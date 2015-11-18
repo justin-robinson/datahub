@@ -1,0 +1,70 @@
+<div class="modal hide span12 in" id="select-crop-modal">
+    <div class="modal-header">
+        <button data-dismiss="modal" class="close modal-close" type="button">&times;</button>
+        <h3>Select Crop</h3>
+    </div>
+    <div class="modal-body">
+        <form class="form-modal" action="">
+            <input type="hidden" name="media_id" value="<?php echo $this->media['media_id'] ?>" />
+            <input type="hidden" name="filename" value="<?php echo $this->media['filename'] ?>" />
+
+            <div class="row">
+                <div class="span7">
+                    <div class="secondary modal-secondary select-crop">
+                        <ul class="thumbnails">
+<?php foreach ($this->crops as $index => $crop): ?>
+                            <li class="span3">
+                                <div class="thumbnail">
+                                    <input type="radio" name="crop" style="margin-right:5px; float:left;" value="<?php echo $crop['cropdata'] ?>">
+                                    <img src="img/ajax-loader.gif" data-src="<?php echo $crop['url'] ?>">
+                                </div>
+                            </li>
+<?php endforeach ?>
+                        </ul>
+                    </div>
+
+                    <div class="secondary modal-secondary hide crop-options">
+                        <input class="radio-portrait" type="radio" name="photo_position" value="portrait"> Portrait
+                        <input class="radio-landscape" type="radio" name="photo_position" value="landscape"> Landscape
+                    </div>
+
+                    <div class="secondary modal-secondary hide create-crop">
+                        <div class="media-crop">
+                            <img src="img/ajax-loader.gif">
+                            <img id="primary-crop" class="media-crop" style="display: none" src="<?php echo $this->media['crop_url'] ?>">
+<?php if ($this->thumbnail): ?>
+                            <label class="checkbox">
+                                <input type="checkbox" checked="checked" id="use-thumbnail"> Use this photo as thumbnail
+                            </label>
+                        </div>
+                        <div class="media-crop">
+                            <img src="img/ajax-loader.gif">
+                            <img id="thumbnail-crop" class="media-crop" style="display: none" src="<?php echo $this->media['crop_url'] ?>">
+<?php endif ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="span4">
+                    <div class="primary modal-primary">
+                        <label for="media-title">Title</label>
+                        <input type="text" class="span4" name="media-title" value="<?php echo $this->media['attributes']['title'] ?>">
+                        <label for="media-caption">Caption</label>
+                        <textarea class="span4" rows="4" name="media-caption"><?php echo $this->media['attributes']['caption'] ?></textarea>
+<?php if ($this->show == 'all'): ?>
+                        <label for="media-caption">Notes</label>
+                        <textarea class="span4" rows="4" name="media-notes"><?php echo $this->media['attributes']['notes'] ?></textarea>
+                        <label for="media-title">Art Credit</label>
+                        <input type="text" class="span4" name="media-art_credit" value="<?php echo $this->media['attributes']['art_credit'] ?>">
+<?php endif ?>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-back modal-trigger modal-close" rel="leadPhoto" href="#">Back</a>
+        <a class="btn btn-create-crop" href="#">Create New Crop</a>
+        <a class="btn btn-select-crop hide" href="#">Choose From Crops</a>
+        <a data-dismiss="modal" class="btn btn-primary modal-finish" href="#">Insert Photo</a>
+    </div>
+</div>

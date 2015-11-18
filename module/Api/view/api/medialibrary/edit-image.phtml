@@ -1,0 +1,41 @@
+<div class="modal hide span12 in" id="edit-photo-modal">
+    <div class="modal-header">
+        <button data-dismiss="modal" class="close modal-close" type="button">&times;</button>
+        <h3>Edit Photo</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row-fluid">
+            <div class="span6">
+                <img src="<?php echo $this->media['crop_url'] ?>">
+            </div>
+            <div class="span6">
+                <div class="modal-body__primary">
+                    <form class="form-modal" action="">
+                        <input type="hidden" name="media_id" value="<?php echo $this->media['media_id'] ?>" />
+                        <input type="hidden" name="is_live" value="1" />
+
+                        <label for="attributes[title]" class="control-label">Title</label>
+                        <input type="text" class="span12" name="attributes[title]" value="<?php echo $this->media['attributes']['title'] ?>">
+
+                        <label for="attributes[caption]" class="control-label">Caption</label>
+                        <textarea class="span12" rows="4" name="attributes[caption]"><?php echo $this->media['attributes']['caption'] ?></textarea>
+
+                        <label for="attributes[notes]" class="control-label">Notes</label>
+                        <textarea class="span12" rows="4" name="attributes[notes]"><?php echo $this->media['attributes']['notes'] ?></textarea>
+
+                        <label for="attributes[art_credit]" class="control-label">Art Credit</label>
+                        <input type="text" class="span12" name="attributes[art_credit]" value="<?php echo $this->media['attributes']['art_credit'] ?>">
+
+                        <label for="attributes[copyright_notice]" class="control-label">Copyright</label>
+                        <input type="text" class="span12" name="attributes[copyright_notice]" value="<?php echo (isset($this->media['attributes']['copyright_notice'])) ? $this->media['attributes']['copyright_notice'] : ''?>">
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary modal-finish" data-loading-text="Applying...">Apply</button>
+    </div>
+</div>
