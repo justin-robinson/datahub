@@ -1,0 +1,12 @@
+/composer.lock
+/.project
+/.buildpath
+/.settings
+.DS_Store
+.DS_Store?
+/*.sublime-project
+/*.sublime-workspace
+**/node_modules
+.idea/
+npm-debug.log
+deployment.properties
