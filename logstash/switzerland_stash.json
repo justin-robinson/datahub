@@ -30,5 +30,6 @@ filter {
 output {
     elasticsearch {
       hosts => ["es-listandleads-query:9200"]
+      index => "listsandleads"
     }
   }
