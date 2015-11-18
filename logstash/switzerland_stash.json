@@ -1,0 +1,34 @@
+input {
+        file {
+          path => "/tmp/switzerland_person.csv"
+          start_position => "beginning"
+          type => person
+        }
+
+        file {
+          path => "/tmp/switzerland_company.csv"
+          start_position => "beginning"
+          type => company
+        }
+    }
+
+filter {
+    if [type] == "person" {
+        csv {
+          source => "message"
+          columns => ["id","company_id","name","first_name","middle_name","last_name","position","start_year","photo","linkedin","twitter","facebook","address1","address2","address3","city","state","zip","email","phone","rank","vendor_person_id","vendor_email_accuracy","vendor_phone_accuracy"]
+          }
+        }
+    if [type] == "company" {        
+        csv {
+          source => "message"
+          columns => ["id","headquarters_id","location_type","name","description","ticker","employees_at_location","sales_volume","address1","address2","address3","city","state","zip","organization_url","phone","sic","last_story_date","acbj_org_id","vendor4_org_id","linkedin_org_id","linkedin_url"]
+          }
+        }
+      }
+
+output {
+    elasticsearch {
+      hosts => ["es-listandleads-query:9200"]
+    }
+  }
