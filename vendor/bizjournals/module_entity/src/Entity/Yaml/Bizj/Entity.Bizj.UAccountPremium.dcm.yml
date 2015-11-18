@@ -1,0 +1,68 @@
+Entity\Bizj\UAccountPremium:
+  type: entity
+  table: u_account_premium
+  fields:
+    premium_id:
+      type: integer
+      unsigned: true
+      id: true
+      generator:
+        strategy: AUTO
+    user_id:
+      type: integer
+      unsigned: true
+    market_id:
+      type: integer
+      unsigned: true
+    subscription_number:
+      type: integer
+      unsigned: true
+      nullable: true
+    start_date:
+      type: date
+    end_date:
+      type: date
+    source:
+      type: string
+      length: 32
+      options:
+        default: 'unspecified'
+    premium_type:
+      type: string
+      length: 32
+      options:
+        default: 'print-edition'
+    added_by:
+      type: string
+      length: 255
+      nullable: true
+    modified_by:
+      type: string
+      length: 255
+      nullable: true
+    created_at:
+      type: datetime
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      options:
+        timestampable:
+          on: update
+  manyToOne:
+    User:
+      targetEntity: UAccount
+      joinColumn:
+        name: user_id
+        referencedColumnName: user_id
+    Market:
+      targetEntity: Market
+      joinColumn:
+        name: market_id
+        referencedColumnName: market_id
+    UAccount:
+      targetEntity: UAccount
+      joinColumn:
+        name: user_id
+        referencedColumnName: user_id

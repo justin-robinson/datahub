@@ -1,0 +1,44 @@
+Entity\Bizj\CtClickTrack:
+  type: entity
+  table: ct_click_track
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: true 
+      nullable: false
+      generator:
+        strategy: AUTO
+    event_type:
+      type: string
+      length: 2
+      nullable: true
+    campaign_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    click_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    c_time:
+      type: datetime
+      options:
+        timestampable:
+          on: create
+    remote_ip:
+      type: string
+      length: 15
+    uin:
+      type: string
+      length: 30
+      nullable: true
+    user_agent:
+      type: string
+      nullable: true
+    dest_url:
+      type: string
+      nullable: true
+    referer:
+      type: string
+      nullable: true

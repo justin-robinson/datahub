@@ -1,0 +1,73 @@
+Entity\NascarIllustrated\PurchaseItem:
+  type: entity
+  table: purchase_item
+  fields:
+    purchase_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+      nullable: false
+    product_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+      nullable: false
+    product_name:
+      type: string
+      length: 255
+      nullable: false
+    is_subscription:
+      type: boolean
+      columnDefinition: tinyint(1) unsigned NOT NULL DEFAULT '0'
+      nullable: false
+      options:
+        default: false
+    key_code:
+      type: string
+      length: 255
+      nullable: true
+    quantity:
+      type: integer
+      columnDefinition: int(10) NOT NULL DEFAULT '1'
+      nullable: false
+      options:
+        default: 1
+    unit_price:
+      type: integer
+      columnDefinition: int(10) NOT NULL DEFAULT '0'
+      nullable: false
+      options:
+        default: 0
+    unit_shipping:
+      type: integer
+      columnDefinition: int(10) NOT NULL DEFAULT '0'
+      nullable: false
+      options:
+        default: 0
+    item_metadata:
+      type: string
+      nullable: true
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  manyToOne:
+    Purchase:
+      targetEntity: Purchase
+      joinColumn:
+        name: purchase_id
+        referencedColumnName: purchase_id
+    Product:
+      targetEntity: Product
+      joinColumn:
+        name: product_id
+        referencedColumnName: product_id
+

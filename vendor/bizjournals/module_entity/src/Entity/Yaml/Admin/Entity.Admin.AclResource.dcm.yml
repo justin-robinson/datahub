@@ -1,0 +1,40 @@
+Entity\Admin\AclResource:
+  type: entity
+  table: acl_resource
+  fields:
+    acl_resource_id:
+      id: true
+      type: integer
+      unsigned: true
+      nullable: false
+      generator:
+        strategy: AUTO
+    parent_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    resource_name:
+      type: string
+      length: 255
+      fixed: false
+      nullable: false
+    description:
+      type: string
+      length: 255
+      fixed: false
+      nullable: false
+    resource_type:
+      type: string
+      length: null
+      fixed: false
+      nullable: true
+    created_at:
+      type: datetime
+      nullable: false
+    updated_at:
+      type: datetime
+      nullable: false
+  oneToMany:
+    AclRolePrivilege:
+      targetEntity: AclRolePrivilege
+      mappedBy: AclResource

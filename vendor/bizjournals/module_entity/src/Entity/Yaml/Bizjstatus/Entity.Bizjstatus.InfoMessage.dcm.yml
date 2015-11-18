@@ -1,0 +1,52 @@
+Entity\Bizjstatus\InfoMessage:
+  type: entity
+  table: info_message
+  fields:
+    message_id:
+      id: true
+      type: integer
+      unsigned: true
+      columnDefinition: int(10) unsigned NOT NULL AUTO_INCREMENT
+      generator:
+        strategy: AUTO
+    allow_syndication:
+      type: boolean
+      columnDefinition: tinyint(1) NOT NULL DEFAULT '0'
+      options:
+        default: false
+      nullable: false
+    title:
+      type: string
+      length: '255'
+      nullable: false
+    details:
+      type: string
+      nullable: true
+      columnDefinition: mediumtext
+    created_by:
+      type: string
+      nullable: false
+    updated_by:
+      type: string
+      nullable: false
+    expires_at:
+      type: datetime
+      nullable: true
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  oneToMany:
+    ProductMap:
+      targetEntity: ProductEventMap
+      mappedBy: InfoMessage
+      cascade: [ 'all' ]
+

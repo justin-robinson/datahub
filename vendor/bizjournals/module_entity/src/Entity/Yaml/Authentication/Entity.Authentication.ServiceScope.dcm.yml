@@ -1,0 +1,51 @@
+Entity\Authentication\ServiceScope:
+  type: entity
+  table: service_scope
+  fields:
+    scope_id:
+      id: true
+      type: integer
+      generator:
+        strategy: AUTO
+    service_id:
+      type: integer
+      columnDefinition: smallint(5) unsigned NOT NULL
+      nullable: false
+    scope:
+      type: string
+      length: '50'
+      nullable: false
+    description:
+      type: string
+      length: '2000'
+      nullable: true
+    is_default:
+      type: boolean
+      nullable: false
+      columnDefinition: tinyint(1) NOT NULL DEFAULT '0'
+      options:
+        default: false
+    is_active:
+      type: boolean
+      nullable: false
+      columnDefinition: tinyint(1) NOT NULL DEFAULT '1'
+      options:
+        default: true
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  manyToOne:
+    Service:
+      targetEntity: Service
+      joinColumn:
+        name: service_id
+        referencedColumnName: service_id

@@ -1,0 +1,44 @@
+Entity\Bizjstatus\User:
+  type: entity
+  table: user
+  fields:
+    user_id:
+      id: true
+      type: integer
+      unsigned: true
+      columnDefinition: int(11) unsigned AUTO_INCREMENT
+      generator:
+        strategy: AUTO
+    username:
+      type: string
+      length: '255'
+      nullable: true
+    email:
+      type: string
+      length: '255'
+      nullable: true
+    display_name:
+      type: string
+      length: '50'
+      nullable: true
+    password:
+      type: string
+      length: '128'
+      nullable: false
+    state:
+      type: integer
+      unsigned: true
+      columnDefinition: smallint(6) unsigned
+      nullable: true
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update

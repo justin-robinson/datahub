@@ -1,0 +1,60 @@
+Entity\Tracking\TrackerKey:
+  type: entity
+  table: tracker_key
+  uniqueConstraints:
+    map_unique:
+      columns:
+        - tracker_key
+  fields:
+    tracker_key_id:
+      id: true
+      type: integer
+      columnDefinition: bigint(20) unsigned NOT NULL
+      generator:
+        strategy: AUTO
+    tracker_key:
+      type: string
+      length: 30
+      nullable: false
+    client_id:
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+      nullable: false
+    tracker_type:
+      type: string
+      length: 25
+      nullable: false
+    tracker_subtype:
+      type: string
+      length: 50
+      nullable: true
+    url:
+      type: string
+      length: 2000
+      nullable: true
+    campaign_ref:
+      type: string
+      length: 50
+      nullable: true
+    tracker_properties:
+      type: string
+      columnDefinition: text
+      nullable: true
+    is_active:
+      type: boolean
+      columnDefinition: tinyint(1) unsigned NOT NULL DEFAULT '1'
+      nullable: false
+      options:
+        default: true
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update

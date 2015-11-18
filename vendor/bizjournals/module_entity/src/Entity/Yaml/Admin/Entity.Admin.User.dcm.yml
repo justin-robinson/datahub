@@ -1,0 +1,42 @@
+Entity\Admin\User:
+  type: entity
+  table: user
+  fields:
+    user_id:
+      id: true
+      type: integer
+      unsigned: true
+      nullable: false
+      generator:
+        strategy: AUTO
+    email:
+      type: string
+      length: 255
+      fixed: false
+      nullable: false
+    password:
+      type: string
+      length: 64
+      fixed: false
+      nullable: true
+    use_ldap:
+      type: boolean
+      nullable: false
+    expires:
+      type: datetime
+      nullable: true
+    modified_by:
+      type: string
+      length: 255
+      fixed: false
+      nullable: true
+    created_at:
+      type: datetime
+      nullable: false
+    updated_at:
+      type: datetime
+      nullable: false
+  oneToMany:
+    AclUserRole:
+      targetEntity: AclUserRole
+      mappedBy: User

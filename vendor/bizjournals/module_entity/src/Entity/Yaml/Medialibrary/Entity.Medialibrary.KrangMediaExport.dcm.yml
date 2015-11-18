@@ -1,0 +1,48 @@
+Entity\Medialibrary\KrangMediaExport:
+  type: entity
+  table: krang_media_export
+  indexes:
+    media_id:
+      columns:
+        - media_id
+  fields:
+    media_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+    media_type_id:
+      type: integer
+      columnDefinition: smallint(5) unsigned NOT NULL
+    mime_type:
+      type: string
+      length: '255'
+      nullable: true
+    location_url:
+      type: string
+      length: '4000'
+      nullable: true
+    filename:
+      type: string
+      length: '1000'
+      nullable: true
+    title:
+      type: string
+      length: '255'
+      nullable: true
+    caption:
+      type: string
+      nullable: true
+    copyright:
+      type: string
+      length: '2000'
+      nullable: true
+    publish_date:
+      type: datetime
+      nullable: true
+  oneToMany:
+    IdMap:
+      targetEntity: KrangMediaIdMap
+      mappedBy: KrangMediaExport
+      cascade: [ 'all' ]
+      orphanRemoval: true
+      orderBy: null

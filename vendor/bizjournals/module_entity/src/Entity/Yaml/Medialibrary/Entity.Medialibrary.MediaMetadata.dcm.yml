@@ -1,0 +1,62 @@
+Entity\Medialibrary\MediaMetadata:
+  type: entity
+  table: media_metadata
+  indexes:
+    media_id:
+      columns:
+        - media_id
+  fields:
+    meta_id:
+      id: true
+      type: bigint
+      columnDefinition: bigint(20) unsigned
+      generator:
+        strategy: AUTO
+    media_id:
+      type: bigint
+      columnDefinition: bigint(20) unsigned NOT NULL
+      nullable: false
+    meta_group:
+      type: string
+      length: '64'
+      nullable: false
+      options:
+        default: 'attribute'
+    meta_name:
+      type: string
+      length: '255'
+      columnDefinition: mediumtext
+      nullable: false
+    meta_value:
+      type: string
+      length: '32767'
+    is_preferred:
+      type: boolean
+      columnDefinition: tinyint(1) unsigned NOT NULL
+      nullable: false
+      options:
+        default: false
+    is_original:
+      type: boolean
+      columnDefinition: tinyint(1) unsigned NOT NULL
+      nullable: false
+      options:
+        default: false
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  manyToOne:
+    Media:
+      targetEntity: Entity\Medialibrary\Media
+      joinColumn:
+        name: media_id
+        referencedColumnName: media_id

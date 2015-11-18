@@ -1,0 +1,39 @@
+Entity\Bzjpreview\StoryVerticalSubtopic:
+  type: entity
+  table: story_vertical_subtopic
+  fields:
+    story_id:
+      id: true
+      type: integer
+      unsigned: true 
+      nullable: false
+    vertical_subtopic_id:
+      id: true
+      type: integer
+      unsigned: true
+    market:
+      type: string
+      length: 20
+      nullable: false
+    story_date:
+      type: date
+      nullable: false
+    relevance:
+      type: integer
+      unsigned: true
+      nullable: false
+      options:
+        default: 0
+    is_daily:
+      type: string
+      nullable: false
+      columnDefinition: enum('0', '1') NOT NULL,
+      options:
+        default: '1'
+        validate: ['0', '1']
+  manyToOne:
+    StoryRead:
+      targetEntity: StoryRead
+      joinColumn:
+        name: story_id
+        referencedColumnName: story_id

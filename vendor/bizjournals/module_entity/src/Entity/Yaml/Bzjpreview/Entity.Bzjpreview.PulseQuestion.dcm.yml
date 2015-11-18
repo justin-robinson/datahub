@@ -1,0 +1,59 @@
+Entity\Bzjpreview\PulseQuestion:
+  type: entity
+  table: pulse_question
+  fields:
+    question_id:
+      type: integer
+      unsigned: true
+      id: true
+      generator:
+        strategy: AUTO
+    pulse_id:
+      type: integer
+      unsigned: true
+    question:
+      type: string
+      length: 255
+    ord:
+      type: integer
+      unsigned: true
+      options:
+        default: 0
+    option_type:
+      type: string
+      columnDefinition: enum('text', 'textarea', 'radio', 'checkbox', 'rank') NOT NULL DEFAULT 'radio'
+      options:
+        validate: [text, textarea, radio, checkbox, rank]
+        default: 'radio'
+    is_required:
+      type: boolean
+      options:
+        default: true
+    results_cache:
+      type: string
+      nullable: true
+    created_at:
+      type: datetime
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      options:
+        timestampable:
+          on: update
+    deleted_at:
+      type: datetime
+      nullable: true
+  manyToOne:
+    Pulse:
+      targetEntity: Pulse
+      joinColumn:
+        name: pulse_id
+        referencedColumnName: pulse_id
+  oneToMany:
+    Options:
+      targetEntity: PulseQuestionOption
+      mappedBy: Question
+      orphanRemoval: true
+      cascade: [all]

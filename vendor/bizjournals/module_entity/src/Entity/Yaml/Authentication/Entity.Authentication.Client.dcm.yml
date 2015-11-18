@@ -1,0 +1,89 @@
+Entity\Authentication\Client:
+  type: entity
+  table: client
+  fields:
+    client_id:
+      id: true
+      type: integer
+      generator:
+        strategy: AUTO
+    service_id:
+      type: integer
+      columnDefinition: smallint(5) unsigned NOT NULL
+      nullable: false
+    public_key:
+      type: string
+      length: '50'
+      nullable: false
+    secret_key:
+      type: string
+      length: '50'
+      nullable: false
+    redirect_uri:
+      type: string
+      length: '2000'
+      nullable: false
+    grant_types:
+      type: string
+      length: '80'
+      nullable: true
+    scope:
+      type: string
+      length: '100'
+      nullable: true
+    rate_limit:
+      type: integer
+      nullable: false
+      options:
+        default: 0
+    client_name:
+      type: string
+      length: '100'
+      nullable: false
+    description:
+      type: string
+      length: '2000'
+      nullable: true
+    unit_id:
+      type: integer
+      columnDefinition: smallint(5) unsigned NOT NULL
+      nullable: false
+    is_active:
+      type: boolean
+      nullable: false
+      columnDefinition: tinyint(1) NOT NULL DEFAULT '1'
+      options:
+        default: true
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  oneToMany:
+    AccessTokens:
+      targetEntity: AccessToken
+      mappedBy: Client
+    RefreshTokens:
+      targetEntity: RefreshToken
+      mappedBy: Client
+    AuthorizationCodes:
+      targetEntity: AuthorizationCode
+      mappedBy: Client
+  manyToOne:
+    Service:
+      targetEntity: Service
+      joinColumn:
+        name: service_id
+        referencedColumnName: service_id
+    Unit:
+      targetEntity: Unit
+      joinColumn:
+        name: unit_id
+        referencedColumnName: unit_id

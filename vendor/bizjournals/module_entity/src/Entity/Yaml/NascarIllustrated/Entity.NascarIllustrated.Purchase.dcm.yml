@@ -1,0 +1,132 @@
+Entity\NascarIllustrated\Purchase:
+  type: entity
+  table: purchase
+  fields:
+    purchase_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+      generator:
+        strategy: AUTO
+    is_complete:
+      type: boolean
+      columnDefinition: tinyint(1) unsigned NOT NULL DEFAULT '0'
+      nullable: false
+      options:
+        default: false
+    merchandise_batch_file:
+      type: string
+      length: 255
+      nullable: true
+    subscription_batch_file:
+      type: string
+      length: 255
+      nullable: true
+    cart_id:
+      type: integer
+      columnDefinition: int(10) unsigned DEFAULT NULL
+      nullable: true
+    amount:
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL DEFAULT '0'
+      nullable: false
+      options:
+        default: 0
+    first_name:
+      type: string
+      length: 50
+      nullable: false
+      options:
+        default: ''
+    last_name:
+      type: string
+      length: 50
+      nullable: false
+      options:
+        default: ''
+    email:
+      type: string
+      length: 255
+      nullable: false
+      options:
+        default: ''
+    phone:
+      type: string
+      length: 70
+      nullable: false
+      options:
+        default: ''
+    address1:
+      type: string
+      length: 150
+      nullable: false
+      options:
+        default: ''
+    address2:
+      type: string
+      length: 150
+      nullable: false
+      options:
+        default: ''
+    city:
+      type: string
+      length: 100
+      nullable: false
+      options:
+        default: ''
+    state_province:
+      type: string
+      length: 70
+      nullable: false
+      options:
+        default: ''
+    postal_code:
+      type: string
+      length: 35
+      nullable: false
+      options:
+        default: ''
+    country:
+      type: string
+      length: 3
+      nullable: false
+      options:
+        default: ''
+    has_billing_eq_shipping:
+      type: boolean
+      columnDefinition: tinyint(1) unsigned NOT NULL DEFAULT '1'
+      nullable: false
+      options:
+        default: true
+    transaction_code:
+      type: string
+      length: 64
+      nullable: true
+    transaction_metadata:
+      type: string
+      nullable: true
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  oneToMany:
+    PurchaseItems:
+      targetEntity: PurchaseItem
+      mappedBy: Purchase
+      cascade: [ 'all' ]
+      orphanRemoval: true
+  manyToOne:
+    Cart:
+      targetEntity: Cart
+      joinColumn:
+        name: cart_id
+        referencedColumnName: cart_id
+

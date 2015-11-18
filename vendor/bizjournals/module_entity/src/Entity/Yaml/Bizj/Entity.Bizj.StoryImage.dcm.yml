@@ -1,0 +1,61 @@
+Entity\Bizj\StoryImage:
+  type: entity
+  table: story.story_image
+  fields:
+    image_id:
+      id: true
+      type: integer
+      unsigned: true
+      nullable: false
+    c_time:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    story_id:
+      type: integer
+      unsigned: true 
+      nullable: false
+    major_rev:
+      type: integer
+      unsigned: true
+      nullable: false
+      options:
+        default: 0
+    rev_time:
+      type: datetime
+      nullable: false
+    caption:
+      type: string
+    media_producer:
+      type: string
+    image_data:
+      type: string
+    width:
+      type: integer
+      unsigned: true
+      nullable: false
+      options:
+        default: 0
+    height:
+      type: integer
+      unsigned: true
+      nullable: false
+      options:
+        default: 0
+    size_hint:
+      type: string
+      length: 20
+    display_order:
+      type: integer
+      unsigned: true
+      nullable: false
+      options:
+        default: 0
+  manyToOne:
+    StoryRead:
+      targetEntity: StoryRead
+      joinColumn:
+        name: story_id
+        referencedColumnName: story_id

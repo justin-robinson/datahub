@@ -1,0 +1,73 @@
+Entity\Bizj\KrangSpecialCategory:
+  type: entity
+  table: krang_special_category
+  fields:
+    special_cat_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned
+      generator:
+        strategy: AUTO
+    category_name:
+      type: string
+      length: 78
+      nullable: false
+    sponsor_name:
+      type: string
+      length: 255
+      nullable: true
+    content_label:
+      type: string
+      length: 80
+      nullable: false
+      options:
+        default: 'Sponsor Content'
+    market_code:
+      type: string
+      length: 50
+      nullable: false
+    krang_page_type:
+      type: string
+      length: 30
+    krang_category:
+      type: string
+      length: 255
+    is_active:
+      type: boolean
+      nullable: false
+      options:
+        default: '1'
+    skin:
+      type: string
+      length: 20
+    extraheader:
+      type: string
+    adtag_spf:
+      type: integer
+      columnDefinition: int(10) unsigned
+    blog_extraheader:
+      type: string
+    start_date:
+      type: date
+      nullable: true
+    end_date:
+      type: date
+      nullable: true
+    modified_by:
+      type: string
+      length: 255
+    created_at:
+      type: datetime
+      nullable: true
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: true
+      options:
+        timestampable:
+          on: update
+    deleted_at:
+      type: datetime
+      nullable: true

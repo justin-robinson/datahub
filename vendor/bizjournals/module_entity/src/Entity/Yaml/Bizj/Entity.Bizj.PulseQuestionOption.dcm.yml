@@ -1,0 +1,48 @@
+Entity\Bizj\PulseQuestionOption:
+  type: entity
+  table: pulse_question_option
+  gedmo:
+    soft_deleteable:
+      field_name: deleted_at
+      time_aware: false
+  fields:
+    option_id:
+      type: integer
+      unsigned: true
+      id: true
+      generator:
+        strategy: AUTO
+    question_id:
+      type: integer
+      unsigned: true
+    ord:
+      type: integer
+      unsigned: true
+      options:
+        default: 0
+    choice:
+      type: string
+      length: 255
+    is_correct:
+      type: boolean
+      options:
+        default: false
+    created_at:
+      type: datetime
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      options:
+        timestampable:
+          on: update
+    deleted_at:
+      type: datetime
+      nullable: true
+  manyToOne:
+    Question:
+      targetEntity: PulseQuestion
+      joinColumn:
+        name: question_id
+        referencedColumnName: question_id

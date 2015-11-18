@@ -1,0 +1,66 @@
+Entity\Bizj\PageUrl:
+  type: entity
+  table: page_url
+  fields:
+    url_id:
+      id: true
+      type: integer
+      unsigned: true
+      nullable: false
+      generator:
+        strategy: AUTO
+    site:
+      type: string
+      length: 80
+      nullable: false
+    path:
+      type: string
+      length: 727
+      nullable: false
+    slug:
+      type: string
+      length: 80
+      nullable: false
+    issue_date:
+      type: date
+      nullable: false
+    page_id:
+      type: integer
+      unsigned: true 
+      nullable: false
+    is_primary:
+      type: boolean
+      columnDefinition: tinyint(1) NOT NULL
+      nullable: false
+      options:
+        default: false
+    is_active: 
+      type: boolean
+      columnDefinition: tinyint(1) NOT NULL
+      nullable: false
+      options:
+        default: true
+    is_redirect: 
+      type: boolean
+      columnDefinition: tinyint(1) NOT NULL
+      nullable: false
+      options:
+        default: false
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  manyToOne:
+    Page:
+      targetEntity: Page
+      joinColumn:
+        name: page_id
+        referencedColumnName: page_id

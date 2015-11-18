@@ -1,0 +1,90 @@
+Entity\Bizj\PulseMedia:
+  type: entity
+  table: pulse_media
+  gedmo:
+    soft_deleteable:
+      field_name: deleted_at
+      time_aware: false
+  fields:
+    pulse_id:
+      type: integer
+      unsigned: true
+      id: true
+    question_id:
+      type: integer
+      unsigned: true
+      id: true
+      options:
+        default: 0
+    media_type:
+      type: string
+      columnDefinition: enum('image', 'thumbnail') NOT NULL DEFAULT 'image'
+      id: true
+      options:
+        validate: [image, thumbnail]
+        default: 'image'
+    option_id:
+      type: integer
+      unsigned: true
+      id: true
+      options:
+        default: 0
+    media_host:
+      type: string
+      length: 100
+    media_uri:
+      type: string
+      length: 767
+    crop_data:
+      type: string
+      length: 32
+      nullable: true
+    media_source:
+      type: string
+      length: 32
+      options:
+        default: 'unknown'
+    external_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    alt_text:
+      type: string
+      length: 255
+      nullable: true
+    art_credit:
+      type: string
+      length: 255
+      nullable: true
+    orig_height:
+      type: integer
+      unsigned: true
+      options:
+        default: 0
+    orig_width:
+      type: integer
+      unsigned: true
+      options:
+        default: 0
+    additional_data:
+      type: string
+      nullable: true
+    created_at:
+      type: datetime
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      options:
+        timestampable:
+          on: update
+    deleted_at:
+      type: datetime
+      nullable: true
+  manyToOne:
+    Pulse:
+      targetEntity: Pulse
+      joinColumn:
+        name: pulse_id
+        referencedColumnName: pulse_id

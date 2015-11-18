@@ -1,0 +1,15 @@
+Entity\Bizj\PageStandout:
+  type: entity
+  table: page_standout
+  fields:
+    page_id:
+      id: true
+      type: integer
+      unsigned: true
+      nullable: false
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create

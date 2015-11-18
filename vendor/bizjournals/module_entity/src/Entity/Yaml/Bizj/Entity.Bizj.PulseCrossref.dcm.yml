@@ -1,0 +1,52 @@
+Entity\Bizj\PulseCrossref:
+  type: entity
+  table: pulse_crossref
+  gedmo:
+    soft_deleteable:
+      field_name: deleted_at
+      time_aware: false
+  fields:
+    ref_id:
+      type: integer
+      unsigned: true
+      id: true
+      generator:
+        strategy: AUTO
+    pulse_id:
+      type: integer
+      unsigned: true
+    ref_type:
+      type: string
+      columnDefinition: enum('person', 'company', 'industry', 'tag', 'category', 'location', 'bucket')
+      options:
+        validate: [person, company, industry, tag, category, location, bucket]
+    ref_key:
+      type: string
+      length: 255
+      nullable: true
+    ref_value:
+      type: string
+      nullable: true
+    ref_weight:
+      type: integer
+      unsigned: true
+      nullable: true
+    created_at:
+      type: datetime
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      options:
+        timestampable:
+          on: update
+    deleted_at:
+      type: datetime
+      nullable: true
+  manyToOne:
+    Pulse:
+      targetEntity: Pulse
+      joinColumn:
+        name: pulse_id
+        referencedColumnName: pulse_id

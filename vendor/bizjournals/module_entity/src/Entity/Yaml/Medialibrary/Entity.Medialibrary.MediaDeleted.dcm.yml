@@ -1,0 +1,32 @@
+Entity\Medialibrary\MediaDeleted:
+  type: entity
+  table: media_deleted
+  indexes:
+    media_id:
+      columns:
+        - media_id
+    deleted_at:
+      columns:
+        - deleted_at
+  fields:
+    media_id:
+      id: true
+      type: bigint
+      columnDefinition: bigint(20) unsigned NOT NULL
+    relative_path:
+      type: string
+      length: '1023'
+      nullable: false
+    filename:
+      type: string
+      length: '1023'
+      nullable: false
+    created_at:
+      type: datetime
+      nullable: false
+    deleted_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create

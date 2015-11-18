@@ -1,0 +1,22 @@
+Entity\Cms\ContentWorkspace:
+  type: entity
+  table: content_workspace
+  fields:
+    content_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned
+    user_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned
+    user_name:
+      type: string
+      length: '255'
+      nullable: false
+  oneToOne:
+    Content:
+      targetEntity: Content
+      joinColumn:
+        name: content_id
+        referencedColumnName: content_id

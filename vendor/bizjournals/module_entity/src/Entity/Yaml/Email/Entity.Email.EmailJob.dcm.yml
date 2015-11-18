@@ -1,0 +1,47 @@
+Entity\Email\EmailJob:
+  type: entity
+  table: email_job
+  fields:
+    job_id:
+      type: integer
+      unsigned: true
+      id: true
+      generator:
+        strategy: AUTO
+    description:
+      type: string
+      length: 100
+      nullable: true
+    product_id:
+      type: integer
+      unsigned: false
+      nullable: true
+    from_field:
+      type: string
+      length: 128
+      nullable: true
+    reply_to:
+      type: string
+      length: 128
+      nullable: true
+    sender_host:
+      type: string
+      length: 128
+      nullable: true
+    send_priority:
+      type: integer
+      unsigned: true
+      nullable: true
+    message_count:
+      type: integer
+      unsigned: true
+      nullable: true
+    message_sent_count:
+      type: integer
+      unsigned: true
+      nullable: true
+    c_time:
+      type: datetime
+      options:
+        timestampable:
+          on: create

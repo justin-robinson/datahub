@@ -1,0 +1,54 @@
+Entity\Bzjpreview\PollQuestion:
+  type: entity
+  table: poll_question
+  fields:
+    poll_question_id:
+      id: true
+      type: integer
+      unsigned: true 
+      nullable: false
+      generator:
+        strategy: AUTO
+    poll_id:
+      type: integer
+      unsigned: true 
+      nullable: false
+    question:
+      type: string
+      length: 255
+      nullable: false
+    position:
+      type: integer
+      nullable: false
+      options:
+        default: '0'
+    type:
+      type: string
+      nullable: false
+      columnDefinition: enum('text', 'textarea', 'radio') NOT NULL,
+      options:
+        default: 'radio'
+        validate: ['text', 'textarea', 'radio']
+    required:
+      type: boolean
+      nullable: false
+      options:
+        default: false
+    c_time:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+  oneToMany:
+    Answers:
+      targetEntity: PollQuestionData
+      mappedBy: PollQuestion
+      orderBy:
+        position: asc
+  manyToOne:
+    Poll:
+      targetEntity: Poll
+      joinColumn:
+        name: poll_id
+        referencedColumnName: poll_id

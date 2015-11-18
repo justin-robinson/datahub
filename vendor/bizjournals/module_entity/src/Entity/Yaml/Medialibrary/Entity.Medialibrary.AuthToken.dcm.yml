@@ -1,0 +1,61 @@
+Entity\Medialibrary\AuthToken:
+  type: entity
+  table: auth_token
+  fields:
+    auth_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned
+      generator:
+        strategy: AUTO
+    purpose:
+      type: string
+      length: '255'
+      nullable: false
+    category:
+      type: string
+      length: '64'
+      nullable: false
+      options:
+        default: 'editorial'
+    api_key:
+      type: string
+      length: '255'
+      nullable: false
+    shared_secret:
+      type: string
+      length: '255'
+      nullable: false
+    is_active:
+      type: boolean
+      columnDefinition: tinyint(1) unsigned
+      nullable: false
+      options:
+        default: true
+    expires_at:
+      type: datetime
+    is_superuser:
+      type: boolean
+      columnDefinition: tinyint(1) unsigned
+      nullable: false
+      options:
+        default: false
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  oneToMany:
+    AuthSessions:
+      targetEntity: AuthSession
+      mappedBy: AuthToken
+      cascade: [ 'all' ]
+      orphanRemoval: true
+      orderBy: null

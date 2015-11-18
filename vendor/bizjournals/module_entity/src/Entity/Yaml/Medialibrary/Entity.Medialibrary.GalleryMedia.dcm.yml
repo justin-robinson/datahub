@@ -1,0 +1,67 @@
+Entity\Medialibrary\GalleryMedia:
+  type: entity
+  table: gallery_media
+  indexes:
+    media_id:
+      columns:
+        - media_id
+        - created_at
+    created_at:
+      columns:
+        - created_at
+  fields:
+    gallery_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+      nullable: false
+    media_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+      nullable: false
+    ord:
+      type: integer
+      unsigned: true 
+      nullable: false
+      options:
+        default: 0
+    crop_data:
+      type: string
+      length: '255'
+    title:
+      type: string
+      columnDefinition: varchar(2048) NOT NULL DEFAULT ''
+      nullable: false
+      options:
+        default: ''
+    caption:
+      type: string
+      columnDefinition: varchar(2048) NOT NULL DEFAULT ''
+      nullable: false
+      options:
+        default: ''
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  manyToOne:
+    Gallery:
+      targetEntity: Entity\Medialibrary\Gallery
+      joinColumn:
+        name: gallery_id
+        referencedColumnName: gallery_id
+    Media:
+      targetEntity: Entity\Medialibrary\Media
+      joinColumn:
+        name: media_id
+        referencedColumnName: media_id
+

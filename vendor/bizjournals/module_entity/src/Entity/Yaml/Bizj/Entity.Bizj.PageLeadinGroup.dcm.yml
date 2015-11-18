@@ -1,0 +1,63 @@
+Entity\Bizj\PageLeadinGroup:
+  type: entity
+  table: page_leadin_group
+  fields:
+    group_id:
+      id: true
+      type: integer
+      unsigned: true
+      nullable: false
+      generator:
+        strategy: AUTO
+    page_id:
+      type: integer
+      unsigned: true 
+      nullable: false
+    group_type:
+      type: string
+      nullable: false
+      columnDefinition: enum('auto', 'curate') NOT NULL DEFAULT 'curate',
+      options:
+        default: 'curate'
+        validate: ['auto', 'curate']
+    group_title:
+      type: string
+      length: 255
+    group_class:
+      type: string
+      length: 255
+    group_topic:
+      type: string
+      length: 255
+    group_teaser:
+      type: string
+      length: 255
+    placement:
+      type: string
+      length: 64
+    ord:
+      type: integer
+      unsigned: true 
+      nullable: false
+      options:
+        default: 0
+    group_url:
+      type: string
+      length: 512
+    auto_query:
+      type: string
+      length: 1024
+  oneToMany:
+    LeadinItems:
+      targetEntity: PageLeadinItem
+      mappedBy: PageLeadinGroup
+      cascade: [ 'all' ]
+      orphanRemoval: true
+      orderBy:
+        ord: asc
+  manyToOne:
+    Page:
+      targetEntity: Page
+      joinColumn:
+        name: page_id
+        referencedColumnName: page_id

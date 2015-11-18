@@ -1,0 +1,84 @@
+Entity\Bizjstatus\Event:
+  type: entity
+  table: event
+  fields:
+    event_id:
+      id: true
+      type: integer
+      unsigned: true
+      columnDefinition: int(10) unsigned NOT NULL AUTO_INCREMENT
+      generator:
+        strategy: AUTO
+    parent_id:
+      type: integer
+      unsigned: true
+      columnDefinition: int(10) unsigned
+      nullable: true
+    grandparent_id:
+      type: integer
+      unsigned: true
+      columnDefinition: int(10) unsigned
+      nullable: true
+    has_child:
+      type: boolean
+      columnDefinition: tinyint(1) NOT NULL DEFAULT '0'
+      options:
+        default: false
+      nullable: true
+    code_id:
+      type: integer
+      unsigned: true
+      columnDefinition: int(10) unsigned NOT NULL
+      nullable: false
+    allow_syndication:
+      type: boolean
+      columnDefinition: tinyint(1) NOT NULL DEFAULT '0'
+      options:
+        default: false
+      nullable: false
+    is_resolved:
+      type: boolean
+      columnDefinition: tinyint(1) NOT NULL DEFAULT '0'
+      options:
+        default: false
+      nullable: false
+    title:
+      type: string
+      length: '255'
+      nullable: false
+    details:
+      type: string
+      nullable: true
+      columnDefinition: mediumtext
+    created_by:
+      type: string
+      nullable: false
+    updated_by:
+      type: string
+      nullable: false
+    expires_at:
+      type: datetime
+      nullable: true
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  oneToMany:
+    ProductMap:
+      targetEntity: ProductEventMap
+      mappedBy: Event
+      cascade: [ 'all' ]
+  manyToOne:
+    Status:
+      targetEntity: StatusCode
+      joinColumn:
+        name: code_id
+        referencedColumnName: code_id

@@ -1,0 +1,44 @@
+Entity\Admin\AclUserRole:
+  type: entity
+  table: acl_user_role
+  fields:
+    acl_user_role_id:
+      id: true
+      type: integer
+      unsigned: true
+      nullable: false
+      generator:
+        strategy: AUTO
+    user_id:
+      type: integer
+      unsigned: true
+      nullable: false
+    acl_role_id:
+      type: integer
+      unsigned: true
+      nullable: false
+    role_order:
+      type: integer
+      unsigned: true
+      nullable: false
+    created_at:
+      type: datetime
+      nullable: false
+    updated_at:
+      type: datetime
+      nullable: false
+  oneToMany:
+    AclUserRoleMarket:
+      targetEntity: AclUserRoleMarket
+      mappedBy: AclUserRole
+  manyToOne:
+    AclRole:
+      targetEntity: AclRole
+      joinColumn:
+        name: acl_role_id
+        referencedColumnName: acl_role_id
+    User:
+      targetEntity: User
+      joinColumn:
+        name: user_id
+        referencedColumnName: user_id

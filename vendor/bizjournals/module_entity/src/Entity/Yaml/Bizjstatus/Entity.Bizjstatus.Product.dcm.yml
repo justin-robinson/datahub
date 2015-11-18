@@ -1,0 +1,46 @@
+Entity\Bizjstatus\Product:
+  type: entity
+  table: product
+  fields:
+    product_id:
+      id: true
+      type: integer
+      unsigned: true
+      columnDefinition: int(10) unsigned NOT NULL AUTO_INCREMENT
+      generator:
+        strategy: AUTO
+    product_name:
+      type: string
+      length: '255'
+      nullable: false
+    product_url:
+       type: string
+       length: '1000'
+       nullable: true
+    is_active:
+      type: boolean
+      columnDefinition: tinyint(1) NOT NULL DEFAULT '1'
+      options:
+        default: true
+      nullable: false
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  oneToMany:
+    Events:
+      targetEntity: ProductEventMap
+      mappedBy: Product
+      cascade: [ 'all' ]
+    Messages:
+      targetEntity: ProductInfoMessageMap
+      mappedBy: InfoMessage
+      cascade: [ 'all' ]

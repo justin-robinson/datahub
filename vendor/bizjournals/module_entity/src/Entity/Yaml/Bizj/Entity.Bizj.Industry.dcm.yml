@@ -1,0 +1,44 @@
+Entity\Bizj\Industry:
+  type: entity
+  table: industry
+  fields:
+    industry_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned
+      generator:
+        strategy: AUTO
+    industry_code:
+      type: string
+      length: '50'
+      nullable: false
+      unique: true
+    industry_name:
+      type: string
+      length: '255'
+      nullable: false
+    short_name:
+      type: string
+      length: '40'
+    active:
+      type: boolean
+      nullable: false
+      options:
+        default: '1'
+    hidden:
+      type: boolean
+      nullable: false
+      options:
+        default: '0'
+    feed_id:
+      type: integer
+      columnDefinition: int(10) unsigned
+      nullable: true
+    nstein_name:
+      type: string
+      length: 255
+      nullable: true
+    iana_value:
+      type: string
+      length: 32
+      nullable: true

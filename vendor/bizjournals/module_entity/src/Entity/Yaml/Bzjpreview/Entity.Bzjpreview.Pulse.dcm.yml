@@ -1,0 +1,106 @@
+Entity\Bzjpreview\Pulse:
+  type: entity
+  table: pulse
+  fields:
+    pulse_id:
+      type: integer
+      unsigned: true
+      id: true
+    pulse_type:
+      type: string
+      columnDefinition: enum('poll', 'survey', 'quiz', 'rankrate') NOT NULL DEFAULT 'poll'
+      options:
+        validate: [poll, survey, quiz, rankrate]
+        default: 'poll'
+    primary_market_id:
+      type: integer
+      unsigned: true
+    headline:
+      type: string
+      length: 255
+    short_headline:
+      type: string
+      length: 80
+      nullable: true
+    description:
+      type: string
+      nullable: true
+    start_time:
+      type: datetime
+    end_time:
+      type: datetime
+      nullable: true
+    is_evergreen:
+      type: boolean
+      options:
+        default: false
+    is_featured:
+      type: boolean
+      options:
+        default: false
+    is_national:
+      type: boolean
+      options:
+        default: false
+    has_sponsor:
+      type: boolean
+      options:
+        default: false
+    allow_comments:
+      type: boolean
+      options:
+        default: true
+    display_results:
+      type: boolean
+      options:
+        default: true
+    meta_title:
+      type: string
+      length: 255
+      nullable: true
+    meta_description:
+      type: string
+      nullable: true
+    estimated_response_count:
+      type: integer
+      unsigned: true
+      nullable: true
+    created_at:
+      type: datetime
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      options:
+        timestampable:
+          on: update
+    deleted_at:
+      type: datetime
+      nullable: true
+  oneToMany:
+    Crossrefs:
+      targetEntity: PulseCrossref
+      mappedBy: Pulse
+      orphanRemoval: true
+      cascade: [all]
+    Media:
+      targetEntity: PulseMedia
+      mappedBy: Pulse
+      orphanRemoval: true
+      cascade: [all]
+    Markets:
+      targetEntity: PulseMarketMap
+      mappedBy: Pulse
+      orphanRemoval: true
+      cascade: [all]
+    Questions:
+      targetEntity: PulseQuestion
+      mappedBy: Pulse
+      orphanRemoval: true
+      cascade: [all]
+    LeadinGroups:
+      targetEntity: PulseLeadinGroup
+      mappedBy: Pulse
+      orphanRemoval: true
+      cascade: [all]

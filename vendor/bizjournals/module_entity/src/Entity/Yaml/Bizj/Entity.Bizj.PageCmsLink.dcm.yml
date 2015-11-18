@@ -1,0 +1,46 @@
+Entity\Bizj\PageCmsLink:
+  type: entity
+  table: page_cms_link
+  fields:
+    page_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned
+      generator:
+        strategy: AUTO
+    reserve_time:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    publish_time:
+      type: datetime
+      nullable: true
+    revision_time:
+      type: datetime
+      nullable: true
+    delete_time:
+      type: datetime
+      nullable: true
+    delete_issue_date:
+      type: date
+    url:
+      type: string
+      length: '847'
+    headline:
+      type: string
+      length: '255'
+      nullable: true
+    type_id:
+      type: integer
+      columnDefinition: int(10) unsigned
+      nullable: false
+      options:
+        default: 0
+    source:
+      type: string
+      nullable: false
+      options:
+        default: 'cms'
+        validate: ['cms','krang','potm','leads','publishthis']

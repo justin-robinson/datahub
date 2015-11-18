@@ -1,0 +1,32 @@
+Entity\Tracking\TrackerEvent:
+  type: entity
+  table: tracker_event
+  fields:
+    event_id:
+      id: true
+      type: integer
+      columnDefinition: bigint(20) unsigned NOT NULL
+      generator:
+        strategy: AUTO
+    tracker_key_id:
+      type: integer
+      columnDefinition: bigint(20) unsigned NOT NULL
+      nullable: false
+    client_id:
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+      nullable: false
+    user_ref:
+      type: string
+      length: 50
+      nullable: true
+    event_properties:
+      type: string
+      columnDefinition: text
+      nullable: true
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create

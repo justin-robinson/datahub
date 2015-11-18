@@ -1,0 +1,18 @@
+Entity\Bizj\PageBucket:
+  type: entity
+  table: page_bucket
+  fields:
+    bucket:
+      id: true
+      type: string
+      length: 40
+      nullable: false
+    krang_group:
+      type: string
+      length: 80
+    label:
+      type: string
+      length: 80
+    special_cat_id:
+      type: integer
+      unsigned: true

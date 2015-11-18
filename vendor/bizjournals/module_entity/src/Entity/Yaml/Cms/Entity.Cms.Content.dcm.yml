@@ -1,0 +1,108 @@
+Entity\Cms\Content:
+  type: entity
+  table: content
+  fields:
+    content_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL AUTO_INCREMENT
+      generator:
+        strategy: AUTO
+    version:
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+      nullable: false
+    content_type:
+      type: string
+      nullable: false
+      columnDefinition: enum('story','poll','section-front','homepage','pulse') NOT NULL DEFAULT 'story',
+      options:
+        default: 'story'
+        validate: ['story','poll','section-front','homepage','pulse']
+    title:
+      type: string
+      length: '255'
+      nullable: false
+    slug:
+      type: string
+      length: '255'
+      nullable: false
+      options:
+        default: 'index'
+    pub_id:
+      type: integer
+      columnDefinition: int(10) unsigned
+      nullable: false
+      options:
+        default: 2661
+    frontend_id:
+      type: integer
+      columnDefinition: int(10) unsigned
+      nullable: true
+    last_published_version:
+      type: integer
+      columnDefinition: int(10) unsigned
+      nullable: true
+    json_data:
+      type: string
+      nullable: false
+      columnDefinition: longtext NOT NULL
+      options:
+        default: '{}'
+    db_created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    db_updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+    last_updated_by:
+      type: string
+      length: '255'
+      nullable: false
+      options:
+        default: ''
+    nilsimsa_digest:
+      type: string
+      length: '64'
+    parent_frontend_id:
+      type: integer
+      columnDefinition: int(10) unsigned
+      nullable: true
+    parent_content_id:
+      type: integer
+      columnDefinition: int(10) unsigned
+      nullable: true
+  manyToOne:
+    Publication:
+      targetEntity: Publication
+      joinColumn:
+        name: pub_id
+        referencedColumnName: pub_id
+  oneToMany:
+    Versions:
+      targetEntity: ContentVersion
+      mappedBy: Content
+      cascade: [ 'persist' ]
+      orderBy:
+        version: desc
+    AuditLog:
+      targetEntity: AuditLog
+      mappedBy: Content
+      orderBy:
+        created_at: desc
+    ContentDesk:
+      targetEntity: ContentDesk
+      mappedBy: Content
+      cascade: [ 'all' ]
+      orphanRemoval: true
+    ContentWorkspace:
+      targetEntity: ContentWorkspace
+      mappedBy: Content
+      cascade: [ 'all' ]
+      orphanRemoval: true

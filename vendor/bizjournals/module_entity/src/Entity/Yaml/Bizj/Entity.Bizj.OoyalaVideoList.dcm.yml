@@ -1,0 +1,39 @@
+Entity\Bizj\OoyalaVideoList:
+  type: entity
+  table: ooyala_video_list
+  fields:
+    market_code:
+      id: true
+      type: string
+      length: 50
+    embed_code:
+      id: true
+      type: string
+      length: 50
+    title:
+      type: string
+      length: 255
+      nullable: false
+    description:
+      type: string
+      columnDefinition: text
+      nullable: false
+    preview_image_url:
+      type: string
+      nullable: true
+    status:
+      type: string
+      length: 50
+      options:
+        default: 'unknown'
+    metadata:
+      type: string
+      nullable: true
+    created_at:
+      type: datetime
+      nullable: false
+    updated_at:
+      type: datetime
+      nullable: false
+    deleted_at:
+      type: datetime

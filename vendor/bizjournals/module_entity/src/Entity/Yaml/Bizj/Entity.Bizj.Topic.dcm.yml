@@ -1,0 +1,35 @@
+Entity\Bizj\Topic:
+  type: entity
+  table: topic
+  fields:
+    topic_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned
+      generator:
+        strategy: AUTO
+    usage_market:
+      type: string
+      length: '50'
+      nullable: false
+      unique: true
+      options:
+        default: 'global'
+    topic_code:
+      type: string
+      length: '255'
+      nullable: false
+    topic_name:
+      type: string
+      length: '255'
+      nullable: false
+    hidden:
+      type: boolean
+      nullable: false
+      options:
+        default: false
+    is_active:
+      type: boolean
+      nullable: false
+      options:
+        default: true

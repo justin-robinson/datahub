@@ -1,0 +1,40 @@
+Entity\Medialibrary\AuthSession:
+  type: entity
+  table: auth_session
+  fields:
+    session_id:
+      id: true
+      type: integer
+      columnDefinition: bigint(20) unsigned
+      generator:
+        strategy: AUTO
+    auth_id:
+      type: integer
+      columnDefinition: int(10) unsigned
+      nullable: false
+    session_hash:
+      type: string
+      length: '255'
+      nullable: false
+    username:
+      type: string
+      length: '255'
+      nullable: false
+    ip_address:
+      type: string
+      length: '39'
+      nullable: false
+    expires_at:
+      type: datetime
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+  manyToOne:
+    AuthToken:
+      targetEntity: Entity\Medialibrary\AuthToken
+      joinColumn:
+        name: auth_id
+        referencedColumnName: auth_id

@@ -1,0 +1,75 @@
+Entity\Cms\PublishQueue:
+  type: entity
+  table: publish_queue
+  fields:
+    queue_id:
+      id: true
+      type: integer
+      columnDefinition: bigint(20) unsigned NOT NULL AUTO_INCREMENT
+      generator:
+        strategy: AUTO
+    content_id:
+      type: integer
+      nullable: false
+      columnDefinition: int(10) unsigned NOT NULL
+    version:
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+      nullable: false
+    action:
+      type: string
+      nullable: false
+      columnDefinition: enum('publish','unpublish') NOT NULL DEFAULT 'publish',
+      options:
+        default: 'publish'
+        validate: ['publish','unpublish']
+    run_at:
+      type: datetime
+      nullable: true
+    queued_by:
+      type: string
+      length: '255'
+      nullable: false
+    queued_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    is_complete:
+      type: boolean
+      nullable: false
+      columnDefinition: tinyint(1) NOT NULL
+      options:
+        default: 0
+    completed_at:
+      type: datetime
+      nullable: true
+    has_succeeded:
+      type: boolean
+      nullable: false
+      columnDefinition: tinyint(1) NOT NULL
+      options:
+        default: 0
+    has_failed:
+      type: boolean
+      nullable: false
+      columnDefinition: tinyint(1) NOT NULL
+      options:
+        default: 0
+    is_overridden:
+      type: boolean
+      nullable: false
+      columnDefinition: tinyint(1) NOT NULL
+      options:
+        default: 0
+    override_auditlog_id:
+      type: integer
+      nullable: true
+      columnDefinition: bigint(20) unsigned
+  manyToOne:
+    Content:
+      targetEntity: Content
+      joinColumn:
+        name: content_id
+        referencedColumnName: content_id

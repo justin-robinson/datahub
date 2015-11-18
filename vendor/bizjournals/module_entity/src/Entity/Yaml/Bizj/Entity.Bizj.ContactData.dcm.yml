@@ -1,0 +1,152 @@
+Entity\Bizj\ContactData:
+  type: entity
+  table: contact_data
+  fields:
+    contact_id:
+      id: true
+      type: integer
+      columnDefinition: bigint(20) unsigned
+      generator:
+        strategy: AUTO
+    backlink_class:
+      type: string
+      length: '64'
+    backlink_id:
+      type: integer
+      columnDefinition: bigint(20) unsigned
+    contact_type:
+      type: string
+      columnDefinition: enum('person','company'),
+      options:
+        validate: [person,company]
+    contact_name:
+      type: string
+      length: '255'
+    contact_title:
+      type: string
+      length: '255'
+    contact_description:
+      type: string
+      length: '512'
+    address1:
+      type: string
+      length: '255'
+    address2:
+      type: string
+      length: '255'
+    address3:
+      type: string
+      length: '255'
+    community:
+      type: string
+      length: '255'
+    state_province:
+      type: string
+      length: '70'
+    country:
+      type: string
+      length: '2'
+    postal_code:
+      type: string
+      length: '35'
+    phone1:
+      type: string
+      length: '70'
+    phone1_type:
+      type: string
+      length: '30'
+    phone1_notes:
+      type: string
+      length: '255'
+    phone2:
+      type: string
+      length: '70'
+    phone2_type:
+      type: string
+      length: '30'
+    phone2_notes:
+      type: string
+      length: '255'
+    phone3:
+      type: string
+      length: '70'
+    phone3_type:
+      type: string
+      length: '30'
+    phone3_notes:
+      type: string
+      length: '255'
+    email1:
+      type: string
+      length: '255'
+    email1_notes:
+      type: string
+      length: '255'
+    email2:
+      type: string
+      length: '255'
+    email2_notes:
+      type: string
+      length: '255'
+    email3:
+      type: string
+      length: '255'
+    email3_notes:
+      type: string
+      length: '255'
+    social1:
+      type: string
+      length: '255'
+    social1_type:
+      type: string
+      length: '30'
+    social1_notes:
+      type: string
+      length: '255'
+    social2:
+      type: string
+      length: '255'
+    social2_type:
+      type: string
+      length: '30'
+    social2_notes:
+      type: string
+      length: '255'
+    social3:
+      type: string
+      length: '255'
+    social3_type:
+      type: string
+      length: '30'
+    social3_notes:
+      type: string
+      length: '255'
+    headshot_media_id:
+      type: integer
+      columnDefinition: int(10) unsigned
+    photo_headshot_url:
+      type: string
+      length: '255'
+    photo_social_url:
+      type: string
+      length: '255'
+    contact_subtype:
+      type: string
+      length: '64'
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  oneToMany:
+    Staff:
+      targetEntity: MarketStaff
+      mappedBy: ContactData
+      cascade: [ 'all' ]

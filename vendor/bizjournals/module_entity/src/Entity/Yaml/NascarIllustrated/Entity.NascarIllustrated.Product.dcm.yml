@@ -1,0 +1,126 @@
+Entity\NascarIllustrated\Product:
+  type: entity
+  table: product
+  fields:
+    product_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+      generator:
+        strategy: AUTO
+    category_id:
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL DEFAULT '0'
+      nullable: false
+      options:
+        default: 0
+    sku_code:
+      type: string
+      length: 255
+      nullable: true
+    product_name:
+      type: string
+      length: 255
+      nullable: false
+    slug:
+      type: string
+      length: 255
+      nullable: false
+    issue_date:
+      type: date
+      nullable: true
+    teaser:
+      type: string
+      nullable: true
+    description:
+      type: string
+      nullable: true
+    is_active:
+      type: boolean
+      columnDefinition: tinyint(1) unsigned NOT NULL DEFAULT '1'
+      nullable: false
+      options:
+        default: true
+    is_hidden:
+      type: boolean
+      columnDefinition: tinyint(1) unsigned NOT NULL DEFAULT '0'
+      nullable: false
+      options:
+        default: false
+    is_subscription:
+      type: boolean
+      columnDefinition: tinyint(1) unsigned NOT NULL DEFAULT '0'
+      nullable: false
+      options:
+        default: false
+    key_code:
+      type: string
+      length: 255
+      nullable: true
+    price:
+      type: integer
+      columnDefinition: int(10) NOT NULL DEFAULT '0'
+      nullable: false
+      options:
+        default: 0
+    domestic_ratecode:
+      type: string
+      length: 255
+      nullable: true
+    domestic_charge:
+      type: integer
+      columnDefinition: int(10) NOT NULL DEFAULT '0'
+      nullable: false
+      options:
+        default: 0
+    ca_mx_ratecode:
+      type: string
+      length: 255
+      nullable: true
+    ca_mx_charge:
+      type: integer
+      columnDefinition: int(10) NOT NULL DEFAULT '0'
+      nullable: false
+      options:
+        default: 0
+    international_ratecode:
+      type: string
+      length: 255
+      nullable: true
+    international_charge:
+      type: integer
+      columnDefinition: int(10) NOT NULL DEFAULT '0'
+      nullable: false
+      options:
+        default: 0
+    original_issue_id:
+      type: integer
+      columnDefinition: int(10) unsigned DEFAULT NULL
+      nullable: true
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  oneToMany:
+    Images:
+      targetEntity: ProductImage
+      mappedBy: Product
+      cascade: [ 'all' ]
+      orphanRemoval: true
+      orderBy:
+        ord: asc
+  manyToOne:
+    Category:
+      targetEntity: ProductCategory
+      joinColumn:
+        name: category_id
+        referencedColumnName: category_id
+

@@ -1,0 +1,79 @@
+Entity\Bizj\PulseLeadinGroup:
+  type: entity
+  table: pulse_leadin_group
+  gedmo:
+    soft_deleteable:
+      field_name: deleted_at
+      time_aware: false
+  fields:
+    group_id:
+      type: integer
+      unsigned: true
+      id: true
+      generator:
+        strategy: AUTO
+    pulse_id:
+      type: integer
+      unsigned: true
+    group_type:
+      type: string
+      columnDefinition: enum('auto', 'curate')
+      options:
+        validate: [auto, curate]
+    group_title:
+      type: string
+      length: 255
+      nullable: true
+    group_class:
+      type: string
+      length: 255
+      nullable: true
+    group_topic:
+      type: string
+      length: 255
+      nullable: true
+    group_teaser:
+      type: string
+      nullable: true
+    placement:
+      type: string
+      length: 64
+      nullable: true
+    ord:
+      type: integer
+      unsigned: true
+      options:
+        default: 0
+    group_url:
+      type: string
+      length: 512
+      nullable: true
+    auto_query:
+      type: string
+      length: 1024
+      nullable: true
+    created_at:
+      type: datetime
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      options:
+        timestampable:
+          on: update
+    deleted_at:
+      type: datetime
+      nullable: true
+  manyToOne:
+    Pulse:
+      targetEntity: Pulse
+      joinColumn:
+        name: pulse_id
+        referencedColumnName: pulse_id
+  oneToMany:
+    LeadinItems:
+      targetEntity: PulseLeadinItem
+      mappedBy: LeadinGroup
+      orphanRemoval: true
+      cascade: [all]

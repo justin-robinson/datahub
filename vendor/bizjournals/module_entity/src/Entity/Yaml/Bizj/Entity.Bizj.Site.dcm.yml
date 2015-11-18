@@ -1,0 +1,41 @@
+Entity\Bizj\Site:
+  type: entity
+  table: site
+  fields:
+    site_id:
+      id: true
+      type: integer
+      unsigned: true
+      nullable: false
+      generator:
+        strategy: AUTO
+    site_host:
+      type: string
+      length: 255
+      nullable: false
+    site_name:
+      type: string
+      length: 255
+      nullable: false
+    product_name:
+      type: string
+      length: 255
+      nullable: false
+      options:
+        default: 'The Business Journals'
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  oneToMany:
+    Sections:
+      targetEntity: SiteSection
+      mappedBy: Site

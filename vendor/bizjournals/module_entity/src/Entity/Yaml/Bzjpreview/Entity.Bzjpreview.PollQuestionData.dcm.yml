@@ -1,0 +1,42 @@
+Entity\Bzjpreview\PollQuestionData:
+  type: entity
+  table: poll_question_data
+  fields:
+    question_data_id:
+      id: true
+      type: integer
+      unsigned: true 
+      nullable: false
+      generator:
+        strategy: AUTO
+    position:
+      type: integer
+      nullable: false
+      options:
+        default: '0'
+    answer:
+      type: string
+      length: 255
+      nullable: false
+    poll_question_id:
+      type: integer
+      unsigned: true 
+      nullable: false
+    c_time:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    is_deleted:
+      type: boolean
+      nullable: false
+      options:
+        default: false
+  manyToOne:
+    PollQuestion:
+      targetEntity: PollQuestion
+      joinColumn:
+        name: poll_question_id
+        referencedColumnName: poll_question_id
+        

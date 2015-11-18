@@ -1,0 +1,47 @@
+Entity\Medialibrary\History:
+  type: entity
+  table: history
+  indexes:
+    object:
+      columns:
+        - object_id
+        - object_type
+        - history_id DESC
+    user:
+      columns:
+        - username
+        - history_id DESC
+    created:
+      columns:
+        - created_at DESC
+  fields:
+    history_id:
+      id: true
+      type: bigint
+      columnDefinition: bigint(20) unsigned NOT NULL
+      generator:
+        strategy: AUTO
+    object_type:
+      type: string
+      length: '255'
+      nullable: false
+    object_id:
+      type: bigint
+      columnDefinition: bigint(20) unsigned NOT NULL
+      nullable: false
+    detail:
+      type: string
+      length: '10000'
+    note:
+      type: string
+      length: '10000'
+    username:
+      type: string
+      length: '255'
+      nullable: false
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create

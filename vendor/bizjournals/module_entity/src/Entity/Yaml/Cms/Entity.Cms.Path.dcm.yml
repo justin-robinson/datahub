@@ -1,0 +1,95 @@
+Entity\Cms\Path:
+  type: entity
+  table: path
+  fields:
+    path_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL AUTO_INCREMENT
+      generator:
+        strategy: AUTO
+    site:
+      type: string
+      length: '255'
+      nullable: false
+    path:
+      type: string
+      nullable: false
+    description:
+      type: string
+      nullable: false
+      options:
+        default: ''
+    pub_id:
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+      nullable: false
+      options:
+        default: 2661
+    date_format:
+      type: string
+      nullable: false
+      columnDefinition: enum('/','/Y/','/Y/m/','/Y/m/d/') NOT NULL DEFAULT '/Y/m/',
+      options:
+        default: '/Y/m/'
+        validate: ['/','/Y/','/Y/m/','/Y/m/d/']
+    allow_story:
+      type: boolean
+      columnDefinition: tinyint(1) NOT NULL
+      options:
+        default: 1
+    allow_section_front:
+      type: boolean
+      columnDefinition: tinyint(1) NOT NULL
+      options:
+        default: 1
+    allow_homepage:
+      type: boolean
+      columnDefinition: tinyint(1) NOT NULL
+      options:
+        default: 0
+    allow_poll:
+      type: boolean
+      columnDefinition: tinyint(1) NOT NULL
+      options:
+        default: 0
+    allow_new_content:
+      type: boolean
+      columnDefinition: tinyint(1) NOT NULL
+      options:
+        default: 1
+    syndication_default:
+      type: boolean
+      columnDefinition: tinyint(1) NOT NULL
+      options:
+        default: 1
+    is_premium:
+      type: boolean
+      columnDefinition: tinyint(1) NOT NULL
+      options:
+        default: 0
+    sort_order:
+      type: integer
+      columnDefinition: mediumint(8) unsigned NOT NULL
+      unsigned: true
+      nullable: false
+      options:
+        default: 9999999
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  manyToOne:
+    Publication:
+      targetEntity: Publication
+      joinColumn:
+        name: pub_id
+        referencedColumnName: pub_id

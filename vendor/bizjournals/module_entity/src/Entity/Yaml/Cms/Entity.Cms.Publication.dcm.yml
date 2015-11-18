@@ -1,0 +1,55 @@
+Entity\Cms\Publication:
+  type: entity
+  table: publication
+  fields:
+    pub_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+      nullable: false
+    pub_name:
+      type: string
+      length: '255'
+      nullable: false
+      unique: true
+    short_name:
+      type: string
+      length: '50'
+      nullable: false
+      unique: true
+    market_code:
+      type: string
+      length: '50'
+      nullable: false
+      unique: true
+    publisher_config:
+      type: string
+      length: '255'
+      nullable: false
+      options:
+        default: 'default-publisher'
+    timezone:
+      type: string
+      length: '255'
+      nullable: false
+    default_copyright_notice:
+      type: string
+      length: '255'
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  oneToMany:
+    Content:
+      targetEntity: Content
+      mappedBy: Publication
+      orderBy:
+        db_updated_at: desc

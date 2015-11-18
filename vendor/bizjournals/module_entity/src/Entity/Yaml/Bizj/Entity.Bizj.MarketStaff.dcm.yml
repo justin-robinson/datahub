@@ -1,0 +1,54 @@
+Entity\Bizj\MarketStaff:
+  type: entity
+  table: market_staff
+  fields:
+    staff_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned
+      generator:
+        strategy: AUTO
+    market_id:
+      type: integer
+      columnDefinition: int(10) unsigned
+    contact_id:
+      type: integer
+      columnDefinition: bigint(20) unsigned
+    is_writer:
+      type: boolean
+      nullable: false
+      options:
+        default: false
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+    is_former_staff:
+      type: boolean
+      nullable: false
+      options:
+        default: false
+    is_contributor:
+      type: boolean
+      nullable: false
+      options:
+        default: false
+  manyToOne:
+    Market:
+      targetEntity: Market
+      joinColumn:
+        name: market_id
+        referencedColumnName: market_id
+    ContactData:
+      targetEntity: ContactData
+      joinColumn:
+        name: contact_id
+        referencedColumnName: contact_id

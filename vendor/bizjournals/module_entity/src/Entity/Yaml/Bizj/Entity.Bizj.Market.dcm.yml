@@ -1,0 +1,98 @@
+Entity\Bizj\Market:
+  type: entity
+  table: market
+  fields:
+    market_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned
+      generator:
+        strategy: AUTO
+    market_code:
+      type: string
+      length: 50
+      nullable: false
+      unique: true
+    market_name:
+      type: string
+      length: 255
+      nullable: false
+    market_abbrev:
+      type: string
+      length: 64
+      nullable: false
+    city:
+      type: string
+      length: 255
+      nullable: false
+    state:
+      type: string
+      length: 2
+      nullable: false
+      usstate: true
+    region:
+      type: string
+      length: 255
+      nullable: false
+    region_objective:
+      type: string
+      length: 255
+      nullable: false
+    local_sales_tax:
+      type: decimal
+      length: 12
+      scale: 4
+      unsigned: true
+    primary_zip_code:
+      type: string
+      length: 35
+    center_latitude:
+      type: string
+      length: 30
+    center_longitude:
+      type: string
+      length: 30
+    timezone:
+      type: string
+      length: 64
+      nullable: false
+    utc_std_offset:
+      type: integer
+      length: 1
+      unsigned: true
+      nullable: false
+    utc_dst_offset:
+      type: integer
+      length: 1
+      unsigned: true
+      nullable: false
+    payment_contact_id:
+      type: integer
+      length: 8
+      unsigned: true
+      notnull: false
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  uniqueConstraints:
+    market_code_idx:
+      columns: [market_code]
+  oneToMany:
+    Journals:
+      targetEntity: Journal
+      mappedBy: Market
+    Pulses:
+      targetEntity: Pulse
+      mappedBy: Market
+    PulseMarkets:
+      targetEntity: PulseMarketMap
+      mappedBy: Market

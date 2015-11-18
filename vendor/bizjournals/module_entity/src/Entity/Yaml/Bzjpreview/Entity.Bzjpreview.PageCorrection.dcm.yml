@@ -1,0 +1,41 @@
+Entity\Bzjpreview\PageCorrection:
+  type: entity
+  table: page_correction
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: true
+      generator:
+        strategy: AUTO
+    page_id:
+      type: integer
+      unsigned: true 
+      nullable: false
+    market_code:
+      type: string
+      length: 50
+      nullable: false
+      options:
+        default: 'bizjournals'
+    correction:
+      type: string
+      nullable: false
+    is_daily:
+      type: boolean
+      columnDefinition: tinyint(1) NOT NULL
+      nullable: false
+      options:
+        default: false
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+  manyToOne:
+    Page:
+      targetEntity: Page
+      joinColumn:
+        name: page_id
+        referencedColumnName: page_id

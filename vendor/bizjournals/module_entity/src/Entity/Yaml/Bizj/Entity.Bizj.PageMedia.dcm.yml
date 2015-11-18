@@ -1,0 +1,85 @@
+Entity\Bizj\PageMedia:
+  type: entity
+  table: page_media
+  fields:
+    page_id:
+      id: true
+      type: integer
+      unsigned: true 
+      nullable: false
+    ord:
+      id: true
+      type: integer
+      unsigned: true 
+      nullable: false
+      options:
+        default: 0
+    media_host:
+      type: string
+      length: 100
+      nullable: false
+    media_uri:
+      type: string
+      length: 767
+      nullable: false
+    crop_data:
+      type: string
+      length: 32
+    media_source:
+      type: string
+      length: 32
+      nullable: false
+      options:
+        default: 'unknown'
+    external_id:
+      type: integer
+      unsigned: true 
+      nullable: true
+    media_type:
+      type: string
+      nullable: false
+      columnDefinition: enum('image', 'thumbnail', 'gallery', 'video', 'audio', 'flash', 'pdf', 'css', 'csv', 'download', 'infographic') NOT NULL,
+      options:
+        default: 'image'
+        validate: ['image', 'thumbnail', 'gallery', 'video', 'audio', 'flash', 'pdf', 'css', 'csv', 'download', 'infographic']
+    title:
+      type: string
+      length: 255
+    caption:
+      type: string
+      length: 10000
+    alt_text:
+      type: string
+      length: 255
+    link_url:
+      type: string
+      length: 767
+    art_credit:
+      type: string
+      length: 255
+    orig_height:
+      type: integer
+      unsigned: true 
+      nullable: false
+      options:
+        default: 0
+    orig_width:
+      type: integer
+      unsigned: true 
+      nullable: false
+      options:
+        default: 0
+    flag:
+      type: boolean
+      columnDefinition: tinyint(1) NOT NULL
+      nullable: false
+      options:
+        default: false
+    additional_data:
+      type: string
+  manyToOne:
+    Page:
+      targetEntity: Page
+      joinColumn:
+        name: page_id
+        referencedColumnName: page_id

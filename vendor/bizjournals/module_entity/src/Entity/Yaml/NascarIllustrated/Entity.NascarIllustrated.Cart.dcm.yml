@@ -1,0 +1,45 @@
+Entity\NascarIllustrated\Cart:
+  type: entity
+  table: cart
+  fields:
+    cart_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+      generator:
+        strategy: AUTO
+    cart_hash:
+      type: string
+      length: 32
+      nullable: false
+    shipping_destination:
+      type: string
+      columnDefinition: enum('domestic','ca_mx','international') NOT NULL DEFAULT 'domestic'
+      nullable: false
+      options:
+        default: 'domestic'
+    ip_address:
+      type: string
+      length: 39
+      nullable: false
+      options:
+        default: '127.0.0.1'
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  oneToMany:
+    CartItems:
+      targetEntity: CartItem
+      mappedBy: Cart
+      cascade: [ 'all' ]
+      orphanRemoval: true
+

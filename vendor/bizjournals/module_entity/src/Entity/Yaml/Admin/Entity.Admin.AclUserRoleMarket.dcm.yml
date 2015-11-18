@@ -1,0 +1,21 @@
+Entity\Admin\AclUserRoleMarket:
+  type: entity
+  table: acl_user_role_market
+  fields:
+    acl_user_role_id:
+      id: true
+      type: integer
+      unsigned: true
+      nullable: false
+    market_code:
+      id: true
+      type: string
+      length: 20
+      fixed: false
+      nullable: false
+  manyToOne:
+    AclUserRole:
+      targetEntity: AclUserRole
+      joinColumn:
+        name: acl_user_role_id
+        referencedColumnName: acl_user_role_id

@@ -1,0 +1,44 @@
+Entity\Tracking\TrackerClient:
+  type: entity
+  table: tracker_client
+  fields:
+    client_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+      generator:
+        strategy: AUTO
+    public_key:
+      type: string
+      columnDefinition: tinytext
+      nullable: false
+    secret_key:
+      type: string
+      columnDefinition: tinytext
+      nullable: false
+    client_name:
+      type: string
+      length: 100
+      nullable: false
+    description:
+      type: string
+      columnDefinition: tinytext
+      nullable: true
+    is_active:
+      type: boolean
+      columnDefinition: tinyint(1) unsigned NOT NULL DEFAULT '1'
+      nullable: false
+      options:
+        default: true
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update

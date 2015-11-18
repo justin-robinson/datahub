@@ -1,0 +1,61 @@
+Entity\Medialibrary\BatchUpload:
+  type: entity
+  table: batch_upload
+  indexes:
+    pub_id:
+      columns:
+        - pub_id
+        - batch_id
+    created_by:
+      columns:
+        - created_by
+        - created_at
+    created_at:
+      columns:
+        - created_at
+  fields:
+    batch_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+      generator:
+        strategy: AUTO
+    pub_id:
+      type: integer
+      columnDefinition: int(10) unsigned
+      nullable: false
+    ip_address:
+      type: string
+      length: '39'
+    user_agent:
+      type: string
+      length: '1023'
+    is_complete:
+      type: boolean
+      columnDefinition: tinyint(1) NOT NULL DEFAULT '0'
+      nullable: false
+      options:
+        default: false
+    created_by:
+      type: string
+      length: '255'
+      nullable: false
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+  oneToMany:
+    BatchMedia:
+      targetEntity: BatchMedia
+      mappedBy: BatchUpload
+      cascade: [ 'all' ]
+      orphanRemoval: true
+      orderBy: null
+  manyToOne:
+    Publication:
+      targetEntity: Entity\Medialibrary\Publication
+      joinColumn:
+        name: pub_id
+        referencedColumnName: pub_id

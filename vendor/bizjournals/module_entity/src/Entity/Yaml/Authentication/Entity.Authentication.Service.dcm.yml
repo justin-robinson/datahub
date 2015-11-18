@@ -1,0 +1,102 @@
+Entity\Authentication\Service:
+  type: entity
+  table: service
+  fields:
+    service_id:
+      id: true
+      type: integer
+      columnDefinition: smallint(5) unsigned NOT NULL AUTO_INCREMENT
+      generator:
+        strategy: AUTO
+    unit_id:
+      type: integer
+      columnDefinition: smallint(5) unsigned NOT NULL
+      nullable: false
+    service_name:
+      type: string
+      length: '100'
+      nullable: false
+    public_key:
+      type: string
+      length: '50'
+      nullable: false
+    secret_key:
+      type: string
+      length: '50'
+      nullable: false
+    access_token_ttl:
+      type: integer
+      nullable: false
+      options:
+        default: 3600
+    refresh_token_ttl:
+      type: integer
+      nullable: false
+      options:
+        default: 3600
+    authorization_code_ttl:
+      type: integer
+      nullable: false
+      options:
+        default: 3600
+    rate_limit:
+      type: integer
+      nullable: false
+      options:
+        default: 0
+    description:
+      type: string
+      length: '2000'
+      nullable: true
+    service_url:
+      type: string
+      length: '512'
+      nullable: true
+    documentation_url:
+      type: string
+      length: '512'
+      nullable: true
+    repository_url:
+      type: string
+      length: '512'
+      nullable: true
+    is_active:
+      type: boolean
+      nullable: false
+      columnDefinition: tinyint(1) NOT NULL DEFAULT '1'
+      options:
+        default: true
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  oneToMany:
+    ServiceScopes:
+      targetEntity: ServiceScope
+      mappedBy: Service
+    Clients:
+      targetEntity: Client
+      mappedBy: Service
+    AccessTokens:
+      targetEntity: AccessToken
+      mappedBy: Service
+    RefreshTokens:
+      targetEntity: RefreshToken
+      mappedBy: Service
+    AuthorizationCodes:
+      targetEntity: AuthorizationCode
+      mappedBy: Service
+  manyToOne:
+    Unit:
+      targetEntity: Unit
+      joinColumn:
+        name: unit_id
+        referencedColumnName: unit_id

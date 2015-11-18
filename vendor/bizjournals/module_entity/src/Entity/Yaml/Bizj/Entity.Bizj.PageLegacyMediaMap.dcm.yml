@@ -1,0 +1,60 @@
+Entity\Bizj\PageLegacyMediaMap:
+  type: entity
+  table: page_media_map
+  fields:
+    page_id:
+      id: true
+      type: integer
+      unsigned: true 
+      nullable: false
+    media_id:
+      type: integer
+      unsigned: true 
+      nullable: false
+    media_type: 
+      type: string
+      nullable: false
+      columnDefinition: enum('image', 'video', 'audio', 'flash', 'pdf', 'css', 'download') NOT NULL,
+      options:
+        default: 'image'
+        validate: ['image', 'video', 'audio', 'flash', 'pdf', 'css', 'download']
+    caption:
+      type: string
+      length: 10000
+      nullable: true
+    alt_text:
+      type: string
+      length: 255
+      nullable: true
+    link_url:
+      type: string
+      length: 767
+      nullable: true
+    ord:
+      id: true
+      type: integer
+      unsigned: true 
+      nullable: false
+      options:
+        default: 0
+    title:
+      type: string
+      length: 255
+      nullable: true
+    flag:
+      type: boolean
+      columnDefinition: tinyint(1) NOT NULL
+      nullable: false
+      options:
+        default: false
+  manyToOne:
+    Page:
+      targetEntity: Page
+      joinColumn:
+        name: page_id
+        referencedColumnName: page_id
+    Media:
+      targetEntity: LegacyMedia
+      joinColumn:
+        name: media_id
+        referencedColumnName: media_id

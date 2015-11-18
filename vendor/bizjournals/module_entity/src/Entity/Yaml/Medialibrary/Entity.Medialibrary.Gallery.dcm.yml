@@ -1,0 +1,84 @@
+Entity\Medialibrary\Gallery:
+  type: entity
+  table: gallery
+  indexes:
+    gallery_id:
+      columns:
+        - gallery_id
+    pub_id:
+      columns:
+        - pub_id
+    created_at:
+      columns:
+        - created_at
+  fields:
+    gallery_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+      generator:
+        strategy: AUTO
+    pub_id:
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+      nullable: false
+    category:
+      type: string
+      length: '64'
+      nullable: false
+      options:
+        default: 'editorial'
+    title:
+      type: string
+      length: '255'
+      nullable: false
+      options:
+        default: 'New Gallery'
+    description:
+      type: string
+      columnDefinition: varchar(2048) NOT NULL DEFAULT ''
+      nullable: false
+      options:
+        default: ''
+    gallery_type:
+      type: string
+      length: '32'
+      nullable: false
+      options:
+        default: 'curate'
+        validate: ['auto', 'curate']
+    auto_query:
+      type: string
+      columnDefinition: varchar(2048)
+    is_pub_restricted:
+      type: boolean
+      columnDefinition: tinyint(1) unsigned NOT NULL DEFAULT '0'
+      nullable: false
+      options:
+        default: false
+    is_live:
+      type: boolean
+      columnDefinition: tinyint(1) unsigned NOT NULL DEFAULT '1'
+      nullable: false
+      options:
+        default: true
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  oneToMany:
+    GalleryMedia:
+      targetEntity: GalleryMedia
+      mappedBy: Gallery
+      cascade: [ 'all' ]
+      orphanRemoval: true
+      orderBy:
+        ord: ASC

@@ -1,0 +1,15 @@
+Entity\Bizj\PageNational:
+  type: entity
+  table: page_national
+  fields:
+    page_id:
+      id: true
+      type: integer
+      unsigned: true
+      nullable: false
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create

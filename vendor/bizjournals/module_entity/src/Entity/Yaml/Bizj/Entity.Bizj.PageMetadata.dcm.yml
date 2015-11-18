@@ -1,0 +1,34 @@
+Entity\Bizj\PageMetadata:
+  type: entity
+  table: page_metadata
+  fields:
+    meta_id:
+      id: true
+      type: integer
+      unsigned: true
+      nullable: false
+      generator:
+        strategy: AUTO
+    page_id:
+      type: integer
+      unsigned: true 
+      nullable: false
+    ord:
+      type: integer
+      unsigned: true 
+      nullable: false
+      options:
+        default: 0
+    meta_name: 
+      type: string
+      length: 255
+      nullable: false
+    meta_value: 
+      type: string
+      nullable: false
+  manyToOne:
+    Page:
+      targetEntity: Page
+      joinColumn:
+        name: page_id
+        referencedColumnName: page_id

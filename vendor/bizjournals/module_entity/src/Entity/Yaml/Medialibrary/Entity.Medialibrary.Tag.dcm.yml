@@ -1,0 +1,56 @@
+Entity\Medialibrary\Tag:
+  type: entity
+  table: tag
+  indexes:
+    tag_name:
+      columns:
+        - tag_name
+    pub_id:
+      columns:
+        - pub_id
+        - tag_name
+    tag_type:
+      columns:
+        - tag_type
+        - tag_name
+  fields:
+    tag_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+      generator:
+        strategy: AUTO
+    tag_name:
+      type: string
+      length: '255'
+      nullable: false
+    tag_type:
+      type: string
+      length: '32'
+      nullable: false
+      options:
+        default: 'folder'
+        validate: ['internal', 'date', 'folder']
+    pub_id:
+      type: integer
+      columnDefinition: int(10) unsigned
+      nullable: true
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+  oneToMany:
+    MediaTags:
+      targetEntity: MediaTag
+      mappedBy: Tag
+      cascade: [ 'all' ]
+      orphanRemoval: true
+      orderBy: null
+  manyToOne:
+    Publication:
+      targetEntity: Entity\Medialibrary\Publication
+      joinColumn:
+        name: pub_id
+        referencedColumnName: pub_id

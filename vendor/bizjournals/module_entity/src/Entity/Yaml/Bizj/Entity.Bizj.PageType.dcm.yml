@@ -1,0 +1,37 @@
+Entity\Bizj\PageType:
+  type: entity
+  table: page_type
+  fields:
+    type_id:
+      id: true
+      type: integer
+      unsigned: true
+      nullable: false
+      generator:
+        strategy: AUTO
+    type_name:
+      type: string
+      length: 50
+      nullable: false
+    description:
+      type: string
+      length: 255
+      nullable: true
+    use_template:
+      type: boolean
+      columnDefinition: tinyint(1) NOT NULL
+      nullable: false
+      options:
+        default: true
+    active:
+      type: boolean
+      columnDefinition: tinyint(1) NOT NULL
+      nullable: false
+      options:
+        default: true
+    in_search_results:
+      type: boolean
+      columnDefinition: tinyint(1) NOT NULL
+      nullable: false
+      options:
+        default: true

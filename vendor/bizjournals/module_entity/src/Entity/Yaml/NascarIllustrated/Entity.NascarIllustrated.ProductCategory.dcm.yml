@@ -1,0 +1,64 @@
+Entity\NascarIllustrated\ProductCategory:
+  type: entity
+  table: product_category
+  fields:
+    category_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+      generator:
+        strategy: AUTO
+    category_name:
+      type: string
+      length: 255
+      nullable: false
+    slug:
+      type: string
+      length: 255
+      nullable: false
+    ord:
+      type: integer
+      columnDefinition: tinyint(3) unsigned NOT NULL DEFAULT '0'
+      nullable: false
+      options:
+        default: 0
+    is_active:
+      type: boolean
+      columnDefinition: tinyint(1) unsigned NOT NULL DEFAULT '1'
+      nullable: false
+      options:
+        default: true
+    is_hidden:
+      type: boolean
+      columnDefinition: tinyint(1) unsigned NOT NULL DEFAULT '0'
+      nullable: false
+      options:
+        default: false
+    can_group_by_year:
+      type: boolean
+      columnDefinition: tinyint(1) unsigned NOT NULL DEFAULT '0'
+      nullable: false
+      options:
+        default: false
+    group_id:
+      type: integer
+      columnDefinition: int(10) unsigned
+      nullable: true
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  oneToMany:
+    Products:
+      targetEntity: Product
+      mappedBy: Product
+      cascade: null
+

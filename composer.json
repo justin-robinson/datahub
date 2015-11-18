@@ -6,10 +6,11 @@
 	],
 	"require" : {
 		"php" : ">=5.6.0",
+        "gedmo/doctrine-extensions" : "2.3.*",
 		"bizjournals/module_services" : "dev-master",
 		"bizjournals/module_entity" : "dev-master",
 		"zendframework/zendframework" : "2.3.*",
-		"zendframework/zend-developer-tools" : "@stable",
+		"zendframework/zend-developer-tools" : "@stable"
 	},
 	"minimum-stability" : "stable",
 	"repositories" : [{

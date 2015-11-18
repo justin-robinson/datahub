@@ -1,0 +1,39 @@
+Entity\Bzjpreview\PageContent:
+  type: entity
+  table: page_content
+  fields:
+    page_id:
+      id: true
+      type: integer
+      unsigned: true 
+      nullable: false
+    ord:
+      id: true
+      type: integer
+      unsigned: true 
+      nullable: false
+      options:
+        default: 0
+    content_type:
+      type: string
+      length: 32
+      nullable: false
+      options:
+        default: 'paragraph'
+    content_html:
+      type: string
+      nullable: false
+      options:
+        default: ''
+    word_count:
+      type: integer
+      unsigned: true 
+      nullable: false
+      options:
+        default: 0
+  manyToOne:
+    Page:
+      targetEntity: Page
+      joinColumn:
+        name: page_id
+        referencedColumnName: page_id

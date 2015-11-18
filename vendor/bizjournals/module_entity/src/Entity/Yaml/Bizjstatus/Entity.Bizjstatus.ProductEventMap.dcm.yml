@@ -1,0 +1,35 @@
+Entity\Bizjstatus\ProductEventMap:
+  type: entity
+  table: product_event_map
+  fields:
+    event_id:
+      id: true
+      type: integer
+      unsigned: true
+      columnDefinition: int(10) unsigned NOT NULL
+    product_id:
+      id: true
+      type: integer
+      unsigned: true
+      columnDefinition: int(10) unsigned NOT NULL
+    created_at:
+      type: datetime
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      options:
+        timestampable:
+          on: update
+  manyToOne:
+    Event:
+      targetEntity: Event
+      joinColumn:
+        name: event_id
+        referencedColumnName: event_id
+    Product:
+      targetEntity: Product
+      joinColumn:
+        name: product_id
+        referencedColumnName: product_id

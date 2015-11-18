@@ -1,0 +1,38 @@
+Entity\Medialibrary\BatchMedia:
+  type: entity
+  table: batch_media
+  indexes:
+    batch_id:
+      columns:
+        - batch_id
+        - created_at
+    created_at:
+      columns:
+        - created_at
+  fields:
+    media_id:
+      id: true
+      type: integer
+      columnDefinition: bigint(20) unsigned NOT NULL
+    batch_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+  manyToOne:
+    BatchUpload:
+      targetEntity: Entity\Medialibrary\BatchUpload
+      joinColumn:
+        name: batch_id
+        referencedColumnName: batch_id
+    Media:
+      targetEntity: Entity\Medialibrary\Media
+      joinColumn:
+        name: media_id
+        referencedColumnName: media_id
+

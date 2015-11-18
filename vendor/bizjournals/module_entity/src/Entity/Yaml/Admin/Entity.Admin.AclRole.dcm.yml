@@ -1,0 +1,35 @@
+Entity\Admin\AclRole:
+  type: entity
+  table: acl_role
+  fields:
+    acl_role_id:
+      id: true
+      type: integer
+      unsigned: true
+      nullable: false
+      generator:
+        strategy: AUTO
+    role_name:
+      type: string
+      length: 255
+      fixed: false
+      nullable: false
+    description:
+      type: string
+      length: 255
+      fixed: false
+      nullable: true
+    created_at:
+      type: datetime
+      nullable: false
+    updated_at:
+      type: datetime
+      nullable: false
+      column: updated_at
+  oneToMany:
+    AclUserRole:
+      targetEntity: AclUserRole
+      mappedBy: AclRole
+    AclRolePrivilege:
+      targetEntity: AclRolePrivilege
+      mappedBy: AclRole

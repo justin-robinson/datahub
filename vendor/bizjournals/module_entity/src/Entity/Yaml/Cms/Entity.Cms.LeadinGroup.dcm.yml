@@ -1,0 +1,145 @@
+Entity\Cms\LeadinGroup:
+  type: entity
+  table: leadin_group
+  fields:
+    group_id:
+      id: true
+      type: integer
+      generator:
+        strategy: AUTO
+    content_type:
+      type: string
+      nullable: false
+      columnDefinition: enum('story','poll','section-front','homepage','pulse') NOT NULL DEFAULT 'section-front',
+      options:
+        default: 'section-front'
+        validate: ['story','poll','section-front','homepage','pulse']
+    display_name:
+      type: string
+      length: '255'
+      nullable: false
+    group_class:
+      type: string
+      length: '255'
+      nullable: true
+    placement:
+      type: string
+      length: '64'
+      nullable: true
+    max_instances:
+      type: integer
+      nullable: false
+      columnDefinition: tinyint(3) unsigned NOT NULL DEFAULT '1'
+      options:
+        default: 1
+    allow_story_items:
+      type: boolean
+      nullable: false
+      columnDefinition: tinyint(1) NOT NULL DEFAULT '1'
+      options:
+        default: true
+    allow_group_title:
+      type: boolean
+      nullable: false
+      columnDefinition: tinyint(1) NOT NULL DEFAULT '1'
+      options:
+        default: true
+    allow_group_teaser:
+      type: boolean
+      nullable: false
+      columnDefinition: tinyint(1) NOT NULL DEFAULT '1'
+      options:
+        default: true
+    allow_curate:
+      type: boolean
+      nullable: false
+      columnDefinition: tinyint(1) NOT NULL DEFAULT '1'
+      options:
+        default: true
+    allow_auto:
+      type: boolean
+      nullable: false
+      columnDefinition: tinyint(1) NOT NULL DEFAULT '1'
+      options:
+        default: true
+    min_items:
+      type: integer
+      nullable: false
+      columnDefinition: tinyint(3) unsigned NOT NULL DEFAULT '0'
+      options:
+        default: 0
+    max_items:
+      type: integer
+      nullable: false
+      columnDefinition: tinyint(3) unsigned NOT NULL DEFAULT '255'
+      options:
+        default: 255
+    allow_external_items:
+      type: boolean
+      nullable: false
+      columnDefinition: tinyint(1) NOT NULL DEFAULT '1'
+      options:
+        default: true
+    allow_gallery_items:
+      type: boolean
+      nullable: false
+      columnDefinition: tinyint(1) NOT NULL DEFAULT '1'
+      options:
+        default: true
+    allow_video_items:
+      type: boolean
+      nullable: false
+      columnDefinition: tinyint(1) NOT NULL DEFAULT '1'
+      options:
+        default: true
+    allow_image_upload:
+      type: boolean
+      nullable: false
+      columnDefinition: tinyint(1) NOT NULL DEFAULT '1'
+      options:
+        default: true
+    allow_kicker:
+      type: boolean
+      nullable: false
+      columnDefinition: tinyint(1) NOT NULL DEFAULT '0'
+      options:
+        default: false
+    use_short_headline:
+      type: boolean
+      nullable: false
+      columnDefinition: tinyint(1) NOT NULL DEFAULT '0'
+      options:
+        default: false
+    default_image_ratio:
+      type: string
+      nullable: false
+      columnDefinition: enum('1:1','2:3','3:2','3:4','4:3','16:9') NOT NULL DEFAULT '4:3'
+      options:
+        default: '4:3'
+        validate: ['1:1','2:3','3:2','3:4','4:3','16:9']
+    first_image_ratio:
+      type: string
+      nullable: false
+      columnDefinition: enum('1:1','2:3','3:2','3:4','4:3','16:9') NOT NULL DEFAULT '4:3'
+      options:
+        default: '4:3'
+        validate: ['1:1','2:3','3:2','3:4','4:3','16:9']
+  oneToMany:
+    LeadinGroupPub:
+      targetEntity: LeadinGroupPub
+      mappedBy: LeadinGroup
+      cascade: [ 'all' ]
+      orphanRemoval: true
+      orderBy: null
+  manyToMany:
+    Publication:
+      targetEntity: Publication
+      joinTable:
+        name: leadin_group_pub
+        schema: LeadinGroupPub
+        joinColumns:
+          group_id:
+            referencedColumnName: group_id
+        inverseJoinColumns:
+          pub_id:
+            referencedColumnName: pub_id

@@ -1,0 +1,24 @@
+Entity\Bizj\UrlShortener:
+  type: entity
+  table: url_shortener
+  fields:
+    url_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned
+      generator:
+        strategy: AUTO
+    url:
+      type: string
+      length: '2000'
+      nullable: true
+    market:
+      type: string
+      length: '32'
+      nullable: true
+    created_time:
+      type: datetime
+      nullable: true
+    modified_time:
+      type: datetime
+      nullable: true

@@ -1,0 +1,40 @@
+Entity\Authentication\RefreshToken:
+  type: entity
+  table: refresh_token
+  fields:
+    token:
+      id: true
+      type: string
+      length: '40'
+      columnDefinition: CHAR(40) NOT NULL
+    client_id:
+      type: integer
+      nullable: false
+    service_id:
+      type: integer
+      columnDefinition: smallint(5) unsigned NOT NULL
+      nullable: false
+    expires_at:
+      type: datetime
+      nullable: false
+    scope:
+      type: string
+      length: '2000'
+      nullable: true
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+  manyToOne:
+    Client:
+      targetEntity: Client
+      joinColumn:
+        name: client_id
+        referencedColumnName: client_id
+    Service:
+      targetEntity: Service
+      joinColumn:
+        name: service_id
+        referencedColumnName: service_id

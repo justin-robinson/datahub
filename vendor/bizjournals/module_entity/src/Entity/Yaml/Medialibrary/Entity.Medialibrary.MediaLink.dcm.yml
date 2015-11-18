@@ -1,0 +1,70 @@
+Entity\Medialibrary\MediaLink:
+  type: entity
+  table: media_link
+  indexes:
+    media_id:
+      columns:
+        - media_id
+    pub_id:
+      columns:
+        - pub_id
+    page_url:
+      columns:
+        - page_url
+    created_at:
+      columns:
+        - created_at
+  fields:
+    link_id:
+      id: true
+      type: bigint
+      columnDefinition: bigint(20) unsigned NOT NULL
+      generator:
+        strategy: AUTO
+    media_id:
+      type: bigint
+      columnDefinition: bigint(20) unsigned NOT NULL
+      nullable: false
+    pub_id:
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+      nullable: false
+    use_source:
+      type: string
+      length: '32'
+      nullable: false
+      options:
+        default: 'unknown'
+    cms_id:
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+      nullable: false
+      options:
+        default: 0
+    page_url:
+      type: string
+      length: '1000'
+      nullable: false
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  manyToOne:
+    Media:
+      targetEntity: Entity\Medialibrary\Media
+      joinColumn:
+        name: media_id
+        referencedColumnName: media_id
+    Publication:
+      targetEntity: Entity\Medialibrary\Publication
+      joinColumn:
+        name: pub_id
+        referencedColumnName: pub_id

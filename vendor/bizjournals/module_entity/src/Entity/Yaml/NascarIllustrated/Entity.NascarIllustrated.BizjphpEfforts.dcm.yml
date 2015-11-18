@@ -1,0 +1,49 @@
+Entity\NascarIllustrated\BizjphpEfforts:
+  type: entity
+  table: bizjphp.efforts
+  fields:
+    market_code:
+      id: true
+      type: string
+      length: 2
+      nullable: false
+    subscription_number:
+      id: true
+      type: integer
+      nullable: false
+    source_code:
+      id: true
+      type: string
+      length: 6
+      nullable: false
+    effort_number:
+      id: true
+      type: integer
+      nullable: false
+    zip:
+      type: string
+      length: 5
+      nullable: false
+    start_date:
+      type: date
+      nullable: false
+    end_date:
+      type: date
+      nullable: false
+    billing_data:
+      type: string
+      nullable: false
+    rate_data:
+      type: string
+      nullable: false
+    premium_code:
+      type: string
+      length: 20
+      nullable: true
+    copies:
+      type: integer
+      nullable: false
+    finder:
+      type: string
+      length: 9
+      nullable: true

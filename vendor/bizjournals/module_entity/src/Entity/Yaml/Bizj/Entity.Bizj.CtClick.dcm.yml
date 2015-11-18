@@ -1,0 +1,23 @@
+Entity\Bizj\CtClick:
+  type: entity
+  table: ct_click
+  fields:
+    click_id:
+      type: integer
+      unsigned: true
+      id: true
+      generator:
+        strategy: AUTO
+    campaign_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    source_url:
+      type: string
+      nullable: true
+    dest_url:
+      type: string
+      nullable: true
+    description:
+      type: string
+      nullable: true

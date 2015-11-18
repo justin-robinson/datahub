@@ -1,0 +1,72 @@
+Entity\NascarIllustrated\CartItem:
+  type: entity
+  table: cart_item
+  fields:
+    cart_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+      nullable: false
+    item_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+      nullable: false
+    product_name:
+      type: string
+      length: 255
+      nullable: false
+    price:
+      type: integer
+      columnDefinition: int(10) NOT NULL DEFAULT '0'
+      nullable: false
+      options:
+        default: 0
+    quantity:
+      type: integer
+      columnDefinition: int(10) NOT NULL DEFAULT '1'
+      nullable: false
+      options:
+        default: 1
+    added_time:
+      type: datetime
+      nullable: true
+    tax:
+      type: integer
+      columnDefinition: int(10) NOT NULL DEFAULT '0'
+      nullable: false
+      options:
+        default: 0
+    parent_item_id:
+      type: integer
+      columnDefinition: int(10) NOT NULL DEFAULT '0'
+      nullable: false
+      options:
+        default: 0
+    metadata:
+      type: string
+      nullable: true
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  manyToOne:
+    Cart:
+      targetEntity: Cart
+      joinColumn:
+        name: cart_id
+        referencedColumnName: cart_id
+    Product:
+      targetEntity: Product
+      joinColumn:
+        name: item_id
+        referencedColumnName: product_id
+

@@ -1,0 +1,118 @@
+Entity\Email\EmailType:
+  type: entity
+  table: email_type
+  fields:
+    product_id:
+      type: integer
+      unsigned: false
+      id: true
+      generator:
+        strategy: AUTO
+    product_name:
+      type: string
+      length: 128
+    product_title:
+      type: string
+      length: 128
+      nullable: true
+    product_type:
+      type: string
+      length: 128
+      nullable: true
+    classification:
+      type: string
+      length: 50
+      nullable: true
+    site:
+      type: string
+      length: 16
+      nullable: true
+    market:
+      type: string
+      length: 128
+      nullable: true
+    skin:
+      type: string
+      length: 255
+      nullable: true
+    tracking_code:
+      type: string
+      length: 128
+      nullable: true
+    default_host:
+      type: string
+      length: 128
+      nullable: true
+    default_subject:
+      type: string
+      length: 64
+      nullable: true
+    default_sender:
+      type: string
+      length: 255
+      nullable: true
+    reply_address:
+      type: string
+      length: 128
+      nullable: true
+    send_days:
+      type: string
+      length: 20
+      nullable: true
+    send_time:
+      type: string
+      length: 20
+      nullable: true
+    message_expiration:
+      type: integer
+      unsigned: false
+      nullable: true
+      options:
+        default: 30
+    content_id:
+      type: integer
+      unsigned: false
+      nullable: true
+    managed:
+      type: boolean
+      nullable: true
+      options:
+        default: false
+    active:
+      type: boolean
+      nullable: true
+      options:
+        default: true
+    manual_send:
+      type: boolean
+      nullable: true
+      options:
+        default: false
+    homepage_promo:
+      type: boolean
+      nullable: true
+      options:
+        default: false
+    promo_text:
+      type: string
+      length: 255
+      nullable: true
+    product_recommendations:
+      type: string
+      length: 2000
+      nullable: true
+    created_at:
+      type: datetime
+      nullable: true
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: true
+      options:
+        timestampable:
+          on: update
+  uniqueConstraints:
+    product_name_idx:
+      columns: [product_name]

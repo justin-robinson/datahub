@@ -1,0 +1,46 @@
+Entity\Email\EmailActivityDaily:
+  type: entity
+  table: email_activity_daily
+  fields:
+    activity_id:
+      type: integer
+      unsigned: true
+      id: true
+      generator:
+        strategy: AUTO
+    job_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    product_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    user_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    activity:
+      type: string
+      length: 10
+    remote_ip:
+      type: string
+      length: 15
+      nullable: true
+    user_agent:
+      type: integer
+      unsigned: true
+      nullable: true
+    referer:
+      type: string
+      nullable: true
+    created_at:
+      type: datetime
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      options:
+        timestampable:
+          on: update

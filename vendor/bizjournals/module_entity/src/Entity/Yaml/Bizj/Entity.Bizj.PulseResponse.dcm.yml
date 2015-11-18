@@ -1,0 +1,76 @@
+Entity\Bizj\PulseResponse:
+  type: entity
+  table: pulse_response
+  fields:
+    response_id:
+      type: integer
+      unsigned: true
+      id: true
+      generator:
+        strategy: AUTO
+    pulse_id:
+      type: integer
+      unsigned: true
+    market_id:
+      type: integer
+      unsigned: true
+    uin:
+      type: string
+      length: 30
+    ip_address:
+      type: string
+      length: 39
+    score:
+      type: integer
+      unsigned: true
+      options:
+        default: 0
+    rating:
+      type: string
+      length: 255
+      nullable: true
+    is_complete:
+      type: boolean
+      options:
+        default: false
+    is_invalid:
+      type: boolean
+      options:
+        default: false
+    is_geocoded:
+      type: boolean
+      options:
+        default: false
+    postal_code:
+      type: string
+      length: 35
+      nullable: true
+    state_province:
+      type: string
+      length: 70
+      nullable: true
+    country:
+      type: string
+      length: 2
+      nullable: true
+    created_at:
+      type: datetime
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      options:
+        timestampable:
+          on: update
+  manyToOne:
+    Pulse:
+      targetEntity: Pulse
+      joinColumn:
+        name: pulse_id
+        referencedColumnName: pulse_id
+  oneToMany:
+    ResponseData:
+      targetEntity: PulseResponseData
+      mappedBy: Response
+      cascade: [all]

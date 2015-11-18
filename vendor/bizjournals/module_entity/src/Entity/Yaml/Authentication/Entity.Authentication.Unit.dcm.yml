@@ -1,0 +1,43 @@
+Entity\Authentication\Unit:
+  type: entity
+  table: unit
+  fields:
+    unit_id:
+      id: true
+      type: integer
+      columnDefinition: smallint(5) unsigned NOT NULL AUTO_INCREMENT
+      generator:
+        strategy: AUTO
+    unit_name:
+      type: string
+      length: '100'
+      nullable: false
+    description:
+      type: string
+      length: '2000'
+      nullable: true
+    is_active:
+      type: boolean
+      nullable: false
+      columnDefinition: tinyint(1) NOT NULL DEFAULT '1'
+      options:
+        default: true
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  oneToMany:
+    Services:
+      targetEntity: Service
+      mappedBy: Uhit
+    Clients:
+      targetEntity: Client
+      mappedBy: Uhit

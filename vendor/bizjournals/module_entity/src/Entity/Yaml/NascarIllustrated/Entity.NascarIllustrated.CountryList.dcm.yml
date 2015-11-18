@@ -1,0 +1,19 @@
+Entity\NascarIllustrated\CountryList:
+  type: entity
+  table: country_list
+  fields:
+    country_code:
+      id: true
+      type: string
+      length: 2
+      columnDefinition: char(2) NOT NULL
+    alpha3:
+      type: string
+      length: 3
+      columnDefinition: char(3) NOT NULL
+      nullable: false
+    country:
+      type: string
+      length: 50
+      nullable: false
+

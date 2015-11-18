@@ -1,0 +1,47 @@
+Entity\Cms\AuditLog:
+  type: entity
+  table: audit_log
+  fields:
+    id:
+      id: true
+      type: integer
+      columnDefinition: bigint(20) unsigned NOT NULL AUTO_INCREMENT
+      generator:
+        strategy: AUTO
+    content_id:
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+      nullable: false
+    version:
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+      nullable: false
+    action:
+      type: string
+      nullable: false
+    detail:
+      type: string
+      nullable: false
+      columnDefinition: longtext NOT NULL
+    updated_by:
+      type: string
+      nullable: false
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+  manyToOne:
+    Content:
+      targetEntity: Content
+      joinColumn:
+        name: content_id
+        referencedColumnName: content_id
+    ContentVersion:
+      targetEntity: ContentVersion
+      joinColumns:
+        version:
+          referencedColumnName: version
+        content_id:
+          referencedColumnName: content_id

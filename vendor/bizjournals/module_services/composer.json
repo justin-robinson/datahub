@@ -1,0 +1,16 @@
+{
+	"name" : "bizjournals/module_services",
+	"description" : "bizjournals Services Module",
+	"type" : "library",
+	"require" : {
+		"monolog/monolog" : "@stable",
+		"ruflin/elastica" : "@stable",
+		"solarium/solarium" : "@stable"
+	},
+	"autoload" : {
+		"psr-0" : {
+			"Services\\" : "src/"
+		}
+	},
+	"minimum-stability" : "stable"
+}

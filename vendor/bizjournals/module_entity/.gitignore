@@ -1,0 +1,8 @@
+/.project
+/vendor
+/composer.lock
+/config/autoload/local.php
+/src/Entity/*/*.php~
+/.buildpath
+/.settings
+/tmp

@@ -1,0 +1,17 @@
+{
+    "name" : "bizjournals/module_entity",
+    "description" : "bizjournals Entity Module",
+    "type" : "library",
+    "require" : {
+        "doctrine/doctrine-orm-module" : "@stable",
+        "symfony/yaml" : "@stable"
+    },
+    "require-dev" : {
+        "zendframework/zendframework": "2.4.*"
+    },
+    "autoload" : {
+        "psr-0" : {
+            "Entity\\" : "src/"
+        }
+    }
+}

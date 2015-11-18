@@ -1,0 +1,39 @@
+Entity\Cms\ElasticRecovery:
+  type: entity
+  table: elastic_recovery
+  fields:
+    id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL AUTO_INCREMENT
+      generator:
+        strategy: AUTO
+    action:
+      type: string
+      length: '30'
+      nullable: false
+    index_name:
+      type: string
+      length: '40'
+      nullable: false
+    type_name:
+      type: string
+      length: '30'
+      nullable: false
+    elasticid:
+      type: string
+      length: '30'
+      nullable: true
+    struct_data:
+      type: string
+    is_processed:
+      type: boolean
+      columnDefinition: tinyint(1) NOT NULL DEFAULT '0'
+      options:
+        default: false
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create

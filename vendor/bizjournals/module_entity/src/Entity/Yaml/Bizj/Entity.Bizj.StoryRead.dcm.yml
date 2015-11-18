@@ -1,0 +1,159 @@
+Entity\Bizj\StoryRead:
+  type: entity
+  table: story.story_read
+  fields:
+    story_id:
+      id: true
+      type: integer
+      unsigned: true 
+      nullable: false
+    site_id:
+      type: integer
+      unsigned: true
+      nullable: false
+      options:
+        default: 1
+    c_time: 
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    major_rev:
+      type: integer
+      unsigned: true
+      nullable: false
+      options:
+        default: 0
+    minor_rev:
+      type: integer
+      unsigned: true
+      nullable: false
+      options:
+        default: 0
+    rev_time:
+      type: datetime
+      nullable: false
+    release_status:
+      type: string
+      nullable: false
+      columnDefinition: enum('canceled', 'usable') NOT NULL,
+      options:
+        default: 'usable'
+        validate: ['canceled', 'usable']
+    release_time:
+      type: datetime
+      nullable: false
+    issue_id:
+      type: integer(4)
+      unsigned: true
+      nullable: false
+      options:
+        default: 0
+    issue_date:
+      type: date
+      nullable: false
+    pub:
+      type: string
+      length: 20
+      nullable: false
+    slug:
+      type: string
+      length: 20
+      nullable: false
+    story_type:
+      type: string
+      length: 20
+      nullable: false
+    story_type_order_num:
+      type: integer
+      unsigned: true
+      nullable: false
+      options:
+        default: 0
+    story_sequence_num:
+      type: integer
+      unsigned: true
+      nullable: false
+      options:
+        default: 0
+    display_timeofday:
+      type: time
+      nullable: false
+    display_date:
+      type: date
+      nullable: false
+    named_section_id:
+      type: integer
+      unsigned: true
+    fixture:
+      type: string
+      length: 100
+    byline:
+      type: string
+      length: 100
+    bylineinfo:
+      type: string
+      length: 100
+    original_byline:
+      type: string
+      length: 255
+    tagline:
+      type: string
+    copyrite:
+      type: string
+      length: 100
+    teaser:
+      type: string
+    editors_note:
+      type: string
+    headline:
+      type: string
+      length: 255
+    subhead:
+      type: string
+      length: 255
+    external_url:
+      type: string
+      length: 255
+    publication_src:
+      type: string
+      length: 255
+    body_content:
+      type: string
+    is_premium:
+      type: string
+      nullable: false
+      columnDefinition: enum('0', '1') NOT NULL,
+      options:
+        default: '0'
+        validate: ['0', '1']
+    teaser_headline:
+      type: string
+      length: 255
+    default_skin:
+      type: string
+      length: 20
+    parent_story_id:
+      type: integer
+      unsigned: true
+  oneToMany:
+    Companies:
+      targetEntity: StoryEntityCompany
+      mappedBy: StoryRead
+    People:
+      targetEntity: StoryPerson
+      mappedBy: StoryRead
+    Industries:
+      targetEntity: StoryVerticalSubtopic
+      mappedBy: StoryRead
+    Images:
+      targetEntity: StoryImage
+      mappedBy: StoryRead
+    SpecialCategories:
+      targetEntity: StorySpecialCategory
+      mappedBy: StoryRead
+    Corrections:
+      targetEntity: StoryCorrections
+      mappedBy: StoryRead
+

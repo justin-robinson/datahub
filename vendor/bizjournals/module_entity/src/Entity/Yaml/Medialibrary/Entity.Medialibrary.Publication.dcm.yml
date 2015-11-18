@@ -1,0 +1,59 @@
+Entity\Medialibrary\Publication:
+  type: entity
+  table: publication
+  fields:
+    pub_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+      generator:
+        strategy: AUTO
+    pub_name:
+      type: string
+      length: '255'
+      nullable: false
+      unique: true
+    short_name:
+      type: string
+      length: '50'
+      nullable: false
+      unique: true
+    timezone:
+      type: string
+      length: '255'
+      nullable: false
+    default_copyright_notice:
+      type: string
+      length: '255'
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  oneToMany:
+    MediaPubs:
+      targetEntity: MediaPub
+      mappedBy: Publication
+      cascade: null
+      orphanRemoval: false
+      orderBy: null
+    Tags:
+      targetEntity: Tag
+      mappedBy: Publication
+      cascade: null
+      orphanRemoval: false
+      orderBy:
+        tag_name: asc
+    MediaLinks:
+      targetEntity: MediaLink
+      mappedBy: Publication
+      cascade: null
+      orphanRemoval: false
+      orderBy: null

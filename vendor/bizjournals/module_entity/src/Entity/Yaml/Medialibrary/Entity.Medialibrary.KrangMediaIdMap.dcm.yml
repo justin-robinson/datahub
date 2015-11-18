@@ -1,0 +1,35 @@
+Entity\Medialibrary\KrangMediaIdMap:
+  type: entity
+  table: krang_media_id_map
+  indexes:
+    bizj_id:
+      columns:
+        - bizj_media_id
+    krang_id:
+      columns:
+        - krang_media_id
+  fields:
+    bizj_media_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+    krang_media_id:
+      type: integer
+      nullable: false
+      columnDefinition: int(10) unsigned NOT NULL
+    frontend_type:
+      type: string
+      length: '40'
+      nullable: false
+      options:
+        default: 'media'
+    crop_data:
+      type: string
+      length: '32'
+      nullable: true
+  manyToOne:
+    KrangMedia:
+      targetEntity: KrangMediaExport
+      joinColumn:
+        name: krang_media_id
+        referencedColumnName: media_id

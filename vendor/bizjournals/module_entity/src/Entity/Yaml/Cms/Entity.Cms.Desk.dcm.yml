@@ -1,0 +1,25 @@
+Entity\Cms\Desk:
+  type: entity
+  table: desk
+  fields:
+    desk_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned
+    desk_name:
+      type: string
+      length: '255'
+      nullable: false
+      unique: true
+  manyToMany:
+    Content:
+      targetEntity: Content
+      joinTable:
+        name: content_desk
+        schema: ContentDesk
+        joinColumns:
+          desk_id_id:
+            referencedColumnName: desk_id
+        inverseJoinColumns:
+          content_id:
+            referencedColumnName: content_id

@@ -1,0 +1,37 @@
+Entity\Bizj\PulseResponseData:
+  type: entity
+  table: pulse_response_data
+  fields:
+    response_id:
+      type: integer
+      unsigned: true
+      id: true
+    question_id:
+      type: integer
+      unsigned: true
+      id: true
+    option_id:
+      type: integer
+      unsigned: true
+      id: true
+      options:
+        default: 0
+    created_at:
+      type: datetime
+      options:
+        timestampable:
+          on: create
+    response:
+      type: string
+      nullable: true
+  manyToOne:
+    Response:
+      targetEntity: PulseResponse
+      joinColumn:
+        name: response_id
+        referencedColumnName: response_id
+    Question:
+      targetEntity: PulseQuestion
+      joinColumn:
+        name: question_id
+        referencedColumnName: question_id

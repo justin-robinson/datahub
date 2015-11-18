@@ -1,0 +1,26 @@
+Entity\NascarIllustrated\StateList:
+  type: entity
+  table: state_list
+  fields:
+    state_code:
+      id: true
+      type: string
+      length: 2
+      columnDefinition: char(2) NOT NULL
+    state_name:
+      type: string
+      length: 64
+      nullable: false
+    is_active:
+      type: boolean
+      columnDefinition: tinyint(1) unsigned NOT NULL DEFAULT '1'
+      nullable: false
+      options:
+        default: true
+    ord:
+      type: integer
+      columnDefinition: tinyint(3) unsigned NOT NULL DEFAULT '0'
+      nullable: false
+      options:
+        default: 0
+

@@ -1,0 +1,48 @@
+Entity\Admin\AclRolePrivilege:
+  type: entity
+  table: acl_role_privilege
+  fields:
+    acl_role_privilege_id:
+      id: true
+      type: integer
+      unsigned: true
+      nullable: false
+      generator:
+        strategy: AUTO
+    acl_role_id:
+      type: integer
+      unsigned: true
+      nullable: false
+    acl_resource_id:
+      type: integer
+      unsigned: true
+      nullable: false
+    privilege:
+      type: string
+      length: 10
+      fixed: false
+      nullable: false
+    mode:
+      type: string
+      length: null
+      fixed: false
+      nullable: false
+    created_at:
+      type: datetime
+      nullable: false
+      column: created_at
+    updated_at:
+      type: datetime
+      nullable: false
+      column: updated_at
+  manyToOne:
+    AclRole:
+      targetEntity: AclRole
+      joinColumn:
+        name: acl_role_id
+        referencedColumnName: acl_role_id
+    AclResource:
+      targetEntity: AclResource
+      joinColumn:
+        name: acl_resource_id
+        referencedColumnName: acl_resource_id

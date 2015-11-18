@@ -1,0 +1,44 @@
+Entity\Bizjstatus\StatusCode:
+  type: entity
+  table: status_code
+  fields:
+    code_id:
+      id: true
+      type: integer
+      unsigned: true
+      columnDefinition: int(10) unsigned NOT NULL AUTO_INCREMENT
+      generator:
+        strategy: AUTO
+    code_name:
+      type: string
+      length: '255'
+      nullable: false
+    display_order:
+      type: integer
+      columnDefinition: tinyint(1) NOT NULL DEFAULT '0',
+      nullable: false
+      options:
+        default: '0'
+    is_active:
+      type: boolean
+      columnDefinition: tinyint(1) NOT NULL DEFAULT '1'
+      options:
+        default: true
+      nullable: false
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  oneToMany:
+    Events:
+      targetEntity: StatusCode
+      mappedBy: Event
+      cascade: [ 'all' ]

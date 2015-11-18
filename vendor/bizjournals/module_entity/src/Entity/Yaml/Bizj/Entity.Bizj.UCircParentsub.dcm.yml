@@ -1,0 +1,18 @@
+Entity\Bizj\UCircParentsub:
+  type: entity
+  table: u_circ_parentsub
+  fields:
+    user_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    parent_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    id:
+      type: integer
+      unsigned: true
+      id: true
+      generator:
+        strategy: AUTO

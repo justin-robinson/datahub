@@ -1,0 +1,132 @@
+Entity\Bizj\Page:
+  type: entity
+  table: page
+  fields:
+    page_id:
+      id: true
+      type: integer
+      unsigned: true 
+      nullable: false
+    site:
+      type: string
+      length: 80
+      nullable: false
+    path:
+      type: string
+      length: 727
+      nullable: false
+    slug:
+      type: string
+      length: 80
+      nullable: false
+    issue_date:
+      type: date
+      nullable: false
+    release_time:
+      type: datetime
+      nullable: false
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+    rev_number:
+      type: integer
+      unsigned: true 
+      nullable: false
+      options:
+        default: 0
+    headline:
+      type: string
+      length: 255
+      nullable: false
+    short_headline:
+      type: string
+      length: 80
+      nullable: true
+    is_premium:
+      type: boolean 
+      nullable: false
+      options:
+        default: false
+    journal_id:
+      type: integer
+      unsigned: true 
+      nullable: true
+    type_id:
+      type: integer
+      unsigned: true 
+      nullable: false
+    parent_page_id:
+      type: integer
+      unsigned: true 
+      nullable: true
+    published_at:
+      type: datetime
+      nullable: true
+    revised_at:
+      type: datetime
+      nullable: true
+    allow_syndication:
+      type: boolean 
+      nullable: false
+      options:
+        default: true
+  oneToMany:
+    Contents:
+      targetEntity: PageContent
+      mappedBy: Page
+      cascade: [ 'all' ]
+      orphanRemoval: true
+      orderBy:
+        ord: asc
+    Corrections:
+      targetEntity: PageCorrection
+      mappedBy: Page
+      cascade: [ 'all' ]
+      orphanRemoval: true
+    Metadata:
+      targetEntity: PageMetadata
+      mappedBy: Page
+      cascade: [ 'all' ]
+      orphanRemoval: true
+      orderBy:
+        ord: asc
+    LeadinGroups:
+      targetEntity: PageLeadinGroup
+      mappedBy: Page
+      cascade: [ 'all' ]
+      orphanRemoval: true
+      orderBy:
+        ord: asc
+    Crossrefs:
+      targetEntity: PageCrossref
+      mappedBy: Page
+      cascade: [ 'all' ]
+      orphanRemoval: true
+    LegacyMediaMap:
+      targetEntity: PageLegacyMediaMap
+      mappedBy: Page
+      cascade: [ 'all' ]
+      orphanRemoval: true
+      orderBy:
+        ord: asc
+    Media:
+      targetEntity: PageMedia
+      mappedBy: Page
+      cascade: [ 'all' ]
+      orphanRemoval: true
+      orderBy:
+        ord: asc
+    Urls:
+      targetEntity: PageUrl
+      mappedBy: Page
+      cascade: [ 'all' ]
+      orphanRemoval: true

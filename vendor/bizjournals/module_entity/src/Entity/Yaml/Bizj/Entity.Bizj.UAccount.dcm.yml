@@ -1,0 +1,178 @@
+Entity\Bizj\UAccount:
+  type: entity
+  table: u_account
+  fields:
+    user_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned
+      generator:
+        strategy: AUTO
+    uin:
+      type: string
+      length: '30'
+      nullable: false
+      unique: true
+    email:
+      type: string
+      length: '255'
+      nullable: true
+      unique: true
+    password:
+      type: string
+      length: '32'
+      nullable: true
+    country_code:
+      type: string
+      length: '2'
+      nullable: true
+    postal_code:
+      type: string
+      length: '10'
+      nullable: true
+    business_type_id:
+      type: integer
+      columnDefinition: smallint(10) unsigned
+      nullable: true
+    employee_count:
+      type: string
+      length: '6'
+      nullable: true
+    may_email_features:
+      type: string
+      length: 1
+      nullable: true
+      options:
+       default: '0'
+       validate: ['0', '1']
+    first_name:
+      type: string
+      length: '30'
+      nullable: true
+    last_name:
+      type: string
+      length: '30'
+      nullable: true
+    c_time:
+      type: datetime
+      nullable: true
+      options:
+        Timestampable: created
+    m_time:
+      type: datetime
+      nullable: false
+      options:
+        Timestampable: updated
+    has_undeliverable_email:
+      type: string
+      length: 1
+      nullable: true
+      options:
+       default: '0'
+       validate: ['0', '1']
+    undeliverable_email_count:
+      type: integer
+      columnDefinition: mediumint(8) unsigned
+      unsigned: true
+      nullable: false
+      options:
+        default: 0
+    has_html_email:
+      type: string
+      length: 1
+      nullable: true
+      options:
+       default: '1'
+       validate: ['0', '1']
+    gender:
+      type: string
+      length: 1
+      nullable: true
+      options:
+       validate: ['F', 'M']
+    job_title_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    company_postal_code:
+      type: string
+      length: '10'
+      nullable: true
+    subscriber_info_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    income_level_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    has_confirmed_email:
+      type: string
+      length: '1'
+      nullable: false
+      options:
+       default: '1'
+       validate: ['0', '1']
+    company_name:
+      type: string
+      length: '100'
+      nullable: true
+    company_address:
+      type: string
+      length: '100'
+      nullable: true
+    company_city:
+      type: string
+      length: '100'
+      nullable: true
+    company_state:
+      type: string
+      length: '10'
+      nullable: true
+    receive_partner_email:
+      type: string
+      length: '1'
+      nullable: true
+      options:
+       default: '0'
+       validate: ['0', '1']
+    comp_access:
+      type: string
+      length: '1'
+      nullable: true
+      options:
+       default: '0'
+       validate: ['0', '1']
+    source_id:
+      type: integer
+      unsigned: true
+      nullable: true
+      options:
+        default: 0
+    email_domain:
+      type: string
+      length: '127'
+      nullable: true
+    undeliverable_time:
+      type: datetime
+      nullable: true
+    use_external_auth:
+      type: boolean
+      columnDefinition: tinyint(1) unsigned
+      nullable: false
+      options:
+        default: 0
+    last_login:
+      type: datetime
+      nullable: true
+    is_archived:
+      type: boolean
+      columnDefinition: tinyint(1) unsigned
+      nullable: false
+      options:
+        default: 0
+    has_suppressed_email:
+      type: boolean
+      columnDefinition: tinyint(1) unsigned
+      options:
+        default: 0

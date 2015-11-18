@@ -1,0 +1,64 @@
+Entity\Bizj\SiteSection:
+  type: entity
+  table: site_section
+  fields:
+    section_id:
+      id: true
+      type: integer
+      unsigned: true
+      nullable: false
+      generator:
+        strategy: AUTO
+    site_id:
+      type: integer
+      unsigned: true
+      nullable: false
+    section_slug:
+      type: string
+      length: 255
+      nullable: false
+    section_name:
+      type: string
+      length: 255
+      nullable: false
+    section_crumb:
+      type: string
+      length: 255
+    section_url:
+      type: string
+      length: 767
+      nullable: false
+    parent_id:
+      type: integer
+      unsigned: true
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+    lft:
+      type: integer
+      unsigned: false
+      nullable: true
+    rgt:
+      type: integer
+      unsigned: false
+      nullable: true
+    level:
+      type: integer
+      columnDefinition: smallint(6)
+      unsigned: false
+      nullable: true
+  manyToOne:
+    Site:
+      targetEntity: Site
+      joinColumn:
+        name: site_id
+        referencedColumnName: site_id

@@ -1,0 +1,34 @@
+Entity\Bzjpreview\StoryEntityCompany:
+  type: entity
+  table: story_entity_company
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: true
+      nullable: false
+    story_id:
+      type: integer
+      unsigned: true 
+      nullable: false
+    name:
+      type: string
+      length: 255
+    eoc:
+      type: string
+      length: 32
+    c_time:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    normalized_name:
+      type: string
+      length: 255
+  manyToOne:
+    StoryRead:
+      targetEntity: StoryRead
+      joinColumn:
+        name: story_id
+        referencedColumnName: story_id

@@ -1,0 +1,57 @@
+Entity\NascarIllustrated\ProductImage:
+  type: entity
+  table: product_image
+  fields:
+    product_image_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+      generator:
+        strategy: AUTO
+    product_id:
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL DEFAULT '0'
+      nullable: false
+      options:
+        default: 0
+    image_type:
+      type: string
+      columnDefinition: enum('cover','spread','other') NOT NULL DEFAULT 'other'
+      nullable: false
+      options:
+        default: 'other'
+    media_id:
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL DEFAULT '0'
+      nullable: false
+      options:
+        default: 0
+    media_url:
+      type: string
+      length: 255
+      nullable: false
+    ord:
+      type: integer
+      columnDefinition: tinyint(3) unsigned NOT NULL DEFAULT '0'
+      nullable: false
+      options:
+        default: 0
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  manyToOne:
+    Product:
+      targetEntity: Product
+      joinColumn:
+        name: product_id
+        referencedColumnName: product_id
+

@@ -1,0 +1,28 @@
+Entity\Bzjpreview\StoryDeletes:
+  type: entity
+  table: story_deletes
+  fields:
+    story_id:
+      id: true
+      type: integer
+      unsigned: true
+    c_time:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    issue_date:
+      type: date
+      nullable: false
+    pub:
+      type: string
+      length: 20
+      nullable: false
+    slug:
+      type: string
+      length: 20
+      nullable: false
+    headline:
+      type: string
+      length: 255

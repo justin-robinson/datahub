@@ -1,0 +1,52 @@
+Entity\Bzjpreview\PageCrossref:
+  type: entity
+  table: page_crossref
+  fields:
+    ref_id:
+      id: true
+      type: integer
+      unsigned: true
+      nullable: false
+      generator:
+        strategy: AUTO
+    page_id:
+      type: integer
+      unsigned: true 
+      nullable: false
+    ref_type:
+      type: string
+      nullable: false
+      columnDefinition: enum('person', 'company', 'industry', 'tag', 'category', 'location', 'bucket') NOT NULL,
+      options:
+        validate: ['person', 'company', 'industry', 'tag', 'category', 'location', 'bucket']
+    issue_date:
+      type: date
+      nullable: false
+    ref_key:
+      type: string
+      length: 255
+    ref_value: 
+      type: string
+      length: 10000
+    ref_weight:
+      type: integer
+      unsigned: true 
+      nullable: true
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  manyToOne:
+    Page:
+      targetEntity: Page
+      joinColumn:
+        name: page_id
+        referencedColumnName: page_id

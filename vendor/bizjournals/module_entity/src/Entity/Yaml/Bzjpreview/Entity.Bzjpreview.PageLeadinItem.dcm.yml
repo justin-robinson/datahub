@@ -1,0 +1,67 @@
+Entity\Bzjpreview\PageLeadinItem:
+  type: entity
+  table: page_leadin_item
+  fields:
+    item_id:
+      id: true
+      type: integer
+      unsigned: true
+      nullable: false
+      generator:
+        strategy: AUTO
+    group_id:
+      type: integer
+      unsigned: true
+      nullable: false
+    ord:
+      type: integer
+      unsigned: true
+      nullable: false
+      options:
+        default: 0
+    item_page_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    url:
+      type: string
+      length: 767
+      nullable: false
+    headline:
+      type: string
+      length: 255
+      nullable: false
+    teaser:
+      type: string
+      length: 10000
+    item_media_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    item_media_url:
+      type: string
+      length: 255
+    media_caption:
+      type: string
+      length: 10000
+    media_alt_text:
+      type: string
+      length: 255
+    thumb_media_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    kicker:
+      type: string
+      length: 255
+    item_video_id:
+      type: string
+      length: 80
+    additional_data:
+      type: string
+  manyToOne:
+    PageLeadinGroup:
+      targetEntity: PageLeadinGroup
+      joinColumn:
+        name: group_id
+        referencedColumnName: group_id

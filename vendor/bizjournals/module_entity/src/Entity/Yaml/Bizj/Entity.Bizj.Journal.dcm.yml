@@ -1,0 +1,84 @@
+Entity\Bizj\Journal:
+  type: entity
+  table: journal_info
+  fields:
+    journal_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned
+      generator:
+        strategy: AUTO
+    journal_code:
+      type: string
+      length: 50
+      nullable: false
+      unique: true
+    market_id:
+      type: integer
+      columnDefinition: int(10) unsigned
+      nullable: false
+    journal_name:
+      type: string
+      length: 80
+      nullable: false
+    descriptive_name:
+      type: string
+      length: 80
+      nullable: false
+    short_name:
+      type: string
+      length: 50
+      nullable: false
+    objective_name:
+      type: string
+      length: 50
+      nullable: false
+    objective_short_name:
+      type: string
+      length: 50
+      nullable: false
+    print_product_id:
+      type: integer
+      unsigned: true 
+    online_product_id:
+      type: integer
+      unsigned: true 
+    primary_contact_id:
+      type: integer
+      unsigned: true 
+    publisher_contact_id:
+      type: integer
+      unsigned: true 
+    circ_mgr_contact_id:
+      type: integer
+      unsigned: true 
+    ad_mgr_contact_id:
+      type: integer
+      unsigned: true 
+    editor_contact_id:
+      type: integer
+      unsigned: true 
+    research_dir_contact_id:
+      type: integer
+      unsigned: true 
+    circ_product_id:
+      type: string
+      length: 2
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  manyToOne:
+    Market:
+      targetEntity: Market
+      joinColumn:
+        name: market_id
+        referencedColumnName: market_id

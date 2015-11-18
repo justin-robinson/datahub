@@ -1,0 +1,42 @@
+Entity\Bizj\StoryCorrections:
+  type: entity
+  table: story.story_corrections
+  fields:
+    id:
+      id: true
+      type: integer
+      unsigned: true
+      generator:
+        strategy: AUTO
+    story_id:
+      type: integer
+      unsigned: true 
+      nullable: false
+    market:
+      type: string
+      length: 20
+      nullable: false
+      options:
+        default: 'bizjournals'
+    text:
+      type: string
+      nullable: false
+    c_time:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    is_daily:
+      type: string
+      nullable: false
+      columnDefinition: enum('0', '1') NOT NULL,
+      options:
+        default: '0'
+        validate: ['0', '1']
+  manyToOne:
+    StoryRead:
+      targetEntity: StoryRead
+      joinColumn:
+        name: story_id
+        referencedColumnName: story_id

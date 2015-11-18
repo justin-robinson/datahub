@@ -1,0 +1,31 @@
+Entity\Bzjpreview\PulseMarketMap:
+  type: entity
+  table: pulse_market_map
+  fields:
+    pulse_id:
+      type: integer
+      unsigned: true
+      id: true
+    market_id:
+      type: integer
+      unsigned: true
+      id: true
+    created_at:
+      type: datetime
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      options:
+        timestampable:
+          on: update
+    deleted_at:
+      type: datetime
+      nullable: true
+  manyToOne:
+    Pulse:
+      targetEntity: Pulse
+      joinColumn:
+        name: pulse_id
+        referencedColumnName: pulse_id

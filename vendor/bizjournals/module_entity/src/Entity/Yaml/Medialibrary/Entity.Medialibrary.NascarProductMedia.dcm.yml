@@ -1,0 +1,28 @@
+Entity\Medialibrary\NascarProductMedia:
+  type: entity
+  table: nascar_product_media
+  fields:
+    id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+    product_id:
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+      nullable: false
+    image_type:
+      type: string
+      columnDefinition: enum('cover','spread')
+      nullable: false
+    mime_type:
+      type: string
+      length: '255'
+      nullable: true
+    file_size:
+      type: integer
+      columnDefinition: int(10) unsigned
+      nullable: true
+    file_path:
+      type: string
+      length: '1023'
+      nullable: true

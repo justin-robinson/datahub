@@ -1,0 +1,24 @@
+Entity\Cms\ContentDesk:
+  type: entity
+  table: content_desk
+  fields:
+    content_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned
+    desk_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned
+  oneToOne:
+    Content:
+      targetEntity: Content
+      joinColumn:
+        name: content_id
+        referencedColumnName: content_id
+  manyToOne:
+    Desk:
+      targetEntity: Desk
+      joinColumn:
+        name: desk_id
+        referencedColumnName: desk_id

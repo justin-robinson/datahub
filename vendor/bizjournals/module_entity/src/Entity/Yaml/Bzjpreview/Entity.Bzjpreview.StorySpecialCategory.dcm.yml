@@ -1,0 +1,26 @@
+Entity\Bzjpreview\StorySpecialCategory:
+  type: entity
+  table: story_special_category
+  fields:
+    story_id:
+      id: true
+      type: integer
+      unsigned: true 
+      nullable: false
+    special_cat_id:
+      id: true
+      type: integer
+      unsigned: true
+      nullable: false
+    c_time:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+  manyToOne:
+    StoryRead:
+      targetEntity: StoryRead
+      joinColumn:
+        name: story_id
+        referencedColumnName: story_id
