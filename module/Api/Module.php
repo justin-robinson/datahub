@@ -65,19 +65,4 @@ class Module
         }
     }
 
-    /**
-     * Service config
-     * @return multitype:multitype:\CMS\Form\Service\FormFactory
-     */
-    public function getServiceConfig()
-    {
-        return array(
-            'factories' => array(
-                /*
-                 * Form Factories
-                */
-                'Api\Form\QueryBuilder' => new FormFactory(__DIR__ . '/config/form/query-builder.form.config.php'),
-            ),
-        );
-    }
 }
