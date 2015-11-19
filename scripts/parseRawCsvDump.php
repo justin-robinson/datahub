@@ -197,7 +197,7 @@ if (($parsed = fopen('/usr/local/bizj/dHubWorkSpace/parsed.csv', "r")) !== false
         'IS' => 'ICELAND',
         'IN' => 'INDIA',
         'ID' => 'INDONESIA',
-        'IR' => 'IRAN, ISLAMIC REPUBLIC OF',
+        'IR' => 'IRAN',
         'IQ' => 'IRAQ',
         'IE' => 'IRELAND',
         'IL' => 'ISRAEL',
@@ -209,7 +209,7 @@ if (($parsed = fopen('/usr/local/bizj/dHubWorkSpace/parsed.csv', "r")) !== false
         'KE' => 'KENYA',
         'KI' => 'KIRIBATI',
         'KP' => 'KOREA DEMOCRATIC PEOPLES REPUBLIC OF',
-        'KR' => 'KOREA (SOUTH)',
+        'KR' => 'KOREA',
         'KW' => 'KUWAIT',
         'KG' => 'KYRGYZSTAN',
         'LA' => 'LAO PEOPLES DEMOCRATIC REPUBLIC',
@@ -321,12 +321,11 @@ if (($parsed = fopen('/usr/local/bizj/dHubWorkSpace/parsed.csv', "r")) !== false
         'AE' => 'UNITED ARAB EMIRATES',
         'GB' => 'UNITED KINGDOM',
         'US' => 'UNITED STATES',
-//        'UM' => 'UNITED STATES MINOR OUTLYING ISLANDS',
         'UY' => 'URUGUAY',
         'UZ' => 'UZBEKISTAN',
         'VU' => 'VANUATU',
         'VE' => 'VENEZUELA',
-        'VN' => 'VIET NAM',
+        'VN' => 'VIETNAM',
         'VG' => 'VIRGIN ISLANDS, BRITISH',
         'VI' => 'VIRGIN ISLANDS, U.S.',
         'WF' => 'WALLIS AND FUTUNA',
@@ -343,9 +342,16 @@ if (($parsed = fopen('/usr/local/bizj/dHubWorkSpace/parsed.csv', "r")) !== false
         if (!empty($record[9])) {
             $raw       = $record[9];
             $processed = strtoupper($raw);
-
+            $splode = explode("(", $processed);
+            $processed = trim($splode[0]);
+            $processed = preg_replace("/\([^)]+\)/","",$processed);
             if (in_array($processed, $countries)) {
                 $record[13] = array_search($processed, $countries);
+            } else {
+//                //
+//                foreach ($countries as $code => $country) {
+//
+//                }
             }
 
 //            foreach ($countries as $code => $country) {
@@ -359,6 +365,8 @@ if (($parsed = fopen('/usr/local/bizj/dHubWorkSpace/parsed.csv', "r")) !== false
 ////                    }
 //                }
 //            }
+        } else {
+            $record[13] = 'US';
         }
         fputcsv($normalizedFile, $record);
     }
