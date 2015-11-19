@@ -1,16 +1,15 @@
+#!/usr/bin/env php
 <?php
 /**
  *  Let's get rid of all of the crap and prepare the rest for import!
  *  requires the path : /usr/local/bizj/dHubWorkSpace
  *  requires something to parse as well
  */
-use Entity\Proxy\__CG__\Entity\NascarIllustrated\CountryList;
 
 /**
  * @todo lookup country codes
  * @todo generate country codes if they aren't present
  */
-
 
 /**
  * stage one filter out records that we don't want
@@ -72,6 +71,7 @@ if (($parsed = fopen('/usr/local/bizj/dHubWorkSpace/parsed.csv', "r")) !== false
 
     $normalizedFile = fopen('/usr/local/bizj/dHubWorkSpace/normalized.csv', 'w');
     $referenceCols  = fgetcsv($parsed, 0, ",");
+    $referenceCols[13] = 'countryCode';
 
     fputcsv($normalizedFile, $referenceCols);
 
@@ -209,7 +209,7 @@ if (($parsed = fopen('/usr/local/bizj/dHubWorkSpace/parsed.csv', "r")) !== false
         'KE' => 'KENYA',
         'KI' => 'KIRIBATI',
         'KP' => 'KOREA DEMOCRATIC PEOPLES REPUBLIC OF',
-        'KR' => 'KOREA REPUBLIC OF',
+        'KR' => 'KOREA (SOUTH)',
         'KW' => 'KUWAIT',
         'KG' => 'KYRGYZSTAN',
         'LA' => 'LAO PEOPLES DEMOCRATIC REPUBLIC',
@@ -273,7 +273,7 @@ if (($parsed = fopen('/usr/local/bizj/dHubWorkSpace/parsed.csv', "r")) !== false
         'QA' => 'QATAR',
         'RE' => 'REUNION',
         'RO' => 'ROMANIA',
-        'RU' => 'RUSSIAN FEDERATION',
+        'RU' => 'RUSSIA',
         'RW' => 'RWANDA',
         'SH' => 'SAINT HELENA',
         'KN' => 'SAINT KITTS AND NEVIS',
@@ -321,7 +321,7 @@ if (($parsed = fopen('/usr/local/bizj/dHubWorkSpace/parsed.csv', "r")) !== false
         'AE' => 'UNITED ARAB EMIRATES',
         'GB' => 'UNITED KINGDOM',
         'US' => 'UNITED STATES',
-        'UM' => 'UNITED STATES MINOR OUTLYING ISLANDS',
+//        'UM' => 'UNITED STATES MINOR OUTLYING ISLANDS',
         'UY' => 'URUGUAY',
         'UZ' => 'UZBEKISTAN',
         'VU' => 'VANUATU',
@@ -338,20 +338,32 @@ if (($parsed = fopen('/usr/local/bizj/dHubWorkSpace/parsed.csv', "r")) !== false
     ];
 
 
-    // country code conversion
+    // country code conversion based
     while ($record = fgetcsv($parsed, 0, ',')) {
         if (!empty($record[9])) {
             $raw       = $record[9];
             $processed = strtoupper($raw);
 
-            if (in_array($processed, $countries)){
-                $record[9] = array_search($processed, $countries);
+            if (in_array($processed, $countries)) {
+                $record[13] = array_search($processed, $countries);
             }
 
+//            foreach ($countries as $code => $country) {
+//                $matched = [];
+//                if ($country +++ $processed) === strlen($processed))
+//                {
+//                    $record[13] = $code;
+////                    if($code !== 'US' && $code !== 'CA' && $code !== 'GB') {
+//////                    $matched[$code] = $record[9];
+//                    echo $code . ' | ' . $record[9] . PHP_EOL;
+////                    }
+//                }
+//            }
         }
         fputcsv($normalizedFile, $record);
     }
-fclose($normalizedFile);
- fclose($parsed);
+
+    fclose($normalizedFile);
+    fclose($parsed);
 
 }
