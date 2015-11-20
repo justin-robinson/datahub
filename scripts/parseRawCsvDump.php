@@ -1,76 +1,82 @@
 #!/usr/bin/env php
 <?php
 /**
- *  Let's get rid of all of the crap and prepare the rest for import!
+ *  Let's get rid of all of the crap and prepare the rest for import.
  *  requires the path : /usr/local/bizj/dHubWorkSpace
  *  requires something to parse as well
+ *  note: for the time being I've had to hand convert the bridgetree_dump file to "backtick" delimited
+ *  to get it to work.
+ * @todo next up is a script to do that on a cron
+ *      1. convert all existing backticks to apostrophes
+ *      2. convert the group "|:|" to backtick
+ *      3. ?
+ *      4. Go have a sandwich.
+ *
+ * @todo stop with the intermediate files and do it in arrays.
  */
 
-/**
- * @todo lookup country codes
- * @todo generate country codes if they aren't present
- */
 
-/**
- * stage one filter out records that we don't want
- */
-//if (($handle = fopen('/usr/local/bizj/dHubWorkSpace/bridgetree_dump', "r")) !== false) {
-//    $parsedFile   = fopen('/usr/local/bizj/dHubWorkSpace/parsed.csv', 'w');
-//    $headerRaw    = fgetcsv($handle, 0, "|");
-//    $headerSource = [];
-//    foreach ($headerRaw as $key => $value) {
-//        $headerSource[$key] = str_replace('|', '', $value);
-//    }
 //
-//    $headerProcessed = [];
+// stage one filter out records that we don't want
 //
-//    $colsToKeep = [
-//        'CompanyId',
-//        'Name',
-//        'Ticker',
-//        'TickerExchange',
-//        'Addr1',
-//        'Addr2',
-//        'City',
-//        'State',
-//        'ZipCode',
-//        'Country',
-//        'OfficePhone1',
-//        'Url',
-//        'LastStoryDate',
-//    ];
-//    foreach ($headerSource as $k => $value) {
-//        if (in_array($value, $colsToKeep)) {
-//            $headerProcessed[$k] = $value;
-//        }
-//    }
-//
-//    // write the header row
-//    fputcsv($parsedFile, $headerProcessed);
-//
-//    while ($recordRaw = fgetcsv($handle, 0, '|')) {
-//        $recordProcessed = [];
-//        foreach ($recordRaw as $k => $v) {
-//            if (array_key_exists($k, $headerProcessed)) {
-//                $recordProcessed[$k] = trim($v, '|');
-//            }
-//        }
-//        if (!empty($recordProcessed[52])) {
-//            fputcsv($parsedFile, $recordProcessed);
-//        }
-//    }
-//    fclose($parsedFile);
-//    fclose($handle);
-//}
 
-/**
- * stage 2 normalize
- */
+if (($handle = fopen('/usr/local/bizj/dHubWorkSpace/bridgetree_dumpBacktik', "r")) !== false) {
+    $parsedFile   = fopen('/usr/local/bizj/dHubWorkSpace/parsed.csv', 'w');
+    $headerRaw    = fgetcsv($handle, 0, "`");
+    $headerSource = [];
+    foreach ($headerRaw as $key => $value) {
+        $headerSource[$key] = $value;
+    }
+    $headerProcessed = [];
+
+    $colsToKeep = [
+        'CompanyId',
+        'Name',
+        'Ticker',
+        'TickerExchange',
+        'Addr1',
+        'Addr2',
+        'City',
+        'State',
+        'ZipCode',
+        'Country',
+        'OfficePhone1',
+        'Url',
+        'LastStoryDate',
+    ];
+    foreach ($headerSource as $k => $value) {
+        if (in_array($value, $colsToKeep)) {
+            $headerProcessed[$k] = $value;
+        }
+    }
+
+    // write the header row
+    fputcsv($parsedFile, $headerProcessed);
+
+    while ($recordRaw = fgetcsv($handle, 0, "`")) {
+        $recordProcessed = [];
+        foreach ($recordRaw as $k => $v) {
+            if (array_key_exists($k, $headerProcessed)) {
+                $recordProcessed[$k] = $v;
+            }
+        }
+        // we only care about records with LastStoryDate 'cause these are referenced in a story
+        if (!empty($recordProcessed[26]) && strtotime($recordProcessed[26])) {
+            fputcsv($parsedFile, $recordProcessed);
+        }
+    }
+    fclose($parsedFile);
+    fclose($handle);
+}
+
+///
+/// stage 2 normalize
+///
 
 if (($parsed = fopen('/usr/local/bizj/dHubWorkSpace/parsed.csv', "r")) !== false) {
 
-    $normalizedFile = fopen('/usr/local/bizj/dHubWorkSpace/normalized.csv', 'w');
-    $referenceCols  = fgetcsv($parsed, 0, ",");
+    $normalizedFile    = fopen('/usr/local/bizj/dHubWorkSpace/normalized.csv', 'w');
+    $referenceCols     = fgetcsv($parsed, 0, ",");
     $referenceCols[13] = 'countryCode';
 
     fputcsv($normalizedFile, $referenceCols);
@@ -93,7 +99,6 @@ if (($parsed = fopen('/usr/local/bizj/dHubWorkSpace/parsed.csv', "r")) !== false
      *     [12] => "LastStoryDate"
      * ]
      */
-
 
     $countries = [
         'AF' => 'AFGHANISTAN',
@@ -177,6 +182,7 @@ if (($parsed = fopen('/usr/local/bizj/dHubWorkSpace/parsed.csv', "r")) !== false
         'GM' => 'GAMBIA',
         'GE' => 'GEORGIA',
         'DE' => 'GERMANY',
+        'GG' => 'GUERNSEY',
         'GH' => 'GHANA',
         'GI' => 'GIBRALTAR',
         'GR' => 'GREECE',
@@ -303,9 +309,9 @@ if (($parsed = fopen('/usr/local/bizj/dHubWorkSpace/parsed.csv', "r")) !== false
         'SE' => 'SWEDEN',
         'CH' => 'SWITZERLAND',
         'SY' => 'SYRIAN ARAB REPUBLIC',
-        'TW' => 'TAIWAN, PROVINCE OF CHINA',
+        'TW' => 'TAIWAN',
         'TJ' => 'TAJIKISTAN',
-        'TZ' => 'TANZANIA, UNITED REPUBLIC OF',
+        'TZ' => 'TANZANIA',
         'TH' => 'THAILAND',
         'TG' => 'TOGO',
         'TK' => 'TOKELAU',
@@ -337,38 +343,44 @@ if (($parsed = fopen('/usr/local/bizj/dHubWorkSpace/parsed.csv', "r")) !== false
     ];
 
 
-    // country code conversion based
+    $secondChanceCountries = [
+        'GB' => 'UK',
+        'NL' => 'THE NETHERLANDS',
+    ];
+
+
     while ($record = fgetcsv($parsed, 0, ',')) {
+        // match existing records
         if (!empty($record[9])) {
+
             $raw       = $record[9];
             $processed = strtoupper($raw);
-            $splode = explode("(", $processed);
+            $splode    = explode("(", $processed);
             $processed = trim($splode[0]);
-            $processed = preg_replace("/\([^)]+\)/","",$processed);
+            $processed = preg_replace('/,.*/', '', $processed);
+            $processed = preg_replace("/\([^)]+\)/", "", $processed);
+
             if (in_array($processed, $countries)) {
+
                 $record[13] = array_search($processed, $countries);
+
             } else {
-//                //
-//                foreach ($countries as $code => $country) {
-//
-//                }
+                // try again
+                if (in_array($processed, $secondChanceCountries)) {
+
+                    $record[13] = array_search($processed, $secondChanceCountries);
+
+                }
             }
 
-//            foreach ($countries as $code => $country) {
-//                $matched = [];
-//                if ($country +++ $processed) === strlen($processed))
-//                {
-//                    $record[13] = $code;
-////                    if($code !== 'US' && $code !== 'CA' && $code !== 'GB') {
-//////                    $matched[$code] = $record[9];
-//                    echo $code . ' | ' . $record[9] . PHP_EOL;
-////                    }
-//                }
-//            }
         } else {
+            // 'Murica
             $record[13] = 'US';
+
         }
+
         fputcsv($normalizedFile, $record);
+
     }
 
     fclose($normalizedFile);
