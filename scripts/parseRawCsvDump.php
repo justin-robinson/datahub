@@ -1,7 +1,5 @@
 #!/usr/bin/env php
 <?php
-
-
 /**
  *  Let's get rid of all of the crap and prepare the rest for import.
  *  requires the path : /usr/local/bizj/dHubWorkSpace
@@ -16,7 +14,6 @@
  *      4. Go have a sandwich.
  *      5. Think about how you wish that you could do something about the initial export
  *
- * @todo stop with the intermediate files and do it in arrays.
  */
 
 //                          __                 _                       _
@@ -39,10 +36,9 @@
 //     |_|  \___/ |_|   |_| |_| |_| \__,_| \__| \__||_||_| |_| \__, |
 //                                                              __/ |
 //                                                             |___/
-
-
 //
-// stage one filter out records that we don't want
+// stage one
+// filter out records that we don't want
 //
 
 if (($handle = fopen('/usr/local/bizj/dHubWorkSpace/bridgetree_dumpBacktik', "r")) !== false) {
@@ -76,9 +72,8 @@ if (($handle = fopen('/usr/local/bizj/dHubWorkSpace/bridgetree_dumpBacktik', "r"
     foreach ($headerSource as $k => $value) {
 
         if (in_array($value, $colsToKeep)) {
-
-            $value               = $value === 'ZipCode' ? 'PostalCode' : $value;
-            $headerProcessed[$k] = $value;
+            // PostalCode reminds us that it's international
+            $headerProcessed[$k] = $value === 'ZipCode' ? 'PostalCode' : $value;
 
         }
 
@@ -399,7 +394,7 @@ foreach ($processedArray as $record) {
     $record[3] = strpos($record[3], 'York Stock') ? 'NYSE'   : $record[3];
 
     if ($record[11] !== '') {
-
+        // get the country names
         // normalize the col for array searching
         $raw       = $record[11];
         $processed = strtoupper($raw);
