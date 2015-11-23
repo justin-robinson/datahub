@@ -51,7 +51,9 @@ if (($handle = fopen('/usr/local/bizj/dHubWorkSpace/bridgetree_dumpBacktik', "r"
     $headerSource = [];
 
     foreach ($headerRaw as $key => $value) {
+
         $headerSource[$key] = $value;
+
     }
 
     $headerProcessed = [];
@@ -72,10 +74,14 @@ if (($handle = fopen('/usr/local/bizj/dHubWorkSpace/bridgetree_dumpBacktik', "r"
     ];
 
     foreach ($headerSource as $k => $value) {
+
         if (in_array($value, $colsToKeep)) {
+
             $value               = $value === 'ZipCode' ? 'PostalCode' : $value;
             $headerProcessed[$k] = $value;
+
         }
+
     }
 
     $processedArray = [];
@@ -83,17 +89,26 @@ if (($handle = fopen('/usr/local/bizj/dHubWorkSpace/bridgetree_dumpBacktik', "r"
     // write the header row
 
     while ($recordRaw = fgetcsv($handle, 0, "`")) {
+
         $recordProcessed = [];
         foreach ($recordRaw as $k => $v) {
+
             if (array_key_exists($k, $headerProcessed)) {
+
                 $recordProcessed[$k] = $v;
+
             }
+
         }
         // we only care about records with LastStoryDate 'cause these are referenced in a story
         if (!empty($recordProcessed[26]) && strtotime($recordProcessed[26])) {
+
             array_push($processedArray, $recordProcessed);
+
         }
+
     }
+
     fclose($handle);
 }
 
@@ -108,24 +123,24 @@ $referenceCols[13] = 'Country';
 
 array_push($finalArray, $referenceCols);
 
-
 /**
- * $referenceCols as of 11-19
- * [
- *     [0]  => "CompanyId"
- *     [1]  => "Name"
- *     [2]  => "Ticker"
- *     [3]  => "TickerExchange"
- *     [4]  => "Addr1"
- *     [5]  => "Addr2"
- *     [6]  => "City"
- *     [7]  => "State"
- *     [8]  => "ZipCode"
- *     [9]  => "Country"
- *     [10] => "OfficePhone1"
- *     [11] => "Url"
- *     [12] => "LastStoryDate"
- * ]
+ * $referenceCols as of 11-23:
+   [
+      [0] => "CompanyId"
+      [1] => "Name"
+      [2] => "Ticker"
+      [3] => "TickerExchange"
+      [5] => "Addr1"
+      [6] => "Addr2"
+      [8] => "City"
+      [9] => "State"
+      [10] => "PostalCode"
+      [11] => "Country"
+      [21] => "OfficePhone1"
+      [24] => "Url"
+      [26] => "LastStoryDate"
+      [13] => "Country"
+    ]
  */
 
 $countries = [
@@ -370,7 +385,6 @@ $countries = [
     'ZW' => 'ZIMBABWE',
 ];
 
-
 $secondChanceCountries = [
     'GB' => 'UK',
     'NL' => 'THE NETHERLANDS',
@@ -378,12 +392,15 @@ $secondChanceCountries = [
 
 foreach ($processedArray as $record) {
 
-    // match existing records
-    $record[3] = strpos($record[3], 'NASDAQ') ? 'NASDAQ' : $record[3];
-    $record[3] = strpos($record[3], 'York Stock') ? 'NYSE' : $record[3];
+    // abbreviate the exchange names
+    // strpos returns 0 if the matched portion is at the beginning of the string
+    // hence the weird search strings
+    $record[3] = strpos($record[3], 'NASDAQ')     ? 'NASDAQ' : $record[3];
+    $record[3] = strpos($record[3], 'York Stock') ? 'NYSE'   : $record[3];
 
     if ($record[11] !== '') {
 
+        // normalize the col for array searching
         $raw       = $record[11];
         $processed = strtoupper($raw);
         $splode    = explode("(", $processed);
@@ -391,21 +408,29 @@ foreach ($processedArray as $record) {
         $processed = preg_replace('/,.*/', '', $processed);
         $processed = preg_replace("/\([^)]+\)/", "", $processed);
 
+        // is the country in the array
         if (in_array($processed, $countries)) {
+
             $record[13] = array_search($processed, $countries);
+
         } else {
+
             // try again
             if (in_array($processed, $secondChanceCountries)) {
+
                 $record[13] = array_search($processed, $secondChanceCountries);
+
             } else {
+                // no match so we don't care
                 continue;
+
             }
         }
+
         array_push($finalArray, $record);
 
     } else {
-
-        // 'Murica
+        // assume that all records that have an empty country col are US
         $record[13] = 'US';
         array_push($finalArray, $record);
 
@@ -415,8 +440,13 @@ foreach ($processedArray as $record) {
 $normalizedFile = fopen('/usr/local/bizj/dHubWorkSpace/normalized.csv', 'w');
 
 foreach ($finalArray as $row) {
+
     unset($row[11]);
+    // sort the row to move the country code up a bit
+    ksort($row);
+
     fputcsv($normalizedFile, $row);
+
 }
 
 fclose($normalizedFile);
