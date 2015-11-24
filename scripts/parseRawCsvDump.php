@@ -2,19 +2,6 @@
 <?php
 /**
  *
- __    __                                           ______                                __                                __
-|  \  |  \                                         /      \                              |  \                              |  \
-| $$  | $$ _______    ______    ______    ______  |  $$$$$$\ ______    _______   _______  \$$  ______   _______    ______  | $$
-| $$  | $$|       \  /      \  /      \  /      \ | $$_  \$$/      \  /       \ /       \|  \ /      \ |       \  |      \ | $$
-| $$  | $$| $$$$$$$\|  $$$$$$\|  $$$$$$\|  $$$$$$\| $$ \   |  $$$$$$\|  $$$$$$$|  $$$$$$$| $$|  $$$$$$\| $$$$$$$\  \$$$$$$\| $$
-| $$  | $$| $$  | $$| $$  | $$| $$   \$$| $$  | $$| $$$$   | $$    $$ \$$    \  \$$    \ | $$| $$  | $$| $$  | $$ /      $$| $$
-| $$__/ $$| $$  | $$| $$__/ $$| $$      | $$__/ $$| $$     | $$$$$$$$ _\$$$$$$\ _\$$$$$$\| $$| $$__/ $$| $$  | $$|  $$$$$$$| $$
- \$$    $$| $$  | $$| $$    $$| $$       \$$    $$| $$      \$$     \|       $$|       $$| $$ \$$    $$| $$  | $$ \$$    $$| $$
-  \$$$$$$  \$$   \$$| $$$$$$$  \$$        \$$$$$$  \$$       \$$$$$$$ \$$$$$$$  \$$$$$$$  \$$  \$$$$$$  \$$   \$$  \$$$$$$$ \$$
-                    | $$
-                    | $$
-                     \$$
- *
  *
  *  Let's get rid of all of the crap and prepare the rest for import.
  *  requires the path : /usr/local/bizj/dHubWorkSpace
@@ -37,13 +24,6 @@
 if (($handle = fopen('/usr/local/bizj/dHubWorkSpace/bridgetree_dumpBacktik', "r")) !== false) {
 
     $headerRaw    = fgetcsv($handle, 0, "`");
-    $headerSource = [];
-
-    foreach ($headerRaw as $key => $value) {
-
-        $headerSource[$key] = $value;
-
-    }
 
     $headerProcessed = [];
     $colsToKeep      = [
@@ -62,14 +42,11 @@ if (($handle = fopen('/usr/local/bizj/dHubWorkSpace/bridgetree_dumpBacktik', "r"
         'LastStoryDate',
     ];
 
-    foreach ($headerSource as $k => $value) {
-
+    foreach ($headerRaw as $k => $value) {
         if (in_array($value, $colsToKeep)) {
             // PostalCode reminds us that it's international
             $headerProcessed[$k] = $value === 'ZipCode' ? 'PostalCode' : $value;
-
         }
-
     }
 
     $processedArray = [];
@@ -80,19 +57,14 @@ if (($handle = fopen('/usr/local/bizj/dHubWorkSpace/bridgetree_dumpBacktik', "r"
 
         $recordProcessed = [];
         foreach ($recordRaw as $k => $v) {
-
             if (array_key_exists($k, $headerProcessed)) {
-
                 $recordProcessed[$k] = $v;
-
             }
 
         }
         // we only care about records with LastStoryDate 'cause these are referenced in a story
         if (!empty($recordProcessed[26]) && strtotime($recordProcessed[26])) {
-
             array_push($processedArray, $recordProcessed);
-
         }
 
     }
