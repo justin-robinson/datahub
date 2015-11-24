@@ -1,5 +1,14 @@
 <?php
-
+/**
+ * @todo
+ *  convert semicolons to spaces
+ *  convert backticks to '
+ *  get lat and lon
+ *  get countries for records without
+ *  git zips for records without
+ *
+ *
+ */
 @$filename = '/tmp/bridgetree_refinery_' . date('Ymd');
 
 $fd = fopen($filename, 'w');
@@ -19,12 +28,15 @@ $SQL = "
     Name,
     Ticker,
     TickerExchange,
-    DateModified,
-    HasStories
+    DateModified
   FROM
-    Org ";
+    Org
+  WHERE
+    HasStories = 1
+  LIMIT
+    300";
 
-$delimiter = '|:|';
+$delimiter = '`';
 
 fputs($fd,
     'GenerateId' . $delimiter .
@@ -34,7 +46,6 @@ fputs($fd,
     'Ticker' . $delimiter .
     'TickerExchange' . $delimiter .
     'DateModified' . $delimiter .
-    'HasStories' . $delimiter .
     'Addr1' . $delimiter .
     'Addr2' . $delimiter .
     'City' . $delimiter .
@@ -44,12 +55,8 @@ fputs($fd,
     'OfficePhone1' . $delimiter .
     'Url' . "\n");
 
-// loop through the Orgs, getting employee(OrgContact) for each and imploding them into a column
-
 foreach ($db->query($SQL) as $row) {
 
-
-    // collect and format original query data
     $line =
         $row['id'] . $delimiter .
         $row['ExternalId']. $delimiter .
