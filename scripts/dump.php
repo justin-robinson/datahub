@@ -18,8 +18,6 @@ fputs($fd, '');
 $db  = new PDO('mysql:host=db02;dbname=recon;port=3318;', 'operations', 'operations');
 $db2 = new PDO('mysql:dbname=bizj;host=reportdb', 'operations', 'operations');
 
-// pull all the Orgs
-
 $SQL = "
   SELECT
     id,
@@ -39,30 +37,30 @@ $SQL = "
 $delimiter = '`';
 
 fputs($fd,
-    'GenerateId' . $delimiter .
-    'CompanyId' . $delimiter .
-    'SourceID' . $delimiter .
-    'Name' . $delimiter .
-    'Ticker' . $delimiter .
+    'GenerateId'     . $delimiter .
+    'CompanyId'      . $delimiter .
+    'SourceID'       . $delimiter .
+    'Name'           . $delimiter .
+    'Ticker'         . $delimiter .
     'TickerExchange' . $delimiter .
-    'DateModified' . $delimiter .
-    'Addr1' . $delimiter .
-    'Addr2' . $delimiter .
-    'City' . $delimiter .
-    'State' . $delimiter .
-    'ZipCode' . $delimiter .
-    'Country' . $delimiter .
-    'OfficePhone1' . $delimiter .
+    'DateModified'   . $delimiter .
+    'Addr1'          . $delimiter .
+    'Addr2'          . $delimiter .
+    'City'           . $delimiter .
+    'State'          . $delimiter .
+    'ZipCode'        . $delimiter .
+    'Country'        . $delimiter .
+    'OfficePhone1'   . $delimiter .
     'Url' . "\n");
 
 foreach ($db->query($SQL) as $row) {
 
     $line =
-        $row['id'] . $delimiter .
-        $row['ExternalId']. $delimiter .
-        $row['SourceID']. $delimiter .
-        $row['Name'] . $delimiter .
-        $row['Ticker'] . $delimiter .
+        $row['id']             . $delimiter .
+        $row['ExternalId']     . $delimiter .
+        $row['SourceID']       . $delimiter .
+        $row['Name']           . $delimiter .
+        $row['Ticker']         . $delimiter .
         $row['TickerExchange'] . $delimiter .
         $row['DateModified'];
 
