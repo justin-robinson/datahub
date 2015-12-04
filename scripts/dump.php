@@ -335,6 +335,10 @@ foreach ($db->query($SQL) as $row) {
 
     if ($OrgAddress_results && ($OrgAddress_results[0][5] !== '')) {
 
+        if( empty($OrgAddress_results[0][3]) ){
+            continue;
+        }
+
         if ($OrgAddress_results[0][5]) {
             // get the country names
             // normalize the col for array searching
@@ -345,18 +349,11 @@ foreach ($db->query($SQL) as $row) {
             $processed = preg_replace('/,.*/', '', $processed);
             $processed = preg_replace("/\([^)]+\)/", "", $processed);
 
-            // is the country in the array
             if (in_array($processed, $countries)) {
-
                 $countryCode = array_search($processed, $countries);
-
             } else {
-
-                // try again
                 if (in_array($processed, $secondChanceCountries)) {
-
                     $countryCode = array_search($processed, $secondChanceCountries);
-
                 } else {
                     // no match so we don't care
                     continue;
@@ -427,7 +424,7 @@ foreach ($db->query($SQL) as $row) {
 
     if (!empty($OrgUrl_results)) {
         // add http to those lacking either http or https
-        $url = strpos($OrgUrl_results[0][0], 'http') ? $OrgUrl_results[0][0] : 'http://' . $OrgUrl_results[0][0];
+        $url = strpos($OrgUrl_results[0][0], 'http') === 0 ?$OrgUrl_results[0][0]  :'http://' . $OrgUrl_results[0][0];
         // remove everything after and including the first comma if there is a comma
         $url = strpos($url, ',') ? substr($url, 0, strpos($url, ',')) : $url;
         // remove everything after and including the first space if there is a space
@@ -439,7 +436,6 @@ foreach ($db->query($SQL) as $row) {
     }
     // format and write row to file
     fputs($fd, $line . "\n");
-
 }
 
 echo "ended at " . date('h:i:s A') . PHP_EOL;
