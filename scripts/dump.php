@@ -1,9 +1,5 @@
 <?php
-/**
- * @todo
- * filter useless records
- * refactor to build the array first and write the file line by line checking for the presence of certain keys
- */
+//echo "started at ".date('l jS \of F Y h:i:s A').PHP_EOL;
 $countries = [
     'AF' => 'AFGHANISTAN',
     'AL' => 'ALBANIA',
@@ -299,16 +295,19 @@ fputs(
     'Url' . "\n"
 );
 
+
+
+// fetch all the good bits
 foreach ($db->query($SQL) as $row) {
 
     $row['TickerExchange'] = strpos($row['TickerExchange'], 'NASDAQ') ? 'NASDAQ' : $row['TickerExchange'];
     $row['TickerExchange'] = strpos($row['TickerExchange'], 'York Stock') ? 'NYSE' : $row['TickerExchange'];
     $row['ExternalId']     = strlen($row['ExternalId']) > 12 ? $row['ExternalId'] : '';
 
-    $line =
-        $row['id'] . $delimiter .
-        $row['ExternalId'] . $delimiter .
-        $row['SourceId'] . $delimiter .
+    $line      =
+        $row['id']. $delimiter .
+        $row['ExternalId']. $delimiter .
+        $row['SourceId']. $delimiter .
         str_replace('"', '', $row['Name']) . $delimiter .
         $row['Ticker'] . $delimiter .
         $row['TickerExchange'] . $delimiter .
@@ -335,7 +334,7 @@ foreach ($db->query($SQL) as $row) {
     $stmt->execute();
     $OrgAddress_results = $stmt->fetchAll(PDO::FETCH_NUM);
 
-    if (!empty($OrgAddress_results[0][5])) {
+    if ($OrgAddress_results && ($OrgAddress_results[0][5] !== '')) {
 
         if ($OrgAddress_results[0][5]) {
             // get the country names
@@ -368,7 +367,6 @@ foreach ($db->query($SQL) as $row) {
         } else {
             // assume that all records that have an empty country col are US
             $countryCode = 'US';
-
         }
 
         $line .=
@@ -380,9 +378,12 @@ foreach ($db->query($SQL) as $row) {
             $delimiter . $countryCode .
             $delimiter . $OrgAddress_results[0][6] .
             $delimiter . $OrgAddress_results[0][7];
+    } else {
+        // no address so no care
+        continue;
     }
 
-
+    // fetch phone records
     $SQL = "
     SELECT
       OfficePhone1
@@ -423,10 +424,14 @@ foreach ($db->query($SQL) as $row) {
     $OrgUrl_results = $stmt->fetchAll(PDO::FETCH_NUM);
 
     if (!empty($OrgUrl_results)) {
-        $line .= $delimiter . $OrgUrl_results[0][0];
+        $line .= $delimiter . str_replace(',', ' ', $OrgUrl_results[0][0]);
     } else {
         $line .= $delimiter;
     }
     // format and write row to file
     fputs($fd, $line . "\n");
+
 }
+
+//echo "ended at " .date('l jS \of F Y h:i:s A').PHP_EOL;
+
