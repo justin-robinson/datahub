@@ -1,5 +1,5 @@
 <?php
-//echo "started at ".date('l jS \of F Y h:i:s A').PHP_EOL;
+echo "started at " . date('h:i:s A') . PHP_EOL;
 $countries = [
     'AF' => 'AFGHANISTAN',
     'AL' => 'ALBANIA',
@@ -296,7 +296,6 @@ fputs(
 );
 
 
-
 // fetch all the good bits
 foreach ($db->query($SQL) as $row) {
 
@@ -304,10 +303,10 @@ foreach ($db->query($SQL) as $row) {
     $row['TickerExchange'] = strpos($row['TickerExchange'], 'York Stock') ? 'NYSE' : $row['TickerExchange'];
     $row['ExternalId']     = strlen($row['ExternalId']) > 12 ? $row['ExternalId'] : '';
 
-    $line      =
-        $row['id']. $delimiter .
-        $row['ExternalId']. $delimiter .
-        $row['SourceId']. $delimiter .
+    $line =
+        $row['id'] . $delimiter .
+        $row['ExternalId'] . $delimiter .
+        $row['SourceId'] . $delimiter .
         str_replace('"', '', $row['Name']) . $delimiter .
         $row['Ticker'] . $delimiter .
         $row['TickerExchange'] . $delimiter .
@@ -399,16 +398,19 @@ foreach ($db->query($SQL) as $row) {
     $OrgPhone_results = $stmt->fetchAll(PDO::FETCH_NUM);
 
     if (!empty($OrgPhone_results)) {
+        // remove all but digits
         $phone = preg_replace('/\D/', '', $OrgPhone_results[0][0]);
+
+        // take off the leading 1 if it's not american
         if ((strlen($phone) > 10) && (substr($phone, 0, 1) == 1)) {
-            $phone = ltrim($phone, '1');
+            $phone = trim($phone, '1');
         }
         $line .= $delimiter . $phone;
     } else {
         $line .= $delimiter;
     }
 
-    // grab OrgUrl Data and tack on
+    // grab OrgUrl Data, normalise and tack on
     $SQL = "
     SELECT
       Url
@@ -424,7 +426,14 @@ foreach ($db->query($SQL) as $row) {
     $OrgUrl_results = $stmt->fetchAll(PDO::FETCH_NUM);
 
     if (!empty($OrgUrl_results)) {
-        $line .= $delimiter . str_replace(',', ' ', $OrgUrl_results[0][0]);
+        // add http to those lacking either http or https
+        $url = strpos($OrgUrl_results[0][0], 'http') ? $OrgUrl_results[0][0] : 'http://' . $OrgUrl_results[0][0];
+        // remove everything after and including the first comma if there is a comma
+        $url = strstr($url, ',', true);
+        // remove everything after and including the first space if there is a space
+        $url = strstr($url, ' ', true);
+
+        $line .= $delimiter . $url;
     } else {
         $line .= $delimiter;
     }
@@ -433,5 +442,4 @@ foreach ($db->query($SQL) as $row) {
 
 }
 
-//echo "ended at " .date('l jS \of F Y h:i:s A').PHP_EOL;
-
+echo "ended at " . date('h:i:s A') . PHP_EOL;
