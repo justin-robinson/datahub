@@ -429,9 +429,9 @@ foreach ($db->query($SQL) as $row) {
         // add http to those lacking either http or https
         $url = strpos($OrgUrl_results[0][0], 'http') ? $OrgUrl_results[0][0] : 'http://' . $OrgUrl_results[0][0];
         // remove everything after and including the first comma if there is a comma
-        $url = strstr($url, ',', true);
+        $url = strpos($url, ',') ? substr($url, 0, strpos($url, ',')) : $url;
         // remove everything after and including the first space if there is a space
-        $url = strstr($url, ' ', true);
+        $url = strpos($url, ' ') ? substr($url, 0, strpos($url, ' ')) : $url;
 
         $line .= $delimiter . $url;
     } else {
