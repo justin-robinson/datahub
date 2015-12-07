@@ -314,7 +314,6 @@ foreach ($db->query($SQL) as $row) {
     $row['TickerExchange'] = strpos($row['TickerExchange'], 'York Stock') ? 'NYSE' : $row['TickerExchange'];
     $row['ExternalId']     = strlen($row['ExternalId']) > 12 ? $row['ExternalId'] : '';
     $row['Name']           = trim(preg_replace('/\s+/', ' ', $row['Name']));
-    $row['Name']           = str_replace('"', '', $row['Name']);
 
     $line =
         '"'.$row['id'].'"' . $delimiter .
