@@ -1,4 +1,15 @@
 <?php
+/**
+ * removes
+ *      new lines
+ * replaces
+ *      ` with '
+ *      " with '
+ * normalises
+ *      countries to their country code
+ *      urls to http:// or https://
+ *      phone to num only
+ */
 echo "started at " . date('h:i:s A') . PHP_EOL;
 $countries = [
     'AF' => 'AFGHANISTAN',
@@ -272,27 +283,27 @@ $SQL = "
     HasStories = 1
 ";
 
-$delimiter = '`';
+$delimiter = ',';
 
 fputs(
     $fd,
-    'InternalId' . $delimiter .
-    'GenId' . $delimiter .
-    'SourceID' . $delimiter .
-    'Name' . $delimiter .
-    'Ticker' . $delimiter .
-    'TickerExchange' . $delimiter .
-    'DateModified' . $delimiter .
-    'Addr1' . $delimiter .
-    'Addr2' . $delimiter .
-    'City' . $delimiter .
-    'State' . $delimiter .
-    'PostalCode' . $delimiter .
-    'Country' . $delimiter .
-    'Lat' . $delimiter .
-    'Lon' . $delimiter .
-    'OfficePhone1' . $delimiter .
-    'Url' . "\n"
+    "InternalId" . $delimiter .
+    "GenId" . $delimiter .
+    "SourceID" . $delimiter .
+    "Name" . $delimiter .
+    "Ticker" . $delimiter .
+    "TickerExchange" . $delimiter .
+    "DateModified" . $delimiter .
+    "Addr1" . $delimiter .
+    "Addr2" . $delimiter .
+    "City" . $delimiter .
+    "State" . $delimiter .
+    "PostalCode" . $delimiter .
+    "Country" . $delimiter .
+    "Lat" . $delimiter .
+    "Lon" . $delimiter .
+    "OfficePhone1" . $delimiter .
+    "Url" . "\n"
 );
 
 
@@ -302,15 +313,17 @@ foreach ($db->query($SQL) as $row) {
     $row['TickerExchange'] = strpos($row['TickerExchange'], 'NASDAQ') ? 'NASDAQ' : $row['TickerExchange'];
     $row['TickerExchange'] = strpos($row['TickerExchange'], 'York Stock') ? 'NYSE' : $row['TickerExchange'];
     $row['ExternalId']     = strlen($row['ExternalId']) > 12 ? $row['ExternalId'] : '';
+    $row['Name']           = trim(preg_replace('/\s+/', ' ', $row['Name']));
+    $row['Name']           = str_replace('"', '', $row['Name']);
 
     $line =
-        $row['id'] . $delimiter .
-        $row['ExternalId'] . $delimiter .
-        $row['SourceId'] . $delimiter .
-        str_replace('"', '', $row['Name']) . $delimiter .
-        $row['Ticker'] . $delimiter .
-        $row['TickerExchange'] . $delimiter .
-        $row['DateModified'];
+        '"'.$row['id'].'"' . $delimiter .
+        '"'.$row['ExternalId'].'"' . $delimiter .
+        '"'.$row['SourceId'].'"' . $delimiter .
+        '"'.$row['Name'].'"' . $delimiter .
+        '"'.$row['Ticker'].'"' . $delimiter .
+        '"'.$row['TickerExchange'].'"' . $delimiter .
+        '"'. $row['DateModified'].'"';
 
     $SQL = "
       SELECT
@@ -335,7 +348,7 @@ foreach ($db->query($SQL) as $row) {
 
     if ($OrgAddress_results && ($OrgAddress_results[0][5] !== '')) {
 
-        if( empty($OrgAddress_results[0][3]) ){
+        if (empty($OrgAddress_results[0][3])) {
             continue;
         }
 
@@ -364,16 +377,15 @@ foreach ($db->query($SQL) as $row) {
             // assume that all records that have an empty country col are US
             $countryCode = 'US';
         }
-
         $line .=
-            $delimiter . $OrgAddress_results[0][0] .
-            $delimiter . $OrgAddress_results[0][1] .
-            $delimiter . $OrgAddress_results[0][2] .
-            $delimiter . $OrgAddress_results[0][3] .
-            $delimiter . $OrgAddress_results[0][4] .
-            $delimiter . $countryCode .
-            $delimiter . $OrgAddress_results[0][6] .
-            $delimiter . $OrgAddress_results[0][7];
+            $delimiter . '"'. trim(preg_replace('/\s+/', ' ', $OrgAddress_results[0][0])).'"' .
+            $delimiter . '"'. trim(preg_replace('/\s+/', ' ', $OrgAddress_results[0][1])).'"' .
+            $delimiter . '"'. trim(preg_replace('/\s+/', ' ', $OrgAddress_results[0][2])).'"' .
+            $delimiter . '"'. trim(preg_replace('/\s+/', ' ', $OrgAddress_results[0][3])).'"' .
+            $delimiter . '"'. trim(preg_replace('/\s+/', ' ', $OrgAddress_results[0][4])).'"' .
+            $delimiter . '"'. $countryCode                                               . '"' .
+            $delimiter . '"'. trim(preg_replace('/\s+/', ' ', $OrgAddress_results[0][6])).'"' .
+            $delimiter . '"'. trim(preg_replace('/\s+/', ' ', $OrgAddress_results[0][7])).'"';
     } else {
         // no address so no care
         continue;
@@ -402,7 +414,7 @@ foreach ($db->query($SQL) as $row) {
         if ((strlen($phone) > 10) && (substr($phone, 0, 1) == 1)) {
             $phone = trim($phone, '1');
         }
-        $line .= $delimiter . $phone;
+        $line .= $delimiter . '"'. $phone . '"';
     } else {
         $line .= $delimiter;
     }
@@ -422,15 +434,19 @@ foreach ($db->query($SQL) as $row) {
     $stmt->execute();
     $OrgUrl_results = $stmt->fetchAll(PDO::FETCH_NUM);
 
-    if (!empty($OrgUrl_results)) {
+    if (!empty($OrgUrl_results[0][0])) {
         // add http to those lacking either http or https
-        $url = strpos($OrgUrl_results[0][0], 'http') === 0 ?$OrgUrl_results[0][0]  :'http://' . $OrgUrl_results[0][0];
+        $url = strpos($OrgUrl_results[0][0], 'http') === 0 ? $OrgUrl_results[0][0] : 'http://' . $OrgUrl_results[0][0];
         // remove everything after and including the first comma if there is a comma
         $url = strpos($url, ',') ? substr($url, 0, strpos($url, ',')) : $url;
         // remove everything after and including the first space if there is a space
         $url = strpos($url, ' ') ? substr($url, 0, strpos($url, ' ')) : $url;
 
-        $line .= $delimiter . $url;
+        if ($url !== "http:??"){
+            $line .= $delimiter . '"' . $url . '"';
+        } else {
+            $line .= $delimiter;
+        }
     } else {
         $line .= $delimiter;
     }
