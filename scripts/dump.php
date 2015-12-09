@@ -264,8 +264,7 @@ $fd = fopen($filename, 'w');
 
 fputs($fd, '');
 
-$db = new PDO('mysql:host=radb.bizjournals.int; dbname=recon', 'operations', 'operations');
-
+$db  = new PDO('mysql:host=radb.bizjournals.int; dbname=recon', 'operations', 'operations');
 $db2 = new PDO('mysql:host=reportdb.bizjournals.int; dbname=bizj', 'operations', 'operations');
 
 $SQL = "
@@ -317,13 +316,13 @@ foreach ($db->query($SQL) as $row) {
     $row['Name']           = trim(preg_replace('/\s+/', ' ', $row['Name']));
 
     $line =
-        '"'.$row['id'].'"' . $delimiter .
-        '"'.$row['ExternalId'].'"' . $delimiter .
-        '"'.$row['SourceId'].'"' . $delimiter .
-        '"'.$row['Name'].'"' . $delimiter .
-        '"'.$row['Ticker'].'"' . $delimiter .
-        '"'.$row['TickerExchange'].'"' . $delimiter .
-        '"'. $row['DateModified'].'"';
+        '"' . $row['id'] . '"' . $delimiter .
+        '"' . $row['ExternalId'] . '"' . $delimiter .
+        '"' . $row['SourceId'] . '"' . $delimiter .
+        '"' . $row['Name'] . '"' . $delimiter .
+        '"' . $row['Ticker'] . '"' . $delimiter .
+        '"' . $row['TickerExchange'] . '"' . $delimiter .
+        '"' . $row['DateModified'] . '"';
 
     $SQL = "
       SELECT
@@ -378,14 +377,14 @@ foreach ($db->query($SQL) as $row) {
             $countryCode = 'US';
         }
         $line .=
-            $delimiter . '"'. trim(preg_replace('/\s+/', ' ', $OrgAddress_results[0][0])).'"' .
-            $delimiter . '"'. trim(preg_replace('/\s+/', ' ', $OrgAddress_results[0][1])).'"' .
-            $delimiter . '"'. trim(preg_replace('/\s+/', ' ', $OrgAddress_results[0][2])).'"' .
-            $delimiter . '"'. trim(preg_replace('/\s+/', ' ', $OrgAddress_results[0][3])).'"' .
-            $delimiter . '"'. trim(preg_replace('/\s+/', ' ', $OrgAddress_results[0][4])).'"' .
-            $delimiter . '"'. $countryCode                                               . '"' .
-            $delimiter . '"'. trim(preg_replace('/\s+/', ' ', $OrgAddress_results[0][6])).'"' .
-            $delimiter . '"'. trim(preg_replace('/\s+/', ' ', $OrgAddress_results[0][7])).'"';
+            $delimiter . '"' . trim(preg_replace('/\s+/', ' ', $OrgAddress_results[0][0])) . '"' .
+            $delimiter . '"' . trim(preg_replace('/\s+/', ' ', $OrgAddress_results[0][1])) . '"' .
+            $delimiter . '"' . trim(preg_replace('/\s+/', ' ', $OrgAddress_results[0][2])) . '"' .
+            $delimiter . '"' . trim(preg_replace('/\s+/', ' ', $OrgAddress_results[0][3])) . '"' .
+            $delimiter . '"' . trim(preg_replace('/\s+/', ' ', $OrgAddress_results[0][4])) . '"' .
+            $delimiter . '"' . $countryCode . '"' .
+            $delimiter . '"' . trim(preg_replace('/\s+/', ' ', $OrgAddress_results[0][6])) . '"' .
+            $delimiter . '"' . trim(preg_replace('/\s+/', ' ', $OrgAddress_results[0][7])) . '"';
     } else {
         // no address so no care
         continue;
@@ -414,7 +413,7 @@ foreach ($db->query($SQL) as $row) {
         if ((strlen($phone) > 10) && (substr($phone, 0, 1) == 1)) {
             $phone = trim($phone, '1');
         }
-        $line .= $delimiter . '"'. $phone . '"';
+        $line .= $delimiter . '"' . $phone . '"';
     } else {
         $line .= $delimiter;
     }
@@ -442,7 +441,7 @@ foreach ($db->query($SQL) as $row) {
         // remove everything after and including the first space if there is a space
         $url = strpos($url, ' ') ? substr($url, 0, strpos($url, ' ')) : $url;
 
-        if ($url !== "http:??"){
+        if ($url !== "http:??") {
             $line .= $delimiter . '"' . $url . '"';
         } else {
             $line .= $delimiter;
