@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Site
  */
@@ -53,9 +51,9 @@ class Site extends \Entity\Entity\Base
     }
 
     /**
-     * Get site_id
+     * Get siteId
      *
-     * @return integer 
+     * @return integer
      */
     public function getSiteId()
     {
@@ -63,9 +61,10 @@ class Site extends \Entity\Entity\Base
     }
 
     /**
-     * Set site_host
+     * Set siteHost
      *
      * @param string $siteHost
+     *
      * @return Site
      */
     public function setSiteHost($siteHost)
@@ -76,9 +75,9 @@ class Site extends \Entity\Entity\Base
     }
 
     /**
-     * Get site_host
+     * Get siteHost
      *
-     * @return string 
+     * @return string
      */
     public function getSiteHost()
     {
@@ -86,9 +85,10 @@ class Site extends \Entity\Entity\Base
     }
 
     /**
-     * Set site_name
+     * Set siteName
      *
      * @param string $siteName
+     *
      * @return Site
      */
     public function setSiteName($siteName)
@@ -99,9 +99,9 @@ class Site extends \Entity\Entity\Base
     }
 
     /**
-     * Get site_name
+     * Get siteName
      *
-     * @return string 
+     * @return string
      */
     public function getSiteName()
     {
@@ -109,9 +109,10 @@ class Site extends \Entity\Entity\Base
     }
 
     /**
-     * Set product_name
+     * Set productName
      *
      * @param string $productName
+     *
      * @return Site
      */
     public function setProductName($productName)
@@ -122,9 +123,9 @@ class Site extends \Entity\Entity\Base
     }
 
     /**
-     * Get product_name
+     * Get productName
      *
-     * @return string 
+     * @return string
      */
     public function getProductName()
     {
@@ -132,9 +133,10 @@ class Site extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return Site
      */
     public function setCreatedAt($createdAt)
@@ -145,9 +147,9 @@ class Site extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -155,9 +157,10 @@ class Site extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return Site
      */
     public function setUpdatedAt($updatedAt)
@@ -168,9 +171,9 @@ class Site extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -178,35 +181,37 @@ class Site extends \Entity\Entity\Base
     }
 
     /**
-     * Add Sections
+     * Add section
      *
-     * @param \Entity\Bizj\SiteSection $sections
+     * @param \Entity\Bizj\SiteSection $section
+     *
      * @return Site
      */
-    public function addSection(\Entity\Bizj\SiteSection $sections)
+    public function addSection(\Entity\Bizj\SiteSection $section)
     {
-        $this->Sections[] = $sections;
+        $this->Sections[] = $section;
 
         return $this;
     }
 
     /**
-     * Remove Sections
+     * Remove section
      *
-     * @param \Entity\Bizj\SiteSection $sections
+     * @param \Entity\Bizj\SiteSection $section
      */
-    public function removeSection(\Entity\Bizj\SiteSection $sections)
+    public function removeSection(\Entity\Bizj\SiteSection $section)
     {
-        $this->Sections->removeElement($sections);
+        $this->Sections->removeElement($section);
     }
 
     /**
-     * Get Sections
+     * Get sections
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSections()
     {
         return $this->Sections;
     }
 }
+

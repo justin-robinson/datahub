@@ -297,23 +297,23 @@ class Unit extends \Entity\Authentication\Unit implements \Doctrine\ORM\Proxy\Pr
     /**
      * {@inheritDoc}
      */
-    public function addService(\Entity\Authentication\Service $services)
+    public function addService(\Entity\Authentication\Service $service)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addService', array($services));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addService', array($service));
 
-        return parent::addService($services);
+        return parent::addService($service);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeService(\Entity\Authentication\Service $services)
+    public function removeService(\Entity\Authentication\Service $service)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeService', array($services));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeService', array($service));
 
-        return parent::removeService($services);
+        return parent::removeService($service);
     }
 
     /**
@@ -330,23 +330,23 @@ class Unit extends \Entity\Authentication\Unit implements \Doctrine\ORM\Proxy\Pr
     /**
      * {@inheritDoc}
      */
-    public function addClient(\Entity\Authentication\Client $clients)
+    public function addClient(\Entity\Authentication\Client $client)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addClient', array($clients));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addClient', array($client));
 
-        return parent::addClient($clients);
+        return parent::addClient($client);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeClient(\Entity\Authentication\Client $clients)
+    public function removeClient(\Entity\Authentication\Client $client)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeClient', array($clients));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeClient', array($client));
 
-        return parent::removeClient($clients);
+        return parent::removeClient($client);
     }
 
     /**

@@ -2,8 +2,6 @@
 
 namespace Entity\Medialibrary;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * BatchMedia
  */
@@ -36,9 +34,10 @@ class BatchMedia extends \Entity\Entity\Base
 
 
     /**
-     * Set media_id
+     * Set mediaId
      *
      * @param integer $mediaId
+     *
      * @return BatchMedia
      */
     public function setMediaId($mediaId)
@@ -49,9 +48,9 @@ class BatchMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_id
+     * Get mediaId
      *
-     * @return integer 
+     * @return integer
      */
     public function getMediaId()
     {
@@ -59,9 +58,10 @@ class BatchMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set batch_id
+     * Set batchId
      *
      * @param integer $batchId
+     *
      * @return BatchMedia
      */
     public function setBatchId($batchId)
@@ -72,9 +72,9 @@ class BatchMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get batch_id
+     * Get batchId
      *
-     * @return integer 
+     * @return integer
      */
     public function getBatchId()
     {
@@ -82,9 +82,10 @@ class BatchMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return BatchMedia
      */
     public function setCreatedAt($createdAt)
@@ -95,9 +96,9 @@ class BatchMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -105,9 +106,10 @@ class BatchMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set BatchUpload
+     * Set batchUpload
      *
      * @param \Entity\Medialibrary\BatchUpload $batchUpload
+     *
      * @return BatchMedia
      */
     public function setBatchUpload(\Entity\Medialibrary\BatchUpload $batchUpload = null)
@@ -118,9 +120,9 @@ class BatchMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get BatchUpload
+     * Get batchUpload
      *
-     * @return \Entity\Medialibrary\BatchUpload 
+     * @return \Entity\Medialibrary\BatchUpload
      */
     public function getBatchUpload()
     {
@@ -128,9 +130,10 @@ class BatchMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set Media
+     * Set media
      *
      * @param \Entity\Medialibrary\Media $media
+     *
      * @return BatchMedia
      */
     public function setMedia(\Entity\Medialibrary\Media $media = null)
@@ -141,12 +144,13 @@ class BatchMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get Media
+     * Get media
      *
-     * @return \Entity\Medialibrary\Media 
+     * @return \Entity\Medialibrary\Media
      */
     public function getMedia()
     {
         return $this->Media;
     }
 }
+

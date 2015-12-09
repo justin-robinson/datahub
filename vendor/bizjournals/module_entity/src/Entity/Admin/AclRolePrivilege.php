@@ -2,8 +2,6 @@
 
 namespace Entity\Admin;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * AclRolePrivilege
  */
@@ -56,9 +54,9 @@ class AclRolePrivilege extends \Entity\Entity\Base
 
 
     /**
-     * Get acl_role_privilege_id
+     * Get aclRolePrivilegeId
      *
-     * @return integer 
+     * @return integer
      */
     public function getAclRolePrivilegeId()
     {
@@ -66,9 +64,10 @@ class AclRolePrivilege extends \Entity\Entity\Base
     }
 
     /**
-     * Set acl_role_id
+     * Set aclRoleId
      *
      * @param integer $aclRoleId
+     *
      * @return AclRolePrivilege
      */
     public function setAclRoleId($aclRoleId)
@@ -79,9 +78,9 @@ class AclRolePrivilege extends \Entity\Entity\Base
     }
 
     /**
-     * Get acl_role_id
+     * Get aclRoleId
      *
-     * @return integer 
+     * @return integer
      */
     public function getAclRoleId()
     {
@@ -89,9 +88,10 @@ class AclRolePrivilege extends \Entity\Entity\Base
     }
 
     /**
-     * Set acl_resource_id
+     * Set aclResourceId
      *
      * @param integer $aclResourceId
+     *
      * @return AclRolePrivilege
      */
     public function setAclResourceId($aclResourceId)
@@ -102,9 +102,9 @@ class AclRolePrivilege extends \Entity\Entity\Base
     }
 
     /**
-     * Get acl_resource_id
+     * Get aclResourceId
      *
-     * @return integer 
+     * @return integer
      */
     public function getAclResourceId()
     {
@@ -115,6 +115,7 @@ class AclRolePrivilege extends \Entity\Entity\Base
      * Set privilege
      *
      * @param string $privilege
+     *
      * @return AclRolePrivilege
      */
     public function setPrivilege($privilege)
@@ -127,7 +128,7 @@ class AclRolePrivilege extends \Entity\Entity\Base
     /**
      * Get privilege
      *
-     * @return string 
+     * @return string
      */
     public function getPrivilege()
     {
@@ -138,6 +139,7 @@ class AclRolePrivilege extends \Entity\Entity\Base
      * Set mode
      *
      * @param string $mode
+     *
      * @return AclRolePrivilege
      */
     public function setMode($mode)
@@ -150,7 +152,7 @@ class AclRolePrivilege extends \Entity\Entity\Base
     /**
      * Get mode
      *
-     * @return string 
+     * @return string
      */
     public function getMode()
     {
@@ -158,9 +160,10 @@ class AclRolePrivilege extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return AclRolePrivilege
      */
     public function setCreatedAt($createdAt)
@@ -171,9 +174,9 @@ class AclRolePrivilege extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -181,9 +184,10 @@ class AclRolePrivilege extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return AclRolePrivilege
      */
     public function setUpdatedAt($updatedAt)
@@ -194,9 +198,9 @@ class AclRolePrivilege extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -204,9 +208,10 @@ class AclRolePrivilege extends \Entity\Entity\Base
     }
 
     /**
-     * Set AclRole
+     * Set aclRole
      *
      * @param \Entity\Admin\AclRole $aclRole
+     *
      * @return AclRolePrivilege
      */
     public function setAclRole(\Entity\Admin\AclRole $aclRole = null)
@@ -217,9 +222,9 @@ class AclRolePrivilege extends \Entity\Entity\Base
     }
 
     /**
-     * Get AclRole
+     * Get aclRole
      *
-     * @return \Entity\Admin\AclRole 
+     * @return \Entity\Admin\AclRole
      */
     public function getAclRole()
     {
@@ -227,9 +232,10 @@ class AclRolePrivilege extends \Entity\Entity\Base
     }
 
     /**
-     * Set AclResource
+     * Set aclResource
      *
      * @param \Entity\Admin\AclResource $aclResource
+     *
      * @return AclRolePrivilege
      */
     public function setAclResource(\Entity\Admin\AclResource $aclResource = null)
@@ -240,12 +246,13 @@ class AclRolePrivilege extends \Entity\Entity\Base
     }
 
     /**
-     * Get AclResource
+     * Get aclResource
      *
-     * @return \Entity\Admin\AclResource 
+     * @return \Entity\Admin\AclResource
      */
     public function getAclResource()
     {
         return $this->AclResource;
     }
 }
+

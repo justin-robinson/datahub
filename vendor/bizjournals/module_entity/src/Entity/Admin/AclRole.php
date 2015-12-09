@@ -2,8 +2,6 @@
 
 namespace Entity\Admin;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * AclRole
  */
@@ -54,9 +52,9 @@ class AclRole extends \Entity\Entity\Base
     }
 
     /**
-     * Get acl_role_id
+     * Get aclRoleId
      *
-     * @return integer 
+     * @return integer
      */
     public function getAclRoleId()
     {
@@ -64,9 +62,10 @@ class AclRole extends \Entity\Entity\Base
     }
 
     /**
-     * Set role_name
+     * Set roleName
      *
      * @param string $roleName
+     *
      * @return AclRole
      */
     public function setRoleName($roleName)
@@ -77,9 +76,9 @@ class AclRole extends \Entity\Entity\Base
     }
 
     /**
-     * Get role_name
+     * Get roleName
      *
-     * @return string 
+     * @return string
      */
     public function getRoleName()
     {
@@ -90,6 +89,7 @@ class AclRole extends \Entity\Entity\Base
      * Set description
      *
      * @param string $description
+     *
      * @return AclRole
      */
     public function setDescription($description)
@@ -102,7 +102,7 @@ class AclRole extends \Entity\Entity\Base
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -110,9 +110,10 @@ class AclRole extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return AclRole
      */
     public function setCreatedAt($createdAt)
@@ -123,9 +124,9 @@ class AclRole extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -133,9 +134,10 @@ class AclRole extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return AclRole
      */
     public function setUpdatedAt($updatedAt)
@@ -146,9 +148,9 @@ class AclRole extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -156,9 +158,10 @@ class AclRole extends \Entity\Entity\Base
     }
 
     /**
-     * Add AclUserRole
+     * Add aclUserRole
      *
      * @param \Entity\Admin\AclUserRole $aclUserRole
+     *
      * @return AclRole
      */
     public function addAclUserRole(\Entity\Admin\AclUserRole $aclUserRole)
@@ -169,7 +172,7 @@ class AclRole extends \Entity\Entity\Base
     }
 
     /**
-     * Remove AclUserRole
+     * Remove aclUserRole
      *
      * @param \Entity\Admin\AclUserRole $aclUserRole
      */
@@ -179,9 +182,9 @@ class AclRole extends \Entity\Entity\Base
     }
 
     /**
-     * Get AclUserRole
+     * Get aclUserRole
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getAclUserRole()
     {
@@ -189,9 +192,10 @@ class AclRole extends \Entity\Entity\Base
     }
 
     /**
-     * Add AclRolePrivilege
+     * Add aclRolePrivilege
      *
      * @param \Entity\Admin\AclRolePrivilege $aclRolePrivilege
+     *
      * @return AclRole
      */
     public function addAclRolePrivilege(\Entity\Admin\AclRolePrivilege $aclRolePrivilege)
@@ -202,7 +206,7 @@ class AclRole extends \Entity\Entity\Base
     }
 
     /**
-     * Remove AclRolePrivilege
+     * Remove aclRolePrivilege
      *
      * @param \Entity\Admin\AclRolePrivilege $aclRolePrivilege
      */
@@ -212,12 +216,13 @@ class AclRole extends \Entity\Entity\Base
     }
 
     /**
-     * Get AclRolePrivilege
+     * Get aclRolePrivilege
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getAclRolePrivilege()
     {
         return $this->AclRolePrivilege;
     }
 }
+

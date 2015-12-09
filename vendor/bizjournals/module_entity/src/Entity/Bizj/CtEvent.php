@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * CtEvent
  */
@@ -61,9 +59,10 @@ class CtEvent extends \Entity\Entity\Base
 
 
     /**
-     * Set event_type
+     * Set eventType
      *
      * @param string $eventType
+     *
      * @return CtEvent
      */
     public function setEventType($eventType)
@@ -74,9 +73,9 @@ class CtEvent extends \Entity\Entity\Base
     }
 
     /**
-     * Get event_type
+     * Get eventType
      *
-     * @return string 
+     * @return string
      */
     public function getEventType()
     {
@@ -84,9 +83,10 @@ class CtEvent extends \Entity\Entity\Base
     }
 
     /**
-     * Set campaign_id
+     * Set campaignId
      *
      * @param integer $campaignId
+     *
      * @return CtEvent
      */
     public function setCampaignId($campaignId)
@@ -97,9 +97,9 @@ class CtEvent extends \Entity\Entity\Base
     }
 
     /**
-     * Get campaign_id
+     * Get campaignId
      *
-     * @return integer 
+     * @return integer
      */
     public function getCampaignId()
     {
@@ -107,9 +107,10 @@ class CtEvent extends \Entity\Entity\Base
     }
 
     /**
-     * Set click_id
+     * Set clickId
      *
      * @param integer $clickId
+     *
      * @return CtEvent
      */
     public function setClickId($clickId)
@@ -120,9 +121,9 @@ class CtEvent extends \Entity\Entity\Base
     }
 
     /**
-     * Get click_id
+     * Get clickId
      *
-     * @return integer 
+     * @return integer
      */
     public function getClickId()
     {
@@ -130,9 +131,10 @@ class CtEvent extends \Entity\Entity\Base
     }
 
     /**
-     * Set c_time
+     * Set cTime
      *
      * @param \DateTime $cTime
+     *
      * @return CtEvent
      */
     public function setCTime($cTime)
@@ -143,9 +145,9 @@ class CtEvent extends \Entity\Entity\Base
     }
 
     /**
-     * Get c_time
+     * Get cTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCTime()
     {
@@ -153,9 +155,10 @@ class CtEvent extends \Entity\Entity\Base
     }
 
     /**
-     * Set remote_ip
+     * Set remoteIp
      *
      * @param string $remoteIp
+     *
      * @return CtEvent
      */
     public function setRemoteIp($remoteIp)
@@ -166,9 +169,9 @@ class CtEvent extends \Entity\Entity\Base
     }
 
     /**
-     * Get remote_ip
+     * Get remoteIp
      *
-     * @return string 
+     * @return string
      */
     public function getRemoteIp()
     {
@@ -179,6 +182,7 @@ class CtEvent extends \Entity\Entity\Base
      * Set uin
      *
      * @param string $uin
+     *
      * @return CtEvent
      */
     public function setUin($uin)
@@ -191,7 +195,7 @@ class CtEvent extends \Entity\Entity\Base
     /**
      * Get uin
      *
-     * @return string 
+     * @return string
      */
     public function getUin()
     {
@@ -199,9 +203,10 @@ class CtEvent extends \Entity\Entity\Base
     }
 
     /**
-     * Set user_agent
+     * Set userAgent
      *
      * @param string $userAgent
+     *
      * @return CtEvent
      */
     public function setUserAgent($userAgent)
@@ -212,9 +217,9 @@ class CtEvent extends \Entity\Entity\Base
     }
 
     /**
-     * Get user_agent
+     * Get userAgent
      *
-     * @return string 
+     * @return string
      */
     public function getUserAgent()
     {
@@ -222,9 +227,10 @@ class CtEvent extends \Entity\Entity\Base
     }
 
     /**
-     * Set source_url
+     * Set sourceUrl
      *
      * @param string $sourceUrl
+     *
      * @return CtEvent
      */
     public function setSourceUrl($sourceUrl)
@@ -235,9 +241,9 @@ class CtEvent extends \Entity\Entity\Base
     }
 
     /**
-     * Get source_url
+     * Get sourceUrl
      *
-     * @return string 
+     * @return string
      */
     public function getSourceUrl()
     {
@@ -245,9 +251,10 @@ class CtEvent extends \Entity\Entity\Base
     }
 
     /**
-     * Set dest_url
+     * Set destUrl
      *
      * @param string $destUrl
+     *
      * @return CtEvent
      */
     public function setDestUrl($destUrl)
@@ -258,9 +265,9 @@ class CtEvent extends \Entity\Entity\Base
     }
 
     /**
-     * Get dest_url
+     * Get destUrl
      *
-     * @return string 
+     * @return string
      */
     public function getDestUrl()
     {
@@ -271,6 +278,7 @@ class CtEvent extends \Entity\Entity\Base
      * Set referer
      *
      * @param string $referer
+     *
      * @return CtEvent
      */
     public function setReferer($referer)
@@ -283,10 +291,11 @@ class CtEvent extends \Entity\Entity\Base
     /**
      * Get referer
      *
-     * @return string 
+     * @return string
      */
     public function getReferer()
     {
         return $this->referer;
     }
 }
+

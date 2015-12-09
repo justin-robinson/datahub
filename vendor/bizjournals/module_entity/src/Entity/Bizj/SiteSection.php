@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * SiteSection
  */
@@ -76,9 +74,9 @@ class SiteSection extends \Entity\Entity\Base
 
 
     /**
-     * Get section_id
+     * Get sectionId
      *
-     * @return integer 
+     * @return integer
      */
     public function getSectionId()
     {
@@ -86,9 +84,10 @@ class SiteSection extends \Entity\Entity\Base
     }
 
     /**
-     * Set site_id
+     * Set siteId
      *
      * @param integer $siteId
+     *
      * @return SiteSection
      */
     public function setSiteId($siteId)
@@ -99,9 +98,9 @@ class SiteSection extends \Entity\Entity\Base
     }
 
     /**
-     * Get site_id
+     * Get siteId
      *
-     * @return integer 
+     * @return integer
      */
     public function getSiteId()
     {
@@ -109,9 +108,10 @@ class SiteSection extends \Entity\Entity\Base
     }
 
     /**
-     * Set section_slug
+     * Set sectionSlug
      *
      * @param string $sectionSlug
+     *
      * @return SiteSection
      */
     public function setSectionSlug($sectionSlug)
@@ -122,9 +122,9 @@ class SiteSection extends \Entity\Entity\Base
     }
 
     /**
-     * Get section_slug
+     * Get sectionSlug
      *
-     * @return string 
+     * @return string
      */
     public function getSectionSlug()
     {
@@ -132,9 +132,10 @@ class SiteSection extends \Entity\Entity\Base
     }
 
     /**
-     * Set section_name
+     * Set sectionName
      *
      * @param string $sectionName
+     *
      * @return SiteSection
      */
     public function setSectionName($sectionName)
@@ -145,9 +146,9 @@ class SiteSection extends \Entity\Entity\Base
     }
 
     /**
-     * Get section_name
+     * Get sectionName
      *
-     * @return string 
+     * @return string
      */
     public function getSectionName()
     {
@@ -155,9 +156,10 @@ class SiteSection extends \Entity\Entity\Base
     }
 
     /**
-     * Set section_crumb
+     * Set sectionCrumb
      *
      * @param string $sectionCrumb
+     *
      * @return SiteSection
      */
     public function setSectionCrumb($sectionCrumb)
@@ -168,9 +170,9 @@ class SiteSection extends \Entity\Entity\Base
     }
 
     /**
-     * Get section_crumb
+     * Get sectionCrumb
      *
-     * @return string 
+     * @return string
      */
     public function getSectionCrumb()
     {
@@ -178,9 +180,10 @@ class SiteSection extends \Entity\Entity\Base
     }
 
     /**
-     * Set section_url
+     * Set sectionUrl
      *
      * @param string $sectionUrl
+     *
      * @return SiteSection
      */
     public function setSectionUrl($sectionUrl)
@@ -191,9 +194,9 @@ class SiteSection extends \Entity\Entity\Base
     }
 
     /**
-     * Get section_url
+     * Get sectionUrl
      *
-     * @return string 
+     * @return string
      */
     public function getSectionUrl()
     {
@@ -201,9 +204,10 @@ class SiteSection extends \Entity\Entity\Base
     }
 
     /**
-     * Set parent_id
+     * Set parentId
      *
      * @param integer $parentId
+     *
      * @return SiteSection
      */
     public function setParentId($parentId)
@@ -214,9 +218,9 @@ class SiteSection extends \Entity\Entity\Base
     }
 
     /**
-     * Get parent_id
+     * Get parentId
      *
-     * @return integer 
+     * @return integer
      */
     public function getParentId()
     {
@@ -224,9 +228,10 @@ class SiteSection extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return SiteSection
      */
     public function setCreatedAt($createdAt)
@@ -237,9 +242,9 @@ class SiteSection extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -247,9 +252,10 @@ class SiteSection extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return SiteSection
      */
     public function setUpdatedAt($updatedAt)
@@ -260,9 +266,9 @@ class SiteSection extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -273,6 +279,7 @@ class SiteSection extends \Entity\Entity\Base
      * Set lft
      *
      * @param integer $lft
+     *
      * @return SiteSection
      */
     public function setLft($lft)
@@ -285,7 +292,7 @@ class SiteSection extends \Entity\Entity\Base
     /**
      * Get lft
      *
-     * @return integer 
+     * @return integer
      */
     public function getLft()
     {
@@ -296,6 +303,7 @@ class SiteSection extends \Entity\Entity\Base
      * Set rgt
      *
      * @param integer $rgt
+     *
      * @return SiteSection
      */
     public function setRgt($rgt)
@@ -308,7 +316,7 @@ class SiteSection extends \Entity\Entity\Base
     /**
      * Get rgt
      *
-     * @return integer 
+     * @return integer
      */
     public function getRgt()
     {
@@ -319,6 +327,7 @@ class SiteSection extends \Entity\Entity\Base
      * Set level
      *
      * @param integer $level
+     *
      * @return SiteSection
      */
     public function setLevel($level)
@@ -331,7 +340,7 @@ class SiteSection extends \Entity\Entity\Base
     /**
      * Get level
      *
-     * @return integer 
+     * @return integer
      */
     public function getLevel()
     {
@@ -339,9 +348,10 @@ class SiteSection extends \Entity\Entity\Base
     }
 
     /**
-     * Set Site
+     * Set site
      *
      * @param \Entity\Bizj\Site $site
+     *
      * @return SiteSection
      */
     public function setSite(\Entity\Bizj\Site $site = null)
@@ -352,12 +362,13 @@ class SiteSection extends \Entity\Entity\Base
     }
 
     /**
-     * Get Site
+     * Get site
      *
-     * @return \Entity\Bizj\Site 
+     * @return \Entity\Bizj\Site
      */
     public function getSite()
     {
         return $this->Site;
     }
 }
+

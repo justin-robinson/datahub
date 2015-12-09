@@ -2,8 +2,6 @@
 
 namespace Entity\NascarIllustrated;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Cart
  */
@@ -53,9 +51,9 @@ class Cart extends \Entity\Entity\Base
     }
 
     /**
-     * Get cart_id
+     * Get cartId
      *
-     * @return integer 
+     * @return integer
      */
     public function getCartId()
     {
@@ -63,9 +61,10 @@ class Cart extends \Entity\Entity\Base
     }
 
     /**
-     * Set cart_hash
+     * Set cartHash
      *
      * @param string $cartHash
+     *
      * @return Cart
      */
     public function setCartHash($cartHash)
@@ -76,9 +75,9 @@ class Cart extends \Entity\Entity\Base
     }
 
     /**
-     * Get cart_hash
+     * Get cartHash
      *
-     * @return string 
+     * @return string
      */
     public function getCartHash()
     {
@@ -86,9 +85,10 @@ class Cart extends \Entity\Entity\Base
     }
 
     /**
-     * Set shipping_destination
+     * Set shippingDestination
      *
      * @param string $shippingDestination
+     *
      * @return Cart
      */
     public function setShippingDestination($shippingDestination)
@@ -99,9 +99,9 @@ class Cart extends \Entity\Entity\Base
     }
 
     /**
-     * Get shipping_destination
+     * Get shippingDestination
      *
-     * @return string 
+     * @return string
      */
     public function getShippingDestination()
     {
@@ -109,9 +109,10 @@ class Cart extends \Entity\Entity\Base
     }
 
     /**
-     * Set ip_address
+     * Set ipAddress
      *
      * @param string $ipAddress
+     *
      * @return Cart
      */
     public function setIpAddress($ipAddress)
@@ -122,9 +123,9 @@ class Cart extends \Entity\Entity\Base
     }
 
     /**
-     * Get ip_address
+     * Get ipAddress
      *
-     * @return string 
+     * @return string
      */
     public function getIpAddress()
     {
@@ -132,9 +133,10 @@ class Cart extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return Cart
      */
     public function setCreatedAt($createdAt)
@@ -145,9 +147,9 @@ class Cart extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -155,9 +157,10 @@ class Cart extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return Cart
      */
     public function setUpdatedAt($updatedAt)
@@ -168,9 +171,9 @@ class Cart extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -178,35 +181,37 @@ class Cart extends \Entity\Entity\Base
     }
 
     /**
-     * Add CartItems
+     * Add cartItem
      *
-     * @param \Entity\NascarIllustrated\CartItem $cartItems
+     * @param \Entity\NascarIllustrated\CartItem $cartItem
+     *
      * @return Cart
      */
-    public function addCartItem(\Entity\NascarIllustrated\CartItem $cartItems)
+    public function addCartItem(\Entity\NascarIllustrated\CartItem $cartItem)
     {
-        $this->CartItems[] = $cartItems;
+        $this->CartItems[] = $cartItem;
 
         return $this;
     }
 
     /**
-     * Remove CartItems
+     * Remove cartItem
      *
-     * @param \Entity\NascarIllustrated\CartItem $cartItems
+     * @param \Entity\NascarIllustrated\CartItem $cartItem
      */
-    public function removeCartItem(\Entity\NascarIllustrated\CartItem $cartItems)
+    public function removeCartItem(\Entity\NascarIllustrated\CartItem $cartItem)
     {
-        $this->CartItems->removeElement($cartItems);
+        $this->CartItems->removeElement($cartItem);
     }
 
     /**
-     * Get CartItems
+     * Get cartItems
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getCartItems()
     {
         return $this->CartItems;
     }
 }
+

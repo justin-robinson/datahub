@@ -2,8 +2,6 @@
 
 namespace Entity\Admin;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * AclResource
  */
@@ -58,9 +56,9 @@ class AclResource extends \Entity\Entity\Base
     }
 
     /**
-     * Get acl_resource_id
+     * Get aclResourceId
      *
-     * @return integer 
+     * @return integer
      */
     public function getAclResourceId()
     {
@@ -68,9 +66,10 @@ class AclResource extends \Entity\Entity\Base
     }
 
     /**
-     * Set parent_id
+     * Set parentId
      *
      * @param integer $parentId
+     *
      * @return AclResource
      */
     public function setParentId($parentId)
@@ -81,9 +80,9 @@ class AclResource extends \Entity\Entity\Base
     }
 
     /**
-     * Get parent_id
+     * Get parentId
      *
-     * @return integer 
+     * @return integer
      */
     public function getParentId()
     {
@@ -91,9 +90,10 @@ class AclResource extends \Entity\Entity\Base
     }
 
     /**
-     * Set resource_name
+     * Set resourceName
      *
      * @param string $resourceName
+     *
      * @return AclResource
      */
     public function setResourceName($resourceName)
@@ -104,9 +104,9 @@ class AclResource extends \Entity\Entity\Base
     }
 
     /**
-     * Get resource_name
+     * Get resourceName
      *
-     * @return string 
+     * @return string
      */
     public function getResourceName()
     {
@@ -117,6 +117,7 @@ class AclResource extends \Entity\Entity\Base
      * Set description
      *
      * @param string $description
+     *
      * @return AclResource
      */
     public function setDescription($description)
@@ -129,7 +130,7 @@ class AclResource extends \Entity\Entity\Base
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -137,9 +138,10 @@ class AclResource extends \Entity\Entity\Base
     }
 
     /**
-     * Set resource_type
+     * Set resourceType
      *
      * @param string $resourceType
+     *
      * @return AclResource
      */
     public function setResourceType($resourceType)
@@ -150,9 +152,9 @@ class AclResource extends \Entity\Entity\Base
     }
 
     /**
-     * Get resource_type
+     * Get resourceType
      *
-     * @return string 
+     * @return string
      */
     public function getResourceType()
     {
@@ -160,9 +162,10 @@ class AclResource extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return AclResource
      */
     public function setCreatedAt($createdAt)
@@ -173,9 +176,9 @@ class AclResource extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -183,9 +186,10 @@ class AclResource extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return AclResource
      */
     public function setUpdatedAt($updatedAt)
@@ -196,9 +200,9 @@ class AclResource extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -206,9 +210,10 @@ class AclResource extends \Entity\Entity\Base
     }
 
     /**
-     * Add AclRolePrivilege
+     * Add aclRolePrivilege
      *
      * @param \Entity\Admin\AclRolePrivilege $aclRolePrivilege
+     *
      * @return AclResource
      */
     public function addAclRolePrivilege(\Entity\Admin\AclRolePrivilege $aclRolePrivilege)
@@ -219,7 +224,7 @@ class AclResource extends \Entity\Entity\Base
     }
 
     /**
-     * Remove AclRolePrivilege
+     * Remove aclRolePrivilege
      *
      * @param \Entity\Admin\AclRolePrivilege $aclRolePrivilege
      */
@@ -229,12 +234,13 @@ class AclResource extends \Entity\Entity\Base
     }
 
     /**
-     * Get AclRolePrivilege
+     * Get aclRolePrivilege
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getAclRolePrivilege()
     {
         return $this->AclRolePrivilege;
     }
 }
+

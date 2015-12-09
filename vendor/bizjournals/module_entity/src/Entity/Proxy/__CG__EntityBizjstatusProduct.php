@@ -297,23 +297,23 @@ class Product extends \Entity\Bizjstatus\Product implements \Doctrine\ORM\Proxy\
     /**
      * {@inheritDoc}
      */
-    public function addEvent(\Entity\Bizjstatus\ProductEventMap $events)
+    public function addEvent(\Entity\Bizjstatus\ProductEventMap $event)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addEvent', array($events));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addEvent', array($event));
 
-        return parent::addEvent($events);
+        return parent::addEvent($event);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeEvent(\Entity\Bizjstatus\ProductEventMap $events)
+    public function removeEvent(\Entity\Bizjstatus\ProductEventMap $event)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeEvent', array($events));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeEvent', array($event));
 
-        return parent::removeEvent($events);
+        return parent::removeEvent($event);
     }
 
     /**
@@ -330,23 +330,23 @@ class Product extends \Entity\Bizjstatus\Product implements \Doctrine\ORM\Proxy\
     /**
      * {@inheritDoc}
      */
-    public function addMessage(\Entity\Bizjstatus\ProductInfoMessageMap $messages)
+    public function addMessage(\Entity\Bizjstatus\ProductInfoMessageMap $message)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMessage', array($messages));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMessage', array($message));
 
-        return parent::addMessage($messages);
+        return parent::addMessage($message);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeMessage(\Entity\Bizjstatus\ProductInfoMessageMap $messages)
+    public function removeMessage(\Entity\Bizjstatus\ProductInfoMessageMap $message)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMessage', array($messages));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMessage', array($message));
 
-        return parent::removeMessage($messages);
+        return parent::removeMessage($message);
     }
 
     /**

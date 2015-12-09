@@ -2,8 +2,6 @@
 
 namespace Entity\Medialibrary;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * MediaCacheQueue
  */
@@ -38,7 +36,7 @@ class MediaCacheQueue extends \Entity\Entity\Base
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -46,9 +44,10 @@ class MediaCacheQueue extends \Entity\Entity\Base
     }
 
     /**
-     * Set media_id
+     * Set mediaId
      *
      * @param integer $mediaId
+     *
      * @return MediaCacheQueue
      */
     public function setMediaId($mediaId)
@@ -59,9 +58,9 @@ class MediaCacheQueue extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_id
+     * Get mediaId
      *
-     * @return integer 
+     * @return integer
      */
     public function getMediaId()
     {
@@ -69,9 +68,10 @@ class MediaCacheQueue extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return MediaCacheQueue
      */
     public function setCreatedAt($createdAt)
@@ -82,9 +82,9 @@ class MediaCacheQueue extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -92,9 +92,10 @@ class MediaCacheQueue extends \Entity\Entity\Base
     }
 
     /**
-     * Set akamai_sent_at
+     * Set akamaiSentAt
      *
      * @param \DateTime $akamaiSentAt
+     *
      * @return MediaCacheQueue
      */
     public function setAkamaiSentAt($akamaiSentAt)
@@ -105,9 +106,9 @@ class MediaCacheQueue extends \Entity\Entity\Base
     }
 
     /**
-     * Get akamai_sent_at
+     * Get akamaiSentAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getAkamaiSentAt()
     {
@@ -115,9 +116,10 @@ class MediaCacheQueue extends \Entity\Entity\Base
     }
 
     /**
-     * Set akamai_cleared_at
+     * Set akamaiClearedAt
      *
      * @param \DateTime $akamaiClearedAt
+     *
      * @return MediaCacheQueue
      */
     public function setAkamaiClearedAt($akamaiClearedAt)
@@ -128,12 +130,13 @@ class MediaCacheQueue extends \Entity\Entity\Base
     }
 
     /**
-     * Get akamai_cleared_at
+     * Get akamaiClearedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getAkamaiClearedAt()
     {
         return $this->akamai_cleared_at;
     }
 }
+

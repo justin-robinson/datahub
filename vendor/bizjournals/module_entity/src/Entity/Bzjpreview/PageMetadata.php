@@ -2,8 +2,6 @@
 
 namespace Entity\Bzjpreview;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * PageMetadata
  */
@@ -41,9 +39,9 @@ class PageMetadata extends \Entity\Entity\Base
 
 
     /**
-     * Get meta_id
+     * Get metaId
      *
-     * @return integer 
+     * @return integer
      */
     public function getMetaId()
     {
@@ -51,9 +49,10 @@ class PageMetadata extends \Entity\Entity\Base
     }
 
     /**
-     * Set page_id
+     * Set pageId
      *
      * @param integer $pageId
+     *
      * @return PageMetadata
      */
     public function setPageId($pageId)
@@ -64,9 +63,9 @@ class PageMetadata extends \Entity\Entity\Base
     }
 
     /**
-     * Get page_id
+     * Get pageId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPageId()
     {
@@ -77,6 +76,7 @@ class PageMetadata extends \Entity\Entity\Base
      * Set ord
      *
      * @param integer $ord
+     *
      * @return PageMetadata
      */
     public function setOrd($ord)
@@ -89,7 +89,7 @@ class PageMetadata extends \Entity\Entity\Base
     /**
      * Get ord
      *
-     * @return integer 
+     * @return integer
      */
     public function getOrd()
     {
@@ -97,9 +97,10 @@ class PageMetadata extends \Entity\Entity\Base
     }
 
     /**
-     * Set meta_name
+     * Set metaName
      *
      * @param string $metaName
+     *
      * @return PageMetadata
      */
     public function setMetaName($metaName)
@@ -110,9 +111,9 @@ class PageMetadata extends \Entity\Entity\Base
     }
 
     /**
-     * Get meta_name
+     * Get metaName
      *
-     * @return string 
+     * @return string
      */
     public function getMetaName()
     {
@@ -120,9 +121,10 @@ class PageMetadata extends \Entity\Entity\Base
     }
 
     /**
-     * Set meta_value
+     * Set metaValue
      *
      * @param string $metaValue
+     *
      * @return PageMetadata
      */
     public function setMetaValue($metaValue)
@@ -133,9 +135,9 @@ class PageMetadata extends \Entity\Entity\Base
     }
 
     /**
-     * Get meta_value
+     * Get metaValue
      *
-     * @return string 
+     * @return string
      */
     public function getMetaValue()
     {
@@ -143,9 +145,10 @@ class PageMetadata extends \Entity\Entity\Base
     }
 
     /**
-     * Set Page
+     * Set page
      *
      * @param \Entity\Bzjpreview\Page $page
+     *
      * @return PageMetadata
      */
     public function setPage(\Entity\Bzjpreview\Page $page = null)
@@ -156,12 +159,13 @@ class PageMetadata extends \Entity\Entity\Base
     }
 
     /**
-     * Get Page
+     * Get page
      *
-     * @return \Entity\Bzjpreview\Page 
+     * @return \Entity\Bzjpreview\Page
      */
     public function getPage()
     {
         return $this->Page;
     }
 }
+

@@ -2,8 +2,6 @@
 
 namespace Entity\Bizjstatus;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * InfoMessage
  */
@@ -68,9 +66,9 @@ class InfoMessage extends \Entity\Entity\Base
     }
 
     /**
-     * Get message_id
+     * Get messageId
      *
-     * @return integer 
+     * @return integer
      */
     public function getMessageId()
     {
@@ -78,9 +76,10 @@ class InfoMessage extends \Entity\Entity\Base
     }
 
     /**
-     * Set allow_syndication
+     * Set allowSyndication
      *
      * @param boolean $allowSyndication
+     *
      * @return InfoMessage
      */
     public function setAllowSyndication($allowSyndication)
@@ -91,9 +90,9 @@ class InfoMessage extends \Entity\Entity\Base
     }
 
     /**
-     * Get allow_syndication
+     * Get allowSyndication
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getAllowSyndication()
     {
@@ -104,6 +103,7 @@ class InfoMessage extends \Entity\Entity\Base
      * Set title
      *
      * @param string $title
+     *
      * @return InfoMessage
      */
     public function setTitle($title)
@@ -116,7 +116,7 @@ class InfoMessage extends \Entity\Entity\Base
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -127,6 +127,7 @@ class InfoMessage extends \Entity\Entity\Base
      * Set details
      *
      * @param string $details
+     *
      * @return InfoMessage
      */
     public function setDetails($details)
@@ -139,7 +140,7 @@ class InfoMessage extends \Entity\Entity\Base
     /**
      * Get details
      *
-     * @return string 
+     * @return string
      */
     public function getDetails()
     {
@@ -147,9 +148,10 @@ class InfoMessage extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_by
+     * Set createdBy
      *
      * @param string $createdBy
+     *
      * @return InfoMessage
      */
     public function setCreatedBy($createdBy)
@@ -160,9 +162,9 @@ class InfoMessage extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_by
+     * Get createdBy
      *
-     * @return string 
+     * @return string
      */
     public function getCreatedBy()
     {
@@ -170,9 +172,10 @@ class InfoMessage extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_by
+     * Set updatedBy
      *
      * @param string $updatedBy
+     *
      * @return InfoMessage
      */
     public function setUpdatedBy($updatedBy)
@@ -183,9 +186,9 @@ class InfoMessage extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_by
+     * Get updatedBy
      *
-     * @return string 
+     * @return string
      */
     public function getUpdatedBy()
     {
@@ -193,9 +196,10 @@ class InfoMessage extends \Entity\Entity\Base
     }
 
     /**
-     * Set expires_at
+     * Set expiresAt
      *
      * @param \DateTime $expiresAt
+     *
      * @return InfoMessage
      */
     public function setExpiresAt($expiresAt)
@@ -206,9 +210,9 @@ class InfoMessage extends \Entity\Entity\Base
     }
 
     /**
-     * Get expires_at
+     * Get expiresAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getExpiresAt()
     {
@@ -216,9 +220,10 @@ class InfoMessage extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return InfoMessage
      */
     public function setCreatedAt($createdAt)
@@ -229,9 +234,9 @@ class InfoMessage extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -239,9 +244,10 @@ class InfoMessage extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return InfoMessage
      */
     public function setUpdatedAt($updatedAt)
@@ -252,9 +258,9 @@ class InfoMessage extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -262,9 +268,10 @@ class InfoMessage extends \Entity\Entity\Base
     }
 
     /**
-     * Add ProductMap
+     * Add productMap
      *
      * @param \Entity\Bizjstatus\ProductEventMap $productMap
+     *
      * @return InfoMessage
      */
     public function addProductMap(\Entity\Bizjstatus\ProductEventMap $productMap)
@@ -275,7 +282,7 @@ class InfoMessage extends \Entity\Entity\Base
     }
 
     /**
-     * Remove ProductMap
+     * Remove productMap
      *
      * @param \Entity\Bizjstatus\ProductEventMap $productMap
      */
@@ -285,12 +292,13 @@ class InfoMessage extends \Entity\Entity\Base
     }
 
     /**
-     * Get ProductMap
+     * Get productMap
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getProductMap()
     {
         return $this->ProductMap;
     }
 }
+

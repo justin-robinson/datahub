@@ -2,8 +2,6 @@
 
 namespace Entity\Medialibrary;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * KrangMediaExport
  */
@@ -68,9 +66,10 @@ class KrangMediaExport extends \Entity\Entity\Base
     }
 
     /**
-     * Set media_id
+     * Set mediaId
      *
      * @param integer $mediaId
+     *
      * @return KrangMediaExport
      */
     public function setMediaId($mediaId)
@@ -81,9 +80,9 @@ class KrangMediaExport extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_id
+     * Get mediaId
      *
-     * @return integer 
+     * @return integer
      */
     public function getMediaId()
     {
@@ -91,9 +90,10 @@ class KrangMediaExport extends \Entity\Entity\Base
     }
 
     /**
-     * Set media_type_id
+     * Set mediaTypeId
      *
      * @param integer $mediaTypeId
+     *
      * @return KrangMediaExport
      */
     public function setMediaTypeId($mediaTypeId)
@@ -104,9 +104,9 @@ class KrangMediaExport extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_type_id
+     * Get mediaTypeId
      *
-     * @return integer 
+     * @return integer
      */
     public function getMediaTypeId()
     {
@@ -114,9 +114,10 @@ class KrangMediaExport extends \Entity\Entity\Base
     }
 
     /**
-     * Set mime_type
+     * Set mimeType
      *
      * @param string $mimeType
+     *
      * @return KrangMediaExport
      */
     public function setMimeType($mimeType)
@@ -127,9 +128,9 @@ class KrangMediaExport extends \Entity\Entity\Base
     }
 
     /**
-     * Get mime_type
+     * Get mimeType
      *
-     * @return string 
+     * @return string
      */
     public function getMimeType()
     {
@@ -137,9 +138,10 @@ class KrangMediaExport extends \Entity\Entity\Base
     }
 
     /**
-     * Set location_url
+     * Set locationUrl
      *
      * @param string $locationUrl
+     *
      * @return KrangMediaExport
      */
     public function setLocationUrl($locationUrl)
@@ -150,9 +152,9 @@ class KrangMediaExport extends \Entity\Entity\Base
     }
 
     /**
-     * Get location_url
+     * Get locationUrl
      *
-     * @return string 
+     * @return string
      */
     public function getLocationUrl()
     {
@@ -163,6 +165,7 @@ class KrangMediaExport extends \Entity\Entity\Base
      * Set filename
      *
      * @param string $filename
+     *
      * @return KrangMediaExport
      */
     public function setFilename($filename)
@@ -175,7 +178,7 @@ class KrangMediaExport extends \Entity\Entity\Base
     /**
      * Get filename
      *
-     * @return string 
+     * @return string
      */
     public function getFilename()
     {
@@ -186,6 +189,7 @@ class KrangMediaExport extends \Entity\Entity\Base
      * Set title
      *
      * @param string $title
+     *
      * @return KrangMediaExport
      */
     public function setTitle($title)
@@ -198,7 +202,7 @@ class KrangMediaExport extends \Entity\Entity\Base
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -209,6 +213,7 @@ class KrangMediaExport extends \Entity\Entity\Base
      * Set caption
      *
      * @param string $caption
+     *
      * @return KrangMediaExport
      */
     public function setCaption($caption)
@@ -221,7 +226,7 @@ class KrangMediaExport extends \Entity\Entity\Base
     /**
      * Get caption
      *
-     * @return string 
+     * @return string
      */
     public function getCaption()
     {
@@ -232,6 +237,7 @@ class KrangMediaExport extends \Entity\Entity\Base
      * Set copyright
      *
      * @param string $copyright
+     *
      * @return KrangMediaExport
      */
     public function setCopyright($copyright)
@@ -244,7 +250,7 @@ class KrangMediaExport extends \Entity\Entity\Base
     /**
      * Get copyright
      *
-     * @return string 
+     * @return string
      */
     public function getCopyright()
     {
@@ -252,9 +258,10 @@ class KrangMediaExport extends \Entity\Entity\Base
     }
 
     /**
-     * Set publish_date
+     * Set publishDate
      *
      * @param \DateTime $publishDate
+     *
      * @return KrangMediaExport
      */
     public function setPublishDate($publishDate)
@@ -265,9 +272,9 @@ class KrangMediaExport extends \Entity\Entity\Base
     }
 
     /**
-     * Get publish_date
+     * Get publishDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getPublishDate()
     {
@@ -275,9 +282,10 @@ class KrangMediaExport extends \Entity\Entity\Base
     }
 
     /**
-     * Add IdMap
+     * Add idMap
      *
      * @param \Entity\Medialibrary\KrangMediaIdMap $idMap
+     *
      * @return KrangMediaExport
      */
     public function addIdMap(\Entity\Medialibrary\KrangMediaIdMap $idMap)
@@ -288,7 +296,7 @@ class KrangMediaExport extends \Entity\Entity\Base
     }
 
     /**
-     * Remove IdMap
+     * Remove idMap
      *
      * @param \Entity\Medialibrary\KrangMediaIdMap $idMap
      */
@@ -298,12 +306,13 @@ class KrangMediaExport extends \Entity\Entity\Base
     }
 
     /**
-     * Get IdMap
+     * Get idMap
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getIdMap()
     {
         return $this->IdMap;
     }
 }
+

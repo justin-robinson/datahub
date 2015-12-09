@@ -2,8 +2,6 @@
 
 namespace Entity\NascarIllustrated;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * ProductCategory
  */
@@ -73,9 +71,9 @@ class ProductCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Get category_id
+     * Get categoryId
      *
-     * @return integer 
+     * @return integer
      */
     public function getCategoryId()
     {
@@ -83,9 +81,10 @@ class ProductCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Set category_name
+     * Set categoryName
      *
      * @param string $categoryName
+     *
      * @return ProductCategory
      */
     public function setCategoryName($categoryName)
@@ -96,9 +95,9 @@ class ProductCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Get category_name
+     * Get categoryName
      *
-     * @return string 
+     * @return string
      */
     public function getCategoryName()
     {
@@ -109,6 +108,7 @@ class ProductCategory extends \Entity\Entity\Base
      * Set slug
      *
      * @param string $slug
+     *
      * @return ProductCategory
      */
     public function setSlug($slug)
@@ -121,7 +121,7 @@ class ProductCategory extends \Entity\Entity\Base
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug()
     {
@@ -132,6 +132,7 @@ class ProductCategory extends \Entity\Entity\Base
      * Set ord
      *
      * @param integer $ord
+     *
      * @return ProductCategory
      */
     public function setOrd($ord)
@@ -144,7 +145,7 @@ class ProductCategory extends \Entity\Entity\Base
     /**
      * Get ord
      *
-     * @return integer 
+     * @return integer
      */
     public function getOrd()
     {
@@ -152,9 +153,10 @@ class ProductCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_active
+     * Set isActive
      *
      * @param boolean $isActive
+     *
      * @return ProductCategory
      */
     public function setIsActive($isActive)
@@ -165,9 +167,9 @@ class ProductCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_active
+     * Get isActive
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsActive()
     {
@@ -175,9 +177,10 @@ class ProductCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_hidden
+     * Set isHidden
      *
      * @param boolean $isHidden
+     *
      * @return ProductCategory
      */
     public function setIsHidden($isHidden)
@@ -188,9 +191,9 @@ class ProductCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_hidden
+     * Get isHidden
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsHidden()
     {
@@ -198,9 +201,10 @@ class ProductCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Set can_group_by_year
+     * Set canGroupByYear
      *
      * @param boolean $canGroupByYear
+     *
      * @return ProductCategory
      */
     public function setCanGroupByYear($canGroupByYear)
@@ -211,9 +215,9 @@ class ProductCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Get can_group_by_year
+     * Get canGroupByYear
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getCanGroupByYear()
     {
@@ -221,9 +225,10 @@ class ProductCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Set group_id
+     * Set groupId
      *
      * @param integer $groupId
+     *
      * @return ProductCategory
      */
     public function setGroupId($groupId)
@@ -234,9 +239,9 @@ class ProductCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Get group_id
+     * Get groupId
      *
-     * @return integer 
+     * @return integer
      */
     public function getGroupId()
     {
@@ -244,9 +249,10 @@ class ProductCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return ProductCategory
      */
     public function setCreatedAt($createdAt)
@@ -257,9 +263,9 @@ class ProductCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -267,9 +273,10 @@ class ProductCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return ProductCategory
      */
     public function setUpdatedAt($updatedAt)
@@ -280,9 +287,9 @@ class ProductCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -290,35 +297,37 @@ class ProductCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Add Products
+     * Add product
      *
-     * @param \Entity\NascarIllustrated\Product $products
+     * @param \Entity\NascarIllustrated\Product $product
+     *
      * @return ProductCategory
      */
-    public function addProduct(\Entity\NascarIllustrated\Product $products)
+    public function addProduct(\Entity\NascarIllustrated\Product $product)
     {
-        $this->Products[] = $products;
+        $this->Products[] = $product;
 
         return $this;
     }
 
     /**
-     * Remove Products
+     * Remove product
      *
-     * @param \Entity\NascarIllustrated\Product $products
+     * @param \Entity\NascarIllustrated\Product $product
      */
-    public function removeProduct(\Entity\NascarIllustrated\Product $products)
+    public function removeProduct(\Entity\NascarIllustrated\Product $product)
     {
-        $this->Products->removeElement($products);
+        $this->Products->removeElement($product);
     }
 
     /**
-     * Get Products
+     * Get products
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getProducts()
     {
         return $this->Products;
     }
 }
+

@@ -2,8 +2,6 @@
 
 namespace Entity\Medialibrary;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * MediaDeleted
  */
@@ -36,9 +34,10 @@ class MediaDeleted extends \Entity\Entity\Base
 
 
     /**
-     * Set media_id
+     * Set mediaId
      *
      * @param integer $mediaId
+     *
      * @return MediaDeleted
      */
     public function setMediaId($mediaId)
@@ -49,9 +48,9 @@ class MediaDeleted extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_id
+     * Get mediaId
      *
-     * @return integer 
+     * @return integer
      */
     public function getMediaId()
     {
@@ -59,9 +58,10 @@ class MediaDeleted extends \Entity\Entity\Base
     }
 
     /**
-     * Set relative_path
+     * Set relativePath
      *
      * @param string $relativePath
+     *
      * @return MediaDeleted
      */
     public function setRelativePath($relativePath)
@@ -72,9 +72,9 @@ class MediaDeleted extends \Entity\Entity\Base
     }
 
     /**
-     * Get relative_path
+     * Get relativePath
      *
-     * @return string 
+     * @return string
      */
     public function getRelativePath()
     {
@@ -85,6 +85,7 @@ class MediaDeleted extends \Entity\Entity\Base
      * Set filename
      *
      * @param string $filename
+     *
      * @return MediaDeleted
      */
     public function setFilename($filename)
@@ -97,7 +98,7 @@ class MediaDeleted extends \Entity\Entity\Base
     /**
      * Get filename
      *
-     * @return string 
+     * @return string
      */
     public function getFilename()
     {
@@ -105,9 +106,10 @@ class MediaDeleted extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return MediaDeleted
      */
     public function setCreatedAt($createdAt)
@@ -118,9 +120,9 @@ class MediaDeleted extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -128,9 +130,10 @@ class MediaDeleted extends \Entity\Entity\Base
     }
 
     /**
-     * Set deleted_at
+     * Set deletedAt
      *
      * @param \DateTime $deletedAt
+     *
      * @return MediaDeleted
      */
     public function setDeletedAt($deletedAt)
@@ -141,12 +144,13 @@ class MediaDeleted extends \Entity\Entity\Base
     }
 
     /**
-     * Get deleted_at
+     * Get deletedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDeletedAt()
     {
         return $this->deleted_at;
     }
 }
+

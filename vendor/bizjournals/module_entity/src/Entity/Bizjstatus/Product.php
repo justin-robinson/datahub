@@ -2,8 +2,6 @@
 
 namespace Entity\Bizjstatus;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Product
  */
@@ -59,9 +57,9 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Get product_id
+     * Get productId
      *
-     * @return integer 
+     * @return integer
      */
     public function getProductId()
     {
@@ -69,9 +67,10 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Set product_name
+     * Set productName
      *
      * @param string $productName
+     *
      * @return Product
      */
     public function setProductName($productName)
@@ -82,9 +81,9 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Get product_name
+     * Get productName
      *
-     * @return string 
+     * @return string
      */
     public function getProductName()
     {
@@ -92,9 +91,10 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Set product_url
+     * Set productUrl
      *
      * @param string $productUrl
+     *
      * @return Product
      */
     public function setProductUrl($productUrl)
@@ -105,9 +105,9 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Get product_url
+     * Get productUrl
      *
-     * @return string 
+     * @return string
      */
     public function getProductUrl()
     {
@@ -115,9 +115,10 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_active
+     * Set isActive
      *
      * @param boolean $isActive
+     *
      * @return Product
      */
     public function setIsActive($isActive)
@@ -128,9 +129,9 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_active
+     * Get isActive
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsActive()
     {
@@ -138,9 +139,10 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return Product
      */
     public function setCreatedAt($createdAt)
@@ -151,9 +153,9 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -161,9 +163,10 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return Product
      */
     public function setUpdatedAt($updatedAt)
@@ -174,9 +177,9 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -184,32 +187,33 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Add Events
+     * Add event
      *
-     * @param \Entity\Bizjstatus\ProductEventMap $events
+     * @param \Entity\Bizjstatus\ProductEventMap $event
+     *
      * @return Product
      */
-    public function addEvent(\Entity\Bizjstatus\ProductEventMap $events)
+    public function addEvent(\Entity\Bizjstatus\ProductEventMap $event)
     {
-        $this->Events[] = $events;
+        $this->Events[] = $event;
 
         return $this;
     }
 
     /**
-     * Remove Events
+     * Remove event
      *
-     * @param \Entity\Bizjstatus\ProductEventMap $events
+     * @param \Entity\Bizjstatus\ProductEventMap $event
      */
-    public function removeEvent(\Entity\Bizjstatus\ProductEventMap $events)
+    public function removeEvent(\Entity\Bizjstatus\ProductEventMap $event)
     {
-        $this->Events->removeElement($events);
+        $this->Events->removeElement($event);
     }
 
     /**
-     * Get Events
+     * Get events
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getEvents()
     {
@@ -217,35 +221,37 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Add Messages
+     * Add message
      *
-     * @param \Entity\Bizjstatus\ProductInfoMessageMap $messages
+     * @param \Entity\Bizjstatus\ProductInfoMessageMap $message
+     *
      * @return Product
      */
-    public function addMessage(\Entity\Bizjstatus\ProductInfoMessageMap $messages)
+    public function addMessage(\Entity\Bizjstatus\ProductInfoMessageMap $message)
     {
-        $this->Messages[] = $messages;
+        $this->Messages[] = $message;
 
         return $this;
     }
 
     /**
-     * Remove Messages
+     * Remove message
      *
-     * @param \Entity\Bizjstatus\ProductInfoMessageMap $messages
+     * @param \Entity\Bizjstatus\ProductInfoMessageMap $message
      */
-    public function removeMessage(\Entity\Bizjstatus\ProductInfoMessageMap $messages)
+    public function removeMessage(\Entity\Bizjstatus\ProductInfoMessageMap $message)
     {
-        $this->Messages->removeElement($messages);
+        $this->Messages->removeElement($message);
     }
 
     /**
-     * Get Messages
+     * Get messages
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getMessages()
     {
         return $this->Messages;
     }
 }
+

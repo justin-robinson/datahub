@@ -2,8 +2,6 @@
 
 namespace Entity\Email;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * EmailActivityDaily
  */
@@ -61,9 +59,9 @@ class EmailActivityDaily extends \Entity\Entity\Base
 
 
     /**
-     * Get activity_id
+     * Get activityId
      *
-     * @return integer 
+     * @return integer
      */
     public function getActivityId()
     {
@@ -71,9 +69,10 @@ class EmailActivityDaily extends \Entity\Entity\Base
     }
 
     /**
-     * Set job_id
+     * Set jobId
      *
      * @param integer $jobId
+     *
      * @return EmailActivityDaily
      */
     public function setJobId($jobId)
@@ -84,9 +83,9 @@ class EmailActivityDaily extends \Entity\Entity\Base
     }
 
     /**
-     * Get job_id
+     * Get jobId
      *
-     * @return integer 
+     * @return integer
      */
     public function getJobId()
     {
@@ -94,9 +93,10 @@ class EmailActivityDaily extends \Entity\Entity\Base
     }
 
     /**
-     * Set product_id
+     * Set productId
      *
      * @param integer $productId
+     *
      * @return EmailActivityDaily
      */
     public function setProductId($productId)
@@ -107,9 +107,9 @@ class EmailActivityDaily extends \Entity\Entity\Base
     }
 
     /**
-     * Get product_id
+     * Get productId
      *
-     * @return integer 
+     * @return integer
      */
     public function getProductId()
     {
@@ -117,9 +117,10 @@ class EmailActivityDaily extends \Entity\Entity\Base
     }
 
     /**
-     * Set user_id
+     * Set userId
      *
      * @param integer $userId
+     *
      * @return EmailActivityDaily
      */
     public function setUserId($userId)
@@ -130,9 +131,9 @@ class EmailActivityDaily extends \Entity\Entity\Base
     }
 
     /**
-     * Get user_id
+     * Get userId
      *
-     * @return integer 
+     * @return integer
      */
     public function getUserId()
     {
@@ -143,6 +144,7 @@ class EmailActivityDaily extends \Entity\Entity\Base
      * Set activity
      *
      * @param string $activity
+     *
      * @return EmailActivityDaily
      */
     public function setActivity($activity)
@@ -155,7 +157,7 @@ class EmailActivityDaily extends \Entity\Entity\Base
     /**
      * Get activity
      *
-     * @return string 
+     * @return string
      */
     public function getActivity()
     {
@@ -163,9 +165,10 @@ class EmailActivityDaily extends \Entity\Entity\Base
     }
 
     /**
-     * Set remote_ip
+     * Set remoteIp
      *
      * @param string $remoteIp
+     *
      * @return EmailActivityDaily
      */
     public function setRemoteIp($remoteIp)
@@ -176,9 +179,9 @@ class EmailActivityDaily extends \Entity\Entity\Base
     }
 
     /**
-     * Get remote_ip
+     * Get remoteIp
      *
-     * @return string 
+     * @return string
      */
     public function getRemoteIp()
     {
@@ -186,9 +189,10 @@ class EmailActivityDaily extends \Entity\Entity\Base
     }
 
     /**
-     * Set user_agent
+     * Set userAgent
      *
      * @param integer $userAgent
+     *
      * @return EmailActivityDaily
      */
     public function setUserAgent($userAgent)
@@ -199,9 +203,9 @@ class EmailActivityDaily extends \Entity\Entity\Base
     }
 
     /**
-     * Get user_agent
+     * Get userAgent
      *
-     * @return integer 
+     * @return integer
      */
     public function getUserAgent()
     {
@@ -212,6 +216,7 @@ class EmailActivityDaily extends \Entity\Entity\Base
      * Set referer
      *
      * @param string $referer
+     *
      * @return EmailActivityDaily
      */
     public function setReferer($referer)
@@ -224,7 +229,7 @@ class EmailActivityDaily extends \Entity\Entity\Base
     /**
      * Get referer
      *
-     * @return string 
+     * @return string
      */
     public function getReferer()
     {
@@ -232,9 +237,10 @@ class EmailActivityDaily extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return EmailActivityDaily
      */
     public function setCreatedAt($createdAt)
@@ -245,9 +251,9 @@ class EmailActivityDaily extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -255,9 +261,10 @@ class EmailActivityDaily extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return EmailActivityDaily
      */
     public function setUpdatedAt($updatedAt)
@@ -268,12 +275,13 @@ class EmailActivityDaily extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
         return $this->updated_at;
     }
 }
+

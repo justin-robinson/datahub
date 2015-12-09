@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * PageCrossref
  */
@@ -61,9 +59,9 @@ class PageCrossref extends \Entity\Entity\Base
 
 
     /**
-     * Get ref_id
+     * Get refId
      *
-     * @return integer 
+     * @return integer
      */
     public function getRefId()
     {
@@ -71,9 +69,10 @@ class PageCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Set page_id
+     * Set pageId
      *
      * @param integer $pageId
+     *
      * @return PageCrossref
      */
     public function setPageId($pageId)
@@ -84,9 +83,9 @@ class PageCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Get page_id
+     * Get pageId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPageId()
     {
@@ -94,9 +93,10 @@ class PageCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Set ref_type
+     * Set refType
      *
      * @param string $refType
+     *
      * @return PageCrossref
      */
     public function setRefType($refType)
@@ -107,9 +107,9 @@ class PageCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Get ref_type
+     * Get refType
      *
-     * @return string 
+     * @return string
      */
     public function getRefType()
     {
@@ -117,9 +117,10 @@ class PageCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Set issue_date
+     * Set issueDate
      *
      * @param \DateTime $issueDate
+     *
      * @return PageCrossref
      */
     public function setIssueDate($issueDate)
@@ -130,9 +131,9 @@ class PageCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Get issue_date
+     * Get issueDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getIssueDate()
     {
@@ -140,9 +141,10 @@ class PageCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Set ref_key
+     * Set refKey
      *
      * @param string $refKey
+     *
      * @return PageCrossref
      */
     public function setRefKey($refKey)
@@ -153,9 +155,9 @@ class PageCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Get ref_key
+     * Get refKey
      *
-     * @return string 
+     * @return string
      */
     public function getRefKey()
     {
@@ -163,9 +165,10 @@ class PageCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Set ref_value
+     * Set refValue
      *
      * @param string $refValue
+     *
      * @return PageCrossref
      */
     public function setRefValue($refValue)
@@ -176,9 +179,9 @@ class PageCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Get ref_value
+     * Get refValue
      *
-     * @return string 
+     * @return string
      */
     public function getRefValue()
     {
@@ -186,9 +189,10 @@ class PageCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Set ref_weight
+     * Set refWeight
      *
      * @param integer $refWeight
+     *
      * @return PageCrossref
      */
     public function setRefWeight($refWeight)
@@ -199,9 +203,9 @@ class PageCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Get ref_weight
+     * Get refWeight
      *
-     * @return integer 
+     * @return integer
      */
     public function getRefWeight()
     {
@@ -209,9 +213,10 @@ class PageCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return PageCrossref
      */
     public function setCreatedAt($createdAt)
@@ -222,9 +227,9 @@ class PageCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -232,9 +237,10 @@ class PageCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return PageCrossref
      */
     public function setUpdatedAt($updatedAt)
@@ -245,9 +251,9 @@ class PageCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -255,9 +261,10 @@ class PageCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Set Page
+     * Set page
      *
      * @param \Entity\Bizj\Page $page
+     *
      * @return PageCrossref
      */
     public function setPage(\Entity\Bizj\Page $page = null)
@@ -268,12 +275,13 @@ class PageCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Get Page
+     * Get page
      *
-     * @return \Entity\Bizj\Page 
+     * @return \Entity\Bizj\Page
      */
     public function getPage()
     {
         return $this->Page;
     }
 }
+

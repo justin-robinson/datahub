@@ -2,8 +2,6 @@
 
 namespace Entity\Bzjpreview;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * StoryRead
  */
@@ -228,9 +226,10 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Set story_id
+     * Set storyId
      *
      * @param integer $storyId
+     *
      * @return StoryRead
      */
     public function setStoryId($storyId)
@@ -241,9 +240,9 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Get story_id
+     * Get storyId
      *
-     * @return integer 
+     * @return integer
      */
     public function getStoryId()
     {
@@ -251,9 +250,10 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Set site_id
+     * Set siteId
      *
      * @param integer $siteId
+     *
      * @return StoryRead
      */
     public function setSiteId($siteId)
@@ -264,9 +264,9 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Get site_id
+     * Get siteId
      *
-     * @return integer 
+     * @return integer
      */
     public function getSiteId()
     {
@@ -274,9 +274,10 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Set c_time
+     * Set cTime
      *
      * @param \DateTime $cTime
+     *
      * @return StoryRead
      */
     public function setCTime($cTime)
@@ -287,9 +288,9 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Get c_time
+     * Get cTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCTime()
     {
@@ -297,9 +298,10 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Set major_rev
+     * Set majorRev
      *
      * @param integer $majorRev
+     *
      * @return StoryRead
      */
     public function setMajorRev($majorRev)
@@ -310,9 +312,9 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Get major_rev
+     * Get majorRev
      *
-     * @return integer 
+     * @return integer
      */
     public function getMajorRev()
     {
@@ -320,9 +322,10 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Set minor_rev
+     * Set minorRev
      *
      * @param integer $minorRev
+     *
      * @return StoryRead
      */
     public function setMinorRev($minorRev)
@@ -333,9 +336,9 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Get minor_rev
+     * Get minorRev
      *
-     * @return integer 
+     * @return integer
      */
     public function getMinorRev()
     {
@@ -343,9 +346,10 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Set rev_time
+     * Set revTime
      *
      * @param \DateTime $revTime
+     *
      * @return StoryRead
      */
     public function setRevTime($revTime)
@@ -356,9 +360,9 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Get rev_time
+     * Get revTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getRevTime()
     {
@@ -366,9 +370,10 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Set release_status
+     * Set releaseStatus
      *
      * @param string $releaseStatus
+     *
      * @return StoryRead
      */
     public function setReleaseStatus($releaseStatus)
@@ -379,9 +384,9 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Get release_status
+     * Get releaseStatus
      *
-     * @return string 
+     * @return string
      */
     public function getReleaseStatus()
     {
@@ -389,9 +394,10 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Set release_time
+     * Set releaseTime
      *
      * @param \DateTime $releaseTime
+     *
      * @return StoryRead
      */
     public function setReleaseTime($releaseTime)
@@ -402,9 +408,9 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Get release_time
+     * Get releaseTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getReleaseTime()
     {
@@ -412,9 +418,10 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Set issue_id
+     * Set issueId
      *
      * @param integer $issueId
+     *
      * @return StoryRead
      */
     public function setIssueId($issueId)
@@ -425,9 +432,9 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Get issue_id
+     * Get issueId
      *
-     * @return integer 
+     * @return integer
      */
     public function getIssueId()
     {
@@ -435,9 +442,10 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Set issue_date
+     * Set issueDate
      *
      * @param \DateTime $issueDate
+     *
      * @return StoryRead
      */
     public function setIssueDate($issueDate)
@@ -448,9 +456,9 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Get issue_date
+     * Get issueDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getIssueDate()
     {
@@ -461,6 +469,7 @@ class StoryRead extends \Entity\Entity\Base
      * Set pub
      *
      * @param string $pub
+     *
      * @return StoryRead
      */
     public function setPub($pub)
@@ -473,7 +482,7 @@ class StoryRead extends \Entity\Entity\Base
     /**
      * Get pub
      *
-     * @return string 
+     * @return string
      */
     public function getPub()
     {
@@ -484,6 +493,7 @@ class StoryRead extends \Entity\Entity\Base
      * Set slug
      *
      * @param string $slug
+     *
      * @return StoryRead
      */
     public function setSlug($slug)
@@ -496,7 +506,7 @@ class StoryRead extends \Entity\Entity\Base
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug()
     {
@@ -504,9 +514,10 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Set story_type
+     * Set storyType
      *
      * @param string $storyType
+     *
      * @return StoryRead
      */
     public function setStoryType($storyType)
@@ -517,9 +528,9 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Get story_type
+     * Get storyType
      *
-     * @return string 
+     * @return string
      */
     public function getStoryType()
     {
@@ -527,9 +538,10 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Set story_type_order_num
+     * Set storyTypeOrderNum
      *
      * @param integer $storyTypeOrderNum
+     *
      * @return StoryRead
      */
     public function setStoryTypeOrderNum($storyTypeOrderNum)
@@ -540,9 +552,9 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Get story_type_order_num
+     * Get storyTypeOrderNum
      *
-     * @return integer 
+     * @return integer
      */
     public function getStoryTypeOrderNum()
     {
@@ -550,9 +562,10 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Set story_sequence_num
+     * Set storySequenceNum
      *
      * @param integer $storySequenceNum
+     *
      * @return StoryRead
      */
     public function setStorySequenceNum($storySequenceNum)
@@ -563,9 +576,9 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Get story_sequence_num
+     * Get storySequenceNum
      *
-     * @return integer 
+     * @return integer
      */
     public function getStorySequenceNum()
     {
@@ -573,9 +586,10 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Set display_timeofday
+     * Set displayTimeofday
      *
      * @param \DateTime $displayTimeofday
+     *
      * @return StoryRead
      */
     public function setDisplayTimeofday($displayTimeofday)
@@ -586,9 +600,9 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Get display_timeofday
+     * Get displayTimeofday
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDisplayTimeofday()
     {
@@ -596,9 +610,10 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Set display_date
+     * Set displayDate
      *
      * @param \DateTime $displayDate
+     *
      * @return StoryRead
      */
     public function setDisplayDate($displayDate)
@@ -609,9 +624,9 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Get display_date
+     * Get displayDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDisplayDate()
     {
@@ -619,9 +634,10 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Set named_section_id
+     * Set namedSectionId
      *
      * @param integer $namedSectionId
+     *
      * @return StoryRead
      */
     public function setNamedSectionId($namedSectionId)
@@ -632,9 +648,9 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Get named_section_id
+     * Get namedSectionId
      *
-     * @return integer 
+     * @return integer
      */
     public function getNamedSectionId()
     {
@@ -645,6 +661,7 @@ class StoryRead extends \Entity\Entity\Base
      * Set fixture
      *
      * @param string $fixture
+     *
      * @return StoryRead
      */
     public function setFixture($fixture)
@@ -657,7 +674,7 @@ class StoryRead extends \Entity\Entity\Base
     /**
      * Get fixture
      *
-     * @return string 
+     * @return string
      */
     public function getFixture()
     {
@@ -668,6 +685,7 @@ class StoryRead extends \Entity\Entity\Base
      * Set byline
      *
      * @param string $byline
+     *
      * @return StoryRead
      */
     public function setByline($byline)
@@ -680,7 +698,7 @@ class StoryRead extends \Entity\Entity\Base
     /**
      * Get byline
      *
-     * @return string 
+     * @return string
      */
     public function getByline()
     {
@@ -691,6 +709,7 @@ class StoryRead extends \Entity\Entity\Base
      * Set bylineinfo
      *
      * @param string $bylineinfo
+     *
      * @return StoryRead
      */
     public function setBylineinfo($bylineinfo)
@@ -703,7 +722,7 @@ class StoryRead extends \Entity\Entity\Base
     /**
      * Get bylineinfo
      *
-     * @return string 
+     * @return string
      */
     public function getBylineinfo()
     {
@@ -711,9 +730,10 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Set original_byline
+     * Set originalByline
      *
      * @param string $originalByline
+     *
      * @return StoryRead
      */
     public function setOriginalByline($originalByline)
@@ -724,9 +744,9 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Get original_byline
+     * Get originalByline
      *
-     * @return string 
+     * @return string
      */
     public function getOriginalByline()
     {
@@ -737,6 +757,7 @@ class StoryRead extends \Entity\Entity\Base
      * Set tagline
      *
      * @param string $tagline
+     *
      * @return StoryRead
      */
     public function setTagline($tagline)
@@ -749,7 +770,7 @@ class StoryRead extends \Entity\Entity\Base
     /**
      * Get tagline
      *
-     * @return string 
+     * @return string
      */
     public function getTagline()
     {
@@ -760,6 +781,7 @@ class StoryRead extends \Entity\Entity\Base
      * Set copyrite
      *
      * @param string $copyrite
+     *
      * @return StoryRead
      */
     public function setCopyrite($copyrite)
@@ -772,7 +794,7 @@ class StoryRead extends \Entity\Entity\Base
     /**
      * Get copyrite
      *
-     * @return string 
+     * @return string
      */
     public function getCopyrite()
     {
@@ -783,6 +805,7 @@ class StoryRead extends \Entity\Entity\Base
      * Set teaser
      *
      * @param string $teaser
+     *
      * @return StoryRead
      */
     public function setTeaser($teaser)
@@ -795,7 +818,7 @@ class StoryRead extends \Entity\Entity\Base
     /**
      * Get teaser
      *
-     * @return string 
+     * @return string
      */
     public function getTeaser()
     {
@@ -803,9 +826,10 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Set editors_note
+     * Set editorsNote
      *
      * @param string $editorsNote
+     *
      * @return StoryRead
      */
     public function setEditorsNote($editorsNote)
@@ -816,9 +840,9 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Get editors_note
+     * Get editorsNote
      *
-     * @return string 
+     * @return string
      */
     public function getEditorsNote()
     {
@@ -829,6 +853,7 @@ class StoryRead extends \Entity\Entity\Base
      * Set headline
      *
      * @param string $headline
+     *
      * @return StoryRead
      */
     public function setHeadline($headline)
@@ -841,7 +866,7 @@ class StoryRead extends \Entity\Entity\Base
     /**
      * Get headline
      *
-     * @return string 
+     * @return string
      */
     public function getHeadline()
     {
@@ -852,6 +877,7 @@ class StoryRead extends \Entity\Entity\Base
      * Set subhead
      *
      * @param string $subhead
+     *
      * @return StoryRead
      */
     public function setSubhead($subhead)
@@ -864,7 +890,7 @@ class StoryRead extends \Entity\Entity\Base
     /**
      * Get subhead
      *
-     * @return string 
+     * @return string
      */
     public function getSubhead()
     {
@@ -872,9 +898,10 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Set external_url
+     * Set externalUrl
      *
      * @param string $externalUrl
+     *
      * @return StoryRead
      */
     public function setExternalUrl($externalUrl)
@@ -885,9 +912,9 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Get external_url
+     * Get externalUrl
      *
-     * @return string 
+     * @return string
      */
     public function getExternalUrl()
     {
@@ -895,9 +922,10 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Set publication_src
+     * Set publicationSrc
      *
      * @param string $publicationSrc
+     *
      * @return StoryRead
      */
     public function setPublicationSrc($publicationSrc)
@@ -908,9 +936,9 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Get publication_src
+     * Get publicationSrc
      *
-     * @return string 
+     * @return string
      */
     public function getPublicationSrc()
     {
@@ -918,9 +946,10 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Set body_content
+     * Set bodyContent
      *
      * @param string $bodyContent
+     *
      * @return StoryRead
      */
     public function setBodyContent($bodyContent)
@@ -931,9 +960,9 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Get body_content
+     * Get bodyContent
      *
-     * @return string 
+     * @return string
      */
     public function getBodyContent()
     {
@@ -941,9 +970,10 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_premium
+     * Set isPremium
      *
      * @param string $isPremium
+     *
      * @return StoryRead
      */
     public function setIsPremium($isPremium)
@@ -954,9 +984,9 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_premium
+     * Get isPremium
      *
-     * @return string 
+     * @return string
      */
     public function getIsPremium()
     {
@@ -964,9 +994,10 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Set teaser_headline
+     * Set teaserHeadline
      *
      * @param string $teaserHeadline
+     *
      * @return StoryRead
      */
     public function setTeaserHeadline($teaserHeadline)
@@ -977,9 +1008,9 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Get teaser_headline
+     * Get teaserHeadline
      *
-     * @return string 
+     * @return string
      */
     public function getTeaserHeadline()
     {
@@ -987,9 +1018,10 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Set default_skin
+     * Set defaultSkin
      *
      * @param string $defaultSkin
+     *
      * @return StoryRead
      */
     public function setDefaultSkin($defaultSkin)
@@ -1000,9 +1032,9 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Get default_skin
+     * Get defaultSkin
      *
-     * @return string 
+     * @return string
      */
     public function getDefaultSkin()
     {
@@ -1010,9 +1042,10 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Set parent_story_id
+     * Set parentStoryId
      *
      * @param integer $parentStoryId
+     *
      * @return StoryRead
      */
     public function setParentStoryId($parentStoryId)
@@ -1023,9 +1056,9 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Get parent_story_id
+     * Get parentStoryId
      *
-     * @return integer 
+     * @return integer
      */
     public function getParentStoryId()
     {
@@ -1033,32 +1066,33 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Add Companies
+     * Add company
      *
-     * @param \Entity\Bzjpreview\StoryEntityCompany $companies
+     * @param \Entity\Bzjpreview\StoryEntityCompany $company
+     *
      * @return StoryRead
      */
-    public function addCompany(\Entity\Bzjpreview\StoryEntityCompany $companies)
+    public function addCompany(\Entity\Bzjpreview\StoryEntityCompany $company)
     {
-        $this->Companies[] = $companies;
+        $this->Companies[] = $company;
 
         return $this;
     }
 
     /**
-     * Remove Companies
+     * Remove company
      *
-     * @param \Entity\Bzjpreview\StoryEntityCompany $companies
+     * @param \Entity\Bzjpreview\StoryEntityCompany $company
      */
-    public function removeCompany(\Entity\Bzjpreview\StoryEntityCompany $companies)
+    public function removeCompany(\Entity\Bzjpreview\StoryEntityCompany $company)
     {
-        $this->Companies->removeElement($companies);
+        $this->Companies->removeElement($company);
     }
 
     /**
-     * Get Companies
+     * Get companies
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getCompanies()
     {
@@ -1066,32 +1100,33 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Add People
+     * Add person
      *
-     * @param \Entity\Bzjpreview\StoryPerson $people
+     * @param \Entity\Bzjpreview\StoryPerson $person
+     *
      * @return StoryRead
      */
-    public function addPerson(\Entity\Bzjpreview\StoryPerson $people)
+    public function addPerson(\Entity\Bzjpreview\StoryPerson $person)
     {
-        $this->People[] = $people;
+        $this->People[] = $person;
 
         return $this;
     }
 
     /**
-     * Remove People
+     * Remove person
      *
-     * @param \Entity\Bzjpreview\StoryPerson $people
+     * @param \Entity\Bzjpreview\StoryPerson $person
      */
-    public function removePerson(\Entity\Bzjpreview\StoryPerson $people)
+    public function removePerson(\Entity\Bzjpreview\StoryPerson $person)
     {
-        $this->People->removeElement($people);
+        $this->People->removeElement($person);
     }
 
     /**
-     * Get People
+     * Get people
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getPeople()
     {
@@ -1099,32 +1134,33 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Add Industries
+     * Add industry
      *
-     * @param \Entity\Bzjpreview\StoryVerticalSubtopic $industries
+     * @param \Entity\Bzjpreview\StoryVerticalSubtopic $industry
+     *
      * @return StoryRead
      */
-    public function addIndustry(\Entity\Bzjpreview\StoryVerticalSubtopic $industries)
+    public function addIndustry(\Entity\Bzjpreview\StoryVerticalSubtopic $industry)
     {
-        $this->Industries[] = $industries;
+        $this->Industries[] = $industry;
 
         return $this;
     }
 
     /**
-     * Remove Industries
+     * Remove industry
      *
-     * @param \Entity\Bzjpreview\StoryVerticalSubtopic $industries
+     * @param \Entity\Bzjpreview\StoryVerticalSubtopic $industry
      */
-    public function removeIndustry(\Entity\Bzjpreview\StoryVerticalSubtopic $industries)
+    public function removeIndustry(\Entity\Bzjpreview\StoryVerticalSubtopic $industry)
     {
-        $this->Industries->removeElement($industries);
+        $this->Industries->removeElement($industry);
     }
 
     /**
-     * Get Industries
+     * Get industries
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getIndustries()
     {
@@ -1132,32 +1168,33 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Add Images
+     * Add image
      *
-     * @param \Entity\Bzjpreview\StoryImage $images
+     * @param \Entity\Bzjpreview\StoryImage $image
+     *
      * @return StoryRead
      */
-    public function addImage(\Entity\Bzjpreview\StoryImage $images)
+    public function addImage(\Entity\Bzjpreview\StoryImage $image)
     {
-        $this->Images[] = $images;
+        $this->Images[] = $image;
 
         return $this;
     }
 
     /**
-     * Remove Images
+     * Remove image
      *
-     * @param \Entity\Bzjpreview\StoryImage $images
+     * @param \Entity\Bzjpreview\StoryImage $image
      */
-    public function removeImage(\Entity\Bzjpreview\StoryImage $images)
+    public function removeImage(\Entity\Bzjpreview\StoryImage $image)
     {
-        $this->Images->removeElement($images);
+        $this->Images->removeElement($image);
     }
 
     /**
-     * Get Images
+     * Get images
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getImages()
     {
@@ -1165,32 +1202,33 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Add SpecialCategories
+     * Add specialCategory
      *
-     * @param \Entity\Bzjpreview\StorySpecialCategory $specialCategories
+     * @param \Entity\Bzjpreview\StorySpecialCategory $specialCategory
+     *
      * @return StoryRead
      */
-    public function addSpecialCategory(\Entity\Bzjpreview\StorySpecialCategory $specialCategories)
+    public function addSpecialCategory(\Entity\Bzjpreview\StorySpecialCategory $specialCategory)
     {
-        $this->SpecialCategories[] = $specialCategories;
+        $this->SpecialCategories[] = $specialCategory;
 
         return $this;
     }
 
     /**
-     * Remove SpecialCategories
+     * Remove specialCategory
      *
-     * @param \Entity\Bzjpreview\StorySpecialCategory $specialCategories
+     * @param \Entity\Bzjpreview\StorySpecialCategory $specialCategory
      */
-    public function removeSpecialCategory(\Entity\Bzjpreview\StorySpecialCategory $specialCategories)
+    public function removeSpecialCategory(\Entity\Bzjpreview\StorySpecialCategory $specialCategory)
     {
-        $this->SpecialCategories->removeElement($specialCategories);
+        $this->SpecialCategories->removeElement($specialCategory);
     }
 
     /**
-     * Get SpecialCategories
+     * Get specialCategories
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSpecialCategories()
     {
@@ -1198,35 +1236,37 @@ class StoryRead extends \Entity\Entity\Base
     }
 
     /**
-     * Add Corrections
+     * Add correction
      *
-     * @param \Entity\Bzjpreview\StoryCorrections $corrections
+     * @param \Entity\Bzjpreview\StoryCorrections $correction
+     *
      * @return StoryRead
      */
-    public function addCorrection(\Entity\Bzjpreview\StoryCorrections $corrections)
+    public function addCorrection(\Entity\Bzjpreview\StoryCorrections $correction)
     {
-        $this->Corrections[] = $corrections;
+        $this->Corrections[] = $correction;
 
         return $this;
     }
 
     /**
-     * Remove Corrections
+     * Remove correction
      *
-     * @param \Entity\Bzjpreview\StoryCorrections $corrections
+     * @param \Entity\Bzjpreview\StoryCorrections $correction
      */
-    public function removeCorrection(\Entity\Bzjpreview\StoryCorrections $corrections)
+    public function removeCorrection(\Entity\Bzjpreview\StoryCorrections $correction)
     {
-        $this->Corrections->removeElement($corrections);
+        $this->Corrections->removeElement($correction);
     }
 
     /**
-     * Get Corrections
+     * Get corrections
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getCorrections()
     {
         return $this->Corrections;
     }
 }
+

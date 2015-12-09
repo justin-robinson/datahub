@@ -385,23 +385,23 @@ class PulseQuestion extends \Entity\Bzjpreview\PulseQuestion implements \Doctrin
     /**
      * {@inheritDoc}
      */
-    public function addOption(\Entity\Bzjpreview\PulseQuestionOption $options)
+    public function addOption(\Entity\Bzjpreview\PulseQuestionOption $option)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addOption', array($options));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addOption', array($option));
 
-        return parent::addOption($options);
+        return parent::addOption($option);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeOption(\Entity\Bzjpreview\PulseQuestionOption $options)
+    public function removeOption(\Entity\Bzjpreview\PulseQuestionOption $option)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeOption', array($options));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeOption', array($option));
 
-        return parent::removeOption($options);
+        return parent::removeOption($option);
     }
 
     /**

@@ -2,8 +2,6 @@
 
 namespace Entity\Bzjpreview;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * PulseQuestionOption
  */
@@ -56,9 +54,9 @@ class PulseQuestionOption extends \Entity\Entity\Base
 
 
     /**
-     * Get option_id
+     * Get optionId
      *
-     * @return integer 
+     * @return integer
      */
     public function getOptionId()
     {
@@ -66,9 +64,10 @@ class PulseQuestionOption extends \Entity\Entity\Base
     }
 
     /**
-     * Set question_id
+     * Set questionId
      *
      * @param integer $questionId
+     *
      * @return PulseQuestionOption
      */
     public function setQuestionId($questionId)
@@ -79,9 +78,9 @@ class PulseQuestionOption extends \Entity\Entity\Base
     }
 
     /**
-     * Get question_id
+     * Get questionId
      *
-     * @return integer 
+     * @return integer
      */
     public function getQuestionId()
     {
@@ -92,6 +91,7 @@ class PulseQuestionOption extends \Entity\Entity\Base
      * Set ord
      *
      * @param integer $ord
+     *
      * @return PulseQuestionOption
      */
     public function setOrd($ord)
@@ -104,7 +104,7 @@ class PulseQuestionOption extends \Entity\Entity\Base
     /**
      * Get ord
      *
-     * @return integer 
+     * @return integer
      */
     public function getOrd()
     {
@@ -115,6 +115,7 @@ class PulseQuestionOption extends \Entity\Entity\Base
      * Set choice
      *
      * @param string $choice
+     *
      * @return PulseQuestionOption
      */
     public function setChoice($choice)
@@ -127,7 +128,7 @@ class PulseQuestionOption extends \Entity\Entity\Base
     /**
      * Get choice
      *
-     * @return string 
+     * @return string
      */
     public function getChoice()
     {
@@ -135,9 +136,10 @@ class PulseQuestionOption extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_correct
+     * Set isCorrect
      *
      * @param boolean $isCorrect
+     *
      * @return PulseQuestionOption
      */
     public function setIsCorrect($isCorrect)
@@ -148,9 +150,9 @@ class PulseQuestionOption extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_correct
+     * Get isCorrect
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsCorrect()
     {
@@ -158,9 +160,10 @@ class PulseQuestionOption extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return PulseQuestionOption
      */
     public function setCreatedAt($createdAt)
@@ -171,9 +174,9 @@ class PulseQuestionOption extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -181,9 +184,10 @@ class PulseQuestionOption extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return PulseQuestionOption
      */
     public function setUpdatedAt($updatedAt)
@@ -194,9 +198,9 @@ class PulseQuestionOption extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -204,9 +208,10 @@ class PulseQuestionOption extends \Entity\Entity\Base
     }
 
     /**
-     * Set deleted_at
+     * Set deletedAt
      *
      * @param \DateTime $deletedAt
+     *
      * @return PulseQuestionOption
      */
     public function setDeletedAt($deletedAt)
@@ -217,9 +222,9 @@ class PulseQuestionOption extends \Entity\Entity\Base
     }
 
     /**
-     * Get deleted_at
+     * Get deletedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDeletedAt()
     {
@@ -227,9 +232,10 @@ class PulseQuestionOption extends \Entity\Entity\Base
     }
 
     /**
-     * Set Question
+     * Set question
      *
      * @param \Entity\Bzjpreview\PulseQuestion $question
+     *
      * @return PulseQuestionOption
      */
     public function setQuestion(\Entity\Bzjpreview\PulseQuestion $question = null)
@@ -240,12 +246,13 @@ class PulseQuestionOption extends \Entity\Entity\Base
     }
 
     /**
-     * Get Question
+     * Get question
      *
-     * @return \Entity\Bzjpreview\PulseQuestion 
+     * @return \Entity\Bzjpreview\PulseQuestion
      */
     public function getQuestion()
     {
         return $this->Question;
     }
 }
+

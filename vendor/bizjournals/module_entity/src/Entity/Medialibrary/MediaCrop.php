@@ -2,8 +2,6 @@
 
 namespace Entity\Medialibrary;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * MediaCrop
  */
@@ -51,9 +49,9 @@ class MediaCrop extends \Entity\Entity\Base
 
 
     /**
-     * Get crop_id
+     * Get cropId
      *
-     * @return integer 
+     * @return integer
      */
     public function getCropId()
     {
@@ -61,9 +59,10 @@ class MediaCrop extends \Entity\Entity\Base
     }
 
     /**
-     * Set media_id
+     * Set mediaId
      *
      * @param integer $mediaId
+     *
      * @return MediaCrop
      */
     public function setMediaId($mediaId)
@@ -74,9 +73,9 @@ class MediaCrop extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_id
+     * Get mediaId
      *
-     * @return integer 
+     * @return integer
      */
     public function getMediaId()
     {
@@ -87,6 +86,7 @@ class MediaCrop extends \Entity\Entity\Base
      * Set ratio
      *
      * @param string $ratio
+     *
      * @return MediaCrop
      */
     public function setRatio($ratio)
@@ -99,7 +99,7 @@ class MediaCrop extends \Entity\Entity\Base
     /**
      * Get ratio
      *
-     * @return string 
+     * @return string
      */
     public function getRatio()
     {
@@ -110,6 +110,7 @@ class MediaCrop extends \Entity\Entity\Base
      * Set cropdata
      *
      * @param string $cropdata
+     *
      * @return MediaCrop
      */
     public function setCropdata($cropdata)
@@ -122,7 +123,7 @@ class MediaCrop extends \Entity\Entity\Base
     /**
      * Get cropdata
      *
-     * @return string 
+     * @return string
      */
     public function getCropdata()
     {
@@ -130,9 +131,10 @@ class MediaCrop extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_default
+     * Set isDefault
      *
      * @param boolean $isDefault
+     *
      * @return MediaCrop
      */
     public function setIsDefault($isDefault)
@@ -143,9 +145,9 @@ class MediaCrop extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_default
+     * Get isDefault
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsDefault()
     {
@@ -153,9 +155,10 @@ class MediaCrop extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return MediaCrop
      */
     public function setCreatedAt($createdAt)
@@ -166,9 +169,9 @@ class MediaCrop extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -176,9 +179,10 @@ class MediaCrop extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return MediaCrop
      */
     public function setUpdatedAt($updatedAt)
@@ -189,9 +193,9 @@ class MediaCrop extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -199,9 +203,10 @@ class MediaCrop extends \Entity\Entity\Base
     }
 
     /**
-     * Set Media
+     * Set media
      *
      * @param \Entity\Medialibrary\Media $media
+     *
      * @return MediaCrop
      */
     public function setMedia(\Entity\Medialibrary\Media $media = null)
@@ -212,12 +217,13 @@ class MediaCrop extends \Entity\Entity\Base
     }
 
     /**
-     * Get Media
+     * Get media
      *
-     * @return \Entity\Medialibrary\Media 
+     * @return \Entity\Medialibrary\Media
      */
     public function getMedia()
     {
         return $this->Media;
     }
 }
+

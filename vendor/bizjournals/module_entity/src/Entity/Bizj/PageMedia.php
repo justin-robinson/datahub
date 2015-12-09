@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * PageMedia
  */
@@ -101,9 +99,10 @@ class PageMedia extends \Entity\Entity\Base
 
 
     /**
-     * Set page_id
+     * Set pageId
      *
      * @param integer $pageId
+     *
      * @return PageMedia
      */
     public function setPageId($pageId)
@@ -114,9 +113,9 @@ class PageMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get page_id
+     * Get pageId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPageId()
     {
@@ -127,6 +126,7 @@ class PageMedia extends \Entity\Entity\Base
      * Set ord
      *
      * @param integer $ord
+     *
      * @return PageMedia
      */
     public function setOrd($ord)
@@ -139,7 +139,7 @@ class PageMedia extends \Entity\Entity\Base
     /**
      * Get ord
      *
-     * @return integer 
+     * @return integer
      */
     public function getOrd()
     {
@@ -147,9 +147,10 @@ class PageMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set media_host
+     * Set mediaHost
      *
      * @param string $mediaHost
+     *
      * @return PageMedia
      */
     public function setMediaHost($mediaHost)
@@ -160,9 +161,9 @@ class PageMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_host
+     * Get mediaHost
      *
-     * @return string 
+     * @return string
      */
     public function getMediaHost()
     {
@@ -170,9 +171,10 @@ class PageMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set media_uri
+     * Set mediaUri
      *
      * @param string $mediaUri
+     *
      * @return PageMedia
      */
     public function setMediaUri($mediaUri)
@@ -183,9 +185,9 @@ class PageMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_uri
+     * Get mediaUri
      *
-     * @return string 
+     * @return string
      */
     public function getMediaUri()
     {
@@ -193,9 +195,10 @@ class PageMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set crop_data
+     * Set cropData
      *
      * @param string $cropData
+     *
      * @return PageMedia
      */
     public function setCropData($cropData)
@@ -206,9 +209,9 @@ class PageMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get crop_data
+     * Get cropData
      *
-     * @return string 
+     * @return string
      */
     public function getCropData()
     {
@@ -216,9 +219,10 @@ class PageMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set media_source
+     * Set mediaSource
      *
      * @param string $mediaSource
+     *
      * @return PageMedia
      */
     public function setMediaSource($mediaSource)
@@ -229,9 +233,9 @@ class PageMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_source
+     * Get mediaSource
      *
-     * @return string 
+     * @return string
      */
     public function getMediaSource()
     {
@@ -239,9 +243,10 @@ class PageMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set external_id
+     * Set externalId
      *
      * @param integer $externalId
+     *
      * @return PageMedia
      */
     public function setExternalId($externalId)
@@ -252,9 +257,9 @@ class PageMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get external_id
+     * Get externalId
      *
-     * @return integer 
+     * @return integer
      */
     public function getExternalId()
     {
@@ -262,9 +267,10 @@ class PageMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set media_type
+     * Set mediaType
      *
      * @param string $mediaType
+     *
      * @return PageMedia
      */
     public function setMediaType($mediaType)
@@ -275,9 +281,9 @@ class PageMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_type
+     * Get mediaType
      *
-     * @return string 
+     * @return string
      */
     public function getMediaType()
     {
@@ -288,6 +294,7 @@ class PageMedia extends \Entity\Entity\Base
      * Set title
      *
      * @param string $title
+     *
      * @return PageMedia
      */
     public function setTitle($title)
@@ -300,7 +307,7 @@ class PageMedia extends \Entity\Entity\Base
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -311,6 +318,7 @@ class PageMedia extends \Entity\Entity\Base
      * Set caption
      *
      * @param string $caption
+     *
      * @return PageMedia
      */
     public function setCaption($caption)
@@ -323,7 +331,7 @@ class PageMedia extends \Entity\Entity\Base
     /**
      * Get caption
      *
-     * @return string 
+     * @return string
      */
     public function getCaption()
     {
@@ -331,9 +339,10 @@ class PageMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set alt_text
+     * Set altText
      *
      * @param string $altText
+     *
      * @return PageMedia
      */
     public function setAltText($altText)
@@ -344,9 +353,9 @@ class PageMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get alt_text
+     * Get altText
      *
-     * @return string 
+     * @return string
      */
     public function getAltText()
     {
@@ -354,9 +363,10 @@ class PageMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set link_url
+     * Set linkUrl
      *
      * @param string $linkUrl
+     *
      * @return PageMedia
      */
     public function setLinkUrl($linkUrl)
@@ -367,9 +377,9 @@ class PageMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get link_url
+     * Get linkUrl
      *
-     * @return string 
+     * @return string
      */
     public function getLinkUrl()
     {
@@ -377,9 +387,10 @@ class PageMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set art_credit
+     * Set artCredit
      *
      * @param string $artCredit
+     *
      * @return PageMedia
      */
     public function setArtCredit($artCredit)
@@ -390,9 +401,9 @@ class PageMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get art_credit
+     * Get artCredit
      *
-     * @return string 
+     * @return string
      */
     public function getArtCredit()
     {
@@ -400,9 +411,10 @@ class PageMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set orig_height
+     * Set origHeight
      *
      * @param integer $origHeight
+     *
      * @return PageMedia
      */
     public function setOrigHeight($origHeight)
@@ -413,9 +425,9 @@ class PageMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get orig_height
+     * Get origHeight
      *
-     * @return integer 
+     * @return integer
      */
     public function getOrigHeight()
     {
@@ -423,9 +435,10 @@ class PageMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set orig_width
+     * Set origWidth
      *
      * @param integer $origWidth
+     *
      * @return PageMedia
      */
     public function setOrigWidth($origWidth)
@@ -436,9 +449,9 @@ class PageMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get orig_width
+     * Get origWidth
      *
-     * @return integer 
+     * @return integer
      */
     public function getOrigWidth()
     {
@@ -449,6 +462,7 @@ class PageMedia extends \Entity\Entity\Base
      * Set flag
      *
      * @param boolean $flag
+     *
      * @return PageMedia
      */
     public function setFlag($flag)
@@ -461,7 +475,7 @@ class PageMedia extends \Entity\Entity\Base
     /**
      * Get flag
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getFlag()
     {
@@ -469,9 +483,10 @@ class PageMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set additional_data
+     * Set additionalData
      *
      * @param string $additionalData
+     *
      * @return PageMedia
      */
     public function setAdditionalData($additionalData)
@@ -482,9 +497,9 @@ class PageMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get additional_data
+     * Get additionalData
      *
-     * @return string 
+     * @return string
      */
     public function getAdditionalData()
     {
@@ -492,9 +507,10 @@ class PageMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set Page
+     * Set page
      *
      * @param \Entity\Bizj\Page $page
+     *
      * @return PageMedia
      */
     public function setPage(\Entity\Bizj\Page $page = null)
@@ -505,12 +521,13 @@ class PageMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get Page
+     * Get page
      *
-     * @return \Entity\Bizj\Page 
+     * @return \Entity\Bizj\Page
      */
     public function getPage()
     {
         return $this->Page;
     }
 }
+

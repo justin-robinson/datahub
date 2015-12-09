@@ -2,8 +2,6 @@
 
 namespace Entity\NascarIllustrated;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Product
  */
@@ -138,9 +136,9 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Get product_id
+     * Get productId
      *
-     * @return integer 
+     * @return integer
      */
     public function getProductId()
     {
@@ -148,9 +146,10 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Set category_id
+     * Set categoryId
      *
      * @param integer $categoryId
+     *
      * @return Product
      */
     public function setCategoryId($categoryId)
@@ -161,9 +160,9 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Get category_id
+     * Get categoryId
      *
-     * @return integer 
+     * @return integer
      */
     public function getCategoryId()
     {
@@ -171,9 +170,10 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Set sku_code
+     * Set skuCode
      *
      * @param string $skuCode
+     *
      * @return Product
      */
     public function setSkuCode($skuCode)
@@ -184,9 +184,9 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Get sku_code
+     * Get skuCode
      *
-     * @return string 
+     * @return string
      */
     public function getSkuCode()
     {
@@ -194,9 +194,10 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Set product_name
+     * Set productName
      *
      * @param string $productName
+     *
      * @return Product
      */
     public function setProductName($productName)
@@ -207,9 +208,9 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Get product_name
+     * Get productName
      *
-     * @return string 
+     * @return string
      */
     public function getProductName()
     {
@@ -220,6 +221,7 @@ class Product extends \Entity\Entity\Base
      * Set slug
      *
      * @param string $slug
+     *
      * @return Product
      */
     public function setSlug($slug)
@@ -232,7 +234,7 @@ class Product extends \Entity\Entity\Base
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug()
     {
@@ -240,9 +242,10 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Set issue_date
+     * Set issueDate
      *
      * @param \DateTime $issueDate
+     *
      * @return Product
      */
     public function setIssueDate($issueDate)
@@ -253,9 +256,9 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Get issue_date
+     * Get issueDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getIssueDate()
     {
@@ -266,6 +269,7 @@ class Product extends \Entity\Entity\Base
      * Set teaser
      *
      * @param string $teaser
+     *
      * @return Product
      */
     public function setTeaser($teaser)
@@ -278,7 +282,7 @@ class Product extends \Entity\Entity\Base
     /**
      * Get teaser
      *
-     * @return string 
+     * @return string
      */
     public function getTeaser()
     {
@@ -289,6 +293,7 @@ class Product extends \Entity\Entity\Base
      * Set description
      *
      * @param string $description
+     *
      * @return Product
      */
     public function setDescription($description)
@@ -301,7 +306,7 @@ class Product extends \Entity\Entity\Base
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -309,9 +314,10 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_active
+     * Set isActive
      *
      * @param boolean $isActive
+     *
      * @return Product
      */
     public function setIsActive($isActive)
@@ -322,9 +328,9 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_active
+     * Get isActive
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsActive()
     {
@@ -332,9 +338,10 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_hidden
+     * Set isHidden
      *
      * @param boolean $isHidden
+     *
      * @return Product
      */
     public function setIsHidden($isHidden)
@@ -345,9 +352,9 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_hidden
+     * Get isHidden
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsHidden()
     {
@@ -355,9 +362,10 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_subscription
+     * Set isSubscription
      *
      * @param boolean $isSubscription
+     *
      * @return Product
      */
     public function setIsSubscription($isSubscription)
@@ -368,9 +376,9 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_subscription
+     * Get isSubscription
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsSubscription()
     {
@@ -378,9 +386,10 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Set key_code
+     * Set keyCode
      *
      * @param string $keyCode
+     *
      * @return Product
      */
     public function setKeyCode($keyCode)
@@ -391,9 +400,9 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Get key_code
+     * Get keyCode
      *
-     * @return string 
+     * @return string
      */
     public function getKeyCode()
     {
@@ -404,6 +413,7 @@ class Product extends \Entity\Entity\Base
      * Set price
      *
      * @param integer $price
+     *
      * @return Product
      */
     public function setPrice($price)
@@ -416,7 +426,7 @@ class Product extends \Entity\Entity\Base
     /**
      * Get price
      *
-     * @return integer 
+     * @return integer
      */
     public function getPrice()
     {
@@ -424,9 +434,10 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Set domestic_ratecode
+     * Set domesticRatecode
      *
      * @param string $domesticRatecode
+     *
      * @return Product
      */
     public function setDomesticRatecode($domesticRatecode)
@@ -437,9 +448,9 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Get domestic_ratecode
+     * Get domesticRatecode
      *
-     * @return string 
+     * @return string
      */
     public function getDomesticRatecode()
     {
@@ -447,9 +458,10 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Set domestic_charge
+     * Set domesticCharge
      *
      * @param integer $domesticCharge
+     *
      * @return Product
      */
     public function setDomesticCharge($domesticCharge)
@@ -460,9 +472,9 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Get domestic_charge
+     * Get domesticCharge
      *
-     * @return integer 
+     * @return integer
      */
     public function getDomesticCharge()
     {
@@ -470,9 +482,10 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Set ca_mx_ratecode
+     * Set caMxRatecode
      *
      * @param string $caMxRatecode
+     *
      * @return Product
      */
     public function setCaMxRatecode($caMxRatecode)
@@ -483,9 +496,9 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Get ca_mx_ratecode
+     * Get caMxRatecode
      *
-     * @return string 
+     * @return string
      */
     public function getCaMxRatecode()
     {
@@ -493,9 +506,10 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Set ca_mx_charge
+     * Set caMxCharge
      *
      * @param integer $caMxCharge
+     *
      * @return Product
      */
     public function setCaMxCharge($caMxCharge)
@@ -506,9 +520,9 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Get ca_mx_charge
+     * Get caMxCharge
      *
-     * @return integer 
+     * @return integer
      */
     public function getCaMxCharge()
     {
@@ -516,9 +530,10 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Set international_ratecode
+     * Set internationalRatecode
      *
      * @param string $internationalRatecode
+     *
      * @return Product
      */
     public function setInternationalRatecode($internationalRatecode)
@@ -529,9 +544,9 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Get international_ratecode
+     * Get internationalRatecode
      *
-     * @return string 
+     * @return string
      */
     public function getInternationalRatecode()
     {
@@ -539,9 +554,10 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Set international_charge
+     * Set internationalCharge
      *
      * @param integer $internationalCharge
+     *
      * @return Product
      */
     public function setInternationalCharge($internationalCharge)
@@ -552,9 +568,9 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Get international_charge
+     * Get internationalCharge
      *
-     * @return integer 
+     * @return integer
      */
     public function getInternationalCharge()
     {
@@ -562,9 +578,10 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Set original_issue_id
+     * Set originalIssueId
      *
      * @param integer $originalIssueId
+     *
      * @return Product
      */
     public function setOriginalIssueId($originalIssueId)
@@ -575,9 +592,9 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Get original_issue_id
+     * Get originalIssueId
      *
-     * @return integer 
+     * @return integer
      */
     public function getOriginalIssueId()
     {
@@ -585,9 +602,10 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return Product
      */
     public function setCreatedAt($createdAt)
@@ -598,9 +616,9 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -608,9 +626,10 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return Product
      */
     public function setUpdatedAt($updatedAt)
@@ -621,9 +640,9 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -631,32 +650,33 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Add Images
+     * Add image
      *
-     * @param \Entity\NascarIllustrated\ProductImage $images
+     * @param \Entity\NascarIllustrated\ProductImage $image
+     *
      * @return Product
      */
-    public function addImage(\Entity\NascarIllustrated\ProductImage $images)
+    public function addImage(\Entity\NascarIllustrated\ProductImage $image)
     {
-        $this->Images[] = $images;
+        $this->Images[] = $image;
 
         return $this;
     }
 
     /**
-     * Remove Images
+     * Remove image
      *
-     * @param \Entity\NascarIllustrated\ProductImage $images
+     * @param \Entity\NascarIllustrated\ProductImage $image
      */
-    public function removeImage(\Entity\NascarIllustrated\ProductImage $images)
+    public function removeImage(\Entity\NascarIllustrated\ProductImage $image)
     {
-        $this->Images->removeElement($images);
+        $this->Images->removeElement($image);
     }
 
     /**
-     * Get Images
+     * Get images
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getImages()
     {
@@ -664,9 +684,10 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Set Category
+     * Set category
      *
      * @param \Entity\NascarIllustrated\ProductCategory $category
+     *
      * @return Product
      */
     public function setCategory(\Entity\NascarIllustrated\ProductCategory $category = null)
@@ -677,12 +698,13 @@ class Product extends \Entity\Entity\Base
     }
 
     /**
-     * Get Category
+     * Get category
      *
-     * @return \Entity\NascarIllustrated\ProductCategory 
+     * @return \Entity\NascarIllustrated\ProductCategory
      */
     public function getCategory()
     {
         return $this->Category;
     }
 }
+

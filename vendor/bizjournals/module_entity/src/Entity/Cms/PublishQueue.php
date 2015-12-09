@@ -2,8 +2,6 @@
 
 namespace Entity\Cms;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * PublishQueue
  */
@@ -81,9 +79,9 @@ class PublishQueue extends \Entity\Entity\Base
 
 
     /**
-     * Get queue_id
+     * Get queueId
      *
-     * @return integer 
+     * @return integer
      */
     public function getQueueId()
     {
@@ -91,9 +89,10 @@ class PublishQueue extends \Entity\Entity\Base
     }
 
     /**
-     * Set content_id
+     * Set contentId
      *
      * @param integer $contentId
+     *
      * @return PublishQueue
      */
     public function setContentId($contentId)
@@ -104,9 +103,9 @@ class PublishQueue extends \Entity\Entity\Base
     }
 
     /**
-     * Get content_id
+     * Get contentId
      *
-     * @return integer 
+     * @return integer
      */
     public function getContentId()
     {
@@ -117,6 +116,7 @@ class PublishQueue extends \Entity\Entity\Base
      * Set version
      *
      * @param integer $version
+     *
      * @return PublishQueue
      */
     public function setVersion($version)
@@ -129,7 +129,7 @@ class PublishQueue extends \Entity\Entity\Base
     /**
      * Get version
      *
-     * @return integer 
+     * @return integer
      */
     public function getVersion()
     {
@@ -140,6 +140,7 @@ class PublishQueue extends \Entity\Entity\Base
      * Set action
      *
      * @param string $action
+     *
      * @return PublishQueue
      */
     public function setAction($action)
@@ -152,7 +153,7 @@ class PublishQueue extends \Entity\Entity\Base
     /**
      * Get action
      *
-     * @return string 
+     * @return string
      */
     public function getAction()
     {
@@ -160,9 +161,10 @@ class PublishQueue extends \Entity\Entity\Base
     }
 
     /**
-     * Set run_at
+     * Set runAt
      *
      * @param \DateTime $runAt
+     *
      * @return PublishQueue
      */
     public function setRunAt($runAt)
@@ -173,9 +175,9 @@ class PublishQueue extends \Entity\Entity\Base
     }
 
     /**
-     * Get run_at
+     * Get runAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getRunAt()
     {
@@ -183,9 +185,10 @@ class PublishQueue extends \Entity\Entity\Base
     }
 
     /**
-     * Set queued_by
+     * Set queuedBy
      *
      * @param string $queuedBy
+     *
      * @return PublishQueue
      */
     public function setQueuedBy($queuedBy)
@@ -196,9 +199,9 @@ class PublishQueue extends \Entity\Entity\Base
     }
 
     /**
-     * Get queued_by
+     * Get queuedBy
      *
-     * @return string 
+     * @return string
      */
     public function getQueuedBy()
     {
@@ -206,9 +209,10 @@ class PublishQueue extends \Entity\Entity\Base
     }
 
     /**
-     * Set queued_at
+     * Set queuedAt
      *
      * @param \DateTime $queuedAt
+     *
      * @return PublishQueue
      */
     public function setQueuedAt($queuedAt)
@@ -219,9 +223,9 @@ class PublishQueue extends \Entity\Entity\Base
     }
 
     /**
-     * Get queued_at
+     * Get queuedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getQueuedAt()
     {
@@ -229,9 +233,10 @@ class PublishQueue extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_complete
+     * Set isComplete
      *
      * @param boolean $isComplete
+     *
      * @return PublishQueue
      */
     public function setIsComplete($isComplete)
@@ -242,9 +247,9 @@ class PublishQueue extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_complete
+     * Get isComplete
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsComplete()
     {
@@ -252,9 +257,10 @@ class PublishQueue extends \Entity\Entity\Base
     }
 
     /**
-     * Set completed_at
+     * Set completedAt
      *
      * @param \DateTime $completedAt
+     *
      * @return PublishQueue
      */
     public function setCompletedAt($completedAt)
@@ -265,9 +271,9 @@ class PublishQueue extends \Entity\Entity\Base
     }
 
     /**
-     * Get completed_at
+     * Get completedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCompletedAt()
     {
@@ -275,9 +281,10 @@ class PublishQueue extends \Entity\Entity\Base
     }
 
     /**
-     * Set has_succeeded
+     * Set hasSucceeded
      *
      * @param boolean $hasSucceeded
+     *
      * @return PublishQueue
      */
     public function setHasSucceeded($hasSucceeded)
@@ -288,9 +295,9 @@ class PublishQueue extends \Entity\Entity\Base
     }
 
     /**
-     * Get has_succeeded
+     * Get hasSucceeded
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getHasSucceeded()
     {
@@ -298,9 +305,10 @@ class PublishQueue extends \Entity\Entity\Base
     }
 
     /**
-     * Set has_failed
+     * Set hasFailed
      *
      * @param boolean $hasFailed
+     *
      * @return PublishQueue
      */
     public function setHasFailed($hasFailed)
@@ -311,9 +319,9 @@ class PublishQueue extends \Entity\Entity\Base
     }
 
     /**
-     * Get has_failed
+     * Get hasFailed
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getHasFailed()
     {
@@ -321,9 +329,10 @@ class PublishQueue extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_overridden
+     * Set isOverridden
      *
      * @param boolean $isOverridden
+     *
      * @return PublishQueue
      */
     public function setIsOverridden($isOverridden)
@@ -334,9 +343,9 @@ class PublishQueue extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_overridden
+     * Get isOverridden
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsOverridden()
     {
@@ -344,9 +353,10 @@ class PublishQueue extends \Entity\Entity\Base
     }
 
     /**
-     * Set override_auditlog_id
+     * Set overrideAuditlogId
      *
      * @param integer $overrideAuditlogId
+     *
      * @return PublishQueue
      */
     public function setOverrideAuditlogId($overrideAuditlogId)
@@ -357,9 +367,9 @@ class PublishQueue extends \Entity\Entity\Base
     }
 
     /**
-     * Get override_auditlog_id
+     * Get overrideAuditlogId
      *
-     * @return integer 
+     * @return integer
      */
     public function getOverrideAuditlogId()
     {
@@ -367,9 +377,10 @@ class PublishQueue extends \Entity\Entity\Base
     }
 
     /**
-     * Set Content
+     * Set content
      *
      * @param \Entity\Cms\Content $content
+     *
      * @return PublishQueue
      */
     public function setContent(\Entity\Cms\Content $content = null)
@@ -380,12 +391,13 @@ class PublishQueue extends \Entity\Entity\Base
     }
 
     /**
-     * Get Content
+     * Get content
      *
-     * @return \Entity\Cms\Content 
+     * @return \Entity\Cms\Content
      */
     public function getContent()
     {
         return $this->Content;
     }
 }
+

@@ -2,8 +2,6 @@
 
 namespace Entity\Bzjpreview;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * PulseCrossref
  */
@@ -61,9 +59,9 @@ class PulseCrossref extends \Entity\Entity\Base
 
 
     /**
-     * Get ref_id
+     * Get refId
      *
-     * @return integer 
+     * @return integer
      */
     public function getRefId()
     {
@@ -71,9 +69,10 @@ class PulseCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Set pulse_id
+     * Set pulseId
      *
      * @param integer $pulseId
+     *
      * @return PulseCrossref
      */
     public function setPulseId($pulseId)
@@ -84,9 +83,9 @@ class PulseCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Get pulse_id
+     * Get pulseId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPulseId()
     {
@@ -94,9 +93,10 @@ class PulseCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Set ref_type
+     * Set refType
      *
      * @param string $refType
+     *
      * @return PulseCrossref
      */
     public function setRefType($refType)
@@ -107,9 +107,9 @@ class PulseCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Get ref_type
+     * Get refType
      *
-     * @return string 
+     * @return string
      */
     public function getRefType()
     {
@@ -117,9 +117,10 @@ class PulseCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Set ref_key
+     * Set refKey
      *
      * @param string $refKey
+     *
      * @return PulseCrossref
      */
     public function setRefKey($refKey)
@@ -130,9 +131,9 @@ class PulseCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Get ref_key
+     * Get refKey
      *
-     * @return string 
+     * @return string
      */
     public function getRefKey()
     {
@@ -140,9 +141,10 @@ class PulseCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Set ref_value
+     * Set refValue
      *
      * @param string $refValue
+     *
      * @return PulseCrossref
      */
     public function setRefValue($refValue)
@@ -153,9 +155,9 @@ class PulseCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Get ref_value
+     * Get refValue
      *
-     * @return string 
+     * @return string
      */
     public function getRefValue()
     {
@@ -163,9 +165,10 @@ class PulseCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Set ref_weight
+     * Set refWeight
      *
      * @param integer $refWeight
+     *
      * @return PulseCrossref
      */
     public function setRefWeight($refWeight)
@@ -176,9 +179,9 @@ class PulseCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Get ref_weight
+     * Get refWeight
      *
-     * @return integer 
+     * @return integer
      */
     public function getRefWeight()
     {
@@ -186,9 +189,10 @@ class PulseCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return PulseCrossref
      */
     public function setCreatedAt($createdAt)
@@ -199,9 +203,9 @@ class PulseCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -209,9 +213,10 @@ class PulseCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return PulseCrossref
      */
     public function setUpdatedAt($updatedAt)
@@ -222,9 +227,9 @@ class PulseCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -232,9 +237,10 @@ class PulseCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Set deleted_at
+     * Set deletedAt
      *
      * @param \DateTime $deletedAt
+     *
      * @return PulseCrossref
      */
     public function setDeletedAt($deletedAt)
@@ -245,9 +251,9 @@ class PulseCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Get deleted_at
+     * Get deletedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDeletedAt()
     {
@@ -255,9 +261,10 @@ class PulseCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Set Pulse
+     * Set pulse
      *
      * @param \Entity\Bzjpreview\Pulse $pulse
+     *
      * @return PulseCrossref
      */
     public function setPulse(\Entity\Bzjpreview\Pulse $pulse = null)
@@ -268,12 +275,13 @@ class PulseCrossref extends \Entity\Entity\Base
     }
 
     /**
-     * Get Pulse
+     * Get pulse
      *
-     * @return \Entity\Bzjpreview\Pulse 
+     * @return \Entity\Bzjpreview\Pulse
      */
     public function getPulse()
     {
         return $this->Pulse;
     }
 }
+

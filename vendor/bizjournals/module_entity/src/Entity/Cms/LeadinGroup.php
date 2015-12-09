@@ -2,8 +2,6 @@
 
 namespace Entity\Cms;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * LeadinGroup
  */
@@ -134,9 +132,9 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get group_id
+     * Get groupId
      *
-     * @return integer 
+     * @return integer
      */
     public function getGroupId()
     {
@@ -144,9 +142,10 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set content_type
+     * Set contentType
      *
      * @param string $contentType
+     *
      * @return LeadinGroup
      */
     public function setContentType($contentType)
@@ -157,9 +156,9 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get content_type
+     * Get contentType
      *
-     * @return string 
+     * @return string
      */
     public function getContentType()
     {
@@ -167,9 +166,10 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set display_name
+     * Set displayName
      *
      * @param string $displayName
+     *
      * @return LeadinGroup
      */
     public function setDisplayName($displayName)
@@ -180,9 +180,9 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get display_name
+     * Get displayName
      *
-     * @return string 
+     * @return string
      */
     public function getDisplayName()
     {
@@ -190,9 +190,10 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set group_class
+     * Set groupClass
      *
      * @param string $groupClass
+     *
      * @return LeadinGroup
      */
     public function setGroupClass($groupClass)
@@ -203,9 +204,9 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get group_class
+     * Get groupClass
      *
-     * @return string 
+     * @return string
      */
     public function getGroupClass()
     {
@@ -216,6 +217,7 @@ class LeadinGroup extends \Entity\Entity\Base
      * Set placement
      *
      * @param string $placement
+     *
      * @return LeadinGroup
      */
     public function setPlacement($placement)
@@ -228,7 +230,7 @@ class LeadinGroup extends \Entity\Entity\Base
     /**
      * Get placement
      *
-     * @return string 
+     * @return string
      */
     public function getPlacement()
     {
@@ -236,9 +238,10 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set max_instances
+     * Set maxInstances
      *
      * @param integer $maxInstances
+     *
      * @return LeadinGroup
      */
     public function setMaxInstances($maxInstances)
@@ -249,9 +252,9 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get max_instances
+     * Get maxInstances
      *
-     * @return integer 
+     * @return integer
      */
     public function getMaxInstances()
     {
@@ -259,9 +262,10 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set allow_story_items
+     * Set allowStoryItems
      *
      * @param boolean $allowStoryItems
+     *
      * @return LeadinGroup
      */
     public function setAllowStoryItems($allowStoryItems)
@@ -272,9 +276,9 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get allow_story_items
+     * Get allowStoryItems
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getAllowStoryItems()
     {
@@ -282,9 +286,10 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set allow_group_title
+     * Set allowGroupTitle
      *
      * @param boolean $allowGroupTitle
+     *
      * @return LeadinGroup
      */
     public function setAllowGroupTitle($allowGroupTitle)
@@ -295,9 +300,9 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get allow_group_title
+     * Get allowGroupTitle
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getAllowGroupTitle()
     {
@@ -305,9 +310,10 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set allow_group_teaser
+     * Set allowGroupTeaser
      *
      * @param boolean $allowGroupTeaser
+     *
      * @return LeadinGroup
      */
     public function setAllowGroupTeaser($allowGroupTeaser)
@@ -318,9 +324,9 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get allow_group_teaser
+     * Get allowGroupTeaser
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getAllowGroupTeaser()
     {
@@ -328,9 +334,10 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set allow_curate
+     * Set allowCurate
      *
      * @param boolean $allowCurate
+     *
      * @return LeadinGroup
      */
     public function setAllowCurate($allowCurate)
@@ -341,9 +348,9 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get allow_curate
+     * Get allowCurate
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getAllowCurate()
     {
@@ -351,9 +358,10 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set allow_auto
+     * Set allowAuto
      *
      * @param boolean $allowAuto
+     *
      * @return LeadinGroup
      */
     public function setAllowAuto($allowAuto)
@@ -364,9 +372,9 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get allow_auto
+     * Get allowAuto
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getAllowAuto()
     {
@@ -374,9 +382,10 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set min_items
+     * Set minItems
      *
      * @param integer $minItems
+     *
      * @return LeadinGroup
      */
     public function setMinItems($minItems)
@@ -387,9 +396,9 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get min_items
+     * Get minItems
      *
-     * @return integer 
+     * @return integer
      */
     public function getMinItems()
     {
@@ -397,9 +406,10 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set max_items
+     * Set maxItems
      *
      * @param integer $maxItems
+     *
      * @return LeadinGroup
      */
     public function setMaxItems($maxItems)
@@ -410,9 +420,9 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get max_items
+     * Get maxItems
      *
-     * @return integer 
+     * @return integer
      */
     public function getMaxItems()
     {
@@ -420,9 +430,10 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set allow_external_items
+     * Set allowExternalItems
      *
      * @param boolean $allowExternalItems
+     *
      * @return LeadinGroup
      */
     public function setAllowExternalItems($allowExternalItems)
@@ -433,9 +444,9 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get allow_external_items
+     * Get allowExternalItems
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getAllowExternalItems()
     {
@@ -443,9 +454,10 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set allow_gallery_items
+     * Set allowGalleryItems
      *
      * @param boolean $allowGalleryItems
+     *
      * @return LeadinGroup
      */
     public function setAllowGalleryItems($allowGalleryItems)
@@ -456,9 +468,9 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get allow_gallery_items
+     * Get allowGalleryItems
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getAllowGalleryItems()
     {
@@ -466,9 +478,10 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set allow_video_items
+     * Set allowVideoItems
      *
      * @param boolean $allowVideoItems
+     *
      * @return LeadinGroup
      */
     public function setAllowVideoItems($allowVideoItems)
@@ -479,9 +492,9 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get allow_video_items
+     * Get allowVideoItems
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getAllowVideoItems()
     {
@@ -489,9 +502,10 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set allow_image_upload
+     * Set allowImageUpload
      *
      * @param boolean $allowImageUpload
+     *
      * @return LeadinGroup
      */
     public function setAllowImageUpload($allowImageUpload)
@@ -502,9 +516,9 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get allow_image_upload
+     * Get allowImageUpload
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getAllowImageUpload()
     {
@@ -512,9 +526,10 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set allow_kicker
+     * Set allowKicker
      *
      * @param boolean $allowKicker
+     *
      * @return LeadinGroup
      */
     public function setAllowKicker($allowKicker)
@@ -525,9 +540,9 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get allow_kicker
+     * Get allowKicker
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getAllowKicker()
     {
@@ -535,9 +550,10 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set use_short_headline
+     * Set useShortHeadline
      *
      * @param boolean $useShortHeadline
+     *
      * @return LeadinGroup
      */
     public function setUseShortHeadline($useShortHeadline)
@@ -548,9 +564,9 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get use_short_headline
+     * Get useShortHeadline
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getUseShortHeadline()
     {
@@ -558,9 +574,10 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set default_image_ratio
+     * Set defaultImageRatio
      *
      * @param string $defaultImageRatio
+     *
      * @return LeadinGroup
      */
     public function setDefaultImageRatio($defaultImageRatio)
@@ -571,9 +588,9 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get default_image_ratio
+     * Get defaultImageRatio
      *
-     * @return string 
+     * @return string
      */
     public function getDefaultImageRatio()
     {
@@ -581,9 +598,10 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set first_image_ratio
+     * Set firstImageRatio
      *
      * @param string $firstImageRatio
+     *
      * @return LeadinGroup
      */
     public function setFirstImageRatio($firstImageRatio)
@@ -594,9 +612,9 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get first_image_ratio
+     * Get firstImageRatio
      *
-     * @return string 
+     * @return string
      */
     public function getFirstImageRatio()
     {
@@ -604,9 +622,10 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Add LeadinGroupPub
+     * Add leadinGroupPub
      *
      * @param \Entity\Cms\LeadinGroupPub $leadinGroupPub
+     *
      * @return LeadinGroup
      */
     public function addLeadinGroupPub(\Entity\Cms\LeadinGroupPub $leadinGroupPub)
@@ -617,7 +636,7 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Remove LeadinGroupPub
+     * Remove leadinGroupPub
      *
      * @param \Entity\Cms\LeadinGroupPub $leadinGroupPub
      */
@@ -627,9 +646,9 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get LeadinGroupPub
+     * Get leadinGroupPub
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getLeadinGroupPub()
     {
@@ -637,9 +656,10 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Add Publication
+     * Add publication
      *
      * @param \Entity\Cms\Publication $publication
+     *
      * @return LeadinGroup
      */
     public function addPublication(\Entity\Cms\Publication $publication)
@@ -650,7 +670,7 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Remove Publication
+     * Remove publication
      *
      * @param \Entity\Cms\Publication $publication
      */
@@ -660,12 +680,13 @@ class LeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get Publication
+     * Get publication
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getPublication()
     {
         return $this->Publication;
     }
 }
+

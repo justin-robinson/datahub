@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * CtClick
  */
@@ -36,9 +34,9 @@ class CtClick extends \Entity\Entity\Base
 
 
     /**
-     * Get click_id
+     * Get clickId
      *
-     * @return integer 
+     * @return integer
      */
     public function getClickId()
     {
@@ -46,9 +44,10 @@ class CtClick extends \Entity\Entity\Base
     }
 
     /**
-     * Set campaign_id
+     * Set campaignId
      *
      * @param integer $campaignId
+     *
      * @return CtClick
      */
     public function setCampaignId($campaignId)
@@ -59,9 +58,9 @@ class CtClick extends \Entity\Entity\Base
     }
 
     /**
-     * Get campaign_id
+     * Get campaignId
      *
-     * @return integer 
+     * @return integer
      */
     public function getCampaignId()
     {
@@ -69,9 +68,10 @@ class CtClick extends \Entity\Entity\Base
     }
 
     /**
-     * Set source_url
+     * Set sourceUrl
      *
      * @param string $sourceUrl
+     *
      * @return CtClick
      */
     public function setSourceUrl($sourceUrl)
@@ -82,9 +82,9 @@ class CtClick extends \Entity\Entity\Base
     }
 
     /**
-     * Get source_url
+     * Get sourceUrl
      *
-     * @return string 
+     * @return string
      */
     public function getSourceUrl()
     {
@@ -92,9 +92,10 @@ class CtClick extends \Entity\Entity\Base
     }
 
     /**
-     * Set dest_url
+     * Set destUrl
      *
      * @param string $destUrl
+     *
      * @return CtClick
      */
     public function setDestUrl($destUrl)
@@ -105,9 +106,9 @@ class CtClick extends \Entity\Entity\Base
     }
 
     /**
-     * Get dest_url
+     * Get destUrl
      *
-     * @return string 
+     * @return string
      */
     public function getDestUrl()
     {
@@ -118,6 +119,7 @@ class CtClick extends \Entity\Entity\Base
      * Set description
      *
      * @param string $description
+     *
      * @return CtClick
      */
     public function setDescription($description)
@@ -130,10 +132,11 @@ class CtClick extends \Entity\Entity\Base
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
         return $this->description;
     }
 }
+

@@ -2,8 +2,6 @@
 
 namespace Entity\Cms;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * AuditLog
  */
@@ -58,7 +56,7 @@ class AuditLog extends \Entity\Entity\Base
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -66,9 +64,10 @@ class AuditLog extends \Entity\Entity\Base
     }
 
     /**
-     * Set content_id
+     * Set contentId
      *
      * @param integer $contentId
+     *
      * @return AuditLog
      */
     public function setContentId($contentId)
@@ -79,9 +78,9 @@ class AuditLog extends \Entity\Entity\Base
     }
 
     /**
-     * Get content_id
+     * Get contentId
      *
-     * @return integer 
+     * @return integer
      */
     public function getContentId()
     {
@@ -92,6 +91,7 @@ class AuditLog extends \Entity\Entity\Base
      * Set version
      *
      * @param integer $version
+     *
      * @return AuditLog
      */
     public function setVersion($version)
@@ -104,7 +104,7 @@ class AuditLog extends \Entity\Entity\Base
     /**
      * Get version
      *
-     * @return integer 
+     * @return integer
      */
     public function getVersion()
     {
@@ -115,6 +115,7 @@ class AuditLog extends \Entity\Entity\Base
      * Set action
      *
      * @param string $action
+     *
      * @return AuditLog
      */
     public function setAction($action)
@@ -127,7 +128,7 @@ class AuditLog extends \Entity\Entity\Base
     /**
      * Get action
      *
-     * @return string 
+     * @return string
      */
     public function getAction()
     {
@@ -138,6 +139,7 @@ class AuditLog extends \Entity\Entity\Base
      * Set detail
      *
      * @param string $detail
+     *
      * @return AuditLog
      */
     public function setDetail($detail)
@@ -150,7 +152,7 @@ class AuditLog extends \Entity\Entity\Base
     /**
      * Get detail
      *
-     * @return string 
+     * @return string
      */
     public function getDetail()
     {
@@ -158,9 +160,10 @@ class AuditLog extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_by
+     * Set updatedBy
      *
      * @param string $updatedBy
+     *
      * @return AuditLog
      */
     public function setUpdatedBy($updatedBy)
@@ -171,9 +174,9 @@ class AuditLog extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_by
+     * Get updatedBy
      *
-     * @return string 
+     * @return string
      */
     public function getUpdatedBy()
     {
@@ -181,9 +184,10 @@ class AuditLog extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return AuditLog
      */
     public function setCreatedAt($createdAt)
@@ -194,9 +198,9 @@ class AuditLog extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -204,9 +208,10 @@ class AuditLog extends \Entity\Entity\Base
     }
 
     /**
-     * Set Content
+     * Set content
      *
      * @param \Entity\Cms\Content $content
+     *
      * @return AuditLog
      */
     public function setContent(\Entity\Cms\Content $content = null)
@@ -217,9 +222,9 @@ class AuditLog extends \Entity\Entity\Base
     }
 
     /**
-     * Get Content
+     * Get content
      *
-     * @return \Entity\Cms\Content 
+     * @return \Entity\Cms\Content
      */
     public function getContent()
     {
@@ -227,9 +232,10 @@ class AuditLog extends \Entity\Entity\Base
     }
 
     /**
-     * Set ContentVersion
+     * Set contentVersion
      *
      * @param \Entity\Cms\ContentVersion $contentVersion
+     *
      * @return AuditLog
      */
     public function setContentVersion(\Entity\Cms\ContentVersion $contentVersion = null)
@@ -240,12 +246,13 @@ class AuditLog extends \Entity\Entity\Base
     }
 
     /**
-     * Get ContentVersion
+     * Get contentVersion
      *
-     * @return \Entity\Cms\ContentVersion 
+     * @return \Entity\Cms\ContentVersion
      */
     public function getContentVersion()
     {
         return $this->ContentVersion;
     }
 }
+

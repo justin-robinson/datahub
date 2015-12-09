@@ -2,8 +2,6 @@
 
 namespace Entity\Admin;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * AclUserRole
  */
@@ -63,9 +61,9 @@ class AclUserRole extends \Entity\Entity\Base
     }
 
     /**
-     * Get acl_user_role_id
+     * Get aclUserRoleId
      *
-     * @return integer 
+     * @return integer
      */
     public function getAclUserRoleId()
     {
@@ -73,9 +71,10 @@ class AclUserRole extends \Entity\Entity\Base
     }
 
     /**
-     * Set user_id
+     * Set userId
      *
      * @param integer $userId
+     *
      * @return AclUserRole
      */
     public function setUserId($userId)
@@ -86,9 +85,9 @@ class AclUserRole extends \Entity\Entity\Base
     }
 
     /**
-     * Get user_id
+     * Get userId
      *
-     * @return integer 
+     * @return integer
      */
     public function getUserId()
     {
@@ -96,9 +95,10 @@ class AclUserRole extends \Entity\Entity\Base
     }
 
     /**
-     * Set acl_role_id
+     * Set aclRoleId
      *
      * @param integer $aclRoleId
+     *
      * @return AclUserRole
      */
     public function setAclRoleId($aclRoleId)
@@ -109,9 +109,9 @@ class AclUserRole extends \Entity\Entity\Base
     }
 
     /**
-     * Get acl_role_id
+     * Get aclRoleId
      *
-     * @return integer 
+     * @return integer
      */
     public function getAclRoleId()
     {
@@ -119,9 +119,10 @@ class AclUserRole extends \Entity\Entity\Base
     }
 
     /**
-     * Set role_order
+     * Set roleOrder
      *
      * @param integer $roleOrder
+     *
      * @return AclUserRole
      */
     public function setRoleOrder($roleOrder)
@@ -132,9 +133,9 @@ class AclUserRole extends \Entity\Entity\Base
     }
 
     /**
-     * Get role_order
+     * Get roleOrder
      *
-     * @return integer 
+     * @return integer
      */
     public function getRoleOrder()
     {
@@ -142,9 +143,10 @@ class AclUserRole extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return AclUserRole
      */
     public function setCreatedAt($createdAt)
@@ -155,9 +157,9 @@ class AclUserRole extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -165,9 +167,10 @@ class AclUserRole extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return AclUserRole
      */
     public function setUpdatedAt($updatedAt)
@@ -178,9 +181,9 @@ class AclUserRole extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -188,9 +191,10 @@ class AclUserRole extends \Entity\Entity\Base
     }
 
     /**
-     * Add AclUserRoleMarket
+     * Add aclUserRoleMarket
      *
      * @param \Entity\Admin\AclUserRoleMarket $aclUserRoleMarket
+     *
      * @return AclUserRole
      */
     public function addAclUserRoleMarket(\Entity\Admin\AclUserRoleMarket $aclUserRoleMarket)
@@ -201,7 +205,7 @@ class AclUserRole extends \Entity\Entity\Base
     }
 
     /**
-     * Remove AclUserRoleMarket
+     * Remove aclUserRoleMarket
      *
      * @param \Entity\Admin\AclUserRoleMarket $aclUserRoleMarket
      */
@@ -211,9 +215,9 @@ class AclUserRole extends \Entity\Entity\Base
     }
 
     /**
-     * Get AclUserRoleMarket
+     * Get aclUserRoleMarket
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getAclUserRoleMarket()
     {
@@ -221,9 +225,10 @@ class AclUserRole extends \Entity\Entity\Base
     }
 
     /**
-     * Set AclRole
+     * Set aclRole
      *
      * @param \Entity\Admin\AclRole $aclRole
+     *
      * @return AclUserRole
      */
     public function setAclRole(\Entity\Admin\AclRole $aclRole = null)
@@ -234,9 +239,9 @@ class AclUserRole extends \Entity\Entity\Base
     }
 
     /**
-     * Get AclRole
+     * Get aclRole
      *
-     * @return \Entity\Admin\AclRole 
+     * @return \Entity\Admin\AclRole
      */
     public function getAclRole()
     {
@@ -244,9 +249,10 @@ class AclUserRole extends \Entity\Entity\Base
     }
 
     /**
-     * Set User
+     * Set user
      *
      * @param \Entity\Admin\User $user
+     *
      * @return AclUserRole
      */
     public function setUser(\Entity\Admin\User $user = null)
@@ -257,12 +263,13 @@ class AclUserRole extends \Entity\Entity\Base
     }
 
     /**
-     * Get User
+     * Get user
      *
-     * @return \Entity\Admin\User 
+     * @return \Entity\Admin\User
      */
     public function getUser()
     {
         return $this->User;
     }
 }
+

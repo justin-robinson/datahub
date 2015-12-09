@@ -2,8 +2,6 @@
 
 namespace Entity\Bizjstatus;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * StatusCode
  */
@@ -53,9 +51,9 @@ class StatusCode extends \Entity\Entity\Base
     }
 
     /**
-     * Get code_id
+     * Get codeId
      *
-     * @return integer 
+     * @return integer
      */
     public function getCodeId()
     {
@@ -63,9 +61,10 @@ class StatusCode extends \Entity\Entity\Base
     }
 
     /**
-     * Set code_name
+     * Set codeName
      *
      * @param string $codeName
+     *
      * @return StatusCode
      */
     public function setCodeName($codeName)
@@ -76,9 +75,9 @@ class StatusCode extends \Entity\Entity\Base
     }
 
     /**
-     * Get code_name
+     * Get codeName
      *
-     * @return string 
+     * @return string
      */
     public function getCodeName()
     {
@@ -86,9 +85,10 @@ class StatusCode extends \Entity\Entity\Base
     }
 
     /**
-     * Set display_order
+     * Set displayOrder
      *
      * @param integer $displayOrder
+     *
      * @return StatusCode
      */
     public function setDisplayOrder($displayOrder)
@@ -99,9 +99,9 @@ class StatusCode extends \Entity\Entity\Base
     }
 
     /**
-     * Get display_order
+     * Get displayOrder
      *
-     * @return integer 
+     * @return integer
      */
     public function getDisplayOrder()
     {
@@ -109,9 +109,10 @@ class StatusCode extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_active
+     * Set isActive
      *
      * @param boolean $isActive
+     *
      * @return StatusCode
      */
     public function setIsActive($isActive)
@@ -122,9 +123,9 @@ class StatusCode extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_active
+     * Get isActive
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsActive()
     {
@@ -132,9 +133,10 @@ class StatusCode extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return StatusCode
      */
     public function setCreatedAt($createdAt)
@@ -145,9 +147,9 @@ class StatusCode extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -155,9 +157,10 @@ class StatusCode extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return StatusCode
      */
     public function setUpdatedAt($updatedAt)
@@ -168,9 +171,9 @@ class StatusCode extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -178,35 +181,37 @@ class StatusCode extends \Entity\Entity\Base
     }
 
     /**
-     * Add Events
+     * Add event
      *
-     * @param \Entity\Bizjstatus\StatusCode $events
+     * @param \Entity\Bizjstatus\StatusCode $event
+     *
      * @return StatusCode
      */
-    public function addEvent(\Entity\Bizjstatus\StatusCode $events)
+    public function addEvent(\Entity\Bizjstatus\StatusCode $event)
     {
-        $this->Events[] = $events;
+        $this->Events[] = $event;
 
         return $this;
     }
 
     /**
-     * Remove Events
+     * Remove event
      *
-     * @param \Entity\Bizjstatus\StatusCode $events
+     * @param \Entity\Bizjstatus\StatusCode $event
      */
-    public function removeEvent(\Entity\Bizjstatus\StatusCode $events)
+    public function removeEvent(\Entity\Bizjstatus\StatusCode $event)
     {
-        $this->Events->removeElement($events);
+        $this->Events->removeElement($event);
     }
 
     /**
-     * Get Events
+     * Get events
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getEvents()
     {
         return $this->Events;
     }
 }
+

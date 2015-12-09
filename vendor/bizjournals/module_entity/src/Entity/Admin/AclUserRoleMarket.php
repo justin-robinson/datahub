@@ -2,8 +2,6 @@
 
 namespace Entity\Admin;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * AclUserRoleMarket
  */
@@ -26,9 +24,10 @@ class AclUserRoleMarket extends \Entity\Entity\Base
 
 
     /**
-     * Set acl_user_role_id
+     * Set aclUserRoleId
      *
      * @param integer $aclUserRoleId
+     *
      * @return AclUserRoleMarket
      */
     public function setAclUserRoleId($aclUserRoleId)
@@ -39,9 +38,9 @@ class AclUserRoleMarket extends \Entity\Entity\Base
     }
 
     /**
-     * Get acl_user_role_id
+     * Get aclUserRoleId
      *
-     * @return integer 
+     * @return integer
      */
     public function getAclUserRoleId()
     {
@@ -49,9 +48,10 @@ class AclUserRoleMarket extends \Entity\Entity\Base
     }
 
     /**
-     * Set market_code
+     * Set marketCode
      *
      * @param string $marketCode
+     *
      * @return AclUserRoleMarket
      */
     public function setMarketCode($marketCode)
@@ -62,9 +62,9 @@ class AclUserRoleMarket extends \Entity\Entity\Base
     }
 
     /**
-     * Get market_code
+     * Get marketCode
      *
-     * @return string 
+     * @return string
      */
     public function getMarketCode()
     {
@@ -72,9 +72,10 @@ class AclUserRoleMarket extends \Entity\Entity\Base
     }
 
     /**
-     * Set AclUserRole
+     * Set aclUserRole
      *
      * @param \Entity\Admin\AclUserRole $aclUserRole
+     *
      * @return AclUserRoleMarket
      */
     public function setAclUserRole(\Entity\Admin\AclUserRole $aclUserRole = null)
@@ -85,12 +86,13 @@ class AclUserRoleMarket extends \Entity\Entity\Base
     }
 
     /**
-     * Get AclUserRole
+     * Get aclUserRole
      *
-     * @return \Entity\Admin\AclUserRole 
+     * @return \Entity\Admin\AclUserRole
      */
     public function getAclUserRole()
     {
         return $this->AclUserRole;
     }
 }
+

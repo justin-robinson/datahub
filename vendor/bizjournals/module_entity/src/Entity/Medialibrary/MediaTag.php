@@ -2,8 +2,6 @@
 
 namespace Entity\Medialibrary;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * MediaTag
  */
@@ -36,9 +34,10 @@ class MediaTag extends \Entity\Entity\Base
 
 
     /**
-     * Set media_id
+     * Set mediaId
      *
      * @param integer $mediaId
+     *
      * @return MediaTag
      */
     public function setMediaId($mediaId)
@@ -49,9 +48,9 @@ class MediaTag extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_id
+     * Get mediaId
      *
-     * @return integer 
+     * @return integer
      */
     public function getMediaId()
     {
@@ -59,9 +58,10 @@ class MediaTag extends \Entity\Entity\Base
     }
 
     /**
-     * Set tag_id
+     * Set tagId
      *
      * @param integer $tagId
+     *
      * @return MediaTag
      */
     public function setTagId($tagId)
@@ -72,9 +72,9 @@ class MediaTag extends \Entity\Entity\Base
     }
 
     /**
-     * Get tag_id
+     * Get tagId
      *
-     * @return integer 
+     * @return integer
      */
     public function getTagId()
     {
@@ -82,9 +82,10 @@ class MediaTag extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return MediaTag
      */
     public function setCreatedAt($createdAt)
@@ -95,9 +96,9 @@ class MediaTag extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -105,9 +106,10 @@ class MediaTag extends \Entity\Entity\Base
     }
 
     /**
-     * Set Media
+     * Set media
      *
      * @param \Entity\Medialibrary\Media $media
+     *
      * @return MediaTag
      */
     public function setMedia(\Entity\Medialibrary\Media $media = null)
@@ -118,9 +120,9 @@ class MediaTag extends \Entity\Entity\Base
     }
 
     /**
-     * Get Media
+     * Get media
      *
-     * @return \Entity\Medialibrary\Media 
+     * @return \Entity\Medialibrary\Media
      */
     public function getMedia()
     {
@@ -128,9 +130,10 @@ class MediaTag extends \Entity\Entity\Base
     }
 
     /**
-     * Set Tag
+     * Set tag
      *
      * @param \Entity\Medialibrary\Tag $tag
+     *
      * @return MediaTag
      */
     public function setTag(\Entity\Medialibrary\Tag $tag = null)
@@ -141,12 +144,13 @@ class MediaTag extends \Entity\Entity\Base
     }
 
     /**
-     * Get Tag
+     * Get tag
      *
-     * @return \Entity\Medialibrary\Tag 
+     * @return \Entity\Medialibrary\Tag
      */
     public function getTag()
     {
         return $this->Tag;
     }
 }
+

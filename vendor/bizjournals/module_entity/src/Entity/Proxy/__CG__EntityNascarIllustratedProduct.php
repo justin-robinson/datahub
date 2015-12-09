@@ -649,23 +649,23 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     /**
      * {@inheritDoc}
      */
-    public function addImage(\Entity\NascarIllustrated\ProductImage $images)
+    public function addImage(\Entity\NascarIllustrated\ProductImage $image)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addImage', array($images));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addImage', array($image));
 
-        return parent::addImage($images);
+        return parent::addImage($image);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeImage(\Entity\NascarIllustrated\ProductImage $images)
+    public function removeImage(\Entity\NascarIllustrated\ProductImage $image)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeImage', array($images));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeImage', array($image));
 
-        return parent::removeImage($images);
+        return parent::removeImage($image);
     }
 
     /**

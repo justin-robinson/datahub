@@ -407,23 +407,23 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
     /**
      * {@inheritDoc}
      */
-    public function addLeadinItem(\Entity\Bzjpreview\PageLeadinItem $leadinItems)
+    public function addLeadinItem(\Entity\Bzjpreview\PageLeadinItem $leadinItem)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addLeadinItem', array($leadinItems));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addLeadinItem', array($leadinItem));
 
-        return parent::addLeadinItem($leadinItems);
+        return parent::addLeadinItem($leadinItem);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeLeadinItem(\Entity\Bzjpreview\PageLeadinItem $leadinItems)
+    public function removeLeadinItem(\Entity\Bzjpreview\PageLeadinItem $leadinItem)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeLeadinItem', array($leadinItems));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeLeadinItem', array($leadinItem));
 
-        return parent::removeLeadinItem($leadinItems);
+        return parent::removeLeadinItem($leadinItem);
     }
 
     /**

@@ -2,8 +2,6 @@
 
 namespace Entity\NascarIllustrated;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * PurchaseItem
  */
@@ -76,9 +74,10 @@ class PurchaseItem extends \Entity\Entity\Base
 
 
     /**
-     * Set purchase_id
+     * Set purchaseId
      *
      * @param integer $purchaseId
+     *
      * @return PurchaseItem
      */
     public function setPurchaseId($purchaseId)
@@ -89,9 +88,9 @@ class PurchaseItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get purchase_id
+     * Get purchaseId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPurchaseId()
     {
@@ -99,9 +98,10 @@ class PurchaseItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set product_id
+     * Set productId
      *
      * @param integer $productId
+     *
      * @return PurchaseItem
      */
     public function setProductId($productId)
@@ -112,9 +112,9 @@ class PurchaseItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get product_id
+     * Get productId
      *
-     * @return integer 
+     * @return integer
      */
     public function getProductId()
     {
@@ -122,9 +122,10 @@ class PurchaseItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set product_name
+     * Set productName
      *
      * @param string $productName
+     *
      * @return PurchaseItem
      */
     public function setProductName($productName)
@@ -135,9 +136,9 @@ class PurchaseItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get product_name
+     * Get productName
      *
-     * @return string 
+     * @return string
      */
     public function getProductName()
     {
@@ -145,9 +146,10 @@ class PurchaseItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_subscription
+     * Set isSubscription
      *
      * @param boolean $isSubscription
+     *
      * @return PurchaseItem
      */
     public function setIsSubscription($isSubscription)
@@ -158,9 +160,9 @@ class PurchaseItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_subscription
+     * Get isSubscription
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsSubscription()
     {
@@ -168,9 +170,10 @@ class PurchaseItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set key_code
+     * Set keyCode
      *
      * @param string $keyCode
+     *
      * @return PurchaseItem
      */
     public function setKeyCode($keyCode)
@@ -181,9 +184,9 @@ class PurchaseItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get key_code
+     * Get keyCode
      *
-     * @return string 
+     * @return string
      */
     public function getKeyCode()
     {
@@ -194,6 +197,7 @@ class PurchaseItem extends \Entity\Entity\Base
      * Set quantity
      *
      * @param integer $quantity
+     *
      * @return PurchaseItem
      */
     public function setQuantity($quantity)
@@ -206,7 +210,7 @@ class PurchaseItem extends \Entity\Entity\Base
     /**
      * Get quantity
      *
-     * @return integer 
+     * @return integer
      */
     public function getQuantity()
     {
@@ -214,9 +218,10 @@ class PurchaseItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set unit_price
+     * Set unitPrice
      *
      * @param integer $unitPrice
+     *
      * @return PurchaseItem
      */
     public function setUnitPrice($unitPrice)
@@ -227,9 +232,9 @@ class PurchaseItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get unit_price
+     * Get unitPrice
      *
-     * @return integer 
+     * @return integer
      */
     public function getUnitPrice()
     {
@@ -237,9 +242,10 @@ class PurchaseItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set unit_shipping
+     * Set unitShipping
      *
      * @param integer $unitShipping
+     *
      * @return PurchaseItem
      */
     public function setUnitShipping($unitShipping)
@@ -250,9 +256,9 @@ class PurchaseItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get unit_shipping
+     * Get unitShipping
      *
-     * @return integer 
+     * @return integer
      */
     public function getUnitShipping()
     {
@@ -260,9 +266,10 @@ class PurchaseItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set item_metadata
+     * Set itemMetadata
      *
      * @param string $itemMetadata
+     *
      * @return PurchaseItem
      */
     public function setItemMetadata($itemMetadata)
@@ -273,9 +280,9 @@ class PurchaseItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get item_metadata
+     * Get itemMetadata
      *
-     * @return string 
+     * @return string
      */
     public function getItemMetadata()
     {
@@ -283,9 +290,10 @@ class PurchaseItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return PurchaseItem
      */
     public function setCreatedAt($createdAt)
@@ -296,9 +304,9 @@ class PurchaseItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -306,9 +314,10 @@ class PurchaseItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return PurchaseItem
      */
     public function setUpdatedAt($updatedAt)
@@ -319,9 +328,9 @@ class PurchaseItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -329,9 +338,10 @@ class PurchaseItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set Purchase
+     * Set purchase
      *
      * @param \Entity\NascarIllustrated\Purchase $purchase
+     *
      * @return PurchaseItem
      */
     public function setPurchase(\Entity\NascarIllustrated\Purchase $purchase = null)
@@ -342,9 +352,9 @@ class PurchaseItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get Purchase
+     * Get purchase
      *
-     * @return \Entity\NascarIllustrated\Purchase 
+     * @return \Entity\NascarIllustrated\Purchase
      */
     public function getPurchase()
     {
@@ -352,9 +362,10 @@ class PurchaseItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set Product
+     * Set product
      *
      * @param \Entity\NascarIllustrated\Product $product
+     *
      * @return PurchaseItem
      */
     public function setProduct(\Entity\NascarIllustrated\Product $product = null)
@@ -365,12 +376,13 @@ class PurchaseItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get Product
+     * Get product
      *
-     * @return \Entity\NascarIllustrated\Product 
+     * @return \Entity\NascarIllustrated\Product
      */
     public function getProduct()
     {
         return $this->Product;
     }
 }
+

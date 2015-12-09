@@ -495,23 +495,23 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function addVersion(\Entity\Cms\ContentVersion $versions)
+    public function addVersion(\Entity\Cms\ContentVersion $version)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addVersion', array($versions));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addVersion', array($version));
 
-        return parent::addVersion($versions);
+        return parent::addVersion($version);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeVersion(\Entity\Cms\ContentVersion $versions)
+    public function removeVersion(\Entity\Cms\ContentVersion $version)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeVersion', array($versions));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeVersion', array($version));
 
-        return parent::removeVersion($versions);
+        return parent::removeVersion($version);
     }
 
     /**

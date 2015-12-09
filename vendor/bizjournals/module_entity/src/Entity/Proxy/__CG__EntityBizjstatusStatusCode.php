@@ -297,23 +297,23 @@ class StatusCode extends \Entity\Bizjstatus\StatusCode implements \Doctrine\ORM\
     /**
      * {@inheritDoc}
      */
-    public function addEvent(\Entity\Bizjstatus\StatusCode $events)
+    public function addEvent(\Entity\Bizjstatus\StatusCode $event)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addEvent', array($events));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addEvent', array($event));
 
-        return parent::addEvent($events);
+        return parent::addEvent($event);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeEvent(\Entity\Bizjstatus\StatusCode $events)
+    public function removeEvent(\Entity\Bizjstatus\StatusCode $event)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeEvent', array($events));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeEvent', array($event));
 
-        return parent::removeEvent($events);
+        return parent::removeEvent($event);
     }
 
     /**

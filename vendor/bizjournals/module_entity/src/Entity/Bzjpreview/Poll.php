@@ -2,8 +2,6 @@
 
 namespace Entity\Bzjpreview;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Poll
  */
@@ -133,9 +131,10 @@ class Poll extends \Entity\Entity\Base
     }
 
     /**
-     * Set poll_id
+     * Set pollId
      *
      * @param integer $pollId
+     *
      * @return Poll
      */
     public function setPollId($pollId)
@@ -146,9 +145,9 @@ class Poll extends \Entity\Entity\Base
     }
 
     /**
-     * Get poll_id
+     * Get pollId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPollId()
     {
@@ -159,6 +158,7 @@ class Poll extends \Entity\Entity\Base
      * Set market
      *
      * @param string $market
+     *
      * @return Poll
      */
     public function setMarket($market)
@@ -171,7 +171,7 @@ class Poll extends \Entity\Entity\Base
     /**
      * Get market
      *
-     * @return string 
+     * @return string
      */
     public function getMarket()
     {
@@ -182,6 +182,7 @@ class Poll extends \Entity\Entity\Base
      * Set headline
      *
      * @param string $headline
+     *
      * @return Poll
      */
     public function setHeadline($headline)
@@ -194,7 +195,7 @@ class Poll extends \Entity\Entity\Base
     /**
      * Get headline
      *
-     * @return string 
+     * @return string
      */
     public function getHeadline()
     {
@@ -205,6 +206,7 @@ class Poll extends \Entity\Entity\Base
      * Set teaser
      *
      * @param string $teaser
+     *
      * @return Poll
      */
     public function setTeaser($teaser)
@@ -217,7 +219,7 @@ class Poll extends \Entity\Entity\Base
     /**
      * Get teaser
      *
-     * @return string 
+     * @return string
      */
     public function getTeaser()
     {
@@ -225,9 +227,10 @@ class Poll extends \Entity\Entity\Base
     }
 
     /**
-     * Set start_time
+     * Set startTime
      *
      * @param \DateTime $startTime
+     *
      * @return Poll
      */
     public function setStartTime($startTime)
@@ -238,9 +241,9 @@ class Poll extends \Entity\Entity\Base
     }
 
     /**
-     * Get start_time
+     * Get startTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getStartTime()
     {
@@ -248,9 +251,10 @@ class Poll extends \Entity\Entity\Base
     }
 
     /**
-     * Set end_time
+     * Set endTime
      *
      * @param \DateTime $endTime
+     *
      * @return Poll
      */
     public function setEndTime($endTime)
@@ -261,9 +265,9 @@ class Poll extends \Entity\Entity\Base
     }
 
     /**
-     * Get end_time
+     * Get endTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getEndTime()
     {
@@ -274,6 +278,7 @@ class Poll extends \Entity\Entity\Base
      * Set active
      *
      * @param boolean $active
+     *
      * @return Poll
      */
     public function setActive($active)
@@ -286,7 +291,7 @@ class Poll extends \Entity\Entity\Base
     /**
      * Get active
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getActive()
     {
@@ -294,9 +299,10 @@ class Poll extends \Entity\Entity\Base
     }
 
     /**
-     * Set display_results
+     * Set displayResults
      *
      * @param boolean $displayResults
+     *
      * @return Poll
      */
     public function setDisplayResults($displayResults)
@@ -307,9 +313,9 @@ class Poll extends \Entity\Entity\Base
     }
 
     /**
-     * Get display_results
+     * Get displayResults
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayResults()
     {
@@ -317,9 +323,10 @@ class Poll extends \Entity\Entity\Base
     }
 
     /**
-     * Set recipients_final
+     * Set recipientsFinal
      *
      * @param string $recipientsFinal
+     *
      * @return Poll
      */
     public function setRecipientsFinal($recipientsFinal)
@@ -330,9 +337,9 @@ class Poll extends \Entity\Entity\Base
     }
 
     /**
-     * Get recipients_final
+     * Get recipientsFinal
      *
-     * @return string 
+     * @return string
      */
     public function getRecipientsFinal()
     {
@@ -340,9 +347,10 @@ class Poll extends \Entity\Entity\Base
     }
 
     /**
-     * Set recipients_daily
+     * Set recipientsDaily
      *
      * @param string $recipientsDaily
+     *
      * @return Poll
      */
     public function setRecipientsDaily($recipientsDaily)
@@ -353,9 +361,9 @@ class Poll extends \Entity\Entity\Base
     }
 
     /**
-     * Get recipients_daily
+     * Get recipientsDaily
      *
-     * @return string 
+     * @return string
      */
     public function getRecipientsDaily()
     {
@@ -363,9 +371,10 @@ class Poll extends \Entity\Entity\Base
     }
 
     /**
-     * Set site_id
+     * Set siteId
      *
      * @param integer $siteId
+     *
      * @return Poll
      */
     public function setSiteId($siteId)
@@ -376,9 +385,9 @@ class Poll extends \Entity\Entity\Base
     }
 
     /**
-     * Get site_id
+     * Get siteId
      *
-     * @return integer 
+     * @return integer
      */
     public function getSiteId()
     {
@@ -389,6 +398,7 @@ class Poll extends \Entity\Entity\Base
      * Set description
      *
      * @param string $description
+     *
      * @return Poll
      */
     public function setDescription($description)
@@ -401,7 +411,7 @@ class Poll extends \Entity\Entity\Base
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -409,9 +419,10 @@ class Poll extends \Entity\Entity\Base
     }
 
     /**
-     * Set has_comments
+     * Set hasComments
      *
      * @param boolean $hasComments
+     *
      * @return Poll
      */
     public function setHasComments($hasComments)
@@ -422,9 +433,9 @@ class Poll extends \Entity\Entity\Base
     }
 
     /**
-     * Get has_comments
+     * Get hasComments
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getHasComments()
     {
@@ -432,9 +443,10 @@ class Poll extends \Entity\Entity\Base
     }
 
     /**
-     * Set has_sponsor
+     * Set hasSponsor
      *
      * @param boolean $hasSponsor
+     *
      * @return Poll
      */
     public function setHasSponsor($hasSponsor)
@@ -445,9 +457,9 @@ class Poll extends \Entity\Entity\Base
     }
 
     /**
-     * Get has_sponsor
+     * Get hasSponsor
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getHasSponsor()
     {
@@ -455,9 +467,10 @@ class Poll extends \Entity\Entity\Base
     }
 
     /**
-     * Set c_time
+     * Set cTime
      *
      * @param \DateTime $cTime
+     *
      * @return Poll
      */
     public function setCTime($cTime)
@@ -468,9 +481,9 @@ class Poll extends \Entity\Entity\Base
     }
 
     /**
-     * Get c_time
+     * Get cTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCTime()
     {
@@ -478,9 +491,10 @@ class Poll extends \Entity\Entity\Base
     }
 
     /**
-     * Set m_time
+     * Set mTime
      *
      * @param \DateTime $mTime
+     *
      * @return Poll
      */
     public function setMTime($mTime)
@@ -491,9 +505,9 @@ class Poll extends \Entity\Entity\Base
     }
 
     /**
-     * Get m_time
+     * Get mTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getMTime()
     {
@@ -504,6 +518,7 @@ class Poll extends \Entity\Entity\Base
      * Set featured
      *
      * @param boolean $featured
+     *
      * @return Poll
      */
     public function setFeatured($featured)
@@ -516,7 +531,7 @@ class Poll extends \Entity\Entity\Base
     /**
      * Get featured
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getFeatured()
     {
@@ -527,6 +542,7 @@ class Poll extends \Entity\Entity\Base
      * Set site
      *
      * @param string $site
+     *
      * @return Poll
      */
     public function setSite($site)
@@ -539,7 +555,7 @@ class Poll extends \Entity\Entity\Base
     /**
      * Get site
      *
-     * @return string 
+     * @return string
      */
     public function getSite()
     {
@@ -550,6 +566,7 @@ class Poll extends \Entity\Entity\Base
      * Set path
      *
      * @param string $path
+     *
      * @return Poll
      */
     public function setPath($path)
@@ -562,7 +579,7 @@ class Poll extends \Entity\Entity\Base
     /**
      * Get path
      *
-     * @return string 
+     * @return string
      */
     public function getPath()
     {
@@ -570,9 +587,10 @@ class Poll extends \Entity\Entity\Base
     }
 
     /**
-     * Set meta_title
+     * Set metaTitle
      *
      * @param string $metaTitle
+     *
      * @return Poll
      */
     public function setMetaTitle($metaTitle)
@@ -583,9 +601,9 @@ class Poll extends \Entity\Entity\Base
     }
 
     /**
-     * Get meta_title
+     * Get metaTitle
      *
-     * @return string 
+     * @return string
      */
     public function getMetaTitle()
     {
@@ -593,9 +611,10 @@ class Poll extends \Entity\Entity\Base
     }
 
     /**
-     * Set meta_description
+     * Set metaDescription
      *
      * @param string $metaDescription
+     *
      * @return Poll
      */
     public function setMetaDescription($metaDescription)
@@ -606,9 +625,9 @@ class Poll extends \Entity\Entity\Base
     }
 
     /**
-     * Get meta_description
+     * Get metaDescription
      *
-     * @return string 
+     * @return string
      */
     public function getMetaDescription()
     {
@@ -616,9 +635,10 @@ class Poll extends \Entity\Entity\Base
     }
 
     /**
-     * Set meta_keywords
+     * Set metaKeywords
      *
      * @param string $metaKeywords
+     *
      * @return Poll
      */
     public function setMetaKeywords($metaKeywords)
@@ -629,9 +649,9 @@ class Poll extends \Entity\Entity\Base
     }
 
     /**
-     * Get meta_keywords
+     * Get metaKeywords
      *
-     * @return string 
+     * @return string
      */
     public function getMetaKeywords()
     {
@@ -639,35 +659,37 @@ class Poll extends \Entity\Entity\Base
     }
 
     /**
-     * Add Questions
+     * Add question
      *
-     * @param \Entity\Bzjpreview\PollQuestion $questions
+     * @param \Entity\Bzjpreview\PollQuestion $question
+     *
      * @return Poll
      */
-    public function addQuestion(\Entity\Bzjpreview\PollQuestion $questions)
+    public function addQuestion(\Entity\Bzjpreview\PollQuestion $question)
     {
-        $this->Questions[] = $questions;
+        $this->Questions[] = $question;
 
         return $this;
     }
 
     /**
-     * Remove Questions
+     * Remove question
      *
-     * @param \Entity\Bzjpreview\PollQuestion $questions
+     * @param \Entity\Bzjpreview\PollQuestion $question
      */
-    public function removeQuestion(\Entity\Bzjpreview\PollQuestion $questions)
+    public function removeQuestion(\Entity\Bzjpreview\PollQuestion $question)
     {
-        $this->Questions->removeElement($questions);
+        $this->Questions->removeElement($question);
     }
 
     /**
-     * Get Questions
+     * Get questions
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getQuestions()
     {
         return $this->Questions;
     }
 }
+

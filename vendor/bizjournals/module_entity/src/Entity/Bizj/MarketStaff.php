@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * MarketStaff
  */
@@ -61,9 +59,9 @@ class MarketStaff extends \Entity\Entity\Base
 
 
     /**
-     * Get staff_id
+     * Get staffId
      *
-     * @return integer 
+     * @return integer
      */
     public function getStaffId()
     {
@@ -71,9 +69,10 @@ class MarketStaff extends \Entity\Entity\Base
     }
 
     /**
-     * Set market_id
+     * Set marketId
      *
      * @param integer $marketId
+     *
      * @return MarketStaff
      */
     public function setMarketId($marketId)
@@ -84,9 +83,9 @@ class MarketStaff extends \Entity\Entity\Base
     }
 
     /**
-     * Get market_id
+     * Get marketId
      *
-     * @return integer 
+     * @return integer
      */
     public function getMarketId()
     {
@@ -94,9 +93,10 @@ class MarketStaff extends \Entity\Entity\Base
     }
 
     /**
-     * Set contact_id
+     * Set contactId
      *
      * @param integer $contactId
+     *
      * @return MarketStaff
      */
     public function setContactId($contactId)
@@ -107,9 +107,9 @@ class MarketStaff extends \Entity\Entity\Base
     }
 
     /**
-     * Get contact_id
+     * Get contactId
      *
-     * @return integer 
+     * @return integer
      */
     public function getContactId()
     {
@@ -117,9 +117,10 @@ class MarketStaff extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_writer
+     * Set isWriter
      *
      * @param boolean $isWriter
+     *
      * @return MarketStaff
      */
     public function setIsWriter($isWriter)
@@ -130,9 +131,9 @@ class MarketStaff extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_writer
+     * Get isWriter
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsWriter()
     {
@@ -140,9 +141,10 @@ class MarketStaff extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return MarketStaff
      */
     public function setCreatedAt($createdAt)
@@ -153,9 +155,9 @@ class MarketStaff extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -163,9 +165,10 @@ class MarketStaff extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return MarketStaff
      */
     public function setUpdatedAt($updatedAt)
@@ -176,9 +179,9 @@ class MarketStaff extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -186,9 +189,10 @@ class MarketStaff extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_former_staff
+     * Set isFormerStaff
      *
      * @param boolean $isFormerStaff
+     *
      * @return MarketStaff
      */
     public function setIsFormerStaff($isFormerStaff)
@@ -199,9 +203,9 @@ class MarketStaff extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_former_staff
+     * Get isFormerStaff
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsFormerStaff()
     {
@@ -209,9 +213,10 @@ class MarketStaff extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_contributor
+     * Set isContributor
      *
      * @param boolean $isContributor
+     *
      * @return MarketStaff
      */
     public function setIsContributor($isContributor)
@@ -222,9 +227,9 @@ class MarketStaff extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_contributor
+     * Get isContributor
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsContributor()
     {
@@ -232,9 +237,10 @@ class MarketStaff extends \Entity\Entity\Base
     }
 
     /**
-     * Set Market
+     * Set market
      *
      * @param \Entity\Bizj\Market $market
+     *
      * @return MarketStaff
      */
     public function setMarket(\Entity\Bizj\Market $market = null)
@@ -245,9 +251,9 @@ class MarketStaff extends \Entity\Entity\Base
     }
 
     /**
-     * Get Market
+     * Get market
      *
-     * @return \Entity\Bizj\Market 
+     * @return \Entity\Bizj\Market
      */
     public function getMarket()
     {
@@ -255,9 +261,10 @@ class MarketStaff extends \Entity\Entity\Base
     }
 
     /**
-     * Set ContactData
+     * Set contactData
      *
      * @param \Entity\Bizj\ContactData $contactData
+     *
      * @return MarketStaff
      */
     public function setContactData(\Entity\Bizj\ContactData $contactData = null)
@@ -268,12 +275,13 @@ class MarketStaff extends \Entity\Entity\Base
     }
 
     /**
-     * Get ContactData
+     * Get contactData
      *
-     * @return \Entity\Bizj\ContactData 
+     * @return \Entity\Bizj\ContactData
      */
     public function getContactData()
     {
         return $this->ContactData;
     }
 }
+

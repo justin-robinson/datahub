@@ -2,8 +2,6 @@
 
 namespace Entity\Email;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * EmailJob
  */
@@ -61,9 +59,9 @@ class EmailJob extends \Entity\Entity\Base
 
 
     /**
-     * Get job_id
+     * Get jobId
      *
-     * @return integer 
+     * @return integer
      */
     public function getJobId()
     {
@@ -74,6 +72,7 @@ class EmailJob extends \Entity\Entity\Base
      * Set description
      *
      * @param string $description
+     *
      * @return EmailJob
      */
     public function setDescription($description)
@@ -86,7 +85,7 @@ class EmailJob extends \Entity\Entity\Base
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -94,9 +93,10 @@ class EmailJob extends \Entity\Entity\Base
     }
 
     /**
-     * Set product_id
+     * Set productId
      *
      * @param integer $productId
+     *
      * @return EmailJob
      */
     public function setProductId($productId)
@@ -107,9 +107,9 @@ class EmailJob extends \Entity\Entity\Base
     }
 
     /**
-     * Get product_id
+     * Get productId
      *
-     * @return integer 
+     * @return integer
      */
     public function getProductId()
     {
@@ -117,9 +117,10 @@ class EmailJob extends \Entity\Entity\Base
     }
 
     /**
-     * Set from_field
+     * Set fromField
      *
      * @param string $fromField
+     *
      * @return EmailJob
      */
     public function setFromField($fromField)
@@ -130,9 +131,9 @@ class EmailJob extends \Entity\Entity\Base
     }
 
     /**
-     * Get from_field
+     * Get fromField
      *
-     * @return string 
+     * @return string
      */
     public function getFromField()
     {
@@ -140,9 +141,10 @@ class EmailJob extends \Entity\Entity\Base
     }
 
     /**
-     * Set reply_to
+     * Set replyTo
      *
      * @param string $replyTo
+     *
      * @return EmailJob
      */
     public function setReplyTo($replyTo)
@@ -153,9 +155,9 @@ class EmailJob extends \Entity\Entity\Base
     }
 
     /**
-     * Get reply_to
+     * Get replyTo
      *
-     * @return string 
+     * @return string
      */
     public function getReplyTo()
     {
@@ -163,9 +165,10 @@ class EmailJob extends \Entity\Entity\Base
     }
 
     /**
-     * Set sender_host
+     * Set senderHost
      *
      * @param string $senderHost
+     *
      * @return EmailJob
      */
     public function setSenderHost($senderHost)
@@ -176,9 +179,9 @@ class EmailJob extends \Entity\Entity\Base
     }
 
     /**
-     * Get sender_host
+     * Get senderHost
      *
-     * @return string 
+     * @return string
      */
     public function getSenderHost()
     {
@@ -186,9 +189,10 @@ class EmailJob extends \Entity\Entity\Base
     }
 
     /**
-     * Set send_priority
+     * Set sendPriority
      *
      * @param integer $sendPriority
+     *
      * @return EmailJob
      */
     public function setSendPriority($sendPriority)
@@ -199,9 +203,9 @@ class EmailJob extends \Entity\Entity\Base
     }
 
     /**
-     * Get send_priority
+     * Get sendPriority
      *
-     * @return integer 
+     * @return integer
      */
     public function getSendPriority()
     {
@@ -209,9 +213,10 @@ class EmailJob extends \Entity\Entity\Base
     }
 
     /**
-     * Set message_count
+     * Set messageCount
      *
      * @param integer $messageCount
+     *
      * @return EmailJob
      */
     public function setMessageCount($messageCount)
@@ -222,9 +227,9 @@ class EmailJob extends \Entity\Entity\Base
     }
 
     /**
-     * Get message_count
+     * Get messageCount
      *
-     * @return integer 
+     * @return integer
      */
     public function getMessageCount()
     {
@@ -232,9 +237,10 @@ class EmailJob extends \Entity\Entity\Base
     }
 
     /**
-     * Set message_sent_count
+     * Set messageSentCount
      *
      * @param integer $messageSentCount
+     *
      * @return EmailJob
      */
     public function setMessageSentCount($messageSentCount)
@@ -245,9 +251,9 @@ class EmailJob extends \Entity\Entity\Base
     }
 
     /**
-     * Get message_sent_count
+     * Get messageSentCount
      *
-     * @return integer 
+     * @return integer
      */
     public function getMessageSentCount()
     {
@@ -255,9 +261,10 @@ class EmailJob extends \Entity\Entity\Base
     }
 
     /**
-     * Set c_time
+     * Set cTime
      *
      * @param \DateTime $cTime
+     *
      * @return EmailJob
      */
     public function setCTime($cTime)
@@ -268,12 +275,13 @@ class EmailJob extends \Entity\Entity\Base
     }
 
     /**
-     * Get c_time
+     * Get cTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCTime()
     {
         return $this->c_time;
     }
 }
+

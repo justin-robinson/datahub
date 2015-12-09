@@ -1,83 +1,101 @@
 Entity\Datahub\Contact:
   type: entity
   table: contact
+  gedmo:
+    soft_deleteable:
+      field_name: deleted_at
+      time_aware: false
   fields:
     contact_id:
       id: true
       type: integer
       unsigned: true
-      nullable: false
+      generator:
+        strategy: AUTO
     hub_id:
      type: integer
      unsigned: true
-     nullable: false
+     nullable: true
     meroveus_id:
      type: integer
      unsigned: true
+     nullable: true
     relevate_id:
      type: integer
      unsigned: true
+     nullable: true
     is_duplicate:
-     type: integer
-     length: 1
-     unsigned: true
-     nullable: false
-     default: 0
+      type: boolean
+      nullable: false
+      options:
+       default: false
     is_current_employee:
-     type: integer
-     length: 1
-     unsigned: true
-     nullable: false
-     default: 1
+      type: boolean
+      nullable: false
+      options:
+       default: true
     first_name:
-      type: varchar
+      type: string
       length: 50
     middle_initial:
-      type: varchar
+      type: string
       length: 20
     last_name:
-      type: varchar
+      type: string
       length: 50
       nullable: false
     suffix:
-      type: varchar
+      type: string
       length: 20
     honorific:
-      type: varchar
+      type: string
       length: 20
     job_title:
-      type: varchar
+      type: string
       length: 255
     job_position_id:
      type: integer
      unsigned: true
     email:
-      type: varchar
+      type: string
       length: 700
     phone:
-      type: varchar
+      type: string
       length: 70
     address1:
-      type: varchar
+      type: string
       length: 150
     address2:
-      type: varchar
+      type: string
       length: 150
     city:
-      type: varchar
+      type: string
       length: 100
     state:
-      type: varchar
+      type: string
       length: 70
     postal_code:
-      type: varchar
+      type: string
       length: 35
     created_at:
-    nullable: false
       type: datetime
       nullable: false
+      options:
+        timestampable:
+          on: create
     updated_at:
       type: datetime
       nullable: false
+      options:
+        timestampable:
+          on: update
     deleted_at:
       type: datetime
+      nullable: true
+  manyToOne:
+    Company:
+      targetEntity: Company
+      joinColumn:
+        name: hub_id
+        referencedColumnName: hub_id
+

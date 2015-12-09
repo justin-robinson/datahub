@@ -68,6 +68,15 @@ return array(
                 'proxy_dir'        => __DIR__ . '/../src/Entity/Proxy',
                 'proxy_namespace'  => 'Entity\Proxy',
             ),
+            'datahub' => array(
+                'metadata_cache'   => 'array',
+                'query_cache'      => 'array',
+                'result_cache'     => 'array',
+                'driver'           => 'cms',
+                'generate_proxies' => false,
+                'proxy_dir'        => __DIR__ . '/../src/Entity/Proxy',
+                'proxy_namespace'  => 'Entity\Proxy',
+            ),
             'email' => array(
                 'metadata_cache'   => 'array',
                 'query_cache'      => 'array',
@@ -114,6 +123,7 @@ return array(
                     'Entity\\Bizjstatus\\'          => 'bizjstatus',
                     'Entity\\Bzjpreview\\'          => 'bzjpreview',
                     'Entity\\Cms\\'                 => 'cms',
+                    'Entity\\Datahub\\'             => 'datahub',
                     'Entity\\Email\\'               => 'email',
                     'Entity\\Medialibrary\\'        => 'medialibrary',
                     'Entity\\NascarIllustrated\\'   => 'nascarillustrated',
@@ -154,6 +164,12 @@ return array(
                 'class' => 'Doctrine\ORM\Mapping\Driver\YamlDriver',
                 'paths' => array(
                     __DIR__ . '/../src/Entity/Yaml/Cms'
+                )
+            ),
+            'datahub' => array(
+                'class' => 'Doctrine\ORM\Mapping\Driver\YamlDriver',
+                'paths' => array(
+                    __DIR__ . '/../src/Entity/Yaml/Datahub'
                 )
             ),
             'email' => array(
@@ -205,6 +221,10 @@ return array(
             'cms' => array(
                 'connection'    => 'cms',
                 'configuration' => 'cms'
+            ),
+            'datahub' => array(
+                'connection'    => 'datahub',
+                'configuration' => 'datahub'
             ),
             'email' => array(
                 'connection'    => 'email',

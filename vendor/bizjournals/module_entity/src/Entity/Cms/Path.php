@@ -2,8 +2,6 @@
 
 namespace Entity\Cms;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Path
  */
@@ -96,9 +94,9 @@ class Path extends \Entity\Entity\Base
 
 
     /**
-     * Get path_id
+     * Get pathId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPathId()
     {
@@ -109,6 +107,7 @@ class Path extends \Entity\Entity\Base
      * Set site
      *
      * @param string $site
+     *
      * @return Path
      */
     public function setSite($site)
@@ -121,7 +120,7 @@ class Path extends \Entity\Entity\Base
     /**
      * Get site
      *
-     * @return string 
+     * @return string
      */
     public function getSite()
     {
@@ -132,6 +131,7 @@ class Path extends \Entity\Entity\Base
      * Set path
      *
      * @param string $path
+     *
      * @return Path
      */
     public function setPath($path)
@@ -144,7 +144,7 @@ class Path extends \Entity\Entity\Base
     /**
      * Get path
      *
-     * @return string 
+     * @return string
      */
     public function getPath()
     {
@@ -155,6 +155,7 @@ class Path extends \Entity\Entity\Base
      * Set description
      *
      * @param string $description
+     *
      * @return Path
      */
     public function setDescription($description)
@@ -167,7 +168,7 @@ class Path extends \Entity\Entity\Base
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -175,9 +176,10 @@ class Path extends \Entity\Entity\Base
     }
 
     /**
-     * Set pub_id
+     * Set pubId
      *
      * @param integer $pubId
+     *
      * @return Path
      */
     public function setPubId($pubId)
@@ -188,9 +190,9 @@ class Path extends \Entity\Entity\Base
     }
 
     /**
-     * Get pub_id
+     * Get pubId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPubId()
     {
@@ -198,9 +200,10 @@ class Path extends \Entity\Entity\Base
     }
 
     /**
-     * Set date_format
+     * Set dateFormat
      *
      * @param string $dateFormat
+     *
      * @return Path
      */
     public function setDateFormat($dateFormat)
@@ -211,9 +214,9 @@ class Path extends \Entity\Entity\Base
     }
 
     /**
-     * Get date_format
+     * Get dateFormat
      *
-     * @return string 
+     * @return string
      */
     public function getDateFormat()
     {
@@ -221,9 +224,10 @@ class Path extends \Entity\Entity\Base
     }
 
     /**
-     * Set allow_story
+     * Set allowStory
      *
      * @param boolean $allowStory
+     *
      * @return Path
      */
     public function setAllowStory($allowStory)
@@ -234,9 +238,9 @@ class Path extends \Entity\Entity\Base
     }
 
     /**
-     * Get allow_story
+     * Get allowStory
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getAllowStory()
     {
@@ -244,9 +248,10 @@ class Path extends \Entity\Entity\Base
     }
 
     /**
-     * Set allow_section_front
+     * Set allowSectionFront
      *
      * @param boolean $allowSectionFront
+     *
      * @return Path
      */
     public function setAllowSectionFront($allowSectionFront)
@@ -257,9 +262,9 @@ class Path extends \Entity\Entity\Base
     }
 
     /**
-     * Get allow_section_front
+     * Get allowSectionFront
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getAllowSectionFront()
     {
@@ -267,9 +272,10 @@ class Path extends \Entity\Entity\Base
     }
 
     /**
-     * Set allow_homepage
+     * Set allowHomepage
      *
      * @param boolean $allowHomepage
+     *
      * @return Path
      */
     public function setAllowHomepage($allowHomepage)
@@ -280,9 +286,9 @@ class Path extends \Entity\Entity\Base
     }
 
     /**
-     * Get allow_homepage
+     * Get allowHomepage
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getAllowHomepage()
     {
@@ -290,9 +296,10 @@ class Path extends \Entity\Entity\Base
     }
 
     /**
-     * Set allow_poll
+     * Set allowPoll
      *
      * @param boolean $allowPoll
+     *
      * @return Path
      */
     public function setAllowPoll($allowPoll)
@@ -303,9 +310,9 @@ class Path extends \Entity\Entity\Base
     }
 
     /**
-     * Get allow_poll
+     * Get allowPoll
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getAllowPoll()
     {
@@ -313,9 +320,10 @@ class Path extends \Entity\Entity\Base
     }
 
     /**
-     * Set allow_new_content
+     * Set allowNewContent
      *
      * @param boolean $allowNewContent
+     *
      * @return Path
      */
     public function setAllowNewContent($allowNewContent)
@@ -326,9 +334,9 @@ class Path extends \Entity\Entity\Base
     }
 
     /**
-     * Get allow_new_content
+     * Get allowNewContent
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getAllowNewContent()
     {
@@ -336,9 +344,10 @@ class Path extends \Entity\Entity\Base
     }
 
     /**
-     * Set syndication_default
+     * Set syndicationDefault
      *
      * @param boolean $syndicationDefault
+     *
      * @return Path
      */
     public function setSyndicationDefault($syndicationDefault)
@@ -349,9 +358,9 @@ class Path extends \Entity\Entity\Base
     }
 
     /**
-     * Get syndication_default
+     * Get syndicationDefault
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getSyndicationDefault()
     {
@@ -359,9 +368,10 @@ class Path extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_premium
+     * Set isPremium
      *
      * @param boolean $isPremium
+     *
      * @return Path
      */
     public function setIsPremium($isPremium)
@@ -372,9 +382,9 @@ class Path extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_premium
+     * Get isPremium
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsPremium()
     {
@@ -382,9 +392,10 @@ class Path extends \Entity\Entity\Base
     }
 
     /**
-     * Set sort_order
+     * Set sortOrder
      *
      * @param integer $sortOrder
+     *
      * @return Path
      */
     public function setSortOrder($sortOrder)
@@ -395,9 +406,9 @@ class Path extends \Entity\Entity\Base
     }
 
     /**
-     * Get sort_order
+     * Get sortOrder
      *
-     * @return integer 
+     * @return integer
      */
     public function getSortOrder()
     {
@@ -405,9 +416,10 @@ class Path extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return Path
      */
     public function setCreatedAt($createdAt)
@@ -418,9 +430,9 @@ class Path extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -428,9 +440,10 @@ class Path extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return Path
      */
     public function setUpdatedAt($updatedAt)
@@ -441,9 +454,9 @@ class Path extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -451,9 +464,10 @@ class Path extends \Entity\Entity\Base
     }
 
     /**
-     * Set Publication
+     * Set publication
      *
      * @param \Entity\Cms\Publication $publication
+     *
      * @return Path
      */
     public function setPublication(\Entity\Cms\Publication $publication = null)
@@ -464,12 +478,13 @@ class Path extends \Entity\Entity\Base
     }
 
     /**
-     * Get Publication
+     * Get publication
      *
-     * @return \Entity\Cms\Publication 
+     * @return \Entity\Cms\Publication
      */
     public function getPublication()
     {
         return $this->Publication;
     }
 }
+

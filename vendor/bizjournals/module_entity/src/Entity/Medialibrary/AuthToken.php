@@ -2,8 +2,6 @@
 
 namespace Entity\Medialibrary;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * AuthToken
  */
@@ -73,9 +71,9 @@ class AuthToken extends \Entity\Entity\Base
     }
 
     /**
-     * Get auth_id
+     * Get authId
      *
-     * @return integer 
+     * @return integer
      */
     public function getAuthId()
     {
@@ -86,6 +84,7 @@ class AuthToken extends \Entity\Entity\Base
      * Set purpose
      *
      * @param string $purpose
+     *
      * @return AuthToken
      */
     public function setPurpose($purpose)
@@ -98,7 +97,7 @@ class AuthToken extends \Entity\Entity\Base
     /**
      * Get purpose
      *
-     * @return string 
+     * @return string
      */
     public function getPurpose()
     {
@@ -109,6 +108,7 @@ class AuthToken extends \Entity\Entity\Base
      * Set category
      *
      * @param string $category
+     *
      * @return AuthToken
      */
     public function setCategory($category)
@@ -121,7 +121,7 @@ class AuthToken extends \Entity\Entity\Base
     /**
      * Get category
      *
-     * @return string 
+     * @return string
      */
     public function getCategory()
     {
@@ -129,9 +129,10 @@ class AuthToken extends \Entity\Entity\Base
     }
 
     /**
-     * Set api_key
+     * Set apiKey
      *
      * @param string $apiKey
+     *
      * @return AuthToken
      */
     public function setApiKey($apiKey)
@@ -142,9 +143,9 @@ class AuthToken extends \Entity\Entity\Base
     }
 
     /**
-     * Get api_key
+     * Get apiKey
      *
-     * @return string 
+     * @return string
      */
     public function getApiKey()
     {
@@ -152,9 +153,10 @@ class AuthToken extends \Entity\Entity\Base
     }
 
     /**
-     * Set shared_secret
+     * Set sharedSecret
      *
      * @param string $sharedSecret
+     *
      * @return AuthToken
      */
     public function setSharedSecret($sharedSecret)
@@ -165,9 +167,9 @@ class AuthToken extends \Entity\Entity\Base
     }
 
     /**
-     * Get shared_secret
+     * Get sharedSecret
      *
-     * @return string 
+     * @return string
      */
     public function getSharedSecret()
     {
@@ -175,9 +177,10 @@ class AuthToken extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_active
+     * Set isActive
      *
      * @param boolean $isActive
+     *
      * @return AuthToken
      */
     public function setIsActive($isActive)
@@ -188,9 +191,9 @@ class AuthToken extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_active
+     * Get isActive
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsActive()
     {
@@ -198,9 +201,10 @@ class AuthToken extends \Entity\Entity\Base
     }
 
     /**
-     * Set expires_at
+     * Set expiresAt
      *
      * @param \DateTime $expiresAt
+     *
      * @return AuthToken
      */
     public function setExpiresAt($expiresAt)
@@ -211,9 +215,9 @@ class AuthToken extends \Entity\Entity\Base
     }
 
     /**
-     * Get expires_at
+     * Get expiresAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getExpiresAt()
     {
@@ -221,9 +225,10 @@ class AuthToken extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_superuser
+     * Set isSuperuser
      *
      * @param boolean $isSuperuser
+     *
      * @return AuthToken
      */
     public function setIsSuperuser($isSuperuser)
@@ -234,9 +239,9 @@ class AuthToken extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_superuser
+     * Get isSuperuser
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsSuperuser()
     {
@@ -244,9 +249,10 @@ class AuthToken extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return AuthToken
      */
     public function setCreatedAt($createdAt)
@@ -257,9 +263,9 @@ class AuthToken extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -267,9 +273,10 @@ class AuthToken extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return AuthToken
      */
     public function setUpdatedAt($updatedAt)
@@ -280,9 +287,9 @@ class AuthToken extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -290,35 +297,37 @@ class AuthToken extends \Entity\Entity\Base
     }
 
     /**
-     * Add AuthSessions
+     * Add authSession
      *
-     * @param \Entity\Medialibrary\AuthSession $authSessions
+     * @param \Entity\Medialibrary\AuthSession $authSession
+     *
      * @return AuthToken
      */
-    public function addAuthSession(\Entity\Medialibrary\AuthSession $authSessions)
+    public function addAuthSession(\Entity\Medialibrary\AuthSession $authSession)
     {
-        $this->AuthSessions[] = $authSessions;
+        $this->AuthSessions[] = $authSession;
 
         return $this;
     }
 
     /**
-     * Remove AuthSessions
+     * Remove authSession
      *
-     * @param \Entity\Medialibrary\AuthSession $authSessions
+     * @param \Entity\Medialibrary\AuthSession $authSession
      */
-    public function removeAuthSession(\Entity\Medialibrary\AuthSession $authSessions)
+    public function removeAuthSession(\Entity\Medialibrary\AuthSession $authSession)
     {
-        $this->AuthSessions->removeElement($authSessions);
+        $this->AuthSessions->removeElement($authSession);
     }
 
     /**
-     * Get AuthSessions
+     * Get authSessions
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getAuthSessions()
     {
         return $this->AuthSessions;
     }
 }
+

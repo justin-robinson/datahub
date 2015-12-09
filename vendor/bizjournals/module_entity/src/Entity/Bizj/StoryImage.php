@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * StoryImage
  */
@@ -76,9 +74,10 @@ class StoryImage extends \Entity\Entity\Base
 
 
     /**
-     * Set image_id
+     * Set imageId
      *
      * @param integer $imageId
+     *
      * @return StoryImage
      */
     public function setImageId($imageId)
@@ -89,9 +88,9 @@ class StoryImage extends \Entity\Entity\Base
     }
 
     /**
-     * Get image_id
+     * Get imageId
      *
-     * @return integer 
+     * @return integer
      */
     public function getImageId()
     {
@@ -99,9 +98,10 @@ class StoryImage extends \Entity\Entity\Base
     }
 
     /**
-     * Set c_time
+     * Set cTime
      *
      * @param \DateTime $cTime
+     *
      * @return StoryImage
      */
     public function setCTime($cTime)
@@ -112,9 +112,9 @@ class StoryImage extends \Entity\Entity\Base
     }
 
     /**
-     * Get c_time
+     * Get cTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCTime()
     {
@@ -122,9 +122,10 @@ class StoryImage extends \Entity\Entity\Base
     }
 
     /**
-     * Set story_id
+     * Set storyId
      *
      * @param integer $storyId
+     *
      * @return StoryImage
      */
     public function setStoryId($storyId)
@@ -135,9 +136,9 @@ class StoryImage extends \Entity\Entity\Base
     }
 
     /**
-     * Get story_id
+     * Get storyId
      *
-     * @return integer 
+     * @return integer
      */
     public function getStoryId()
     {
@@ -145,9 +146,10 @@ class StoryImage extends \Entity\Entity\Base
     }
 
     /**
-     * Set major_rev
+     * Set majorRev
      *
      * @param integer $majorRev
+     *
      * @return StoryImage
      */
     public function setMajorRev($majorRev)
@@ -158,9 +160,9 @@ class StoryImage extends \Entity\Entity\Base
     }
 
     /**
-     * Get major_rev
+     * Get majorRev
      *
-     * @return integer 
+     * @return integer
      */
     public function getMajorRev()
     {
@@ -168,9 +170,10 @@ class StoryImage extends \Entity\Entity\Base
     }
 
     /**
-     * Set rev_time
+     * Set revTime
      *
      * @param \DateTime $revTime
+     *
      * @return StoryImage
      */
     public function setRevTime($revTime)
@@ -181,9 +184,9 @@ class StoryImage extends \Entity\Entity\Base
     }
 
     /**
-     * Get rev_time
+     * Get revTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getRevTime()
     {
@@ -194,6 +197,7 @@ class StoryImage extends \Entity\Entity\Base
      * Set caption
      *
      * @param string $caption
+     *
      * @return StoryImage
      */
     public function setCaption($caption)
@@ -206,7 +210,7 @@ class StoryImage extends \Entity\Entity\Base
     /**
      * Get caption
      *
-     * @return string 
+     * @return string
      */
     public function getCaption()
     {
@@ -214,9 +218,10 @@ class StoryImage extends \Entity\Entity\Base
     }
 
     /**
-     * Set media_producer
+     * Set mediaProducer
      *
      * @param string $mediaProducer
+     *
      * @return StoryImage
      */
     public function setMediaProducer($mediaProducer)
@@ -227,9 +232,9 @@ class StoryImage extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_producer
+     * Get mediaProducer
      *
-     * @return string 
+     * @return string
      */
     public function getMediaProducer()
     {
@@ -237,9 +242,10 @@ class StoryImage extends \Entity\Entity\Base
     }
 
     /**
-     * Set image_data
+     * Set imageData
      *
      * @param string $imageData
+     *
      * @return StoryImage
      */
     public function setImageData($imageData)
@@ -250,9 +256,9 @@ class StoryImage extends \Entity\Entity\Base
     }
 
     /**
-     * Get image_data
+     * Get imageData
      *
-     * @return string 
+     * @return string
      */
     public function getImageData()
     {
@@ -263,6 +269,7 @@ class StoryImage extends \Entity\Entity\Base
      * Set width
      *
      * @param integer $width
+     *
      * @return StoryImage
      */
     public function setWidth($width)
@@ -275,7 +282,7 @@ class StoryImage extends \Entity\Entity\Base
     /**
      * Get width
      *
-     * @return integer 
+     * @return integer
      */
     public function getWidth()
     {
@@ -286,6 +293,7 @@ class StoryImage extends \Entity\Entity\Base
      * Set height
      *
      * @param integer $height
+     *
      * @return StoryImage
      */
     public function setHeight($height)
@@ -298,7 +306,7 @@ class StoryImage extends \Entity\Entity\Base
     /**
      * Get height
      *
-     * @return integer 
+     * @return integer
      */
     public function getHeight()
     {
@@ -306,9 +314,10 @@ class StoryImage extends \Entity\Entity\Base
     }
 
     /**
-     * Set size_hint
+     * Set sizeHint
      *
      * @param string $sizeHint
+     *
      * @return StoryImage
      */
     public function setSizeHint($sizeHint)
@@ -319,9 +328,9 @@ class StoryImage extends \Entity\Entity\Base
     }
 
     /**
-     * Get size_hint
+     * Get sizeHint
      *
-     * @return string 
+     * @return string
      */
     public function getSizeHint()
     {
@@ -329,9 +338,10 @@ class StoryImage extends \Entity\Entity\Base
     }
 
     /**
-     * Set display_order
+     * Set displayOrder
      *
      * @param integer $displayOrder
+     *
      * @return StoryImage
      */
     public function setDisplayOrder($displayOrder)
@@ -342,9 +352,9 @@ class StoryImage extends \Entity\Entity\Base
     }
 
     /**
-     * Get display_order
+     * Get displayOrder
      *
-     * @return integer 
+     * @return integer
      */
     public function getDisplayOrder()
     {
@@ -352,9 +362,10 @@ class StoryImage extends \Entity\Entity\Base
     }
 
     /**
-     * Set StoryRead
+     * Set storyRead
      *
      * @param \Entity\Bizj\StoryRead $storyRead
+     *
      * @return StoryImage
      */
     public function setStoryRead(\Entity\Bizj\StoryRead $storyRead = null)
@@ -365,12 +376,13 @@ class StoryImage extends \Entity\Entity\Base
     }
 
     /**
-     * Get StoryRead
+     * Get storyRead
      *
-     * @return \Entity\Bizj\StoryRead 
+     * @return \Entity\Bizj\StoryRead
      */
     public function getStoryRead()
     {
         return $this->StoryRead;
     }
 }
+

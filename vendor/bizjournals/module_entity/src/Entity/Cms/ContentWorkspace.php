@@ -2,8 +2,6 @@
 
 namespace Entity\Cms;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * ContentWorkspace
  */
@@ -31,9 +29,10 @@ class ContentWorkspace extends \Entity\Entity\Base
 
 
     /**
-     * Set content_id
+     * Set contentId
      *
      * @param integer $contentId
+     *
      * @return ContentWorkspace
      */
     public function setContentId($contentId)
@@ -44,9 +43,9 @@ class ContentWorkspace extends \Entity\Entity\Base
     }
 
     /**
-     * Get content_id
+     * Get contentId
      *
-     * @return integer 
+     * @return integer
      */
     public function getContentId()
     {
@@ -54,9 +53,10 @@ class ContentWorkspace extends \Entity\Entity\Base
     }
 
     /**
-     * Set user_id
+     * Set userId
      *
      * @param integer $userId
+     *
      * @return ContentWorkspace
      */
     public function setUserId($userId)
@@ -67,9 +67,9 @@ class ContentWorkspace extends \Entity\Entity\Base
     }
 
     /**
-     * Get user_id
+     * Get userId
      *
-     * @return integer 
+     * @return integer
      */
     public function getUserId()
     {
@@ -77,9 +77,10 @@ class ContentWorkspace extends \Entity\Entity\Base
     }
 
     /**
-     * Set user_name
+     * Set userName
      *
      * @param string $userName
+     *
      * @return ContentWorkspace
      */
     public function setUserName($userName)
@@ -90,9 +91,9 @@ class ContentWorkspace extends \Entity\Entity\Base
     }
 
     /**
-     * Get user_name
+     * Get userName
      *
-     * @return string 
+     * @return string
      */
     public function getUserName()
     {
@@ -100,9 +101,10 @@ class ContentWorkspace extends \Entity\Entity\Base
     }
 
     /**
-     * Set Content
+     * Set content
      *
      * @param \Entity\Cms\Content $content
+     *
      * @return ContentWorkspace
      */
     public function setContent(\Entity\Cms\Content $content = null)
@@ -113,12 +115,13 @@ class ContentWorkspace extends \Entity\Entity\Base
     }
 
     /**
-     * Get Content
+     * Get content
      *
-     * @return \Entity\Cms\Content 
+     * @return \Entity\Cms\Content
      */
     public function getContent()
     {
         return $this->Content;
     }
 }
+

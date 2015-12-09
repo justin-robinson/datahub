@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Journal
  */
@@ -111,9 +109,9 @@ class Journal extends \Entity\Entity\Base
 
 
     /**
-     * Get journal_id
+     * Get journalId
      *
-     * @return integer 
+     * @return integer
      */
     public function getJournalId()
     {
@@ -121,9 +119,10 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Set journal_code
+     * Set journalCode
      *
      * @param string $journalCode
+     *
      * @return Journal
      */
     public function setJournalCode($journalCode)
@@ -134,9 +133,9 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Get journal_code
+     * Get journalCode
      *
-     * @return string 
+     * @return string
      */
     public function getJournalCode()
     {
@@ -144,9 +143,10 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Set market_id
+     * Set marketId
      *
      * @param integer $marketId
+     *
      * @return Journal
      */
     public function setMarketId($marketId)
@@ -157,9 +157,9 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Get market_id
+     * Get marketId
      *
-     * @return integer 
+     * @return integer
      */
     public function getMarketId()
     {
@@ -167,9 +167,10 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Set journal_name
+     * Set journalName
      *
      * @param string $journalName
+     *
      * @return Journal
      */
     public function setJournalName($journalName)
@@ -180,9 +181,9 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Get journal_name
+     * Get journalName
      *
-     * @return string 
+     * @return string
      */
     public function getJournalName()
     {
@@ -190,9 +191,10 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Set descriptive_name
+     * Set descriptiveName
      *
      * @param string $descriptiveName
+     *
      * @return Journal
      */
     public function setDescriptiveName($descriptiveName)
@@ -203,9 +205,9 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Get descriptive_name
+     * Get descriptiveName
      *
-     * @return string 
+     * @return string
      */
     public function getDescriptiveName()
     {
@@ -213,9 +215,10 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Set short_name
+     * Set shortName
      *
      * @param string $shortName
+     *
      * @return Journal
      */
     public function setShortName($shortName)
@@ -226,9 +229,9 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Get short_name
+     * Get shortName
      *
-     * @return string 
+     * @return string
      */
     public function getShortName()
     {
@@ -236,9 +239,10 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Set objective_name
+     * Set objectiveName
      *
      * @param string $objectiveName
+     *
      * @return Journal
      */
     public function setObjectiveName($objectiveName)
@@ -249,9 +253,9 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Get objective_name
+     * Get objectiveName
      *
-     * @return string 
+     * @return string
      */
     public function getObjectiveName()
     {
@@ -259,9 +263,10 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Set objective_short_name
+     * Set objectiveShortName
      *
      * @param string $objectiveShortName
+     *
      * @return Journal
      */
     public function setObjectiveShortName($objectiveShortName)
@@ -272,9 +277,9 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Get objective_short_name
+     * Get objectiveShortName
      *
-     * @return string 
+     * @return string
      */
     public function getObjectiveShortName()
     {
@@ -282,9 +287,10 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Set print_product_id
+     * Set printProductId
      *
      * @param integer $printProductId
+     *
      * @return Journal
      */
     public function setPrintProductId($printProductId)
@@ -295,9 +301,9 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Get print_product_id
+     * Get printProductId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPrintProductId()
     {
@@ -305,9 +311,10 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Set online_product_id
+     * Set onlineProductId
      *
      * @param integer $onlineProductId
+     *
      * @return Journal
      */
     public function setOnlineProductId($onlineProductId)
@@ -318,9 +325,9 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Get online_product_id
+     * Get onlineProductId
      *
-     * @return integer 
+     * @return integer
      */
     public function getOnlineProductId()
     {
@@ -328,9 +335,10 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Set primary_contact_id
+     * Set primaryContactId
      *
      * @param integer $primaryContactId
+     *
      * @return Journal
      */
     public function setPrimaryContactId($primaryContactId)
@@ -341,9 +349,9 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Get primary_contact_id
+     * Get primaryContactId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPrimaryContactId()
     {
@@ -351,9 +359,10 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Set publisher_contact_id
+     * Set publisherContactId
      *
      * @param integer $publisherContactId
+     *
      * @return Journal
      */
     public function setPublisherContactId($publisherContactId)
@@ -364,9 +373,9 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Get publisher_contact_id
+     * Get publisherContactId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPublisherContactId()
     {
@@ -374,9 +383,10 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Set circ_mgr_contact_id
+     * Set circMgrContactId
      *
      * @param integer $circMgrContactId
+     *
      * @return Journal
      */
     public function setCircMgrContactId($circMgrContactId)
@@ -387,9 +397,9 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Get circ_mgr_contact_id
+     * Get circMgrContactId
      *
-     * @return integer 
+     * @return integer
      */
     public function getCircMgrContactId()
     {
@@ -397,9 +407,10 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Set ad_mgr_contact_id
+     * Set adMgrContactId
      *
      * @param integer $adMgrContactId
+     *
      * @return Journal
      */
     public function setAdMgrContactId($adMgrContactId)
@@ -410,9 +421,9 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Get ad_mgr_contact_id
+     * Get adMgrContactId
      *
-     * @return integer 
+     * @return integer
      */
     public function getAdMgrContactId()
     {
@@ -420,9 +431,10 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Set editor_contact_id
+     * Set editorContactId
      *
      * @param integer $editorContactId
+     *
      * @return Journal
      */
     public function setEditorContactId($editorContactId)
@@ -433,9 +445,9 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Get editor_contact_id
+     * Get editorContactId
      *
-     * @return integer 
+     * @return integer
      */
     public function getEditorContactId()
     {
@@ -443,9 +455,10 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Set research_dir_contact_id
+     * Set researchDirContactId
      *
      * @param integer $researchDirContactId
+     *
      * @return Journal
      */
     public function setResearchDirContactId($researchDirContactId)
@@ -456,9 +469,9 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Get research_dir_contact_id
+     * Get researchDirContactId
      *
-     * @return integer 
+     * @return integer
      */
     public function getResearchDirContactId()
     {
@@ -466,9 +479,10 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Set circ_product_id
+     * Set circProductId
      *
      * @param string $circProductId
+     *
      * @return Journal
      */
     public function setCircProductId($circProductId)
@@ -479,9 +493,9 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Get circ_product_id
+     * Get circProductId
      *
-     * @return string 
+     * @return string
      */
     public function getCircProductId()
     {
@@ -489,9 +503,10 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return Journal
      */
     public function setCreatedAt($createdAt)
@@ -502,9 +517,9 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -512,9 +527,10 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return Journal
      */
     public function setUpdatedAt($updatedAt)
@@ -525,9 +541,9 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -535,9 +551,10 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Set Market
+     * Set market
      *
      * @param \Entity\Bizj\Market $market
+     *
      * @return Journal
      */
     public function setMarket(\Entity\Bizj\Market $market = null)
@@ -548,12 +565,13 @@ class Journal extends \Entity\Entity\Base
     }
 
     /**
-     * Get Market
+     * Get market
      *
-     * @return \Entity\Bizj\Market 
+     * @return \Entity\Bizj\Market
      */
     public function getMarket()
     {
         return $this->Market;
     }
 }
+

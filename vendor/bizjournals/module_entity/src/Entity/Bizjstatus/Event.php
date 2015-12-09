@@ -2,8 +2,6 @@
 
 namespace Entity\Bizjstatus;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Event
  */
@@ -98,9 +96,9 @@ class Event extends \Entity\Entity\Base
     }
 
     /**
-     * Get event_id
+     * Get eventId
      *
-     * @return integer 
+     * @return integer
      */
     public function getEventId()
     {
@@ -108,9 +106,10 @@ class Event extends \Entity\Entity\Base
     }
 
     /**
-     * Set parent_id
+     * Set parentId
      *
      * @param integer $parentId
+     *
      * @return Event
      */
     public function setParentId($parentId)
@@ -121,9 +120,9 @@ class Event extends \Entity\Entity\Base
     }
 
     /**
-     * Get parent_id
+     * Get parentId
      *
-     * @return integer 
+     * @return integer
      */
     public function getParentId()
     {
@@ -131,9 +130,10 @@ class Event extends \Entity\Entity\Base
     }
 
     /**
-     * Set grandparent_id
+     * Set grandparentId
      *
      * @param integer $grandparentId
+     *
      * @return Event
      */
     public function setGrandparentId($grandparentId)
@@ -144,9 +144,9 @@ class Event extends \Entity\Entity\Base
     }
 
     /**
-     * Get grandparent_id
+     * Get grandparentId
      *
-     * @return integer 
+     * @return integer
      */
     public function getGrandparentId()
     {
@@ -154,9 +154,10 @@ class Event extends \Entity\Entity\Base
     }
 
     /**
-     * Set has_child
+     * Set hasChild
      *
      * @param boolean $hasChild
+     *
      * @return Event
      */
     public function setHasChild($hasChild)
@@ -167,9 +168,9 @@ class Event extends \Entity\Entity\Base
     }
 
     /**
-     * Get has_child
+     * Get hasChild
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getHasChild()
     {
@@ -177,9 +178,10 @@ class Event extends \Entity\Entity\Base
     }
 
     /**
-     * Set code_id
+     * Set codeId
      *
      * @param integer $codeId
+     *
      * @return Event
      */
     public function setCodeId($codeId)
@@ -190,9 +192,9 @@ class Event extends \Entity\Entity\Base
     }
 
     /**
-     * Get code_id
+     * Get codeId
      *
-     * @return integer 
+     * @return integer
      */
     public function getCodeId()
     {
@@ -200,9 +202,10 @@ class Event extends \Entity\Entity\Base
     }
 
     /**
-     * Set allow_syndication
+     * Set allowSyndication
      *
      * @param boolean $allowSyndication
+     *
      * @return Event
      */
     public function setAllowSyndication($allowSyndication)
@@ -213,9 +216,9 @@ class Event extends \Entity\Entity\Base
     }
 
     /**
-     * Get allow_syndication
+     * Get allowSyndication
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getAllowSyndication()
     {
@@ -223,9 +226,10 @@ class Event extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_resolved
+     * Set isResolved
      *
      * @param boolean $isResolved
+     *
      * @return Event
      */
     public function setIsResolved($isResolved)
@@ -236,9 +240,9 @@ class Event extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_resolved
+     * Get isResolved
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsResolved()
     {
@@ -249,6 +253,7 @@ class Event extends \Entity\Entity\Base
      * Set title
      *
      * @param string $title
+     *
      * @return Event
      */
     public function setTitle($title)
@@ -261,7 +266,7 @@ class Event extends \Entity\Entity\Base
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -272,6 +277,7 @@ class Event extends \Entity\Entity\Base
      * Set details
      *
      * @param string $details
+     *
      * @return Event
      */
     public function setDetails($details)
@@ -284,7 +290,7 @@ class Event extends \Entity\Entity\Base
     /**
      * Get details
      *
-     * @return string 
+     * @return string
      */
     public function getDetails()
     {
@@ -292,9 +298,10 @@ class Event extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_by
+     * Set createdBy
      *
      * @param string $createdBy
+     *
      * @return Event
      */
     public function setCreatedBy($createdBy)
@@ -305,9 +312,9 @@ class Event extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_by
+     * Get createdBy
      *
-     * @return string 
+     * @return string
      */
     public function getCreatedBy()
     {
@@ -315,9 +322,10 @@ class Event extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_by
+     * Set updatedBy
      *
      * @param string $updatedBy
+     *
      * @return Event
      */
     public function setUpdatedBy($updatedBy)
@@ -328,9 +336,9 @@ class Event extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_by
+     * Get updatedBy
      *
-     * @return string 
+     * @return string
      */
     public function getUpdatedBy()
     {
@@ -338,9 +346,10 @@ class Event extends \Entity\Entity\Base
     }
 
     /**
-     * Set expires_at
+     * Set expiresAt
      *
      * @param \DateTime $expiresAt
+     *
      * @return Event
      */
     public function setExpiresAt($expiresAt)
@@ -351,9 +360,9 @@ class Event extends \Entity\Entity\Base
     }
 
     /**
-     * Get expires_at
+     * Get expiresAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getExpiresAt()
     {
@@ -361,9 +370,10 @@ class Event extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return Event
      */
     public function setCreatedAt($createdAt)
@@ -374,9 +384,9 @@ class Event extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -384,9 +394,10 @@ class Event extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return Event
      */
     public function setUpdatedAt($updatedAt)
@@ -397,9 +408,9 @@ class Event extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -407,9 +418,10 @@ class Event extends \Entity\Entity\Base
     }
 
     /**
-     * Add ProductMap
+     * Add productMap
      *
      * @param \Entity\Bizjstatus\ProductEventMap $productMap
+     *
      * @return Event
      */
     public function addProductMap(\Entity\Bizjstatus\ProductEventMap $productMap)
@@ -420,7 +432,7 @@ class Event extends \Entity\Entity\Base
     }
 
     /**
-     * Remove ProductMap
+     * Remove productMap
      *
      * @param \Entity\Bizjstatus\ProductEventMap $productMap
      */
@@ -430,9 +442,9 @@ class Event extends \Entity\Entity\Base
     }
 
     /**
-     * Get ProductMap
+     * Get productMap
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getProductMap()
     {
@@ -440,9 +452,10 @@ class Event extends \Entity\Entity\Base
     }
 
     /**
-     * Set Status
+     * Set status
      *
      * @param \Entity\Bizjstatus\StatusCode $status
+     *
      * @return Event
      */
     public function setStatus(\Entity\Bizjstatus\StatusCode $status = null)
@@ -453,12 +466,13 @@ class Event extends \Entity\Entity\Base
     }
 
     /**
-     * Get Status
+     * Get status
      *
-     * @return \Entity\Bizjstatus\StatusCode 
+     * @return \Entity\Bizjstatus\StatusCode
      */
     public function getStatus()
     {
         return $this->Status;
     }
 }
+

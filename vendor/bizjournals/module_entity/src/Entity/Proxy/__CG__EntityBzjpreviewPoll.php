@@ -660,23 +660,23 @@ class Poll extends \Entity\Bzjpreview\Poll implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function addQuestion(\Entity\Bzjpreview\PollQuestion $questions)
+    public function addQuestion(\Entity\Bzjpreview\PollQuestion $question)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addQuestion', array($questions));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addQuestion', array($question));
 
-        return parent::addQuestion($questions);
+        return parent::addQuestion($question);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeQuestion(\Entity\Bzjpreview\PollQuestion $questions)
+    public function removeQuestion(\Entity\Bzjpreview\PollQuestion $question)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeQuestion', array($questions));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeQuestion', array($question));
 
-        return parent::removeQuestion($questions);
+        return parent::removeQuestion($question);
     }
 
     /**

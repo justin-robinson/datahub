@@ -2,8 +2,6 @@
 
 namespace Entity\Bizjstatus;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * User
  */
@@ -51,9 +49,9 @@ class User extends \Entity\Entity\Base
 
 
     /**
-     * Get user_id
+     * Get userId
      *
-     * @return integer 
+     * @return integer
      */
     public function getUserId()
     {
@@ -64,6 +62,7 @@ class User extends \Entity\Entity\Base
      * Set username
      *
      * @param string $username
+     *
      * @return User
      */
     public function setUsername($username)
@@ -76,7 +75,7 @@ class User extends \Entity\Entity\Base
     /**
      * Get username
      *
-     * @return string 
+     * @return string
      */
     public function getUsername()
     {
@@ -87,6 +86,7 @@ class User extends \Entity\Entity\Base
      * Set email
      *
      * @param string $email
+     *
      * @return User
      */
     public function setEmail($email)
@@ -99,7 +99,7 @@ class User extends \Entity\Entity\Base
     /**
      * Get email
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
@@ -107,9 +107,10 @@ class User extends \Entity\Entity\Base
     }
 
     /**
-     * Set display_name
+     * Set displayName
      *
      * @param string $displayName
+     *
      * @return User
      */
     public function setDisplayName($displayName)
@@ -120,9 +121,9 @@ class User extends \Entity\Entity\Base
     }
 
     /**
-     * Get display_name
+     * Get displayName
      *
-     * @return string 
+     * @return string
      */
     public function getDisplayName()
     {
@@ -133,6 +134,7 @@ class User extends \Entity\Entity\Base
      * Set password
      *
      * @param string $password
+     *
      * @return User
      */
     public function setPassword($password)
@@ -145,7 +147,7 @@ class User extends \Entity\Entity\Base
     /**
      * Get password
      *
-     * @return string 
+     * @return string
      */
     public function getPassword()
     {
@@ -156,6 +158,7 @@ class User extends \Entity\Entity\Base
      * Set state
      *
      * @param integer $state
+     *
      * @return User
      */
     public function setState($state)
@@ -168,7 +171,7 @@ class User extends \Entity\Entity\Base
     /**
      * Get state
      *
-     * @return integer 
+     * @return integer
      */
     public function getState()
     {
@@ -176,9 +179,10 @@ class User extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return User
      */
     public function setCreatedAt($createdAt)
@@ -189,9 +193,9 @@ class User extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -199,9 +203,10 @@ class User extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return User
      */
     public function setUpdatedAt($updatedAt)
@@ -212,12 +217,13 @@ class User extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
         return $this->updated_at;
     }
 }
+

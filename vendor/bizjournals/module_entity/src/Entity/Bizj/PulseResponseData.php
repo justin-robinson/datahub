@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * PulseResponseData
  */
@@ -46,9 +44,10 @@ class PulseResponseData extends \Entity\Entity\Base
 
 
     /**
-     * Set response_id
+     * Set responseId
      *
      * @param integer $responseId
+     *
      * @return PulseResponseData
      */
     public function setResponseId($responseId)
@@ -59,9 +58,9 @@ class PulseResponseData extends \Entity\Entity\Base
     }
 
     /**
-     * Get response_id
+     * Get responseId
      *
-     * @return integer 
+     * @return integer
      */
     public function getResponseId()
     {
@@ -69,9 +68,10 @@ class PulseResponseData extends \Entity\Entity\Base
     }
 
     /**
-     * Set question_id
+     * Set questionId
      *
      * @param integer $questionId
+     *
      * @return PulseResponseData
      */
     public function setQuestionId($questionId)
@@ -82,9 +82,9 @@ class PulseResponseData extends \Entity\Entity\Base
     }
 
     /**
-     * Get question_id
+     * Get questionId
      *
-     * @return integer 
+     * @return integer
      */
     public function getQuestionId()
     {
@@ -92,9 +92,10 @@ class PulseResponseData extends \Entity\Entity\Base
     }
 
     /**
-     * Set option_id
+     * Set optionId
      *
      * @param integer $optionId
+     *
      * @return PulseResponseData
      */
     public function setOptionId($optionId)
@@ -105,9 +106,9 @@ class PulseResponseData extends \Entity\Entity\Base
     }
 
     /**
-     * Get option_id
+     * Get optionId
      *
-     * @return integer 
+     * @return integer
      */
     public function getOptionId()
     {
@@ -115,9 +116,10 @@ class PulseResponseData extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return PulseResponseData
      */
     public function setCreatedAt($createdAt)
@@ -128,9 +130,9 @@ class PulseResponseData extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -141,6 +143,7 @@ class PulseResponseData extends \Entity\Entity\Base
      * Set response
      *
      * @param string $response
+     *
      * @return PulseResponseData
      */
     public function setResponse($response)
@@ -153,7 +156,7 @@ class PulseResponseData extends \Entity\Entity\Base
     /**
      * Get response
      *
-     * @return string 
+     * @return string
      */
     public function getResponse()
     {
@@ -161,9 +164,10 @@ class PulseResponseData extends \Entity\Entity\Base
     }
 
     /**
-     * Set Question
+     * Set question
      *
      * @param \Entity\Bizj\PulseQuestion $question
+     *
      * @return PulseResponseData
      */
     public function setQuestion(\Entity\Bizj\PulseQuestion $question = null)
@@ -174,12 +178,13 @@ class PulseResponseData extends \Entity\Entity\Base
     }
 
     /**
-     * Get Question
+     * Get question
      *
-     * @return \Entity\Bizj\PulseQuestion 
+     * @return \Entity\Bizj\PulseQuestion
      */
     public function getQuestion()
     {
         return $this->Question;
     }
 }
+

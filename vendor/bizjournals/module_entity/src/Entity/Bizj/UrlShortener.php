@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * UrlShortener
  */
@@ -36,9 +34,9 @@ class UrlShortener extends \Entity\Entity\Base
 
 
     /**
-     * Get url_id
+     * Get urlId
      *
-     * @return integer 
+     * @return integer
      */
     public function getUrlId()
     {
@@ -49,6 +47,7 @@ class UrlShortener extends \Entity\Entity\Base
      * Set url
      *
      * @param string $url
+     *
      * @return UrlShortener
      */
     public function setUrl($url)
@@ -61,7 +60,7 @@ class UrlShortener extends \Entity\Entity\Base
     /**
      * Get url
      *
-     * @return string 
+     * @return string
      */
     public function getUrl()
     {
@@ -72,6 +71,7 @@ class UrlShortener extends \Entity\Entity\Base
      * Set market
      *
      * @param string $market
+     *
      * @return UrlShortener
      */
     public function setMarket($market)
@@ -84,7 +84,7 @@ class UrlShortener extends \Entity\Entity\Base
     /**
      * Get market
      *
-     * @return string 
+     * @return string
      */
     public function getMarket()
     {
@@ -92,9 +92,10 @@ class UrlShortener extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_time
+     * Set createdTime
      *
      * @param \DateTime $createdTime
+     *
      * @return UrlShortener
      */
     public function setCreatedTime($createdTime)
@@ -105,9 +106,9 @@ class UrlShortener extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_time
+     * Get createdTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedTime()
     {
@@ -115,9 +116,10 @@ class UrlShortener extends \Entity\Entity\Base
     }
 
     /**
-     * Set modified_time
+     * Set modifiedTime
      *
      * @param \DateTime $modifiedTime
+     *
      * @return UrlShortener
      */
     public function setModifiedTime($modifiedTime)
@@ -128,12 +130,13 @@ class UrlShortener extends \Entity\Entity\Base
     }
 
     /**
-     * Get modified_time
+     * Get modifiedTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getModifiedTime()
     {
         return $this->modified_time;
     }
 }
+

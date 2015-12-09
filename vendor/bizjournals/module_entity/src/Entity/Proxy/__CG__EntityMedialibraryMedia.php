@@ -594,23 +594,23 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     /**
      * {@inheritDoc}
      */
-    public function addMediaMetadatum(\Entity\Medialibrary\MediaMetadata $mediaMetadata)
+    public function addMediaMetadatum(\Entity\Medialibrary\MediaMetadata $mediaMetadatum)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMediaMetadatum', array($mediaMetadata));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMediaMetadatum', array($mediaMetadatum));
 
-        return parent::addMediaMetadatum($mediaMetadata);
+        return parent::addMediaMetadatum($mediaMetadatum);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeMediaMetadatum(\Entity\Medialibrary\MediaMetadata $mediaMetadata)
+    public function removeMediaMetadatum(\Entity\Medialibrary\MediaMetadata $mediaMetadatum)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMediaMetadatum', array($mediaMetadata));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMediaMetadatum', array($mediaMetadatum));
 
-        return parent::removeMediaMetadatum($mediaMetadata);
+        return parent::removeMediaMetadatum($mediaMetadatum);
     }
 
     /**
@@ -627,23 +627,23 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     /**
      * {@inheritDoc}
      */
-    public function addMediaLink(\Entity\Medialibrary\MediaLink $mediaLinks)
+    public function addMediaLink(\Entity\Medialibrary\MediaLink $mediaLink)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMediaLink', array($mediaLinks));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMediaLink', array($mediaLink));
 
-        return parent::addMediaLink($mediaLinks);
+        return parent::addMediaLink($mediaLink);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeMediaLink(\Entity\Medialibrary\MediaLink $mediaLinks)
+    public function removeMediaLink(\Entity\Medialibrary\MediaLink $mediaLink)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMediaLink', array($mediaLinks));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMediaLink', array($mediaLink));
 
-        return parent::removeMediaLink($mediaLinks);
+        return parent::removeMediaLink($mediaLink);
     }
 
     /**
@@ -660,23 +660,23 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     /**
      * {@inheritDoc}
      */
-    public function addMediaTag(\Entity\Medialibrary\MediaTag $mediaTags)
+    public function addMediaTag(\Entity\Medialibrary\MediaTag $mediaTag)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMediaTag', array($mediaTags));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMediaTag', array($mediaTag));
 
-        return parent::addMediaTag($mediaTags);
+        return parent::addMediaTag($mediaTag);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeMediaTag(\Entity\Medialibrary\MediaTag $mediaTags)
+    public function removeMediaTag(\Entity\Medialibrary\MediaTag $mediaTag)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMediaTag', array($mediaTags));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMediaTag', array($mediaTag));
 
-        return parent::removeMediaTag($mediaTags);
+        return parent::removeMediaTag($mediaTag);
     }
 
     /**
@@ -693,23 +693,23 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     /**
      * {@inheritDoc}
      */
-    public function addUploadBatch(\Entity\Medialibrary\BatchMedia $uploadBatches)
+    public function addUploadBatch(\Entity\Medialibrary\BatchMedia $uploadBatch)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addUploadBatch', array($uploadBatches));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addUploadBatch', array($uploadBatch));
 
-        return parent::addUploadBatch($uploadBatches);
+        return parent::addUploadBatch($uploadBatch);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeUploadBatch(\Entity\Medialibrary\BatchMedia $uploadBatches)
+    public function removeUploadBatch(\Entity\Medialibrary\BatchMedia $uploadBatch)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeUploadBatch', array($uploadBatches));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeUploadBatch', array($uploadBatch));
 
-        return parent::removeUploadBatch($uploadBatches);
+        return parent::removeUploadBatch($uploadBatch);
     }
 
     /**
@@ -726,23 +726,23 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     /**
      * {@inheritDoc}
      */
-    public function addMediaPub(\Entity\Medialibrary\MediaPub $mediaPubs)
+    public function addMediaPub(\Entity\Medialibrary\MediaPub $mediaPub)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMediaPub', array($mediaPubs));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMediaPub', array($mediaPub));
 
-        return parent::addMediaPub($mediaPubs);
+        return parent::addMediaPub($mediaPub);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeMediaPub(\Entity\Medialibrary\MediaPub $mediaPubs)
+    public function removeMediaPub(\Entity\Medialibrary\MediaPub $mediaPub)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMediaPub', array($mediaPubs));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMediaPub', array($mediaPub));
 
-        return parent::removeMediaPub($mediaPubs);
+        return parent::removeMediaPub($mediaPub);
     }
 
     /**
@@ -792,23 +792,23 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     /**
      * {@inheritDoc}
      */
-    public function addTag(\Entity\Medialibrary\Tag $tags)
+    public function addTag(\Entity\Medialibrary\Tag $tag)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addTag', array($tags));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addTag', array($tag));
 
-        return parent::addTag($tags);
+        return parent::addTag($tag);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeTag(\Entity\Medialibrary\Tag $tags)
+    public function removeTag(\Entity\Medialibrary\Tag $tag)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeTag', array($tags));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeTag', array($tag));
 
-        return parent::removeTag($tags);
+        return parent::removeTag($tag);
     }
 
     /**
@@ -825,23 +825,23 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     /**
      * {@inheritDoc}
      */
-    public function addPublication(\Entity\Medialibrary\Publication $publications)
+    public function addPublication(\Entity\Medialibrary\Publication $publication)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addPublication', array($publications));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addPublication', array($publication));
 
-        return parent::addPublication($publications);
+        return parent::addPublication($publication);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removePublication(\Entity\Medialibrary\Publication $publications)
+    public function removePublication(\Entity\Medialibrary\Publication $publication)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removePublication', array($publications));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removePublication', array($publication));
 
-        return parent::removePublication($publications);
+        return parent::removePublication($publication);
     }
 
     /**

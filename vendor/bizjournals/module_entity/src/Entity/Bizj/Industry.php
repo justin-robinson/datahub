@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Industry
  */
@@ -56,9 +54,9 @@ class Industry extends \Entity\Entity\Base
 
 
     /**
-     * Get industry_id
+     * Get industryId
      *
-     * @return integer 
+     * @return integer
      */
     public function getIndustryId()
     {
@@ -66,9 +64,10 @@ class Industry extends \Entity\Entity\Base
     }
 
     /**
-     * Set industry_code
+     * Set industryCode
      *
      * @param string $industryCode
+     *
      * @return Industry
      */
     public function setIndustryCode($industryCode)
@@ -79,9 +78,9 @@ class Industry extends \Entity\Entity\Base
     }
 
     /**
-     * Get industry_code
+     * Get industryCode
      *
-     * @return string 
+     * @return string
      */
     public function getIndustryCode()
     {
@@ -89,9 +88,10 @@ class Industry extends \Entity\Entity\Base
     }
 
     /**
-     * Set industry_name
+     * Set industryName
      *
      * @param string $industryName
+     *
      * @return Industry
      */
     public function setIndustryName($industryName)
@@ -102,9 +102,9 @@ class Industry extends \Entity\Entity\Base
     }
 
     /**
-     * Get industry_name
+     * Get industryName
      *
-     * @return string 
+     * @return string
      */
     public function getIndustryName()
     {
@@ -112,9 +112,10 @@ class Industry extends \Entity\Entity\Base
     }
 
     /**
-     * Set short_name
+     * Set shortName
      *
      * @param string $shortName
+     *
      * @return Industry
      */
     public function setShortName($shortName)
@@ -125,9 +126,9 @@ class Industry extends \Entity\Entity\Base
     }
 
     /**
-     * Get short_name
+     * Get shortName
      *
-     * @return string 
+     * @return string
      */
     public function getShortName()
     {
@@ -138,6 +139,7 @@ class Industry extends \Entity\Entity\Base
      * Set active
      *
      * @param boolean $active
+     *
      * @return Industry
      */
     public function setActive($active)
@@ -150,7 +152,7 @@ class Industry extends \Entity\Entity\Base
     /**
      * Get active
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getActive()
     {
@@ -161,6 +163,7 @@ class Industry extends \Entity\Entity\Base
      * Set hidden
      *
      * @param boolean $hidden
+     *
      * @return Industry
      */
     public function setHidden($hidden)
@@ -173,7 +176,7 @@ class Industry extends \Entity\Entity\Base
     /**
      * Get hidden
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getHidden()
     {
@@ -181,9 +184,10 @@ class Industry extends \Entity\Entity\Base
     }
 
     /**
-     * Set feed_id
+     * Set feedId
      *
      * @param integer $feedId
+     *
      * @return Industry
      */
     public function setFeedId($feedId)
@@ -194,9 +198,9 @@ class Industry extends \Entity\Entity\Base
     }
 
     /**
-     * Get feed_id
+     * Get feedId
      *
-     * @return integer 
+     * @return integer
      */
     public function getFeedId()
     {
@@ -204,9 +208,10 @@ class Industry extends \Entity\Entity\Base
     }
 
     /**
-     * Set nstein_name
+     * Set nsteinName
      *
      * @param string $nsteinName
+     *
      * @return Industry
      */
     public function setNsteinName($nsteinName)
@@ -217,9 +222,9 @@ class Industry extends \Entity\Entity\Base
     }
 
     /**
-     * Get nstein_name
+     * Get nsteinName
      *
-     * @return string 
+     * @return string
      */
     public function getNsteinName()
     {
@@ -227,9 +232,10 @@ class Industry extends \Entity\Entity\Base
     }
 
     /**
-     * Set iana_value
+     * Set ianaValue
      *
      * @param string $ianaValue
+     *
      * @return Industry
      */
     public function setIanaValue($ianaValue)
@@ -240,12 +246,13 @@ class Industry extends \Entity\Entity\Base
     }
 
     /**
-     * Get iana_value
+     * Get ianaValue
      *
-     * @return string 
+     * @return string
      */
     public function getIanaValue()
     {
         return $this->iana_value;
     }
 }
+

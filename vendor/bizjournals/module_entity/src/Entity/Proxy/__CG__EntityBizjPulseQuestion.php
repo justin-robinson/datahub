@@ -385,23 +385,23 @@ class PulseQuestion extends \Entity\Bizj\PulseQuestion implements \Doctrine\ORM\
     /**
      * {@inheritDoc}
      */
-    public function addOption(\Entity\Bizj\PulseQuestionOption $options)
+    public function addOption(\Entity\Bizj\PulseQuestionOption $option)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addOption', array($options));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addOption', array($option));
 
-        return parent::addOption($options);
+        return parent::addOption($option);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeOption(\Entity\Bizj\PulseQuestionOption $options)
+    public function removeOption(\Entity\Bizj\PulseQuestionOption $option)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeOption', array($options));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeOption', array($option));
 
-        return parent::removeOption($options);
+        return parent::removeOption($option);
     }
 
     /**
@@ -418,23 +418,23 @@ class PulseQuestion extends \Entity\Bizj\PulseQuestion implements \Doctrine\ORM\
     /**
      * {@inheritDoc}
      */
-    public function addResponseDatum(\Entity\Bizj\PulseResponseData $responseData)
+    public function addResponseDatum(\Entity\Bizj\PulseResponseData $responseDatum)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addResponseDatum', array($responseData));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addResponseDatum', array($responseDatum));
 
-        return parent::addResponseDatum($responseData);
+        return parent::addResponseDatum($responseDatum);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeResponseDatum(\Entity\Bizj\PulseResponseData $responseData)
+    public function removeResponseDatum(\Entity\Bizj\PulseResponseData $responseDatum)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeResponseDatum', array($responseData));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeResponseDatum', array($responseDatum));
 
-        return parent::removeResponseDatum($responseData);
+        return parent::removeResponseDatum($responseDatum);
     }
 
     /**

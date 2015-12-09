@@ -297,23 +297,23 @@ class Site extends \Entity\Bizj\Site implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function addSection(\Entity\Bizj\SiteSection $sections)
+    public function addSection(\Entity\Bizj\SiteSection $section)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addSection', array($sections));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addSection', array($section));
 
-        return parent::addSection($sections);
+        return parent::addSection($section);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeSection(\Entity\Bizj\SiteSection $sections)
+    public function removeSection(\Entity\Bizj\SiteSection $section)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeSection', array($sections));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeSection', array($section));
 
-        return parent::removeSection($sections);
+        return parent::removeSection($section);
     }
 
     /**

@@ -2,8 +2,6 @@
 
 namespace Entity\Medialibrary;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * GalleryMedia
  */
@@ -61,9 +59,10 @@ class GalleryMedia extends \Entity\Entity\Base
 
 
     /**
-     * Set gallery_id
+     * Set galleryId
      *
      * @param integer $galleryId
+     *
      * @return GalleryMedia
      */
     public function setGalleryId($galleryId)
@@ -74,9 +73,9 @@ class GalleryMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get gallery_id
+     * Get galleryId
      *
-     * @return integer 
+     * @return integer
      */
     public function getGalleryId()
     {
@@ -84,9 +83,10 @@ class GalleryMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set media_id
+     * Set mediaId
      *
      * @param integer $mediaId
+     *
      * @return GalleryMedia
      */
     public function setMediaId($mediaId)
@@ -97,9 +97,9 @@ class GalleryMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_id
+     * Get mediaId
      *
-     * @return integer 
+     * @return integer
      */
     public function getMediaId()
     {
@@ -110,6 +110,7 @@ class GalleryMedia extends \Entity\Entity\Base
      * Set ord
      *
      * @param integer $ord
+     *
      * @return GalleryMedia
      */
     public function setOrd($ord)
@@ -122,7 +123,7 @@ class GalleryMedia extends \Entity\Entity\Base
     /**
      * Get ord
      *
-     * @return integer 
+     * @return integer
      */
     public function getOrd()
     {
@@ -130,9 +131,10 @@ class GalleryMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set crop_data
+     * Set cropData
      *
      * @param string $cropData
+     *
      * @return GalleryMedia
      */
     public function setCropData($cropData)
@@ -143,9 +145,9 @@ class GalleryMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get crop_data
+     * Get cropData
      *
-     * @return string 
+     * @return string
      */
     public function getCropData()
     {
@@ -156,6 +158,7 @@ class GalleryMedia extends \Entity\Entity\Base
      * Set title
      *
      * @param string $title
+     *
      * @return GalleryMedia
      */
     public function setTitle($title)
@@ -168,7 +171,7 @@ class GalleryMedia extends \Entity\Entity\Base
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -179,6 +182,7 @@ class GalleryMedia extends \Entity\Entity\Base
      * Set caption
      *
      * @param string $caption
+     *
      * @return GalleryMedia
      */
     public function setCaption($caption)
@@ -191,7 +195,7 @@ class GalleryMedia extends \Entity\Entity\Base
     /**
      * Get caption
      *
-     * @return string 
+     * @return string
      */
     public function getCaption()
     {
@@ -199,9 +203,10 @@ class GalleryMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return GalleryMedia
      */
     public function setCreatedAt($createdAt)
@@ -212,9 +217,9 @@ class GalleryMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -222,9 +227,10 @@ class GalleryMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return GalleryMedia
      */
     public function setUpdatedAt($updatedAt)
@@ -235,9 +241,9 @@ class GalleryMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -245,9 +251,10 @@ class GalleryMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set Gallery
+     * Set gallery
      *
      * @param \Entity\Medialibrary\Gallery $gallery
+     *
      * @return GalleryMedia
      */
     public function setGallery(\Entity\Medialibrary\Gallery $gallery = null)
@@ -258,9 +265,9 @@ class GalleryMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get Gallery
+     * Get gallery
      *
-     * @return \Entity\Medialibrary\Gallery 
+     * @return \Entity\Medialibrary\Gallery
      */
     public function getGallery()
     {
@@ -268,9 +275,10 @@ class GalleryMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set Media
+     * Set media
      *
      * @param \Entity\Medialibrary\Media $media
+     *
      * @return GalleryMedia
      */
     public function setMedia(\Entity\Medialibrary\Media $media = null)
@@ -281,12 +289,13 @@ class GalleryMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get Media
+     * Get media
      *
-     * @return \Entity\Medialibrary\Media 
+     * @return \Entity\Medialibrary\Media
      */
     public function getMedia()
     {
         return $this->Media;
     }
 }
+

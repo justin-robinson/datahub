@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * ContactData
  */
@@ -243,9 +241,9 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get contact_id
+     * Get contactId
      *
-     * @return integer 
+     * @return integer
      */
     public function getContactId()
     {
@@ -253,9 +251,10 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Set backlink_class
+     * Set backlinkClass
      *
      * @param string $backlinkClass
+     *
      * @return ContactData
      */
     public function setBacklinkClass($backlinkClass)
@@ -266,9 +265,9 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get backlink_class
+     * Get backlinkClass
      *
-     * @return string 
+     * @return string
      */
     public function getBacklinkClass()
     {
@@ -276,9 +275,10 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Set backlink_id
+     * Set backlinkId
      *
      * @param integer $backlinkId
+     *
      * @return ContactData
      */
     public function setBacklinkId($backlinkId)
@@ -289,9 +289,9 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get backlink_id
+     * Get backlinkId
      *
-     * @return integer 
+     * @return integer
      */
     public function getBacklinkId()
     {
@@ -299,9 +299,10 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Set contact_type
+     * Set contactType
      *
      * @param string $contactType
+     *
      * @return ContactData
      */
     public function setContactType($contactType)
@@ -312,9 +313,9 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get contact_type
+     * Get contactType
      *
-     * @return string 
+     * @return string
      */
     public function getContactType()
     {
@@ -322,9 +323,10 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Set contact_name
+     * Set contactName
      *
      * @param string $contactName
+     *
      * @return ContactData
      */
     public function setContactName($contactName)
@@ -335,9 +337,9 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get contact_name
+     * Get contactName
      *
-     * @return string 
+     * @return string
      */
     public function getContactName()
     {
@@ -345,9 +347,10 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Set contact_title
+     * Set contactTitle
      *
      * @param string $contactTitle
+     *
      * @return ContactData
      */
     public function setContactTitle($contactTitle)
@@ -358,9 +361,9 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get contact_title
+     * Get contactTitle
      *
-     * @return string 
+     * @return string
      */
     public function getContactTitle()
     {
@@ -368,9 +371,10 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Set contact_description
+     * Set contactDescription
      *
      * @param string $contactDescription
+     *
      * @return ContactData
      */
     public function setContactDescription($contactDescription)
@@ -381,9 +385,9 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get contact_description
+     * Get contactDescription
      *
-     * @return string 
+     * @return string
      */
     public function getContactDescription()
     {
@@ -394,6 +398,7 @@ class ContactData extends \Entity\Entity\Base
      * Set address1
      *
      * @param string $address1
+     *
      * @return ContactData
      */
     public function setAddress1($address1)
@@ -406,7 +411,7 @@ class ContactData extends \Entity\Entity\Base
     /**
      * Get address1
      *
-     * @return string 
+     * @return string
      */
     public function getAddress1()
     {
@@ -417,6 +422,7 @@ class ContactData extends \Entity\Entity\Base
      * Set address2
      *
      * @param string $address2
+     *
      * @return ContactData
      */
     public function setAddress2($address2)
@@ -429,7 +435,7 @@ class ContactData extends \Entity\Entity\Base
     /**
      * Get address2
      *
-     * @return string 
+     * @return string
      */
     public function getAddress2()
     {
@@ -440,6 +446,7 @@ class ContactData extends \Entity\Entity\Base
      * Set address3
      *
      * @param string $address3
+     *
      * @return ContactData
      */
     public function setAddress3($address3)
@@ -452,7 +459,7 @@ class ContactData extends \Entity\Entity\Base
     /**
      * Get address3
      *
-     * @return string 
+     * @return string
      */
     public function getAddress3()
     {
@@ -463,6 +470,7 @@ class ContactData extends \Entity\Entity\Base
      * Set community
      *
      * @param string $community
+     *
      * @return ContactData
      */
     public function setCommunity($community)
@@ -475,7 +483,7 @@ class ContactData extends \Entity\Entity\Base
     /**
      * Get community
      *
-     * @return string 
+     * @return string
      */
     public function getCommunity()
     {
@@ -483,9 +491,10 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Set state_province
+     * Set stateProvince
      *
      * @param string $stateProvince
+     *
      * @return ContactData
      */
     public function setStateProvince($stateProvince)
@@ -496,9 +505,9 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get state_province
+     * Get stateProvince
      *
-     * @return string 
+     * @return string
      */
     public function getStateProvince()
     {
@@ -509,6 +518,7 @@ class ContactData extends \Entity\Entity\Base
      * Set country
      *
      * @param string $country
+     *
      * @return ContactData
      */
     public function setCountry($country)
@@ -521,7 +531,7 @@ class ContactData extends \Entity\Entity\Base
     /**
      * Get country
      *
-     * @return string 
+     * @return string
      */
     public function getCountry()
     {
@@ -529,9 +539,10 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Set postal_code
+     * Set postalCode
      *
      * @param string $postalCode
+     *
      * @return ContactData
      */
     public function setPostalCode($postalCode)
@@ -542,9 +553,9 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get postal_code
+     * Get postalCode
      *
-     * @return string 
+     * @return string
      */
     public function getPostalCode()
     {
@@ -555,6 +566,7 @@ class ContactData extends \Entity\Entity\Base
      * Set phone1
      *
      * @param string $phone1
+     *
      * @return ContactData
      */
     public function setPhone1($phone1)
@@ -567,7 +579,7 @@ class ContactData extends \Entity\Entity\Base
     /**
      * Get phone1
      *
-     * @return string 
+     * @return string
      */
     public function getPhone1()
     {
@@ -575,9 +587,10 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Set phone1_type
+     * Set phone1Type
      *
      * @param string $phone1Type
+     *
      * @return ContactData
      */
     public function setPhone1Type($phone1Type)
@@ -588,9 +601,9 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get phone1_type
+     * Get phone1Type
      *
-     * @return string 
+     * @return string
      */
     public function getPhone1Type()
     {
@@ -598,9 +611,10 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Set phone1_notes
+     * Set phone1Notes
      *
      * @param string $phone1Notes
+     *
      * @return ContactData
      */
     public function setPhone1Notes($phone1Notes)
@@ -611,9 +625,9 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get phone1_notes
+     * Get phone1Notes
      *
-     * @return string 
+     * @return string
      */
     public function getPhone1Notes()
     {
@@ -624,6 +638,7 @@ class ContactData extends \Entity\Entity\Base
      * Set phone2
      *
      * @param string $phone2
+     *
      * @return ContactData
      */
     public function setPhone2($phone2)
@@ -636,7 +651,7 @@ class ContactData extends \Entity\Entity\Base
     /**
      * Get phone2
      *
-     * @return string 
+     * @return string
      */
     public function getPhone2()
     {
@@ -644,9 +659,10 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Set phone2_type
+     * Set phone2Type
      *
      * @param string $phone2Type
+     *
      * @return ContactData
      */
     public function setPhone2Type($phone2Type)
@@ -657,9 +673,9 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get phone2_type
+     * Get phone2Type
      *
-     * @return string 
+     * @return string
      */
     public function getPhone2Type()
     {
@@ -667,9 +683,10 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Set phone2_notes
+     * Set phone2Notes
      *
      * @param string $phone2Notes
+     *
      * @return ContactData
      */
     public function setPhone2Notes($phone2Notes)
@@ -680,9 +697,9 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get phone2_notes
+     * Get phone2Notes
      *
-     * @return string 
+     * @return string
      */
     public function getPhone2Notes()
     {
@@ -693,6 +710,7 @@ class ContactData extends \Entity\Entity\Base
      * Set phone3
      *
      * @param string $phone3
+     *
      * @return ContactData
      */
     public function setPhone3($phone3)
@@ -705,7 +723,7 @@ class ContactData extends \Entity\Entity\Base
     /**
      * Get phone3
      *
-     * @return string 
+     * @return string
      */
     public function getPhone3()
     {
@@ -713,9 +731,10 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Set phone3_type
+     * Set phone3Type
      *
      * @param string $phone3Type
+     *
      * @return ContactData
      */
     public function setPhone3Type($phone3Type)
@@ -726,9 +745,9 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get phone3_type
+     * Get phone3Type
      *
-     * @return string 
+     * @return string
      */
     public function getPhone3Type()
     {
@@ -736,9 +755,10 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Set phone3_notes
+     * Set phone3Notes
      *
      * @param string $phone3Notes
+     *
      * @return ContactData
      */
     public function setPhone3Notes($phone3Notes)
@@ -749,9 +769,9 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get phone3_notes
+     * Get phone3Notes
      *
-     * @return string 
+     * @return string
      */
     public function getPhone3Notes()
     {
@@ -762,6 +782,7 @@ class ContactData extends \Entity\Entity\Base
      * Set email1
      *
      * @param string $email1
+     *
      * @return ContactData
      */
     public function setEmail1($email1)
@@ -774,7 +795,7 @@ class ContactData extends \Entity\Entity\Base
     /**
      * Get email1
      *
-     * @return string 
+     * @return string
      */
     public function getEmail1()
     {
@@ -782,9 +803,10 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Set email1_notes
+     * Set email1Notes
      *
      * @param string $email1Notes
+     *
      * @return ContactData
      */
     public function setEmail1Notes($email1Notes)
@@ -795,9 +817,9 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get email1_notes
+     * Get email1Notes
      *
-     * @return string 
+     * @return string
      */
     public function getEmail1Notes()
     {
@@ -808,6 +830,7 @@ class ContactData extends \Entity\Entity\Base
      * Set email2
      *
      * @param string $email2
+     *
      * @return ContactData
      */
     public function setEmail2($email2)
@@ -820,7 +843,7 @@ class ContactData extends \Entity\Entity\Base
     /**
      * Get email2
      *
-     * @return string 
+     * @return string
      */
     public function getEmail2()
     {
@@ -828,9 +851,10 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Set email2_notes
+     * Set email2Notes
      *
      * @param string $email2Notes
+     *
      * @return ContactData
      */
     public function setEmail2Notes($email2Notes)
@@ -841,9 +865,9 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get email2_notes
+     * Get email2Notes
      *
-     * @return string 
+     * @return string
      */
     public function getEmail2Notes()
     {
@@ -854,6 +878,7 @@ class ContactData extends \Entity\Entity\Base
      * Set email3
      *
      * @param string $email3
+     *
      * @return ContactData
      */
     public function setEmail3($email3)
@@ -866,7 +891,7 @@ class ContactData extends \Entity\Entity\Base
     /**
      * Get email3
      *
-     * @return string 
+     * @return string
      */
     public function getEmail3()
     {
@@ -874,9 +899,10 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Set email3_notes
+     * Set email3Notes
      *
      * @param string $email3Notes
+     *
      * @return ContactData
      */
     public function setEmail3Notes($email3Notes)
@@ -887,9 +913,9 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get email3_notes
+     * Get email3Notes
      *
-     * @return string 
+     * @return string
      */
     public function getEmail3Notes()
     {
@@ -900,6 +926,7 @@ class ContactData extends \Entity\Entity\Base
      * Set social1
      *
      * @param string $social1
+     *
      * @return ContactData
      */
     public function setSocial1($social1)
@@ -912,7 +939,7 @@ class ContactData extends \Entity\Entity\Base
     /**
      * Get social1
      *
-     * @return string 
+     * @return string
      */
     public function getSocial1()
     {
@@ -920,9 +947,10 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Set social1_type
+     * Set social1Type
      *
      * @param string $social1Type
+     *
      * @return ContactData
      */
     public function setSocial1Type($social1Type)
@@ -933,9 +961,9 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get social1_type
+     * Get social1Type
      *
-     * @return string 
+     * @return string
      */
     public function getSocial1Type()
     {
@@ -943,9 +971,10 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Set social1_notes
+     * Set social1Notes
      *
      * @param string $social1Notes
+     *
      * @return ContactData
      */
     public function setSocial1Notes($social1Notes)
@@ -956,9 +985,9 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get social1_notes
+     * Get social1Notes
      *
-     * @return string 
+     * @return string
      */
     public function getSocial1Notes()
     {
@@ -969,6 +998,7 @@ class ContactData extends \Entity\Entity\Base
      * Set social2
      *
      * @param string $social2
+     *
      * @return ContactData
      */
     public function setSocial2($social2)
@@ -981,7 +1011,7 @@ class ContactData extends \Entity\Entity\Base
     /**
      * Get social2
      *
-     * @return string 
+     * @return string
      */
     public function getSocial2()
     {
@@ -989,9 +1019,10 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Set social2_type
+     * Set social2Type
      *
      * @param string $social2Type
+     *
      * @return ContactData
      */
     public function setSocial2Type($social2Type)
@@ -1002,9 +1033,9 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get social2_type
+     * Get social2Type
      *
-     * @return string 
+     * @return string
      */
     public function getSocial2Type()
     {
@@ -1012,9 +1043,10 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Set social2_notes
+     * Set social2Notes
      *
      * @param string $social2Notes
+     *
      * @return ContactData
      */
     public function setSocial2Notes($social2Notes)
@@ -1025,9 +1057,9 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get social2_notes
+     * Get social2Notes
      *
-     * @return string 
+     * @return string
      */
     public function getSocial2Notes()
     {
@@ -1038,6 +1070,7 @@ class ContactData extends \Entity\Entity\Base
      * Set social3
      *
      * @param string $social3
+     *
      * @return ContactData
      */
     public function setSocial3($social3)
@@ -1050,7 +1083,7 @@ class ContactData extends \Entity\Entity\Base
     /**
      * Get social3
      *
-     * @return string 
+     * @return string
      */
     public function getSocial3()
     {
@@ -1058,9 +1091,10 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Set social3_type
+     * Set social3Type
      *
      * @param string $social3Type
+     *
      * @return ContactData
      */
     public function setSocial3Type($social3Type)
@@ -1071,9 +1105,9 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get social3_type
+     * Get social3Type
      *
-     * @return string 
+     * @return string
      */
     public function getSocial3Type()
     {
@@ -1081,9 +1115,10 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Set social3_notes
+     * Set social3Notes
      *
      * @param string $social3Notes
+     *
      * @return ContactData
      */
     public function setSocial3Notes($social3Notes)
@@ -1094,9 +1129,9 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get social3_notes
+     * Get social3Notes
      *
-     * @return string 
+     * @return string
      */
     public function getSocial3Notes()
     {
@@ -1104,9 +1139,10 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Set headshot_media_id
+     * Set headshotMediaId
      *
      * @param integer $headshotMediaId
+     *
      * @return ContactData
      */
     public function setHeadshotMediaId($headshotMediaId)
@@ -1117,9 +1153,9 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get headshot_media_id
+     * Get headshotMediaId
      *
-     * @return integer 
+     * @return integer
      */
     public function getHeadshotMediaId()
     {
@@ -1127,9 +1163,10 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Set photo_headshot_url
+     * Set photoHeadshotUrl
      *
      * @param string $photoHeadshotUrl
+     *
      * @return ContactData
      */
     public function setPhotoHeadshotUrl($photoHeadshotUrl)
@@ -1140,9 +1177,9 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get photo_headshot_url
+     * Get photoHeadshotUrl
      *
-     * @return string 
+     * @return string
      */
     public function getPhotoHeadshotUrl()
     {
@@ -1150,9 +1187,10 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Set photo_social_url
+     * Set photoSocialUrl
      *
      * @param string $photoSocialUrl
+     *
      * @return ContactData
      */
     public function setPhotoSocialUrl($photoSocialUrl)
@@ -1163,9 +1201,9 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get photo_social_url
+     * Get photoSocialUrl
      *
-     * @return string 
+     * @return string
      */
     public function getPhotoSocialUrl()
     {
@@ -1173,9 +1211,10 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Set contact_subtype
+     * Set contactSubtype
      *
      * @param string $contactSubtype
+     *
      * @return ContactData
      */
     public function setContactSubtype($contactSubtype)
@@ -1186,9 +1225,9 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get contact_subtype
+     * Get contactSubtype
      *
-     * @return string 
+     * @return string
      */
     public function getContactSubtype()
     {
@@ -1196,9 +1235,10 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return ContactData
      */
     public function setCreatedAt($createdAt)
@@ -1209,9 +1249,9 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -1219,9 +1259,10 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return ContactData
      */
     public function setUpdatedAt($updatedAt)
@@ -1232,9 +1273,9 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -1242,9 +1283,10 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Add Staff
+     * Add staff
      *
      * @param \Entity\Bizj\MarketStaff $staff
+     *
      * @return ContactData
      */
     public function addStaff(\Entity\Bizj\MarketStaff $staff)
@@ -1255,7 +1297,7 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Remove Staff
+     * Remove staff
      *
      * @param \Entity\Bizj\MarketStaff $staff
      */
@@ -1265,12 +1307,13 @@ class ContactData extends \Entity\Entity\Base
     }
 
     /**
-     * Get Staff
+     * Get staff
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getStaff()
     {
         return $this->Staff;
     }
 }
+

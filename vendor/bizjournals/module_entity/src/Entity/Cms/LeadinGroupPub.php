@@ -2,8 +2,6 @@
 
 namespace Entity\Cms;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * LeadinGroupPub
  */
@@ -31,9 +29,10 @@ class LeadinGroupPub extends \Entity\Entity\Base
 
 
     /**
-     * Set group_id
+     * Set groupId
      *
      * @param integer $groupId
+     *
      * @return LeadinGroupPub
      */
     public function setGroupId($groupId)
@@ -44,9 +43,9 @@ class LeadinGroupPub extends \Entity\Entity\Base
     }
 
     /**
-     * Get group_id
+     * Get groupId
      *
-     * @return integer 
+     * @return integer
      */
     public function getGroupId()
     {
@@ -54,9 +53,10 @@ class LeadinGroupPub extends \Entity\Entity\Base
     }
 
     /**
-     * Set pub_id
+     * Set pubId
      *
      * @param integer $pubId
+     *
      * @return LeadinGroupPub
      */
     public function setPubId($pubId)
@@ -67,9 +67,9 @@ class LeadinGroupPub extends \Entity\Entity\Base
     }
 
     /**
-     * Get pub_id
+     * Get pubId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPubId()
     {
@@ -77,9 +77,10 @@ class LeadinGroupPub extends \Entity\Entity\Base
     }
 
     /**
-     * Set LeadinGroup
+     * Set leadinGroup
      *
      * @param \Entity\Cms\LeadinGroup $leadinGroup
+     *
      * @return LeadinGroupPub
      */
     public function setLeadinGroup(\Entity\Cms\LeadinGroup $leadinGroup = null)
@@ -90,9 +91,9 @@ class LeadinGroupPub extends \Entity\Entity\Base
     }
 
     /**
-     * Get LeadinGroup
+     * Get leadinGroup
      *
-     * @return \Entity\Cms\LeadinGroup 
+     * @return \Entity\Cms\LeadinGroup
      */
     public function getLeadinGroup()
     {
@@ -100,9 +101,10 @@ class LeadinGroupPub extends \Entity\Entity\Base
     }
 
     /**
-     * Set Publication
+     * Set publication
      *
      * @param \Entity\Cms\Publication $publication
+     *
      * @return LeadinGroupPub
      */
     public function setPublication(\Entity\Cms\Publication $publication = null)
@@ -113,12 +115,13 @@ class LeadinGroupPub extends \Entity\Entity\Base
     }
 
     /**
-     * Get Publication
+     * Get publication
      *
-     * @return \Entity\Cms\Publication 
+     * @return \Entity\Cms\Publication
      */
     public function getPublication()
     {
         return $this->Publication;
     }
 }
+

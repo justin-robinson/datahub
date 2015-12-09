@@ -2,8 +2,6 @@
 
 namespace Entity\Authentication;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Unit
  */
@@ -59,9 +57,9 @@ class Unit extends \Entity\Entity\Base
     }
 
     /**
-     * Get unit_id
+     * Get unitId
      *
-     * @return integer 
+     * @return integer
      */
     public function getUnitId()
     {
@@ -69,9 +67,10 @@ class Unit extends \Entity\Entity\Base
     }
 
     /**
-     * Set unit_name
+     * Set unitName
      *
      * @param string $unitName
+     *
      * @return Unit
      */
     public function setUnitName($unitName)
@@ -82,9 +81,9 @@ class Unit extends \Entity\Entity\Base
     }
 
     /**
-     * Get unit_name
+     * Get unitName
      *
-     * @return string 
+     * @return string
      */
     public function getUnitName()
     {
@@ -95,6 +94,7 @@ class Unit extends \Entity\Entity\Base
      * Set description
      *
      * @param string $description
+     *
      * @return Unit
      */
     public function setDescription($description)
@@ -107,7 +107,7 @@ class Unit extends \Entity\Entity\Base
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -115,9 +115,10 @@ class Unit extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_active
+     * Set isActive
      *
      * @param boolean $isActive
+     *
      * @return Unit
      */
     public function setIsActive($isActive)
@@ -128,9 +129,9 @@ class Unit extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_active
+     * Get isActive
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsActive()
     {
@@ -138,9 +139,10 @@ class Unit extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return Unit
      */
     public function setCreatedAt($createdAt)
@@ -151,9 +153,9 @@ class Unit extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -161,9 +163,10 @@ class Unit extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return Unit
      */
     public function setUpdatedAt($updatedAt)
@@ -174,9 +177,9 @@ class Unit extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -184,32 +187,33 @@ class Unit extends \Entity\Entity\Base
     }
 
     /**
-     * Add Services
+     * Add service
      *
-     * @param \Entity\Authentication\Service $services
+     * @param \Entity\Authentication\Service $service
+     *
      * @return Unit
      */
-    public function addService(\Entity\Authentication\Service $services)
+    public function addService(\Entity\Authentication\Service $service)
     {
-        $this->Services[] = $services;
+        $this->Services[] = $service;
 
         return $this;
     }
 
     /**
-     * Remove Services
+     * Remove service
      *
-     * @param \Entity\Authentication\Service $services
+     * @param \Entity\Authentication\Service $service
      */
-    public function removeService(\Entity\Authentication\Service $services)
+    public function removeService(\Entity\Authentication\Service $service)
     {
-        $this->Services->removeElement($services);
+        $this->Services->removeElement($service);
     }
 
     /**
-     * Get Services
+     * Get services
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getServices()
     {
@@ -217,35 +221,37 @@ class Unit extends \Entity\Entity\Base
     }
 
     /**
-     * Add Clients
+     * Add client
      *
-     * @param \Entity\Authentication\Client $clients
+     * @param \Entity\Authentication\Client $client
+     *
      * @return Unit
      */
-    public function addClient(\Entity\Authentication\Client $clients)
+    public function addClient(\Entity\Authentication\Client $client)
     {
-        $this->Clients[] = $clients;
+        $this->Clients[] = $client;
 
         return $this;
     }
 
     /**
-     * Remove Clients
+     * Remove client
      *
-     * @param \Entity\Authentication\Client $clients
+     * @param \Entity\Authentication\Client $client
      */
-    public function removeClient(\Entity\Authentication\Client $clients)
+    public function removeClient(\Entity\Authentication\Client $client)
     {
-        $this->Clients->removeElement($clients);
+        $this->Clients->removeElement($client);
     }
 
     /**
-     * Get Clients
+     * Get clients
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getClients()
     {
         return $this->Clients;
     }
 }
+

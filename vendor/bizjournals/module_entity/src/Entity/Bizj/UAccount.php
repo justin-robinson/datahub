@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * UAccount
  */
@@ -186,9 +184,9 @@ class UAccount extends \Entity\Entity\Base
 
 
     /**
-     * Get user_id
+     * Get userId
      *
-     * @return integer 
+     * @return integer
      */
     public function getUserId()
     {
@@ -199,6 +197,7 @@ class UAccount extends \Entity\Entity\Base
      * Set uin
      *
      * @param string $uin
+     *
      * @return UAccount
      */
     public function setUin($uin)
@@ -211,7 +210,7 @@ class UAccount extends \Entity\Entity\Base
     /**
      * Get uin
      *
-     * @return string 
+     * @return string
      */
     public function getUin()
     {
@@ -222,6 +221,7 @@ class UAccount extends \Entity\Entity\Base
      * Set email
      *
      * @param string $email
+     *
      * @return UAccount
      */
     public function setEmail($email)
@@ -234,7 +234,7 @@ class UAccount extends \Entity\Entity\Base
     /**
      * Get email
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
@@ -245,6 +245,7 @@ class UAccount extends \Entity\Entity\Base
      * Set password
      *
      * @param string $password
+     *
      * @return UAccount
      */
     public function setPassword($password)
@@ -257,7 +258,7 @@ class UAccount extends \Entity\Entity\Base
     /**
      * Get password
      *
-     * @return string 
+     * @return string
      */
     public function getPassword()
     {
@@ -265,9 +266,10 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Set country_code
+     * Set countryCode
      *
      * @param string $countryCode
+     *
      * @return UAccount
      */
     public function setCountryCode($countryCode)
@@ -278,9 +280,9 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Get country_code
+     * Get countryCode
      *
-     * @return string 
+     * @return string
      */
     public function getCountryCode()
     {
@@ -288,9 +290,10 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Set postal_code
+     * Set postalCode
      *
      * @param string $postalCode
+     *
      * @return UAccount
      */
     public function setPostalCode($postalCode)
@@ -301,9 +304,9 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Get postal_code
+     * Get postalCode
      *
-     * @return string 
+     * @return string
      */
     public function getPostalCode()
     {
@@ -311,9 +314,10 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Set business_type_id
+     * Set businessTypeId
      *
      * @param integer $businessTypeId
+     *
      * @return UAccount
      */
     public function setBusinessTypeId($businessTypeId)
@@ -324,9 +328,9 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Get business_type_id
+     * Get businessTypeId
      *
-     * @return integer 
+     * @return integer
      */
     public function getBusinessTypeId()
     {
@@ -334,9 +338,10 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Set employee_count
+     * Set employeeCount
      *
      * @param string $employeeCount
+     *
      * @return UAccount
      */
     public function setEmployeeCount($employeeCount)
@@ -347,9 +352,9 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Get employee_count
+     * Get employeeCount
      *
-     * @return string 
+     * @return string
      */
     public function getEmployeeCount()
     {
@@ -357,9 +362,10 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Set may_email_features
+     * Set mayEmailFeatures
      *
      * @param string $mayEmailFeatures
+     *
      * @return UAccount
      */
     public function setMayEmailFeatures($mayEmailFeatures)
@@ -370,9 +376,9 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Get may_email_features
+     * Get mayEmailFeatures
      *
-     * @return string 
+     * @return string
      */
     public function getMayEmailFeatures()
     {
@@ -380,9 +386,10 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Set first_name
+     * Set firstName
      *
      * @param string $firstName
+     *
      * @return UAccount
      */
     public function setFirstName($firstName)
@@ -393,9 +400,9 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Get first_name
+     * Get firstName
      *
-     * @return string 
+     * @return string
      */
     public function getFirstName()
     {
@@ -403,9 +410,10 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Set last_name
+     * Set lastName
      *
      * @param string $lastName
+     *
      * @return UAccount
      */
     public function setLastName($lastName)
@@ -416,9 +424,9 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Get last_name
+     * Get lastName
      *
-     * @return string 
+     * @return string
      */
     public function getLastName()
     {
@@ -426,9 +434,10 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Set c_time
+     * Set cTime
      *
      * @param \DateTime $cTime
+     *
      * @return UAccount
      */
     public function setCTime($cTime)
@@ -439,9 +448,9 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Get c_time
+     * Get cTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCTime()
     {
@@ -449,9 +458,10 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Set m_time
+     * Set mTime
      *
      * @param \DateTime $mTime
+     *
      * @return UAccount
      */
     public function setMTime($mTime)
@@ -462,9 +472,9 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Get m_time
+     * Get mTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getMTime()
     {
@@ -472,9 +482,10 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Set has_undeliverable_email
+     * Set hasUndeliverableEmail
      *
      * @param string $hasUndeliverableEmail
+     *
      * @return UAccount
      */
     public function setHasUndeliverableEmail($hasUndeliverableEmail)
@@ -485,9 +496,9 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Get has_undeliverable_email
+     * Get hasUndeliverableEmail
      *
-     * @return string 
+     * @return string
      */
     public function getHasUndeliverableEmail()
     {
@@ -495,9 +506,10 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Set undeliverable_email_count
+     * Set undeliverableEmailCount
      *
      * @param integer $undeliverableEmailCount
+     *
      * @return UAccount
      */
     public function setUndeliverableEmailCount($undeliverableEmailCount)
@@ -508,9 +520,9 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Get undeliverable_email_count
+     * Get undeliverableEmailCount
      *
-     * @return integer 
+     * @return integer
      */
     public function getUndeliverableEmailCount()
     {
@@ -518,9 +530,10 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Set has_html_email
+     * Set hasHtmlEmail
      *
      * @param string $hasHtmlEmail
+     *
      * @return UAccount
      */
     public function setHasHtmlEmail($hasHtmlEmail)
@@ -531,9 +544,9 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Get has_html_email
+     * Get hasHtmlEmail
      *
-     * @return string 
+     * @return string
      */
     public function getHasHtmlEmail()
     {
@@ -544,6 +557,7 @@ class UAccount extends \Entity\Entity\Base
      * Set gender
      *
      * @param string $gender
+     *
      * @return UAccount
      */
     public function setGender($gender)
@@ -556,7 +570,7 @@ class UAccount extends \Entity\Entity\Base
     /**
      * Get gender
      *
-     * @return string 
+     * @return string
      */
     public function getGender()
     {
@@ -564,9 +578,10 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Set job_title_id
+     * Set jobTitleId
      *
      * @param integer $jobTitleId
+     *
      * @return UAccount
      */
     public function setJobTitleId($jobTitleId)
@@ -577,9 +592,9 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Get job_title_id
+     * Get jobTitleId
      *
-     * @return integer 
+     * @return integer
      */
     public function getJobTitleId()
     {
@@ -587,9 +602,10 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Set company_postal_code
+     * Set companyPostalCode
      *
      * @param string $companyPostalCode
+     *
      * @return UAccount
      */
     public function setCompanyPostalCode($companyPostalCode)
@@ -600,9 +616,9 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Get company_postal_code
+     * Get companyPostalCode
      *
-     * @return string 
+     * @return string
      */
     public function getCompanyPostalCode()
     {
@@ -610,9 +626,10 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Set subscriber_info_id
+     * Set subscriberInfoId
      *
      * @param integer $subscriberInfoId
+     *
      * @return UAccount
      */
     public function setSubscriberInfoId($subscriberInfoId)
@@ -623,9 +640,9 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Get subscriber_info_id
+     * Get subscriberInfoId
      *
-     * @return integer 
+     * @return integer
      */
     public function getSubscriberInfoId()
     {
@@ -633,9 +650,10 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Set income_level_id
+     * Set incomeLevelId
      *
      * @param integer $incomeLevelId
+     *
      * @return UAccount
      */
     public function setIncomeLevelId($incomeLevelId)
@@ -646,9 +664,9 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Get income_level_id
+     * Get incomeLevelId
      *
-     * @return integer 
+     * @return integer
      */
     public function getIncomeLevelId()
     {
@@ -656,9 +674,10 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Set has_confirmed_email
+     * Set hasConfirmedEmail
      *
      * @param string $hasConfirmedEmail
+     *
      * @return UAccount
      */
     public function setHasConfirmedEmail($hasConfirmedEmail)
@@ -669,9 +688,9 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Get has_confirmed_email
+     * Get hasConfirmedEmail
      *
-     * @return string 
+     * @return string
      */
     public function getHasConfirmedEmail()
     {
@@ -679,9 +698,10 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Set company_name
+     * Set companyName
      *
      * @param string $companyName
+     *
      * @return UAccount
      */
     public function setCompanyName($companyName)
@@ -692,9 +712,9 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Get company_name
+     * Get companyName
      *
-     * @return string 
+     * @return string
      */
     public function getCompanyName()
     {
@@ -702,9 +722,10 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Set company_address
+     * Set companyAddress
      *
      * @param string $companyAddress
+     *
      * @return UAccount
      */
     public function setCompanyAddress($companyAddress)
@@ -715,9 +736,9 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Get company_address
+     * Get companyAddress
      *
-     * @return string 
+     * @return string
      */
     public function getCompanyAddress()
     {
@@ -725,9 +746,10 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Set company_city
+     * Set companyCity
      *
      * @param string $companyCity
+     *
      * @return UAccount
      */
     public function setCompanyCity($companyCity)
@@ -738,9 +760,9 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Get company_city
+     * Get companyCity
      *
-     * @return string 
+     * @return string
      */
     public function getCompanyCity()
     {
@@ -748,9 +770,10 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Set company_state
+     * Set companyState
      *
      * @param string $companyState
+     *
      * @return UAccount
      */
     public function setCompanyState($companyState)
@@ -761,9 +784,9 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Get company_state
+     * Get companyState
      *
-     * @return string 
+     * @return string
      */
     public function getCompanyState()
     {
@@ -771,9 +794,10 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Set receive_partner_email
+     * Set receivePartnerEmail
      *
      * @param string $receivePartnerEmail
+     *
      * @return UAccount
      */
     public function setReceivePartnerEmail($receivePartnerEmail)
@@ -784,9 +808,9 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Get receive_partner_email
+     * Get receivePartnerEmail
      *
-     * @return string 
+     * @return string
      */
     public function getReceivePartnerEmail()
     {
@@ -794,9 +818,10 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Set comp_access
+     * Set compAccess
      *
      * @param string $compAccess
+     *
      * @return UAccount
      */
     public function setCompAccess($compAccess)
@@ -807,9 +832,9 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Get comp_access
+     * Get compAccess
      *
-     * @return string 
+     * @return string
      */
     public function getCompAccess()
     {
@@ -817,9 +842,10 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Set source_id
+     * Set sourceId
      *
      * @param integer $sourceId
+     *
      * @return UAccount
      */
     public function setSourceId($sourceId)
@@ -830,9 +856,9 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Get source_id
+     * Get sourceId
      *
-     * @return integer 
+     * @return integer
      */
     public function getSourceId()
     {
@@ -840,9 +866,10 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Set email_domain
+     * Set emailDomain
      *
      * @param string $emailDomain
+     *
      * @return UAccount
      */
     public function setEmailDomain($emailDomain)
@@ -853,9 +880,9 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Get email_domain
+     * Get emailDomain
      *
-     * @return string 
+     * @return string
      */
     public function getEmailDomain()
     {
@@ -863,9 +890,10 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Set undeliverable_time
+     * Set undeliverableTime
      *
      * @param \DateTime $undeliverableTime
+     *
      * @return UAccount
      */
     public function setUndeliverableTime($undeliverableTime)
@@ -876,9 +904,9 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Get undeliverable_time
+     * Get undeliverableTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUndeliverableTime()
     {
@@ -886,9 +914,10 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Set use_external_auth
+     * Set useExternalAuth
      *
      * @param boolean $useExternalAuth
+     *
      * @return UAccount
      */
     public function setUseExternalAuth($useExternalAuth)
@@ -899,9 +928,9 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Get use_external_auth
+     * Get useExternalAuth
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getUseExternalAuth()
     {
@@ -909,9 +938,10 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Set last_login
+     * Set lastLogin
      *
      * @param \DateTime $lastLogin
+     *
      * @return UAccount
      */
     public function setLastLogin($lastLogin)
@@ -922,9 +952,9 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Get last_login
+     * Get lastLogin
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getLastLogin()
     {
@@ -932,9 +962,10 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_archived
+     * Set isArchived
      *
      * @param boolean $isArchived
+     *
      * @return UAccount
      */
     public function setIsArchived($isArchived)
@@ -945,9 +976,9 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_archived
+     * Get isArchived
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsArchived()
     {
@@ -955,9 +986,10 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Set has_suppressed_email
+     * Set hasSuppressedEmail
      *
      * @param boolean $hasSuppressedEmail
+     *
      * @return UAccount
      */
     public function setHasSuppressedEmail($hasSuppressedEmail)
@@ -968,12 +1000,13 @@ class UAccount extends \Entity\Entity\Base
     }
 
     /**
-     * Get has_suppressed_email
+     * Get hasSuppressedEmail
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getHasSuppressedEmail()
     {
         return $this->has_suppressed_email;
     }
 }
+

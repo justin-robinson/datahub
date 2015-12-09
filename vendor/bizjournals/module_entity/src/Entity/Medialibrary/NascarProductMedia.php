@@ -2,8 +2,6 @@
 
 namespace Entity\Medialibrary;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * NascarProductMedia
  */
@@ -44,6 +42,7 @@ class NascarProductMedia extends \Entity\Entity\Base
      * Set id
      *
      * @param integer $id
+     *
      * @return NascarProductMedia
      */
     public function setId($id)
@@ -56,7 +55,7 @@ class NascarProductMedia extends \Entity\Entity\Base
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -64,9 +63,10 @@ class NascarProductMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set product_id
+     * Set productId
      *
      * @param integer $productId
+     *
      * @return NascarProductMedia
      */
     public function setProductId($productId)
@@ -77,9 +77,9 @@ class NascarProductMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get product_id
+     * Get productId
      *
-     * @return integer 
+     * @return integer
      */
     public function getProductId()
     {
@@ -87,9 +87,10 @@ class NascarProductMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set image_type
+     * Set imageType
      *
      * @param string $imageType
+     *
      * @return NascarProductMedia
      */
     public function setImageType($imageType)
@@ -100,9 +101,9 @@ class NascarProductMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get image_type
+     * Get imageType
      *
-     * @return string 
+     * @return string
      */
     public function getImageType()
     {
@@ -110,9 +111,10 @@ class NascarProductMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set mime_type
+     * Set mimeType
      *
      * @param string $mimeType
+     *
      * @return NascarProductMedia
      */
     public function setMimeType($mimeType)
@@ -123,9 +125,9 @@ class NascarProductMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get mime_type
+     * Get mimeType
      *
-     * @return string 
+     * @return string
      */
     public function getMimeType()
     {
@@ -133,9 +135,10 @@ class NascarProductMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set file_size
+     * Set fileSize
      *
      * @param integer $fileSize
+     *
      * @return NascarProductMedia
      */
     public function setFileSize($fileSize)
@@ -146,9 +149,9 @@ class NascarProductMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get file_size
+     * Get fileSize
      *
-     * @return integer 
+     * @return integer
      */
     public function getFileSize()
     {
@@ -156,9 +159,10 @@ class NascarProductMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set file_path
+     * Set filePath
      *
      * @param string $filePath
+     *
      * @return NascarProductMedia
      */
     public function setFilePath($filePath)
@@ -169,12 +173,13 @@ class NascarProductMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get file_path
+     * Get filePath
      *
-     * @return string 
+     * @return string
      */
     public function getFilePath()
     {
         return $this->file_path;
     }
 }
+

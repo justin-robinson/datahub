@@ -616,23 +616,23 @@ class Pulse extends \Entity\Bizj\Pulse implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function addCrossref(\Entity\Bizj\PulseCrossref $crossrefs)
+    public function addCrossref(\Entity\Bizj\PulseCrossref $crossref)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCrossref', array($crossrefs));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCrossref', array($crossref));
 
-        return parent::addCrossref($crossrefs);
+        return parent::addCrossref($crossref);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeCrossref(\Entity\Bizj\PulseCrossref $crossrefs)
+    public function removeCrossref(\Entity\Bizj\PulseCrossref $crossref)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCrossref', array($crossrefs));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCrossref', array($crossref));
 
-        return parent::removeCrossref($crossrefs);
+        return parent::removeCrossref($crossref);
     }
 
     /**
@@ -649,23 +649,23 @@ class Pulse extends \Entity\Bizj\Pulse implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function addMedia(\Entity\Bizj\PulseMedia $media)
+    public function addMedia(\Entity\Bizj\PulseMedia $medium)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMedia', array($media));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMedia', array($medium));
 
-        return parent::addMedia($media);
+        return parent::addMedia($medium);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeMedia(\Entity\Bizj\PulseMedia $media)
+    public function removeMedia(\Entity\Bizj\PulseMedia $medium)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMedia', array($media));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMedia', array($medium));
 
-        return parent::removeMedia($media);
+        return parent::removeMedia($medium);
     }
 
     /**
@@ -682,23 +682,23 @@ class Pulse extends \Entity\Bizj\Pulse implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function addMarket(\Entity\Bizj\PulseMarketMap $markets)
+    public function addMarket(\Entity\Bizj\PulseMarketMap $market)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMarket', array($markets));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMarket', array($market));
 
-        return parent::addMarket($markets);
+        return parent::addMarket($market);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeMarket(\Entity\Bizj\PulseMarketMap $markets)
+    public function removeMarket(\Entity\Bizj\PulseMarketMap $market)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMarket', array($markets));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMarket', array($market));
 
-        return parent::removeMarket($markets);
+        return parent::removeMarket($market);
     }
 
     /**
@@ -715,23 +715,23 @@ class Pulse extends \Entity\Bizj\Pulse implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function addQuestion(\Entity\Bizj\PulseQuestion $questions)
+    public function addQuestion(\Entity\Bizj\PulseQuestion $question)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addQuestion', array($questions));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addQuestion', array($question));
 
-        return parent::addQuestion($questions);
+        return parent::addQuestion($question);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeQuestion(\Entity\Bizj\PulseQuestion $questions)
+    public function removeQuestion(\Entity\Bizj\PulseQuestion $question)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeQuestion', array($questions));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeQuestion', array($question));
 
-        return parent::removeQuestion($questions);
+        return parent::removeQuestion($question);
     }
 
     /**
@@ -748,23 +748,23 @@ class Pulse extends \Entity\Bizj\Pulse implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function addLeadinGroup(\Entity\Bizj\PulseLeadinGroup $leadinGroups)
+    public function addLeadinGroup(\Entity\Bizj\PulseLeadinGroup $leadinGroup)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addLeadinGroup', array($leadinGroups));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addLeadinGroup', array($leadinGroup));
 
-        return parent::addLeadinGroup($leadinGroups);
+        return parent::addLeadinGroup($leadinGroup);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeLeadinGroup(\Entity\Bizj\PulseLeadinGroup $leadinGroups)
+    public function removeLeadinGroup(\Entity\Bizj\PulseLeadinGroup $leadinGroup)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeLeadinGroup', array($leadinGroups));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeLeadinGroup', array($leadinGroup));
 
-        return parent::removeLeadinGroup($leadinGroups);
+        return parent::removeLeadinGroup($leadinGroup);
     }
 
     /**
@@ -781,23 +781,23 @@ class Pulse extends \Entity\Bizj\Pulse implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function addResponse(\Entity\Bizj\PulseResponse $responses)
+    public function addResponse(\Entity\Bizj\PulseResponse $response)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addResponse', array($responses));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addResponse', array($response));
 
-        return parent::addResponse($responses);
+        return parent::addResponse($response);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeResponse(\Entity\Bizj\PulseResponse $responses)
+    public function removeResponse(\Entity\Bizj\PulseResponse $response)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeResponse', array($responses));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeResponse', array($response));
 
-        return parent::removeResponse($responses);
+        return parent::removeResponse($response);
     }
 
     /**

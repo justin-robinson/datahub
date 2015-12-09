@@ -2,8 +2,6 @@
 
 namespace Entity\Bzjpreview;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * PageContent
  */
@@ -41,9 +39,10 @@ class PageContent extends \Entity\Entity\Base
 
 
     /**
-     * Set page_id
+     * Set pageId
      *
      * @param integer $pageId
+     *
      * @return PageContent
      */
     public function setPageId($pageId)
@@ -54,9 +53,9 @@ class PageContent extends \Entity\Entity\Base
     }
 
     /**
-     * Get page_id
+     * Get pageId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPageId()
     {
@@ -67,6 +66,7 @@ class PageContent extends \Entity\Entity\Base
      * Set ord
      *
      * @param integer $ord
+     *
      * @return PageContent
      */
     public function setOrd($ord)
@@ -79,7 +79,7 @@ class PageContent extends \Entity\Entity\Base
     /**
      * Get ord
      *
-     * @return integer 
+     * @return integer
      */
     public function getOrd()
     {
@@ -87,9 +87,10 @@ class PageContent extends \Entity\Entity\Base
     }
 
     /**
-     * Set content_type
+     * Set contentType
      *
      * @param string $contentType
+     *
      * @return PageContent
      */
     public function setContentType($contentType)
@@ -100,9 +101,9 @@ class PageContent extends \Entity\Entity\Base
     }
 
     /**
-     * Get content_type
+     * Get contentType
      *
-     * @return string 
+     * @return string
      */
     public function getContentType()
     {
@@ -110,9 +111,10 @@ class PageContent extends \Entity\Entity\Base
     }
 
     /**
-     * Set content_html
+     * Set contentHtml
      *
      * @param string $contentHtml
+     *
      * @return PageContent
      */
     public function setContentHtml($contentHtml)
@@ -123,9 +125,9 @@ class PageContent extends \Entity\Entity\Base
     }
 
     /**
-     * Get content_html
+     * Get contentHtml
      *
-     * @return string 
+     * @return string
      */
     public function getContentHtml()
     {
@@ -133,9 +135,10 @@ class PageContent extends \Entity\Entity\Base
     }
 
     /**
-     * Set word_count
+     * Set wordCount
      *
      * @param integer $wordCount
+     *
      * @return PageContent
      */
     public function setWordCount($wordCount)
@@ -146,9 +149,9 @@ class PageContent extends \Entity\Entity\Base
     }
 
     /**
-     * Get word_count
+     * Get wordCount
      *
-     * @return integer 
+     * @return integer
      */
     public function getWordCount()
     {
@@ -156,9 +159,10 @@ class PageContent extends \Entity\Entity\Base
     }
 
     /**
-     * Set Page
+     * Set page
      *
      * @param \Entity\Bzjpreview\Page $page
+     *
      * @return PageContent
      */
     public function setPage(\Entity\Bzjpreview\Page $page = null)
@@ -169,12 +173,13 @@ class PageContent extends \Entity\Entity\Base
     }
 
     /**
-     * Get Page
+     * Get page
      *
-     * @return \Entity\Bzjpreview\Page 
+     * @return \Entity\Bzjpreview\Page
      */
     public function getPage()
     {
         return $this->Page;
     }
 }
+

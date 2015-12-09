@@ -2,8 +2,6 @@
 
 namespace Entity\Medialibrary;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * AuthSession
  */
@@ -51,9 +49,9 @@ class AuthSession extends \Entity\Entity\Base
 
 
     /**
-     * Get session_id
+     * Get sessionId
      *
-     * @return integer 
+     * @return integer
      */
     public function getSessionId()
     {
@@ -61,9 +59,10 @@ class AuthSession extends \Entity\Entity\Base
     }
 
     /**
-     * Set auth_id
+     * Set authId
      *
      * @param integer $authId
+     *
      * @return AuthSession
      */
     public function setAuthId($authId)
@@ -74,9 +73,9 @@ class AuthSession extends \Entity\Entity\Base
     }
 
     /**
-     * Get auth_id
+     * Get authId
      *
-     * @return integer 
+     * @return integer
      */
     public function getAuthId()
     {
@@ -84,9 +83,10 @@ class AuthSession extends \Entity\Entity\Base
     }
 
     /**
-     * Set session_hash
+     * Set sessionHash
      *
      * @param string $sessionHash
+     *
      * @return AuthSession
      */
     public function setSessionHash($sessionHash)
@@ -97,9 +97,9 @@ class AuthSession extends \Entity\Entity\Base
     }
 
     /**
-     * Get session_hash
+     * Get sessionHash
      *
-     * @return string 
+     * @return string
      */
     public function getSessionHash()
     {
@@ -110,6 +110,7 @@ class AuthSession extends \Entity\Entity\Base
      * Set username
      *
      * @param string $username
+     *
      * @return AuthSession
      */
     public function setUsername($username)
@@ -122,7 +123,7 @@ class AuthSession extends \Entity\Entity\Base
     /**
      * Get username
      *
-     * @return string 
+     * @return string
      */
     public function getUsername()
     {
@@ -130,9 +131,10 @@ class AuthSession extends \Entity\Entity\Base
     }
 
     /**
-     * Set ip_address
+     * Set ipAddress
      *
      * @param string $ipAddress
+     *
      * @return AuthSession
      */
     public function setIpAddress($ipAddress)
@@ -143,9 +145,9 @@ class AuthSession extends \Entity\Entity\Base
     }
 
     /**
-     * Get ip_address
+     * Get ipAddress
      *
-     * @return string 
+     * @return string
      */
     public function getIpAddress()
     {
@@ -153,9 +155,10 @@ class AuthSession extends \Entity\Entity\Base
     }
 
     /**
-     * Set expires_at
+     * Set expiresAt
      *
      * @param \DateTime $expiresAt
+     *
      * @return AuthSession
      */
     public function setExpiresAt($expiresAt)
@@ -166,9 +169,9 @@ class AuthSession extends \Entity\Entity\Base
     }
 
     /**
-     * Get expires_at
+     * Get expiresAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getExpiresAt()
     {
@@ -176,9 +179,10 @@ class AuthSession extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return AuthSession
      */
     public function setCreatedAt($createdAt)
@@ -189,9 +193,9 @@ class AuthSession extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -199,9 +203,10 @@ class AuthSession extends \Entity\Entity\Base
     }
 
     /**
-     * Set AuthToken
+     * Set authToken
      *
      * @param \Entity\Medialibrary\AuthToken $authToken
+     *
      * @return AuthSession
      */
     public function setAuthToken(\Entity\Medialibrary\AuthToken $authToken = null)
@@ -212,12 +217,13 @@ class AuthSession extends \Entity\Entity\Base
     }
 
     /**
-     * Get AuthToken
+     * Get authToken
      *
-     * @return \Entity\Medialibrary\AuthToken 
+     * @return \Entity\Medialibrary\AuthToken
      */
     public function getAuthToken()
     {
         return $this->AuthToken;
     }
 }
+

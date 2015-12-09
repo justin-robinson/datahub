@@ -2,8 +2,6 @@
 
 namespace Entity\Authentication;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * AuthorizationCode
  */
@@ -59,6 +57,7 @@ class AuthorizationCode extends \Entity\Entity\Base
      * Set code
      *
      * @param string $code
+     *
      * @return AuthorizationCode
      */
     public function setCode($code)
@@ -71,7 +70,7 @@ class AuthorizationCode extends \Entity\Entity\Base
     /**
      * Get code
      *
-     * @return string 
+     * @return string
      */
     public function getCode()
     {
@@ -79,9 +78,10 @@ class AuthorizationCode extends \Entity\Entity\Base
     }
 
     /**
-     * Set client_id
+     * Set clientId
      *
      * @param integer $clientId
+     *
      * @return AuthorizationCode
      */
     public function setClientId($clientId)
@@ -92,9 +92,9 @@ class AuthorizationCode extends \Entity\Entity\Base
     }
 
     /**
-     * Get client_id
+     * Get clientId
      *
-     * @return integer 
+     * @return integer
      */
     public function getClientId()
     {
@@ -102,9 +102,10 @@ class AuthorizationCode extends \Entity\Entity\Base
     }
 
     /**
-     * Set service_id
+     * Set serviceId
      *
      * @param integer $serviceId
+     *
      * @return AuthorizationCode
      */
     public function setServiceId($serviceId)
@@ -115,9 +116,9 @@ class AuthorizationCode extends \Entity\Entity\Base
     }
 
     /**
-     * Get service_id
+     * Get serviceId
      *
-     * @return integer 
+     * @return integer
      */
     public function getServiceId()
     {
@@ -125,9 +126,10 @@ class AuthorizationCode extends \Entity\Entity\Base
     }
 
     /**
-     * Set redirect_uri
+     * Set redirectUri
      *
      * @param string $redirectUri
+     *
      * @return AuthorizationCode
      */
     public function setRedirectUri($redirectUri)
@@ -138,9 +140,9 @@ class AuthorizationCode extends \Entity\Entity\Base
     }
 
     /**
-     * Get redirect_uri
+     * Get redirectUri
      *
-     * @return string 
+     * @return string
      */
     public function getRedirectUri()
     {
@@ -148,9 +150,10 @@ class AuthorizationCode extends \Entity\Entity\Base
     }
 
     /**
-     * Set expires_at
+     * Set expiresAt
      *
      * @param \DateTime $expiresAt
+     *
      * @return AuthorizationCode
      */
     public function setExpiresAt($expiresAt)
@@ -161,9 +164,9 @@ class AuthorizationCode extends \Entity\Entity\Base
     }
 
     /**
-     * Get expires_at
+     * Get expiresAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getExpiresAt()
     {
@@ -174,6 +177,7 @@ class AuthorizationCode extends \Entity\Entity\Base
      * Set scope
      *
      * @param string $scope
+     *
      * @return AuthorizationCode
      */
     public function setScope($scope)
@@ -186,7 +190,7 @@ class AuthorizationCode extends \Entity\Entity\Base
     /**
      * Get scope
      *
-     * @return string 
+     * @return string
      */
     public function getScope()
     {
@@ -194,9 +198,10 @@ class AuthorizationCode extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return AuthorizationCode
      */
     public function setCreatedAt($createdAt)
@@ -207,9 +212,9 @@ class AuthorizationCode extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -217,9 +222,10 @@ class AuthorizationCode extends \Entity\Entity\Base
     }
 
     /**
-     * Set Client
+     * Set client
      *
      * @param \Entity\Authentication\Client $client
+     *
      * @return AuthorizationCode
      */
     public function setClient(\Entity\Authentication\Client $client = null)
@@ -230,9 +236,9 @@ class AuthorizationCode extends \Entity\Entity\Base
     }
 
     /**
-     * Get Client
+     * Get client
      *
-     * @return \Entity\Authentication\Client 
+     * @return \Entity\Authentication\Client
      */
     public function getClient()
     {
@@ -240,9 +246,10 @@ class AuthorizationCode extends \Entity\Entity\Base
     }
 
     /**
-     * Set Service
+     * Set service
      *
      * @param \Entity\Authentication\Service $service
+     *
      * @return AuthorizationCode
      */
     public function setService(\Entity\Authentication\Service $service = null)
@@ -253,12 +260,13 @@ class AuthorizationCode extends \Entity\Entity\Base
     }
 
     /**
-     * Get Service
+     * Get service
      *
-     * @return \Entity\Authentication\Service 
+     * @return \Entity\Authentication\Service
      */
     public function getService()
     {
         return $this->Service;
     }
 }
+

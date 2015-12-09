@@ -2,8 +2,6 @@
 
 namespace Entity\Authentication;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Client
  */
@@ -115,9 +113,9 @@ class Client extends \Entity\Entity\Base
     }
 
     /**
-     * Get client_id
+     * Get clientId
      *
-     * @return integer 
+     * @return integer
      */
     public function getClientId()
     {
@@ -125,9 +123,10 @@ class Client extends \Entity\Entity\Base
     }
 
     /**
-     * Set service_id
+     * Set serviceId
      *
      * @param integer $serviceId
+     *
      * @return Client
      */
     public function setServiceId($serviceId)
@@ -138,9 +137,9 @@ class Client extends \Entity\Entity\Base
     }
 
     /**
-     * Get service_id
+     * Get serviceId
      *
-     * @return integer 
+     * @return integer
      */
     public function getServiceId()
     {
@@ -148,9 +147,10 @@ class Client extends \Entity\Entity\Base
     }
 
     /**
-     * Set public_key
+     * Set publicKey
      *
      * @param string $publicKey
+     *
      * @return Client
      */
     public function setPublicKey($publicKey)
@@ -161,9 +161,9 @@ class Client extends \Entity\Entity\Base
     }
 
     /**
-     * Get public_key
+     * Get publicKey
      *
-     * @return string 
+     * @return string
      */
     public function getPublicKey()
     {
@@ -171,9 +171,10 @@ class Client extends \Entity\Entity\Base
     }
 
     /**
-     * Set secret_key
+     * Set secretKey
      *
      * @param string $secretKey
+     *
      * @return Client
      */
     public function setSecretKey($secretKey)
@@ -184,9 +185,9 @@ class Client extends \Entity\Entity\Base
     }
 
     /**
-     * Get secret_key
+     * Get secretKey
      *
-     * @return string 
+     * @return string
      */
     public function getSecretKey()
     {
@@ -194,9 +195,10 @@ class Client extends \Entity\Entity\Base
     }
 
     /**
-     * Set redirect_uri
+     * Set redirectUri
      *
      * @param string $redirectUri
+     *
      * @return Client
      */
     public function setRedirectUri($redirectUri)
@@ -207,9 +209,9 @@ class Client extends \Entity\Entity\Base
     }
 
     /**
-     * Get redirect_uri
+     * Get redirectUri
      *
-     * @return string 
+     * @return string
      */
     public function getRedirectUri()
     {
@@ -217,9 +219,10 @@ class Client extends \Entity\Entity\Base
     }
 
     /**
-     * Set grant_types
+     * Set grantTypes
      *
      * @param string $grantTypes
+     *
      * @return Client
      */
     public function setGrantTypes($grantTypes)
@@ -230,9 +233,9 @@ class Client extends \Entity\Entity\Base
     }
 
     /**
-     * Get grant_types
+     * Get grantTypes
      *
-     * @return string 
+     * @return string
      */
     public function getGrantTypes()
     {
@@ -243,6 +246,7 @@ class Client extends \Entity\Entity\Base
      * Set scope
      *
      * @param string $scope
+     *
      * @return Client
      */
     public function setScope($scope)
@@ -255,7 +259,7 @@ class Client extends \Entity\Entity\Base
     /**
      * Get scope
      *
-     * @return string 
+     * @return string
      */
     public function getScope()
     {
@@ -263,9 +267,10 @@ class Client extends \Entity\Entity\Base
     }
 
     /**
-     * Set rate_limit
+     * Set rateLimit
      *
      * @param integer $rateLimit
+     *
      * @return Client
      */
     public function setRateLimit($rateLimit)
@@ -276,9 +281,9 @@ class Client extends \Entity\Entity\Base
     }
 
     /**
-     * Get rate_limit
+     * Get rateLimit
      *
-     * @return integer 
+     * @return integer
      */
     public function getRateLimit()
     {
@@ -286,9 +291,10 @@ class Client extends \Entity\Entity\Base
     }
 
     /**
-     * Set client_name
+     * Set clientName
      *
      * @param string $clientName
+     *
      * @return Client
      */
     public function setClientName($clientName)
@@ -299,9 +305,9 @@ class Client extends \Entity\Entity\Base
     }
 
     /**
-     * Get client_name
+     * Get clientName
      *
-     * @return string 
+     * @return string
      */
     public function getClientName()
     {
@@ -312,6 +318,7 @@ class Client extends \Entity\Entity\Base
      * Set description
      *
      * @param string $description
+     *
      * @return Client
      */
     public function setDescription($description)
@@ -324,7 +331,7 @@ class Client extends \Entity\Entity\Base
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -332,9 +339,10 @@ class Client extends \Entity\Entity\Base
     }
 
     /**
-     * Set unit_id
+     * Set unitId
      *
      * @param integer $unitId
+     *
      * @return Client
      */
     public function setUnitId($unitId)
@@ -345,9 +353,9 @@ class Client extends \Entity\Entity\Base
     }
 
     /**
-     * Get unit_id
+     * Get unitId
      *
-     * @return integer 
+     * @return integer
      */
     public function getUnitId()
     {
@@ -355,9 +363,10 @@ class Client extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_active
+     * Set isActive
      *
      * @param boolean $isActive
+     *
      * @return Client
      */
     public function setIsActive($isActive)
@@ -368,9 +377,9 @@ class Client extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_active
+     * Get isActive
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsActive()
     {
@@ -378,9 +387,10 @@ class Client extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return Client
      */
     public function setCreatedAt($createdAt)
@@ -391,9 +401,9 @@ class Client extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -401,9 +411,10 @@ class Client extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return Client
      */
     public function setUpdatedAt($updatedAt)
@@ -414,9 +425,9 @@ class Client extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -424,32 +435,33 @@ class Client extends \Entity\Entity\Base
     }
 
     /**
-     * Add AccessTokens
+     * Add accessToken
      *
-     * @param \Entity\Authentication\AccessToken $accessTokens
+     * @param \Entity\Authentication\AccessToken $accessToken
+     *
      * @return Client
      */
-    public function addAccessToken(\Entity\Authentication\AccessToken $accessTokens)
+    public function addAccessToken(\Entity\Authentication\AccessToken $accessToken)
     {
-        $this->AccessTokens[] = $accessTokens;
+        $this->AccessTokens[] = $accessToken;
 
         return $this;
     }
 
     /**
-     * Remove AccessTokens
+     * Remove accessToken
      *
-     * @param \Entity\Authentication\AccessToken $accessTokens
+     * @param \Entity\Authentication\AccessToken $accessToken
      */
-    public function removeAccessToken(\Entity\Authentication\AccessToken $accessTokens)
+    public function removeAccessToken(\Entity\Authentication\AccessToken $accessToken)
     {
-        $this->AccessTokens->removeElement($accessTokens);
+        $this->AccessTokens->removeElement($accessToken);
     }
 
     /**
-     * Get AccessTokens
+     * Get accessTokens
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getAccessTokens()
     {
@@ -457,32 +469,33 @@ class Client extends \Entity\Entity\Base
     }
 
     /**
-     * Add RefreshTokens
+     * Add refreshToken
      *
-     * @param \Entity\Authentication\RefreshToken $refreshTokens
+     * @param \Entity\Authentication\RefreshToken $refreshToken
+     *
      * @return Client
      */
-    public function addRefreshToken(\Entity\Authentication\RefreshToken $refreshTokens)
+    public function addRefreshToken(\Entity\Authentication\RefreshToken $refreshToken)
     {
-        $this->RefreshTokens[] = $refreshTokens;
+        $this->RefreshTokens[] = $refreshToken;
 
         return $this;
     }
 
     /**
-     * Remove RefreshTokens
+     * Remove refreshToken
      *
-     * @param \Entity\Authentication\RefreshToken $refreshTokens
+     * @param \Entity\Authentication\RefreshToken $refreshToken
      */
-    public function removeRefreshToken(\Entity\Authentication\RefreshToken $refreshTokens)
+    public function removeRefreshToken(\Entity\Authentication\RefreshToken $refreshToken)
     {
-        $this->RefreshTokens->removeElement($refreshTokens);
+        $this->RefreshTokens->removeElement($refreshToken);
     }
 
     /**
-     * Get RefreshTokens
+     * Get refreshTokens
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getRefreshTokens()
     {
@@ -490,32 +503,33 @@ class Client extends \Entity\Entity\Base
     }
 
     /**
-     * Add AuthorizationCodes
+     * Add authorizationCode
      *
-     * @param \Entity\Authentication\AuthorizationCode $authorizationCodes
+     * @param \Entity\Authentication\AuthorizationCode $authorizationCode
+     *
      * @return Client
      */
-    public function addAuthorizationCode(\Entity\Authentication\AuthorizationCode $authorizationCodes)
+    public function addAuthorizationCode(\Entity\Authentication\AuthorizationCode $authorizationCode)
     {
-        $this->AuthorizationCodes[] = $authorizationCodes;
+        $this->AuthorizationCodes[] = $authorizationCode;
 
         return $this;
     }
 
     /**
-     * Remove AuthorizationCodes
+     * Remove authorizationCode
      *
-     * @param \Entity\Authentication\AuthorizationCode $authorizationCodes
+     * @param \Entity\Authentication\AuthorizationCode $authorizationCode
      */
-    public function removeAuthorizationCode(\Entity\Authentication\AuthorizationCode $authorizationCodes)
+    public function removeAuthorizationCode(\Entity\Authentication\AuthorizationCode $authorizationCode)
     {
-        $this->AuthorizationCodes->removeElement($authorizationCodes);
+        $this->AuthorizationCodes->removeElement($authorizationCode);
     }
 
     /**
-     * Get AuthorizationCodes
+     * Get authorizationCodes
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getAuthorizationCodes()
     {
@@ -523,9 +537,10 @@ class Client extends \Entity\Entity\Base
     }
 
     /**
-     * Set Service
+     * Set service
      *
      * @param \Entity\Authentication\Service $service
+     *
      * @return Client
      */
     public function setService(\Entity\Authentication\Service $service = null)
@@ -536,9 +551,9 @@ class Client extends \Entity\Entity\Base
     }
 
     /**
-     * Get Service
+     * Get service
      *
-     * @return \Entity\Authentication\Service 
+     * @return \Entity\Authentication\Service
      */
     public function getService()
     {
@@ -546,9 +561,10 @@ class Client extends \Entity\Entity\Base
     }
 
     /**
-     * Set Unit
+     * Set unit
      *
      * @param \Entity\Authentication\Unit $unit
+     *
      * @return Client
      */
     public function setUnit(\Entity\Authentication\Unit $unit = null)
@@ -559,12 +575,13 @@ class Client extends \Entity\Entity\Base
     }
 
     /**
-     * Get Unit
+     * Get unit
      *
-     * @return \Entity\Authentication\Unit 
+     * @return \Entity\Authentication\Unit
      */
     public function getUnit()
     {
         return $this->Unit;
     }
 }
+

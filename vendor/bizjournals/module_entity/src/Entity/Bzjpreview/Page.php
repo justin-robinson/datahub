@@ -2,8 +2,6 @@
 
 namespace Entity\Bzjpreview;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Page
  */
@@ -155,9 +153,10 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Set page_id
+     * Set pageId
      *
      * @param integer $pageId
+     *
      * @return Page
      */
     public function setPageId($pageId)
@@ -168,9 +167,9 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Get page_id
+     * Get pageId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPageId()
     {
@@ -181,6 +180,7 @@ class Page extends \Entity\Entity\Base
      * Set site
      *
      * @param string $site
+     *
      * @return Page
      */
     public function setSite($site)
@@ -193,7 +193,7 @@ class Page extends \Entity\Entity\Base
     /**
      * Get site
      *
-     * @return string 
+     * @return string
      */
     public function getSite()
     {
@@ -204,6 +204,7 @@ class Page extends \Entity\Entity\Base
      * Set path
      *
      * @param string $path
+     *
      * @return Page
      */
     public function setPath($path)
@@ -216,7 +217,7 @@ class Page extends \Entity\Entity\Base
     /**
      * Get path
      *
-     * @return string 
+     * @return string
      */
     public function getPath()
     {
@@ -227,6 +228,7 @@ class Page extends \Entity\Entity\Base
      * Set slug
      *
      * @param string $slug
+     *
      * @return Page
      */
     public function setSlug($slug)
@@ -239,7 +241,7 @@ class Page extends \Entity\Entity\Base
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug()
     {
@@ -247,9 +249,10 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Set issue_date
+     * Set issueDate
      *
      * @param \DateTime $issueDate
+     *
      * @return Page
      */
     public function setIssueDate($issueDate)
@@ -260,9 +263,9 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Get issue_date
+     * Get issueDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getIssueDate()
     {
@@ -270,9 +273,10 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Set release_time
+     * Set releaseTime
      *
      * @param \DateTime $releaseTime
+     *
      * @return Page
      */
     public function setReleaseTime($releaseTime)
@@ -283,9 +287,9 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Get release_time
+     * Get releaseTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getReleaseTime()
     {
@@ -293,9 +297,10 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return Page
      */
     public function setCreatedAt($createdAt)
@@ -306,9 +311,9 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -316,9 +321,10 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return Page
      */
     public function setUpdatedAt($updatedAt)
@@ -329,9 +335,9 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -339,9 +345,10 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Set rev_number
+     * Set revNumber
      *
      * @param integer $revNumber
+     *
      * @return Page
      */
     public function setRevNumber($revNumber)
@@ -352,9 +359,9 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Get rev_number
+     * Get revNumber
      *
-     * @return integer 
+     * @return integer
      */
     public function getRevNumber()
     {
@@ -365,6 +372,7 @@ class Page extends \Entity\Entity\Base
      * Set headline
      *
      * @param string $headline
+     *
      * @return Page
      */
     public function setHeadline($headline)
@@ -377,7 +385,7 @@ class Page extends \Entity\Entity\Base
     /**
      * Get headline
      *
-     * @return string 
+     * @return string
      */
     public function getHeadline()
     {
@@ -385,9 +393,10 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Set short_headline
+     * Set shortHeadline
      *
      * @param string $shortHeadline
+     *
      * @return Page
      */
     public function setShortHeadline($shortHeadline)
@@ -398,9 +407,9 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Get short_headline
+     * Get shortHeadline
      *
-     * @return string 
+     * @return string
      */
     public function getShortHeadline()
     {
@@ -408,9 +417,10 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_premium
+     * Set isPremium
      *
      * @param boolean $isPremium
+     *
      * @return Page
      */
     public function setIsPremium($isPremium)
@@ -421,9 +431,9 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_premium
+     * Get isPremium
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsPremium()
     {
@@ -431,9 +441,10 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Set journal_id
+     * Set journalId
      *
      * @param integer $journalId
+     *
      * @return Page
      */
     public function setJournalId($journalId)
@@ -444,9 +455,9 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Get journal_id
+     * Get journalId
      *
-     * @return integer 
+     * @return integer
      */
     public function getJournalId()
     {
@@ -454,9 +465,10 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Set type_id
+     * Set typeId
      *
      * @param integer $typeId
+     *
      * @return Page
      */
     public function setTypeId($typeId)
@@ -467,9 +479,9 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Get type_id
+     * Get typeId
      *
-     * @return integer 
+     * @return integer
      */
     public function getTypeId()
     {
@@ -477,9 +489,10 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Set parent_page_id
+     * Set parentPageId
      *
      * @param integer $parentPageId
+     *
      * @return Page
      */
     public function setParentPageId($parentPageId)
@@ -490,9 +503,9 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Get parent_page_id
+     * Get parentPageId
      *
-     * @return integer 
+     * @return integer
      */
     public function getParentPageId()
     {
@@ -500,9 +513,10 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Set published_at
+     * Set publishedAt
      *
      * @param \DateTime $publishedAt
+     *
      * @return Page
      */
     public function setPublishedAt($publishedAt)
@@ -513,9 +527,9 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Get published_at
+     * Get publishedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getPublishedAt()
     {
@@ -523,9 +537,10 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Set revised_at
+     * Set revisedAt
      *
      * @param \DateTime $revisedAt
+     *
      * @return Page
      */
     public function setRevisedAt($revisedAt)
@@ -536,9 +551,9 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Get revised_at
+     * Get revisedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getRevisedAt()
     {
@@ -546,9 +561,10 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Set allow_syndication
+     * Set allowSyndication
      *
      * @param boolean $allowSyndication
+     *
      * @return Page
      */
     public function setAllowSyndication($allowSyndication)
@@ -559,9 +575,9 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Get allow_syndication
+     * Get allowSyndication
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getAllowSyndication()
     {
@@ -569,32 +585,33 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Add Contents
+     * Add content
      *
-     * @param \Entity\Bzjpreview\PageContent $contents
+     * @param \Entity\Bzjpreview\PageContent $content
+     *
      * @return Page
      */
-    public function addContent(\Entity\Bzjpreview\PageContent $contents)
+    public function addContent(\Entity\Bzjpreview\PageContent $content)
     {
-        $this->Contents[] = $contents;
+        $this->Contents[] = $content;
 
         return $this;
     }
 
     /**
-     * Remove Contents
+     * Remove content
      *
-     * @param \Entity\Bzjpreview\PageContent $contents
+     * @param \Entity\Bzjpreview\PageContent $content
      */
-    public function removeContent(\Entity\Bzjpreview\PageContent $contents)
+    public function removeContent(\Entity\Bzjpreview\PageContent $content)
     {
-        $this->Contents->removeElement($contents);
+        $this->Contents->removeElement($content);
     }
 
     /**
-     * Get Contents
+     * Get contents
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getContents()
     {
@@ -602,32 +619,33 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Add Corrections
+     * Add correction
      *
-     * @param \Entity\Bzjpreview\PageCorrection $corrections
+     * @param \Entity\Bzjpreview\PageCorrection $correction
+     *
      * @return Page
      */
-    public function addCorrection(\Entity\Bzjpreview\PageCorrection $corrections)
+    public function addCorrection(\Entity\Bzjpreview\PageCorrection $correction)
     {
-        $this->Corrections[] = $corrections;
+        $this->Corrections[] = $correction;
 
         return $this;
     }
 
     /**
-     * Remove Corrections
+     * Remove correction
      *
-     * @param \Entity\Bzjpreview\PageCorrection $corrections
+     * @param \Entity\Bzjpreview\PageCorrection $correction
      */
-    public function removeCorrection(\Entity\Bzjpreview\PageCorrection $corrections)
+    public function removeCorrection(\Entity\Bzjpreview\PageCorrection $correction)
     {
-        $this->Corrections->removeElement($corrections);
+        $this->Corrections->removeElement($correction);
     }
 
     /**
-     * Get Corrections
+     * Get corrections
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getCorrections()
     {
@@ -635,32 +653,33 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Add Metadata
+     * Add metadatum
      *
-     * @param \Entity\Bzjpreview\PageMetadata $metadata
+     * @param \Entity\Bzjpreview\PageMetadata $metadatum
+     *
      * @return Page
      */
-    public function addMetadatum(\Entity\Bzjpreview\PageMetadata $metadata)
+    public function addMetadatum(\Entity\Bzjpreview\PageMetadata $metadatum)
     {
-        $this->Metadata[] = $metadata;
+        $this->Metadata[] = $metadatum;
 
         return $this;
     }
 
     /**
-     * Remove Metadata
+     * Remove metadatum
      *
-     * @param \Entity\Bzjpreview\PageMetadata $metadata
+     * @param \Entity\Bzjpreview\PageMetadata $metadatum
      */
-    public function removeMetadatum(\Entity\Bzjpreview\PageMetadata $metadata)
+    public function removeMetadatum(\Entity\Bzjpreview\PageMetadata $metadatum)
     {
-        $this->Metadata->removeElement($metadata);
+        $this->Metadata->removeElement($metadatum);
     }
 
     /**
-     * Get Metadata
+     * Get metadata
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getMetadata()
     {
@@ -668,32 +687,33 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Add LeadinGroups
+     * Add leadinGroup
      *
-     * @param \Entity\Bzjpreview\PageLeadinGroup $leadinGroups
+     * @param \Entity\Bzjpreview\PageLeadinGroup $leadinGroup
+     *
      * @return Page
      */
-    public function addLeadinGroup(\Entity\Bzjpreview\PageLeadinGroup $leadinGroups)
+    public function addLeadinGroup(\Entity\Bzjpreview\PageLeadinGroup $leadinGroup)
     {
-        $this->LeadinGroups[] = $leadinGroups;
+        $this->LeadinGroups[] = $leadinGroup;
 
         return $this;
     }
 
     /**
-     * Remove LeadinGroups
+     * Remove leadinGroup
      *
-     * @param \Entity\Bzjpreview\PageLeadinGroup $leadinGroups
+     * @param \Entity\Bzjpreview\PageLeadinGroup $leadinGroup
      */
-    public function removeLeadinGroup(\Entity\Bzjpreview\PageLeadinGroup $leadinGroups)
+    public function removeLeadinGroup(\Entity\Bzjpreview\PageLeadinGroup $leadinGroup)
     {
-        $this->LeadinGroups->removeElement($leadinGroups);
+        $this->LeadinGroups->removeElement($leadinGroup);
     }
 
     /**
-     * Get LeadinGroups
+     * Get leadinGroups
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getLeadinGroups()
     {
@@ -701,32 +721,33 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Add Crossrefs
+     * Add crossref
      *
-     * @param \Entity\Bzjpreview\PageCrossref $crossrefs
+     * @param \Entity\Bzjpreview\PageCrossref $crossref
+     *
      * @return Page
      */
-    public function addCrossref(\Entity\Bzjpreview\PageCrossref $crossrefs)
+    public function addCrossref(\Entity\Bzjpreview\PageCrossref $crossref)
     {
-        $this->Crossrefs[] = $crossrefs;
+        $this->Crossrefs[] = $crossref;
 
         return $this;
     }
 
     /**
-     * Remove Crossrefs
+     * Remove crossref
      *
-     * @param \Entity\Bzjpreview\PageCrossref $crossrefs
+     * @param \Entity\Bzjpreview\PageCrossref $crossref
      */
-    public function removeCrossref(\Entity\Bzjpreview\PageCrossref $crossrefs)
+    public function removeCrossref(\Entity\Bzjpreview\PageCrossref $crossref)
     {
-        $this->Crossrefs->removeElement($crossrefs);
+        $this->Crossrefs->removeElement($crossref);
     }
 
     /**
-     * Get Crossrefs
+     * Get crossrefs
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getCrossrefs()
     {
@@ -734,9 +755,10 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Add LegacyMediaMap
+     * Add legacyMediaMap
      *
      * @param \Entity\Bzjpreview\PageLegacyMediaMap $legacyMediaMap
+     *
      * @return Page
      */
     public function addLegacyMediaMap(\Entity\Bzjpreview\PageLegacyMediaMap $legacyMediaMap)
@@ -747,7 +769,7 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Remove LegacyMediaMap
+     * Remove legacyMediaMap
      *
      * @param \Entity\Bzjpreview\PageLegacyMediaMap $legacyMediaMap
      */
@@ -757,9 +779,9 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Get LegacyMediaMap
+     * Get legacyMediaMap
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getLegacyMediaMap()
     {
@@ -767,32 +789,33 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Add Media
+     * Add medium
      *
-     * @param \Entity\Bzjpreview\PageMedia $media
+     * @param \Entity\Bzjpreview\PageMedia $medium
+     *
      * @return Page
      */
-    public function addMedia(\Entity\Bzjpreview\PageMedia $media)
+    public function addMedia(\Entity\Bzjpreview\PageMedia $medium)
     {
-        $this->Media[] = $media;
+        $this->Media[] = $medium;
 
         return $this;
     }
 
     /**
-     * Remove Media
+     * Remove medium
      *
-     * @param \Entity\Bzjpreview\PageMedia $media
+     * @param \Entity\Bzjpreview\PageMedia $medium
      */
-    public function removeMedia(\Entity\Bzjpreview\PageMedia $media)
+    public function removeMedia(\Entity\Bzjpreview\PageMedia $medium)
     {
-        $this->Media->removeElement($media);
+        $this->Media->removeElement($medium);
     }
 
     /**
-     * Get Media
+     * Get media
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getMedia()
     {
@@ -800,35 +823,37 @@ class Page extends \Entity\Entity\Base
     }
 
     /**
-     * Add Urls
+     * Add url
      *
-     * @param \Entity\Bzjpreview\PageUrl $urls
+     * @param \Entity\Bzjpreview\PageUrl $url
+     *
      * @return Page
      */
-    public function addUrl(\Entity\Bzjpreview\PageUrl $urls)
+    public function addUrl(\Entity\Bzjpreview\PageUrl $url)
     {
-        $this->Urls[] = $urls;
+        $this->Urls[] = $url;
 
         return $this;
     }
 
     /**
-     * Remove Urls
+     * Remove url
      *
-     * @param \Entity\Bzjpreview\PageUrl $urls
+     * @param \Entity\Bzjpreview\PageUrl $url
      */
-    public function removeUrl(\Entity\Bzjpreview\PageUrl $urls)
+    public function removeUrl(\Entity\Bzjpreview\PageUrl $url)
     {
-        $this->Urls->removeElement($urls);
+        $this->Urls->removeElement($url);
     }
 
     /**
-     * Get Urls
+     * Get urls
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getUrls()
     {
         return $this->Urls;
     }
 }
+

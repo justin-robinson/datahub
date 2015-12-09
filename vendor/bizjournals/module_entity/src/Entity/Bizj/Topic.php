@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Topic
  */
@@ -41,9 +39,9 @@ class Topic extends \Entity\Entity\Base
 
 
     /**
-     * Get topic_id
+     * Get topicId
      *
-     * @return integer 
+     * @return integer
      */
     public function getTopicId()
     {
@@ -51,9 +49,10 @@ class Topic extends \Entity\Entity\Base
     }
 
     /**
-     * Set usage_market
+     * Set usageMarket
      *
      * @param string $usageMarket
+     *
      * @return Topic
      */
     public function setUsageMarket($usageMarket)
@@ -64,9 +63,9 @@ class Topic extends \Entity\Entity\Base
     }
 
     /**
-     * Get usage_market
+     * Get usageMarket
      *
-     * @return string 
+     * @return string
      */
     public function getUsageMarket()
     {
@@ -74,9 +73,10 @@ class Topic extends \Entity\Entity\Base
     }
 
     /**
-     * Set topic_code
+     * Set topicCode
      *
      * @param string $topicCode
+     *
      * @return Topic
      */
     public function setTopicCode($topicCode)
@@ -87,9 +87,9 @@ class Topic extends \Entity\Entity\Base
     }
 
     /**
-     * Get topic_code
+     * Get topicCode
      *
-     * @return string 
+     * @return string
      */
     public function getTopicCode()
     {
@@ -97,9 +97,10 @@ class Topic extends \Entity\Entity\Base
     }
 
     /**
-     * Set topic_name
+     * Set topicName
      *
      * @param string $topicName
+     *
      * @return Topic
      */
     public function setTopicName($topicName)
@@ -110,9 +111,9 @@ class Topic extends \Entity\Entity\Base
     }
 
     /**
-     * Get topic_name
+     * Get topicName
      *
-     * @return string 
+     * @return string
      */
     public function getTopicName()
     {
@@ -123,6 +124,7 @@ class Topic extends \Entity\Entity\Base
      * Set hidden
      *
      * @param boolean $hidden
+     *
      * @return Topic
      */
     public function setHidden($hidden)
@@ -135,7 +137,7 @@ class Topic extends \Entity\Entity\Base
     /**
      * Get hidden
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getHidden()
     {
@@ -143,9 +145,10 @@ class Topic extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_active
+     * Set isActive
      *
      * @param boolean $isActive
+     *
      * @return Topic
      */
     public function setIsActive($isActive)
@@ -156,12 +159,13 @@ class Topic extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_active
+     * Get isActive
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsActive()
     {
         return $this->is_active;
     }
 }
+

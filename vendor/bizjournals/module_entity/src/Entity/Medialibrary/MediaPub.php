@@ -2,8 +2,6 @@
 
 namespace Entity\Medialibrary;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * MediaPub
  */
@@ -36,9 +34,10 @@ class MediaPub extends \Entity\Entity\Base
 
 
     /**
-     * Set media_id
+     * Set mediaId
      *
      * @param integer $mediaId
+     *
      * @return MediaPub
      */
     public function setMediaId($mediaId)
@@ -49,9 +48,9 @@ class MediaPub extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_id
+     * Get mediaId
      *
-     * @return integer 
+     * @return integer
      */
     public function getMediaId()
     {
@@ -59,9 +58,10 @@ class MediaPub extends \Entity\Entity\Base
     }
 
     /**
-     * Set pub_id
+     * Set pubId
      *
      * @param integer $pubId
+     *
      * @return MediaPub
      */
     public function setPubId($pubId)
@@ -72,9 +72,9 @@ class MediaPub extends \Entity\Entity\Base
     }
 
     /**
-     * Get pub_id
+     * Get pubId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPubId()
     {
@@ -82,9 +82,10 @@ class MediaPub extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return MediaPub
      */
     public function setCreatedAt($createdAt)
@@ -95,9 +96,9 @@ class MediaPub extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -105,9 +106,10 @@ class MediaPub extends \Entity\Entity\Base
     }
 
     /**
-     * Set Media
+     * Set media
      *
      * @param \Entity\Medialibrary\Media $media
+     *
      * @return MediaPub
      */
     public function setMedia(\Entity\Medialibrary\Media $media = null)
@@ -118,9 +120,9 @@ class MediaPub extends \Entity\Entity\Base
     }
 
     /**
-     * Get Media
+     * Get media
      *
-     * @return \Entity\Medialibrary\Media 
+     * @return \Entity\Medialibrary\Media
      */
     public function getMedia()
     {
@@ -128,9 +130,10 @@ class MediaPub extends \Entity\Entity\Base
     }
 
     /**
-     * Set Publication
+     * Set publication
      *
      * @param \Entity\Medialibrary\Publication $publication
+     *
      * @return MediaPub
      */
     public function setPublication(\Entity\Medialibrary\Publication $publication = null)
@@ -141,12 +144,13 @@ class MediaPub extends \Entity\Entity\Base
     }
 
     /**
-     * Get Publication
+     * Get publication
      *
-     * @return \Entity\Medialibrary\Publication 
+     * @return \Entity\Medialibrary\Publication
      */
     public function getPublication()
     {
         return $this->Publication;
     }
 }
+

@@ -275,23 +275,23 @@ class Tag extends \Entity\Medialibrary\Tag implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function addMediaTag(\Entity\Medialibrary\MediaTag $mediaTags)
+    public function addMediaTag(\Entity\Medialibrary\MediaTag $mediaTag)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMediaTag', array($mediaTags));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMediaTag', array($mediaTag));
 
-        return parent::addMediaTag($mediaTags);
+        return parent::addMediaTag($mediaTag);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeMediaTag(\Entity\Medialibrary\MediaTag $mediaTags)
+    public function removeMediaTag(\Entity\Medialibrary\MediaTag $mediaTag)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMediaTag', array($mediaTags));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMediaTag', array($mediaTag));
 
-        return parent::removeMediaTag($mediaTags);
+        return parent::removeMediaTag($mediaTag);
     }
 
     /**

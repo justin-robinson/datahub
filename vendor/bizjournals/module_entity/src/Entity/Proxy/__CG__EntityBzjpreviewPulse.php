@@ -616,23 +616,23 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     /**
      * {@inheritDoc}
      */
-    public function addCrossref(\Entity\Bzjpreview\PulseCrossref $crossrefs)
+    public function addCrossref(\Entity\Bzjpreview\PulseCrossref $crossref)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCrossref', array($crossrefs));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCrossref', array($crossref));
 
-        return parent::addCrossref($crossrefs);
+        return parent::addCrossref($crossref);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeCrossref(\Entity\Bzjpreview\PulseCrossref $crossrefs)
+    public function removeCrossref(\Entity\Bzjpreview\PulseCrossref $crossref)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCrossref', array($crossrefs));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCrossref', array($crossref));
 
-        return parent::removeCrossref($crossrefs);
+        return parent::removeCrossref($crossref);
     }
 
     /**
@@ -649,23 +649,23 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     /**
      * {@inheritDoc}
      */
-    public function addMedia(\Entity\Bzjpreview\PulseMedia $media)
+    public function addMedia(\Entity\Bzjpreview\PulseMedia $medium)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMedia', array($media));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMedia', array($medium));
 
-        return parent::addMedia($media);
+        return parent::addMedia($medium);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeMedia(\Entity\Bzjpreview\PulseMedia $media)
+    public function removeMedia(\Entity\Bzjpreview\PulseMedia $medium)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMedia', array($media));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMedia', array($medium));
 
-        return parent::removeMedia($media);
+        return parent::removeMedia($medium);
     }
 
     /**
@@ -682,23 +682,23 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     /**
      * {@inheritDoc}
      */
-    public function addMarket(\Entity\Bzjpreview\PulseMarketMap $markets)
+    public function addMarket(\Entity\Bzjpreview\PulseMarketMap $market)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMarket', array($markets));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMarket', array($market));
 
-        return parent::addMarket($markets);
+        return parent::addMarket($market);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeMarket(\Entity\Bzjpreview\PulseMarketMap $markets)
+    public function removeMarket(\Entity\Bzjpreview\PulseMarketMap $market)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMarket', array($markets));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMarket', array($market));
 
-        return parent::removeMarket($markets);
+        return parent::removeMarket($market);
     }
 
     /**
@@ -715,23 +715,23 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     /**
      * {@inheritDoc}
      */
-    public function addQuestion(\Entity\Bzjpreview\PulseQuestion $questions)
+    public function addQuestion(\Entity\Bzjpreview\PulseQuestion $question)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addQuestion', array($questions));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addQuestion', array($question));
 
-        return parent::addQuestion($questions);
+        return parent::addQuestion($question);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeQuestion(\Entity\Bzjpreview\PulseQuestion $questions)
+    public function removeQuestion(\Entity\Bzjpreview\PulseQuestion $question)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeQuestion', array($questions));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeQuestion', array($question));
 
-        return parent::removeQuestion($questions);
+        return parent::removeQuestion($question);
     }
 
     /**
@@ -748,23 +748,23 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     /**
      * {@inheritDoc}
      */
-    public function addLeadinGroup(\Entity\Bzjpreview\PulseLeadinGroup $leadinGroups)
+    public function addLeadinGroup(\Entity\Bzjpreview\PulseLeadinGroup $leadinGroup)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addLeadinGroup', array($leadinGroups));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addLeadinGroup', array($leadinGroup));
 
-        return parent::addLeadinGroup($leadinGroups);
+        return parent::addLeadinGroup($leadinGroup);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeLeadinGroup(\Entity\Bzjpreview\PulseLeadinGroup $leadinGroups)
+    public function removeLeadinGroup(\Entity\Bzjpreview\PulseLeadinGroup $leadinGroup)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeLeadinGroup', array($leadinGroups));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeLeadinGroup', array($leadinGroup));
 
-        return parent::removeLeadinGroup($leadinGroups);
+        return parent::removeLeadinGroup($leadinGroup);
     }
 
     /**

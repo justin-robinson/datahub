@@ -2,8 +2,6 @@
 
 namespace Entity\Tracking;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * TrackerClient
  */
@@ -51,9 +49,9 @@ class TrackerClient extends \Entity\Entity\Base
 
 
     /**
-     * Get client_id
+     * Get clientId
      *
-     * @return integer 
+     * @return integer
      */
     public function getClientId()
     {
@@ -61,9 +59,10 @@ class TrackerClient extends \Entity\Entity\Base
     }
 
     /**
-     * Set public_key
+     * Set publicKey
      *
      * @param string $publicKey
+     *
      * @return TrackerClient
      */
     public function setPublicKey($publicKey)
@@ -74,9 +73,9 @@ class TrackerClient extends \Entity\Entity\Base
     }
 
     /**
-     * Get public_key
+     * Get publicKey
      *
-     * @return string 
+     * @return string
      */
     public function getPublicKey()
     {
@@ -84,9 +83,10 @@ class TrackerClient extends \Entity\Entity\Base
     }
 
     /**
-     * Set secret_key
+     * Set secretKey
      *
      * @param string $secretKey
+     *
      * @return TrackerClient
      */
     public function setSecretKey($secretKey)
@@ -97,9 +97,9 @@ class TrackerClient extends \Entity\Entity\Base
     }
 
     /**
-     * Get secret_key
+     * Get secretKey
      *
-     * @return string 
+     * @return string
      */
     public function getSecretKey()
     {
@@ -107,9 +107,10 @@ class TrackerClient extends \Entity\Entity\Base
     }
 
     /**
-     * Set client_name
+     * Set clientName
      *
      * @param string $clientName
+     *
      * @return TrackerClient
      */
     public function setClientName($clientName)
@@ -120,9 +121,9 @@ class TrackerClient extends \Entity\Entity\Base
     }
 
     /**
-     * Get client_name
+     * Get clientName
      *
-     * @return string 
+     * @return string
      */
     public function getClientName()
     {
@@ -133,6 +134,7 @@ class TrackerClient extends \Entity\Entity\Base
      * Set description
      *
      * @param string $description
+     *
      * @return TrackerClient
      */
     public function setDescription($description)
@@ -145,7 +147,7 @@ class TrackerClient extends \Entity\Entity\Base
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -153,9 +155,10 @@ class TrackerClient extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_active
+     * Set isActive
      *
      * @param boolean $isActive
+     *
      * @return TrackerClient
      */
     public function setIsActive($isActive)
@@ -166,9 +169,9 @@ class TrackerClient extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_active
+     * Get isActive
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsActive()
     {
@@ -176,9 +179,10 @@ class TrackerClient extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return TrackerClient
      */
     public function setCreatedAt($createdAt)
@@ -189,9 +193,9 @@ class TrackerClient extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -199,9 +203,10 @@ class TrackerClient extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return TrackerClient
      */
     public function setUpdatedAt($updatedAt)
@@ -212,12 +217,13 @@ class TrackerClient extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
         return $this->updated_at;
     }
 }
+

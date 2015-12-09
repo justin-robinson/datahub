@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * StoryVerticalSubtopic
  */
@@ -46,9 +44,10 @@ class StoryVerticalSubtopic extends \Entity\Entity\Base
 
 
     /**
-     * Set story_id
+     * Set storyId
      *
      * @param integer $storyId
+     *
      * @return StoryVerticalSubtopic
      */
     public function setStoryId($storyId)
@@ -59,9 +58,9 @@ class StoryVerticalSubtopic extends \Entity\Entity\Base
     }
 
     /**
-     * Get story_id
+     * Get storyId
      *
-     * @return integer 
+     * @return integer
      */
     public function getStoryId()
     {
@@ -69,9 +68,10 @@ class StoryVerticalSubtopic extends \Entity\Entity\Base
     }
 
     /**
-     * Set vertical_subtopic_id
+     * Set verticalSubtopicId
      *
      * @param integer $verticalSubtopicId
+     *
      * @return StoryVerticalSubtopic
      */
     public function setVerticalSubtopicId($verticalSubtopicId)
@@ -82,9 +82,9 @@ class StoryVerticalSubtopic extends \Entity\Entity\Base
     }
 
     /**
-     * Get vertical_subtopic_id
+     * Get verticalSubtopicId
      *
-     * @return integer 
+     * @return integer
      */
     public function getVerticalSubtopicId()
     {
@@ -95,6 +95,7 @@ class StoryVerticalSubtopic extends \Entity\Entity\Base
      * Set market
      *
      * @param string $market
+     *
      * @return StoryVerticalSubtopic
      */
     public function setMarket($market)
@@ -107,7 +108,7 @@ class StoryVerticalSubtopic extends \Entity\Entity\Base
     /**
      * Get market
      *
-     * @return string 
+     * @return string
      */
     public function getMarket()
     {
@@ -115,9 +116,10 @@ class StoryVerticalSubtopic extends \Entity\Entity\Base
     }
 
     /**
-     * Set story_date
+     * Set storyDate
      *
      * @param \DateTime $storyDate
+     *
      * @return StoryVerticalSubtopic
      */
     public function setStoryDate($storyDate)
@@ -128,9 +130,9 @@ class StoryVerticalSubtopic extends \Entity\Entity\Base
     }
 
     /**
-     * Get story_date
+     * Get storyDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getStoryDate()
     {
@@ -141,6 +143,7 @@ class StoryVerticalSubtopic extends \Entity\Entity\Base
      * Set relevance
      *
      * @param integer $relevance
+     *
      * @return StoryVerticalSubtopic
      */
     public function setRelevance($relevance)
@@ -153,7 +156,7 @@ class StoryVerticalSubtopic extends \Entity\Entity\Base
     /**
      * Get relevance
      *
-     * @return integer 
+     * @return integer
      */
     public function getRelevance()
     {
@@ -161,9 +164,10 @@ class StoryVerticalSubtopic extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_daily
+     * Set isDaily
      *
      * @param string $isDaily
+     *
      * @return StoryVerticalSubtopic
      */
     public function setIsDaily($isDaily)
@@ -174,9 +178,9 @@ class StoryVerticalSubtopic extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_daily
+     * Get isDaily
      *
-     * @return string 
+     * @return string
      */
     public function getIsDaily()
     {
@@ -184,9 +188,10 @@ class StoryVerticalSubtopic extends \Entity\Entity\Base
     }
 
     /**
-     * Set StoryRead
+     * Set storyRead
      *
      * @param \Entity\Bizj\StoryRead $storyRead
+     *
      * @return StoryVerticalSubtopic
      */
     public function setStoryRead(\Entity\Bizj\StoryRead $storyRead = null)
@@ -197,12 +202,13 @@ class StoryVerticalSubtopic extends \Entity\Entity\Base
     }
 
     /**
-     * Get StoryRead
+     * Get storyRead
      *
-     * @return \Entity\Bizj\StoryRead 
+     * @return \Entity\Bizj\StoryRead
      */
     public function getStoryRead()
     {
         return $this->StoryRead;
     }
 }
+

@@ -473,23 +473,23 @@ class PulseLeadinGroup extends \Entity\Bizj\PulseLeadinGroup implements \Doctrin
     /**
      * {@inheritDoc}
      */
-    public function addLeadinItem(\Entity\Bizj\PulseLeadinItem $leadinItems)
+    public function addLeadinItem(\Entity\Bizj\PulseLeadinItem $leadinItem)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addLeadinItem', array($leadinItems));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addLeadinItem', array($leadinItem));
 
-        return parent::addLeadinItem($leadinItems);
+        return parent::addLeadinItem($leadinItem);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeLeadinItem(\Entity\Bizj\PulseLeadinItem $leadinItems)
+    public function removeLeadinItem(\Entity\Bizj\PulseLeadinItem $leadinItem)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeLeadinItem', array($leadinItems));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeLeadinItem', array($leadinItem));
 
-        return parent::removeLeadinItem($leadinItems);
+        return parent::removeLeadinItem($leadinItem);
     }
 
     /**

@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * KrangSpecialCategory
  */
@@ -101,9 +99,9 @@ class KrangSpecialCategory extends \Entity\Entity\Base
 
 
     /**
-     * Get special_cat_id
+     * Get specialCatId
      *
-     * @return integer 
+     * @return integer
      */
     public function getSpecialCatId()
     {
@@ -111,9 +109,10 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Set category_name
+     * Set categoryName
      *
      * @param string $categoryName
+     *
      * @return KrangSpecialCategory
      */
     public function setCategoryName($categoryName)
@@ -124,9 +123,9 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Get category_name
+     * Get categoryName
      *
-     * @return string 
+     * @return string
      */
     public function getCategoryName()
     {
@@ -134,9 +133,10 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Set sponsor_name
+     * Set sponsorName
      *
      * @param string $sponsorName
+     *
      * @return KrangSpecialCategory
      */
     public function setSponsorName($sponsorName)
@@ -147,9 +147,9 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Get sponsor_name
+     * Get sponsorName
      *
-     * @return string 
+     * @return string
      */
     public function getSponsorName()
     {
@@ -157,9 +157,10 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Set content_label
+     * Set contentLabel
      *
      * @param string $contentLabel
+     *
      * @return KrangSpecialCategory
      */
     public function setContentLabel($contentLabel)
@@ -170,9 +171,9 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Get content_label
+     * Get contentLabel
      *
-     * @return string 
+     * @return string
      */
     public function getContentLabel()
     {
@@ -180,9 +181,10 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Set market_code
+     * Set marketCode
      *
      * @param string $marketCode
+     *
      * @return KrangSpecialCategory
      */
     public function setMarketCode($marketCode)
@@ -193,9 +195,9 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Get market_code
+     * Get marketCode
      *
-     * @return string 
+     * @return string
      */
     public function getMarketCode()
     {
@@ -203,9 +205,10 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Set krang_page_type
+     * Set krangPageType
      *
      * @param string $krangPageType
+     *
      * @return KrangSpecialCategory
      */
     public function setKrangPageType($krangPageType)
@@ -216,9 +219,9 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Get krang_page_type
+     * Get krangPageType
      *
-     * @return string 
+     * @return string
      */
     public function getKrangPageType()
     {
@@ -226,9 +229,10 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Set krang_category
+     * Set krangCategory
      *
      * @param string $krangCategory
+     *
      * @return KrangSpecialCategory
      */
     public function setKrangCategory($krangCategory)
@@ -239,9 +243,9 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Get krang_category
+     * Get krangCategory
      *
-     * @return string 
+     * @return string
      */
     public function getKrangCategory()
     {
@@ -249,9 +253,10 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_active
+     * Set isActive
      *
      * @param boolean $isActive
+     *
      * @return KrangSpecialCategory
      */
     public function setIsActive($isActive)
@@ -262,9 +267,9 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_active
+     * Get isActive
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsActive()
     {
@@ -275,6 +280,7 @@ class KrangSpecialCategory extends \Entity\Entity\Base
      * Set skin
      *
      * @param string $skin
+     *
      * @return KrangSpecialCategory
      */
     public function setSkin($skin)
@@ -287,7 +293,7 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     /**
      * Get skin
      *
-     * @return string 
+     * @return string
      */
     public function getSkin()
     {
@@ -298,6 +304,7 @@ class KrangSpecialCategory extends \Entity\Entity\Base
      * Set extraheader
      *
      * @param string $extraheader
+     *
      * @return KrangSpecialCategory
      */
     public function setExtraheader($extraheader)
@@ -310,7 +317,7 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     /**
      * Get extraheader
      *
-     * @return string 
+     * @return string
      */
     public function getExtraheader()
     {
@@ -318,9 +325,10 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Set adtag_spf
+     * Set adtagSpf
      *
      * @param integer $adtagSpf
+     *
      * @return KrangSpecialCategory
      */
     public function setAdtagSpf($adtagSpf)
@@ -331,9 +339,9 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Get adtag_spf
+     * Get adtagSpf
      *
-     * @return integer 
+     * @return integer
      */
     public function getAdtagSpf()
     {
@@ -341,9 +349,10 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Set blog_extraheader
+     * Set blogExtraheader
      *
      * @param string $blogExtraheader
+     *
      * @return KrangSpecialCategory
      */
     public function setBlogExtraheader($blogExtraheader)
@@ -354,9 +363,9 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Get blog_extraheader
+     * Get blogExtraheader
      *
-     * @return string 
+     * @return string
      */
     public function getBlogExtraheader()
     {
@@ -364,9 +373,10 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Set start_date
+     * Set startDate
      *
      * @param \DateTime $startDate
+     *
      * @return KrangSpecialCategory
      */
     public function setStartDate($startDate)
@@ -377,9 +387,9 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Get start_date
+     * Get startDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getStartDate()
     {
@@ -387,9 +397,10 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Set end_date
+     * Set endDate
      *
      * @param \DateTime $endDate
+     *
      * @return KrangSpecialCategory
      */
     public function setEndDate($endDate)
@@ -400,9 +411,9 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Get end_date
+     * Get endDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getEndDate()
     {
@@ -410,9 +421,10 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Set modified_by
+     * Set modifiedBy
      *
      * @param string $modifiedBy
+     *
      * @return KrangSpecialCategory
      */
     public function setModifiedBy($modifiedBy)
@@ -423,9 +435,9 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Get modified_by
+     * Get modifiedBy
      *
-     * @return string 
+     * @return string
      */
     public function getModifiedBy()
     {
@@ -433,9 +445,10 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return KrangSpecialCategory
      */
     public function setCreatedAt($createdAt)
@@ -446,9 +459,9 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -456,9 +469,10 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return KrangSpecialCategory
      */
     public function setUpdatedAt($updatedAt)
@@ -469,9 +483,9 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -479,9 +493,10 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Set deleted_at
+     * Set deletedAt
      *
      * @param \DateTime $deletedAt
+     *
      * @return KrangSpecialCategory
      */
     public function setDeletedAt($deletedAt)
@@ -492,12 +507,13 @@ class KrangSpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Get deleted_at
+     * Get deletedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDeletedAt()
     {
         return $this->deleted_at;
     }
 }
+

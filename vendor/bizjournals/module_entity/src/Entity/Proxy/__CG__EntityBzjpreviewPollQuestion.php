@@ -319,23 +319,23 @@ class PollQuestion extends \Entity\Bzjpreview\PollQuestion implements \Doctrine\
     /**
      * {@inheritDoc}
      */
-    public function addAnswer(\Entity\Bzjpreview\PollQuestionData $answers)
+    public function addAnswer(\Entity\Bzjpreview\PollQuestionData $answer)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAnswer', array($answers));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAnswer', array($answer));
 
-        return parent::addAnswer($answers);
+        return parent::addAnswer($answer);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeAnswer(\Entity\Bzjpreview\PollQuestionData $answers)
+    public function removeAnswer(\Entity\Bzjpreview\PollQuestionData $answer)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAnswer', array($answers));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAnswer', array($answer));
 
-        return parent::removeAnswer($answers);
+        return parent::removeAnswer($answer);
     }
 
     /**

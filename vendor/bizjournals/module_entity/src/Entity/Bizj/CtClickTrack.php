@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * CtClickTrack
  */
@@ -63,7 +61,7 @@ class CtClickTrack extends \Entity\Entity\Base
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -71,9 +69,10 @@ class CtClickTrack extends \Entity\Entity\Base
     }
 
     /**
-     * Set event_type
+     * Set eventType
      *
      * @param string $eventType
+     *
      * @return CtClickTrack
      */
     public function setEventType($eventType)
@@ -84,9 +83,9 @@ class CtClickTrack extends \Entity\Entity\Base
     }
 
     /**
-     * Get event_type
+     * Get eventType
      *
-     * @return string 
+     * @return string
      */
     public function getEventType()
     {
@@ -94,9 +93,10 @@ class CtClickTrack extends \Entity\Entity\Base
     }
 
     /**
-     * Set campaign_id
+     * Set campaignId
      *
      * @param integer $campaignId
+     *
      * @return CtClickTrack
      */
     public function setCampaignId($campaignId)
@@ -107,9 +107,9 @@ class CtClickTrack extends \Entity\Entity\Base
     }
 
     /**
-     * Get campaign_id
+     * Get campaignId
      *
-     * @return integer 
+     * @return integer
      */
     public function getCampaignId()
     {
@@ -117,9 +117,10 @@ class CtClickTrack extends \Entity\Entity\Base
     }
 
     /**
-     * Set click_id
+     * Set clickId
      *
      * @param integer $clickId
+     *
      * @return CtClickTrack
      */
     public function setClickId($clickId)
@@ -130,9 +131,9 @@ class CtClickTrack extends \Entity\Entity\Base
     }
 
     /**
-     * Get click_id
+     * Get clickId
      *
-     * @return integer 
+     * @return integer
      */
     public function getClickId()
     {
@@ -140,9 +141,10 @@ class CtClickTrack extends \Entity\Entity\Base
     }
 
     /**
-     * Set c_time
+     * Set cTime
      *
      * @param \DateTime $cTime
+     *
      * @return CtClickTrack
      */
     public function setCTime($cTime)
@@ -153,9 +155,9 @@ class CtClickTrack extends \Entity\Entity\Base
     }
 
     /**
-     * Get c_time
+     * Get cTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCTime()
     {
@@ -163,9 +165,10 @@ class CtClickTrack extends \Entity\Entity\Base
     }
 
     /**
-     * Set remote_ip
+     * Set remoteIp
      *
      * @param string $remoteIp
+     *
      * @return CtClickTrack
      */
     public function setRemoteIp($remoteIp)
@@ -176,9 +179,9 @@ class CtClickTrack extends \Entity\Entity\Base
     }
 
     /**
-     * Get remote_ip
+     * Get remoteIp
      *
-     * @return string 
+     * @return string
      */
     public function getRemoteIp()
     {
@@ -189,6 +192,7 @@ class CtClickTrack extends \Entity\Entity\Base
      * Set uin
      *
      * @param string $uin
+     *
      * @return CtClickTrack
      */
     public function setUin($uin)
@@ -201,7 +205,7 @@ class CtClickTrack extends \Entity\Entity\Base
     /**
      * Get uin
      *
-     * @return string 
+     * @return string
      */
     public function getUin()
     {
@@ -209,9 +213,10 @@ class CtClickTrack extends \Entity\Entity\Base
     }
 
     /**
-     * Set user_agent
+     * Set userAgent
      *
      * @param string $userAgent
+     *
      * @return CtClickTrack
      */
     public function setUserAgent($userAgent)
@@ -222,9 +227,9 @@ class CtClickTrack extends \Entity\Entity\Base
     }
 
     /**
-     * Get user_agent
+     * Get userAgent
      *
-     * @return string 
+     * @return string
      */
     public function getUserAgent()
     {
@@ -232,9 +237,10 @@ class CtClickTrack extends \Entity\Entity\Base
     }
 
     /**
-     * Set dest_url
+     * Set destUrl
      *
      * @param string $destUrl
+     *
      * @return CtClickTrack
      */
     public function setDestUrl($destUrl)
@@ -245,9 +251,9 @@ class CtClickTrack extends \Entity\Entity\Base
     }
 
     /**
-     * Get dest_url
+     * Get destUrl
      *
-     * @return string 
+     * @return string
      */
     public function getDestUrl()
     {
@@ -258,6 +264,7 @@ class CtClickTrack extends \Entity\Entity\Base
      * Set referer
      *
      * @param string $referer
+     *
      * @return CtClickTrack
      */
     public function setReferer($referer)
@@ -270,10 +277,11 @@ class CtClickTrack extends \Entity\Entity\Base
     /**
      * Get referer
      *
-     * @return string 
+     * @return string
      */
     public function getReferer()
     {
         return $this->referer;
     }
 }
+
