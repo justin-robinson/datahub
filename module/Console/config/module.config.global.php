@@ -13,12 +13,22 @@ return array(
                         ),
                     ),
                 ),
+                'import' => array(
+                    'options' => array(
+                        'route' => 'import [<action>] [--content_id=] [-c=s] [-e=s]',
+                        'defaults' => array(
+                            'controller' => 'Console\Controller\Import',
+                            'action' => 'index',
+                        ),
+                    ),
+                ),
             ),
         ),
     ),
     'controllers' => array(
         'invokables' => array(
             'Console\Controller\Index'              => 'Console\Controller\IndexController',
+            'Console\Controller\Import'             => 'Console\Controller\ImportController',
         ),
     ),
     'logger' => array(
