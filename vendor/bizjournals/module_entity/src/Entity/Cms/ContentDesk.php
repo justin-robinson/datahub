@@ -2,8 +2,6 @@
 
 namespace Entity\Cms;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * ContentDesk
  */
@@ -31,9 +29,10 @@ class ContentDesk extends \Entity\Entity\Base
 
 
     /**
-     * Set content_id
+     * Set contentId
      *
      * @param integer $contentId
+     *
      * @return ContentDesk
      */
     public function setContentId($contentId)
@@ -44,9 +43,9 @@ class ContentDesk extends \Entity\Entity\Base
     }
 
     /**
-     * Get content_id
+     * Get contentId
      *
-     * @return integer 
+     * @return integer
      */
     public function getContentId()
     {
@@ -54,9 +53,10 @@ class ContentDesk extends \Entity\Entity\Base
     }
 
     /**
-     * Set desk_id
+     * Set deskId
      *
      * @param integer $deskId
+     *
      * @return ContentDesk
      */
     public function setDeskId($deskId)
@@ -67,9 +67,9 @@ class ContentDesk extends \Entity\Entity\Base
     }
 
     /**
-     * Get desk_id
+     * Get deskId
      *
-     * @return integer 
+     * @return integer
      */
     public function getDeskId()
     {
@@ -77,9 +77,10 @@ class ContentDesk extends \Entity\Entity\Base
     }
 
     /**
-     * Set Content
+     * Set content
      *
      * @param \Entity\Cms\Content $content
+     *
      * @return ContentDesk
      */
     public function setContent(\Entity\Cms\Content $content = null)
@@ -90,9 +91,9 @@ class ContentDesk extends \Entity\Entity\Base
     }
 
     /**
-     * Get Content
+     * Get content
      *
-     * @return \Entity\Cms\Content 
+     * @return \Entity\Cms\Content
      */
     public function getContent()
     {
@@ -100,9 +101,10 @@ class ContentDesk extends \Entity\Entity\Base
     }
 
     /**
-     * Set Desk
+     * Set desk
      *
      * @param \Entity\Cms\Desk $desk
+     *
      * @return ContentDesk
      */
     public function setDesk(\Entity\Cms\Desk $desk = null)
@@ -113,12 +115,13 @@ class ContentDesk extends \Entity\Entity\Base
     }
 
     /**
-     * Get Desk
+     * Get desk
      *
-     * @return \Entity\Cms\Desk 
+     * @return \Entity\Cms\Desk
      */
     public function getDesk()
     {
         return $this->Desk;
     }
 }
+

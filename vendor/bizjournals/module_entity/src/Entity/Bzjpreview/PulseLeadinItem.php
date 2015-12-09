@@ -2,8 +2,6 @@
 
 namespace Entity\Bzjpreview;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * PulseLeadinItem
  */
@@ -111,9 +109,9 @@ class PulseLeadinItem extends \Entity\Entity\Base
 
 
     /**
-     * Get item_id
+     * Get itemId
      *
-     * @return integer 
+     * @return integer
      */
     public function getItemId()
     {
@@ -121,9 +119,10 @@ class PulseLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set group_id
+     * Set groupId
      *
      * @param integer $groupId
+     *
      * @return PulseLeadinItem
      */
     public function setGroupId($groupId)
@@ -134,9 +133,9 @@ class PulseLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get group_id
+     * Get groupId
      *
-     * @return integer 
+     * @return integer
      */
     public function getGroupId()
     {
@@ -147,6 +146,7 @@ class PulseLeadinItem extends \Entity\Entity\Base
      * Set ord
      *
      * @param integer $ord
+     *
      * @return PulseLeadinItem
      */
     public function setOrd($ord)
@@ -159,7 +159,7 @@ class PulseLeadinItem extends \Entity\Entity\Base
     /**
      * Get ord
      *
-     * @return integer 
+     * @return integer
      */
     public function getOrd()
     {
@@ -167,9 +167,10 @@ class PulseLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set item_page_id
+     * Set itemPageId
      *
      * @param integer $itemPageId
+     *
      * @return PulseLeadinItem
      */
     public function setItemPageId($itemPageId)
@@ -180,9 +181,9 @@ class PulseLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get item_page_id
+     * Get itemPageId
      *
-     * @return integer 
+     * @return integer
      */
     public function getItemPageId()
     {
@@ -193,6 +194,7 @@ class PulseLeadinItem extends \Entity\Entity\Base
      * Set url
      *
      * @param string $url
+     *
      * @return PulseLeadinItem
      */
     public function setUrl($url)
@@ -205,7 +207,7 @@ class PulseLeadinItem extends \Entity\Entity\Base
     /**
      * Get url
      *
-     * @return string 
+     * @return string
      */
     public function getUrl()
     {
@@ -216,6 +218,7 @@ class PulseLeadinItem extends \Entity\Entity\Base
      * Set headline
      *
      * @param string $headline
+     *
      * @return PulseLeadinItem
      */
     public function setHeadline($headline)
@@ -228,7 +231,7 @@ class PulseLeadinItem extends \Entity\Entity\Base
     /**
      * Get headline
      *
-     * @return string 
+     * @return string
      */
     public function getHeadline()
     {
@@ -239,6 +242,7 @@ class PulseLeadinItem extends \Entity\Entity\Base
      * Set teaser
      *
      * @param string $teaser
+     *
      * @return PulseLeadinItem
      */
     public function setTeaser($teaser)
@@ -251,7 +255,7 @@ class PulseLeadinItem extends \Entity\Entity\Base
     /**
      * Get teaser
      *
-     * @return string 
+     * @return string
      */
     public function getTeaser()
     {
@@ -259,9 +263,10 @@ class PulseLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set item_media_id
+     * Set itemMediaId
      *
      * @param integer $itemMediaId
+     *
      * @return PulseLeadinItem
      */
     public function setItemMediaId($itemMediaId)
@@ -272,9 +277,9 @@ class PulseLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get item_media_id
+     * Get itemMediaId
      *
-     * @return integer 
+     * @return integer
      */
     public function getItemMediaId()
     {
@@ -282,9 +287,10 @@ class PulseLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set item_media_url
+     * Set itemMediaUrl
      *
      * @param string $itemMediaUrl
+     *
      * @return PulseLeadinItem
      */
     public function setItemMediaUrl($itemMediaUrl)
@@ -295,9 +301,9 @@ class PulseLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get item_media_url
+     * Get itemMediaUrl
      *
-     * @return string 
+     * @return string
      */
     public function getItemMediaUrl()
     {
@@ -305,9 +311,10 @@ class PulseLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set media_caption
+     * Set mediaCaption
      *
      * @param string $mediaCaption
+     *
      * @return PulseLeadinItem
      */
     public function setMediaCaption($mediaCaption)
@@ -318,9 +325,9 @@ class PulseLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_caption
+     * Get mediaCaption
      *
-     * @return string 
+     * @return string
      */
     public function getMediaCaption()
     {
@@ -328,9 +335,10 @@ class PulseLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set media_alt_text
+     * Set mediaAltText
      *
      * @param string $mediaAltText
+     *
      * @return PulseLeadinItem
      */
     public function setMediaAltText($mediaAltText)
@@ -341,9 +349,9 @@ class PulseLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_alt_text
+     * Get mediaAltText
      *
-     * @return string 
+     * @return string
      */
     public function getMediaAltText()
     {
@@ -351,9 +359,10 @@ class PulseLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set thumb_media_id
+     * Set thumbMediaId
      *
      * @param integer $thumbMediaId
+     *
      * @return PulseLeadinItem
      */
     public function setThumbMediaId($thumbMediaId)
@@ -364,9 +373,9 @@ class PulseLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get thumb_media_id
+     * Get thumbMediaId
      *
-     * @return integer 
+     * @return integer
      */
     public function getThumbMediaId()
     {
@@ -377,6 +386,7 @@ class PulseLeadinItem extends \Entity\Entity\Base
      * Set kicker
      *
      * @param string $kicker
+     *
      * @return PulseLeadinItem
      */
     public function setKicker($kicker)
@@ -389,7 +399,7 @@ class PulseLeadinItem extends \Entity\Entity\Base
     /**
      * Get kicker
      *
-     * @return string 
+     * @return string
      */
     public function getKicker()
     {
@@ -397,9 +407,10 @@ class PulseLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set item_video_id
+     * Set itemVideoId
      *
      * @param string $itemVideoId
+     *
      * @return PulseLeadinItem
      */
     public function setItemVideoId($itemVideoId)
@@ -410,9 +421,9 @@ class PulseLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get item_video_id
+     * Get itemVideoId
      *
-     * @return string 
+     * @return string
      */
     public function getItemVideoId()
     {
@@ -420,9 +431,10 @@ class PulseLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set item_pulse_id
+     * Set itemPulseId
      *
      * @param integer $itemPulseId
+     *
      * @return PulseLeadinItem
      */
     public function setItemPulseId($itemPulseId)
@@ -433,9 +445,9 @@ class PulseLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get item_pulse_id
+     * Get itemPulseId
      *
-     * @return integer 
+     * @return integer
      */
     public function getItemPulseId()
     {
@@ -443,9 +455,10 @@ class PulseLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set additional_data
+     * Set additionalData
      *
      * @param string $additionalData
+     *
      * @return PulseLeadinItem
      */
     public function setAdditionalData($additionalData)
@@ -456,9 +469,9 @@ class PulseLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get additional_data
+     * Get additionalData
      *
-     * @return string 
+     * @return string
      */
     public function getAdditionalData()
     {
@@ -466,9 +479,10 @@ class PulseLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return PulseLeadinItem
      */
     public function setCreatedAt($createdAt)
@@ -479,9 +493,9 @@ class PulseLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -489,9 +503,10 @@ class PulseLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return PulseLeadinItem
      */
     public function setUpdatedAt($updatedAt)
@@ -502,9 +517,9 @@ class PulseLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -512,9 +527,10 @@ class PulseLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set deleted_at
+     * Set deletedAt
      *
      * @param \DateTime $deletedAt
+     *
      * @return PulseLeadinItem
      */
     public function setDeletedAt($deletedAt)
@@ -525,9 +541,9 @@ class PulseLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get deleted_at
+     * Get deletedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDeletedAt()
     {
@@ -535,9 +551,10 @@ class PulseLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set LeadinGroup
+     * Set leadinGroup
      *
      * @param \Entity\Bzjpreview\PulseLeadinGroup $leadinGroup
+     *
      * @return PulseLeadinItem
      */
     public function setLeadinGroup(\Entity\Bzjpreview\PulseLeadinGroup $leadinGroup = null)
@@ -548,12 +565,13 @@ class PulseLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get LeadinGroup
+     * Get leadinGroup
      *
-     * @return \Entity\Bzjpreview\PulseLeadinGroup 
+     * @return \Entity\Bzjpreview\PulseLeadinGroup
      */
     public function getLeadinGroup()
     {
         return $this->LeadinGroup;
     }
 }
+

@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Metadata
  */
@@ -46,9 +44,9 @@ class Metadata extends \Entity\Entity\Base
 
 
     /**
-     * Get meta_id
+     * Get metaId
      *
-     * @return integer 
+     * @return integer
      */
     public function getMetaId()
     {
@@ -56,9 +54,10 @@ class Metadata extends \Entity\Entity\Base
     }
 
     /**
-     * Set object_type
+     * Set objectType
      *
      * @param string $objectType
+     *
      * @return Metadata
      */
     public function setObjectType($objectType)
@@ -69,9 +68,9 @@ class Metadata extends \Entity\Entity\Base
     }
 
     /**
-     * Get object_type
+     * Get objectType
      *
-     * @return string 
+     * @return string
      */
     public function getObjectType()
     {
@@ -79,9 +78,10 @@ class Metadata extends \Entity\Entity\Base
     }
 
     /**
-     * Set object_id
+     * Set objectId
      *
      * @param integer $objectId
+     *
      * @return Metadata
      */
     public function setObjectId($objectId)
@@ -92,9 +92,9 @@ class Metadata extends \Entity\Entity\Base
     }
 
     /**
-     * Get object_id
+     * Get objectId
      *
-     * @return integer 
+     * @return integer
      */
     public function getObjectId()
     {
@@ -102,9 +102,10 @@ class Metadata extends \Entity\Entity\Base
     }
 
     /**
-     * Set meta_name
+     * Set metaName
      *
      * @param string $metaName
+     *
      * @return Metadata
      */
     public function setMetaName($metaName)
@@ -115,9 +116,9 @@ class Metadata extends \Entity\Entity\Base
     }
 
     /**
-     * Get meta_name
+     * Get metaName
      *
-     * @return string 
+     * @return string
      */
     public function getMetaName()
     {
@@ -125,9 +126,10 @@ class Metadata extends \Entity\Entity\Base
     }
 
     /**
-     * Set meta_value
+     * Set metaValue
      *
      * @param string $metaValue
+     *
      * @return Metadata
      */
     public function setMetaValue($metaValue)
@@ -138,9 +140,9 @@ class Metadata extends \Entity\Entity\Base
     }
 
     /**
-     * Get meta_value
+     * Get metaValue
      *
-     * @return string 
+     * @return string
      */
     public function getMetaValue()
     {
@@ -148,9 +150,10 @@ class Metadata extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return Metadata
      */
     public function setCreatedAt($createdAt)
@@ -161,9 +164,9 @@ class Metadata extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -171,9 +174,10 @@ class Metadata extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return Metadata
      */
     public function setUpdatedAt($updatedAt)
@@ -184,12 +188,13 @@ class Metadata extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
         return $this->updated_at;
     }
 }
+

@@ -2,8 +2,6 @@
 
 namespace Entity\Medialibrary;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Tag
  */
@@ -53,9 +51,9 @@ class Tag extends \Entity\Entity\Base
     }
 
     /**
-     * Get tag_id
+     * Get tagId
      *
-     * @return integer 
+     * @return integer
      */
     public function getTagId()
     {
@@ -63,9 +61,10 @@ class Tag extends \Entity\Entity\Base
     }
 
     /**
-     * Set tag_name
+     * Set tagName
      *
      * @param string $tagName
+     *
      * @return Tag
      */
     public function setTagName($tagName)
@@ -76,9 +75,9 @@ class Tag extends \Entity\Entity\Base
     }
 
     /**
-     * Get tag_name
+     * Get tagName
      *
-     * @return string 
+     * @return string
      */
     public function getTagName()
     {
@@ -86,9 +85,10 @@ class Tag extends \Entity\Entity\Base
     }
 
     /**
-     * Set tag_type
+     * Set tagType
      *
      * @param string $tagType
+     *
      * @return Tag
      */
     public function setTagType($tagType)
@@ -99,9 +99,9 @@ class Tag extends \Entity\Entity\Base
     }
 
     /**
-     * Get tag_type
+     * Get tagType
      *
-     * @return string 
+     * @return string
      */
     public function getTagType()
     {
@@ -109,9 +109,10 @@ class Tag extends \Entity\Entity\Base
     }
 
     /**
-     * Set pub_id
+     * Set pubId
      *
      * @param integer $pubId
+     *
      * @return Tag
      */
     public function setPubId($pubId)
@@ -122,9 +123,9 @@ class Tag extends \Entity\Entity\Base
     }
 
     /**
-     * Get pub_id
+     * Get pubId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPubId()
     {
@@ -132,9 +133,10 @@ class Tag extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return Tag
      */
     public function setCreatedAt($createdAt)
@@ -145,9 +147,9 @@ class Tag extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -155,32 +157,33 @@ class Tag extends \Entity\Entity\Base
     }
 
     /**
-     * Add MediaTags
+     * Add mediaTag
      *
-     * @param \Entity\Medialibrary\MediaTag $mediaTags
+     * @param \Entity\Medialibrary\MediaTag $mediaTag
+     *
      * @return Tag
      */
-    public function addMediaTag(\Entity\Medialibrary\MediaTag $mediaTags)
+    public function addMediaTag(\Entity\Medialibrary\MediaTag $mediaTag)
     {
-        $this->MediaTags[] = $mediaTags;
+        $this->MediaTags[] = $mediaTag;
 
         return $this;
     }
 
     /**
-     * Remove MediaTags
+     * Remove mediaTag
      *
-     * @param \Entity\Medialibrary\MediaTag $mediaTags
+     * @param \Entity\Medialibrary\MediaTag $mediaTag
      */
-    public function removeMediaTag(\Entity\Medialibrary\MediaTag $mediaTags)
+    public function removeMediaTag(\Entity\Medialibrary\MediaTag $mediaTag)
     {
-        $this->MediaTags->removeElement($mediaTags);
+        $this->MediaTags->removeElement($mediaTag);
     }
 
     /**
-     * Get MediaTags
+     * Get mediaTags
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getMediaTags()
     {
@@ -188,9 +191,10 @@ class Tag extends \Entity\Entity\Base
     }
 
     /**
-     * Set Publication
+     * Set publication
      *
      * @param \Entity\Medialibrary\Publication $publication
+     *
      * @return Tag
      */
     public function setPublication(\Entity\Medialibrary\Publication $publication = null)
@@ -201,12 +205,13 @@ class Tag extends \Entity\Entity\Base
     }
 
     /**
-     * Get Publication
+     * Get publication
      *
-     * @return \Entity\Medialibrary\Publication 
+     * @return \Entity\Medialibrary\Publication
      */
     public function getPublication()
     {
         return $this->Publication;
     }
 }
+

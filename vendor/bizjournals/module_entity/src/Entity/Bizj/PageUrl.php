@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * PageUrl
  */
@@ -71,9 +69,9 @@ class PageUrl extends \Entity\Entity\Base
 
 
     /**
-     * Get url_id
+     * Get urlId
      *
-     * @return integer 
+     * @return integer
      */
     public function getUrlId()
     {
@@ -84,6 +82,7 @@ class PageUrl extends \Entity\Entity\Base
      * Set site
      *
      * @param string $site
+     *
      * @return PageUrl
      */
     public function setSite($site)
@@ -96,7 +95,7 @@ class PageUrl extends \Entity\Entity\Base
     /**
      * Get site
      *
-     * @return string 
+     * @return string
      */
     public function getSite()
     {
@@ -107,6 +106,7 @@ class PageUrl extends \Entity\Entity\Base
      * Set path
      *
      * @param string $path
+     *
      * @return PageUrl
      */
     public function setPath($path)
@@ -119,7 +119,7 @@ class PageUrl extends \Entity\Entity\Base
     /**
      * Get path
      *
-     * @return string 
+     * @return string
      */
     public function getPath()
     {
@@ -130,6 +130,7 @@ class PageUrl extends \Entity\Entity\Base
      * Set slug
      *
      * @param string $slug
+     *
      * @return PageUrl
      */
     public function setSlug($slug)
@@ -142,7 +143,7 @@ class PageUrl extends \Entity\Entity\Base
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug()
     {
@@ -150,9 +151,10 @@ class PageUrl extends \Entity\Entity\Base
     }
 
     /**
-     * Set issue_date
+     * Set issueDate
      *
      * @param \DateTime $issueDate
+     *
      * @return PageUrl
      */
     public function setIssueDate($issueDate)
@@ -163,9 +165,9 @@ class PageUrl extends \Entity\Entity\Base
     }
 
     /**
-     * Get issue_date
+     * Get issueDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getIssueDate()
     {
@@ -173,9 +175,10 @@ class PageUrl extends \Entity\Entity\Base
     }
 
     /**
-     * Set page_id
+     * Set pageId
      *
      * @param integer $pageId
+     *
      * @return PageUrl
      */
     public function setPageId($pageId)
@@ -186,9 +189,9 @@ class PageUrl extends \Entity\Entity\Base
     }
 
     /**
-     * Get page_id
+     * Get pageId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPageId()
     {
@@ -196,9 +199,10 @@ class PageUrl extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_primary
+     * Set isPrimary
      *
      * @param boolean $isPrimary
+     *
      * @return PageUrl
      */
     public function setIsPrimary($isPrimary)
@@ -209,9 +213,9 @@ class PageUrl extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_primary
+     * Get isPrimary
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsPrimary()
     {
@@ -219,9 +223,10 @@ class PageUrl extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_active
+     * Set isActive
      *
      * @param boolean $isActive
+     *
      * @return PageUrl
      */
     public function setIsActive($isActive)
@@ -232,9 +237,9 @@ class PageUrl extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_active
+     * Get isActive
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsActive()
     {
@@ -242,9 +247,10 @@ class PageUrl extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_redirect
+     * Set isRedirect
      *
      * @param boolean $isRedirect
+     *
      * @return PageUrl
      */
     public function setIsRedirect($isRedirect)
@@ -255,9 +261,9 @@ class PageUrl extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_redirect
+     * Get isRedirect
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsRedirect()
     {
@@ -265,9 +271,10 @@ class PageUrl extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return PageUrl
      */
     public function setCreatedAt($createdAt)
@@ -278,9 +285,9 @@ class PageUrl extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -288,9 +295,10 @@ class PageUrl extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return PageUrl
      */
     public function setUpdatedAt($updatedAt)
@@ -301,9 +309,9 @@ class PageUrl extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -311,9 +319,10 @@ class PageUrl extends \Entity\Entity\Base
     }
 
     /**
-     * Set Page
+     * Set page
      *
      * @param \Entity\Bizj\Page $page
+     *
      * @return PageUrl
      */
     public function setPage(\Entity\Bizj\Page $page = null)
@@ -324,12 +333,13 @@ class PageUrl extends \Entity\Entity\Base
     }
 
     /**
-     * Get Page
+     * Get page
      *
-     * @return \Entity\Bizj\Page 
+     * @return \Entity\Bizj\Page
      */
     public function getPage()
     {
         return $this->Page;
     }
 }
+

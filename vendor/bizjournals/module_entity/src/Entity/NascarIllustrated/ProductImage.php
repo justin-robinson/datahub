@@ -2,8 +2,6 @@
 
 namespace Entity\NascarIllustrated;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * ProductImage
  */
@@ -56,9 +54,9 @@ class ProductImage extends \Entity\Entity\Base
 
 
     /**
-     * Get product_image_id
+     * Get productImageId
      *
-     * @return integer 
+     * @return integer
      */
     public function getProductImageId()
     {
@@ -66,9 +64,10 @@ class ProductImage extends \Entity\Entity\Base
     }
 
     /**
-     * Set product_id
+     * Set productId
      *
      * @param integer $productId
+     *
      * @return ProductImage
      */
     public function setProductId($productId)
@@ -79,9 +78,9 @@ class ProductImage extends \Entity\Entity\Base
     }
 
     /**
-     * Get product_id
+     * Get productId
      *
-     * @return integer 
+     * @return integer
      */
     public function getProductId()
     {
@@ -89,9 +88,10 @@ class ProductImage extends \Entity\Entity\Base
     }
 
     /**
-     * Set image_type
+     * Set imageType
      *
      * @param string $imageType
+     *
      * @return ProductImage
      */
     public function setImageType($imageType)
@@ -102,9 +102,9 @@ class ProductImage extends \Entity\Entity\Base
     }
 
     /**
-     * Get image_type
+     * Get imageType
      *
-     * @return string 
+     * @return string
      */
     public function getImageType()
     {
@@ -112,9 +112,10 @@ class ProductImage extends \Entity\Entity\Base
     }
 
     /**
-     * Set media_id
+     * Set mediaId
      *
      * @param integer $mediaId
+     *
      * @return ProductImage
      */
     public function setMediaId($mediaId)
@@ -125,9 +126,9 @@ class ProductImage extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_id
+     * Get mediaId
      *
-     * @return integer 
+     * @return integer
      */
     public function getMediaId()
     {
@@ -135,9 +136,10 @@ class ProductImage extends \Entity\Entity\Base
     }
 
     /**
-     * Set media_url
+     * Set mediaUrl
      *
      * @param string $mediaUrl
+     *
      * @return ProductImage
      */
     public function setMediaUrl($mediaUrl)
@@ -148,9 +150,9 @@ class ProductImage extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_url
+     * Get mediaUrl
      *
-     * @return string 
+     * @return string
      */
     public function getMediaUrl()
     {
@@ -161,6 +163,7 @@ class ProductImage extends \Entity\Entity\Base
      * Set ord
      *
      * @param integer $ord
+     *
      * @return ProductImage
      */
     public function setOrd($ord)
@@ -173,7 +176,7 @@ class ProductImage extends \Entity\Entity\Base
     /**
      * Get ord
      *
-     * @return integer 
+     * @return integer
      */
     public function getOrd()
     {
@@ -181,9 +184,10 @@ class ProductImage extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return ProductImage
      */
     public function setCreatedAt($createdAt)
@@ -194,9 +198,9 @@ class ProductImage extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -204,9 +208,10 @@ class ProductImage extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return ProductImage
      */
     public function setUpdatedAt($updatedAt)
@@ -217,9 +222,9 @@ class ProductImage extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -227,9 +232,10 @@ class ProductImage extends \Entity\Entity\Base
     }
 
     /**
-     * Set Product
+     * Set product
      *
      * @param \Entity\NascarIllustrated\Product $product
+     *
      * @return ProductImage
      */
     public function setProduct(\Entity\NascarIllustrated\Product $product = null)
@@ -240,12 +246,13 @@ class ProductImage extends \Entity\Entity\Base
     }
 
     /**
-     * Get Product
+     * Get product
      *
-     * @return \Entity\NascarIllustrated\Product 
+     * @return \Entity\NascarIllustrated\Product
      */
     public function getProduct()
     {
         return $this->Product;
     }
 }
+

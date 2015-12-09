@@ -2,8 +2,6 @@
 
 namespace Entity\NascarIllustrated;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * BizjphpEfforts
  */
@@ -71,9 +69,10 @@ class BizjphpEfforts extends \Entity\Entity\Base
 
 
     /**
-     * Set market_code
+     * Set marketCode
      *
      * @param string $marketCode
+     *
      * @return BizjphpEfforts
      */
     public function setMarketCode($marketCode)
@@ -84,9 +83,9 @@ class BizjphpEfforts extends \Entity\Entity\Base
     }
 
     /**
-     * Get market_code
+     * Get marketCode
      *
-     * @return string 
+     * @return string
      */
     public function getMarketCode()
     {
@@ -94,9 +93,10 @@ class BizjphpEfforts extends \Entity\Entity\Base
     }
 
     /**
-     * Set subscription_number
+     * Set subscriptionNumber
      *
      * @param integer $subscriptionNumber
+     *
      * @return BizjphpEfforts
      */
     public function setSubscriptionNumber($subscriptionNumber)
@@ -107,9 +107,9 @@ class BizjphpEfforts extends \Entity\Entity\Base
     }
 
     /**
-     * Get subscription_number
+     * Get subscriptionNumber
      *
-     * @return integer 
+     * @return integer
      */
     public function getSubscriptionNumber()
     {
@@ -117,9 +117,10 @@ class BizjphpEfforts extends \Entity\Entity\Base
     }
 
     /**
-     * Set source_code
+     * Set sourceCode
      *
      * @param string $sourceCode
+     *
      * @return BizjphpEfforts
      */
     public function setSourceCode($sourceCode)
@@ -130,9 +131,9 @@ class BizjphpEfforts extends \Entity\Entity\Base
     }
 
     /**
-     * Get source_code
+     * Get sourceCode
      *
-     * @return string 
+     * @return string
      */
     public function getSourceCode()
     {
@@ -140,9 +141,10 @@ class BizjphpEfforts extends \Entity\Entity\Base
     }
 
     /**
-     * Set effort_number
+     * Set effortNumber
      *
      * @param integer $effortNumber
+     *
      * @return BizjphpEfforts
      */
     public function setEffortNumber($effortNumber)
@@ -153,9 +155,9 @@ class BizjphpEfforts extends \Entity\Entity\Base
     }
 
     /**
-     * Get effort_number
+     * Get effortNumber
      *
-     * @return integer 
+     * @return integer
      */
     public function getEffortNumber()
     {
@@ -166,6 +168,7 @@ class BizjphpEfforts extends \Entity\Entity\Base
      * Set zip
      *
      * @param string $zip
+     *
      * @return BizjphpEfforts
      */
     public function setZip($zip)
@@ -178,7 +181,7 @@ class BizjphpEfforts extends \Entity\Entity\Base
     /**
      * Get zip
      *
-     * @return string 
+     * @return string
      */
     public function getZip()
     {
@@ -186,9 +189,10 @@ class BizjphpEfforts extends \Entity\Entity\Base
     }
 
     /**
-     * Set start_date
+     * Set startDate
      *
      * @param \DateTime $startDate
+     *
      * @return BizjphpEfforts
      */
     public function setStartDate($startDate)
@@ -199,9 +203,9 @@ class BizjphpEfforts extends \Entity\Entity\Base
     }
 
     /**
-     * Get start_date
+     * Get startDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getStartDate()
     {
@@ -209,9 +213,10 @@ class BizjphpEfforts extends \Entity\Entity\Base
     }
 
     /**
-     * Set end_date
+     * Set endDate
      *
      * @param \DateTime $endDate
+     *
      * @return BizjphpEfforts
      */
     public function setEndDate($endDate)
@@ -222,9 +227,9 @@ class BizjphpEfforts extends \Entity\Entity\Base
     }
 
     /**
-     * Get end_date
+     * Get endDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getEndDate()
     {
@@ -232,9 +237,10 @@ class BizjphpEfforts extends \Entity\Entity\Base
     }
 
     /**
-     * Set billing_data
+     * Set billingData
      *
      * @param string $billingData
+     *
      * @return BizjphpEfforts
      */
     public function setBillingData($billingData)
@@ -245,9 +251,9 @@ class BizjphpEfforts extends \Entity\Entity\Base
     }
 
     /**
-     * Get billing_data
+     * Get billingData
      *
-     * @return string 
+     * @return string
      */
     public function getBillingData()
     {
@@ -255,9 +261,10 @@ class BizjphpEfforts extends \Entity\Entity\Base
     }
 
     /**
-     * Set rate_data
+     * Set rateData
      *
      * @param string $rateData
+     *
      * @return BizjphpEfforts
      */
     public function setRateData($rateData)
@@ -268,9 +275,9 @@ class BizjphpEfforts extends \Entity\Entity\Base
     }
 
     /**
-     * Get rate_data
+     * Get rateData
      *
-     * @return string 
+     * @return string
      */
     public function getRateData()
     {
@@ -278,9 +285,10 @@ class BizjphpEfforts extends \Entity\Entity\Base
     }
 
     /**
-     * Set premium_code
+     * Set premiumCode
      *
      * @param string $premiumCode
+     *
      * @return BizjphpEfforts
      */
     public function setPremiumCode($premiumCode)
@@ -291,9 +299,9 @@ class BizjphpEfforts extends \Entity\Entity\Base
     }
 
     /**
-     * Get premium_code
+     * Get premiumCode
      *
-     * @return string 
+     * @return string
      */
     public function getPremiumCode()
     {
@@ -304,6 +312,7 @@ class BizjphpEfforts extends \Entity\Entity\Base
      * Set copies
      *
      * @param integer $copies
+     *
      * @return BizjphpEfforts
      */
     public function setCopies($copies)
@@ -316,7 +325,7 @@ class BizjphpEfforts extends \Entity\Entity\Base
     /**
      * Get copies
      *
-     * @return integer 
+     * @return integer
      */
     public function getCopies()
     {
@@ -327,6 +336,7 @@ class BizjphpEfforts extends \Entity\Entity\Base
      * Set finder
      *
      * @param string $finder
+     *
      * @return BizjphpEfforts
      */
     public function setFinder($finder)
@@ -339,10 +349,11 @@ class BizjphpEfforts extends \Entity\Entity\Base
     /**
      * Get finder
      *
-     * @return string 
+     * @return string
      */
     public function getFinder()
     {
         return $this->finder;
     }
 }
+

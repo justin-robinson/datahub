@@ -2,8 +2,6 @@
 
 namespace Entity\Medialibrary;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * MediaLink
  */
@@ -61,9 +59,9 @@ class MediaLink extends \Entity\Entity\Base
 
 
     /**
-     * Get link_id
+     * Get linkId
      *
-     * @return integer 
+     * @return integer
      */
     public function getLinkId()
     {
@@ -71,9 +69,10 @@ class MediaLink extends \Entity\Entity\Base
     }
 
     /**
-     * Set media_id
+     * Set mediaId
      *
      * @param integer $mediaId
+     *
      * @return MediaLink
      */
     public function setMediaId($mediaId)
@@ -84,9 +83,9 @@ class MediaLink extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_id
+     * Get mediaId
      *
-     * @return integer 
+     * @return integer
      */
     public function getMediaId()
     {
@@ -94,9 +93,10 @@ class MediaLink extends \Entity\Entity\Base
     }
 
     /**
-     * Set pub_id
+     * Set pubId
      *
      * @param integer $pubId
+     *
      * @return MediaLink
      */
     public function setPubId($pubId)
@@ -107,9 +107,9 @@ class MediaLink extends \Entity\Entity\Base
     }
 
     /**
-     * Get pub_id
+     * Get pubId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPubId()
     {
@@ -117,9 +117,10 @@ class MediaLink extends \Entity\Entity\Base
     }
 
     /**
-     * Set use_source
+     * Set useSource
      *
      * @param string $useSource
+     *
      * @return MediaLink
      */
     public function setUseSource($useSource)
@@ -130,9 +131,9 @@ class MediaLink extends \Entity\Entity\Base
     }
 
     /**
-     * Get use_source
+     * Get useSource
      *
-     * @return string 
+     * @return string
      */
     public function getUseSource()
     {
@@ -140,9 +141,10 @@ class MediaLink extends \Entity\Entity\Base
     }
 
     /**
-     * Set cms_id
+     * Set cmsId
      *
      * @param integer $cmsId
+     *
      * @return MediaLink
      */
     public function setCmsId($cmsId)
@@ -153,9 +155,9 @@ class MediaLink extends \Entity\Entity\Base
     }
 
     /**
-     * Get cms_id
+     * Get cmsId
      *
-     * @return integer 
+     * @return integer
      */
     public function getCmsId()
     {
@@ -163,9 +165,10 @@ class MediaLink extends \Entity\Entity\Base
     }
 
     /**
-     * Set page_url
+     * Set pageUrl
      *
      * @param string $pageUrl
+     *
      * @return MediaLink
      */
     public function setPageUrl($pageUrl)
@@ -176,9 +179,9 @@ class MediaLink extends \Entity\Entity\Base
     }
 
     /**
-     * Get page_url
+     * Get pageUrl
      *
-     * @return string 
+     * @return string
      */
     public function getPageUrl()
     {
@@ -186,9 +189,10 @@ class MediaLink extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return MediaLink
      */
     public function setCreatedAt($createdAt)
@@ -199,9 +203,9 @@ class MediaLink extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -209,9 +213,10 @@ class MediaLink extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return MediaLink
      */
     public function setUpdatedAt($updatedAt)
@@ -222,9 +227,9 @@ class MediaLink extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -232,9 +237,10 @@ class MediaLink extends \Entity\Entity\Base
     }
 
     /**
-     * Set Media
+     * Set media
      *
      * @param \Entity\Medialibrary\Media $media
+     *
      * @return MediaLink
      */
     public function setMedia(\Entity\Medialibrary\Media $media = null)
@@ -245,9 +251,9 @@ class MediaLink extends \Entity\Entity\Base
     }
 
     /**
-     * Get Media
+     * Get media
      *
-     * @return \Entity\Medialibrary\Media 
+     * @return \Entity\Medialibrary\Media
      */
     public function getMedia()
     {
@@ -255,9 +261,10 @@ class MediaLink extends \Entity\Entity\Base
     }
 
     /**
-     * Set Publication
+     * Set publication
      *
      * @param \Entity\Medialibrary\Publication $publication
+     *
      * @return MediaLink
      */
     public function setPublication(\Entity\Medialibrary\Publication $publication = null)
@@ -268,12 +275,13 @@ class MediaLink extends \Entity\Entity\Base
     }
 
     /**
-     * Get Publication
+     * Get publication
      *
-     * @return \Entity\Medialibrary\Publication 
+     * @return \Entity\Medialibrary\Publication
      */
     public function getPublication()
     {
         return $this->Publication;
     }
 }
+

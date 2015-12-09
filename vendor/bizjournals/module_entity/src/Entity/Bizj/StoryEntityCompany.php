@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * StoryEntityCompany
  */
@@ -49,6 +47,7 @@ class StoryEntityCompany extends \Entity\Entity\Base
      * Set id
      *
      * @param integer $id
+     *
      * @return StoryEntityCompany
      */
     public function setId($id)
@@ -61,7 +60,7 @@ class StoryEntityCompany extends \Entity\Entity\Base
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -69,9 +68,10 @@ class StoryEntityCompany extends \Entity\Entity\Base
     }
 
     /**
-     * Set story_id
+     * Set storyId
      *
      * @param integer $storyId
+     *
      * @return StoryEntityCompany
      */
     public function setStoryId($storyId)
@@ -82,9 +82,9 @@ class StoryEntityCompany extends \Entity\Entity\Base
     }
 
     /**
-     * Get story_id
+     * Get storyId
      *
-     * @return integer 
+     * @return integer
      */
     public function getStoryId()
     {
@@ -95,6 +95,7 @@ class StoryEntityCompany extends \Entity\Entity\Base
      * Set name
      *
      * @param string $name
+     *
      * @return StoryEntityCompany
      */
     public function setName($name)
@@ -107,7 +108,7 @@ class StoryEntityCompany extends \Entity\Entity\Base
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -118,6 +119,7 @@ class StoryEntityCompany extends \Entity\Entity\Base
      * Set eoc
      *
      * @param string $eoc
+     *
      * @return StoryEntityCompany
      */
     public function setEoc($eoc)
@@ -130,7 +132,7 @@ class StoryEntityCompany extends \Entity\Entity\Base
     /**
      * Get eoc
      *
-     * @return string 
+     * @return string
      */
     public function getEoc()
     {
@@ -138,9 +140,10 @@ class StoryEntityCompany extends \Entity\Entity\Base
     }
 
     /**
-     * Set c_time
+     * Set cTime
      *
      * @param \DateTime $cTime
+     *
      * @return StoryEntityCompany
      */
     public function setCTime($cTime)
@@ -151,9 +154,9 @@ class StoryEntityCompany extends \Entity\Entity\Base
     }
 
     /**
-     * Get c_time
+     * Get cTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCTime()
     {
@@ -161,9 +164,10 @@ class StoryEntityCompany extends \Entity\Entity\Base
     }
 
     /**
-     * Set normalized_name
+     * Set normalizedName
      *
      * @param string $normalizedName
+     *
      * @return StoryEntityCompany
      */
     public function setNormalizedName($normalizedName)
@@ -174,9 +178,9 @@ class StoryEntityCompany extends \Entity\Entity\Base
     }
 
     /**
-     * Get normalized_name
+     * Get normalizedName
      *
-     * @return string 
+     * @return string
      */
     public function getNormalizedName()
     {
@@ -184,9 +188,10 @@ class StoryEntityCompany extends \Entity\Entity\Base
     }
 
     /**
-     * Set StoryRead
+     * Set storyRead
      *
      * @param \Entity\Bizj\StoryRead $storyRead
+     *
      * @return StoryEntityCompany
      */
     public function setStoryRead(\Entity\Bizj\StoryRead $storyRead = null)
@@ -197,12 +202,13 @@ class StoryEntityCompany extends \Entity\Entity\Base
     }
 
     /**
-     * Get StoryRead
+     * Get storyRead
      *
-     * @return \Entity\Bizj\StoryRead 
+     * @return \Entity\Bizj\StoryRead
      */
     public function getStoryRead()
     {
         return $this->StoryRead;
     }
 }
+

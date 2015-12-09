@@ -2,8 +2,6 @@
 
 namespace Entity\Cms;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Publication
  */
@@ -68,9 +66,10 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Set pub_id
+     * Set pubId
      *
      * @param integer $pubId
+     *
      * @return Publication
      */
     public function setPubId($pubId)
@@ -81,9 +80,9 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Get pub_id
+     * Get pubId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPubId()
     {
@@ -91,9 +90,10 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Set pub_name
+     * Set pubName
      *
      * @param string $pubName
+     *
      * @return Publication
      */
     public function setPubName($pubName)
@@ -104,9 +104,9 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Get pub_name
+     * Get pubName
      *
-     * @return string 
+     * @return string
      */
     public function getPubName()
     {
@@ -114,9 +114,10 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Set short_name
+     * Set shortName
      *
      * @param string $shortName
+     *
      * @return Publication
      */
     public function setShortName($shortName)
@@ -127,9 +128,9 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Get short_name
+     * Get shortName
      *
-     * @return string 
+     * @return string
      */
     public function getShortName()
     {
@@ -137,9 +138,10 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Set market_code
+     * Set marketCode
      *
      * @param string $marketCode
+     *
      * @return Publication
      */
     public function setMarketCode($marketCode)
@@ -150,9 +152,9 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Get market_code
+     * Get marketCode
      *
-     * @return string 
+     * @return string
      */
     public function getMarketCode()
     {
@@ -160,9 +162,10 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Set publisher_config
+     * Set publisherConfig
      *
      * @param string $publisherConfig
+     *
      * @return Publication
      */
     public function setPublisherConfig($publisherConfig)
@@ -173,9 +176,9 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Get publisher_config
+     * Get publisherConfig
      *
-     * @return string 
+     * @return string
      */
     public function getPublisherConfig()
     {
@@ -186,6 +189,7 @@ class Publication extends \Entity\Entity\Base
      * Set timezone
      *
      * @param string $timezone
+     *
      * @return Publication
      */
     public function setTimezone($timezone)
@@ -198,7 +202,7 @@ class Publication extends \Entity\Entity\Base
     /**
      * Get timezone
      *
-     * @return string 
+     * @return string
      */
     public function getTimezone()
     {
@@ -206,9 +210,10 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Set default_copyright_notice
+     * Set defaultCopyrightNotice
      *
      * @param string $defaultCopyrightNotice
+     *
      * @return Publication
      */
     public function setDefaultCopyrightNotice($defaultCopyrightNotice)
@@ -219,9 +224,9 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Get default_copyright_notice
+     * Get defaultCopyrightNotice
      *
-     * @return string 
+     * @return string
      */
     public function getDefaultCopyrightNotice()
     {
@@ -229,9 +234,10 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return Publication
      */
     public function setCreatedAt($createdAt)
@@ -242,9 +248,9 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -252,9 +258,10 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return Publication
      */
     public function setUpdatedAt($updatedAt)
@@ -265,9 +272,9 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -275,9 +282,10 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Add Content
+     * Add content
      *
      * @param \Entity\Cms\Content $content
+     *
      * @return Publication
      */
     public function addContent(\Entity\Cms\Content $content)
@@ -288,7 +296,7 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Remove Content
+     * Remove content
      *
      * @param \Entity\Cms\Content $content
      */
@@ -298,12 +306,13 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Get Content
+     * Get content
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getContent()
     {
         return $this->Content;
     }
 }
+

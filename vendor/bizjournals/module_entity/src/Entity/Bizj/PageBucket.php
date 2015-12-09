@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * PageBucket
  */
@@ -34,6 +32,7 @@ class PageBucket extends \Entity\Entity\Base
      * Set bucket
      *
      * @param string $bucket
+     *
      * @return PageBucket
      */
     public function setBucket($bucket)
@@ -46,7 +45,7 @@ class PageBucket extends \Entity\Entity\Base
     /**
      * Get bucket
      *
-     * @return string 
+     * @return string
      */
     public function getBucket()
     {
@@ -54,9 +53,10 @@ class PageBucket extends \Entity\Entity\Base
     }
 
     /**
-     * Set krang_group
+     * Set krangGroup
      *
      * @param string $krangGroup
+     *
      * @return PageBucket
      */
     public function setKrangGroup($krangGroup)
@@ -67,9 +67,9 @@ class PageBucket extends \Entity\Entity\Base
     }
 
     /**
-     * Get krang_group
+     * Get krangGroup
      *
-     * @return string 
+     * @return string
      */
     public function getKrangGroup()
     {
@@ -80,6 +80,7 @@ class PageBucket extends \Entity\Entity\Base
      * Set label
      *
      * @param string $label
+     *
      * @return PageBucket
      */
     public function setLabel($label)
@@ -92,7 +93,7 @@ class PageBucket extends \Entity\Entity\Base
     /**
      * Get label
      *
-     * @return string 
+     * @return string
      */
     public function getLabel()
     {
@@ -100,9 +101,10 @@ class PageBucket extends \Entity\Entity\Base
     }
 
     /**
-     * Set special_cat_id
+     * Set specialCatId
      *
      * @param integer $specialCatId
+     *
      * @return PageBucket
      */
     public function setSpecialCatId($specialCatId)
@@ -113,12 +115,13 @@ class PageBucket extends \Entity\Entity\Base
     }
 
     /**
-     * Get special_cat_id
+     * Get specialCatId
      *
-     * @return integer 
+     * @return integer
      */
     public function getSpecialCatId()
     {
         return $this->special_cat_id;
     }
 }
+

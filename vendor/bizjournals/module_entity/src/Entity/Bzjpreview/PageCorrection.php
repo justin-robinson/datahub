@@ -2,8 +2,6 @@
 
 namespace Entity\Bzjpreview;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * PageCorrection
  */
@@ -48,7 +46,7 @@ class PageCorrection extends \Entity\Entity\Base
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -56,9 +54,10 @@ class PageCorrection extends \Entity\Entity\Base
     }
 
     /**
-     * Set page_id
+     * Set pageId
      *
      * @param integer $pageId
+     *
      * @return PageCorrection
      */
     public function setPageId($pageId)
@@ -69,9 +68,9 @@ class PageCorrection extends \Entity\Entity\Base
     }
 
     /**
-     * Get page_id
+     * Get pageId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPageId()
     {
@@ -79,9 +78,10 @@ class PageCorrection extends \Entity\Entity\Base
     }
 
     /**
-     * Set market_code
+     * Set marketCode
      *
      * @param string $marketCode
+     *
      * @return PageCorrection
      */
     public function setMarketCode($marketCode)
@@ -92,9 +92,9 @@ class PageCorrection extends \Entity\Entity\Base
     }
 
     /**
-     * Get market_code
+     * Get marketCode
      *
-     * @return string 
+     * @return string
      */
     public function getMarketCode()
     {
@@ -105,6 +105,7 @@ class PageCorrection extends \Entity\Entity\Base
      * Set correction
      *
      * @param string $correction
+     *
      * @return PageCorrection
      */
     public function setCorrection($correction)
@@ -117,7 +118,7 @@ class PageCorrection extends \Entity\Entity\Base
     /**
      * Get correction
      *
-     * @return string 
+     * @return string
      */
     public function getCorrection()
     {
@@ -125,9 +126,10 @@ class PageCorrection extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_daily
+     * Set isDaily
      *
      * @param boolean $isDaily
+     *
      * @return PageCorrection
      */
     public function setIsDaily($isDaily)
@@ -138,9 +140,9 @@ class PageCorrection extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_daily
+     * Get isDaily
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsDaily()
     {
@@ -148,9 +150,10 @@ class PageCorrection extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return PageCorrection
      */
     public function setCreatedAt($createdAt)
@@ -161,9 +164,9 @@ class PageCorrection extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -171,9 +174,10 @@ class PageCorrection extends \Entity\Entity\Base
     }
 
     /**
-     * Set Page
+     * Set page
      *
      * @param \Entity\Bzjpreview\Page $page
+     *
      * @return PageCorrection
      */
     public function setPage(\Entity\Bzjpreview\Page $page = null)
@@ -184,12 +188,13 @@ class PageCorrection extends \Entity\Entity\Base
     }
 
     /**
-     * Get Page
+     * Get page
      *
-     * @return \Entity\Bzjpreview\Page 
+     * @return \Entity\Bzjpreview\Page
      */
     public function getPage()
     {
         return $this->Page;
     }
 }
+

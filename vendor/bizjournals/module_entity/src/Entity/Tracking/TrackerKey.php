@@ -2,8 +2,6 @@
 
 namespace Entity\Tracking;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * TrackerKey
  */
@@ -66,9 +64,9 @@ class TrackerKey extends \Entity\Entity\Base
 
 
     /**
-     * Get tracker_key_id
+     * Get trackerKeyId
      *
-     * @return integer 
+     * @return integer
      */
     public function getTrackerKeyId()
     {
@@ -76,9 +74,10 @@ class TrackerKey extends \Entity\Entity\Base
     }
 
     /**
-     * Set tracker_key
+     * Set trackerKey
      *
      * @param string $trackerKey
+     *
      * @return TrackerKey
      */
     public function setTrackerKey($trackerKey)
@@ -89,9 +88,9 @@ class TrackerKey extends \Entity\Entity\Base
     }
 
     /**
-     * Get tracker_key
+     * Get trackerKey
      *
-     * @return string 
+     * @return string
      */
     public function getTrackerKey()
     {
@@ -99,9 +98,10 @@ class TrackerKey extends \Entity\Entity\Base
     }
 
     /**
-     * Set client_id
+     * Set clientId
      *
      * @param integer $clientId
+     *
      * @return TrackerKey
      */
     public function setClientId($clientId)
@@ -112,9 +112,9 @@ class TrackerKey extends \Entity\Entity\Base
     }
 
     /**
-     * Get client_id
+     * Get clientId
      *
-     * @return integer 
+     * @return integer
      */
     public function getClientId()
     {
@@ -122,9 +122,10 @@ class TrackerKey extends \Entity\Entity\Base
     }
 
     /**
-     * Set tracker_type
+     * Set trackerType
      *
      * @param string $trackerType
+     *
      * @return TrackerKey
      */
     public function setTrackerType($trackerType)
@@ -135,9 +136,9 @@ class TrackerKey extends \Entity\Entity\Base
     }
 
     /**
-     * Get tracker_type
+     * Get trackerType
      *
-     * @return string 
+     * @return string
      */
     public function getTrackerType()
     {
@@ -145,9 +146,10 @@ class TrackerKey extends \Entity\Entity\Base
     }
 
     /**
-     * Set tracker_subtype
+     * Set trackerSubtype
      *
      * @param string $trackerSubtype
+     *
      * @return TrackerKey
      */
     public function setTrackerSubtype($trackerSubtype)
@@ -158,9 +160,9 @@ class TrackerKey extends \Entity\Entity\Base
     }
 
     /**
-     * Get tracker_subtype
+     * Get trackerSubtype
      *
-     * @return string 
+     * @return string
      */
     public function getTrackerSubtype()
     {
@@ -171,6 +173,7 @@ class TrackerKey extends \Entity\Entity\Base
      * Set url
      *
      * @param string $url
+     *
      * @return TrackerKey
      */
     public function setUrl($url)
@@ -183,7 +186,7 @@ class TrackerKey extends \Entity\Entity\Base
     /**
      * Get url
      *
-     * @return string 
+     * @return string
      */
     public function getUrl()
     {
@@ -191,9 +194,10 @@ class TrackerKey extends \Entity\Entity\Base
     }
 
     /**
-     * Set campaign_ref
+     * Set campaignRef
      *
      * @param string $campaignRef
+     *
      * @return TrackerKey
      */
     public function setCampaignRef($campaignRef)
@@ -204,9 +208,9 @@ class TrackerKey extends \Entity\Entity\Base
     }
 
     /**
-     * Get campaign_ref
+     * Get campaignRef
      *
-     * @return string 
+     * @return string
      */
     public function getCampaignRef()
     {
@@ -214,9 +218,10 @@ class TrackerKey extends \Entity\Entity\Base
     }
 
     /**
-     * Set tracker_properties
+     * Set trackerProperties
      *
      * @param string $trackerProperties
+     *
      * @return TrackerKey
      */
     public function setTrackerProperties($trackerProperties)
@@ -227,9 +232,9 @@ class TrackerKey extends \Entity\Entity\Base
     }
 
     /**
-     * Get tracker_properties
+     * Get trackerProperties
      *
-     * @return string 
+     * @return string
      */
     public function getTrackerProperties()
     {
@@ -237,9 +242,10 @@ class TrackerKey extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_active
+     * Set isActive
      *
      * @param boolean $isActive
+     *
      * @return TrackerKey
      */
     public function setIsActive($isActive)
@@ -250,9 +256,9 @@ class TrackerKey extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_active
+     * Get isActive
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsActive()
     {
@@ -260,9 +266,10 @@ class TrackerKey extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return TrackerKey
      */
     public function setCreatedAt($createdAt)
@@ -273,9 +280,9 @@ class TrackerKey extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -283,9 +290,10 @@ class TrackerKey extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return TrackerKey
      */
     public function setUpdatedAt($updatedAt)
@@ -296,12 +304,13 @@ class TrackerKey extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
         return $this->updated_at;
     }
 }
+

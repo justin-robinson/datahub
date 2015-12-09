@@ -2,8 +2,6 @@
 
 namespace Entity\NascarIllustrated;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Purchase
  */
@@ -133,9 +131,9 @@ class Purchase extends \Entity\Entity\Base
     }
 
     /**
-     * Get purchase_id
+     * Get purchaseId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPurchaseId()
     {
@@ -143,9 +141,10 @@ class Purchase extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_complete
+     * Set isComplete
      *
      * @param boolean $isComplete
+     *
      * @return Purchase
      */
     public function setIsComplete($isComplete)
@@ -156,9 +155,9 @@ class Purchase extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_complete
+     * Get isComplete
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsComplete()
     {
@@ -166,9 +165,10 @@ class Purchase extends \Entity\Entity\Base
     }
 
     /**
-     * Set merchandise_batch_file
+     * Set merchandiseBatchFile
      *
      * @param string $merchandiseBatchFile
+     *
      * @return Purchase
      */
     public function setMerchandiseBatchFile($merchandiseBatchFile)
@@ -179,9 +179,9 @@ class Purchase extends \Entity\Entity\Base
     }
 
     /**
-     * Get merchandise_batch_file
+     * Get merchandiseBatchFile
      *
-     * @return string 
+     * @return string
      */
     public function getMerchandiseBatchFile()
     {
@@ -189,9 +189,10 @@ class Purchase extends \Entity\Entity\Base
     }
 
     /**
-     * Set subscription_batch_file
+     * Set subscriptionBatchFile
      *
      * @param string $subscriptionBatchFile
+     *
      * @return Purchase
      */
     public function setSubscriptionBatchFile($subscriptionBatchFile)
@@ -202,9 +203,9 @@ class Purchase extends \Entity\Entity\Base
     }
 
     /**
-     * Get subscription_batch_file
+     * Get subscriptionBatchFile
      *
-     * @return string 
+     * @return string
      */
     public function getSubscriptionBatchFile()
     {
@@ -212,9 +213,10 @@ class Purchase extends \Entity\Entity\Base
     }
 
     /**
-     * Set cart_id
+     * Set cartId
      *
      * @param integer $cartId
+     *
      * @return Purchase
      */
     public function setCartId($cartId)
@@ -225,9 +227,9 @@ class Purchase extends \Entity\Entity\Base
     }
 
     /**
-     * Get cart_id
+     * Get cartId
      *
-     * @return integer 
+     * @return integer
      */
     public function getCartId()
     {
@@ -238,6 +240,7 @@ class Purchase extends \Entity\Entity\Base
      * Set amount
      *
      * @param integer $amount
+     *
      * @return Purchase
      */
     public function setAmount($amount)
@@ -250,7 +253,7 @@ class Purchase extends \Entity\Entity\Base
     /**
      * Get amount
      *
-     * @return integer 
+     * @return integer
      */
     public function getAmount()
     {
@@ -258,9 +261,10 @@ class Purchase extends \Entity\Entity\Base
     }
 
     /**
-     * Set first_name
+     * Set firstName
      *
      * @param string $firstName
+     *
      * @return Purchase
      */
     public function setFirstName($firstName)
@@ -271,9 +275,9 @@ class Purchase extends \Entity\Entity\Base
     }
 
     /**
-     * Get first_name
+     * Get firstName
      *
-     * @return string 
+     * @return string
      */
     public function getFirstName()
     {
@@ -281,9 +285,10 @@ class Purchase extends \Entity\Entity\Base
     }
 
     /**
-     * Set last_name
+     * Set lastName
      *
      * @param string $lastName
+     *
      * @return Purchase
      */
     public function setLastName($lastName)
@@ -294,9 +299,9 @@ class Purchase extends \Entity\Entity\Base
     }
 
     /**
-     * Get last_name
+     * Get lastName
      *
-     * @return string 
+     * @return string
      */
     public function getLastName()
     {
@@ -307,6 +312,7 @@ class Purchase extends \Entity\Entity\Base
      * Set email
      *
      * @param string $email
+     *
      * @return Purchase
      */
     public function setEmail($email)
@@ -319,7 +325,7 @@ class Purchase extends \Entity\Entity\Base
     /**
      * Get email
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
@@ -330,6 +336,7 @@ class Purchase extends \Entity\Entity\Base
      * Set phone
      *
      * @param string $phone
+     *
      * @return Purchase
      */
     public function setPhone($phone)
@@ -342,7 +349,7 @@ class Purchase extends \Entity\Entity\Base
     /**
      * Get phone
      *
-     * @return string 
+     * @return string
      */
     public function getPhone()
     {
@@ -353,6 +360,7 @@ class Purchase extends \Entity\Entity\Base
      * Set address1
      *
      * @param string $address1
+     *
      * @return Purchase
      */
     public function setAddress1($address1)
@@ -365,7 +373,7 @@ class Purchase extends \Entity\Entity\Base
     /**
      * Get address1
      *
-     * @return string 
+     * @return string
      */
     public function getAddress1()
     {
@@ -376,6 +384,7 @@ class Purchase extends \Entity\Entity\Base
      * Set address2
      *
      * @param string $address2
+     *
      * @return Purchase
      */
     public function setAddress2($address2)
@@ -388,7 +397,7 @@ class Purchase extends \Entity\Entity\Base
     /**
      * Get address2
      *
-     * @return string 
+     * @return string
      */
     public function getAddress2()
     {
@@ -399,6 +408,7 @@ class Purchase extends \Entity\Entity\Base
      * Set city
      *
      * @param string $city
+     *
      * @return Purchase
      */
     public function setCity($city)
@@ -411,7 +421,7 @@ class Purchase extends \Entity\Entity\Base
     /**
      * Get city
      *
-     * @return string 
+     * @return string
      */
     public function getCity()
     {
@@ -419,9 +429,10 @@ class Purchase extends \Entity\Entity\Base
     }
 
     /**
-     * Set state_province
+     * Set stateProvince
      *
      * @param string $stateProvince
+     *
      * @return Purchase
      */
     public function setStateProvince($stateProvince)
@@ -432,9 +443,9 @@ class Purchase extends \Entity\Entity\Base
     }
 
     /**
-     * Get state_province
+     * Get stateProvince
      *
-     * @return string 
+     * @return string
      */
     public function getStateProvince()
     {
@@ -442,9 +453,10 @@ class Purchase extends \Entity\Entity\Base
     }
 
     /**
-     * Set postal_code
+     * Set postalCode
      *
      * @param string $postalCode
+     *
      * @return Purchase
      */
     public function setPostalCode($postalCode)
@@ -455,9 +467,9 @@ class Purchase extends \Entity\Entity\Base
     }
 
     /**
-     * Get postal_code
+     * Get postalCode
      *
-     * @return string 
+     * @return string
      */
     public function getPostalCode()
     {
@@ -468,6 +480,7 @@ class Purchase extends \Entity\Entity\Base
      * Set country
      *
      * @param string $country
+     *
      * @return Purchase
      */
     public function setCountry($country)
@@ -480,7 +493,7 @@ class Purchase extends \Entity\Entity\Base
     /**
      * Get country
      *
-     * @return string 
+     * @return string
      */
     public function getCountry()
     {
@@ -488,9 +501,10 @@ class Purchase extends \Entity\Entity\Base
     }
 
     /**
-     * Set has_billing_eq_shipping
+     * Set hasBillingEqShipping
      *
      * @param boolean $hasBillingEqShipping
+     *
      * @return Purchase
      */
     public function setHasBillingEqShipping($hasBillingEqShipping)
@@ -501,9 +515,9 @@ class Purchase extends \Entity\Entity\Base
     }
 
     /**
-     * Get has_billing_eq_shipping
+     * Get hasBillingEqShipping
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getHasBillingEqShipping()
     {
@@ -511,9 +525,10 @@ class Purchase extends \Entity\Entity\Base
     }
 
     /**
-     * Set transaction_code
+     * Set transactionCode
      *
      * @param string $transactionCode
+     *
      * @return Purchase
      */
     public function setTransactionCode($transactionCode)
@@ -524,9 +539,9 @@ class Purchase extends \Entity\Entity\Base
     }
 
     /**
-     * Get transaction_code
+     * Get transactionCode
      *
-     * @return string 
+     * @return string
      */
     public function getTransactionCode()
     {
@@ -534,9 +549,10 @@ class Purchase extends \Entity\Entity\Base
     }
 
     /**
-     * Set transaction_metadata
+     * Set transactionMetadata
      *
      * @param string $transactionMetadata
+     *
      * @return Purchase
      */
     public function setTransactionMetadata($transactionMetadata)
@@ -547,9 +563,9 @@ class Purchase extends \Entity\Entity\Base
     }
 
     /**
-     * Get transaction_metadata
+     * Get transactionMetadata
      *
-     * @return string 
+     * @return string
      */
     public function getTransactionMetadata()
     {
@@ -557,9 +573,10 @@ class Purchase extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return Purchase
      */
     public function setCreatedAt($createdAt)
@@ -570,9 +587,9 @@ class Purchase extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -580,9 +597,10 @@ class Purchase extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return Purchase
      */
     public function setUpdatedAt($updatedAt)
@@ -593,9 +611,9 @@ class Purchase extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -603,32 +621,33 @@ class Purchase extends \Entity\Entity\Base
     }
 
     /**
-     * Add PurchaseItems
+     * Add purchaseItem
      *
-     * @param \Entity\NascarIllustrated\PurchaseItem $purchaseItems
+     * @param \Entity\NascarIllustrated\PurchaseItem $purchaseItem
+     *
      * @return Purchase
      */
-    public function addPurchaseItem(\Entity\NascarIllustrated\PurchaseItem $purchaseItems)
+    public function addPurchaseItem(\Entity\NascarIllustrated\PurchaseItem $purchaseItem)
     {
-        $this->PurchaseItems[] = $purchaseItems;
+        $this->PurchaseItems[] = $purchaseItem;
 
         return $this;
     }
 
     /**
-     * Remove PurchaseItems
+     * Remove purchaseItem
      *
-     * @param \Entity\NascarIllustrated\PurchaseItem $purchaseItems
+     * @param \Entity\NascarIllustrated\PurchaseItem $purchaseItem
      */
-    public function removePurchaseItem(\Entity\NascarIllustrated\PurchaseItem $purchaseItems)
+    public function removePurchaseItem(\Entity\NascarIllustrated\PurchaseItem $purchaseItem)
     {
-        $this->PurchaseItems->removeElement($purchaseItems);
+        $this->PurchaseItems->removeElement($purchaseItem);
     }
 
     /**
-     * Get PurchaseItems
+     * Get purchaseItems
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getPurchaseItems()
     {
@@ -636,9 +655,10 @@ class Purchase extends \Entity\Entity\Base
     }
 
     /**
-     * Set Cart
+     * Set cart
      *
      * @param \Entity\NascarIllustrated\Cart $cart
+     *
      * @return Purchase
      */
     public function setCart(\Entity\NascarIllustrated\Cart $cart = null)
@@ -649,12 +669,13 @@ class Purchase extends \Entity\Entity\Base
     }
 
     /**
-     * Get Cart
+     * Get cart
      *
-     * @return \Entity\NascarIllustrated\Cart 
+     * @return \Entity\NascarIllustrated\Cart
      */
     public function getCart()
     {
         return $this->Cart;
     }
 }
+

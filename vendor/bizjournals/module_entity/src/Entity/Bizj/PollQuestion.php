@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * PollQuestion
  */
@@ -63,9 +61,9 @@ class PollQuestion extends \Entity\Entity\Base
     }
 
     /**
-     * Get poll_question_id
+     * Get pollQuestionId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPollQuestionId()
     {
@@ -73,9 +71,10 @@ class PollQuestion extends \Entity\Entity\Base
     }
 
     /**
-     * Set poll_id
+     * Set pollId
      *
      * @param integer $pollId
+     *
      * @return PollQuestion
      */
     public function setPollId($pollId)
@@ -86,9 +85,9 @@ class PollQuestion extends \Entity\Entity\Base
     }
 
     /**
-     * Get poll_id
+     * Get pollId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPollId()
     {
@@ -99,6 +98,7 @@ class PollQuestion extends \Entity\Entity\Base
      * Set question
      *
      * @param string $question
+     *
      * @return PollQuestion
      */
     public function setQuestion($question)
@@ -111,7 +111,7 @@ class PollQuestion extends \Entity\Entity\Base
     /**
      * Get question
      *
-     * @return string 
+     * @return string
      */
     public function getQuestion()
     {
@@ -122,6 +122,7 @@ class PollQuestion extends \Entity\Entity\Base
      * Set position
      *
      * @param integer $position
+     *
      * @return PollQuestion
      */
     public function setPosition($position)
@@ -134,7 +135,7 @@ class PollQuestion extends \Entity\Entity\Base
     /**
      * Get position
      *
-     * @return integer 
+     * @return integer
      */
     public function getPosition()
     {
@@ -145,6 +146,7 @@ class PollQuestion extends \Entity\Entity\Base
      * Set type
      *
      * @param string $type
+     *
      * @return PollQuestion
      */
     public function setType($type)
@@ -157,7 +159,7 @@ class PollQuestion extends \Entity\Entity\Base
     /**
      * Get type
      *
-     * @return string 
+     * @return string
      */
     public function getType()
     {
@@ -168,6 +170,7 @@ class PollQuestion extends \Entity\Entity\Base
      * Set required
      *
      * @param boolean $required
+     *
      * @return PollQuestion
      */
     public function setRequired($required)
@@ -180,7 +183,7 @@ class PollQuestion extends \Entity\Entity\Base
     /**
      * Get required
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getRequired()
     {
@@ -188,9 +191,10 @@ class PollQuestion extends \Entity\Entity\Base
     }
 
     /**
-     * Set c_time
+     * Set cTime
      *
      * @param \DateTime $cTime
+     *
      * @return PollQuestion
      */
     public function setCTime($cTime)
@@ -201,9 +205,9 @@ class PollQuestion extends \Entity\Entity\Base
     }
 
     /**
-     * Get c_time
+     * Get cTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCTime()
     {
@@ -211,32 +215,33 @@ class PollQuestion extends \Entity\Entity\Base
     }
 
     /**
-     * Add Answers
+     * Add answer
      *
-     * @param \Entity\Bizj\PollQuestionData $answers
+     * @param \Entity\Bizj\PollQuestionData $answer
+     *
      * @return PollQuestion
      */
-    public function addAnswer(\Entity\Bizj\PollQuestionData $answers)
+    public function addAnswer(\Entity\Bizj\PollQuestionData $answer)
     {
-        $this->Answers[] = $answers;
+        $this->Answers[] = $answer;
 
         return $this;
     }
 
     /**
-     * Remove Answers
+     * Remove answer
      *
-     * @param \Entity\Bizj\PollQuestionData $answers
+     * @param \Entity\Bizj\PollQuestionData $answer
      */
-    public function removeAnswer(\Entity\Bizj\PollQuestionData $answers)
+    public function removeAnswer(\Entity\Bizj\PollQuestionData $answer)
     {
-        $this->Answers->removeElement($answers);
+        $this->Answers->removeElement($answer);
     }
 
     /**
-     * Get Answers
+     * Get answers
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getAnswers()
     {
@@ -244,9 +249,10 @@ class PollQuestion extends \Entity\Entity\Base
     }
 
     /**
-     * Set Poll
+     * Set poll
      *
      * @param \Entity\Bizj\Poll $poll
+     *
      * @return PollQuestion
      */
     public function setPoll(\Entity\Bizj\Poll $poll = null)
@@ -257,12 +263,13 @@ class PollQuestion extends \Entity\Entity\Base
     }
 
     /**
-     * Get Poll
+     * Get poll
      *
-     * @return \Entity\Bizj\Poll 
+     * @return \Entity\Bizj\Poll
      */
     public function getPoll()
     {
         return $this->Poll;
     }
 }
+

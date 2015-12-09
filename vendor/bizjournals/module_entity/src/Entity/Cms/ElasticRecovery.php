@@ -2,8 +2,6 @@
 
 namespace Entity\Cms;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * ElasticRecovery
  */
@@ -53,7 +51,7 @@ class ElasticRecovery extends \Entity\Entity\Base
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -64,6 +62,7 @@ class ElasticRecovery extends \Entity\Entity\Base
      * Set action
      *
      * @param string $action
+     *
      * @return ElasticRecovery
      */
     public function setAction($action)
@@ -76,7 +75,7 @@ class ElasticRecovery extends \Entity\Entity\Base
     /**
      * Get action
      *
-     * @return string 
+     * @return string
      */
     public function getAction()
     {
@@ -84,9 +83,10 @@ class ElasticRecovery extends \Entity\Entity\Base
     }
 
     /**
-     * Set index_name
+     * Set indexName
      *
      * @param string $indexName
+     *
      * @return ElasticRecovery
      */
     public function setIndexName($indexName)
@@ -97,9 +97,9 @@ class ElasticRecovery extends \Entity\Entity\Base
     }
 
     /**
-     * Get index_name
+     * Get indexName
      *
-     * @return string 
+     * @return string
      */
     public function getIndexName()
     {
@@ -107,9 +107,10 @@ class ElasticRecovery extends \Entity\Entity\Base
     }
 
     /**
-     * Set type_name
+     * Set typeName
      *
      * @param string $typeName
+     *
      * @return ElasticRecovery
      */
     public function setTypeName($typeName)
@@ -120,9 +121,9 @@ class ElasticRecovery extends \Entity\Entity\Base
     }
 
     /**
-     * Get type_name
+     * Get typeName
      *
-     * @return string 
+     * @return string
      */
     public function getTypeName()
     {
@@ -133,6 +134,7 @@ class ElasticRecovery extends \Entity\Entity\Base
      * Set elasticid
      *
      * @param string $elasticid
+     *
      * @return ElasticRecovery
      */
     public function setElasticid($elasticid)
@@ -145,7 +147,7 @@ class ElasticRecovery extends \Entity\Entity\Base
     /**
      * Get elasticid
      *
-     * @return string 
+     * @return string
      */
     public function getElasticid()
     {
@@ -153,9 +155,10 @@ class ElasticRecovery extends \Entity\Entity\Base
     }
 
     /**
-     * Set struct_data
+     * Set structData
      *
      * @param string $structData
+     *
      * @return ElasticRecovery
      */
     public function setStructData($structData)
@@ -166,9 +169,9 @@ class ElasticRecovery extends \Entity\Entity\Base
     }
 
     /**
-     * Get struct_data
+     * Get structData
      *
-     * @return string 
+     * @return string
      */
     public function getStructData()
     {
@@ -176,9 +179,10 @@ class ElasticRecovery extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_processed
+     * Set isProcessed
      *
      * @param boolean $isProcessed
+     *
      * @return ElasticRecovery
      */
     public function setIsProcessed($isProcessed)
@@ -189,9 +193,9 @@ class ElasticRecovery extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_processed
+     * Get isProcessed
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsProcessed()
     {
@@ -199,9 +203,10 @@ class ElasticRecovery extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return ElasticRecovery
      */
     public function setCreatedAt($createdAt)
@@ -212,12 +217,13 @@ class ElasticRecovery extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
         return $this->created_at;
     }
 }
+

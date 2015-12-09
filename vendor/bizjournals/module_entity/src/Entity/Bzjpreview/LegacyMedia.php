@@ -2,8 +2,6 @@
 
 namespace Entity\Bzjpreview;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * LegacyMedia
  */
@@ -98,9 +96,9 @@ class LegacyMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_id
+     * Get mediaId
      *
-     * @return integer 
+     * @return integer
      */
     public function getMediaId()
     {
@@ -108,9 +106,10 @@ class LegacyMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set location_url
+     * Set locationUrl
      *
      * @param string $locationUrl
+     *
      * @return LegacyMedia
      */
     public function setLocationUrl($locationUrl)
@@ -121,9 +120,9 @@ class LegacyMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get location_url
+     * Get locationUrl
      *
-     * @return string 
+     * @return string
      */
     public function getLocationUrl()
     {
@@ -134,6 +133,7 @@ class LegacyMedia extends \Entity\Entity\Base
      * Set filename
      *
      * @param string $filename
+     *
      * @return LegacyMedia
      */
     public function setFilename($filename)
@@ -146,7 +146,7 @@ class LegacyMedia extends \Entity\Entity\Base
     /**
      * Get filename
      *
-     * @return string 
+     * @return string
      */
     public function getFilename()
     {
@@ -154,9 +154,10 @@ class LegacyMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set media_type
+     * Set mediaType
      *
      * @param string $mediaType
+     *
      * @return LegacyMedia
      */
     public function setMediaType($mediaType)
@@ -167,9 +168,9 @@ class LegacyMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_type
+     * Get mediaType
      *
-     * @return string 
+     * @return string
      */
     public function getMediaType()
     {
@@ -177,9 +178,10 @@ class LegacyMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set mime_type
+     * Set mimeType
      *
      * @param string $mimeType
+     *
      * @return LegacyMedia
      */
     public function setMimeType($mimeType)
@@ -190,9 +192,9 @@ class LegacyMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get mime_type
+     * Get mimeType
      *
-     * @return string 
+     * @return string
      */
     public function getMimeType()
     {
@@ -200,9 +202,10 @@ class LegacyMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set rev_number
+     * Set revNumber
      *
      * @param integer $revNumber
+     *
      * @return LegacyMedia
      */
     public function setRevNumber($revNumber)
@@ -213,9 +216,9 @@ class LegacyMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get rev_number
+     * Get revNumber
      *
-     * @return integer 
+     * @return integer
      */
     public function getRevNumber()
     {
@@ -223,9 +226,10 @@ class LegacyMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set default_height
+     * Set defaultHeight
      *
      * @param integer $defaultHeight
+     *
      * @return LegacyMedia
      */
     public function setDefaultHeight($defaultHeight)
@@ -236,9 +240,9 @@ class LegacyMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get default_height
+     * Get defaultHeight
      *
-     * @return integer 
+     * @return integer
      */
     public function getDefaultHeight()
     {
@@ -246,9 +250,10 @@ class LegacyMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set default_width
+     * Set defaultWidth
      *
      * @param integer $defaultWidth
+     *
      * @return LegacyMedia
      */
     public function setDefaultWidth($defaultWidth)
@@ -259,9 +264,9 @@ class LegacyMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get default_width
+     * Get defaultWidth
      *
-     * @return integer 
+     * @return integer
      */
     public function getDefaultWidth()
     {
@@ -269,9 +274,10 @@ class LegacyMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set default_caption
+     * Set defaultCaption
      *
      * @param string $defaultCaption
+     *
      * @return LegacyMedia
      */
     public function setDefaultCaption($defaultCaption)
@@ -282,9 +288,9 @@ class LegacyMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get default_caption
+     * Get defaultCaption
      *
-     * @return string 
+     * @return string
      */
     public function getDefaultCaption()
     {
@@ -292,9 +298,10 @@ class LegacyMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set default_copyright
+     * Set defaultCopyright
      *
      * @param string $defaultCopyright
+     *
      * @return LegacyMedia
      */
     public function setDefaultCopyright($defaultCopyright)
@@ -305,9 +312,9 @@ class LegacyMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get default_copyright
+     * Get defaultCopyright
      *
-     * @return string 
+     * @return string
      */
     public function getDefaultCopyright()
     {
@@ -315,9 +322,10 @@ class LegacyMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set default_alt_text
+     * Set defaultAltText
      *
      * @param string $defaultAltText
+     *
      * @return LegacyMedia
      */
     public function setDefaultAltText($defaultAltText)
@@ -328,9 +336,9 @@ class LegacyMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get default_alt_text
+     * Get defaultAltText
      *
-     * @return string 
+     * @return string
      */
     public function getDefaultAltText()
     {
@@ -341,6 +349,7 @@ class LegacyMedia extends \Entity\Entity\Base
      * Set content
      *
      * @param string $content
+     *
      * @return LegacyMedia
      */
     public function setContent($content)
@@ -353,7 +362,7 @@ class LegacyMedia extends \Entity\Entity\Base
     /**
      * Get content
      *
-     * @return string 
+     * @return string
      */
     public function getContent()
     {
@@ -364,6 +373,7 @@ class LegacyMedia extends \Entity\Entity\Base
      * Set filesize
      *
      * @param integer $filesize
+     *
      * @return LegacyMedia
      */
     public function setFilesize($filesize)
@@ -376,7 +386,7 @@ class LegacyMedia extends \Entity\Entity\Base
     /**
      * Get filesize
      *
-     * @return integer 
+     * @return integer
      */
     public function getFilesize()
     {
@@ -384,9 +394,10 @@ class LegacyMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return LegacyMedia
      */
     public function setCreatedAt($createdAt)
@@ -397,9 +408,9 @@ class LegacyMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -407,9 +418,10 @@ class LegacyMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return LegacyMedia
      */
     public function setUpdatedAt($updatedAt)
@@ -420,9 +432,9 @@ class LegacyMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -430,9 +442,10 @@ class LegacyMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Add PageLegacyMediaMap
+     * Add pageLegacyMediaMap
      *
      * @param \Entity\Bzjpreview\PageLegacyMediaMap $pageLegacyMediaMap
+     *
      * @return LegacyMedia
      */
     public function addPageLegacyMediaMap(\Entity\Bzjpreview\PageLegacyMediaMap $pageLegacyMediaMap)
@@ -443,7 +456,7 @@ class LegacyMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Remove PageLegacyMediaMap
+     * Remove pageLegacyMediaMap
      *
      * @param \Entity\Bzjpreview\PageLegacyMediaMap $pageLegacyMediaMap
      */
@@ -453,12 +466,13 @@ class LegacyMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get PageLegacyMediaMap
+     * Get pageLegacyMediaMap
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getPageLegacyMediaMap()
     {
         return $this->PageLegacyMediaMap;
     }
 }
+

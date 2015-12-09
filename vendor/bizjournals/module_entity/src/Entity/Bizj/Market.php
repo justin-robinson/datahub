@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Market
  */
@@ -125,9 +123,9 @@ class Market extends \Entity\Entity\Base
     }
 
     /**
-     * Get market_id
+     * Get marketId
      *
-     * @return integer 
+     * @return integer
      */
     public function getMarketId()
     {
@@ -135,9 +133,10 @@ class Market extends \Entity\Entity\Base
     }
 
     /**
-     * Set market_code
+     * Set marketCode
      *
      * @param string $marketCode
+     *
      * @return Market
      */
     public function setMarketCode($marketCode)
@@ -148,9 +147,9 @@ class Market extends \Entity\Entity\Base
     }
 
     /**
-     * Get market_code
+     * Get marketCode
      *
-     * @return string 
+     * @return string
      */
     public function getMarketCode()
     {
@@ -158,9 +157,10 @@ class Market extends \Entity\Entity\Base
     }
 
     /**
-     * Set market_name
+     * Set marketName
      *
      * @param string $marketName
+     *
      * @return Market
      */
     public function setMarketName($marketName)
@@ -171,9 +171,9 @@ class Market extends \Entity\Entity\Base
     }
 
     /**
-     * Get market_name
+     * Get marketName
      *
-     * @return string 
+     * @return string
      */
     public function getMarketName()
     {
@@ -181,9 +181,10 @@ class Market extends \Entity\Entity\Base
     }
 
     /**
-     * Set market_abbrev
+     * Set marketAbbrev
      *
      * @param string $marketAbbrev
+     *
      * @return Market
      */
     public function setMarketAbbrev($marketAbbrev)
@@ -194,9 +195,9 @@ class Market extends \Entity\Entity\Base
     }
 
     /**
-     * Get market_abbrev
+     * Get marketAbbrev
      *
-     * @return string 
+     * @return string
      */
     public function getMarketAbbrev()
     {
@@ -207,6 +208,7 @@ class Market extends \Entity\Entity\Base
      * Set city
      *
      * @param string $city
+     *
      * @return Market
      */
     public function setCity($city)
@@ -219,7 +221,7 @@ class Market extends \Entity\Entity\Base
     /**
      * Get city
      *
-     * @return string 
+     * @return string
      */
     public function getCity()
     {
@@ -230,6 +232,7 @@ class Market extends \Entity\Entity\Base
      * Set state
      *
      * @param string $state
+     *
      * @return Market
      */
     public function setState($state)
@@ -242,7 +245,7 @@ class Market extends \Entity\Entity\Base
     /**
      * Get state
      *
-     * @return string 
+     * @return string
      */
     public function getState()
     {
@@ -253,6 +256,7 @@ class Market extends \Entity\Entity\Base
      * Set region
      *
      * @param string $region
+     *
      * @return Market
      */
     public function setRegion($region)
@@ -265,7 +269,7 @@ class Market extends \Entity\Entity\Base
     /**
      * Get region
      *
-     * @return string 
+     * @return string
      */
     public function getRegion()
     {
@@ -273,9 +277,10 @@ class Market extends \Entity\Entity\Base
     }
 
     /**
-     * Set region_objective
+     * Set regionObjective
      *
      * @param string $regionObjective
+     *
      * @return Market
      */
     public function setRegionObjective($regionObjective)
@@ -286,9 +291,9 @@ class Market extends \Entity\Entity\Base
     }
 
     /**
-     * Get region_objective
+     * Get regionObjective
      *
-     * @return string 
+     * @return string
      */
     public function getRegionObjective()
     {
@@ -296,9 +301,10 @@ class Market extends \Entity\Entity\Base
     }
 
     /**
-     * Set local_sales_tax
+     * Set localSalesTax
      *
      * @param string $localSalesTax
+     *
      * @return Market
      */
     public function setLocalSalesTax($localSalesTax)
@@ -309,9 +315,9 @@ class Market extends \Entity\Entity\Base
     }
 
     /**
-     * Get local_sales_tax
+     * Get localSalesTax
      *
-     * @return string 
+     * @return string
      */
     public function getLocalSalesTax()
     {
@@ -319,9 +325,10 @@ class Market extends \Entity\Entity\Base
     }
 
     /**
-     * Set primary_zip_code
+     * Set primaryZipCode
      *
      * @param string $primaryZipCode
+     *
      * @return Market
      */
     public function setPrimaryZipCode($primaryZipCode)
@@ -332,9 +339,9 @@ class Market extends \Entity\Entity\Base
     }
 
     /**
-     * Get primary_zip_code
+     * Get primaryZipCode
      *
-     * @return string 
+     * @return string
      */
     public function getPrimaryZipCode()
     {
@@ -342,9 +349,10 @@ class Market extends \Entity\Entity\Base
     }
 
     /**
-     * Set center_latitude
+     * Set centerLatitude
      *
      * @param string $centerLatitude
+     *
      * @return Market
      */
     public function setCenterLatitude($centerLatitude)
@@ -355,9 +363,9 @@ class Market extends \Entity\Entity\Base
     }
 
     /**
-     * Get center_latitude
+     * Get centerLatitude
      *
-     * @return string 
+     * @return string
      */
     public function getCenterLatitude()
     {
@@ -365,9 +373,10 @@ class Market extends \Entity\Entity\Base
     }
 
     /**
-     * Set center_longitude
+     * Set centerLongitude
      *
      * @param string $centerLongitude
+     *
      * @return Market
      */
     public function setCenterLongitude($centerLongitude)
@@ -378,9 +387,9 @@ class Market extends \Entity\Entity\Base
     }
 
     /**
-     * Get center_longitude
+     * Get centerLongitude
      *
-     * @return string 
+     * @return string
      */
     public function getCenterLongitude()
     {
@@ -391,6 +400,7 @@ class Market extends \Entity\Entity\Base
      * Set timezone
      *
      * @param string $timezone
+     *
      * @return Market
      */
     public function setTimezone($timezone)
@@ -403,7 +413,7 @@ class Market extends \Entity\Entity\Base
     /**
      * Get timezone
      *
-     * @return string 
+     * @return string
      */
     public function getTimezone()
     {
@@ -411,9 +421,10 @@ class Market extends \Entity\Entity\Base
     }
 
     /**
-     * Set utc_std_offset
+     * Set utcStdOffset
      *
      * @param integer $utcStdOffset
+     *
      * @return Market
      */
     public function setUtcStdOffset($utcStdOffset)
@@ -424,9 +435,9 @@ class Market extends \Entity\Entity\Base
     }
 
     /**
-     * Get utc_std_offset
+     * Get utcStdOffset
      *
-     * @return integer 
+     * @return integer
      */
     public function getUtcStdOffset()
     {
@@ -434,9 +445,10 @@ class Market extends \Entity\Entity\Base
     }
 
     /**
-     * Set utc_dst_offset
+     * Set utcDstOffset
      *
      * @param integer $utcDstOffset
+     *
      * @return Market
      */
     public function setUtcDstOffset($utcDstOffset)
@@ -447,9 +459,9 @@ class Market extends \Entity\Entity\Base
     }
 
     /**
-     * Get utc_dst_offset
+     * Get utcDstOffset
      *
-     * @return integer 
+     * @return integer
      */
     public function getUtcDstOffset()
     {
@@ -457,9 +469,10 @@ class Market extends \Entity\Entity\Base
     }
 
     /**
-     * Set payment_contact_id
+     * Set paymentContactId
      *
      * @param integer $paymentContactId
+     *
      * @return Market
      */
     public function setPaymentContactId($paymentContactId)
@@ -470,9 +483,9 @@ class Market extends \Entity\Entity\Base
     }
 
     /**
-     * Get payment_contact_id
+     * Get paymentContactId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPaymentContactId()
     {
@@ -480,9 +493,10 @@ class Market extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return Market
      */
     public function setCreatedAt($createdAt)
@@ -493,9 +507,9 @@ class Market extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -503,9 +517,10 @@ class Market extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return Market
      */
     public function setUpdatedAt($updatedAt)
@@ -516,9 +531,9 @@ class Market extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -526,32 +541,33 @@ class Market extends \Entity\Entity\Base
     }
 
     /**
-     * Add Journals
+     * Add journal
      *
-     * @param \Entity\Bizj\Journal $journals
+     * @param \Entity\Bizj\Journal $journal
+     *
      * @return Market
      */
-    public function addJournal(\Entity\Bizj\Journal $journals)
+    public function addJournal(\Entity\Bizj\Journal $journal)
     {
-        $this->Journals[] = $journals;
+        $this->Journals[] = $journal;
 
         return $this;
     }
 
     /**
-     * Remove Journals
+     * Remove journal
      *
-     * @param \Entity\Bizj\Journal $journals
+     * @param \Entity\Bizj\Journal $journal
      */
-    public function removeJournal(\Entity\Bizj\Journal $journals)
+    public function removeJournal(\Entity\Bizj\Journal $journal)
     {
-        $this->Journals->removeElement($journals);
+        $this->Journals->removeElement($journal);
     }
 
     /**
-     * Get Journals
+     * Get journals
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getJournals()
     {
@@ -559,32 +575,33 @@ class Market extends \Entity\Entity\Base
     }
 
     /**
-     * Add Pulses
+     * Add pulse
      *
-     * @param \Entity\Bizj\Pulse $pulses
+     * @param \Entity\Bizj\Pulse $pulse
+     *
      * @return Market
      */
-    public function addPulse(\Entity\Bizj\Pulse $pulses)
+    public function addPulse(\Entity\Bizj\Pulse $pulse)
     {
-        $this->Pulses[] = $pulses;
+        $this->Pulses[] = $pulse;
 
         return $this;
     }
 
     /**
-     * Remove Pulses
+     * Remove pulse
      *
-     * @param \Entity\Bizj\Pulse $pulses
+     * @param \Entity\Bizj\Pulse $pulse
      */
-    public function removePulse(\Entity\Bizj\Pulse $pulses)
+    public function removePulse(\Entity\Bizj\Pulse $pulse)
     {
-        $this->Pulses->removeElement($pulses);
+        $this->Pulses->removeElement($pulse);
     }
 
     /**
-     * Get Pulses
+     * Get pulses
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getPulses()
     {
@@ -592,35 +609,37 @@ class Market extends \Entity\Entity\Base
     }
 
     /**
-     * Add PulseMarkets
+     * Add pulseMarket
      *
-     * @param \Entity\Bizj\PulseMarketMap $pulseMarkets
+     * @param \Entity\Bizj\PulseMarketMap $pulseMarket
+     *
      * @return Market
      */
-    public function addPulseMarket(\Entity\Bizj\PulseMarketMap $pulseMarkets)
+    public function addPulseMarket(\Entity\Bizj\PulseMarketMap $pulseMarket)
     {
-        $this->PulseMarkets[] = $pulseMarkets;
+        $this->PulseMarkets[] = $pulseMarket;
 
         return $this;
     }
 
     /**
-     * Remove PulseMarkets
+     * Remove pulseMarket
      *
-     * @param \Entity\Bizj\PulseMarketMap $pulseMarkets
+     * @param \Entity\Bizj\PulseMarketMap $pulseMarket
      */
-    public function removePulseMarket(\Entity\Bizj\PulseMarketMap $pulseMarkets)
+    public function removePulseMarket(\Entity\Bizj\PulseMarketMap $pulseMarket)
     {
-        $this->PulseMarkets->removeElement($pulseMarkets);
+        $this->PulseMarkets->removeElement($pulseMarket);
     }
 
     /**
-     * Get PulseMarkets
+     * Get pulseMarkets
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getPulseMarkets()
     {
         return $this->PulseMarkets;
     }
 }
+

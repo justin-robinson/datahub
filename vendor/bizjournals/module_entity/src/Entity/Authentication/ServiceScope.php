@@ -2,8 +2,6 @@
 
 namespace Entity\Authentication;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * ServiceScope
  */
@@ -56,9 +54,9 @@ class ServiceScope extends \Entity\Entity\Base
 
 
     /**
-     * Get scope_id
+     * Get scopeId
      *
-     * @return integer 
+     * @return integer
      */
     public function getScopeId()
     {
@@ -66,9 +64,10 @@ class ServiceScope extends \Entity\Entity\Base
     }
 
     /**
-     * Set service_id
+     * Set serviceId
      *
      * @param integer $serviceId
+     *
      * @return ServiceScope
      */
     public function setServiceId($serviceId)
@@ -79,9 +78,9 @@ class ServiceScope extends \Entity\Entity\Base
     }
 
     /**
-     * Get service_id
+     * Get serviceId
      *
-     * @return integer 
+     * @return integer
      */
     public function getServiceId()
     {
@@ -92,6 +91,7 @@ class ServiceScope extends \Entity\Entity\Base
      * Set scope
      *
      * @param string $scope
+     *
      * @return ServiceScope
      */
     public function setScope($scope)
@@ -104,7 +104,7 @@ class ServiceScope extends \Entity\Entity\Base
     /**
      * Get scope
      *
-     * @return string 
+     * @return string
      */
     public function getScope()
     {
@@ -115,6 +115,7 @@ class ServiceScope extends \Entity\Entity\Base
      * Set description
      *
      * @param string $description
+     *
      * @return ServiceScope
      */
     public function setDescription($description)
@@ -127,7 +128,7 @@ class ServiceScope extends \Entity\Entity\Base
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -135,9 +136,10 @@ class ServiceScope extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_default
+     * Set isDefault
      *
      * @param boolean $isDefault
+     *
      * @return ServiceScope
      */
     public function setIsDefault($isDefault)
@@ -148,9 +150,9 @@ class ServiceScope extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_default
+     * Get isDefault
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsDefault()
     {
@@ -158,9 +160,10 @@ class ServiceScope extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_active
+     * Set isActive
      *
      * @param boolean $isActive
+     *
      * @return ServiceScope
      */
     public function setIsActive($isActive)
@@ -171,9 +174,9 @@ class ServiceScope extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_active
+     * Get isActive
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsActive()
     {
@@ -181,9 +184,10 @@ class ServiceScope extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return ServiceScope
      */
     public function setCreatedAt($createdAt)
@@ -194,9 +198,9 @@ class ServiceScope extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -204,9 +208,10 @@ class ServiceScope extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return ServiceScope
      */
     public function setUpdatedAt($updatedAt)
@@ -217,9 +222,9 @@ class ServiceScope extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -227,9 +232,10 @@ class ServiceScope extends \Entity\Entity\Base
     }
 
     /**
-     * Set Service
+     * Set service
      *
      * @param \Entity\Authentication\Service $service
+     *
      * @return ServiceScope
      */
     public function setService(\Entity\Authentication\Service $service = null)
@@ -240,12 +246,13 @@ class ServiceScope extends \Entity\Entity\Base
     }
 
     /**
-     * Get Service
+     * Get service
      *
-     * @return \Entity\Authentication\Service 
+     * @return \Entity\Authentication\Service
      */
     public function getService()
     {
         return $this->Service;
     }
 }
+

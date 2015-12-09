@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * PageLeadinGroup
  */
@@ -83,9 +81,9 @@ class PageLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get group_id
+     * Get groupId
      *
-     * @return integer 
+     * @return integer
      */
     public function getGroupId()
     {
@@ -93,9 +91,10 @@ class PageLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set page_id
+     * Set pageId
      *
      * @param integer $pageId
+     *
      * @return PageLeadinGroup
      */
     public function setPageId($pageId)
@@ -106,9 +105,9 @@ class PageLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get page_id
+     * Get pageId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPageId()
     {
@@ -116,9 +115,10 @@ class PageLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set group_type
+     * Set groupType
      *
      * @param string $groupType
+     *
      * @return PageLeadinGroup
      */
     public function setGroupType($groupType)
@@ -129,9 +129,9 @@ class PageLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get group_type
+     * Get groupType
      *
-     * @return string 
+     * @return string
      */
     public function getGroupType()
     {
@@ -139,9 +139,10 @@ class PageLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set group_title
+     * Set groupTitle
      *
      * @param string $groupTitle
+     *
      * @return PageLeadinGroup
      */
     public function setGroupTitle($groupTitle)
@@ -152,9 +153,9 @@ class PageLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get group_title
+     * Get groupTitle
      *
-     * @return string 
+     * @return string
      */
     public function getGroupTitle()
     {
@@ -162,9 +163,10 @@ class PageLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set group_class
+     * Set groupClass
      *
      * @param string $groupClass
+     *
      * @return PageLeadinGroup
      */
     public function setGroupClass($groupClass)
@@ -175,9 +177,9 @@ class PageLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get group_class
+     * Get groupClass
      *
-     * @return string 
+     * @return string
      */
     public function getGroupClass()
     {
@@ -185,9 +187,10 @@ class PageLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set group_topic
+     * Set groupTopic
      *
      * @param string $groupTopic
+     *
      * @return PageLeadinGroup
      */
     public function setGroupTopic($groupTopic)
@@ -198,9 +201,9 @@ class PageLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get group_topic
+     * Get groupTopic
      *
-     * @return string 
+     * @return string
      */
     public function getGroupTopic()
     {
@@ -208,9 +211,10 @@ class PageLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set group_teaser
+     * Set groupTeaser
      *
      * @param string $groupTeaser
+     *
      * @return PageLeadinGroup
      */
     public function setGroupTeaser($groupTeaser)
@@ -221,9 +225,9 @@ class PageLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get group_teaser
+     * Get groupTeaser
      *
-     * @return string 
+     * @return string
      */
     public function getGroupTeaser()
     {
@@ -234,6 +238,7 @@ class PageLeadinGroup extends \Entity\Entity\Base
      * Set placement
      *
      * @param string $placement
+     *
      * @return PageLeadinGroup
      */
     public function setPlacement($placement)
@@ -246,7 +251,7 @@ class PageLeadinGroup extends \Entity\Entity\Base
     /**
      * Get placement
      *
-     * @return string 
+     * @return string
      */
     public function getPlacement()
     {
@@ -257,6 +262,7 @@ class PageLeadinGroup extends \Entity\Entity\Base
      * Set ord
      *
      * @param integer $ord
+     *
      * @return PageLeadinGroup
      */
     public function setOrd($ord)
@@ -269,7 +275,7 @@ class PageLeadinGroup extends \Entity\Entity\Base
     /**
      * Get ord
      *
-     * @return integer 
+     * @return integer
      */
     public function getOrd()
     {
@@ -277,9 +283,10 @@ class PageLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set group_url
+     * Set groupUrl
      *
      * @param string $groupUrl
+     *
      * @return PageLeadinGroup
      */
     public function setGroupUrl($groupUrl)
@@ -290,9 +297,9 @@ class PageLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get group_url
+     * Get groupUrl
      *
-     * @return string 
+     * @return string
      */
     public function getGroupUrl()
     {
@@ -300,9 +307,10 @@ class PageLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set auto_query
+     * Set autoQuery
      *
      * @param string $autoQuery
+     *
      * @return PageLeadinGroup
      */
     public function setAutoQuery($autoQuery)
@@ -313,9 +321,9 @@ class PageLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get auto_query
+     * Get autoQuery
      *
-     * @return string 
+     * @return string
      */
     public function getAutoQuery()
     {
@@ -323,32 +331,33 @@ class PageLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Add LeadinItems
+     * Add leadinItem
      *
-     * @param \Entity\Bizj\PageLeadinItem $leadinItems
+     * @param \Entity\Bizj\PageLeadinItem $leadinItem
+     *
      * @return PageLeadinGroup
      */
-    public function addLeadinItem(\Entity\Bizj\PageLeadinItem $leadinItems)
+    public function addLeadinItem(\Entity\Bizj\PageLeadinItem $leadinItem)
     {
-        $this->LeadinItems[] = $leadinItems;
+        $this->LeadinItems[] = $leadinItem;
 
         return $this;
     }
 
     /**
-     * Remove LeadinItems
+     * Remove leadinItem
      *
-     * @param \Entity\Bizj\PageLeadinItem $leadinItems
+     * @param \Entity\Bizj\PageLeadinItem $leadinItem
      */
-    public function removeLeadinItem(\Entity\Bizj\PageLeadinItem $leadinItems)
+    public function removeLeadinItem(\Entity\Bizj\PageLeadinItem $leadinItem)
     {
-        $this->LeadinItems->removeElement($leadinItems);
+        $this->LeadinItems->removeElement($leadinItem);
     }
 
     /**
-     * Get LeadinItems
+     * Get leadinItems
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getLeadinItems()
     {
@@ -356,9 +365,10 @@ class PageLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set Page
+     * Set page
      *
      * @param \Entity\Bizj\Page $page
+     *
      * @return PageLeadinGroup
      */
     public function setPage(\Entity\Bizj\Page $page = null)
@@ -369,12 +379,13 @@ class PageLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get Page
+     * Get page
      *
-     * @return \Entity\Bizj\Page 
+     * @return \Entity\Bizj\Page
      */
     public function getPage()
     {
         return $this->Page;
     }
 }
+

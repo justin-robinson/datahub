@@ -2,8 +2,6 @@
 
 namespace Entity\Bzjpreview;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * StoryDeletes
  */
@@ -41,9 +39,10 @@ class StoryDeletes extends \Entity\Entity\Base
 
 
     /**
-     * Set story_id
+     * Set storyId
      *
      * @param integer $storyId
+     *
      * @return StoryDeletes
      */
     public function setStoryId($storyId)
@@ -54,9 +53,9 @@ class StoryDeletes extends \Entity\Entity\Base
     }
 
     /**
-     * Get story_id
+     * Get storyId
      *
-     * @return integer 
+     * @return integer
      */
     public function getStoryId()
     {
@@ -64,9 +63,10 @@ class StoryDeletes extends \Entity\Entity\Base
     }
 
     /**
-     * Set c_time
+     * Set cTime
      *
      * @param \DateTime $cTime
+     *
      * @return StoryDeletes
      */
     public function setCTime($cTime)
@@ -77,9 +77,9 @@ class StoryDeletes extends \Entity\Entity\Base
     }
 
     /**
-     * Get c_time
+     * Get cTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCTime()
     {
@@ -87,9 +87,10 @@ class StoryDeletes extends \Entity\Entity\Base
     }
 
     /**
-     * Set issue_date
+     * Set issueDate
      *
      * @param \DateTime $issueDate
+     *
      * @return StoryDeletes
      */
     public function setIssueDate($issueDate)
@@ -100,9 +101,9 @@ class StoryDeletes extends \Entity\Entity\Base
     }
 
     /**
-     * Get issue_date
+     * Get issueDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getIssueDate()
     {
@@ -113,6 +114,7 @@ class StoryDeletes extends \Entity\Entity\Base
      * Set pub
      *
      * @param string $pub
+     *
      * @return StoryDeletes
      */
     public function setPub($pub)
@@ -125,7 +127,7 @@ class StoryDeletes extends \Entity\Entity\Base
     /**
      * Get pub
      *
-     * @return string 
+     * @return string
      */
     public function getPub()
     {
@@ -136,6 +138,7 @@ class StoryDeletes extends \Entity\Entity\Base
      * Set slug
      *
      * @param string $slug
+     *
      * @return StoryDeletes
      */
     public function setSlug($slug)
@@ -148,7 +151,7 @@ class StoryDeletes extends \Entity\Entity\Base
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug()
     {
@@ -159,6 +162,7 @@ class StoryDeletes extends \Entity\Entity\Base
      * Set headline
      *
      * @param string $headline
+     *
      * @return StoryDeletes
      */
     public function setHeadline($headline)
@@ -171,10 +175,11 @@ class StoryDeletes extends \Entity\Entity\Base
     /**
      * Get headline
      *
-     * @return string 
+     * @return string
      */
     public function getHeadline()
     {
         return $this->headline;
     }
 }
+

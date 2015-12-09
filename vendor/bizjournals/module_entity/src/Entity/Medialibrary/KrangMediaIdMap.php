@@ -2,8 +2,6 @@
 
 namespace Entity\Medialibrary;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * KrangMediaIdMap
  */
@@ -36,9 +34,10 @@ class KrangMediaIdMap extends \Entity\Entity\Base
 
 
     /**
-     * Set bizj_media_id
+     * Set bizjMediaId
      *
      * @param integer $bizjMediaId
+     *
      * @return KrangMediaIdMap
      */
     public function setBizjMediaId($bizjMediaId)
@@ -49,9 +48,9 @@ class KrangMediaIdMap extends \Entity\Entity\Base
     }
 
     /**
-     * Get bizj_media_id
+     * Get bizjMediaId
      *
-     * @return integer 
+     * @return integer
      */
     public function getBizjMediaId()
     {
@@ -59,9 +58,10 @@ class KrangMediaIdMap extends \Entity\Entity\Base
     }
 
     /**
-     * Set krang_media_id
+     * Set krangMediaId
      *
      * @param integer $krangMediaId
+     *
      * @return KrangMediaIdMap
      */
     public function setKrangMediaId($krangMediaId)
@@ -72,9 +72,9 @@ class KrangMediaIdMap extends \Entity\Entity\Base
     }
 
     /**
-     * Get krang_media_id
+     * Get krangMediaId
      *
-     * @return integer 
+     * @return integer
      */
     public function getKrangMediaId()
     {
@@ -82,9 +82,10 @@ class KrangMediaIdMap extends \Entity\Entity\Base
     }
 
     /**
-     * Set frontend_type
+     * Set frontendType
      *
      * @param string $frontendType
+     *
      * @return KrangMediaIdMap
      */
     public function setFrontendType($frontendType)
@@ -95,9 +96,9 @@ class KrangMediaIdMap extends \Entity\Entity\Base
     }
 
     /**
-     * Get frontend_type
+     * Get frontendType
      *
-     * @return string 
+     * @return string
      */
     public function getFrontendType()
     {
@@ -105,9 +106,10 @@ class KrangMediaIdMap extends \Entity\Entity\Base
     }
 
     /**
-     * Set crop_data
+     * Set cropData
      *
      * @param string $cropData
+     *
      * @return KrangMediaIdMap
      */
     public function setCropData($cropData)
@@ -118,9 +120,9 @@ class KrangMediaIdMap extends \Entity\Entity\Base
     }
 
     /**
-     * Get crop_data
+     * Get cropData
      *
-     * @return string 
+     * @return string
      */
     public function getCropData()
     {
@@ -128,9 +130,10 @@ class KrangMediaIdMap extends \Entity\Entity\Base
     }
 
     /**
-     * Set KrangMedia
+     * Set krangMedia
      *
      * @param \Entity\Medialibrary\KrangMediaExport $krangMedia
+     *
      * @return KrangMediaIdMap
      */
     public function setKrangMedia(\Entity\Medialibrary\KrangMediaExport $krangMedia = null)
@@ -141,12 +144,13 @@ class KrangMediaIdMap extends \Entity\Entity\Base
     }
 
     /**
-     * Get KrangMedia
+     * Get krangMedia
      *
-     * @return \Entity\Medialibrary\KrangMediaExport 
+     * @return \Entity\Medialibrary\KrangMediaExport
      */
     public function getKrangMedia()
     {
         return $this->KrangMedia;
     }
 }
+

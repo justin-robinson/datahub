@@ -2,8 +2,6 @@
 
 namespace Entity\Cms;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Content
  */
@@ -121,9 +119,9 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Get content_id
+     * Get contentId
      *
-     * @return integer 
+     * @return integer
      */
     public function getContentId()
     {
@@ -134,6 +132,7 @@ class Content extends \Entity\Entity\Base
      * Set version
      *
      * @param integer $version
+     *
      * @return Content
      */
     public function setVersion($version)
@@ -146,7 +145,7 @@ class Content extends \Entity\Entity\Base
     /**
      * Get version
      *
-     * @return integer 
+     * @return integer
      */
     public function getVersion()
     {
@@ -154,9 +153,10 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Set content_type
+     * Set contentType
      *
      * @param string $contentType
+     *
      * @return Content
      */
     public function setContentType($contentType)
@@ -167,9 +167,9 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Get content_type
+     * Get contentType
      *
-     * @return string 
+     * @return string
      */
     public function getContentType()
     {
@@ -180,6 +180,7 @@ class Content extends \Entity\Entity\Base
      * Set title
      *
      * @param string $title
+     *
      * @return Content
      */
     public function setTitle($title)
@@ -192,7 +193,7 @@ class Content extends \Entity\Entity\Base
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -203,6 +204,7 @@ class Content extends \Entity\Entity\Base
      * Set slug
      *
      * @param string $slug
+     *
      * @return Content
      */
     public function setSlug($slug)
@@ -215,7 +217,7 @@ class Content extends \Entity\Entity\Base
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug()
     {
@@ -223,9 +225,10 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Set pub_id
+     * Set pubId
      *
      * @param integer $pubId
+     *
      * @return Content
      */
     public function setPubId($pubId)
@@ -236,9 +239,9 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Get pub_id
+     * Get pubId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPubId()
     {
@@ -246,9 +249,10 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Set frontend_id
+     * Set frontendId
      *
      * @param integer $frontendId
+     *
      * @return Content
      */
     public function setFrontendId($frontendId)
@@ -259,9 +263,9 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Get frontend_id
+     * Get frontendId
      *
-     * @return integer 
+     * @return integer
      */
     public function getFrontendId()
     {
@@ -269,9 +273,10 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Set last_published_version
+     * Set lastPublishedVersion
      *
      * @param integer $lastPublishedVersion
+     *
      * @return Content
      */
     public function setLastPublishedVersion($lastPublishedVersion)
@@ -282,9 +287,9 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Get last_published_version
+     * Get lastPublishedVersion
      *
-     * @return integer 
+     * @return integer
      */
     public function getLastPublishedVersion()
     {
@@ -292,9 +297,10 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Set json_data
+     * Set jsonData
      *
      * @param string $jsonData
+     *
      * @return Content
      */
     public function setJsonData($jsonData)
@@ -305,9 +311,9 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Get json_data
+     * Get jsonData
      *
-     * @return string 
+     * @return string
      */
     public function getJsonData()
     {
@@ -315,9 +321,10 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Set db_created_at
+     * Set dbCreatedAt
      *
      * @param \DateTime $dbCreatedAt
+     *
      * @return Content
      */
     public function setDbCreatedAt($dbCreatedAt)
@@ -328,9 +335,9 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Get db_created_at
+     * Get dbCreatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDbCreatedAt()
     {
@@ -338,9 +345,10 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Set db_updated_at
+     * Set dbUpdatedAt
      *
      * @param \DateTime $dbUpdatedAt
+     *
      * @return Content
      */
     public function setDbUpdatedAt($dbUpdatedAt)
@@ -351,9 +359,9 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Get db_updated_at
+     * Get dbUpdatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDbUpdatedAt()
     {
@@ -361,9 +369,10 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Set last_updated_by
+     * Set lastUpdatedBy
      *
      * @param string $lastUpdatedBy
+     *
      * @return Content
      */
     public function setLastUpdatedBy($lastUpdatedBy)
@@ -374,9 +383,9 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Get last_updated_by
+     * Get lastUpdatedBy
      *
-     * @return string 
+     * @return string
      */
     public function getLastUpdatedBy()
     {
@@ -384,9 +393,10 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Set nilsimsa_digest
+     * Set nilsimsaDigest
      *
      * @param string $nilsimsaDigest
+     *
      * @return Content
      */
     public function setNilsimsaDigest($nilsimsaDigest)
@@ -397,9 +407,9 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Get nilsimsa_digest
+     * Get nilsimsaDigest
      *
-     * @return string 
+     * @return string
      */
     public function getNilsimsaDigest()
     {
@@ -407,9 +417,10 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Set parent_frontend_id
+     * Set parentFrontendId
      *
      * @param integer $parentFrontendId
+     *
      * @return Content
      */
     public function setParentFrontendId($parentFrontendId)
@@ -420,9 +431,9 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Get parent_frontend_id
+     * Get parentFrontendId
      *
-     * @return integer 
+     * @return integer
      */
     public function getParentFrontendId()
     {
@@ -430,9 +441,10 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Set parent_content_id
+     * Set parentContentId
      *
      * @param integer $parentContentId
+     *
      * @return Content
      */
     public function setParentContentId($parentContentId)
@@ -443,9 +455,9 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Get parent_content_id
+     * Get parentContentId
      *
-     * @return integer 
+     * @return integer
      */
     public function getParentContentId()
     {
@@ -453,32 +465,33 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Add Versions
+     * Add version
      *
-     * @param \Entity\Cms\ContentVersion $versions
+     * @param \Entity\Cms\ContentVersion $version
+     *
      * @return Content
      */
-    public function addVersion(\Entity\Cms\ContentVersion $versions)
+    public function addVersion(\Entity\Cms\ContentVersion $version)
     {
-        $this->Versions[] = $versions;
+        $this->Versions[] = $version;
 
         return $this;
     }
 
     /**
-     * Remove Versions
+     * Remove version
      *
-     * @param \Entity\Cms\ContentVersion $versions
+     * @param \Entity\Cms\ContentVersion $version
      */
-    public function removeVersion(\Entity\Cms\ContentVersion $versions)
+    public function removeVersion(\Entity\Cms\ContentVersion $version)
     {
-        $this->Versions->removeElement($versions);
+        $this->Versions->removeElement($version);
     }
 
     /**
-     * Get Versions
+     * Get versions
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getVersions()
     {
@@ -486,9 +499,10 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Add AuditLog
+     * Add auditLog
      *
      * @param \Entity\Cms\AuditLog $auditLog
+     *
      * @return Content
      */
     public function addAuditLog(\Entity\Cms\AuditLog $auditLog)
@@ -499,7 +513,7 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Remove AuditLog
+     * Remove auditLog
      *
      * @param \Entity\Cms\AuditLog $auditLog
      */
@@ -509,9 +523,9 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Get AuditLog
+     * Get auditLog
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getAuditLog()
     {
@@ -519,9 +533,10 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Add ContentDesk
+     * Add contentDesk
      *
      * @param \Entity\Cms\ContentDesk $contentDesk
+     *
      * @return Content
      */
     public function addContentDesk(\Entity\Cms\ContentDesk $contentDesk)
@@ -532,7 +547,7 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Remove ContentDesk
+     * Remove contentDesk
      *
      * @param \Entity\Cms\ContentDesk $contentDesk
      */
@@ -542,9 +557,9 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Get ContentDesk
+     * Get contentDesk
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getContentDesk()
     {
@@ -552,9 +567,10 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Add ContentWorkspace
+     * Add contentWorkspace
      *
      * @param \Entity\Cms\ContentWorkspace $contentWorkspace
+     *
      * @return Content
      */
     public function addContentWorkspace(\Entity\Cms\ContentWorkspace $contentWorkspace)
@@ -565,7 +581,7 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Remove ContentWorkspace
+     * Remove contentWorkspace
      *
      * @param \Entity\Cms\ContentWorkspace $contentWorkspace
      */
@@ -575,9 +591,9 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Get ContentWorkspace
+     * Get contentWorkspace
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getContentWorkspace()
     {
@@ -585,9 +601,10 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Set Publication
+     * Set publication
      *
      * @param \Entity\Cms\Publication $publication
+     *
      * @return Content
      */
     public function setPublication(\Entity\Cms\Publication $publication = null)
@@ -598,12 +615,13 @@ class Content extends \Entity\Entity\Base
     }
 
     /**
-     * Get Publication
+     * Get publication
      *
-     * @return \Entity\Cms\Publication 
+     * @return \Entity\Cms\Publication
      */
     public function getPublication()
     {
         return $this->Publication;
     }
 }
+

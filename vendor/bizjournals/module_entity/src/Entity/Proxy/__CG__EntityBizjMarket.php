@@ -561,23 +561,23 @@ class Market extends \Entity\Bizj\Market implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function addJournal(\Entity\Bizj\Journal $journals)
+    public function addJournal(\Entity\Bizj\Journal $journal)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addJournal', array($journals));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addJournal', array($journal));
 
-        return parent::addJournal($journals);
+        return parent::addJournal($journal);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeJournal(\Entity\Bizj\Journal $journals)
+    public function removeJournal(\Entity\Bizj\Journal $journal)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeJournal', array($journals));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeJournal', array($journal));
 
-        return parent::removeJournal($journals);
+        return parent::removeJournal($journal);
     }
 
     /**
@@ -594,23 +594,23 @@ class Market extends \Entity\Bizj\Market implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function addPulse(\Entity\Bizj\Pulse $pulses)
+    public function addPulse(\Entity\Bizj\Pulse $pulse)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addPulse', array($pulses));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addPulse', array($pulse));
 
-        return parent::addPulse($pulses);
+        return parent::addPulse($pulse);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removePulse(\Entity\Bizj\Pulse $pulses)
+    public function removePulse(\Entity\Bizj\Pulse $pulse)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removePulse', array($pulses));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removePulse', array($pulse));
 
-        return parent::removePulse($pulses);
+        return parent::removePulse($pulse);
     }
 
     /**
@@ -627,23 +627,23 @@ class Market extends \Entity\Bizj\Market implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function addPulseMarket(\Entity\Bizj\PulseMarketMap $pulseMarkets)
+    public function addPulseMarket(\Entity\Bizj\PulseMarketMap $pulseMarket)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addPulseMarket', array($pulseMarkets));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addPulseMarket', array($pulseMarket));
 
-        return parent::addPulseMarket($pulseMarkets);
+        return parent::addPulseMarket($pulseMarket);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removePulseMarket(\Entity\Bizj\PulseMarketMap $pulseMarkets)
+    public function removePulseMarket(\Entity\Bizj\PulseMarketMap $pulseMarket)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removePulseMarket', array($pulseMarkets));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removePulseMarket', array($pulseMarket));
 
-        return parent::removePulseMarket($pulseMarkets);
+        return parent::removePulseMarket($pulseMarket);
     }
 
     /**

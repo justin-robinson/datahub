@@ -1,80 +1,127 @@
 Entity\Datahub\Company:
   type: entity
   table: company
+  gedmo:
+    soft_deleteable:
+      field_name: deleted_at
+      time_aware: false
   fields:
-   hub_id:
+    hub_id:
       id: true
       type: integer
       unsigned: true
+      generator:
+        strategy: AUTO
     refinery_id:
       type: integer
       unsigned: true
+      nullable: true
     meroveus_id:
       type: integer
       unsigned: true
+      nullable: true
     generate_code:
       type: string
       length: 32
+      nullable: true
     record_source:
       type: string
       length: 16
+      nullable: true
     company_name:
       type: string
       length: 255
+      nullable: false
     public_ticker:
       type: string
       length: 32
+      nullable: true
     ticker_exchange:
-      type: string
+      type: string`
       length: 30
+      nullable: true
     source_modified_at:
       type: datetime
+      nullable: true
+    product_id:
+      type: integer
+      columnDefinition: int(10) unsigned NOT NULL
+      nullable: true
     address1:
       type: string
       length: 150
+      nullable: true
     address2:
       type: string
       length: 150
+      nullable: true
     city:
       type: string
-      lengt 100h:
+      length: 100
+      nullable: true
     state:
       type: string
-      length 70:
+      length: 70
+      nullable: true
     postal_code:
       type: string
       length: 35
+      nullable: true
     country:
-      type: char
+      type: string
       length: 2
+      nullable: true
     latitude:
       type: decimal
       length: 9
+      scale: 6
+      unsigned: true
+      nullable: true
     longitude:
       type: decimal
       length: 9
+      scale: 6
+      unsigned: true
+      nullable: true
     phone:
       type: string
-      length 70:
+      length: 70
+      nullable: true
     website:
       type: string
       length: 700
+      nullable: true
     is_active:
-      type: bool
-      default : 1
+      type: boolean
+      nullable: false
+      options:
+       default: true
     sic_code:
-      type: char
+      type: string
       length: 4
+      nullable: true
     employee_count:
       type: integer
       unsigned: true
+      nullable: true
     created_at:
       type: datetime
-      length:
+      nullable: false
+      options:
+        timestampable:
+          on: create
     updated_at:
       type: datetime
       nullable: false
+      options:
+        timestampable:
+          on: update
     deleted_at:
       type: datetime
-      nullable: false
-
+      nullable: true
+  oneToMany:
+     Contacts:
+       targetEntity: Contact
+       mappedBy: Company
+       cascade: [ 'all' ]
+       orphanRemoval: true

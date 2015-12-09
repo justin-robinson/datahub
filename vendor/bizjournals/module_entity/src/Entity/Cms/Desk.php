@@ -2,8 +2,6 @@
 
 namespace Entity\Cms;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Desk
  */
@@ -33,9 +31,10 @@ class Desk extends \Entity\Entity\Base
     }
 
     /**
-     * Set desk_id
+     * Set deskId
      *
      * @param integer $deskId
+     *
      * @return Desk
      */
     public function setDeskId($deskId)
@@ -46,9 +45,9 @@ class Desk extends \Entity\Entity\Base
     }
 
     /**
-     * Get desk_id
+     * Get deskId
      *
-     * @return integer 
+     * @return integer
      */
     public function getDeskId()
     {
@@ -56,9 +55,10 @@ class Desk extends \Entity\Entity\Base
     }
 
     /**
-     * Set desk_name
+     * Set deskName
      *
      * @param string $deskName
+     *
      * @return Desk
      */
     public function setDeskName($deskName)
@@ -69,9 +69,9 @@ class Desk extends \Entity\Entity\Base
     }
 
     /**
-     * Get desk_name
+     * Get deskName
      *
-     * @return string 
+     * @return string
      */
     public function getDeskName()
     {
@@ -79,9 +79,10 @@ class Desk extends \Entity\Entity\Base
     }
 
     /**
-     * Add Content
+     * Add content
      *
      * @param \Entity\Cms\Content $content
+     *
      * @return Desk
      */
     public function addContent(\Entity\Cms\Content $content)
@@ -92,7 +93,7 @@ class Desk extends \Entity\Entity\Base
     }
 
     /**
-     * Remove Content
+     * Remove content
      *
      * @param \Entity\Cms\Content $content
      */
@@ -102,12 +103,13 @@ class Desk extends \Entity\Entity\Base
     }
 
     /**
-     * Get Content
+     * Get content
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getContent()
     {
         return $this->Content;
     }
 }
+

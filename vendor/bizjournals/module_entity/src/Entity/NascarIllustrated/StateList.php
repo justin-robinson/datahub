@@ -2,8 +2,6 @@
 
 namespace Entity\NascarIllustrated;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * StateList
  */
@@ -31,9 +29,10 @@ class StateList extends \Entity\Entity\Base
 
 
     /**
-     * Set state_code
+     * Set stateCode
      *
      * @param string $stateCode
+     *
      * @return StateList
      */
     public function setStateCode($stateCode)
@@ -44,9 +43,9 @@ class StateList extends \Entity\Entity\Base
     }
 
     /**
-     * Get state_code
+     * Get stateCode
      *
-     * @return string 
+     * @return string
      */
     public function getStateCode()
     {
@@ -54,9 +53,10 @@ class StateList extends \Entity\Entity\Base
     }
 
     /**
-     * Set state_name
+     * Set stateName
      *
      * @param string $stateName
+     *
      * @return StateList
      */
     public function setStateName($stateName)
@@ -67,9 +67,9 @@ class StateList extends \Entity\Entity\Base
     }
 
     /**
-     * Get state_name
+     * Get stateName
      *
-     * @return string 
+     * @return string
      */
     public function getStateName()
     {
@@ -77,9 +77,10 @@ class StateList extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_active
+     * Set isActive
      *
      * @param boolean $isActive
+     *
      * @return StateList
      */
     public function setIsActive($isActive)
@@ -90,9 +91,9 @@ class StateList extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_active
+     * Get isActive
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsActive()
     {
@@ -103,6 +104,7 @@ class StateList extends \Entity\Entity\Base
      * Set ord
      *
      * @param integer $ord
+     *
      * @return StateList
      */
     public function setOrd($ord)
@@ -115,10 +117,11 @@ class StateList extends \Entity\Entity\Base
     /**
      * Get ord
      *
-     * @return integer 
+     * @return integer
      */
     public function getOrd()
     {
         return $this->ord;
     }
 }
+

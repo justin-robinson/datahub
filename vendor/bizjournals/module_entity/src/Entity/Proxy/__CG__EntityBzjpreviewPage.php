@@ -572,23 +572,23 @@ class Page extends \Entity\Bzjpreview\Page implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function addContent(\Entity\Bzjpreview\PageContent $contents)
+    public function addContent(\Entity\Bzjpreview\PageContent $content)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addContent', array($contents));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addContent', array($content));
 
-        return parent::addContent($contents);
+        return parent::addContent($content);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeContent(\Entity\Bzjpreview\PageContent $contents)
+    public function removeContent(\Entity\Bzjpreview\PageContent $content)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeContent', array($contents));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeContent', array($content));
 
-        return parent::removeContent($contents);
+        return parent::removeContent($content);
     }
 
     /**
@@ -605,23 +605,23 @@ class Page extends \Entity\Bzjpreview\Page implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function addCorrection(\Entity\Bzjpreview\PageCorrection $corrections)
+    public function addCorrection(\Entity\Bzjpreview\PageCorrection $correction)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCorrection', array($corrections));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCorrection', array($correction));
 
-        return parent::addCorrection($corrections);
+        return parent::addCorrection($correction);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeCorrection(\Entity\Bzjpreview\PageCorrection $corrections)
+    public function removeCorrection(\Entity\Bzjpreview\PageCorrection $correction)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCorrection', array($corrections));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCorrection', array($correction));
 
-        return parent::removeCorrection($corrections);
+        return parent::removeCorrection($correction);
     }
 
     /**
@@ -638,23 +638,23 @@ class Page extends \Entity\Bzjpreview\Page implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function addMetadatum(\Entity\Bzjpreview\PageMetadata $metadata)
+    public function addMetadatum(\Entity\Bzjpreview\PageMetadata $metadatum)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMetadatum', array($metadata));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMetadatum', array($metadatum));
 
-        return parent::addMetadatum($metadata);
+        return parent::addMetadatum($metadatum);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeMetadatum(\Entity\Bzjpreview\PageMetadata $metadata)
+    public function removeMetadatum(\Entity\Bzjpreview\PageMetadata $metadatum)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMetadatum', array($metadata));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMetadatum', array($metadatum));
 
-        return parent::removeMetadatum($metadata);
+        return parent::removeMetadatum($metadatum);
     }
 
     /**
@@ -671,23 +671,23 @@ class Page extends \Entity\Bzjpreview\Page implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function addLeadinGroup(\Entity\Bzjpreview\PageLeadinGroup $leadinGroups)
+    public function addLeadinGroup(\Entity\Bzjpreview\PageLeadinGroup $leadinGroup)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addLeadinGroup', array($leadinGroups));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addLeadinGroup', array($leadinGroup));
 
-        return parent::addLeadinGroup($leadinGroups);
+        return parent::addLeadinGroup($leadinGroup);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeLeadinGroup(\Entity\Bzjpreview\PageLeadinGroup $leadinGroups)
+    public function removeLeadinGroup(\Entity\Bzjpreview\PageLeadinGroup $leadinGroup)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeLeadinGroup', array($leadinGroups));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeLeadinGroup', array($leadinGroup));
 
-        return parent::removeLeadinGroup($leadinGroups);
+        return parent::removeLeadinGroup($leadinGroup);
     }
 
     /**
@@ -704,23 +704,23 @@ class Page extends \Entity\Bzjpreview\Page implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function addCrossref(\Entity\Bzjpreview\PageCrossref $crossrefs)
+    public function addCrossref(\Entity\Bzjpreview\PageCrossref $crossref)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCrossref', array($crossrefs));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCrossref', array($crossref));
 
-        return parent::addCrossref($crossrefs);
+        return parent::addCrossref($crossref);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeCrossref(\Entity\Bzjpreview\PageCrossref $crossrefs)
+    public function removeCrossref(\Entity\Bzjpreview\PageCrossref $crossref)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCrossref', array($crossrefs));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCrossref', array($crossref));
 
-        return parent::removeCrossref($crossrefs);
+        return parent::removeCrossref($crossref);
     }
 
     /**
@@ -770,23 +770,23 @@ class Page extends \Entity\Bzjpreview\Page implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function addMedia(\Entity\Bzjpreview\PageMedia $media)
+    public function addMedia(\Entity\Bzjpreview\PageMedia $medium)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMedia', array($media));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMedia', array($medium));
 
-        return parent::addMedia($media);
+        return parent::addMedia($medium);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeMedia(\Entity\Bzjpreview\PageMedia $media)
+    public function removeMedia(\Entity\Bzjpreview\PageMedia $medium)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMedia', array($media));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMedia', array($medium));
 
-        return parent::removeMedia($media);
+        return parent::removeMedia($medium);
     }
 
     /**
@@ -803,23 +803,23 @@ class Page extends \Entity\Bzjpreview\Page implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function addUrl(\Entity\Bzjpreview\PageUrl $urls)
+    public function addUrl(\Entity\Bzjpreview\PageUrl $url)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addUrl', array($urls));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addUrl', array($url));
 
-        return parent::addUrl($urls);
+        return parent::addUrl($url);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeUrl(\Entity\Bzjpreview\PageUrl $urls)
+    public function removeUrl(\Entity\Bzjpreview\PageUrl $url)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeUrl', array($urls));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeUrl', array($url));
 
-        return parent::removeUrl($urls);
+        return parent::removeUrl($url);
     }
 
     /**

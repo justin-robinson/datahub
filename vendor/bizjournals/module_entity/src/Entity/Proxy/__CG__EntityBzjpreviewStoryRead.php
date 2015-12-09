@@ -946,23 +946,23 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     /**
      * {@inheritDoc}
      */
-    public function addCompany(\Entity\Bzjpreview\StoryEntityCompany $companies)
+    public function addCompany(\Entity\Bzjpreview\StoryEntityCompany $company)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCompany', array($companies));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCompany', array($company));
 
-        return parent::addCompany($companies);
+        return parent::addCompany($company);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeCompany(\Entity\Bzjpreview\StoryEntityCompany $companies)
+    public function removeCompany(\Entity\Bzjpreview\StoryEntityCompany $company)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCompany', array($companies));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCompany', array($company));
 
-        return parent::removeCompany($companies);
+        return parent::removeCompany($company);
     }
 
     /**
@@ -979,23 +979,23 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     /**
      * {@inheritDoc}
      */
-    public function addPerson(\Entity\Bzjpreview\StoryPerson $people)
+    public function addPerson(\Entity\Bzjpreview\StoryPerson $person)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addPerson', array($people));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addPerson', array($person));
 
-        return parent::addPerson($people);
+        return parent::addPerson($person);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removePerson(\Entity\Bzjpreview\StoryPerson $people)
+    public function removePerson(\Entity\Bzjpreview\StoryPerson $person)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removePerson', array($people));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removePerson', array($person));
 
-        return parent::removePerson($people);
+        return parent::removePerson($person);
     }
 
     /**
@@ -1012,23 +1012,23 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     /**
      * {@inheritDoc}
      */
-    public function addIndustry(\Entity\Bzjpreview\StoryVerticalSubtopic $industries)
+    public function addIndustry(\Entity\Bzjpreview\StoryVerticalSubtopic $industry)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addIndustry', array($industries));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addIndustry', array($industry));
 
-        return parent::addIndustry($industries);
+        return parent::addIndustry($industry);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeIndustry(\Entity\Bzjpreview\StoryVerticalSubtopic $industries)
+    public function removeIndustry(\Entity\Bzjpreview\StoryVerticalSubtopic $industry)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeIndustry', array($industries));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeIndustry', array($industry));
 
-        return parent::removeIndustry($industries);
+        return parent::removeIndustry($industry);
     }
 
     /**
@@ -1045,23 +1045,23 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     /**
      * {@inheritDoc}
      */
-    public function addImage(\Entity\Bzjpreview\StoryImage $images)
+    public function addImage(\Entity\Bzjpreview\StoryImage $image)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addImage', array($images));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addImage', array($image));
 
-        return parent::addImage($images);
+        return parent::addImage($image);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeImage(\Entity\Bzjpreview\StoryImage $images)
+    public function removeImage(\Entity\Bzjpreview\StoryImage $image)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeImage', array($images));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeImage', array($image));
 
-        return parent::removeImage($images);
+        return parent::removeImage($image);
     }
 
     /**
@@ -1078,23 +1078,23 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     /**
      * {@inheritDoc}
      */
-    public function addSpecialCategory(\Entity\Bzjpreview\StorySpecialCategory $specialCategories)
+    public function addSpecialCategory(\Entity\Bzjpreview\StorySpecialCategory $specialCategory)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addSpecialCategory', array($specialCategories));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addSpecialCategory', array($specialCategory));
 
-        return parent::addSpecialCategory($specialCategories);
+        return parent::addSpecialCategory($specialCategory);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeSpecialCategory(\Entity\Bzjpreview\StorySpecialCategory $specialCategories)
+    public function removeSpecialCategory(\Entity\Bzjpreview\StorySpecialCategory $specialCategory)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeSpecialCategory', array($specialCategories));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeSpecialCategory', array($specialCategory));
 
-        return parent::removeSpecialCategory($specialCategories);
+        return parent::removeSpecialCategory($specialCategory);
     }
 
     /**
@@ -1111,23 +1111,23 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     /**
      * {@inheritDoc}
      */
-    public function addCorrection(\Entity\Bzjpreview\StoryCorrections $corrections)
+    public function addCorrection(\Entity\Bzjpreview\StoryCorrections $correction)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCorrection', array($corrections));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCorrection', array($correction));
 
-        return parent::addCorrection($corrections);
+        return parent::addCorrection($correction);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeCorrection(\Entity\Bzjpreview\StoryCorrections $corrections)
+    public function removeCorrection(\Entity\Bzjpreview\StoryCorrections $correction)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCorrection', array($corrections));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCorrection', array($correction));
 
-        return parent::removeCorrection($corrections);
+        return parent::removeCorrection($correction);
     }
 
     /**

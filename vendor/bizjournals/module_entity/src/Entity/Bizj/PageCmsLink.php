@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * PageCmsLink
  */
@@ -61,9 +59,9 @@ class PageCmsLink extends \Entity\Entity\Base
 
 
     /**
-     * Get page_id
+     * Get pageId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPageId()
     {
@@ -71,9 +69,10 @@ class PageCmsLink extends \Entity\Entity\Base
     }
 
     /**
-     * Set reserve_time
+     * Set reserveTime
      *
      * @param \DateTime $reserveTime
+     *
      * @return PageCmsLink
      */
     public function setReserveTime($reserveTime)
@@ -84,9 +83,9 @@ class PageCmsLink extends \Entity\Entity\Base
     }
 
     /**
-     * Get reserve_time
+     * Get reserveTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getReserveTime()
     {
@@ -94,9 +93,10 @@ class PageCmsLink extends \Entity\Entity\Base
     }
 
     /**
-     * Set publish_time
+     * Set publishTime
      *
      * @param \DateTime $publishTime
+     *
      * @return PageCmsLink
      */
     public function setPublishTime($publishTime)
@@ -107,9 +107,9 @@ class PageCmsLink extends \Entity\Entity\Base
     }
 
     /**
-     * Get publish_time
+     * Get publishTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getPublishTime()
     {
@@ -117,9 +117,10 @@ class PageCmsLink extends \Entity\Entity\Base
     }
 
     /**
-     * Set revision_time
+     * Set revisionTime
      *
      * @param \DateTime $revisionTime
+     *
      * @return PageCmsLink
      */
     public function setRevisionTime($revisionTime)
@@ -130,9 +131,9 @@ class PageCmsLink extends \Entity\Entity\Base
     }
 
     /**
-     * Get revision_time
+     * Get revisionTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getRevisionTime()
     {
@@ -140,9 +141,10 @@ class PageCmsLink extends \Entity\Entity\Base
     }
 
     /**
-     * Set delete_time
+     * Set deleteTime
      *
      * @param \DateTime $deleteTime
+     *
      * @return PageCmsLink
      */
     public function setDeleteTime($deleteTime)
@@ -153,9 +155,9 @@ class PageCmsLink extends \Entity\Entity\Base
     }
 
     /**
-     * Get delete_time
+     * Get deleteTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDeleteTime()
     {
@@ -163,9 +165,10 @@ class PageCmsLink extends \Entity\Entity\Base
     }
 
     /**
-     * Set delete_issue_date
+     * Set deleteIssueDate
      *
      * @param \DateTime $deleteIssueDate
+     *
      * @return PageCmsLink
      */
     public function setDeleteIssueDate($deleteIssueDate)
@@ -176,9 +179,9 @@ class PageCmsLink extends \Entity\Entity\Base
     }
 
     /**
-     * Get delete_issue_date
+     * Get deleteIssueDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDeleteIssueDate()
     {
@@ -189,6 +192,7 @@ class PageCmsLink extends \Entity\Entity\Base
      * Set url
      *
      * @param string $url
+     *
      * @return PageCmsLink
      */
     public function setUrl($url)
@@ -201,7 +205,7 @@ class PageCmsLink extends \Entity\Entity\Base
     /**
      * Get url
      *
-     * @return string 
+     * @return string
      */
     public function getUrl()
     {
@@ -212,6 +216,7 @@ class PageCmsLink extends \Entity\Entity\Base
      * Set headline
      *
      * @param string $headline
+     *
      * @return PageCmsLink
      */
     public function setHeadline($headline)
@@ -224,7 +229,7 @@ class PageCmsLink extends \Entity\Entity\Base
     /**
      * Get headline
      *
-     * @return string 
+     * @return string
      */
     public function getHeadline()
     {
@@ -232,9 +237,10 @@ class PageCmsLink extends \Entity\Entity\Base
     }
 
     /**
-     * Set type_id
+     * Set typeId
      *
      * @param integer $typeId
+     *
      * @return PageCmsLink
      */
     public function setTypeId($typeId)
@@ -245,9 +251,9 @@ class PageCmsLink extends \Entity\Entity\Base
     }
 
     /**
-     * Get type_id
+     * Get typeId
      *
-     * @return integer 
+     * @return integer
      */
     public function getTypeId()
     {
@@ -258,6 +264,7 @@ class PageCmsLink extends \Entity\Entity\Base
      * Set source
      *
      * @param string $source
+     *
      * @return PageCmsLink
      */
     public function setSource($source)
@@ -270,10 +277,11 @@ class PageCmsLink extends \Entity\Entity\Base
     /**
      * Get source
      *
-     * @return string 
+     * @return string
      */
     public function getSource()
     {
         return $this->source;
     }
 }
+

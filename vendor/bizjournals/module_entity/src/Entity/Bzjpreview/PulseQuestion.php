@@ -2,8 +2,6 @@
 
 namespace Entity\Bzjpreview;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * PulseQuestion
  */
@@ -78,9 +76,9 @@ class PulseQuestion extends \Entity\Entity\Base
     }
 
     /**
-     * Get question_id
+     * Get questionId
      *
-     * @return integer 
+     * @return integer
      */
     public function getQuestionId()
     {
@@ -88,9 +86,10 @@ class PulseQuestion extends \Entity\Entity\Base
     }
 
     /**
-     * Set pulse_id
+     * Set pulseId
      *
      * @param integer $pulseId
+     *
      * @return PulseQuestion
      */
     public function setPulseId($pulseId)
@@ -101,9 +100,9 @@ class PulseQuestion extends \Entity\Entity\Base
     }
 
     /**
-     * Get pulse_id
+     * Get pulseId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPulseId()
     {
@@ -114,6 +113,7 @@ class PulseQuestion extends \Entity\Entity\Base
      * Set question
      *
      * @param string $question
+     *
      * @return PulseQuestion
      */
     public function setQuestion($question)
@@ -126,7 +126,7 @@ class PulseQuestion extends \Entity\Entity\Base
     /**
      * Get question
      *
-     * @return string 
+     * @return string
      */
     public function getQuestion()
     {
@@ -137,6 +137,7 @@ class PulseQuestion extends \Entity\Entity\Base
      * Set ord
      *
      * @param integer $ord
+     *
      * @return PulseQuestion
      */
     public function setOrd($ord)
@@ -149,7 +150,7 @@ class PulseQuestion extends \Entity\Entity\Base
     /**
      * Get ord
      *
-     * @return integer 
+     * @return integer
      */
     public function getOrd()
     {
@@ -157,9 +158,10 @@ class PulseQuestion extends \Entity\Entity\Base
     }
 
     /**
-     * Set option_type
+     * Set optionType
      *
      * @param string $optionType
+     *
      * @return PulseQuestion
      */
     public function setOptionType($optionType)
@@ -170,9 +172,9 @@ class PulseQuestion extends \Entity\Entity\Base
     }
 
     /**
-     * Get option_type
+     * Get optionType
      *
-     * @return string 
+     * @return string
      */
     public function getOptionType()
     {
@@ -180,9 +182,10 @@ class PulseQuestion extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_required
+     * Set isRequired
      *
      * @param boolean $isRequired
+     *
      * @return PulseQuestion
      */
     public function setIsRequired($isRequired)
@@ -193,9 +196,9 @@ class PulseQuestion extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_required
+     * Get isRequired
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsRequired()
     {
@@ -203,9 +206,10 @@ class PulseQuestion extends \Entity\Entity\Base
     }
 
     /**
-     * Set results_cache
+     * Set resultsCache
      *
      * @param string $resultsCache
+     *
      * @return PulseQuestion
      */
     public function setResultsCache($resultsCache)
@@ -216,9 +220,9 @@ class PulseQuestion extends \Entity\Entity\Base
     }
 
     /**
-     * Get results_cache
+     * Get resultsCache
      *
-     * @return string 
+     * @return string
      */
     public function getResultsCache()
     {
@@ -226,9 +230,10 @@ class PulseQuestion extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return PulseQuestion
      */
     public function setCreatedAt($createdAt)
@@ -239,9 +244,9 @@ class PulseQuestion extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -249,9 +254,10 @@ class PulseQuestion extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return PulseQuestion
      */
     public function setUpdatedAt($updatedAt)
@@ -262,9 +268,9 @@ class PulseQuestion extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -272,9 +278,10 @@ class PulseQuestion extends \Entity\Entity\Base
     }
 
     /**
-     * Set deleted_at
+     * Set deletedAt
      *
      * @param \DateTime $deletedAt
+     *
      * @return PulseQuestion
      */
     public function setDeletedAt($deletedAt)
@@ -285,9 +292,9 @@ class PulseQuestion extends \Entity\Entity\Base
     }
 
     /**
-     * Get deleted_at
+     * Get deletedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDeletedAt()
     {
@@ -295,32 +302,33 @@ class PulseQuestion extends \Entity\Entity\Base
     }
 
     /**
-     * Add Options
+     * Add option
      *
-     * @param \Entity\Bzjpreview\PulseQuestionOption $options
+     * @param \Entity\Bzjpreview\PulseQuestionOption $option
+     *
      * @return PulseQuestion
      */
-    public function addOption(\Entity\Bzjpreview\PulseQuestionOption $options)
+    public function addOption(\Entity\Bzjpreview\PulseQuestionOption $option)
     {
-        $this->Options[] = $options;
+        $this->Options[] = $option;
 
         return $this;
     }
 
     /**
-     * Remove Options
+     * Remove option
      *
-     * @param \Entity\Bzjpreview\PulseQuestionOption $options
+     * @param \Entity\Bzjpreview\PulseQuestionOption $option
      */
-    public function removeOption(\Entity\Bzjpreview\PulseQuestionOption $options)
+    public function removeOption(\Entity\Bzjpreview\PulseQuestionOption $option)
     {
-        $this->Options->removeElement($options);
+        $this->Options->removeElement($option);
     }
 
     /**
-     * Get Options
+     * Get options
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getOptions()
     {
@@ -328,9 +336,10 @@ class PulseQuestion extends \Entity\Entity\Base
     }
 
     /**
-     * Set Pulse
+     * Set pulse
      *
      * @param \Entity\Bzjpreview\Pulse $pulse
+     *
      * @return PulseQuestion
      */
     public function setPulse(\Entity\Bzjpreview\Pulse $pulse = null)
@@ -341,12 +350,13 @@ class PulseQuestion extends \Entity\Entity\Base
     }
 
     /**
-     * Get Pulse
+     * Get pulse
      *
-     * @return \Entity\Bzjpreview\Pulse 
+     * @return \Entity\Bzjpreview\Pulse
      */
     public function getPulse()
     {
         return $this->Pulse;
     }
 }
+

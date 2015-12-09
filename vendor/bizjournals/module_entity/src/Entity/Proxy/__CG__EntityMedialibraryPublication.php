@@ -319,23 +319,23 @@ class Publication extends \Entity\Medialibrary\Publication implements \Doctrine\
     /**
      * {@inheritDoc}
      */
-    public function addMediaPub(\Entity\Medialibrary\MediaPub $mediaPubs)
+    public function addMediaPub(\Entity\Medialibrary\MediaPub $mediaPub)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMediaPub', array($mediaPubs));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMediaPub', array($mediaPub));
 
-        return parent::addMediaPub($mediaPubs);
+        return parent::addMediaPub($mediaPub);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeMediaPub(\Entity\Medialibrary\MediaPub $mediaPubs)
+    public function removeMediaPub(\Entity\Medialibrary\MediaPub $mediaPub)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMediaPub', array($mediaPubs));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMediaPub', array($mediaPub));
 
-        return parent::removeMediaPub($mediaPubs);
+        return parent::removeMediaPub($mediaPub);
     }
 
     /**
@@ -352,23 +352,23 @@ class Publication extends \Entity\Medialibrary\Publication implements \Doctrine\
     /**
      * {@inheritDoc}
      */
-    public function addTag(\Entity\Medialibrary\Tag $tags)
+    public function addTag(\Entity\Medialibrary\Tag $tag)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addTag', array($tags));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addTag', array($tag));
 
-        return parent::addTag($tags);
+        return parent::addTag($tag);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeTag(\Entity\Medialibrary\Tag $tags)
+    public function removeTag(\Entity\Medialibrary\Tag $tag)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeTag', array($tags));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeTag', array($tag));
 
-        return parent::removeTag($tags);
+        return parent::removeTag($tag);
     }
 
     /**
@@ -385,23 +385,23 @@ class Publication extends \Entity\Medialibrary\Publication implements \Doctrine\
     /**
      * {@inheritDoc}
      */
-    public function addMediaLink(\Entity\Medialibrary\MediaLink $mediaLinks)
+    public function addMediaLink(\Entity\Medialibrary\MediaLink $mediaLink)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMediaLink', array($mediaLinks));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMediaLink', array($mediaLink));
 
-        return parent::addMediaLink($mediaLinks);
+        return parent::addMediaLink($mediaLink);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeMediaLink(\Entity\Medialibrary\MediaLink $mediaLinks)
+    public function removeMediaLink(\Entity\Medialibrary\MediaLink $mediaLink)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMediaLink', array($mediaLinks));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMediaLink', array($mediaLink));
 
-        return parent::removeMediaLink($mediaLinks);
+        return parent::removeMediaLink($mediaLink);
     }
 
     /**

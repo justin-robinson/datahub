@@ -2,8 +2,6 @@
 
 namespace Entity\Bzjpreview;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * PulseLeadinGroup
  */
@@ -98,9 +96,9 @@ class PulseLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get group_id
+     * Get groupId
      *
-     * @return integer 
+     * @return integer
      */
     public function getGroupId()
     {
@@ -108,9 +106,10 @@ class PulseLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set pulse_id
+     * Set pulseId
      *
      * @param integer $pulseId
+     *
      * @return PulseLeadinGroup
      */
     public function setPulseId($pulseId)
@@ -121,9 +120,9 @@ class PulseLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get pulse_id
+     * Get pulseId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPulseId()
     {
@@ -131,9 +130,10 @@ class PulseLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set group_type
+     * Set groupType
      *
      * @param string $groupType
+     *
      * @return PulseLeadinGroup
      */
     public function setGroupType($groupType)
@@ -144,9 +144,9 @@ class PulseLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get group_type
+     * Get groupType
      *
-     * @return string 
+     * @return string
      */
     public function getGroupType()
     {
@@ -154,9 +154,10 @@ class PulseLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set group_title
+     * Set groupTitle
      *
      * @param string $groupTitle
+     *
      * @return PulseLeadinGroup
      */
     public function setGroupTitle($groupTitle)
@@ -167,9 +168,9 @@ class PulseLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get group_title
+     * Get groupTitle
      *
-     * @return string 
+     * @return string
      */
     public function getGroupTitle()
     {
@@ -177,9 +178,10 @@ class PulseLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set group_class
+     * Set groupClass
      *
      * @param string $groupClass
+     *
      * @return PulseLeadinGroup
      */
     public function setGroupClass($groupClass)
@@ -190,9 +192,9 @@ class PulseLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get group_class
+     * Get groupClass
      *
-     * @return string 
+     * @return string
      */
     public function getGroupClass()
     {
@@ -200,9 +202,10 @@ class PulseLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set group_topic
+     * Set groupTopic
      *
      * @param string $groupTopic
+     *
      * @return PulseLeadinGroup
      */
     public function setGroupTopic($groupTopic)
@@ -213,9 +216,9 @@ class PulseLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get group_topic
+     * Get groupTopic
      *
-     * @return string 
+     * @return string
      */
     public function getGroupTopic()
     {
@@ -223,9 +226,10 @@ class PulseLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set group_teaser
+     * Set groupTeaser
      *
      * @param string $groupTeaser
+     *
      * @return PulseLeadinGroup
      */
     public function setGroupTeaser($groupTeaser)
@@ -236,9 +240,9 @@ class PulseLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get group_teaser
+     * Get groupTeaser
      *
-     * @return string 
+     * @return string
      */
     public function getGroupTeaser()
     {
@@ -249,6 +253,7 @@ class PulseLeadinGroup extends \Entity\Entity\Base
      * Set placement
      *
      * @param string $placement
+     *
      * @return PulseLeadinGroup
      */
     public function setPlacement($placement)
@@ -261,7 +266,7 @@ class PulseLeadinGroup extends \Entity\Entity\Base
     /**
      * Get placement
      *
-     * @return string 
+     * @return string
      */
     public function getPlacement()
     {
@@ -272,6 +277,7 @@ class PulseLeadinGroup extends \Entity\Entity\Base
      * Set ord
      *
      * @param integer $ord
+     *
      * @return PulseLeadinGroup
      */
     public function setOrd($ord)
@@ -284,7 +290,7 @@ class PulseLeadinGroup extends \Entity\Entity\Base
     /**
      * Get ord
      *
-     * @return integer 
+     * @return integer
      */
     public function getOrd()
     {
@@ -292,9 +298,10 @@ class PulseLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set group_url
+     * Set groupUrl
      *
      * @param string $groupUrl
+     *
      * @return PulseLeadinGroup
      */
     public function setGroupUrl($groupUrl)
@@ -305,9 +312,9 @@ class PulseLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get group_url
+     * Get groupUrl
      *
-     * @return string 
+     * @return string
      */
     public function getGroupUrl()
     {
@@ -315,9 +322,10 @@ class PulseLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set auto_query
+     * Set autoQuery
      *
      * @param string $autoQuery
+     *
      * @return PulseLeadinGroup
      */
     public function setAutoQuery($autoQuery)
@@ -328,9 +336,9 @@ class PulseLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get auto_query
+     * Get autoQuery
      *
-     * @return string 
+     * @return string
      */
     public function getAutoQuery()
     {
@@ -338,9 +346,10 @@ class PulseLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return PulseLeadinGroup
      */
     public function setCreatedAt($createdAt)
@@ -351,9 +360,9 @@ class PulseLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -361,9 +370,10 @@ class PulseLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return PulseLeadinGroup
      */
     public function setUpdatedAt($updatedAt)
@@ -374,9 +384,9 @@ class PulseLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -384,9 +394,10 @@ class PulseLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set deleted_at
+     * Set deletedAt
      *
      * @param \DateTime $deletedAt
+     *
      * @return PulseLeadinGroup
      */
     public function setDeletedAt($deletedAt)
@@ -397,9 +408,9 @@ class PulseLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get deleted_at
+     * Get deletedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDeletedAt()
     {
@@ -407,32 +418,33 @@ class PulseLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Add LeadinItems
+     * Add leadinItem
      *
-     * @param \Entity\Bzjpreview\PulseLeadinItem $leadinItems
+     * @param \Entity\Bzjpreview\PulseLeadinItem $leadinItem
+     *
      * @return PulseLeadinGroup
      */
-    public function addLeadinItem(\Entity\Bzjpreview\PulseLeadinItem $leadinItems)
+    public function addLeadinItem(\Entity\Bzjpreview\PulseLeadinItem $leadinItem)
     {
-        $this->LeadinItems[] = $leadinItems;
+        $this->LeadinItems[] = $leadinItem;
 
         return $this;
     }
 
     /**
-     * Remove LeadinItems
+     * Remove leadinItem
      *
-     * @param \Entity\Bzjpreview\PulseLeadinItem $leadinItems
+     * @param \Entity\Bzjpreview\PulseLeadinItem $leadinItem
      */
-    public function removeLeadinItem(\Entity\Bzjpreview\PulseLeadinItem $leadinItems)
+    public function removeLeadinItem(\Entity\Bzjpreview\PulseLeadinItem $leadinItem)
     {
-        $this->LeadinItems->removeElement($leadinItems);
+        $this->LeadinItems->removeElement($leadinItem);
     }
 
     /**
-     * Get LeadinItems
+     * Get leadinItems
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getLeadinItems()
     {
@@ -440,9 +452,10 @@ class PulseLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Set Pulse
+     * Set pulse
      *
      * @param \Entity\Bzjpreview\Pulse $pulse
+     *
      * @return PulseLeadinGroup
      */
     public function setPulse(\Entity\Bzjpreview\Pulse $pulse = null)
@@ -453,12 +466,13 @@ class PulseLeadinGroup extends \Entity\Entity\Base
     }
 
     /**
-     * Get Pulse
+     * Get pulse
      *
-     * @return \Entity\Bzjpreview\Pulse 
+     * @return \Entity\Bzjpreview\Pulse
      */
     public function getPulse()
     {
         return $this->Pulse;
     }
 }
+

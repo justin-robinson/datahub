@@ -2,8 +2,6 @@
 
 namespace Entity\Email;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * EmailType
  */
@@ -136,9 +134,9 @@ class EmailType extends \Entity\Entity\Base
 
 
     /**
-     * Get product_id
+     * Get productId
      *
-     * @return integer 
+     * @return integer
      */
     public function getProductId()
     {
@@ -146,9 +144,10 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Set product_name
+     * Set productName
      *
      * @param string $productName
+     *
      * @return EmailType
      */
     public function setProductName($productName)
@@ -159,9 +158,9 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Get product_name
+     * Get productName
      *
-     * @return string 
+     * @return string
      */
     public function getProductName()
     {
@@ -169,9 +168,10 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Set product_title
+     * Set productTitle
      *
      * @param string $productTitle
+     *
      * @return EmailType
      */
     public function setProductTitle($productTitle)
@@ -182,9 +182,9 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Get product_title
+     * Get productTitle
      *
-     * @return string 
+     * @return string
      */
     public function getProductTitle()
     {
@@ -192,9 +192,10 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Set product_type
+     * Set productType
      *
      * @param string $productType
+     *
      * @return EmailType
      */
     public function setProductType($productType)
@@ -205,9 +206,9 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Get product_type
+     * Get productType
      *
-     * @return string 
+     * @return string
      */
     public function getProductType()
     {
@@ -218,6 +219,7 @@ class EmailType extends \Entity\Entity\Base
      * Set classification
      *
      * @param string $classification
+     *
      * @return EmailType
      */
     public function setClassification($classification)
@@ -230,7 +232,7 @@ class EmailType extends \Entity\Entity\Base
     /**
      * Get classification
      *
-     * @return string 
+     * @return string
      */
     public function getClassification()
     {
@@ -241,6 +243,7 @@ class EmailType extends \Entity\Entity\Base
      * Set site
      *
      * @param string $site
+     *
      * @return EmailType
      */
     public function setSite($site)
@@ -253,7 +256,7 @@ class EmailType extends \Entity\Entity\Base
     /**
      * Get site
      *
-     * @return string 
+     * @return string
      */
     public function getSite()
     {
@@ -264,6 +267,7 @@ class EmailType extends \Entity\Entity\Base
      * Set market
      *
      * @param string $market
+     *
      * @return EmailType
      */
     public function setMarket($market)
@@ -276,7 +280,7 @@ class EmailType extends \Entity\Entity\Base
     /**
      * Get market
      *
-     * @return string 
+     * @return string
      */
     public function getMarket()
     {
@@ -287,6 +291,7 @@ class EmailType extends \Entity\Entity\Base
      * Set skin
      *
      * @param string $skin
+     *
      * @return EmailType
      */
     public function setSkin($skin)
@@ -299,7 +304,7 @@ class EmailType extends \Entity\Entity\Base
     /**
      * Get skin
      *
-     * @return string 
+     * @return string
      */
     public function getSkin()
     {
@@ -307,9 +312,10 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Set tracking_code
+     * Set trackingCode
      *
      * @param string $trackingCode
+     *
      * @return EmailType
      */
     public function setTrackingCode($trackingCode)
@@ -320,9 +326,9 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Get tracking_code
+     * Get trackingCode
      *
-     * @return string 
+     * @return string
      */
     public function getTrackingCode()
     {
@@ -330,9 +336,10 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Set default_host
+     * Set defaultHost
      *
      * @param string $defaultHost
+     *
      * @return EmailType
      */
     public function setDefaultHost($defaultHost)
@@ -343,9 +350,9 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Get default_host
+     * Get defaultHost
      *
-     * @return string 
+     * @return string
      */
     public function getDefaultHost()
     {
@@ -353,9 +360,10 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Set default_subject
+     * Set defaultSubject
      *
      * @param string $defaultSubject
+     *
      * @return EmailType
      */
     public function setDefaultSubject($defaultSubject)
@@ -366,9 +374,9 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Get default_subject
+     * Get defaultSubject
      *
-     * @return string 
+     * @return string
      */
     public function getDefaultSubject()
     {
@@ -376,9 +384,10 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Set default_sender
+     * Set defaultSender
      *
      * @param string $defaultSender
+     *
      * @return EmailType
      */
     public function setDefaultSender($defaultSender)
@@ -389,9 +398,9 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Get default_sender
+     * Get defaultSender
      *
-     * @return string 
+     * @return string
      */
     public function getDefaultSender()
     {
@@ -399,9 +408,10 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Set reply_address
+     * Set replyAddress
      *
      * @param string $replyAddress
+     *
      * @return EmailType
      */
     public function setReplyAddress($replyAddress)
@@ -412,9 +422,9 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Get reply_address
+     * Get replyAddress
      *
-     * @return string 
+     * @return string
      */
     public function getReplyAddress()
     {
@@ -422,9 +432,10 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Set send_days
+     * Set sendDays
      *
      * @param string $sendDays
+     *
      * @return EmailType
      */
     public function setSendDays($sendDays)
@@ -435,9 +446,9 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Get send_days
+     * Get sendDays
      *
-     * @return string 
+     * @return string
      */
     public function getSendDays()
     {
@@ -445,9 +456,10 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Set send_time
+     * Set sendTime
      *
      * @param string $sendTime
+     *
      * @return EmailType
      */
     public function setSendTime($sendTime)
@@ -458,9 +470,9 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Get send_time
+     * Get sendTime
      *
-     * @return string 
+     * @return string
      */
     public function getSendTime()
     {
@@ -468,9 +480,10 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Set message_expiration
+     * Set messageExpiration
      *
      * @param integer $messageExpiration
+     *
      * @return EmailType
      */
     public function setMessageExpiration($messageExpiration)
@@ -481,9 +494,9 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Get message_expiration
+     * Get messageExpiration
      *
-     * @return integer 
+     * @return integer
      */
     public function getMessageExpiration()
     {
@@ -491,9 +504,10 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Set content_id
+     * Set contentId
      *
      * @param integer $contentId
+     *
      * @return EmailType
      */
     public function setContentId($contentId)
@@ -504,9 +518,9 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Get content_id
+     * Get contentId
      *
-     * @return integer 
+     * @return integer
      */
     public function getContentId()
     {
@@ -517,6 +531,7 @@ class EmailType extends \Entity\Entity\Base
      * Set managed
      *
      * @param boolean $managed
+     *
      * @return EmailType
      */
     public function setManaged($managed)
@@ -529,7 +544,7 @@ class EmailType extends \Entity\Entity\Base
     /**
      * Get managed
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getManaged()
     {
@@ -540,6 +555,7 @@ class EmailType extends \Entity\Entity\Base
      * Set active
      *
      * @param boolean $active
+     *
      * @return EmailType
      */
     public function setActive($active)
@@ -552,7 +568,7 @@ class EmailType extends \Entity\Entity\Base
     /**
      * Get active
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getActive()
     {
@@ -560,9 +576,10 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Set manual_send
+     * Set manualSend
      *
      * @param boolean $manualSend
+     *
      * @return EmailType
      */
     public function setManualSend($manualSend)
@@ -573,9 +590,9 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Get manual_send
+     * Get manualSend
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getManualSend()
     {
@@ -583,9 +600,10 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Set homepage_promo
+     * Set homepagePromo
      *
      * @param boolean $homepagePromo
+     *
      * @return EmailType
      */
     public function setHomepagePromo($homepagePromo)
@@ -596,9 +614,9 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Get homepage_promo
+     * Get homepagePromo
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getHomepagePromo()
     {
@@ -606,9 +624,10 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Set promo_text
+     * Set promoText
      *
      * @param string $promoText
+     *
      * @return EmailType
      */
     public function setPromoText($promoText)
@@ -619,9 +638,9 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Get promo_text
+     * Get promoText
      *
-     * @return string 
+     * @return string
      */
     public function getPromoText()
     {
@@ -629,9 +648,10 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Set product_recommendations
+     * Set productRecommendations
      *
      * @param string $productRecommendations
+     *
      * @return EmailType
      */
     public function setProductRecommendations($productRecommendations)
@@ -642,9 +662,9 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Get product_recommendations
+     * Get productRecommendations
      *
-     * @return string 
+     * @return string
      */
     public function getProductRecommendations()
     {
@@ -652,9 +672,10 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return EmailType
      */
     public function setCreatedAt($createdAt)
@@ -665,9 +686,9 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -675,9 +696,10 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return EmailType
      */
     public function setUpdatedAt($updatedAt)
@@ -688,12 +710,13 @@ class EmailType extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
         return $this->updated_at;
     }
 }
+

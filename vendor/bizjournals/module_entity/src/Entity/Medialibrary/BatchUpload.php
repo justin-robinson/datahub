@@ -2,8 +2,6 @@
 
 namespace Entity\Medialibrary;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * BatchUpload
  */
@@ -63,9 +61,9 @@ class BatchUpload extends \Entity\Entity\Base
     }
 
     /**
-     * Get batch_id
+     * Get batchId
      *
-     * @return integer 
+     * @return integer
      */
     public function getBatchId()
     {
@@ -73,9 +71,10 @@ class BatchUpload extends \Entity\Entity\Base
     }
 
     /**
-     * Set pub_id
+     * Set pubId
      *
      * @param integer $pubId
+     *
      * @return BatchUpload
      */
     public function setPubId($pubId)
@@ -86,9 +85,9 @@ class BatchUpload extends \Entity\Entity\Base
     }
 
     /**
-     * Get pub_id
+     * Get pubId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPubId()
     {
@@ -96,9 +95,10 @@ class BatchUpload extends \Entity\Entity\Base
     }
 
     /**
-     * Set ip_address
+     * Set ipAddress
      *
      * @param string $ipAddress
+     *
      * @return BatchUpload
      */
     public function setIpAddress($ipAddress)
@@ -109,9 +109,9 @@ class BatchUpload extends \Entity\Entity\Base
     }
 
     /**
-     * Get ip_address
+     * Get ipAddress
      *
-     * @return string 
+     * @return string
      */
     public function getIpAddress()
     {
@@ -119,9 +119,10 @@ class BatchUpload extends \Entity\Entity\Base
     }
 
     /**
-     * Set user_agent
+     * Set userAgent
      *
      * @param string $userAgent
+     *
      * @return BatchUpload
      */
     public function setUserAgent($userAgent)
@@ -132,9 +133,9 @@ class BatchUpload extends \Entity\Entity\Base
     }
 
     /**
-     * Get user_agent
+     * Get userAgent
      *
-     * @return string 
+     * @return string
      */
     public function getUserAgent()
     {
@@ -142,9 +143,10 @@ class BatchUpload extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_complete
+     * Set isComplete
      *
      * @param boolean $isComplete
+     *
      * @return BatchUpload
      */
     public function setIsComplete($isComplete)
@@ -155,9 +157,9 @@ class BatchUpload extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_complete
+     * Get isComplete
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsComplete()
     {
@@ -165,9 +167,10 @@ class BatchUpload extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_by
+     * Set createdBy
      *
      * @param string $createdBy
+     *
      * @return BatchUpload
      */
     public function setCreatedBy($createdBy)
@@ -178,9 +181,9 @@ class BatchUpload extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_by
+     * Get createdBy
      *
-     * @return string 
+     * @return string
      */
     public function getCreatedBy()
     {
@@ -188,9 +191,10 @@ class BatchUpload extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return BatchUpload
      */
     public function setCreatedAt($createdAt)
@@ -201,9 +205,9 @@ class BatchUpload extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -211,9 +215,10 @@ class BatchUpload extends \Entity\Entity\Base
     }
 
     /**
-     * Add BatchMedia
+     * Add batchMedia
      *
      * @param \Entity\Medialibrary\BatchMedia $batchMedia
+     *
      * @return BatchUpload
      */
     public function addBatchMedia(\Entity\Medialibrary\BatchMedia $batchMedia)
@@ -224,7 +229,7 @@ class BatchUpload extends \Entity\Entity\Base
     }
 
     /**
-     * Remove BatchMedia
+     * Remove batchMedia
      *
      * @param \Entity\Medialibrary\BatchMedia $batchMedia
      */
@@ -234,9 +239,9 @@ class BatchUpload extends \Entity\Entity\Base
     }
 
     /**
-     * Get BatchMedia
+     * Get batchMedia
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getBatchMedia()
     {
@@ -244,9 +249,10 @@ class BatchUpload extends \Entity\Entity\Base
     }
 
     /**
-     * Set Publication
+     * Set publication
      *
      * @param \Entity\Medialibrary\Publication $publication
+     *
      * @return BatchUpload
      */
     public function setPublication(\Entity\Medialibrary\Publication $publication = null)
@@ -257,12 +263,13 @@ class BatchUpload extends \Entity\Entity\Base
     }
 
     /**
-     * Get Publication
+     * Get publication
      *
-     * @return \Entity\Medialibrary\Publication 
+     * @return \Entity\Medialibrary\Publication
      */
     public function getPublication()
     {
         return $this->Publication;
     }
 }
+

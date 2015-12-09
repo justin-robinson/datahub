@@ -2,8 +2,6 @@
 
 namespace Entity\Bzjpreview;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * PulseMarketMap
  */
@@ -41,9 +39,10 @@ class PulseMarketMap extends \Entity\Entity\Base
 
 
     /**
-     * Set pulse_id
+     * Set pulseId
      *
      * @param integer $pulseId
+     *
      * @return PulseMarketMap
      */
     public function setPulseId($pulseId)
@@ -54,9 +53,9 @@ class PulseMarketMap extends \Entity\Entity\Base
     }
 
     /**
-     * Get pulse_id
+     * Get pulseId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPulseId()
     {
@@ -64,9 +63,10 @@ class PulseMarketMap extends \Entity\Entity\Base
     }
 
     /**
-     * Set market_id
+     * Set marketId
      *
      * @param integer $marketId
+     *
      * @return PulseMarketMap
      */
     public function setMarketId($marketId)
@@ -77,9 +77,9 @@ class PulseMarketMap extends \Entity\Entity\Base
     }
 
     /**
-     * Get market_id
+     * Get marketId
      *
-     * @return integer 
+     * @return integer
      */
     public function getMarketId()
     {
@@ -87,9 +87,10 @@ class PulseMarketMap extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return PulseMarketMap
      */
     public function setCreatedAt($createdAt)
@@ -100,9 +101,9 @@ class PulseMarketMap extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -110,9 +111,10 @@ class PulseMarketMap extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return PulseMarketMap
      */
     public function setUpdatedAt($updatedAt)
@@ -123,9 +125,9 @@ class PulseMarketMap extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -133,9 +135,10 @@ class PulseMarketMap extends \Entity\Entity\Base
     }
 
     /**
-     * Set deleted_at
+     * Set deletedAt
      *
      * @param \DateTime $deletedAt
+     *
      * @return PulseMarketMap
      */
     public function setDeletedAt($deletedAt)
@@ -146,9 +149,9 @@ class PulseMarketMap extends \Entity\Entity\Base
     }
 
     /**
-     * Get deleted_at
+     * Get deletedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDeletedAt()
     {
@@ -156,9 +159,10 @@ class PulseMarketMap extends \Entity\Entity\Base
     }
 
     /**
-     * Set Pulse
+     * Set pulse
      *
      * @param \Entity\Bzjpreview\Pulse $pulse
+     *
      * @return PulseMarketMap
      */
     public function setPulse(\Entity\Bzjpreview\Pulse $pulse = null)
@@ -169,12 +173,13 @@ class PulseMarketMap extends \Entity\Entity\Base
     }
 
     /**
-     * Get Pulse
+     * Get pulse
      *
-     * @return \Entity\Bzjpreview\Pulse 
+     * @return \Entity\Bzjpreview\Pulse
      */
     public function getPulse()
     {
         return $this->Pulse;
     }
 }
+

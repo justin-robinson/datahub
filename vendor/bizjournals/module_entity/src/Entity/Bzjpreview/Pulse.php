@@ -2,8 +2,6 @@
 
 namespace Entity\Bzjpreview;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Pulse
  */
@@ -147,9 +145,10 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Set pulse_id
+     * Set pulseId
      *
      * @param integer $pulseId
+     *
      * @return Pulse
      */
     public function setPulseId($pulseId)
@@ -160,9 +159,9 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Get pulse_id
+     * Get pulseId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPulseId()
     {
@@ -170,9 +169,10 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Set pulse_type
+     * Set pulseType
      *
      * @param string $pulseType
+     *
      * @return Pulse
      */
     public function setPulseType($pulseType)
@@ -183,9 +183,9 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Get pulse_type
+     * Get pulseType
      *
-     * @return string 
+     * @return string
      */
     public function getPulseType()
     {
@@ -193,9 +193,10 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Set primary_market_id
+     * Set primaryMarketId
      *
      * @param integer $primaryMarketId
+     *
      * @return Pulse
      */
     public function setPrimaryMarketId($primaryMarketId)
@@ -206,9 +207,9 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Get primary_market_id
+     * Get primaryMarketId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPrimaryMarketId()
     {
@@ -219,6 +220,7 @@ class Pulse extends \Entity\Entity\Base
      * Set headline
      *
      * @param string $headline
+     *
      * @return Pulse
      */
     public function setHeadline($headline)
@@ -231,7 +233,7 @@ class Pulse extends \Entity\Entity\Base
     /**
      * Get headline
      *
-     * @return string 
+     * @return string
      */
     public function getHeadline()
     {
@@ -239,9 +241,10 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Set short_headline
+     * Set shortHeadline
      *
      * @param string $shortHeadline
+     *
      * @return Pulse
      */
     public function setShortHeadline($shortHeadline)
@@ -252,9 +255,9 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Get short_headline
+     * Get shortHeadline
      *
-     * @return string 
+     * @return string
      */
     public function getShortHeadline()
     {
@@ -265,6 +268,7 @@ class Pulse extends \Entity\Entity\Base
      * Set description
      *
      * @param string $description
+     *
      * @return Pulse
      */
     public function setDescription($description)
@@ -277,7 +281,7 @@ class Pulse extends \Entity\Entity\Base
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -285,9 +289,10 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Set start_time
+     * Set startTime
      *
      * @param \DateTime $startTime
+     *
      * @return Pulse
      */
     public function setStartTime($startTime)
@@ -298,9 +303,9 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Get start_time
+     * Get startTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getStartTime()
     {
@@ -308,9 +313,10 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Set end_time
+     * Set endTime
      *
      * @param \DateTime $endTime
+     *
      * @return Pulse
      */
     public function setEndTime($endTime)
@@ -321,9 +327,9 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Get end_time
+     * Get endTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getEndTime()
     {
@@ -331,9 +337,10 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_evergreen
+     * Set isEvergreen
      *
      * @param boolean $isEvergreen
+     *
      * @return Pulse
      */
     public function setIsEvergreen($isEvergreen)
@@ -344,9 +351,9 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_evergreen
+     * Get isEvergreen
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsEvergreen()
     {
@@ -354,9 +361,10 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_featured
+     * Set isFeatured
      *
      * @param boolean $isFeatured
+     *
      * @return Pulse
      */
     public function setIsFeatured($isFeatured)
@@ -367,9 +375,9 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_featured
+     * Get isFeatured
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsFeatured()
     {
@@ -377,9 +385,10 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_national
+     * Set isNational
      *
      * @param boolean $isNational
+     *
      * @return Pulse
      */
     public function setIsNational($isNational)
@@ -390,9 +399,9 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_national
+     * Get isNational
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsNational()
     {
@@ -400,9 +409,10 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Set has_sponsor
+     * Set hasSponsor
      *
      * @param boolean $hasSponsor
+     *
      * @return Pulse
      */
     public function setHasSponsor($hasSponsor)
@@ -413,9 +423,9 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Get has_sponsor
+     * Get hasSponsor
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getHasSponsor()
     {
@@ -423,9 +433,10 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Set allow_comments
+     * Set allowComments
      *
      * @param boolean $allowComments
+     *
      * @return Pulse
      */
     public function setAllowComments($allowComments)
@@ -436,9 +447,9 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Get allow_comments
+     * Get allowComments
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getAllowComments()
     {
@@ -446,9 +457,10 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Set display_results
+     * Set displayResults
      *
      * @param boolean $displayResults
+     *
      * @return Pulse
      */
     public function setDisplayResults($displayResults)
@@ -459,9 +471,9 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Get display_results
+     * Get displayResults
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getDisplayResults()
     {
@@ -469,9 +481,10 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Set meta_title
+     * Set metaTitle
      *
      * @param string $metaTitle
+     *
      * @return Pulse
      */
     public function setMetaTitle($metaTitle)
@@ -482,9 +495,9 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Get meta_title
+     * Get metaTitle
      *
-     * @return string 
+     * @return string
      */
     public function getMetaTitle()
     {
@@ -492,9 +505,10 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Set meta_description
+     * Set metaDescription
      *
      * @param string $metaDescription
+     *
      * @return Pulse
      */
     public function setMetaDescription($metaDescription)
@@ -505,9 +519,9 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Get meta_description
+     * Get metaDescription
      *
-     * @return string 
+     * @return string
      */
     public function getMetaDescription()
     {
@@ -515,9 +529,10 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Set estimated_response_count
+     * Set estimatedResponseCount
      *
      * @param integer $estimatedResponseCount
+     *
      * @return Pulse
      */
     public function setEstimatedResponseCount($estimatedResponseCount)
@@ -528,9 +543,9 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Get estimated_response_count
+     * Get estimatedResponseCount
      *
-     * @return integer 
+     * @return integer
      */
     public function getEstimatedResponseCount()
     {
@@ -538,9 +553,10 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return Pulse
      */
     public function setCreatedAt($createdAt)
@@ -551,9 +567,9 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -561,9 +577,10 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return Pulse
      */
     public function setUpdatedAt($updatedAt)
@@ -574,9 +591,9 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -584,9 +601,10 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Set deleted_at
+     * Set deletedAt
      *
      * @param \DateTime $deletedAt
+     *
      * @return Pulse
      */
     public function setDeletedAt($deletedAt)
@@ -597,9 +615,9 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Get deleted_at
+     * Get deletedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDeletedAt()
     {
@@ -607,32 +625,33 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Add Crossrefs
+     * Add crossref
      *
-     * @param \Entity\Bzjpreview\PulseCrossref $crossrefs
+     * @param \Entity\Bzjpreview\PulseCrossref $crossref
+     *
      * @return Pulse
      */
-    public function addCrossref(\Entity\Bzjpreview\PulseCrossref $crossrefs)
+    public function addCrossref(\Entity\Bzjpreview\PulseCrossref $crossref)
     {
-        $this->Crossrefs[] = $crossrefs;
+        $this->Crossrefs[] = $crossref;
 
         return $this;
     }
 
     /**
-     * Remove Crossrefs
+     * Remove crossref
      *
-     * @param \Entity\Bzjpreview\PulseCrossref $crossrefs
+     * @param \Entity\Bzjpreview\PulseCrossref $crossref
      */
-    public function removeCrossref(\Entity\Bzjpreview\PulseCrossref $crossrefs)
+    public function removeCrossref(\Entity\Bzjpreview\PulseCrossref $crossref)
     {
-        $this->Crossrefs->removeElement($crossrefs);
+        $this->Crossrefs->removeElement($crossref);
     }
 
     /**
-     * Get Crossrefs
+     * Get crossrefs
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getCrossrefs()
     {
@@ -640,32 +659,33 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Add Media
+     * Add medium
      *
-     * @param \Entity\Bzjpreview\PulseMedia $media
+     * @param \Entity\Bzjpreview\PulseMedia $medium
+     *
      * @return Pulse
      */
-    public function addMedia(\Entity\Bzjpreview\PulseMedia $media)
+    public function addMedia(\Entity\Bzjpreview\PulseMedia $medium)
     {
-        $this->Media[] = $media;
+        $this->Media[] = $medium;
 
         return $this;
     }
 
     /**
-     * Remove Media
+     * Remove medium
      *
-     * @param \Entity\Bzjpreview\PulseMedia $media
+     * @param \Entity\Bzjpreview\PulseMedia $medium
      */
-    public function removeMedia(\Entity\Bzjpreview\PulseMedia $media)
+    public function removeMedia(\Entity\Bzjpreview\PulseMedia $medium)
     {
-        $this->Media->removeElement($media);
+        $this->Media->removeElement($medium);
     }
 
     /**
-     * Get Media
+     * Get media
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getMedia()
     {
@@ -673,32 +693,33 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Add Markets
+     * Add market
      *
-     * @param \Entity\Bzjpreview\PulseMarketMap $markets
+     * @param \Entity\Bzjpreview\PulseMarketMap $market
+     *
      * @return Pulse
      */
-    public function addMarket(\Entity\Bzjpreview\PulseMarketMap $markets)
+    public function addMarket(\Entity\Bzjpreview\PulseMarketMap $market)
     {
-        $this->Markets[] = $markets;
+        $this->Markets[] = $market;
 
         return $this;
     }
 
     /**
-     * Remove Markets
+     * Remove market
      *
-     * @param \Entity\Bzjpreview\PulseMarketMap $markets
+     * @param \Entity\Bzjpreview\PulseMarketMap $market
      */
-    public function removeMarket(\Entity\Bzjpreview\PulseMarketMap $markets)
+    public function removeMarket(\Entity\Bzjpreview\PulseMarketMap $market)
     {
-        $this->Markets->removeElement($markets);
+        $this->Markets->removeElement($market);
     }
 
     /**
-     * Get Markets
+     * Get markets
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getMarkets()
     {
@@ -706,32 +727,33 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Add Questions
+     * Add question
      *
-     * @param \Entity\Bzjpreview\PulseQuestion $questions
+     * @param \Entity\Bzjpreview\PulseQuestion $question
+     *
      * @return Pulse
      */
-    public function addQuestion(\Entity\Bzjpreview\PulseQuestion $questions)
+    public function addQuestion(\Entity\Bzjpreview\PulseQuestion $question)
     {
-        $this->Questions[] = $questions;
+        $this->Questions[] = $question;
 
         return $this;
     }
 
     /**
-     * Remove Questions
+     * Remove question
      *
-     * @param \Entity\Bzjpreview\PulseQuestion $questions
+     * @param \Entity\Bzjpreview\PulseQuestion $question
      */
-    public function removeQuestion(\Entity\Bzjpreview\PulseQuestion $questions)
+    public function removeQuestion(\Entity\Bzjpreview\PulseQuestion $question)
     {
-        $this->Questions->removeElement($questions);
+        $this->Questions->removeElement($question);
     }
 
     /**
-     * Get Questions
+     * Get questions
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getQuestions()
     {
@@ -739,35 +761,37 @@ class Pulse extends \Entity\Entity\Base
     }
 
     /**
-     * Add LeadinGroups
+     * Add leadinGroup
      *
-     * @param \Entity\Bzjpreview\PulseLeadinGroup $leadinGroups
+     * @param \Entity\Bzjpreview\PulseLeadinGroup $leadinGroup
+     *
      * @return Pulse
      */
-    public function addLeadinGroup(\Entity\Bzjpreview\PulseLeadinGroup $leadinGroups)
+    public function addLeadinGroup(\Entity\Bzjpreview\PulseLeadinGroup $leadinGroup)
     {
-        $this->LeadinGroups[] = $leadinGroups;
+        $this->LeadinGroups[] = $leadinGroup;
 
         return $this;
     }
 
     /**
-     * Remove LeadinGroups
+     * Remove leadinGroup
      *
-     * @param \Entity\Bzjpreview\PulseLeadinGroup $leadinGroups
+     * @param \Entity\Bzjpreview\PulseLeadinGroup $leadinGroup
      */
-    public function removeLeadinGroup(\Entity\Bzjpreview\PulseLeadinGroup $leadinGroups)
+    public function removeLeadinGroup(\Entity\Bzjpreview\PulseLeadinGroup $leadinGroup)
     {
-        $this->LeadinGroups->removeElement($leadinGroups);
+        $this->LeadinGroups->removeElement($leadinGroup);
     }
 
     /**
-     * Get LeadinGroups
+     * Get leadinGroups
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getLeadinGroups()
     {
         return $this->LeadinGroups;
     }
 }
+

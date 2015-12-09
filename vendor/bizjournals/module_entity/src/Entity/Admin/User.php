@@ -2,8 +2,6 @@
 
 namespace Entity\Admin;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * User
  */
@@ -63,9 +61,9 @@ class User extends \Entity\Entity\Base
     }
 
     /**
-     * Get user_id
+     * Get userId
      *
-     * @return integer 
+     * @return integer
      */
     public function getUserId()
     {
@@ -76,6 +74,7 @@ class User extends \Entity\Entity\Base
      * Set email
      *
      * @param string $email
+     *
      * @return User
      */
     public function setEmail($email)
@@ -88,7 +87,7 @@ class User extends \Entity\Entity\Base
     /**
      * Get email
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
@@ -99,6 +98,7 @@ class User extends \Entity\Entity\Base
      * Set password
      *
      * @param string $password
+     *
      * @return User
      */
     public function setPassword($password)
@@ -111,7 +111,7 @@ class User extends \Entity\Entity\Base
     /**
      * Get password
      *
-     * @return string 
+     * @return string
      */
     public function getPassword()
     {
@@ -119,9 +119,10 @@ class User extends \Entity\Entity\Base
     }
 
     /**
-     * Set use_ldap
+     * Set useLdap
      *
      * @param boolean $useLdap
+     *
      * @return User
      */
     public function setUseLdap($useLdap)
@@ -132,9 +133,9 @@ class User extends \Entity\Entity\Base
     }
 
     /**
-     * Get use_ldap
+     * Get useLdap
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getUseLdap()
     {
@@ -145,6 +146,7 @@ class User extends \Entity\Entity\Base
      * Set expires
      *
      * @param \DateTime $expires
+     *
      * @return User
      */
     public function setExpires($expires)
@@ -157,7 +159,7 @@ class User extends \Entity\Entity\Base
     /**
      * Get expires
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getExpires()
     {
@@ -165,9 +167,10 @@ class User extends \Entity\Entity\Base
     }
 
     /**
-     * Set modified_by
+     * Set modifiedBy
      *
      * @param string $modifiedBy
+     *
      * @return User
      */
     public function setModifiedBy($modifiedBy)
@@ -178,9 +181,9 @@ class User extends \Entity\Entity\Base
     }
 
     /**
-     * Get modified_by
+     * Get modifiedBy
      *
-     * @return string 
+     * @return string
      */
     public function getModifiedBy()
     {
@@ -188,9 +191,10 @@ class User extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return User
      */
     public function setCreatedAt($createdAt)
@@ -201,9 +205,9 @@ class User extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -211,9 +215,10 @@ class User extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return User
      */
     public function setUpdatedAt($updatedAt)
@@ -224,9 +229,9 @@ class User extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -234,9 +239,10 @@ class User extends \Entity\Entity\Base
     }
 
     /**
-     * Add AclUserRole
+     * Add aclUserRole
      *
      * @param \Entity\Admin\AclUserRole $aclUserRole
+     *
      * @return User
      */
     public function addAclUserRole(\Entity\Admin\AclUserRole $aclUserRole)
@@ -247,7 +253,7 @@ class User extends \Entity\Entity\Base
     }
 
     /**
-     * Remove AclUserRole
+     * Remove aclUserRole
      *
      * @param \Entity\Admin\AclUserRole $aclUserRole
      */
@@ -257,12 +263,13 @@ class User extends \Entity\Entity\Base
     }
 
     /**
-     * Get AclUserRole
+     * Get aclUserRole
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getAclUserRole()
     {
         return $this->AclUserRole;
     }
 }
+

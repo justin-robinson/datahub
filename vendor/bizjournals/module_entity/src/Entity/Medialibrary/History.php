@@ -2,8 +2,6 @@
 
 namespace Entity\Medialibrary;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * History
  */
@@ -46,9 +44,9 @@ class History extends \Entity\Entity\Base
 
 
     /**
-     * Get history_id
+     * Get historyId
      *
-     * @return integer 
+     * @return integer
      */
     public function getHistoryId()
     {
@@ -56,9 +54,10 @@ class History extends \Entity\Entity\Base
     }
 
     /**
-     * Set object_type
+     * Set objectType
      *
      * @param string $objectType
+     *
      * @return History
      */
     public function setObjectType($objectType)
@@ -69,9 +68,9 @@ class History extends \Entity\Entity\Base
     }
 
     /**
-     * Get object_type
+     * Get objectType
      *
-     * @return string 
+     * @return string
      */
     public function getObjectType()
     {
@@ -79,9 +78,10 @@ class History extends \Entity\Entity\Base
     }
 
     /**
-     * Set object_id
+     * Set objectId
      *
      * @param integer $objectId
+     *
      * @return History
      */
     public function setObjectId($objectId)
@@ -92,9 +92,9 @@ class History extends \Entity\Entity\Base
     }
 
     /**
-     * Get object_id
+     * Get objectId
      *
-     * @return integer 
+     * @return integer
      */
     public function getObjectId()
     {
@@ -105,6 +105,7 @@ class History extends \Entity\Entity\Base
      * Set detail
      *
      * @param string $detail
+     *
      * @return History
      */
     public function setDetail($detail)
@@ -117,7 +118,7 @@ class History extends \Entity\Entity\Base
     /**
      * Get detail
      *
-     * @return string 
+     * @return string
      */
     public function getDetail()
     {
@@ -128,6 +129,7 @@ class History extends \Entity\Entity\Base
      * Set note
      *
      * @param string $note
+     *
      * @return History
      */
     public function setNote($note)
@@ -140,7 +142,7 @@ class History extends \Entity\Entity\Base
     /**
      * Get note
      *
-     * @return string 
+     * @return string
      */
     public function getNote()
     {
@@ -151,6 +153,7 @@ class History extends \Entity\Entity\Base
      * Set username
      *
      * @param string $username
+     *
      * @return History
      */
     public function setUsername($username)
@@ -163,7 +166,7 @@ class History extends \Entity\Entity\Base
     /**
      * Get username
      *
-     * @return string 
+     * @return string
      */
     public function getUsername()
     {
@@ -171,9 +174,10 @@ class History extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return History
      */
     public function setCreatedAt($createdAt)
@@ -184,12 +188,13 @@ class History extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
         return $this->created_at;
     }
 }
+

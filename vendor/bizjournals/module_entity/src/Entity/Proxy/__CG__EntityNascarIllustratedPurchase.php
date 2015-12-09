@@ -627,23 +627,23 @@ class Purchase extends \Entity\NascarIllustrated\Purchase implements \Doctrine\O
     /**
      * {@inheritDoc}
      */
-    public function addPurchaseItem(\Entity\NascarIllustrated\PurchaseItem $purchaseItems)
+    public function addPurchaseItem(\Entity\NascarIllustrated\PurchaseItem $purchaseItem)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addPurchaseItem', array($purchaseItems));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addPurchaseItem', array($purchaseItem));
 
-        return parent::addPurchaseItem($purchaseItems);
+        return parent::addPurchaseItem($purchaseItem);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removePurchaseItem(\Entity\NascarIllustrated\PurchaseItem $purchaseItems)
+    public function removePurchaseItem(\Entity\NascarIllustrated\PurchaseItem $purchaseItem)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removePurchaseItem', array($purchaseItems));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removePurchaseItem', array($purchaseItem));
 
-        return parent::removePurchaseItem($purchaseItems);
+        return parent::removePurchaseItem($purchaseItem);
     }
 
     /**

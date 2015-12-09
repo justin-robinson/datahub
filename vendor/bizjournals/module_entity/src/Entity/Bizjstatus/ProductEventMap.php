@@ -2,8 +2,6 @@
 
 namespace Entity\Bizjstatus;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * ProductEventMap
  */
@@ -41,9 +39,10 @@ class ProductEventMap extends \Entity\Entity\Base
 
 
     /**
-     * Set event_id
+     * Set eventId
      *
      * @param integer $eventId
+     *
      * @return ProductEventMap
      */
     public function setEventId($eventId)
@@ -54,9 +53,9 @@ class ProductEventMap extends \Entity\Entity\Base
     }
 
     /**
-     * Get event_id
+     * Get eventId
      *
-     * @return integer 
+     * @return integer
      */
     public function getEventId()
     {
@@ -64,9 +63,10 @@ class ProductEventMap extends \Entity\Entity\Base
     }
 
     /**
-     * Set product_id
+     * Set productId
      *
      * @param integer $productId
+     *
      * @return ProductEventMap
      */
     public function setProductId($productId)
@@ -77,9 +77,9 @@ class ProductEventMap extends \Entity\Entity\Base
     }
 
     /**
-     * Get product_id
+     * Get productId
      *
-     * @return integer 
+     * @return integer
      */
     public function getProductId()
     {
@@ -87,9 +87,10 @@ class ProductEventMap extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return ProductEventMap
      */
     public function setCreatedAt($createdAt)
@@ -100,9 +101,9 @@ class ProductEventMap extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -110,9 +111,10 @@ class ProductEventMap extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return ProductEventMap
      */
     public function setUpdatedAt($updatedAt)
@@ -123,9 +125,9 @@ class ProductEventMap extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -133,9 +135,10 @@ class ProductEventMap extends \Entity\Entity\Base
     }
 
     /**
-     * Set Event
+     * Set event
      *
      * @param \Entity\Bizjstatus\Event $event
+     *
      * @return ProductEventMap
      */
     public function setEvent(\Entity\Bizjstatus\Event $event = null)
@@ -146,9 +149,9 @@ class ProductEventMap extends \Entity\Entity\Base
     }
 
     /**
-     * Get Event
+     * Get event
      *
-     * @return \Entity\Bizjstatus\Event 
+     * @return \Entity\Bizjstatus\Event
      */
     public function getEvent()
     {
@@ -156,9 +159,10 @@ class ProductEventMap extends \Entity\Entity\Base
     }
 
     /**
-     * Set Product
+     * Set product
      *
      * @param \Entity\Bizjstatus\Product $product
+     *
      * @return ProductEventMap
      */
     public function setProduct(\Entity\Bizjstatus\Product $product = null)
@@ -169,12 +173,13 @@ class ProductEventMap extends \Entity\Entity\Base
     }
 
     /**
-     * Get Product
+     * Get product
      *
-     * @return \Entity\Bizjstatus\Product 
+     * @return \Entity\Bizjstatus\Product
      */
     public function getProduct()
     {
         return $this->Product;
     }
 }
+

@@ -2,8 +2,6 @@
 
 namespace Entity\Medialibrary;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Media
  */
@@ -161,9 +159,9 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_id
+     * Get mediaId
      *
-     * @return integer 
+     * @return integer
      */
     public function getMediaId()
     {
@@ -171,9 +169,10 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Set md5_hash
+     * Set md5Hash
      *
      * @param string $md5Hash
+     *
      * @return Media
      */
     public function setMd5Hash($md5Hash)
@@ -184,9 +183,9 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Get md5_hash
+     * Get md5Hash
      *
-     * @return string 
+     * @return string
      */
     public function getMd5Hash()
     {
@@ -194,9 +193,10 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Set media_size
+     * Set mediaSize
      *
      * @param integer $mediaSize
+     *
      * @return Media
      */
     public function setMediaSize($mediaSize)
@@ -207,9 +207,9 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_size
+     * Get mediaSize
      *
-     * @return integer 
+     * @return integer
      */
     public function getMediaSize()
     {
@@ -220,6 +220,7 @@ class Media extends \Entity\Entity\Base
      * Set category
      *
      * @param string $category
+     *
      * @return Media
      */
     public function setCategory($category)
@@ -232,7 +233,7 @@ class Media extends \Entity\Entity\Base
     /**
      * Get category
      *
-     * @return string 
+     * @return string
      */
     public function getCategory()
     {
@@ -240,9 +241,10 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Set source_file
+     * Set sourceFile
      *
      * @param string $sourceFile
+     *
      * @return Media
      */
     public function setSourceFile($sourceFile)
@@ -253,9 +255,9 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Get source_file
+     * Get sourceFile
      *
-     * @return string 
+     * @return string
      */
     public function getSourceFile()
     {
@@ -263,9 +265,10 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return Media
      */
     public function setCreatedAt($createdAt)
@@ -276,9 +279,9 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -286,9 +289,10 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return Media
      */
     public function setUpdatedAt($updatedAt)
@@ -299,9 +303,9 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -309,9 +313,10 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Set expires_at
+     * Set expiresAt
      *
      * @param \DateTime $expiresAt
+     *
      * @return Media
      */
     public function setExpiresAt($expiresAt)
@@ -322,9 +327,9 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Get expires_at
+     * Get expiresAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getExpiresAt()
     {
@@ -335,6 +340,7 @@ class Media extends \Entity\Entity\Base
      * Set filename
      *
      * @param string $filename
+     *
      * @return Media
      */
     public function setFilename($filename)
@@ -347,7 +353,7 @@ class Media extends \Entity\Entity\Base
     /**
      * Get filename
      *
-     * @return string 
+     * @return string
      */
     public function getFilename()
     {
@@ -358,6 +364,7 @@ class Media extends \Entity\Entity\Base
      * Set height
      *
      * @param integer $height
+     *
      * @return Media
      */
     public function setHeight($height)
@@ -370,7 +377,7 @@ class Media extends \Entity\Entity\Base
     /**
      * Get height
      *
-     * @return integer 
+     * @return integer
      */
     public function getHeight()
     {
@@ -381,6 +388,7 @@ class Media extends \Entity\Entity\Base
      * Set width
      *
      * @param integer $width
+     *
      * @return Media
      */
     public function setWidth($width)
@@ -393,7 +401,7 @@ class Media extends \Entity\Entity\Base
     /**
      * Get width
      *
-     * @return integer 
+     * @return integer
      */
     public function getWidth()
     {
@@ -401,9 +409,10 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_image
+     * Set isImage
      *
      * @param boolean $isImage
+     *
      * @return Media
      */
     public function setIsImage($isImage)
@@ -414,9 +423,9 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_image
+     * Get isImage
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsImage()
     {
@@ -424,9 +433,10 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Set image_format
+     * Set imageFormat
      *
      * @param string $imageFormat
+     *
      * @return Media
      */
     public function setImageFormat($imageFormat)
@@ -437,9 +447,9 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Get image_format
+     * Get imageFormat
      *
-     * @return string 
+     * @return string
      */
     public function getImageFormat()
     {
@@ -447,9 +457,10 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Set mime_type
+     * Set mimeType
      *
      * @param string $mimeType
+     *
      * @return Media
      */
     public function setMimeType($mimeType)
@@ -460,9 +471,9 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Get mime_type
+     * Get mimeType
      *
-     * @return string 
+     * @return string
      */
     public function getMimeType()
     {
@@ -470,9 +481,10 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_pub_restricted
+     * Set isPubRestricted
      *
      * @param boolean $isPubRestricted
+     *
      * @return Media
      */
     public function setIsPubRestricted($isPubRestricted)
@@ -483,9 +495,9 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_pub_restricted
+     * Get isPubRestricted
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsPubRestricted()
     {
@@ -493,9 +505,10 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Set copyright_notice
+     * Set copyrightNotice
      *
      * @param string $copyrightNotice
+     *
      * @return Media
      */
     public function setCopyrightNotice($copyrightNotice)
@@ -506,9 +519,9 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Get copyright_notice
+     * Get copyrightNotice
      *
-     * @return string 
+     * @return string
      */
     public function getCopyrightNotice()
     {
@@ -516,9 +529,10 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_live
+     * Set isLive
      *
      * @param boolean $isLive
+     *
      * @return Media
      */
     public function setIsLive($isLive)
@@ -529,9 +543,9 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_live
+     * Get isLive
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsLive()
     {
@@ -539,9 +553,10 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Set upload_date
+     * Set uploadDate
      *
      * @param \DateTime $uploadDate
+     *
      * @return Media
      */
     public function setUploadDate($uploadDate)
@@ -552,9 +567,9 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Get upload_date
+     * Get uploadDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUploadDate()
     {
@@ -562,9 +577,10 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Add MediaCrop
+     * Add mediaCrop
      *
      * @param \Entity\Medialibrary\MediaCrop $mediaCrop
+     *
      * @return Media
      */
     public function addMediaCrop(\Entity\Medialibrary\MediaCrop $mediaCrop)
@@ -575,7 +591,7 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Remove MediaCrop
+     * Remove mediaCrop
      *
      * @param \Entity\Medialibrary\MediaCrop $mediaCrop
      */
@@ -585,9 +601,9 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Get MediaCrop
+     * Get mediaCrop
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getMediaCrop()
     {
@@ -595,32 +611,33 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Add MediaMetadata
+     * Add mediaMetadatum
      *
-     * @param \Entity\Medialibrary\MediaMetadata $mediaMetadata
+     * @param \Entity\Medialibrary\MediaMetadata $mediaMetadatum
+     *
      * @return Media
      */
-    public function addMediaMetadatum(\Entity\Medialibrary\MediaMetadata $mediaMetadata)
+    public function addMediaMetadatum(\Entity\Medialibrary\MediaMetadata $mediaMetadatum)
     {
-        $this->MediaMetadata[] = $mediaMetadata;
+        $this->MediaMetadata[] = $mediaMetadatum;
 
         return $this;
     }
 
     /**
-     * Remove MediaMetadata
+     * Remove mediaMetadatum
      *
-     * @param \Entity\Medialibrary\MediaMetadata $mediaMetadata
+     * @param \Entity\Medialibrary\MediaMetadata $mediaMetadatum
      */
-    public function removeMediaMetadatum(\Entity\Medialibrary\MediaMetadata $mediaMetadata)
+    public function removeMediaMetadatum(\Entity\Medialibrary\MediaMetadata $mediaMetadatum)
     {
-        $this->MediaMetadata->removeElement($mediaMetadata);
+        $this->MediaMetadata->removeElement($mediaMetadatum);
     }
 
     /**
-     * Get MediaMetadata
+     * Get mediaMetadata
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getMediaMetadata()
     {
@@ -628,32 +645,33 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Add MediaLinks
+     * Add mediaLink
      *
-     * @param \Entity\Medialibrary\MediaLink $mediaLinks
+     * @param \Entity\Medialibrary\MediaLink $mediaLink
+     *
      * @return Media
      */
-    public function addMediaLink(\Entity\Medialibrary\MediaLink $mediaLinks)
+    public function addMediaLink(\Entity\Medialibrary\MediaLink $mediaLink)
     {
-        $this->MediaLinks[] = $mediaLinks;
+        $this->MediaLinks[] = $mediaLink;
 
         return $this;
     }
 
     /**
-     * Remove MediaLinks
+     * Remove mediaLink
      *
-     * @param \Entity\Medialibrary\MediaLink $mediaLinks
+     * @param \Entity\Medialibrary\MediaLink $mediaLink
      */
-    public function removeMediaLink(\Entity\Medialibrary\MediaLink $mediaLinks)
+    public function removeMediaLink(\Entity\Medialibrary\MediaLink $mediaLink)
     {
-        $this->MediaLinks->removeElement($mediaLinks);
+        $this->MediaLinks->removeElement($mediaLink);
     }
 
     /**
-     * Get MediaLinks
+     * Get mediaLinks
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getMediaLinks()
     {
@@ -661,32 +679,33 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Add MediaTags
+     * Add mediaTag
      *
-     * @param \Entity\Medialibrary\MediaTag $mediaTags
+     * @param \Entity\Medialibrary\MediaTag $mediaTag
+     *
      * @return Media
      */
-    public function addMediaTag(\Entity\Medialibrary\MediaTag $mediaTags)
+    public function addMediaTag(\Entity\Medialibrary\MediaTag $mediaTag)
     {
-        $this->MediaTags[] = $mediaTags;
+        $this->MediaTags[] = $mediaTag;
 
         return $this;
     }
 
     /**
-     * Remove MediaTags
+     * Remove mediaTag
      *
-     * @param \Entity\Medialibrary\MediaTag $mediaTags
+     * @param \Entity\Medialibrary\MediaTag $mediaTag
      */
-    public function removeMediaTag(\Entity\Medialibrary\MediaTag $mediaTags)
+    public function removeMediaTag(\Entity\Medialibrary\MediaTag $mediaTag)
     {
-        $this->MediaTags->removeElement($mediaTags);
+        $this->MediaTags->removeElement($mediaTag);
     }
 
     /**
-     * Get MediaTags
+     * Get mediaTags
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getMediaTags()
     {
@@ -694,32 +713,33 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Add UploadBatches
+     * Add uploadBatch
      *
-     * @param \Entity\Medialibrary\BatchMedia $uploadBatches
+     * @param \Entity\Medialibrary\BatchMedia $uploadBatch
+     *
      * @return Media
      */
-    public function addUploadBatch(\Entity\Medialibrary\BatchMedia $uploadBatches)
+    public function addUploadBatch(\Entity\Medialibrary\BatchMedia $uploadBatch)
     {
-        $this->UploadBatches[] = $uploadBatches;
+        $this->UploadBatches[] = $uploadBatch;
 
         return $this;
     }
 
     /**
-     * Remove UploadBatches
+     * Remove uploadBatch
      *
-     * @param \Entity\Medialibrary\BatchMedia $uploadBatches
+     * @param \Entity\Medialibrary\BatchMedia $uploadBatch
      */
-    public function removeUploadBatch(\Entity\Medialibrary\BatchMedia $uploadBatches)
+    public function removeUploadBatch(\Entity\Medialibrary\BatchMedia $uploadBatch)
     {
-        $this->UploadBatches->removeElement($uploadBatches);
+        $this->UploadBatches->removeElement($uploadBatch);
     }
 
     /**
-     * Get UploadBatches
+     * Get uploadBatches
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getUploadBatches()
     {
@@ -727,32 +747,33 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Add MediaPubs
+     * Add mediaPub
      *
-     * @param \Entity\Medialibrary\MediaPub $mediaPubs
+     * @param \Entity\Medialibrary\MediaPub $mediaPub
+     *
      * @return Media
      */
-    public function addMediaPub(\Entity\Medialibrary\MediaPub $mediaPubs)
+    public function addMediaPub(\Entity\Medialibrary\MediaPub $mediaPub)
     {
-        $this->MediaPubs[] = $mediaPubs;
+        $this->MediaPubs[] = $mediaPub;
 
         return $this;
     }
 
     /**
-     * Remove MediaPubs
+     * Remove mediaPub
      *
-     * @param \Entity\Medialibrary\MediaPub $mediaPubs
+     * @param \Entity\Medialibrary\MediaPub $mediaPub
      */
-    public function removeMediaPub(\Entity\Medialibrary\MediaPub $mediaPubs)
+    public function removeMediaPub(\Entity\Medialibrary\MediaPub $mediaPub)
     {
-        $this->MediaPubs->removeElement($mediaPubs);
+        $this->MediaPubs->removeElement($mediaPub);
     }
 
     /**
-     * Get MediaPubs
+     * Get mediaPubs
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getMediaPubs()
     {
@@ -760,9 +781,10 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Add GalleryMedia
+     * Add galleryMedia
      *
      * @param \Entity\Medialibrary\GalleryMedia $galleryMedia
+     *
      * @return Media
      */
     public function addGalleryMedia(\Entity\Medialibrary\GalleryMedia $galleryMedia)
@@ -773,7 +795,7 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Remove GalleryMedia
+     * Remove galleryMedia
      *
      * @param \Entity\Medialibrary\GalleryMedia $galleryMedia
      */
@@ -783,9 +805,9 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Get GalleryMedia
+     * Get galleryMedia
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getGalleryMedia()
     {
@@ -793,32 +815,33 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Add Tags
+     * Add tag
      *
-     * @param \Entity\Medialibrary\Tag $tags
+     * @param \Entity\Medialibrary\Tag $tag
+     *
      * @return Media
      */
-    public function addTag(\Entity\Medialibrary\Tag $tags)
+    public function addTag(\Entity\Medialibrary\Tag $tag)
     {
-        $this->Tags[] = $tags;
+        $this->Tags[] = $tag;
 
         return $this;
     }
 
     /**
-     * Remove Tags
+     * Remove tag
      *
-     * @param \Entity\Medialibrary\Tag $tags
+     * @param \Entity\Medialibrary\Tag $tag
      */
-    public function removeTag(\Entity\Medialibrary\Tag $tags)
+    public function removeTag(\Entity\Medialibrary\Tag $tag)
     {
-        $this->Tags->removeElement($tags);
+        $this->Tags->removeElement($tag);
     }
 
     /**
-     * Get Tags
+     * Get tags
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTags()
     {
@@ -826,35 +849,37 @@ class Media extends \Entity\Entity\Base
     }
 
     /**
-     * Add Publications
+     * Add publication
      *
-     * @param \Entity\Medialibrary\Publication $publications
+     * @param \Entity\Medialibrary\Publication $publication
+     *
      * @return Media
      */
-    public function addPublication(\Entity\Medialibrary\Publication $publications)
+    public function addPublication(\Entity\Medialibrary\Publication $publication)
     {
-        $this->Publications[] = $publications;
+        $this->Publications[] = $publication;
 
         return $this;
     }
 
     /**
-     * Remove Publications
+     * Remove publication
      *
-     * @param \Entity\Medialibrary\Publication $publications
+     * @param \Entity\Medialibrary\Publication $publication
      */
-    public function removePublication(\Entity\Medialibrary\Publication $publications)
+    public function removePublication(\Entity\Medialibrary\Publication $publication)
     {
-        $this->Publications->removeElement($publications);
+        $this->Publications->removeElement($publication);
     }
 
     /**
-     * Get Publications
+     * Get publications
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getPublications()
     {
         return $this->Publications;
     }
 }
+

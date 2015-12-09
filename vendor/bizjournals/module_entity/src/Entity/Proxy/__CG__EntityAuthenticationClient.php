@@ -473,23 +473,23 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     /**
      * {@inheritDoc}
      */
-    public function addAccessToken(\Entity\Authentication\AccessToken $accessTokens)
+    public function addAccessToken(\Entity\Authentication\AccessToken $accessToken)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAccessToken', array($accessTokens));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAccessToken', array($accessToken));
 
-        return parent::addAccessToken($accessTokens);
+        return parent::addAccessToken($accessToken);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeAccessToken(\Entity\Authentication\AccessToken $accessTokens)
+    public function removeAccessToken(\Entity\Authentication\AccessToken $accessToken)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAccessToken', array($accessTokens));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAccessToken', array($accessToken));
 
-        return parent::removeAccessToken($accessTokens);
+        return parent::removeAccessToken($accessToken);
     }
 
     /**
@@ -506,23 +506,23 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     /**
      * {@inheritDoc}
      */
-    public function addRefreshToken(\Entity\Authentication\RefreshToken $refreshTokens)
+    public function addRefreshToken(\Entity\Authentication\RefreshToken $refreshToken)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addRefreshToken', array($refreshTokens));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addRefreshToken', array($refreshToken));
 
-        return parent::addRefreshToken($refreshTokens);
+        return parent::addRefreshToken($refreshToken);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeRefreshToken(\Entity\Authentication\RefreshToken $refreshTokens)
+    public function removeRefreshToken(\Entity\Authentication\RefreshToken $refreshToken)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeRefreshToken', array($refreshTokens));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeRefreshToken', array($refreshToken));
 
-        return parent::removeRefreshToken($refreshTokens);
+        return parent::removeRefreshToken($refreshToken);
     }
 
     /**
@@ -539,23 +539,23 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     /**
      * {@inheritDoc}
      */
-    public function addAuthorizationCode(\Entity\Authentication\AuthorizationCode $authorizationCodes)
+    public function addAuthorizationCode(\Entity\Authentication\AuthorizationCode $authorizationCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAuthorizationCode', array($authorizationCodes));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAuthorizationCode', array($authorizationCode));
 
-        return parent::addAuthorizationCode($authorizationCodes);
+        return parent::addAuthorizationCode($authorizationCode);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeAuthorizationCode(\Entity\Authentication\AuthorizationCode $authorizationCodes)
+    public function removeAuthorizationCode(\Entity\Authentication\AuthorizationCode $authorizationCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAuthorizationCode', array($authorizationCodes));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAuthorizationCode', array($authorizationCode));
 
-        return parent::removeAuthorizationCode($authorizationCodes);
+        return parent::removeAuthorizationCode($authorizationCode);
     }
 
     /**

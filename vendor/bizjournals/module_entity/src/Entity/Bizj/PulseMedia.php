@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * PulseMedia
  */
@@ -101,9 +99,10 @@ class PulseMedia extends \Entity\Entity\Base
 
 
     /**
-     * Set pulse_id
+     * Set pulseId
      *
      * @param integer $pulseId
+     *
      * @return PulseMedia
      */
     public function setPulseId($pulseId)
@@ -114,9 +113,9 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get pulse_id
+     * Get pulseId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPulseId()
     {
@@ -124,9 +123,10 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set question_id
+     * Set questionId
      *
      * @param integer $questionId
+     *
      * @return PulseMedia
      */
     public function setQuestionId($questionId)
@@ -137,9 +137,9 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get question_id
+     * Get questionId
      *
-     * @return integer 
+     * @return integer
      */
     public function getQuestionId()
     {
@@ -147,9 +147,10 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set media_type
+     * Set mediaType
      *
      * @param string $mediaType
+     *
      * @return PulseMedia
      */
     public function setMediaType($mediaType)
@@ -160,9 +161,9 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_type
+     * Get mediaType
      *
-     * @return string 
+     * @return string
      */
     public function getMediaType()
     {
@@ -170,9 +171,10 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set option_id
+     * Set optionId
      *
      * @param integer $optionId
+     *
      * @return PulseMedia
      */
     public function setOptionId($optionId)
@@ -183,9 +185,9 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get option_id
+     * Get optionId
      *
-     * @return integer 
+     * @return integer
      */
     public function getOptionId()
     {
@@ -193,9 +195,10 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set media_host
+     * Set mediaHost
      *
      * @param string $mediaHost
+     *
      * @return PulseMedia
      */
     public function setMediaHost($mediaHost)
@@ -206,9 +209,9 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_host
+     * Get mediaHost
      *
-     * @return string 
+     * @return string
      */
     public function getMediaHost()
     {
@@ -216,9 +219,10 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set media_uri
+     * Set mediaUri
      *
      * @param string $mediaUri
+     *
      * @return PulseMedia
      */
     public function setMediaUri($mediaUri)
@@ -229,9 +233,9 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_uri
+     * Get mediaUri
      *
-     * @return string 
+     * @return string
      */
     public function getMediaUri()
     {
@@ -239,9 +243,10 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set crop_data
+     * Set cropData
      *
      * @param string $cropData
+     *
      * @return PulseMedia
      */
     public function setCropData($cropData)
@@ -252,9 +257,9 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get crop_data
+     * Get cropData
      *
-     * @return string 
+     * @return string
      */
     public function getCropData()
     {
@@ -262,9 +267,10 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set media_source
+     * Set mediaSource
      *
      * @param string $mediaSource
+     *
      * @return PulseMedia
      */
     public function setMediaSource($mediaSource)
@@ -275,9 +281,9 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_source
+     * Get mediaSource
      *
-     * @return string 
+     * @return string
      */
     public function getMediaSource()
     {
@@ -285,9 +291,10 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set external_id
+     * Set externalId
      *
      * @param integer $externalId
+     *
      * @return PulseMedia
      */
     public function setExternalId($externalId)
@@ -298,9 +305,9 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get external_id
+     * Get externalId
      *
-     * @return integer 
+     * @return integer
      */
     public function getExternalId()
     {
@@ -308,9 +315,10 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set alt_text
+     * Set altText
      *
      * @param string $altText
+     *
      * @return PulseMedia
      */
     public function setAltText($altText)
@@ -321,9 +329,9 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get alt_text
+     * Get altText
      *
-     * @return string 
+     * @return string
      */
     public function getAltText()
     {
@@ -331,9 +339,10 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set art_credit
+     * Set artCredit
      *
      * @param string $artCredit
+     *
      * @return PulseMedia
      */
     public function setArtCredit($artCredit)
@@ -344,9 +353,9 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get art_credit
+     * Get artCredit
      *
-     * @return string 
+     * @return string
      */
     public function getArtCredit()
     {
@@ -354,9 +363,10 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set orig_height
+     * Set origHeight
      *
      * @param integer $origHeight
+     *
      * @return PulseMedia
      */
     public function setOrigHeight($origHeight)
@@ -367,9 +377,9 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get orig_height
+     * Get origHeight
      *
-     * @return integer 
+     * @return integer
      */
     public function getOrigHeight()
     {
@@ -377,9 +387,10 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set orig_width
+     * Set origWidth
      *
      * @param integer $origWidth
+     *
      * @return PulseMedia
      */
     public function setOrigWidth($origWidth)
@@ -390,9 +401,9 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get orig_width
+     * Get origWidth
      *
-     * @return integer 
+     * @return integer
      */
     public function getOrigWidth()
     {
@@ -400,9 +411,10 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set additional_data
+     * Set additionalData
      *
      * @param string $additionalData
+     *
      * @return PulseMedia
      */
     public function setAdditionalData($additionalData)
@@ -413,9 +425,9 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get additional_data
+     * Get additionalData
      *
-     * @return string 
+     * @return string
      */
     public function getAdditionalData()
     {
@@ -423,9 +435,10 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return PulseMedia
      */
     public function setCreatedAt($createdAt)
@@ -436,9 +449,9 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -446,9 +459,10 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return PulseMedia
      */
     public function setUpdatedAt($updatedAt)
@@ -459,9 +473,9 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -469,9 +483,10 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set deleted_at
+     * Set deletedAt
      *
      * @param \DateTime $deletedAt
+     *
      * @return PulseMedia
      */
     public function setDeletedAt($deletedAt)
@@ -482,9 +497,9 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get deleted_at
+     * Get deletedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDeletedAt()
     {
@@ -492,9 +507,10 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Set Pulse
+     * Set pulse
      *
      * @param \Entity\Bizj\Pulse $pulse
+     *
      * @return PulseMedia
      */
     public function setPulse(\Entity\Bizj\Pulse $pulse = null)
@@ -505,12 +521,13 @@ class PulseMedia extends \Entity\Entity\Base
     }
 
     /**
-     * Get Pulse
+     * Get pulse
      *
-     * @return \Entity\Bizj\Pulse 
+     * @return \Entity\Bizj\Pulse
      */
     public function getPulse()
     {
         return $this->Pulse;
     }
 }
+

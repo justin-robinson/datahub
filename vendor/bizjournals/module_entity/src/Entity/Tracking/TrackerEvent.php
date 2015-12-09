@@ -2,8 +2,6 @@
 
 namespace Entity\Tracking;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * TrackerEvent
  */
@@ -41,9 +39,9 @@ class TrackerEvent extends \Entity\Entity\Base
 
 
     /**
-     * Get event_id
+     * Get eventId
      *
-     * @return integer 
+     * @return integer
      */
     public function getEventId()
     {
@@ -51,9 +49,10 @@ class TrackerEvent extends \Entity\Entity\Base
     }
 
     /**
-     * Set tracker_key_id
+     * Set trackerKeyId
      *
      * @param integer $trackerKeyId
+     *
      * @return TrackerEvent
      */
     public function setTrackerKeyId($trackerKeyId)
@@ -64,9 +63,9 @@ class TrackerEvent extends \Entity\Entity\Base
     }
 
     /**
-     * Get tracker_key_id
+     * Get trackerKeyId
      *
-     * @return integer 
+     * @return integer
      */
     public function getTrackerKeyId()
     {
@@ -74,9 +73,10 @@ class TrackerEvent extends \Entity\Entity\Base
     }
 
     /**
-     * Set client_id
+     * Set clientId
      *
      * @param integer $clientId
+     *
      * @return TrackerEvent
      */
     public function setClientId($clientId)
@@ -87,9 +87,9 @@ class TrackerEvent extends \Entity\Entity\Base
     }
 
     /**
-     * Get client_id
+     * Get clientId
      *
-     * @return integer 
+     * @return integer
      */
     public function getClientId()
     {
@@ -97,9 +97,10 @@ class TrackerEvent extends \Entity\Entity\Base
     }
 
     /**
-     * Set user_ref
+     * Set userRef
      *
      * @param string $userRef
+     *
      * @return TrackerEvent
      */
     public function setUserRef($userRef)
@@ -110,9 +111,9 @@ class TrackerEvent extends \Entity\Entity\Base
     }
 
     /**
-     * Get user_ref
+     * Get userRef
      *
-     * @return string 
+     * @return string
      */
     public function getUserRef()
     {
@@ -120,9 +121,10 @@ class TrackerEvent extends \Entity\Entity\Base
     }
 
     /**
-     * Set event_properties
+     * Set eventProperties
      *
      * @param string $eventProperties
+     *
      * @return TrackerEvent
      */
     public function setEventProperties($eventProperties)
@@ -133,9 +135,9 @@ class TrackerEvent extends \Entity\Entity\Base
     }
 
     /**
-     * Get event_properties
+     * Get eventProperties
      *
-     * @return string 
+     * @return string
      */
     public function getEventProperties()
     {
@@ -143,9 +145,10 @@ class TrackerEvent extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return TrackerEvent
      */
     public function setCreatedAt($createdAt)
@@ -156,12 +159,13 @@ class TrackerEvent extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
         return $this->created_at;
     }
 }
+

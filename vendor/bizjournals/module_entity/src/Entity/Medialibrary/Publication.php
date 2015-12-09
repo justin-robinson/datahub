@@ -2,8 +2,6 @@
 
 namespace Entity\Medialibrary;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Publication
  */
@@ -70,9 +68,9 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Get pub_id
+     * Get pubId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPubId()
     {
@@ -80,9 +78,10 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Set pub_name
+     * Set pubName
      *
      * @param string $pubName
+     *
      * @return Publication
      */
     public function setPubName($pubName)
@@ -93,9 +92,9 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Get pub_name
+     * Get pubName
      *
-     * @return string 
+     * @return string
      */
     public function getPubName()
     {
@@ -103,9 +102,10 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Set short_name
+     * Set shortName
      *
      * @param string $shortName
+     *
      * @return Publication
      */
     public function setShortName($shortName)
@@ -116,9 +116,9 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Get short_name
+     * Get shortName
      *
-     * @return string 
+     * @return string
      */
     public function getShortName()
     {
@@ -129,6 +129,7 @@ class Publication extends \Entity\Entity\Base
      * Set timezone
      *
      * @param string $timezone
+     *
      * @return Publication
      */
     public function setTimezone($timezone)
@@ -141,7 +142,7 @@ class Publication extends \Entity\Entity\Base
     /**
      * Get timezone
      *
-     * @return string 
+     * @return string
      */
     public function getTimezone()
     {
@@ -149,9 +150,10 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Set default_copyright_notice
+     * Set defaultCopyrightNotice
      *
      * @param string $defaultCopyrightNotice
+     *
      * @return Publication
      */
     public function setDefaultCopyrightNotice($defaultCopyrightNotice)
@@ -162,9 +164,9 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Get default_copyright_notice
+     * Get defaultCopyrightNotice
      *
-     * @return string 
+     * @return string
      */
     public function getDefaultCopyrightNotice()
     {
@@ -172,9 +174,10 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return Publication
      */
     public function setCreatedAt($createdAt)
@@ -185,9 +188,9 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -195,9 +198,10 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return Publication
      */
     public function setUpdatedAt($updatedAt)
@@ -208,9 +212,9 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -218,32 +222,33 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Add MediaPubs
+     * Add mediaPub
      *
-     * @param \Entity\Medialibrary\MediaPub $mediaPubs
+     * @param \Entity\Medialibrary\MediaPub $mediaPub
+     *
      * @return Publication
      */
-    public function addMediaPub(\Entity\Medialibrary\MediaPub $mediaPubs)
+    public function addMediaPub(\Entity\Medialibrary\MediaPub $mediaPub)
     {
-        $this->MediaPubs[] = $mediaPubs;
+        $this->MediaPubs[] = $mediaPub;
 
         return $this;
     }
 
     /**
-     * Remove MediaPubs
+     * Remove mediaPub
      *
-     * @param \Entity\Medialibrary\MediaPub $mediaPubs
+     * @param \Entity\Medialibrary\MediaPub $mediaPub
      */
-    public function removeMediaPub(\Entity\Medialibrary\MediaPub $mediaPubs)
+    public function removeMediaPub(\Entity\Medialibrary\MediaPub $mediaPub)
     {
-        $this->MediaPubs->removeElement($mediaPubs);
+        $this->MediaPubs->removeElement($mediaPub);
     }
 
     /**
-     * Get MediaPubs
+     * Get mediaPubs
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getMediaPubs()
     {
@@ -251,32 +256,33 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Add Tags
+     * Add tag
      *
-     * @param \Entity\Medialibrary\Tag $tags
+     * @param \Entity\Medialibrary\Tag $tag
+     *
      * @return Publication
      */
-    public function addTag(\Entity\Medialibrary\Tag $tags)
+    public function addTag(\Entity\Medialibrary\Tag $tag)
     {
-        $this->Tags[] = $tags;
+        $this->Tags[] = $tag;
 
         return $this;
     }
 
     /**
-     * Remove Tags
+     * Remove tag
      *
-     * @param \Entity\Medialibrary\Tag $tags
+     * @param \Entity\Medialibrary\Tag $tag
      */
-    public function removeTag(\Entity\Medialibrary\Tag $tags)
+    public function removeTag(\Entity\Medialibrary\Tag $tag)
     {
-        $this->Tags->removeElement($tags);
+        $this->Tags->removeElement($tag);
     }
 
     /**
-     * Get Tags
+     * Get tags
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTags()
     {
@@ -284,35 +290,37 @@ class Publication extends \Entity\Entity\Base
     }
 
     /**
-     * Add MediaLinks
+     * Add mediaLink
      *
-     * @param \Entity\Medialibrary\MediaLink $mediaLinks
+     * @param \Entity\Medialibrary\MediaLink $mediaLink
+     *
      * @return Publication
      */
-    public function addMediaLink(\Entity\Medialibrary\MediaLink $mediaLinks)
+    public function addMediaLink(\Entity\Medialibrary\MediaLink $mediaLink)
     {
-        $this->MediaLinks[] = $mediaLinks;
+        $this->MediaLinks[] = $mediaLink;
 
         return $this;
     }
 
     /**
-     * Remove MediaLinks
+     * Remove mediaLink
      *
-     * @param \Entity\Medialibrary\MediaLink $mediaLinks
+     * @param \Entity\Medialibrary\MediaLink $mediaLink
      */
-    public function removeMediaLink(\Entity\Medialibrary\MediaLink $mediaLinks)
+    public function removeMediaLink(\Entity\Medialibrary\MediaLink $mediaLink)
     {
-        $this->MediaLinks->removeElement($mediaLinks);
+        $this->MediaLinks->removeElement($mediaLink);
     }
 
     /**
-     * Get MediaLinks
+     * Get mediaLinks
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getMediaLinks()
     {
         return $this->MediaLinks;
     }
 }
+

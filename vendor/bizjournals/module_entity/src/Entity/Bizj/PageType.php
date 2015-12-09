@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * PageType
  */
@@ -41,9 +39,9 @@ class PageType extends \Entity\Entity\Base
 
 
     /**
-     * Get type_id
+     * Get typeId
      *
-     * @return integer 
+     * @return integer
      */
     public function getTypeId()
     {
@@ -51,9 +49,10 @@ class PageType extends \Entity\Entity\Base
     }
 
     /**
-     * Set type_name
+     * Set typeName
      *
      * @param string $typeName
+     *
      * @return PageType
      */
     public function setTypeName($typeName)
@@ -64,9 +63,9 @@ class PageType extends \Entity\Entity\Base
     }
 
     /**
-     * Get type_name
+     * Get typeName
      *
-     * @return string 
+     * @return string
      */
     public function getTypeName()
     {
@@ -77,6 +76,7 @@ class PageType extends \Entity\Entity\Base
      * Set description
      *
      * @param string $description
+     *
      * @return PageType
      */
     public function setDescription($description)
@@ -89,7 +89,7 @@ class PageType extends \Entity\Entity\Base
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -97,9 +97,10 @@ class PageType extends \Entity\Entity\Base
     }
 
     /**
-     * Set use_template
+     * Set useTemplate
      *
      * @param boolean $useTemplate
+     *
      * @return PageType
      */
     public function setUseTemplate($useTemplate)
@@ -110,9 +111,9 @@ class PageType extends \Entity\Entity\Base
     }
 
     /**
-     * Get use_template
+     * Get useTemplate
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getUseTemplate()
     {
@@ -123,6 +124,7 @@ class PageType extends \Entity\Entity\Base
      * Set active
      *
      * @param boolean $active
+     *
      * @return PageType
      */
     public function setActive($active)
@@ -135,7 +137,7 @@ class PageType extends \Entity\Entity\Base
     /**
      * Get active
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getActive()
     {
@@ -143,9 +145,10 @@ class PageType extends \Entity\Entity\Base
     }
 
     /**
-     * Set in_search_results
+     * Set inSearchResults
      *
      * @param boolean $inSearchResults
+     *
      * @return PageType
      */
     public function setInSearchResults($inSearchResults)
@@ -156,12 +159,13 @@ class PageType extends \Entity\Entity\Base
     }
 
     /**
-     * Get in_search_results
+     * Get inSearchResults
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getInSearchResults()
     {
         return $this->in_search_results;
     }
 }
+

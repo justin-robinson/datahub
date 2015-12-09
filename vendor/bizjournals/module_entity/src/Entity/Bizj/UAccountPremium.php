@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * UAccountPremium
  */
@@ -86,9 +84,9 @@ class UAccountPremium extends \Entity\Entity\Base
 
 
     /**
-     * Get premium_id
+     * Get premiumId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPremiumId()
     {
@@ -96,9 +94,10 @@ class UAccountPremium extends \Entity\Entity\Base
     }
 
     /**
-     * Set user_id
+     * Set userId
      *
      * @param integer $userId
+     *
      * @return UAccountPremium
      */
     public function setUserId($userId)
@@ -109,9 +108,9 @@ class UAccountPremium extends \Entity\Entity\Base
     }
 
     /**
-     * Get user_id
+     * Get userId
      *
-     * @return integer 
+     * @return integer
      */
     public function getUserId()
     {
@@ -119,9 +118,10 @@ class UAccountPremium extends \Entity\Entity\Base
     }
 
     /**
-     * Set market_id
+     * Set marketId
      *
      * @param integer $marketId
+     *
      * @return UAccountPremium
      */
     public function setMarketId($marketId)
@@ -132,9 +132,9 @@ class UAccountPremium extends \Entity\Entity\Base
     }
 
     /**
-     * Get market_id
+     * Get marketId
      *
-     * @return integer 
+     * @return integer
      */
     public function getMarketId()
     {
@@ -142,9 +142,10 @@ class UAccountPremium extends \Entity\Entity\Base
     }
 
     /**
-     * Set subscription_number
+     * Set subscriptionNumber
      *
      * @param integer $subscriptionNumber
+     *
      * @return UAccountPremium
      */
     public function setSubscriptionNumber($subscriptionNumber)
@@ -155,9 +156,9 @@ class UAccountPremium extends \Entity\Entity\Base
     }
 
     /**
-     * Get subscription_number
+     * Get subscriptionNumber
      *
-     * @return integer 
+     * @return integer
      */
     public function getSubscriptionNumber()
     {
@@ -165,9 +166,10 @@ class UAccountPremium extends \Entity\Entity\Base
     }
 
     /**
-     * Set start_date
+     * Set startDate
      *
      * @param \DateTime $startDate
+     *
      * @return UAccountPremium
      */
     public function setStartDate($startDate)
@@ -178,9 +180,9 @@ class UAccountPremium extends \Entity\Entity\Base
     }
 
     /**
-     * Get start_date
+     * Get startDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getStartDate()
     {
@@ -188,9 +190,10 @@ class UAccountPremium extends \Entity\Entity\Base
     }
 
     /**
-     * Set end_date
+     * Set endDate
      *
      * @param \DateTime $endDate
+     *
      * @return UAccountPremium
      */
     public function setEndDate($endDate)
@@ -201,9 +204,9 @@ class UAccountPremium extends \Entity\Entity\Base
     }
 
     /**
-     * Get end_date
+     * Get endDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getEndDate()
     {
@@ -214,6 +217,7 @@ class UAccountPremium extends \Entity\Entity\Base
      * Set source
      *
      * @param string $source
+     *
      * @return UAccountPremium
      */
     public function setSource($source)
@@ -226,7 +230,7 @@ class UAccountPremium extends \Entity\Entity\Base
     /**
      * Get source
      *
-     * @return string 
+     * @return string
      */
     public function getSource()
     {
@@ -234,9 +238,10 @@ class UAccountPremium extends \Entity\Entity\Base
     }
 
     /**
-     * Set premium_type
+     * Set premiumType
      *
      * @param string $premiumType
+     *
      * @return UAccountPremium
      */
     public function setPremiumType($premiumType)
@@ -247,9 +252,9 @@ class UAccountPremium extends \Entity\Entity\Base
     }
 
     /**
-     * Get premium_type
+     * Get premiumType
      *
-     * @return string 
+     * @return string
      */
     public function getPremiumType()
     {
@@ -257,9 +262,10 @@ class UAccountPremium extends \Entity\Entity\Base
     }
 
     /**
-     * Set added_by
+     * Set addedBy
      *
      * @param string $addedBy
+     *
      * @return UAccountPremium
      */
     public function setAddedBy($addedBy)
@@ -270,9 +276,9 @@ class UAccountPremium extends \Entity\Entity\Base
     }
 
     /**
-     * Get added_by
+     * Get addedBy
      *
-     * @return string 
+     * @return string
      */
     public function getAddedBy()
     {
@@ -280,9 +286,10 @@ class UAccountPremium extends \Entity\Entity\Base
     }
 
     /**
-     * Set modified_by
+     * Set modifiedBy
      *
      * @param string $modifiedBy
+     *
      * @return UAccountPremium
      */
     public function setModifiedBy($modifiedBy)
@@ -293,9 +300,9 @@ class UAccountPremium extends \Entity\Entity\Base
     }
 
     /**
-     * Get modified_by
+     * Get modifiedBy
      *
-     * @return string 
+     * @return string
      */
     public function getModifiedBy()
     {
@@ -303,9 +310,10 @@ class UAccountPremium extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return UAccountPremium
      */
     public function setCreatedAt($createdAt)
@@ -316,9 +324,9 @@ class UAccountPremium extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -326,9 +334,10 @@ class UAccountPremium extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return UAccountPremium
      */
     public function setUpdatedAt($updatedAt)
@@ -339,9 +348,9 @@ class UAccountPremium extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -349,9 +358,10 @@ class UAccountPremium extends \Entity\Entity\Base
     }
 
     /**
-     * Set User
+     * Set user
      *
      * @param \Entity\Bizj\UAccount $user
+     *
      * @return UAccountPremium
      */
     public function setUser(\Entity\Bizj\UAccount $user = null)
@@ -362,9 +372,9 @@ class UAccountPremium extends \Entity\Entity\Base
     }
 
     /**
-     * Get User
+     * Get user
      *
-     * @return \Entity\Bizj\UAccount 
+     * @return \Entity\Bizj\UAccount
      */
     public function getUser()
     {
@@ -372,9 +382,10 @@ class UAccountPremium extends \Entity\Entity\Base
     }
 
     /**
-     * Set Market
+     * Set market
      *
      * @param \Entity\Bizj\Market $market
+     *
      * @return UAccountPremium
      */
     public function setMarket(\Entity\Bizj\Market $market = null)
@@ -385,9 +396,9 @@ class UAccountPremium extends \Entity\Entity\Base
     }
 
     /**
-     * Get Market
+     * Get market
      *
-     * @return \Entity\Bizj\Market 
+     * @return \Entity\Bizj\Market
      */
     public function getMarket()
     {
@@ -395,9 +406,10 @@ class UAccountPremium extends \Entity\Entity\Base
     }
 
     /**
-     * Set UAccount
+     * Set uAccount
      *
      * @param \Entity\Bizj\UAccount $uAccount
+     *
      * @return UAccountPremium
      */
     public function setUAccount(\Entity\Bizj\UAccount $uAccount = null)
@@ -408,12 +420,13 @@ class UAccountPremium extends \Entity\Entity\Base
     }
 
     /**
-     * Get UAccount
+     * Get uAccount
      *
-     * @return \Entity\Bizj\UAccount 
+     * @return \Entity\Bizj\UAccount
      */
     public function getUAccount()
     {
         return $this->UAccount;
     }
 }
+

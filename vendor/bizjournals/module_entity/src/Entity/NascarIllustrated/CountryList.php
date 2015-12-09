@@ -2,8 +2,6 @@
 
 namespace Entity\NascarIllustrated;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * CountryList
  */
@@ -26,9 +24,10 @@ class CountryList extends \Entity\Entity\Base
 
 
     /**
-     * Set country_code
+     * Set countryCode
      *
      * @param string $countryCode
+     *
      * @return CountryList
      */
     public function setCountryCode($countryCode)
@@ -39,9 +38,9 @@ class CountryList extends \Entity\Entity\Base
     }
 
     /**
-     * Get country_code
+     * Get countryCode
      *
-     * @return string 
+     * @return string
      */
     public function getCountryCode()
     {
@@ -52,6 +51,7 @@ class CountryList extends \Entity\Entity\Base
      * Set alpha3
      *
      * @param string $alpha3
+     *
      * @return CountryList
      */
     public function setAlpha3($alpha3)
@@ -64,7 +64,7 @@ class CountryList extends \Entity\Entity\Base
     /**
      * Get alpha3
      *
-     * @return string 
+     * @return string
      */
     public function getAlpha3()
     {
@@ -75,6 +75,7 @@ class CountryList extends \Entity\Entity\Base
      * Set country
      *
      * @param string $country
+     *
      * @return CountryList
      */
     public function setCountry($country)
@@ -87,10 +88,11 @@ class CountryList extends \Entity\Entity\Base
     /**
      * Get country
      *
-     * @return string 
+     * @return string
      */
     public function getCountry()
     {
         return $this->country;
     }
 }
+

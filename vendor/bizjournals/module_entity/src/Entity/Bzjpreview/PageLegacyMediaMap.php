@@ -2,8 +2,6 @@
 
 namespace Entity\Bzjpreview;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * PageLegacyMediaMap
  */
@@ -66,9 +64,10 @@ class PageLegacyMediaMap extends \Entity\Entity\Base
 
 
     /**
-     * Set page_id
+     * Set pageId
      *
      * @param integer $pageId
+     *
      * @return PageLegacyMediaMap
      */
     public function setPageId($pageId)
@@ -79,9 +78,9 @@ class PageLegacyMediaMap extends \Entity\Entity\Base
     }
 
     /**
-     * Get page_id
+     * Get pageId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPageId()
     {
@@ -89,9 +88,10 @@ class PageLegacyMediaMap extends \Entity\Entity\Base
     }
 
     /**
-     * Set media_id
+     * Set mediaId
      *
      * @param integer $mediaId
+     *
      * @return PageLegacyMediaMap
      */
     public function setMediaId($mediaId)
@@ -102,9 +102,9 @@ class PageLegacyMediaMap extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_id
+     * Get mediaId
      *
-     * @return integer 
+     * @return integer
      */
     public function getMediaId()
     {
@@ -112,9 +112,10 @@ class PageLegacyMediaMap extends \Entity\Entity\Base
     }
 
     /**
-     * Set media_type
+     * Set mediaType
      *
      * @param string $mediaType
+     *
      * @return PageLegacyMediaMap
      */
     public function setMediaType($mediaType)
@@ -125,9 +126,9 @@ class PageLegacyMediaMap extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_type
+     * Get mediaType
      *
-     * @return string 
+     * @return string
      */
     public function getMediaType()
     {
@@ -138,6 +139,7 @@ class PageLegacyMediaMap extends \Entity\Entity\Base
      * Set caption
      *
      * @param string $caption
+     *
      * @return PageLegacyMediaMap
      */
     public function setCaption($caption)
@@ -150,7 +152,7 @@ class PageLegacyMediaMap extends \Entity\Entity\Base
     /**
      * Get caption
      *
-     * @return string 
+     * @return string
      */
     public function getCaption()
     {
@@ -158,9 +160,10 @@ class PageLegacyMediaMap extends \Entity\Entity\Base
     }
 
     /**
-     * Set alt_text
+     * Set altText
      *
      * @param string $altText
+     *
      * @return PageLegacyMediaMap
      */
     public function setAltText($altText)
@@ -171,9 +174,9 @@ class PageLegacyMediaMap extends \Entity\Entity\Base
     }
 
     /**
-     * Get alt_text
+     * Get altText
      *
-     * @return string 
+     * @return string
      */
     public function getAltText()
     {
@@ -181,9 +184,10 @@ class PageLegacyMediaMap extends \Entity\Entity\Base
     }
 
     /**
-     * Set link_url
+     * Set linkUrl
      *
      * @param string $linkUrl
+     *
      * @return PageLegacyMediaMap
      */
     public function setLinkUrl($linkUrl)
@@ -194,9 +198,9 @@ class PageLegacyMediaMap extends \Entity\Entity\Base
     }
 
     /**
-     * Get link_url
+     * Get linkUrl
      *
-     * @return string 
+     * @return string
      */
     public function getLinkUrl()
     {
@@ -207,6 +211,7 @@ class PageLegacyMediaMap extends \Entity\Entity\Base
      * Set ord
      *
      * @param integer $ord
+     *
      * @return PageLegacyMediaMap
      */
     public function setOrd($ord)
@@ -219,7 +224,7 @@ class PageLegacyMediaMap extends \Entity\Entity\Base
     /**
      * Get ord
      *
-     * @return integer 
+     * @return integer
      */
     public function getOrd()
     {
@@ -230,6 +235,7 @@ class PageLegacyMediaMap extends \Entity\Entity\Base
      * Set title
      *
      * @param string $title
+     *
      * @return PageLegacyMediaMap
      */
     public function setTitle($title)
@@ -242,7 +248,7 @@ class PageLegacyMediaMap extends \Entity\Entity\Base
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -253,6 +259,7 @@ class PageLegacyMediaMap extends \Entity\Entity\Base
      * Set flag
      *
      * @param boolean $flag
+     *
      * @return PageLegacyMediaMap
      */
     public function setFlag($flag)
@@ -265,7 +272,7 @@ class PageLegacyMediaMap extends \Entity\Entity\Base
     /**
      * Get flag
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getFlag()
     {
@@ -273,9 +280,10 @@ class PageLegacyMediaMap extends \Entity\Entity\Base
     }
 
     /**
-     * Set Page
+     * Set page
      *
      * @param \Entity\Bzjpreview\Page $page
+     *
      * @return PageLegacyMediaMap
      */
     public function setPage(\Entity\Bzjpreview\Page $page = null)
@@ -286,9 +294,9 @@ class PageLegacyMediaMap extends \Entity\Entity\Base
     }
 
     /**
-     * Get Page
+     * Get page
      *
-     * @return \Entity\Bzjpreview\Page 
+     * @return \Entity\Bzjpreview\Page
      */
     public function getPage()
     {
@@ -296,9 +304,10 @@ class PageLegacyMediaMap extends \Entity\Entity\Base
     }
 
     /**
-     * Set Media
+     * Set media
      *
      * @param \Entity\Bzjpreview\LegacyMedia $media
+     *
      * @return PageLegacyMediaMap
      */
     public function setMedia(\Entity\Bzjpreview\LegacyMedia $media = null)
@@ -309,12 +318,13 @@ class PageLegacyMediaMap extends \Entity\Entity\Base
     }
 
     /**
-     * Get Media
+     * Get media
      *
-     * @return \Entity\Bzjpreview\LegacyMedia 
+     * @return \Entity\Bzjpreview\LegacyMedia
      */
     public function getMedia()
     {
         return $this->Media;
     }
 }
+

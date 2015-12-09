@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * PulseResponse
  */
@@ -103,9 +101,9 @@ class PulseResponse extends \Entity\Entity\Base
     }
 
     /**
-     * Get response_id
+     * Get responseId
      *
-     * @return integer 
+     * @return integer
      */
     public function getResponseId()
     {
@@ -113,9 +111,10 @@ class PulseResponse extends \Entity\Entity\Base
     }
 
     /**
-     * Set pulse_id
+     * Set pulseId
      *
      * @param integer $pulseId
+     *
      * @return PulseResponse
      */
     public function setPulseId($pulseId)
@@ -126,9 +125,9 @@ class PulseResponse extends \Entity\Entity\Base
     }
 
     /**
-     * Get pulse_id
+     * Get pulseId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPulseId()
     {
@@ -136,9 +135,10 @@ class PulseResponse extends \Entity\Entity\Base
     }
 
     /**
-     * Set market_id
+     * Set marketId
      *
      * @param integer $marketId
+     *
      * @return PulseResponse
      */
     public function setMarketId($marketId)
@@ -149,9 +149,9 @@ class PulseResponse extends \Entity\Entity\Base
     }
 
     /**
-     * Get market_id
+     * Get marketId
      *
-     * @return integer 
+     * @return integer
      */
     public function getMarketId()
     {
@@ -162,6 +162,7 @@ class PulseResponse extends \Entity\Entity\Base
      * Set uin
      *
      * @param string $uin
+     *
      * @return PulseResponse
      */
     public function setUin($uin)
@@ -174,7 +175,7 @@ class PulseResponse extends \Entity\Entity\Base
     /**
      * Get uin
      *
-     * @return string 
+     * @return string
      */
     public function getUin()
     {
@@ -182,9 +183,10 @@ class PulseResponse extends \Entity\Entity\Base
     }
 
     /**
-     * Set ip_address
+     * Set ipAddress
      *
      * @param string $ipAddress
+     *
      * @return PulseResponse
      */
     public function setIpAddress($ipAddress)
@@ -195,9 +197,9 @@ class PulseResponse extends \Entity\Entity\Base
     }
 
     /**
-     * Get ip_address
+     * Get ipAddress
      *
-     * @return string 
+     * @return string
      */
     public function getIpAddress()
     {
@@ -208,6 +210,7 @@ class PulseResponse extends \Entity\Entity\Base
      * Set score
      *
      * @param integer $score
+     *
      * @return PulseResponse
      */
     public function setScore($score)
@@ -220,7 +223,7 @@ class PulseResponse extends \Entity\Entity\Base
     /**
      * Get score
      *
-     * @return integer 
+     * @return integer
      */
     public function getScore()
     {
@@ -231,6 +234,7 @@ class PulseResponse extends \Entity\Entity\Base
      * Set rating
      *
      * @param string $rating
+     *
      * @return PulseResponse
      */
     public function setRating($rating)
@@ -243,7 +247,7 @@ class PulseResponse extends \Entity\Entity\Base
     /**
      * Get rating
      *
-     * @return string 
+     * @return string
      */
     public function getRating()
     {
@@ -251,9 +255,10 @@ class PulseResponse extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_complete
+     * Set isComplete
      *
      * @param boolean $isComplete
+     *
      * @return PulseResponse
      */
     public function setIsComplete($isComplete)
@@ -264,9 +269,9 @@ class PulseResponse extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_complete
+     * Get isComplete
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsComplete()
     {
@@ -274,9 +279,10 @@ class PulseResponse extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_invalid
+     * Set isInvalid
      *
      * @param boolean $isInvalid
+     *
      * @return PulseResponse
      */
     public function setIsInvalid($isInvalid)
@@ -287,9 +293,9 @@ class PulseResponse extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_invalid
+     * Get isInvalid
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsInvalid()
     {
@@ -297,9 +303,10 @@ class PulseResponse extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_geocoded
+     * Set isGeocoded
      *
      * @param boolean $isGeocoded
+     *
      * @return PulseResponse
      */
     public function setIsGeocoded($isGeocoded)
@@ -310,9 +317,9 @@ class PulseResponse extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_geocoded
+     * Get isGeocoded
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsGeocoded()
     {
@@ -320,9 +327,10 @@ class PulseResponse extends \Entity\Entity\Base
     }
 
     /**
-     * Set postal_code
+     * Set postalCode
      *
      * @param string $postalCode
+     *
      * @return PulseResponse
      */
     public function setPostalCode($postalCode)
@@ -333,9 +341,9 @@ class PulseResponse extends \Entity\Entity\Base
     }
 
     /**
-     * Get postal_code
+     * Get postalCode
      *
-     * @return string 
+     * @return string
      */
     public function getPostalCode()
     {
@@ -343,9 +351,10 @@ class PulseResponse extends \Entity\Entity\Base
     }
 
     /**
-     * Set state_province
+     * Set stateProvince
      *
      * @param string $stateProvince
+     *
      * @return PulseResponse
      */
     public function setStateProvince($stateProvince)
@@ -356,9 +365,9 @@ class PulseResponse extends \Entity\Entity\Base
     }
 
     /**
-     * Get state_province
+     * Get stateProvince
      *
-     * @return string 
+     * @return string
      */
     public function getStateProvince()
     {
@@ -369,6 +378,7 @@ class PulseResponse extends \Entity\Entity\Base
      * Set country
      *
      * @param string $country
+     *
      * @return PulseResponse
      */
     public function setCountry($country)
@@ -381,7 +391,7 @@ class PulseResponse extends \Entity\Entity\Base
     /**
      * Get country
      *
-     * @return string 
+     * @return string
      */
     public function getCountry()
     {
@@ -389,9 +399,10 @@ class PulseResponse extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return PulseResponse
      */
     public function setCreatedAt($createdAt)
@@ -402,9 +413,9 @@ class PulseResponse extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -412,9 +423,10 @@ class PulseResponse extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return PulseResponse
      */
     public function setUpdatedAt($updatedAt)
@@ -425,9 +437,9 @@ class PulseResponse extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -435,32 +447,33 @@ class PulseResponse extends \Entity\Entity\Base
     }
 
     /**
-     * Add ResponseData
+     * Add responseDatum
      *
-     * @param \Entity\Bizj\PulseResponseData $responseData
+     * @param \Entity\Bizj\PulseResponseData $responseDatum
+     *
      * @return PulseResponse
      */
-    public function addResponseDatum(\Entity\Bizj\PulseResponseData $responseData)
+    public function addResponseDatum(\Entity\Bizj\PulseResponseData $responseDatum)
     {
-        $this->ResponseData[] = $responseData;
+        $this->ResponseData[] = $responseDatum;
 
         return $this;
     }
 
     /**
-     * Remove ResponseData
+     * Remove responseDatum
      *
-     * @param \Entity\Bizj\PulseResponseData $responseData
+     * @param \Entity\Bizj\PulseResponseData $responseDatum
      */
-    public function removeResponseDatum(\Entity\Bizj\PulseResponseData $responseData)
+    public function removeResponseDatum(\Entity\Bizj\PulseResponseData $responseDatum)
     {
-        $this->ResponseData->removeElement($responseData);
+        $this->ResponseData->removeElement($responseDatum);
     }
 
     /**
-     * Get ResponseData
+     * Get responseData
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getResponseData()
     {
@@ -468,9 +481,10 @@ class PulseResponse extends \Entity\Entity\Base
     }
 
     /**
-     * Set Pulse
+     * Set pulse
      *
      * @param \Entity\Bizj\Pulse $pulse
+     *
      * @return PulseResponse
      */
     public function setPulse(\Entity\Bizj\Pulse $pulse = null)
@@ -481,12 +495,13 @@ class PulseResponse extends \Entity\Entity\Base
     }
 
     /**
-     * Get Pulse
+     * Get pulse
      *
-     * @return \Entity\Bizj\Pulse 
+     * @return \Entity\Bizj\Pulse
      */
     public function getPulse()
     {
         return $this->Pulse;
     }
 }
+

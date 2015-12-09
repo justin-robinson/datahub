@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * PageNational
  */
@@ -21,9 +19,10 @@ class PageNational extends \Entity\Entity\Base
 
 
     /**
-     * Set page_id
+     * Set pageId
      *
      * @param integer $pageId
+     *
      * @return PageNational
      */
     public function setPageId($pageId)
@@ -34,9 +33,9 @@ class PageNational extends \Entity\Entity\Base
     }
 
     /**
-     * Get page_id
+     * Get pageId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPageId()
     {
@@ -44,9 +43,10 @@ class PageNational extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return PageNational
      */
     public function setCreatedAt($createdAt)
@@ -57,12 +57,13 @@ class PageNational extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
         return $this->created_at;
     }
 }
+

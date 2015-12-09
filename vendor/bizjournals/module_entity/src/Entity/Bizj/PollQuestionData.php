@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * PollQuestionData
  */
@@ -46,9 +44,9 @@ class PollQuestionData extends \Entity\Entity\Base
 
 
     /**
-     * Get question_data_id
+     * Get questionDataId
      *
-     * @return integer 
+     * @return integer
      */
     public function getQuestionDataId()
     {
@@ -59,6 +57,7 @@ class PollQuestionData extends \Entity\Entity\Base
      * Set position
      *
      * @param integer $position
+     *
      * @return PollQuestionData
      */
     public function setPosition($position)
@@ -71,7 +70,7 @@ class PollQuestionData extends \Entity\Entity\Base
     /**
      * Get position
      *
-     * @return integer 
+     * @return integer
      */
     public function getPosition()
     {
@@ -82,6 +81,7 @@ class PollQuestionData extends \Entity\Entity\Base
      * Set answer
      *
      * @param string $answer
+     *
      * @return PollQuestionData
      */
     public function setAnswer($answer)
@@ -94,7 +94,7 @@ class PollQuestionData extends \Entity\Entity\Base
     /**
      * Get answer
      *
-     * @return string 
+     * @return string
      */
     public function getAnswer()
     {
@@ -102,9 +102,10 @@ class PollQuestionData extends \Entity\Entity\Base
     }
 
     /**
-     * Set poll_question_id
+     * Set pollQuestionId
      *
      * @param integer $pollQuestionId
+     *
      * @return PollQuestionData
      */
     public function setPollQuestionId($pollQuestionId)
@@ -115,9 +116,9 @@ class PollQuestionData extends \Entity\Entity\Base
     }
 
     /**
-     * Get poll_question_id
+     * Get pollQuestionId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPollQuestionId()
     {
@@ -125,9 +126,10 @@ class PollQuestionData extends \Entity\Entity\Base
     }
 
     /**
-     * Set c_time
+     * Set cTime
      *
      * @param \DateTime $cTime
+     *
      * @return PollQuestionData
      */
     public function setCTime($cTime)
@@ -138,9 +140,9 @@ class PollQuestionData extends \Entity\Entity\Base
     }
 
     /**
-     * Get c_time
+     * Get cTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCTime()
     {
@@ -148,9 +150,10 @@ class PollQuestionData extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_deleted
+     * Set isDeleted
      *
      * @param boolean $isDeleted
+     *
      * @return PollQuestionData
      */
     public function setIsDeleted($isDeleted)
@@ -161,9 +164,9 @@ class PollQuestionData extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_deleted
+     * Get isDeleted
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsDeleted()
     {
@@ -171,9 +174,10 @@ class PollQuestionData extends \Entity\Entity\Base
     }
 
     /**
-     * Set PollQuestion
+     * Set pollQuestion
      *
      * @param \Entity\Bizj\PollQuestion $pollQuestion
+     *
      * @return PollQuestionData
      */
     public function setPollQuestion(\Entity\Bizj\PollQuestion $pollQuestion = null)
@@ -184,12 +188,13 @@ class PollQuestionData extends \Entity\Entity\Base
     }
 
     /**
-     * Get PollQuestion
+     * Get pollQuestion
      *
-     * @return \Entity\Bizj\PollQuestion 
+     * @return \Entity\Bizj\PollQuestion
      */
     public function getPollQuestion()
     {
         return $this->PollQuestion;
     }
 }
+

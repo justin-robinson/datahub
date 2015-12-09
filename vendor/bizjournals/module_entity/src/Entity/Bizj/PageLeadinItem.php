@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * PageLeadinItem
  */
@@ -91,9 +89,9 @@ class PageLeadinItem extends \Entity\Entity\Base
 
 
     /**
-     * Get item_id
+     * Get itemId
      *
-     * @return integer 
+     * @return integer
      */
     public function getItemId()
     {
@@ -101,9 +99,10 @@ class PageLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set group_id
+     * Set groupId
      *
      * @param integer $groupId
+     *
      * @return PageLeadinItem
      */
     public function setGroupId($groupId)
@@ -114,9 +113,9 @@ class PageLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get group_id
+     * Get groupId
      *
-     * @return integer 
+     * @return integer
      */
     public function getGroupId()
     {
@@ -127,6 +126,7 @@ class PageLeadinItem extends \Entity\Entity\Base
      * Set ord
      *
      * @param integer $ord
+     *
      * @return PageLeadinItem
      */
     public function setOrd($ord)
@@ -139,7 +139,7 @@ class PageLeadinItem extends \Entity\Entity\Base
     /**
      * Get ord
      *
-     * @return integer 
+     * @return integer
      */
     public function getOrd()
     {
@@ -147,9 +147,10 @@ class PageLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set item_page_id
+     * Set itemPageId
      *
      * @param integer $itemPageId
+     *
      * @return PageLeadinItem
      */
     public function setItemPageId($itemPageId)
@@ -160,9 +161,9 @@ class PageLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get item_page_id
+     * Get itemPageId
      *
-     * @return integer 
+     * @return integer
      */
     public function getItemPageId()
     {
@@ -173,6 +174,7 @@ class PageLeadinItem extends \Entity\Entity\Base
      * Set url
      *
      * @param string $url
+     *
      * @return PageLeadinItem
      */
     public function setUrl($url)
@@ -185,7 +187,7 @@ class PageLeadinItem extends \Entity\Entity\Base
     /**
      * Get url
      *
-     * @return string 
+     * @return string
      */
     public function getUrl()
     {
@@ -196,6 +198,7 @@ class PageLeadinItem extends \Entity\Entity\Base
      * Set headline
      *
      * @param string $headline
+     *
      * @return PageLeadinItem
      */
     public function setHeadline($headline)
@@ -208,7 +211,7 @@ class PageLeadinItem extends \Entity\Entity\Base
     /**
      * Get headline
      *
-     * @return string 
+     * @return string
      */
     public function getHeadline()
     {
@@ -219,6 +222,7 @@ class PageLeadinItem extends \Entity\Entity\Base
      * Set teaser
      *
      * @param string $teaser
+     *
      * @return PageLeadinItem
      */
     public function setTeaser($teaser)
@@ -231,7 +235,7 @@ class PageLeadinItem extends \Entity\Entity\Base
     /**
      * Get teaser
      *
-     * @return string 
+     * @return string
      */
     public function getTeaser()
     {
@@ -239,9 +243,10 @@ class PageLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set item_media_id
+     * Set itemMediaId
      *
      * @param integer $itemMediaId
+     *
      * @return PageLeadinItem
      */
     public function setItemMediaId($itemMediaId)
@@ -252,9 +257,9 @@ class PageLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get item_media_id
+     * Get itemMediaId
      *
-     * @return integer 
+     * @return integer
      */
     public function getItemMediaId()
     {
@@ -262,9 +267,10 @@ class PageLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set item_media_url
+     * Set itemMediaUrl
      *
      * @param string $itemMediaUrl
+     *
      * @return PageLeadinItem
      */
     public function setItemMediaUrl($itemMediaUrl)
@@ -275,9 +281,9 @@ class PageLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get item_media_url
+     * Get itemMediaUrl
      *
-     * @return string 
+     * @return string
      */
     public function getItemMediaUrl()
     {
@@ -285,9 +291,10 @@ class PageLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set media_caption
+     * Set mediaCaption
      *
      * @param string $mediaCaption
+     *
      * @return PageLeadinItem
      */
     public function setMediaCaption($mediaCaption)
@@ -298,9 +305,9 @@ class PageLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_caption
+     * Get mediaCaption
      *
-     * @return string 
+     * @return string
      */
     public function getMediaCaption()
     {
@@ -308,9 +315,10 @@ class PageLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set media_alt_text
+     * Set mediaAltText
      *
      * @param string $mediaAltText
+     *
      * @return PageLeadinItem
      */
     public function setMediaAltText($mediaAltText)
@@ -321,9 +329,9 @@ class PageLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_alt_text
+     * Get mediaAltText
      *
-     * @return string 
+     * @return string
      */
     public function getMediaAltText()
     {
@@ -331,9 +339,10 @@ class PageLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set thumb_media_id
+     * Set thumbMediaId
      *
      * @param integer $thumbMediaId
+     *
      * @return PageLeadinItem
      */
     public function setThumbMediaId($thumbMediaId)
@@ -344,9 +353,9 @@ class PageLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get thumb_media_id
+     * Get thumbMediaId
      *
-     * @return integer 
+     * @return integer
      */
     public function getThumbMediaId()
     {
@@ -357,6 +366,7 @@ class PageLeadinItem extends \Entity\Entity\Base
      * Set kicker
      *
      * @param string $kicker
+     *
      * @return PageLeadinItem
      */
     public function setKicker($kicker)
@@ -369,7 +379,7 @@ class PageLeadinItem extends \Entity\Entity\Base
     /**
      * Get kicker
      *
-     * @return string 
+     * @return string
      */
     public function getKicker()
     {
@@ -377,9 +387,10 @@ class PageLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set item_video_id
+     * Set itemVideoId
      *
      * @param string $itemVideoId
+     *
      * @return PageLeadinItem
      */
     public function setItemVideoId($itemVideoId)
@@ -390,9 +401,9 @@ class PageLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get item_video_id
+     * Get itemVideoId
      *
-     * @return string 
+     * @return string
      */
     public function getItemVideoId()
     {
@@ -400,9 +411,10 @@ class PageLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set additional_data
+     * Set additionalData
      *
      * @param string $additionalData
+     *
      * @return PageLeadinItem
      */
     public function setAdditionalData($additionalData)
@@ -413,9 +425,9 @@ class PageLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get additional_data
+     * Get additionalData
      *
-     * @return string 
+     * @return string
      */
     public function getAdditionalData()
     {
@@ -423,9 +435,10 @@ class PageLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set PageLeadinGroup
+     * Set pageLeadinGroup
      *
      * @param \Entity\Bizj\PageLeadinGroup $pageLeadinGroup
+     *
      * @return PageLeadinItem
      */
     public function setPageLeadinGroup(\Entity\Bizj\PageLeadinGroup $pageLeadinGroup = null)
@@ -436,12 +449,13 @@ class PageLeadinItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get PageLeadinGroup
+     * Get pageLeadinGroup
      *
-     * @return \Entity\Bizj\PageLeadinGroup 
+     * @return \Entity\Bizj\PageLeadinGroup
      */
     public function getPageLeadinGroup()
     {
         return $this->PageLeadinGroup;
     }
 }
+

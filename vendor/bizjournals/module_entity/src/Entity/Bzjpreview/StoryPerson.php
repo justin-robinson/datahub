@@ -2,8 +2,6 @@
 
 namespace Entity\Bzjpreview;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * StoryPerson
  */
@@ -41,9 +39,10 @@ class StoryPerson extends \Entity\Entity\Base
 
 
     /**
-     * Set story_id
+     * Set storyId
      *
      * @param integer $storyId
+     *
      * @return StoryPerson
      */
     public function setStoryId($storyId)
@@ -54,9 +53,9 @@ class StoryPerson extends \Entity\Entity\Base
     }
 
     /**
-     * Get story_id
+     * Get storyId
      *
-     * @return integer 
+     * @return integer
      */
     public function getStoryId()
     {
@@ -64,9 +63,10 @@ class StoryPerson extends \Entity\Entity\Base
     }
 
     /**
-     * Set c_time
+     * Set cTime
      *
      * @param \DateTime $cTime
+     *
      * @return StoryPerson
      */
     public function setCTime($cTime)
@@ -77,9 +77,9 @@ class StoryPerson extends \Entity\Entity\Base
     }
 
     /**
-     * Get c_time
+     * Get cTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCTime()
     {
@@ -87,9 +87,10 @@ class StoryPerson extends \Entity\Entity\Base
     }
 
     /**
-     * Set person_id
+     * Set personId
      *
      * @param integer $personId
+     *
      * @return StoryPerson
      */
     public function setPersonId($personId)
@@ -100,9 +101,9 @@ class StoryPerson extends \Entity\Entity\Base
     }
 
     /**
-     * Get person_id
+     * Get personId
      *
-     * @return integer 
+     * @return integer
      */
     public function getPersonId()
     {
@@ -113,6 +114,7 @@ class StoryPerson extends \Entity\Entity\Base
      * Set weight
      *
      * @param integer $weight
+     *
      * @return StoryPerson
      */
     public function setWeight($weight)
@@ -125,7 +127,7 @@ class StoryPerson extends \Entity\Entity\Base
     /**
      * Get weight
      *
-     * @return integer 
+     * @return integer
      */
     public function getWeight()
     {
@@ -136,6 +138,7 @@ class StoryPerson extends \Entity\Entity\Base
      * Set frequency
      *
      * @param integer $frequency
+     *
      * @return StoryPerson
      */
     public function setFrequency($frequency)
@@ -148,7 +151,7 @@ class StoryPerson extends \Entity\Entity\Base
     /**
      * Get frequency
      *
-     * @return integer 
+     * @return integer
      */
     public function getFrequency()
     {
@@ -156,9 +159,10 @@ class StoryPerson extends \Entity\Entity\Base
     }
 
     /**
-     * Set StoryRead
+     * Set storyRead
      *
      * @param \Entity\Bzjpreview\StoryRead $storyRead
+     *
      * @return StoryPerson
      */
     public function setStoryRead(\Entity\Bzjpreview\StoryRead $storyRead = null)
@@ -169,12 +173,13 @@ class StoryPerson extends \Entity\Entity\Base
     }
 
     /**
-     * Get StoryRead
+     * Get storyRead
      *
-     * @return \Entity\Bzjpreview\StoryRead 
+     * @return \Entity\Bzjpreview\StoryRead
      */
     public function getStoryRead()
     {
         return $this->StoryRead;
     }
 }
+

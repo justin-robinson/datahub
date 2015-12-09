@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * StoryCorrections
  */
@@ -48,7 +46,7 @@ class StoryCorrections extends \Entity\Entity\Base
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -56,9 +54,10 @@ class StoryCorrections extends \Entity\Entity\Base
     }
 
     /**
-     * Set story_id
+     * Set storyId
      *
      * @param integer $storyId
+     *
      * @return StoryCorrections
      */
     public function setStoryId($storyId)
@@ -69,9 +68,9 @@ class StoryCorrections extends \Entity\Entity\Base
     }
 
     /**
-     * Get story_id
+     * Get storyId
      *
-     * @return integer 
+     * @return integer
      */
     public function getStoryId()
     {
@@ -82,6 +81,7 @@ class StoryCorrections extends \Entity\Entity\Base
      * Set market
      *
      * @param string $market
+     *
      * @return StoryCorrections
      */
     public function setMarket($market)
@@ -94,7 +94,7 @@ class StoryCorrections extends \Entity\Entity\Base
     /**
      * Get market
      *
-     * @return string 
+     * @return string
      */
     public function getMarket()
     {
@@ -105,6 +105,7 @@ class StoryCorrections extends \Entity\Entity\Base
      * Set text
      *
      * @param string $text
+     *
      * @return StoryCorrections
      */
     public function setText($text)
@@ -117,7 +118,7 @@ class StoryCorrections extends \Entity\Entity\Base
     /**
      * Get text
      *
-     * @return string 
+     * @return string
      */
     public function getText()
     {
@@ -125,9 +126,10 @@ class StoryCorrections extends \Entity\Entity\Base
     }
 
     /**
-     * Set c_time
+     * Set cTime
      *
      * @param \DateTime $cTime
+     *
      * @return StoryCorrections
      */
     public function setCTime($cTime)
@@ -138,9 +140,9 @@ class StoryCorrections extends \Entity\Entity\Base
     }
 
     /**
-     * Get c_time
+     * Get cTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCTime()
     {
@@ -148,9 +150,10 @@ class StoryCorrections extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_daily
+     * Set isDaily
      *
      * @param string $isDaily
+     *
      * @return StoryCorrections
      */
     public function setIsDaily($isDaily)
@@ -161,9 +164,9 @@ class StoryCorrections extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_daily
+     * Get isDaily
      *
-     * @return string 
+     * @return string
      */
     public function getIsDaily()
     {
@@ -171,9 +174,10 @@ class StoryCorrections extends \Entity\Entity\Base
     }
 
     /**
-     * Set StoryRead
+     * Set storyRead
      *
      * @param \Entity\Bizj\StoryRead $storyRead
+     *
      * @return StoryCorrections
      */
     public function setStoryRead(\Entity\Bizj\StoryRead $storyRead = null)
@@ -184,12 +188,13 @@ class StoryCorrections extends \Entity\Entity\Base
     }
 
     /**
-     * Get StoryRead
+     * Get storyRead
      *
-     * @return \Entity\Bizj\StoryRead 
+     * @return \Entity\Bizj\StoryRead
      */
     public function getStoryRead()
     {
         return $this->StoryRead;
     }
 }
+

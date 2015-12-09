@@ -2,8 +2,6 @@
 
 namespace Entity\Medialibrary;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * MediaMetadata
  */
@@ -61,9 +59,9 @@ class MediaMetadata extends \Entity\Entity\Base
 
 
     /**
-     * Get meta_id
+     * Get metaId
      *
-     * @return integer 
+     * @return integer
      */
     public function getMetaId()
     {
@@ -71,9 +69,10 @@ class MediaMetadata extends \Entity\Entity\Base
     }
 
     /**
-     * Set media_id
+     * Set mediaId
      *
      * @param integer $mediaId
+     *
      * @return MediaMetadata
      */
     public function setMediaId($mediaId)
@@ -84,9 +83,9 @@ class MediaMetadata extends \Entity\Entity\Base
     }
 
     /**
-     * Get media_id
+     * Get mediaId
      *
-     * @return integer 
+     * @return integer
      */
     public function getMediaId()
     {
@@ -94,9 +93,10 @@ class MediaMetadata extends \Entity\Entity\Base
     }
 
     /**
-     * Set meta_group
+     * Set metaGroup
      *
      * @param string $metaGroup
+     *
      * @return MediaMetadata
      */
     public function setMetaGroup($metaGroup)
@@ -107,9 +107,9 @@ class MediaMetadata extends \Entity\Entity\Base
     }
 
     /**
-     * Get meta_group
+     * Get metaGroup
      *
-     * @return string 
+     * @return string
      */
     public function getMetaGroup()
     {
@@ -117,9 +117,10 @@ class MediaMetadata extends \Entity\Entity\Base
     }
 
     /**
-     * Set meta_name
+     * Set metaName
      *
      * @param string $metaName
+     *
      * @return MediaMetadata
      */
     public function setMetaName($metaName)
@@ -130,9 +131,9 @@ class MediaMetadata extends \Entity\Entity\Base
     }
 
     /**
-     * Get meta_name
+     * Get metaName
      *
-     * @return string 
+     * @return string
      */
     public function getMetaName()
     {
@@ -140,9 +141,10 @@ class MediaMetadata extends \Entity\Entity\Base
     }
 
     /**
-     * Set meta_value
+     * Set metaValue
      *
      * @param string $metaValue
+     *
      * @return MediaMetadata
      */
     public function setMetaValue($metaValue)
@@ -153,9 +155,9 @@ class MediaMetadata extends \Entity\Entity\Base
     }
 
     /**
-     * Get meta_value
+     * Get metaValue
      *
-     * @return string 
+     * @return string
      */
     public function getMetaValue()
     {
@@ -163,9 +165,10 @@ class MediaMetadata extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_preferred
+     * Set isPreferred
      *
      * @param boolean $isPreferred
+     *
      * @return MediaMetadata
      */
     public function setIsPreferred($isPreferred)
@@ -176,9 +179,9 @@ class MediaMetadata extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_preferred
+     * Get isPreferred
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsPreferred()
     {
@@ -186,9 +189,10 @@ class MediaMetadata extends \Entity\Entity\Base
     }
 
     /**
-     * Set is_original
+     * Set isOriginal
      *
      * @param boolean $isOriginal
+     *
      * @return MediaMetadata
      */
     public function setIsOriginal($isOriginal)
@@ -199,9 +203,9 @@ class MediaMetadata extends \Entity\Entity\Base
     }
 
     /**
-     * Get is_original
+     * Get isOriginal
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIsOriginal()
     {
@@ -209,9 +213,10 @@ class MediaMetadata extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return MediaMetadata
      */
     public function setCreatedAt($createdAt)
@@ -222,9 +227,9 @@ class MediaMetadata extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -232,9 +237,10 @@ class MediaMetadata extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return MediaMetadata
      */
     public function setUpdatedAt($updatedAt)
@@ -245,9 +251,9 @@ class MediaMetadata extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -255,9 +261,10 @@ class MediaMetadata extends \Entity\Entity\Base
     }
 
     /**
-     * Set Media
+     * Set media
      *
      * @param \Entity\Medialibrary\Media $media
+     *
      * @return MediaMetadata
      */
     public function setMedia(\Entity\Medialibrary\Media $media = null)
@@ -268,12 +275,13 @@ class MediaMetadata extends \Entity\Entity\Base
     }
 
     /**
-     * Get Media
+     * Get media
      *
-     * @return \Entity\Medialibrary\Media 
+     * @return \Entity\Medialibrary\Media
      */
     public function getMedia()
     {
         return $this->Media;
     }
 }
+

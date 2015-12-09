@@ -2,8 +2,6 @@
 
 namespace Entity\NascarIllustrated;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * CartItem
  */
@@ -76,9 +74,10 @@ class CartItem extends \Entity\Entity\Base
 
 
     /**
-     * Set cart_id
+     * Set cartId
      *
      * @param integer $cartId
+     *
      * @return CartItem
      */
     public function setCartId($cartId)
@@ -89,9 +88,9 @@ class CartItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get cart_id
+     * Get cartId
      *
-     * @return integer 
+     * @return integer
      */
     public function getCartId()
     {
@@ -99,9 +98,10 @@ class CartItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set item_id
+     * Set itemId
      *
      * @param integer $itemId
+     *
      * @return CartItem
      */
     public function setItemId($itemId)
@@ -112,9 +112,9 @@ class CartItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get item_id
+     * Get itemId
      *
-     * @return integer 
+     * @return integer
      */
     public function getItemId()
     {
@@ -122,9 +122,10 @@ class CartItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set product_name
+     * Set productName
      *
      * @param string $productName
+     *
      * @return CartItem
      */
     public function setProductName($productName)
@@ -135,9 +136,9 @@ class CartItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get product_name
+     * Get productName
      *
-     * @return string 
+     * @return string
      */
     public function getProductName()
     {
@@ -148,6 +149,7 @@ class CartItem extends \Entity\Entity\Base
      * Set price
      *
      * @param integer $price
+     *
      * @return CartItem
      */
     public function setPrice($price)
@@ -160,7 +162,7 @@ class CartItem extends \Entity\Entity\Base
     /**
      * Get price
      *
-     * @return integer 
+     * @return integer
      */
     public function getPrice()
     {
@@ -171,6 +173,7 @@ class CartItem extends \Entity\Entity\Base
      * Set quantity
      *
      * @param integer $quantity
+     *
      * @return CartItem
      */
     public function setQuantity($quantity)
@@ -183,7 +186,7 @@ class CartItem extends \Entity\Entity\Base
     /**
      * Get quantity
      *
-     * @return integer 
+     * @return integer
      */
     public function getQuantity()
     {
@@ -191,9 +194,10 @@ class CartItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set added_time
+     * Set addedTime
      *
      * @param \DateTime $addedTime
+     *
      * @return CartItem
      */
     public function setAddedTime($addedTime)
@@ -204,9 +208,9 @@ class CartItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get added_time
+     * Get addedTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getAddedTime()
     {
@@ -217,6 +221,7 @@ class CartItem extends \Entity\Entity\Base
      * Set tax
      *
      * @param integer $tax
+     *
      * @return CartItem
      */
     public function setTax($tax)
@@ -229,7 +234,7 @@ class CartItem extends \Entity\Entity\Base
     /**
      * Get tax
      *
-     * @return integer 
+     * @return integer
      */
     public function getTax()
     {
@@ -237,9 +242,10 @@ class CartItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set parent_item_id
+     * Set parentItemId
      *
      * @param integer $parentItemId
+     *
      * @return CartItem
      */
     public function setParentItemId($parentItemId)
@@ -250,9 +256,9 @@ class CartItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get parent_item_id
+     * Get parentItemId
      *
-     * @return integer 
+     * @return integer
      */
     public function getParentItemId()
     {
@@ -263,6 +269,7 @@ class CartItem extends \Entity\Entity\Base
      * Set metadata
      *
      * @param string $metadata
+     *
      * @return CartItem
      */
     public function setMetadata($metadata)
@@ -275,7 +282,7 @@ class CartItem extends \Entity\Entity\Base
     /**
      * Get metadata
      *
-     * @return string 
+     * @return string
      */
     public function getMetadata()
     {
@@ -283,9 +290,10 @@ class CartItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return CartItem
      */
     public function setCreatedAt($createdAt)
@@ -296,9 +304,9 @@ class CartItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -306,9 +314,10 @@ class CartItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return CartItem
      */
     public function setUpdatedAt($updatedAt)
@@ -319,9 +328,9 @@ class CartItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -329,9 +338,10 @@ class CartItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set Cart
+     * Set cart
      *
      * @param \Entity\NascarIllustrated\Cart $cart
+     *
      * @return CartItem
      */
     public function setCart(\Entity\NascarIllustrated\Cart $cart = null)
@@ -342,9 +352,9 @@ class CartItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get Cart
+     * Get cart
      *
-     * @return \Entity\NascarIllustrated\Cart 
+     * @return \Entity\NascarIllustrated\Cart
      */
     public function getCart()
     {
@@ -352,9 +362,10 @@ class CartItem extends \Entity\Entity\Base
     }
 
     /**
-     * Set Product
+     * Set product
      *
      * @param \Entity\NascarIllustrated\Product $product
+     *
      * @return CartItem
      */
     public function setProduct(\Entity\NascarIllustrated\Product $product = null)
@@ -365,12 +376,13 @@ class CartItem extends \Entity\Entity\Base
     }
 
     /**
-     * Get Product
+     * Get product
      *
-     * @return \Entity\NascarIllustrated\Product 
+     * @return \Entity\NascarIllustrated\Product
      */
     public function getProduct()
     {
         return $this->Product;
     }
 }
+

@@ -2,8 +2,6 @@
 
 namespace Entity\Authentication;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * AccessToken
  */
@@ -54,6 +52,7 @@ class AccessToken extends \Entity\Entity\Base
      * Set token
      *
      * @param string $token
+     *
      * @return AccessToken
      */
     public function setToken($token)
@@ -66,7 +65,7 @@ class AccessToken extends \Entity\Entity\Base
     /**
      * Get token
      *
-     * @return string 
+     * @return string
      */
     public function getToken()
     {
@@ -74,9 +73,10 @@ class AccessToken extends \Entity\Entity\Base
     }
 
     /**
-     * Set client_id
+     * Set clientId
      *
      * @param integer $clientId
+     *
      * @return AccessToken
      */
     public function setClientId($clientId)
@@ -87,9 +87,9 @@ class AccessToken extends \Entity\Entity\Base
     }
 
     /**
-     * Get client_id
+     * Get clientId
      *
-     * @return integer 
+     * @return integer
      */
     public function getClientId()
     {
@@ -97,9 +97,10 @@ class AccessToken extends \Entity\Entity\Base
     }
 
     /**
-     * Set service_id
+     * Set serviceId
      *
      * @param integer $serviceId
+     *
      * @return AccessToken
      */
     public function setServiceId($serviceId)
@@ -110,9 +111,9 @@ class AccessToken extends \Entity\Entity\Base
     }
 
     /**
-     * Get service_id
+     * Get serviceId
      *
-     * @return integer 
+     * @return integer
      */
     public function getServiceId()
     {
@@ -120,9 +121,10 @@ class AccessToken extends \Entity\Entity\Base
     }
 
     /**
-     * Set expires_at
+     * Set expiresAt
      *
      * @param \DateTime $expiresAt
+     *
      * @return AccessToken
      */
     public function setExpiresAt($expiresAt)
@@ -133,9 +135,9 @@ class AccessToken extends \Entity\Entity\Base
     }
 
     /**
-     * Get expires_at
+     * Get expiresAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getExpiresAt()
     {
@@ -146,6 +148,7 @@ class AccessToken extends \Entity\Entity\Base
      * Set scope
      *
      * @param string $scope
+     *
      * @return AccessToken
      */
     public function setScope($scope)
@@ -158,7 +161,7 @@ class AccessToken extends \Entity\Entity\Base
     /**
      * Get scope
      *
-     * @return string 
+     * @return string
      */
     public function getScope()
     {
@@ -166,9 +169,10 @@ class AccessToken extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return AccessToken
      */
     public function setCreatedAt($createdAt)
@@ -179,9 +183,9 @@ class AccessToken extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -189,9 +193,10 @@ class AccessToken extends \Entity\Entity\Base
     }
 
     /**
-     * Set Client
+     * Set client
      *
      * @param \Entity\Authentication\Client $client
+     *
      * @return AccessToken
      */
     public function setClient(\Entity\Authentication\Client $client = null)
@@ -202,9 +207,9 @@ class AccessToken extends \Entity\Entity\Base
     }
 
     /**
-     * Get Client
+     * Get client
      *
-     * @return \Entity\Authentication\Client 
+     * @return \Entity\Authentication\Client
      */
     public function getClient()
     {
@@ -212,9 +217,10 @@ class AccessToken extends \Entity\Entity\Base
     }
 
     /**
-     * Set Service
+     * Set service
      *
      * @param \Entity\Authentication\Service $service
+     *
      * @return AccessToken
      */
     public function setService(\Entity\Authentication\Service $service = null)
@@ -225,12 +231,13 @@ class AccessToken extends \Entity\Entity\Base
     }
 
     /**
-     * Get Service
+     * Get service
      *
-     * @return \Entity\Authentication\Service 
+     * @return \Entity\Authentication\Service
      */
     public function getService()
     {
         return $this->Service;
     }
 }
+

@@ -2,8 +2,6 @@
 
 namespace Entity\Bzjpreview;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * StorySpecialCategory
  */
@@ -31,9 +29,10 @@ class StorySpecialCategory extends \Entity\Entity\Base
 
 
     /**
-     * Set story_id
+     * Set storyId
      *
      * @param integer $storyId
+     *
      * @return StorySpecialCategory
      */
     public function setStoryId($storyId)
@@ -44,9 +43,9 @@ class StorySpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Get story_id
+     * Get storyId
      *
-     * @return integer 
+     * @return integer
      */
     public function getStoryId()
     {
@@ -54,9 +53,10 @@ class StorySpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Set special_cat_id
+     * Set specialCatId
      *
      * @param integer $specialCatId
+     *
      * @return StorySpecialCategory
      */
     public function setSpecialCatId($specialCatId)
@@ -67,9 +67,9 @@ class StorySpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Get special_cat_id
+     * Get specialCatId
      *
-     * @return integer 
+     * @return integer
      */
     public function getSpecialCatId()
     {
@@ -77,9 +77,10 @@ class StorySpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Set c_time
+     * Set cTime
      *
      * @param \DateTime $cTime
+     *
      * @return StorySpecialCategory
      */
     public function setCTime($cTime)
@@ -90,9 +91,9 @@ class StorySpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Get c_time
+     * Get cTime
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCTime()
     {
@@ -100,9 +101,10 @@ class StorySpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Set StoryRead
+     * Set storyRead
      *
      * @param \Entity\Bzjpreview\StoryRead $storyRead
+     *
      * @return StorySpecialCategory
      */
     public function setStoryRead(\Entity\Bzjpreview\StoryRead $storyRead = null)
@@ -113,12 +115,13 @@ class StorySpecialCategory extends \Entity\Entity\Base
     }
 
     /**
-     * Get StoryRead
+     * Get storyRead
      *
-     * @return \Entity\Bzjpreview\StoryRead 
+     * @return \Entity\Bzjpreview\StoryRead
      */
     public function getStoryRead()
     {
         return $this->StoryRead;
     }
 }
+

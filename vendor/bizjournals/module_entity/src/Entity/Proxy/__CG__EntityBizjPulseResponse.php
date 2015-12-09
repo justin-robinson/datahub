@@ -495,23 +495,23 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     /**
      * {@inheritDoc}
      */
-    public function addResponseDatum(\Entity\Bizj\PulseResponseData $responseData)
+    public function addResponseDatum(\Entity\Bizj\PulseResponseData $responseDatum)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addResponseDatum', array($responseData));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addResponseDatum', array($responseDatum));
 
-        return parent::addResponseDatum($responseData);
+        return parent::addResponseDatum($responseDatum);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeResponseDatum(\Entity\Bizj\PulseResponseData $responseData)
+    public function removeResponseDatum(\Entity\Bizj\PulseResponseData $responseDatum)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeResponseDatum', array($responseData));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeResponseDatum', array($responseDatum));
 
-        return parent::removeResponseDatum($responseData);
+        return parent::removeResponseDatum($responseDatum);
     }
 
     /**

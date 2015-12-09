@@ -385,23 +385,23 @@ class ProductCategory extends \Entity\NascarIllustrated\ProductCategory implemen
     /**
      * {@inheritDoc}
      */
-    public function addProduct(\Entity\NascarIllustrated\Product $products)
+    public function addProduct(\Entity\NascarIllustrated\Product $product)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addProduct', array($products));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addProduct', array($product));
 
-        return parent::addProduct($products);
+        return parent::addProduct($product);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeProduct(\Entity\NascarIllustrated\Product $products)
+    public function removeProduct(\Entity\NascarIllustrated\Product $product)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeProduct', array($products));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeProduct', array($product));
 
-        return parent::removeProduct($products);
+        return parent::removeProduct($product);
     }
 
     /**

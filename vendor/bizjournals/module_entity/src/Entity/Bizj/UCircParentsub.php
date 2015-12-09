@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * UCircParentsub
  */
@@ -26,9 +24,10 @@ class UCircParentsub extends \Entity\Entity\Base
 
 
     /**
-     * Set user_id
+     * Set userId
      *
      * @param integer $userId
+     *
      * @return UCircParentsub
      */
     public function setUserId($userId)
@@ -39,9 +38,9 @@ class UCircParentsub extends \Entity\Entity\Base
     }
 
     /**
-     * Get user_id
+     * Get userId
      *
-     * @return integer 
+     * @return integer
      */
     public function getUserId()
     {
@@ -49,9 +48,10 @@ class UCircParentsub extends \Entity\Entity\Base
     }
 
     /**
-     * Set parent_id
+     * Set parentId
      *
      * @param integer $parentId
+     *
      * @return UCircParentsub
      */
     public function setParentId($parentId)
@@ -62,9 +62,9 @@ class UCircParentsub extends \Entity\Entity\Base
     }
 
     /**
-     * Get parent_id
+     * Get parentId
      *
-     * @return integer 
+     * @return integer
      */
     public function getParentId()
     {
@@ -74,10 +74,11 @@ class UCircParentsub extends \Entity\Entity\Base
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
     }
 }
+

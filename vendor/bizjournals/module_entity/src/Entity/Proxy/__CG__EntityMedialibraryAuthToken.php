@@ -385,23 +385,23 @@ class AuthToken extends \Entity\Medialibrary\AuthToken implements \Doctrine\ORM\
     /**
      * {@inheritDoc}
      */
-    public function addAuthSession(\Entity\Medialibrary\AuthSession $authSessions)
+    public function addAuthSession(\Entity\Medialibrary\AuthSession $authSession)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAuthSession', array($authSessions));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAuthSession', array($authSession));
 
-        return parent::addAuthSession($authSessions);
+        return parent::addAuthSession($authSession);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeAuthSession(\Entity\Medialibrary\AuthSession $authSessions)
+    public function removeAuthSession(\Entity\Medialibrary\AuthSession $authSession)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAuthSession', array($authSessions));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAuthSession', array($authSession));
 
-        return parent::removeAuthSession($authSessions);
+        return parent::removeAuthSession($authSession);
     }
 
     /**

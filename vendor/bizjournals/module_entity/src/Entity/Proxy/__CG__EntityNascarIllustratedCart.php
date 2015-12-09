@@ -297,23 +297,23 @@ class Cart extends \Entity\NascarIllustrated\Cart implements \Doctrine\ORM\Proxy
     /**
      * {@inheritDoc}
      */
-    public function addCartItem(\Entity\NascarIllustrated\CartItem $cartItems)
+    public function addCartItem(\Entity\NascarIllustrated\CartItem $cartItem)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCartItem', array($cartItems));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCartItem', array($cartItem));
 
-        return parent::addCartItem($cartItems);
+        return parent::addCartItem($cartItem);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function removeCartItem(\Entity\NascarIllustrated\CartItem $cartItems)
+    public function removeCartItem(\Entity\NascarIllustrated\CartItem $cartItem)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCartItem', array($cartItems));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCartItem', array($cartItem));
 
-        return parent::removeCartItem($cartItems);
+        return parent::removeCartItem($cartItem);
     }
 
     /**

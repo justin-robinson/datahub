@@ -2,8 +2,6 @@
 
 namespace Entity\Bizj;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * OoyalaVideoList
  */
@@ -61,9 +59,10 @@ class OoyalaVideoList extends \Entity\Entity\Base
 
 
     /**
-     * Set market_code
+     * Set marketCode
      *
      * @param string $marketCode
+     *
      * @return OoyalaVideoList
      */
     public function setMarketCode($marketCode)
@@ -74,9 +73,9 @@ class OoyalaVideoList extends \Entity\Entity\Base
     }
 
     /**
-     * Get market_code
+     * Get marketCode
      *
-     * @return string 
+     * @return string
      */
     public function getMarketCode()
     {
@@ -84,9 +83,10 @@ class OoyalaVideoList extends \Entity\Entity\Base
     }
 
     /**
-     * Set embed_code
+     * Set embedCode
      *
      * @param string $embedCode
+     *
      * @return OoyalaVideoList
      */
     public function setEmbedCode($embedCode)
@@ -97,9 +97,9 @@ class OoyalaVideoList extends \Entity\Entity\Base
     }
 
     /**
-     * Get embed_code
+     * Get embedCode
      *
-     * @return string 
+     * @return string
      */
     public function getEmbedCode()
     {
@@ -110,6 +110,7 @@ class OoyalaVideoList extends \Entity\Entity\Base
      * Set title
      *
      * @param string $title
+     *
      * @return OoyalaVideoList
      */
     public function setTitle($title)
@@ -122,7 +123,7 @@ class OoyalaVideoList extends \Entity\Entity\Base
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -133,6 +134,7 @@ class OoyalaVideoList extends \Entity\Entity\Base
      * Set description
      *
      * @param string $description
+     *
      * @return OoyalaVideoList
      */
     public function setDescription($description)
@@ -145,7 +147,7 @@ class OoyalaVideoList extends \Entity\Entity\Base
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -153,9 +155,10 @@ class OoyalaVideoList extends \Entity\Entity\Base
     }
 
     /**
-     * Set preview_image_url
+     * Set previewImageUrl
      *
      * @param string $previewImageUrl
+     *
      * @return OoyalaVideoList
      */
     public function setPreviewImageUrl($previewImageUrl)
@@ -166,9 +169,9 @@ class OoyalaVideoList extends \Entity\Entity\Base
     }
 
     /**
-     * Get preview_image_url
+     * Get previewImageUrl
      *
-     * @return string 
+     * @return string
      */
     public function getPreviewImageUrl()
     {
@@ -179,6 +182,7 @@ class OoyalaVideoList extends \Entity\Entity\Base
      * Set status
      *
      * @param string $status
+     *
      * @return OoyalaVideoList
      */
     public function setStatus($status)
@@ -191,7 +195,7 @@ class OoyalaVideoList extends \Entity\Entity\Base
     /**
      * Get status
      *
-     * @return string 
+     * @return string
      */
     public function getStatus()
     {
@@ -202,6 +206,7 @@ class OoyalaVideoList extends \Entity\Entity\Base
      * Set metadata
      *
      * @param string $metadata
+     *
      * @return OoyalaVideoList
      */
     public function setMetadata($metadata)
@@ -214,7 +219,7 @@ class OoyalaVideoList extends \Entity\Entity\Base
     /**
      * Get metadata
      *
-     * @return string 
+     * @return string
      */
     public function getMetadata()
     {
@@ -222,9 +227,10 @@ class OoyalaVideoList extends \Entity\Entity\Base
     }
 
     /**
-     * Set created_at
+     * Set createdAt
      *
      * @param \DateTime $createdAt
+     *
      * @return OoyalaVideoList
      */
     public function setCreatedAt($createdAt)
@@ -235,9 +241,9 @@ class OoyalaVideoList extends \Entity\Entity\Base
     }
 
     /**
-     * Get created_at
+     * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -245,9 +251,10 @@ class OoyalaVideoList extends \Entity\Entity\Base
     }
 
     /**
-     * Set updated_at
+     * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     *
      * @return OoyalaVideoList
      */
     public function setUpdatedAt($updatedAt)
@@ -258,9 +265,9 @@ class OoyalaVideoList extends \Entity\Entity\Base
     }
 
     /**
-     * Get updated_at
+     * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -268,9 +275,10 @@ class OoyalaVideoList extends \Entity\Entity\Base
     }
 
     /**
-     * Set deleted_at
+     * Set deletedAt
      *
      * @param \DateTime $deletedAt
+     *
      * @return OoyalaVideoList
      */
     public function setDeletedAt($deletedAt)
@@ -281,12 +289,13 @@ class OoyalaVideoList extends \Entity\Entity\Base
     }
 
     /**
-     * Get deleted_at
+     * Get deletedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDeletedAt()
     {
         return $this->deleted_at;
     }
 }
+
