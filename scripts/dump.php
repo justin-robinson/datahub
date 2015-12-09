@@ -258,7 +258,7 @@ $secondChanceCountries = [
     'NL' => 'THE NETHERLANDS',
 ];
 
-@$filename = '/tmp/bridgetree_refinery_' . date('Ymd') . '.csv';
+@$filename = '/tmp/refineryDump.csv';
 
 $fd = fopen($filename, 'w');
 
@@ -303,7 +303,8 @@ fputs(
     "Lat" . $delimiter .
     "Lon" . $delimiter .
     "OfficePhone1" . $delimiter .
-    "Url" . "\n"
+    "Url" . $delimiter .
+    "Sic" . "\n"
 );
 
 
@@ -446,6 +447,27 @@ foreach ($db->query($SQL) as $row) {
         } else {
             $line .= $delimiter;
         }
+    } else {
+        $line .= $delimiter;
+    }
+
+    // grab sic Data, and tack on
+    $SQL = "
+    SELECT
+      OrgId,
+      SIC
+    FROM
+      OrgSIC
+    WHERE
+      OrgId = " . $row['id'] . " ";
+
+    $stmt = $db->prepare($SQL);
+    $stmt->execute();
+    $sicResult = $stmt->fetchAll(PDO::FETCH_NUM);
+
+
+    if (!empty($sicResult[0][0])) {
+        $line .= $delimiter . '"' . $sicResult[0][0] . '"';
     } else {
         $line .= $delimiter;
     }
