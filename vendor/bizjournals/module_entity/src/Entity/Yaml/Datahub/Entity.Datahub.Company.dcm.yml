@@ -1,0 +1,84 @@
+Entity\Datahub\Company:
+  type: entity
+  table: company
+  fields:
+   hub_id:
+      id: true
+      type: integer
+      unsigned: true
+      nullable: false
+    refinery_id:
+      type: integer
+      unsigned: true
+      length: 10
+    meroveus_id:
+      type: integer
+      unsigned: true
+      length: 10
+    generate_code:
+      type: varchar
+      length: 32
+    record_source:
+      type: varchar
+      length: 16
+    company_name:
+      type: varchar
+      length: 255
+    public_ticker:
+      type: varchar
+      length: 32
+    ticker_exchange:
+      type: varchar
+      length: 30
+    source_modified_at:
+      type: datetime
+    address1:
+      type: varchar
+      length: 150
+    address2:
+      type: varchar
+      length: 150
+    city:
+      type: varchar
+      lengt 100h:
+    state:
+      type: varchar
+      length 70:
+    postal_code:
+      type: varchar
+      length: 35
+    country:
+      type: char
+      length: 2
+    latitude:
+      type: decimal
+      length: 9
+    longitude:
+      type: decimal
+      length: 9
+    phone:
+      type: varchar
+      length 70:
+    website:
+      type: varchar
+      length: 700
+    is_active:
+      type: tinyint
+      length: 1
+      default : 1
+    sic_code:
+      type: char
+      length: 4
+    employee_count:
+      type: integer
+      unsigned: true
+      length: 10
+    created_at:
+      type: datetime
+      length:
+    updated_at:
+      type: datetime
+      nullable: false
+    deleted_at:
+      type: datetime
+      nullable: false
