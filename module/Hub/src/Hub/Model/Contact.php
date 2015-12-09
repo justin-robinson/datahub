@@ -8,6 +8,7 @@
 namespace Hub;
 
 use \Entity\Model\Base;
+
 class Contact extends Base
 {
     /**
