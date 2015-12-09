@@ -1,0 +1,83 @@
+Entity\Datahub\Contact:
+  type: entity
+  table: contact
+  fields:
+    contact_id:
+      id: true
+      type: integer
+      unsigned: true
+      nullable: false
+    hub_id:
+     type: integer
+     unsigned: true
+     nullable: false
+    meroveus_id:
+     type: integer
+     unsigned: true
+    relevate_id:
+     type: integer
+     unsigned: true
+    is_duplicate:
+     type: integer
+     length: 1
+     unsigned: true
+     nullable: false
+     default: 0
+    is_current_employee:
+     type: integer
+     length: 1
+     unsigned: true
+     nullable: false
+     default: 1
+    first_name:
+      type: varchar
+      length: 50
+    middle_initial:
+      type: varchar
+      length: 20
+    last_name:
+      type: varchar
+      length: 50
+      nullable: false
+    suffix:
+      type: varchar
+      length: 20
+    honorific:
+      type: varchar
+      length: 20
+    job_title:
+      type: varchar
+      length: 255
+    job_position_id:
+     type: integer
+     unsigned: true
+    email:
+      type: varchar
+      length: 700
+    phone:
+      type: varchar
+      length: 70
+    address1:
+      type: varchar
+      length: 150
+    address2:
+      type: varchar
+      length: 150
+    city:
+      type: varchar
+      length: 100
+    state:
+      type: varchar
+      length: 70
+    postal_code:
+      type: varchar
+      length: 35
+    created_at:
+    nullable: false
+      type: datetime
+      nullable: false
+    updated_at:
+      type: datetime
+      nullable: false
+    deleted_at:
+      type: datetime
