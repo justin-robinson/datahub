@@ -453,7 +453,6 @@ foreach ($db->query($SQL) as $row) {
     // grab sic Data, and tack on
     $SQL = "
     SELECT
-      OrgId,
       SIC
     FROM
       OrgSIC

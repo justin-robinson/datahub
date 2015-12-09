@@ -6,46 +6,43 @@ Entity\Datahub\Company:
       id: true
       type: integer
       unsigned: true
-      nullable: false
     refinery_id:
       type: integer
       unsigned: true
-      length: 10
     meroveus_id:
       type: integer
       unsigned: true
-      length: 10
     generate_code:
-      type: varchar
+      type: string
       length: 32
     record_source:
-      type: varchar
+      type: string
       length: 16
     company_name:
-      type: varchar
+      type: string
       length: 255
     public_ticker:
-      type: varchar
+      type: string
       length: 32
     ticker_exchange:
-      type: varchar
+      type: string
       length: 30
     source_modified_at:
       type: datetime
     address1:
-      type: varchar
+      type: string
       length: 150
     address2:
-      type: varchar
+      type: string
       length: 150
     city:
-      type: varchar
+      type: string
       lengt 100h:
     state:
-      type: varchar
+      type: string
       length 70:
     postal_code:
-      type: varchar
+      type: string
       length: 35
     country:
       type: char
@@ -57,14 +54,13 @@ Entity\Datahub\Company:
       type: decimal
       length: 9
     phone:
-      type: varchar
+      type: string
       length 70:
     website:
-      type: varchar
+      type: string
       length: 700
     is_active:
-      type: tinyint
-      length: 1
+      type: bool
       default : 1
     sic_code:
       type: char
@@ -72,7 +68,6 @@ Entity\Datahub\Company:
     employee_count:
       type: integer
       unsigned: true
-      length: 10
     created_at:
       type: datetime
       length:
@@ -82,3 +77,4 @@ Entity\Datahub\Company:
     deleted_at:
       type: datetime
       nullable: false
+
