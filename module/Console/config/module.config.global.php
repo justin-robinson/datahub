@@ -22,13 +22,23 @@ return array(
                         ),
                     ),
                 ),
+                'meroveus' => array(
+                    'options' => array(
+                        'route' => 'meroveus [<action>] [--env=] [-c=s] [-e=s]',
+                        'defaults' => array(
+                            'controller' => 'Console\Controller\Meroveus',
+                            'action' => 'index',
+                        ),
+                    ),
+                ),
             ),
         ),
     ),
     'controllers' => array(
         'invokables' => array(
-            'Console\Controller\Index'              => 'Console\Controller\IndexController',
-            'Console\Controller\Import'             => 'Console\Controller\ImportController',
+            'Console\Controller\Index'      => 'Console\Controller\IndexController',
+            'Console\Controller\Import'     => 'Console\Controller\ImportController',
+            'Console\Controller\Meroveus'   => 'Console\Controller\MeroveusController',
         ),
     ),
     'logger' => array(

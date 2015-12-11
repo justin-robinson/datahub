@@ -12,7 +12,8 @@ to run the logstash export:
     run :<path/to/logstash -f <your_file>.conf
     example
         : /opt/logstash/bin/logstash -f listLeads.conf
-        you may want to symlink config/logstash/refineryDump.conf to wherever your logstash install lives
+        you may want to symlink config/logstash/refineryDump.conf to wherever your 
+        logstash install lives
 if you’ve installed kibana 
     kibana serve
     go to http://localhost:5601/

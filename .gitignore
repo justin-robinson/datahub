@@ -8,5 +8,6 @@
 /*.sublime-workspace
 **/node_modules
 .idea/
+/.idea
 npm-debug.log
 deployment.properties
