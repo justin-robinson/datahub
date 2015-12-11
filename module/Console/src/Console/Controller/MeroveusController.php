@@ -42,9 +42,11 @@ class MeroveusController extends AbstractActionController
      */
     public function matchAction()
     {
-        $client         = new Client();
-        $companyService = new CompanyService($client);
-        $journal        = new Journal();
+//        $client         =  $this->getServiceLocator()->get('Services\Meroveus\Client');
+        $client         =  new Client();
+//        $companyService =  $this->getServiceLocator()->get('Services\Meroveus\CompanyService');
+        $companyService =  new CompanyService($client);
+        $journal        =  $this->getServiceLocator()->get('Hub\Model\Journal');
         $markets = $journal->getMarkets();
         echo "line 51". ' in '."MeroveusController.php".PHP_EOL;
         die(var_dump( $markets ));
