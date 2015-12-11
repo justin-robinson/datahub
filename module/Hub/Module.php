@@ -32,4 +32,23 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface
         return $module_config;
     }
 
+    public function getServiceConfig()
+    {
+        return array(
+            'invokables' => array(
+                'Hub\Model\Company'             => 'Hub\Model\Company',
+                'Hub\Model\Contact'             => 'Hub\Model\Contact',
+                'Hub\Model\StockExchange'       => 'Hub\Model\StockExchange',
+            ),
+            'factories' => array(
+                'Logger' => function (ServiceManager $sm) {
+                        $service = new Log\LoggerServiceFactory('nascar');
+                        $logger = $service->createService($sm);
+                        $logger->addProcessor('backtrace');
+                        $logger->addProcessor('requestid');
+                        return $logger;
+                    },
+            ),
+        );
+    }
 }

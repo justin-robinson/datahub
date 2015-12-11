@@ -12,16 +12,10 @@ $defaultMysqlConnectionParams = array(
 return array(
     'doctrine' => array(
         'connection' => array(
-            'bizj' => array(
+            'datahub' => array(
                 'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
                 'params' => array_merge($defaultMysqlConnectionParams, array(
-                    'dbname' => 'bizj',
-                ) ),
-            ),
-            'email' => array(
-                'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
-                'params' => array_merge($defaultMysqlConnectionParams, array(
-                    'dbname' => 'email',
+                    'dbname' => 'datahub',
                 ) ),
             ),
             'orm_default' => array(

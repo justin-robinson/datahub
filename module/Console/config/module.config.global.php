@@ -15,7 +15,7 @@ return array(
                 ),
                 'import' => array(
                     'options' => array(
-                        'route' => 'import [<action>] [--content_id=] [-c=s] [-e=s]',
+                        'route' => 'import [<action>] [--content_id=] [-c=s] [--file=s] [-e=s]',
                         'defaults' => array(
                             'controller' => 'Console\Controller\Import',
                             'action' => 'index',
