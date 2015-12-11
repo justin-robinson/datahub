@@ -24,7 +24,7 @@ return array(
                 ),
                 'meroveus' => array(
                     'options' => array(
-                        'route' => 'meroveus [<action>] [--env=] [-c=s] [-e=s]',
+                        'route' => 'meroveus [<action>] [--env=] [--id=s] [-c=s] [-e=s]',
                         'defaults' => array(
                             'controller' => 'Console\Controller\Meroveus',
                             'action' => 'index',

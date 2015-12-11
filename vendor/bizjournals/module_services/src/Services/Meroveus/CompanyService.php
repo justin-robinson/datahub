@@ -23,7 +23,7 @@ class CompanyService extends AbstractService
      *
      * @return string
      */
-    public function findCompanyById($id)
+    public function findById($id)
     {
         $request = 'a bunch of meroveus control stuff';
 
@@ -34,4 +34,11 @@ class CompanyService extends AbstractService
         // this will filter out all of the crap that's not needed
         return Json\Json::encode($result);
     }
+
+    public function fetchByMarket($marketCode){
+        return [];
+    }
+
+
+
 }
