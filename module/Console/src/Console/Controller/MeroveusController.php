@@ -8,12 +8,12 @@
 namespace Console\Controller;
 
 use Elastica\Connection;
+use Elastica\Search;
+use Entity\Bizj\Market;
 use Services\Meroveus\Client;
-
 use Services\Meroveus\CompanyService;
-
-use Services\RabbitMQ\ElasticSearchService;
 use Zend\Mvc\Controller\AbstractActionController;
+use Hub\Model\Journal;
 
 /**
  * Class MeroveusController
@@ -44,17 +44,23 @@ class MeroveusController extends AbstractActionController
     {
         $client         = new Client();
         $companyService = new CompanyService($client);
-        $markets        = $this->getMarketCodes();
+        $journal        = new Journal();
+        $markets = $journal->getMarkets();
+        echo "line 51". ' in '."MeroveusController.php".PHP_EOL;
+        die(var_dump( $markets ));
 //        $connection     = "http://datahub.listsandleads.elasticsearch.bizj-dev.com:9200";
         $connection = new Connection(["http://datahub.listsandleads.elasticsearch.bizj-dev.com", "9200",]);
-        $elastic    = new ElasticSearchService($connection);
+
+        $elasticSearch    = new Search($client);
         foreach ($markets as $marketCode) {
             $companies = $companyService->fetchByMarket($marketCode);
 
             foreach ($companies as $company) {
+                // do something here
+                $body = $company;
 
                 $body   = '{}';
-                $insert = $this->processForInsert($elastic->sendMessage($body));
+                $insert = $this->processForInsert( $elasticSearch->search()  );
                 if (!$insert) {
                     break;
                 } else {

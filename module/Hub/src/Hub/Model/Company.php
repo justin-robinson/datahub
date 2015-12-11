@@ -5,7 +5,7 @@
  * Time: 3:53 PM
  */
 
-namespace Hub;
+namespace Hub\Model;
 
 use \Entity\Model\Base;
 

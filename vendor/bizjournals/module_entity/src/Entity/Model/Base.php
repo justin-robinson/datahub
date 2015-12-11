@@ -334,7 +334,7 @@ abstract class Base implements ServiceLocatorAwareInterface, ArrayAccess
 
     /**
      * Save entity to database
-     * 
+     *
      * @param  array $options
      */
     public function save(array $options = array())
@@ -522,11 +522,11 @@ abstract class Base implements ServiceLocatorAwareInterface, ArrayAccess
         $model = new static;
         $model->setServiceLocator($this->getServiceLocator())
             ->setEntityManager($this->getEntityManager());
-        
+
         if ($model instanceof InitProviderInterface) {
             $model->init();
         }
-        
+
         return $model;
     }
 
@@ -543,11 +543,11 @@ abstract class Base implements ServiceLocatorAwareInterface, ArrayAccess
         $model->setEntity($entity)
             ->setServiceLocator($this->getServiceLocator())
             ->setEntityManager($this->getEntityManager());
-        
+
         if ($model instanceof InitProviderInterface) {
             $model->init();
         }
-        
+
         return $model;
     }
 
@@ -611,7 +611,6 @@ abstract class Base implements ServiceLocatorAwareInterface, ArrayAccess
     {
         $em = $this->getEntityManager();
         $results = $em->getRepository($this->entity_class)->findBy($criteria, $orderBy, $limit, $offset);
-
         $return = array();
         foreach ($results as $result) {
             $return[] = $this->hydrateNewModel($result, get_called_class());

@@ -57,7 +57,8 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface
             'invokables' => array(
                 'Hub\Model\Company'             => 'Hub\Model\Company',
                 'Hub\Model\Contact'             => 'Hub\Model\Contact',
-                'Hub\Model\StockExchange'       => 'Hub\Model\StockExchange',
+//                'Hub\Model\StockExchange'       => 'Hub\Model\StockExchange',
+                'Hub\Model\Journal'             => 'Hub\Model\StockExchange',
             ),
             'factories' => array(
                 'Logger' => function (ServiceManager $sm) {
