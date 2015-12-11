@@ -27,10 +27,10 @@ class CompanyService extends AbstractService
     {
         $request = 'a bunch of meroveus control stuff';
 
-        /** @var $client \Services\Meroveus\Client*/
+        /** @var $client \Services\Meroveus\Client */
         $client = $this->getClient();
 //        $result = $client->sendRequest($request);
-        $result = ['test'=>'value' .$id];
+        $result = ['test' => 'value' . $id];
         // this will filter out all of the crap that's not needed
         return Json\Json::encode($result);
     }

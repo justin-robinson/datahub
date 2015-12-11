@@ -13,7 +13,7 @@ require_once 'vendor/legendarydata/meroveusclient.php';
 
 class Client extends AbstractClient
 {
-        /**
+    /**
      * Options array
      * @var array
      */
@@ -29,41 +29,41 @@ class Client extends AbstractClient
      * Modes array
      * @var array
      */
-    protected $_validModes = array(
-         //"ACTIONSEARCH",
-         //"ADMINSEARCH",
-         //"APPROVE",
-         //"CONTACTBUILD",
-         //"CONTACTDOWNLOAD",
-         //"CONTACTSEARCH",
-         //"DOWNLOAD",
-         //"EXPORT",
-         //"EXPORTUPDATE",
-         "FIELDSEARCH",
-         //"JOBCANCEL",
-         //"JOBSEARCH",
-         //"JOBSTATUS",
-         //"JOBUPDATE",
-         "LABELSEARCH",
-         "LISTSEARCH",
-         //"LISTUPDATE",
-         "LOGSEARCH",
-         "LOOKUP",
-         //"MAIL",
-         //"MAILSEARCH",
-         //"MAILTEST",
-         //"PUBLISH",
-         //"QREPLYUPDATE",
-         //"QSEARCH",
-         "RANKSEARCH",
-         //"REVIEW",
-         "REVIEWSEARCH",
-         //"TASKSEARCH",
-         //"TASKUPDATE",
-         //"UPDATE",
-         "SEARCH",
-         "SUBMIT",
-    );
+    protected $_validModes = [
+        //"ACTIONSEARCH",
+        //"ADMINSEARCH",
+        //"APPROVE",
+        //"CONTACTBUILD",
+        //"CONTACTDOWNLOAD",
+        //"CONTACTSEARCH",
+        //"DOWNLOAD",
+        //"EXPORT",
+        //"EXPORTUPDATE",
+        "FIELDSEARCH",
+        //"JOBCANCEL",
+        //"JOBSEARCH",
+        //"JOBSTATUS",
+        //"JOBUPDATE",
+        "LABELSEARCH",
+        "LISTSEARCH",
+        //"LISTUPDATE",
+        "LOGSEARCH",
+        "LOOKUP",
+        //"MAIL",
+        //"MAILSEARCH",
+        //"MAILTEST",
+        //"PUBLISH",
+        //"QREPLYUPDATE",
+        //"QSEARCH",
+        "RANKSEARCH",
+        //"REVIEW",
+        "REVIEWSEARCH",
+        //"TASKSEARCH",
+        //"TASKUPDATE",
+        //"UPDATE",
+        "SEARCH",
+        "SUBMIT",
+    ];
 // @todo set up a config
 //    public function __construct(array $options = array())
 //    {
@@ -84,15 +84,16 @@ class Client extends AbstractClient
     public function sendRequest($mode = "SEARCH", array $params = [])
     {
         $return = null;
-        $mode = strtoupper($mode);
+        $mode   = strtoupper($mode);
         if (in_array($mode, $this->_validModes)) {
             $sendArray = $params + [
-                'AKEY' => 'dJoJubaKc2sGEyVWvg3h6ICUC',
-                'EKEY' => 'UdHuwsJhWgyhMWhpBAxkmydnT',
-                'MODE' => $mode,
-            ];
-            $resp = MeroveusClient::sendRequest( json_encode($sendArray), in_array($mode, ['LABELSEARCH','FIELDSEARCH']) );
-            $return = (in_array(substr($resp,0,1), array('{','[')) ? json_decode($resp, true) : $resp);
+                    'AKEY' => 'dJoJubaKc2sGEyVWvg3h6ICUC',
+                    'EKEY' => 'UdHuwsJhWgyhMWhpBAxkmydnT',
+                    'MODE' => $mode,
+                ];
+            $resp      = MeroveusClient::sendRequest(json_encode($sendArray),
+                in_array($mode, ['LABELSEARCH', 'FIELDSEARCH']));
+            $return    = (in_array(substr($resp, 0, 1), ['{', '[']) ? json_decode($resp, true) : $resp);
         } else {
             throw new Core_Exception('Invalid Meroveous Mode');
         }

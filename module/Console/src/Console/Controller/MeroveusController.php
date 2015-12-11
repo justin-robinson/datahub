@@ -24,11 +24,11 @@ class MeroveusController extends AbstractActionController
 
     public function requestAction()
     {
-        $client = new Client();
+        $client         = new Client();
         $companyService = new CompanyService($client);
-        $company = $companyService->findCompanyById(2);
-        echo "line 29". ' in '."MeroveusController.php".PHP_EOL;
-        die(var_dump( $company ));
+        $company        = $companyService->findCompanyById(2);
+        echo "line 29" . ' in ' . "MeroveusController.php" . PHP_EOL;
+        die(var_dump($company));
 
     }
 
