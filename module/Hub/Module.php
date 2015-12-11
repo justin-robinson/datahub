@@ -1,12 +1,31 @@
 <?php
 namespace Hub;
 
+use Zend\Mvc\MvcEvent;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\Stdlib\ArrayUtils;
 
 class Module implements AutoloaderProviderInterface, ConfigProviderInterface
 {
+    public function onBootstrap(MvcEvent $e)
+    {
+
+        $app = $e->getApplication();
+        $sm  = $app->getServiceManager();
+        $em  = $app->getEventManager();
+
+        //$this->initLogger($sm, $em);
+        //$this->initAssets($sm, $em);
+        //$this->initHeaders($em);
+
+        $entityManager = $sm->get('doctrine.entitymanager.datahub');
+
+        if (!($e->getRequest() instanceof \Zend\Console\Request)) {
+            $emConfig = $entityManager->getConfiguration();
+        }
+    }
+
     public function getAutoloaderConfig()
     {
         return array(
