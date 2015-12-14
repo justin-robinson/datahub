@@ -42,7 +42,7 @@ $libraryPath = getcwd();
 // Setup autoloading
 $loader = new StandardAutoloader(array('autoregister_zf' => true));
 $loader->register();
-$loader->registerNamespace('Symfony', $zfLibraryPath . '/../../../symfony/yaml/Symfony');
+$loader->registerNamespace('Symfony\Component\Yaml', $zfLibraryPath . '/../../../symfony/yaml');
 
 $rules = array(
     'help|h'      => 'Get usage message',
@@ -108,7 +108,8 @@ if (!$usingStdout) {
 }
 
 $classTableMapping = array();
-$data = Yaml::parse($inputFile, true, false);
+$data = Yaml::parse(file_get_contents($inputFile), true, false);
+
 // First pass - build array of classes and table names.
 foreach ($data as $class => $defn) {
     if (in_array($class, array('connection','options'))) {
@@ -189,6 +190,9 @@ foreach ($data as $class => $defn) {
                         if (isset($column_data['primary']) && $column_data['primary'] == true) {
                             $column_data['notnull'] = true;
                         }
+                        // NOTE: If you see " Illegal string offset" errors when running
+                        // this script, it's because someone uses a short-notation YAML 
+                        // format that we shouldn't use in our Doctrine 1 YAML files.
                         if (!isset($column_data['notnull'])) {
                             $column_data['notnull'] = false;
                         }

@@ -1,0 +1,13 @@
+Entity\Datahub\Country:
+  type: entity
+  table: country
+  fields:
+    country_code:
+      id: true
+      type: string
+      length: 2
+      nullable: true
+    country:
+      type: string
+      length: 50
+      nullable: true

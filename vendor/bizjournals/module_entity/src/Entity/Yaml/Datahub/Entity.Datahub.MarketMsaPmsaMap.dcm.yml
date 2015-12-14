@@ -1,0 +1,15 @@
+Entity\Datahub\MarketMsaPmsaMap:
+  type: entity
+  table: market_msa_pmsa_map
+  fields:
+    market_id:
+      id: true
+      type: integer
+      length: 10
+      nullable: false
+    sa_code:
+      id: true
+      type: string
+      length: 4
+      nullable: false
+  manyToOne:

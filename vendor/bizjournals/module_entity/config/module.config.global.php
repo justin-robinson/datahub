@@ -72,7 +72,7 @@ return array(
                 'metadata_cache'   => 'array',
                 'query_cache'      => 'array',
                 'result_cache'     => 'array',
-                'driver'           => 'datahub',
+                'driver'           => 'cms',
                 'generate_proxies' => false,
                 'proxy_dir'        => __DIR__ . '/../src/Entity/Proxy',
                 'proxy_namespace'  => 'Entity\Proxy',

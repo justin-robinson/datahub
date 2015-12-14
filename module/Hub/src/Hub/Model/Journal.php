@@ -32,6 +32,5 @@ class Journal extends Base
             $markets[] = $journal->getMarket();
         }
         ksort($markets);
-
     }
 }

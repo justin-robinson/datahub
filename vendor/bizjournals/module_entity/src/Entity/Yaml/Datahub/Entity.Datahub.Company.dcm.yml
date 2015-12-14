@@ -1,10 +1,6 @@
 Entity\Datahub\Company:
   type: entity
   table: company
-  gedmo:
-    soft_deleteable:
-      field_name: deleted_at
-      time_aware: false
   fields:
     hub_id:
       id: true
@@ -37,7 +33,7 @@ Entity\Datahub\Company:
       length: 32
       nullable: true
     ticker_exchange:
-      type: string`
+      type: string
       length: 30
       nullable: true
     source_modified_at:
