@@ -161,6 +161,15 @@ class Module
                     $client = $sm->get('Services\Refinery\Client');
                     return new Refinery\SearchService($client);
                 },
+                // Meroveus
+                'Services\Meroveus\Client' => function (ServiceManager $sm) {
+                    $config = $sm->get('Config');
+                    return new Meroveus\Client();
+                },
+                'Services\Meroveus\CompanyService' => function (ServiceManager $sm) {
+                    $client = $sm->get('Services\Meroveus\Client');
+                    return new Meroveus\CompanyService($client);
+                },
             ),
         );
     }

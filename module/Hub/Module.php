@@ -5,6 +5,12 @@ use Zend\Mvc\MvcEvent;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\Stdlib\ArrayUtils;
+use Zend\ServiceManager\ServiceManager as ServiceManager;
+
+use Entity\Service\EntityManagerFactory;
+use DoctrineModule\Service\DriverFactory;
+use DoctrineORMModule\Service\DBALConnectionFactory;
+use DoctrineORMModule\Service\ConfigurationFactory;
 
 class Module implements AutoloaderProviderInterface, ConfigProviderInterface
 {
@@ -28,22 +34,23 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface
 
     public function getAutoloaderConfig()
     {
-        return array(
-             'Zend\Loader\ClassMapAutoloader' => array(
-                 __DIR__ . '/autoload_classmap.php',
-             ),
-             'Zend\Loader\StandardAutoloader' => array(
-                 'namespaces' => array(
-                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
-                 ),
-             ),
-         );
+        return [
+            'Zend\Loader\ClassMapAutoloader' => [
+                __DIR__ . '/autoload_classmap.php',
+            ],
+            'Zend\Loader\StandardAutoloader' => [
+                'namespaces' => [
+                    __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
+                ],
+            ],
+        ];
     }
 
     public function getConfig()
     {
-        $module_config = array();
-        $files = glob(__DIR__ . sprintf('/config/module.config.{global,%s,local}.php', getenv('APPLICATION_ENV')), GLOB_BRACE);
+        $module_config = [];
+        $files         = glob(__DIR__ . sprintf('/config/module.config.{global,%s,local}.php',
+                getenv('APPLICATION_ENV')), GLOB_BRACE);
         foreach ($files as $config) {
             $module_config = ArrayUtils::merge($module_config, include $config);
         }
@@ -53,22 +60,28 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface
 
     public function getServiceConfig()
     {
-        return array(
-            'invokables' => array(
-                'Hub\Model\Company'             => 'Hub\Model\Company',
-                'Hub\Model\Contact'             => 'Hub\Model\Contact',
-//                'Hub\Model\StockExchange'       => 'Hub\Model\StockExchange',
-                'Hub\Model\Journal'             => 'Hub\Model\Journal',
-            ),
-            'factories' => array(
-                'Logger' => function (ServiceManager $sm) {
-                        $service = new Log\LoggerServiceFactory('nascar');
-                        $logger = $service->createService($sm);
-                        $logger->addProcessor('backtrace');
-                        $logger->addProcessor('requestid');
-                        return $logger;
-                    },
-            ),
-        );
+        return [
+            'invokables' => [
+                'Hub\Model\Company' => 'Hub\Model\Company',
+                'Hub\Model\Contact' => 'Hub\Model\Contact',
+                //                'Hub\Model\StockExchange'       => 'Hub\Model\StockExchange',
+                'Hub\Model\Company' => 'Hub\Model\Company',
+                'Hub\Model\Comtact' => 'Hub\Model\Comtact',
+                'Hub\Model\Market'  => 'Hub\Model\Market',
+            ],
+            'factories'  => [
+                'Logger'                         => function (ServiceManager $sm) {
+                    $service = new Log\LoggerServiceFactory('nascar');
+                    $logger  = $service->createService($sm);
+                    $logger->addProcessor('backtrace');
+                    $logger->addProcessor('requestid');
+                    return $logger;
+                },
+                'doctrine.connection.datahub'    => new DBALConnectionFactory('datahub'),
+                'doctrine.configuration.datahub' => new ConfigurationFactory('datahub'),
+                'doctrine.entitymanager.datahub' => new EntityManagerFactory('datahub'),
+                'doctrine.driver.datahub'        => new DriverFactory('bizjstatus'),
+            ],
+        ];
     }
 }
