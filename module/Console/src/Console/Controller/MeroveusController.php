@@ -7,8 +7,11 @@
 
 namespace Console\Controller;
 
-use Elastica\Connection;
+use Elastica\Client as ElasticaClient;
+use Elastica\Query as ElasticaQuery;
+use Elastica\Search as ElasticaSearch;
 use Services\Meroveus\CompanyService;
+use Services\Meroveus\Client as MeroveusClient;
 use Zend\Mvc\Controller\AbstractActionController;
 use Hub\Model\Journal;
 //use Services\Meroveus\CompanyService;
@@ -109,6 +112,24 @@ class MeroveusController extends AbstractActionController
         'wichita',
     ];
 
+    private $meroveusClient;
+
+    private $elasticaClient;
+
+    private $companyService;
+
+    private $elasticSearch;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->meroveusClient = new MeroveusClient;
+        $this->companyService = new CompanyService($this->meroveusClient);
+        $this->elasticaClient = new ElasticaClient(['http://datahub.listsandleads.elasticsearch.bizj-dev.com', '9200',]);
+        $this->elasticSearch  = new ElasticaSearch($this->elasticaClient);
+    }
     /**
      * @return string
      */
@@ -130,35 +151,45 @@ class MeroveusController extends AbstractActionController
      */
     public function matchAction()
     {
-        $company = $this->getServiceLocator()->get('Services\Meroveus\CompanyService');
-//        $contact = $this->getServiceLocator()->get('Hub\Model\Contact');
-        echo "line 135". ' in '."MeroveusController.php".PHP_EOL;
-        die(var_dump( $company ));
-//        $MeroveusClient = $this->getServiceLocator()->get('Services\Meroveus\Company');
-//        echo "line 138". ' in '."MeroveusController.php".PHP_EOL;
-//        die(var_dump( $MeroveusClient ));
-//        $companyService = new CompanyService($MeroveusClient);
-//        $elasticaClient = new ElasticaClient();
-//
-//        $connection    = new Connection(['http://datahub.listsandleads.elasticsearch.bizj-dev.com', '9200',]);
-//        $elasticSearch = new Search($elasticaClient);
-//        foreach ($this->markets as $marketCode) {
-//            $companies = $companyService->fetchByMarket($marketCode);
-//            foreach ($companies as $company) {
-//                // do something here
-//                $body = $company;
-//
-//                $body   = '{}';
-//                $insert = $this->processForInsert($elasticSearch->search());
-//                if (!$insert) {
-//                    break;
-//                } else {
-//                    $this->doInsert();
-//                }
-//            }
-//        }
-//
-//        echo 'Something has been done.'.PHP_EOL;
+        /**
+         * 1. step through the markets
+         * 2. find array of company ids
+         */
+        echo $this->meroveusClient->send('SEARCH', 'charlotte');
+
+        foreach ($this->markets as $marketCode) {
+
+            $companies = $this->companyService->fetchByMarket($marketCode);
+
+            /**
+             * step through the companies and query elastic for their data
+             */
+            foreach ($companies as $company) {
+
+
+//                write a meroveus query
+
+
+
+                /**
+                 * get company info from meroveus
+                 * query elastic
+                 */
+
+//                $query = new ElasticaQuery();
+
+                // define the query somehow
+//                $query->setQuery(new ElasticaQuery\MatchAll());
+                /**
+                 * if match
+                 *  insert the company['id']
+                 * else
+                 *  create a new company record
+                 */
+            }
+        }
+
+        echo 'Something has been done.'.PHP_EOL;
     }
 
     /**
@@ -173,6 +204,11 @@ class MeroveusController extends AbstractActionController
         echo 'fetchCompanyById' . ' in ' . 'MeroveusController.php' . PHP_EOL;
         var_dump($company);
         echo PHP_EOL;
+    }
+
+    public function getMarkets()
+    {
+        return $this->markets;
     }
 
     /**
