@@ -10,10 +10,12 @@ namespace Services\Meroveus;
 require_once 'vendor/legendarydata/meroveusclient.php';
 
 use \MeroveusClient;
-use Services\AbstractClient;
+use \Services\AbstractClient;
+use \Core_Exception;
 
 class Client extends AbstractClient
 {
+
     /**
      * Options array
      * @var array
@@ -30,7 +32,7 @@ class Client extends AbstractClient
      * Modes array
      * @var array
      */
-    protected $_validModes = [
+    private $_validModes = [
         //"ACTIONSEARCH",
         //"ADMINSEARCH",
         //"APPROVE",
@@ -65,6 +67,16 @@ class Client extends AbstractClient
         "SEARCH",
         "SUBMIT",
     ];
+
+    private $akey;
+
+    private $ekey;
+
+    private $listData;
+
+    private $companyService;
+
+
     /**
      * Constructor
      *
@@ -72,10 +84,12 @@ class Client extends AbstractClient
      * @return void
      * @access public
      */
-    public function __construct(array $options = array())
+    public function __construct(array $options = [])
     {
         $this->setOptions(array_merge($this->_getConfig(), $options));
         MeroveusClient::$meroveus = MeroveusClient::$meroveusRoot = $this->getOption('path');
+        $this->akey = 'dJoJubaKc2sGEyVWvg3h6ICUC';
+        $this->ekey = 'UdHuwsJhWgyhMWhpBAxkmydnT';
     }
 
     /**
@@ -85,22 +99,25 @@ class Client extends AbstractClient
      * @param string $mode
      * @param string $market_code
      * @param array $params
+     * @throws Core_Exceptionfunction sendRe
      * @return array
      */
-    public function send($mode, $market_code, array $params = array())
+    public function send($mode, $market_code, array $params = [])
     {
         $return = null;
-        $mode = strtoupper($mode);
+        $mode   = strtoupper($mode);
         if (in_array($mode, $this->_validModes)) {
-            $sendArray = $params + array(
-                'AKEY' => 'dJoJubaKc2sGEyVWvg3h6ICUC',
-                'EKEY' => 'UdHuwsJhWgyhMWhpBAxkmydnT',
-                'MODE' => $mode,
-            );
-            $resp = MeroveusClient::sendRequest( json_encode($sendArray), in_array($mode, ['LABELSEARCH','FIELDSEARCH']) );
-            $return = (in_array(substr($resp,0,1), array('{','[')) ? json_decode($resp, true) : $resp);
+            $sendArray = $params + [
+                    'AKEY' => $this->akey,
+                    'EKEY' => $this->ekey,
+                    'MODE' => $mode,
+                ];
+            $resp      = MeroveusClient::sendRequest(json_encode($sendArray),
+                in_array($mode, ['LABELSEARCH', 'FIELDSEARCH']));
+            $return    = (in_array(substr($resp, 0, 1), ['{', '[']) ? json_decode($resp, true) : $resp);
         } else {
-            throw new Core_Exception('Invalid Meroveous Mode');
+            //@todo figure out the right way to do this
+            //throw new Core_Exception('Invalid Meroveous Mode');
         }
 
         return $return;
@@ -108,13 +125,11 @@ class Client extends AbstractClient
 
     /**
      * Set options
-     *
      * @param array $options Options array
-     *
-     * @return void
      * @access public
+     * @return $this
      */
-    public function setOptions(array $options = array())
+    public function setOptions(array $options = [])
     {
         $this->_options = $options;
 
@@ -123,14 +138,14 @@ class Client extends AbstractClient
 
     /**
      * Get options
-     *
      * @return array $this->_options
      * @access public
+     * @return $this
      */
     public function getOptions()
     {
         if (!is_array($this->_options)) {
-            $this->_options = array();
+            $this->_options = [];
         }
 
         return $this->_options;
@@ -138,12 +153,10 @@ class Client extends AbstractClient
 
     /**
      * Set an option
-     *
      * @param string $name Key name
      * @param string $value Key value
-     *
-     * @return void
      * @access public
+     * @return $this
      */
     public function setOption($name, $value)
     {
@@ -154,10 +167,8 @@ class Client extends AbstractClient
 
     /**
      * Get an option
-     *
      * @param string $name Key name
      * @param string $default
-     *
      * @return string option value
      * @access public
      */
@@ -172,7 +183,6 @@ class Client extends AbstractClient
 
     /**
      * Get Config settings
-     *
      * @access private
      * @return array $this->_config
      */
@@ -187,18 +197,19 @@ class Client extends AbstractClient
 
     /**
      * Set Config settings
-     *
      * @access public
      * @static
      * @param array $configOptions
      * @return void
      */
-    public static function setConfig(array $configOptions = array())
+    public static function setConfig(array $configOptions = [])
     {
-        if (!is_array(self::$_config)) self::$_config = array();
-        $defaults = array(
+        if (!is_array(self::$_config)) {
+            self::$_config = [];
+        }
+        $defaults      = [
             'timeout' => 1,
-        );
+        ];
         self::$_config = array_merge($defaults, self::$_config, $configOptions);
     }
 

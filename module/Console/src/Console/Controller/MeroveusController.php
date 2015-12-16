@@ -151,43 +151,38 @@ class MeroveusController extends AbstractActionController
      */
     public function matchAction()
     {
-        /**
-         * 1. step through the markets
-         * 2. find array of company ids
-         */
-        echo $this->meroveusClient->send('SEARCH', 'charlotte');
-
-        foreach ($this->markets as $marketCode) {
-
-            $companies = $this->companyService->fetchByMarket($marketCode);
-
-            /**
-             * step through the companies and query elastic for their data
-             */
-            foreach ($companies as $company) {
-
-
-//                write a meroveus query
-
-
-
-                /**
-                 * get company info from meroveus
-                 * query elastic
-                 */
-
-//                $query = new ElasticaQuery();
-
-                // define the query somehow
-//                $query->setQuery(new ElasticaQuery\MatchAll());
-                /**
-                 * if match
-                 *  insert the company['id']
-                 * else
-                 *  create a new company record
-                 */
-            }
-        }
+            die(var_dump($this->companyService->fetchByMarket($this->meroveusClient, 'charlotte',[])));
+//        foreach ($this->markets as $marketCode) {
+//
+//            $companies = $this->companyService->fetchByMarket($marketCode);
+//
+//            /**
+//             * step through the companies and query elastic for their data
+//             */
+//            foreach ($companies as $company) {
+//
+//
+////                write a meroveus query
+//
+//
+//
+//                /**
+//                 * get company info from meroveus
+//                 * query elastic
+//                 */
+//
+////                $query = new ElasticaQuery();
+//
+//                // define the query somehow
+////                $query->setQuery(new ElasticaQuery\MatchAll());
+//                /**
+//                 * if match
+//                 *  insert the company['id']
+//                 * else
+//                 *  create a new company record
+//                 */
+//            }
+//        }
 
         echo 'Something has been done.'.PHP_EOL;
     }

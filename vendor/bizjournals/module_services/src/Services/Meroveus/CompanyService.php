@@ -35,10 +35,46 @@ class CompanyService extends AbstractService
         return Json\Json::encode($result);
     }
 
-    public function fetchByMarket($marketCode){
-        return [];
+    /**
+     * @param \Services\Meroveus\Client $meroveusClient
+     * @param $market
+     * @param array $meroveusParams
+     * @return array
+     */
+    public function fetchByMarket(\Services\Meroveus\Client $meroveusClient, $market = '', array $meroveusParams = [])
+    {
+        // @todo this will be set via APPLICATION_ENV
+        if (!empty($meroveusParams)) {
+            $meroveusPath = $meroveusParams['path'];
+        } else {
+            $meroveusPath = 'http://acbj-stg.meroveus.com:8080/api';
+        }
+
+        $meroveusClient->setOption('path', $meroveusPath);
+
+//        $test = $meroveusClient->send('SEARCH', 'default', [
+//            'ENV'  => '*',
+//            'LIST' => [
+//                'LISTID' => '3064',
+//            ],
+//        ]);
+        $query           = [];
+        $result          = $meroveusClient->send('SEARCH', $market, $query);
+        $formattedResult = $this->formatResult($result);
+        return $formattedResult;
+
     }
 
+
+    /**
+     * @param $result
+     * @return array
+     */
+    private function formatResult($result)
+    {
+        $return = ['formatted' => 'list'];
+        return $result;
+    }
 
 
 }
