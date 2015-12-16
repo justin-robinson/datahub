@@ -12,6 +12,7 @@ require_once 'vendor/legendarydata/meroveusclient.php';
 use \MeroveusClient;
 use \Services\AbstractClient;
 use \Core_Exception;
+use Zend\Http\Request;
 
 class Client extends AbstractClient
 {
@@ -112,8 +113,10 @@ class Client extends AbstractClient
                     'EKEY' => $this->ekey,
                     'MODE' => $mode,
                 ];
-            $resp      = MeroveusClient::sendRequest(json_encode($sendArray),
-                in_array($mode, ['LABELSEARCH', 'FIELDSEARCH']));
+            $resp      = MeroveusClient::sendRequest(json_encode($sendArray), in_array($mode, ['LABELSEARCH', 'FIELDSEARCH']));
+//            $testQ = '{"MODE":"SEARCH", "AKEY":"dJoJubaKc2sGEyVWvg3h6ICUC", "EKEY":"UdHuwsJhWgyhMWhpBAxkmydnT", "HISTORY":"-1 day", "STARTROW":1, "MAXROWS":25, "LIST":{"LISTID":"3064", "LOAD":true}, "META":null, "SET":null}';
+//
+//            $resp      = MeroveusClient::sendRequest($testQ);
             $return    = (in_array(substr($resp, 0, 1), ['{', '[']) ? json_decode($resp, true) : $resp);
         } else {
             //@todo figure out the right way to do this

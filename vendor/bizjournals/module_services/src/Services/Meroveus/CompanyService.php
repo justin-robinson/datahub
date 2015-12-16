@@ -43,14 +43,6 @@ class CompanyService extends AbstractService
      */
     public function fetchByMarket(\Services\Meroveus\Client $meroveusClient, $market = '', array $meroveusParams = [])
     {
-        // @todo this will be set via APPLICATION_ENV
-        if (!empty($meroveusParams)) {
-            $meroveusPath = $meroveusParams['path'];
-        } else {
-            $meroveusPath = 'http://acbj-stg.meroveus.com:8080/api';
-        }
-
-        $meroveusClient->setOption('path', $meroveusPath);
 
 //        $test = $meroveusClient->send('SEARCH', 'default', [
 //            'ENV'  => '*',
@@ -59,7 +51,7 @@ class CompanyService extends AbstractService
 //            ],
 //        ]);
         $query           = [];
-        $result          = $meroveusClient->send('SEARCH', $market, $query);
+        $result          = $meroveusClient->send('SEARCH', $market, $meroveusParams);
         $formattedResult = $this->formatResult($result);
         return $formattedResult;
 

@@ -1,6 +1,6 @@
 <?php
 /*
- * @filename meroveusclient.php 
+ * @filename meroveusclient.php
  * @description Core MeroveusClient class for communicating with a Meroveus instance from PHP
  * @author D.Feiveson
  * @created_at 20111001
@@ -37,7 +37,7 @@ class MeroveusClient {
 
 	private static $bExposePrivateData = false;
 
-	
+
 	public function MeroveusClient( $aKey=null, $eKey=null ) {
 		$this->AKEY = $aKey;
 		$this->EKEY = $eKey;
@@ -187,9 +187,9 @@ class MeroveusClient {
 		$str = str_replace( array( "\n" ), array( '\n' ), $str );
 		return $str;
 	}
-	
+
 	public static function GetInstance() {
-		
+
 		self::$meroveus = ConfigObject::Get('MeroveusHost');
 		//self::$meroveusRoot = ConfigObject::Get('MeroveusRootHost');
 		//self::$meroveusRootKey = ConfigObject::Get('MeroveusRootKey');
@@ -211,7 +211,7 @@ class MeroveusClient {
 		if ( $AKEY == null || $EKEY == null ) {
 			throw new Exception('Meroveus credentials not set in configuration.');
 		}
-		
+
 		/* instantiate the meroveus instance *
 		$mero = new MeroveusClient(
 				$AKEY,
@@ -300,11 +300,11 @@ class MeroveusClient {
 			$req .= ',"ORIGIN":{"LATLONG":['.$this->latitude.','.$this->longitude.']}';
 		}
 		$req .= '}';
-		
+
 		$json = self::sendRequest( $req );
-		
+
 		$dat = json_decode( $json );
-		
+
 		return $dat;
 	}
 
@@ -347,24 +347,24 @@ class MeroveusClient {
 					$val = "(".$val.")";
 				}
 				$keywords .= (strlen( $keywords ) > 0 ? " AND " : "") . $fld.":".$val;
-			} 
+			}
 		}
 		return $keywords;
 	}
-	
+
 	public static function merge( $recObj1, $recObj2 ) {
 		$dat2 = $recObj2->DATA;
 		$dat1 = $recObj1->DATA;
-		
+
 		foreach ( $dat1 as $dat ) {
 			$tmp = self::gerMDataObj( $recObj2, $dat->KEY );
 			if ( !isset( $tmp->KEY ) ) $dat2[] = $dat;
 		}
-		
+
 		$recObj1->DATA = $dat2;
 		return $recObj1;
 	}
-	
+
 	public static function getMHistoryData( $recObj, $key ) {
 		if ( !isset( $recObj->DATA ) || !( $dat = $recObj->DATA ) ) return null;
 		if ( count( $dat ) == 0 ) return null;
@@ -397,7 +397,7 @@ class MeroveusClient {
 		}
 		return "";
 	}
-	
+
 	public static function getMLabelIds( $recObj, $key ) {
 		/* retrieve a DATA val from a standard MCore REC object */
 		if ( !isset( $recObj->DATA ) || !( $dat = $recObj->DATA ) ) return array();
@@ -430,7 +430,7 @@ class MeroveusClient {
 					$val = "&lt; " . number_format( $to );
 				} else {
 					$val = number_format( $from ) . " to " . number_format( $to );
-				} 
+				}
 				return $val;
 			}
 		}
@@ -466,7 +466,7 @@ class MeroveusClient {
 		}
 		$recObj->DATA[] = $oData;
 	}
-	
+
 	public static function getMSyncPrimary( $recObj, $src ) {
 		try {
 		$sync = $recObj->SYNC;
@@ -561,8 +561,8 @@ class MeroveusClient {
 		$n = ""; $chr="";
 		for ( $x=strlen($sFormat)-1; $x>0; $x-- ) {
 			$chr = substr( $sFormat, $x, 1 );
-			if ( 	$chr == "*" || 
-				$chr == "#" || 
+			if ( 	$chr == "*" ||
+				$chr == "#" ||
 				( $chr == "." && substr( $sFormat, $x-1, 1 ) == "#" ) ) break;
 			$n = $chr . $n;
 		}
@@ -574,7 +574,7 @@ class MeroveusClient {
 		$dt = strtotime( strtok( $val, " " ) );
 		if ( !$dt ) return $val;
 		$str = date( "M j, Y", $dt );
-		$str = str_replace( 
+		$str = str_replace(
 			array( "Jan ", "Feb ", "Mar ", "Apr ", "Jun ", "Jul ", "Aug ", "Sep ", "Nov ", "Dec "),
 			array( "Jan. ", "Feb. ", "March ", "April ", "June ", "July ", "Aug. ", "Sep. ", "Nov. ", "Dec. "), $str );
 		return $str;
@@ -592,7 +592,7 @@ class MeroveusClient {
 		$dec = ( $num1 && substr($num1,0,1)=="#" ? strlen($num1) - strlen( str_replace( "#", "", $num1 ) ) : 0 );
 
 		$notation = self::parseNumberNotation( $numStr );
-		
+
 		if ( strlen( $notation ) > 0 ) {
 			$n = trim( strip_tags($notation) ); //in case a space-separator
 			if ( strtolower( substr( $n, 0, 1 ) ) == "m" ) {
@@ -708,7 +708,7 @@ class MeroveusClient {
 				if ( $oLayoutField->BREAKAFTER == true && strlen(trim($sCellContent)) > 0 ) $sRow .= '<br />';
 			}
 			$out .= ( strlen( $out ) > 0 ? $sSep : "" ) . $sRow;
-			
+
 		}
 		if ( count( $aReplaceWith ) > 0 ) {
 			try {
@@ -771,7 +771,7 @@ class MeroveusClient {
 				if ( $oLayoutField->BREAKAFTER == true && strlen(trim($sCellContent)) > 0 ) $sRow .= '<br />';
 			}
 			$out .= ( strlen( $out ) > 0 ? $sSep : "" ) . $sRow;
-			
+
 		}
 		if ( count( $aReplaceWith ) > 0 ) {
 			try {
@@ -866,7 +866,7 @@ class MeroveusClient {
 		$val = "";
 		$oFormat = ( $oLayoutField != null && isset( $oLayoutField->FORMAT ) ? $oLayoutField->FORMAT : null );
 		$dClass = self::parseDataClass( $sKey );
-		if ( ( $oFormat == null || !is_object($oFormat) || !isset( $oFormat->NUMBER ) ) && 
+		if ( ( $oFormat == null || !is_object($oFormat) || !isset( $oFormat->NUMBER ) ) &&
 			$aClassFormats != null && isset( $aClassFormats[$dClass] ) ) {
 			$fmt = $aClassFormats[$dClass];
 			if ( !is_object( $fmt ) ) {
@@ -878,7 +878,7 @@ class MeroveusClient {
 		if ( !self::$bExposePrivateData && self::isPrivateData( $oRec, $sKey ) ) {
 			return "";
 		}
-		
+
 		switch ( $sTyp ) {
 			case "Label":
 			$variant = "NAME";
@@ -969,7 +969,7 @@ class MeroveusClient {
 					} else {
 						if ( $oField->TYP == "Label" ) {
 							$variant = "NAME";
-							if ( isset( $oLayoutField->FORMAT ) 
+							if ( isset( $oLayoutField->FORMAT )
 							&& isset( $oLayoutField->FORMAT->VARIANT ) ) {
 								$variant = $oLayoutField->FORMAT->VARIANT;
 							}
@@ -1056,7 +1056,7 @@ class MeroveusClient {
 	public static function flattenLayoutFields( $aFields ) {
 		if ( !is_array($aFields) ) {
 			throw new MeroveusSyntaxException( "::flattenLayoutFields requires parameter one be an array of LAYOUTFIELD objects" );
-		} 
+		}
 		$aNewFlds = array();
 		foreach( $aFields as $oField ) {
 			if ( isset( $oField->FIELDS ) && is_array( $oField->FIELDS ) ) {
@@ -1065,7 +1065,7 @@ class MeroveusClient {
 					//if ( $oFld->HIDE == true ) continue;
 					$aFlds [] = $oFld;
 					if ( $oFld->RETURNAFTER == true ) {
-						
+
 						$oNext = ( isset( $oField->FIELDS[ $ii+1 ] ) ? $oField->FIELDS[ $ii+1 ] : null );
 						$oNew = self::cloneLayoutField( $oField );
 						$oNew->FIELDS = $aFlds;
@@ -1077,13 +1077,13 @@ class MeroveusClient {
 						}
 						$aNewFlds [] = $oNew;
 						$aFlds = array();
-						
+
 					}
-					
-					
+
+
 				}
 				$oField->FIELDS = $aFlds;
-			} 
+			}
 			$aNewFlds [] = $oField;
 		}
 		return $aNewFlds;
@@ -1164,11 +1164,11 @@ class MeroveusClient {
 						$val = self::formatData( $oRec, $oField->KEY, $aConfig );
 						/*if ( $oField->TYP == "Label" ) {
 							$variant = "NAME";
-							if ( isset( $oLayoutField->FORMAT ) 
+							if ( isset( $oLayoutField->FORMAT )
 							&& isset( $oLayoutField->FORMAT->VARIANT ) ) {
 								$variant = $oLayoutField->FORMAT->VARIANT;
 							}
-							$val = self::getMLabelData( $oRec, $oLayoutField->KEY, $oRes->LABELS, $variant );	
+							$val = self::getMLabelData( $oRec, $oLayoutField->KEY, $oRes->LABELS, $variant );
 						} else if ( $oField->TYP == "Neighborhood" ) {
 							$val = self::listFormatContainer( self::getMDataObj( $oRec, $oLayoutField->KEY ), $oLayoutField );
 						} else {
@@ -1204,7 +1204,7 @@ class MeroveusClient {
 		return $html;
 	}
 
-	
+
 	public static function sendRootRequest( $json ) {
 		self::sendRequest( $json, self::$meroveusRoot );
 	}
@@ -1214,24 +1214,24 @@ class MeroveusClient {
 		$json = str_replace( '%2B', '+', $json ); //fix plus symbols disappearing 20140320 tdf
 		$ch = curl_init(); // init curl
 		$sMeroveus = ( $isRootRequest ? self::$meroveusRoot : self::$meroveus );
-		
+
 		// set the target url
 		curl_setopt($ch, CURLOPT_URL, $sMeroveus);
-		
+
 		// how many parameters to post
 		curl_setopt($ch, CURLOPT_POST, 1);
 		// this just for a bad response
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Expect:'));
 		// the parameter 'username' with its value 'johndoe'
 		curl_setopt($ch, CURLOPT_POSTFIELDS,($isRootRequest?"MROOT":"MCORE")."=".urlencode($json) );
-		curl_setopt($ch, CURLOPT_HEADER      ,0);  // DO NOT RETURN HTTP HEADERS 
+		curl_setopt($ch, CURLOPT_HEADER      ,0);  // DO NOT RETURN HTTP HEADERS
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER  ,1);  // RETURN THE CONTENTS OF THE CALL
 		curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, false); //ignore protocol if https
 		curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, 0 ); //ignore ssl name
 		//echo 'Curl error: ' . curl_error($ch);
 
 		$result= curl_exec ($ch);
-		
+
 		curl_close ($ch);
 		//decompress the response
 		//echo "result size = " . strlen($result);
@@ -1356,7 +1356,7 @@ class MeroveusClient {
 		}
 		return urldecode( $data );
 	}
-	
+
 }
 
 

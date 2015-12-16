@@ -14,6 +14,7 @@ use Services\Meroveus\CompanyService;
 use Services\Meroveus\Client as MeroveusClient;
 use Zend\Mvc\Controller\AbstractActionController;
 use Hub\Model\Journal;
+
 //use Services\Meroveus\CompanyService;
 
 /**
@@ -125,11 +126,15 @@ class MeroveusController extends AbstractActionController
      */
     public function __construct()
     {
-        $this->meroveusClient = new MeroveusClient;
+        $this->meroveusClient = new MeroveusClient(['path' => 'http://acbj-stg.meroveus.com:8080/api']);
         $this->companyService = new CompanyService($this->meroveusClient);
-        $this->elasticaClient = new ElasticaClient(['http://datahub.listsandleads.elasticsearch.bizj-dev.com', '9200',]);
+        $this->elasticaClient = new ElasticaClient([
+            'http://datahub.listsandleads.elasticsearch.bizj-dev.com',
+            '9200',
+        ]);
         $this->elasticSearch  = new ElasticaSearch($this->elasticaClient);
     }
+
     /**
      * @return string
      */
@@ -151,7 +156,35 @@ class MeroveusController extends AbstractActionController
      */
     public function matchAction()
     {
-            die(var_dump($this->companyService->fetchByMarket($this->meroveusClient, 'charlotte',[])));
+        $result = $this->companyService->fetchByMarket(
+            $this->meroveusClient,
+            'charlotte',
+            [
+                "HISTORY"  => "-1 day",
+                "STARTROW" => 1,
+                "MAXROWS"  => 5,
+                "SET"      => [
+                    "RECTYP" => "Business",
+                ],
+                'META' => [
+                    'FIELDS' => [
+                        ['KEY' => 'firm-name_static'],
+                        ['KEY' => 'contact-website_static'],
+                        ['KEY' => 'street-address_static'],
+                        ['KEY' => 'street-line2-address_static'],
+                        ['KEY' => 'street-city_static'],
+                        ['KEY' => 'street-state_static'],
+                        ['KEY' => 'street-zip_static'],
+                        ['KEY' => 'street-zip_static'],
+                        ['KEY' => 'contact-phone_static'],
+                    ],
+                ],
+            ]
+        );
+
+        foreach ($result['SET']['RECS'] as $item) {
+            var_dump($item['DATA']);
+        }
 //        foreach ($this->markets as $marketCode) {
 //
 //            $companies = $this->companyService->fetchByMarket($marketCode);
@@ -184,7 +217,7 @@ class MeroveusController extends AbstractActionController
 //            }
 //        }
 
-        echo 'Something has been done.'.PHP_EOL;
+        echo 'Something has been done.' . PHP_EOL;
     }
 
     /**
@@ -193,7 +226,7 @@ class MeroveusController extends AbstractActionController
     public function fetchbyidAction()
     {
         $id             = $this->getRequest()->getParam('id');
-        $MeroveusClient = new ClientService();;
+        $MeroveusClient = new ClientService(['path' => 'http://acbj-stg.legendarydata.com/relay']);
         $companyService = new CompanyService($MeroveusClient);
         $company        = $companyService->findById($id);
         echo 'fetchCompanyById' . ' in ' . 'MeroveusController.php' . PHP_EOL;
