@@ -69,6 +69,14 @@ class CompanyService extends AbstractService
      */
     private function formatResult($result)
     {
+        $keepFields = [
+            'firm-name_static',
+            'street-address_static',
+            'street-zip_static',
+            'street-city_static',
+            'street-state_static',
+        ];
+
         $labels = $result['LABELS'];
 
         $list = [];
@@ -76,22 +84,24 @@ class CompanyService extends AbstractService
         foreach ($result['SET']['RECS'] as $k => $record) {
             $company = [];
             foreach ($record['DATA'] as $dk => $data) {
-                $stateId = null;
-                $state   = null;
-                if (!isset($data['VAL']) && $data['KEY'] === "street-state_static") {
-                    $stateId = $data['LABELIDS'][0];
-                    $state   = $this->getStateFromId($stateId, $labels);
+                if (in_array($data['KEY'], $keepFields)) {
+                    $stateId = null;
+                    $state   = null;
+                    if (!isset($data['VAL']) && $data['KEY'] === "street-state_static") {
+                        $stateId = $data['LABELIDS'][0];
+                        $state   = $this->getStateFromId($stateId, $labels);
+                    }
+
+                    if (isset($data['VAL'])) {
+                        $value = !is_array($data['VAL']) ? $data['VAL'] : null;
+                    } else {
+                        $value = $state;
+                    }
+
+                    $mergedData = [$data['KEY'] => $value];
+
+                    array_push($company, $mergedData);
                 }
-
-                if (isset($data['VAL'])) {
-                    $value = !is_array($data['VAL']) ? $data['VAL'] : null;
-                } else {
-                    $value = $state;
-                }
-
-                $mergedData = [$data['KEY'] => $value];
-
-                array_push($company, $mergedData);
             }
 
             array_push($list, $company);

@@ -163,7 +163,7 @@ class MeroveusController extends AbstractActionController
             [
                 'HISTORY'  => '-1 day',
                 'STARTROW' => '1',
-                'MAXROWS'  => '100',
+                'MAXROWS'  => '1',
                 'SET'      => [
                     'RECTYP' => 'Business',
                 ],
