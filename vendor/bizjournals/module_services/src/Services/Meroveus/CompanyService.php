@@ -44,6 +44,10 @@ class CompanyService extends AbstractService
     public function fetchByMarket(\Services\Meroveus\Client $meroveusClient, $market = '', array $meroveusParams = [])
     {
 
+        /**
+         * {AKEY:"", EKEY:"", MODE:"SEARCH", "SET":{RECTYP:"Business"}, "KEYWORDS":"published:true", "ENV":"4"}
+         */
+
 //        $test = $meroveusClient->send('SEARCH', 'default', [
 //            'ENV'  => '*',
 //            'LIST' => [
@@ -61,11 +65,52 @@ class CompanyService extends AbstractService
     /**
      * @param $result
      * @return array
+     *
      */
     private function formatResult($result)
     {
-        $return = ['formatted' => 'list'];
-        return $result;
+        $labels = $result['LABELS'];
+
+        $list = [];
+
+        foreach ($result['SET']['RECS'] as $k => $record) {
+            $company = [];
+            foreach ($record['DATA'] as $dk => $data) {
+                $stateId = null;
+                $state   = null;
+                if (!isset($data['VAL']) && $data['KEY'] === "street-state_static") {
+                    $stateId = $data['LABELIDS'][0];
+                    $state   = $this->getStateFromId($stateId, $labels);
+                }
+
+                if (isset($data['VAL'])) {
+                    $value = !is_array($data['VAL']) ? $data['VAL'] : null;
+                } else {
+                    $value = $state;
+                }
+
+                $mergedData = [$data['KEY'] => $value];
+
+                array_push($company, $mergedData);
+            }
+
+            array_push($list, $company);
+        }
+
+        return $list;
+    }
+
+    private function getStateFromId($stateId, array $labelsArray)
+    {
+        if (!$stateId) {
+            return null;
+        }
+
+        foreach ($labelsArray as $k => $label) {
+            if ($label['LABELID'] === $stateId) {
+                return $label['PostalCode'];
+            }
+        }
     }
 
 

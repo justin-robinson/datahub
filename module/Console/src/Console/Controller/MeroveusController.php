@@ -153,6 +153,7 @@ class MeroveusController extends AbstractActionController
      *  do stuff
      * else
      *  do other stuff
+     * {AKEY:"", EKEY:"", MODE:"SEARCH", "SET":{RECTYP:"Business"}, "KEYWORDS":"published:true", "ENV":"4"}
      */
     public function matchAction()
     {
@@ -160,62 +161,29 @@ class MeroveusController extends AbstractActionController
             $this->meroveusClient,
             'charlotte',
             [
-                "HISTORY"  => "-1 day",
-                "STARTROW" => 1,
-                "MAXROWS"  => 5,
-                "SET"      => [
-                    "RECTYP" => "Business",
+                'HISTORY'  => '-1 day',
+                'STARTROW' => '1',
+                'MAXROWS'  => '100',
+                'SET'      => [
+                    'RECTYP' => 'Business',
                 ],
-                'META' => [
-                    'FIELDS' => [
-                        ['KEY' => 'firm-name_static'],
-                        ['KEY' => 'contact-website_static'],
-                        ['KEY' => 'street-address_static'],
-                        ['KEY' => 'street-line2-address_static'],
-                        ['KEY' => 'street-city_static'],
-                        ['KEY' => 'street-state_static'],
-                        ['KEY' => 'street-zip_static'],
-                        ['KEY' => 'street-zip_static'],
-                        ['KEY' => 'contact-phone_static'],
-                    ],
+                'KEYWORDS' => 'published:true',
+                'ENV'      => '10',
+                'META'     => [
+                    'RECTYP' => 'Business',
                 ],
             ]
         );
-
-        foreach ($result['SET']['RECS'] as $item) {
-            var_dump($item['DATA']);
-        }
-//        foreach ($this->markets as $marketCode) {
-//
-//            $companies = $this->companyService->fetchByMarket($marketCode);
-//
-//            /**
-//             * step through the companies and query elastic for their data
-//             */
-//            foreach ($companies as $company) {
-//
-//
-////                write a meroveus query
-//
-//
-//
-//                /**
-//                 * get company info from meroveus
-//                 * query elastic
-//                 */
-//
-////                $query = new ElasticaQuery();
-//
-//                // define the query somehow
-////                $query->setQuery(new ElasticaQuery\MatchAll());
-//                /**
-//                 * if match
-//                 *  insert the company['id']
-//                 * else
-//                 *  create a new company record
-//                 */
-//            }
-//        }
+        /**
+         * i need
+         *  name
+         *  state
+         *  city
+         *  zip
+         *
+         */
+        echo "result: " . PHP_EOL;
+        var_dump($result);
 
         echo 'Something has been done.' . PHP_EOL;
     }

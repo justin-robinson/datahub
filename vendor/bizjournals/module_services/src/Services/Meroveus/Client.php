@@ -89,8 +89,8 @@ class Client extends AbstractClient
     {
         $this->setOptions(array_merge($this->_getConfig(), $options));
         MeroveusClient::$meroveus = MeroveusClient::$meroveusRoot = $this->getOption('path');
-        $this->akey = 'dJoJubaKc2sGEyVWvg3h6ICUC';
-        $this->ekey = 'UdHuwsJhWgyhMWhpBAxkmydnT';
+        $this->akey               = 'dJoJubaKc2sGEyVWvg3h6ICUC';
+        $this->ekey               = 'UdHuwsJhWgyhMWhpBAxkmydnT';
     }
 
     /**
@@ -100,7 +100,7 @@ class Client extends AbstractClient
      * @param string $mode
      * @param string $market_code
      * @param array $params
-     * @throws Core_Exceptionfunction sendRe
+     * @throws Core_Exceptionfunction
      * @return array
      */
     public function send($mode, $market_code, array $params = [])
@@ -113,11 +113,12 @@ class Client extends AbstractClient
                     'EKEY' => $this->ekey,
                     'MODE' => $mode,
                 ];
-            $resp      = MeroveusClient::sendRequest(json_encode($sendArray), in_array($mode, ['LABELSEARCH', 'FIELDSEARCH']));
+            $resp      = MeroveusClient::sendRequest(json_encode($sendArray),
+                in_array($mode, ['LABELSEARCH', 'FIELDSEARCH']));
 //            $testQ = '{"MODE":"SEARCH", "AKEY":"dJoJubaKc2sGEyVWvg3h6ICUC", "EKEY":"UdHuwsJhWgyhMWhpBAxkmydnT", "HISTORY":"-1 day", "STARTROW":1, "MAXROWS":25, "LIST":{"LISTID":"3064", "LOAD":true}, "META":null, "SET":null}';
 //
 //            $resp      = MeroveusClient::sendRequest($testQ);
-            $return    = (in_array(substr($resp, 0, 1), ['{', '[']) ? json_decode($resp, true) : $resp);
+            $return = (in_array(substr($resp, 0, 1), ['{', '[']) ? json_decode($resp, true) : $resp);
         } else {
             //@todo figure out the right way to do this
             //throw new Core_Exception('Invalid Meroveous Mode');
