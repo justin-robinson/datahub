@@ -23,7 +23,6 @@ use Hub\Model\Journal;
  */
 class MeroveusController extends AbstractActionController
 {
-    /** @todo replace this with a method call */
         private $markets = [
         'albany'       => '1',
         'albuquerque'  => '73',
@@ -67,12 +66,24 @@ class MeroveusController extends AbstractActionController
         'seattle'      => '31',
     ];
 
+    /**
+     * @var MeroveusClient
+     */
     private $meroveusClient;
 
+    /**
+     * @var ElasticaClient
+     */
     private $elasticaClient;
 
+    /**
+     * @var CompanyService
+     */
     private $companyService;
 
+    /**
+     * @var ElasticaSearch
+     */
     private $elasticSearch;
 
     /**
@@ -100,14 +111,7 @@ class MeroveusController extends AbstractActionController
     }
 
     /**
-     * mostly psuedo code
-     * query meroveus for companies by market
-     * query elastic for match
-     * if match
-     *  do stuff
-     * else
-     *  do other stuff
-     * {AKEY:"", EKEY:"", MODE:"SEARCH", "SET":{RECTYP:"Business"}, "KEYWORDS":"published:true", "ENV":"4"}
+     *
      */
     public function matchAction()
     {
@@ -132,66 +136,11 @@ class MeroveusController extends AbstractActionController
                     ],
                 ]
             );
-            /**
-             * i need
-             *  name
-             *  state
-             *  city
-             *  zip
-             *
-             */
             if($result)
                 array_push($bigOleList, $result);
         }
-
         echo 'Something has been done.' . PHP_EOL;
         var_dump($bigOleList);
     }
-
-    /**
-     * return a company by it's id
-     */
-    public function fetchbyidAction()
-    {
-        $id             = $this->getRequest()->getParam('id');
-        $MeroveusClient = new ClientService(['path' => 'http://acbj-stg.legendarydata.com/relay']);
-        $companyService = new CompanyService($MeroveusClient);
-        $company        = $companyService->findById($id);
-        echo 'fetchCompanyById' . ' in ' . 'MeroveusController.php' . PHP_EOL;
-        var_dump($company);
-        echo PHP_EOL;
-    }
-
-    public function getMarkets()
-    {
-        return $this->markets;
-    }
-
-    /**
-     * does whatever needs to be done
-     * @param $company
-     */
-    private function processForInsert($company)
-    {
-        return boolval(true);
-    }
-
-    /**
-     * placeholder
-     */
-    private function getMarketCodes()
-    {
-        return [];
-    }
-
-    /**
-     * placeholder
-     */
-    private function doInsert()
-    {
-
-    }
-
-
 
 }
