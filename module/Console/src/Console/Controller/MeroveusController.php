@@ -24,93 +24,47 @@ use Hub\Model\Journal;
 class MeroveusController extends AbstractActionController
 {
     /** @todo replace this with a method call */
-    private $markets = [
-        'bizjournals',
-        'albany',
-        'albuquerque',
-        'allentown',
-        'anchorage',
-        'atlanta',
-        'austin',
-        'baltimore',
-        'birmingham',
-        'boston',
-        'buffalo',
-        'charleston',
-        'charlotte',
-        'chicago',
-        'cincinnati',
-        'cleveland',
-        'coloradosprings',
-        'columbia',
-        'columbus',
-        'dallas',
-        'dayton',
-        'denver',
-        'desmoines',
-        'detroit',
-        'eastbay',
-        'elpaso',
-        'fairfield',
-        'fresno',
-        'ftworth',
-        'grandrapids',
-        'triad',
-        'greenville',
-        'pacific',
-        'houston',
-        'indianapolis',
-        'jackson',
-        'jacksonville',
-        'kansascity',
-        'lasvegas',
-        'longisland',
-        'losangeles',
-        'louisville',
-        'masshightech',
-        'memphis',
-        'milwaukee',
-        'twincities',
-        'nashville',
-        'newbrunswick',
-        'newjersey',
-        'neworleans',
-        'newyork',
-        'oklahomacity',
-        'ontario',
-        'orange',
-        'orlando',
-        'philadelphia',
-        'phoenix',
-        'pittsburgh',
-        'portland',
-        'providence',
-        'pueblo',
-        'triangle',
-        'rochester',
-        'sacramento',
-        'sanantonio',
-        'sandiego',
-        'sanfernando',
-        'sanfrancisco',
-        'santabarbara',
-        'santarosa',
-        'seattle',
-        'sanjose',
-        'sonoma',
-        'southflorida',
-        'springfield',
-        'stlouis',
-        'syracuse',
-        'tampabay',
-        'tuscon',
-        'upstart',
-        'washington',
-        'wenatchee',
-        'westchester',
-        'western',
-        'whiteplains',
-        'wichita',
+        private $markets = [
+        'albany'       => '1',
+        'albuquerque'  => '73',
+        'atlanta'      => '2',
+        'austin'       => '3',
+        'baltimore'    => '4',
+        'boston'       => '5',
+        'birmingham'   => '40',
+        'buffalo'      => '6',
+        'charlotte'    => '7',
+        'cincinnati'   => '8',
+        'columbus'     => '9',
+        'dallas'       => '10',
+        'dayton'       => '11',
+        'denver'       => '12',
+        'houston'      => '13',
+        'jacksonville' => '14',
+        'kansascity'   => '15',
+        'louisville'   => '16',
+        'memphis'      => '17',
+        'nashville'    => '20',
+        'orlando'      => '21',
+        'philadelphia' => '23',
+        'phoenix'      => '24',
+        'pittsburgh'   => '25',
+        'portland'     => '26',
+        'sacramento'   => '27',
+        'sanantonio'   => '28',
+        'southflorida' => '32',
+        'stlouis'      => '33',
+        'tampabay'     => '34',
+        'twincities'   => '19',
+        'triad'        => '38',
+        'triangle'     => '35',
+        'washington'   => '36',
+        'wichita'      => '37',
+        'milwaukee'    => '18',
+        'pacific'      => '22',
+        'sanfrancisco' => '29',
+        'sanjose'      => '30',
+        'seattle'      => '31',
     ];
 
     private $meroveusClient;
@@ -157,35 +111,41 @@ class MeroveusController extends AbstractActionController
      */
     public function matchAction()
     {
-        $result = $this->companyService->fetchByMarket(
-            $this->meroveusClient,
-            'charlotte',
-            [
-                'HISTORY'  => '-1 day',
-                'STARTROW' => '1',
-                'MAXROWS'  => '1',
-                'SET'      => [
-                    'RECTYP' => 'Business',
-                ],
-                'KEYWORDS' => 'published:true',
-                'ENV'      => '10',
-                'META'     => [
-                    'RECTYP' => 'Business',
-                ],
-            ]
-        );
-        /**
-         * i need
-         *  name
-         *  state
-         *  city
-         *  zip
-         *
-         */
-        echo "result: " . PHP_EOL;
-        var_dump($result);
+        $bigOleList = [];
+
+        foreach ($this->markets as $name => $id) {
+
+            $result = $this->companyService->fetchByMarket(
+                $this->meroveusClient,
+                'charlotte',
+                [
+                    'HISTORY'  => '-1 day',
+                    'STARTROW' => '1',
+                    'MAXROWS'  => '1',
+                    'SET'      => [
+                        'RECTYP' => 'Business',
+                    ],
+                    'KEYWORDS' => 'published:true',
+                    'ENV'      => $id,
+                    'META'     => [
+                        'RECTYP' => 'Business',
+                    ],
+                ]
+            );
+            /**
+             * i need
+             *  name
+             *  state
+             *  city
+             *  zip
+             *
+             */
+            if($result)
+                array_push($bigOleList, $result);
+        }
 
         echo 'Something has been done.' . PHP_EOL;
+        var_dump($bigOleList);
     }
 
     /**
@@ -231,6 +191,7 @@ class MeroveusController extends AbstractActionController
     {
 
     }
+
 
 
 }

@@ -77,37 +77,40 @@ class CompanyService extends AbstractService
             'street-state_static',
         ];
 
-        $labels = $result['LABELS'];
+        $labels = isset($result['LABELS'])?$result['LABELS']:null;
 
         $list = [];
+        if (isset($result['SET']['RECS'])) {
+            foreach ($result['SET']['RECS'] as $k => $record) {
+                $company = [];
+                foreach ($record['DATA'] as $dk => $data) {
+                    if (in_array($data['KEY'], $keepFields)) {
+                        $stateId = null;
+                        $state   = null;
+                        if (!isset($data['VAL']) && $data['KEY'] === "street-state_static") {
+                            $stateId = $data['LABELIDS'][0];
+                            $state   = $this->getStateFromId($stateId, $labels);
+                        }
 
-        foreach ($result['SET']['RECS'] as $k => $record) {
-            $company = [];
-            foreach ($record['DATA'] as $dk => $data) {
-                if (in_array($data['KEY'], $keepFields)) {
-                    $stateId = null;
-                    $state   = null;
-                    if (!isset($data['VAL']) && $data['KEY'] === "street-state_static") {
-                        $stateId = $data['LABELIDS'][0];
-                        $state   = $this->getStateFromId($stateId, $labels);
+                        if (isset($data['VAL'])) {
+                            $value = !is_array($data['VAL']) ? $data['VAL'] : null;
+                        } else {
+                            $value = $state;
+                        }
+
+                        $mergedData = [$data['KEY'] => $value];
+
+                        array_push($company, $mergedData);
                     }
-
-                    if (isset($data['VAL'])) {
-                        $value = !is_array($data['VAL']) ? $data['VAL'] : null;
-                    } else {
-                        $value = $state;
-                    }
-
-                    $mergedData = [$data['KEY'] => $value];
-
-                    array_push($company, $mergedData);
                 }
+
+                array_push($list, $company);
             }
 
-            array_push($list, $company);
+            return $list;
+        } else {
+            return null;
         }
-
-        return $list;
     }
 
     private function getStateFromId($stateId, array $labelsArray)
