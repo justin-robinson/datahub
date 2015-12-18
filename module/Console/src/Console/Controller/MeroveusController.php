@@ -23,47 +23,47 @@ use Hub\Model\Journal;
  */
 class MeroveusController extends AbstractActionController
 {
-        private $markets = [
-        'albany'       => '1',
-        'albuquerque'  => '73',
-        'atlanta'      => '2',
-        'austin'       => '3',
-        'baltimore'    => '4',
-        'boston'       => '5',
-        'birmingham'   => '40',
-        'buffalo'      => '6',
-        'charlotte'    => '7',
-        'cincinnati'   => '8',
-        'columbus'     => '9',
-        'dallas'       => '10',
-        'dayton'       => '11',
-        'denver'       => '12',
-        'houston'      => '13',
-        'jacksonville' => '14',
-        'kansascity'   => '15',
-        'louisville'   => '16',
-        'memphis'      => '17',
+    private $markets = [
+        'albany'       => '12',
+        'albuquerque'  => '9',
+        'atlanta'      => '11',
+        'austin'       => '22',
+        'baltimore'    => '15',
+        'birmingham'   => '30',
+        'boston'       => '34',
+        'buffalo'      => '3',
+        'charlotte'    => '26',
+        'cincinnati'   => '6',
+        'columbus'     => '31',
+        'dallas'       => '7',
+        'dayton'       => '19',
+        'denver'       => '2',
+        'houston'      => '8',
+        'jacksonville' => '23',
+        'kansascity'   => '13',
+        'louisville'   => '32',
+        'memphis'      => '10',
+        'milwaukee'    => '33',
         'nashville'    => '20',
-        'orlando'      => '21',
-        'philadelphia' => '23',
-        'phoenix'      => '24',
-        'pittsburgh'   => '25',
-        'portland'     => '26',
-        'sacramento'   => '27',
-        'sanantonio'   => '28',
-        'southflorida' => '32',
-        'stlouis'      => '33',
-        'tampabay'     => '34',
-        'twincities'   => '19',
-        'triad'        => '38',
-        'triangle'     => '35',
-        'washington'   => '36',
+        'orlando'      => '17',
+        'pacific'      => '38',
+        'philadelphia' => '16',
+        'phoenix'      => '14',
+        'pittsburgh'   => '18',
+        'portland'     => '24',
+        'sacramento'   => '4',
+        'sanantonio'   => '25',
+        'sanfrancisco' => '39',
+        'sanjose'      => '40',
+        'seattle'      => '41',
+        'southflorida' => '35',
+        'stlouis'      => '28',
+        'tampabay'     => '36',
+        'triad'        => '29',
+        'triangle'     => '27',
+        'twincities'   => '21',
+        'washington'   => '5',
         'wichita'      => '37',
-        'milwaukee'    => '18',
-        'pacific'      => '22',
-        'sanfrancisco' => '29',
-        'sanjose'      => '30',
-        'seattle'      => '31',
     ];
 
     /**
@@ -115,32 +115,86 @@ class MeroveusController extends AbstractActionController
      */
     public function matchAction()
     {
+        echo "
+     ▄▄       ▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄               ▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄         ▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄
+    ▐░░▌     ▐░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌             ▐░▌▐░░░░░░░░░░░▌▐░▌       ▐░▌▐░░░░░░░░░░░▌▐░▌
+    ▐░▌░▌   ▐░▐░▌▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀█░▌ ▐░▌           ▐░▌ ▐░█▀▀▀▀▀▀▀▀▀ ▐░▌       ▐░▌▐░█▀▀▀▀▀▀▀▀▀ ▐░▌
+    ▐░▌▐░▌ ▐░▌▐░▌▐░▌          ▐░▌       ▐░▌▐░▌       ▐░▌  ▐░▌         ▐░▌  ▐░▌          ▐░▌       ▐░▌▐░▌          ▐░▌
+    ▐░▌ ▐░▐░▌ ▐░▌▐░█▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄█░▌▐░▌       ▐░▌   ▐░▌       ▐░▌   ▐░█▄▄▄▄▄▄▄▄▄ ▐░▌       ▐░▌▐░█▄▄▄▄▄▄▄▄▄ ▐░▌
+    ▐░▌  ▐░▌  ▐░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌       ▐░▌    ▐░▌     ▐░▌    ▐░░░░░░░░░░░▌▐░▌       ▐░▌▐░░░░░░░░░░░▌▐░▌
+    ▐░▌   ▀   ▐░▌▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀█░█▀▀ ▐░▌       ▐░▌     ▐░▌   ▐░▌     ▐░█▀▀▀▀▀▀▀▀▀ ▐░▌       ▐░▌ ▀▀▀▀▀▀▀▀▀█░▌▐░▌
+    ▐░▌       ▐░▌▐░▌          ▐░▌     ▐░▌  ▐░▌       ▐░▌      ▐░▌ ▐░▌      ▐░▌          ▐░▌       ▐░▌          ▐░▌ ▀
+    ▐░▌       ▐░▌▐░█▄▄▄▄▄▄▄▄▄ ▐░▌      ▐░▌ ▐░█▄▄▄▄▄▄▄█░▌       ▐░▐░▌       ▐░█▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄█░▌ ▄▄▄▄▄▄▄▄▄█░▌ ▄
+    ▐░▌       ▐░▌▐░░░░░░░░░░░▌▐░▌       ▐░▌▐░░░░░░░░░░░▌        ▐░▌        ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌
+     ▀         ▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀         ▀  ▀▀▀▀▀▀▀▀▀▀▀          ▀          ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀
+". PHP_EOL;
+        $maxRows  = 500;
+        $compiled = [];
+        $markets  = [
+            'albany'      => '9',
+            'albuquerque' => '9',
+        ];
+        foreach ($this->markets as $env) {
+            array_push($compiled, $this->paginatedSearch($env, $maxRows));
+        }
+        $count = 0;
+        foreach ($compiled as $item) {
+            $count++;
+        }
+        var_dump($count);
+        echo 'Something has been done.' . PHP_EOL;
+    }
+
+
+    /**
+     * chunks the queries for throttling
+     * @param string $env (this represents the market in the query to meroveus)
+     * @param int $maxRows (max returned results per call)
+     * @return array ( filtered and compiled results )
+     */
+    private function paginatedSearch($env, $maxRows = 25)
+    {
+
         $bigOleList = [];
 
-        foreach ($this->markets as $name => $id) {
 
+        /**
+         * get $maxRows results,
+         * do we have any results
+         * add them to the list
+         * add $maxRows to the offset
+         */
+
+        $run    = true;
+        $startRow = 1;
+        do {
             $result = $this->companyService->fetchByMarket(
                 $this->meroveusClient,
                 'charlotte',
                 [
-                    'HISTORY'  => '-1 day',
-                    'STARTROW' => '1',
-                    'MAXROWS'  => '1',
+                    'STARTROW' => $startRow,
+                    'MAXROWS'  => $maxRows,
                     'SET'      => [
                         'RECTYP' => 'Business',
                     ],
                     'KEYWORDS' => 'published:true',
-                    'ENV'      => $id,
+                    'ENV'      => $env,
                     'META'     => [
                         'RECTYP' => 'Business',
                     ],
                 ]
             );
-            if($result)
+            if (is_array($result)) {
                 array_push($bigOleList, $result);
-        }
-        echo 'Something has been done.' . PHP_EOL;
-        var_dump($bigOleList);
+                $startRow = $startRow + $maxRows;
+            } else {
+                $run = false;
+            }
+
+        } while ($run);
+
+        return $bigOleList;
+
     }
 
 }
