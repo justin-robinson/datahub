@@ -9,6 +9,7 @@ namespace Console\Controller;
 
 use Elastica\Client as ElasticaClient;
 use Elastica\Query as ElasticaQuery;
+use Elastica\QueryBuilder as EQB;
 use Elastica\Search as ElasticaSearch;
 use Services\Meroveus\CompanyService;
 use Services\Meroveus\Client as MeroveusClient;
@@ -23,6 +24,10 @@ use Hub\Model\Journal;
  */
 class MeroveusController extends AbstractActionController
 {
+    /**
+     * @var array $markets
+     * map of our parket names to their respective meroveus environments
+     */
     private $markets = [
         'albany'       => '12',
         'albuquerque'  => '9',
@@ -127,21 +132,17 @@ class MeroveusController extends AbstractActionController
     ▐░▌       ▐░▌▐░█▄▄▄▄▄▄▄▄▄ ▐░▌      ▐░▌ ▐░█▄▄▄▄▄▄▄█░▌       ▐░▐░▌       ▐░█▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄█░▌ ▄▄▄▄▄▄▄▄▄█░▌ ▄
     ▐░▌       ▐░▌▐░░░░░░░░░░░▌▐░▌       ▐░▌▐░░░░░░░░░░░▌        ▐░▌        ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌
      ▀         ▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀         ▀  ▀▀▀▀▀▀▀▀▀▀▀          ▀          ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀
-". PHP_EOL;
+" . PHP_EOL;
         $maxRows  = 500;
         $compiled = [];
-        $markets  = [
+        // test markets
+        $markets = [
             'albany'      => '9',
             'albuquerque' => '9',
         ];
         foreach ($this->markets as $env) {
             array_push($compiled, $this->paginatedSearch($env, $maxRows));
         }
-        $count = 0;
-        foreach ($compiled as $item) {
-            $count++;
-        }
-        var_dump($count);
         echo 'Something has been done.' . PHP_EOL;
     }
 
@@ -165,7 +166,7 @@ class MeroveusController extends AbstractActionController
          * add $maxRows to the offset
          */
 
-        $run    = true;
+        $run      = true;
         $startRow = 1;
         do {
             $result = $this->companyService->fetchByMarket(
@@ -195,6 +196,43 @@ class MeroveusController extends AbstractActionController
 
         return $bigOleList;
 
+    }
+
+
+    /**
+     * look up the company
+     * if match
+     *   add the internal id to the index
+     * else
+     *   create a new record
+     * return bool
+     * @param array $target
+     * @return bool
+     */
+    private function elasticMatch(array $target)
+    {
+        $search = new ElasticaSearch($this->elasticaClient);
+        $query  = new ElasticaQuery();
+        $q      = new EQB();
+        $query->setQuery($q->query()->bool()->addMust([
+            $q->query()->match(['Name' => $target['name']]),
+            $q->query()->match(['State' => $target['state']])->setFieldType('State', 'phrase'),
+            $q->query()->match(['City' => $target['city']]),
+            $q->query()->match(['Addr1' => $target['addr1']]),
+            $q->query()->match(['PostalCode' => $target['postalCOde']])->setFieldType('PostalCode', 'phrase'),
+        ]));
+
+
+        $match = false;
+        // perform search
+        if ($match) {
+            // insert meroveus id
+        } else {
+            // create record
+        }
+
+
+        return true;
     }
 
 }

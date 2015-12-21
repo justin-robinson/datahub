@@ -49,6 +49,13 @@ class Module
                     $logger->addProcessor('backtrace');
                     return $logger;
                 },
+                 // Elastica
+                'Elastica\Client' => function (ServiceManager $sm) {
+                    $config = $sm->get('Config');
+                    $client = new Elastica\Client($config['elastica']);
+                    $client->setLogger($sm->get('Monolog'));
+                    return $client;
+                },
             ),
         );
     }
