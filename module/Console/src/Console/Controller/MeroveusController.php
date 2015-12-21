@@ -139,14 +139,13 @@ class MeroveusController extends AbstractActionController
         $compiled = [];
         // test markets
         $markets = [
-            'albany'      => '12',
-//            'albuquerque' => '9',
+//            'albany'      => '12',
+            'albuquerque' => '9',
         ];
         foreach ($markets as $env) {
             array_push($compiled, $this->paginatedSearch($env, $maxRows));
         }
-        echo "line 148". ' in '."MeroveusController.php".PHP_EOL;
-        die(var_dump( $compiled[0][1] ));
+        var_dump($compiled[0][1]);
         var_dump($this->elasticMatch($compiled[0][1]));
 
         echo 'Something has been done.' . PHP_EOL;
@@ -231,11 +230,11 @@ class MeroveusController extends AbstractActionController
 //            'PostalCode',
 //        ]);
         $query->setQuery($q->query()->bool()
-            ->addMust($q->query()->match('Name', $target[1]['firm-name_static']))
-            ->addMust($q->query()->match('State', $target[4]['street-state_static']))
-            ->addMust($q->query()->match('City', $target[3]['street-city_static']))
-            ->addMust($q->query()->match('Addr1',  $target[0]['street-address_static']))
-            ->addMust($q->query()->match('PostalCode',  $target[2]['street-zip_static']))
+            ->addMust($q->query()->match('Name', $target['firm-name_static']))
+            ->addMust($q->query()->match('State', $target['street-state_static']))
+            ->addMust($q->query()->match('City', $target['street-city_static']))
+            ->addMust($q->query()->match('Addr1',  $target['street-address_static']))
+            ->addMust($q->query()->match('PostalCode',  $target['street-zip_static']))
         );
 
         $resultSet = $search->search();

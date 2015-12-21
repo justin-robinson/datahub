@@ -64,11 +64,14 @@ class CompanyService extends AbstractService
                         } else {
                             $value = $state;
                         }
-                        $mergedData = [$data['KEY'] => $value];
-                        array_push($company, $mergedData);
+                        $company[$data['KEY']] = $value;
+                        // I want consistency
+                        ksort($company);
                     }
                 }
-                array_push($list, $company);
+                if (count($company) == 5) {
+                    array_push($list, $company);
+                }
             }
             return $list;
         } else {
