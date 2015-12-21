@@ -9,7 +9,7 @@ namespace Console\Controller;
 
 use Elastica\Client as ElasticaClient;
 use Elastica\Query as ElasticaQuery;
-use Elastica\QueryBuilder as EQB;
+use Elastica\QueryBuilder as QueryBuilder;
 use Elastica\Search as ElasticaSearch;
 use Services\Meroveus\CompanyService;
 use Services\Meroveus\Client as MeroveusClient;
@@ -70,7 +70,6 @@ class MeroveusController extends AbstractActionController
         'washington'   => '5',
         'wichita'      => '37',
     ];
-
     /**
      * @var MeroveusClient
      */
@@ -99,9 +98,12 @@ class MeroveusController extends AbstractActionController
         $this->meroveusClient = new MeroveusClient(['path' => 'http://acbj-stg.meroveus.com:8080/api']);
         $this->companyService = new CompanyService($this->meroveusClient);
         $this->elasticaClient = new ElasticaClient([
-            'http://datahub.listsandleads.elasticsearch.bizj-dev.com',
-            '9200',
+            'host' => 'http://datahub.listsandleads.elasticsearch.bizj-dev.com',
+            'path' => 'rerefinery',
+            'port' => '9200',
+            'url' =>  'http://datahub.listsandleads.elasticsearch.bizj-dev.com:9200/rerefinery'
         ]);
+
         $this->elasticSearch  = new ElasticaSearch($this->elasticaClient);
     }
 
@@ -116,7 +118,7 @@ class MeroveusController extends AbstractActionController
     }
 
     /**
-     *
+     * php run.php  meroveus match -e development
      */
     public function matchAction()
     {
@@ -137,12 +139,16 @@ class MeroveusController extends AbstractActionController
         $compiled = [];
         // test markets
         $markets = [
-            'albany'      => '9',
-            'albuquerque' => '9',
+            'albany'      => '12',
+//            'albuquerque' => '9',
         ];
-        foreach ($this->markets as $env) {
+        foreach ($markets as $env) {
             array_push($compiled, $this->paginatedSearch($env, $maxRows));
         }
+        echo "line 148". ' in '."MeroveusController.php".PHP_EOL;
+        die(var_dump( $compiled[0][1] ));
+        var_dump($this->elasticMatch($compiled[0][1]));
+
         echo 'Something has been done.' . PHP_EOL;
     }
 
@@ -157,7 +163,6 @@ class MeroveusController extends AbstractActionController
     {
 
         $bigOleList = [];
-
 
         /**
          * get $maxRows results,
@@ -186,7 +191,10 @@ class MeroveusController extends AbstractActionController
                 ]
             );
             if (is_array($result)) {
-                array_push($bigOleList, $result);
+                foreach($result as $company ) {
+
+                    array_push($bigOleList, $company);
+                }
                 $startRow = $startRow + $maxRows;
             } else {
                 $run = false;
@@ -211,18 +219,33 @@ class MeroveusController extends AbstractActionController
      */
     private function elasticMatch(array $target)
     {
+
         $search = new ElasticaSearch($this->elasticaClient);
         $query  = new ElasticaQuery();
-        $q      = new EQB();
-        $query->setQuery($q->query()->bool()->addMust([
-            $q->query()->match(['Name' => $target['name']]),
-            $q->query()->match(['State' => $target['state']])->setFieldType('State', 'phrase'),
-            $q->query()->match(['City' => $target['city']]),
-            $q->query()->match(['Addr1' => $target['addr1']]),
-            $q->query()->match(['PostalCode' => $target['postalCOde']])->setFieldType('PostalCode', 'phrase'),
-        ]));
+        $q      = new QueryBuilder();
+//        $query->setFields([
+//            'Name',
+//            'State',
+//            'City',
+//            'Addr1',
+//            'PostalCode',
+//        ]);
+        $query->setQuery($q->query()->bool()
+            ->addMust($q->query()->match('Name', $target[1]['firm-name_static']))
+            ->addMust($q->query()->match('State', $target[4]['street-state_static']))
+            ->addMust($q->query()->match('City', $target[3]['street-city_static']))
+            ->addMust($q->query()->match('Addr1',  $target[0]['street-address_static']))
+            ->addMust($q->query()->match('PostalCode',  $target[2]['street-zip_static']))
+        );
 
+        $resultSet = $search->search();
+//        var_dump($resultSet->getResults());
+        foreach($resultSet->getResults() as $result ){
+            var_dump($result);
+        }
+//        return $resultSet->getResults();
 
+        return json_encode($query->toArray());
         $match = false;
         // perform search
         if ($match) {
