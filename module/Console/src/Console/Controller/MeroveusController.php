@@ -29,45 +29,45 @@ class MeroveusController extends AbstractActionController
      */
     private $markets = [
         'albany'       => '12',
-        'albuquerque'  => '9',
-        'atlanta'      => '11',
-        'austin'       => '22',
-        'baltimore'    => '15',
-        'birmingham'   => '30',
-        'boston'       => '34',
-        'buffalo'      => '3',
-        'charlotte'    => '26',
-        'cincinnati'   => '6',
-        'columbus'     => '31',
-        'dallas'       => '7',
-        'dayton'       => '19',
-        'denver'       => '2',
-        'houston'      => '8',
-        'jacksonville' => '23',
-        'kansascity'   => '13',
-        'louisville'   => '32',
-        'memphis'      => '10',
-        'milwaukee'    => '33',
-        'nashville'    => '20',
-        'orlando'      => '17',
-        'pacific'      => '38',
-        'philadelphia' => '16',
-        'phoenix'      => '14',
-        'pittsburgh'   => '18',
-        'portland'     => '24',
-        'sacramento'   => '4',
-        'sanantonio'   => '25',
-        'sanfrancisco' => '39',
-        'sanjose'      => '40',
-        'seattle'      => '41',
-        'southflorida' => '35',
-        'stlouis'      => '28',
-        'tampabay'     => '36',
-        'triad'        => '29',
-        'triangle'     => '27',
-        'twincities'   => '21',
-        'washington'   => '5',
-        'wichita'      => '37',
+//        'albuquerque'  => '9',
+//        'atlanta'      => '11',
+//        'austin'       => '22',
+//        'baltimore'    => '15',
+//        'birmingham'   => '30',
+//        'boston'       => '34',
+//        'buffalo'      => '3',
+//        'charlotte'    => '26',
+//        'cincinnati'   => '6',
+//        'columbus'     => '31',
+//        'dallas'       => '7',
+//        'dayton'       => '19',
+//        'denver'       => '2',
+//        'houston'      => '8',
+//        'jacksonville' => '23',
+//        'kansascity'   => '13',
+//        'louisville'   => '32',
+//        'memphis'      => '10',
+//        'milwaukee'    => '33',
+//        'nashville'    => '20',
+//        'orlando'      => '17',
+//        'pacific'      => '38',
+//        'philadelphia' => '16',
+//        'phoenix'      => '14',
+//        'pittsburgh'   => '18',
+//        'portland'     => '24',
+//        'sacramento'   => '4',
+//        'sanantonio'   => '25',
+//        'sanfrancisco' => '39',
+//        'sanjose'      => '40',
+//        'seattle'      => '41',
+//        'southflorida' => '35',
+//        'stlouis'      => '28',
+//        'tampabay'     => '36',
+//        'triad'        => '29',
+//        'triangle'     => '27',
+//        'twincities'   => '21',
+//        'washington'   => '5',
+//        'wichita'      => '37',
     ];
     /**
      * @var MeroveusClient
@@ -133,12 +133,13 @@ class MeroveusController extends AbstractActionController
     ▐░▌       ▐░▌▐░░░░░░░░░░░▌▐░▌       ▐░▌▐░░░░░░░░░░░▌        ▐░▌        ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌
      ▀         ▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀         ▀  ▀▀▀▀▀▀▀▀▀▀▀          ▀          ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀
 " . PHP_EOL;
+        echo "started at " . date('h:i:s A') . PHP_EOL;
         $maxRows  = 500;
         $compiled = [];
         // test markets
         $markets       = [
-            'albany'       => '26',
-            'sanfransisco' => '39',
+            'albany' => '26',
+            //            'sanfransisco' => '39',
         ];
         $totalMatched  = 0;
         $totalInserted = 0;
@@ -147,12 +148,14 @@ class MeroveusController extends AbstractActionController
             $marketList     = $this->paginatedSearch($env, $maxRows);
             $marketMatched  = 0;
             $marketInserted = 0;
-            foreach ($marketList as $result) {
+            foreach ($marketList as $target) {
 
-                if ($this->elasticMatch($result)) {
+                if ($this->elasticMatch($target)) {
+                    $this->writeSanityFiles($market, $target, $this->elasticMatch($target));
                     $marketMatched++;
                     $totalMatched++;
                 } else {
+                    $this->writeSanityFiles($market, $target, false);
                     $marketInserted++;
                     $totalInserted++;
                 }
@@ -163,7 +166,7 @@ class MeroveusController extends AbstractActionController
 
         echo $totalMatched . ' total  records matched ' . PHP_EOL;
         echo $totalInserted . ' total records not matched ' . PHP_EOL;
-
+        echo "ended at " . date('h:i:s A') . PHP_EOL;
         echo 'Enjoy your day' . PHP_EOL;
     }
 
@@ -253,7 +256,7 @@ class MeroveusController extends AbstractActionController
 
         foreach ($resultSet->getResults() as $result) {
             if ($result->getScore() >= 13 && $result->getScore() === $topScore) {
-                return true;
+                return $result;
 
             } else {
                 return false;
@@ -263,6 +266,45 @@ class MeroveusController extends AbstractActionController
 
         // if we get here it's broke
         return false;
+    }
+
+    private function writeSanityFiles($market, $target, $elasticResult)
+    {
+        ksort($target);
+        $keepArray = [
+            'firm-name_static',
+            'street-address_static',
+            'street-city_static',
+            'street-state_static',
+            'street-zip_static',
+        ];
+
+        if ($elasticResult) {
+            $filename = '/tmp/'.$market.'hits.txt';
+        } else {
+            $filename = '/tmp/'.$market.'misses.txt';
+        }
+
+        $fd = fopen($filename, 'a');
+
+        $count = 0;
+        foreach($target as $key=>$field){
+
+            if(in_array($key, $keepArray)){
+                $count++;
+//                fputs($fd, $key .' : '. $field.', ');
+            }
+        }
+        fputs($fd, 'count: '. $count.',');
+        foreach($target as $key=>$field){
+
+            if(in_array($key, $keepArray)){
+                fputs($fd, $key .' : '. $field.', ');
+            }
+        }
+
+        fputs($fd, PHP_EOL);
+        fclose($fd);
     }
 
 }
