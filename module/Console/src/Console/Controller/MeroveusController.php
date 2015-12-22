@@ -14,7 +14,6 @@ use Elastica\Search as ElasticaSearch;
 use Services\Meroveus\CompanyService;
 use Services\Meroveus\Client as MeroveusClient;
 use Zend\Mvc\Controller\AbstractActionController;
-use Hub\Model\Journal;
 
 //use Services\Meroveus\CompanyService;
 
@@ -99,12 +98,12 @@ class MeroveusController extends AbstractActionController
         $this->companyService = new CompanyService($this->meroveusClient);
         $this->elasticaClient = new ElasticaClient([
             'host' => 'http://datahub.listsandleads.elasticsearch.bizj-dev.com',
-            'path' => 'rerefinery',
+            'path' => 'rerefinery/',
             'port' => '9200',
-            'url' =>  'http://datahub.listsandleads.elasticsearch.bizj-dev.com:9200/rerefinery'
+            'url'  => 'http://datahub.listsandleads.elasticsearch.bizj-dev.com:9200/rerefinery/',
         ]);
-
-        $this->elasticSearch  = new ElasticaSearch($this->elasticaClient);
+        $this->elasticaClient->getLastRequest();
+        $this->elasticSearch = new ElasticaSearch($this->elasticaClient);
     }
 
     /**
@@ -139,14 +138,29 @@ class MeroveusController extends AbstractActionController
         $compiled = [];
         // test markets
         $markets = [
-//            'albany'      => '12',
+//            'albany' => '26',
             'albuquerque' => '9',
         ];
         foreach ($markets as $env) {
             array_push($compiled, $this->paginatedSearch($env, $maxRows));
         }
-        var_dump($compiled[0][1]);
-        var_dump($this->elasticMatch($compiled[0][1]));
+        $matched  = 0;
+        $inserted = 0;
+        foreach ($compiled as $marketResults) {
+            foreach ($marketResults as $result) {
+                if ($this->elasticMatch($result)) {
+                    $matched++;
+                } else {
+                    $inserted++;
+                }
+            }
+        }
+        echo $matched . ' records matched ' . PHP_EOL;
+        echo $inserted . ' records not matched ' . PHP_EOL;
+//        var_dump($compiled[0]);
+//
+//        var_dump($compiled[0][1]);
+//        var_dump($this->elasticMatch($compiled[0][1]));
 
         echo 'Something has been done.' . PHP_EOL;
     }
@@ -190,7 +204,7 @@ class MeroveusController extends AbstractActionController
                 ]
             );
             if (is_array($result)) {
-                foreach($result as $company ) {
+                foreach ($result as $company) {
 
                     array_push($bigOleList, $company);
                 }
@@ -207,54 +221,51 @@ class MeroveusController extends AbstractActionController
 
 
     /**
-     * look up the company
-     * if match
-     *   add the internal id to the index
-     * else
-     *   create a new record
-     * return bool
      * @param array $target
-     * @return bool
+     * @return array
+     * query elastic for match
+     *  return pertinent data for further processing
      */
     private function elasticMatch(array $target)
     {
+        if (empty($target)) {
+            return false;
+        }
 
         $search = new ElasticaSearch($this->elasticaClient);
         $query  = new ElasticaQuery();
         $q      = new QueryBuilder();
-//        $query->setFields([
-//            'Name',
-//            'State',
-//            'City',
-//            'Addr1',
-//            'PostalCode',
-//        ]);
+        // @todo I do not like this, but it works
+        if (
+            !isset($target['firm-name_static'])
+            || !isset($target['street-state_static'])
+            || !isset($target['street-city_static'])
+            || !isset($target['street-address_static'])
+            || !isset($target['street-zip_static'])
+        ) {
+            return false;
+        }
+
         $query->setQuery($q->query()->bool()
             ->addMust($q->query()->match('Name', $target['firm-name_static']))
             ->addMust($q->query()->match('State', $target['street-state_static']))
             ->addMust($q->query()->match('City', $target['street-city_static']))
-            ->addMust($q->query()->match('Addr1',  $target['street-address_static']))
-            ->addMust($q->query()->match('PostalCode',  $target['street-zip_static']))
+            ->addMust($q->query()->match('Addr1', $target['street-address_static']))
+            ->addMust($q->query()->match('PostalCode', $target['street-zip_static']))
         );
 
-        $resultSet = $search->search();
-//        var_dump($resultSet->getResults());
-        foreach($resultSet->getResults() as $result ){
-            var_dump($result);
+        $resultSet = $search->search($query);
+        $topScore  = $resultSet->getMaxScore();
+
+        foreach ($resultSet->getResults() as $result) {
+            if ($result->getScore() >= 13 && $result->getScore() === $topScore) {
+                return true;
+
+            } else {
+                return false;
+
+            }
         }
-//        return $resultSet->getResults();
-
-        return json_encode($query->toArray());
-        $match = false;
-        // perform search
-        if ($match) {
-            // insert meroveus id
-        } else {
-            // create record
-        }
-
-
-        return true;
     }
 
 }

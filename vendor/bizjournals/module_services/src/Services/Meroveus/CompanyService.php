@@ -23,7 +23,8 @@ class CompanyService extends AbstractService
      * @param array $meroveusParams
      * @return array
      */
-    public function fetchByMarket(\Services\Meroveus\Client $meroveusClient, $market = '', array $meroveusParams = [])
+    public function fetchByMarket
+    (\Services\Meroveus\Client $meroveusClient, $market = '', array $meroveusParams = [])
     {
         $result          = $meroveusClient->send('SEARCH', $market, $meroveusParams);
         $formattedResult = $this->formatResult($result);
@@ -32,53 +33,49 @@ class CompanyService extends AbstractService
 
 
     /**
-     * @param $result
+     * @param array $result
      * @return array
      *
      */
-    private function formatResult($result)
+    private function formatResult(array $result)
     {
-        $keepFields = [
-            'firm-name_static',
-            'street-address_static',
-            'street-zip_static',
-            'street-city_static',
-            'street-state_static',
-        ];
-
         $labels = isset($result['LABELS']) ? $result['LABELS'] : null;
         $list   = [];
         if (isset($result['SET']['RECS'])) {
             foreach ($result['SET']['RECS'] as $k => $record) {
                 $company = [];
+
                 foreach ($record['DATA'] as $dk => $data) {
-                    if (in_array($data['KEY'], $keepFields)) {
-                        $stateId = null;
-                        $state   = null;
-                        if (!isset($data['VAL']) && $data['KEY'] === "street-state_static") {
-                            $stateId = $data['LABELIDS'][0];
-                            $state   = $this->getStateFromId($stateId, $labels);
-                        }
-                        if (isset($data['VAL'])) {
-                            $value = !is_array($data['VAL']) ? $data['VAL'] : null;
-                        } else {
-                            $value = $state;
-                        }
-                        $company[$data['KEY']] = $value;
-                        // I want consistency
-                        ksort($company);
+                    $company['meroveusId'] = isset($record['ID']) ? $record['ID'] : null;
+                    $stateId = null;
+                    $state   = null;
+                    if (!isset($data['VAL']) && $data['KEY'] === "street-state_static") {
+                        $stateId = $data['LABELIDS'][0];
+                        $state   = $this->getStateFromId($stateId, $labels);
                     }
+                    if (isset($data['VAL'])) {
+                        $value = !is_array($data['VAL']) ? $data['VAL'] : null;
+                    } else {
+                        $value = $state;
+                    }
+                    $company[$data['KEY']] = $value;
+                    // I want consistency
+                    ksort($company);
                 }
-                if (count($company) == 5) {
-                    array_push($list, $company);
-                }
+                array_push($list, $company);
             }
+
             return $list;
         } else {
             return null;
         }
     }
 
+    /**
+     * @param $stateId
+     * @param array $labelsArray
+     * @return null|string
+     */
     private function getStateFromId($stateId, array $labelsArray)
     {
         if (!$stateId) {
