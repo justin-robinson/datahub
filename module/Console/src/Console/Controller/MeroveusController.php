@@ -25,7 +25,7 @@ class MeroveusController extends AbstractActionController
 {
     /**
      * @var array $markets
-     * map of our parket names to their respective meroveus environments
+     * map of our market names to their respective meroveus environments
      */
     private $markets = [
         'albany'       => '12',
@@ -102,8 +102,7 @@ class MeroveusController extends AbstractActionController
             'port' => '9200',
             'url'  => 'http://datahub.listsandleads.elasticsearch.bizj-dev.com:9200/rerefinery/',
         ]);
-        $this->elasticaClient->getLastRequest();
-        $this->elasticSearch = new ElasticaSearch($this->elasticaClient);
+        $this->elasticSearch  = new ElasticaSearch($this->elasticaClient);
     }
 
     /**
@@ -137,32 +136,35 @@ class MeroveusController extends AbstractActionController
         $maxRows  = 500;
         $compiled = [];
         // test markets
-        $markets = [
-//            'albany' => '26',
-            'albuquerque' => '9',
+        $markets       = [
+            'albany'       => '26',
+            'sanfransisco' => '39',
         ];
-        foreach ($markets as $env) {
-            array_push($compiled, $this->paginatedSearch($env, $maxRows));
-        }
-        $matched  = 0;
-        $inserted = 0;
-        foreach ($compiled as $marketResults) {
-            foreach ($marketResults as $result) {
+        $totalMatched  = 0;
+        $totalInserted = 0;
+
+        foreach ($this->markets as $market => $env) {
+            $marketList     = $this->paginatedSearch($env, $maxRows);
+            $marketMatched  = 0;
+            $marketInserted = 0;
+            foreach ($marketList as $result) {
+
                 if ($this->elasticMatch($result)) {
-                    $matched++;
+                    $marketMatched++;
+                    $totalMatched++;
                 } else {
-                    $inserted++;
+                    $marketInserted++;
+                    $totalInserted++;
                 }
             }
+            echo $marketMatched . ' records matched, ' . $marketInserted . ' records not matched in ' . $market . PHP_EOL;
         }
-        echo $matched . ' records matched ' . PHP_EOL;
-        echo $inserted . ' records not matched ' . PHP_EOL;
-//        var_dump($compiled[0]);
-//
-//        var_dump($compiled[0][1]);
-//        var_dump($this->elasticMatch($compiled[0][1]));
 
-        echo 'Something has been done.' . PHP_EOL;
+
+        echo $totalMatched . ' total  records matched ' . PHP_EOL;
+        echo $totalInserted . ' total records not matched ' . PHP_EOL;
+
+        echo 'Enjoy your day' . PHP_EOL;
     }
 
 
@@ -176,16 +178,8 @@ class MeroveusController extends AbstractActionController
     {
 
         $bigOleList = [];
-
-        /**
-         * get $maxRows results,
-         * do we have any results
-         * add them to the list
-         * add $maxRows to the offset
-         */
-
-        $run      = true;
-        $startRow = 1;
+        $run        = true;
+        $startRow   = 1;
         do {
             $result = $this->companyService->fetchByMarket(
                 $this->meroveusClient,
@@ -266,6 +260,9 @@ class MeroveusController extends AbstractActionController
 
             }
         }
+
+        // if we get here it's broke
+        return false;
     }
 
 }
