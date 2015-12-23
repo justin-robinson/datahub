@@ -21,4 +21,5 @@ class Company extends Base
     protected $entity_class = 'Entity\Datahub\Company';
 
 
+
 }
