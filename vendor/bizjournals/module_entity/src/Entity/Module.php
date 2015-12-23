@@ -79,6 +79,11 @@ class Module
                 'doctrine.entitymanager.cms'   => new EntityManagerFactory('cms'),
                 'doctrine.driver.cms'          => new DriverFactory('cms'),
 
+                'doctrine.connection.datahub'      => new DBALConnectionFactory('datahub'),
+                'doctrine.configuration.datahub'   => new ConfigurationFactory('datahub'),
+                'doctrine.entitymanager.datahub'   => new EntityManagerFactory('datahub'),
+                'doctrine.driver.datahub'          => new DriverFactory('datahub'),
+
                 'doctrine.connection.email'     => new DBALConnectionFactory('email'),
                 'doctrine.configuration.email'  => new ConfigurationFactory('email'),
                 'doctrine.entitymanager.email'  => new EntityManagerFactory('email'),
