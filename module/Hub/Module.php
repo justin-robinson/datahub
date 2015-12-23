@@ -62,10 +62,17 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface
     {
         return [
             'invokables' => [
-                'Hub\Model\Company' => 'Hub\Model\Company',
-                'Hub\Model\Contact' => 'Hub\Model\Contact',
-                //                'Hub\Model\StockExchange'       => 'Hub\Model\StockExchange',
-                'Hub\Model\Market'  => 'Hub\Model\Market',
+                'Hub\Model\Company'         => 'Hub\Model\Company',
+                'Hub\Model\Contact'         => 'Hub\Model\Contact',
+                'Hub\Model\Country'         => 'Hub\Model\Country',
+                'Hub\Model\FipsCounty'      => 'Hub\Model\FipsCounty',
+                'Hub\Model\JobPosition'     => 'Hub\Model\JobPosition',
+                'Hub\Model\Market'          => 'Hub\Model\Market',
+                'Hub\Model\MsaPmsa'         => 'Hub\Model\MsaPmsa',
+                'Hub\Model\SicCode'         => 'Hub\Model\SicCode',
+                'Hub\Model\StockExchange'   => 'Hub\Model\StockExchange',
+                'Hub\Model\UsState'         => 'Hub\Model\UsState',
+                'Hub\Model\ZipCode'         => 'Hub\Model\ZipCode',
             ],
             'factories'  => [
                 'Logger'                         => function (ServiceManager $sm) {
@@ -75,10 +82,6 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface
                     $logger->addProcessor('requestid');
                     return $logger;
                 },
-//                 'doctrine.connection.datahub'    => new DBALConnectionFactory('datahub'),
-//                 'doctrine.configuration.datahub' => new ConfigurationFactory('datahub'),
-//                 'doctrine.entitymanager.datahub' => new EntityManagerFactory('datahub'),
-//                 'doctrine.driver.datahub'        => new DriverFactory('datahub'),
             ],
         ];
     }
