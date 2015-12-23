@@ -29,45 +29,45 @@ class MeroveusController extends AbstractActionController
      * map of our market names to their respective meroveus environments
      */
     private $markets = [
-        'albany' => '12',
-        'albuquerque'  => '9',
-        'atlanta'      => '11',
-        'austin'       => '22',
-        'baltimore'    => '15',
-        'birmingham'   => '30',
-        'boston'       => '34',
-        'buffalo'      => '3',
-        'charlotte'    => '26',
-        'cincinnati'   => '6',
-        'columbus'     => '31',
-        'dallas'       => '7',
-        'dayton'       => '19',
-        'denver'       => '2',
-        'houston'      => '8',
-        'jacksonville' => '23',
-        'kansascity'   => '13',
-        'louisville'   => '32',
-        'memphis'      => '10',
-        'milwaukee'    => '33',
-        'nashville'    => '20',
-        'orlando'      => '17',
-        'pacific'      => '38',
-        'philadelphia' => '16',
-        'phoenix'      => '14',
-        'pittsburgh'   => '18',
-        'portland'     => '24',
-        'sacramento'   => '4',
-        'sanantonio'   => '25',
-        'sanfrancisco' => '39',
-        'sanjose'      => '40',
-        'seattle'      => '41',
-        'southflorida' => '35',
-        'stlouis'      => '28',
-        'tampabay'     => '36',
-        'triad'        => '29',
-        'triangle'     => '27',
-        'twincities'   => '21',
-        'washington'   => '5',
+//        'albany' => '12',
+//        'albuquerque'  => '9',
+//        'atlanta'      => '11',
+//        'austin'       => '22',
+//        'baltimore'    => '15',
+//        'birmingham'   => '30',
+//        'boston'       => '34',
+//        'buffalo'      => '3',
+//        'charlotte'    => '26',
+//        'cincinnati'   => '6',
+//        'columbus'     => '31',
+//        'dallas'       => '7',
+//        'dayton'       => '19',
+//        'denver'       => '2',
+//        'houston'      => '8',
+//        'jacksonville' => '23',
+//        'kansascity'   => '13',
+//        'louisville'   => '32',
+//        'memphis'      => '10',
+//        'milwaukee'    => '33',
+//        'nashville'    => '20',
+//        'orlando'      => '17',
+//        'pacific'      => '38',
+//        'philadelphia' => '16',
+//        'phoenix'      => '14',
+//        'pittsburgh'   => '18',
+//        'portland'     => '24',
+//        'sacramento'   => '4',
+//        'sanantonio'   => '25',
+//        'sanfrancisco' => '39',
+//        'sanjose'      => '40',
+//        'seattle'      => '41',
+//        'southflorida' => '35',
+//        'stlouis'      => '28',
+//        'tampabay'     => '36',
+//        'triad'        => '29',
+//        'triangle'     => '27',
+//        'twincities'   => '21',
+//        'washington'   => '5',
         'wichita'      => '37',
     ];
     /**
@@ -122,7 +122,6 @@ class MeroveusController extends AbstractActionController
     public function matchAction()
     {
 
-
 echo '
              ███▄ ▄███▓   ▓█████     ██▀███      ▒█████      ██▒   █▓   ▓█████     █    ██      ██████
             ▓██▒▀█▀ ██▒   ▓█   ▀    ▓██ ▒ ██▒   ▒██▒  ██▒   ▓██░   █▒   ▓█   ▀     ██  ▓██▒   ▒██    ▒
@@ -165,7 +164,6 @@ echo '
             }
             echo $marketMatched . ' records matched, ' . $marketInserted . ' records not matched in ' . $market . PHP_EOL;
         }
-
 
         echo $totalMatched . ' total  records matched ' . PHP_EOL;
         echo $totalInserted . ' total records not matched ' . PHP_EOL;
@@ -223,7 +221,7 @@ echo '
 
     /**
      * @param array $target
-     * @param integer $minScore
+     * @param float $minScore
      * @return array
      * query elastic for match
      *  return pertinent data for further processing
