@@ -6,6 +6,27 @@ use Zend\Mvc\Controller\AbstractActionController;
 
 class ImportController extends AbstractActionController
 {
+    protected $RefineryColumns = [
+        "InternalId"        => 0,
+        "GenId"             => 1,
+        "SourceID"          => 2,
+        "Name"              => 3,
+        "Ticker"            => 4,
+        "TickerExchange"    => 5,
+        "DateModified"      => 6,
+        "Addr1"             => 7,
+        "Addr2"             => 8,
+        "City"              => 9,
+        "State"             => 10,
+        "PostalCode"        => 11,
+        "Country"           => 12,
+        "Lat"               => 13,
+        "Lon"               => 14,
+        "OfficePhone1"      => 15,
+        "Url"               => 16,
+        "Sic"               => 17,
+    ];
+
     /**
      * Just echo the environment
      *
@@ -38,27 +59,6 @@ class ImportController extends AbstractActionController
      * @access pubic
      * @return void
      */
-    /* 
-     * Columns:
-      [0] => "InternalId"
-      [1] => "GenId"
-      [2] => "SourceID"
-      [3] => "Name"
-      [4] => "Ticker"
-      [5] => "TickerExchange"
-      [6] => "DateModified"
-      [7] => "Addr1"
-      [8] => "Addr2"
-      [9] => "City"
-      [10] => "State"
-      [11] => "PostalCode"
-      [12] => "Country"
-      [13] => "Lat"
-      [14] => "Lon"
-      [15] => "OfficePhone1"
-      [16] => "Url"
-      [17] => "Sic"
-     */
     public function refineryAction()
     {
         $csvFile = realpath($this->getRequest()->getParam('file'));
@@ -70,31 +70,34 @@ class ImportController extends AbstractActionController
                 /* @var $model Hub\Model\Company */
                 $model = $this->getServiceLocator()->get('Hub\Model\Company');
 
-                $fp = fopen($csvFile, 'r');
-                $header = $record = fgetcsv($fp);
+                $fp         = fopen($csvFile, 'r');
+                $header     = $record = fgetcsv($fp);
+                //var_dump($header);
+                $rc         = $this->RefineryColumns;
                 while ($record = fgetcsv($fp)) {
-                    var_dump($record); die;
+                    //var_dump($record);
                     $obj = $model->newModel();
                     $obj->populate([
-                        'refinery_id' => $record[0],
-                        'generate_code',
-                        'record_source',
-                        'company_name',
-                        'public_ticker',
-                        'ticker_exchange',
-                        'source_modified_at',
-                        'address1',
-                        'address2',
-                        'city',
-                        'state',
-                        'postal_code',
-                        'country',
-                        'latitude',
-                        'longitude',
-                        'phone',
+                        'refinery_id'           => $record[$rc['InternalId']],
+                        'generate_code'         => $record[$rc['GenId']],
+                        'record_source'         => (empty($record[$rc['SourceID']]) ? 'Refinery' : 'Refinery:' . $record[$rc['SourceID']]),
+                        'company_name'          => $record[$rc['Name']],
+                        'public_ticker'         => $record[$rc['Ticker']],
+                        'ticker_exchange'       => $record[$rc['TickerExchange']],
+                        'source_modified_at'    => $record[$rc['DateModified']],
+                        'address1'              => $record[$rc['Addr1']],
+                        'address2'              => $record[$rc['Addr2']],
+                        'city'                  => $record[$rc['City']],
+                        'state'                 => $record[$rc['State']],
+                        'postal_code'           => $record[$rc['PostalCode']],
+                        'country'               => $record[$rc['Country']],
+                        'latitude'              => $record[$rc['Lat']],
+                        'longitude'             => $record[$rc['Lon']],
+                        'phone'                 => $record[$rc['OfficePhone1']],
+                        'website'               => $record[$rc['Url']],
+                        'sic_code'              => $record[$rc['Sic']],
                     ])->save();
-                    $obj->free();
-                    die;
+                    unset($obj);
                 }
             } else {
                 die('Parameter must be a CSV file.');

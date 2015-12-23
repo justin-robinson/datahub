@@ -53,11 +53,6 @@ class Company extends \Entity\Entity\Base
     private $source_modified_at;
 
     /**
-     * @var integer
-     */
-    private $product_id;
-
-    /**
      * @var string
      */
     private $address1;
@@ -350,30 +345,6 @@ class Company extends \Entity\Entity\Base
     public function getSourceModifiedAt()
     {
         return $this->source_modified_at;
-    }
-
-    /**
-     * Set productId
-     *
-     * @param integer $productId
-     *
-     * @return Company
-     */
-    public function setProductId($productId)
-    {
-        $this->product_id = $productId;
-
-        return $this;
-    }
-
-    /**
-     * Get productId
-     *
-     * @return integer
-     */
-    public function getProductId()
-    {
-        return $this->product_id;
     }
 
     /**

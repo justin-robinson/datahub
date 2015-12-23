@@ -65,22 +65,20 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface
                 'Hub\Model\Company' => 'Hub\Model\Company',
                 'Hub\Model\Contact' => 'Hub\Model\Contact',
                 //                'Hub\Model\StockExchange'       => 'Hub\Model\StockExchange',
-                'Hub\Model\Company' => 'Hub\Model\Company',
-                'Hub\Model\Comtact' => 'Hub\Model\Comtact',
                 'Hub\Model\Market'  => 'Hub\Model\Market',
             ],
             'factories'  => [
                 'Logger'                         => function (ServiceManager $sm) {
-                    $service = new Log\LoggerServiceFactory('nascar');
+                    $service = new Log\LoggerServiceFactory('hub');
                     $logger  = $service->createService($sm);
                     $logger->addProcessor('backtrace');
                     $logger->addProcessor('requestid');
                     return $logger;
                 },
-                'doctrine.connection.datahub'    => new DBALConnectionFactory('datahub'),
-                'doctrine.configuration.datahub' => new ConfigurationFactory('datahub'),
-                'doctrine.entitymanager.datahub' => new EntityManagerFactory('datahub'),
-                'doctrine.driver.datahub'        => new DriverFactory('bizjstatus'),
+//                 'doctrine.connection.datahub'    => new DBALConnectionFactory('datahub'),
+//                 'doctrine.configuration.datahub' => new ConfigurationFactory('datahub'),
+//                 'doctrine.entitymanager.datahub' => new EntityManagerFactory('datahub'),
+//                 'doctrine.driver.datahub'        => new DriverFactory('datahub'),
             ],
         ];
     }
