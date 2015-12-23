@@ -1,0 +1,78 @@
+Entity\Datahub\Market:
+  type: entity
+  table: market
+  fields:
+    market_id:
+      type: integer
+      unsigned: true
+      id: true
+      generator:
+        strategy: AUTO
+    market_code:
+      type: string
+      length: 50
+    market_name:
+      type: string
+      length: 255
+    market_abbrev:
+      type: string
+      length: 64
+    city:
+      type: string
+      length: 255
+    state:
+      type: string
+      length: 2
+      usstate: '1'
+    region:
+      type: string
+      length: 255
+    region_objective:
+      type: string
+      length: 255
+    analytics_code:
+      type: string
+      length: 5
+    local_sales_tax:
+      type: decimal
+      scale: '4'
+      unsigned: true
+      nullable: true
+    primary_zip_code:
+      type: string
+      length: 35
+      nullable: true
+    center_latitude:
+      type: string
+      length: 30
+      nullable: true
+    center_longitude:
+      type: string
+      length: 30
+      nullable: true
+    timezone:
+      type: string
+      length: 64
+    utc_std_offset:
+      type: integer
+      unsigned: true
+    utc_dst_offset:
+      type: integer
+      unsigned: true
+    payment_contact_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    nomination_faq:
+      type: string
+      nullable: true
+    created_at:
+      type: datetime
+      options:
+        timestampable:
+          'on': create
+    updated_at:
+      type: datetime
+      options:
+        timestampable:
+          'on': update

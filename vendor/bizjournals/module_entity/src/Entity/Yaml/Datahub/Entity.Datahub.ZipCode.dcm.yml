@@ -1,0 +1,69 @@
+Entity\Datahub\ZipCode:
+  type: entity
+  table: zip_code
+  fields:
+    zip_code:
+      type: string
+      length: 5
+      id: true
+    city_name:
+      type: string
+      length: 128
+      id: true
+    state_code:
+      type: string
+      length: 2
+    area_code:
+      type: string
+      length: 32
+      nullable: true
+    fips_code:
+      type: integer
+      unsigned: true
+      nullable: true
+    msa_or_pmsa:
+      type: string
+      length: 4
+      nullable: true
+    utc_std_offset:
+      type: integer
+      unsigned: true
+    utc_dst_offset:
+      type: integer
+      unsigned: true
+    latitude:
+      type: decimal
+      unsigned: false
+      nullable: true
+    longitude:
+      type: decimal
+      unsigned: false
+      nullable: true
+    city_type:
+      type: string
+      columnDefinition: enum('default', 'alternate') NOT NULL DEFAULT 'default'
+      options:
+        validate: [default, alternate]
+        default: 'default'
+    zip_type:
+      type: string
+      columnDefinition: enum('standard', 'pobox_only', 'unique', 'military') NOT NULL DEFAULT 'standard'
+      options:
+        validate: [standard, pobox_only, unique, military]
+        default: 'standard'
+  manyToOne:
+    Msa:
+      targetEntity: MsaPmsa
+      joinColumn:
+        name: msa_or_pmsa
+        referencedColumnName: sa_code
+    FipsCounty:
+      targetEntity: FipsCounty
+      joinColumn:
+        name: fips_code
+        referencedColumnName: fips_code
+    Market:
+      targetEntity: MarketMsaPmsaMap
+      joinColumn:
+        name: msa_or_pmsa
+        referencedColumnName: sa_code

@@ -1,0 +1,11 @@
+Entity\Datahub\SicCode:
+  type: entity
+  table: sic_code
+  fields:
+    sic:
+      type: string
+      length: 4
+      id: true
+    title:
+      type: string
+      length: 255

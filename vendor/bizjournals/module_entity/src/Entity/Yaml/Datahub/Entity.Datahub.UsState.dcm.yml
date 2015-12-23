@@ -1,0 +1,27 @@
+Entity\Datahub\UsState:
+  type: entity
+  table: us_state
+  fields:
+    state_long:
+      type: string
+      length: 64
+      nullable: true
+    state_postal:
+      type: string
+      length: 2
+      id: true
+      usstate: '1'
+    state_ap_style:
+      type: string
+      length: 20
+      nullable: true
+    is_active:
+      type: boolean
+      unsigned: true
+      options:
+        default: true
+    ord:
+      type: integer
+      unsigned: true
+      options:
+        default: 0

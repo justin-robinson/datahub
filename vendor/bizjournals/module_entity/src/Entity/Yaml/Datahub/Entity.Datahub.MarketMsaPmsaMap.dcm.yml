@@ -1,0 +1,21 @@
+Entity\Datahub\MarketMsaPmsaMap:
+  type: entity
+  table: market_msa_pmsa_map
+  fields:
+    market_id:
+      type: integer
+      unsigned: true
+      id: true
+    sa_code:
+      type: string
+      length: 4
+      id: true
+  oneToMany:
+    Markets:
+      targetEntity: Market
+      mappedBy: MarketMsaPmsaMap
+      cascade: [persist]
+    MsaPmsas:
+      targetEntity: MsaPmsa
+      mappedBy: MarketMsaPmsaMap
+      cascade: [persist]

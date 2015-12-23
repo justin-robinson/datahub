@@ -1,0 +1,11 @@
+Entity\Datahub\JobPosition:
+  type: entity
+  table: job_position
+  fields:
+    job_position_id:
+      type: integer
+      unsigned: true
+      id: true
+    position:
+      type: string
+      length: 200

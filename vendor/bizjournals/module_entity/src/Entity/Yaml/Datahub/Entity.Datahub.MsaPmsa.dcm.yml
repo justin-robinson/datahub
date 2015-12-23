@@ -1,0 +1,28 @@
+Entity\Datahub\MsaPmsa:
+  type: entity
+  table: msa_pmsa
+  fields:
+    sa_code:
+      type: string
+      length: 4
+      id: true
+    sa_name:
+      type: string
+      length: 255
+    sa_state:
+      type: string
+      length: 2
+      nullable: true
+    is_combined:
+      type: boolean
+      options:
+        default: false
+    parent_sa:
+      type: string
+      length: 4
+      nullable: true
+  oneToMany:
+    ZipCodes:
+      targetEntity: ZipCode
+      mappedBy: MsaPmsa
+      cascade: [persist]

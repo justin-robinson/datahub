@@ -1,0 +1,20 @@
+Entity\Datahub\StockExchange:
+  type: entity
+  table: stock_exchange
+  fields:
+    id:
+      type: integer
+      unsigned: true
+      id: true
+      generator:
+        strategy: AUTO
+    exchange_name:
+      type: string
+      length: 255
+    echange_abbrev:
+      type: string
+      length: 30
+    yahoo_code:
+      type: string
+      length: 8
+      nullable: true

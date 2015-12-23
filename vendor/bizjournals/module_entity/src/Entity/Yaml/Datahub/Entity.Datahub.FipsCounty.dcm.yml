@@ -1,0 +1,31 @@
+Entity\Datahub\FipsCounty:
+  type: entity
+  table: fips_county
+  fields:
+    fips_code:
+      type: integer
+      unsigned: true
+      id: true
+    state_code:
+      type: string
+      length: 2
+    county:
+      type: string
+      length: 64
+    msa:
+      type: string
+      length: 4
+      nullable: true
+    pmsa:
+      type: string
+      length: 4
+      nullable: true
+    is_outlying:
+      type: boolean
+      options:
+        default: false
+  oneToMany:
+    ZipCodes:
+      targetEntity: ZipCode
+      mappedBy: FipsCounty
+      cascade: [persist]
