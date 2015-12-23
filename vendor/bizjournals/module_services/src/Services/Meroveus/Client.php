@@ -69,21 +69,30 @@ class Client extends AbstractClient
         "SUBMIT",
     ];
 
+    /**
+     * @var string
+     */
     private $akey;
 
+    /**
+     * @var string
+     */
     private $ekey;
 
+    /**
+     * @var
+     */
     private $listData;
 
+    /**
+     * @var
+     */
     private $companyService;
 
 
     /**
-     * Constructor
-     *
-     * @param array $options Options array
-     * @return void
-     * @access public
+     * Client constructor.
+     * @param array $options
      */
     public function __construct(array $options = [])
     {
@@ -113,11 +122,7 @@ class Client extends AbstractClient
                     'EKEY' => $this->ekey,
                     'MODE' => $mode,
                 ];
-            $resp      = MeroveusClient::sendRequest(json_encode($sendArray),
-                in_array($mode, ['LABELSEARCH', 'FIELDSEARCH']));
-//            $testQ = '{"MODE":"SEARCH", "AKEY":"dJoJubaKc2sGEyVWvg3h6ICUC", "EKEY":"UdHuwsJhWgyhMWhpBAxkmydnT", "HISTORY":"-1 day", "STARTROW":1, "MAXROWS":25, "LIST":{"LISTID":"3064", "LOAD":true}, "META":null, "SET":null}';
-//
-//            $resp      = MeroveusClient::sendRequest($testQ);
+            $resp   = MeroveusClient::sendRequest(json_encode($sendArray), in_array($mode, ['LABELSEARCH', 'FIELDSEARCH']));
             $return = (in_array(substr($resp, 0, 1), ['{', '[']) ? json_decode($resp, true) : $resp);
         } else {
             //@todo figure out the right way to do this
