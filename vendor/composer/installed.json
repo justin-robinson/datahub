@@ -1640,12 +1640,12 @@
         "source": {
             "type": "git",
             "url": "git@gitlab.bizjournals.com:bizjournals/module_entity.git",
-            "reference": "55f325507132caa049d2ab85b5444f475d399a49"
+            "reference": "d0c009b811da0bef32d50905cc75a183459078ee"
         },
         "dist": {
             "type": "zip",
-            "url": "http://packages.bizjournals.int/dist/module_entity-657-55f325507132caa049d2ab85b5444f475d399a49.zip",
-            "reference": "55f325507132caa049d2ab85b5444f475d399a49",
+            "url": "http://packages.bizjournals.int/dist/module_entity-657-d0c009b811da0bef32d50905cc75a183459078ee.zip",
+            "reference": "d0c009b811da0bef32d50905cc75a183459078ee",
             "shasum": null
         },
         "require": {
@@ -1655,7 +1655,7 @@
         "require-dev": {
             "zendframework/zendframework": "2.4.*"
         },
-        "time": "2015-12-11 16:05:53",
+        "time": "2015-12-23 15:40:21",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
