@@ -30,45 +30,45 @@ class MeroveusController extends AbstractActionController
      */
     private $markets = [
         'albany' => '12',
-        //        'albuquerque'  => '9',
-        //        'atlanta'      => '11',
-        //        'austin'       => '22',
-        //        'baltimore'    => '15',
-        //        'birmingham'   => '30',
-        //        'boston'       => '34',
-        //        'buffalo'      => '3',
-        //        'charlotte'    => '26',
-        //        'cincinnati'   => '6',
-        //        'columbus'     => '31',
-        //        'dallas'       => '7',
-        //        'dayton'       => '19',
-        //        'denver'       => '2',
-        //        'houston'      => '8',
-        //        'jacksonville' => '23',
-        //        'kansascity'   => '13',
-        //        'louisville'   => '32',
-        //        'memphis'      => '10',
-        //        'milwaukee'    => '33',
-        //        'nashville'    => '20',
-        //        'orlando'      => '17',
-        //        'pacific'      => '38',
-        //        'philadelphia' => '16',
-        //        'phoenix'      => '14',
-        //        'pittsburgh'   => '18',
-        //        'portland'     => '24',
-        //        'sacramento'   => '4',
-        //        'sanantonio'   => '25',
-        //        'sanfrancisco' => '39',
-        //        'sanjose'      => '40',
-        //        'seattle'      => '41',
-        //        'southflorida' => '35',
-        //        'stlouis'      => '28',
-        //        'tampabay'     => '36',
-        //        'triad'        => '29',
-        //        'triangle'     => '27',
-        //        'twincities'   => '21',
-        //        'washington'   => '5',
-        //        'wichita'      => '37',
+        'albuquerque'  => '9',
+        'atlanta'      => '11',
+        'austin'       => '22',
+        'baltimore'    => '15',
+        'birmingham'   => '30',
+        'boston'       => '34',
+        'buffalo'      => '3',
+        'charlotte'    => '26',
+        'cincinnati'   => '6',
+        'columbus'     => '31',
+        'dallas'       => '7',
+        'dayton'       => '19',
+        'denver'       => '2',
+        'houston'      => '8',
+        'jacksonville' => '23',
+        'kansascity'   => '13',
+        'louisville'   => '32',
+        'memphis'      => '10',
+        'milwaukee'    => '33',
+        'nashville'    => '20',
+        'orlando'      => '17',
+        'pacific'      => '38',
+        'philadelphia' => '16',
+        'phoenix'      => '14',
+        'pittsburgh'   => '18',
+        'portland'     => '24',
+        'sacramento'   => '4',
+        'sanantonio'   => '25',
+        'sanfrancisco' => '39',
+        'sanjose'      => '40',
+        'seattle'      => '41',
+        'southflorida' => '35',
+        'stlouis'      => '28',
+        'tampabay'     => '36',
+        'triad'        => '29',
+        'triangle'     => '27',
+        'twincities'   => '21',
+        'washington'   => '5',
+        'wichita'      => '37',
     ];
     /**
      * @var MeroveusClient
@@ -121,20 +121,22 @@ class MeroveusController extends AbstractActionController
      */
     public function matchAction()
     {
-        echo "
-     ▄▄       ▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄               ▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄         ▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄
-    ▐░░▌     ▐░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌             ▐░▌▐░░░░░░░░░░░▌▐░▌       ▐░▌▐░░░░░░░░░░░▌▐░▌
-    ▐░▌░▌   ▐░▐░▌▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀█░▌ ▐░▌           ▐░▌ ▐░█▀▀▀▀▀▀▀▀▀ ▐░▌       ▐░▌▐░█▀▀▀▀▀▀▀▀▀ ▐░▌
-    ▐░▌▐░▌ ▐░▌▐░▌▐░▌          ▐░▌       ▐░▌▐░▌       ▐░▌  ▐░▌         ▐░▌  ▐░▌          ▐░▌       ▐░▌▐░▌          ▐░▌
-    ▐░▌ ▐░▐░▌ ▐░▌▐░█▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄█░▌▐░▌       ▐░▌   ▐░▌       ▐░▌   ▐░█▄▄▄▄▄▄▄▄▄ ▐░▌       ▐░▌▐░█▄▄▄▄▄▄▄▄▄ ▐░▌
-    ▐░▌  ▐░▌  ▐░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌       ▐░▌    ▐░▌     ▐░▌    ▐░░░░░░░░░░░▌▐░▌       ▐░▌▐░░░░░░░░░░░▌▐░▌
-    ▐░▌   ▀   ▐░▌▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀█░█▀▀ ▐░▌       ▐░▌     ▐░▌   ▐░▌     ▐░█▀▀▀▀▀▀▀▀▀ ▐░▌       ▐░▌ ▀▀▀▀▀▀▀▀▀█░▌▐░▌
-    ▐░▌       ▐░▌▐░▌          ▐░▌     ▐░▌  ▐░▌       ▐░▌      ▐░▌ ▐░▌      ▐░▌          ▐░▌       ▐░▌          ▐░▌ ▀
-    ▐░▌       ▐░▌▐░█▄▄▄▄▄▄▄▄▄ ▐░▌      ▐░▌ ▐░█▄▄▄▄▄▄▄█░▌       ▐░▐░▌       ▐░█▄▄▄▄▄▄▄▄▄ ▐░█▄▄▄▄▄▄▄█░▌ ▄▄▄▄▄▄▄▄▄█░▌ ▄
-    ▐░▌       ▐░▌▐░░░░░░░░░░░▌▐░▌       ▐░▌▐░░░░░░░░░░░▌        ▐░▌        ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌
-     ▀         ▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀         ▀  ▀▀▀▀▀▀▀▀▀▀▀          ▀          ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀
-" . PHP_EOL;
-        echo "started at " . date('h:i:s A') . PHP_EOL;
+
+
+echo '
+             ███▄ ▄███▓   ▓█████     ██▀███      ▒█████      ██▒   █▓   ▓█████     █    ██      ██████
+            ▓██▒▀█▀ ██▒   ▓█   ▀    ▓██ ▒ ██▒   ▒██▒  ██▒   ▓██░   █▒   ▓█   ▀     ██  ▓██▒   ▒██    ▒
+            ▓██    ▓██░   ▒███      ▓██ ░▄█ ▒   ▒██░  ██▒    ▓██  █▒░   ▒███      ▓██  ▒██░   ░ ▓██▄
+            ▒██    ▒██    ▒▓█  ▄    ▒██▀▀█▄     ▒██   ██░     ▒██ █░░   ▒▓█  ▄    ▓▓█  ░██░     ▒   ██▒
+            ▒██▒   ░██▒   ░▒████▒   ░██▓ ▒██▒   ░ ████▓▒░      ▒▀█░     ░▒████▒   ▒▒█████▓    ▒██████▒▒
+            ░ ▒░   ░  ░   ░░ ▒░ ░   ░ ▒▓ ░▒▓░   ░ ▒░▒░▒░       ░ ▐░     ░░ ▒░ ░   ░▒▓▒ ▒ ▒    ▒ ▒▓▒ ▒ ░
+            ░  ░      ░    ░ ░  ░     ░▒ ░ ▒░     ░ ▒ ▒░       ░ ░░      ░ ░  ░   ░░▒░ ░ ░    ░ ░▒  ░ ░
+            ░      ░         ░        ░░   ░    ░ ░ ░ ▒          ░░        ░       ░░░ ░ ░    ░  ░  ░
+                   ░         ░  ░      ░            ░ ░           ░        ░  ░      ░              ░
+                                                     ░
+';
+        $start = date('h:i:s A');
+        echo "started at " . $start . PHP_EOL;
         $maxRows  = 500;
         $compiled = [];
         // test markets
@@ -167,7 +169,8 @@ class MeroveusController extends AbstractActionController
 
         echo $totalMatched . ' total  records matched ' . PHP_EOL;
         echo $totalInserted . ' total records not matched ' . PHP_EOL;
-        echo "ended at " . date('h:i:s A') . PHP_EOL;
+        $end = date('h:i:s A');
+        echo "ended at " . $end . PHP_EOL;
         echo 'Enjoy your day' . PHP_EOL;
     }
 
