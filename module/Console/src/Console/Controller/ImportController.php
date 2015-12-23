@@ -76,11 +76,12 @@ class ImportController extends AbstractActionController
                 $rc         = $this->RefineryColumns;
                 while ($record = fgetcsv($fp)) {
                     //var_dump($record);
+                    /* @var $obj Hub\Model\Company */
                     $obj = $model->newModel();
                     $obj->populate([
                         'refinery_id'           => $record[$rc['InternalId']],
                         'generate_code'         => $record[$rc['GenId']],
-                        'record_source'         => (empty($record[$rc['SourceID']]) ? 'Refinery' : 'Refinery:' . $record[$rc['SourceID']]),
+                        'record_source'         => 'Refinery' . (empty($record[$rc['SourceID']]) ? '' : ':' . $record[$rc['SourceID']]),
                         'company_name'          => $record[$rc['Name']],
                         'public_ticker'         => $record[$rc['Ticker']],
                         'ticker_exchange'       => $record[$rc['TickerExchange']],
