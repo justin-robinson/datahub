@@ -37,15 +37,11 @@ Entity\Datahub\Company:
       length: 32
       nullable: true
     ticker_exchange:
-      type: string`
+      type: string
       length: 30
       nullable: true
     source_modified_at:
       type: datetime
-      nullable: true
-    product_id:
-      type: integer
-      columnDefinition: int(10) unsigned NOT NULL
       nullable: true
     address1:
       type: string
