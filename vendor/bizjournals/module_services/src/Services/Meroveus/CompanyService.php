@@ -8,6 +8,7 @@
 namespace Services\Meroveus;
 
 use Services\AbstractService;
+use Hub\Model\Company;
 use Zend\Json;
 
 /**
@@ -31,6 +32,13 @@ class CompanyService extends AbstractService
         return $formattedResult;
     }
 
+    public function findOneByRefineryId($refineryId)
+    {
+        $companyFactory = $this->getServiceLocator()->get('Hub\Model\Company');
+        $company        = $companyFactory->findOneBy(['refinery_id' => $refineryId]);
+
+        return $company;
+    }
 
     /**
      * @param array $result
@@ -47,8 +55,8 @@ class CompanyService extends AbstractService
 
                 foreach ($record['DATA'] as $dk => $data) {
                     $company['meroveusId'] = isset($record['ID']) ? $record['ID'] : null;
-                    $stateId = null;
-                    $state   = null;
+                    $stateId               = null;
+                    $state                 = null;
                     if (!isset($data['VAL']) && $data['KEY'] === "street-state_static") {
                         $stateId = $data['LABELIDS'][0];
                         $state   = $this->getStateFromId($stateId, $labels);

@@ -20,6 +20,9 @@ class Company extends Base
      */
     protected $entity_class = 'Entity\Datahub\Company';
 
+    protected $metadata_class = 'Entity\Datahub\Metadata';
+
+    protected $attribute_key = 'company';
 
 
 }

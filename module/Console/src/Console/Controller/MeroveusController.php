@@ -11,10 +11,11 @@ use Elastica\Client as ElasticaClient;
 use Elastica\Query as ElasticaQuery;
 use Elastica\QueryBuilder as QueryBuilder;
 use Elastica\Search as ElasticaSearch;
-use Elastica\Filter\Terms;
+use Elastica\Result;
 use Services\Meroveus\CompanyService;
 use Services\Meroveus\Client as MeroveusClient;
 use Zend\Mvc\Controller\AbstractActionController;
+use Hub\Model\Company;
 
 //use Services\Meroveus\CompanyService;
 
@@ -29,12 +30,12 @@ class MeroveusController extends AbstractActionController
      * map of our market names to their respective meroveus environments
      */
     private $markets = [
-//        'albany' => '12',
+//        'albany'       => '12',
 //        'albuquerque'  => '9',
 //        'atlanta'      => '11',
 //        'austin'       => '22',
 //        'baltimore'    => '15',
-//        'birmingham'   => '30',
+'birmingham' => '30',
 //        'boston'       => '34',
 //        'buffalo'      => '3',
 //        'charlotte'    => '26',
@@ -68,7 +69,7 @@ class MeroveusController extends AbstractActionController
 //        'triangle'     => '27',
 //        'twincities'   => '21',
 //        'washington'   => '5',
-        'wichita'      => '37',
+//        'wichita'      => '37',
     ];
     /**
      * @var MeroveusClient
@@ -122,7 +123,7 @@ class MeroveusController extends AbstractActionController
     public function matchAction()
     {
 
-echo '
+        echo '
              ███▄ ▄███▓   ▓█████     ██▀███      ▒█████      ██▒   █▓   ▓█████     █    ██      ██████
             ▓██▒▀█▀ ██▒   ▓█   ▀    ▓██ ▒ ██▒   ▒██▒  ██▒   ▓██░   █▒   ▓█   ▀     ██  ▓██▒   ▒██    ▒
             ▓██    ▓██░   ▒███      ▓██ ░▄█ ▒   ▒██░  ██▒    ▓██  █▒░   ▒███      ▓██  ▒██░   ░ ▓██▄
@@ -147,13 +148,17 @@ echo '
         $totalInserted = 0;
 
         foreach ($this->markets as $market => $env) {
-            $marketList     = $this->paginatedSearch($env, $maxRows);
-            $marketMatched  = 0;
-            $marketInserted = 0;
-            foreach ($marketList as $target) {
+            $marketCompanyList = $this->paginatedSearch($env, $market, $maxRows);
+            $marketMatched     = 0;
+            $marketInserted    = 0;
+            foreach ($marketCompanyList as $target) {
 
-                if ($this->elasticMatch($target)) {
-                    $this->writeSanityFiles($market, $target, $this->elasticMatch($target));
+                $match = $this->elasticMatch($target);
+
+                if ($match) {
+                    $this->processMatch($match, $target);
+
+                    $this->writeSanityFiles($market, $target, $match);
                     $marketMatched++;
                     $totalMatched++;
                 } else {
@@ -176,10 +181,11 @@ echo '
     /**
      * chunks the queries for throttling
      * @param string $env (this represents the market in the query to meroveus)
+     * @param string $market ()
      * @param int $maxRows (max returned results per call)
      * @return array ( filtered and compiled results )
      */
-    private function paginatedSearch($env, $maxRows = 25)
+    private function paginatedSearch($env, $market, $maxRows = 25)
     {
 
         $bigOleList = [];
@@ -188,7 +194,7 @@ echo '
         do {
             $result = $this->companyService->fetchByMarket(
                 $this->meroveusClient,
-                'charlotte',
+                $market,
                 [
                     'STARTROW' => $startRow,
                     'MAXROWS'  => $maxRows,
@@ -325,13 +331,53 @@ echo '
     }
 
 
-        /**
-     * find one by elastics internal id 204863
-     *
-     */
-
     /**
-     * new model for inserts
+     * @param Result $match
+     * @param array $target
      */
+    private function processMatch(Result $match, array $target)
+    {
+        $refineryId     = $match->getSource()['InternalId'];
+        $companyService = $this->getServiceLocator()->get('Services\Meroveus\CompanyService');
 
+        /** @var  $company Company */
+        $company = $companyService->findOneByRefineryId($refineryId);
+
+        if ($company) {
+            $company->setMeroveusId($target['meroveusId']);
+            $company->save();
+
+        } else {
+            $company = new Company();
+            /**
+             * @todo find all these damn fields
+             * looks like i will have to do some processing on the
+             * employee count since there seems to be a field per year in the meroveus data
+             * also figure out the saving bit
+             */
+            $company
+                ->setMeroveusId(isset($target['meroveusId']) ? $target['meroveusId'] : null)
+//                ->setGenerateCode(isset($target['todo']) ? $target['todo'] : null)
+//                ->setRecordSource(isset($target['todo']) ? $target['todo'] : null)
+                ->setCompanyName(isset($target['firm-name_static']) ? $target['firm-name_static'] : null)
+//                ->setPublicTicker(isset($target['todo']) ? $target['todo'] : null)
+//                ->setTickerExchange(isset($target['todo']) ? $target['todo'] : null)
+//                ->setSourceModifiedAt(isset($target['todo']) ? $target['todo'] : null)
+                ->setAddress1(isset($target['street-address_static']) ? $target['street-address_static'] : null)
+                ->setAddress2(isset($target['street-line2-address_static']) ? $target['street-line2-address_static'] : null)
+                ->setCity(isset($target['street-city_static']) ? $target['street-city_static'] : null)
+                ->setState(isset($target['street-state_static']) ? $target['street-state_static'] : null)
+                ->setPostalCode(isset($target['street-zip_static']) ? $target['street-zip_static'] : null)
+//                ->setCountry(isset($target['todo']) ? $target['todo'] : null)
+//                ->setLatitude(isset($target['todo']) ? $target['todo'] : null)
+//                ->setLongitude(isset($target['todo']) ? $target['todo'] : null)
+                ->setPhone(isset($target['contact-phone_static']) ? $target['contact-phone_static'] : null)
+                ->setWebsite(isset($target['contact-website_static']) ? $target['contact-website_static'] : null)
+                ->setIsActive(1)
+//                ->setSicCode(isset($target['todo']) ? $target['todo'] : null)
+//                ->setEmployeeCount(isset($target['todo']) ? $target['todo'] : null)
+            ;
+//            $company->save();
+        }
+    }
 }
