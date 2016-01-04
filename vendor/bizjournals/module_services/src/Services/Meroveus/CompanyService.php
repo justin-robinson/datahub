@@ -36,7 +36,6 @@ class CompanyService extends AbstractService
     {
         $companyFactory = $this->getServiceLocator()->get('Hub\Model\Company');
         $company        = $companyFactory->findOneBy(['refinery_id' => $refineryId]);
-
         return $company;
     }
 
@@ -67,7 +66,7 @@ class CompanyService extends AbstractService
                         $value = $state;
                     }
                     $company[$data['KEY']] = $value;
-                    // I want consistency
+                    // I want consistency in the field order
                     ksort($company);
                 }
                 array_push($list, $company);

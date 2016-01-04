@@ -139,11 +139,6 @@ class MeroveusController extends AbstractActionController
         echo "started at " . $start . PHP_EOL;
         $maxRows  = 500;
         $compiled = [];
-        // test markets
-        $markets       = [
-            'albany' => '26',
-            //            'sanfransisco' => '39',
-        ];
         $totalMatched  = 0;
         $totalInserted = 0;
 
