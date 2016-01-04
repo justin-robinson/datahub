@@ -67,24 +67,23 @@ class ImportController extends AbstractActionController
             if ($info['extension'] == 'csv') {
                 echo "Processing File: " . $csvFile . PHP_EOL;
 
-                /* @var $model \Hub\Model\Company */
+                /* @var $model Hub\Model\Company */
                 $model = $this->getServiceLocator()->get('Hub\Model\Company');
                 $fp    = fopen($csvFile, 'r');
-                $rc    = $this->RefineryColumns;
-                //$header = $record = fgetcsv($fp);
+                $header     = $record = fgetcsv($fp);
                 //var_dump($header);
+                $rc    = $this->RefineryColumns;
                 while ($record = fgetcsv($fp)) {
                     //var_dump($record);
-                    /* @var $obj \Hub\Model\Company */
                     $obj = $model->newModel();
                     $obj->populate([
                         'refinery_id'        => $record[$rc['InternalId']],
                         'generate_code'      => $record[$rc['GenId']],
-                        'record_source'      => 'Refinery' . (empty($record[$rc['SourceID']]) ? '' : ':' . $record[$rc['SourceID']]),
+                        'record_source'         => (empty($record[$rc['SourceID']]) ? 'Refinery' : 'Refinery:' . $record[$rc['SourceID']]),
                         'company_name'       => $record[$rc['Name']],
                         'public_ticker'      => $record[$rc['Ticker']],
                         'ticker_exchange'    => $record[$rc['TickerExchange']],
-                        'source_modified_at' => $record[$rc['DateModified']],
+                        'source_modified_at'    => $record[$rc['DateModified']],
                         'address1'           => $record[$rc['Addr1']],
                         'address2'           => $record[$rc['Addr2']],
                         'city'               => $record[$rc['City']],
