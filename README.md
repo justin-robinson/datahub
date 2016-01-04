@@ -17,4 +17,11 @@ to run the logstash export:
 if you’ve installed kibana 
     kibana serve
     go to http://localhost:5601/
+    
+matching:
+    run it from /scripts
+    'php run.php  meroveus match -e development' where -e is environment 
 
+
+importing records to match against:
+    'sudo /var/www/datahub/scripts/run.php import refinery -e development --file=/home/vagrant/files/refineryDump.csv'
