@@ -3,6 +3,7 @@
 namespace Console\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\Db\Adapter as dbAdapter;
 
 class ImportController extends AbstractActionController
 {
@@ -25,6 +26,60 @@ class ImportController extends AbstractActionController
         "OfficePhone1"   => 15,
         "Url"            => 16,
         "Sic"            => 17,
+    ];
+
+   protected $states = [
+        'AL' => 'Alabama',
+        'AK' => 'Alaska',
+        'AZ' => 'Arizona',
+        'AR' => 'Arkansas',
+        'CA' => 'California',
+        'CO' => 'Colorado',
+        'CT' => 'Connecticut',
+        'DE' => 'Delaware',
+        'DC' => 'District of Columbia',
+        'FL' => 'Florida',
+        'GA' => 'Georgia',
+        'HI' => 'Hawaii',
+        'ID' => 'Idaho',
+        'IL' => 'Illinois',
+        'IN' => 'Indiana',
+        'IA' => 'Iowa',
+        'KS' => 'Kansas',
+        'KY' => 'Kentucky',
+        'LA' => 'Louisiana',
+        'ME' => 'Maine',
+        'MD' => 'Maryland',
+        'MA' => 'Massachusetts',
+        'MI' => 'Michigan',
+        'MN' => 'Minnesota',
+        'MS' => 'Mississippi',
+        'MO' => 'Missouri',
+        'MT' => 'Montana',
+        'NE' => 'Nebraska',
+        'NV' => 'Nevada',
+        'NH' => 'New Hampshire',
+        'NJ' => 'New Jersey',
+        'NM' => 'New Mexico',
+        'NY' => 'New York',
+        'NC' => 'North Carolina',
+        'ND' => 'North Dakota',
+        'OH' => 'Ohio',
+        'OK' => 'Oklahoma',
+        'OR' => 'Oregon',
+        'PA' => 'Pennsylvania',
+        'RI' => 'Rhode Island',
+        'SC' => 'South Carolina',
+        'SD' => 'South Dakota',
+        'TN' => 'Tennessee',
+        'TX' => 'Texas',
+        'UT' => 'Utah',
+        'VT' => 'Vermont',
+        'VA' => 'Virginia',
+        'WA' => 'Washington',
+        'WV' => 'West Virginia',
+        'WI' => 'Wisconsin',
+        'WY' => 'Wyoming',
     ];
 
     /**
@@ -55,49 +110,128 @@ class ImportController extends AbstractActionController
 
     /**
      * Import the refinery data from a CSV file
-     *
+     *  does a bit of normalising
      * @access pubic
      * @return void
      */
     public function refineryAction()
     {
+
+        echo'
+         ██▓    ███▄ ▄███▓    ██▓███      ▒█████      ██▀███     ▄▄▄█████▓    ██▓    ███▄    █      ▄████
+        ▓██▒   ▓██▒▀█▀ ██▒   ▓██░  ██▒   ▒██▒  ██▒   ▓██ ▒ ██▒   ▓  ██▒ ▓▒   ▓██▒    ██ ▀█   █     ██▒ ▀█▒
+        ▒██▒   ▓██    ▓██░   ▓██░ ██▓▒   ▒██░  ██▒   ▓██ ░▄█ ▒   ▒ ▓██░ ▒░   ▒██▒   ▓██  ▀█ ██▒   ▒██░▄▄▄░
+        ░██░   ▒██    ▒██    ▒██▄█▓▒ ▒   ▒██   ██░   ▒██▀▀█▄     ░ ▓██▓ ░    ░██░   ▓██▒  ▐▌██▒   ░▓█  ██▓
+        ░██░   ▒██▒   ░██▒   ▒██▒ ░  ░   ░ ████▓▒░   ░██▓ ▒██▒     ▒██▒ ░    ░██░   ▒██░   ▓██░   ░▒▓███▀▒
+        ░▓     ░ ▒░   ░  ░   ▒▓▒░ ░  ░   ░ ▒░▒░▒░    ░ ▒▓ ░▒▓░     ▒ ░░      ░▓     ░ ▒░   ▒ ▒     ░▒   ▒
+         ▒ ░   ░  ░      ░   ░▒ ░          ░ ▒ ▒░      ░▒ ░ ▒░       ░        ▒ ░   ░ ░░   ░ ▒░     ░   ░
+         ▒ ░   ░      ░      ░░          ░ ░ ░ ▒       ░░   ░      ░          ▒ ░      ░   ░ ░    ░ ░   ░
+         ░            ░                      ░ ░        ░                     ░              ░          ░
+        '. PHP_EOL;
+        echo "started at " . date('h:i:s A') . PHP_EOL;
+        $db  = new \PDO('mysql:host=devdb.bizjournals.int;dbname=datahub', 'web', '');
+        $sql = ' INSERT INTO
+            company(
+                refinery_id,
+                meroveus_id,
+                generate_code,
+                record_source,
+                company_name,
+                public_ticker,
+                ticker_exchange,
+                source_modified_at,
+                address1,
+                address2,
+                city,
+                state,
+                postal_code,
+                country,
+                latitude,
+                longitude,
+                phone,
+                website,
+                is_active,
+                sic_code,
+                employee_count,
+                created_at,
+                updated_at,
+                deleted_at
+                )
+            VALUES (
+                :refinery_id,
+                :meroveus_id,
+                :generate_code,
+                :record_source,
+                :company_name,
+                :public_ticker,
+                :ticker_exchange,
+                :source_modified_at,
+                :address1,
+                :address2,
+                :city,
+                :state,
+                :postal_code,
+                :country,
+                :latitude,
+                :longitude,
+                :phone,
+                :website,
+                :is_active,
+                :sic_code,
+                :employee_count,
+                :created_at,
+                :updated_at,
+                :deleted_at
+            )';
+
         $csvFile = realpath($this->getRequest()->getParam('file'));
         if (file_exists($csvFile)) {
             $info = pathinfo($csvFile);
             if ($info['extension'] == 'csv') {
                 echo "Processing File: " . $csvFile . PHP_EOL;
-
-                /* @var $model Hub\Model\Company */
-                $model = $this->getServiceLocator()->get('Hub\Model\Company');
-                $fp    = fopen($csvFile, 'r');
-                $header     = $record = fgetcsv($fp);
+                /* @var $model \Hub\Model\Company */
+                $model  = $this->getServiceLocator()->get('Hub\Model\Company');
+                $fp     = fopen($csvFile, 'r');
+                $header = $record = fgetcsv($fp);
                 //var_dump($header);
-                $rc    = $this->RefineryColumns;
+                $rc          = $this->RefineryColumns;
+                $queryParams = [];
+                $count = 0;
                 while ($record = fgetcsv($fp)) {
+
+                    $tickerExchange = strpos($record[$rc['TickerExchange']], 'NASDAQ') ? 'NASDAQ' : $record[$rc['TickerExchange']];
+                    $tickerExchange = strpos($record[$rc['TickerExchange']], 'York Stock') ? 'NYSE' : $record[$rc['TickerExchange']];
+
                     //var_dump($record);
-                    $obj = $model->newModel();
-                    $obj->populate([
-                        'refinery_id'        => $record[$rc['InternalId']],
-                        'generate_code'      => $record[$rc['GenId']],
-                        'record_source'         => (empty($record[$rc['SourceID']]) ? 'Refinery' : 'Refinery:' . $record[$rc['SourceID']]),
-                        'company_name'       => $record[$rc['Name']],
-                        'public_ticker'      => $record[$rc['Ticker']],
-                        'ticker_exchange'    => $record[$rc['TickerExchange']],
-                        'source_modified_at'    => $record[$rc['DateModified']],
-                        'address1'           => $record[$rc['Addr1']],
-                        'address2'           => $record[$rc['Addr2']],
-                        'city'               => $record[$rc['City']],
-                        'state'              => $record[$rc['State']],
-                        'postal_code'        => $record[$rc['PostalCode']],
-                        'country'            => $record[$rc['Country']],
-                        'latitude'           => $record[$rc['Lat']],
-                        'longitude'          => $record[$rc['Lon']],
-                        'phone'              => $record[$rc['OfficePhone1']],
-                        'website'            => $record[$rc['Url']],
-                        'sic_code'           => $record[$rc['Sic']],
-                    ])->save();
-                    unset($obj);
+                    $queryParams[':refinery_id']        = $record[$rc['InternalId']];
+                    $queryParams[':meroveus_id']        = null;
+                    $queryParams[':generate_code']      = $record[$rc['GenId']];
+                    $queryParams[':record_source']      = (empty($record[$rc['SourceID']]) ? 'Refinery' : 'Refinery:' . $record[$rc['SourceID']]);
+                    $queryParams[':company_name']       = $record[$rc['Name']];
+                    $queryParams[':public_ticker']      = $record[$rc['Ticker']];
+                    $queryParams[':ticker_exchange']    = $tickerExchange;
+                    $queryParams[':source_modified_at'] = $record[$rc['DateModified']];
+                    $queryParams[':address1']           = $record[$rc['Addr1']];
+                    $queryParams[':address2']           = $record[$rc['Addr2']];
+                    $queryParams[':city']               = $record[$rc['City']];
+                    $queryParams[':state']              = $record[$rc['State']];
+                    $queryParams[':postal_code']        = $record[$rc['PostalCode']]; // validate
+                    $queryParams[':country']            = $record[$rc['Country']]; // validate
+                    $queryParams[':latitude']           = $record[$rc['Lat']];
+                    $queryParams[':longitude']          = $record[$rc['Lon']];
+                    $queryParams[':phone']              = $record[$rc['OfficePhone1']];
+                    $queryParams[':website']            = $record[$rc['Url']];
+                    $queryParams[':is_active']          = true;
+                    $queryParams[':sic_code']           = $record[$rc['Sic']];
+                    $queryParams[':employee_count']     = 0;
+                    $queryParams[':created_at']         = 'NOW()';
+                    $queryParams[':updated_at']         = 'NOW()';
+                    $queryParams[':deleted_at']         = null;
+
+                    $query = $db->prepare($sql)->execute($queryParams);
+                    $count++;
                 }
+                echo "ended at " . date('h:i:s A') . PHP_EOL . 'imported ' . $count . 'records' . PHP_EOL;
             } else {
                 die('Parameter must be a CSV file.');
             }
