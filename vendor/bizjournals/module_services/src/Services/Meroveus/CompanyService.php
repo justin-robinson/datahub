@@ -46,6 +46,7 @@ class CompanyService extends AbstractService
      */
     private function formatResult(array $result)
     {
+
         $labels = isset($result['LABELS']) ? $result['LABELS'] : null;
         $list   = [];
         if (isset($result['SET']['RECS'])) {
@@ -66,8 +67,13 @@ class CompanyService extends AbstractService
                         $value = $state;
                     }
                     $company[$data['KEY']] = $value;
+                    $company['coordinates'] = [
+                        'lat' => isset($record['LATLONG'])?$record['LATLONG'][0]:0,
+                        'long'=> isset($record['LATLONG'])?$record['LATLONG'][1]:0
+                    ];
                     // I want consistency in the field order
                     ksort($company);
+
                 }
                 array_push($list, $company);
             }

@@ -137,8 +137,8 @@ class MeroveusController extends AbstractActionController
 ';
         $start = date('h:i:s A');
         echo "started at " . $start . PHP_EOL;
-        $maxRows  = 500;
-        $compiled = [];
+        $maxRows       = 500;
+        $compiled      = [];
         $totalMatched  = 0;
         $totalInserted = 0;
 
@@ -260,6 +260,7 @@ class MeroveusController extends AbstractActionController
                 ->addMust($builder->query()->match('State', $queryFields['State']))
                 ->addMust($builder->query()->match('PostalCode', $queryFields['PostalCode']))
         );
+
         $query->setMinScore($minScore);
 
         $resultSet = $search->search($query);
@@ -343,36 +344,98 @@ class MeroveusController extends AbstractActionController
             $company->save();
 
         } else {
-            $company = new Company();
-            /**
-             * @todo find all these damn fields
-             * looks like i will have to do some processing on the
-             * employee count since there seems to be a field per year in the meroveus data
-             * also figure out the saving bit
-             */
-            $company
-                ->setMeroveusId(isset($target['meroveusId']) ? $target['meroveusId'] : null)
-//                ->setGenerateCode(isset($target['todo']) ? $target['todo'] : null)
-//                ->setRecordSource(isset($target['todo']) ? $target['todo'] : null)
-                ->setCompanyName(isset($target['firm-name_static']) ? $target['firm-name_static'] : null)
-//                ->setPublicTicker(isset($target['todo']) ? $target['todo'] : null)
-//                ->setTickerExchange(isset($target['todo']) ? $target['todo'] : null)
-//                ->setSourceModifiedAt(isset($target['todo']) ? $target['todo'] : null)
-                ->setAddress1(isset($target['street-address_static']) ? $target['street-address_static'] : null)
-                ->setAddress2(isset($target['street-line2-address_static']) ? $target['street-line2-address_static'] : null)
-                ->setCity(isset($target['street-city_static']) ? $target['street-city_static'] : null)
-                ->setState(isset($target['street-state_static']) ? $target['street-state_static'] : null)
-                ->setPostalCode(isset($target['street-zip_static']) ? $target['street-zip_static'] : null)
-//                ->setCountry(isset($target['todo']) ? $target['todo'] : null)
-//                ->setLatitude(isset($target['todo']) ? $target['todo'] : null)
-//                ->setLongitude(isset($target['todo']) ? $target['todo'] : null)
-                ->setPhone(isset($target['contact-phone_static']) ? $target['contact-phone_static'] : null)
-                ->setWebsite(isset($target['contact-website_static']) ? $target['contact-website_static'] : null)
-                ->setIsActive(1)
-//                ->setSicCode(isset($target['todo']) ? $target['todo'] : null)
-//                ->setEmployeeCount(isset($target['todo']) ? $target['todo'] : null)
-            ;
-//            $company->save();
+            $queryParams                   = [];
+            $queryParams[':refinery_id']   = isset($target['refinery_id']) ? $target['refinery_id'] : 'noData';
+            $queryParams[':meroveus_id']   = isset($target['meroveusId']) ? $target['meroveusId'] : 'noData';
+            $queryParams[':generate_code'] = isset($target['generate_codeId']) ? $target['generate_codeId'] : 'noData';
+            $queryParams[':record_source'] = isset($target['sourceId']) ? $target['sourceId'] : 'noData';;
+            $queryParams[':company_name']       = isset($target['firm-name_static']) ? $target['firm-name_static'] : 'noData';
+            $queryParams[':public_ticker']      = isset($target['idk']) ? $target['idk'] : 'noData';
+            $queryParams[':ticker_exchange']    = isset($target['idk']) ? $target['idk'] : 'noData';
+            $queryParams[':source_modified_at'] = isset($target['idk']) ? $target['idk'] : 'noData';
+            $queryParams[':address1']           = isset($target['street-address_static']) ? $target['street-address_static'] : 'noData';
+            $queryParams[':address2']           = isset($target['street-line2-address_static']) ? $target['street-line2-address_static'] : 'noData';
+            $queryParams[':city']               = isset($target['street-city_static']) ? $target['street-city_static'] : 'noData';
+            $queryParams[':state']              = isset($target['street-state_static']) ? $target['street-state_static'] : null;
+            $queryParams[':postal_code']        = isset($target['street-zip_static']) ? $target['street-zip_static'] : null; // validate
+            $queryParams[':country']            = isset($target['street-country_static']) ? $target['street-country_static'] : null; // validate
+            $queryParams[':latitude']           = isset($target['coordinates']['lat']) ? $target['coordinates']['lat'] : null;
+            $queryParams[':longitude']          = isset($target['coordinates']['long']) ? $target['coordinates']['long'] : null;
+            $queryParams[':phone']              = isset($target['contact-phone_static']) ? $target['contact-phone_static'] : null;
+            $queryParams[':website']            = isset($target['contact-website_static']) ? $target['contact-website_static'] : null;
+            $queryParams[':is_active']          = true;
+            $queryParams[':sic_code']           = isset($target['sicCode']) ? $target['sicCode'] : null;
+            $queryParams[':employee_count']     = 0;
+            $queryParams[':created_at']         = 'NOW()';
+            $queryParams[':updated_at']         = 'NOW()';
+            $queryParams[':deleted_at']         = null;
+            return $this->addACompany($queryParams);
         }
+    }
+
+    /**
+     * @param array $queryParams
+     * @return bool
+     */
+    private function addACompany(array $queryParams)
+    {
+
+        $db  = new \PDO('mysql:host=devdb.bizjournals.int;dbname=datahub', 'web', '');
+        $sql = ' INSERT INTO
+            company(
+                refinery_id,
+                meroveus_id,
+                generate_code,
+                record_source,
+                company_name,
+                public_ticker,
+                ticker_exchange,
+                source_modified_at,
+                address1,
+                address2,
+                city,
+                state,
+                postal_code,
+                country,
+                latitude,
+                longitude,
+                phone,
+                website,
+                is_active,
+                sic_code,
+                employee_count,
+                created_at,
+                updated_at,
+                deleted_at
+                )
+            VALUES (
+                :refinery_id,
+                :meroveus_id,
+                :generate_code,
+                :record_source,
+                :company_name,
+                :public_ticker,
+                :ticker_exchange,
+                :source_modified_at,
+                :address1,
+                :address2,
+                :city,
+                :state,
+                :postal_code,
+                :country,
+                :latitude,
+                :longitude,
+                :phone,
+                :website,
+                :is_active,
+                :sic_code,
+                :employee_count,
+                :created_at,
+                :updated_at,
+                :deleted_at
+            )';
+
+        $query = $db->prepare($sql)->execute($queryParams);
+        return $query;
     }
 }

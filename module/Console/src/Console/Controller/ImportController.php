@@ -116,7 +116,7 @@ class ImportController extends AbstractActionController
      */
     public function refineryAction()
     {
-
+        //@todo set up environment sniffing
         echo'
          ██▓    ███▄ ▄███▓    ██▓███      ▒█████      ██▀███     ▄▄▄█████▓    ██▓    ███▄    █      ▄████
         ▓██▒   ▓██▒▀█▀ ██▒   ▓██░  ██▒   ▒██▒  ██▒   ▓██ ▒ ██▒   ▓  ██▒ ▓▒   ▓██▒    ██ ▀█   █     ██▒ ▀█▒
@@ -231,7 +231,7 @@ class ImportController extends AbstractActionController
                     $query = $db->prepare($sql)->execute($queryParams);
                     $count++;
                 }
-                echo "ended at " . date('h:i:s A') . PHP_EOL . 'imported ' . $count . 'records' . PHP_EOL;
+                echo "ended at " . date('h:i:s A') . PHP_EOL . 'imported ' . $count . ' records' . PHP_EOL;
             } else {
                 die('Parameter must be a CSV file.');
             }

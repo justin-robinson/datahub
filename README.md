@@ -1,5 +1,7 @@
 It's a hub for data!
 general elastic notes
+    dev elastic path:
+        http://datahub.listsandleads.elasticsearch.bizj-dev.com:9200
     to delete indexes from elastic:
         curl -sXDELETE <path_to_your_elastic_instance>:<port>/<index> 
         example:
