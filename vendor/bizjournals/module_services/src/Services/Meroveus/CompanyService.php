@@ -38,15 +38,36 @@ class CompanyService extends AbstractService
 
 
     /**
-     * @param \Hub\Model\Company $companyService
+     * return company object
+     *
      * @param $refineryId
      * @return \Hub\Model\Company
+     * @todo refactor for DI and write test
      */
     public function findOneByRefineryId($refineryId)
     {
+        /** @var $companyFactory  \Hub\Model\Company */
         $companyFactory = $this->getServiceLocator()->get('Hub\Model\Company');
-        $company        = $companyFactory->findOneBy(['refinery_id' => $refineryId]);
+        /** @var $company  \Hub\Model\Company */
+        $company = $companyFactory->findOneBy(['refinery_id' => $refineryId]);
         return $company;
+    }
+
+
+    /**
+     * returns json encoded company
+     *
+     * @param $refineryId
+     * @return string
+     * @todo refactor for DI and write test
+     */
+    public function get($refineryId)
+    {
+        /** @var $companyFactory  \Hub\Model\Company */
+        $companyFactory = $this->getServiceLocator()->get('Hub\Model\Company');
+        /** @var $company  \Hub\Model\Company */
+        $company = $companyFactory->findOneBy(['hub_id' => $refineryId]);
+        return json_encode($company->toArray());
     }
 
     /**
