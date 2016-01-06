@@ -30,47 +30,46 @@ class MeroveusController extends AbstractActionController
      * map of our market names to their respective meroveus environments
      */
     private $markets = [
-//        'albany'       => '12',
-//        'albuquerque'  => '9',
-//        'atlanta'      => '11',
-//        'austin'       => '22',
-//        'baltimore'    => '15',
-        //'birmingham' => '30',
-//        'boston'       => '34',
-//        'buffalo'      => '3',
-//        'charlotte'    => '26',
-// last run
-//        'cincinnati'   => '6',
-//        'columbus'     => '31',
-//        'dallas'       => '7',
-//        'dayton'       => '19',
-//        'denver'       => '2',
-//        'houston'      => '8',
-//        'jacksonville' => '23',
-//        'kansascity'   => '13',
-//        'louisville'   => '32',
-//        'memphis'      => '10',
-//        'milwaukee'    => '33',
-//        'nashville'    => '20',
-//        'orlando'      => '17',
-//        'pacific'      => '38',
-//        'philadelphia' => '16',
-//        'phoenix'      => '14',
-//        'pittsburgh'   => '18',
-//        'portland'     => '24',
-//        'sacramento'   => '4',
-//        'sanantonio'   => '25',
-//        'sanfrancisco' => '39',
-//        'sanjose'      => '40',
-//        'seattle'      => '41',
-//        'southflorida' => '35',
-//        'stlouis'      => '28',
-//        'tampabay'     => '36',
-//        'triad'        => '29',
-//        'triangle'     => '27',
-//        'twincities'   => '21',
-//        'washington'   => '5',
-//        'wichita'      => '37',
+        'albany'       => '12',
+        'albuquerque'  => '9',
+        'atlanta'      => '11',
+        'austin'       => '22',
+        'baltimore'    => '15',
+        'birmingham'   => '30',
+        'boston'       => '34',
+        'buffalo'      => '3',
+        'charlotte'    => '26',
+        'cincinnati'   => '6',
+        'columbus'     => '31',
+        'dallas'       => '7',
+        'dayton'       => '19',
+        'denver'       => '2',
+        'houston'      => '8',
+        'jacksonville' => '23',
+        'kansascity'   => '13',
+        'louisville'   => '32',
+        'memphis'      => '10',
+        'milwaukee'    => '33',
+        'nashville'    => '20',
+        'orlando'      => '17',
+        'pacific'      => '38',
+        'philadelphia' => '16',
+        'phoenix'      => '14',
+        'pittsburgh'   => '18',
+        'portland'     => '24',
+        'sacramento'   => '4',
+        'sanantonio'   => '25',
+        'sanfrancisco' => '39',
+        'sanjose'      => '40',
+        'seattle'      => '41',
+        'southflorida' => '35',
+        'stlouis'      => '28',
+        'tampabay'     => '36',
+        'triad'        => '29',
+        'triangle'     => '27',
+        'twincities'   => '21',
+        'washington'   => '5',
+        'wichita'      => '37',
     ];
     /**
      * @var MeroveusClient
@@ -93,12 +92,18 @@ class MeroveusController extends AbstractActionController
     private $elasticSearch;
 
     /**
+     * @var \PDO
+     */
+    private $dataHubDb;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->meroveusClient = new MeroveusClient(['path' => 'http://acbj-stg.meroveus.com:8080/api']);
         $this->companyService = new CompanyService($this->meroveusClient);
+        //@todo make this environment aware
         $this->elasticaClient = new ElasticaClient([
             'host' => 'http://datahub.listsandleads.elasticsearch.bizj-dev.com',
             'path' => 'rerefinery/',
@@ -106,9 +111,12 @@ class MeroveusController extends AbstractActionController
             'url'  => 'http://datahub.listsandleads.elasticsearch.bizj-dev.com:9200/rerefinery/',
         ]);
         $this->elasticSearch  = new ElasticaSearch($this->elasticaClient);
+        $this->dataHubDb      = new \PDO('mysql:host=devdb.bizjournals.int;dbname=datahub', 'web', '');
     }
 
     /**
+     * utility randomness
+     *
      * @return string
      */
     public function indexAction()
@@ -120,48 +128,52 @@ class MeroveusController extends AbstractActionController
 
     /**
      * php run.php  meroveus match -e development
+     * @var $sanity bool // will write files for you to peruse for debugging
      */
-    public function matchAction()
+    public function matchAction($sanity = false)
     {
 
         echo '
-             ███▄ ▄███▓   ▓█████     ██▀███      ▒█████      ██▒   █▓   ▓█████     █    ██      ██████
-            ▓██▒▀█▀ ██▒   ▓█   ▀    ▓██ ▒ ██▒   ▒██▒  ██▒   ▓██░   █▒   ▓█   ▀     ██  ▓██▒   ▒██    ▒
-            ▓██    ▓██░   ▒███      ▓██ ░▄█ ▒   ▒██░  ██▒    ▓██  █▒░   ▒███      ▓██  ▒██░   ░ ▓██▄
-            ▒██    ▒██    ▒▓█  ▄    ▒██▀▀█▄     ▒██   ██░     ▒██ █░░   ▒▓█  ▄    ▓▓█  ░██░     ▒   ██▒
-            ▒██▒   ░██▒   ░▒████▒   ░██▓ ▒██▒   ░ ████▓▒░      ▒▀█░     ░▒████▒   ▒▒█████▓    ▒██████▒▒
-            ░ ▒░   ░  ░   ░░ ▒░ ░   ░ ▒▓ ░▒▓░   ░ ▒░▒░▒░       ░ ▐░     ░░ ▒░ ░   ░▒▓▒ ▒ ▒    ▒ ▒▓▒ ▒ ░
-            ░  ░      ░    ░ ░  ░     ░▒ ░ ▒░     ░ ▒ ▒░       ░ ░░      ░ ░  ░   ░░▒░ ░ ░    ░ ░▒  ░ ░
-            ░      ░         ░        ░░   ░    ░ ░ ░ ▒          ░░        ░       ░░░ ░ ░    ░  ░  ░
-                   ░         ░  ░      ░            ░ ░           ░        ░  ░      ░              ░
+             ███▄ ▄███▓    ▄▄▄         ▄▄▄█████▓    ▄████▄      ██░ ██     ██▓    ███▄    █      ▄████
+            ▓██▒▀█▀ ██▒   ▒████▄       ▓  ██▒ ▓▒   ▒██▀ ▀█     ▓██░ ██▒   ▓██▒    ██ ▀█   █     ██▒ ▀█▒
+            ▓██    ▓██░   ▒██  ▀█▄     ▒ ▓██░ ▒░   ▒▓█    ▄    ▒██▀▀██░   ▒██▒   ▓██  ▀█ ██▒   ▒██░▄▄▄░
+            ▒██    ▒██    ░██▄▄▄▄██    ░ ▓██▓ ░    ▒▓▓▄ ▄██▒   ░▓█ ░██    ░██░   ▓██▒  ▐▌██▒   ░▓█  ██▓
+            ▒██▒   ░██▒    ▓█   ▓██▒     ▒██▒ ░    ▒ ▓███▀ ░   ░▓█▒░██▓   ░██░   ▒██░   ▓██░   ░▒▓███▀▒
+            ░ ▒░   ░  ░    ▒▒   ▓▒█░     ▒ ░░      ░ ░▒ ▒  ░    ▒ ░░▒░▒   ░▓     ░ ▒░   ▒ ▒     ░▒   ▒
+            ░  ░      ░     ▒   ▒▒ ░       ░         ░  ▒       ▒ ░▒░ ░    ▒ ░   ░ ░░   ░ ▒░     ░   ░
+            ░      ░        ░   ▒        ░         ░            ░  ░░ ░    ▒ ░      ░   ░ ░    ░ ░   ░
+                   ░            ░  ░               ░ ░          ░  ░  ░    ░              ░          ░
+                                                   ░
                                                      ░
 ';
         $start = date('h:i:s A');
         echo "started at " . $start . PHP_EOL;
         $maxRows       = 500;
-        $compiled      = [];
         $totalMatched  = 0;
         $totalInserted = 0;
 
         foreach ($this->markets as $market => $env) {
             $marketCompanyList = $this->paginatedSearch($env, $market, $maxRows);
-            $marketMatched     = 0;
-            $marketInserted    = 0;
+
+            $marketMatched  = 0;
+            $marketInserted = 0;
             foreach ($marketCompanyList as $target) {
 
                 $match = $this->elasticMatch($target);
 
                 if ($match) {
                     // update existing record here
+                    // @todo refactor for depInjection
                     $this->processMatch($match, $target);
 
-                    $this->writeSanityFiles($market, $target, $match);
+                    if ($sanity) {
+                        $this->writeSanityFiles($market, $target, $match);
+                    }
+
                     $marketMatched++;
                     $totalMatched++;
                 } else {
-
-                    // function to add new record
-
+                    // @todo function to add new record ?
                     $queryParams                   = [];
                     $queryParams[':refinery_id']   = isset($target['refinery_id']) ? $target['refinery_id'] : 'noData';
                     $queryParams[':meroveus_id']   = isset($target['meroveusId']) ? $target['meroveusId'] : 'noData';
@@ -188,30 +200,43 @@ class MeroveusController extends AbstractActionController
                     $queryParams[':updated_at']         = 'NOW()';
                     $queryParams[':deleted_at']         = null;
 
-                    $added = $this->addACompany($queryParams);
+                    $added = $this->addACompany($queryParams, $this->dataHubDb);
                     if (!$added) {
                         echo 'opps, add failed' . PHP_EOL;
-                        // log it
+                        // @todo log it
                     };
 
-//                    $this->writeSanityFiles($market, $target, false);
+                    // write some debug files if you want
+                    if ($sanity) {
+                        $this->writeSanityFiles($market, $target, false);
+                    }
+
                     $marketInserted++;
                     $totalInserted++;
                 }
             }
-            echo $marketMatched . ' records matched, ' . PHP_EOL . $marketInserted . ' records not matched in ' . $market . PHP_EOL;
+
+            echo $market . ':' . PHP_EOL;
+            echo '  ' . $marketMatched . ' records matched, ' . PHP_EOL . '    ' . $marketInserted . ' records created' . PHP_EOL;
+            /**
+             * we seem to have to do this to be able to query the next market. IDK why
+             */
+            unset($this->meroveusClient);
+            $this->meroveusClient = new MeroveusClient(['path' => 'http://acbj-stg.meroveus.com:8080/api']);
+
+
         }
 
         echo $totalMatched . ' total  records matched ' . PHP_EOL;
-        echo $totalInserted . ' total records not matched ' . PHP_EOL;
+        echo $totalInserted . ' total records inserted ' . PHP_EOL;
         $end = date('h:i:s A');
         echo "ended at " . $end . PHP_EOL;
         echo 'Enjoy your day' . PHP_EOL;
     }
 
-
     /**
      * chunks the queries for throttling
+     *
      * @param string $env (this represents the market in the query to meroveus)
      * @param string $market ()
      * @param int $maxRows (max returned results per call)
@@ -223,6 +248,7 @@ class MeroveusController extends AbstractActionController
         $bigOleList = [];
         $run        = true;
         $startRow   = 1;
+
         do {
             $result = $this->companyService->fetchByMarket(
                 $this->meroveusClient,
@@ -240,6 +266,7 @@ class MeroveusController extends AbstractActionController
                     ],
                 ]
             );
+
             if (is_array($result)) {
                 foreach ($result as $company) {
 
@@ -256,13 +283,15 @@ class MeroveusController extends AbstractActionController
 
     }
 
-
     /**
-     * @param array $target
-     * @param float $minScore
-     * @return array
+     * attempt to match the record with whats in elastic and
+     * return pertinent data for further processing
+     *
+     * @param array $target ( what we're trying to match in elastic)
+     * @param float $minScore ( our score thresh hold )
+     * @return mixed array/bool
      * query elastic for match
-     *  return pertinent data for further processing
+     *
      */
     private function elasticMatch(array $target, $minScore = 9.9)
     {
@@ -282,13 +311,14 @@ class MeroveusController extends AbstractActionController
             'PostalCode' => isset($target['street-zip_static']) ? $target['street-zip_static'] : false,
         ];
 
-        // make sure that we have what we need
+        // make sure that we have everything that we need
         foreach ($queryFields as $field) {
             if (!$field) {
                 return false;
             }
         }
 
+        // set up the elastic query
         $query->setQuery(
             $builder->query()->bool()
                 ->addShould($builder->query()->match('Name', $queryFields['Name']))
@@ -317,63 +347,22 @@ class MeroveusController extends AbstractActionController
         return false;
     }
 
-
     /**
-     * @param $market
-     * @param $target
-     * @param $elasticResult
-     *
-     * mostly useful for debugging and query tuning
-     */
-    private function writeSanityFiles($market, $target, $elasticResult)
-    {
-        ksort($target);
-        $keepArray = [
-            'firm-name_static',
-            'street-address_static',
-            'street-city_static',
-            'street-state_static',
-            'street-zip_static',
-        ];
-
-        if ($elasticResult) {
-            $filename = '/tmp/' . $market . 'hits.txt';
-        } else {
-            $filename = '/tmp/' . $market . 'misses.txt';
-        }
-
-        $fd = fopen($filename, 'a');
-
-        $count = 0;
-        foreach ($target as $key => $field) {
-
-            if (in_array($key, $keepArray)) {
-                $count++;
-            }
-        }
-        fputs($fd, 'count: ' . $count . ', ');
-        foreach ($target as $key => $field) {
-
-            if (in_array($key, $keepArray)) {
-                fputs($fd, $key . ': ' . $field . ', ');
-            }
-        }
-
-        fputs($fd, PHP_EOL);
-        fclose($fd);
-    }
-
-
-    /**
+     * updates the existing refinery record
      * @param Result $match
      * @param array $target
+     * @todo refactor for depInjection of:
+     *      param \Services\Meroveus\CompanyService $companyService
      */
     private function processMatch(Result $match, array $target)
     {
+        if(!$match ){
+            //@todo log it catch it
+            return false;
+        }
         $refineryId     = $match->getSource()['InternalId'];
         $companyService = $this->getServiceLocator()->get('Services\Meroveus\CompanyService');
 
-        /** @var  $company Company */
         $company = $companyService->findOneByRefineryId($refineryId);
 
         if ($company) {
@@ -382,18 +371,23 @@ class MeroveusController extends AbstractActionController
 
         } else {
             echo 'processMatch called for no good reason ' . PHP_EOL;
-            // error out
+            // @todo error out
         }
     }
 
     /**
+     * just pdo things...
+     *
      * @param array $queryParams
+     * @param \PDO $dataHubDb
      * @return bool
      */
-    private function addACompany(array $queryParams)
+    private function addACompany(array $queryParams, \PDO $dataHubDb)
     {
-
-        $db  = new \PDO('mysql:host=devdb.bizjournals.int;dbname=datahub', 'web', '');
+        if( !$dataHubDb ){
+            // @todo log the error catch it
+            return false;
+        }
         $sql = ' INSERT INTO
             company(
                 refinery_id,
@@ -448,7 +442,54 @@ class MeroveusController extends AbstractActionController
                 :deleted_at
             )';
 
-        $query = $db->prepare($sql)->execute($queryParams);
+        $query = $dataHubDb->prepare($sql)->execute($queryParams);
         return $query;
+    }
+
+    /**
+     * mostly useful for debugging and query tuning
+     *
+     * @param $market
+     * @param $target
+     * @param $elasticResult
+     *
+     *
+     */
+    private function writeSanityFiles($market, $target, $elasticResult)
+    {
+        ksort($target);
+        $keepArray = [
+            'firm-name_static',
+            'street-address_static',
+            'street-city_static',
+            'street-state_static',
+            'street-zip_static',
+        ];
+
+        if ($elasticResult) {
+            $filename = '/tmp/' . $market . 'hits.txt';
+        } else {
+            $filename = '/tmp/' . $market . 'misses.txt';
+        }
+
+        $fd = fopen($filename, 'a');
+
+        $count = 0;
+        foreach ($target as $key => $field) {
+
+            if (in_array($key, $keepArray)) {
+                $count++;
+            }
+        }
+        fputs($fd, 'count: ' . $count . ', ');
+        foreach ($target as $key => $field) {
+
+            if (in_array($key, $keepArray)) {
+                fputs($fd, $key . ': ' . $field . ', ');
+            }
+        }
+
+        fputs($fd, PHP_EOL);
+        fclose($fd);
     }
 }

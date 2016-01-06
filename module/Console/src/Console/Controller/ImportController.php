@@ -5,8 +5,16 @@ namespace Console\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Db\Adapter as dbAdapter;
 
+/**
+ * Class ImportController
+ * @package Console\Controller
+ */
 class ImportController extends AbstractActionController
 {
+
+    /**
+     * @var array
+     */
     protected $RefineryColumns = [
         "InternalId"     => 0,
         "GenId"          => 1,
@@ -28,7 +36,10 @@ class ImportController extends AbstractActionController
         "Sic"            => 17,
     ];
 
-   protected $states = [
+    /**
+     * @var array
+     */
+    protected $states = [
         'AL' => 'Alabama',
         'AK' => 'Alaska',
         'AZ' => 'Arizona',
