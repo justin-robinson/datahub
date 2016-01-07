@@ -11,21 +11,6 @@ return [
 
     'router' => [
         'routes' => [
-//            'api' => [
-//                'type'          => 'Literal',
-//                'options'       => [
-//                    'route'    => '/api',
-//                    'defaults' => [
-//                        'controller' => 'Api\Controller\Search',
-//                        'action'     => 'index',
-//                    ],
-//                ],
-//                'may_terminate' => false,
-//                'child_routes'  => [
-//
-//                ],
-//            ],
-
             'company' => [
                 'type'    => 'Segment',
                 'options' => [

@@ -29,4 +29,14 @@ class CompanyController extends AbstractRestfulController
         $return = new JsonModel($record->toArray(true));
         return $return;
     }
+
+    /**
+     * @param mixed $company_id
+     * @return JsonModel
+     */
+    public function delete($company_id)
+    {
+        return new JsonModel(['delete' => 'record deleted']);
+    }
+
 }

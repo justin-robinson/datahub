@@ -22,7 +22,7 @@ abstract class AbstractRestfulController extends ZendAbstractRestfulController
         return $this->getResponse()->getHeaders()
             ->addHeaderLine('Access-Control-Allow-Headers', $this->getRequest()->getHeader('Access-Control-Request-Headers')->getFieldValue());
     }
-    
+
     /**
      * Handle the request
      *
@@ -35,30 +35,10 @@ abstract class AbstractRestfulController extends ZendAbstractRestfulController
         $this->getResponse()->getHeaders()
             ->addHeaderLine('Access-Control-Allow-Origin', '*')
             ->addHeaderLine('Access-Control-Allow-Methods', 'OPTIONS, HEAD, GET, POST, PUT, DELETE');
-    
+
         return parent::onDispatch($e);
     }
-    
-    /**
-     * Pull publication from serviceLocator
-     *
-     * @return \CMS\Model\Publication
-     */
-    public function getCurrentPub()
-    {
-        return $this->getServiceLocator()->get('Publication');
-    }
 
-    /**
-     * Pull publication id from serviceLocator
-     *
-     * @return int
-     */
-    public function getCurrentPubId()
-    {
-        return $this->getCurrentPub()->getPubId();
-    }
-    
     /**
      * Trigger logger
      *
@@ -71,9 +51,9 @@ abstract class AbstractRestfulController extends ZendAbstractRestfulController
         foreach ($params as $name => $value) {
             $event->setParam($name, $value);
         }
-        
+
         $this->getEventManager()->trigger('api.error', $event);
-        
+
         return $this;
     }
 }
