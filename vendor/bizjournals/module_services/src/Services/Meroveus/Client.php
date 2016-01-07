@@ -103,7 +103,7 @@ class Client extends AbstractClient
     }
 
     /**
-     * Send a request
+     * Send a request to meroveus
      *
      * @access public
      * @param string $mode
@@ -162,6 +162,7 @@ class Client extends AbstractClient
 
     /**
      * Set an option
+     *
      * @param string $name Key name
      * @param string $value Key value
      * @access public
@@ -176,6 +177,7 @@ class Client extends AbstractClient
 
     /**
      * Get an option
+     *
      * @param string $name Key name
      * @param string $default
      * @return string option value
@@ -192,6 +194,7 @@ class Client extends AbstractClient
 
     /**
      * Get Config settings
+     *
      * @access private
      * @return array $this->_config
      */
@@ -206,6 +209,7 @@ class Client extends AbstractClient
 
     /**
      * Set Config settings
+     *
      * @access public
      * @static
      * @param array $configOptions

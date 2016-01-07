@@ -18,7 +18,8 @@ class CompanyService extends AbstractService
 {
 
     /**
-     * searches meroveus and formats the return
+     * queries meroveus and formats the return
+     *
      * @param \Services\Meroveus\Client $meroveusClient
      * @param $market
      * @param array $meroveusParams
@@ -72,6 +73,7 @@ class CompanyService extends AbstractService
 
     /**
      * formats the merovious return
+     *
      * @param array $result
      * @return mixed array/bool
      */
@@ -123,6 +125,7 @@ class CompanyService extends AbstractService
     /**
      * used for getting state data in the form that we want by extracing them from the labels
      * returned by meroveus
+     *
      * @param $stateId
      * @param array $labelsArray
      * @return null|string

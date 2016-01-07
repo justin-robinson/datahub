@@ -154,7 +154,9 @@ class MeroveusController extends AbstractActionController
 
         foreach ($this->markets as $market => $env) {
             $marketCompanyList = $this->paginatedSearch($env, $market, $maxRows);
-
+            if( !$marketCompanyList){
+            echo '                  No results returned for '. $market . PHP_EOL;
+            }
             $marketMatched  = 0;
             $marketInserted = 0;
             foreach ($marketCompanyList as $target) {
