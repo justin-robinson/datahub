@@ -39,4 +39,21 @@ class CompanyController extends AbstractRestfulController
         return new JsonModel(['delete' => 'record deleted']);
     }
 
+
+    /**
+     * @param mixed $data
+     * @return JsonModel
+     */
+    public function create($data){
+        return new JsonModel(['create' => $data]);
+    }
+
+    /**
+     * @param mixed $id
+     * @param mixed $data
+     * @return JsonModel
+     */
+    public function update($id, $data){
+        return new JsonModel(['update' => $data]);
+    }
 }
