@@ -1,46 +1,51 @@
 <?php
-return array(
-    'router' => array(
-        'routes' => array(
-            'api' => array(
-                'type'    => 'Literal',
-                'options' => array(
+return [
+    'router' => [
+        'routes' => [
+            'api' => [
+                'type'          => 'Literal',
+                'options'       => [
                     'route'    => '/api',
-                    'defaults' => array(
-                        'controller' => 'index',
-                    ),
-                ),
+                    'defaults' => [
+                        'controller' => 'Api\Controller\Search',
+                        'action'     => 'index',
+                    ],
+                ],
                 'may_terminate' => false,
-                'child_routes' => array(
-                    'content' => array(
+                'child_routes'  => [
+                    'company' => [
                         'type'    => 'Segment',
-                        'options' => array(
-                            'route'    => '/content/:action[/:id]',
-                            'constraints' => array(
-                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'options' => [
+                            'route'       => '/company[/:id]',
+                            'constraints' => [
+//                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'id'     => '[a-zA-Z0-9_-]*',
-                            ),
-                            'defaults' => array(
-                                'controller' => 'Api\Controller\Content',
-                                'action'     => 'index',
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-        ),
-    ),
-    'controllers' => array(
-        'invokables' => array(
-            'Api\Controller\Abstract'       => 'Api\Controller\AbstractRestfulController',
-        ),
-    ),
-    'view_manager' => array(
-        'template_path_stack' => array(
-            'api' => __DIR__ . '/../view',
-        ),
-        'strategies' => array(
+                            ],
+                            'defaults'    => [
+                                'controller' => 'Api\Controller\Company',
+//                                'action'     => 'get',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ],
+    ],
+
+    'controllers' => [
+        'invokables' => [
+            'Api\Controller\Abstract' => 'Api\Controller\AbstractRestfulController',
+            'Api\Controller\Search'   => 'Api\Controller\SearchController',
+            'Api\Controller\Company'  => 'Api\Controller\CompanyController',
+        ],
+    ],
+
+    'view_manager' => [
+//        'template_path_stack' => [
+//            'api' => __DIR__ . '/../view',
+//        ],
+        'strategies'          => [
             'ViewJsonStrategy',
-        ),
-    ),
-);
+        ],
+    ],
+];

@@ -8,7 +8,13 @@
 namespace Api\Controller;
 
 
-class SearchController
+class SearchController extends AbstractRestfulController
 {
     // @todo write this
+
+    public function indexAction()
+    {
+        die('SearchController index action');
+    }
+
 }
