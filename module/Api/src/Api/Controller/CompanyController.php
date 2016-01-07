@@ -56,4 +56,13 @@ class CompanyController extends AbstractRestfulController
     public function update($id, $data){
         return new JsonModel(['update' => $data]);
     }
+
+    /**
+     * @return JsonModel
+     */
+    public function getList()
+    {
+        return new JsonModel(['getList' => 'not implemented']);
+    }
+
 }
