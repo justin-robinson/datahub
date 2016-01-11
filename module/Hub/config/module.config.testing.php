@@ -1,7 +1,7 @@
 <?php
 $defaultMysqlConnectionParams = array(
     'charset'       => 'utf8',
-    'host'          => 'stagingdb.bizjournals.int',
+    'host'          => 'devdb.bizjournals.int',
     'port'          => '3306',
     'user'          => 'bizj-write',
     'password'      => 'bizj-write',
