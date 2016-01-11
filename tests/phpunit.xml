@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         bootstrap="bootstrap.php"
+         colors="true">
+    <testsuites>
+        <testsuite name="Controllers">
+            <directory>./Core/Controller</directory>
+        </testsuite>
+        <testsuite name="Models">
+            <directory>./Core/Model</directory>
+        </testsuite>
+        <testsuite name="Top25">
+            <file>./Core/Model/Top25ListTest.php</file>
+            <file>./Core/Model/Top25SuperClassificationTest.php</file>
+            <file>./Core/Model/MeroveusListTest.php</file>
+        </testsuite>
+        <testsuite name="Other">
+            <directory>./Core/System</directory>
+        </testsuite>
+        <!-- TODO: Schema tests aren't yet working 
+        <testsuite name="Schemas">
+            <directory>./Schema</directory>
+        </testsuite>
+         -->
+    </testsuites>
+
+    <logging>
+        <log type="coverage-html" target="../build/coverage" title="Bizjournals" charset="UTF-8" yui="true" highlight="true" lowUpperBound="35" highLowerBound="70"/>
+        <log type="coverage-clover" target="../build/logs/clover.xml"/>
+        <log type="junit" target="../build/logs/junit.xml" logIncompleteSkipped="false"/>
+    </logging>
+
+    <filter>
+        <whitelist>
+            <directory suffix=".php">../library/Core</directory>
+            <directory suffix=".php">../library/Zend</directory>
+            <directory suffix=".php">../library/Schema</directory>
+            <directory suffix=".php">../library/vendor</directory>
+            <directory suffix=".php">../library/Doctrine</directory>
+            <directory suffix=".php">../library/ApnsPHP</directory>
+            <directory suffix=".php">../library/Elastica</directory>
+            <directory suffix=".php">../library/Entity</directory>
+            <directory suffix=".php">../library/Solarium</directory>
+            <directory suffix=".php">../library/Symfony</directory>
+            <directory suffix=".php">../library/ZFDebug</directory>
+        </whitelist>
+    </filter>
+</phpunit>

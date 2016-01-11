@@ -15,7 +15,6 @@ use Elastica\Result;
 use Services\Meroveus\CompanyService;
 use Services\Meroveus\Client as MeroveusClient;
 use Zend\Mvc\Controller\AbstractActionController;
-use Hub\Model\Company;
 
 //use Services\Meroveus\CompanyService;
 
@@ -154,8 +153,8 @@ class MeroveusController extends AbstractActionController
 
         foreach ($this->markets as $market => $env) {
             $marketCompanyList = $this->paginatedSearch($env, $market, $maxRows);
-            if( !$marketCompanyList){
-            echo '                  No results returned for '. $market . PHP_EOL;
+            if (!$marketCompanyList) {
+                echo '                  No results returned for ' . $market . PHP_EOL;
             }
             $marketMatched  = 0;
             $marketInserted = 0;
@@ -353,26 +352,28 @@ class MeroveusController extends AbstractActionController
      * updates the existing refinery record
      * @param Result $match
      * @param array $target
-     * @todo refactor for depInjection of:
+     * @todo refactor for DI of:
      *      param \Services\Meroveus\CompanyService $companyService
+     * @return bool
      */
     private function processMatch(Result $match, array $target)
     {
-        if(!$match ){
+        if (!$match) {
             //@todo log it catch it
             return false;
         }
         $refineryId     = $match->getSource()['InternalId'];
         $companyService = $this->getServiceLocator()->get('Services\Meroveus\CompanyService');
-
-        $company = $companyService->findOneByRefineryId($refineryId);
+        $company        = $companyService->findOneByRefineryId($refineryId);
 
         if ($company) {
             $company->setMeroveusId($target['meroveusId']);
             $company->save();
+            return true;
 
         } else {
             echo 'processMatch called for no good reason ' . PHP_EOL;
+            return false;
             // @todo error out
         }
     }
@@ -386,7 +387,7 @@ class MeroveusController extends AbstractActionController
      */
     private function addACompany(array $queryParams, \PDO $dataHubDb)
     {
-        if( !$dataHubDb ){
+        if (!$dataHubDb) {
             // @todo log the error catch it
             return false;
         }
@@ -454,7 +455,7 @@ class MeroveusController extends AbstractActionController
      * @param $market
      * @param $target
      * @param $elasticResult
-     *
+     * @return bool
      *
      */
     private function writeSanityFiles($market, $target, $elasticResult)
@@ -493,5 +494,6 @@ class MeroveusController extends AbstractActionController
 
         fputs($fd, PHP_EOL);
         fclose($fd);
+        return true;
     }
 }
