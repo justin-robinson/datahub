@@ -170,6 +170,11 @@ class Module
                     $client = $sm->get('Services\Meroveus\Client');
                     return new Meroveus\CompanyService($client);
                 },
+                'Services\Meroveus\ContactService' => function (ServiceManager $sm) {
+                    // @todo write a contactClient?
+                    $client = $sm->get('Services\Meroveus\Client');
+                    return new Meroveus\ContactService($client);
+                },
             ),
         );
     }

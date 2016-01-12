@@ -122,8 +122,6 @@ class Client extends AbstractClient
                     'EKEY' => $this->ekey,
                     'MODE' => $mode,
                 ];
-            echo "line 125". ' in '."Client.php".PHP_EOL;
-            die(var_dump( json_encode($sendArray) ));
             $resp   = MeroveusClient::sendRequest(json_encode($sendArray), in_array($mode, ['LABELSEARCH', 'FIELDSEARCH']));
             $return = (in_array(substr($resp, 0, 1), ['{', '[']) ? json_decode($resp, true) : $resp);
         } else {

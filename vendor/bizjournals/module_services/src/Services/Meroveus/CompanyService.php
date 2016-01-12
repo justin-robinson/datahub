@@ -83,9 +83,11 @@ class CompanyService extends AbstractService
         $labels = isset($result['LABELS']) ? $result['LABELS'] : null;
         $list   = [];
         if (isset($result['SET']['RECS'])) {
+
             // data we care about is in the RECS index of the result SET
             // each record is a company in the queried market
             foreach ($result['SET']['RECS'] as $k => $record) {
+
                 $company = [];
                 // walk the company data and extract and normalise
                 foreach ($record['DATA'] as $dk => $data) {
@@ -110,7 +112,15 @@ class CompanyService extends AbstractService
                         'lat'  => isset($record['LATLONG']) ? $record['LATLONG'][0] : 0,
                         'long' => isset($record['LATLONG']) ? $record['LATLONG'][1] : 0,
                     ];
+                    $company['contacts'] = [];
+                    if (!empty($data['SET']) && $data['KEY'] === 'keycontact-set_static') {
+                        if (!empty($data['SET']['RECS'])) {
 
+                            foreach ($data['SET']['RECS'] as $meroveusContact) {
+                                array_push($company['contacts'], $meroveusContact);
+                            }
+                        }
+                    }
                     // We want consistency in the field order
                     ksort($company);
                 }
@@ -140,5 +150,15 @@ class CompanyService extends AbstractService
                 return isset($label['PostalCode']) ? $label['PostalCode'] : 'not available';
             }
         }
+    }
+
+    /**
+     * pull out, normalize and save contact info
+     * @param $data
+     */
+    private function processContact($data)
+    {
+        $contactService = $this->getServiceLocator()->get('Services\Meroveus\Contact');
+        return $contactService;
     }
 }
