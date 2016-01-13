@@ -68,7 +68,10 @@ class CompanyService extends AbstractService
         $companyFactory = $this->getServiceLocator()->get('Hub\Model\Company');
         /** @var $company  \Hub\Model\Company */
         $company = $companyFactory->findOneBy(['hub_id' => $refineryId]);
-        return json_encode($company->toArray());
+        $contacts = $company->getContacts();
+        $company = $company->toArray();
+        $company['contacts'] = $contacts;
+        return json_encode($company);
     }
 
     public function findOneByMeroveusId($meroveusId)

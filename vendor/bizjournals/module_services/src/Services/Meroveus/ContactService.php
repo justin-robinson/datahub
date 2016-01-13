@@ -53,7 +53,7 @@ class ContactService extends AbstractService
         $contact['hub_id']              = empty($meroveusReturn['hub_id']) ? '' : $meroveusReturn['hub_id'];
         $contact['relevate_id']         = null;
         $contact['is_duplicate']        = 0;
-        $contact['is_current_employee'] = 0;
+        $contact['is_current_employee'] = 1;
         $contact['first_name']          = empty($contactData['first-name_static']) ? null : $contactData['first-name_static'];
         $contact['middle_initial']      = empty($contactData['middle-name_static']) ? null : $contactData['middle-name_static'];
         $contact['last_name']           = empty($contactData['last-name_static']) ? null : $contactData['last-name_static'];

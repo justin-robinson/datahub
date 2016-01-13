@@ -150,7 +150,6 @@ class MeroveusController extends AbstractActionController
         $maxRows       = 500;
         $totalMatched  = 0;
         $totalInserted = 0;
-        $totalContacts = 0;
         foreach ($this->markets as $market => $env) {
             $marketCompanyList = $this->paginatedSearch($env, $market, $maxRows);
             if (!$marketCompanyList) {
@@ -217,7 +216,6 @@ class MeroveusController extends AbstractActionController
                     $totalInserted++;
                 }
 
-                $contactCount = 0;
                 // process company contacts
                 /** @var  $contactService \Services\Meroveus\ContactService */
                 $contactService = $this->getServiceLocator()->get('Services\Meroveus\ContactService');
@@ -233,15 +231,12 @@ class MeroveusController extends AbstractActionController
                         // attach the companys hub id to the contact
                         $contact['hub_id'] = $company->getHubId();
                         $this->addAContact($contactService->formatMeroveusReturn($contact), $this->dataHubDb);
-                        $contactCount++;
-                        $totalContacts++;
                     }
                 }
             }
 
             echo $market . ':' . PHP_EOL;
-            echo '  ' . $marketMatched . ' records matched, ' . PHP_EOL . '    ' . $marketInserted . ' records created' .
-                PHP_EOL . $contactCount . ' contacts inserted' . PHP_EOL;
+            echo '  ' . $marketMatched . ' records matched, ' . PHP_EOL . '    ' . $marketInserted . ' records created' . PHP_EOL;
             /**
              * we seem to have to do this to be able to query the next market. IDK why
              */
@@ -253,7 +248,6 @@ class MeroveusController extends AbstractActionController
 
         echo $totalMatched . ' total  records matched ' . PHP_EOL;
         echo $totalInserted . ' total records inserted ' . PHP_EOL;
-        echo $totalContacts . ' total contacts inserted ' . PHP_EOL;
         $end = date('h:i:s A');
         echo "ended at " . $end . PHP_EOL;
         echo 'Enjoy your day' . PHP_EOL;

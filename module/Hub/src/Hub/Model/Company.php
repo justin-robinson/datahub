@@ -41,6 +41,8 @@ use \Entity\Model\Base;
  * @method string getCreatedAt() schema data get method
  * @method string getUpdatedAt() schema data get method
  * @method string getDeletedAt() schema data get method
+ * @method string getContacts() schema data get method
+ *
  */
 class Company extends Base
 {
