@@ -10,6 +10,14 @@ namespace Hub\Model;
 
 use \Entity\Model\Base;
 
+/**
+ * Class Company
+ * @package Hub\Model
+ *
+ *
+ *
+ *
+ */
 class Company extends Base
 {
     /**

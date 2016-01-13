@@ -9,6 +9,12 @@ namespace Hub\Model;
 
 use \Entity\Model\Base;
 
+/**
+ * Class Contact
+ * @package Hub\Model
+ *
+ * @method getHubId() return hub_id
+ */
 class Contact extends Base
 {
     /**

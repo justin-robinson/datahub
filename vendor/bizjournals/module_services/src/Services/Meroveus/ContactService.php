@@ -32,89 +32,51 @@ class ContactService extends AbstractService
 
     /**
      * @param array $meroveusReturn
+     * @return array
      */
     public function formatMeroveusReturn(array $meroveusReturn)
     {
 
-
-        /**
-         * you are here you are here you are here you are here
-         * you are here you are here you are here you are here
-         * you are here you are here you are here you are here
-         * you are here you are here you are here you are here
-         * you are here you are here you are here you are here
-         * you are here you are here you are here you are here
-         * you are here you are here you are here you are here
-         * you are here you are here you are here you are here
-         * you are here you are here you are here you are here
-         * you are here you are here you are here you are here
-         * you are here you are here you are here you are here
-         * you are here you are here you are here you are here
-         * you are here you are here you are here you are here
-         * you are here you are here you are here you are here
-         * you are here you are here you are here you are here
-         * you are here you are here you are here you are here
-         * you are here you are here you are here you are here
-         * you are here you are here you are here you are here
-         * you are here you are here you are here you are here
-         * you are here you are here you are here you are here
-         * you are here you are here you are here you are here
-         * you are here you are here you are here you are here
-         * you are here you are here you are here you are here
-         * you are here you are here you are here you are here
-         * you are here you are here you are here you are here
-         * you are here you are here you are here you are here
-         * you are here you are here you are here you are here
-         * you are here you are here you are here you are here
-         * you are here you are here you are here you are here
-         * meroveus_id int(10) unsigned,
-         * relevate_id int(10) unsigned,
-         * is_duplicate tinyint(1) not null default '0',
-         * is_current_employee tinyint(1) not null default '1',
-         * first_name varchar(50),
-         * middle_initial varchar(20),
-         * last_name varchar(50) not null,
-         * suffix varchar(20),
-         * honorific varchar(20),
-         * job_title varchar(255),
-         * job_position_id int(10) unsigned,
-         * email varchar(700),
-         * phone varchar(70),
-         * address1 varchar(150),
-         * address2 varchar(150),
-         * city varchar(100),
-         * state varchar(70),
-         * postal_code varchar(35),
-         * created_at datetime not null,
-         * updated_at datetime not null,
-         * deleted_at datetime,
-         * );
-         */
         $contact = [];
+        if (empty($meroveusReturn) || empty($meroveusReturn['DATA'])) {
+            return $contact;
+        }
+        $contactData = [];
+        // flatten the meroveus data return in order to avoid having a bad time
+        foreach ($meroveusReturn['DATA'] as $val) {
+            $contactData[$val['KEY']] = $val['VAL'];
+        }
 
-        $contact['meroveus_id']         = !empty($meroveusReturn['ID']) ?: null;
+        $contact['meroveus_id']         = empty($meroveusReturn['ID']) ? '' : $meroveusReturn['ID'];
+        $contact['hub_id']              = empty($meroveusReturn['hub_id']) ? '' : $meroveusReturn['hub_id'];
         $contact['relevate_id']         = null;
         $contact['is_duplicate']        = 0;
         $contact['is_current_employee'] = 0;
-        $contact['first_name']          = null;
-        $contact['middle_initial']      = null;
-        $contact['last_name']           = null;
-        $contact['suffix']              = null;
-        $contact['honorific']           = null;
-        $contact['job_title']           = null;
-        $contact['job_position_id']     = null;
-        $contact['email']               = null;
-        $contact['phone']               = null;
-        $contact['address1']            = null;
-        $contact['address2']            = null;
-        $contact['city']                = null;
-        $contact['state']               = null;
-        $contact['postal_code']         = null;
+        $contact['first_name']          = empty($contactData['first-name_static']) ? null : $contactData['first-name_static'];
+        $contact['middle_initial']      = empty($contactData['middle-name_static']) ? null : $contactData['middle-name_static'];
+        $contact['last_name']           = empty($contactData['last-name_static']) ? null : $contactData['last-name_static'];
+        $contact['suffix']              = empty($contactData['suffix-name_static']) ? null : $contactData['suffix-name_static'];
+        $contact['honorific']           = empty($contactData['prefix-name_static']) ? null : $contactData['prefix-name_static'];
+        $contact['phone']               = empty($contactData['work-phone_static']) ? null : $contactData['work-phone_static'];
+        // tack on the extension if present
+        $contact['phone'] .= empty($contactData['work-ext-phone_static']) ? '' : ' EXT: ' . $contactData['work-ext-phone_static'];
+        $contact['job_title']       = null;
+        $contact['job_position_id'] = null;
+        $contact['email']           = empty($contactData['work-email_static']) ? null : $contactData['work-email_static'];
+        $contact['address1']        = null;
+        $contact['address2']        = null;
+        $contact['city']            = null;
+        $contact['state']           = null;
+        $contact['postal_code']     = null;
+        $contact[':created_at']     = 'NOW()';
+        $contact[':updated_at']     = 'NOW()';
+        $contact[':deleted_at']     = null;
 
         return $contact;
 
     }
 
 }
+
 
 
