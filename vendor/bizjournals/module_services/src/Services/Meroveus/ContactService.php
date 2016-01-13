@@ -44,7 +44,9 @@ class ContactService extends AbstractService
         $contactData = [];
         // flatten the meroveus data return in order to avoid having a bad time
         foreach ($meroveusReturn['DATA'] as $val) {
-            $contactData[$val['KEY']] = $val['VAL'];
+            if(!empty($val['VAL'])){
+                $contactData[$val['KEY']] = $val['VAL'];
+            }
         }
 
         $contact['meroveus_id']         = empty($meroveusReturn['ID']) ? '' : $meroveusReturn['ID'];
