@@ -12,16 +12,36 @@ return [
     'router' => [
         'routes' => [
             'company' => [
-                'type'    => 'Segment',
-                'options' => [
-                    'route'       => '/api/company[/:id]',
-                    'constraints' => [
-                        'id' => '[a-zA-Z0-9_-]*',
-                    ],
+                'type'         => 'Segment',
+                'options'      => [
+                    'route'       => '/api/company',
                     'defaults'    => [
                         'controller' => 'Api\Controller\Company',
                     ],
                 ],
+                'child_routes' => [
+                    'hub' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route'       => '[/:id]',
+                            'constraints' => [
+                                'id' => '[a-zA-Z0-9_-]*',
+                            ],
+                        ]
+                    ],
+                    'refinery' => [
+                        'type'    => 'Segment',
+                        'options' => [
+                            'route'       => '/refinery[/:id]',
+                            'constraints' => [
+                                'id' => '\d*'
+                            ],
+                            'defaults'    => [
+                                'action'     => 'refineryId'
+                            ]
+                        ]
+                    ]
+                ]
             ],
         ],
     ],
