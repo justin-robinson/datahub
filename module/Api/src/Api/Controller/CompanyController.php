@@ -75,7 +75,7 @@ class CompanyController extends AbstractRestfulController
      * @param $id
      * @return JsonModel
      */
-    private function lookupBy( $name, $id) {
+    private function lookupBy($name, $id) {
 
         // load company model
         $company = $this->getServiceLocator()->get('\Hub\Model\Company');
