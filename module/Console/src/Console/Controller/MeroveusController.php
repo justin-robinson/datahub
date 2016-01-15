@@ -70,6 +70,7 @@ class MeroveusController extends AbstractActionController
         'washington'   => '5',
         'wichita'      => '37',
     ];
+
     /**
      * @var MeroveusClient
      */
@@ -95,6 +96,40 @@ class MeroveusController extends AbstractActionController
      */
     private $dataHubDb;
 
+    /** @var string */
+    private $contactSql =
+        'INSERT INTO
+            contact (
+              hub_id, meroveus_id, relevate_id, is_duplicate, is_current_employee, first_name, middle_initial, last_name,
+              suffix, honorific, job_title, job_position_id, email, phone, address1, address2, city, state, postal_code,
+              created_at, updated_at, deleted_at
+            )
+            VALUES (
+              :hub_id, :meroveus_id, :relevate_id, :is_duplicate, :is_current_employee, :first_name, :middle_initial,
+              :last_name, :suffix, :honorific, :job_title, :job_position_id, :email, :phone, :address1, :address2, :city,
+              :state, :postal_code, :created_at, :updated_at, :deleted_at
+            )';
+
+    /** @var string */
+    private $companySql =
+        'INSERT INTO
+            company(
+                refinery_id, meroveus_id, generate_code, record_source, company_name, public_ticker, ticker_exchange,
+                source_modified_at, address1, address2, city, state, postal_code, country, latitude, longitude,
+                phone, website, is_active, sic_code, employee_count, created_at, updated_at, deleted_at
+            )
+            VALUES (
+                :refinery_id, :meroveus_id, :generate_code, :record_source, :company_name, :public_ticker, :ticker_exchange,
+                :source_modified_at, :address1, :address2, :city, :state, :postal_code, :country, :latitude, :longitude,
+                :phone, :website, :is_active, :sic_code, :employee_count, :created_at, :updated_at, :deleted_at
+            )';
+
+    /** @var \PDOStatement */
+    private $contactPdo;
+
+    /** @var \PDOStatement */
+    private $companyPdo;
+
     /**
      * Constructor
      */
@@ -103,6 +138,7 @@ class MeroveusController extends AbstractActionController
         $this->meroveusClient = new MeroveusClient(['path' => 'http://acbj-stg.meroveus.com:8080/api']);
         $this->companyService = new CompanyService($this->meroveusClient);
         //@todo make this environment aware
+        // set up elastic
         $this->elasticaClient = new ElasticaClient([
             'host' => 'http://datahub.listsandleads.elasticsearch.bizj-dev.com',
             'path' => 'rerefinery/',
@@ -110,7 +146,11 @@ class MeroveusController extends AbstractActionController
             'url'  => 'http://datahub.listsandleads.elasticsearch.bizj-dev.com:9200/rerefinery/',
         ]);
         $this->elasticSearch  = new ElasticaSearch($this->elasticaClient);
-        $this->dataHubDb      = new \PDO('mysql:host=devdb.bizjournals.int;dbname=datahub', 'web', '');
+
+        // prepare pdo outside the loop for memory purposes
+        $this->dataHubDb  = new \PDO('mysql:host=devdb.bizjournals.int;dbname=datahub', 'web', '');
+        $this->contactPdo = $this->dataHubDb->prepare($this->contactSql);
+        $this->companyPdo = $this->dataHubDb->prepare($this->companySql);
     }
 
     /**
@@ -127,7 +167,7 @@ class MeroveusController extends AbstractActionController
 
     /**
      * php run.php  meroveus match -e development
-     * @var $sanity bool // will write files for you to peruse for debugging
+     * @var $sanity bool will write files for you to peruse for debugging
      */
     public function matchAction($sanity = false)
     {
@@ -151,20 +191,24 @@ class MeroveusController extends AbstractActionController
         $totalMatched  = 0;
         $totalInserted = 0;
         foreach ($this->markets as $market => $env) {
+
             $marketCompanyList = $this->paginatedSearch($env, $market, $maxRows);
+
             if (!$marketCompanyList) {
                 echo '                  No results returned for ' . $market . PHP_EOL;
             }
 
             $marketMatched  = 0;
             $marketInserted = 0;
+
             foreach ($marketCompanyList as $target) {
 
                 $match = $this->elasticMatch($target);
 
-                if ($match) {
+                if ($match) { // update the existing record
                     // update existing record here
-                    // @todo refactor for depInjection
+                    // @todo refactor for DI
+
                     $this->processMatch($match, $target);
 
                     if ($sanity) {
@@ -173,35 +217,11 @@ class MeroveusController extends AbstractActionController
 
                     $marketMatched++;
                     $totalMatched++;
-                } else {
-                    // @todo function to add new record ?
-                    $queryParams                        = [];
-                    $queryParams[':refinery_id']        = isset($target['refinery_id']) ? $target['refinery_id'] : 'noData';
-                    $queryParams[':meroveus_id']        = isset($target['meroveusId']) ? $target['meroveusId'] : 'noData';
-                    $queryParams[':generate_code']      = isset($target['generate_codeId']) ? $target['generate_codeId'] : 'noData';
-                    $queryParams[':record_source']      = isset($target['sourceId']) ? $target['sourceId'] : 'noData';;
-                    $queryParams[':company_name']       = isset($target['firm-name_static']) ? $target['firm-name_static'] : 'noData';
-                    $queryParams[':public_ticker']      = isset($target['idk']) ? $target['idk'] : 'noData';
-                    $queryParams[':ticker_exchange']    = isset($target['idk']) ? $target['idk'] : 'noData';
-                    $queryParams[':source_modified_at'] = isset($target['idk']) ? $target['idk'] : 'noData';
-                    $queryParams[':address1']           = isset($target['street-address_static']) ? $target['street-address_static'] : 'noData';
-                    $queryParams[':address2']           = isset($target['street-line2-address_static']) ? $target['street-line2-address_static'] : 'noData';
-                    $queryParams[':city']               = isset($target['street-city_static']) ? $target['street-city_static'] : 'noData';
-                    $queryParams[':state']              = isset($target['street-state_static']) ? $target['street-state_static'] : null;
-                    $queryParams[':postal_code']        = isset($target['street-zip_static']) ? $target['street-zip_static'] : null; // validate
-                    $queryParams[':country']            = isset($target['street-country_static']) ? $target['street-country_static'] : null; // validate
-                    $queryParams[':latitude']           = isset($target['coordinates']['lat']) ? $target['coordinates']['lat'] : null;
-                    $queryParams[':longitude']          = isset($target['coordinates']['long']) ? $target['coordinates']['long'] : null;
-                    $queryParams[':phone']              = isset($target['contact-phone_static']) ? $target['contact-phone_static'] : null;
-                    $queryParams[':website']            = isset($target['contact-website_static']) ? $target['contact-website_static'] : null;
-                    $queryParams[':is_active']          = true;
-                    $queryParams[':sic_code']           = isset($target['sicCode']) ? $target['sicCode'] : null;
-                    $queryParams[':employee_count']     = 0;
-                    $queryParams[':created_at']         = 'NOW()';
-                    $queryParams[':updated_at']         = 'NOW()';
-                    $queryParams[':deleted_at']         = null;
 
-                    $added = $this->addACompany($queryParams, $this->dataHubDb);
+                } else { // create a new record
+
+                    $queryParams = $this->formatCompany($target);
+                    $added       = $this->companyPdo->execute($queryParams);
                     if (!$added) {
                         echo 'opps, add failed' . PHP_EOL;
                         // @todo log it
@@ -217,32 +237,44 @@ class MeroveusController extends AbstractActionController
                 }
 
                 // process company contacts
-                /** @var  $contactService \Services\Meroveus\ContactService */
-                $contactService = $this->getServiceLocator()->get('Services\Meroveus\ContactService');
-                /** @var  $companyService \Services\Meroveus\CompanyService */
-                $companyService = $this->getServiceLocator()->get('Services\Meroveus\CompanyService');
-                // temp lookup for meroveus id
 
+                /** @var  $contactService \Services\Meroveus\ContactService */
+                /** @var  $companyService \Services\Meroveus\CompanyService */
                 /** @var  $company  \Hub\Model\Company */
+
+                $contactService = $this->getServiceLocator()->get('Services\Meroveus\ContactService');
+                $companyService = $this->getServiceLocator()->get('Services\Meroveus\CompanyService');
+
+                // temp lookup for meroveus id @todo get this from pdo last id?
                 $company = $companyService->findOneByMeroveusId($target['meroveusId']);
+
                 if ($company) {
                     foreach ($target['contacts'] as $contact) {
+                        // some of them have no data so we ignore them
 
-                        // attach the companys hub id to the contact
+
+                        // attach the companys hub id to the contact, format it and add it
                         $contact['hub_id'] = $company->getHubId();
-                        $this->addAContact($contactService->formatMeroveusReturn($contact), $this->dataHubDb);
+                        $formatedContact   = $contactService->formatMeroveusReturn($contact);
+                        if ($formatedContact) {
+                            $contactAdded = $this->contactPdo->execute($formatedContact);
+
+//                            if (!$contactAdded) {
+//                                echo 'opps, contact add failed' . PHP_EOL;
+                                // @todo log it
+//                            };
+                        }
                     }
                 }
             }
 
             echo $market . ':' . PHP_EOL;
-            echo '  ' . $marketMatched . ' records matched, ' . PHP_EOL . '    ' . $marketInserted . ' records created' . PHP_EOL;
-            /**
-             * we seem to have to do this to be able to query the next market. IDK why
-             */
+            echo '  ' . $marketMatched . ' records matched, ' . PHP_EOL;
+            echo '  ' . $marketInserted . ' records created' . PHP_EOL;
+
+            // we seem to have to do this to be able to query the next market... IDK why
             unset($this->meroveusClient);
             $this->meroveusClient = new MeroveusClient(['path' => 'http://acbj-stg.meroveus.com:8080/api']);
-
 
         }
 
@@ -351,6 +383,8 @@ class MeroveusController extends AbstractActionController
                 ->addMust($builder->query()->match('PostalCode', $queryFields['PostalCode']))
         );
 
+        // set the minimum score that we consider a match
+        // https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-min-score.html
         $query->setMinScore($minScore);
 
         $resultSet = $search->search($query);
@@ -374,7 +408,7 @@ class MeroveusController extends AbstractActionController
      * updates the existing refinery record
      * @param Result $match
      * @param array $target
-     * @todo refactor for DI of:
+     * @todo refactor for DI of the following:
      *      param \Services\Meroveus\CompanyService $companyService
      * @return bool
      */
@@ -388,6 +422,7 @@ class MeroveusController extends AbstractActionController
         $companyService = $this->getServiceLocator()->get('Services\Meroveus\CompanyService');
         $company        = $companyService->findOneByRefineryId($refineryId);
 
+        /** @var  $company \Hub\Model\Company */
         if ($company) {
             $company->setMeroveusId($target['meroveusId']);
             $company->save();
@@ -401,136 +436,42 @@ class MeroveusController extends AbstractActionController
     }
 
     /**
-     * just pdo things...
+     * format the meroveus return for 'sanity'
+     * it's defined here for readability
      *
-     * @param array $queryParams
-     * @param \PDO $dataHubDb
-     * @return bool
+     * @param array $company
+     * @return array
      */
-    private function addACompany(array $queryParams, \PDO $dataHubDb)
+    private function formatCompany(array $company)
     {
-        if (!$dataHubDb) {
-            // @todo log the error catch it
-            return false;
-        }
-        $sql = ' INSERT INTO
-            company(
-                refinery_id,
-                meroveus_id,
-                generate_code,
-                record_source,
-                company_name,
-                public_ticker,
-                ticker_exchange,
-                source_modified_at,
-                address1,
-                address2,
-                city,
-                state,
-                postal_code,
-                country,
-                latitude,
-                longitude,
-                phone,
-                website,
-                is_active,
-                sic_code,
-                employee_count,
-                created_at,
-                updated_at,
-                deleted_at
-                )
-            VALUES (
-                :refinery_id,
-                :meroveus_id,
-                :generate_code,
-                :record_source,
-                :company_name,
-                :public_ticker,
-                :ticker_exchange,
-                :source_modified_at,
-                :address1,
-                :address2,
-                :city,
-                :state,
-                :postal_code,
-                :country,
-                :latitude,
-                :longitude,
-                :phone,
-                :website,
-                :is_active,
-                :sic_code,
-                :employee_count,
-                :created_at,
-                :updated_at,
-                :deleted_at
-            )';
+        $queryParams = [];
 
-        $query = $dataHubDb->prepare($sql)->execute($queryParams);
-        return $query;
-    }
+        $queryParams[':refinery_id']   = isset($company['refinery_id']) ? $company['refinery_id'] : 'noData';
+        $queryParams[':meroveus_id']   = isset($company['meroveusId']) ? $company['meroveusId'] : 'noData';
+        $queryParams[':generate_code'] = isset($company['generate_codeId']) ? $company['generate_codeId'] : 'noData';
+        $queryParams[':record_source'] = isset($company['sourceId']) ? $company['sourceId'] : 'noData';;
+        $queryParams[':company_name']       = isset($company['firm-name_static']) ? $company['firm-name_static'] : 'noData';
+        $queryParams[':public_ticker']      = isset($company['idk']) ? $company['idk'] : 'noData';
+        $queryParams[':ticker_exchange']    = isset($company['idk']) ? $company['idk'] : 'noData';
+        $queryParams[':source_modified_at'] = isset($company['idk']) ? $company['idk'] : 'noData';
+        $queryParams[':address1']           = isset($company['street-address_static']) ? $company['street-address_static'] : 'noData';
+        $queryParams[':address2']           = isset($company['street-line2-address_static']) ? $company['street-line2-address_static'] : 'noData';
+        $queryParams[':city']               = isset($company['street-city_static']) ? $company['street-city_static'] : 'noData';
+        $queryParams[':state']              = isset($company['street-state_static']) ? $company['street-state_static'] : null;
+        $queryParams[':postal_code']        = isset($company['street-zip_static']) ? $company['street-zip_static'] : null; // validate
+        $queryParams[':country']            = isset($company['street-country_static']) ? $company['street-country_static'] : null; // validate
+        $queryParams[':latitude']           = isset($company['coordinates']['lat']) ? $company['coordinates']['lat'] : null;
+        $queryParams[':longitude']          = isset($company['coordinates']['long']) ? $company['coordinates']['long'] : null;
+        $queryParams[':phone']              = isset($company['contact-phone_static']) ? $company['contact-phone_static'] : null;
+        $queryParams[':website']            = isset($company['contact-website_static']) ? $company['contact-website_static'] : null;
+        $queryParams[':is_active']          = true;
+        $queryParams[':sic_code']           = isset($company['sicCode']) ? $company['sicCode'] : null;
+        $queryParams[':employee_count']     = 0;
+        $queryParams[':created_at']         = 'NOW()';
+        $queryParams[':updated_at']         = 'NOW()';
+        $queryParams[':deleted_at']         = null;
 
-
-    private function addAContact(array $queryParams, \PDO $dataHubDb)
-    {
-
-        if (!$dataHubDb || empty($queryParams)) {
-            // @todo log the error catch it
-            return false;
-        }
-        $sql = ' INSERT INTO
-            contact(
-                hub_id,
-                meroveus_id,
-                relevate_id,
-                is_duplicate,
-                is_current_employee,
-                first_name,
-                middle_initial,
-                last_name,
-                suffix,
-                honorific,
-                job_title,
-                job_position_id,
-                email,
-                phone,
-                address1,
-                address2,
-                city,
-                state,
-                postal_code,
-                created_at,
-                updated_at,
-                deleted_at
-            )
-            VALUES (
-                :hub_id,
-                :meroveus_id,
-                :relevate_id,
-                :is_duplicate,
-                :is_current_employee,
-                :first_name,
-                :middle_initial,
-                :last_name,
-                :suffix,
-                :honorific,
-                :job_title,
-                :job_position_id,
-                :email,
-                :phone,
-                :address1,
-                :address2,
-                :city,
-                :state,
-                :postal_code,
-                :created_at,
-                :updated_at,
-                :deleted_at
-            )';
-
-        $query = $dataHubDb->prepare($sql)->execute($queryParams);
-        return $query;
+        return $queryParams;
     }
 
     /**

@@ -19,6 +19,7 @@ use \Entity\Model\Base;
  * @method integer getHubId() schema data get method
  * @method integer getRefineryId() schema data get method
  * @method integer getMeroveusId() schema data get method
+ * @method integer setMeroveusId($id) schema data set method
  * @method string getGenerateCode() schema data get method
  * @method string getRecordSource() schema data get method
  * @method string getCompanyName() schema data get method

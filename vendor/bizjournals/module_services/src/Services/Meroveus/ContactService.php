@@ -37,14 +37,15 @@ class ContactService extends AbstractService
     public function formatMeroveusReturn(array $meroveusReturn)
     {
 
-        $contact = [];
         if (empty($meroveusReturn) || empty($meroveusReturn['DATA'])) {
-            return $contact;
+            return false;
         }
+
+        $contact     = [];
         $contactData = [];
         // flatten the meroveus data return in order to avoid having a bad time
         foreach ($meroveusReturn['DATA'] as $val) {
-            if(!empty($val['VAL'])){
+            if (!empty($val['VAL'])) {
                 $contactData[$val['KEY']] = $val['VAL'];
             }
         }
