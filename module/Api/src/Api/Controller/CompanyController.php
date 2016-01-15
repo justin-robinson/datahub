@@ -21,13 +21,7 @@ class CompanyController extends AbstractRestfulController
      */
     public function get($companyId)
     {
-        /** @var $company \Hub\Model\Company * */
-        $company = $this->getServiceLocator()->get('\Hub\Model\Company');
-        /** @var $record \Hub\Model\Company * */
-        $record = $company->findOneBy(['hub_id' => $companyId]);
-
-        $return = new JsonModel($record->toArray(true));
-        return $return;
+        return $this->lookupBy( 'hub_id', $companyId);
     }
 
     /**
@@ -63,6 +57,43 @@ class CompanyController extends AbstractRestfulController
     public function getList()
     {
         return new JsonModel(['getList' => 'not implemented']);
+    }
+
+    /**
+     * @return JsonModel
+     */
+    public function refineryIdAction() {
+
+        // get id from url
+        $refineryId = $this->params()->fromRoute('id');
+
+        return $this->lookupBy( 'refinery_id', $refineryId);
+    }
+
+    /**
+     * @param $name
+     * @param $id
+     * @return JsonModel
+     */
+    private function lookupBy($name, $id) {
+
+        // load company model
+        $company = $this->getServiceLocator()->get('\Hub\Model\Company');
+
+        // find company by refinery_id in url
+        $record = $company->findOneBy([$name => $id]);
+
+        // ensure we don't return something falsey
+        $record = empty($record)
+            ? [
+                'success' => false,
+                'messsage' => 'not found'
+            ]
+            : $record->toArray(true);
+
+        // return
+        return new JsonModel($record);
+
     }
 
 }
