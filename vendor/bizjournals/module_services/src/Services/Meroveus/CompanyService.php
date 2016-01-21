@@ -17,6 +17,28 @@ use Zend\Json;
 class CompanyService extends AbstractService
 {
 
+    private $akey;
+
+    private $ekey;
+
+    private $meroveus;
+
+    private $curl;
+
+    public function __construct()
+    {
+        $this->akey     = 'dJoJubaKc2sGEyVWvg3h6ICUC';
+        $this->ekey     = 'UdHuwsJhWgyhMWhpBAxkmydnT';
+        $this->meroveus = 'http://acbj-stg.meroveus.com:8080/api';
+        $this->curl     = curl_init($this->meroveus);
+        curl_setopt($this->curl, CURLOPT_POST, 1);
+        curl_setopt($this->curl, CURLOPT_HTTPHEADER, ['Expect:']);
+        curl_setopt($this->curl, CURLOPT_HEADER, 0);
+        curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($this->curl, CURLOPT_SSL_VERIFYHOST, 0);
+    }
+
     /**
      * queries meroveus and formats the return
      *
@@ -25,14 +47,10 @@ class CompanyService extends AbstractService
      * @param array $meroveusParams
      * @return array
      */
-    public function fetchByMarket(\Services\Meroveus\Client $meroveusClient, $market = '', array $meroveusParams = [])
+//    public function fetchByMarket(\Services\Meroveus\Client $meroveusClient, $market = '', array $meroveusParams = [])
+    public function fetchByMarket(array $meroveusParams)
     {
-
-        if (!$meroveusClient) {
-            //@todo log and catch it
-            return false;
-        }
-        $result          = $meroveusClient->send('SEARCH', $market, $meroveusParams);
+        $result          = $this->queryMeroveus($meroveusParams);
         $formattedResult = $this->formatResult($result);
         return $formattedResult;
     }
@@ -67,9 +85,9 @@ class CompanyService extends AbstractService
         /** @var $companyFactory  \Hub\Model\Company */
         $companyFactory = $this->getServiceLocator()->get('Hub\Model\Company');
         /** @var $company  \Hub\Model\Company */
-        $company = $companyFactory->findOneBy(['hub_id' => $refineryId]);
-        $contacts = $company->getContacts();
-        $company = $company->toArray();
+        $company             = $companyFactory->findOneBy(['hub_id' => $refineryId]);
+        $contacts            = $company->getContacts();
+        $company             = $company->toArray();
         $company['contacts'] = $contacts;
         return json_encode($company);
     }
@@ -124,7 +142,7 @@ class CompanyService extends AbstractService
                         'lat'  => isset($record['LATLONG']) ? $record['LATLONG'][0] : 0,
                         'long' => isset($record['LATLONG']) ? $record['LATLONG'][1] : 0,
                     ];
-                    $company['contacts'] = [];
+                    $company['contacts']    = [];
                     if (!empty($data['SET']) && $data['KEY'] === 'keycontact-set_static') {
                         if (!empty($data['SET']['RECS'])) {
 
@@ -167,10 +185,74 @@ class CompanyService extends AbstractService
     /**
      * pull out, normalize and save contact info
      * @param $data
+     * @return \Services\Meroveus\Contact
      */
     private function processContact($data)
     {
         $contactService = $this->getServiceLocator()->get('Services\Meroveus\Contact');
         return $contactService;
     }
+
+    /**
+     * fetch the meroveus return
+     * @param $meroveusParams
+     * @return bool
+     */
+    private function queryMeroveus(array $meroveusParams = [])
+    {
+
+        $return    = null;
+        $sendArray = $meroveusParams + [
+                'AKEY' => $this->akey,
+                'EKEY' => $this->ekey,
+                'MODE' => 'SEARCH',
+            ];
+        $sendJson  = json_encode($sendArray);
+        /* send a request to Meroveus! takes JSON string, posts via curl, returns JSON string */
+        $json = str_replace('%2B', '+', $sendJson);
+        curl_setopt($this->curl, CURLOPT_POSTFIELDS, 'MCORE=' . urlencode($json));
+        $result = curl_exec($this->curl);
+        if ($result) {
+            $resp   = str_replace(":NaN", ":0", gzinflate(substr($result, 10, -8)));
+            $return = (in_array(substr($resp, 0, 1), ['{', '[']) ? json_decode($resp, true) : $resp);
+            return $return;
+        } else {
+            echo 'no meroveus reaponse';
+            return false;
+        }
+    }
+
+    /**
+     * Send a request to meroveus
+     *
+     * @access public
+     * @param string $mode
+     * @param string $market_code
+     * @param array $params
+     * @throws Core_Exceptionfunction
+     * @return array
+     */
+    public function send($mode, $market_code, array $params = [])
+    {
+        $return = null;
+        $mode   = strtoupper($mode);
+        if (in_array($mode, $this->_validModes)) {
+            $sendArray = $params + [
+                    'AKEY' => $this->akey,
+                    'EKEY' => $this->ekey,
+                    'MODE' => $mode,
+                ];
+            $resp      = MeroveusClient::sendRequest(json_encode($sendArray),
+                in_array($mode, ['LABELSEARCH', 'FIELDSEARCH']));
+            $return    = (in_array(substr($resp, 0, 1), ['{', '[']) ? json_decode($resp, true) : $resp);
+        } else {
+            //@todo figure out the right way to do this
+            //throw new Core_Exception('Invalid Meroveous Mode');
+        }
+
+        return $return;
+    }
+
 }
+
+

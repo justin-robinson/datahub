@@ -21,6 +21,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 /**
  * Class MeroveusController
  * @package Console\Controller
+ * pdo statement prep happens in __construct for DI reasons
  */
 class MeroveusController extends AbstractActionController
 {
@@ -29,7 +30,7 @@ class MeroveusController extends AbstractActionController
      * map of our market names to their respective meroveus environments
      */
     private $markets = [
-        'albany' => '12',
+        'albany'       => '12',
         'albuquerque'  => '9',
         'atlanta'      => '11',
         'austin'       => '22',
@@ -111,7 +112,7 @@ class MeroveusController extends AbstractActionController
             )';
 
     /** @var string */
-    private $companySql =
+    private $createCompanySql =
         'INSERT INTO
             company(
                 refinery_id, meroveus_id, generate_code, record_source, company_name, public_ticker, ticker_exchange,
@@ -124,18 +125,25 @@ class MeroveusController extends AbstractActionController
                 :phone, :website, :is_active, :sic_code, :employee_count, :created_at, :updated_at, :deleted_at
             )';
 
-    /** @var \PDOStatement */
-    private $contactPdo;
+    /** @var string */
+    private $updateCompanySql = 'UPDATE company SET meroveus_id=:meroveus_id WHERE hub_id = :refinery_id';
 
     /** @var \PDOStatement */
-    private $companyPdo;
+    private $addContactPdo = null;
+
+    /** @var \PDOStatement */
+    private $addCompanyPdo = null;
+
+    /** @var \PDOStatement */
+    private $updateCompanyPdo = null;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->meroveusClient = new MeroveusClient(['path' => 'http://acbj-stg.meroveus.com:8080/api']);
+//        $this->meroveusClient = new MeroveusClient(['path' => 'http://acbj-stg.meroveus.com:8080/api']);
+
         $this->companyService = new CompanyService($this->meroveusClient);
         //@todo make this environment aware
         // set up elastic
@@ -148,9 +156,10 @@ class MeroveusController extends AbstractActionController
         $this->elasticSearch  = new ElasticaSearch($this->elasticaClient);
 
         // prepare pdo outside the loop for memory purposes
-        $this->dataHubDb  = new \PDO('mysql:host=devdb.bizjournals.int;dbname=datahub', 'web', '');
-        $this->contactPdo = $this->dataHubDb->prepare($this->contactSql);
-        $this->companyPdo = $this->dataHubDb->prepare($this->companySql);
+        $this->dataHubDb        = new \PDO('mysql:host=devdb.bizjournals.int;dbname=datahub', 'web', '');
+        $this->addContactPdo    = $this->dataHubDb->prepare($this->contactSql);
+        $this->addCompanyPdo    = $this->dataHubDb->prepare($this->createCompanySql);
+        $this->updateCompanyPdo = $this->dataHubDb->prepare($this->updateCompanySql);
     }
 
     /**
@@ -190,8 +199,10 @@ class MeroveusController extends AbstractActionController
         $maxRows       = 500;
         $totalMatched  = 0;
         $totalInserted = 0;
+
         foreach ($this->markets as $market => $env) {
 
+            $marketCompanyList = null;
             $marketCompanyList = $this->paginatedSearch($env, $market, $maxRows);
 
             if (!$marketCompanyList) {
@@ -208,8 +219,7 @@ class MeroveusController extends AbstractActionController
                 if ($match) { // update the existing record
                     // update existing record here
                     // @todo refactor for DI
-
-                    $this->processMatch($match, $target);
+                    $this->processMatch($match, $target, $this->updateCompanyPdo);
 
                     if ($sanity) {
                         $this->writeSanityFiles($market, $target, $match);
@@ -221,7 +231,7 @@ class MeroveusController extends AbstractActionController
                 } else { // create a new record
 
                     $queryParams = $this->formatCompany($target);
-                    $added       = $this->companyPdo->execute($queryParams);
+                    $added       = $this->addCompanyPdo->execute($queryParams);
                     if (!$added) {
                         echo 'opps, add failed' . PHP_EOL;
                         // @todo log it
@@ -251,31 +261,33 @@ class MeroveusController extends AbstractActionController
                 if ($company) {
                     foreach ($target['contacts'] as $contact) {
                         // some of them have no data so we ignore them
-
-
+                        if (empty($contact['last_name']) || empty($contact['last_name'])) {
+                            continue;
+                        }
                         // attach the companys hub id to the contact, format it and add it
                         $contact['hub_id'] = $company->getHubId();
                         $formatedContact   = $contactService->formatMeroveusReturn($contact);
                         if ($formatedContact) {
-                            $contactAdded = $this->contactPdo->execute($formatedContact);
+                            $contactAdded = $this->addContactPdo->execute($formatedContact);
 
-//                            if (!$contactAdded) {
-//                                echo 'opps, contact add failed' . PHP_EOL;
+                            if (!$contactAdded) {
+                                echo 'opps, contact add failed' . PHP_EOL;
+                                var_dump($formatedContact);
                                 // @todo log it
-//                            };
+                            };
                         }
                     }
                 }
+                $contactService = null;
+                $companyService = null;
+                $company        = null;
             }
 
             echo $market . ':' . PHP_EOL;
             echo '  ' . $marketMatched . ' records matched, ' . PHP_EOL;
             echo '  ' . $marketInserted . ' records created' . PHP_EOL;
 
-            // we seem to have to do this to be able to query the next market... IDK why
-            unset($this->meroveusClient);
-            $this->meroveusClient = new MeroveusClient(['path' => 'http://acbj-stg.meroveus.com:8080/api']);
-
+            echo "              post market out of loop memory usage is " .memory_get_usage(). PHP_EOL;
         }
 
         echo $totalMatched . ' total  records matched ' . PHP_EOL;
@@ -302,8 +314,6 @@ class MeroveusController extends AbstractActionController
 
         do {
             $result = $this->companyService->fetchByMarket(
-                $this->meroveusClient,
-                $market,
                 [
                     'STARTROW' => $startRow,
                     'MAXROWS'  => $maxRows,
@@ -323,6 +333,8 @@ class MeroveusController extends AbstractActionController
                     ],
                 ]
             );
+
+
             if (is_array($result)) {
                 foreach ($result as $company) {
                     array_push($bigOleList, $company);
@@ -369,6 +381,10 @@ class MeroveusController extends AbstractActionController
         // make sure that we have everything that we need
         foreach ($queryFields as $field) {
             if (!$field) {
+
+                $search  = null;
+                $query   = null;
+                $builder = null;
                 return false;
             }
         }
@@ -392,14 +408,28 @@ class MeroveusController extends AbstractActionController
 
         foreach ($resultSet->getResults() as $result) {
             if ($result->getScore() === $topScore) {
+
+                $resultSet = null;
+                $search    = null;
+                $query     = null;
+                $builder   = null;
                 return $result;
 
             } else {
+
+                $resultSet = null;
+                $search    = null;
+                $query     = null;
+                $builder   = null;
+
                 return false;
 
             }
         }
 
+        $search  = null;
+        $query   = null;
+        $builder = null;
         // if we get here it's broke
         return false;
     }
@@ -412,27 +442,37 @@ class MeroveusController extends AbstractActionController
      *      param \Services\Meroveus\CompanyService $companyService
      * @return bool
      */
-    private function processMatch(Result $match, array $target)
+    private function processMatch(Result $match, array $target, \PDOStatement $pdo)
     {
         if (!$match) {
             //@todo log it catch it
             return false;
         }
-        $refineryId     = $match->getSource()['InternalId'];
-        $companyService = $this->getServiceLocator()->get('Services\Meroveus\CompanyService');
-        $company        = $companyService->findOneByRefineryId($refineryId);
+        //@todo refactor for PDO
+        $refineryId = $match->getSource()['InternalId'];
 
-        /** @var  $company \Hub\Model\Company */
-        if ($company) {
-            $company->setMeroveusId($target['meroveusId']);
-            $company->save();
+        if ($pdo->execute([':meroveus_id' => $target['meroveusId'], 'refinery_id' => $refineryId])) {
             return true;
 
         } else {
             echo 'processMatch called for no good reason. did you run the import? Hmm? ' . PHP_EOL;
             return false;
-            // @todo error out
         }
+        unset($match);
+        unset($pdo);
+//        $companyService = $this->getServiceLocator()->get('Services\Meroveus\CompanyService');
+//        $company        = $companyService->findOneByRefineryId($refineryId);
+
+//        /** @var  $company \Hub\Model\Company */
+//        if ($company) {
+//           $company->setMeroveusId($target['meroveusId']);
+//           $company->save();
+//           return true;
+//        } else {
+//           echo 'processMatch called for no good reason. did you run the import? Hmm? ' . PHP_EOL;
+//           return false;
+//           // @todo error out
+//        }
     }
 
     /**
@@ -521,4 +561,6 @@ class MeroveusController extends AbstractActionController
         fclose($fd);
         return true;
     }
+
+
 }
