@@ -448,7 +448,6 @@ class MeroveusController extends AbstractActionController
             //@todo log it catch it
             return false;
         }
-        //@todo refactor for PDO
         $refineryId = $match->getSource()['InternalId'];
 
         if ($pdo->execute([':meroveus_id' => $target['meroveusId'], 'refinery_id' => $refineryId])) {
