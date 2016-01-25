@@ -30,7 +30,7 @@ class MeroveusController extends AbstractActionController
      * map of our market names to their respective meroveus environments
      */
     private $markets = [
-        'albany'       => '12',
+        'albany' => '12',
         'albuquerque'  => '9',
         'atlanta'      => '11',
         'austin'       => '22',
@@ -126,7 +126,7 @@ class MeroveusController extends AbstractActionController
             )';
 
     /** @var string */
-    private $updateCompanySql = 'UPDATE company SET meroveus_id=:meroveus_id WHERE hub_id = :refinery_id';
+    private $updateCompanySql = 'UPDATE company SET meroveus_id = :meroveus_id WHERE refinery_id = :refinery_id';
 
     /** @var \PDOStatement */
     private $addContactPdo = null;
@@ -211,7 +211,6 @@ class MeroveusController extends AbstractActionController
 
             $marketMatched  = 0;
             $marketInserted = 0;
-
             foreach ($marketCompanyList as $target) {
 
                 $match = $this->elasticMatch($target);
@@ -233,7 +232,7 @@ class MeroveusController extends AbstractActionController
                     $queryParams = $this->formatCompany($target);
                     $added       = $this->addCompanyPdo->execute($queryParams);
                     if (!$added) {
-                        echo 'opps, add failed' . PHP_EOL;
+                        echo 'opps, company add failed' . PHP_EOL;
                         // @todo log it
                     };
 
@@ -257,23 +256,25 @@ class MeroveusController extends AbstractActionController
 
                 // temp lookup for meroveus id @todo get this from pdo last id?
                 $company = $companyService->findOneByMeroveusId($target['meroveusId']);
-
                 if ($company) {
                     foreach ($target['contacts'] as $contact) {
                         // some of them have no data so we ignore them
-                        if (empty($contact['last_name']) || empty($contact['last_name'])) {
-                            continue;
-                        }
+//                        if (empty($contact['last_name']) || empty($contact['last_name'])) {
+//                            continue;
+//                        }
                         // attach the companys hub id to the contact, format it and add it
                         $contact['hub_id'] = $company->getHubId();
                         $formatedContact   = $contactService->formatMeroveusReturn($contact);
+
                         if ($formatedContact) {
                             $contactAdded = $this->addContactPdo->execute($formatedContact);
-
+//                            $contactAdded = true;
                             if (!$contactAdded) {
-                                echo 'opps, contact add failed' . PHP_EOL;
-                                var_dump($formatedContact);
+//                                echo 'opps, contact add failed' . PHP_EOL;
+//                                var_dump($formatedContact);
                                 // @todo log it
+                            } else {
+//                                echo 'Contact added';
                             };
                         }
                     }
@@ -287,7 +288,7 @@ class MeroveusController extends AbstractActionController
             echo '  ' . $marketMatched . ' records matched, ' . PHP_EOL;
             echo '  ' . $marketInserted . ' records created' . PHP_EOL;
 
-            echo "              post market out of loop memory usage is " .memory_get_usage(). PHP_EOL;
+            echo "              post market out of loop memory usage is " . memory_get_usage() . PHP_EOL;
         }
 
         echo $totalMatched . ' total  records matched ' . PHP_EOL;
@@ -333,8 +334,6 @@ class MeroveusController extends AbstractActionController
                     ],
                 ]
             );
-
-
             if (is_array($result)) {
                 foreach ($result as $company) {
                     array_push($bigOleList, $company);
@@ -444,34 +443,27 @@ class MeroveusController extends AbstractActionController
      */
     private function processMatch(Result $match, array $target, \PDOStatement $pdo)
     {
+
         if (!$match) {
             //@todo log it catch it
             return false;
         }
+
         $refineryId = $match->getSource()['InternalId'];
 
-        if ($pdo->execute([':meroveus_id' => $target['meroveusId'], 'refinery_id' => $refineryId])) {
-            return true;
+        $update = $pdo->execute([':meroveus_id' => $target['meroveusId'], 'refinery_id' => $refineryId]);
+        if ($update) {
+            unset($match);
+            unset($pdo);
 
         } else {
+            unset($match);
+            unset($pdo);
             echo 'processMatch called for no good reason. did you run the import? Hmm? ' . PHP_EOL;
             return false;
         }
-        unset($match);
-        unset($pdo);
-//        $companyService = $this->getServiceLocator()->get('Services\Meroveus\CompanyService');
-//        $company        = $companyService->findOneByRefineryId($refineryId);
 
-//        /** @var  $company \Hub\Model\Company */
-//        if ($company) {
-//           $company->setMeroveusId($target['meroveusId']);
-//           $company->save();
-//           return true;
-//        } else {
-//           echo 'processMatch called for no good reason. did you run the import? Hmm? ' . PHP_EOL;
-//           return false;
-//           // @todo error out
-//        }
+        return false;
     }
 
     /**
