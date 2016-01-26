@@ -210,10 +210,10 @@ class ImportController extends AbstractActionController
                 $queryParams = [];
 
                 // start out with row -1
-                $rowNumber = -1;
+                $count = 0;
 
                 // process the rows
-                foreach ( $file as $rowNumber => $record ) {
+                foreach ( $file as $record ) {
 
                     // so we don't parse an empty line
                     if ( $record ) {
@@ -248,11 +248,10 @@ class ImportController extends AbstractActionController
                         $queryParams[':deleted_at']         = null;
 
                         $db->prepare($sql)->execute($queryParams);
+                        $count++;
                     }
                 }
-
-                $rowNumber++;
-                echo "ended at " . date('h:i:s A') . PHP_EOL . 'imported ' . $rowNumber . ' records' . PHP_EOL;
+                echo "ended at " . date('h:i:s A') . PHP_EOL . 'imported ' . $count . ' records' . PHP_EOL;
             } else {
                 die('Parameter must be a CSV file.');
             }
