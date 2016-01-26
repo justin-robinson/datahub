@@ -215,37 +215,40 @@ class ImportController extends AbstractActionController
                 // process the rows
                 foreach ( $file as $rowNumber => $record ) {
 
-                    // TODO create ticker exchange normalizer classes
-                    $tickerExchange = strpos($record[$rc['TickerExchange']], 'NASDAQ') ? 'NASDAQ' : $record[$rc['TickerExchange']];
-                    $tickerExchange = strpos($record[$rc['TickerExchange']], 'York Stock') ? 'NYSE' : $record[$rc['TickerExchange']];
+                    // so we don't parse an empty line
+                    if ( !empty($record) ) {
+                        // TODO create ticker exchange normalizer classes
+                        $tickerExchange = strpos($record[$rc['TickerExchange']], 'NASDAQ') ? 'NASDAQ' : $record[$rc['TickerExchange']];
+                        $tickerExchange = strpos($record[$rc['TickerExchange']], 'York Stock') ? 'NYSE' : $record[$rc['TickerExchange']];
 
-                    //var_dump($record);
-                    $queryParams[':refinery_id']        = $record[$rc['InternalId']];
-                    $queryParams[':meroveus_id']        = null;
-                    $queryParams[':generate_code']      = $record[$rc['GenId']];
-                    $queryParams[':record_source']      = (empty($record[$rc['SourceID']]) ? 'Refinery' : 'Refinery:' . $record[$rc['SourceID']]);
-                    $queryParams[':company_name']       = $record[$rc['Name']];
-                    $queryParams[':public_ticker']      = $record[$rc['Ticker']];
-                    $queryParams[':ticker_exchange']    = $tickerExchange;
-                    $queryParams[':source_modified_at'] = $record[$rc['DateModified']];
-                    $queryParams[':address1']           = $record[$rc['Addr1']];
-                    $queryParams[':address2']           = $record[$rc['Addr2']];
-                    $queryParams[':city']               = $record[$rc['City']];
-                    $queryParams[':state']              = $record[$rc['State']];
-                    $queryParams[':postal_code']        = $record[$rc['PostalCode']]; // validate
-                    $queryParams[':country']            = $record[$rc['Country']]; // validate
-                    $queryParams[':latitude']           = $record[$rc['Lat']];
-                    $queryParams[':longitude']          = $record[$rc['Lon']];
-                    $queryParams[':phone']              = $record[$rc['OfficePhone1']];
-                    $queryParams[':website']            = $record[$rc['Url']];
-                    $queryParams[':is_active']          = true;
-                    $queryParams[':sic_code']           = $record[$rc['Sic']];
-                    $queryParams[':employee_count']     = 0;
-                    $queryParams[':created_at']         = 'NOW()';
-                    $queryParams[':updated_at']         = 'NOW()';
-                    $queryParams[':deleted_at']         = null;
+                        //var_dump($record);
+                        $queryParams[':refinery_id']        = $record[$rc['InternalId']];
+                        $queryParams[':meroveus_id']        = null;
+                        $queryParams[':generate_code']      = $record[$rc['GenId']];
+                        $queryParams[':record_source']      = (empty($record[$rc['SourceID']]) ? 'Refinery' : 'Refinery:' . $record[$rc['SourceID']]);
+                        $queryParams[':company_name']       = $record[$rc['Name']];
+                        $queryParams[':public_ticker']      = $record[$rc['Ticker']];
+                        $queryParams[':ticker_exchange']    = $tickerExchange;
+                        $queryParams[':source_modified_at'] = $record[$rc['DateModified']];
+                        $queryParams[':address1']           = $record[$rc['Addr1']];
+                        $queryParams[':address2']           = $record[$rc['Addr2']];
+                        $queryParams[':city']               = $record[$rc['City']];
+                        $queryParams[':state']              = $record[$rc['State']];
+                        $queryParams[':postal_code']        = $record[$rc['PostalCode']]; // validate
+                        $queryParams[':country']            = $record[$rc['Country']]; // validate
+                        $queryParams[':latitude']           = $record[$rc['Lat']];
+                        $queryParams[':longitude']          = $record[$rc['Lon']];
+                        $queryParams[':phone']              = $record[$rc['OfficePhone1']];
+                        $queryParams[':website']            = $record[$rc['Url']];
+                        $queryParams[':is_active']          = true;
+                        $queryParams[':sic_code']           = $record[$rc['Sic']];
+                        $queryParams[':employee_count']     = 0;
+                        $queryParams[':created_at']         = 'NOW()';
+                        $queryParams[':updated_at']         = 'NOW()';
+                        $queryParams[':deleted_at']         = null;
 
-                    $db->prepare($sql)->execute($queryParams);
+                        $db->prepare($sql)->execute($queryParams);
+                    }
                 }
 
                 $rowNumber++;
