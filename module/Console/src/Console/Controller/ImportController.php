@@ -198,19 +198,24 @@ class ImportController extends AbstractActionController
 
         $csvFile = realpath($this->getRequest()->getParam('file'));
         if (file_exists($csvFile)) {
-            $info = pathinfo($csvFile);
-            if ($info['extension'] == 'csv') {
+            if (pathinfo($csvFile, PATHINFO_EXTENSION) === 'csv') {
                 echo "Processing File: " . $csvFile . PHP_EOL;
-                /* @var $model \Hub\Model\Company */
-                $model  = $this->getServiceLocator()->get('Hub\Model\Company');
-                $fp     = fopen($csvFile, 'r');
-                $header = $record = fgetcsv($fp);
-                //var_dump($header);
-                $rc          = $this->RefineryColumns;
-                $queryParams = [];
-                $count = 0;
-                while ($record = fgetcsv($fp)) {
 
+                // open file as csv
+                $file = new \Console\CsvIterator($csvFile);
+
+                // refinery columns
+                $rc = array_flip($file->getHeaderRow());
+
+                $queryParams = [];
+
+                // start out with row -1
+                $rowNumber = -1;
+
+                // process the rows
+                foreach ( $file as $rowNumber => $record ) {
+
+                    // TODO create ticker exchange normalizer classes
                     $tickerExchange = strpos($record[$rc['TickerExchange']], 'NASDAQ') ? 'NASDAQ' : $record[$rc['TickerExchange']];
                     $tickerExchange = strpos($record[$rc['TickerExchange']], 'York Stock') ? 'NYSE' : $record[$rc['TickerExchange']];
 
@@ -240,10 +245,11 @@ class ImportController extends AbstractActionController
                     $queryParams[':updated_at']         = 'NOW()';
                     $queryParams[':deleted_at']         = null;
 
-                    $query = $db->prepare($sql)->execute($queryParams);
-                    $count++;
+                    $db->prepare($sql)->execute($queryParams);
                 }
-                echo "ended at " . date('h:i:s A') . PHP_EOL . 'imported ' . $count . ' records' . PHP_EOL;
+
+                $rowNumber++;
+                echo "ended at " . date('h:i:s A') . PHP_EOL . 'imported ' . $rowNumber . ' records' . PHP_EOL;
             } else {
                 die('Parameter must be a CSV file.');
             }

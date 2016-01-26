@@ -6,4 +6,5 @@ return array(
     'Console\Controller\IndexController'          => __DIR__ . '/src/Console/Controller/IndexController.php',
     'Console\Controller\MeroveusController'       => __DIR__ . '/src/Console/Controller/MeroveusController.php',
     'Console\Module'                              => __DIR__ . '/Module.php',
+    'Console\FileIterator'                        => __DIR__ . '/src/Console/FileIterator.php'
 );
