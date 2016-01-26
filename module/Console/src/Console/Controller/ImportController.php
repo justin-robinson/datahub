@@ -216,7 +216,7 @@ class ImportController extends AbstractActionController
                 foreach ( $file as $rowNumber => $record ) {
 
                     // so we don't parse an empty line
-                    if ( !empty($record) ) {
+                    if ( $record ) {
                         // TODO create ticker exchange normalizer classes
                         $tickerExchange = strpos($record[$rc['TickerExchange']], 'NASDAQ') ? 'NASDAQ' : $record[$rc['TickerExchange']];
                         $tickerExchange = strpos($record[$rc['TickerExchange']], 'York Stock') ? 'NYSE' : $record[$rc['TickerExchange']];

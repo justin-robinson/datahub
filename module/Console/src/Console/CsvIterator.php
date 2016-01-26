@@ -17,7 +17,7 @@ class CsvIterator extends \SplFileObject {
 
         parent::__construct ( $file_name, $open_mode, $use_include_path, $context );
 
-        $this->setFlags(\SplFileObject::READ_CSV);
+        $this->setFlags(\SplFileObject::READ_CSV | \SplFileObject::SKIP_EMPTY);
     }
 
     /**
