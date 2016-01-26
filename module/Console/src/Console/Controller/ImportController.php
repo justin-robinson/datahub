@@ -126,10 +126,10 @@ class ImportController extends AbstractActionController
      * @access pubic
      * @return void
      */
-    public function refineryAction() {
-
+    public function refineryAction()
+    {
         //@todo set up environment sniffing
-        echo '
+        echo'
          ██▓    ███▄ ▄███▓    ██▓███      ▒█████      ██▀███     ▄▄▄█████▓    ██▓    ███▄    █      ▄████
         ▓██▒   ▓██▒▀█▀ ██▒   ▓██░  ██▒   ▒██▒  ██▒   ▓██ ▒ ██▒   ▓  ██▒ ▓▒   ▓██▒    ██ ▀█   █     ██▒ ▀█▒
         ▒██▒   ▓██    ▓██░   ▓██░ ██▓▒   ▒██░  ██▒   ▓██ ░▄█ ▒   ▒ ▓██░ ▒░   ▒██▒   ▓██  ▀█ ██▒   ▒██░▄▄▄░
@@ -139,9 +139,9 @@ class ImportController extends AbstractActionController
          ▒ ░   ░  ░      ░   ░▒ ░          ░ ▒ ▒░      ░▒ ░ ▒░       ░        ▒ ░   ░ ░░   ░ ▒░     ░   ░
          ▒ ░   ░      ░      ░░          ░ ░ ░ ▒       ░░   ░      ░          ▒ ░      ░   ░ ░    ░ ░   ░
          ░            ░                      ░ ░        ░                     ░              ░          ░
-        ' . PHP_EOL;
-        echo "started at " . date ( 'h:i:s A' ) . PHP_EOL;
-        $db = new \PDO( 'mysql:host=devdb.bizjournals.int;dbname=datahub', 'web', '' );
+        '. PHP_EOL;
+        echo "started at " . date('h:i:s A') . PHP_EOL;
+        $db  = new \PDO('mysql:host=devdb.bizjournals.int;dbname=datahub', 'web', '');
         $sql = ' INSERT INTO
             company(
                 refinery_id,
@@ -196,18 +196,18 @@ class ImportController extends AbstractActionController
                 :deleted_at
             )';
 
-        $csvFile = $this->getRequest ()->getParam ( 'file' );
-        if ( pathinfo ( $csvFile, PATHINFO_EXTENSION ) === 'csv' ) {
-            try {
+        $csvFile = realpath($this->getRequest()->getParam('file'));
+        if (file_exists($csvFile)) {
+            if (pathinfo($csvFile, PATHINFO_EXTENSION) === 'csv') {
                 echo "Processing File: " . $csvFile . PHP_EOL;
 
                 // open file as csv
-                $file = new \Console\CsvIterator( $csvFile );
+                $file = new \Console\CsvIterator($csvFile);
 
                 // refinery columns
-                $rc = array_flip ( $file->getHeaderRow () );
+                $rc = array_flip($file->getHeaderRow());
 
-                $queryParams = [ ];
+                $queryParams = [];
 
                 // start out with row -1
                 $rowNumber = -1;
@@ -216,53 +216,49 @@ class ImportController extends AbstractActionController
                 foreach ( $file as $rowNumber => $record ) {
 
                     // so we don't parse an empty line
-                    if ( !empty( $record ) ) {
+                    if ( !empty($record) ) {
                         // TODO create ticker exchange normalizer classes
-                        $tickerExchange = strpos ( $record[$rc['TickerExchange']], 'NASDAQ' ) ? 'NASDAQ' : $record[$rc['TickerExchange']];
-                        $tickerExchange = strpos ( $record[$rc['TickerExchange']], 'York Stock' ) ? 'NYSE' : $record[$rc['TickerExchange']];
+                        $tickerExchange = strpos($record[$rc['TickerExchange']], 'NASDAQ') ? 'NASDAQ' : $record[$rc['TickerExchange']];
+                        $tickerExchange = strpos($record[$rc['TickerExchange']], 'York Stock') ? 'NYSE' : $record[$rc['TickerExchange']];
 
                         //var_dump($record);
-                        $queryParams[':refinery_id'] = $record[$rc['InternalId']];
-                        $queryParams[':meroveus_id'] = null;
-                        $queryParams[':generate_code'] = $record[$rc['GenId']];
-                        $queryParams[':record_source'] = ( empty( $record[$rc['SourceID']] ) ? 'Refinery' : 'Refinery:' . $record[$rc['SourceID']] );
-                        $queryParams[':company_name'] = $record[$rc['Name']];
-                        $queryParams[':public_ticker'] = $record[$rc['Ticker']];
-                        $queryParams[':ticker_exchange'] = $tickerExchange;
+                        $queryParams[':refinery_id']        = $record[$rc['InternalId']];
+                        $queryParams[':meroveus_id']        = null;
+                        $queryParams[':generate_code']      = $record[$rc['GenId']];
+                        $queryParams[':record_source']      = (empty($record[$rc['SourceID']]) ? 'Refinery' : 'Refinery:' . $record[$rc['SourceID']]);
+                        $queryParams[':company_name']       = $record[$rc['Name']];
+                        $queryParams[':public_ticker']      = $record[$rc['Ticker']];
+                        $queryParams[':ticker_exchange']    = $tickerExchange;
                         $queryParams[':source_modified_at'] = $record[$rc['DateModified']];
-                        $queryParams[':address1'] = $record[$rc['Addr1']];
-                        $queryParams[':address2'] = $record[$rc['Addr2']];
-                        $queryParams[':city'] = $record[$rc['City']];
-                        $queryParams[':state'] = $record[$rc['State']];
-                        $queryParams[':postal_code'] = $record[$rc['PostalCode']]; // validate
-                        $queryParams[':country'] = $record[$rc['Country']]; // validate
-                        $queryParams[':latitude'] = $record[$rc['Lat']];
-                        $queryParams[':longitude'] = $record[$rc['Lon']];
-                        $queryParams[':phone'] = $record[$rc['OfficePhone1']];
-                        $queryParams[':website'] = $record[$rc['Url']];
-                        $queryParams[':is_active'] = true;
-                        $queryParams[':sic_code'] = $record[$rc['Sic']];
-                        $queryParams[':employee_count'] = 0;
-                        $queryParams[':created_at'] = 'NOW()';
-                        $queryParams[':updated_at'] = 'NOW()';
-                        $queryParams[':deleted_at'] = null;
+                        $queryParams[':address1']           = $record[$rc['Addr1']];
+                        $queryParams[':address2']           = $record[$rc['Addr2']];
+                        $queryParams[':city']               = $record[$rc['City']];
+                        $queryParams[':state']              = $record[$rc['State']];
+                        $queryParams[':postal_code']        = $record[$rc['PostalCode']]; // validate
+                        $queryParams[':country']            = $record[$rc['Country']]; // validate
+                        $queryParams[':latitude']           = $record[$rc['Lat']];
+                        $queryParams[':longitude']          = $record[$rc['Lon']];
+                        $queryParams[':phone']              = $record[$rc['OfficePhone1']];
+                        $queryParams[':website']            = $record[$rc['Url']];
+                        $queryParams[':is_active']          = true;
+                        $queryParams[':sic_code']           = $record[$rc['Sic']];
+                        $queryParams[':employee_count']     = 0;
+                        $queryParams[':created_at']         = 'NOW()';
+                        $queryParams[':updated_at']         = 'NOW()';
+                        $queryParams[':deleted_at']         = null;
 
-                        $db->prepare ( $sql )->execute ( $queryParams );
+                        $db->prepare($sql)->execute($queryParams);
                     }
                 }
 
                 $rowNumber++;
-                echo "ended at " . date ( 'h:i:s A' ) . PHP_EOL . 'imported ' . $rowNumber . ' records' . PHP_EOL;
-            } catch ( \RuntimeException $e ) {
-                die( $e->getMessage () );
+                echo "ended at " . date('h:i:s A') . PHP_EOL . 'imported ' . $rowNumber . ' records' . PHP_EOL;
+            } else {
+                die('Parameter must be a CSV file.');
             }
         } else {
-            die( 'Parameter must be a CSV file.' );
+            die('File not found: ' . $csvFile);
         }
-    }
-
-    public function relevateAction () {
-
     }
 
 }
