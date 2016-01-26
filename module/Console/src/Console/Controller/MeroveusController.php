@@ -30,7 +30,7 @@ class MeroveusController extends AbstractActionController
      * map of our market names to their respective meroveus environments
      */
     private $markets = [
-        'albany' => '12',
+        'albany'       => '12',
         'albuquerque'  => '9',
         'atlanta'      => '11',
         'austin'       => '22',
@@ -258,30 +258,24 @@ class MeroveusController extends AbstractActionController
                 $company = $companyService->findOneByMeroveusId($target['meroveusId']);
                 if ($company) {
                     foreach ($target['contacts'] as $contact) {
-                        // some of them have no data so we ignore them
-//                        if (empty($contact['last_name']) || empty($contact['last_name'])) {
-//                            continue;
-//                        }
+
                         // attach the companys hub id to the contact, format it and add it
                         $contact['hub_id'] = $company->getHubId();
-                        $formatedContact   = $contactService->formatMeroveusReturn($contact);
 
-                        if ($formatedContact) {
-                            $contactAdded = $this->addContactPdo->execute($formatedContact);
-//                            $contactAdded = true;
+                        if ($contactService->formatMeroveusReturn($contact)) {
+                            $contactAdded = $this->addContactPdo->execute(
+                                $contactService->formatMeroveusReturn($contact)
+                            );
                             if (!$contactAdded) {
-//                                echo 'opps, contact add failed' . PHP_EOL;
-//                                var_dump($formatedContact);
                                 // @todo log it
                             } else {
-//                                echo 'Contact added';
+                                // @todo and do what, exactly?
                             };
                         }
                     }
                 }
-                $contactService = null;
-                $companyService = null;
-                $company        = null;
+                unset($contactService, $companyService, $company);
+                gc_collect_cycles();
             }
 
             echo $market . ':' . PHP_EOL;
@@ -380,10 +374,8 @@ class MeroveusController extends AbstractActionController
         // make sure that we have everything that we need
         foreach ($queryFields as $field) {
             if (!$field) {
-
-                $search  = null;
-                $query   = null;
-                $builder = null;
+                unset($search, $query, $builder);
+                gc_collect_cycles();
                 return false;
             }
         }
@@ -407,28 +399,19 @@ class MeroveusController extends AbstractActionController
 
         foreach ($resultSet->getResults() as $result) {
             if ($result->getScore() === $topScore) {
-
-                $resultSet = null;
-                $search    = null;
-                $query     = null;
-                $builder   = null;
+                unset($resultSet, $search, $query, $builder);
+                gc_collect_cycles();
                 return $result;
 
             } else {
-
-                $resultSet = null;
-                $search    = null;
-                $query     = null;
-                $builder   = null;
-
+                unset($resultSet, $search, $query, $builder);
+                gc_collect_cycles();
                 return false;
 
             }
         }
-
-        $search  = null;
-        $query   = null;
-        $builder = null;
+        unset($search, $query, $builder);
+        gc_collect_cycles();
         // if we get here it's broke
         return false;
     }
@@ -453,12 +436,12 @@ class MeroveusController extends AbstractActionController
 
         $update = $pdo->execute([':meroveus_id' => $target['meroveusId'], 'refinery_id' => $refineryId]);
         if ($update) {
-            unset($match);
-            unset($pdo);
+            unset($match, $pdo);
+            gc_collect_cycles();
 
         } else {
-            unset($match);
-            unset($pdo);
+            unset($match, $pdo);
+            gc_collect_cycles();
             echo 'processMatch called for no good reason. did you run the import? Hmm? ' . PHP_EOL;
             return false;
         }

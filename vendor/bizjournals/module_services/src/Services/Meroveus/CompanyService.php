@@ -156,6 +156,8 @@ class CompanyService extends AbstractService
                 }
                 array_push($list, $company);
             }
+            unset($labels, $company);
+            gc_collect_cycles();
             return $list;
         } else {
             return false;
@@ -221,38 +223,6 @@ class CompanyService extends AbstractService
             return false;
         }
     }
-
-    /**
-     * Send a request to meroveus
-     *
-     * @access public
-     * @param string $mode
-     * @param string $market_code
-     * @param array $params
-     * @throws Core_Exceptionfunction
-     * @return array
-     */
-    public function send($mode, $market_code, array $params = [])
-    {
-        $return = null;
-        $mode   = strtoupper($mode);
-        if (in_array($mode, $this->_validModes)) {
-            $sendArray = $params + [
-                    'AKEY' => $this->akey,
-                    'EKEY' => $this->ekey,
-                    'MODE' => $mode,
-                ];
-            $resp      = MeroveusClient::sendRequest(json_encode($sendArray),
-                in_array($mode, ['LABELSEARCH', 'FIELDSEARCH']));
-            $return    = (in_array(substr($resp, 0, 1), ['{', '[']) ? json_decode($resp, true) : $resp);
-        } else {
-            //@todo figure out the right way to do this
-            //throw new Core_Exception('Invalid Meroveous Mode');
-        }
-
-        return $return;
-    }
-
 }
 
 

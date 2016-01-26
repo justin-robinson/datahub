@@ -74,7 +74,8 @@ class ContactService extends AbstractService
         $contact[':created_at']     = 'NOW()';
         $contact[':updated_at']     = 'NOW()';
         $contact[':deleted_at']     = null;
-
+        unset($meroveusReturn);
+        gc_collect_cycles();
         return $contact;
 
     }
