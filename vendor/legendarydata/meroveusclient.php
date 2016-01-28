@@ -38,7 +38,7 @@ class MeroveusClient {
 	private static $bExposePrivateData = false;
 
 
-	public function MeroveusClient( $aKey=null, $eKey=null ) {
+	public function __construct( $aKey=null, $eKey=null ) {
 		$this->AKEY = $aKey;
 		$this->EKEY = $eKey;
 		$this->TIMEFRAME = date( "Y", mktime() );
