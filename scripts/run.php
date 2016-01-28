@@ -19,5 +19,11 @@ putenv("APPLICATION_ENV=$environment");
 // Setup autoloading
 require 'vendor/autoload.php';
 
+// orm autoloader
+$ormIncludePath = 'orm/phpr/base.php';
+if ( file_exists($ormIncludePath) ) {
+    require_once $ormIncludePath;
+}
+
 // Run the application!
 Zend\Mvc\Application::init(require 'config/application.config.php')->run();
