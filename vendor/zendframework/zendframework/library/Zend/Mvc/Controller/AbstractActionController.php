@@ -45,6 +45,7 @@ abstract class AbstractActionController extends AbstractController
         // setup db connection
         // todo dynamic db connection
         $this->db = new \PDO('mysql:host=devdb.bizjournals.int;dbname=datahub', 'web', '');
+        $this->db->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
 
         // prepare sql statements
         foreach ( $this->sqlStringsArray as $name => $sqlString ) {
