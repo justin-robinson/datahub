@@ -93,110 +93,185 @@ class ImportController extends AbstractActionController
         'WY' => 'Wyoming',
     ];
 
-    protected $sqlInsertCompany = ' INSERT INTO
-            datahub.company(
-                refinery_id,
+    /**
+     * @var $sqlStatementsArray \mysqli_stmt[]
+     */
+    protected $sqlStatementsArray = [];
+
+    /**
+     * @var $sqlStringsArray string[]
+     */
+    protected $sqlStringsArray = [
+        'selectContacts' => '
+            SELECT
+                *
+            FROM
+              `datahub`.`contact`
+            WHERE meroveus_id = ?
+            LIMIT 1000',
+        'selectCompany' => '
+            SELECT
+                *
+            FROM
+              `datahub`.`company`
+            WHERE meroveus_id = ?',
+        'selectJobPosition' => '
+            SELECT
+              job_position_id
+            FROM
+              `datahub`.`job_position`
+            WHERE
+               position = ?',
+        'insertCompany' => '
+            INSERT INTO
+                datahub.company(
+                    refinery_id,
+                    meroveus_id,
+                    generate_code,
+                    record_source,
+                    company_name,
+                    public_ticker,
+                    ticker_exchange,
+                    source_modified_at,
+                    address1,
+                    address2,
+                    city,
+                    state,
+                    postal_code,
+                    country,
+                    latitude,
+                    longitude,
+                    phone,
+                    website,
+                    is_active,
+                    sic_code,
+                    employee_count,
+                    created_at,
+                    updated_at,
+                    deleted_at
+                    )
+                VALUES (
+                    :refinery_id,
+                    :meroveus_id,
+                    :generate_code,
+                    :record_source,
+                    :company_name,
+                    :public_ticker,
+                    :ticker_exchange,
+                    :source_modified_at,
+                    :address1,
+                    :address2,
+                    :city,
+                    :state,
+                    :postal_code,
+                    :country,
+                    :latitude,
+                    :longitude,
+                    :phone,
+                    :website,
+                    :is_active,
+                    :sic_code,
+                    :employee_count,
+                    :created_at,
+                    :updated_at,
+                    :deleted_at
+            )',
+        'insertContact' => '
+            INSERT INTO
+              datahub.contact (
+                hub_id,
                 meroveus_id,
-                generate_code,
-                record_source,
-                company_name,
-                public_ticker,
-                ticker_exchange,
-                source_modified_at,
+                relevate_id,
+                is_duplicate,
+                is_current_employee,
+                first_name,
+                middle_initial,
+                last_name,
+                suffix,
+                honorific,
+                job_title,
+                job_position_id,
+                email,
+                phone,
                 address1,
                 address2,
                 city,
                 state,
                 postal_code,
-                country,
-                latitude,
-                longitude,
-                phone,
-                website,
-                is_active,
-                sic_code,
-                employee_count,
                 created_at,
                 updated_at,
                 deleted_at
-                )
-            VALUES (
-                :refinery_id,
+              )
+              VALUES (
+                :hub_id,
                 :meroveus_id,
-                :generate_code,
-                :record_source,
-                :company_name,
-                :public_ticker,
-                :ticker_exchange,
-                :source_modified_at,
+                :relevate_id,
+                :is_duplicate,
+                :is_current_employee,
+                :first_name,
+                :middle_initial,
+                :last_name,
+                :suffix,
+                :honorific,
+                :job_title,
+                :job_position_id,
+                :email,
+                :phone,
                 :address1,
                 :address2,
                 :city,
                 :state,
                 :postal_code,
-                :country,
-                :latitude,
-                :longitude,
-                :phone,
-                :website,
-                :is_active,
-                :sic_code,
-                :employee_count,
-                :created_at,
-                :updated_at,
-                :deleted_at
-            )';
+                NOW(),
+                NOW(),
+                NULL
+              )',
+        'updateContact' => '
+            UPDATE
+              `datahub`.`contact`
+            SET
+                hub_id = :hub_id,
+                meroveus_id = :meroveus_id,
+                relevate_id = :relevate_id,
+                is_duplicate = :is_duplicate,
+                is_current_employee = :is_current_employee,
+                first_name = :first_name,
+                middle_initial = :middle_initial,
+                last_name = :last_name,
+                suffix = :suffix,
+                honorific = :honorific,
+                job_title = :job_title,
+                job_position_id = :job_position_id,
+                email = :email,
+                phone = :phone,
+                address1 = :address1,
+                address2 = :address2,
+                city = :city,
+                state = :state,
+                postal_code = :postal_code,
+                created_at = :created_at,
+                updated_at = NOW(),
+                deleted_at = :deleted_at
+            WHERE
+              contact_id = :contact_id'
+    ];
 
-    protected $sqlInsertContact =
-        'INSERT INTO
-          datahub.contact (
-            hub_id,
-            meroveus_id,
-            relevate_id,
-            is_duplicate,
-            is_current_employee,
-            first_name,
-            middle_initial,
-            last_name,
-            suffix,
-            honorific,
-            job_title,
-            job_position_id,
-            email,
-            phone,
-            address1,
-            address2,
-            city,
-            state,
-            postal_code,
-            created_at,
-            updated_at,
-            deleted_at
-          )
-          VALUES (
-            :hub_id,
-            :meroveus_id,
-            :relevate_id,
-            :is_duplicate,
-            :is_current_employee,
-            :first_name,
-            :middle_initial,
-            :last_name,
-            :suffix,
-            :honorific,
-            :job_title,
-            :job_position_id,
-            :email,
-            :phone,
-            :address1,
-            :address2,
-            :city,
-            :state,
-            :postal_code,
-            NOW(),
-            NOW(),
-            NULL
-          )';
+    /**
+     * @var \PDO
+     */
+    protected $db;
+
+    public function __construct () {
+
+        // setup db connection
+        // todo dynamic db connection
+        $this->db = new \PDO('mysql:host=devdb.bizjournals.int;dbname=datahub', 'web', '');
+
+        // prepare sql statements
+        foreach ( $this->sqlStringsArray as $name => $sqlString ) {
+            $this->sqlStatementsArray[$name] = $this->db->prepare( $sqlString );
+        }
+    }
 
     /**
      * Just echo the environment
@@ -246,7 +321,6 @@ class ImportController extends AbstractActionController
          ░            ░                      ░ ░        ░                     ░              ░          ░
         '. PHP_EOL;
         echo "started at " . date('h:i:s A') . PHP_EOL;
-        $db  = new \PDO('mysql:host=devdb.bizjournals.int;dbname=datahub', 'web', '');
 
         $csvFile = realpath($this->getRequest()->getParam('file'));
         if (file_exists($csvFile)) {
@@ -265,7 +339,7 @@ class ImportController extends AbstractActionController
                 $count = 0;
 
                 // prepare our insert
-                $insertStatement = $db->prepare($this->sqlInsertCompany);
+                $insertStatement = $this->sqlStatementsArray['insertCompany'];
 
                 // process the rows
                 foreach ( $file as $record ) {
@@ -333,6 +407,17 @@ class ImportController extends AbstractActionController
         // meroveus ids are grouped together so we can use this to reduce sql queries down to 1 for each company
         $lastMeroveusId = -1;
 
+        $selectJobPosition = $this->sqlStatementsArray['selectJobPosition'];
+        $selectAllContacts = $this->sqlStatementsArray['selectContacts'];
+        $selectCompany = $this->sqlStatementsArray['selectCompany'];
+        $insertContact = $this->sqlStatementsArray['insertContact'];
+        $updateContact = $this->sqlStatementsArray['updateContact'];
+
+        // some stats
+        $totalCount = $insertCount = $updateCount = 0;
+
+        echo "started at " . date('h:i:s A') . PHP_EOL;
+
         foreach ( $file as $line ) {
 
             // char 0 to 10 is the id, strip off the first two digits and we have a meroveus id
@@ -345,32 +430,39 @@ class ImportController extends AbstractActionController
              *          - justin robinson
              */
             $contactDataArray = [
-                'meroveus_id'         => $currentMeroveusId,
-                'relevate_id'         => $currentMeroveusId,
-                'is_duplicate'        => 0,
-                'is_current_employee' => 1,
-                'first_name'          => ucwords ( strtolower ( trim ( substr ( $line, 296, 11 ) ) ) ),
-                'middle_initial'      => ucwords ( strtolower ( trim ( substr ( $line, 307, 1 ) ) ) ),
-                'last_name'           => ucwords ( strtolower ( trim ( substr ( $line, 308, 14 ) ) ) ),
-                'suffix'              => ucwords ( strtolower ( trim ( substr ( $line, 322, 3 ) ) ) ),
-                'honorific'           => '',
-                'job_title'           => ucwords ( strtolower ( trim ( substr ( $line, 325, 30 ) ) ) ),
-                'job_position_id'     => '',
-                'email'               => '',
-                'phone'               => '',
-                'address1'            => '',
-                'address2'            => null,
-                'city'                => null,
-                'state'               => null,
-                'postal_code'         => null,
-                'created_at'          => new \phpr\Database\Literal('NOW()'),
-                'updated_at'          => new \phpr\Database\Literal('NOW()'),
+                ':hub_id'              => '',
+                ':meroveus_id'         => $currentMeroveusId,
+                ':relevate_id'         => $currentMeroveusId,
+                ':is_duplicate'        => 0,
+                ':is_current_employee' => 1,
+                ':first_name'          => ucwords ( strtolower ( trim ( substr ( $line, 296, 11 ) ) ) ),
+                ':middle_initial'      => ucwords ( strtolower ( trim ( substr ( $line, 307, 1 ) ) ) ),
+                ':last_name'           => ucwords ( strtolower ( trim ( substr ( $line, 308, 14 ) ) ) ),
+                ':suffix'              => ucwords ( strtolower ( trim ( substr ( $line, 322, 3 ) ) ) ),
+                ':honorific'           => '',
+                ':job_title'           => ucwords ( strtolower ( trim ( substr ( $line, 325, 30 ) ) ) ),
+                ':job_position_id'     => '',
+                ':email'               => '',
+                ':phone'               => '',
+                ':address1'            => '',
+                ':address2'            => null,
+                ':city'                => null,
+                ':state'               => null,
+                ':postal_code'         => null
             ];
 
+            // get the hub id
+            $selectCompany->execute([$currentMeroveusId]);
+            if ( $selectCompany->rowCount() > 0 ) {
+                $company = $selectCompany->fetch(\PDO::FETCH_ASSOC);
+                $contactDataArray[':hub_id'] = $company['hub_id'];
+            }
+
             // get the job position id
-            $jobPosition = \DB\Datahub\JobPosition::fetch_one_where('position = ?', [$contactDataArray['job_title']]);
-            if ( $jobPosition ) {
-                $contactDataArray['job_position_id'] = $jobPosition->job_position_id;
+            $selectJobPosition->execute([$contactDataArray[':job_title']]);
+            if ( $selectJobPosition->rowCount() > 0 ) {
+                $jobPosition = $selectJobPosition->fetch(\PDO::FETCH_ASSOC);
+                $contactDataArray[':job_position_id'] = $jobPosition['job_position_id'];
             }
 
             // if we have a new meroveus id, get all the contacts related to it
@@ -380,50 +472,76 @@ class ImportController extends AbstractActionController
                 $lastMeroveusId = $currentMeroveusId;
 
                 // get all contacts for this meroveus id
-                $allContacts = \DB\Datahub\Contact::fetch_where(
-                    'meroveus_id = ?',
-                    1000,
-                    [$currentMeroveusId]);
+                $allContacts = [];
 
-                // translate int indexes into something useful
-                foreach ( $allContacts as $key => $contact ) {
+                $selectAllContacts->execute([$currentMeroveusId]);
 
-                    // new index will be the contact name
-                    $newKey = strtolower($contact->first_name . $contact->last_name);
-
-                    // replace index
-                    $allContacts[$newKey] = $contact;
-                    unset($allContacts[$key]);
+                // add each contact to our contacts array index by their name
+                while ( $contact = $selectAllContacts->fetch(\PDO::FETCH_ASSOC) ) {
+                    $key = strtolower($contact['first_name'] . $contact['last_name']);
+                    $allContacts[$key] = $contact;
                 }
             }
 
-            // the contact key
-            $key = strtolower($contactDataArray['first_name'] . $contactDataArray['last_name']);
+            // key used to find this contact on our contacts array
+            $key = strtolower($contactDataArray[':first_name'] . $contactDataArray[':last_name']);
 
             // does this contact exist?
             if ( empty($allContacts[$key]) ) {
 
-                // create a new contact
-                $contact = new \DB\Datahub\Contact($contactDataArray);
+                // insert new contact
+                $insertCount += $insertContact->execute($contactDataArray);
 
             } else {
 
-                // update contact with missing info
-                $contact = $allContacts[$key];
+                // the contact in the db
+                $existingContact = $allContacts[$key];
 
-                foreach ( $contactDataArray as $columnName => $value ) {
+                // flag that we updated a contact
+                $contactNeedsUpdate = false;
 
-                    // do not replace this with empty() since 0 is a valid value
-                    if ( is_null($contact->{$columnName}) || $contact->{$columnName} === '' ) {
-                        $contact->{$columnName} = $value;
+                foreach ( $existingContact as $columnName => $valueInDB ) {
+
+                    // pdo sql statements use this column prefix naming convention
+                    $pdoColumnName = ':' . $columnName;
+
+                    // the value loaded from the csv
+                    $newValue = isset($contactDataArray[$pdoColumnName]) ? $contactDataArray[$pdoColumnName] : null;
+
+                    // is the new value different from what we have?
+                    $newValueisDifferent = $existingContact[$columnName] != $newValue;
+
+                    // current value is null or empty string
+                    $existingValueIsUseless = is_null($existingContact[$columnName]) || $existingContact[$columnName] === '';
+
+                    // update db value with new value
+                    if ( $newValueisDifferent && $existingValueIsUseless ) {
+                        $valueInDB = $newValue;
+                        $contactNeedsUpdate = true;
                     }
 
+                    // set value to be sent as update
+                    $contactDataArray[$pdoColumnName] = $valueInDB;
+
+                }
+
+                // this is set to NOW() in the prepared sql statement
+                unset($contactDataArray[':updated_at']);
+
+                // update the contact record
+                if ( $contactNeedsUpdate ) {
+                    $updateCount += $updateContact->execute($contactDataArray);
                 }
             }
 
-            $contact->save();
+            $totalCount++;
 
         }
+
+        echo "ended at " . date('h:i:s A') . PHP_EOL;
+        echo "imported {$totalCount} records" . PHP_EOL;
+        echo "\t created {$insertCount}";
+        echo "\t updated {$updateCount}";
     }
 
 }

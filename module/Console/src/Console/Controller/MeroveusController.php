@@ -213,6 +213,7 @@ class MeroveusController extends AbstractActionController
         $this->totalInserted = 0;
         /** @var  $contactService \Services\Meroveus\ContactService */
         $this->contactService = $this->getServiceLocator()->get('Services\Meroveus\ContactService');
+        $this->companyService = $this->getServiceLocator()->get('Services\Meroveus\CompanyService');
 
         $this->lastMemUsageMessageLength = 0;
 
@@ -267,13 +268,13 @@ class MeroveusController extends AbstractActionController
                         // process company contacts
 
                         // temp lookup for meroveus id @todo get this from pdo last id?
-                        $company = \DB\Datahub\Company::fetch_one_where('meroveus_id = ?', [$target['meroveusId']]);
+                        $company = $this->companyService->findOneByMeroveusId($target['meroveusId']);
 
                         if ($company) {
                             foreach ($target['contacts'] as $contact) {
 
                                 // attach the companys hub id to the contact, format it and add it
-                                $contact['hub_id'] = $company->hub_id;
+                                $contact['hub_id'] = $company->getHubId();
 
                                 if ($this->contactService->formatMeroveusReturn($contact)) {
                                     $contactAdded = $this->addContactPdo->execute(
@@ -291,7 +292,8 @@ class MeroveusController extends AbstractActionController
                         // track memory and total count
                         echo "\033[{$this->lastMemUsageMessageLength}D";
                         $total = $this->totalInserted + $this->totalMatched;
-                        $memory = $total . ':' . $index . ':' . $this->convert_memory_usage( memory_get_usage( true));
+                        $currentLoopInsertionCount = $index + 1;
+                        $memory = $total . ':' . $currentLoopInsertionCount . ':' . $this->convert_memory_usage( memory_get_usage( true));
                         $this->lastMemUsageMessageLength = strlen($memory);
                         echo $memory;
                     }
