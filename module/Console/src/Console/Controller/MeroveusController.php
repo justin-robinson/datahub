@@ -158,6 +158,14 @@ class MeroveusController extends AbstractActionController
               `datahub`.`company`
             WHERE
               meroveus_id = ?',
+        'selectCompaniesWithoutMeroveusId' => '
+            SELECT
+              *
+            FROM
+              `datahub`.`company`
+            WHERE
+              meroveus_id IS NULL
+            LIMIT :offset, :limit'
     ];
 
     /**
@@ -338,6 +346,95 @@ class MeroveusController extends AbstractActionController
         $end = date('h:i:s A');
         echo "ended at " . $end . PHP_EOL;
         echo 'Enjoy your day' . PHP_EOL;
+    }
+
+    /**
+     * Exports companies that do not have a meroveus id for relevate to match
+     */
+    public function exportRelevateAction () {
+
+        // get user provided file path or default to ours
+        @$outFilePath = $this->getRequest()->getParam('out') ?: 'relevate-' . time() . '.csv';
+
+        // open file, then erase or attempt to create
+        $file = fopen ( $outFilePath, 'w' );
+
+        if ( file_exists($outFilePath) ) {
+
+            $headerRow = [
+                'record_uid',
+                'pub_uid',
+                'record_name',
+                'address1',
+                'address2',
+                'address3',
+                'city',
+                'state',
+                'zip',
+                'zip4',
+                'phone',
+                'fax',
+                'public_email',
+                'website'
+            ];
+
+            // write header row
+            fputcsv ( $file, $headerRow );
+
+            /** @var  $companyStatement \mysqli_stmt */
+            $companyStatement = $this->sqlStatementsArray['selectCompaniesWithoutMeroveusId'];
+
+            // sql pagination setup
+            $queryParams = [
+                ':offset' => 0,
+                ':limit'  => 1000
+            ];
+
+            $count = 0;
+
+            // while we are getting rows back
+            while ( $companyStatement->execute ( $queryParams ) && $companyStatement->rowCount () > 0 ) {
+
+                // save each row to the csv file
+                while ( $row = $companyStatement->fetch () ) {
+
+                    // postal_code is zipPlus4 so split on the dash
+                    $zipParts = preg_split('/\-/', $row['postal_code'], -1, PREG_SPLIT_NO_EMPTY);
+
+                    // write this row to file
+                    fputcsv( $file, [
+                       $row['hub_id'],
+                       0,                   // pub_id doesn't matter
+                       $row['company_name'],
+                       $row['address1'],
+                       $row['address2'],
+                       '',                  // no address 3 field on our side
+                       $row['city'],
+                       $row['state'],
+                       @$zipParts[0],       // zip
+                       @$zipParts[1] ?: '', // zip4
+                       $row['phone'],
+                       '',                  // no fax field
+                       '',                  // no email
+                       $row['website']
+                    ]);
+
+                    $count++;
+                }
+
+                // lil bit o status
+                echo '.';
+
+                // setup for next round of sql results
+                $queryParams[':offset'] += $queryParams[':limit'];
+            }
+
+            fclose($file);
+
+            echo PHP_EOL . "exported {$count} companies to " . realpath($outFilePath);
+        }
+
+
     }
 
     /**
