@@ -291,7 +291,8 @@ class MeroveusController extends AbstractActionController
                         // track memory and total count
                         echo "\033[{$this->lastMemUsageMessageLength}D";
                         $total = $this->totalInserted + $this->totalMatched;
-                        $memory = $total . ':' . $index . ':' . $this->convert_memory_usage( memory_get_usage( true));
+                        $currentLoopInsertionCount = $index + 1;
+                        $memory = $total . ':' . $currentLoopInsertionCount . ':' . $this->convert_memory_usage( memory_get_usage( true));
                         $this->lastMemUsageMessageLength = strlen($memory);
                         echo $memory;
                     }
