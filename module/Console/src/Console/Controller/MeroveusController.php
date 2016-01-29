@@ -224,6 +224,9 @@ class MeroveusController extends AbstractActionController
 ';
         $start = date('h:i:s A');
         echo "started at " . $start . PHP_EOL;
+
+        echo 'while you wait: https://www.youtube.com/watch?v=siwpn14IE7E';
+
         $maxRows       = 500;
         $this->totalMatched  = 0;
         $this->totalInserted = 0;
