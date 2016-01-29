@@ -26,6 +26,33 @@ abstract class AbstractActionController extends AbstractController
     protected $eventIdentifier = __CLASS__;
 
     /**
+     * @var $sqlStatementsArray \mysqli_stmt[]
+     */
+    protected $sqlStatementsArray = [];
+
+    /**
+     * @var $sqlStringsArray string[]
+     */
+    protected $sqlStringsArray = [];
+
+    /**
+     * @var \PDO
+     */
+    protected $db;
+
+    public function __construct () {
+
+        // setup db connection
+        // todo dynamic db connection
+        $this->db = new \PDO('mysql:host=devdb.bizjournals.int;dbname=datahub', 'web', '');
+
+        // prepare sql statements
+        foreach ( $this->sqlStringsArray as $name => $sqlString ) {
+            $this->sqlStatementsArray[$name] = $this->db->prepare( $sqlString );
+        }
+    }
+
+    /**
      * Default action if none provided
      *
      * @return array

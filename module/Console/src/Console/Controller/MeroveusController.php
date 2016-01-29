@@ -148,10 +148,26 @@ class MeroveusController extends AbstractActionController
     private $updateCompanyPdo = null;
 
     /**
+     * @var $sqlStringsArray string[]
+     */
+    protected $sqlStringsArray = [
+        'selectOneCompanyByMeroveusId' => '
+            SELECT
+              *
+            FROM
+              `datahub`.`company`
+            WHERE
+              meroveus_id = ?',
+    ];
+
+    /**
      * Constructor
      */
     public function __construct()
     {
+
+        parent::__construct();
+
 //        $this->meroveusClient = new MeroveusClient(['path' => 'http://acbj-stg.meroveus.com:8080/api']);
 
         $this->companyService = new CompanyService($this->meroveusClient);
@@ -213,16 +229,18 @@ class MeroveusController extends AbstractActionController
         $this->totalInserted = 0;
         /** @var  $contactService \Services\Meroveus\ContactService */
         $this->contactService = $this->getServiceLocator()->get('Services\Meroveus\ContactService');
-        $this->companyService = $this->getServiceLocator()->get('Services\Meroveus\CompanyService');
 
         $this->lastMemUsageMessageLength = 0;
+
+        $selectCompany = $this->sqlStatementsArray['selectOneCompanyByMeroveusId'];
 
         foreach ($this->markets as $market => $env) {
 
             $this->paginatedSearch(
                 function ( $marketCompanyList ) use(
                     $market,
-                    $sanity) {
+                    $sanity,
+                    $selectCompany) {
 
 
                     if (!$marketCompanyList) {
@@ -268,13 +286,17 @@ class MeroveusController extends AbstractActionController
                         // process company contacts
 
                         // temp lookup for meroveus id @todo get this from pdo last id?
-                        $company = $this->companyService->findOneByMeroveusId($target['meroveusId']);
+                        $selectCompany->execute([$target['meroveusId']]);
+
+                        $company = ( $selectCompany->rowCount() > 0 )
+                            ? $company = $selectCompany->fetch(\PDO::FETCH_ASSOC)
+                            : false;
 
                         if ($company) {
                             foreach ($target['contacts'] as $contact) {
 
                                 // attach the companys hub id to the contact, format it and add it
-                                $contact['hub_id'] = $company->getHubId();
+                                $contact['hub_id'] = $company['hub_id'];
 
                                 if ($this->contactService->formatMeroveusReturn($contact)) {
                                     $contactAdded = $this->addContactPdo->execute(
