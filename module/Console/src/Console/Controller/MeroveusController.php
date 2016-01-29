@@ -93,6 +93,16 @@ class MeroveusController extends AbstractActionController
     private $elasticSearch;
 
     /**
+     * @var ElasticaQuery
+     */
+    private $elasticQuery;
+
+    /**
+     * @var QueryBuilder
+     */
+    private $elasticQueryBuilder;
+
+    /**
      * @var \PDO
      */
     private $dataHubDb;
@@ -154,6 +164,8 @@ class MeroveusController extends AbstractActionController
             'url'  => 'http://datahub.listsandleads.elasticsearch.bizj-dev.com:9200/rerefinery/',
         ]);
         $this->elasticSearch  = new ElasticaSearch($this->elasticaClient);
+        $this->elasticQuery = new ElasticaQuery();
+        $this->elasticQueryBuilder = new QueryBuilder();
 
         // prepare pdo outside the loop for memory purposes
         $this->dataHubDb        = new \PDO('mysql:host=devdb.bizjournals.int;dbname=datahub', 'web', '');
@@ -197,25 +209,28 @@ class MeroveusController extends AbstractActionController
         $start = date('h:i:s A');
         echo "started at " . $start . PHP_EOL;
         $maxRows       = 500;
-        $totalMatched  = 0;
-        $totalInserted = 0;
-        $marketMatched = $marketInserted = null;
+        $this->totalMatched  = 0;
+        $this->totalInserted = 0;
+        /** @var  $contactService \Services\Meroveus\ContactService */
+        $this->contactService = $this->getServiceLocator()->get('Services\Meroveus\ContactService');
+
+        $this->lastMemUsageMessageLength = 0;
 
         foreach ($this->markets as $market => $env) {
 
             $this->paginatedSearch(
-                function ( $marketCompanyList ) {
+                function ( $marketCompanyList ) use(
+                    $market,
+                    $sanity) {
 
-                    echo '.';
 
-                    global $market, $sanity, $marketMatched, $marketInserted, $totalMatched, $totalInserted;
                     if (!$marketCompanyList) {
                         echo '                  No results returned for ' . $market . PHP_EOL;
                     }
 
-                    $marketMatched  = 0;
-                    $marketInserted = 0;
-                    foreach ($marketCompanyList as $target) {
+                    $this->marketMatched  = $this->marketInserted = 0;
+
+                    foreach ($marketCompanyList as $index => $target) {
 
                         $match = $this->elasticMatch($target);
 
@@ -228,8 +243,8 @@ class MeroveusController extends AbstractActionController
                                 $this->writeSanityFiles($market, $target, $match);
                             }
 
-                            $marketMatched++;
-                            $totalMatched++;
+                            $this->marketMatched++;
+                            $this->totalMatched++;
 
                         } else { // create a new record
 
@@ -245,30 +260,24 @@ class MeroveusController extends AbstractActionController
                                 $this->writeSanityFiles($market, $target, false);
                             }
 
-                            $marketInserted++;
-                            $totalInserted++;
+                            $this->marketInserted++;
+                            $this->totalInserted++;
                         }
 
                         // process company contacts
 
-                        /** @var  $contactService \Services\Meroveus\ContactService */
-                        /** @var  $companyService \Services\Meroveus\CompanyService */
-                        /** @var  $company  \Hub\Model\Company */
-
-                        $contactService = $this->getServiceLocator()->get('Services\Meroveus\ContactService');
-                        $companyService = $this->getServiceLocator()->get('Services\Meroveus\CompanyService');
-
                         // temp lookup for meroveus id @todo get this from pdo last id?
-                        $company = $companyService->findOneByMeroveusId($target['meroveusId']);
+                        $company = \DB\Datahub\Company::fetch_one_where('meroveus_id = ?', [$target['meroveusId']]);
+
                         if ($company) {
                             foreach ($target['contacts'] as $contact) {
 
                                 // attach the companys hub id to the contact, format it and add it
-                                $contact['hub_id'] = $company->getHubId();
+                                $contact['hub_id'] = $company->hub_id;
 
-                                if ($contactService->formatMeroveusReturn($contact)) {
+                                if ($this->contactService->formatMeroveusReturn($contact)) {
                                     $contactAdded = $this->addContactPdo->execute(
-                                        $contactService->formatMeroveusReturn($contact)
+                                        $this->contactService->formatMeroveusReturn($contact)
                                     );
                                     if (!$contactAdded) {
                                         // @todo log it
@@ -278,22 +287,27 @@ class MeroveusController extends AbstractActionController
                                 }
                             }
                         }
-                        unset($contactService, $companyService, $company);
-                        gc_collect_cycles();
+
+                        // track memory and total count
+                        echo "\033[{$this->lastMemUsageMessageLength}D";
+                        $total = $this->totalInserted + $this->totalMatched;
+                        $memory = $total . ':' . $index . ':' . $this->convert_memory_usage( memory_get_usage( true));
+                        $this->lastMemUsageMessageLength = strlen($memory);
+                        echo $memory;
                     }
 
                 },$env, $market, $maxRows);
 
 
             echo PHP_EOL . $market . ':' . PHP_EOL;
-            echo '  ' . $marketMatched . ' records matched, ' . PHP_EOL;
-            echo '  ' . $marketInserted . ' records created' . PHP_EOL;
+            echo '  ' . $this->marketMatched . ' records matched, ' . PHP_EOL;
+            echo '  ' . $this->marketInserted . ' records created' . PHP_EOL;
 
-            echo "              post market out of loop memory usage is " . memory_get_usage() . PHP_EOL;
+            echo "              post market out of loop memory usage is " . $this->convert_memory_usage( memory_get_usage( true)) . PHP_EOL;
         }
 
-        echo $totalMatched . ' total  records matched ' . PHP_EOL;
-        echo $totalInserted . ' total records inserted ' . PHP_EOL;
+        echo $this->totalMatched . ' total  records matched ' . PHP_EOL;
+        echo $this->totalInserted . ' total records inserted ' . PHP_EOL;
         $end = date('h:i:s A');
         echo "ended at " . $end . PHP_EOL;
         echo 'Enjoy your day' . PHP_EOL;
@@ -309,11 +323,9 @@ class MeroveusController extends AbstractActionController
      */
     private function paginatedSearch($callback, $env, $market, $maxRows = 25) {
 
-        $startRow = 1;
-
         // setup our meroveus params
         $meroveusParams = [
-            'STARTROW' => $startRow,
+            'STARTROW' => 1,
             'MAXROWS'  => $maxRows,
             'SET'      => [
                 'RECTYP' => 'Business',
@@ -333,6 +345,7 @@ class MeroveusController extends AbstractActionController
 
         // call the callback every time we get results
         while ( $result = $this->companyService->fetchByMarket($meroveusParams) ) {
+            $meroveusParams['STARTROW'] += $maxRows;
             call_user_func($callback, $result);
         }
 
@@ -354,9 +367,6 @@ class MeroveusController extends AbstractActionController
             return false;
         }
 
-        $search  = new ElasticaSearch($this->elasticaClient);
-        $query   = new ElasticaQuery();
-        $builder = new QueryBuilder();
         // pull out search terms
         $queryFields = [
             'Name'       => isset($target['firm-name_static']) ? $target['firm-name_static'] : false,
@@ -369,46 +379,37 @@ class MeroveusController extends AbstractActionController
         // make sure that we have everything that we need
         foreach ($queryFields as $field) {
             if (!$field) {
-                unset($search, $query, $builder);
-                gc_collect_cycles();
                 return false;
             }
         }
 
         // set up the elastic query
-        $query->setQuery(
-            $builder->query()->bool()
-                ->addShould($builder->query()->match('Name', $queryFields['Name']))
-                ->addShould($builder->query()->match('Addr1', $queryFields['Addr1']))
-                ->addMust($builder->query()->match('City', $queryFields['City']))
-                ->addMust($builder->query()->match('State', $queryFields['State']))
-                ->addMust($builder->query()->match('PostalCode', $queryFields['PostalCode']))
+        $this->elasticQuery->setQuery(
+            $this->elasticQueryBuilder->query()->bool()
+                ->addShould($this->elasticQueryBuilder->query()->match('Name', $queryFields['Name']))
+                ->addShould($this->elasticQueryBuilder->query()->match('Addr1', $queryFields['Addr1']))
+                ->addMust($this->elasticQueryBuilder->query()->match('City', $queryFields['City']))
+                ->addMust($this->elasticQueryBuilder->query()->match('State', $queryFields['State']))
+                ->addMust($this->elasticQueryBuilder->query()->match('PostalCode', $queryFields['PostalCode']))
         );
 
         // set the minimum score that we consider a match
         // https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-min-score.html
-        $query->setMinScore($minScore);
+        $this->elasticQuery->setMinScore($minScore);
 
-        $resultSet = $search->search($query);
+        $resultSet = $this->elasticSearch->search($this->elasticQuery);
         $topScore  = $resultSet->getMaxScore();
 
-        foreach ($resultSet->getResults() as $result) {
-            if ($result->getScore() === $topScore) {
-                unset($resultSet, $search, $query, $builder);
-                gc_collect_cycles();
-                return $result;
+        $resultsArray = $resultSet->getResults();
 
-            } else {
-                unset($resultSet, $search, $query, $builder);
-                gc_collect_cycles();
-                return false;
-
-            }
+        $result = false;
+        if ( !empty($resultsArray) ) {
+            $result = ($resultsArray[0]->getScore() === $topScore)
+                ? $resultsArray[0]
+                : $result;
         }
-        unset($search, $query, $builder);
-        gc_collect_cycles();
-        // if we get here it's broke
-        return false;
+
+        return $result;
     }
 
     /**
@@ -529,6 +530,13 @@ class MeroveusController extends AbstractActionController
         fputs($fd, PHP_EOL);
         fclose($fd);
         return true;
+    }
+
+    private function convert_memory_usage( $size) {
+
+        $unit = [ 'b', 'kb', 'mb', 'gb', 'tb', 'pb' ];
+
+        return @round($size / pow ( 1024, ( $i = (int)floor ( log ( $size, 1024 ) ) ) ),2) . ' ' . $unit[$i];
     }
 
 

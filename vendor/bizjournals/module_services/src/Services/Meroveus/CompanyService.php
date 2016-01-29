@@ -31,12 +31,16 @@ class CompanyService extends AbstractService
         $this->ekey     = 'UdHuwsJhWgyhMWhpBAxkmydnT';
         $this->meroveus = 'http://acbj-stg.meroveus.com:8080/api';
         $this->curl     = curl_init($this->meroveus);
-        curl_setopt($this->curl, CURLOPT_POST, 1);
+        curl_setopt($this->curl, CURLOPT_POST, true);
         curl_setopt($this->curl, CURLOPT_HTTPHEADER, ['Expect:']);
-        curl_setopt($this->curl, CURLOPT_HEADER, 0);
-        curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($this->curl, CURLOPT_HEADER, false);
+        curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($this->curl, CURLOPT_SSL_VERIFYHOST, 0);
+    }
+
+    public function __destruct () {
+        curl_close($this->curl);
     }
 
     /**
@@ -50,9 +54,7 @@ class CompanyService extends AbstractService
 //    public function fetchByMarket(\Services\Meroveus\Client $meroveusClient, $market = '', array $meroveusParams = [])
     public function fetchByMarket(array $meroveusParams)
     {
-        $result          = $this->queryMeroveus($meroveusParams);
-        $formattedResult = $this->formatResult($result);
-        return $formattedResult;
+        return $this->formatResult($this->queryMeroveus($meroveusParams));
     }
 
 
@@ -156,8 +158,6 @@ class CompanyService extends AbstractService
                 }
                 array_push($list, $company);
             }
-            unset($labels, $company);
-            gc_collect_cycles();
             return $list;
         } else {
             return false;
@@ -203,6 +203,12 @@ class CompanyService extends AbstractService
     private function queryMeroveus(array $meroveusParams = [])
     {
 
+        /* Uncomment to simulate all requests after the first one
+         * if ( isset($this->return) ) {
+
+            return rand(0,10) > 2 ? $this->return : $this->returnEmpty;
+        }*/
+
         $return    = null;
         $sendArray = $meroveusParams + [
                 'AKEY' => $this->akey,
@@ -216,7 +222,19 @@ class CompanyService extends AbstractService
         $result = curl_exec($this->curl);
         if ($result) {
             $resp   = str_replace(":NaN", ":0", gzinflate(substr($result, 10, -8)));
-            $return = (in_array(substr($resp, 0, 1), ['{', '[']) ? json_decode($resp, true) : $resp);
+            try {
+                $return = Json\Json::decode($resp, Json\Json::TYPE_ARRAY);
+            } catch ( \RuntimeException $e ) {
+                $return = $resp;
+            }
+/* Uncomment to simulate all requests after the first one
+ *             $this->return = $return;
+            $return['Labels'] = [];
+            $return['RECCOUNT'] = 0;
+            unset($return['FOOTNOTES']);
+            unset($return['SET']['RECS']);
+            $this->returnEmpty = $return;
+*/
             return $return;
         } else {
             echo 'no meroveus reaponse';
