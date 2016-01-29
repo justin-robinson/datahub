@@ -433,14 +433,14 @@ class ImportController extends AbstractActionController
             // get the hub id
             $selectCompany->execute([$currentMeroveusId]);
             if ( $selectCompany->rowCount() > 0 ) {
-                $company = $selectCompany->fetch(\PDO::FETCH_ASSOC);
+                $company = $selectCompany->fetch();
                 $contactDataArray[':hub_id'] = $company['hub_id'];
             }
 
             // get the job position id
             $selectJobPosition->execute([$contactDataArray[':job_title']]);
             if ( $selectJobPosition->rowCount() > 0 ) {
-                $jobPosition = $selectJobPosition->fetch(\PDO::FETCH_ASSOC);
+                $jobPosition = $selectJobPosition->fetch();
                 $contactDataArray[':job_position_id'] = $jobPosition['job_position_id'];
             }
 
@@ -456,7 +456,7 @@ class ImportController extends AbstractActionController
                 $selectAllContacts->execute([$currentMeroveusId]);
 
                 // add each contact to our contacts array index by their name
-                while ( $contact = $selectAllContacts->fetch(\PDO::FETCH_ASSOC) ) {
+                while ( $contact = $selectAllContacts->fetch() ) {
                     $key = strtolower($contact['first_name'] . $contact['last_name']);
                     $allContacts[$key] = $contact;
                 }

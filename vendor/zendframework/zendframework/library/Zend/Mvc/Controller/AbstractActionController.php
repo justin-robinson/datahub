@@ -49,6 +49,7 @@ abstract class AbstractActionController extends AbstractController
         // prepare sql statements
         foreach ( $this->sqlStringsArray as $name => $sqlString ) {
             $this->sqlStatementsArray[$name] = $this->db->prepare( $sqlString );
+            $this->sqlStatementsArray[$name]->setFetchMode(\PDO::FETCH_ASSOC);
         }
     }
 
