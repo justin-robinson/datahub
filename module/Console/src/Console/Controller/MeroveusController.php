@@ -7,6 +7,8 @@
 
 namespace Console\Controller;
 
+use Console\Factory\FactoryAbstract;
+use Console\Record\Formatter\Factory;
 use Elastica\Client as ElasticaClient;
 use Elastica\Query as ElasticaQuery;
 use Elastica\QueryBuilder as QueryBuilder;
@@ -278,7 +280,9 @@ class MeroveusController extends AbstractActionController
 
                         } else { // create a new record
 
-                            $queryParams = $this->formatCompany($target);
+                            $formatter = Factory::factory('meroveus');
+
+                            $queryParams = $formatter->format($target);
                             $added       = $this->addCompanyPdo->execute($queryParams);
                             if (!$added) {
                                 echo 'opps, company add failed' . PHP_EOL;
@@ -567,45 +571,6 @@ class MeroveusController extends AbstractActionController
         }
 
         return false;
-    }
-
-    /**
-     * format the meroveus return for 'sanity'
-     * it's defined here for readability
-     *
-     * @param array $company
-     * @return array
-     */
-    private function formatCompany(array $company)
-    {
-        $queryParams = [];
-
-        $queryParams[':refinery_id']   = isset($company['refinery_id']) ? $company['refinery_id'] : 'noData';
-        $queryParams[':meroveus_id']   = isset($company['meroveusId']) ? $company['meroveusId'] : 'noData';
-        $queryParams[':generate_code'] = isset($company['generate_codeId']) ? $company['generate_codeId'] : 'noData';
-        $queryParams[':record_source'] = isset($company['sourceId']) ? $company['sourceId'] : 'noData';;
-        $queryParams[':company_name']       = isset($company['firm-name_static']) ? $company['firm-name_static'] : 'noData';
-        $queryParams[':public_ticker']      = isset($company['idk']) ? $company['idk'] : 'noData';
-        $queryParams[':ticker_exchange']    = isset($company['idk']) ? $company['idk'] : 'noData';
-        $queryParams[':source_modified_at'] = isset($company['idk']) ? $company['idk'] : 'noData';
-        $queryParams[':address1']           = isset($company['street-address_static']) ? $company['street-address_static'] : 'noData';
-        $queryParams[':address2']           = isset($company['street-line2-address_static']) ? $company['street-line2-address_static'] : 'noData';
-        $queryParams[':city']               = isset($company['street-city_static']) ? $company['street-city_static'] : 'noData';
-        $queryParams[':state']              = isset($company['street-state_static']) ? $company['street-state_static'] : null;
-        $queryParams[':postal_code']        = isset($company['street-zip_static']) ? $company['street-zip_static'] : null; // validate
-        $queryParams[':country']            = isset($company['street-country_static']) ? $company['street-country_static'] : null; // validate
-        $queryParams[':latitude']           = isset($company['coordinates']['lat']) ? $company['coordinates']['lat'] : null;
-        $queryParams[':longitude']          = isset($company['coordinates']['long']) ? $company['coordinates']['long'] : null;
-        $queryParams[':phone']              = isset($company['contact-phone_static']) ? $company['contact-phone_static'] : null;
-        $queryParams[':website']            = isset($company['contact-website_static']) ? $company['contact-website_static'] : null;
-        $queryParams[':is_active']          = true;
-        $queryParams[':sic_code']           = isset($company['sicCode']) ? $company['sicCode'] : null;
-        $queryParams[':employee_count']     = 0;
-        $queryParams[':created_at']         = 'NOW()';
-        $queryParams[':updated_at']         = 'NOW()';
-        $queryParams[':deleted_at']         = null;
-
-        return $queryParams;
     }
 
     /**
