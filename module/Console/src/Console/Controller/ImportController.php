@@ -260,12 +260,12 @@ class ImportController extends AbstractActionController
      */
     public function indexAction()
     {
-        $this->index($this->getRequest()->getParam('env'));
+        $this->index($this->getRequest()->getParam('e'));
     }
 
     /**
      * Just echo the environment
-     * 
+     *
      * @param $env
      * @return string
      */
