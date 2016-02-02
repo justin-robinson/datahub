@@ -3,6 +3,7 @@
 namespace Console\Controller;
 
 use Console\Record\Formatter\Factory;
+use Console\CsvIterator;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Db\Adapter as dbAdapter;
 
@@ -379,10 +380,10 @@ class ImportController extends AbstractActionController
 
         $csvFile = realpath($this->getRequest()->getParam('file'));
 
-        $file = new \Console\CsvIterator($csvFile);
+        $file = new CsvIterator($csvFile);
 
         // this isn't a proper csv so just ensure we are skipping the empty lines
-        $file->setFlags(\SplFileObject::SKIP_EMPTY);
+        $file->setFlags(CsvIterator::SKIP_EMPTY);
 
         // meroveus ids are grouped together so we can use this to reduce sql queries down to 1 for each company
         $lastMeroveusId = -1;
