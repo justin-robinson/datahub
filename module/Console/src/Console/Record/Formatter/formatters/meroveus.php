@@ -1,6 +1,8 @@
 <?php
 
-namespace Console\Record\Formatter;
+namespace Console\Record\Formatter\Formatters;
+
+use Console\Record\Formatter\FormatterInterface;
 
 /**
  * Class Meroveus
