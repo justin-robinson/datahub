@@ -255,14 +255,21 @@ class ImportController extends AbstractActionController
     ];
 
     /**
-     * Just echo the environment
-     *
      * @access pubic
      * @return string
      */
     public function indexAction()
     {
-        $env = $this->getRequest()->getParam('env');
+        $this->index($this->getRequest()->getParam('env'));
+    }
+
+    /**
+     * Just echo the environment
+     * 
+     * @param $env
+     * @return string
+     */
+    private function index ( $env ) {
         echo $env . PHP_EOL;
         return $env . PHP_EOL;
     }
