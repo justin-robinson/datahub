@@ -48,9 +48,10 @@ class Relevate implements FormatterInterface {
     }
 
     /**
-     * @param $line
-     * @param $from
-     * @param $length
+     * @param $line string
+     * @param $from int
+     * @param $length int
+     * @param $ucword bool
      * @return string
      */
     private function cut_line_by_index_and_length ( $line, $from, $length, $ucword = false ) {
