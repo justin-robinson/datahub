@@ -16,7 +16,7 @@ class Relevate implements FormatterInterface {
     public function format ( $line ) {
 
         // char 0 to 10 is the id, strip off the first two digits and we have a meroveus id
-        $currentMeroveusId = trim ( substr ( $line, 2, 8 ) );
+        $currentMeroveusId = $this->cut_line_by_index_and_length ( $line, 2, 8 );
 
         /**
          * Not even our lord and savior knows why relevate decided to go with fixed width
@@ -30,12 +30,12 @@ class Relevate implements FormatterInterface {
             ':relevate_id'         => $currentMeroveusId,
             ':is_duplicate'        => 0,
             ':is_current_employee' => 1,
-            ':first_name'          => ucwords ( strtolower ( trim ( substr ( $line, 296, 11 ) ) ) ),
-            ':middle_initial'      => ucwords ( strtolower ( trim ( substr ( $line, 307, 1 ) ) ) ),
-            ':last_name'           => ucwords ( strtolower ( trim ( substr ( $line, 308, 14 ) ) ) ),
-            ':suffix'              => ucwords ( strtolower ( trim ( substr ( $line, 322, 3 ) ) ) ),
+            ':first_name'          => $this->cut_line_by_index_and_length ( $line, 296, 11, true ),
+            ':middle_initial'      => $this->cut_line_by_index_and_length ( $line, 307, 1, true ),
+            ':last_name'           => $this->cut_line_by_index_and_length ( $line, 308, 14, true ),
+            ':suffix'              => $this->cut_line_by_index_and_length ( $line, 322, 3, true ),
             ':honorific'           => '',
-            ':job_title'           => ucwords ( strtolower ( trim ( substr ( $line, 325, 30 ) ) ) ),
+            ':job_title'           => $this->cut_line_by_index_and_length ( $line, 325, 30, true ),
             ':job_position_id'     => '',
             ':email'               => '',
             ':phone'               => '',
@@ -45,6 +45,23 @@ class Relevate implements FormatterInterface {
             ':state'               => null,
             ':postal_code'         => null
         ];
+    }
+
+    /**
+     * @param $line
+     * @param $from
+     * @param $length
+     * @return string
+     */
+    private function cut_line_by_index_and_length ( $line, $from, $length, $ucword = false ) {
+
+        $substring = trim ( substr ( $line, $from, $length ) );
+
+        if ( $ucword ) {
+            $substring = ucwords ( strtolower ( $substring ) );
+        }
+
+        return $substring;
     }
 
 }
