@@ -7,7 +7,6 @@
 
 namespace Console\Controller;
 
-use Console\Factory\FactoryAbstract;
 use Console\Record\Formatter\Factory;
 use Elastica\Client as ElasticaClient;
 use Elastica\Query as ElasticaQuery;
@@ -16,7 +15,6 @@ use Elastica\Search as ElasticaSearch;
 use Elastica\Result;
 use Services\Meroveus\CompanyService;
 use Services\Meroveus\Client as MeroveusClient;
-use Zend\Mvc\Controller\AbstractActionController;
 
 //use Services\Meroveus\CompanyService;
 

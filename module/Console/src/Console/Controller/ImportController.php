@@ -4,7 +4,6 @@ namespace Console\Controller;
 
 use Console\Record\Formatter\Factory;
 use Console\CsvIterator;
-use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Db\Adapter as dbAdapter;
 
 /**
