@@ -11,6 +11,7 @@ namespace Console\Record\Formatter;
 interface FormatterInterface {
 
     /**
+     * @param $data
      * @return array
      */
     public function format ( $data );
