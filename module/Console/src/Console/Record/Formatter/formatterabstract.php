@@ -38,15 +38,24 @@ abstract class FormatterAbstract {
     /**
      * @return FormatterAbstract
      */
-    public static function get_instance () {
+    public static function get_instance ( $name ) {
 
-        $class = get_called_class();
+        $name = strtolower($name);
 
-        if ( !isset (static::$instances[$class]) ) {
-            static::$instances[$class] = new static();
+        if ( !isset (static::$instances[$name]) ) {
+            static::$instances[$name] = new static();
         }
 
-        return static::$instances[$class];
+        return static::$instances[$name];
+    }
+
+    /**
+     * @param $name
+     *
+     * @return string
+     */
+    public static function name_to_class ( $name ) {
+        return __NAMESPACE__ . '\\Formatters\\' . $name;
     }
 
     /**

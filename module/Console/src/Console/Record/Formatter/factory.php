@@ -19,10 +19,10 @@ abstract class Factory {
      */
     public static function factory ( $name ) {
 
-        $formatterClassName = __NAMESPACE__ . '\\Formatters\\' . $name;
+        $formatterClassName = FormatterAbstract::name_to_class($name);
 
         if ( class_exists ( $formatterClassName ) ) {
-            return call_user_func_array([$formatterClassName, 'get_instance'], []);
+            return call_user_func_array([$formatterClassName, 'get_instance'], [$name]);
         } else {
             throw new NotFound( $formatterClassName );
         }
