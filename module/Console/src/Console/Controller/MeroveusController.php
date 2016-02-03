@@ -245,13 +245,16 @@ class MeroveusController extends AbstractActionController
 
         $selectCompany = $this->sqlStatementsArray['selectOneCompanyByMeroveusId'];
 
+        $formatter = Factory::factory('meroveus');
+
         foreach ($this->markets as $market => $env) {
 
             $this->paginatedSearch(
                 function ( $marketCompanyList ) use(
                     $market,
                     $sanity,
-                    $selectCompany) {
+                    $selectCompany,
+                    $formatter) {
 
 
                     if (!$marketCompanyList) {
@@ -277,8 +280,6 @@ class MeroveusController extends AbstractActionController
                             $this->totalMatched++;
 
                         } else { // create a new record
-
-                            $formatter = Factory::factory('meroveus');
 
                             $queryParams = $formatter->format($target);
                             $added       = $this->addCompanyPdo->execute($queryParams);

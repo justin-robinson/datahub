@@ -412,10 +412,9 @@ class ImportController extends AbstractActionController
 
         echo "started at " . date('h:i:s A') . PHP_EOL;
 
+        $formatter = Factory::factory('relevate');
+
         foreach ( $file as $line ) {
-
-
-            $formatter = Factory::factory('relevate');
 
             $contactDataArray = $formatter->format($line);
 
