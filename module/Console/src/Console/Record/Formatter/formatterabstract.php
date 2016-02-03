@@ -11,9 +11,9 @@ namespace Console\Record\Formatter;
 abstract class FormatterAbstract {
 
     /**
-     * @var FormatterAbstract
+     * @var FormatterAbstract[]
      */
-    protected static $instance;
+    protected static $instances = [];
 
     /**
      * FormatterAbstract constructor.
@@ -40,11 +40,13 @@ abstract class FormatterAbstract {
      */
     public static function get_instance () {
 
-        if ( !isset (static::$instance) ) {
-            static::$instance = new static;
+        $class = get_called_class();
+
+        if ( !isset (static::$instances[$class]) ) {
+            static::$instances[$class] = new static();
         }
 
-        return static::$instance;
+        return static::$instances[$class];
     }
 
     /**
