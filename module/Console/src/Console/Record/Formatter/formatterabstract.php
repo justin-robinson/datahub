@@ -38,7 +38,7 @@ abstract class FormatterAbstract {
     /**
      * @return FormatterAbstract
      */
-    public function get_instance () {
+    public static function get_instance () {
 
         if ( !isset (static::$instance) ) {
             static::$instance = new static;
