@@ -2,12 +2,12 @@
 
 namespace Console\Record\Formatter\Formatters;
 
-use Console\Record\Formatter\FormatterInterface;
+use Console\Record\Formatter\FormatterAbstract;
 
 /**
  * Class Meroveus
  */
-class Meroveus implements FormatterInterface {
+class Meroveus extends FormatterAbstract {
 
     /**
      * @param $data

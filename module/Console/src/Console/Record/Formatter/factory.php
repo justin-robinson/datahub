@@ -14,7 +14,7 @@ abstract class Factory {
 
     /**
      * @param $name
-     * @return FormatterInterface
+     * @return FormatterAbstract
      * @throws \Exception
      */
     public static function factory ( $name ) {
@@ -22,12 +22,10 @@ abstract class Factory {
         $formatterClassName = __NAMESPACE__ . '\\Formatters\\' . $name;
 
         if ( class_exists ( $formatterClassName ) ) {
-            $formatter = new $formatterClassName();
+            return call_user_func_array([$formatterClassName, 'get_instance'], []);
         } else {
             throw new NotFound( $formatterClassName );
         }
-
-        return $formatter;
     }
 
 }

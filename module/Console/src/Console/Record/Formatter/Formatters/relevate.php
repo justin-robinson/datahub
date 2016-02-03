@@ -2,12 +2,12 @@
 
 namespace Console\Record\Formatter\Formatters;
 
-use Console\Record\Formatter\FormatterInterface;
+use Console\Record\Formatter\FormatterAbstract;
 
 /**
  * Class Relevate
  */
-class Relevate implements FormatterInterface {
+class Relevate extends FormatterAbstract {
 
     /**
      * @param $line string
