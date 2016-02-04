@@ -2,13 +2,15 @@
 
 namespace Console\Record\Formatter\Formatters;
 
-use Console\Record\Formatter\FormatterAbstract;
+use Console\Record\Formatter\FormatterTrait;
 
 /**
  * Class ImportMeroveus
  * @package Console\Record\Formatter\Formatters
  */
-class ImportMeroveus extends FormatterAbstract {
+class ImportMeroveus {
+
+    use FormatterTrait;
 
     /**
      * @param $data

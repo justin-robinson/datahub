@@ -8,12 +8,12 @@ namespace Console\Record\Formatter;
  * Class FormatterAbstract
  * @package Console\Record
  */
-abstract class FormatterAbstract {
+trait FormatterTrait {
 
     /**
-     * @var FormatterAbstract[]
+     * @var FormatterTrait
      */
-    protected static $instances = [];
+    protected static $instance;
 
     /**
      * FormatterAbstract constructor.
@@ -36,26 +36,15 @@ abstract class FormatterAbstract {
     }
 
     /**
-     * @return FormatterAbstract
+     * @return FormatterTrait
      */
-    public static function get_instance ( $name ) {
+    public static function get_instance () {
 
-        $name = strtolower($name);
-
-        if ( !isset (static::$instances[$name]) ) {
-            static::$instances[$name] = new static();
+        if ( !isset (static::$instance) ) {
+            static::$instance = new static();
         }
 
-        return static::$instances[$name];
-    }
-
-    /**
-     * @param $name
-     *
-     * @return string
-     */
-    public static function name_to_class ( $name ) {
-        return __NAMESPACE__ . '\\Formatters\\' . $name;
+        return static::$instance;
     }
 
     /**

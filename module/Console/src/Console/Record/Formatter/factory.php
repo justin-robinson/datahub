@@ -14,15 +14,16 @@ abstract class Factory {
 
     /**
      * @param $name
-     * @return FormatterAbstract
+     *
+*@return FormatterTrait
      * @throws \Exception
      */
     public static function factory ( $name ) {
 
-        $formatterClassName = FormatterAbstract::name_to_class($name);
+        $formatterClassName = __NAMESPACE__ . '\\Formatters\\' . $name;
 
         if ( class_exists ( $formatterClassName ) ) {
-            return call_user_func_array([$formatterClassName, 'get_instance'], [$name]);
+            return call_user_func_array([$formatterClassName, 'get_instance'], []);
         } else {
             throw new NotFound( $formatterClassName );
         }
