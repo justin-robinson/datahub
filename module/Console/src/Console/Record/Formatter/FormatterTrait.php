@@ -26,7 +26,7 @@ trait FormatterTrait {
     /**
      * So we can't clone
      */
-    protected function __clone(){
+    protected function __clone() {
     }
 
     /**
