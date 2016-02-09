@@ -15,7 +15,7 @@ abstract class Factory {
     /**
      * @param $name
      *
-*@return FormatterTrait
+     * @return FormatterTrait
      * @throws \Exception
      */
     public static function factory ( $name ) {
