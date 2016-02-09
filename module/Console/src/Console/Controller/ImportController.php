@@ -441,7 +441,7 @@ class ImportController extends AbstractActionController
                 $selectAllContacts->execute([$currentMeroveusId]);
 
                 // add each contact to our contacts array index by their name
-                while ( $contact = $selectAllContacts->fetch() ) {
+                foreach ( $selectAllContacts as $contact ) {
                     $key = strtolower($contact['first_name'] . $contact['last_name']);
                     $allContacts[$key] = $contact;
                 }
