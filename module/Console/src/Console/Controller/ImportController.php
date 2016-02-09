@@ -8,6 +8,7 @@ use Zend\Db\Adapter as dbAdapter;
 
 /**
  * Class ImportController
+ *
  * @package Console\Controller
  */
 class ImportController extends AbstractActionController
@@ -99,14 +100,14 @@ class ImportController extends AbstractActionController
      * @var $sqlStringsArray string[]
      */
     protected $sqlStringsArray = [
-        'selectContacts' => '
+        'selectContacts'    => '
             SELECT
                 *
             FROM
               `datahub`.`contact`
             WHERE meroveus_id = ?
             LIMIT 1000',
-        'selectCompany' => '
+        'selectCompany'     => '
             SELECT
                 *
             FROM
@@ -119,7 +120,7 @@ class ImportController extends AbstractActionController
               `datahub`.`job_position`
             WHERE
                position = ?',
-        'insertCompany' => '
+        'insertCompany'     => '
             INSERT INTO
                 datahub.company(
                     refinery_id,
@@ -173,7 +174,7 @@ class ImportController extends AbstractActionController
                     NOW(),
                     0
             )',
-        'insertContact' => '
+        'insertContact'     => '
             INSERT INTO
               datahub.contact (
                 hub_id,
@@ -223,7 +224,7 @@ class ImportController extends AbstractActionController
                 NOW(),
                 NULL
               )',
-        'updateContact' => '
+        'updateContact'     => '
             UPDATE
               `datahub`.`contact`
             SET
@@ -272,10 +273,13 @@ class ImportController extends AbstractActionController
      * Just echo the environment
      *
      * @param $env
+     *
      * @return string
      */
-    private function index ( $env ) {
+    private function index($env)
+    {
         echo $env . PHP_EOL;
+
         return $env . PHP_EOL;
     }
 
@@ -302,7 +306,7 @@ class ImportController extends AbstractActionController
     public function refineryAction()
     {
         //@todo set up environment sniffing
-        echo'
+        echo '
          ██▓    ███▄ ▄███▓    ██▓███      ▒█████      ██▀███     ▄▄▄█████▓    ██▓    ███▄    █      ▄████
         ▓██▒   ▓██▒▀█▀ ██▒   ▓██░  ██▒   ▒██▒  ██▒   ▓██ ▒ ██▒   ▓  ██▒ ▓▒   ▓██▒    ██ ▀█   █     ██▒ ▀█▒
         ▒██▒   ▓██    ▓██░   ▓██░ ██▓▒   ▒██░  ██▒   ▓██ ░▄█ ▒   ▒ ▓██░ ▒░   ▒██▒   ▓██  ▀█ ██▒   ▒██░▄▄▄░
@@ -312,14 +316,14 @@ class ImportController extends AbstractActionController
          ▒ ░   ░  ░      ░   ░▒ ░          ░ ▒ ▒░      ░▒ ░ ▒░       ░        ▒ ░   ░ ░░   ░ ▒░     ░   ░
          ▒ ░   ░      ░      ░░          ░ ░ ░ ▒       ░░   ░      ░          ▒ ░      ░   ░ ░    ░ ░   ░
          ░            ░                      ░ ░        ░                     ░              ░          ░
-        '. PHP_EOL;
+        ' . PHP_EOL;
         echo "started at " . date('h:i:s A') . PHP_EOL;
 
         $csvFile = realpath($this->getRequest()->getParam('file'));
 
         // simple checks
         if (!file_exists($csvFile)) {
-            die( 'File not found: ' . $this->getRequest()->getParam('file') );
+            die('File not found: ' . $this->getRequest()->getParam('file'));
         }
         if (pathinfo($csvFile, PATHINFO_EXTENSION) !== 'csv') {
             die('Parameter must be a CSV file.');
@@ -344,20 +348,20 @@ class ImportController extends AbstractActionController
         $formatter = Factory::factory('importmeroveus');
 
         // process the rows
-        foreach ( $file as $record ) {
+        foreach ($file as $record) {
 
             try {
                 // why don't we merge automatically?
                 // because then we would have to try catch around the foreach loop and that would
                 // cause the loop to break.  This way we can continue processing the remaining rows
-                $record = $file->mergeWithHeaderRow ( $record );
+                $record = $file->mergeWithHeaderRow($record);
 
                 $queryParams = $formatter->format($record);
 
                 $insertCompany->execute($queryParams);
 
                 $count++;
-            } catch ( \Exception $e ) {
+            } catch (\Exception $e) {
                 // CsvIterator throws an exception when number of columns in the header row
                 // and the current line do not match
                 echo $e->getMessage() . PHP_EOL;
@@ -374,7 +378,8 @@ class ImportController extends AbstractActionController
      * @access public
      * @return void
      */
-    public function relevateAction () {
+    public function relevateAction()
+    {
 
         $csvFile = realpath($this->getRequest()->getParam('file'));
 
@@ -389,9 +394,9 @@ class ImportController extends AbstractActionController
 
         $selectJobPosition = $this->sqlStatementsArray['selectJobPosition'];
         $selectAllContacts = $this->sqlStatementsArray['selectContacts'];
-        $selectCompany = $this->sqlStatementsArray['selectCompany'];
-        $insertContact = $this->sqlStatementsArray['insertContact'];
-        $updateContact = $this->sqlStatementsArray['updateContact'];
+        $selectCompany     = $this->sqlStatementsArray['selectCompany'];
+        $insertContact     = $this->sqlStatementsArray['insertContact'];
+        $updateContact     = $this->sqlStatementsArray['updateContact'];
         $insertJobPosition = $this->sqlStatementsArray['insertJobPosition'];
 
         // some stats
@@ -401,36 +406,35 @@ class ImportController extends AbstractActionController
 
         $formatter = Factory::factory('relevate');
 
-        foreach ( $file as $line ) {
+        foreach ($file as $line) {
 
-            $contactDataArray = $formatter->format($line);
-
+            $contactDataArray  = $formatter->format($line);
             $currentMeroveusId = $contactDataArray[':meroveus_id'];
 
             // get the hub id
             $selectCompany->execute([$currentMeroveusId]);
-            if ( $selectCompany->rowCount() > 0 ) {
-                $company = $selectCompany->fetch();
+            if ($selectCompany->rowCount() > 0) {
+                $company                     = $selectCompany->fetch();
                 $contactDataArray[':hub_id'] = $company['hub_id'];
             }
 
             // get the job position id
-            if ( !empty($contactDataArray[':job_title']) ) {
-                $jobPositionQueryParams = [ $contactDataArray[':job_title'] ];
-                $selectJobPosition->execute ( $jobPositionQueryParams );
-                if ( $selectJobPosition->rowCount () > 0 ) {
-                    $jobPosition = $selectJobPosition->fetch ();
+            if (!empty($contactDataArray[':job_title'])) {
+                $jobPositionQueryParams = [$contactDataArray[':job_title']];
+                $selectJobPosition->execute($jobPositionQueryParams);
+                if ($selectJobPosition->rowCount() > 0) {
+                    $jobPosition                          = $selectJobPosition->fetch();
                     $contactDataArray[':job_position_id'] = $jobPosition['job_position_id'];
                 } else {
-                    $insertJobPosition->execute ( $jobPositionQueryParams );
-                    if ( $this->db->errorCode () !== '00000' ) {
-                        $contactDataArray[':job_position_id'] = $this->db->lastInsertId ();
+                    $insertJobPosition->execute($jobPositionQueryParams);
+                    if ($this->db->errorCode() !== '00000') {
+                        $contactDataArray[':job_position_id'] = $this->db->lastInsertId();
                     }
                 }
             }
 
             // if we have a new meroveus id, get all the contacts related to it
-            if ( $lastMeroveusId !== $currentMeroveusId ) {
+            if ($lastMeroveusId !== $currentMeroveusId) {
 
                 // update meroveus id
                 $lastMeroveusId = $currentMeroveusId;
@@ -441,8 +445,8 @@ class ImportController extends AbstractActionController
                 $selectAllContacts->execute([$currentMeroveusId]);
 
                 // add each contact to our contacts array index by their name
-                foreach ( $selectAllContacts as $contact ) {
-                    $key = strtolower($contact['first_name'] . $contact['last_name']);
+                foreach ($selectAllContacts as $contact) {
+                    $key               = strtolower($contact['first_name'] . $contact['last_name']);
                     $allContacts[$key] = $contact;
                 }
             }
@@ -451,7 +455,7 @@ class ImportController extends AbstractActionController
             $key = strtolower($contactDataArray[':first_name'] . $contactDataArray[':last_name']);
 
             // does this contact exist?
-            if ( empty($allContacts[$key]) ) {
+            if (empty($allContacts[$key])) {
 
                 // insert new contact
                 $insertCount += $insertContact->execute($contactDataArray);
@@ -464,7 +468,7 @@ class ImportController extends AbstractActionController
                 // flag that we updated a contact
                 $contactNeedsUpdate = false;
 
-                foreach ( $existingContact as $columnName => $valueInDB ) {
+                foreach ($existingContact as $columnName => $valueInDB) {
 
                     // pdo sql statements use this column prefix naming convention
                     $pdoColumnName = ':' . $columnName;
@@ -479,8 +483,8 @@ class ImportController extends AbstractActionController
                     $existingValueIsUseless = is_null($existingContact[$columnName]) || $existingContact[$columnName] === '';
 
                     // update db value with new value
-                    if ( $newValueisDifferent && $existingValueIsUseless ) {
-                        $valueInDB = $newValue;
+                    if ($newValueisDifferent && $existingValueIsUseless) {
+                        $valueInDB          = $newValue;
                         $contactNeedsUpdate = true;
                     }
 
@@ -493,7 +497,7 @@ class ImportController extends AbstractActionController
                 unset($contactDataArray[':updated_at']);
 
                 // update the contact record
-                if ( $contactNeedsUpdate ) {
+                if ($contactNeedsUpdate) {
                     $updateCount += $updateContact->execute($contactDataArray);
                 }
             }

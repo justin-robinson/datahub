@@ -248,7 +248,7 @@ class MeroveusController extends AbstractActionController
 
         $selectCompany = $this->sqlStatementsArray['selectOneCompanyByMeroveusId'];
 
-        $formatter = Factory::factory('meroveus');
+        $formatter = Factory::factory('Meroveus');
 
         // setup our meroveus params
         $meroveusParams = [
@@ -337,7 +337,7 @@ class MeroveusController extends AbstractActionController
                                 if (!$contactAdded) {
                                     // @todo log it
                                 } else {
-                                    // @todo and do what, exactly?
+                                    // @todo and do what, exactly? idk?!
                                 };
                             }
                         }
@@ -473,6 +473,7 @@ class MeroveusController extends AbstractActionController
     private function elasticMatch(array $target, $minScore = 9.9)
     {
         if (empty($target)) {
+            echo 'empty target passed to elasticMatch'.PHP_EOL;
             return false;
         }
 
