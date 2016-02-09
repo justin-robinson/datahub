@@ -245,6 +245,7 @@ class MeroveusController extends AbstractActionController
         $this->contactService = $this->getServiceLocator()->get('Services\Meroveus\ContactService');
 
         $lastMemUsageMessageLength = 0;
+        $companyCache = [];
 
         $selectCompany = $this->sqlStatementsArray['selectOneCompanyByMeroveusId'];
 
@@ -272,7 +273,14 @@ class MeroveusController extends AbstractActionController
 
         foreach ($this->markets as $market => $env) {
 
+            // set env to this market
             $meroveusParams['ENV'] = $env;
+
+            // reset our pagination offset
+            $meroveusParams['STARTROW'] = 1;
+
+            // reset counts for this market
+            $marketMatched = $marketInserted = 0;
 
             // paginate over companies
             while ( $marketCompanyList = $this->companyService->fetchByMarket($meroveusParams) ) {
@@ -280,8 +288,6 @@ class MeroveusController extends AbstractActionController
                 if (!$marketCompanyList) {
                     echo '                  No results returned for ' . $market . PHP_EOL;
                 }
-
-                $marketMatched = $marketInserted = 0;
 
                 foreach ($marketCompanyList as $index => $target) {
 
@@ -320,11 +326,16 @@ class MeroveusController extends AbstractActionController
                     // process company contacts
 
                     // temp lookup for meroveus id @todo get this from pdo last id?
-                    $selectCompany->execute([$target['meroveusId']]);
+                    if ( empty($companyCache[$target['meroveusId']]) ) {
+                        $selectCompany->execute([$target['meroveusId']]);
 
-                    $company = ( $selectCompany->rowCount() > 0 )
-                        ? $company = $selectCompany->fetch(\PDO::FETCH_ASSOC)
-                        : false;
+                        $companyCache[$target['meroveusId']] = ( $selectCompany->rowCount() > 0 )
+                            ? $selectCompany->fetch(\PDO::FETCH_ASSOC)
+                            : false;
+
+                    }
+
+                    $company = $companyCache[$target['meroveusId']];
 
                     if ($company) {
                         foreach ($target['contacts'] as $contact) {
