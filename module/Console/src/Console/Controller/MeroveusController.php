@@ -236,114 +236,136 @@ class MeroveusController extends AbstractActionController
         echo 'while you wait: https://www.youtube.com/watch?v=siwpn14IE7E' . PHP_EOL;
 
         $maxRows       = 500;
-        $this->totalMatched  = 0;
-        $this->totalInserted = 0;
+        $totalMatched
+            = $totalInserted
+            = $marketMatched
+            = $marketInserted
+            = 0;
         /** @var  $contactService \Services\Meroveus\ContactService */
         $this->contactService = $this->getServiceLocator()->get('Services\Meroveus\ContactService');
 
-        $this->lastMemUsageMessageLength = 0;
+        $lastMemUsageMessageLength = 0;
 
         $selectCompany = $this->sqlStatementsArray['selectOneCompanyByMeroveusId'];
 
         $formatter = Factory::factory('meroveus');
 
+        // setup our meroveus params
+        $meroveusParams = [
+            'STARTROW' => 1,
+            'MAXROWS'  => $maxRows,
+            'SET'      => [
+                'RECTYP' => 'Business',
+            ],
+            'KEYWORDS' => 'published:true',
+            'ENV'      => '',
+            'META'     => [
+                'RECTYP' => 'Business',
+                'FIELDS' => [
+                    [
+                        "KEY" => "keycontact-set_static",
+                        "TYP" => "Person",
+                    ],
+                ],
+            ],
+        ];
+
         foreach ($this->markets as $market => $env) {
 
-            $this->paginatedSearch(
-                function ( $marketCompanyList ) use(
-                    $market,
-                    $sanity,
-                    $selectCompany,
-                    $formatter) {
+            $meroveusParams['ENV'] = $env;
 
+            // paginate over companies
+            while ( $marketCompanyList = $this->companyService->fetchByMarket($meroveusParams) ) {
 
-                    if (!$marketCompanyList) {
-                        echo '                  No results returned for ' . $market . PHP_EOL;
-                    }
+                if (!$marketCompanyList) {
+                    echo '                  No results returned for ' . $market . PHP_EOL;
+                }
 
-                    $this->marketMatched  = $this->marketInserted = 0;
+                $marketMatched = $marketInserted = 0;
 
-                    foreach ($marketCompanyList as $index => $target) {
+                foreach ($marketCompanyList as $index => $target) {
 
-                        $match = $this->elasticMatch($target);
+                    $match = $this->elasticMatch($target);
 
-                        if ($match) { // update the existing record
-                            // update existing record here
-                            // @todo refactor for DI
-                            $this->processMatch($match, $target, $this->updateCompanyPdo);
+                    if ($match) { // update the existing record
+                        // update existing record here
+                        // @todo refactor for DI
+                        $this->processMatch($match, $target, $this->updateCompanyPdo);
 
-                            if ($sanity) {
-                                $this->writeSanityFiles($market, $target, $match);
-                            }
-
-                            $this->marketMatched++;
-                            $this->totalMatched++;
-
-                        } else { // create a new record
-
-                            $queryParams = $formatter->format($target);
-                            $added       = $this->addCompanyPdo->execute($queryParams);
-                            if (!$added) {
-                                echo 'opps, company add failed' . PHP_EOL;
-                                // @todo log it
-                            };
-
-                            // write some debug files if you want
-                            if ($sanity) {
-                                $this->writeSanityFiles($market, $target, false);
-                            }
-
-                            $this->marketInserted++;
-                            $this->totalInserted++;
+                        if ($sanity) {
+                            $this->writeSanityFiles($market, $target, $match);
                         }
 
-                        // process company contacts
+                        $marketMatched++;
+                        $totalMatched++;
 
-                        // temp lookup for meroveus id @todo get this from pdo last id?
-                        $selectCompany->execute([$target['meroveusId']]);
+                    } else { // create a new record
 
-                        $company = ( $selectCompany->rowCount() > 0 )
-                            ? $company = $selectCompany->fetch(\PDO::FETCH_ASSOC)
-                            : false;
+                        $queryParams = $formatter->format($target);
+                        $added       = $this->addCompanyPdo->execute($queryParams);
+                        if (!$added) {
+                            echo 'opps, company add failed' . PHP_EOL;
+                            // @todo log it
+                        };
 
-                        if ($company) {
-                            foreach ($target['contacts'] as $contact) {
-
-                                // attach the companys hub id to the contact, format it and add it
-                                $contact['hub_id'] = $company['hub_id'];
-
-                                if ( $meroveusReturn = $this->contactService->formatMeroveusReturn($contact)) {
-                                    $contactAdded = $this->addContactPdo->execute($meroveusReturn);
-                                    if (!$contactAdded) {
-                                        // @todo log it
-                                    } else {
-                                        // @todo and do what, exactly?
-                                    };
-                                }
-                            }
+                        // write some debug files if you want
+                        if ($sanity) {
+                            $this->writeSanityFiles($market, $target, false);
                         }
 
-                        // track memory and total count
-                        echo "\033[{$this->lastMemUsageMessageLength}D";
-                        $total = $this->totalInserted + $this->totalMatched;
-                        $currentLoopInsertionCount = $index + 1;
-                        $memory = $total . ':' . $currentLoopInsertionCount . ':' . $this->convert_memory_usage( memory_get_usage( true));
-                        $this->lastMemUsageMessageLength = strlen($memory);
-                        echo $memory;
+                        $marketInserted++;
+                        $totalInserted++;
                     }
 
-                },$env, $market, $maxRows);
+                    // process company contacts
 
+                    // temp lookup for meroveus id @todo get this from pdo last id?
+                    $selectCompany->execute([$target['meroveusId']]);
+
+                    $company = ( $selectCompany->rowCount() > 0 )
+                        ? $company = $selectCompany->fetch(\PDO::FETCH_ASSOC)
+                        : false;
+
+                    if ($company) {
+                        foreach ($target['contacts'] as $contact) {
+
+                            // attach the companys hub id to the contact, format it and add it
+                            $contact['hub_id'] = $company['hub_id'];
+
+                            if ( $meroveusReturn = $this->contactService->formatMeroveusReturn($contact)) {
+                                $contactAdded = $this->addContactPdo->execute($meroveusReturn);
+                                if (!$contactAdded) {
+                                    // @todo log it
+                                } else {
+                                    // @todo and do what, exactly?
+                                };
+                            }
+                        }
+                    }
+
+                    // track memory and total count
+                    echo "\033[{$lastMemUsageMessageLength}D";
+                    $total = $totalInserted + $totalMatched;
+                    $currentLoopInsertionCount = $index + 1;
+                    $memory = $total . ':' . $currentLoopInsertionCount . ':' . $this->convert_memory_usage( memory_get_usage( true));
+                    $lastMemUsageMessageLength = strlen($memory);
+                    echo $memory;
+                }
+
+                // get next chunk of rows
+                $meroveusParams['STARTROW'] += $maxRows;
+            }
 
             echo PHP_EOL . $market . ':' . PHP_EOL;
-            echo '  ' . $this->marketMatched . ' records matched, ' . PHP_EOL;
-            echo '  ' . $this->marketInserted . ' records created' . PHP_EOL;
+            echo " {$marketMatched} records matched, " . PHP_EOL;
+            echo " {$marketInserted} records created" . PHP_EOL;
 
-            echo "              post market out of loop memory usage is " . $this->convert_memory_usage( memory_get_usage( true)) . PHP_EOL;
+            echo "              post market out of loop memory usage is "
+                . $this->convert_memory_usage(memory_get_usage( true)) . PHP_EOL;
         }
 
-        echo $this->totalMatched . ' total  records matched ' . PHP_EOL;
-        echo $this->totalInserted . ' total records inserted ' . PHP_EOL;
+        echo $totalMatched . ' total  records matched ' . PHP_EOL;
+        echo $totalInserted . ' total records inserted ' . PHP_EOL;
         $end = date('h:i:s A');
         echo "ended at " . $end . PHP_EOL;
         echo 'Enjoy your day' . PHP_EOL;
@@ -404,20 +426,20 @@ class MeroveusController extends AbstractActionController
 
                     // write this row to file
                     fputcsv( $file, [
-                       $row['hub_id'],
-                       0,                   // pub_id doesn't matter
-                       $row['company_name'],
-                       $row['address1'],
-                       $row['address2'],
-                       '',                  // no address 3 field on our side
-                       $row['city'],
-                       $row['state'],
-                       @$zipParts[0],       // zip
-                       @$zipParts[1] ?: '', // zip4
-                       $row['phone'],
-                       '',                  // no fax field
-                       '',                  // no email
-                       $row['website']
+                        $row['hub_id'],
+                        0,                   // pub_id doesn't matter
+                        $row['company_name'],
+                        $row['address1'],
+                        $row['address2'],
+                        '',                  // no address 3 field on our side
+                        $row['city'],
+                        $row['state'],
+                        @$zipParts[0],       // zip
+                        @$zipParts[1] ?: '', // zip4
+                        $row['phone'],
+                        '',                  // no fax field
+                        '',                  // no email
+                        $row['website']
                     ]);
 
                     $count++;
@@ -435,44 +457,6 @@ class MeroveusController extends AbstractActionController
             echo PHP_EOL . "exported {$count} companies to " . realpath($outFilePath);
         }
 
-
-    }
-
-    /**
-     * chunks the queries for throttling
-     *
-     * @param string $env (this represents the market in the query to meroveus)
-     * @param string $market ()
-     * @param int $maxRows (max returned results per call)
-     * @return array ( filtered and compiled results )
-     */
-    private function paginatedSearch($callback, $env, $market, $maxRows = 25) {
-
-        // setup our meroveus params
-        $meroveusParams = [
-            'STARTROW' => 1,
-            'MAXROWS'  => $maxRows,
-            'SET'      => [
-                'RECTYP' => 'Business',
-            ],
-            'KEYWORDS' => 'published:true',
-            'ENV'      => $env,
-            'META'     => [
-                'RECTYP' => 'Business',
-                'FIELDS' => [
-                    [
-                        "KEY" => "keycontact-set_static",
-                        "TYP" => "Person",
-                    ],
-                ],
-            ],
-        ];
-
-        // call the callback every time we get results
-        while ( $result = $this->companyService->fetchByMarket($meroveusParams) ) {
-            $meroveusParams['STARTROW'] += $maxRows;
-            call_user_func($callback, $result);
-        }
 
     }
 
