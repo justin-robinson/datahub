@@ -192,10 +192,9 @@ class MeroveusController extends AbstractActionController
         $this->elasticQueryBuilder = new QueryBuilder();
 
         // prepare pdo outside the loop for memory purposes
-        $this->dataHubDb        = new \PDO('mysql:host=devdb.bizjournals.int;dbname=datahub', 'web', '');
-        $this->addContactPdo    = $this->dataHubDb->prepare($this->contactSql);
-        $this->addCompanyPdo    = $this->dataHubDb->prepare($this->createCompanySql);
-        $this->updateCompanyPdo = $this->dataHubDb->prepare($this->updateCompanySql);
+        $this->addContactPdo    = $this->db->prepare($this->contactSql);
+        $this->addCompanyPdo    = $this->db->prepare($this->createCompanySql);
+        $this->updateCompanyPdo = $this->db->prepare($this->updateCompanySql);
     }
 
     /**
@@ -245,7 +244,6 @@ class MeroveusController extends AbstractActionController
         $this->contactService = $this->getServiceLocator()->get('Services\Meroveus\ContactService');
 
         $lastMemUsageMessageLength = 0;
-        $companyCache = [];
 
         $selectCompany = $this->sqlStatementsArray['selectOneCompanyByMeroveusId'];
 
@@ -302,6 +300,12 @@ class MeroveusController extends AbstractActionController
                             $this->writeSanityFiles($market, $target, $match);
                         }
 
+                        $selectCompany->execute([$target['meroveusId']]);
+
+                        $hubId = ( $selectCompany->rowCount() > 0 )
+                            ? $selectCompany->fetch(\PDO::FETCH_ASSOC)['hub_id']
+                            : false;
+
                         $marketMatched++;
                         $totalMatched++;
 
@@ -314,6 +318,9 @@ class MeroveusController extends AbstractActionController
                             // @todo log it
                         };
 
+                        // good ole pdo has the hubId for us
+                        $hubId = $this->db->lastInsertId();
+
                         // write some debug files if you want
                         if ($sanity) {
                             $this->writeSanityFiles($market, $target, false);
@@ -323,25 +330,11 @@ class MeroveusController extends AbstractActionController
                         $totalInserted++;
                     }
 
-                    // process company contacts
-
-                    // temp lookup for meroveus id @todo get this from pdo last id?
-                    if ( empty($companyCache[$target['meroveusId']]) ) {
-                        $selectCompany->execute([$target['meroveusId']]);
-
-                        $companyCache[$target['meroveusId']] = ( $selectCompany->rowCount() > 0 )
-                            ? $selectCompany->fetch(\PDO::FETCH_ASSOC)
-                            : false;
-
-                    }
-
-                    $company = $companyCache[$target['meroveusId']];
-
-                    if ($company) {
+                    if ($hubId) {
                         foreach ($target['contacts'] as $contact) {
 
                             // attach the companys hub id to the contact, format it and add it
-                            $contact['hub_id'] = $company['hub_id'];
+                            $contact['hub_id'] = $hubId;
 
                             if ( $meroveusReturn = $this->contactService->formatMeroveusReturn($contact)) {
                                 $contactAdded = $this->addContactPdo->execute($meroveusReturn);
