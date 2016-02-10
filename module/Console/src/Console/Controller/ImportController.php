@@ -381,9 +381,18 @@ class ImportController extends AbstractActionController
     public function relevateAction()
     {
 
-        $csvFile = realpath($this->getRequest()->getParam('file'));
+        $filePath = $this->getRequest()->getParam('file');
 
-        $file = new CsvIterator($csvFile);
+        if ( !$filePath ) {
+            die ( 'run with arg --file /path/to/file ');
+        }
+
+        $filePath = realpath($filePath);
+        if ( !$filePath ) {
+            die ( "--file does not exist: " . $this->getRequest()->getParam('file') );
+        }
+
+        $file = new CsvIterator($filePath);
 
         // this isn't a proper csv so just ensure we are skipping the empty lines
         $noCsvFlag = $file->getFlags() ^ CsvIterator::READ_CSV;
