@@ -9,10 +9,10 @@ chdir(dirname(__DIR__));
  * Display all errors when APPLICATION_ENV is development.
  */
 if ($_SERVER['APPLICATION_ENV'] == 'development') {
-	error_reporting(E_ALL);
-	ini_set("display_errors", 1);
+    error_reporting(E_ALL);
+    ini_set("display_errors", 1);
 } else {
-	error_reporting(E_ERROR | E_WARNING | E_PARSE);
+    error_reporting(E_ERROR | E_WARNING | E_PARSE);
 }
 
 
