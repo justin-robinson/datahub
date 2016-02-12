@@ -1,48 +1,50 @@
 <?php
-$defaultMysqlConnectionParams = array(
+$defaultMysqlConnectionParams = [
     'charset'       => 'utf8',
     'host'          => 'devdb.bizjournals.int',
     'port'          => '3306',
     'user'          => 'web',
     'password'      => '',
-    'driverOptions' => array(
+    'driverOptions' => [
         1002 => 'SET NAMES utf8'
-    ),
-);
-return array(
-    'doctrine' => array(
-        'connection' => array(
-            'datahub' => array(
+    ],
+];
+return [
+
+    'doctrine' => [
+        'connection' => [
+            'datahub' => [
                 'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
-                'params' => array_merge($defaultMysqlConnectionParams, array(
+                'params' => array_merge($defaultMysqlConnectionParams, [
                     'dbname' => 'datahub',
-                ) ),
-            ),
-            'orm_default' => array(
+                ] ),
+            ],
+            'orm_default' => [
                 'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
-                'params' => array_merge($defaultMysqlConnectionParams, array(
+                'params' => array_merge($defaultMysqlConnectionParams, [
                     'dbname'  => 'datahub',
-                ) ),
-            ),
-        ),
-    ),
-    'logger' => array(
-        'default' => array(
+                ] ),
+            ],
+        ],
+    ],
+
+    'logger' => [
+        'default' => [
             'priority' => \Zend\Log\Logger::DEBUG,
             'path' => '/var/tmp',
-        )
-    ),
-    'log'=> array (
-        'content' => array(
-            'writers' => array(
-                'stderr' => array(
-                    'options' => array(
+        ]
+    ],
+    'log'=> [
+        'content' => [
+            'writers' => [
+                'stderr' => [
+                    'options' => [
                         'filters' => new \Zend\Log\Filter\Priority(\Zend\Log\Logger::DEBUG),
-                    ),
-                ),
-            ),
-        ),
-    ),
+                    ],
+                ],
+            ],
+        ],
+    ],
 
     'elastica' => [
         'host' => 'http://datahub.listsandleads.elasticsearch.bizj-dev.com',
@@ -50,4 +52,12 @@ return array(
         'port' => '9200',
         'url'  => 'http://datahub.listsandleads.elasticsearch.bizj-dev.com:9200/rerefinery/',
     ],
-);
+
+    'pdo'=> [
+        'host' => 'devdb.bizjournals.int',
+        'dbname' => 'datahub',
+        'usename' => 'web',
+        'pword' => '',
+    ]
+
+];

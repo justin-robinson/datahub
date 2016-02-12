@@ -15,6 +15,7 @@ use Elastica\Search as ElasticaSearch;
 use Elastica\Result;
 use Services\Meroveus\CompanyService;
 use Services\Meroveus\Client as MeroveusClient;
+use Zend\Mvc\MvcEvent;
 
 //use Services\Meroveus\CompanyService;
 
@@ -168,25 +169,19 @@ class MeroveusController extends AbstractActionController
             LIMIT :offset, :limit'
     ];
 
+
     /**
-     * Constructor
+     * set up here since __construct can't use servicelocator
+     * @param MvcEvent $e
      */
-    public function __construct()
+    public function init(MvcEvent $e)
     {
 
-        parent::__construct();
-
-//        $this->meroveusClient = new MeroveusClient(['path' => 'http://acbj-stg.meroveus.com:8080/api']);
 
         $this->companyService = new CompanyService($this->meroveusClient);
         //@todo make this environment aware
         // set up elastic
-        $this->elasticaClient = new ElasticaClient([
-            'host' => 'http://datahub.listsandleads.elasticsearch.bizj-dev.com',
-            'path' => 'rerefinery/',
-            'port' => '9200',
-            'url'  => 'http://datahub.listsandleads.elasticsearch.bizj-dev.com:9200/rerefinery/',
-        ]);
+        $this->elasticaClient = new ElasticaClient($this->getServiceLocator()->get('Config')['elastica'] );
         $this->elasticSearch  = new ElasticaSearch($this->elasticaClient);
         $this->elasticQuery = new ElasticaQuery();
         $this->elasticQueryBuilder = new QueryBuilder();
@@ -197,6 +192,7 @@ class MeroveusController extends AbstractActionController
         $this->updateCompanyPdo = $this->db->prepare($this->updateCompanySql);
     }
 
+
     /**
      * utility randomness
      *
@@ -204,6 +200,7 @@ class MeroveusController extends AbstractActionController
      */
     public function indexAction()
     {
+
         $env = $this->getRequest()->getParam('env');
         echo "$env\n";
         return "$env\n";
@@ -291,7 +288,8 @@ class MeroveusController extends AbstractActionController
 
                     $match = $this->elasticMatch($target);
 
-                    if ($match) { // update the existing record
+                    if ($match) {
+                        // update the existing record
                         // update existing record here
                         // @todo refactor for DI
                         $this->processMatch($match, $target, $this->updateCompanyPdo);

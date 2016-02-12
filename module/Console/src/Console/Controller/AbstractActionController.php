@@ -31,20 +31,7 @@ abstract class AbstractActionController extends ZendAbstractActionController
      * AbstractActionController constructor.
      */
     public function __construct () {
-        // setup db connection
-        // todo dynamic db connection
-        // todo encapsulate pdo logic in classes or use an orm
-
-
-
-        $this->db = new \PDO('mysql:host=devdb.bizjournals.int;dbname=datahub', 'web', '');
-        $this->db->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
-
-        // prepare sql statements
-        foreach ( $this->sqlStringsArray as $name => $sqlString ) {
-            $this->sqlStatementsArray[$name] = $this->db->prepare( $sqlString );
-            $this->sqlStatementsArray[$name]->setFetchMode(\PDO::FETCH_ASSOC);
-        }
+        // see $this->init()
     }
 
     /**
@@ -62,5 +49,18 @@ abstract class AbstractActionController extends ZendAbstractActionController
 
     public function init(MvcEvent $e)
     {
+        $dbConfig = $this->getServiceLocator()->get('Config')['pdo'];
+        $this->db = new \PDO(
+            'mysql:host='.$dbConfig['host'].';dbname='.$dbConfig['dbname'],
+            $dbConfig['usename'],
+            $dbConfig['pword']
+        );
+        $this->db->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
+
+        // prepare sql statements
+        foreach ( $this->sqlStringsArray as $name => $sqlString ) {
+            $this->sqlStatementsArray[$name] = $this->db->prepare( $sqlString );
+            $this->sqlStatementsArray[$name]->setFetchMode(\PDO::FETCH_ASSOC);
+        }
     }
 }
