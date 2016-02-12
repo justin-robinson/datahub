@@ -1,19 +1,31 @@
 <?php
-return array(
-    'logger' => array(
-        'default' => array(
+return [
+    'logger'  => [
+        'default' => [
             'priority' => \Zend\Log\Logger::DEBUG,
-        )
-    ),
-    'log'=> array (
-        'console' => array(
-            'writers' => array(
-                'stderr' => array(
-                    'options' => array(
+        ],
+    ],
+    'log'     => [
+        'console' => [
+            'writers' => [
+                'stderr' => [
+                    'options' => [
                         'filters' => new \Zend\Log\Filter\Priority(\Zend\Log\Logger::ERR),
-                    ),
-                ),
-            ),
-        ),
-    ),
-);
+                    ],
+                ],
+            ],
+        ],
+    ],
+    'db'      => [
+        'host'    => 'devdb',
+        'dbName'  => 'datahub',
+        'usename' => 'web',
+        'pword'   => '',
+    ],
+    'elastic' => [
+        'host' => 'http://datahub.listsandleads.elasticsearch.bizj-dev.com',
+        'path' => 'rerefinery/',
+        'port' => '9200',
+        'url'  => 'http://datahub.listsandleads.elasticsearch.bizj-dev.com:9200/rerefinery/',
+    ],
+];

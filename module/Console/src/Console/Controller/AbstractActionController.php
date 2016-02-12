@@ -34,6 +34,9 @@ abstract class AbstractActionController extends ZendAbstractActionController
         // setup db connection
         // todo dynamic db connection
         // todo encapsulate pdo logic in classes or use an orm
+
+
+
         $this->db = new \PDO('mysql:host=devdb.bizjournals.int;dbname=datahub', 'web', '');
         $this->db->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
 
