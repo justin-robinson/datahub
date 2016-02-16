@@ -3,8 +3,8 @@ $defaultMysqlConnectionParams = [
     'charset'       => 'utf8',
     'host'          => 'devdb.bizjournals.int',
     'port'          => '3306',
-    'user'          => 'bizj-write',
-    'password'      => 'bizj-write',
+    'user'          => 'web',
+    'password'      => '',
     'driverOptions' => [
         1002 => 'SET NAMES utf8',
     ],
