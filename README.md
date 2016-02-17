@@ -39,3 +39,15 @@ php run.php  meroveus match -e development #where -e is environment
 ```shell
 sudo /var/www/datahub/scripts/run.php import refinery -e development --file=/home/vagrant/files/refineryDump.csv
 ```
+
+## aws notes
+
+initiating a re-stash of the data (names of files company.csv and company_stash.json should remain the same)
+
+```shell
+aws s3 cp /path/to/company.csv s3://acbj-team-data/datahub/company.csv
+```
+or
+```shell
+aws s3 cp /datahub/repo/logstash/company_stash.json s3://acbj-team-data/datahub/company_stash.json
+```
