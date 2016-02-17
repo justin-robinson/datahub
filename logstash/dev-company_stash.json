@@ -1,5 +1,7 @@
 input {
-  stdin {
+  file {
+    path => "/tmp/company.csv"
+    start_position => "beginning"
     type => company
   }
 }
@@ -33,7 +35,7 @@ filter {
 
 output {
   elasticsearch {
-      hosts => ["elb.es.production-datahub.bizj-internal.com:9200"]
+      hosts => ["datahub.listsandleads.elasticsearch.bizj-dev.com:9200"]
       index => "companies"
   }
 }
