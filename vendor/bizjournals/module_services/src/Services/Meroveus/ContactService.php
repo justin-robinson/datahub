@@ -80,6 +80,18 @@ class ContactService extends AbstractService
 
     }
 
+
+    /**
+     * @todo align contacts existing job position with our classifications in datahub.job_position
+     * https://bizjournals.atlassian.net/browse/DATA-76
+     * @param $givenPosition
+     *
+     * @return int
+     */
+    private  function getJobPositionId($givenPosition){
+        return 123;
+    }
+
 }
 
 
