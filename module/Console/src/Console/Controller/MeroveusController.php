@@ -334,6 +334,11 @@ class MeroveusController extends AbstractActionController
                             // attach the companys hub id to the contact, format it and add it
                             $contact['hub_id'] = $hubId;
 
+
+                            //@todo sort contacts into buckets
+                           // $this->contactService->getJobPositionId($contact['job_position']);
+
+
                             if ( $meroveusReturn = $this->contactService->formatMeroveusReturn($contact)) {
                                 $contactAdded = $this->addContactPdo->execute($meroveusReturn);
                                 if (!$contactAdded) {

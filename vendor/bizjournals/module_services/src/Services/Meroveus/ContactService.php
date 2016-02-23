@@ -11,10 +11,57 @@ use Services\AbstractService;
 
 /**
  * Class ContactService
+ *
  * @package Services\Meroveus
  */
 class ContactService extends AbstractService
 {
+    /**
+     * @var array $JobIdDictionary
+     * holds the current state of the
+     */
+    private $JobIdDictionary = [
+        10 => [
+            'Chief Executive Officer',
+            'CEO',
+        ],
+        11 => [
+            'President',
+        ],
+        22 => [
+            'Owner',
+        ],
+        30 => [
+            'Chief ? Officer',
+            'C?0',
+        ],
+        60 => [
+            'Chairman',
+        ],
+        50 => [
+            'Partner',
+        ],
+        90 => [
+            'Human Resources Executive',
+            'Finance Executive',
+            'Sales Executive',
+            'Executive Officer',
+            'Operations Executive',
+            'Manufacturing Executive',
+            'Executive Director',
+            'Executive Vice President',
+            'Marketing Executive',
+        ],
+
+        130 => [
+            'Director',
+        ],
+        140 => [
+            'General Manager',
+            'Office Manager',
+            'Manager ',
+        ],
+    ];
 
     /**
      * @param $refineryId
@@ -32,6 +79,7 @@ class ContactService extends AbstractService
 
     /**
      * @param array $meroveusReturn
+     *
      * @return array
      */
     public function formatMeroveusReturn(array $meroveusReturn)
@@ -76,6 +124,7 @@ class ContactService extends AbstractService
         $contact[':deleted_at']     = null;
         unset($meroveusReturn);
         gc_collect_cycles();
+
         return $contact;
 
     }
@@ -84,13 +133,34 @@ class ContactService extends AbstractService
     /**
      * @todo align contacts existing job position with our classifications in datahub.job_position
      * https://bizjournals.atlassian.net/browse/DATA-76
+     *
      * @param $givenPosition
      *
      * @return int
+     * map:
+     * CEO                        10
+     * President                  11
+     * Principal                  20
+     * Managing (any)             21
+     * Owner                      22
+     * C?O                        30
+     * Founder                    40
+     * Partner                    50
+     * (any) Chairman (any)       60
+     * (any) Executive (any)      90
+     * EVP                        90
+     * (Senior) Vice President/VP 100
+     * AVP                        120
+     * Director (any)             130
+     * (any) Manager (any)        140
+     * Other                      1000
+     * No title                   1001
      */
-    private  function getJobPositionId($givenPosition){
+    private function getJobPositionId($givenPosition)
+    {
         return 123;
     }
+
 
 }
 
