@@ -22,44 +22,44 @@ class ContactService extends AbstractService
      */
     private $JobIdDictionary = [
         10 => [
-            'Chief Executive Officer',
+            'CHIEF EXECUTIVE OFFICER',
             'CEO',
         ],
         11 => [
-            'President',
+            'PRESIDENT',
         ],
         22 => [
-            'Owner',
+            'OWNER',
         ],
         30 => [
-            'Chief ? Officer',
+            'CHIEF ? OFFICER',
             'C?0',
         ],
         60 => [
-            'Chairman',
+            'CHAIRMAN',
         ],
         50 => [
-            'Partner',
+            'PARTNER',
         ],
         90 => [
-            'Human Resources Executive',
-            'Finance Executive',
-            'Sales Executive',
-            'Executive Officer',
-            'Operations Executive',
-            'Manufacturing Executive',
-            'Executive Director',
-            'Executive Vice President',
-            'Marketing Executive',
+            'HUMAN RESOURCES EXECUTIVE',
+            'FINANCE EXECUTIVE',
+            'SALES EXECUTIVE',
+            'EXECUTIVE OFFICER',
+            'OPERATIONS EXECUTIVE',
+            'MANUFACTURING EXECUTIVE',
+            'EXECUTIVE DIRECTOR',
+            'EXECUTIVE VICE PRESIDENT',
+            'MARKETING EXECUTIVE',
         ],
 
         130 => [
-            'Director',
+            'DIRECTOR',
         ],
         140 => [
-            'General Manager',
-            'Office Manager',
-            'Manager ',
+            'GENERAL MANAGER',
+            'OFFICE MANAGER',
+            'MANAGER ',
         ],
     ];
 
