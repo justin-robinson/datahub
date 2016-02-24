@@ -147,27 +147,27 @@ class ContactService extends AbstractService
     public function getJobPositionId($givenPosition)
     {
         $input = strtoupper($givenPosition);
-//        $inputArray = str_word_count($input,1 );
-
-
-        $key = array_key_exists($input, $this->jobIdDictionary) ? $this->jobIdDictionary[$input] : null;
+        $key   = array_key_exists($input, $this->jobIdDictionary) ? $this->jobIdDictionary[$input] : null;
 
         if ($key) {
             return $key;
         } else {
             // are we a chief something unheard of?
-            if(strpos($input, 'CHIEF') === 0 && strpos($input, 'OFFICER')) {
-                // insert into db with job_position_id == 30
+            if (strpos($input, 'CHIEF') === 0 && strpos($input, 'OFFICER')) {
+                // @todo insert into db with job_position_id == 30
                 return 30;
             }
-            if ( (strpos($input, 'C' ) === 0 && strlen($input) === 3) ) {
-                // insert into db with job_position_id == 30
-                return 30;
+            if ((strpos($input, 'C') === 0 && strlen($input) === 3)) {
+
+                if(strpos($input, 'O') === 2){
+                // @todo insert into db with job_position_id == 30
+                    return 30;
+                }
             }
         }
+
         return 1001;
     }
-
 
 }
 

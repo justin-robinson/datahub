@@ -212,7 +212,7 @@ class MeroveusController extends AbstractActionController
 
     public function jobAction(){
         echo "line 217". ' in '."MeroveusController.php".PHP_EOL;
-        die(var_dump( $this->contactService->getJobPositionId('CHIEF Mantacular OFFICER') ));
+        die(var_dump( $this->contactService->getJobPositionId('CLO') ));
     }
     /**
      * php run.php  meroveus match -e development
