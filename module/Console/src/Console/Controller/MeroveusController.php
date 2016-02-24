@@ -89,6 +89,12 @@ class MeroveusController extends AbstractActionController
     private $companyService;
 
     /**
+    /**
+     * @var ContactService
+     */
+    private $contactService;
+
+    /**
      * @var ElasticaSearch
      */
     private $elasticSearch;
@@ -170,13 +176,14 @@ class MeroveusController extends AbstractActionController
     ];
 
 
+
     /**
      * set up here since __construct can't use servicelocator
      * @param MvcEvent $e
      */
     public function init(MvcEvent $e)
     {
-
+        parent::init($e);
 
         $this->companyService = new CompanyService($this->meroveusClient);
         //@todo make this environment aware
@@ -185,7 +192,7 @@ class MeroveusController extends AbstractActionController
         $this->elasticSearch  = new ElasticaSearch($this->elasticaClient);
         $this->elasticQuery = new ElasticaQuery();
         $this->elasticQueryBuilder = new QueryBuilder();
-
+        $this->contactService = $this->getServiceLocator()->get('Services\Meroveus\ContactService');
         // prepare pdo outside the loop for memory purposes
         $this->addContactPdo    = $this->db->prepare($this->contactSql);
         $this->addCompanyPdo    = $this->db->prepare($this->createCompanySql);
@@ -206,6 +213,10 @@ class MeroveusController extends AbstractActionController
         return "$env\n";
     }
 
+    public function jobAction(){
+        echo "line 217". ' in '."MeroveusController.php".PHP_EOL;
+        die(var_dump( $this->contactService ));
+    }
     /**
      * php run.php  meroveus match -e development
      * @var $sanity bool will write files for you to peruse for debugging

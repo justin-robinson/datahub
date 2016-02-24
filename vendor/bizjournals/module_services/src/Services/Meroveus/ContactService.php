@@ -18,50 +18,55 @@ class ContactService extends AbstractService
 {
     /**
      * @var array $JobIdDictionary
-     * holds the current state of the
+     *
      */
-    private $JobIdDictionary = [
-        10 => [
-            'CHIEF EXECUTIVE OFFICER',
-            'CEO',
-        ],
-        11 => [
-            'PRESIDENT',
-        ],
-        22 => [
-            'OWNER',
-        ],
-        30 => [
-            'CHIEF ? OFFICER',
-            'C?0',
-        ],
-        60 => [
-            'CHAIRMAN',
-        ],
-        50 => [
-            'PARTNER',
-        ],
-        90 => [
-            'HUMAN RESOURCES EXECUTIVE',
-            'FINANCE EXECUTIVE',
-            'SALES EXECUTIVE',
-            'EXECUTIVE OFFICER',
-            'OPERATIONS EXECUTIVE',
-            'MANUFACTURING EXECUTIVE',
-            'EXECUTIVE DIRECTOR',
-            'EXECUTIVE VICE PRESIDENT',
-            'MARKETING EXECUTIVE',
-        ],
+    private $JobIdDictionary;
 
-        130 => [
-            'DIRECTOR',
-        ],
-        140 => [
-            'GENERAL MANAGER',
-            'OFFICE MANAGER',
-            'MANAGER ',
-        ],
-    ];
+    public function __construct()
+    {
+//        ulitmatly built by referencing datahub.job_position
+        $this->JobIdDictionary = [
+            10 => [
+                'CHIEF EXECUTIVE OFFICER',
+                'CEO',
+            ],
+            11 => [
+                'PRESIDENT',
+            ],
+            22 => [
+                'OWNER',
+            ],
+            30 => [
+                'CHIEF ? OFFICER',
+                'C?0',
+            ],
+            60 => [
+                'CHAIRMAN',
+            ],
+            50 => [
+                'PARTNER',
+            ],
+            90 => [
+                'HUMAN RESOURCES EXECUTIVE',
+                'FINANCE EXECUTIVE',
+                'SALES EXECUTIVE',
+                'EXECUTIVE OFFICER',
+                'OPERATIONS EXECUTIVE',
+                'MANUFACTURING EXECUTIVE',
+                'EXECUTIVE DIRECTOR',
+                'EXECUTIVE VICE PRESIDENT',
+                'MARKETING EXECUTIVE',
+            ],
+            130 => [
+                'DIRECTOR',
+            ],
+            140 => [
+                'GENERAL MANAGER',
+                'OFFICE MANAGER',
+                'MANAGER ',
+            ],
+        ];
+    }
 
     /**
      * @param $refineryId
