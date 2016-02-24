@@ -20,51 +20,52 @@ class ContactService extends AbstractService
      * @var array $JobIdDictionary
      *
      */
-    private $JobIdDictionary;
+    private $jobIdDictionary;
 
     public function __construct()
     {
 //        ulitmatly built by referencing datahub.job_position
-        $this->JobIdDictionary = [
-            10 => [
-                'CHIEF EXECUTIVE OFFICER',
-                'CEO',
-            ],
-            11 => [
-                'PRESIDENT',
-            ],
-            22 => [
-                'OWNER',
-            ],
-            30 => [
-                'CHIEF ? OFFICER',
-                'C?0',
-            ],
-            60 => [
-                'CHAIRMAN',
-            ],
-            50 => [
-                'PARTNER',
-            ],
-            90 => [
-                'HUMAN RESOURCES EXECUTIVE',
-                'FINANCE EXECUTIVE',
-                'SALES EXECUTIVE',
-                'EXECUTIVE OFFICER',
-                'OPERATIONS EXECUTIVE',
-                'MANUFACTURING EXECUTIVE',
-                'EXECUTIVE DIRECTOR',
-                'EXECUTIVE VICE PRESIDENT',
-                'MARKETING EXECUTIVE',
-            ],
-            130 => [
-                'DIRECTOR',
-            ],
-            140 => [
-                'GENERAL MANAGER',
-                'OFFICE MANAGER',
-                'MANAGER ',
-            ],
+        $this->jobIdDictionary = [
+            'CHIEF EXECUTIVE OFFICER'      => 10,
+            'CEO'                          => 10,
+            'PRESIDENT'                    => 11,
+            'OWNER'                        => 22,
+            'CHIEF TECHNOLOGY OFFICER'     => 30,
+            'CTO'                          => 30,
+            'CHIEF FINANCIAL OFFICER'      => 30,
+            'CFO'                          => 30,
+            'CHIEF MARKETING OFFICER'      => 30,
+            'CMO'                          => 30,
+            'CHAIRMAN'                     => 60,
+            'PARTNER'                      => 50,
+            'HUMAN RESOURCES EXECUTIVE'    => 90,
+            'FINANCE EXECUTIVE'            => 90,
+            'SALES EXECUTIVE'              => 90,
+            'EXECUTIVE OFFICER'            => 90,
+            'OPERATIONS EXECUTIVE'         => 90,
+            'MANUFACTURING EXECUTIVE'      => 90,
+            'EXECUTIVE DIRECTOR'           => 90,
+            'EXECUTIVE VICE PRESIDENT'     => 90,
+            'MARKETING EXECUTIVE'          => 90,
+            'DIRECTOR'                     => 130,
+            'GENERAL MANAGER    '          => 140,
+            'OFFICE MANAGER'               => 140,
+            'MANAGER '                     => 140,
+            'INFORMATION TECHNOLOGY'       => 1000,
+            'BOARD MEMBER'                 => 1000,
+            'PURCHASING'                   => 1000,
+            'ADMINISTRATOR'                => 1000,
+            'PUBLISHER/EDITOR'             => 1000,
+            'CORP COMMUNICATIONS/PR'       => 1000,
+            'LEGAL'                        => 1000,
+            'BUSINESS DEVELOPMENT'         => 1000,
+            'INTERNATIONAL RESPONSIBILITY' => 1000,
+            'CONTROLLER'                   => 1000,
+            'ENGINEERING/TECHNICAL'        => 1000,
+            'PRINCIPAL'                    => 1000,
+            'MEDICAL PROFESSIONAL'         => 1000,
+            'GOVERNMENT PROFESSIONAL'      => 1000,
+            'EDUCATOR'                     => 1000,
         ];
     }
 
@@ -139,31 +140,32 @@ class ContactService extends AbstractService
      * @todo align contacts existing job position with our classifications in datahub.job_position
      * https://bizjournals.atlassian.net/browse/DATA-76
      *
-     * @param $givenPosition
+     * @param $givenPosition string
      *
      * @return int
-     * map:
-     * CEO                        10
-     * President                  11
-     * Principal                  20
-     * Managing (any)             21
-     * Owner                      22
-     * C?O                        30
-     * Founder                    40
-     * Partner                    50
-     * (any) Chairman (any)       60
-     * (any) Executive (any)      90
-     * EVP                        90
-     * (Senior) Vice President/VP 100
-     * AVP                        120
-     * Director (any)             130
-     * (any) Manager (any)        140
-     * Other                      1000
-     * No title                   1001
      */
-    private function getJobPositionId($givenPosition)
+    public function getJobPositionId($givenPosition)
     {
-        return 123;
+        $input = strtoupper($givenPosition);
+//        $inputArray = str_word_count($input,1 );
+
+
+        $key = array_key_exists($input, $this->jobIdDictionary) ? $this->jobIdDictionary[$input] : null;
+
+        if ($key) {
+            return $key;
+        } else {
+            // are we a chief something unheard of?
+            if(strpos($input, 'CHIEF') === 0 && strpos($input, 'OFFICER')) {
+                // insert into db with job_position_id == 30
+                return 30;
+            }
+            if ( (strpos($input, 'C' ) === 0 && strlen($input) === 3) ) {
+                // insert into db with job_position_id == 30
+                return 30;
+            }
+        }
+        return 1001;
     }
 
 

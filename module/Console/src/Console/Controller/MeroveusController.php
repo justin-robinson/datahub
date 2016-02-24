@@ -88,10 +88,7 @@ class MeroveusController extends AbstractActionController
      */
     private $companyService;
 
-    /**
-    /**
-     * @var ContactService
-     */
+     /** @var  $contactService \Services\Meroveus\ContactService */
     private $contactService;
 
     /**
@@ -215,7 +212,7 @@ class MeroveusController extends AbstractActionController
 
     public function jobAction(){
         echo "line 217". ' in '."MeroveusController.php".PHP_EOL;
-        die(var_dump( $this->contactService ));
+        die(var_dump( $this->contactService->getJobPositionId('CHIEF Mantacular OFFICER') ));
     }
     /**
      * php run.php  meroveus match -e development
