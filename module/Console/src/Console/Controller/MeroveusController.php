@@ -139,9 +139,7 @@ class MeroveusController extends AbstractActionController
             )';
 
     /** @var string */
-    private $getJobDictionarySql = '
-      SELECT job_title, job_position_id FROM job_position_bukket
-      ORDER BY job_position_id ASC';
+    private $getJobDictionarySql = ' SELECT job_title, job_position_id FROM job_position_bukket ORDER BY job_position_id ASC';
 
     /** @var string */
     private $updateCompanySql = 'UPDATE company SET meroveus_id = :meroveus_id WHERE refinery_id = :refinery_id';
@@ -229,7 +227,7 @@ class MeroveusController extends AbstractActionController
         foreach ($results as $result) {
             $jobIdDictionary[$result->job_title] = $result->job_position_id;
         }
-
+        //@todo refactor for db getting passed
         return $this->contactService->getJobPositionId('Arabian Lizard MANAGER', $jobIdDictionary).PHP_EOL;
     }
 

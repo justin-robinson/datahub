@@ -98,7 +98,7 @@ class ContactService extends AbstractService
      *
      * @param $givenPosition string
      * @param $dictionary array
-     * @return int
+     * @return mixed int|false
      */
     public function getJobPositionId($givenPosition = null, $dictionary)
     {
@@ -135,6 +135,8 @@ class ContactService extends AbstractService
             return 1000;
         }
     }
+
+    //@todo write an insert for new ones with db depinj
 }
 
 
