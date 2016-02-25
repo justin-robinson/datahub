@@ -16,60 +16,12 @@ use Services\AbstractService;
  */
 class ContactService extends AbstractService
 {
-    /**
-     * @var array $JobIdDictionary
-     *
-     */
-    private $jobIdDictionary;
+
 
     public function __construct()
     {
 
-//        ulitmatly built by referencing datahub.job_position
-        $this->jobIdDictionary = [
-            'CHIEF EXECUTIVE OFFICER'      => 10,
-            'CEO'                          => 10,
-            'PRESIDENT'                    => 11,
-            'OWNER'                        => 22,
-            'CHIEF TECHNOLOGY OFFICER'     => 30,
-            'CTO'                          => 30,
-            'CHIEF FINANCIAL OFFICER'      => 30,
-            'CFO'                          => 30,
-            'CHIEF MARKETING OFFICER'      => 30,
-            'CMO'                          => 30,
-            'CHAIRMAN'                     => 60,
-            'PARTNER'                      => 50,
-            'HUMAN RESOURCES EXECUTIVE'    => 90,
-            'FINANCE EXECUTIVE'            => 90,
-            'SALES EXECUTIVE'              => 90,
-            'EXECUTIVE OFFICER'            => 90,
-            'OPERATIONS EXECUTIVE'         => 90,
-            'MANUFACTURING EXECUTIVE'      => 90,
-            'EXECUTIVE DIRECTOR'           => 90,
-            'EXECUTIVE VICE PRESIDENT'     => 90,
-            'MARKETING EXECUTIVE'          => 90,
-            'EXECUTIVE'                    => 90,
-            'DIRECTOR'                     => 130,
-            'GENERAL MANAGER'              => 140,
-            'OFFICE MANAGER'               => 140,
-            'MANAGER'                      => 140,
-            'INFORMATION TECHNOLOGY'       => 1000,
-            'BOARD MEMBER'                 => 1000,
-            'PURCHASING'                   => 1000,
-            'ADMINISTRATOR'                => 1000,
-            'PUBLISHER/EDITOR'             => 1000,
-            'CORP COMMUNICATIONS'          => 1000,
-            'PR'                           => 1000,
-            'LEGAL'                        => 1000,
-            'BUSINESS DEVELOPMENT'         => 1000,
-            'INTERNATIONAL RESPONSIBILITY' => 1000,
-            'CONTROLLER'                   => 1000,
-            'ENGINEERING/TECHNICAL'        => 1000,
-            'PRINCIPAL'                    => 1000,
-            'MEDICAL PROFESSIONAL'         => 1000,
-            'GOVERNMENT PROFESSIONAL'      => 1000,
-            'EDUCATOR'                     => 1000,
-        ];
+
     }
 
     /**
@@ -145,23 +97,23 @@ class ContactService extends AbstractService
      * https://bizjournals.atlassian.net/browse/DATA-76
      *
      * @param $givenPosition string
-     *
+     * @param $dictionary array
      * @return int
      */
-    public function getJobPositionId($givenPosition = null)
+    public function getJobPositionId($givenPosition = null, $dictionary)
     {
         $input = strtoupper($givenPosition);
-        $key   = array_key_exists($input, $this->jobIdDictionary) ? $this->jobIdDictionary[$input] : null;
+        $key   = array_key_exists($input, $dictionary) ? $dictionary[$input] : null;
         // exact title match?
         if ($key) {
             return $key;
         } else {
 
-            //split titles up into arrays and loopem
+            //split titles up into arrays and loopem, doing the same as above
             $inputWords = str_word_count($input, 1);
             foreach($inputWords as $word) {
                 $word = strtoupper($word);
-                $key  = array_key_exists($word, $this->jobIdDictionary) ? $this->jobIdDictionary[$word] : null;
+                $key  = array_key_exists($word, $dictionary) ? $dictionary[$word] : null;
                 if($key) {
                     return $key;
                 }
@@ -172,6 +124,7 @@ class ContactService extends AbstractService
                 // @todo insert into db with job_position_id == 30
                 return 30;
             }
+
             // are we in the form of "C<x>O" ?
             if (strlen($input) === 3 && (strpos($input, 'C') === 0 && strpos($input, 'O') === 2)) {
                 // @todo insert into db with job_position_id == 30

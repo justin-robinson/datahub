@@ -21,8 +21,9 @@ use Zend\Mvc\MvcEvent;
 
 /**
  * Class MeroveusController
+ *
  * @package Console\Controller
- * pdo statement prep happens in __construct for DI reasons
+ *          pdo statement prep happens in __construct for DI reasons
  */
 class MeroveusController extends AbstractActionController
 {
@@ -88,7 +89,7 @@ class MeroveusController extends AbstractActionController
      */
     private $companyService;
 
-     /** @var  $contactService \Services\Meroveus\ContactService */
+    /** @var  $contactService \Services\Meroveus\ContactService */
     private $contactService;
 
     /**
@@ -112,8 +113,7 @@ class MeroveusController extends AbstractActionController
     private $dataHubDb;
 
     /** @var string */
-    private $contactSql =
-        'INSERT INTO
+    private $contactSql = 'INSERT INTO
             contact (
               hub_id, meroveus_id, relevate_id, is_duplicate, is_current_employee, first_name, middle_initial, last_name,
               suffix, honorific, job_title, job_position_id, email, phone, address1, address2, city, state, postal_code,
@@ -126,8 +126,7 @@ class MeroveusController extends AbstractActionController
             )';
 
     /** @var string */
-    private $createCompanySql =
-        'INSERT INTO
+    private $createCompanySql = 'INSERT INTO
             company(
                 refinery_id, meroveus_id, generate_code, record_source, company_name, public_ticker, ticker_exchange,
                 source_modified_at, address1, address2, city, state, postal_code, country, latitude, longitude,
@@ -138,6 +137,11 @@ class MeroveusController extends AbstractActionController
                 :source_modified_at, :address1, :address2, :city, :state, :postal_code, :country, :latitude, :longitude,
                 :phone, :website, :is_active, :sic_code, :employee_count, :created_at, :updated_at, :deleted_at
             )';
+
+    /** @var string */
+    private $getJobDictionarySql = '
+      SELECT job_title, job_position_id FROM job_position_bukket
+      ORDER BY job_position_id ASC';
 
     /** @var string */
     private $updateCompanySql = 'UPDATE company SET meroveus_id = :meroveus_id WHERE refinery_id = :refinery_id';
@@ -151,11 +155,14 @@ class MeroveusController extends AbstractActionController
     /** @var \PDOStatement */
     private $updateCompanyPdo = null;
 
+    /** @var \PDOStatement */
+    private $getJobDictionaryPdo = null;
+
     /**
      * @var $sqlStringsArray string[]
      */
     protected $sqlStringsArray = [
-        'selectOneCompanyByMeroveusId' => '
+        'selectOneCompanyByMeroveusId'     => '
             SELECT
               *
             FROM
@@ -169,13 +176,13 @@ class MeroveusController extends AbstractActionController
               `datahub`.`company`
             WHERE
               meroveus_id IS NULL
-            LIMIT :offset, :limit'
+            LIMIT :offset, :limit',
     ];
-
 
 
     /**
      * set up here since __construct can't use servicelocator
+     *
      * @param MvcEvent $e
      */
     public function init(MvcEvent $e)
@@ -185,15 +192,16 @@ class MeroveusController extends AbstractActionController
         $this->companyService = new CompanyService($this->meroveusClient);
         //@todo make this environment aware
         // set up elastic
-        $this->elasticaClient = new ElasticaClient($this->getServiceLocator()->get('Config')['elastica'] );
-        $this->elasticSearch  = new ElasticaSearch($this->elasticaClient);
-        $this->elasticQuery = new ElasticaQuery();
+        $this->elasticaClient      = new ElasticaClient($this->getServiceLocator()->get('Config')['elastica']);
+        $this->elasticSearch       = new ElasticaSearch($this->elasticaClient);
+        $this->elasticQuery        = new ElasticaQuery();
         $this->elasticQueryBuilder = new QueryBuilder();
-        $this->contactService = $this->getServiceLocator()->get('Services\Meroveus\ContactService');
+        $this->contactService      = $this->getServiceLocator()->get('Services\Meroveus\ContactService');
         // prepare pdo outside the loop for memory purposes
-        $this->addContactPdo    = $this->db->prepare($this->contactSql);
-        $this->addCompanyPdo    = $this->db->prepare($this->createCompanySql);
-        $this->updateCompanyPdo = $this->db->prepare($this->updateCompanySql);
+        $this->addContactPdo       = $this->db->prepare($this->contactSql);
+        $this->addCompanyPdo       = $this->db->prepare($this->createCompanySql);
+        $this->updateCompanyPdo    = $this->db->prepare($this->updateCompanySql);
+        $this->getJobDictionaryPdo = $this->db->prepare($this->getJobDictionarySql);
     }
 
 
@@ -207,15 +215,27 @@ class MeroveusController extends AbstractActionController
 
         $env = $this->getRequest()->getParam('env');
         echo "$env\n";
+
         return "$env\n";
     }
 
-    public function jobAction(){
-        echo "line 217". ' in '."MeroveusController.php".PHP_EOL;
-        die(var_dump( $this->contactService->getJobPositionId('Arabian Lizard MANAGER') ));
+    public function jobAction()
+    {
+
+        $query           = $this->db->query($this->getJobDictionarySql);
+        $results         = $query->fetchAll(\PDO::FETCH_OBJ);
+        $jobIdDictionary = [];
+
+        foreach ($results as $result) {
+            $jobIdDictionary[$result->job_title] = $result->job_position_id;
+        }
+
+        return $this->contactService->getJobPositionId('Arabian Lizard MANAGER', $jobIdDictionary).PHP_EOL;
     }
+
     /**
      * php run.php  meroveus match -e development
+     *
      * @var $sanity bool will write files for you to peruse for debugging
      */
     public function matchAction($sanity = false)
@@ -239,12 +259,8 @@ class MeroveusController extends AbstractActionController
 
         echo 'while you wait: https://www.youtube.com/watch?v=siwpn14IE7E' . PHP_EOL;
 
-        $maxRows       = 500;
-        $totalMatched
-            = $totalInserted
-            = $marketMatched
-            = $marketInserted
-            = 0;
+        $maxRows      = 500;
+        $totalMatched = $totalInserted = $marketMatched = $marketInserted = 0;
         /** @var  $contactService \Services\Meroveus\ContactService */
         $this->contactService = $this->getServiceLocator()->get('Services\Meroveus\ContactService');
 
@@ -286,7 +302,7 @@ class MeroveusController extends AbstractActionController
             $marketMatched = $marketInserted = 0;
 
             // paginate over companies
-            while ( $marketCompanyList = $this->companyService->fetchByMarket($meroveusParams) ) {
+            while ($marketCompanyList = $this->companyService->fetchByMarket($meroveusParams)) {
 
                 if (!$marketCompanyList) {
                     echo '                  No results returned for ' . $market . PHP_EOL;
@@ -308,9 +324,7 @@ class MeroveusController extends AbstractActionController
 
                         $selectCompany->execute([$target['meroveusId']]);
 
-                        $hubId = ( $selectCompany->rowCount() > 0 )
-                            ? $selectCompany->fetch(\PDO::FETCH_ASSOC)['hub_id']
-                            : false;
+                        $hubId = ($selectCompany->rowCount() > 0) ? $selectCompany->fetch(\PDO::FETCH_ASSOC)['hub_id'] : false;
 
                         $marketMatched++;
                         $totalMatched++;
@@ -344,10 +358,10 @@ class MeroveusController extends AbstractActionController
 
 
                             //@todo sort contacts into buckets
-                           // $this->contactService->getJobPositionId($contact['job_position']);
+                            // $this->contactService->getJobPositionId($contact['job_position']);
 
 
-                            if ( $meroveusReturn = $this->contactService->formatMeroveusReturn($contact)) {
+                            if ($meroveusReturn = $this->contactService->formatMeroveusReturn($contact)) {
                                 $contactAdded = $this->addContactPdo->execute($meroveusReturn);
                                 if (!$contactAdded) {
                                     // @todo log it
@@ -360,9 +374,9 @@ class MeroveusController extends AbstractActionController
 
                     // track memory and total count
                     echo "\033[{$lastMemUsageMessageLength}D";
-                    $total = $totalInserted + $totalMatched;
+                    $total                     = $totalInserted + $totalMatched;
                     $currentLoopInsertionCount = $index + 1;
-                    $memory = $total . ':' . $currentLoopInsertionCount . ':' . $this->convert_memory_usage( memory_get_usage( true));
+                    $memory                    = $total . ':' . $currentLoopInsertionCount . ':' . $this->convert_memory_usage(memory_get_usage(true));
                     $lastMemUsageMessageLength = strlen($memory);
                     echo $memory;
                 }
@@ -375,8 +389,7 @@ class MeroveusController extends AbstractActionController
             echo " {$marketMatched} records matched, " . PHP_EOL;
             echo " {$marketInserted} records created" . PHP_EOL;
 
-            echo "              post market out of loop memory usage is "
-                . $this->convert_memory_usage(memory_get_usage( true)) . PHP_EOL;
+            echo "              post market out of loop memory usage is " . $this->convert_memory_usage(memory_get_usage(true)) . PHP_EOL;
         }
 
         echo $totalMatched . ' total  records matched ' . PHP_EOL;
@@ -389,15 +402,16 @@ class MeroveusController extends AbstractActionController
     /**
      * Exports companies that do not have a meroveus id for relevate to match
      */
-    public function exportRelevateAction () {
+    public function exportRelevateAction()
+    {
 
         // get user provided file path or default to ours
         @$outFilePath = $this->getRequest()->getParam('out') ?: 'relevate-' . time() . '.csv';
 
         // open file, then erase or attempt to create
-        $file = fopen ( $outFilePath, 'w' );
+        $file = fopen($outFilePath, 'w');
 
-        if ( file_exists($outFilePath) ) {
+        if (file_exists($outFilePath)) {
 
             $headerRow = [
                 'record_uid',
@@ -413,11 +427,11 @@ class MeroveusController extends AbstractActionController
                 'phone',
                 'fax',
                 'public_email',
-                'website'
+                'website',
             ];
 
             // write header row
-            fputcsv ( $file, $headerRow );
+            fputcsv($file, $headerRow);
 
             /** @var  $companyStatement \mysqli_stmt */
             $companyStatement = $this->sqlStatementsArray['selectCompaniesWithoutMeroveusId'];
@@ -425,22 +439,22 @@ class MeroveusController extends AbstractActionController
             // sql pagination setup
             $queryParams = [
                 ':offset' => 0,
-                ':limit'  => 1000
+                ':limit'  => 1000,
             ];
 
             $count = 0;
 
             // while we are getting rows back
-            while ( $companyStatement->execute ( $queryParams ) && $companyStatement->rowCount () > 0 ) {
+            while ($companyStatement->execute($queryParams) && $companyStatement->rowCount() > 0) {
 
                 // save each row to the csv file
-                while ( $row = $companyStatement->fetch () ) {
+                while ($row = $companyStatement->fetch()) {
 
                     // postal_code is zipPlus4 so split on the dash
                     $zipParts = preg_split('/\-/', $row['postal_code'], -1, PREG_SPLIT_NO_EMPTY);
 
                     // write this row to file
-                    fputcsv( $file, [
+                    fputcsv($file, [
                         $row['hub_id'],
                         0,                   // pub_id doesn't matter
                         $row['company_name'],
@@ -454,7 +468,7 @@ class MeroveusController extends AbstractActionController
                         $row['phone'],
                         '',                  // no fax field
                         '',                  // no email
-                        $row['website']
+                        $row['website'],
                     ]);
 
                     $count++;
@@ -479,8 +493,9 @@ class MeroveusController extends AbstractActionController
      * attempt to match the record with whats in elastic and
      * return pertinent data for further processing
      *
-     * @param array $target ( what we're trying to match in elastic)
+     * @param array $target   ( what we're trying to match in elastic)
      * @param float $minScore ( our score thresh hold )
+     *
      * @return mixed array/bool
      * query elastic for match
      *
@@ -488,7 +503,8 @@ class MeroveusController extends AbstractActionController
     private function elasticMatch(array $target, $minScore = 9.9)
     {
         if (empty($target)) {
-            echo 'empty target passed to elasticMatch'.PHP_EOL;
+            echo 'empty target passed to elasticMatch' . PHP_EOL;
+
             return false;
         }
 
@@ -509,14 +525,12 @@ class MeroveusController extends AbstractActionController
         }
 
         // set up the elastic query
-        $this->elasticQuery->setQuery(
-            $this->elasticQueryBuilder->query()->bool()
-                ->addShould($this->elasticQueryBuilder->query()->match('Name', $queryFields['Name']))
-                ->addShould($this->elasticQueryBuilder->query()->match('Addr1', $queryFields['Addr1']))
-                ->addMust($this->elasticQueryBuilder->query()->match('City', $queryFields['City']))
-                ->addMust($this->elasticQueryBuilder->query()->match('State', $queryFields['State']))
-                ->addMust($this->elasticQueryBuilder->query()->match('PostalCode', $queryFields['PostalCode']))
-        );
+        $this->elasticQuery->setQuery($this->elasticQueryBuilder->query()->bool()->addShould($this->elasticQueryBuilder->query()->match('Name',
+            $queryFields['Name']))->addShould($this->elasticQueryBuilder->query()->match('Addr1',
+            $queryFields['Addr1']))->addMust($this->elasticQueryBuilder->query()->match('City',
+            $queryFields['City']))->addMust($this->elasticQueryBuilder->query()->match('State',
+            $queryFields['State']))->addMust($this->elasticQueryBuilder->query()->match('PostalCode',
+            $queryFields['PostalCode'])));
 
         // set the minimum score that we consider a match
         // https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-min-score.html
@@ -528,10 +542,8 @@ class MeroveusController extends AbstractActionController
         $resultsArray = $resultSet->getResults();
 
         $result = false;
-        if ( !empty($resultsArray) ) {
-            $result = ($resultsArray[0]->getScore() === $topScore)
-                ? $resultsArray[0]
-                : $result;
+        if (!empty($resultsArray)) {
+            $result = ($resultsArray[0]->getScore() === $topScore) ? $resultsArray[0] : $result;
         }
 
         return $result;
@@ -539,10 +551,12 @@ class MeroveusController extends AbstractActionController
 
     /**
      * updates the existing refinery record
+     *
      * @param Result $match
-     * @param array $target
+     * @param array  $target
+     *
      * @todo refactor for DI of the following:
-     *      param \Services\Meroveus\CompanyService $companyService
+     *       param \Services\Meroveus\CompanyService $companyService
      * @return bool
      */
     private function processMatch(Result $match, array $target, \PDOStatement $pdo)
@@ -564,6 +578,7 @@ class MeroveusController extends AbstractActionController
             unset($match, $pdo);
             gc_collect_cycles();
             echo 'processMatch called for no good reason. did you run the import? Hmm? ' . PHP_EOL;
+
             return false;
         }
 
@@ -576,6 +591,7 @@ class MeroveusController extends AbstractActionController
      * @param $market
      * @param $target
      * @param $elasticResult
+     *
      * @return bool
      *
      */
@@ -615,14 +631,16 @@ class MeroveusController extends AbstractActionController
 
         fputs($fd, PHP_EOL);
         fclose($fd);
+
         return true;
     }
 
-    private function convert_memory_usage( $size) {
+    private function convert_memory_usage($size)
+    {
 
-        $unit = [ 'b', 'kb', 'mb', 'gb', 'tb', 'pb' ];
+        $unit = ['b', 'kb', 'mb', 'gb', 'tb', 'pb'];
 
-        return @round($size / pow ( 1024, ( $i = (int)floor ( log ( $size, 1024 ) ) ) ),2) . ' ' . $unit[$i];
+        return @round($size / pow(1024, ($i = (int)floor(log($size, 1024)))), 2) . ' ' . $unit[$i];
     }
 
 
