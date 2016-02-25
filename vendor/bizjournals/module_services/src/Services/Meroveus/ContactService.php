@@ -24,6 +24,7 @@ class ContactService extends AbstractService
 
     public function __construct()
     {
+
 //        ulitmatly built by referencing datahub.job_position
         $this->jobIdDictionary = [
             'CHIEF EXECUTIVE OFFICER'      => 10,
@@ -47,16 +48,18 @@ class ContactService extends AbstractService
             'EXECUTIVE DIRECTOR'           => 90,
             'EXECUTIVE VICE PRESIDENT'     => 90,
             'MARKETING EXECUTIVE'          => 90,
+            'EXECUTIVE'                    => 90,
             'DIRECTOR'                     => 130,
-            'GENERAL MANAGER    '          => 140,
+            'GENERAL MANAGER'              => 140,
             'OFFICE MANAGER'               => 140,
-            'MANAGER '                     => 140,
+            'MANAGER'                      => 140,
             'INFORMATION TECHNOLOGY'       => 1000,
             'BOARD MEMBER'                 => 1000,
             'PURCHASING'                   => 1000,
             'ADMINISTRATOR'                => 1000,
             'PUBLISHER/EDITOR'             => 1000,
-            'CORP COMMUNICATIONS/PR'       => 1000,
+            'CORP COMMUNICATIONS'          => 1000,
+            'PR'                           => 1000,
             'LEGAL'                        => 1000,
             'BUSINESS DEVELOPMENT'         => 1000,
             'INTERNATIONAL RESPONSIBILITY' => 1000,
@@ -137,38 +140,48 @@ class ContactService extends AbstractService
 
 
     /**
-     * @todo align contacts existing job position with our classifications in datahub.job_position
+     * Does a bit of (fuzz||hack).y matching to match a given arbritrary job title to our set.
+     * adds new ones as it finds them to allow us to run reports for tuning.
      * https://bizjournals.atlassian.net/browse/DATA-76
      *
      * @param $givenPosition string
      *
      * @return int
      */
-    public function getJobPositionId($givenPosition)
+    public function getJobPositionId($givenPosition = null)
     {
         $input = strtoupper($givenPosition);
         $key   = array_key_exists($input, $this->jobIdDictionary) ? $this->jobIdDictionary[$input] : null;
-
+        // exact title match?
         if ($key) {
             return $key;
         } else {
-            // are we a chief something unheard of?
+
+            //split titles up into arrays and loopem
+            $inputWords = str_word_count($input, 1);
+            foreach($inputWords as $word) {
+                $word = strtoupper($word);
+                $key  = array_key_exists($word, $this->jobIdDictionary) ? $this->jobIdDictionary[$word] : null;
+                if($key) {
+                    return $key;
+                }
+            }
+
+            // are we a chief of something unheard of?
             if (strpos($input, 'CHIEF') === 0 && strpos($input, 'OFFICER')) {
                 // @todo insert into db with job_position_id == 30
                 return 30;
             }
-            if ((strpos($input, 'C') === 0 && strlen($input) === 3)) {
-
-                if(strpos($input, 'O') === 2){
+            // are we in the form of "C<x>O" ?
+            if (strlen($input) === 3 && (strpos($input, 'C') === 0 && strpos($input, 'O') === 2)) {
                 // @todo insert into db with job_position_id == 30
-                    return 30;
-                }
+                return 30;
             }
+
+            //@todo add it to the db.
+            return 1000;
         }
-
-        return 1001;
     }
-
 }
 
 
