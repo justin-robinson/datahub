@@ -45,7 +45,6 @@ class ContactService extends AbstractService
      */
     public function formatMeroveusReturn(array $meroveusReturn)
     {
-
         if (empty($meroveusReturn) || empty($meroveusReturn['DATA'])) {
             return false;
         }

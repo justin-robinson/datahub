@@ -170,6 +170,8 @@ class MeroveusController extends AbstractActionController
     /** @var \PDOStatement */
     private $updateJobDictionaryPdo = null;
 
+    private $jobIdDictionary = [];
+
     /**
      * @var $sqlStringsArray string[]
      */
@@ -193,7 +195,7 @@ class MeroveusController extends AbstractActionController
 
 
     /**
-     * set up here since __construct can't use servicelocator
+     * set up services and data
      *
      * @param MvcEvent $e
      */
@@ -210,11 +212,18 @@ class MeroveusController extends AbstractActionController
         $this->elasticQueryBuilder = new QueryBuilder();
         $this->contactService      = $this->getServiceLocator()->get('Services\Meroveus\ContactService');
         // prepare pdo outside the loop for memory purposes
-        $this->addContactPdo          = $this->db->prepare($this->contactSql);
-        $this->addCompanyPdo          = $this->db->prepare($this->createCompanySql);
-        $this->updateCompanyPdo       = $this->db->prepare($this->updateCompanySql);
+        $this->addContactPdo    = $this->db->prepare($this->contactSql);
+        $this->addCompanyPdo    = $this->db->prepare($this->createCompanySql);
+        $this->updateCompanyPdo = $this->db->prepare($this->updateCompanySql);
+        // job title pdo and data
         $this->getJobDictionaryPdo    = $this->db->prepare($this->getJobDictionarySql);
         $this->updateJobDictionaryPdo = $this->db->prepare($this->updateJobTitleSql);
+        $query                        = $this->db->query($this->getJobDictionarySql);
+        $results                      = $query->fetchAll(\PDO::FETCH_OBJ);
+        foreach ($results as $result) {
+            $this->jobIdDictionary[$result->job_title] = $result->job_position_id;
+        }
+
     }
 
 
@@ -231,26 +240,6 @@ class MeroveusController extends AbstractActionController
         return "$env\n";
     }
 
-    public function jobAction()
-    {
-        $query           = $this->db->query($this->getJobDictionarySql);
-        $results         = $query->fetchAll(\PDO::FETCH_OBJ);
-        $jobIdDictionary = [];
-
-        foreach ($results as $result) {
-            $jobIdDictionary[$result->job_title] = $result->job_position_id;
-        }
-
-        $jobTitle   = 'CGO';
-        $positionId = $this->contactService->getJobPositionId($jobTitle, $jobIdDictionary, $this->db) . PHP_EOL;
-
-        $this->updateJobDictionaryPdo->bindParam(':job_position_id', $positionId);
-        $this->updateJobDictionaryPdo->bindParam(':job_title', $jobTitle);
-
-        $result = $this->updateJobDictionaryPdo->execute();
-
-
-    }
 
     /**
      * php run.php  meroveus match -e development
@@ -377,8 +366,7 @@ class MeroveusController extends AbstractActionController
 
 
                             //@todo sort contacts into buckets
-                            // $this->contactService->getJobPositionId($contact['job_position']);
-
+//                            $jobPositionId = $this->contactService->getJobPositionId()
 
                             if ($meroveusReturn = $this->contactService->formatMeroveusReturn($contact)) {
                                 $contactAdded = $this->addContactPdo->execute($meroveusReturn);
@@ -603,6 +591,18 @@ class MeroveusController extends AbstractActionController
 
         return false;
     }
+
+
+    private function addNewJobTitle($jobTitle)
+    {
+        $positionId = $this->contactService->getJobPositionId($jobTitle, $jobIdDictionary);
+
+        $this->updateJobDictionaryPdo->bindParam(':job_position_id', $positionId);
+        $this->updateJobDictionaryPdo->bindParam(':job_title', $jobTitle);
+
+        return $this->updateJobDictionaryPdo->execute();
+    }
+
 
     /**
      * mostly useful for debugging and query tuning
