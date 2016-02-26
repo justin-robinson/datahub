@@ -97,7 +97,8 @@ class ContactService extends AbstractService
      * https://bizjournals.atlassian.net/browse/DATA-76
      *
      * @param $givenPosition string
-     * @param $dictionary array
+     * @param $dictionary    array
+     *
      * @return mixed int|false
      */
     public function getJobPositionId($givenPosition = null, $dictionary)
@@ -111,10 +112,10 @@ class ContactService extends AbstractService
 
             //split titles up into arrays and loopem, doing the same as above
             $inputWords = str_word_count($input, 1);
-            foreach($inputWords as $word) {
+            foreach ($inputWords as $word) {
                 $word = strtoupper($word);
                 $key  = array_key_exists($word, $dictionary) ? $dictionary[$word] : null;
-                if($key) {
+                if ($key) {
                     return $key;
                 }
             }
@@ -135,8 +136,6 @@ class ContactService extends AbstractService
             return 1000;
         }
     }
-
-    //@todo write an insert for new ones with db depinj
 }
 
 

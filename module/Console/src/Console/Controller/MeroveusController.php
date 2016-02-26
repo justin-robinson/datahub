@@ -112,6 +112,17 @@ class MeroveusController extends AbstractActionController
      */
     private $dataHubDb;
 
+    /**
+     * @var string
+     */
+    private $updateJobTitleSql = 'INSERT INTO
+            job_position_dictionary(
+              job_position_id, job_title
+            )
+            VALUES(
+              :job_position_id, :job_title
+            ) ';
+
     /** @var string */
     private $contactSql = 'INSERT INTO
             contact (
@@ -139,7 +150,7 @@ class MeroveusController extends AbstractActionController
             )';
 
     /** @var string */
-    private $getJobDictionarySql = ' SELECT job_title, job_position_id FROM job_position_bukket ORDER BY job_position_id ASC';
+    private $getJobDictionarySql = ' SELECT job_title, job_position_id FROM job_position_dictionary ORDER BY job_position_id ASC';
 
     /** @var string */
     private $updateCompanySql = 'UPDATE company SET meroveus_id = :meroveus_id WHERE refinery_id = :refinery_id';
@@ -155,6 +166,9 @@ class MeroveusController extends AbstractActionController
 
     /** @var \PDOStatement */
     private $getJobDictionaryPdo = null;
+
+    /** @var \PDOStatement */
+    private $updateJobDictionaryPdo = null;
 
     /**
      * @var $sqlStringsArray string[]
@@ -196,10 +210,11 @@ class MeroveusController extends AbstractActionController
         $this->elasticQueryBuilder = new QueryBuilder();
         $this->contactService      = $this->getServiceLocator()->get('Services\Meroveus\ContactService');
         // prepare pdo outside the loop for memory purposes
-        $this->addContactPdo       = $this->db->prepare($this->contactSql);
-        $this->addCompanyPdo       = $this->db->prepare($this->createCompanySql);
-        $this->updateCompanyPdo    = $this->db->prepare($this->updateCompanySql);
-        $this->getJobDictionaryPdo = $this->db->prepare($this->getJobDictionarySql);
+        $this->addContactPdo          = $this->db->prepare($this->contactSql);
+        $this->addCompanyPdo          = $this->db->prepare($this->createCompanySql);
+        $this->updateCompanyPdo       = $this->db->prepare($this->updateCompanySql);
+        $this->getJobDictionaryPdo    = $this->db->prepare($this->getJobDictionarySql);
+        $this->updateJobDictionaryPdo = $this->db->prepare($this->updateJobTitleSql);
     }
 
 
@@ -210,7 +225,6 @@ class MeroveusController extends AbstractActionController
      */
     public function indexAction()
     {
-
         $env = $this->getRequest()->getParam('env');
         echo "$env\n";
 
@@ -219,7 +233,6 @@ class MeroveusController extends AbstractActionController
 
     public function jobAction()
     {
-
         $query           = $this->db->query($this->getJobDictionarySql);
         $results         = $query->fetchAll(\PDO::FETCH_OBJ);
         $jobIdDictionary = [];
@@ -227,8 +240,16 @@ class MeroveusController extends AbstractActionController
         foreach ($results as $result) {
             $jobIdDictionary[$result->job_title] = $result->job_position_id;
         }
-        //@todo refactor for db getting passed
-        return $this->contactService->getJobPositionId('Arabian Lizard MANAGER', $jobIdDictionary).PHP_EOL;
+
+        $jobTitle   = 'CGO';
+        $positionId = $this->contactService->getJobPositionId($jobTitle, $jobIdDictionary, $this->db) . PHP_EOL;
+
+        $this->updateJobDictionaryPdo->bindParam(':job_position_id', $positionId);
+        $this->updateJobDictionaryPdo->bindParam(':job_title', $jobTitle);
+
+        $result = $this->updateJobDictionaryPdo->execute();
+
+
     }
 
     /**
@@ -633,6 +654,11 @@ class MeroveusController extends AbstractActionController
         return true;
     }
 
+    /**
+     * @param $size
+     *
+     * @return string
+     */
     private function convert_memory_usage($size)
     {
 
