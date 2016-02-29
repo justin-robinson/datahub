@@ -1,7 +1,9 @@
 # It's a hub for data! :fire::fire::fire:
 ## general elastic notes
-### dev elastic path
-http://datahub.listsandleads.elasticsearch.bizj-dev.com:9200
+### elastic paths
+| | dev | testing | staging | prod |
+| --- | --- | ------- | ------- | ---- |
+| url | http://datahub.listsandleads.elasticsearch.bizj-dev.com:9200 | http://datahub.listsandleads.elasticsearch.bizj-dev.com:9200 | http://elb.es.production-datahub.bizj-internal.com:9200 | http://elb.es.production-datahub.bizj-internal.com:9200 |
 ### to delete indexes from elastic:
 ```shell
 curl -sXDELETE <path_to_your_elastic_instance>:<port>/<index> 
