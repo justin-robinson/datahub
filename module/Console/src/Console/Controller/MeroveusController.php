@@ -111,6 +111,17 @@ class MeroveusController extends AbstractActionController
      */
     private $dataHubDb;
 
+    /**
+     * @var string
+     */
+    private $updateJobTitleSql = 'INSERT INTO
+            job_position_dictionary(
+              job_position_id, job_title
+            )
+            VALUES(
+              :job_position_id, :job_title
+            ) ';
+
     /** @var string */
     private $contactSql =
         'INSERT INTO
@@ -150,6 +161,10 @@ class MeroveusController extends AbstractActionController
 
     /** @var \PDOStatement */
     private $updateCompanyPdo = null;
+
+    /** @var \PDOStatement */
+    private $updateJobDictionaryPdo = null;
+
 
     /**
      * @var $sqlStringsArray string[]
@@ -194,6 +209,8 @@ class MeroveusController extends AbstractActionController
         $this->addContactPdo    = $this->db->prepare($this->contactSql);
         $this->addCompanyPdo    = $this->db->prepare($this->createCompanySql);
         $this->updateCompanyPdo = $this->db->prepare($this->updateCompanySql);
+        // job title pdo and data
+        $this->updateJobDictionaryPdo = $this->db->prepare($this->updateJobTitleSql);
     }
 
 
@@ -270,6 +287,10 @@ class MeroveusController extends AbstractActionController
                         "KEY" => "keycontact-set_static",
                         "TYP" => "Person",
                     ],
+//                    [
+//                        "KEY" => "keyexec-set_static",
+//                        "TYP" => "Person",
+//                    ]
                 ],
             ],
         ];
@@ -344,10 +365,22 @@ class MeroveusController extends AbstractActionController
 
 
                             //@todo sort contacts into buckets
-                           // $this->contactService->getJobPositionId($contact['job_position']);
 
+                            $this->contactService->getJobPositionId($contact['job_position']);
 
-                            if ( $meroveusReturn = $this->contactService->formatMeroveusReturn($contact)) {
+                            if($this->contactService->getJobPositionId($contact['job_position'])){
+                                // update contact data
+                            } else {
+                                $jobId = $this->contactService->isCheifOfTheUnknown($contact['job_position']);
+                                if($jobId) {
+                                    // update contact data and insert new title into job_position_dictionary
+                                    $this->addNewPosition($contact['job_position'], $jobId);
+                                } else {
+                                    // update contact data to 1001 and insert new title into job_position_dictionary
+                                    $this->addNewPosition($contact['job_position'], 1001);
+                                }
+                            }
+                            if ($meroveusReturn = $this->contactService->formatMeroveusReturn($contact)) {
                                 $contactAdded = $this->addContactPdo->execute($meroveusReturn);
                                 if (!$contactAdded) {
                                     // @todo log it
@@ -569,6 +602,23 @@ class MeroveusController extends AbstractActionController
 
         return false;
     }
+
+
+    /**
+     * Inserts new job positions into datahub.job_position_dictionary
+     * @param $jobPositionName
+     * @param $jobPositionId
+     * @return bool
+     */
+    private function addNewPosition($jobPositionName, $jobPositionId)
+    {
+
+        $this->updateJobDictionaryPdo->bindParam(':job_position_id', $jobPositionId);
+        $this->updateJobDictionaryPdo->bindParam(':job_title', $jobPositionName);
+
+        return $this->updateJobDictionaryPdo->execute();
+    }
+
 
     /**
      * mostly useful for debugging and query tuning

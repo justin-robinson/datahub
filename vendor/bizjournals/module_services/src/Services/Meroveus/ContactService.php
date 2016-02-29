@@ -142,31 +142,35 @@ class ContactService extends AbstractService
      *
      * @param $givenPosition string
      *
-     * @return int
+     * @return int|null
      */
-    public function getJobPositionId($givenPosition)
+    public function getJobPositionId( $givenPosition)
     {
         $input = strtoupper($givenPosition);
-        $key   = array_key_exists($input, $this->jobIdDictionary) ? $this->jobIdDictionary[$input] : null;
+        return array_key_exists($input, $this->jobIdDictionary) ? $this->jobIdDictionary[$input] : null;
+    }
 
-        if ($key) {
-            return $key;
-        } else {
-            // are we a chief something unheard of?
-            if (strpos($input, 'CHIEF') === 0 && strpos($input, 'OFFICER')) {
-                // @todo insert into db with job_position_id == 30
+    /**
+     * is the contact a chief <something that we don't know about> officer?
+     * @param $givenPosition
+     *
+     * @return int|null
+     */
+    public function isCheifOfTheUnknown($givenPosition){
+        $input = strtoupper($givenPosition);
+        // are we a chief something unheard of?
+        if (strpos($input, 'CHIEF') === 0 && strpos($input, 'OFFICER')) {
+            //                $db->execute();
+            // @todo insert into db with job_position_id == 30
+            return 30;
+        }
+        if ((strpos($input, 'C') === 0 && strlen($input) === 3)) {
+            if(strpos($input, 'O') === 2){
+            // @todo insert into db with job_position_id == 30
                 return 30;
             }
-            if ((strpos($input, 'C') === 0 && strlen($input) === 3)) {
-
-                if(strpos($input, 'O') === 2){
-                // @todo insert into db with job_position_id == 30
-                    return 30;
-                }
-            }
         }
-
-        return 1001;
+        return null;
     }
 
 }
