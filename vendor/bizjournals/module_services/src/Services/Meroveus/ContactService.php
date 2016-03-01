@@ -40,10 +40,10 @@ class ContactService extends AbstractService
 
     /**
      * @param array $meroveusReturn
-     *
+     * @param array $jobIdDictionary
      * @return array
      */
-    public function formatMeroveusReturn(array $meroveusReturn)
+    public function formatMeroveusContact(array $meroveusReturn, array $jobIdDictionary)
     {
         if (empty($meroveusReturn) || empty($meroveusReturn['DATA'])) {
             return false;
@@ -57,8 +57,6 @@ class ContactService extends AbstractService
                 $contactData[$val['KEY']] = $val['VAL'];
             }
         }
-
-
 
         $contact['meroveus_id']         = empty($meroveusReturn['ID']) ? '' : $meroveusReturn['ID'];
         $contact['hub_id']              = empty($meroveusReturn['hub_id']) ? '' : $meroveusReturn['hub_id'];
@@ -74,23 +72,24 @@ class ContactService extends AbstractService
         // tack on the extension if present
         $contact['phone'] .= empty($contactData['work-ext-phone_static']) ? '' : ' EXT: ' . $contactData['work-ext-phone_static'];
 
-        if(empty($contactData['department-title_static'])) {
+        if (empty($contactData['department-title_static'])) {
             $contact['job_position_id'] = 1001;
-        $contact['job_title']       = null;
+            $contact['job_title']       = null;
         } else {
-            $contact['job_position_id'] = $this->getJobPositionId($contactData['department-title_static'], $jobIdDictionary) ?: 1001;
-            $cont['job_title'] = $contactData['department-title_static'];
+            $contact['job_position_id'] = $this->getJobPositionId($contactData['department-title_static'],
+                $jobIdDictionary) ?: 1001;
+            $cont['job_title']          = $contactData['department-title_static'];
         }
 
-        $contact['email']           = empty($contactData['work-email_static']) ? null : $contactData['work-email_static'];
-        $contact['address1']        = null;
-        $contact['address2']        = null;
-        $contact['city']            = null;
-        $contact['state']           = null;
-        $contact['postal_code']     = null;
-        $contact[':created_at']     = 'NOW()';
-        $contact[':updated_at']     = 'NOW()';
-        $contact[':deleted_at']     = null;
+        $contact['email']       = empty($contactData['work-email_static']) ? null : $contactData['work-email_static'];
+        $contact['address1']    = null;
+        $contact['address2']    = null;
+        $contact['city']        = null;
+        $contact['state']       = null;
+        $contact['postal_code'] = null;
+        $contact[':created_at'] = 'NOW()';
+        $contact[':updated_at'] = 'NOW()';
+        $contact[':deleted_at'] = null;
         unset($meroveusReturn);
         gc_collect_cycles();
 
@@ -102,7 +101,7 @@ class ContactService extends AbstractService
     /**
      * https://bizjournals.atlassian.net/browse/DATA-76
      *
-     * @param $givenPosition string
+     * @param $givenPosition   string
      * @param $jobIdDictionary array
      *
      * @return int|null
@@ -116,8 +115,8 @@ class ContactService extends AbstractService
             return $jobIdDictionary[$input];
         } else {
             return $this->isCheifOfTheUnknown($input);
-                }
-            }
+        }
+    }
 
     /**
      * is the contact a chief <something that we don't know about> officer?
@@ -129,11 +128,11 @@ class ContactService extends AbstractService
     private function isCheifOfTheUnknown($input)
     {
         // are we a chief something unheard of?
-            if (strpos($input, 'CHIEF') === 0 && strpos($input, 'OFFICER')) {
+        if (strpos($input, 'CHIEF') === 0 && strpos($input, 'OFFICER')) {
             //                $db->execute();
-                // @todo insert into db with job_position_id == 30
-                return 30;
-            }
+            // @todo insert into db with job_position_id == 30
+            return 30;
+        }
         if ((strpos($input, 'C') === 0 && strlen($input) === 3)) {
             if (strpos($input, 'O') === 2) {
                 // @todo insert into db with job_position_id == 30
@@ -142,7 +141,7 @@ class ContactService extends AbstractService
         }
 
         return null;
-        }
+    }
 
 }
 

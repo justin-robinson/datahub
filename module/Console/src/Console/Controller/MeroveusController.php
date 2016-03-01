@@ -360,21 +360,14 @@ class MeroveusController extends AbstractActionController
 
                     if ($hubId) {
                         foreach ($target['contacts'] as $contact) {
-
                             // attach the companys hub id to the contact, format it and add it
                             $contact['hub_id'] = $hubId;
-
-
-                            //@todo sort contacts into buckets
-//                            $jobPositionId = $this->contactService->getJobPositionId()
-
-                            if ($meroveusReturn = $this->contactService->formatMeroveusReturn($contact)) {
-                                $contactAdded = $this->addContactPdo->execute($meroveusReturn);
-                                if (!$contactAdded) {
-                                    // @todo log it
-                                } else {
-                                    // @todo and do what, exactly? idk?!
-                                };
+                            if ($meroveusReturn = $this->contactService->formatMeroveusContact($contact, $this->jobIdDictionary)) {
+                                try {
+                                    $this->addContactPdo->execute($meroveusReturn);
+                                } catch (\PDOException $e) {
+                                    echo "PDO ERROR: " . $e->getMessage() . PHP_EOL;
+                                }
                             }
                         }
                     }
@@ -552,7 +545,6 @@ class MeroveusController extends AbstractActionController
         if (!empty($resultsArray)) {
             $result = ($resultsArray[0]->getScore() === $topScore) ? $resultsArray[0] : $result;
         }
-
         return $result;
     }
 
@@ -561,7 +553,7 @@ class MeroveusController extends AbstractActionController
      *
      * @param Result $match
      * @param array  $target
-     *
+     * @param $pdo \PDOStatement
      * @todo refactor for DI of the following:
      *       param \Services\Meroveus\CompanyService $companyService
      * @return bool
@@ -590,17 +582,6 @@ class MeroveusController extends AbstractActionController
         }
 
         return false;
-    }
-
-
-    private function addNewJobTitle($jobTitle)
-    {
-        $positionId = $this->contactService->getJobPositionId($jobTitle, $jobIdDictionary);
-
-        $this->updateJobDictionaryPdo->bindParam(':job_position_id', $positionId);
-        $this->updateJobDictionaryPdo->bindParam(':job_title', $jobTitle);
-
-        return $this->updateJobDictionaryPdo->execute();
     }
 
 

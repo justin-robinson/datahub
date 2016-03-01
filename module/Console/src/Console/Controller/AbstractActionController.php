@@ -55,10 +55,8 @@ abstract class AbstractActionController extends ZendAbstractActionController
             $this->db->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
 
         } catch (\PDOException $e){
-            print "Error!: " . $e->getMessage() . "<br/>";
-            die();
+            die("PDO Error!: " . $e->getMessage().PHP_EOL);
         }
-
 
         // prepare sql statements
         foreach ( $this->sqlStringsArray as $name => $sqlString ) {
