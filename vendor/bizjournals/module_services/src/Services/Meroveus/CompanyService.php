@@ -153,6 +153,15 @@ class CompanyService extends AbstractService
                             }
                         }
                     }
+                    $company['execs']    = [];
+                    if (!empty($data['SET']) && $data['KEY'] === 'keyexec-set_static') {
+                        if (!empty($data['SET']['RECS'])) {
+
+                            foreach ($data['SET']['RECS'] as $execs) {
+                                array_push($company['execs'], $execs);
+                            }
+                        }
+                    }
                     // We want consistency in the field order
                     ksort($company);
                 }

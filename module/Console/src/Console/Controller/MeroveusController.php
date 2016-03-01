@@ -151,6 +151,9 @@ class MeroveusController extends AbstractActionController
             )';
 
     /** @var string */
+    private $getJobDictionarySql = ' SELECT job_title, job_position_id FROM job_position_dictionary ORDER BY job_position_id ASC';
+
+    /** @var string */
     private $updateCompanySql = 'UPDATE company SET meroveus_id = :meroveus_id WHERE refinery_id = :refinery_id';
 
     /** @var \PDOStatement */
@@ -163,8 +166,13 @@ class MeroveusController extends AbstractActionController
     private $updateCompanyPdo = null;
 
     /** @var \PDOStatement */
+    private $getJobDictionaryPdo = null;
+
+    /** @var \PDOStatement */
     private $updateJobDictionaryPdo = null;
 
+    /** @var array */
+    private $jobIdDictionary = [];
 
     /**
      * @var $sqlStringsArray string[]
@@ -210,7 +218,14 @@ class MeroveusController extends AbstractActionController
         $this->addCompanyPdo    = $this->db->prepare($this->createCompanySql);
         $this->updateCompanyPdo = $this->db->prepare($this->updateCompanySql);
         // job title pdo and data
+        $this->getJobDictionaryPdo    = $this->db->prepare($this->getJobDictionarySql);
         $this->updateJobDictionaryPdo = $this->db->prepare($this->updateJobTitleSql);
+        $query                        = $this->db->query($this->getJobDictionarySql);
+        $results                      = $query->fetchAll(\PDO::FETCH_OBJ);
+        foreach ($results as $result) {
+            $this->jobIdDictionary[$result->job_title] = $result->job_position_id;
+        }
+
     }
 
 
@@ -227,10 +242,6 @@ class MeroveusController extends AbstractActionController
         return "$env\n";
     }
 
-    public function jobAction(){
-        echo "line 217". ' in '."MeroveusController.php".PHP_EOL;
-        die(var_dump( $this->contactService->getJobPositionId('CLO') ));
-    }
     /**
      * php run.php  meroveus match -e development
      * @var $sanity bool will write files for you to peruse for debugging
@@ -287,16 +298,27 @@ class MeroveusController extends AbstractActionController
                         "KEY" => "keycontact-set_static",
                         "TYP" => "Person",
                     ],
-//                    [
-//                        "KEY" => "keyexec-set_static",
-//                        "TYP" => "Person",
-//                    ]
+                    [
+                        "KEY" => "keyexec-set_static",
+                        "TYP" => "Person",
+                        'META' => [
+                            'FIELDS' => [
+                                [
+                                    "KEY"    => "department-title_static",
+                                    "TYP"    => "Text",
+                                ],
+
+                            ],
+                        ],
+                    ]
                 ],
             ],
         ];
 
-        foreach ($this->markets as $market => $env) {
 
+
+        foreach ($this->markets as $market => $env) {
+//
             // set env to this market
             $meroveusParams['ENV'] = $env;
 
@@ -308,7 +330,6 @@ class MeroveusController extends AbstractActionController
 
             // paginate over companies
             while ( $marketCompanyList = $this->companyService->fetchByMarket($meroveusParams) ) {
-
                 if (!$marketCompanyList) {
                     echo '                  No results returned for ' . $market . PHP_EOL;
                 }
@@ -363,30 +384,11 @@ class MeroveusController extends AbstractActionController
                             // attach the companys hub id to the contact, format it and add it
                             $contact['hub_id'] = $hubId;
 
-
-                            //@todo sort contacts into buckets
-
-                            $this->contactService->getJobPositionId($contact['job_position']);
-
-                            if($this->contactService->getJobPositionId($contact['job_position'])){
-                                // update contact data
-                            } else {
-                                $jobId = $this->contactService->isCheifOfTheUnknown($contact['job_position']);
-                                if($jobId) {
-                                    // update contact data and insert new title into job_position_dictionary
-                                    $this->addNewPosition($contact['job_position'], $jobId);
-                                } else {
-                                    // update contact data to 1001 and insert new title into job_position_dictionary
-                                    $this->addNewPosition($contact['job_position'], 1001);
-                                }
-                            }
-                            if ($meroveusReturn = $this->contactService->formatMeroveusReturn($contact)) {
+                            if ($meroveusReturn = $this->contactService->formatMeroveusContact($contact, $this->jobIdDictionary)) {
                                 $contactAdded = $this->addContactPdo->execute($meroveusReturn);
                                 if (!$contactAdded) {
                                     // @todo log it
-                                } else {
-                                    // @todo and do what, exactly? idk?!
-                                };
+                                }
                             }
                         }
                     }
