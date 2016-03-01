@@ -33,7 +33,7 @@ filter {
 
 output {
   elasticsearch {
-      hosts => ["elb.es.production-datahub.bizj-internal.com:9200"]
+      hosts => ["datahub_url"]
       index => "companies"
   }
 }
