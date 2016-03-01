@@ -48,7 +48,8 @@ class ContactService extends AbstractService
         if (empty($meroveusReturn) || empty($meroveusReturn['DATA'])) {
             return false;
         }
-
+        echo "line 51". ' in '."ContactService.php".PHP_EOL;
+        die(var_dump( $meroveusReturn ));
         $contact     = [];
         $contactData = [];
         // flatten the meroveus data return in order to avoid having a bad time
@@ -57,7 +58,10 @@ class ContactService extends AbstractService
                 $contactData[$val['KEY']] = $val['VAL'];
             }
         }
-
+        if(!empty($contactData['department-title_static'])){
+            echo "line 61". ' in '."ContactService.php".PHP_EOL;
+            die(var_dump( $contactData ));
+        }
         $contact['meroveus_id']         = empty($meroveusReturn['ID']) ? '' : $meroveusReturn['ID'];
         $contact['hub_id']              = empty($meroveusReturn['hub_id']) ? '' : $meroveusReturn['hub_id'];
         $contact['relevate_id']         = null;
@@ -76,8 +80,7 @@ class ContactService extends AbstractService
             $contact['job_position_id'] = 1001;
             $contact['job_title']       = null;
         } else {
-            $contact['job_position_id'] = $this->getJobPositionId($contactData['department-title_static'],
-                $jobIdDictionary) ?: 1001;
+            $contact['job_position_id'] = $this->getJobPositionId($contactData['department-title_static'], $jobIdDictionary) ?: 1001;
             $cont['job_title']          = $contactData['department-title_static'];
         }
 

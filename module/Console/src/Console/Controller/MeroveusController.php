@@ -32,46 +32,46 @@ class MeroveusController extends AbstractActionController
      * map of our market names to their respective meroveus environments
      */
     private $markets = [
-        'albany'       => '12',
-        'albuquerque'  => '9',
-        'atlanta'      => '11',
-        'austin'       => '22',
-        'baltimore'    => '15',
-        'birmingham'   => '30',
-        'boston'       => '34',
-        'buffalo'      => '3',
+//        'albany'       => '12',
+//        'albuquerque'  => '9',
+//        'atlanta'      => '11',
+//        'austin'       => '22',
+//        'baltimore'    => '15',
+//        'birmingham'   => '30',
+//        'boston'       => '34',
+//        'buffalo'      => '3',
         'charlotte'    => '26',
-        'cincinnati'   => '6',
-        'columbus'     => '31',
-        'dallas'       => '7',
-        'dayton'       => '19',
-        'denver'       => '2',
-        'houston'      => '8',
-        'jacksonville' => '23',
-        'kansascity'   => '13',
-        'louisville'   => '32',
-        'memphis'      => '10',
-        'milwaukee'    => '33',
-        'nashville'    => '20',
-        'orlando'      => '17',
-        'pacific'      => '38',
-        'philadelphia' => '16',
-        'phoenix'      => '14',
-        'pittsburgh'   => '18',
-        'portland'     => '24',
-        'sacramento'   => '4',
-        'sanantonio'   => '25',
-        'sanfrancisco' => '39',
-        'sanjose'      => '40',
-        'seattle'      => '41',
-        'southflorida' => '35',
-        'stlouis'      => '28',
-        'tampabay'     => '36',
-        'triad'        => '29',
-        'triangle'     => '27',
-        'twincities'   => '21',
-        'washington'   => '5',
-        'wichita'      => '37',
+//        'cincinnati'   => '6',
+//        'columbus'     => '31',
+//        'dallas'       => '7',
+//        'dayton'       => '19',
+//        'denver'       => '2',
+//        'houston'      => '8',
+//        'jacksonville' => '23',
+//        'kansascity'   => '13',
+//        'louisville'   => '32',
+//        'memphis'      => '10',
+//        'milwaukee'    => '33',
+//        'nashville'    => '20',
+//        'orlando'      => '17',
+//        'pacific'      => '38',
+//        'philadelphia' => '16',
+//        'phoenix'      => '14',
+//        'pittsburgh'   => '18',
+//        'portland'     => '24',
+//        'sacramento'   => '4',
+//        'sanantonio'   => '25',
+//        'sanfrancisco' => '39',
+//        'sanjose'      => '40',
+//        'seattle'      => '41',
+//        'southflorida' => '35',
+//        'stlouis'      => '28',
+//        'tampabay'     => '36',
+//        'triad'        => '29',
+//        'triangle'     => '27',
+//        'twincities'   => '21',
+//        'washington'   => '5',
+//        'wichita'      => '37',
     ];
 
     /**
@@ -290,10 +290,23 @@ class MeroveusController extends AbstractActionController
             'META'     => [
                 'RECTYP' => 'Business',
                 'FIELDS' => [
+//                    [
+//                        "KEY" => "keycontact-set_static",
+//                        "TYP" => "Person",
+//                    ],
                     [
-                        "KEY" => "keycontact-set_static",
+                        "KEY" => "keyexec-set_static",
                         "TYP" => "Person",
-                    ],
+                        'META' => [
+                            'FIELDS' => [
+                                [
+                                    "KEY"    => "department-title_static",
+                                    "TYP"    => "Text",
+                                ],
+
+                            ],
+                        ],
+                    ]
                 ],
             ],
         ];
@@ -312,6 +325,10 @@ class MeroveusController extends AbstractActionController
 
                 foreach ($marketCompanyList as $index => $target) {
 
+                    if(!empty($target['execes'])) {
+                        echo "line 329". ' in '."MeroveusController.php".PHP_EOL;
+                        die(var_dump( $target['execs'] ));
+                    }
                     $match = $this->elasticMatch($target);
                     $hubId = null;
                     if ($match) {
@@ -336,10 +353,11 @@ class MeroveusController extends AbstractActionController
                             $hubId = $this->db->lastInsertId();
                             if ($hubId) {
                                 foreach ($target['contacts'] as $contact) {
+                                    echo "line 352". ' in '."MeroveusController.php".PHP_EOL;
+                                    die(var_dump( $contact ));
                                     // attach the companys hub id to the contact, format it and add it
                                     $contact['hub_id'] = $hubId;
-                                    if ($meroveusReturn = $this->contactService->formatMeroveusContact($contact,
-                                        $this->jobIdDictionary)
+                                    if ($meroveusReturn = $this->contactService->formatMeroveusContact($contact, $this->jobIdDictionary)
                                     ) {
                                         try {
                                             $this->addContactPdo->execute($meroveusReturn);
@@ -363,10 +381,11 @@ class MeroveusController extends AbstractActionController
                     }
                     if ($hubId) {
                         foreach ($target['contacts'] as $contact) {
+                            echo "line 380". ' in '."MeroveusController.php".PHP_EOL;
+                            die(var_dump( $contact ));
                             // attach the companys hub id to the contact, format it and add it
                             $contact['hub_id'] = $hubId;
-                            if ($meroveusReturn = $this->contactService->formatMeroveusContact($contact,
-                                $this->jobIdDictionary)
+                            if ($meroveusReturn = $this->contactService->formatMeroveusContact($contact, $this->jobIdDictionary)
                             ) {
                                 try {
                                     $this->addContactPdo->execute($meroveusReturn);

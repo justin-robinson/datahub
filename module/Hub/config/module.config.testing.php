@@ -28,9 +28,9 @@ return [
     ],
 
     'elastica-datahub' => [
-        'host' => 'http://datahub.listsandleads.elasticsearch.bizj-dev.com',
+        'host' => 'http://elb.es.datahub.bizj-dev.com',
         'path' => 'rerefinery/',
         'port' => '9200',
-        'url'  => 'http://datahub.listsandleads.elasticsearch.bizj-dev.com:9200/rerefinery/',
+        'url'  => 'http://elb.es.datahub.bizj-dev.com:9200/current',
     ],
 ];
