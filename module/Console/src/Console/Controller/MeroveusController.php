@@ -325,10 +325,6 @@ class MeroveusController extends AbstractActionController
 
                 foreach ($marketCompanyList as $index => $target) {
 
-                    if(!empty($target['execes'])) {
-                        echo "line 329". ' in '."MeroveusController.php".PHP_EOL;
-                        die(var_dump( $target['execs'] ));
-                    }
                     $match = $this->elasticMatch($target);
                     $hubId = null;
                     if ($match) {
@@ -352,9 +348,7 @@ class MeroveusController extends AbstractActionController
                             // good ole pdo has the hubId for us
                             $hubId = $this->db->lastInsertId();
                             if ($hubId) {
-                                foreach ($target['contacts'] as $contact) {
-                                    echo "line 352". ' in '."MeroveusController.php".PHP_EOL;
-                                    die(var_dump( $contact ));
+                                foreach ($target['execs'] as $contact) {
                                     // attach the companys hub id to the contact, format it and add it
                                     $contact['hub_id'] = $hubId;
                                     if ($meroveusReturn = $this->contactService->formatMeroveusContact($contact, $this->jobIdDictionary)
@@ -380,9 +374,7 @@ class MeroveusController extends AbstractActionController
                         }
                     }
                     if ($hubId) {
-                        foreach ($target['contacts'] as $contact) {
-                            echo "line 380". ' in '."MeroveusController.php".PHP_EOL;
-                            die(var_dump( $contact ));
+                        foreach ($target['execs'] as $contact) {
                             // attach the companys hub id to the contact, format it and add it
                             $contact['hub_id'] = $hubId;
                             if ($meroveusReturn = $this->contactService->formatMeroveusContact($contact, $this->jobIdDictionary)
