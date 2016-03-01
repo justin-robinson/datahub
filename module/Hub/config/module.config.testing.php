@@ -27,7 +27,7 @@ return [
         ],
     ],
 
-    'elastica' => [
+    'elastica-datahub' => [
         'host' => 'http://datahub.listsandleads.elasticsearch.bizj-dev.com',
         'path' => 'rerefinery/',
         'port' => '9200',
