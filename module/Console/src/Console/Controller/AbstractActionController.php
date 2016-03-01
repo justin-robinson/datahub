@@ -50,6 +50,7 @@ abstract class AbstractActionController extends ZendAbstractActionController
 
     public function init(MvcEvent $e)
     {
+        //@todo redo the env stuff
         try{
             $this->db = new \PDO('mysql:host=devdb.bizjournals.int;dbname=datahub', 'web', '');
             $this->db->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);

@@ -206,7 +206,7 @@ class MeroveusController extends AbstractActionController
         $this->companyService = new CompanyService($this->meroveusClient);
         //@todo make this environment aware
         // set up elastic
-        $this->elasticaClient      = new ElasticaClient($this->getServiceLocator()->get('Config')['elastica']);
+        $this->elasticaClient      = new ElasticaClient($this->getServiceLocator()->get('Config')['elastica-datahub']);
         $this->elasticSearch       = new ElasticaSearch($this->elasticaClient);
         $this->elasticQuery        = new ElasticaQuery();
         $this->elasticQueryBuilder = new QueryBuilder();
@@ -300,15 +300,9 @@ class MeroveusController extends AbstractActionController
 
         foreach ($this->markets as $market => $env) {
 
-            // set env to this market
-            $meroveusParams['ENV'] = $env;
-
-            // reset our pagination offset
-            $meroveusParams['STARTROW'] = 1;
-
-            // reset counts for this market
-            $marketMatched = $marketInserted = 0;
-
+            $meroveusParams['ENV']      = $env;
+            $meroveusParams['STARTROW'] = 1; // reset our pagination offset
+            $marketMatched              = $marketInserted = 0; // reset counts for this market
             // paginate over companies
             while ($marketCompanyList = $this->companyService->fetchByMarket($meroveusParams)) {
 
@@ -319,50 +313,61 @@ class MeroveusController extends AbstractActionController
                 foreach ($marketCompanyList as $index => $target) {
 
                     $match = $this->elasticMatch($target);
-
+                    $hubId = null;
                     if ($match) {
-                        // update the existing record
-                        // update existing record here
-                        // @todo refactor for DI
                         $this->processMatch($match, $target, $this->updateCompanyPdo);
+                        try{
+                            $selectCompany->execute([$target['meroveusId']]);
+                            $hubId = ($selectCompany->rowCount() > 0) ? $selectCompany->fetch(\PDO::FETCH_ASSOC)['hub_id'] : false;
 
-                        if ($sanity) {
-                            $this->writeSanityFiles($market, $target, $match);
+                            if ($sanity) {
+                                $this->writeSanityFiles($market, $target, $match);
+                            }
+                            $marketMatched++;
+                            $totalMatched++;
+                        } catch (\PDOException $e){
+                            die('PDO ERROR Select Compy '. $e->getMessage());
                         }
-
-                        $selectCompany->execute([$target['meroveusId']]);
-
-                        $hubId = ($selectCompany->rowCount() > 0) ? $selectCompany->fetch(\PDO::FETCH_ASSOC)['hub_id'] : false;
-
-                        $marketMatched++;
-                        $totalMatched++;
-
                     } else { // create a new record
-
                         $queryParams = $formatter->format($target);
-                        $added       = $this->addCompanyPdo->execute($queryParams);
-                        if (!$added) {
-                            echo 'opps, company add failed' . PHP_EOL;
-                            // @todo log it
-                        };
+                        try {
+                            $this->addCompanyPdo->execute($queryParams);
+                            // good ole pdo has the hubId for us
+                            $hubId = $this->db->lastInsertId();
+                            if ($hubId) {
+                                foreach ($target['contacts'] as $contact) {
+                                    // attach the companys hub id to the contact, format it and add it
+                                    $contact['hub_id'] = $hubId;
+                                    if ($meroveusReturn = $this->contactService->formatMeroveusContact($contact,
+                                        $this->jobIdDictionary)
+                                    ) {
+                                        try {
+                                            $this->addContactPdo->execute($meroveusReturn);
+                                        } catch (\PDOException $e) {
+                                            echo "PDO ERROR on contact insert: " . $e->getMessage() . PHP_EOL;
+                                        }
+                                    }
+                                }
+                            }
+                            // write some debug files if you want
+                            if ($sanity) {
+                                $this->writeSanityFiles($market, $target, false);
+                            }
 
-                        // good ole pdo has the hubId for us
-                        $hubId = $this->db->lastInsertId();
+                            $marketInserted++;
+                            $totalInserted++;
 
-                        // write some debug files if you want
-                        if ($sanity) {
-                            $this->writeSanityFiles($market, $target, false);
+                        } catch (\PDOException $e) {
+                            echo 'PDO ERROR on company insert: ' . $e->getMessage() . PHP_EOL;
                         }
-
-                        $marketInserted++;
-                        $totalInserted++;
                     }
-
                     if ($hubId) {
                         foreach ($target['contacts'] as $contact) {
                             // attach the companys hub id to the contact, format it and add it
                             $contact['hub_id'] = $hubId;
-                            if ($meroveusReturn = $this->contactService->formatMeroveusContact($contact, $this->jobIdDictionary)) {
+                            if ($meroveusReturn = $this->contactService->formatMeroveusContact($contact,
+                                $this->jobIdDictionary)
+                            ) {
                                 try {
                                     $this->addContactPdo->execute($meroveusReturn);
                                 } catch (\PDOException $e) {
@@ -502,6 +507,7 @@ class MeroveusController extends AbstractActionController
      */
     private function elasticMatch(array $target, $minScore = 9.9)
     {
+
         if (empty($target)) {
             echo 'empty target passed to elasticMatch' . PHP_EOL;
 
@@ -535,16 +541,14 @@ class MeroveusController extends AbstractActionController
         // set the minimum score that we consider a match
         // https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-min-score.html
         $this->elasticQuery->setMinScore($minScore);
-
-        $resultSet = $this->elasticSearch->search($this->elasticQuery);
-        $topScore  = $resultSet->getMaxScore();
-
+        $resultSet    = $this->elasticSearch->search($this->elasticQuery);
+        $topScore     = $resultSet->getMaxScore();
         $resultsArray = $resultSet->getResults();
-
-        $result = false;
+        $result       = false;
         if (!empty($resultsArray)) {
             $result = ($resultsArray[0]->getScore() === $topScore) ? $resultsArray[0] : $result;
         }
+
         return $result;
     }
 
@@ -553,7 +557,8 @@ class MeroveusController extends AbstractActionController
      *
      * @param Result $match
      * @param array  $target
-     * @param $pdo \PDOStatement
+     * @param        $pdo \PDOStatement
+     *
      * @todo refactor for DI of the following:
      *       param \Services\Meroveus\CompanyService $companyService
      * @return bool
@@ -561,21 +566,43 @@ class MeroveusController extends AbstractActionController
     private function processMatch(Result $match, array $target, \PDOStatement $pdo)
     {
 
+//        if (!$match) {
+//            //@todo log it catch it
+//            return false;
+//        }
+//
+//        $refineryId = $match->getSource()['InternalId'];
+//
+//        $update = $pdo->execute([':meroveus_id' => $target['meroveusId'], 'refinery_id' => $refineryId]);
+//        if ($update) {
+//            unset($match, $pdo);
+//            gc_collect_cycles();
+//
+//        } else {
+//            unset($match, $pdo);
+//            gc_collect_cycles();
+//            echo 'processMatch called for no good reason. did you run the import? Hmm? ' . PHP_EOL;
+//            return false;
+//        }
+
         if (!$match) {
+            echo 'no match passed' . PHP_EOL . PHP_EOL;
+
             //@todo log it catch it
             return false;
         }
 
         $refineryId = $match->getSource()['InternalId'];
-
-        $update = $pdo->execute([':meroveus_id' => $target['meroveusId'], 'refinery_id' => $refineryId]);
-        if ($update) {
+        try {
+            $pdo->execute([':meroveus_id' => $target['meroveusId'], 'refinery_id' => $refineryId]);
             unset($match, $pdo);
             gc_collect_cycles();
 
-        } else {
+            return true;
+        } catch (\PDOException $e) {
             unset($match, $pdo);
             gc_collect_cycles();
+            echo 'ERROR' . $e->getMessage() . PHP_EOL;
             echo 'processMatch called for no good reason. did you run the import? Hmm? ' . PHP_EOL;
 
             return false;
