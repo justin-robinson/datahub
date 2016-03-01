@@ -2,6 +2,7 @@
 
 namespace Console\Controller;
 
+use Doctrine\DBAL\Driver\PDOException;
 use Zend\Mvc\Controller\AbstractActionController as ZendAbstractActionController;
 use Zend\Mvc\MvcEvent;
 
@@ -49,13 +50,15 @@ abstract class AbstractActionController extends ZendAbstractActionController
 
     public function init(MvcEvent $e)
     {
-        $dbConfig = $this->getServiceLocator()->get('Config')['pdo'];
-        $this->db = new \PDO(
-            'mysql:host='.$dbConfig['host'].';dbname='.$dbConfig['dbname'],
-            $dbConfig['usename'],
-            $dbConfig['pword']
-        );
-        $this->db->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
+        try{
+            $this->db = new \PDO('mysql:host=devdb.bizjournals.int;dbname=datahub', 'web', '');
+            $this->db->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
+
+        } catch (\PDOException $e){
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
+
 
         // prepare sql statements
         foreach ( $this->sqlStringsArray as $name => $sqlString ) {

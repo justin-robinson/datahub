@@ -58,6 +58,8 @@ class ContactService extends AbstractService
             }
         }
 
+
+
         $contact['meroveus_id']         = empty($meroveusReturn['ID']) ? '' : $meroveusReturn['ID'];
         $contact['hub_id']              = empty($meroveusReturn['hub_id']) ? '' : $meroveusReturn['hub_id'];
         $contact['relevate_id']         = null;
@@ -71,8 +73,15 @@ class ContactService extends AbstractService
         $contact['phone']               = empty($contactData['work-phone_static']) ? null : $contactData['work-phone_static'];
         // tack on the extension if present
         $contact['phone'] .= empty($contactData['work-ext-phone_static']) ? '' : ' EXT: ' . $contactData['work-ext-phone_static'];
+
+        if(empty($contactData['department-title_static'])) {
+            $contact['job_position_id'] = 1001;
         $contact['job_title']       = null;
-        $contact['job_position_id'] = null;
+        } else {
+            $contact['job_position_id'] = $this->getJobPositionId($contactData['department-title_static'], $jobIdDictionary) ?: 1001;
+            $cont['job_title'] = $contactData['department-title_static'];
+        }
+
         $contact['email']           = empty($contactData['work-email_static']) ? null : $contactData['work-email_static'];
         $contact['address1']        = null;
         $contact['address2']        = null;
@@ -91,50 +100,50 @@ class ContactService extends AbstractService
 
 
     /**
-     * Does a bit of (fuzz||hack).y matching to match a given arbritrary job title to our set.
-     * adds new ones as it finds them to allow us to run reports for tuning.
      * https://bizjournals.atlassian.net/browse/DATA-76
      *
      * @param $givenPosition string
-     * @param $dictionary    array
+     * @param $jobIdDictionary array
      *
-     * @return mixed int|false
+     * @return int|null
      */
-    public function getJobPositionId($givenPosition = null, $dictionary)
+    private function getJobPositionId($givenPosition, array $jobIdDictionary)
     {
         $input = strtoupper($givenPosition);
-        $key   = array_key_exists($input, $dictionary) ? $dictionary[$input] : null;
-        // exact title match?
-        if ($key) {
-            return $key;
-        } else {
+//        return array_key_exists($input, $jobIdDictionary) ? $jobIdDictionary[$input] : null;
 
-            //split titles up into arrays and loopem, doing the same as above
-            $inputWords = str_word_count($input, 1);
-            foreach ($inputWords as $word) {
-                $word = strtoupper($word);
-                $key  = array_key_exists($word, $dictionary) ? $dictionary[$word] : null;
-                if ($key) {
-                    return $key;
+        if (array_key_exists($input, $jobIdDictionary)) {
+            return $jobIdDictionary[$input];
+        } else {
+            return $this->isCheifOfTheUnknown($input);
                 }
             }
 
-            // are we a chief of something unheard of?
+    /**
+     * is the contact a chief <something that we don't know about> officer?
+     *
+     * @param         $input
+     *
+     * @return int|null
+     */
+    private function isCheifOfTheUnknown($input)
+    {
+        // are we a chief something unheard of?
             if (strpos($input, 'CHIEF') === 0 && strpos($input, 'OFFICER')) {
+            //                $db->execute();
                 // @todo insert into db with job_position_id == 30
                 return 30;
             }
-
-            // are we in the form of "C<x>O" ?
-            if (strlen($input) === 3 && (strpos($input, 'C') === 0 && strpos($input, 'O') === 2)) {
+        if ((strpos($input, 'C') === 0 && strlen($input) === 3)) {
+            if (strpos($input, 'O') === 2) {
                 // @todo insert into db with job_position_id == 30
                 return 30;
             }
-
-            //@todo add it to the db.
-            return 1000;
         }
-    }
+
+        return null;
+        }
+
 }
 
 
