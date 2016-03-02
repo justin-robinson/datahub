@@ -20,8 +20,6 @@ class ContactService extends AbstractService
 
     public function __construct()
     {
-
-
     }
 
     /**
@@ -41,6 +39,7 @@ class ContactService extends AbstractService
     /**
      * @param array $meroveusReturn
      * @param array $jobIdDictionary
+     *
      * @return array
      */
     public function formatMeroveusContact(array $meroveusReturn, array $jobIdDictionary)
@@ -76,8 +75,9 @@ class ContactService extends AbstractService
             $contact['job_position_id'] = 1001;
             $contact['job_title']       = null;
         } else {
-            $contact['job_position_id'] = $this->getJobPositionId($contactData['department-title_static'], $jobIdDictionary) ?: 1001;
-            $cont['job_title']          = $contactData['department-title_static'];
+            $contact['job_position_id'] = $this->getJobPositionId($contactData['department-title_static'],
+                $jobIdDictionary) ?: 1001;
+            $contact['job_title']       = $contactData['department-title_static'];
         }
 
         $contact['email']       = empty($contactData['work-email_static']) ? null : $contactData['work-email_static'];
@@ -100,6 +100,14 @@ class ContactService extends AbstractService
     /**
      * https://bizjournals.atlassian.net/browse/DATA-76
      *
+     * @todo look for CEO inside strings
+     * @todo look for C<?>O inside strings
+     * @todo trim spaces off the front and back
+     *
+     *
+     *
+     *
+     *
      * @param $givenPosition   string
      * @param $jobIdDictionary array
      *
@@ -107,15 +115,19 @@ class ContactService extends AbstractService
      */
     private function getJobPositionId($givenPosition, array $jobIdDictionary)
     {
-        $input = strtoupper($givenPosition);
-//        return array_key_exists($input, $jobIdDictionary) ? $jobIdDictionary[$input] : null;
+        $input = strtoupper(ltrim($givenPosition));
 
         if (array_key_exists($input, $jobIdDictionary)) {
             return $jobIdDictionary[$input];
         } else {
-            return $this->isCheifOfTheUnknown($input);
+            if ($id = $this->isCheifOfTheUnknown($input)) {
+                return $id;
+            } else {
+                return $this->getHighestRankedTitle($input);
+            }
         }
     }
+
 
     /**
      * is the contact a chief <something that we don't know about> officer?
@@ -126,20 +138,62 @@ class ContactService extends AbstractService
      */
     private function isCheifOfTheUnknown($input)
     {
+        if(strpos($input, 'CEO')) {
+            return 10;
+        }
         // are we a chief something unheard of?
         if (strpos($input, 'CHIEF') === 0 && strpos($input, 'OFFICER')) {
-            //                $db->execute();
-            // @todo insert into db with job_position_id == 30
             return 30;
         }
         if ((strpos($input, 'C') === 0 && strlen($input) === 3)) {
             if (strpos($input, 'O') === 2) {
-                // @todo insert into db with job_position_id == 30
                 return 30;
             }
         }
 
         return null;
+    }
+
+    /**
+     * returns hignest ranked job_position_id that exists in a compound job position
+     *
+     * @param $compositeTitle
+     *
+     * @return mixed|null
+     */
+    private function getHighestRankedTitle($compositeTitle)
+    {
+        // words that we currently care about and their job_position_id
+        $wordRank = [
+            'PARTNER'   => 50,
+            'CHAIRMAN'  => 60,
+            'EXECUTIVE' => 90,
+            'DIRECTOR'  => 130,
+            'MANAGER'   => 140,
+        ];
+
+        $compositeTitle = preg_split('/[^a-z0-9]/i', strtoupper($compositeTitle));
+
+        $rankedWords = [];
+
+        // build an array of existing words in the title and sort them according to rank asc
+        foreach ($compositeTitle as $word) {
+            if (array_key_exists($word, $wordRank)) {
+                $rankedWords[$wordRank[$word]] = $word;
+            }
+        }
+
+        // if we can't find one return null
+        if (empty($rankedWords)) {
+            return null;
+        } else {
+            // sort the ranked words asc
+            arsort($rankedWords);
+
+            // key returns the first key of the array
+            return key($rankedWords);
+        }
+
     }
 
 }
