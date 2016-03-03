@@ -64,7 +64,7 @@ class ContactService extends AbstractService
         $contact['is_current_employee'] = 1;
         $contact['first_name']          = empty($contactData['first-name_static']) ? null : $contactData['first-name_static'];
         $contact['middle_initial']      = empty($contactData['middle-name_static']) ? null : $contactData['middle-name_static'];
-        $contact['last_name']           = empty($contactData['last-name_static']) ? null : $contactData['last-name_static'];
+        $contact['last_name']           = empty($contactData['last-name_static']) ? '' : $contactData['last-name_static'];
         $contact['suffix']              = empty($contactData['suffix-name_static']) ? null : $contactData['suffix-name_static'];
         $contact['honorific']           = empty($contactData['prefix-name_static']) ? null : $contactData['prefix-name_static'];
         $contact['phone']               = empty($contactData['work-phone_static']) ? null : $contactData['work-phone_static'];
@@ -72,7 +72,7 @@ class ContactService extends AbstractService
         $contact['phone'] .= empty($contactData['work-ext-phone_static']) ? '' : ' EXT: ' . $contactData['work-ext-phone_static'];
 
         if (empty($contactData['department-title_static'])) {
-            $contact['job_position_id'] = 1001;
+            $contact['job_position_id'] = null;
             $contact['job_title']       = null;
         } else {
             $contact['job_position_id'] = $this->getJobPositionId($contactData['department-title_static'],
@@ -96,38 +96,52 @@ class ContactService extends AbstractService
 
     }
 
-
     /**
      * https://bizjournals.atlassian.net/browse/DATA-76
-     *
-     * @todo look for CEO inside strings
-     * @todo look for C<?>O inside strings
-     * @todo trim spaces off the front and back
-     *
-     *
-     *
-     *
-     *
      * @param $givenPosition   string
      * @param $jobIdDictionary array
      *
      * @return int|null
      */
-    private function getJobPositionId($givenPosition, array $jobIdDictionary)
+    public function getJobPositionId($givenPosition, array $jobIdDictionary)
     {
-        $input = strtoupper(ltrim($givenPosition));
 
+        $return = null;
+        $input  = strtoupper(ltrim($givenPosition));
+
+        // if there is an exact match, return it and skip all the following
         if (array_key_exists($input, $jobIdDictionary)) {
-            return $jobIdDictionary[$input];
+            $return = $jobIdDictionary[$input];
         } else {
-            if ($id = $this->isCheifOfTheUnknown($input)) {
-                return $id;
+            $input = $this->normaTheTitle($input);
+            if ($id = $this->isChiefOrVeep($input)) {
+                $return = $id;
             } else {
-                return $this->getHighestRankedTitle($input);
+                $return = $this->getHighestRankedTitle($input);
             }
         }
+
+        return $return;
     }
 
+
+    private function normaTheTitle($givenPosition)
+    {
+        /**
+         * remove periods
+         * remove dashes
+         * strip after and including comma
+         * uppercase
+         * convert space to underscore
+         */
+
+        $norm = strtoupper($givenPosition);
+        $norm = ltrim($norm);
+        $norm = str_replace('/', ' ', $norm);
+        $norm = str_replace('.', '', $norm);
+
+        return $norm;
+    }
 
     /**
      * is the contact a chief <something that we don't know about> officer?
@@ -136,22 +150,31 @@ class ContactService extends AbstractService
      *
      * @return int|null
      */
-    private function isCheifOfTheUnknown($input)
+    private function isChiefOrVeep($input)
     {
-        if(strpos($input, 'CEO')) {
-            return 10;
+        $return = null;
+
+        if (strpos($input, 'CEO') !== false) {
+            $return = 10;
+        }
+        if (strpos($input, 'CHIEF EXECUTIVE OFFICER') !== false) {
+            $return = 10;
         }
         // are we a chief something unheard of?
-        if (strpos($input, 'CHIEF') === 0 && strpos($input, 'OFFICER')) {
-            return 30;
+        if (strpos($input, 'CHIEF') === 0 && strpos($input, 'OFFICER') && !strpos($input, 'EXECUTIVE')) {
+            $return = 30;
         }
         if ((strpos($input, 'C') === 0 && strlen($input) === 3)) {
-            if (strpos($input, 'O') === 2) {
-                return 30;
-            }
+            $return = 30;
+        }
+        if (strpos($input, 'VICE PRESIDENT') !== false) {
+            $return = 90;
+        }
+        if (strpos($input, 'VP') !== false) {
+            $return = 90;
         }
 
-        return null;
+        return $return;
     }
 
     /**
@@ -163,8 +186,12 @@ class ContactService extends AbstractService
      */
     private function getHighestRankedTitle($compositeTitle)
     {
+
+        $return = null;
         // words that we currently care about and their job_position_id
         $wordRank = [
+            'PRESIDENT' => 11,
+            'OWNER'     => 22,
             'PARTNER'   => 50,
             'CHAIRMAN'  => 60,
             'EXECUTIVE' => 90,
@@ -178,21 +205,25 @@ class ContactService extends AbstractService
 
         // build an array of existing words in the title and sort them according to rank asc
         foreach ($compositeTitle as $word) {
+            if(strlen($word) === 3 && strpos($word, 'C') === 0){
+                return 30;
+            }
             if (array_key_exists($word, $wordRank)) {
                 $rankedWords[$wordRank[$word]] = $word;
             }
         }
-
         // if we can't find one return null
         if (empty($rankedWords)) {
-            return null;
+            return $return;
         } else {
             // sort the ranked words asc
             arsort($rankedWords);
 
             // key returns the first key of the array
-            return key($rankedWords);
+            $return = key($rankedWords);
         }
+
+        return $return;
 
     }
 
