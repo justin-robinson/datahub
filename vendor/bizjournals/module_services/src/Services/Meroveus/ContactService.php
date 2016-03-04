@@ -17,6 +17,40 @@ use Services\AbstractService;
 class ContactService extends AbstractService
 {
 
+    private $patternDictionary = [
+        '/^.*(^|\s)(CHIEF\sEXECUTIVE\sOFFICER).*$/i'     => 10,
+        '/^.*(^|\s|\D|\W)(CEO)(\s|\D|\W)*.*$/i'          => 10,
+        '/^.*(^|\s)(PRESIDENT)/i'                        => 11,
+        '/^.*(^|\s)(OWNER)\s.*$/i'                       => 22,
+        '/^.*(^|\s)(CHIEF\s*([^\s]*)\s*OFFICER).*$/i'    => 30,
+        '/^.*(^|\s|\D|\W)(C[a-z]O)(\s|\D|\W).*$/i'       => 30, // any three letter c-level
+        '/^.*(^|\s)(PARTNER)\s.*$/i'                     => 50,
+        '/^.*(^|\s)(CHAIRMAN)\s.*$/i'                    => 60,
+        '/^.*(^|\s)(EXECUTIVE)\s.*$/i'                   => 90,
+        '/^.*(^|\s)(VICE\s).*$/i'                        => 90,
+        '/^.*(^|\s)(EVP\s).*$/i'                         => 90,
+        '/^.*(^|\s)(VP\s).*$/i'                          => 90,
+        '/^.*(^|\s)(DIRECTOR).*$/i'                      => 130,
+        '/^.*(^|\s)(MANAGER).*$/i'                       => 140,
+        '/^.*(^|\s)(INFORMATION ).*$/i'                  => 1000,
+        '/^.*(^|\s)(BOARD\sMEMBER).*$/i'                 => 1000,
+        '/^.*(^|\s)(PURCHASING).*$/i'                    => 1000,
+        '/^.*(^|\s)(ADMINISTRATOR).*$/i'                 => 1000,
+        '/^.*(^|\s)(PUBLISHER).*$/i'                     => 1000,
+        '/^.*(^|\s)(EDITOR).*$/i'                        => 1000,
+        '/^.*(^|\s)(COMMUNICATIONS).*$/i'                => 1000,
+        '/^.*(^|\s)(PR).*$/i'                            => 1000,
+        '/^.*(^|\s)(LEGAL).*$/i'                         => 1000,
+        '/^.*(^|\s)(BUSINESS\sDEVELOPMENT).*$/i'         => 1000,
+        '/^.*(^|\s)(INTERNATIONAL\sRESPONSIBILITY).*$/i' => 1000,
+        '/^.*(^|\s)(CONTROLLER).*$/i'                    => 1000,
+        '/^.*(^|\s)(ENGINEERING).*$/i'                   => 1000,
+        '/^.*(^|\s)(TECHNICAL).*$/i'                     => 1000,
+        '/^.*(^|\s)(PRINCIPAL).*$/i'                     => 1000,
+        '/^.*(^|\s)(PROFESSIONAL).*$/i'                  => 1000,
+        '/^.*(^|\s)(EDUCATOR).*$/i'                      => 1000,
+
+    ];
 
     public function __construct()
     {
@@ -105,126 +139,19 @@ class ContactService extends AbstractService
      */
     public function getJobPositionId($givenPosition, array $jobIdDictionary)
     {
+        $input = strtoupper(ltrim($givenPosition));
 
-        $return = null;
-        $input  = strtoupper(ltrim($givenPosition));
-
-        // if there is an exact match, return it and skip all the following
         if (array_key_exists($input, $jobIdDictionary)) {
-            $return = $jobIdDictionary[$input];
+            return $jobIdDictionary[$input];
         } else {
-            $input = $this->normaTheTitle($input);
-            if ($id = $this->isChiefOrVeep($input)) {
-                $return = $id;
-            } else {
-                $return = $this->getHighestRankedTitle($input);
+            foreach ($this->patternDictionary as $pattern => $id) {
+                if (preg_match($pattern, $givenPosition)) {
+                    return $id;
+                }
             }
         }
 
-        return $return;
-    }
-
-
-    private function normaTheTitle($givenPosition)
-    {
-        /**
-         * remove periods
-         * remove dashes
-         * strip after and including comma
-         * uppercase
-         * convert space to underscore
-         */
-
-        $norm = strtoupper($givenPosition);
-        $norm = ltrim($norm);
-        $norm = str_replace('/', ' ', $norm);
-        $norm = str_replace('.', '', $norm);
-
-        return $norm;
-    }
-
-    /**
-     * is the contact a chief <something that we don't know about> officer?
-     *
-     * @param         $input
-     *
-     * @return int|null
-     */
-    private function isChiefOrVeep($input)
-    {
-        $return = null;
-
-        if (strpos($input, 'CEO') !== false) {
-            $return = 10;
-        }
-        if (strpos($input, 'CHIEF EXECUTIVE OFFICER') !== false) {
-            $return = 10;
-        }
-        // are we a chief something unheard of?
-        if (strpos($input, 'CHIEF') === 0 && strpos($input, 'OFFICER') && !strpos($input, 'EXECUTIVE')) {
-            $return = 30;
-        }
-        if ((strpos($input, 'C') === 0 && strlen($input) === 3)) {
-            $return = 30;
-        }
-        if (strpos($input, 'VICE PRESIDENT') !== false) {
-            $return = 90;
-        }
-        if (strpos($input, 'VP') !== false) {
-            $return = 90;
-        }
-
-        return $return;
-    }
-
-    /**
-     * returns hignest ranked job_position_id that exists in a compound job position
-     *
-     * @param $compositeTitle
-     *
-     * @return mixed|null
-     */
-    private function getHighestRankedTitle($compositeTitle)
-    {
-
-        $return = null;
-        // words that we currently care about and their job_position_id
-        $wordRank = [
-            'PRESIDENT' => 11,
-            'OWNER'     => 22,
-            'PARTNER'   => 50,
-            'CHAIRMAN'  => 60,
-            'EXECUTIVE' => 90,
-            'DIRECTOR'  => 130,
-            'MANAGER'   => 140,
-        ];
-
-        $compositeTitle = preg_split('/[^a-z0-9]/i', strtoupper($compositeTitle));
-
-        $rankedWords = [];
-
-        // build an array of existing words in the title and sort them according to rank asc
-        foreach ($compositeTitle as $word) {
-            if(strlen($word) === 3 && strpos($word, 'C') === 0){
-                return 30;
-            }
-            if (array_key_exists($word, $wordRank)) {
-                $rankedWords[$wordRank[$word]] = $word;
-            }
-        }
-        // if we can't find one return null
-        if (empty($rankedWords)) {
-            return $return;
-        } else {
-            // sort the ranked words asc
-            arsort($rankedWords);
-
-            // key returns the first key of the array
-            $return = key($rankedWords);
-        }
-
-        return $return;
-
+        return 1001;
     }
 
 }

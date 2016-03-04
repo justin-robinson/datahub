@@ -234,7 +234,7 @@ class MeroveusController extends AbstractActionController
      */
     public function indexAction()
     {
-        echo $this->contactService->getJobPositionId("General Manager & COO", $this->jobIdDictionary) . PHP_EOL;
+        echo $this->contactService->getJobPositionId("Tom ", $this->jobIdDictionary) . PHP_EOL;
     }
 
 
@@ -303,7 +303,6 @@ class MeroveusController extends AbstractActionController
                 ],
             ],
         ];
-        $unrankedJobs = [];
         foreach ($this->markets as $market => $env) {
 
             $meroveusParams['ENV']      = $env;
@@ -363,23 +362,23 @@ class MeroveusController extends AbstractActionController
 
                     // process contacts
                     if ($hubId) {
-                        foreach ($target['execs'] as $contact) {
-                            // attach the company hub id to the contact, format it and add it
-                            $contact['hub_id'] = $hubId;
-                            $meroveusReturn    = $this->contactService->formatMeroveusContact($contact,
-                                $this->jobIdDictionary);
 
-                            if ($meroveusReturn) {
-                                try {
-                                    $this->addContactPdo->execute($meroveusReturn);
-                                } catch (\PDOException $e) {
-                                    echo "PDO ERROR: " . $e->getMessage() . PHP_EOL;
-                                }
-                                if ($meroveusReturn['job_position_id'] === 1001 && $meroveusReturn['job_title']) {
-                                    $unrankedJobs[$meroveusReturn['job_title']] = 1001;
-                                }
-                            }
-                        }
+                        $this->processContacts($hubId, $target['execs']);
+
+//                        foreach ($target['execs'] as $contact) {
+//                            // attach the company hub id to the contact, format it and add it
+//                            $contact['hub_id'] = $hubId;
+//                            $meroveusReturn    = $this->contactService->formatMeroveusContact($contact,
+//                                $this->jobIdDictionary);
+//
+//                            if ($meroveusReturn) {
+//                                try {
+//                                    $this->addContactPdo->execute($meroveusReturn);
+//                                } catch (\PDOException $e) {
+//                                    echo "PDO ERROR: " . $e->getMessage() . PHP_EOL;
+//                                }
+//                            }
+//                        }
                     } else {
                         echo "line 391" . ' in ' . "MeroveusController.php" . PHP_EOL;
                         die(var_dump($target));
@@ -403,7 +402,6 @@ class MeroveusController extends AbstractActionController
             echo " {$marketInserted} records created" . PHP_EOL;
 
             echo "              post market out of loop memory usage is " . $this->convert_memory_usage(memory_get_usage(true)) . PHP_EOL;
-            echo count($unrankedJobs). ' unranked jobs found'.PHP_EOL;
         }
 
         echo $totalMatched . ' total  records matched ' . PHP_EOL;
@@ -411,7 +409,27 @@ class MeroveusController extends AbstractActionController
         $end = date('h:i:s A');
         echo "ended at " . $end . PHP_EOL;
         echo 'Enjoy your day' . PHP_EOL;
-        var_dump($unrankedJobs);
+    }
+
+
+    private function processContacts($companyHubId, $contacts)
+    {
+        foreach ($contacts as $contact) {
+            // attach the company hub id to the contact, format it and add it
+            $contact['hub_id'] = $companyHubId;
+            $formattedCOntact  = $this->contactService->formatMeroveusContact($contact, $this->jobIdDictionary);
+
+            if ($formattedCOntact) {
+                try {
+                    $this->addContactPdo->execute($formattedCOntact);
+                } catch (\PDOException $e) {
+                    echo "PDO ERROR: " . $e->getMessage() . PHP_EOL;
+                }
+                if ($formattedCOntact['job_position_id'] === 1001 && $formattedCOntact['job_title']) {
+                    $unrankedJobs[$formattedCOntact['job_title']] = 1001;
+                }
+            }
+        }
     }
 
     /**
@@ -569,8 +587,6 @@ class MeroveusController extends AbstractActionController
      * @param array  $target
      * @param        $pdo \PDOStatement
      *
-     * @todo refactor for DI of the following:
-     *       param \Services\Meroveus\CompanyService $companyService
      * @return bool
      */
     private function processMatch(Result $match, $target, \PDOStatement $pdo)
@@ -579,18 +595,15 @@ class MeroveusController extends AbstractActionController
         if (!$match) {
             echo 'no match passed' . PHP_EOL . PHP_EOL;
 
-            //@todo log it catch it
             return false;
         }
 
         $refineryId = $match->getSource()['InternalId'];
         try {
-            $pdo->execute([':meroveus_id' => $target, ':refinery_id' => $refineryId]);
-
-            return true;
+            return $pdo->execute([':meroveus_id' => $target, ':refinery_id' => $refineryId]);
         } catch (\PDOException $e) {
             echo 'ERROR' . $e->getMessage() . PHP_EOL;
-            echo 'processMatch called for no good reason. did you run the import? Hmm? ' . PHP_EOL;
+            echo 'processMatch called for no good reason. did you run the import?' . PHP_EOL;
 
             return false;
         }
