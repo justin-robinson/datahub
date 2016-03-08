@@ -362,23 +362,7 @@ class MeroveusController extends AbstractActionController
 
                     // process contacts
                     if ($hubId) {
-
                         $this->processContacts($hubId, $target['execs']);
-
-//                        foreach ($target['execs'] as $contact) {
-//                            // attach the company hub id to the contact, format it and add it
-//                            $contact['hub_id'] = $hubId;
-//                            $meroveusReturn    = $this->contactService->formatMeroveusContact($contact,
-//                                $this->jobIdDictionary);
-//
-//                            if ($meroveusReturn) {
-//                                try {
-//                                    $this->addContactPdo->execute($meroveusReturn);
-//                                } catch (\PDOException $e) {
-//                                    echo "PDO ERROR: " . $e->getMessage() . PHP_EOL;
-//                                }
-//                            }
-//                        }
                     } else {
                         echo "line 391" . ' in ' . "MeroveusController.php" . PHP_EOL;
                         die(var_dump($target));
