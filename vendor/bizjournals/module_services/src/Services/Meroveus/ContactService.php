@@ -40,7 +40,7 @@ class ContactService extends AbstractService
         // not part of a word and can contain spaces or periods
         '/^.*(^|\s|\b)(C\.?\s?[a-z]\.?\s?O\.?\s?)(\s|\b|$).*$/i' => 30,
 
-        '/^.*(^|\s|\b)(PARTNER)(\s|\b|$).*$i/' => 50,
+        '/^.*(^|\s|\b)(PARTNER)(\s|\b|$).*$/i' => 50,
 
         '/^.*(^|\s|\b)(CHAIRMAN)(\s|\b|$).*$/i' => 60,
 
