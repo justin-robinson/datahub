@@ -234,7 +234,7 @@ class MeroveusController extends AbstractActionController
      */
     public function indexAction()
     {
-        echo $this->contactService->getJobPositionId("Tom ", $this->jobIdDictionary) . PHP_EOL;
+        echo $this->contactService->getJobPositionId("Owner", $this->jobIdDictionary) . PHP_EOL;
     }
 
 

@@ -17,21 +17,43 @@ use Services\AbstractService;
 class ContactService extends AbstractService
 {
 
+
+    /**
+     * @var array
+     * library of regex to assign numeric value to specifc keywords and substrings in job titles
+     *
+     */
     private $patternDictionary = [
+
         '/^.*(^|\s)(CHIEF\sEXECUTIVE\sOFFICER).*$/i'     => 10,
-        '/^.*(^|\s|\D|\W)(CEO)(\s|\D|\W)*.*$/i'          => 10,
-        '/^.*(^|\s)(PRESIDENT)/i'                        => 11,
-        '/^.*(^|\s)(OWNER)\s.*$/i'                       => 22,
-        '/^.*(^|\s)(CHIEF\s*([^\s]*)\s*OFFICER).*$/i'    => 30,
-        '/^.*(^|\s|\D|\W)(C[a-z]O)(\s|\D|\W).*$/i'       => 30, // any three letter c-level
-        '/^.*(^|\s)(PARTNER)\s.*$/i'                     => 50,
-        '/^.*(^|\s)(CHAIRMAN)\s.*$/i'                    => 60,
-        '/^.*(^|\s)(EXECUTIVE)\s.*$/i'                   => 90,
-        '/^.*(^|\s)(VICE\s).*$/i'                        => 90,
-        '/^.*(^|\s)(EVP\s).*$/i'                         => 90,
-        '/^.*(^|\s)(VP\s).*$/i'                          => 90,
-        '/^.*(^|\s)(DIRECTOR).*$/i'                      => 130,
-        '/^.*(^|\s)(MANAGER).*$/i'                       => 140,
+        // the following matches any occurrce of "CEO" thats
+        // not part of a word and can contain spaces or periods
+        '/^.*(^|\s|\D|\W)(C\.?\s?E\.?\s?O\.?\s?)(\s|\D|\W)*.*$/i' => 10,
+
+        '/^.*(^|\s)(PRESIDENT)/i'                          => 11,
+
+        '/^.*(^|\s)(OWNER)\s.*$/i'                         => 22,
+
+        '/^.*(^|\s)(CHIEF\s*([^\s]*)\s*OFFICER).*$/i'      => 30,
+        // the following matches any occurrce of a three letter group in the form of
+        // "C<whatevet>O" thats
+        // not part of a word and can contain spaces or periods
+        '/^.*(^|\s|)(C\.?\s?[a-z]\.?\s?O\.?\s?)(\s|\b|$).*$/i' => 30,
+
+        '/^.*(^|\s)(PARTNER)\s.*$/i'                        => 50,
+
+        '/^.*(^|\s)(CHAIRMAN)\s.*$/i'                       => 60,
+
+        '/^.*(^|\s)(EXECUTIVE)\s.*$/i'                      => 90,
+        '/^.*(^|\s)(VICE)(\s).*$/i'                         => 90,
+        '/^.*(^|\s|\b)(EVP)(\s|\b).*$/i'                    => 90,
+        '/^.*(^|\s|\b)(VP)(\s|\,|\b).*$/i'                  => 90,
+        '/^.*(^|\s|\b)(SVP)(\s|\,|\b).*$/i'                       => 90,
+
+        '/^.*(^|\s|\b)(DIRECTOR).*$/i'                      => 130,
+
+        '/^.*(^|\s|\b)(MANAGER).*$/i'                    => 140,
+
         '/^.*(^|\s)(INFORMATION ).*$/i'                  => 1000,
         '/^.*(^|\s)(BOARD\sMEMBER).*$/i'                 => 1000,
         '/^.*(^|\s)(PURCHASING).*$/i'                    => 1000,
@@ -49,7 +71,6 @@ class ContactService extends AbstractService
         '/^.*(^|\s)(PRINCIPAL).*$/i'                     => 1000,
         '/^.*(^|\s)(PROFESSIONAL).*$/i'                  => 1000,
         '/^.*(^|\s)(EDUCATOR).*$/i'                      => 1000,
-
     ];
 
     public function __construct()
