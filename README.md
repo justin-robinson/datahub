@@ -1,7 +1,9 @@
 # It's a hub for data! :fire::fire::fire:
 ## general elastic notes
-### dev elastic path
-http://datahub.listsandleads.elasticsearch.bizj-dev.com:9200
+### elastic paths
+| | dev | testing | staging | prod |
+| --- | --- | ------- | ------- | ---- |
+| url | http://elb.es.datahub.bizj-dev.com:9200 | http://elb.es.datahub.bizj-dev.com:9200 | http://elb.es.datahub.bizj-internal.com:9200 | http://elb.es.datahub.bizj-internal.com:9200 |
 ### to delete indexes from elastic:
 ```shell
 curl -sXDELETE <path_to_your_elastic_instance>:<port>/<index> 
@@ -45,9 +47,9 @@ sudo /var/www/datahub/scripts/run.php import refinery -e development --file=/hom
 initiating a re-stash of the data (names of files company.csv and company_stash.json should remain the same)
 
 ```shell
-aws s3 cp /path/to/company.csv s3://acbj-team-data/datahub/company.csv
+aws s3 cp /path/to/company.csv s3://acbj-team-data/datahub/<environment>/company.csv
 ```
 or
 ```shell
-aws s3 cp /datahub/repo/logstash/company_stash.json s3://acbj-team-data/datahub/company_stash.json
+aws s3 cp /datahub/repo/logstash/company_stash.json s3://acbj-team-data/datahub/<environment>/company_stash.json
 ```
