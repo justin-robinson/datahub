@@ -25,52 +25,58 @@ class ContactService extends AbstractService
      */
     private $patternDictionary = [
 
-        '/^.*(^|\s)(CHIEF\sEXECUTIVE\sOFFICER).*$/i'     => 10,
+        '/^.*(^|\s)(CHIEF\sEXECUTIVE\sOFFICER).*$/i'              => 10,
         // the following matches any occurrce of "CEO" thats
         // not part of a word and can contain spaces or periods
         '/^.*(^|\s|\D|\W)(C\.?\s?E\.?\s?O\.?\s?)(\s|\D|\W)*.*$/i' => 10,
 
-        '/^.*(^|\s)(PRESIDENT)/i'                          => 11,
+        '/^.*(^|\s|\b)(PRESIDENT)(\s|\b|$).*$/i' => 11,
 
-        '/^.*(^|\s)(OWNER)\s.*$/i'                         => 22,
+        '/^.*(^|\s|\b)(OWNER)(\s|\b|$).*$/i' => 22,
 
-        '/^.*(^|\s)(CHIEF\s*([^\s]*)\s*OFFICER).*$/i'      => 30,
+        '/^.*(^|\s|\b)(CHIEF\s*([^\s]*)\s*OFFICER).*$/i'         => 30,
         // the following matches any occurrce of a three letter group in the form of
         // "C<whatevet>O" thats
         // not part of a word and can contain spaces or periods
-        '/^.*(^|\s|)(C\.?\s?[a-z]\.?\s?O\.?\s?)(\s|\b|$).*$/i' => 30,
+        '/^.*(^|\s|\b)(C\.?\s?[a-z]\.?\s?O\.?\s?)(\s|\b|$).*$/i' => 30,
 
-        '/^.*(^|\s)(PARTNER)\s.*$/i'                        => 50,
+        '/^.*(^|\s|\b)(PARTNER)(\s|\b|$).*$/i' => 50,
 
-        '/^.*(^|\s)(CHAIRMAN)\s.*$/i'                       => 60,
+        '/^.*(^|\s|\b)(CHAIRMAN)(\s|\b|$).*$/i' => 60,
 
-        '/^.*(^|\s)(EXECUTIVE)\s.*$/i'                      => 90,
-        '/^.*(^|\s)(VICE)(\s).*$/i'                         => 90,
-        '/^.*(^|\s|\b)(EVP)(\s|\b).*$/i'                    => 90,
-        '/^.*(^|\s|\b)(VP)(\s|\,|\b).*$/i'                  => 90,
+        '/^.*(^|\s|\b)(EXECUTIVE)(\s|\b|$).*$/i'                  => 90,
+        '/^.*(^|\s|\b)(VICE)(\s).*$/i'                            => 90,
+        '/^.*(^|\s|\b)(EVP)(\s|\b).*$/i'                          => 90,
+        // the following matches any occurrce of a three letter group in the form of
+        // "C<whatevet>O" thats
+        // not part of a word and can contain spaces or periods
+        '/^.*(^|\s|\D|\W)(E\.?\s?V\.?\s?P\.?\s?)(\s|\D|\W)*.*$/i' => 90,
+        '/^.*(^|\s|\b)(VP)(\s|\,|\b).*$/i'                        => 90,
+        '/^.*(^|\s|\D|\W)(V\.?\s?P\.?\s?)(\s|\D|\W)*.*$/i'        => 90,
         '/^.*(^|\s|\b)(SVP)(\s|\,|\b).*$/i'                       => 90,
+        '/^.*(^|\s|\D|\W)(S\.?\s?V\.?\s?P\.?\s?)(\s|\D|\W)*.*$/i' => 90,
 
-        '/^.*(^|\s|\b)(DIRECTOR).*$/i'                      => 130,
+        '/^.*(^|\s|\b)(DIRECTOR)(\s|\b|$).*$/i' => 130,
 
-        '/^.*(^|\s|\b)(MANAGER).*$/i'                    => 140,
+        '/^.*(^|\s|\b)(MANAGER)(\s|\b|$).*$/i' => 140,
 
-        '/^.*(^|\s)(INFORMATION ).*$/i'                  => 1000,
-        '/^.*(^|\s)(BOARD\sMEMBER).*$/i'                 => 1000,
-        '/^.*(^|\s)(PURCHASING).*$/i'                    => 1000,
-        '/^.*(^|\s)(ADMINISTRATOR).*$/i'                 => 1000,
-        '/^.*(^|\s)(PUBLISHER).*$/i'                     => 1000,
-        '/^.*(^|\s)(EDITOR).*$/i'                        => 1000,
-        '/^.*(^|\s)(COMMUNICATIONS).*$/i'                => 1000,
-        '/^.*(^|\s)(PR).*$/i'                            => 1000,
-        '/^.*(^|\s)(LEGAL).*$/i'                         => 1000,
-        '/^.*(^|\s)(BUSINESS\sDEVELOPMENT).*$/i'         => 1000,
-        '/^.*(^|\s)(INTERNATIONAL\sRESPONSIBILITY).*$/i' => 1000,
-        '/^.*(^|\s)(CONTROLLER).*$/i'                    => 1000,
-        '/^.*(^|\s)(ENGINEERING).*$/i'                   => 1000,
-        '/^.*(^|\s)(TECHNICAL).*$/i'                     => 1000,
-        '/^.*(^|\s)(PRINCIPAL).*$/i'                     => 1000,
-        '/^.*(^|\s)(PROFESSIONAL).*$/i'                  => 1000,
-        '/^.*(^|\s)(EDUCATOR).*$/i'                      => 1000,
+        '/^.*(^|\s|\b)(INFORMATION )(\s|\b|$).*$/i'                  => 1000,
+        '/^.*(^|\s|\b)(BOARD\sMEMBER)(\s|\b|$).*$/i'                 => 1000,
+        '/^.*(^|\s|\b)(PURCHASING)(\s|\b|$).*$/i'                    => 1000,
+        '/^.*(^|\s|\b)(ADMINISTRATOR)(\s|\b|$).*$/i'                 => 1000,
+        '/^.*(^|\s|\b)(PUBLISHER)(\s|\b|$).*$/i'                     => 1000,
+        '/^.*(^|\s|\b)(EDITOR)(\s|\b|$).*$/i'                        => 1000,
+        '/^.*(^|\s|\b)(COMMUNICATIONS)(\s|\b|$).*$/i'                => 1000,
+        '/^.*(^|\s|\b)(PR)(\s|\b|$).*$/i'                            => 1000,
+        '/^.*(^|\s|\b)(LEGAL)(\s|\b|$).*$/i'                         => 1000,
+        '/^.*(^|\s|\b)(BUSINESS\sDEVELOPMENT)(\s|\b|$).*$/i'         => 1000,
+        '/^.*(^|\s|\b)(INTERNATIONAL\sRESPONSIBILITY)(\s|\b|$).*$/i' => 1000,
+        '/^.*(^|\s|\b)(CONTROLLER)(\s|\b|$).*$/i'                    => 1000,
+        '/^.*(^|\s|\b)(ENGINEERING)(\s|\b|$).*$/i'                   => 1000,
+        '/^.*(^|\s|\b)(TECHNICAL)(\s|\b|$).*$/i'                     => 1000,
+        '/^.*(^|\s|\b)(PRINCIPAL)(\s|\b|$).*$/i'                     => 1000,
+        '/^.*(^|\s|\b)(PROFESSIONAL)(\s|\b|$).*$/i'                  => 1000,
+        '/^.*(^|\s|\b)(EDUCATOR)(\s|\b|$).*$/i'                      => 1000,
     ];
 
     public function __construct()
