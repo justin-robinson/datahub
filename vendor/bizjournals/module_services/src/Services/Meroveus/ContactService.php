@@ -43,6 +43,7 @@ class ContactService extends AbstractService
         '/^.*(^|\s|\b)(PARTNER)(\s|\b|$).*$/i' => 50,
 
         '/^.*(^|\s|\b)(CHAIRMAN)(\s|\b|$).*$/i' => 60,
+        '/^.*(^|\s|\b)(FOUNDER)(\s|\b|$).*$/i'  => 60,
 
         '/^.*(^|\s|\b)(EXECUTIVE)(\s|\b|$).*$/i'                  => 90,
         '/^.*(^|\s|\b)(VICE)(\s).*$/i'                            => 90,
@@ -56,9 +57,12 @@ class ContactService extends AbstractService
         '/^.*(^|\s|\b)(SVP)(\s|\,|\b).*$/i'                       => 90,
         '/^.*(^|\s|\D|\W)(S\.?\s?V\.?\s?P\.?\s?)(\s|\D|\W)*.*$/i' => 90,
 
-        '/^.*(^|\s|\b)(DIRECTOR)(\s|\b|$).*$/i' => 130,
+        '/^.*(^|\s|\b)(DIRECTOR)(\s|\b|$).*$/i'            => 130,
 
-        '/^.*(^|\s|\b)(MANAGER)(\s|\b|$).*$/i' => 140,
+        // gm | general manager | managing | manager
+        '/^.*(^|\s|\b)(MANAGER)(\s|\b|$).*$/i'             => 140,
+        '/^.*(^|\s|\b)(MANAGING)(\s|\b|$).*$/i'            => 140,
+        '/^.*(^|\s|\D|\W)(G\.?\s?M\.?\s?)(\s|\D|\W)*.*$/i' => 140,
 
         '/^.*(^|\s|\b)(INFORMATION )(\s|\b|$).*$/i'                  => 1000,
         '/^.*(^|\s|\b)(BOARD\sMEMBER)(\s|\b|$).*$/i'                 => 1000,
