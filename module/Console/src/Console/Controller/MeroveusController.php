@@ -8,6 +8,7 @@
 namespace Console\Controller;
 
 use Console\Record\Formatter\Factory;
+use Doctrine\DBAL\Driver\PDOException;
 use Elastica\Client as ElasticaClient;
 use Elastica\Query as ElasticaQuery;
 use Elastica\QueryBuilder as QueryBuilder;
@@ -223,7 +224,6 @@ class MeroveusController extends AbstractActionController
         foreach ($results as $result) {
             $this->jobIdDictionary[$result->job_title] = $result->job_position_id;
         }
-
     }
 
 
@@ -234,10 +234,7 @@ class MeroveusController extends AbstractActionController
      */
     public function indexAction()
     {
-        $env = $this->getRequest()->getParam('env');
-        echo "$env\n";
-
-        return "$env\n";
+        echo $this->contactService->getJobPositionId("Managing Partner, Strategy", $this->jobIdDictionary) . PHP_EOL;
     }
 
 
@@ -291,18 +288,27 @@ class MeroveusController extends AbstractActionController
                 'RECTYP' => 'Business',
                 'FIELDS' => [
                     [
-                        "KEY" => "keycontact-set_static",
-                        "TYP" => "Person",
+                        "KEY"  => "keyexec-set_static",
+                        "TYP"  => "Person",
+                        'META' => [
+                            'FIELDS' => [
+                                [
+                                    "KEY" => "department-title_static",
+                                    "TYP" => "Text",
+                                ],
+
+                            ],
+                        ],
                     ],
                 ],
             ],
         ];
-
         foreach ($this->markets as $market => $env) {
 
             $meroveusParams['ENV']      = $env;
             $meroveusParams['STARTROW'] = 1; // reset our pagination offset
             $marketMatched              = $marketInserted = 0; // reset counts for this market
+
             // paginate over companies
             while ($marketCompanyList = $this->companyService->fetchByMarket($meroveusParams)) {
 
@@ -314,41 +320,33 @@ class MeroveusController extends AbstractActionController
 
                     $match = $this->elasticMatch($target);
                     $hubId = null;
+
                     if ($match) {
-                        $this->processMatch($match, $target, $this->updateCompanyPdo);
-                        try{
+
+                        $meroveusId = $target['meroveusId'];
+
+                        $this->processMatch($match, $meroveusId, $this->updateCompanyPdo);
+
+                        try {
                             $selectCompany->execute([$target['meroveusId']]);
                             $hubId = ($selectCompany->rowCount() > 0) ? $selectCompany->fetch(\PDO::FETCH_ASSOC)['hub_id'] : false;
-
+                            $selectCompany->closeCursor();
                             if ($sanity) {
                                 $this->writeSanityFiles($market, $target, $match);
                             }
                             $marketMatched++;
                             $totalMatched++;
-                        } catch (\PDOException $e){
-                            die('PDO ERROR Select Compy '. $e->getMessage());
+                        } catch (\PDOException $e) {
+                            die('PDO ERROR on Select Company ' . $e->getMessage());
                         }
+
                     } else { // create a new record
                         $queryParams = $formatter->format($target);
                         try {
+                            $this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
                             $this->addCompanyPdo->execute($queryParams);
                             // good ole pdo has the hubId for us
                             $hubId = $this->db->lastInsertId();
-                            if ($hubId) {
-                                foreach ($target['contacts'] as $contact) {
-                                    // attach the companys hub id to the contact, format it and add it
-                                    $contact['hub_id'] = $hubId;
-                                    if ($meroveusReturn = $this->contactService->formatMeroveusContact($contact,
-                                        $this->jobIdDictionary)
-                                    ) {
-                                        try {
-                                            $this->addContactPdo->execute($meroveusReturn);
-                                        } catch (\PDOException $e) {
-                                            echo "PDO ERROR on contact insert: " . $e->getMessage() . PHP_EOL;
-                                        }
-                                    }
-                                }
-                            }
                             // write some debug files if you want
                             if ($sanity) {
                                 $this->writeSanityFiles($market, $target, false);
@@ -361,20 +359,29 @@ class MeroveusController extends AbstractActionController
                             echo 'PDO ERROR on company insert: ' . $e->getMessage() . PHP_EOL;
                         }
                     }
+
+                    // process contacts
                     if ($hubId) {
-                        foreach ($target['contacts'] as $contact) {
-                            // attach the companys hub id to the contact, format it and add it
-                            $contact['hub_id'] = $hubId;
-                            if ($meroveusReturn = $this->contactService->formatMeroveusContact($contact,
-                                $this->jobIdDictionary)
-                            ) {
-                                try {
-                                    $this->addContactPdo->execute($meroveusReturn);
-                                } catch (\PDOException $e) {
-                                    echo "PDO ERROR: " . $e->getMessage() . PHP_EOL;
-                                }
-                            }
-                        }
+
+                        $this->processContacts($hubId, $target['execs']);
+
+//                        foreach ($target['execs'] as $contact) {
+//                            // attach the company hub id to the contact, format it and add it
+//                            $contact['hub_id'] = $hubId;
+//                            $meroveusReturn    = $this->contactService->formatMeroveusContact($contact,
+//                                $this->jobIdDictionary);
+//
+//                            if ($meroveusReturn) {
+//                                try {
+//                                    $this->addContactPdo->execute($meroveusReturn);
+//                                } catch (\PDOException $e) {
+//                                    echo "PDO ERROR: " . $e->getMessage() . PHP_EOL;
+//                                }
+//                            }
+//                        }
+                    } else {
+                        echo "line 391" . ' in ' . "MeroveusController.php" . PHP_EOL;
+                        die(var_dump($target));
                     }
 
                     // track memory and total count
@@ -402,6 +409,27 @@ class MeroveusController extends AbstractActionController
         $end = date('h:i:s A');
         echo "ended at " . $end . PHP_EOL;
         echo 'Enjoy your day' . PHP_EOL;
+    }
+
+
+    private function processContacts($companyHubId, $contacts)
+    {
+        foreach ($contacts as $contact) {
+            // attach the company hub id to the contact, format it and add it
+            $contact['hub_id'] = $companyHubId;
+            $formattedCOntact  = $this->contactService->formatMeroveusContact($contact, $this->jobIdDictionary);
+
+            if ($formattedCOntact) {
+                try {
+                    $this->addContactPdo->execute($formattedCOntact);
+                } catch (\PDOException $e) {
+                    echo "PDO ERROR: " . $e->getMessage() . PHP_EOL;
+                }
+                if ($formattedCOntact['job_position_id'] === 1001 && $formattedCOntact['job_title']) {
+                    $unrankedJobs[$formattedCOntact['job_title']] = 1001;
+                }
+            }
+        }
     }
 
     /**
@@ -559,56 +587,26 @@ class MeroveusController extends AbstractActionController
      * @param array  $target
      * @param        $pdo \PDOStatement
      *
-     * @todo refactor for DI of the following:
-     *       param \Services\Meroveus\CompanyService $companyService
      * @return bool
      */
-    private function processMatch(Result $match, array $target, \PDOStatement $pdo)
+    private function processMatch(Result $match, $target, \PDOStatement $pdo)
     {
-
-//        if (!$match) {
-//            //@todo log it catch it
-//            return false;
-//        }
-//
-//        $refineryId = $match->getSource()['InternalId'];
-//
-//        $update = $pdo->execute([':meroveus_id' => $target['meroveusId'], 'refinery_id' => $refineryId]);
-//        if ($update) {
-//            unset($match, $pdo);
-//            gc_collect_cycles();
-//
-//        } else {
-//            unset($match, $pdo);
-//            gc_collect_cycles();
-//            echo 'processMatch called for no good reason. did you run the import? Hmm? ' . PHP_EOL;
-//            return false;
-//        }
 
         if (!$match) {
             echo 'no match passed' . PHP_EOL . PHP_EOL;
 
-            //@todo log it catch it
             return false;
         }
 
         $refineryId = $match->getSource()['InternalId'];
         try {
-            $pdo->execute([':meroveus_id' => $target['meroveusId'], 'refinery_id' => $refineryId]);
-            unset($match, $pdo);
-            gc_collect_cycles();
-
-            return true;
+            return $pdo->execute([':meroveus_id' => $target, ':refinery_id' => $refineryId]);
         } catch (\PDOException $e) {
-            unset($match, $pdo);
-            gc_collect_cycles();
             echo 'ERROR' . $e->getMessage() . PHP_EOL;
-            echo 'processMatch called for no good reason. did you run the import? Hmm? ' . PHP_EOL;
+            echo 'processMatch called for no good reason. did you run the import?' . PHP_EOL;
 
             return false;
         }
-
-        return false;
     }
 
 
@@ -674,6 +672,5 @@ class MeroveusController extends AbstractActionController
 
         return @round($size / pow(1024, ($i = (int)floor(log($size, 1024)))), 2) . ' ' . $unit[$i];
     }
-
 
 }

@@ -18,10 +18,59 @@ class ContactService extends AbstractService
 {
 
 
+    /**
+     * @var array
+     * library of regex to assign numeric value to specifc keywords and substrings in job titles
+     *
+     */
+    private $patternDictionary = [
+
+        '/^.*(^|\s)(CHIEF\sEXECUTIVE\sOFFICER).*$/i'                 => 10,
+        // the following matches any occurrce of "CEO" thats
+        // not part of a word and can contain spaces or periods
+        '/^.*(^|\s|\D|\W)(C\.?\s?E\.?\s?O\.?\s?)(\s|\D|\W)*.*$/i'    => 10,
+        '/^.*(^|\s|\b)(PRESIDENT)(\s|\b|$).*$/i'                     => 11,
+        '/^.*(^|\s|\b)(OWNER)(\s|\b|$).*$/i'                         => 22,
+        '/^.*(^|\s|\b)(CHIEF\s*([^\s]*)\s*OFFICER).*$/i'             => 30,
+        // the following matches any occurrce of a three letter group in the form of "C<whatevet>O" thats
+        // not part of a word and can contain spaces or periods
+        '/^.*(^|\s|\b)(C\.?\s?[a-z]\.?\s?O\.?\s?)(\s|\b|$).*$/i'     => 30,
+        '/^.*(^|\s|\b)(PARTNER)(\s|\b|$).*$/i'                       => 50,
+        '/^.*(^|\s|\b)(CHAIRMAN)(\s|\b|$).*$/i'                      => 60,
+        '/^.*(^|\s|\b)(FOUNDER)(\s|\b|$).*$/i'                       => 60,
+        '/^.*(^|\s|\b)(EXECUTIVE)(\s|\b|$).*$/i'                     => 90,
+        '/^.*(^|\s|\b)(VICE)(\s).*$/i'                               => 90,
+        '/^.*(^|\s|\b)(EVP)(\s|\b).*$/i'                             => 90,
+        '/^.*(^|\s|\D|\W)(E\.?\s?V\.?\s?P\.?\s?)(\s|\D|\W)*.*$/i'    => 90,
+        '/^.*(^|\s|\b)(VP)(\s|\,|\b).*$/i'                           => 90,
+        '/^.*(^|\s|\D|\W)(V\.?\s?P\.?\s?)(\s|\D|\W)*.*$/i'           => 90,
+        '/^.*(^|\s|\b)(SVP)(\s|\,|\b).*$/i'                          => 90,
+        '/^.*(^|\s|\D|\W)(S\.?\s?V\.?\s?P\.?\s?)(\s|\D|\W)*.*$/i'    => 90,
+        '/^.*(^|\s|\b)(DIRECTOR)(\s|\b|$).*$/i'                      => 130,
+        '/^.*(^|\s|\b)(MANAGER)(\s|\b|$).*$/i'                       => 140,
+        '/^.*(^|\s|\b)(MANAGING)(\s|\b|$).*$/i'                      => 140,
+        '/^.*(^|\s|\D|\W)(G\.?\s?M\.?\s?)(\s|\D|\W)*.*$/i'           => 140,
+        '/^.*(^|\s|\b)(INFORMATION )(\s|\b|$).*$/i'                  => 1000,
+        '/^.*(^|\s|\b)(BOARD\sMEMBER)(\s|\b|$).*$/i'                 => 1000,
+        '/^.*(^|\s|\b)(PURCHASING)(\s|\b|$).*$/i'                    => 1000,
+        '/^.*(^|\s|\b)(ADMINISTRATOR)(\s|\b|$).*$/i'                 => 1000,
+        '/^.*(^|\s|\b)(PUBLISHER)(\s|\b|$).*$/i'                     => 1000,
+        '/^.*(^|\s|\b)(EDITOR)(\s|\b|$).*$/i'                        => 1000,
+        '/^.*(^|\s|\b)(COMMUNICATIONS)(\s|\b|$).*$/i'                => 1000,
+        '/^.*(^|\s|\b)(PR)(\s|\b|$).*$/i'                            => 1000,
+        '/^.*(^|\s|\b)(LEGAL)(\s|\b|$).*$/i'                         => 1000,
+        '/^.*(^|\s|\b)(BUSINESS\sDEVELOPMENT)(\s|\b|$).*$/i'         => 1000,
+        '/^.*(^|\s|\b)(INTERNATIONAL\sRESPONSIBILITY)(\s|\b|$).*$/i' => 1000,
+        '/^.*(^|\s|\b)(CONTROLLER)(\s|\b|$).*$/i'                    => 1000,
+        '/^.*(^|\s|\b)(ENGINEERING)(\s|\b|$).*$/i'                   => 1000,
+        '/^.*(^|\s|\b)(TECHNICAL)(\s|\b|$).*$/i'                     => 1000,
+        '/^.*(^|\s|\b)(PRINCIPAL)(\s|\b|$).*$/i'                     => 1000,
+        '/^.*(^|\s|\b)(PROFESSIONAL)(\s|\b|$).*$/i'                  => 1000,
+        '/^.*(^|\s|\b)(EDUCATOR)(\s|\b|$).*$/i'                      => 1000,
+    ];
+
     public function __construct()
     {
-
-
     }
 
     /**
@@ -41,6 +90,7 @@ class ContactService extends AbstractService
     /**
      * @param array $meroveusReturn
      * @param array $jobIdDictionary
+     *
      * @return array
      */
     public function formatMeroveusContact(array $meroveusReturn, array $jobIdDictionary)
@@ -65,7 +115,7 @@ class ContactService extends AbstractService
         $contact['is_current_employee'] = 1;
         $contact['first_name']          = empty($contactData['first-name_static']) ? null : $contactData['first-name_static'];
         $contact['middle_initial']      = empty($contactData['middle-name_static']) ? null : $contactData['middle-name_static'];
-        $contact['last_name']           = empty($contactData['last-name_static']) ? null : $contactData['last-name_static'];
+        $contact['last_name']           = empty($contactData['last-name_static']) ? '' : $contactData['last-name_static'];
         $contact['suffix']              = empty($contactData['suffix-name_static']) ? null : $contactData['suffix-name_static'];
         $contact['honorific']           = empty($contactData['prefix-name_static']) ? null : $contactData['prefix-name_static'];
         $contact['phone']               = empty($contactData['work-phone_static']) ? null : $contactData['work-phone_static'];
@@ -73,12 +123,12 @@ class ContactService extends AbstractService
         $contact['phone'] .= empty($contactData['work-ext-phone_static']) ? '' : ' EXT: ' . $contactData['work-ext-phone_static'];
 
         if (empty($contactData['department-title_static'])) {
-            $contact['job_position_id'] = 1001;
+            $contact['job_position_id'] = null;
             $contact['job_title']       = null;
         } else {
             $contact['job_position_id'] = $this->getJobPositionId($contactData['department-title_static'],
                 $jobIdDictionary) ?: 1001;
-            $cont['job_title']          = $contactData['department-title_static'];
+            $contact['job_title']       = $contactData['department-title_static'];
         }
 
         $contact['email']       = empty($contactData['work-email_static']) ? null : $contactData['work-email_static'];
@@ -97,50 +147,28 @@ class ContactService extends AbstractService
 
     }
 
-
     /**
      * https://bizjournals.atlassian.net/browse/DATA-76
-     *
      * @param $givenPosition   string
      * @param $jobIdDictionary array
      *
      * @return int|null
      */
-    private function getJobPositionId($givenPosition, array $jobIdDictionary)
+    public function getJobPositionId($givenPosition, array $jobIdDictionary)
     {
-        $input = strtoupper($givenPosition);
-//        return array_key_exists($input, $jobIdDictionary) ? $jobIdDictionary[$input] : null;
+        $input = strtoupper(ltrim($givenPosition));
 
         if (array_key_exists($input, $jobIdDictionary)) {
             return $jobIdDictionary[$input];
         } else {
-            return $this->isCheifOfTheUnknown($input);
-        }
-    }
-
-    /**
-     * is the contact a chief <something that we don't know about> officer?
-     *
-     * @param         $input
-     *
-     * @return int|null
-     */
-    private function isCheifOfTheUnknown($input)
-    {
-        // are we a chief something unheard of?
-        if (strpos($input, 'CHIEF') === 0 && strpos($input, 'OFFICER')) {
-            //                $db->execute();
-            // @todo insert into db with job_position_id == 30
-            return 30;
-        }
-        if ((strpos($input, 'C') === 0 && strlen($input) === 3)) {
-            if (strpos($input, 'O') === 2) {
-                // @todo insert into db with job_position_id == 30
-                return 30;
+            foreach ($this->patternDictionary as $pattern => $id) {
+                if (preg_match($pattern, $givenPosition)) {
+                    return $id;
+                }
             }
         }
 
-        return null;
+        return 1001;
     }
 
 }
