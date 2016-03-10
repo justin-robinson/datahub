@@ -1,5 +1,7 @@
 <?php
 
+namespace ApiTest\Controller;
+
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
 /**
