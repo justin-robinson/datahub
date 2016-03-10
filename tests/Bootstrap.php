@@ -1,14 +1,14 @@
 <?php
 /**error_reporting(E_ALL | E_STRICT);
-
-$cwd = __DIR__;
-chdir(dirname(__DIR__));
-
-// Assume we use composer
-$loader = require_once  './vendor/autoload.php';
-$loader->register();
+ *
+ * $cwd = __DIR__;
+ * chdir(dirname(__DIR__));
+ *
+ * // Assume we use composer
+ * $loader = require_once  './vendor/autoload.php';
+ * $loader->register();
  */
-namespace ApiTest;
+namespace tests;
 
 use Zend\Loader\AutoloaderFactory;
 use Zend\Mvc\Service\ServiceManagerConfig;
@@ -27,35 +27,39 @@ class Bootstrap
 
     public static function init()
     {
+        // Define application environment
+        defined('APPLICATION_ENV') || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'testing'));
+
         // Load the user-defined test configuration file, if it exists; otherwise, load the app config
         if (is_readable(__DIR__ . '/TestConfig.php')) {
             $testConfig = include __DIR__ . '/TestConfig.php';
         } else {
-            $testConfig = include __DIR__ . '/../config/application.config.php';
+            $testConfig = include '../module/Hub/config/module.config.'.APPLICATION_ENV.'.php';
+            // __DIR__ === /home/daveb/dev/code/datahub/tests
         }
 
-        $zf2ModulePaths = array();
+        $zf2ModulePaths = [];
 
         if (isset($testConfig['module_listener_options']['module_paths'])) {
             $modulePaths = $testConfig['module_listener_options']['module_paths'];
             foreach ($modulePaths as $modulePath) {
-                if (($path = static::findParentPath($modulePath)) ) {
+                if (($path = static::findParentPath($modulePath))) {
                     $zf2ModulePaths[] = $path;
                 }
             }
         }
 
-        $zf2ModulePaths  = implode(PATH_SEPARATOR, $zf2ModulePaths) . PATH_SEPARATOR;
+        $zf2ModulePaths = implode(PATH_SEPARATOR, $zf2ModulePaths) . PATH_SEPARATOR;
         $zf2ModulePaths .= getenv('ZF2_MODULES_TEST_PATHS') ?: (defined('ZF2_MODULES_TEST_PATHS') ? ZF2_MODULES_TEST_PATHS : '');
 
         static::initAutoloader();
 
         // use ModuleManager to load this module and it's dependencies
-        $baseConfig = array(
-            'module_listener_options' => array(
+        $baseConfig = [
+            'module_listener_options' => [
                 'module_paths' => explode(PATH_SEPARATOR, $zf2ModulePaths),
-            ),
-        );
+            ],
+        ];
 
         $config = ArrayUtils::merge($baseConfig, $testConfig);
 
@@ -64,7 +68,7 @@ class Bootstrap
         $serviceManager->get('ModuleManager')->loadModules();
 
         static::$serviceManager = $serviceManager;
-        static::$config = $config;
+        static::$config         = $config;
     }
 
     public static function getServiceManager()
@@ -94,25 +98,28 @@ class Bootstrap
 
         }
 
-        AutoloaderFactory::factory(array(
-            'Zend\Loader\StandardAutoloader' => array(
+        AutoloaderFactory::factory([
+            'Zend\Loader\StandardAutoloader' => [
                 'autoregister_zf' => true,
-                'namespaces' => array(
+                'namespaces'      => [
                     __NAMESPACE__ => __DIR__ . '/' . __NAMESPACE__,
-                ),
-            ),
-        ));
+                ],
+            ],
+        ]);
     }
 
     protected static function findParentPath($path)
     {
-        $dir = __DIR__;
+        $dir         = __DIR__;
         $previousDir = '.';
         while (!is_dir($dir . '/' . $path)) {
             $dir = dirname($dir);
-            if ($previousDir === $dir) return false;
+            if ($previousDir === $dir) {
+                return false;
+            }
             $previousDir = $dir;
         }
+
         return $dir . '/' . $path;
     }
 }
