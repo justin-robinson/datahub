@@ -46,14 +46,14 @@ return [
         ],
     ],
 
-    'elastica' => [
+    'elastica-datahub' => [
         'host' => 'http://datahub.listsandleads.elasticsearch.bizj-dev.com',
         'path' => 'rerefinery/',
         'port' => '9200',
         'url'  => 'http://datahub.listsandleads.elasticsearch.bizj-dev.com:9200/rerefinery/',
     ],
 
-    'pdo'=> [
+    'pdo-datahub'=> [
         'host' => 'devdb.bizjournals.int',
         'dbname' => 'datahub',
         'usename' => 'web',
