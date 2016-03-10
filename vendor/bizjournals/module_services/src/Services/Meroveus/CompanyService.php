@@ -123,6 +123,12 @@ class CompanyService extends AbstractService
                 $company = [];
                 // walk the company data and extract and normalise
                 foreach ($record['DATA'] as $dk => $data) {
+                    
+                    if( $data['KEY'] === 'universal_revenue_volume' ) {
+                        echo "line 128". ' in '."CompanyService.php".PHP_EOL;
+                        die(var_dump( $record['DATA'] ));
+                    }
+                    
                     $company['meroveusId'] = isset($record['ID']) ? $record['ID'] : null;
 
                     // figure out the correct state vaule
@@ -133,17 +139,21 @@ class CompanyService extends AbstractService
 
                         $state = $this->getStateFromId($stateId, $labels);
                     }
+
                     if (isset($data['VAL'])) {
                         $value = !is_array($data['VAL']) ? $data['VAL'] : null;
                     } else {
                         $value = $state;
                     }
+
                     $company[$data['KEY']] = $value;
+
                     // extract latitute and longitude from the return
                     $company['coordinates'] = [
                         'lat'  => isset($record['LATLONG']) ? $record['LATLONG'][0] : 0,
                         'long' => isset($record['LATLONG']) ? $record['LATLONG'][1] : 0,
                     ];
+
                     $company['contacts']    = [];
                     if (!empty($data['SET']) && $data['KEY'] === 'keycontact-set_static') {
                         if (!empty($data['SET']['RECS'])) {
@@ -153,6 +163,7 @@ class CompanyService extends AbstractService
                             }
                         }
                     }
+
                     $company['execs']    = [];
                     if (!empty($data['SET']) && $data['KEY'] === 'keyexec-set_static') {
                         if (!empty($data['SET']['RECS'])) {
@@ -162,6 +173,8 @@ class CompanyService extends AbstractService
                             }
                         }
                     }
+
+
                     // We want consistency in the field order
                     ksort($company);
                 }

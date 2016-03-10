@@ -325,49 +325,48 @@ class MeroveusController extends AbstractActionController
 
                         $meroveusId = $target['meroveusId'];
 
-                        $this->processMatch($match, $meroveusId, $this->updateCompanyPdo);
-
-                        try {
-                            $selectCompany->execute([$target['meroveusId']]);
-                            $hubId = ($selectCompany->rowCount() > 0) ? $selectCompany->fetch(\PDO::FETCH_ASSOC)['hub_id'] : false;
-                            $selectCompany->closeCursor();
-                            if ($sanity) {
-                                $this->writeSanityFiles($market, $target, $match);
-                            }
-                            $marketMatched++;
-                            $totalMatched++;
-                        } catch (\PDOException $e) {
-                            die('PDO ERROR on Select Company ' . $e->getMessage());
-                        }
+//                        $this->processMatch($match, $meroveusId, $this->updateCompanyPdo);
+//
+//                        try {
+//                            $selectCompany->execute([$target['meroveusId']]);
+//                            $hubId = ($selectCompany->rowCount() > 0) ? $selectCompany->fetch(\PDO::FETCH_ASSOC)['hub_id'] : false;
+//                            $selectCompany->closeCursor();
+//                            if ($sanity) {
+//                                $this->writeSanityFiles($market, $target, $match);
+//                            }
+//                            $marketMatched++;
+//                            $totalMatched++;
+//                        } catch (\PDOException $e) {
+//                            die('PDO ERROR on Select Company ' . $e->getMessage());
+//                        }
 
                     } else { // create a new record
-                        $queryParams = $formatter->format($target);
-                        try {
-                            $this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-                            $this->addCompanyPdo->execute($queryParams);
-                            // good ole pdo has the hubId for us
-                            $hubId = $this->db->lastInsertId();
-                            // write some debug files if you want
-                            if ($sanity) {
-                                $this->writeSanityFiles($market, $target, false);
-                            }
-
-                            $marketInserted++;
-                            $totalInserted++;
-
-                        } catch (\PDOException $e) {
-                            echo 'PDO ERROR on company insert: ' . $e->getMessage() . PHP_EOL;
-                        }
+//                        $queryParams = $formatter->format($target);
+//                        try {
+//                            $this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+//                            $this->addCompanyPdo->execute($queryParams);
+//                            // good ole pdo has the hubId for us
+//                            $hubId = $this->db->lastInsertId();
+//                            // write some debug files if you want
+//                            if ($sanity) {
+//                                $this->writeSanityFiles($market, $target, false);
+//                            }
+//
+//                            $marketInserted++;
+//                            $totalInserted++;
+//
+//                        } catch (\PDOException $e) {
+//                            echo 'PDO ERROR on company insert: ' . $e->getMessage() . PHP_EOL;
+//                        }
                     }
 
                     // process contacts
                     if ($hubId) {
                         $this->processContacts($hubId, $target['execs']);
                     } else {
-                        echo "line 391" . ' in ' . "MeroveusController.php" . PHP_EOL;
-                        die(var_dump($target));
+//                        echo "line 367" . ' in ' . "MeroveusController.php" . PHP_EOL;
+//                        die(var_dump($target));
                     }
-
                     // track memory and total count
                     echo "\033[{$lastMemUsageMessageLength}D";
                     $total                     = $totalInserted + $totalMatched;
