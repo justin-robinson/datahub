@@ -58,6 +58,6 @@ return [
         'dbname' => 'datahub',
         'usename' => 'web',
         'pword' => '',
-    ]
+    ],
 
 ];
