@@ -3,7 +3,7 @@
 
     <testsuites>
         <testsuite name="DataHub Complete Test Suite">
-            <directory suffix=".php">./Api</directory>
+            <directory suffix=".php">./ApiTest</directory>
         </testsuite>
     </testsuites>
 
