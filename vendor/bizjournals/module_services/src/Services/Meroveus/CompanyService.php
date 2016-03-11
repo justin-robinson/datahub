@@ -121,14 +121,9 @@ class CompanyService extends AbstractService
             foreach ($result['SET']['RECS'] as $k => $record) {
 
                 $company = [];
-                // walk the company data and extract and normalise
+                // walk the company data, extract and normalise
                 foreach ($record['DATA'] as $dk => $data) {
-                    
-                    if( $data['KEY'] === 'universal_revenue_volume' ) {
-                        echo "line 128". ' in '."CompanyService.php".PHP_EOL;
-                        die(var_dump( $record['DATA'] ));
-                    }
-                    
+
                     $company['meroveusId'] = isset($record['ID']) ? $record['ID'] : null;
 
                     // figure out the correct state vaule
@@ -157,7 +152,6 @@ class CompanyService extends AbstractService
                     $company['contacts']    = [];
                     if (!empty($data['SET']) && $data['KEY'] === 'keycontact-set_static') {
                         if (!empty($data['SET']['RECS'])) {
-
                             foreach ($data['SET']['RECS'] as $meroveusContact) {
                                 array_push($company['contacts'], $meroveusContact);
                             }
@@ -167,19 +161,18 @@ class CompanyService extends AbstractService
                     $company['execs']    = [];
                     if (!empty($data['SET']) && $data['KEY'] === 'keyexec-set_static') {
                         if (!empty($data['SET']['RECS'])) {
-
                             foreach ($data['SET']['RECS'] as $execs) {
                                 array_push($company['execs'], $execs);
                             }
                         }
                     }
 
-
                     // We want consistency in the field order
                     ksort($company);
                 }
                 array_push($list, $company);
             }
+
             return $list;
         } else {
             return false;

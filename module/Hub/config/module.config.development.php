@@ -47,10 +47,10 @@ return [
     ],
 
     'elastica-datahub' => [
-        'host' => 'http://elb.es.datahub.bizj-dev.com',
-        'path' => 'rerefinery/',
+        'host' => 'http://elb.elasticsearch.datahub.bizj-dev.com',
+        'path' => 'current/',
         'port' => '9200',
-        'url'  => 'http://elb.es.datahub.bizj-dev.com:9200/current',
+        'url'  => 'http://elb.elasticsearch.datahub.bizj-dev.com:9200/current',
     ],
 
     'pdo-datahub'=> [
