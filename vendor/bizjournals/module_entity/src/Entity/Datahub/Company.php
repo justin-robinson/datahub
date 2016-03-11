@@ -118,6 +118,31 @@ class Company extends \Entity\Entity\Base
     private $employee_count;
 
     /**
+     * @var string
+     */
+    private $universal_revenue_volume;
+
+    /**
+     * @var string
+     */
+    private $universal_employee_count;
+
+    /**
+     * @var string
+     */
+    private $universal_employee_local;
+
+    /**
+     * @var string
+     */
+    private $universal_established_year;
+
+    /**
+     * @var string
+     */
+    private $universal_profile;
+
+    /**
      * @var \DateTime
      */
     private $created_at;
@@ -657,6 +682,126 @@ class Company extends \Entity\Entity\Base
     public function getEmployeeCount()
     {
         return $this->employee_count;
+    }
+
+    /**
+     * Set universalRevenueVolume
+     *
+     * @param string $universalRevenueVolume
+     *
+     * @return Company
+     */
+    public function setUniversalRevenueVolume($universalRevenueVolume)
+    {
+        $this->universal_revenue_volume = $universalRevenueVolume;
+
+        return $this;
+    }
+
+    /**
+     * Get universalRevenueVolume
+     *
+     * @return string
+     */
+    public function getUniversalRevenueVolume()
+    {
+        return $this->universal_revenue_volume;
+    }
+
+    /**
+     * Set universalEmployeeCount
+     *
+     * @param string $universalEmployeeCount
+     *
+     * @return Company
+     */
+    public function setUniversalEmployeeCount($universalEmployeeCount)
+    {
+        $this->universal_employee_count = $universalEmployeeCount;
+
+        return $this;
+    }
+
+    /**
+     * Get universalEmployeeCount
+     *
+     * @return string
+     */
+    public function getUniversalEmployeeCount()
+    {
+        return $this->universal_employee_count;
+    }
+
+    /**
+     * Set universalEmployeeLocal
+     *
+     * @param string $universalEmployeeLocal
+     *
+     * @return Company
+     */
+    public function setUniversalEmployeeLocal($universalEmployeeLocal)
+    {
+        $this->universal_employee_local = $universalEmployeeLocal;
+
+        return $this;
+    }
+
+    /**
+     * Get universalEmployeeLocal
+     *
+     * @return string
+     */
+    public function getUniversalEmployeeLocal()
+    {
+        return $this->universal_employee_local;
+    }
+
+    /**
+     * Set universalEstablishedYear
+     *
+     * @param string $universalEstablishedYear
+     *
+     * @return Company
+     */
+    public function setUniversalEstablishedYear($universalEstablishedYear)
+    {
+        $this->universal_established_year = $universalEstablishedYear;
+
+        return $this;
+    }
+
+    /**
+     * Get universalEstablishedYear
+     *
+     * @return string
+     */
+    public function getUniversalEstablishedYear()
+    {
+        return $this->universal_established_year;
+    }
+
+    /**
+     * Set universalProfile
+     *
+     * @param string $universalProfile
+     *
+     * @return Company
+     */
+    public function setUniversalProfile($universalProfile)
+    {
+        $this->universal_profile = $universalProfile;
+
+        return $this;
+    }
+
+    /**
+     * Get universalProfile
+     *
+     * @return string
+     */
+    public function getUniversalProfile()
+    {
+        return $this->universal_profile;
     }
 
     /**

@@ -64,10 +64,10 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'hub_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'refinery_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'meroveus_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'generate_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'record_source', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'company_name', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'public_ticker', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'ticker_exchange', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'source_modified_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'address1', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'address2', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'city', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'state', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'postal_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'country', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'latitude', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'longitude', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'phone', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'website', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'is_active', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'sic_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'employee_count', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'created_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'Contacts');
+            return array('__isInitialized__', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'hub_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'refinery_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'meroveus_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'generate_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'record_source', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'company_name', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'public_ticker', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'ticker_exchange', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'source_modified_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'address1', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'address2', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'city', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'state', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'postal_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'country', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'latitude', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'longitude', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'phone', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'website', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'is_active', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'sic_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'employee_count', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_revenue_volume', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_employee_count', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_employee_local', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_established_year', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_profile', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'created_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'Contacts');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'hub_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'refinery_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'meroveus_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'generate_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'record_source', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'company_name', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'public_ticker', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'ticker_exchange', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'source_modified_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'address1', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'address2', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'city', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'state', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'postal_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'country', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'latitude', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'longitude', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'phone', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'website', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'is_active', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'sic_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'employee_count', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'created_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'Contacts');
+        return array('__isInitialized__', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'hub_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'refinery_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'meroveus_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'generate_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'record_source', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'company_name', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'public_ticker', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'ticker_exchange', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'source_modified_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'address1', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'address2', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'city', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'state', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'postal_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'country', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'latitude', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'longitude', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'phone', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'website', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'is_active', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'sic_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'employee_count', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_revenue_volume', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_employee_count', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_employee_local', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_established_year', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_profile', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'created_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'Contacts');
     }
 
     /**
@@ -644,6 +644,116 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmployeeCount', array());
 
         return parent::getEmployeeCount();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setUniversalRevenueVolume($universalRevenueVolume)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUniversalRevenueVolume', array($universalRevenueVolume));
+
+        return parent::setUniversalRevenueVolume($universalRevenueVolume);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getUniversalRevenueVolume()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUniversalRevenueVolume', array());
+
+        return parent::getUniversalRevenueVolume();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setUniversalEmployeeCount($universalEmployeeCount)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUniversalEmployeeCount', array($universalEmployeeCount));
+
+        return parent::setUniversalEmployeeCount($universalEmployeeCount);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getUniversalEmployeeCount()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUniversalEmployeeCount', array());
+
+        return parent::getUniversalEmployeeCount();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setUniversalEmployeeLocal($universalEmployeeLocal)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUniversalEmployeeLocal', array($universalEmployeeLocal));
+
+        return parent::setUniversalEmployeeLocal($universalEmployeeLocal);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getUniversalEmployeeLocal()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUniversalEmployeeLocal', array());
+
+        return parent::getUniversalEmployeeLocal();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setUniversalEstablishedYear($universalEstablishedYear)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUniversalEstablishedYear', array($universalEstablishedYear));
+
+        return parent::setUniversalEstablishedYear($universalEstablishedYear);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getUniversalEstablishedYear()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUniversalEstablishedYear', array());
+
+        return parent::getUniversalEstablishedYear();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setUniversalProfile($universalProfile)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUniversalProfile', array($universalProfile));
+
+        return parent::setUniversalProfile($universalProfile);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getUniversalProfile()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUniversalProfile', array());
+
+        return parent::getUniversalProfile();
     }
 
     /**

@@ -101,7 +101,7 @@ Entity\Datahub\Company:
       unsigned: true
       nullable: true
     universal_revenue_volume:
-      type: int
+      type: decimal
       unsigned: true
       scale: 6
       length: 100
