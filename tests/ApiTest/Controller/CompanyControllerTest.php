@@ -10,7 +10,6 @@ use Zend\Http\Request;
 use Zend\Http\Response;
 use Zend\Mvc\MvcEvent;
 use Zend\Mvc\Router\RouteMatch;
-use PHPUnit_Framework_TestCase;
 
 class CompanyControllerTest extends AbstractHttpControllerTestCase
 {
@@ -37,7 +36,6 @@ class CompanyControllerTest extends AbstractHttpControllerTestCase
         $this->event->setRouteMatch($this->routeMatch);
         $this->controller->setEvent($this->event);
         $this->controller->setServiceLocator($serviceManager);
-
     }
 
     public function testGet()
@@ -46,6 +44,4 @@ class CompanyControllerTest extends AbstractHttpControllerTestCase
         $result = $this->controller->dispatch($this->request);
         $this->assertInstanceOf('Zend\View\Model\JsonModel', $result);
     }
-
-
 }
