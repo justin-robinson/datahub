@@ -34,8 +34,8 @@ class Bootstrap
         if (is_readable(__DIR__ . '/TestConfig.php')) {
             $testConfig = include __DIR__ . '/TestConfig.php';
         } else {
-            $testConfig = include '../module/Hub/config/module.config.'.APPLICATION_ENV.'.php';
-            // __DIR__ === /home/daveb/dev/code/datahub/tests
+//            $testConfig = include '../module/Hub/config/module.config.'.APPLICATION_ENV.'.php';
+            $testConfig = include '../config/application.config.php';
         }
 
         $zf2ModulePaths = [];

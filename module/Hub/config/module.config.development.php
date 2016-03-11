@@ -28,23 +28,23 @@ return [
         ],
     ],
 
-    'logger' => [
-        'default' => [
-            'priority' => \Zend\Log\Logger::DEBUG,
-            'path' => '/var/tmp',
-        ]
-    ],
-    'log'=> [
-        'content' => [
-            'writers' => [
-                'stderr' => [
-                    'options' => [
-                        'filters' => new \Zend\Log\Filter\Priority(\Zend\Log\Logger::DEBUG),
-                    ],
-                ],
-            ],
-        ],
-    ],
+//    'logger' => [
+//        'default' => [
+//            'priority' => \Zend\Log\Logger::DEBUG,
+//            'path' => '/var/tmp',
+//        ]
+//    ],
+//    'log'=> [
+//        'content' => [
+//            'writers' => [
+//                'stderr' => [
+//                    'options' => [
+//                        'filters' => new \Zend\Log\Filter\Priority(\Zend\Log\Logger::DEBUG),
+//                    ],
+//                ],
+//            ],
+//        ],
+//    ],
 
     'elastica-datahub' => [
         'host' => 'http://datahub.listsandleads.elasticsearch.bizj-dev.com',
@@ -58,6 +58,7 @@ return [
         'dbname' => 'datahub',
         'usename' => 'web',
         'pword' => '',
-    ]
+    ],
+    'dave' => ['is great'],
 
 ];
