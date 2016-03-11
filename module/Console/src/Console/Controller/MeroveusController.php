@@ -138,21 +138,23 @@ class MeroveusController extends AbstractActionController
             )';
 
     /** @var string */
-    private $createCompanySql = 'INSERT INTO
-            company(
-                refinery_id, meroveus_id, generate_code, record_source, company_name, public_ticker, ticker_exchange,
-                source_modified_at, address1, address2, city, state, postal_code, country, latitude, longitude,
-                phone, website, is_active, sic_code, employee_count, created_at, updated_at, deleted_at,
-                universal_revenue_volume_static, universal_employee_count_static, universal_employee_local_static,
-                universal_established_year_static, universal_profile_blob_static
-            )
-            VALUES (
-                :refinery_id, :meroveus_id, :generate_code, :record_source, :company_name, :public_ticker, :ticker_exchange,
-                :source_modified_at, :address1, :address2, :city, :state, :postal_code, :country, :latitude, :longitude,
-                :phone, :website, :is_active, :sic_code, :employee_count, :created_at, :updated_at, :deleted_at,
-                :universal-revenue-volume_static, :universal-employee-count_static, :universal-employee-local_static,
-                :universal-established-year_static, :universal-profile-blob_static
-            )';
+    private $createCompanySql = '
+            INSERT INTO
+                 company(
+                    refinery_id, meroveus_id, generate_code, record_source, company_name, public_ticker, ticker_exchange,
+                    source_modified_at, address1, address2, city, state, postal_code, country, latitude, longitude,
+                    phone, website, is_active, sic_code, employee_count, created_at, updated_at, deleted_at,
+                    universal_revenue_volume_static, universal_employee_count_static, universal_employee_local_static,
+                    universal_established_year_static, universal_profile_blob_static
+                    )
+                VALUES (
+                    :refinery_id, :meroveus_id, :generate_code, :record_source, :company_name, :public_ticker, :ticker_exchange,
+                    :source_modified_at, :address1, :address2, :city, :state, :postal_code, :country, :latitude, :longitude,
+                    :phone, :website, :is_active, :sic_code, :employee_count, :created_at, :updated_at, :deleted_at,
+                    :universal_revenue_volume_static, :universal_employee_count_static, :universal_employee_local_static,
+                    :universal_established_year_static, :universal_profile_blob_static
+                )
+            ';
 
     /** @var string */
     private $getJobDictionarySql = 'SELECT job_title, job_position_id FROM job_position_dictionary ORDER BY job_position_id ASC';
@@ -163,11 +165,11 @@ class MeroveusController extends AbstractActionController
        company
       SET
         meroveus_id                       = :meroveus_id,
-        universal_revenue_volume_static   = :universal-revenue-volume_static,
-        universal_employee_count_static   = :universal-employee-count_static,
-        universal_employee_local_static   = :universal-employee-local_static,
-        universal_established_year_static = :universal-established-year_static,
-        universal_profile_blob_static     = :universal-profile-blob_static
+        universal_revenue_volume_static   = :universal_revenue_volume_static,
+        universal_employee_count_static   = :universal_employee_count_static,
+        universal_employee_local_static   = :universal_employee_local_static,
+        universal_established_year_static = :universal_established_year_static,
+        universal_profile_blob_static     = :universal_profile_blob_static
     WHERE
       refinery_id = :refinery_id';
 
@@ -262,7 +264,7 @@ class MeroveusController extends AbstractActionController
      * @var $sanity bool will write files for you to peruse for debugging
      * @var $debug  bool turns off any db inserts/updates
      */
-    public function matchAction($sanity = false, $debug = true)
+    public function matchAction($sanity = false, $debug = false)
     {
 
         echo '
@@ -322,6 +324,7 @@ class MeroveusController extends AbstractActionController
                 ],
             ],
         ];
+
         foreach ($this->markets as $market => $env) {
 
             $meroveusParams['ENV']      = $env;
@@ -605,15 +608,16 @@ class MeroveusController extends AbstractActionController
      *
      * @return bool
      */
-    private function processMatch( $refineryId, array $target, \PDOStatement $pdo)
+    private function processMatch($refineryId, array $target, \PDOStatement $pdo)
     {
-        $params     = [
+
+        $params = [
             ':meroveus_id'                       => $target['meroveusId'],
-            ':universal-revenue-volume_static'   => empty($target['universal-revenue-volume_static']) ? null : $target['universal-revenue-volume_static'],
-            ':universal-employee-count_static'   => empty($target['universal-employee-count_static']) ? null : $target['universal-employee-count_static'],
-            ':universal-employee-local_static'   => empty($target['universal-employee-local_static']) ? null : $target['universal-employee-local_static'],
-            ':universal-established-year_static' => empty($target['universal-established-year_static']) ? null : $target['universal-established-year_static'],
-            ':universal-profile-blob_static'     => empty($target['universal-profile-blob_static']) ? null : $target['universal-profile-blob_static'],
+            ':universal_revenue_volume_static'   => empty($target['universal-revenue-volume_static']) ? null : $target['universal-revenue-volume_static'],
+            ':universal_employee_count_static'   => empty($target['universal-employee-count_static']) ? null : $target['universal-employee-count_static'],
+            ':universal_employee_local_static'   => empty($target['universal-employee-local_static']) ? null : $target['universal-employee-local_static'],
+            ':universal_established_year_static' => empty($target['universal-established-year_static']) ? null : $target['universal-established-year_static'],
+            ':universal_profile_blob_static'     => empty($target['universal-profile-blob_static']) ? null : $target['universal-profile-blob_static'],
             ':refinery_id'                       => $refineryId,
         ];
         try {
