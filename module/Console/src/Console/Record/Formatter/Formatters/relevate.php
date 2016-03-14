@@ -3,6 +3,7 @@
 namespace Console\Record\Formatter\Formatters;
 
 use Console\Record\Formatter\FormatterTrait;
+use \Services\Meroveus\ContactService;
 
 /**
  * Class Relevate
@@ -20,7 +21,7 @@ class Relevate {
         // char 0 to 10 is the id, strip off the first two digits and we have a meroveus id
         $currentMeroveusId = $this->cut_line_by_index_and_length ( $line, 2, 8 );
 
-        $contactService = new \Services\Meroveus\ContactService();
+        $contactService = new ContactService();
 
         /**
          * Not even our lord and savior knows why relevate decided to go with fixed width
