@@ -20,12 +20,15 @@ class Relevate {
         // char 0 to 10 is the id, strip off the first two digits and we have a meroveus id
         $currentMeroveusId = $this->cut_line_by_index_and_length ( $line, 2, 8 );
 
+        $contactService = new \Services\Meroveus\ContactService();
+
         /**
          * Not even our lord and savior knows why relevate decided to go with fixed width
          * columns and then call it a csv.  If you are reading this please pay your respects,
          * for I am sending this message from beyond the grave
          *          - justin robinson
          */
+        $jobTitle = $this->cut_line_by_index_and_length ( $line, 325, 30, true );
         return [
             ':hub_id'              => '',
             ':meroveus_id'         => $currentMeroveusId,
@@ -37,8 +40,8 @@ class Relevate {
             ':last_name'           => $this->cut_line_by_index_and_length ( $line, 308, 14, true ),
             ':suffix'              => $this->cut_line_by_index_and_length ( $line, 322, 3, true ),
             ':honorific'           => '',
-            ':job_title'           => $this->cut_line_by_index_and_length ( $line, 325, 30, true ),
-            ':job_position_id'     => '',
+            ':job_title'           => $jobTitle,
+            ':job_position_id'     => $contactService->getJobPositionId($jobTitle, []),
             ':email'               => '',
             ':phone'               => '',
             ':address1'            => '',
