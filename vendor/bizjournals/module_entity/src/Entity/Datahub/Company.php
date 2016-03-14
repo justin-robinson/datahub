@@ -120,27 +120,27 @@ class Company extends \Entity\Entity\Base
     /**
      * @var string
      */
-    private $universal_revenue_volume;
+    private $universal_revenue_volume_static;
 
     /**
      * @var string
      */
-    private $universal_employee_count;
+    private $universal_employee_count_static;
 
     /**
      * @var string
      */
-    private $universal_employee_local;
+    private $universal_employee_local_static;
 
     /**
      * @var string
      */
-    private $universal_established_year;
+    private $universal_established_year_static;
 
     /**
      * @var string
      */
-    private $universal_profile;
+    private $universal_profile_blob_static;
 
     /**
      * @var \DateTime
@@ -685,123 +685,123 @@ class Company extends \Entity\Entity\Base
     }
 
     /**
-     * Set universalRevenueVolume
+     * Set universalRevenueVolumeStatic
      *
-     * @param string $universalRevenueVolume
+     * @param string $universalRevenueVolumeStatic
      *
      * @return Company
      */
-    public function setUniversalRevenueVolume($universalRevenueVolume)
+    public function setUniversalRevenueVolumeStatic($universalRevenueVolumeStatic)
     {
-        $this->universal_revenue_volume = $universalRevenueVolume;
+        $this->universal_revenue_volume_static = $universalRevenueVolumeStatic;
 
         return $this;
     }
 
     /**
-     * Get universalRevenueVolume
+     * Get universalRevenueVolumeStatic
      *
      * @return string
      */
-    public function getUniversalRevenueVolume()
+    public function getUniversalRevenueVolumeStatic()
     {
-        return $this->universal_revenue_volume;
+        return $this->universal_revenue_volume_static;
     }
 
     /**
-     * Set universalEmployeeCount
+     * Set universalEmployeeCountStatic
      *
-     * @param string $universalEmployeeCount
+     * @param string $universalEmployeeCountStatic
      *
      * @return Company
      */
-    public function setUniversalEmployeeCount($universalEmployeeCount)
+    public function setUniversalEmployeeCountStatic($universalEmployeeCountStatic)
     {
-        $this->universal_employee_count = $universalEmployeeCount;
+        $this->universal_employee_count_static = $universalEmployeeCountStatic;
 
         return $this;
     }
 
     /**
-     * Get universalEmployeeCount
+     * Get universalEmployeeCountStatic
      *
      * @return string
      */
-    public function getUniversalEmployeeCount()
+    public function getUniversalEmployeeCountStatic()
     {
-        return $this->universal_employee_count;
+        return $this->universal_employee_count_static;
     }
 
     /**
-     * Set universalEmployeeLocal
+     * Set universalEmployeeLocalStatic
      *
-     * @param string $universalEmployeeLocal
+     * @param string $universalEmployeeLocalStatic
      *
      * @return Company
      */
-    public function setUniversalEmployeeLocal($universalEmployeeLocal)
+    public function setUniversalEmployeeLocalStatic($universalEmployeeLocalStatic)
     {
-        $this->universal_employee_local = $universalEmployeeLocal;
+        $this->universal_employee_local_static = $universalEmployeeLocalStatic;
 
         return $this;
     }
 
     /**
-     * Get universalEmployeeLocal
+     * Get universalEmployeeLocalStatic
      *
      * @return string
      */
-    public function getUniversalEmployeeLocal()
+    public function getUniversalEmployeeLocalStatic()
     {
-        return $this->universal_employee_local;
+        return $this->universal_employee_local_static;
     }
 
     /**
-     * Set universalEstablishedYear
+     * Set universalEstablishedYearStatic
      *
-     * @param string $universalEstablishedYear
+     * @param string $universalEstablishedYearStatic
      *
      * @return Company
      */
-    public function setUniversalEstablishedYear($universalEstablishedYear)
+    public function setUniversalEstablishedYearStatic($universalEstablishedYearStatic)
     {
-        $this->universal_established_year = $universalEstablishedYear;
+        $this->universal_established_year_static = $universalEstablishedYearStatic;
 
         return $this;
     }
 
     /**
-     * Get universalEstablishedYear
+     * Get universalEstablishedYearStatic
      *
      * @return string
      */
-    public function getUniversalEstablishedYear()
+    public function getUniversalEstablishedYearStatic()
     {
-        return $this->universal_established_year;
+        return $this->universal_established_year_static;
     }
 
     /**
-     * Set universalProfile
+     * Set universalProfileBlobStatic
      *
-     * @param string $universalProfile
+     * @param string $universalProfileBlobStatic
      *
      * @return Company
      */
-    public function setUniversalProfile($universalProfile)
+    public function setUniversalProfileBlobStatic($universalProfileBlobStatic)
     {
-        $this->universal_profile = $universalProfile;
+        $this->universal_profile_blob_static = $universalProfileBlobStatic;
 
         return $this;
     }
 
     /**
-     * Get universalProfile
+     * Get universalProfileBlobStatic
      *
      * @return string
      */
-    public function getUniversalProfile()
+    public function getUniversalProfileBlobStatic()
     {
-        return $this->universal_profile;
+        return $this->universal_profile_blob_static;
     }
 
     /**
