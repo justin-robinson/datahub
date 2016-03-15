@@ -11,7 +11,7 @@ return [
     'router' => [
         'routes' => [
             'company'  => [
-                'type'         => 'Segment',
+                'type'         => 'Literal',
                 'options'      => [
                     'route'    => '/api/company',
                     'defaults' => [
@@ -19,22 +19,14 @@ return [
                     ],
                 ],
                 'child_routes' => [
-                    'hub' => [
+                    'rest' => [
                         'type'    => 'Segment',
                         'options' => [
                             'route'       => '[/:id]',
                             'constraints' => [
                                 'id' => '[a-zA-Z0-9_-]*',
                             ],
-                        ],
-                    ],
-                    'delete' => [
-                        'type'    => 'Segment',
-                        'options' => [
-                            'route'      => '/delete/:id',
-                            'constraints' => [
-                                'id' => '[a-zA-Z0-9_-]*'
-                            ]
+
                         ],
                     ],
 
