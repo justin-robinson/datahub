@@ -8,7 +8,6 @@ return [
             'Api\Controller\Company'  => 'Api\Controller\CompanyController',
         ],
     ],
-
     'router' => [
         'routes' => [
             'company'  => [
@@ -29,7 +28,6 @@ return [
                             ],
                         ],
                     ],
-
                 ],
             ],
             'refinery' => [
@@ -56,11 +54,8 @@ return [
                 ],
             ],
         ],
-
     ],
-
     'view_manager' => [
-
         'strategies' => [
             'ViewJsonStrategy',
         ],
