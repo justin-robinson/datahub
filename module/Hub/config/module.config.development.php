@@ -28,29 +28,29 @@ return [
         ],
     ],
 
-//    'logger' => [
-//        'default' => [
-//            'priority' => \Zend\Log\Logger::DEBUG,
-//            'path' => '/var/tmp',
-//        ]
-//    ],
-//    'log'=> [
-//        'content' => [
-//            'writers' => [
-//                'stderr' => [
-//                    'options' => [
-//                        'filters' => new \Zend\Log\Filter\Priority(\Zend\Log\Logger::DEBUG),
-//                    ],
-//                ],
-//            ],
-//        ],
-//    ],
+    'logger' => [
+        'default' => [
+            'priority' => \Zend\Log\Logger::DEBUG,
+            'path' => '/var/tmp',
+        ]
+    ],
+    'log'=> [
+        'content' => [
+            'writers' => [
+                'stderr' => [
+                    'options' => [
+                        'filters' => new \Zend\Log\Filter\Priority(\Zend\Log\Logger::DEBUG),
+                    ],
+                ],
+            ],
+        ],
+    ],
 
     'elastica-datahub' => [
-        'host' => 'http://datahub.listsandleads.elasticsearch.bizj-dev.com',
-        'path' => 'rerefinery/',
+        'host' => 'http://elb.elasticsearch.datahub.bizj-dev.com',
+        'path' => 'current/',
         'port' => '9200',
-        'url'  => 'http://datahub.listsandleads.elasticsearch.bizj-dev.com:9200/rerefinery/',
+        'url'  => 'http://elb.elasticsearch.datahub.bizj-dev.com:9200/current',
     ],
 
     'pdo-datahub'=> [
@@ -59,6 +59,5 @@ return [
         'usename' => 'web',
         'pword' => '',
     ],
-    'dave' => ['is great'],
 
 ];

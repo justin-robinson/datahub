@@ -90,6 +90,7 @@ class CompanyControllerTest extends AbstractHttpControllerTestCase
 
         $this->assertInstanceOf('Zend\View\Model\JsonModel', $result);
         $this->assertEquals($testObject, $result);
+
     }
 
     /**
@@ -214,3 +215,4 @@ class CompanyControllerTest extends AbstractHttpControllerTestCase
     }
 
 }
+
