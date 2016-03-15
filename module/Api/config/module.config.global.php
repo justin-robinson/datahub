@@ -28,6 +28,16 @@ return [
                             ],
                         ],
                     ],
+                    'delete' => [
+                        'type'    => 'Segment',
+                        'options' => [
+                            'route'      => '/delete/:id',
+                            'constraints' => [
+                                'id' => '[a-zA-Z0-9_-]*'
+                            ]
+                        ],
+                    ],
+
                 ],
             ],
             'refinery' => [
