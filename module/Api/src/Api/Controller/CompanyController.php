@@ -68,6 +68,9 @@ class CompanyController extends AbstractRestfulController
 
     /**
      * @return JsonModel
+     * this is a bridge method to look up companies by the refinery_id
+     * since datahub will eventually replace refinery, it will be depricated
+     * at that time
      */
     public function  refineryAction()
     {
