@@ -62,11 +62,10 @@ class CompanyController extends AbstractRestfulController
     /**
      * @return JsonModel
      */
-    public function refineryIdAction() {
+    public function  refineryAction() {
 
         // get id from url
         $refineryId = $this->params()->fromRoute('id');
-
         return $this->lookupBy( 'refinery_id', $refineryId);
     }
 
@@ -78,8 +77,8 @@ class CompanyController extends AbstractRestfulController
     private function lookupBy($name, $id) {
 
         // load company model
+        /** @var $company \Hub\Model\Company */
         $company = $this->getServiceLocator()->get('\Hub\Model\Company');
-
         // find company by refinery_id in url
         $record = $company->findOneBy([$name => $id]);
 
