@@ -113,13 +113,6 @@ class ImportController extends AbstractActionController
             FROM
               `datahub`.`company`
             WHERE meroveus_id = ?',
-        'selectJobPosition' => '
-            SELECT
-              job_position_id
-            FROM
-              `datahub`.`job_position`
-            WHERE
-               position = ?',
         'insertCompany'     => '
             INSERT INTO
                 datahub.company(
@@ -252,12 +245,6 @@ class ImportController extends AbstractActionController
                 deleted_at = :deleted_at
             WHERE
               contact_id = :contact_id',
-        'insertJobPosition' => '
-            INSERT INTO
-              `datahub`.`job_position`
-            (position)
-            VALUES
-              (?)',
     ];
 
     /**
@@ -401,12 +388,11 @@ class ImportController extends AbstractActionController
         // meroveus ids are grouped together so we can use this to reduce sql queries down to 1 for each company
         $lastMeroveusId = -1;
 
-        $selectJobPosition = $this->sqlStatementsArray['selectJobPosition'];
+
         $selectAllContacts = $this->sqlStatementsArray['selectContacts'];
         $selectCompany     = $this->sqlStatementsArray['selectCompany'];
         $insertContact     = $this->sqlStatementsArray['insertContact'];
         $updateContact     = $this->sqlStatementsArray['updateContact'];
-        $insertJobPosition = $this->sqlStatementsArray['insertJobPosition'];
 
         // some stats
         $totalCount = $insertCount = $updateCount = 0;
@@ -425,21 +411,6 @@ class ImportController extends AbstractActionController
             if ($selectCompany->rowCount() > 0) {
                 $company                     = $selectCompany->fetch();
                 $contactDataArray[':hub_id'] = $company['hub_id'];
-            }
-
-            // get the job position id
-            if (!empty($contactDataArray[':job_title'])) {
-                $jobPositionQueryParams = [$contactDataArray[':job_title']];
-                $selectJobPosition->execute($jobPositionQueryParams);
-                if ($selectJobPosition->rowCount() > 0) {
-                    $jobPosition                          = $selectJobPosition->fetch();
-                    $contactDataArray[':job_position_id'] = $jobPosition['job_position_id'];
-                } else {
-                    $insertJobPosition->execute($jobPositionQueryParams);
-                    if ($this->db->errorCode() !== '00000') {
-                        $contactDataArray[':job_position_id'] = $this->db->lastInsertId();
-                    }
-                }
             }
 
             // if we have a new meroveus id, get all the contacts related to it
