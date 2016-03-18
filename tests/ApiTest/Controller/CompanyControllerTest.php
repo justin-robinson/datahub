@@ -32,7 +32,6 @@ class CompanyControllerTest extends AbstractHttpControllerTestCase
     protected $response;
     protected $routeMatch;
     protected $event;
-
     protected $serviceManager;
 
     protected $companyId;
@@ -137,19 +136,17 @@ class CompanyControllerTest extends AbstractHttpControllerTestCase
      */
     public function testDeleteCompany()
     {
-
         $expectedResult = new JsonModel([
            'delete' =>  'record deleted'
         ]);
-        $this->routeMatch->setParam('action', 'delete');
+
+        $this->request->setMethod('delete');
         $this->routeMatch->setParam('id', $this->companyId);
 
         $result = $this->controller->dispatch($this->request);
 
-        var_dump($result);
-
         $this->assertInstanceOf('Zend\View\Model\JsonModel', $result);
-        //$this->assertEquals($expectedResult, $result);
+        $this->assertEquals($expectedResult, $result);
 
     }
 
@@ -158,19 +155,18 @@ class CompanyControllerTest extends AbstractHttpControllerTestCase
      */
     public function testCreateCompany()
     {
-        $dataArray = [
-            'some'  =>  'stuff'
-        ];
+        $dataArray = [];
         $expectedResult = new JsonModel([
-            'delete' =>  $dataArray
+            'create' =>  $dataArray
         ]);
-        $this->routeMatch->setParam('method', 'create');
+
+        $this->request->setMethod('post');
         $this->routeMatch->setParam('data', $dataArray);
 
         $result = $this->controller->dispatch($this->request);
 
         $this->assertInstanceOf('Zend\View\Model\JsonModel', $result);
-        //$this->assertEquals($expectedResult, $result);
+        $this->assertEquals($expectedResult, $result);
 
     }
 
@@ -185,14 +181,14 @@ class CompanyControllerTest extends AbstractHttpControllerTestCase
             'update'    => $dataArray
         ]);
 
-        $this->routeMatch->setParam('method', 'update');
+        $this->request->setMethod('put');
         $this->routeMatch->setParam('id', $this->companyId);
         $this->routeMatch->setParam('data', $dataArray);
 
         $result = $this->controller->dispatch($this->request);
 
         $this->assertInstanceOf('Zend\View\Model\JsonModel', $result);
-        //$this->assertEquals($expectedResult, $result);
+        $this->assertEquals($expectedResult, $result);
 
     }
 
@@ -208,11 +204,9 @@ class CompanyControllerTest extends AbstractHttpControllerTestCase
 
         $expectedResult = new JsonModel($dataArray);
 
-        $this->routeMatch->setParam('method', 'getList');
-
         $result = $this->controller->dispatch($this->request);
         $this->assertInstanceOf('Zend\View\Model\JsonModel', $result);
-        //$this->assertEquals($expectedResult, $result);
+        $this->assertEquals($expectedResult, $result);
 
     }
 
