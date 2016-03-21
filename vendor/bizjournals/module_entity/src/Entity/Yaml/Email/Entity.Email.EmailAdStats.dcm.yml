@@ -1,0 +1,37 @@
+Entity\Email\EmailAdStats:
+  type: entity
+  table: email_ad_stats
+  fields:
+    ad_id:
+      type: integer
+      unsigned: true
+      id: true
+    job_id:
+      type: integer
+      unsigned: true
+      id: true
+    click_id:
+      type: integer
+      unsigned: true
+    click_unique:
+      type: integer
+      unsigned: true
+      nullable: true
+    click_unique_rate:
+      type: decimal
+      scale: '2'
+      nullable: true
+    click_cumulative:
+      type: integer
+      unsigned: true
+      nullable: true
+    click_cumulative_rate:
+      type: decimal
+      scale: '2'
+      nullable: true
+  manyToOne:
+    Ad:
+      targetEntity: EmailAds
+      joinColumn:
+        name: ad_id
+        referencedColumnName: ad_id

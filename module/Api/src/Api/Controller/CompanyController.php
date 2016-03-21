@@ -17,8 +17,6 @@ use Zend\View\Model\JsonModel;
 class CompanyController extends AbstractRestfulController
 {
     /**
-     * REST action mapped to GET with an 'id'
-     *
      * @param mixed $companyId
      *
      * @return JsonModel
@@ -29,8 +27,6 @@ class CompanyController extends AbstractRestfulController
     }
 
     /**
-     * REST action mapped to DELETE
-     *
      * @param mixed $companyId
      *
      * @return JsonModel
@@ -42,8 +38,6 @@ class CompanyController extends AbstractRestfulController
 
 
     /**
-     * REST action mapped to POST
-     *
      * @param mixed $data
      *
      * @return JsonModel
@@ -54,8 +48,6 @@ class CompanyController extends AbstractRestfulController
     }
 
     /**
-     * REST action mapped to PUT
-     *
      * @param mixed $id
      * @param mixed $data
      *
@@ -67,8 +59,6 @@ class CompanyController extends AbstractRestfulController
     }
 
     /**
-     * REST action mapped to GET without an 'id'
-     *
      * @return JsonModel
      */
     public function getList()
@@ -99,6 +89,7 @@ class CompanyController extends AbstractRestfulController
      */
     private function lookupBy($name, $id)
     {
+
         // load company model
         /** @var $company \Hub\Model\Company */
         $company = $this->getServiceLocator()->get('\Hub\Model\Company');

@@ -1,0 +1,31 @@
+Entity\Bizj\Channel:
+  type: entity
+  table: channel
+  fields:
+    channel_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned
+      generator:
+        strategy: AUTO
+    channel_name:
+      type: string
+      length: '255'
+      nullable: false
+    is_active:
+      type: boolean
+      nullable: false
+      options:
+        default: '1'
+  manyToMany:
+    industries:
+      targetEntity: Industry
+      joinTable:
+        name: industry_channel_map
+        joinColumns:
+          channel_id:
+            referencedColumnName: channel_id
+        inverseJoinColumns:
+          industry_id:
+            referencedColumnName: industry_id
+            unique: true

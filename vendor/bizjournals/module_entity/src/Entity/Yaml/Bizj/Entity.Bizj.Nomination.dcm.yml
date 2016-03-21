@@ -1,0 +1,145 @@
+Entity\Bizj\Nomination:
+  type: entity
+  table: nomination
+  fields:
+    nomination_id:
+      type: integer
+      id: true
+      unsigned: true
+      generator:
+        strategy: AUTO
+    title:
+      type: string
+      length: 255
+    subheader:
+      type: string
+      length: 255
+      nullable: true
+    market_id:
+      type: integer
+      unsigned: true
+    active:
+      type: boolean
+      options:
+        default: true
+    archived:
+      type: boolean
+      options:
+        default: false
+    invitation_only:
+      type: boolean
+      options:
+        default: false
+    start_date:
+      type: date
+      nullable: true
+    end_date:
+      type: date
+      nullable: true
+    short_description:
+      type: string
+      length: 65535
+      nullable: true
+    long_description:
+      type: string
+      nullable: true
+    media_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    media_url:
+      type: string
+      length: 1023
+      nullable: true
+    contact_email_list:
+      type: string
+      length: 65535
+      nullable: true
+    preview_for_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    sponsor_media_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    sponsor_media_url:
+      type: string
+      length: 1023
+      nullable: true
+    sponsor_name:
+      type: string
+      length: 255
+      nullable: true
+    created_at:
+      type: datetime
+      options:
+        timestampable:
+          'on': create
+    updated_at:
+      type: datetime
+      options:
+        timestampable:
+          'on': update
+    external_url:
+      type: string
+      length: 255
+      nullable: true
+    updated_by:
+      type: string
+      length: 255
+      nullable: true
+    nomination_type:
+      type: string
+      columnDefinition: enum('people', 'company', 'deal', 'null') NOT NULL DEFAULT 'null'
+      options:
+        validate: [people, company, deal, 'null']
+        default: 'null'
+    event_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    parameters:
+      type: string
+      nullable: true
+    sponsors:
+      type: string
+      nullable: true
+    is_brand_extension:
+      type: boolean
+      unsigned: true
+      options:
+        default: false
+    brand_extension_year:
+      type: integer
+      unsigned: true
+      nullable: true
+    brand_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    has_locked_form:
+      type: boolean
+      unsigned: true
+      options:
+        default: false
+    sponsor_display_start_date:
+      type: date
+      nullable: true
+    sponsor_display_end_date:
+      type: date
+      nullable: true
+    winners_visible_at:
+      type: datetime
+      nullable: true
+    ord:
+      type: integer
+      unsigned: true
+      options:
+        default: 65535
+  manyToOne:
+    Market:
+      targetEntity: Market
+      joinColumn:
+        name: market_id
+        referencedColumnName: market_id

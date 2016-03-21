@@ -1,0 +1,32 @@
+Entity\Email\ClickTrack:
+  type: entity
+  table: click_track
+  fields:
+    track_id:
+      type: integer
+      unsigned: true
+      id: true
+      generator:
+        strategy: AUTO
+    click_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    job_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    user_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    remote_ip:
+      type: string
+      length: 39
+      nullable: true
+    created_at:
+      type: datetime
+      nullable: true
+      options:
+        timestampable:
+          'on': create

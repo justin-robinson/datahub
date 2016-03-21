@@ -1,0 +1,35 @@
+Entity\Email\ClickUrl:
+  type: entity
+  table: click_url
+  fields:
+    click_id:
+      type: integer
+      unsigned: true
+      id: true
+      generator:
+        strategy: AUTO
+    job_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    ref_type:
+      type: string
+      columnDefinition: enum('source', 'module', 'ad')
+      nullable: true
+      options:
+        validate: [source, module, ad]
+    ref_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    dest_url:
+      type: string
+      nullable: true
+    description:
+      type: string
+      nullable: true
+    created_at:
+      type: datetime
+      options:
+        timestampable:
+          'on': create
