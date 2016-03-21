@@ -16,7 +16,7 @@ abstract class AbstractMulti extends AbstractFilter
     protected $_filters = array();
 
     /**
-     * @param array $filters
+     * @param \Elastica\Filter\AbstractFilter $filters
      */
     public function __construct(array $filters = array())
     {
@@ -34,7 +34,7 @@ abstract class AbstractMulti extends AbstractFilter
      */
     public function addFilter(AbstractFilter $filter)
     {
-        $this->_filters[] = $filter;
+        $this->_filters[] = $filter->toArray();
 
         return $this;
     }
@@ -84,6 +84,6 @@ abstract class AbstractMulti extends AbstractFilter
 
         $data[$name] = $filterData;
 
-        return $this->_convertArrayable($data);
+        return $data;
     }
 }

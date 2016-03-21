@@ -22,6 +22,6 @@ class Query extends AbstractFacet
      */
     public function setQuery(AbstractQuery $query)
     {
-        return $this->_setFacetParam('query', $query);
+        return $this->_setFacetParam('query', $query->toArray());
     }
 }

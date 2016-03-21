@@ -64,10 +64,10 @@ class PageLegacyMediaMap extends \Entity\Bizj\PageLegacyMediaMap implements \Doc
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'media_id', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'media_type', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'caption', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'alt_text', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'link_url', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'ord', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'title', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'flag', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'Page', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'Media');
+            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'media_id', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'media_type', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'caption', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'alt_text', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'link_url', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'ord', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'title', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'flag', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'Page');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'media_id', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'media_type', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'caption', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'alt_text', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'link_url', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'ord', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'title', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'flag', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'Page', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'Media');
+        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'media_id', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'media_type', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'caption', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'alt_text', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'link_url', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'ord', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'title', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'flag', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'Page');
     }
 
     /**
@@ -395,28 +395,6 @@ class PageLegacyMediaMap extends \Entity\Bizj\PageLegacyMediaMap implements \Doc
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPage', array());
 
         return parent::getPage();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setMedia(\Entity\Bizj\LegacyMedia $media = NULL)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMedia', array($media));
-
-        return parent::setMedia($media);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getMedia()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMedia', array());
-
-        return parent::getMedia();
     }
 
 }

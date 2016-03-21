@@ -311,14 +311,16 @@ class MerchantService extends AbstractService
         $items = array();
         foreach ($cartDisplayData['items'] as $item) {
             $items[] = array(
-                'name'          => $item['name'],
-                'description'   => $item['description'],
-                'quantity'      => $item['quantity'],
-                'unit_price'    => $item['unit_price'],
-                'unit_shipping' => $item['unit_shipping'],
-                'tax'           => $item['quantity'] * $item['unit_tax'],
-                'total'         => $item['total'],
-                'rebate'        => 0,
+                'name'              => $item['name'],
+                'product_id'        => $item['product_id'],
+                'description'       => $item['description'],
+                'quantity'          => $item['quantity'],
+                'unit_price'        => $item['unit_price'],
+                'unit_shipping'     => $item['unit_shipping'],
+                'tax_category_code' => $item['tax_category_code'],
+                'tax'               => $item['quantity'] * $item['unit_tax'],
+                'total'             => $item['total'],
+                'rebate'            => 0,
             );
         }
 
@@ -344,4 +346,13 @@ class MerchantService extends AbstractService
             ),
         );
     }
-}
+
+    public function getInvoiceContent()
+    {
+            if (empty($this->transactionId)) {
+                throw new MerchantException('Transaction ID must be set to use this method.');
+            }
+            $result = $this->getClient()->post('mtr/getInvoiceContent', $this->transactionId);
+            return $result;
+        }
+    }

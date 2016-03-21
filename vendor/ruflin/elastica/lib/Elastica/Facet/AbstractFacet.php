@@ -3,7 +3,6 @@ namespace Elastica\Facet;
 
 use Elastica\Exception\InvalidException;
 use Elastica\Filter\AbstractFilter;
-use Elastica\NameableInterface;
 use Elastica\Param;
 
 /**
@@ -14,7 +13,7 @@ use Elastica\Param;
  *
  * @deprecated Facets are deprecated and will be removed in a future release. You are encouraged to migrate to aggregations instead.
  */
-abstract class AbstractFacet extends Param implements NameableInterface
+abstract class AbstractFacet extends Param
 {
     /**
      * @var string Holds the name of the facet.
@@ -75,7 +74,7 @@ abstract class AbstractFacet extends Param implements NameableInterface
      */
     public function setFilter(AbstractFilter $filter)
     {
-        return $this->_setFacetParam('facet_filter', $filter);
+        return $this->_setFacetParam('facet_filter', $filter->toArray());
     }
 
     /**
@@ -125,7 +124,7 @@ abstract class AbstractFacet extends Param implements NameableInterface
      */
     public function toArray()
     {
-        return $this->_convertArrayable($this->_facet);
+        return $this->_facet;
     }
 
     /**

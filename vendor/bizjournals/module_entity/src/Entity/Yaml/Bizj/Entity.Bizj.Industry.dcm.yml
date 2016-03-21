@@ -42,3 +42,27 @@ Entity\Bizj\Industry:
       type: string
       length: 32
       nullable: true
+  manyToMany:
+    Channels:
+      targetEntity: Channel
+      joinTable:
+        name: industry_channel_map
+        joinColumns:
+          industry_id:
+            referencedColumnName: industry_id
+        inverseJoinColumns:
+          channel_id:
+            referencedColumnName: channel_id
+            #unique: true
+    Topics:
+      targetEntity: Topic
+      joinTable:
+        name: industry_topic_map
+        joinColumns:
+          industry_id:
+            referencedColumnName: industry_id
+        inverseJoinColumns:
+          topic_id:
+            referencedColumnName: topic_id
+            unique: true
+

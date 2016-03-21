@@ -10,7 +10,7 @@ use Elastica\Exception\InvalidException;
  *
  * @link http://www.elastic.co/guide/en/elasticsearch/reference/current/modules-scripting.html
  */
-class Script extends AbstractScript
+class Script extends AbstractUpdateAction
 {
     const LANG_MVEL = 'mvel';
     const LANG_JS = 'js';
@@ -35,12 +35,18 @@ class Script extends AbstractScript
      */
     public function __construct($script, array $params = null, $lang = null, $id = null)
     {
-        parent::__construct($params, $id);
-
         $this->setScript($script);
+
+        if ($params) {
+            $this->setParams($params);
+        }
 
         if ($lang) {
             $this->setLang($lang);
+        }
+
+        if ($id) {
+            $this->setId($id);
         }
     }
 
@@ -136,7 +142,7 @@ class Script extends AbstractScript
     }
 
     /**
-     * {@inheritdoc}
+     * @return array
      */
     public function toArray()
     {
@@ -145,7 +151,7 @@ class Script extends AbstractScript
         );
 
         if (!empty($this->_params)) {
-            $array['params'] = $this->_convertArrayable($this->_params);
+            $array['params'] = $this->_params;
         }
 
         if ($this->_lang) {

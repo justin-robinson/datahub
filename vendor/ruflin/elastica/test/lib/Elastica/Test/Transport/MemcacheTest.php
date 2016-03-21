@@ -141,7 +141,6 @@ class MemcacheTest extends BaseTest
      */
     public function testHeadRequest()
     {
-        $this->checkMemcache();
         $client = $this->_getMemcacheClient();
         $client->request('foo', Request::HEAD);
     }
@@ -153,7 +152,6 @@ class MemcacheTest extends BaseTest
      */
     public function testInvalidRequest()
     {
-        $this->checkMemcache();
         $client = $this->_getMemcacheClient();
         $client->request('foo', 'its_fail');
     }
@@ -165,8 +163,6 @@ class MemcacheTest extends BaseTest
      */
     public function testRequestWithLongPath()
     {
-        $this->checkMemcache();
-
         $client = $this->_getMemcacheClient();
         $index = $client->getIndex('memcache-test');
         $index->create();
@@ -176,18 +172,5 @@ class MemcacheTest extends BaseTest
         $queryString = new QueryString(str_repeat('z', 300));
         $query = new Query($queryString);
         $index->search($query);
-    }
-
-    protected function checkMemcache()
-    {
-        $memcache = new \Memcache();
-
-        $client = $this->_getMemcacheClient();
-
-        if (!@$memcache->connect($client->getConnection()->getHost(), $client->getConnection()->getPort())) {
-            $this->markTestSkipped('Couldn\'t connect to host, Memcache down?');
-        }
-
-        $memcache->close();
     }
 }

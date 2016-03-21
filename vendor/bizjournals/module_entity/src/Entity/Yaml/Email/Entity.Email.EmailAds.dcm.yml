@@ -1,0 +1,68 @@
+Entity\Email\EmailAds:
+  type: entity
+  table: email_ads
+  fields:
+    ad_id:
+      type: integer
+      unsigned: true
+      id: true
+      generator:
+        strategy: AUTO
+    product_id:
+      type: integer
+      unsigned: false
+      nullable: true
+    placement:
+      type: integer
+      unsigned: true
+      nullable: true
+      options:
+        default: 0
+    start_date:
+      type: date
+    end_date:
+      type: date
+    sponsor_name:
+      type: string
+      length: 128
+      nullable: true
+    sponsor_link:
+      type: string
+      length: 512
+      nullable: true
+    tracking_pixel:
+      type: string
+      length: 512
+      nullable: true
+    image_url:
+      type: string
+      length: 512
+      nullable: true
+    ad_headline:
+      type: string
+      length: 128
+      nullable: true
+    ad_text:
+      type: string
+      nullable: true
+    call_to_action:
+      type: string
+      length: 128
+      nullable: true
+    approval:
+      type: boolean
+      unsigned: true
+      nullable: true
+      options:
+        default: false
+    c_time:
+      type: datetime
+      options:
+        timestampable:
+          'on': create
+  manyToOne:
+    Products:
+      targetEntity: EmailType
+      joinColumn:
+        name: product_id
+        referencedColumnName: product_id

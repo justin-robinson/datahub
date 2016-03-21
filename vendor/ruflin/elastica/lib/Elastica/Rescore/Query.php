@@ -15,6 +15,7 @@ class Query extends AbstractRescore
     /**
      * Constructor.
      *
+     * @param string|\Elastica\Query\AbstractQuery $rescoreQuery
      * @param string|\Elastica\Query\AbstractQuery $query
      */
     public function __construct($query = null)
@@ -37,28 +38,23 @@ class Query extends AbstractRescore
             $data = array_merge($data, $this->_rawParams);
         }
 
-        $array = $this->_convertArrayable($data);
-
-        if (isset($array['query']['rescore_query']['query'])) {
-            $array['query']['rescore_query'] = $array['query']['rescore_query']['query'];
-        }
-
-        return $array;
+        return $data;
     }
 
     /**
      * Sets rescoreQuery object.
      *
-     * @param string|\Elastica\Query|\Elastica\Query\AbstractQuery $rescoreQuery
+     * @param string|\Elastica\Query|\Elastica\Query\AbstractQuery $query
      *
      * @return $this
      */
     public function setRescoreQuery($rescoreQuery)
     {
-        $rescoreQuery = BaseQuery::create($rescoreQuery);
+        $query = BaseQuery::create($rescoreQuery);
+        $data = $query->toArray();
 
         $query = $this->getParam('query');
-        $query['rescore_query'] = $rescoreQuery;
+        $query['rescore_query'] = $data['query'];
 
         return $this->setParam('query', $query);
     }
@@ -81,7 +77,7 @@ class Query extends AbstractRescore
     /**
      * Sets rescore_query_weight.
      *
-     * @param float $weight
+     * @param float $size
      *
      * @return $this
      */

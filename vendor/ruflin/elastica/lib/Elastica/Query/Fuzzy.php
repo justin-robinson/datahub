@@ -70,11 +70,6 @@ class Fuzzy extends AbstractQuery
      * Deprecated method of setting a field.
      *
      * @deprecated
-     *
-     * @param $fieldName
-     * @param $args
-     *
-     * @return $this
      */
     public function addField($fieldName, $args)
     {

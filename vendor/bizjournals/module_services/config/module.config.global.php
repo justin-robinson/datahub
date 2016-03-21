@@ -5,8 +5,18 @@ return array(
             'sslverifypeer' => false,
         ),
     ),
+    'circapi' => array(
+        'options'  => array(
+            'sslverifypeer' => false,
+        ),
+    ),
     'elastica' => array(
         'log' => false,
+    ),
+    'admin_authentication' => array(
+        'secrets' => array(
+            'ni' => 'bAc3f8dD2oWXEC3dfb8e',
+        ),
     ),
     'multipub' => array(
         'base_url' => 'https://subscribe.bizjournals.com/servlet/lookup',

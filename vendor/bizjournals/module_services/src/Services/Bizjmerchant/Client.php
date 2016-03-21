@@ -37,7 +37,9 @@ class Client extends AbstractClient
         $request->setMethod('POST');
         #\Zend\Debug\Debug::dump($params, "POST PARAMS:");
 
-        $response = $this->getHttpClient()
+        $client = $this->getHttpClient();
+        $client->setAdapter('Zend\Http\Client\Adapter\Curl');
+        $response = $client
             ->setEncType(HttpClient::ENC_URLENCODED)
             ->send($request);
 

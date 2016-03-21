@@ -81,19 +81,17 @@ class BoolFilter extends AbstractFilter
      */
     protected function _addFilter($type, $args)
     {
-        if (!is_array($args) && !($args instanceof AbstractFilter)) {
+        if ($args instanceof AbstractFilter) {
+            $args = $args->toArray();
+        } elseif (!is_array($args)) {
             throw new InvalidException('Invalid parameter. Has to be array or instance of Elastica\Filter');
-        }
-
-        if (is_array($args)) {
+        } else {
             $parsedArgs = array();
-
             foreach ($args as $filter) {
                 if ($filter instanceof AbstractFilter) {
-                    $parsedArgs[] = $filter;
+                    $parsedArgs[] = $filter->toArray();
                 }
             }
-
             $args = $parsedArgs;
         }
 
@@ -130,6 +128,6 @@ class BoolFilter extends AbstractFilter
             $args['bool'] = array_merge($args['bool'], $this->getParams());
         }
 
-        return $this->_convertArrayable($args);
+        return $args;
     }
 }

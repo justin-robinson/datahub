@@ -68,6 +68,11 @@ class Page extends \Entity\Entity\Base
     private $is_premium = false;
 
     /**
+     * @var boolean
+     */
+    private $is_native = false;
+
+    /**
      * @var integer
      */
     private $journal_id;
@@ -438,6 +443,30 @@ class Page extends \Entity\Entity\Base
     public function getIsPremium()
     {
         return $this->is_premium;
+    }
+
+    /**
+     * Set isNative
+     *
+     * @param boolean $isNative
+     *
+     * @return Page
+     */
+    public function setIsNative($isNative)
+    {
+        $this->is_native = $isNative;
+
+        return $this;
+    }
+
+    /**
+     * Get isNative
+     *
+     * @return boolean
+     */
+    public function getIsNative()
+    {
+        return $this->is_native;
     }
 
     /**

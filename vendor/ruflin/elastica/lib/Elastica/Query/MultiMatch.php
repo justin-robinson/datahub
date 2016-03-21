@@ -131,6 +131,7 @@ class MultiMatch extends AbstractQuery
     /**
      * Set type.
      *
+     * @param string $field
      * @param string $type
      *
      * @return $this

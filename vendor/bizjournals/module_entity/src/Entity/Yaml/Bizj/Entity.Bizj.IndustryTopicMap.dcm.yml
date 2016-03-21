@@ -1,0 +1,23 @@
+Entity\Bizj\IndustryTopicMap:
+  type: entity
+  table: industry_topic_map
+  fields:
+    industry_id:
+      type: integer
+      unsigned: true
+      id: true
+    topic_id:
+      type: integer
+      unsigned: true
+      id: true
+  manyToOne:
+    Topic:
+      targetEntity: Topic
+      joinColumn:
+        name: topic_id
+        referencedColumnName: topic_id
+    Channel:
+      targetEntity: Channel
+      joinColumn:
+        name: channel_id
+        referencedColumnName: channel_id

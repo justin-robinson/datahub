@@ -74,7 +74,6 @@ class GuzzleTest extends BaseTest
      */
     public function testWithEnvironmentalProxy()
     {
-        $this->checkProxy($this->_getProxyUrl());
         putenv('http_proxy='.$this->_getProxyUrl().'/');
 
         $client = $this->_getClient(array('transport' => 'Guzzle', 'persistent' => false));
@@ -93,7 +92,6 @@ class GuzzleTest extends BaseTest
      */
     public function testWithEnabledEnvironmentalProxy()
     {
-        $this->checkProxy($this->_getProxyUrl403());
         putenv('http_proxy='.$this->_getProxyUrl403().'/');
 
         $client = $this->_getClient(array('transport' => 'Guzzle', 'persistent' => false));
@@ -113,7 +111,6 @@ class GuzzleTest extends BaseTest
      */
     public function testWithProxy()
     {
-        $this->checkProxy($this->_getProxyUrl());
         $client = $this->_getClient(array('transport' => 'Guzzle', 'persistent' => false));
         $client->getConnection()->setProxy($this->_getProxyUrl());
 
@@ -139,6 +136,7 @@ class GuzzleTest extends BaseTest
     public function testBodyReuse()
     {
         $client = $this->_getClient(array('transport' => 'Guzzle', 'persistent' => false));
+
         $index = $client->getIndex('elastica_body_reuse_test');
         $index->create(array(), true);
         $this->_waitForAllocation($index);
@@ -171,18 +169,7 @@ class GuzzleTest extends BaseTest
     public function testInvalidConnection()
     {
         $client = $this->_getClient(array('transport' => 'Guzzle', 'port' => 4500, 'persistent' => false));
-        $client->request('_status', 'GET');
-    }
-
-    protected function checkProxy($url)
-    {
-        $url = parse_url($url);
-        $this->_checkConnection($url['host'], $url['port']);
-    }
-
-    protected function setUp()
-    {
-        putenv('http_proxy=');
+        $response = $client->request('_status', 'GET');
     }
 
     protected function tearDown()

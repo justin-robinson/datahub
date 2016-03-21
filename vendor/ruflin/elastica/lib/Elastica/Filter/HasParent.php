@@ -33,7 +33,10 @@ class HasParent extends AbstractFilter
      */
     public function setQuery($query)
     {
-        return $this->setParam('query', \Elastica\Query::create($query));
+        $query = \Elastica\Query::create($query);
+        $data = $query->toArray();
+
+        return $this->setParam('query', $data['query']);
     }
 
     /**
@@ -45,7 +48,7 @@ class HasParent extends AbstractFilter
      */
     public function setFilter($filter)
     {
-        return $this->setParam('filter', $filter);
+        return $this->setParam('filter', $filter->toArray());
     }
 
     /**
@@ -62,21 +65,5 @@ class HasParent extends AbstractFilter
         }
 
         return $this->setParam('type', (string) $type);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function toArray()
-    {
-        $array = parent::toArray();
-
-        $baseName = $this->_getBaseName();
-
-        if (isset($array[$baseName]['query'])) {
-            $array[$baseName]['query'] = $array[$baseName]['query']['query'];
-        }
-
-        return $array;
     }
 }

@@ -587,7 +587,6 @@ class TypeTest extends BaseTest
      */
     public function testUpdateDocument()
     {
-        $this->_checkScriptInlineSetting();
         $client = $this->_getClient();
         $index = $client->getIndex('elastica_test');
         $type = $index->getType('update_type');
@@ -618,7 +617,6 @@ class TypeTest extends BaseTest
      */
     public function testUpdateDocumentWithIdForwardSlashes()
     {
-        $this->_checkScriptInlineSetting();
         $client = $this->_getClient();
         $index = $client->getIndex('elastica_test');
         $type = $index->getType('update_type');
@@ -683,7 +681,6 @@ class TypeTest extends BaseTest
      */
     public function testUpdateDocumentWithFieldsSource()
     {
-        $this->_checkScriptInlineSetting();
         $client = $this->_getClient();
         $index = $client->getIndex('elastica_test');
         $type = $index->getType('update_type');

@@ -2,7 +2,7 @@
 namespace Elastica\Aggregation;
 
 /**
- * Class AbstractTermsAggregation.
+ * Class AbstractTermsAggergation.
  */
 abstract class AbstractTermsAggregation extends AbstractSimpleAggregation
 {

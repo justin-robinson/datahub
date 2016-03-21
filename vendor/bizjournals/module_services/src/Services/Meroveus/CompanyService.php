@@ -258,4 +258,3 @@ class CompanyService extends AbstractService
     }
 }
 
-
