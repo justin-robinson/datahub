@@ -14,7 +14,11 @@ class GeoClusterTest extends BaseTest
      */
     public function testQuery()
     {
-        $this->_checkPlugin('geocluster-facet');
+        $client = $this->_getClient();
+        $nodes = $client->getCluster()->getNodes();
+        if (!$nodes[0]->getInfo()->hasPlugin('geocluster-facet')) {
+            $this->markTestSkipped('geocluster-facet plugin not installed');
+        }
 
         $index = $this->_createIndex();
         $type = $index->getType('testQuery');

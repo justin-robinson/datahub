@@ -23,6 +23,9 @@ return array(
             array('host' => 'cms-staging-search-query.bizjournals.int', 'port' => 9200, 'timeout' => 4),
         ),
     ),
+    'admin_authentication' => array(
+        'base_url' => 'http://admin.staging.bizjournals.com/authapi',
+    ),
     'medialibrary' => array(
         'key'      => 'cmsstaging',
         'secret'   => 'e9f3900bd1cc98ba0a5310928a7d44f1',

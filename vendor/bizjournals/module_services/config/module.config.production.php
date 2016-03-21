@@ -22,6 +22,9 @@ return array(
             array('host' => 'elasticsearch-2.bizjournals.int', 'port' => 9200, 'timeout' => 4)
         ),
     ),
+    'admin_authentication' => array(
+        'base_url' => 'http://admin.bizjournals.com/authapi',
+    ),
     'medialibrary' => array(
         'key'      => 'gizmocms',
         'secret'   => 'nZcD2oWXEC3mS',

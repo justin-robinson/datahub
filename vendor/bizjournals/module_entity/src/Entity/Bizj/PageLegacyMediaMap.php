@@ -57,11 +57,6 @@ class PageLegacyMediaMap extends \Entity\Entity\Base
      */
     private $Page;
 
-    /**
-     * @var \Entity\Bizj\LegacyMedia
-     */
-    private $Media;
-
 
     /**
      * Set pageId
@@ -301,30 +296,6 @@ class PageLegacyMediaMap extends \Entity\Entity\Base
     public function getPage()
     {
         return $this->Page;
-    }
-
-    /**
-     * Set media
-     *
-     * @param \Entity\Bizj\LegacyMedia $media
-     *
-     * @return PageLegacyMediaMap
-     */
-    public function setMedia(\Entity\Bizj\LegacyMedia $media = null)
-    {
-        $this->Media = $media;
-
-        return $this;
-    }
-
-    /**
-     * Get media
-     *
-     * @return \Entity\Bizj\LegacyMedia
-     */
-    public function getMedia()
-    {
-        return $this->Media;
     }
 }
 

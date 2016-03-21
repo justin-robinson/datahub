@@ -1,14 +1,12 @@
 <?php
 namespace Elastica\Suggest;
 
-use Elastica\Exception\InvalidException;
-use Elastica\NameableInterface;
 use Elastica\Param;
 
 /**
  * Class AbstractSuggestion.
  */
-abstract class AbstractSuggest extends Param implements NameableInterface
+abstract class AbstractSuggest extends Param
 {
     /**
      * @var string the name of this suggestion
@@ -26,7 +24,7 @@ abstract class AbstractSuggest extends Param implements NameableInterface
      */
     public function __construct($name, $field)
     {
-        $this->setName($name);
+        $this->_name = $name;
         $this->setField($field);
     }
 
@@ -72,26 +70,6 @@ abstract class AbstractSuggest extends Param implements NameableInterface
     public function setShardSize($size)
     {
         return $this->setParam('shard_size', $size);
-    }
-
-    /**
-     * Sets the name of the suggest. It is automatically set by
-     * the constructor.
-     *
-     * @param string $name The name of the facet.
-     *
-     * @throws \Elastica\Exception\InvalidException If name is empty
-     *
-     * @return $this
-     */
-    public function setName($name)
-    {
-        if (empty($name)) {
-            throw new InvalidException('Suggest name has to be set');
-        }
-        $this->_name = $name;
-
-        return $this;
     }
 
     /**

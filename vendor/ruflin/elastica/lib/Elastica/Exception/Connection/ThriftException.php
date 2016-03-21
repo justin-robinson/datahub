@@ -10,8 +10,6 @@ use Thrift\Exception\TException;
  * Transport exception.
  *
  * @author Mikhail Shamin <munk13@gmail.com>
- *
- * @deprecated Will be removed with elasticsearch 2.0
  */
 class ThriftException extends ConnectionException
 {

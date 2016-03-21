@@ -228,7 +228,7 @@ class QueryTest extends BaseTest
         $termQuery->setTerm('text', 'value');
         $query->setQuery($termQuery);
 
-        $this->assertSame($termQuery, $query->getQuery());
+        $this->assertEquals($termQuery->toArray(), $query->getQuery());
     }
 
     /**
@@ -266,24 +266,7 @@ class QueryTest extends BaseTest
         $anotherQuery = new Query();
         $anotherQuery->setQuery($termQuery);
 
-        $this->assertEquals($query->toArray(), $anotherQuery->toArray());
-    }
-
-    /**
-     * @group unit
-     */
-    public function testNotCloneInnerObjects()
-    {
-        $query = new Query();
-        $termQuery = new Term();
-        $termQuery->setTerm('text', 'value');
-        $query->setQuery($termQuery);
-
-        $anotherQuery = clone $query;
-
-        $termQuery->setTerm('text', 'another value');
-
-        $this->assertEquals($query->toArray(), $anotherQuery->toArray());
+        $this->assertNotEquals($query->toArray(), $anotherQuery->toArray());
     }
 
     /**
@@ -299,9 +282,9 @@ class QueryTest extends BaseTest
         $queryArray = $query->toArray();
 
         $termQuery = $query->getQuery();
-        $termQuery->setTerm('text', 'another value');
+        $termQuery['term']['text']['value'] = 'another value';
 
-        $this->assertNotEquals($queryArray, $query->toArray());
+        $this->assertEquals($queryArray, $query->toArray());
     }
 
     /**
@@ -320,7 +303,7 @@ class QueryTest extends BaseTest
         $anotherQuery = new Query();
         $anotherQuery->setScriptFields($scriptFields);
 
-        $this->assertEquals($query->toArray(), $anotherQuery->toArray());
+        $this->assertNotEquals($query->toArray(), $anotherQuery->toArray());
     }
 
     /**
@@ -338,7 +321,7 @@ class QueryTest extends BaseTest
         $anotherQuery = new Query();
         $anotherQuery->addScriptField('script', $scriptField);
 
-        $this->assertEquals($query->toArray(), $anotherQuery->toArray());
+        $this->assertNotEquals($query->toArray(), $anotherQuery->toArray());
     }
 
     /**
@@ -356,7 +339,7 @@ class QueryTest extends BaseTest
         $anotherQuery = new Query();
         $anotherQuery->addFacet($facet);
 
-        $this->assertEquals($query->toArray(), $anotherQuery->toArray());
+        $this->assertNotEquals($query->toArray(), $anotherQuery->toArray());
     }
 
     /**
@@ -374,7 +357,7 @@ class QueryTest extends BaseTest
         $anotherQuery = new Query();
         $anotherQuery->addAggregation($aggregation);
 
-        $this->assertEquals($query->toArray(), $anotherQuery->toArray());
+        $this->assertNotEquals($query->toArray(), $anotherQuery->toArray());
     }
 
     /**
@@ -393,7 +376,7 @@ class QueryTest extends BaseTest
         $anotherQuery = new Query();
         $anotherQuery->setSuggest($suggest);
 
-        $this->assertEquals($query->toArray(), $anotherQuery->toArray());
+        $this->assertNotEquals($query->toArray(), $anotherQuery->toArray());
     }
 
     /**
@@ -412,7 +395,7 @@ class QueryTest extends BaseTest
         $anotherQuery = new Query();
         $anotherQuery->setRescore($rescore);
 
-        $this->assertEquals($query->toArray(), $anotherQuery->toArray());
+        $this->assertNotEquals($query->toArray(), $anotherQuery->toArray());
     }
 
     /**
@@ -430,7 +413,7 @@ class QueryTest extends BaseTest
         $anotherQuery = new Query();
         $anotherQuery->setPostFilter($postFilter);
 
-        $this->assertEquals($query->toArray(), $anotherQuery->toArray());
+        $this->assertNotEquals($query->toArray(), $anotherQuery->toArray());
     }
 
     /**

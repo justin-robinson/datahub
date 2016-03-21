@@ -64,10 +64,10 @@ class Page extends \Entity\Bzjpreview\Page implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'site', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'path', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'slug', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'issue_date', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'release_time', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'rev_number', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'headline', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'short_headline', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'is_premium', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'journal_id', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'type_id', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'parent_page_id', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'published_at', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'revised_at', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'allow_syndication', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'Contents', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'Corrections', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'Metadata', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'LeadinGroups', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'Crossrefs', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'LegacyMediaMap', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'Media', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'Urls');
+            return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'site', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'path', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'slug', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'issue_date', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'release_time', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'rev_number', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'headline', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'short_headline', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'is_premium', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'is_native', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'journal_id', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'type_id', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'parent_page_id', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'published_at', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'revised_at', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'allow_syndication', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'Contents', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'Corrections', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'Metadata', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'LeadinGroups', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'Crossrefs', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'LegacyMediaMap', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'Media', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'Urls');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'site', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'path', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'slug', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'issue_date', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'release_time', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'rev_number', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'headline', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'short_headline', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'is_premium', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'journal_id', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'type_id', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'parent_page_id', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'published_at', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'revised_at', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'allow_syndication', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'Contents', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'Corrections', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'Metadata', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'LeadinGroups', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'Crossrefs', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'LegacyMediaMap', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'Media', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'Urls');
+        return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'site', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'path', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'slug', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'issue_date', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'release_time', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'rev_number', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'headline', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'short_headline', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'is_premium', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'is_native', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'journal_id', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'type_id', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'parent_page_id', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'published_at', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'revised_at', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'allow_syndication', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'Contents', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'Corrections', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'Metadata', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'LeadinGroups', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'Crossrefs', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'LegacyMediaMap', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'Media', '' . "\0" . 'Entity\\Bzjpreview\\Page' . "\0" . 'Urls');
     }
 
     /**
@@ -435,6 +435,28 @@ class Page extends \Entity\Bzjpreview\Page implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsPremium', array());
 
         return parent::getIsPremium();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setIsNative($isNative)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsNative', array($isNative));
+
+        return parent::setIsNative($isNative);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getIsNative()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsNative', array());
+
+        return parent::getIsNative();
     }
 
     /**

@@ -910,4 +910,3 @@ class Company extends \Entity\Entity\Base
         return $this->Contacts;
     }
 }
-

@@ -48,7 +48,6 @@ class UpdateDocument extends IndexDocument
     {
         parent::setScript($script);
 
-        // FIXME: can we throw away toArray cast?
         $source = $script->toArray();
 
         if ($script->hasUpsert()) {

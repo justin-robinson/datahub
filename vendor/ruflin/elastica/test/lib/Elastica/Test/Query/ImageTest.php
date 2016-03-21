@@ -65,7 +65,6 @@ class ImageTest extends BaseTest
      */
     public function testFromReference()
     {
-        $this->_checkPlugin('image');
         $field = 'image';
 
         $client = $this->_getClient();
@@ -113,8 +112,6 @@ class ImageTest extends BaseTest
      */
     public function testFromImage()
     {
-        $this->_checkPlugin('image');
-
         $field = 'image';
 
         $client = $this->_getClient();

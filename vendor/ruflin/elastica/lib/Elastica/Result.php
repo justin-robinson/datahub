@@ -142,7 +142,7 @@ class Result
     /**
      * Returns result data.
      *
-     * Checks for partial result data with getFields, falls back to getSource or both
+     * Checks for partial result data with getFields, falls back to getSource
      *
      * @return array Result data array
      */
@@ -150,8 +150,6 @@ class Result
     {
         if (isset($this->_hit['fields']) && !isset($this->_hit['_source'])) {
             return $this->getFields();
-        } elseif (isset($this->_hit['fields']) && isset($this->_hit['_source'])) {
-            return array_merge($this->getFields(), $this->getSource());
         }
 
         return $this->getSource();

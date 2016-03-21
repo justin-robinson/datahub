@@ -112,7 +112,7 @@ class TopHits extends AbstractAggregation
             $scriptFields = new ScriptFields($scriptFields);
         }
 
-        return $this->setParam('script_fields', $scriptFields);
+        return $this->setParam('script_fields', $scriptFields->toArray());
     }
 
     /**
@@ -125,11 +125,7 @@ class TopHits extends AbstractAggregation
      */
     public function addScriptField($name, Script $script)
     {
-        if (!isset($this->_params['script_fields'])) {
-            $this->_params['script_fields'] = new ScriptFields();
-        }
-
-        $this->_params['script_fields']->addScript($name, $script);
+        $this->_params['script_fields'][$name] = $script->toArray();
 
         return $this;
     }

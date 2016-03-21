@@ -1,7 +1,6 @@
 <?php
 namespace Elastica\Aggregation;
 
-use Elastica\Exception\InvalidException;
 use Elastica\Filter\AbstractFilter;
 
 /**
@@ -33,26 +32,20 @@ class Filter extends AbstractAggregation
      */
     public function setFilter(AbstractFilter $filter)
     {
-        return $this->setParam('filter', $filter);
+        return $this->setParam('filter', $filter->toArray());
     }
 
     /**
-     * @throws \Elastica\Exception\InvalidException If filter is not set
-     *
      * @return array
      */
     public function toArray()
     {
-        if (!$this->hasParam('filter')) {
-            throw new InvalidException('Filter is required');
-        }
-
         $array = array(
-            'filter' => $this->getParam('filter')->toArray(),
+            'filter' => $this->getParam('filter'),
         );
 
         if ($this->_aggs) {
-            $array['aggs'] = $this->_convertArrayable($this->_aggs);
+            $array['aggs'] = $this->_aggs;
         }
 
         return $array;
