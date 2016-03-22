@@ -215,7 +215,7 @@ class CompanyService extends AbstractService
      * @param $meroveusParams
      * @return bool
      */
-    private function queryMeroveus(array $meroveusParams = [])
+    private function queryMeroveus(array $meroveusParams = [], $isRootQuery = false)
     {
 
         /* Uncomment to simulate all requests after the first one
@@ -233,7 +233,7 @@ class CompanyService extends AbstractService
         $sendJson  = json_encode($sendArray);
         /* send a request to Meroveus! takes JSON string, posts via curl, returns JSON string */
         $json = str_replace('%2B', '+', $sendJson);
-        curl_setopt($this->curl, CURLOPT_POSTFIELDS, 'MCORE=' . urlencode($json));
+        curl_setopt($this->curl, CURLOPT_POSTFIELDS, ($isRootQuery ? 'MROOT' : 'MCORE') . '=' . urlencode($json));
         $result = curl_exec($this->curl);
         if ($result) {
             $resp   = str_replace(":NaN", ":0", gzinflate(substr($result, 10, -8)));
@@ -256,5 +256,11 @@ class CompanyService extends AbstractService
             return false;
         }
     }
+
+    public function queryMeroveusRoot(array $meroveusParams) {
+        return $this->queryMeroveus($meroveusParams, true);
+    }
+
+
 }
 

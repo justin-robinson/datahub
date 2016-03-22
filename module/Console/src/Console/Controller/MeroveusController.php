@@ -212,6 +212,11 @@ class MeroveusController extends AbstractActionController
             WHERE
               meroveus_id IS NULL
             LIMIT :offset, :limit',
+        'insertMeroveusIndustry' => '
+            INSERT INTO
+              `datahub`.`meroveus_industries` (external_id, industry)
+            VALUES (:external_id, :industry)
+        '
     ];
 
 
@@ -540,6 +545,34 @@ class MeroveusController extends AbstractActionController
 
     }
 
+    public function updateIndustriesAction() {
+
+        $meroveusParams = [
+            "KEYWORDS" => "",
+            "MODE" => "LABELSEARCH",
+            "LABELS" => [
+                [
+                    "NAME" => "",
+                    "DATACLASS" => [
+                        "KEY" => "industry"
+                    ]
+                ]
+            ]
+        ];
+
+        $industries = $this->companyService->queryMeroveusRoot($meroveusParams);
+
+        foreach ( $industries as $industry ) {
+            $this->sqlStatementsArray['insertMeroveusIndustry']->execute(
+                [
+                    ':external_id' => $industry['LABELID'],
+                    ':industry' => $industry['NAME']
+                ]
+            );
+
+        }
+    }
+
     /**
      * attempt to match the record with whats in elastic and
      * return pertinent data for further processing
@@ -693,5 +726,7 @@ class MeroveusController extends AbstractActionController
 
         return @round($size / pow(1024, ($i = (int)floor(log($size, 1024)))), 2) . ' ' . $unit[$i];
     }
+
+
 
 }
