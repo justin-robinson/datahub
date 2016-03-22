@@ -13,11 +13,11 @@ index="`date +%s`_companies-`date +%Y-%m-%d`"
 sqs_queue_url="https://sqs.us-east-1.amazonaws.com/188675239635/acbj-cf-data-datahub-${environment}-jobs"
 
 if [ ${environment} == "production" ]; then
-    datahub_url="elb.es.datahub.bizj-internal.com:9200"
+    datahub_url="elb.elasticsearch.datahub.bizj-internal.com:9200"
 elif [ ${environment} == "staging" ]; then
-    datahub_url="elb.es.datahub.bizj-staging.com:9200"
+    datahub_url="elb.elasticsearch.datahub.bizj-staging.com:9200"
 else
-    datahub_url="elb.es.datahub.bizj-dev.com:9200"
+    datahub_url="elb.elasticsearch.datahub.bizj-dev.com:9200"
 fi
 
 if [ ! -f /tmp/lock.stash ]; then
@@ -32,8 +32,8 @@ queue_count=$(aws sqs receive-message --queue-url ${sqs_queue_url} | grep "compa
 if [ ${queue_count} -gt 0 ]; then
 	logger "datahub - restash - s3 file operation event detected - running logstash"
 	#grab data csv
-	aws s3 cp s3://acbj-team-data/datahub/${environment}/company.csv ${data_file}
-	aws s3 cp s3://acbj-team-data/datahub/${environment}/company_stash.json ${logstash_config}
+	aws s3 cp s3://acbj-team-data-datahub-${environment}/company.csv ${data_file}
+	aws s3 cp s3://acbj-team-data-datahub-${environment}/company_stash.json ${logstash_config}
 	sed s/companies/${index}/ ${logstash_config} > /tmp/stash.conf
 	sed -i s/datahub_url/${datahub_url}/ /tmp/stash.conf
 
@@ -60,9 +60,7 @@ if [ ${queue_count} -gt 0 ]; then
 
 	#delete indexes older than 14 days if more than 2 indices exist
 	if [ `curl -XGET ${datahub_url}/_cat/indices | wc -l` -gt 2 ]; then
-
 		curator --host ${datahub_url} delete indices --older-than 3 --time-unit days --timestring '%Y-%m-%d' > /dev/null
-
 	fi
 
 	aws sqs purge-queue --queue-url ${sqs_queue_url}
