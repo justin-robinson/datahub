@@ -29,7 +29,7 @@ return [
 
     'elastica' => [
         'host' => 'http://elb.elasticsearch.datahub.bizj-internal.com',
-        'path' => 'rerefinery/',
+        'path' => 'current/',
         'port' => '9200',
         'url'  => 'http://elb.elasticsearch.datahub.bizj-internal.com/current/',
     ],
