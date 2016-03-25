@@ -680,7 +680,6 @@ class ClientTest extends BaseTest
      */
     public function testUpdateDocumentByScript()
     {
-        $this->_checkScriptInlineSetting();
         $index = $this->_createIndex();
         $type = $index->getType('test');
         $client = $index->getClient();
@@ -709,7 +708,6 @@ class ClientTest extends BaseTest
      */
     public function testUpdateDocumentByScriptWithUpsert()
     {
-        $this->_checkScriptInlineSetting();
         $index = $this->_createIndex();
         $type = $index->getType('test');
         $client = $index->getClient();
@@ -935,7 +933,6 @@ class ClientTest extends BaseTest
      */
     public function testUpdateDocumentPopulateFields()
     {
-        $this->_checkScriptInlineSetting();
         $index = $this->_createIndex();
         $type = $index->getType('test');
         $client = $index->getClient();

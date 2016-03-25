@@ -8,10 +8,12 @@ return array(
     ),
     'bizjmerchant' => array(
         // key, secret
-        'api_url'      => 'http://rkunde.tech.bizjournals.com/bizjmerchant/web/api_dev.php',
-        'frontend_url' => 'http://rkunde.tech.bizjournals.com/bizjmerchant/web/frontend_dev.php',
+        'api_url'      => 'http://commerce.tech.bizjournals.com/bizjmerchant/web/api_staging.php',
+        'frontend_url' => 'http://commerce.tech.bizjournals.com/bizjmerchant/web/frontend_staging.php',
         //'api_url'      => 'http://mlong.tech.bizjournals.com/bizjmerchant/web/api_dev.php',
         //'frontend_url' => 'http://mlong.tech.bizjournals.com/bizjmerchant/web/frontend_dev.php',
+        //'api_url'      => 'http://local.merchant.testing.bizjournals.com/api_staging.php',
+        //'frontend_url' => 'http://local.merchant.testing.bizjournals.com/frontend_staging.php',
     ),
     'elastica' => array(
         'servers' => array(
@@ -22,6 +24,9 @@ return array(
         'servers' => array(
             array('host' => 'cms-staging-search-query.bizjournals.int', 'port' => 9200, 'timeout' => 4),
         ),
+    ),
+    'admin_authentication' => array(
+        'base_url' => 'http://admin.testing.bizjournals.com/authapi',
     ),
     'medialibrary' => array(
         'key'      => 'cmsstaging',

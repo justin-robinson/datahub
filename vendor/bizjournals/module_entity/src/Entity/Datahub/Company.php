@@ -118,6 +118,31 @@ class Company extends \Entity\Entity\Base
     private $employee_count;
 
     /**
+     * @var string
+     */
+    private $universal_revenue_volume_static;
+
+    /**
+     * @var string
+     */
+    private $universal_employee_count_static;
+
+    /**
+     * @var string
+     */
+    private $universal_employee_local_static;
+
+    /**
+     * @var string
+     */
+    private $universal_established_year_static;
+
+    /**
+     * @var string
+     */
+    private $universal_profile_blob_static;
+
+    /**
      * @var \DateTime
      */
     private $created_at;
@@ -660,6 +685,126 @@ class Company extends \Entity\Entity\Base
     }
 
     /**
+     * Set universalRevenueVolumeStatic
+     *
+     * @param string $universalRevenueVolumeStatic
+     *
+     * @return Company
+     */
+    public function setUniversalRevenueVolumeStatic($universalRevenueVolumeStatic)
+    {
+        $this->universal_revenue_volume_static = $universalRevenueVolumeStatic;
+
+        return $this;
+    }
+
+    /**
+     * Get universalRevenueVolumeStatic
+     *
+     * @return string
+     */
+    public function getUniversalRevenueVolumeStatic()
+    {
+        return $this->universal_revenue_volume_static;
+    }
+
+    /**
+     * Set universalEmployeeCountStatic
+     *
+     * @param string $universalEmployeeCountStatic
+     *
+     * @return Company
+     */
+    public function setUniversalEmployeeCountStatic($universalEmployeeCountStatic)
+    {
+        $this->universal_employee_count_static = $universalEmployeeCountStatic;
+
+        return $this;
+    }
+
+    /**
+     * Get universalEmployeeCountStatic
+     *
+     * @return string
+     */
+    public function getUniversalEmployeeCountStatic()
+    {
+        return $this->universal_employee_count_static;
+    }
+
+    /**
+     * Set universalEmployeeLocalStatic
+     *
+     * @param string $universalEmployeeLocalStatic
+     *
+     * @return Company
+     */
+    public function setUniversalEmployeeLocalStatic($universalEmployeeLocalStatic)
+    {
+        $this->universal_employee_local_static = $universalEmployeeLocalStatic;
+
+        return $this;
+    }
+
+    /**
+     * Get universalEmployeeLocalStatic
+     *
+     * @return string
+     */
+    public function getUniversalEmployeeLocalStatic()
+    {
+        return $this->universal_employee_local_static;
+    }
+
+    /**
+     * Set universalEstablishedYearStatic
+     *
+     * @param string $universalEstablishedYearStatic
+     *
+     * @return Company
+     */
+    public function setUniversalEstablishedYearStatic($universalEstablishedYearStatic)
+    {
+        $this->universal_established_year_static = $universalEstablishedYearStatic;
+
+        return $this;
+    }
+
+    /**
+     * Get universalEstablishedYearStatic
+     *
+     * @return string
+     */
+    public function getUniversalEstablishedYearStatic()
+    {
+        return $this->universal_established_year_static;
+    }
+
+    /**
+     * Set universalProfileBlobStatic
+     *
+     * @param string $universalProfileBlobStatic
+     *
+     * @return Company
+     */
+    public function setUniversalProfileBlobStatic($universalProfileBlobStatic)
+    {
+        $this->universal_profile_blob_static = $universalProfileBlobStatic;
+
+        return $this;
+    }
+
+    /**
+     * Get universalProfileBlobStatic
+     *
+     * @return string
+     */
+    public function getUniversalProfileBlobStatic()
+    {
+        return $this->universal_profile_blob_static;
+    }
+
+    /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -765,4 +910,3 @@ class Company extends \Entity\Entity\Base
         return $this->Contacts;
     }
 }
-

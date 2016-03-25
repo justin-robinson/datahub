@@ -1,0 +1,347 @@
+Entity\Bizj\EvEvent:
+  type: entity
+  table: ev_event
+  gedmo:
+    soft_deleteable:
+      field_name: deleted_at
+      time_aware: false
+  fields:
+    event_id:
+      type: integer
+      unsigned: true
+      id: true
+      generator:
+        strategy: AUTO
+    title:
+      type: string
+      length: 255
+      nullable: true
+    owner:
+      type: string
+      length: 100
+      nullable: true
+    event_date:
+      type: date
+      nullable: true
+      options:
+        default: '0000-00-00'
+    start_time:
+      type: string
+      length: 30
+      nullable: true
+    end_time:
+      type: string
+      length: 30
+      nullable: true
+    max_attendees:
+      type: integer
+      unsigned: false
+      nullable: true
+      options:
+        default: 0
+    location_address:
+      type: string
+      length: 255
+      nullable: true
+    location_city:
+      type: string
+      length: 75
+      nullable: true
+    location_state:
+      type: string
+      length: 10
+      nullable: true
+    location_zip:
+      type: string
+      length: 15
+      nullable: true
+    contact_name:
+      type: string
+      length: 100
+      nullable: true
+    contact_title:
+      type: string
+      length: 255
+      nullable: true
+    contact_email:
+      type: string
+      length: 100
+      nullable: true
+    contact_phone:
+      type: string
+      length: 25
+      nullable: true
+    c_time:
+      type: datetime
+      options:
+        timestampable:
+          'on': create
+        default: '0000-00-00 00:00:00'
+    teaser:
+      type: string
+      nullable: true
+    location_address_2:
+      type: string
+      length: 100
+      nullable: true
+    dress_code:
+      type: string
+      length: 255
+      nullable: true
+    duration:
+      type: integer
+      unsigned: false
+      nullable: true
+    cancel_policy:
+      type: string
+      length: 255
+      nullable: true
+    admin_reg_notification:
+      type: boolean
+      unsigned: true
+      nullable: true
+      options:
+        default: false
+    m_time:
+      type: datetime
+      options:
+        timestampable:
+          'on': update
+    expected_attendance:
+      type: integer
+      unsigned: false
+      nullable: true
+    avg_past_attendance:
+      type: integer
+      unsigned: false
+      nullable: true
+    number_years_held:
+      type: integer
+      unsigned: false
+      nullable: true
+    marketing_start_date:
+      type: date
+      nullable: true
+    marketing_duration_in_weeks:
+      type: integer
+      unsigned: false
+      nullable: true
+    nomination_id:
+      type: integer
+      unsigned: false
+      nullable: true
+    nomination_deadline:
+      type: date
+      nullable: true
+    nomination_description:
+      type: string
+      length: 255
+      nullable: true
+    nomination_marketing_start_date:
+      type: date
+      nullable: true
+    nomination_marketing_duration_in_weeks:
+      type: integer
+      unsigned: false
+      nullable: true
+    marketing_includes:
+      type: string
+      length: 255
+      nullable: true
+    nomination_marketing_includes:
+      type: string
+      length: 255
+      nullable: true
+    map_href:
+      type: string
+      nullable: true
+    sort_order:
+      type: integer
+      unsigned: false
+      nullable: true
+    is_active:
+      type: boolean
+      unsigned: true
+      options:
+        default: false
+    is_soldout:
+      type: boolean
+      unsigned: true
+      options:
+        default: false
+    is_suspended:
+      type: boolean
+      unsigned: true
+      options:
+        default: false
+    is_cancelled:
+      type: boolean
+      unsigned: true
+      options:
+        default: false
+    is_invite_only:
+      type: boolean
+      unsigned: true
+      options:
+        default: false
+    close_registration:
+      type: boolean
+      unsigned: true
+      options:
+        default: false
+    has_admin_threshold_alert:
+      type: boolean
+      unsigned: true
+      options:
+        default: false
+    show_on_bizj_calendar:
+      type: boolean
+      unsigned: true
+      options:
+        default: false
+    has_nominations:
+      type: boolean
+      unsigned: true
+      options:
+        default: false
+    venue_can_support_autos:
+      type: boolean
+      unsigned: true
+      options:
+        default: false
+    has_sponsor_signage:
+      type: boolean
+      unsigned: true
+      options:
+        default: false
+    sponsor_signage_type_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    is_approx_date:
+      type: boolean
+      unsigned: true
+      options:
+        default: false
+    is_approx_time:
+      type: boolean
+      unsigned: true
+      options:
+        default: false
+    contact_only:
+      type: boolean
+      unsigned: true
+      options:
+        default: false
+    microsite_url:
+      type: string
+      length: 10000
+      nullable: true
+    prefer_microsite:
+      type: boolean
+      unsigned: true
+      options:
+        default: false
+    skin:
+      type: string
+      length: 20
+      nullable: true
+    body_text:
+      type: string
+      nullable: true
+    has_sponsors:
+      type: boolean
+      unsigned: true
+      options:
+        default: true
+    has_single_sponsor_tier:
+      type: boolean
+      unsigned: true
+      options:
+        default: false
+    has_supplement:
+      type: boolean
+      unsigned: true
+      options:
+        default: false
+    is_supplement_handed_out:
+      type: boolean
+      unsigned: true
+      options:
+        default: false
+    supplement_deadline:
+      type: date
+      nullable: true
+      options:
+        default: ''
+    supplement_pub_date:
+      type: date
+      nullable: true
+      options:
+        default: ''
+    market_owned:
+      type: boolean
+      unsigned: true
+      options:
+        default: false
+    is_custom_event:
+      type: boolean
+      unsigned: true
+      options:
+        default: false
+    event_type:
+      type: integer
+      unsigned: true
+      options:
+        default: 0
+    custom_reminder_email:
+      type: string
+      nullable: true
+    is_brand_extension:
+      type: boolean
+      unsigned: true
+      options:
+        default: false
+    brand_extension_year:
+      type: integer
+      unsigned: true
+      nullable: true
+    brand_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    redirect_event_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    sponsor_display_start_date:
+      type: date
+      nullable: true
+    sponsor_display_end_date:
+      type: date
+      nullable: true
+    admin_email:
+      type: string
+      length: 255
+      nullable: true
+    shipping_address:
+      type: string
+      nullable: true
+    hashtag:
+      type: string
+      length: 255
+      nullable: true
+    notes:
+      type: string
+      nullable: true
+    setup_time:
+      type: string
+      length: 20
+      nullable: true
+    modified_by:
+      type: string
+      length: 255
+      nullable: true
+    deleted_at:
+      type: datetime
+      nullable: true

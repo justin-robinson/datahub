@@ -170,7 +170,7 @@ class Index implements SearchableInterface
         }
         $query = Query::create($query);
 
-        return $this->request('_query', Request::DELETE, array('query' => $query->getQuery()->toArray()), $options);
+        return $this->request('_query', Request::DELETE, array('query' => $query->getQuery()), $options);
     }
 
     /**
@@ -318,7 +318,7 @@ class Index implements SearchableInterface
      * @param string|array|\Elastica\Query $query   Array with all query data inside or a Elastica\Query object
      * @param int|array                    $options OPTIONAL Limit or associative array of options (option=>value)
      *
-     * @return \Elastica\ResultSet with all results inside
+     * @return \Elastica\ResultSet ResultSet with all results inside
      *
      * @see \Elastica\SearchableInterface::search
      */
@@ -452,9 +452,7 @@ class Index implements SearchableInterface
     /**
      * Flushes the index to storage.
      *
-     * @param bool $refresh
-     *
-     * @return Response Response object
+     * @return \Elastica\Response Response object
      *
      * @link http://www.elastic.co/guide/en/elasticsearch/reference/current/indices-flush.html
      */

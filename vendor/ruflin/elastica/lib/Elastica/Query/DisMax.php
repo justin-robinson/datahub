@@ -23,7 +23,11 @@ class DisMax extends AbstractQuery
      */
     public function addQuery($args)
     {
-        if (!is_array($args) && !($args instanceof AbstractQuery)) {
+        if ($args instanceof AbstractQuery) {
+            $args = $args->toArray();
+        }
+
+        if (!is_array($args)) {
             throw new InvalidException('Invalid parameter. Has to be array or instance of Elastica\Query\AbstractQuery');
         }
 

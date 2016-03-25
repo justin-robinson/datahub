@@ -56,17 +56,12 @@ class NodeTest extends BaseTest
      */
     public function testGetName()
     {
-        $client = $this->_getClient();
-
-        $nodes = $client->getCluster()->getNodes();
+        $nodes = $this->_getClient()->getCluster()->getNodes();
         // At least 1 instance must exist
         $this->assertGreaterThan(0, $nodes);
 
-        $data = $client->request('/_nodes')->getData();
-        $rawNodes = $data['nodes'];
-
         foreach ($nodes as $node) {
-            $this->assertEquals($rawNodes[$node->getId()]['name'], $node->getName());
+            $this->assertEquals($node->getName(), 'Elastica');
         }
     }
 

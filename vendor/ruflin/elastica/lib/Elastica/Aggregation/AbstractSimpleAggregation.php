@@ -26,26 +26,12 @@ abstract class AbstractSimpleAggregation extends AbstractAggregation
      */
     public function setScript($script)
     {
-        return $this->setParam('script', $script);
-    }
+        if ($script instanceof Script) {
+            $params = array_merge($this->getParams(), $script->toArray());
 
-    /**
-     * {@inheritdoc}
-     */
-    public function toArray()
-    {
-        $array = parent::toArray();
-
-        $baseName = $this->_getBaseName();
-
-        if (isset($array[$baseName]['script']) && is_array($array[$baseName]['script'])) {
-            $script = $array[$baseName]['script'];
-
-            unset($array[$baseName]['script']);
-
-            $array[$baseName] = array_merge($array[$baseName], $script);
+            return $this->setParams($params);
         }
 
-        return $array;
+        return $this->setParam('script', $script);
     }
 }

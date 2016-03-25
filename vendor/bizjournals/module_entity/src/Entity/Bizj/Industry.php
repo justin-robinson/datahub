@@ -52,6 +52,24 @@ class Industry extends \Entity\Entity\Base
      */
     private $iana_value;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $Channels;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $Topics;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->Channels = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->Topics = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get industryId
@@ -253,6 +271,74 @@ class Industry extends \Entity\Entity\Base
     public function getIanaValue()
     {
         return $this->iana_value;
+    }
+
+    /**
+     * Add channel
+     *
+     * @param \Entity\Bizj\Channel $channel
+     *
+     * @return Industry
+     */
+    public function addChannel(\Entity\Bizj\Channel $channel)
+    {
+        $this->Channels[] = $channel;
+
+        return $this;
+    }
+
+    /**
+     * Remove channel
+     *
+     * @param \Entity\Bizj\Channel $channel
+     */
+    public function removeChannel(\Entity\Bizj\Channel $channel)
+    {
+        $this->Channels->removeElement($channel);
+    }
+
+    /**
+     * Get channels
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getChannels()
+    {
+        return $this->Channels;
+    }
+
+    /**
+     * Add topic
+     *
+     * @param \Entity\Bizj\Topic $topic
+     *
+     * @return Industry
+     */
+    public function addTopic(\Entity\Bizj\Topic $topic)
+    {
+        $this->Topics[] = $topic;
+
+        return $this;
+    }
+
+    /**
+     * Remove topic
+     *
+     * @param \Entity\Bizj\Topic $topic
+     */
+    public function removeTopic(\Entity\Bizj\Topic $topic)
+    {
+        $this->Topics->removeElement($topic);
+    }
+
+    /**
+     * Get topics
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTopics()
+    {
+        return $this->Topics;
     }
 }
 

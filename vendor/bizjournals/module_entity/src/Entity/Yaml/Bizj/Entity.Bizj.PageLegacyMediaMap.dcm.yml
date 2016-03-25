@@ -53,8 +53,3 @@ Entity\Bizj\PageLegacyMediaMap:
       joinColumn:
         name: page_id
         referencedColumnName: page_id
-    Media:
-      targetEntity: LegacyMedia
-      joinColumn:
-        name: media_id
-        referencedColumnName: media_id

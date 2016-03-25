@@ -1,7 +1,6 @@
 <?php
 namespace Elastica\Aggregation;
 
-use Elastica\Exception\InvalidException;
 use Elastica\Filter\AbstractFilter;
 
 /**
@@ -11,14 +10,6 @@ use Elastica\Filter\AbstractFilter;
  */
 class Filters extends AbstractAggregation
 {
-    const NAMED_TYPE = 1;
-    const ANONYMOUS_TYPE = 2;
-
-    /**
-     * @var int Type of bucket keys - named, or anonymous
-     */
-    private $_type = null;
-
     /**
      * Add a filter.
      *
@@ -29,31 +20,13 @@ class Filters extends AbstractAggregation
      *
      * @return $this
      */
-    public function addFilter(AbstractFilter $filter, $name = null)
+    public function addFilter(AbstractFilter $filter, $name = '')
     {
-        if (null !== $name && !is_string($name)) {
-            throw new InvalidException('Name must be a string');
-        }
-
-        $filterArray = array();
-
-        $type = self::NAMED_TYPE;
-
-        if (null === $name) {
-            $filterArray[] = $filter;
-            $type = self::ANONYMOUS_TYPE;
+        if (empty($name)) {
+            $filterArray[] = $filter->toArray();
         } else {
-            $filterArray[$name] = $filter;
+            $filterArray[$name] = $filter->toArray();
         }
-
-        if ($this->hasParam('filters')
-            && count($this->getParam('filters'))
-            && $this->_type !== $type
-        ) {
-            throw new InvalidException('Mix named and anonymous keys are not allowed');
-        }
-
-        $this->_type = $type;
 
         return $this->addParam('filters', $filterArray);
     }
@@ -67,16 +40,18 @@ class Filters extends AbstractAggregation
         $filters = $this->getParam('filters');
 
         foreach ($filters as $filter) {
-            if (self::NAMED_TYPE === $this->_type) {
-                $key = key($filter);
-                $array['filters']['filters'][$key] = current($filter)->toArray();
+            // Detect between anonymous filters and named ones
+            $key = key($filter);
+
+            if (is_string($key)) {
+                $array['filters']['filters'][$key] = current($filter);
             } else {
-                $array['filters']['filters'][] = current($filter)->toArray();
+                $array['filters']['filters'][] = current($filter);
             }
         }
 
         if ($this->_aggs) {
-            $array['aggs'] = $this->_convertArrayable($this->_aggs);
+            $array['aggs'] = $this->_aggs;
         }
 
         return $array;

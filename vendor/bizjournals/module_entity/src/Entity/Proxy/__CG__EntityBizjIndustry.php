@@ -64,10 +64,10 @@ class Industry extends \Entity\Bizj\Industry implements \Doctrine\ORM\Proxy\Prox
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'industry_id', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'industry_code', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'industry_name', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'short_name', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'active', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'hidden', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'feed_id', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'nstein_name', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'iana_value');
+            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'industry_id', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'industry_code', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'industry_name', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'short_name', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'active', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'hidden', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'feed_id', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'nstein_name', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'iana_value', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'Channels', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'Topics');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'industry_id', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'industry_code', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'industry_name', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'short_name', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'active', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'hidden', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'feed_id', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'nstein_name', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'iana_value');
+        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'industry_id', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'industry_code', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'industry_name', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'short_name', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'active', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'hidden', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'feed_id', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'nstein_name', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'iana_value', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'Channels', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'Topics');
     }
 
     /**
@@ -358,6 +358,72 @@ class Industry extends \Entity\Bizj\Industry implements \Doctrine\ORM\Proxy\Prox
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIanaValue', array());
 
         return parent::getIanaValue();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addChannel(\Entity\Bizj\Channel $channel)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addChannel', array($channel));
+
+        return parent::addChannel($channel);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeChannel(\Entity\Bizj\Channel $channel)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeChannel', array($channel));
+
+        return parent::removeChannel($channel);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getChannels()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getChannels', array());
+
+        return parent::getChannels();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addTopic(\Entity\Bizj\Topic $topic)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addTopic', array($topic));
+
+        return parent::addTopic($topic);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeTopic(\Entity\Bizj\Topic $topic)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeTopic', array($topic));
+
+        return parent::removeTopic($topic);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getTopics()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTopics', array());
+
+        return parent::getTopics();
     }
 
 }

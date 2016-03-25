@@ -1,4 +1,4 @@
-FROM elasticsearch:1.7.3
+FROM elasticsearch:1.7.1
 MAINTAINER Nicolas Ruflin <spam@ruflin.com>
 
 # Dependencies
@@ -21,8 +21,6 @@ RUN ${ES_PLUGIN_BIN} -install mobz/elasticsearch-head
 
 # Copy config files
 COPY *.yml /usr/share/elasticsearch/config/
-COPY scripts/* /usr/share/elasticsearch/config/scripts/
-
 
 RUN mkdir -p /tmp/backups/backup1
 RUN mkdir -p /tmp/backups/backup2

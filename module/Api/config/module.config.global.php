@@ -8,46 +8,56 @@ return [
             'Api\Controller\Company'  => 'Api\Controller\CompanyController',
         ],
     ],
-
     'router' => [
         'routes' => [
-            'company' => [
-                'type'         => 'Segment',
+            'company'  => [
+                'type'         => 'Literal',
                 'options'      => [
-                    'route'       => '/api/company',
-                    'defaults'    => [
+                    'route'    => '/api/company',
+                    'defaults' => [
                         'controller' => 'Api\Controller\Company',
                     ],
                 ],
                 'child_routes' => [
-                    'hub' => [
-                        'type' => 'Segment',
+                    'rest' => [
+                        'type'    => 'Segment',
                         'options' => [
                             'route'       => '[/:id]',
                             'constraints' => [
                                 'id' => '[a-zA-Z0-9_-]*',
                             ],
-                        ]
+
+                        ],
                     ],
+
+                ],
+            ],
+            'refinery' => [
+                'type'         => 'Segment',
+                'options'      => [
+                    'route'    => '/api/refinery',
+                    'defaults' => [
+                        'controller' => 'Api\Controller\Company',
+                    ],
+                ],
+                'child_routes' => [
                     'refinery' => [
                         'type'    => 'Segment',
                         'options' => [
-                            'route'       => '/refinery[/:id]',
+                            'route'       => '[/:id]',
                             'constraints' => [
-                                'id' => '\d*'
+                                'id' => '\d*',
                             ],
                             'defaults'    => [
-                                'action'     => 'refineryId'
-                            ]
-                        ]
-                    ]
-                ]
+                                'action' => 'refinery',
+                            ],
+                        ],
+                    ],
+                ],
             ],
         ],
     ],
-
     'view_manager' => [
-
         'strategies' => [
             'ViewJsonStrategy',
         ],

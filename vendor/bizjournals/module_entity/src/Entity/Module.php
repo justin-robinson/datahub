@@ -43,12 +43,14 @@ class Module
                 'init_provider'  => new InitProviderInitializer()
             ),
             'invokables' => array(
-                'Entity\Model\Industry'     => 'Entity\Model\Industry',
-                'Entity\Model\Journal'      => 'Entity\Model\Journal',
-                'Entity\Model\Market'       => 'Entity\Model\Market',
-                'Entity\Model\Topic'        => 'Entity\Model\Topic',
-                'Entity\Model\UrlShortener' => 'Entity\Model\UrlShortener',
-                'Entity\Model\Video'        => 'Entity\Model\Video',
+                'Entity\Model\Industry'         => 'Entity\Model\Industry',
+                'Entity\Model\Journal'          => 'Entity\Model\Journal',
+                'Entity\Model\Market'           => 'Entity\Model\Market',
+                'Entity\Model\Topic'            => 'Entity\Model\Topic',
+                'Entity\Model\UrlShortener'     => 'Entity\Model\UrlShortener',
+                'Entity\Model\Video'            => 'Entity\Model\Video',
+                'Entity\Model\Email\ClickUrl'   => 'Entity\Model\Email\ClickUrl',
+                'Entity\Model\Email\ClickTrack' => 'Entity\Model\Email\ClickTrack',
             ),
             'factories' => array(
                 /*

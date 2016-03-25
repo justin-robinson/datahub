@@ -29,6 +29,10 @@ kibana serve
 ```
 go to http://localhost:5601/
 
+## importing records to match against
+```shell
+sudo /var/www/datahub/scripts/run.php import refinery -e development --file=/home/vagrant/files/refineryDump.csv
+```
     
 ## matching:
 run it from /scripts
@@ -37,10 +41,6 @@ php run.php  meroveus match -e development #where -e is environment
 ```
 
 
-## importing records to match against
-```shell
-sudo /var/www/datahub/scripts/run.php import refinery -e development --file=/home/vagrant/files/refineryDump.csv
-```
 
 ## aws notes
 

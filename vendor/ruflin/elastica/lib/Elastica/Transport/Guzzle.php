@@ -142,8 +142,6 @@ class Guzzle extends AbstractTransport
      * Builds the base url for the guzzle connection.
      *
      * @param \Elastica\Connection $connection
-     *
-     * @return string
      */
     protected function _getBaseUrl(Connection $connection)
     {
@@ -163,8 +161,6 @@ class Guzzle extends AbstractTransport
      * Builds the action path url for each request.
      *
      * @param \Elastica\Request $request
-     *
-     * @return string
      */
     protected function _getActionPath(Request $request)
     {

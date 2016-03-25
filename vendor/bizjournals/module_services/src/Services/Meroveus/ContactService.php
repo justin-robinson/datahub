@@ -25,41 +25,31 @@ class ContactService extends AbstractService
      */
     private $patternDictionary = [
 
-        '/^.*(^|\s)(CHIEF\sEXECUTIVE\sOFFICER).*$/i'              => 10,
+        '/^.*(^|\s)(CHIEF\sEXECUTIVE\sOFFICER).*$/i'                 => 10,
         // the following matches any occurrce of "CEO" thats
         // not part of a word and can contain spaces or periods
-        '/^.*(^|\s|\D|\W)(C\.?\s?E\.?\s?O\.?\s?)(\s|\D|\W)*.*$/i' => 10,
-
-        '/^.*(^|\s|\b)(PRESIDENT)(\s|\b|$).*$/i' => 11,
-
-        '/^.*(^|\s|\b)(OWNER)(\s|\b|$).*$/i' => 22,
-
-        '/^.*(^|\s|\b)(CHIEF\s*([^\s]*)\s*OFFICER).*$/i'         => 30,
-        // the following matches any occurrce of a three letter group in the form of
-        // "C<whatevet>O" thats
+        '/^.*(^|\s|\D|\W)(C\.?\s?E\.?\s?O\.?\s?)(\s|\D|\W)*.*$/i'    => 10,
+        '/^.*(^|\s|\b)(PRESIDENT)(\s|\b|$).*$/i'                     => 11,
+        '/^.*(^|\s|\b)(OWNER)(\s|\b|$).*$/i'                         => 22,
+        '/^.*(^|\s|\b)(CHIEF\s*([^\s]*)\s*OFFICER).*$/i'             => 30,
+        // the following matches any occurrce of a three letter group in the form of "C<whatevet>O" thats
         // not part of a word and can contain spaces or periods
-        '/^.*(^|\s|\b)(C\.?\s?[a-z]\.?\s?O\.?\s?)(\s|\b|$).*$/i' => 30,
-
-        '/^.*(^|\s|\b)(PARTNER)(\s|\b|$).*$/i' => 50,
-
-        '/^.*(^|\s|\b)(CHAIRMAN)(\s|\b|$).*$/i' => 60,
-
-        '/^.*(^|\s|\b)(EXECUTIVE)(\s|\b|$).*$/i'                  => 90,
-        '/^.*(^|\s|\b)(VICE)(\s).*$/i'                            => 90,
-        '/^.*(^|\s|\b)(EVP)(\s|\b).*$/i'                          => 90,
-        // the following matches any occurrce of a three letter group in the form of
-        // "C<whatevet>O" thats
-        // not part of a word and can contain spaces or periods
-        '/^.*(^|\s|\D|\W)(E\.?\s?V\.?\s?P\.?\s?)(\s|\D|\W)*.*$/i' => 90,
-        '/^.*(^|\s|\b)(VP)(\s|\,|\b).*$/i'                        => 90,
-        '/^.*(^|\s|\D|\W)(V\.?\s?P\.?\s?)(\s|\D|\W)*.*$/i'        => 90,
-        '/^.*(^|\s|\b)(SVP)(\s|\,|\b).*$/i'                       => 90,
-        '/^.*(^|\s|\D|\W)(S\.?\s?V\.?\s?P\.?\s?)(\s|\D|\W)*.*$/i' => 90,
-
-        '/^.*(^|\s|\b)(DIRECTOR)(\s|\b|$).*$/i' => 130,
-
-        '/^.*(^|\s|\b)(MANAGER)(\s|\b|$).*$/i' => 140,
-
+        '/^.*(^|\s|\b)(C\.?\s?[a-z]\.?\s?O\.?\s?)(\s|\b|$).*$/i'     => 30,
+        '/^.*(^|\s|\b)(PARTNER)(\s|\b|$).*$/i'                       => 50,
+        '/^.*(^|\s|\b)(CHAIRMAN)(\s|\b|$).*$/i'                      => 60,
+        '/^.*(^|\s|\b)(FOUNDER)(\s|\b|$).*$/i'                       => 60,
+        '/^.*(^|\s|\b)(EXECUTIVE)(\s|\b|$).*$/i'                     => 90,
+        '/^.*(^|\s|\b)(VICE)(\s).*$/i'                               => 90,
+        '/^.*(^|\s|\b)(EVP)(\s|\b).*$/i'                             => 90,
+        '/^.*(^|\s|\D|\W)(E\.?\s?V\.?\s?P\.?\s?)(\s|\D|\W)*.*$/i'    => 90,
+        '/^.*(^|\s|\b)(VP)(\s|\,|\b).*$/i'                           => 90,
+        '/^.*(^|\s|\D|\W)(V\.?\s?P\.?\s?)(\s|\D|\W)*.*$/i'           => 90,
+        '/^.*(^|\s|\b)(SVP)(\s|\,|\b).*$/i'                          => 90,
+        '/^.*(^|\s|\D|\W)(S\.?\s?V\.?\s?P\.?\s?)(\s|\D|\W)*.*$/i'    => 90,
+        '/^.*(^|\s|\b)(DIRECTOR)(\s|\b|$).*$/i'                      => 130,
+        '/^.*(^|\s|\b)(MANAGER)(\s|\b|$).*$/i'                       => 140,
+        '/^.*(^|\s|\b)(MANAGING)(\s|\b|$).*$/i'                      => 140,
+        '/^.*(^|\s|\D|\W)(G\.?\s?M\.?\s?)(\s|\D|\W)*.*$/i'           => 140,
         '/^.*(^|\s|\b)(INFORMATION )(\s|\b|$).*$/i'                  => 1000,
         '/^.*(^|\s|\b)(BOARD\sMEMBER)(\s|\b|$).*$/i'                 => 1000,
         '/^.*(^|\s|\b)(PURCHASING)(\s|\b|$).*$/i'                    => 1000,
@@ -182,6 +172,5 @@ class ContactService extends AbstractService
     }
 
 }
-
 
 

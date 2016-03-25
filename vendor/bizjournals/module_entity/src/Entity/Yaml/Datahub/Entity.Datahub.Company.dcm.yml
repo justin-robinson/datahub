@@ -100,6 +100,31 @@ Entity\Datahub\Company:
       type: integer
       unsigned: true
       nullable: true
+    universal_revenue_volume_static:
+      type: decimal
+      unsigned: true
+      scale: 6
+      length: 100
+      nullable: true
+    universal_employee_count_static:
+      type: decimal
+      length: 9
+      scale: 6
+      unsigned: true
+      nullable: true
+    universal_employee_local_static:
+      type: decimal
+      length: 9
+      scale: 6
+      unsigned: true
+      nullable: true
+    universal_established_year_static:
+      type: string
+      length: 4
+      nullable: true
+    universal_profile_blob_static:
+      type: text
+      nullable: true
     created_at:
       type: datetime
       nullable: false

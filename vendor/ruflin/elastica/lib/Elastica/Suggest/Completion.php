@@ -2,7 +2,7 @@
 namespace Elastica\Suggest;
 
 /**
- * Completion suggester.
+ * Comletion suggester.
  *
  * @author Igor Denisenko <im.denisenko@yahoo.com>
  *

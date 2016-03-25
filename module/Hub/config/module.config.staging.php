@@ -23,9 +23,9 @@ return [
         ],
     ],
     'elastica' => [
-        'host' => 'http://elb.es.production-datahub.bizj-internal.com',
+        'host' => 'http://elb.elasticsearch.datahub.bizj-staging.com/',
         'path' => 'rerefinery/',
         'port' => '9200',
-        'url'  => 'http://elb.es.production-datahub.bizj-internal.com:9200/rerefinery/',
+        'url'  => 'http://elb.elasticsearch.datahub.bizj-staging.com/:9200/current/',
     ],
 ];

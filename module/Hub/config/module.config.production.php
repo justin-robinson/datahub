@@ -1,10 +1,10 @@
 <?php
 $defaultMysqlConnectionParams = [
     'charset'       => 'utf8',
-    'host'          => 'dbmaster.bizjournals.int',
-    'port'          => '3306',
-    'user'          => 'bizj-write',
-    'password'      => 'bizj-write',
+    'host'          => 'acbj-data-production-datahub.calx84y1wzxr.us-east-1.rds.amazonaws.com',
+    'name'          => 'datahub',
+    'user'          => 'datahub-read',
+    'password'      => 'f7e20051-a346-40dc-8240-5871cb3948cc',
     'driverOptions' => [
         1002 => 'SET NAMES utf8',
     ],
@@ -28,9 +28,9 @@ return [
     ],
 
     'elastica' => [
-        'host' => 'http://elb.es.production-datahub.bizj-internal.com',
-        'path' => 'rerefinery/',
+        'host' => 'http://elb.elasticsearch.datahub.bizj-internal.com',
+        'path' => 'current/',
         'port' => '9200',
-        'url'  => 'http://elb.es.production-datahub.bizj-internal.com:9200/rerefinery/',
+        'url'  => 'http://elb.elasticsearch.datahub.bizj-internal.com/current/',
     ],
 ];

@@ -35,7 +35,7 @@ class ScriptFields extends Param
         if (!is_string($name) || !strlen($name)) {
             throw new InvalidException('The name of a Script is required and must be a string');
         }
-        $this->setParam($name, $script);
+        $this->setParam($name, $script->toArray());
 
         return $this;
     }
@@ -60,6 +60,6 @@ class ScriptFields extends Param
      */
     public function toArray()
     {
-        return $this->_convertArrayable($this->_params);
+        return $this->_params;
     }
 }

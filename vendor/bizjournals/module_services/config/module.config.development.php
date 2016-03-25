@@ -23,6 +23,9 @@ return array(
             array('host' => 'cms-dev-search-query.bizjournals.int', 'port' => 9200, 'timeout' => 4),
         ),
     ),
+    'admin_authentication' => array(
+        'base_url' => 'http://admin.dev.bizjournals.com/authapi',
+    ),
     'medialibrary' => array(
         'key'      => 'cmsdev',
         'secret'   => '2CsI8ErIHzcT4c',

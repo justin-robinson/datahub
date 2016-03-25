@@ -17,7 +17,9 @@ return array(
             array('host' => 'cms-staging-search-2.bizjournals.int', 'port' => 9200, 'timeout' => 4)
         ),
     ),
-    // TODO: Update to staging media library...
+    'admin_authentication' => array(
+        'base_url' => 'http://admin.testing.bizjournals.com/authapi',
+    ),
     'medialibrary' => array(
         'key'      => 'cmsstaging',
         'secret'   => 'e9f3900bd1cc98ba0a5310928a7d44f1',
