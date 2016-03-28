@@ -566,7 +566,7 @@ class MeroveusController extends AbstractActionController
             $this->sqlStatementsArray['insertMeroveusIndustry']->execute(
                 [
                     ':external_id' => $industry['LABELID'],
-                    ':industry' => $industry['NAME']
+                    ':industry' => trim($industry['NAME'], 'Â ')
                 ]
             );
 
