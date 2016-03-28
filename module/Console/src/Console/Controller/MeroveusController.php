@@ -215,8 +215,13 @@ class MeroveusController extends AbstractActionController
         'insertMeroveusIndustry' => '
             INSERT INTO
               `datahub`.`meroveus_industries` (external_id, industry)
-            VALUES (:external_id, :industry)
-        '
+            VALUES (:external_id, :industry)',
+        'insertCompanyMeroveusIndustry' => '
+            INSERT INTO
+              `datahub`.`company_meroveus_industries`
+            (hub_id, meroveus_industry_id)
+            VALUES
+            (:hub_id, :meroveus_industry_id)',
     ];
 
 
@@ -335,6 +340,7 @@ class MeroveusController extends AbstractActionController
             $meroveusParams['ENV']      = $env;
             $meroveusParams['STARTROW'] = 1; // reset our pagination offset
             $marketMatched              = $marketInserted = 0; // reset counts for this market
+            $insertCompanyMeroveusIndustry = $this->sqlStatementsArray['insertCompanyMeroveusIndustry'];
 
             // paginate over companies
             while ($marketCompanyList = $this->companyService->fetchByMarket($meroveusParams)) {
@@ -358,6 +364,7 @@ class MeroveusController extends AbstractActionController
                             try {
                                 $selectCompany->execute([$target['meroveusId']]);
                                 $hubId = ($selectCompany->rowCount() > 0) ? $selectCompany->fetch(\PDO::FETCH_ASSOC)['hub_id'] : false;
+
                                 $selectCompany->closeCursor();
                                 if ($sanity) {
                                     $this->writeSanityFiles($market, $target, $match);
@@ -391,6 +398,37 @@ class MeroveusController extends AbstractActionController
                         }
                     }
 
+                    // does this company have an industry?
+                    if ( isset($target['firm-industry_static']) ) {
+
+                        // get all meroveus industries for this company by ID
+                        $selectMeroveusIndustry = $this->db->prepare("
+                                                SELECT
+                                                    *
+                                                FROM
+                                                  `datahub`.`meroveus_industries`
+                                                WHERE `external_id` IN ({$target['firm-industry_static']})");
+
+                        if ( $selectMeroveusIndustry->execute() ) {
+
+                            // link each industry to the company
+                            while ( $industry = $selectMeroveusIndustry->fetch(\PDO::FETCH_ASSOC) ) {
+                                try {
+                                    $insertCompanyMeroveusIndustry->execute (
+                                        [
+                                            ':hub_id'               => $hubId,
+                                            ':meroveus_industry_id' => $industry['meroveus_industry_id'],
+                                        ]);
+                                } catch (\Exception $e) {
+                                    // probably a dupe, no biggie
+                                }
+                            }
+
+                        }
+
+                        $selectMeroveusIndustry->closeCursor();
+                    }
+
                     // process contacts
                     if ($hubId || $debug) {
                         $this->processContacts($hubId, $target['execs'], $debug);
@@ -399,12 +437,12 @@ class MeroveusController extends AbstractActionController
                         die(var_dump($target));
                     }
                     // track memory and total count
-                    echo "\033[{$lastMemUsageMessageLength}D";
-                    $total                     = $totalInserted + $totalMatched;
-                    $currentLoopInsertionCount = $index + 1;
-                    $memory                    = $total . ':' . $currentLoopInsertionCount . ':' . $this->convert_memory_usage(memory_get_usage(true));
-                    $lastMemUsageMessageLength = strlen($memory);
-                    echo $memory;
+//                    echo "\033[{$lastMemUsageMessageLength}D";
+//                    $total                     = $totalInserted + $totalMatched;
+//                    $currentLoopInsertionCount = $index + 1;
+//                    $memory                    = $total . ':' . $currentLoopInsertionCount . ':' . $this->convert_memory_usage(memory_get_usage(true));
+//                    $lastMemUsageMessageLength = strlen($memory);
+//                    echo $memory;
                 }
 
                 // get next chunk of rows
@@ -545,6 +583,9 @@ class MeroveusController extends AbstractActionController
 
     }
 
+    /**
+     * Updates meroveus_industries table with payload from meroveus
+     */
     public function updateIndustriesAction() {
 
         $meroveusParams = [
@@ -560,6 +601,7 @@ class MeroveusController extends AbstractActionController
             ]
         ];
 
+        // @todo handle deletions
         $industries = $this->companyService->queryMeroveusRoot($meroveusParams);
 
         foreach ( $industries as $industry ) {

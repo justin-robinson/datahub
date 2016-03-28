@@ -137,6 +137,8 @@ class CompanyService extends AbstractService
 
                     if (isset($data['VAL'])) {
                         $value = !is_array($data['VAL']) ? $data['VAL'] : null;
+                    } else if (isset($data['LABELIDS'])) {
+                        $value = implode(',', $data['LABELIDS']);
                     } else {
                         $value = $state;
                     }
@@ -257,6 +259,12 @@ class CompanyService extends AbstractService
         }
     }
 
+    /**
+     * Query meroveus with MROOT payload
+     * @param array $meroveusParams
+     *
+     * @return bool
+     */
     public function queryMeroveusRoot(array $meroveusParams) {
         return $this->queryMeroveus($meroveusParams, true);
     }
