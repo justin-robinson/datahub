@@ -8,6 +8,7 @@
 namespace Console\Controller;
 
 use Console\Record\Formatter\Factory;
+use Console\CsvIterator;
 use Doctrine\DBAL\Driver\PDOException;
 use Elastica\Client as ElasticaClient;
 use Elastica\Query as ElasticaQuery;
@@ -437,12 +438,12 @@ class MeroveusController extends AbstractActionController
                         die(var_dump($target));
                     }
                     // track memory and total count
-//                    echo "\033[{$lastMemUsageMessageLength}D";
-//                    $total                     = $totalInserted + $totalMatched;
-//                    $currentLoopInsertionCount = $index + 1;
-//                    $memory                    = $total . ':' . $currentLoopInsertionCount . ':' . $this->convert_memory_usage(memory_get_usage(true));
-//                    $lastMemUsageMessageLength = strlen($memory);
-//                    echo $memory;
+                    echo "\033[{$lastMemUsageMessageLength}D";
+                    $total                     = $totalInserted + $totalMatched;
+                    $currentLoopInsertionCount = $index + 1;
+                    $memory                    = $total . ':' . $currentLoopInsertionCount . ':' . $this->convert_memory_usage(memory_get_usage(true));
+                    $lastMemUsageMessageLength = strlen($memory);
+                    echo $memory;
                 }
 
                 // get next chunk of rows
@@ -613,6 +614,50 @@ class MeroveusController extends AbstractActionController
             );
 
         }
+    }
+
+    public function sicToMerovuesAction () {
+
+        // https://docs.google.com/spreadsheets/d/1FbPmppl5ehF0Kbwu6UXcJAOhmYSmIMIiXiD2AXtYklY/edit#gid=939757750
+        // just save link as csv
+
+        $filePath = $this->getRequest()->getParam('file');
+
+        // hardcoding filepath to work around cli arg bug
+        $filePath = "/Users/justinrobinson/Documents/datahub/sicToMeroveus.csv";
+
+        if ( !$filePath ) {
+            die ( 'run with arg --file /path/to/file ');
+        }
+
+        $filePath = realpath($filePath);
+        if ( !$filePath ) {
+            die ( "--file does not exist: " . $this->getRequest()->getParam('file') );
+        }
+
+        $file = new CsvIterator($filePath);
+        $file->setHasHeaderRow(true);
+
+        foreach ( $file as $line ) {
+            $line = $file->mergeWithHeaderRow($line);
+
+            $sql = $this->db->prepare(
+                "INSERT INTO
+	              `datahub`.`sic_code_meroveus_industries` (`sic`, `meroveus_industry_id`)
+                select
+                    s.sic,
+                    m.meroveus_industry_id
+                from
+                    `datahub`.`sic_code` s
+                    left join `datahub`.`meroveus_industries` m ON m.industry = ?
+                where
+                    s.sic LIKE ?
+                    AND m.meroveus_industry_id IS NOT NULL");
+
+
+            $sql->execute([$line['DataHub Industry'], $line['SIC'] . '%']);
+        }
+
     }
 
     /**
