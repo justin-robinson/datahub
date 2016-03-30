@@ -661,7 +661,8 @@ class MeroveusController extends AbstractActionController
                     `datahub`.`company` c
                     left join `datahub`.`meroveus_industry` m ON m.industry = ?
                 WHERE
-                    c.sic_code LIKE ? ");
+                    c.sic_code LIKE ?
+                    AND m.meroveus_industry_id IS NOT NULL");
 
 
             $sql->execute(
