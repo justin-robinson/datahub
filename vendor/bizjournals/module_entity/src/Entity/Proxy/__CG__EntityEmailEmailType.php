@@ -36,7 +36,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'product_id', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'product_name', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'product_title', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'product_type', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'classification', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'site', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'market', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'skin', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'tracking_code', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'default_host', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'default_subject', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'default_sender', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'reply_address', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'send_days', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'send_time', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'message_expiration', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'content_id', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'managed', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'active', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'manual_send', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'homepage_promo', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'promo_text', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'product_recommendations', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'created_at', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'updated_at');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'product_id', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'product_name', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'product_title', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'product_type', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'classification', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'site', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'market', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'skin', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'tracking_code', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'default_host', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'default_subject', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'default_sender', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'reply_address', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'send_days', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'send_time', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'message_expiration', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'content_id', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'managed', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'active', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'manual_send', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'homepage_promo', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'promo_text', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'product_recommendations', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'created_at', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'updated_at'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'product_id', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'product_name', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'product_title', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'product_type', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'classification', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'site', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'market', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'skin', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'tracking_code', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'default_host', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'default_subject', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'default_sender', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'reply_address', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'send_days', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'send_time', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'message_expiration', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'content_id', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'managed', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'active', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'manual_send', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'homepage_promo', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'promo_text', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'product_recommendations', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'created_at', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'updated_at');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'product_id', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'product_name', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'product_title', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'product_type', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'classification', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'site', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'market', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'skin', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'tracking_code', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'default_host', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'default_subject', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'default_sender', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'reply_address', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'send_days', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'send_time', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'message_expiration', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'content_id', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'managed', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'active', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'manual_send', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'homepage_promo', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'promo_text', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'product_recommendations', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'created_at', '' . "\0" . 'Entity\\Email\\EmailType' . "\0" . 'updated_at'];
     }
 
     /**
@@ -97,7 +97,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function getProductId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductId', []);
 
         return parent::getProductId();
     }
@@ -190,7 +190,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function setProductName($productName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductName', array($productName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductName', [$productName]);
 
         return parent::setProductName($productName);
     }
@@ -201,7 +201,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function getProductName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductName', []);
 
         return parent::getProductName();
     }
@@ -212,7 +212,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function setProductTitle($productTitle)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductTitle', array($productTitle));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductTitle', [$productTitle]);
 
         return parent::setProductTitle($productTitle);
     }
@@ -223,7 +223,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function getProductTitle()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductTitle', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductTitle', []);
 
         return parent::getProductTitle();
     }
@@ -234,7 +234,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function setProductType($productType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductType', array($productType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductType', [$productType]);
 
         return parent::setProductType($productType);
     }
@@ -245,7 +245,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function getProductType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductType', []);
 
         return parent::getProductType();
     }
@@ -256,7 +256,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function setClassification($classification)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setClassification', array($classification));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setClassification', [$classification]);
 
         return parent::setClassification($classification);
     }
@@ -267,7 +267,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function getClassification()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClassification', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClassification', []);
 
         return parent::getClassification();
     }
@@ -278,7 +278,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function setSite($site)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSite', array($site));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSite', [$site]);
 
         return parent::setSite($site);
     }
@@ -289,7 +289,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function getSite()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSite', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSite', []);
 
         return parent::getSite();
     }
@@ -300,7 +300,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function setMarket($market)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarket', array($market));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarket', [$market]);
 
         return parent::setMarket($market);
     }
@@ -311,7 +311,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function getMarket()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarket', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarket', []);
 
         return parent::getMarket();
     }
@@ -322,7 +322,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function setSkin($skin)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSkin', array($skin));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSkin', [$skin]);
 
         return parent::setSkin($skin);
     }
@@ -333,7 +333,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function getSkin()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSkin', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSkin', []);
 
         return parent::getSkin();
     }
@@ -344,7 +344,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function setTrackingCode($trackingCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTrackingCode', array($trackingCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTrackingCode', [$trackingCode]);
 
         return parent::setTrackingCode($trackingCode);
     }
@@ -355,7 +355,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function getTrackingCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTrackingCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTrackingCode', []);
 
         return parent::getTrackingCode();
     }
@@ -366,7 +366,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function setDefaultHost($defaultHost)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDefaultHost', array($defaultHost));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDefaultHost', [$defaultHost]);
 
         return parent::setDefaultHost($defaultHost);
     }
@@ -377,7 +377,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function getDefaultHost()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDefaultHost', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDefaultHost', []);
 
         return parent::getDefaultHost();
     }
@@ -388,7 +388,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function setDefaultSubject($defaultSubject)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDefaultSubject', array($defaultSubject));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDefaultSubject', [$defaultSubject]);
 
         return parent::setDefaultSubject($defaultSubject);
     }
@@ -399,7 +399,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function getDefaultSubject()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDefaultSubject', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDefaultSubject', []);
 
         return parent::getDefaultSubject();
     }
@@ -410,7 +410,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function setDefaultSender($defaultSender)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDefaultSender', array($defaultSender));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDefaultSender', [$defaultSender]);
 
         return parent::setDefaultSender($defaultSender);
     }
@@ -421,7 +421,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function getDefaultSender()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDefaultSender', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDefaultSender', []);
 
         return parent::getDefaultSender();
     }
@@ -432,7 +432,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function setReplyAddress($replyAddress)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setReplyAddress', array($replyAddress));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setReplyAddress', [$replyAddress]);
 
         return parent::setReplyAddress($replyAddress);
     }
@@ -443,7 +443,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function getReplyAddress()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getReplyAddress', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getReplyAddress', []);
 
         return parent::getReplyAddress();
     }
@@ -454,7 +454,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function setSendDays($sendDays)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSendDays', array($sendDays));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSendDays', [$sendDays]);
 
         return parent::setSendDays($sendDays);
     }
@@ -465,7 +465,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function getSendDays()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSendDays', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSendDays', []);
 
         return parent::getSendDays();
     }
@@ -476,7 +476,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function setSendTime($sendTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSendTime', array($sendTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSendTime', [$sendTime]);
 
         return parent::setSendTime($sendTime);
     }
@@ -487,7 +487,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function getSendTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSendTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSendTime', []);
 
         return parent::getSendTime();
     }
@@ -498,7 +498,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function setMessageExpiration($messageExpiration)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMessageExpiration', array($messageExpiration));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMessageExpiration', [$messageExpiration]);
 
         return parent::setMessageExpiration($messageExpiration);
     }
@@ -509,7 +509,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function getMessageExpiration()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMessageExpiration', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMessageExpiration', []);
 
         return parent::getMessageExpiration();
     }
@@ -520,7 +520,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function setContentId($contentId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContentId', array($contentId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContentId', [$contentId]);
 
         return parent::setContentId($contentId);
     }
@@ -531,7 +531,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function getContentId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContentId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContentId', []);
 
         return parent::getContentId();
     }
@@ -542,7 +542,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function setManaged($managed)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setManaged', array($managed));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setManaged', [$managed]);
 
         return parent::setManaged($managed);
     }
@@ -553,7 +553,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function getManaged()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getManaged', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getManaged', []);
 
         return parent::getManaged();
     }
@@ -564,7 +564,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function setActive($active)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setActive', array($active));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setActive', [$active]);
 
         return parent::setActive($active);
     }
@@ -575,7 +575,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function getActive()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getActive', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getActive', []);
 
         return parent::getActive();
     }
@@ -586,7 +586,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function setManualSend($manualSend)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setManualSend', array($manualSend));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setManualSend', [$manualSend]);
 
         return parent::setManualSend($manualSend);
     }
@@ -597,7 +597,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function getManualSend()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getManualSend', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getManualSend', []);
 
         return parent::getManualSend();
     }
@@ -608,7 +608,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function setHomepagePromo($homepagePromo)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHomepagePromo', array($homepagePromo));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHomepagePromo', [$homepagePromo]);
 
         return parent::setHomepagePromo($homepagePromo);
     }
@@ -619,7 +619,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function getHomepagePromo()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHomepagePromo', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHomepagePromo', []);
 
         return parent::getHomepagePromo();
     }
@@ -630,7 +630,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function setPromoText($promoText)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPromoText', array($promoText));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPromoText', [$promoText]);
 
         return parent::setPromoText($promoText);
     }
@@ -641,7 +641,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function getPromoText()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPromoText', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPromoText', []);
 
         return parent::getPromoText();
     }
@@ -652,7 +652,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function setProductRecommendations($productRecommendations)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductRecommendations', array($productRecommendations));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductRecommendations', [$productRecommendations]);
 
         return parent::setProductRecommendations($productRecommendations);
     }
@@ -663,7 +663,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function getProductRecommendations()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductRecommendations', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductRecommendations', []);
 
         return parent::getProductRecommendations();
     }
@@ -674,7 +674,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -685,7 +685,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -696,7 +696,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -707,7 +707,7 @@ class EmailType extends \Entity\Email\EmailType implements \Doctrine\ORM\Proxy\P
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }

@@ -36,7 +36,7 @@ class Cart extends \Entity\NascarIllustrated\Cart implements \Doctrine\ORM\Proxy
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Cart extends \Entity\NascarIllustrated\Cart implements \Doctrine\ORM\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\Cart' . "\0" . 'cart_id', '' . "\0" . 'Entity\\NascarIllustrated\\Cart' . "\0" . 'cart_hash', '' . "\0" . 'Entity\\NascarIllustrated\\Cart' . "\0" . 'shipping_destination', '' . "\0" . 'Entity\\NascarIllustrated\\Cart' . "\0" . 'ip_address', '' . "\0" . 'Entity\\NascarIllustrated\\Cart' . "\0" . 'created_at', '' . "\0" . 'Entity\\NascarIllustrated\\Cart' . "\0" . 'updated_at', '' . "\0" . 'Entity\\NascarIllustrated\\Cart' . "\0" . 'CartItems');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\Cart' . "\0" . 'cart_id', '' . "\0" . 'Entity\\NascarIllustrated\\Cart' . "\0" . 'cart_hash', '' . "\0" . 'Entity\\NascarIllustrated\\Cart' . "\0" . 'shipping_destination', '' . "\0" . 'Entity\\NascarIllustrated\\Cart' . "\0" . 'ip_address', '' . "\0" . 'Entity\\NascarIllustrated\\Cart' . "\0" . 'created_at', '' . "\0" . 'Entity\\NascarIllustrated\\Cart' . "\0" . 'updated_at', '' . "\0" . 'Entity\\NascarIllustrated\\Cart' . "\0" . 'CartItems'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\Cart' . "\0" . 'cart_id', '' . "\0" . 'Entity\\NascarIllustrated\\Cart' . "\0" . 'cart_hash', '' . "\0" . 'Entity\\NascarIllustrated\\Cart' . "\0" . 'shipping_destination', '' . "\0" . 'Entity\\NascarIllustrated\\Cart' . "\0" . 'ip_address', '' . "\0" . 'Entity\\NascarIllustrated\\Cart' . "\0" . 'created_at', '' . "\0" . 'Entity\\NascarIllustrated\\Cart' . "\0" . 'updated_at', '' . "\0" . 'Entity\\NascarIllustrated\\Cart' . "\0" . 'CartItems');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\Cart' . "\0" . 'cart_id', '' . "\0" . 'Entity\\NascarIllustrated\\Cart' . "\0" . 'cart_hash', '' . "\0" . 'Entity\\NascarIllustrated\\Cart' . "\0" . 'shipping_destination', '' . "\0" . 'Entity\\NascarIllustrated\\Cart' . "\0" . 'ip_address', '' . "\0" . 'Entity\\NascarIllustrated\\Cart' . "\0" . 'created_at', '' . "\0" . 'Entity\\NascarIllustrated\\Cart' . "\0" . 'updated_at', '' . "\0" . 'Entity\\NascarIllustrated\\Cart' . "\0" . 'CartItems'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Cart extends \Entity\NascarIllustrated\Cart implements \Doctrine\ORM\Proxy
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Cart extends \Entity\NascarIllustrated\Cart implements \Doctrine\ORM\Proxy
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class Cart extends \Entity\NascarIllustrated\Cart implements \Doctrine\ORM\Proxy
     public function getCartId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCartId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCartId', []);
 
         return parent::getCartId();
     }
@@ -190,7 +190,7 @@ class Cart extends \Entity\NascarIllustrated\Cart implements \Doctrine\ORM\Proxy
     public function setCartHash($cartHash)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCartHash', array($cartHash));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCartHash', [$cartHash]);
 
         return parent::setCartHash($cartHash);
     }
@@ -201,7 +201,7 @@ class Cart extends \Entity\NascarIllustrated\Cart implements \Doctrine\ORM\Proxy
     public function getCartHash()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCartHash', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCartHash', []);
 
         return parent::getCartHash();
     }
@@ -212,7 +212,7 @@ class Cart extends \Entity\NascarIllustrated\Cart implements \Doctrine\ORM\Proxy
     public function setShippingDestination($shippingDestination)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setShippingDestination', array($shippingDestination));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setShippingDestination', [$shippingDestination]);
 
         return parent::setShippingDestination($shippingDestination);
     }
@@ -223,7 +223,7 @@ class Cart extends \Entity\NascarIllustrated\Cart implements \Doctrine\ORM\Proxy
     public function getShippingDestination()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getShippingDestination', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getShippingDestination', []);
 
         return parent::getShippingDestination();
     }
@@ -234,7 +234,7 @@ class Cart extends \Entity\NascarIllustrated\Cart implements \Doctrine\ORM\Proxy
     public function setIpAddress($ipAddress)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIpAddress', array($ipAddress));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIpAddress', [$ipAddress]);
 
         return parent::setIpAddress($ipAddress);
     }
@@ -245,7 +245,7 @@ class Cart extends \Entity\NascarIllustrated\Cart implements \Doctrine\ORM\Proxy
     public function getIpAddress()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIpAddress', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIpAddress', []);
 
         return parent::getIpAddress();
     }
@@ -256,7 +256,7 @@ class Cart extends \Entity\NascarIllustrated\Cart implements \Doctrine\ORM\Proxy
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -267,7 +267,7 @@ class Cart extends \Entity\NascarIllustrated\Cart implements \Doctrine\ORM\Proxy
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -278,7 +278,7 @@ class Cart extends \Entity\NascarIllustrated\Cart implements \Doctrine\ORM\Proxy
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -289,7 +289,7 @@ class Cart extends \Entity\NascarIllustrated\Cart implements \Doctrine\ORM\Proxy
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -300,7 +300,7 @@ class Cart extends \Entity\NascarIllustrated\Cart implements \Doctrine\ORM\Proxy
     public function addCartItem(\Entity\NascarIllustrated\CartItem $cartItem)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCartItem', array($cartItem));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCartItem', [$cartItem]);
 
         return parent::addCartItem($cartItem);
     }
@@ -311,7 +311,7 @@ class Cart extends \Entity\NascarIllustrated\Cart implements \Doctrine\ORM\Proxy
     public function removeCartItem(\Entity\NascarIllustrated\CartItem $cartItem)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCartItem', array($cartItem));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCartItem', [$cartItem]);
 
         return parent::removeCartItem($cartItem);
     }
@@ -322,7 +322,7 @@ class Cart extends \Entity\NascarIllustrated\Cart implements \Doctrine\ORM\Proxy
     public function getCartItems()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCartItems', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCartItems', []);
 
         return parent::getCartItems();
     }

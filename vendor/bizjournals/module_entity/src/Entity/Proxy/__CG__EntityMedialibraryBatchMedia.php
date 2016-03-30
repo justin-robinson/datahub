@@ -36,7 +36,7 @@ class BatchMedia extends \Entity\Medialibrary\BatchMedia implements \Doctrine\OR
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class BatchMedia extends \Entity\Medialibrary\BatchMedia implements \Doctrine\OR
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\BatchMedia' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\BatchMedia' . "\0" . 'batch_id', '' . "\0" . 'Entity\\Medialibrary\\BatchMedia' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\BatchMedia' . "\0" . 'BatchUpload', '' . "\0" . 'Entity\\Medialibrary\\BatchMedia' . "\0" . 'Media');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\BatchMedia' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\BatchMedia' . "\0" . 'batch_id', '' . "\0" . 'Entity\\Medialibrary\\BatchMedia' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\BatchMedia' . "\0" . 'BatchUpload', '' . "\0" . 'Entity\\Medialibrary\\BatchMedia' . "\0" . 'Media'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\BatchMedia' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\BatchMedia' . "\0" . 'batch_id', '' . "\0" . 'Entity\\Medialibrary\\BatchMedia' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\BatchMedia' . "\0" . 'BatchUpload', '' . "\0" . 'Entity\\Medialibrary\\BatchMedia' . "\0" . 'Media');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\BatchMedia' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\BatchMedia' . "\0" . 'batch_id', '' . "\0" . 'Entity\\Medialibrary\\BatchMedia' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\BatchMedia' . "\0" . 'BatchUpload', '' . "\0" . 'Entity\\Medialibrary\\BatchMedia' . "\0" . 'Media'];
     }
 
     /**
@@ -97,7 +97,7 @@ class BatchMedia extends \Entity\Medialibrary\BatchMedia implements \Doctrine\OR
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class BatchMedia extends \Entity\Medialibrary\BatchMedia implements \Doctrine\OR
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class BatchMedia extends \Entity\Medialibrary\BatchMedia implements \Doctrine\OR
     public function setMediaId($mediaId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaId', array($mediaId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaId', [$mediaId]);
 
         return parent::setMediaId($mediaId);
     }
@@ -190,7 +190,7 @@ class BatchMedia extends \Entity\Medialibrary\BatchMedia implements \Doctrine\OR
     public function getMediaId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaId', []);
 
         return parent::getMediaId();
     }
@@ -201,7 +201,7 @@ class BatchMedia extends \Entity\Medialibrary\BatchMedia implements \Doctrine\OR
     public function setBatchId($batchId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBatchId', array($batchId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBatchId', [$batchId]);
 
         return parent::setBatchId($batchId);
     }
@@ -212,7 +212,7 @@ class BatchMedia extends \Entity\Medialibrary\BatchMedia implements \Doctrine\OR
     public function getBatchId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBatchId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBatchId', []);
 
         return parent::getBatchId();
     }
@@ -223,7 +223,7 @@ class BatchMedia extends \Entity\Medialibrary\BatchMedia implements \Doctrine\OR
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -234,7 +234,7 @@ class BatchMedia extends \Entity\Medialibrary\BatchMedia implements \Doctrine\OR
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -245,7 +245,7 @@ class BatchMedia extends \Entity\Medialibrary\BatchMedia implements \Doctrine\OR
     public function setBatchUpload(\Entity\Medialibrary\BatchUpload $batchUpload = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBatchUpload', array($batchUpload));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBatchUpload', [$batchUpload]);
 
         return parent::setBatchUpload($batchUpload);
     }
@@ -256,7 +256,7 @@ class BatchMedia extends \Entity\Medialibrary\BatchMedia implements \Doctrine\OR
     public function getBatchUpload()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBatchUpload', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBatchUpload', []);
 
         return parent::getBatchUpload();
     }
@@ -267,7 +267,7 @@ class BatchMedia extends \Entity\Medialibrary\BatchMedia implements \Doctrine\OR
     public function setMedia(\Entity\Medialibrary\Media $media = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMedia', array($media));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMedia', [$media]);
 
         return parent::setMedia($media);
     }
@@ -278,7 +278,7 @@ class BatchMedia extends \Entity\Medialibrary\BatchMedia implements \Doctrine\OR
     public function getMedia()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMedia', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMedia', []);
 
         return parent::getMedia();
     }

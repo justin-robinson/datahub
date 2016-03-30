@@ -36,7 +36,7 @@ class AccessToken extends \Entity\Authentication\AccessToken implements \Doctrin
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class AccessToken extends \Entity\Authentication\AccessToken implements \Doctrin
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'token', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'client_id', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'service_id', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'expires_at', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'scope', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'created_at', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'Client', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'Service');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'token', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'client_id', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'service_id', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'expires_at', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'scope', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'created_at', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'Client', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'Service'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'token', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'client_id', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'service_id', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'expires_at', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'scope', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'created_at', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'Client', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'Service');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'token', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'client_id', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'service_id', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'expires_at', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'scope', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'created_at', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'Client', '' . "\0" . 'Entity\\Authentication\\AccessToken' . "\0" . 'Service'];
     }
 
     /**
@@ -97,7 +97,7 @@ class AccessToken extends \Entity\Authentication\AccessToken implements \Doctrin
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class AccessToken extends \Entity\Authentication\AccessToken implements \Doctrin
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class AccessToken extends \Entity\Authentication\AccessToken implements \Doctrin
     public function setToken($token)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setToken', array($token));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setToken', [$token]);
 
         return parent::setToken($token);
     }
@@ -194,7 +194,7 @@ class AccessToken extends \Entity\Authentication\AccessToken implements \Doctrin
         }
 
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getToken', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getToken', []);
 
         return parent::getToken();
     }
@@ -205,7 +205,7 @@ class AccessToken extends \Entity\Authentication\AccessToken implements \Doctrin
     public function setClientId($clientId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setClientId', array($clientId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setClientId', [$clientId]);
 
         return parent::setClientId($clientId);
     }
@@ -216,7 +216,7 @@ class AccessToken extends \Entity\Authentication\AccessToken implements \Doctrin
     public function getClientId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClientId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClientId', []);
 
         return parent::getClientId();
     }
@@ -227,7 +227,7 @@ class AccessToken extends \Entity\Authentication\AccessToken implements \Doctrin
     public function setServiceId($serviceId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setServiceId', array($serviceId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setServiceId', [$serviceId]);
 
         return parent::setServiceId($serviceId);
     }
@@ -238,7 +238,7 @@ class AccessToken extends \Entity\Authentication\AccessToken implements \Doctrin
     public function getServiceId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getServiceId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getServiceId', []);
 
         return parent::getServiceId();
     }
@@ -249,7 +249,7 @@ class AccessToken extends \Entity\Authentication\AccessToken implements \Doctrin
     public function setExpiresAt($expiresAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExpiresAt', array($expiresAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExpiresAt', [$expiresAt]);
 
         return parent::setExpiresAt($expiresAt);
     }
@@ -260,7 +260,7 @@ class AccessToken extends \Entity\Authentication\AccessToken implements \Doctrin
     public function getExpiresAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExpiresAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExpiresAt', []);
 
         return parent::getExpiresAt();
     }
@@ -271,7 +271,7 @@ class AccessToken extends \Entity\Authentication\AccessToken implements \Doctrin
     public function setScope($scope)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setScope', array($scope));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setScope', [$scope]);
 
         return parent::setScope($scope);
     }
@@ -282,7 +282,7 @@ class AccessToken extends \Entity\Authentication\AccessToken implements \Doctrin
     public function getScope()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getScope', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getScope', []);
 
         return parent::getScope();
     }
@@ -293,7 +293,7 @@ class AccessToken extends \Entity\Authentication\AccessToken implements \Doctrin
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -304,7 +304,7 @@ class AccessToken extends \Entity\Authentication\AccessToken implements \Doctrin
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -315,7 +315,7 @@ class AccessToken extends \Entity\Authentication\AccessToken implements \Doctrin
     public function setClient(\Entity\Authentication\Client $client = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setClient', array($client));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setClient', [$client]);
 
         return parent::setClient($client);
     }
@@ -326,7 +326,7 @@ class AccessToken extends \Entity\Authentication\AccessToken implements \Doctrin
     public function getClient()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClient', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClient', []);
 
         return parent::getClient();
     }
@@ -337,7 +337,7 @@ class AccessToken extends \Entity\Authentication\AccessToken implements \Doctrin
     public function setService(\Entity\Authentication\Service $service = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setService', array($service));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setService', [$service]);
 
         return parent::setService($service);
     }
@@ -348,7 +348,7 @@ class AccessToken extends \Entity\Authentication\AccessToken implements \Doctrin
     public function getService()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getService', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getService', []);
 
         return parent::getService();
     }

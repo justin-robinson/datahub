@@ -36,7 +36,7 @@ class StoryEntityCompany extends \Entity\Bizj\StoryEntityCompany implements \Doc
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class StoryEntityCompany extends \Entity\Bizj\StoryEntityCompany implements \Doc
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\StoryEntityCompany' . "\0" . 'id', '' . "\0" . 'Entity\\Bizj\\StoryEntityCompany' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bizj\\StoryEntityCompany' . "\0" . 'name', '' . "\0" . 'Entity\\Bizj\\StoryEntityCompany' . "\0" . 'eoc', '' . "\0" . 'Entity\\Bizj\\StoryEntityCompany' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\StoryEntityCompany' . "\0" . 'normalized_name', '' . "\0" . 'Entity\\Bizj\\StoryEntityCompany' . "\0" . 'StoryRead');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\StoryEntityCompany' . "\0" . 'id', '' . "\0" . 'Entity\\Bizj\\StoryEntityCompany' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bizj\\StoryEntityCompany' . "\0" . 'name', '' . "\0" . 'Entity\\Bizj\\StoryEntityCompany' . "\0" . 'eoc', '' . "\0" . 'Entity\\Bizj\\StoryEntityCompany' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\StoryEntityCompany' . "\0" . 'normalized_name', '' . "\0" . 'Entity\\Bizj\\StoryEntityCompany' . "\0" . 'StoryRead'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\StoryEntityCompany' . "\0" . 'id', '' . "\0" . 'Entity\\Bizj\\StoryEntityCompany' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bizj\\StoryEntityCompany' . "\0" . 'name', '' . "\0" . 'Entity\\Bizj\\StoryEntityCompany' . "\0" . 'eoc', '' . "\0" . 'Entity\\Bizj\\StoryEntityCompany' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\StoryEntityCompany' . "\0" . 'normalized_name', '' . "\0" . 'Entity\\Bizj\\StoryEntityCompany' . "\0" . 'StoryRead');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\StoryEntityCompany' . "\0" . 'id', '' . "\0" . 'Entity\\Bizj\\StoryEntityCompany' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bizj\\StoryEntityCompany' . "\0" . 'name', '' . "\0" . 'Entity\\Bizj\\StoryEntityCompany' . "\0" . 'eoc', '' . "\0" . 'Entity\\Bizj\\StoryEntityCompany' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\StoryEntityCompany' . "\0" . 'normalized_name', '' . "\0" . 'Entity\\Bizj\\StoryEntityCompany' . "\0" . 'StoryRead'];
     }
 
     /**
@@ -97,7 +97,7 @@ class StoryEntityCompany extends \Entity\Bizj\StoryEntityCompany implements \Doc
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class StoryEntityCompany extends \Entity\Bizj\StoryEntityCompany implements \Doc
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class StoryEntityCompany extends \Entity\Bizj\StoryEntityCompany implements \Doc
     public function setId($id)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setId', array($id));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setId', [$id]);
 
         return parent::setId($id);
     }
@@ -194,7 +194,7 @@ class StoryEntityCompany extends \Entity\Bizj\StoryEntityCompany implements \Doc
         }
 
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -205,7 +205,7 @@ class StoryEntityCompany extends \Entity\Bizj\StoryEntityCompany implements \Doc
     public function setStoryId($storyId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryId', array($storyId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryId', [$storyId]);
 
         return parent::setStoryId($storyId);
     }
@@ -216,7 +216,7 @@ class StoryEntityCompany extends \Entity\Bizj\StoryEntityCompany implements \Doc
     public function getStoryId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryId', []);
 
         return parent::getStoryId();
     }
@@ -227,7 +227,7 @@ class StoryEntityCompany extends \Entity\Bizj\StoryEntityCompany implements \Doc
     public function setName($name)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setName', array($name));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setName', [$name]);
 
         return parent::setName($name);
     }
@@ -238,7 +238,7 @@ class StoryEntityCompany extends \Entity\Bizj\StoryEntityCompany implements \Doc
     public function getName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getName', []);
 
         return parent::getName();
     }
@@ -249,7 +249,7 @@ class StoryEntityCompany extends \Entity\Bizj\StoryEntityCompany implements \Doc
     public function setEoc($eoc)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEoc', array($eoc));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEoc', [$eoc]);
 
         return parent::setEoc($eoc);
     }
@@ -260,7 +260,7 @@ class StoryEntityCompany extends \Entity\Bizj\StoryEntityCompany implements \Doc
     public function getEoc()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEoc', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEoc', []);
 
         return parent::getEoc();
     }
@@ -271,7 +271,7 @@ class StoryEntityCompany extends \Entity\Bizj\StoryEntityCompany implements \Doc
     public function setCTime($cTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCTime', array($cTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCTime', [$cTime]);
 
         return parent::setCTime($cTime);
     }
@@ -282,7 +282,7 @@ class StoryEntityCompany extends \Entity\Bizj\StoryEntityCompany implements \Doc
     public function getCTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCTime', []);
 
         return parent::getCTime();
     }
@@ -293,7 +293,7 @@ class StoryEntityCompany extends \Entity\Bizj\StoryEntityCompany implements \Doc
     public function setNormalizedName($normalizedName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNormalizedName', array($normalizedName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNormalizedName', [$normalizedName]);
 
         return parent::setNormalizedName($normalizedName);
     }
@@ -304,7 +304,7 @@ class StoryEntityCompany extends \Entity\Bizj\StoryEntityCompany implements \Doc
     public function getNormalizedName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNormalizedName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNormalizedName', []);
 
         return parent::getNormalizedName();
     }
@@ -315,7 +315,7 @@ class StoryEntityCompany extends \Entity\Bizj\StoryEntityCompany implements \Doc
     public function setStoryRead(\Entity\Bizj\StoryRead $storyRead = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryRead', array($storyRead));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryRead', [$storyRead]);
 
         return parent::setStoryRead($storyRead);
     }
@@ -326,7 +326,7 @@ class StoryEntityCompany extends \Entity\Bizj\StoryEntityCompany implements \Doc
     public function getStoryRead()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryRead', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryRead', []);
 
         return parent::getStoryRead();
     }

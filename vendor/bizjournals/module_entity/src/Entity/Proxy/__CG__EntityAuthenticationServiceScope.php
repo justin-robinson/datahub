@@ -36,7 +36,7 @@ class ServiceScope extends \Entity\Authentication\ServiceScope implements \Doctr
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class ServiceScope extends \Entity\Authentication\ServiceScope implements \Doctr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'scope_id', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'service_id', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'scope', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'description', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'is_default', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'is_active', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'created_at', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'Service');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'scope_id', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'service_id', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'scope', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'description', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'is_default', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'is_active', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'created_at', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'Service'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'scope_id', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'service_id', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'scope', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'description', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'is_default', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'is_active', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'created_at', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'Service');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'scope_id', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'service_id', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'scope', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'description', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'is_default', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'is_active', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'created_at', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Authentication\\ServiceScope' . "\0" . 'Service'];
     }
 
     /**
@@ -97,7 +97,7 @@ class ServiceScope extends \Entity\Authentication\ServiceScope implements \Doctr
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class ServiceScope extends \Entity\Authentication\ServiceScope implements \Doctr
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class ServiceScope extends \Entity\Authentication\ServiceScope implements \Doctr
     public function getScopeId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getScopeId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getScopeId', []);
 
         return parent::getScopeId();
     }
@@ -190,7 +190,7 @@ class ServiceScope extends \Entity\Authentication\ServiceScope implements \Doctr
     public function setServiceId($serviceId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setServiceId', array($serviceId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setServiceId', [$serviceId]);
 
         return parent::setServiceId($serviceId);
     }
@@ -201,7 +201,7 @@ class ServiceScope extends \Entity\Authentication\ServiceScope implements \Doctr
     public function getServiceId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getServiceId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getServiceId', []);
 
         return parent::getServiceId();
     }
@@ -212,7 +212,7 @@ class ServiceScope extends \Entity\Authentication\ServiceScope implements \Doctr
     public function setScope($scope)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setScope', array($scope));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setScope', [$scope]);
 
         return parent::setScope($scope);
     }
@@ -223,7 +223,7 @@ class ServiceScope extends \Entity\Authentication\ServiceScope implements \Doctr
     public function getScope()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getScope', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getScope', []);
 
         return parent::getScope();
     }
@@ -234,7 +234,7 @@ class ServiceScope extends \Entity\Authentication\ServiceScope implements \Doctr
     public function setDescription($description)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', array($description));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', [$description]);
 
         return parent::setDescription($description);
     }
@@ -245,7 +245,7 @@ class ServiceScope extends \Entity\Authentication\ServiceScope implements \Doctr
     public function getDescription()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', []);
 
         return parent::getDescription();
     }
@@ -256,7 +256,7 @@ class ServiceScope extends \Entity\Authentication\ServiceScope implements \Doctr
     public function setIsDefault($isDefault)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsDefault', array($isDefault));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsDefault', [$isDefault]);
 
         return parent::setIsDefault($isDefault);
     }
@@ -267,7 +267,7 @@ class ServiceScope extends \Entity\Authentication\ServiceScope implements \Doctr
     public function getIsDefault()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsDefault', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsDefault', []);
 
         return parent::getIsDefault();
     }
@@ -278,7 +278,7 @@ class ServiceScope extends \Entity\Authentication\ServiceScope implements \Doctr
     public function setIsActive($isActive)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', array($isActive));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', [$isActive]);
 
         return parent::setIsActive($isActive);
     }
@@ -289,7 +289,7 @@ class ServiceScope extends \Entity\Authentication\ServiceScope implements \Doctr
     public function getIsActive()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', []);
 
         return parent::getIsActive();
     }
@@ -300,7 +300,7 @@ class ServiceScope extends \Entity\Authentication\ServiceScope implements \Doctr
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -311,7 +311,7 @@ class ServiceScope extends \Entity\Authentication\ServiceScope implements \Doctr
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -322,7 +322,7 @@ class ServiceScope extends \Entity\Authentication\ServiceScope implements \Doctr
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -333,7 +333,7 @@ class ServiceScope extends \Entity\Authentication\ServiceScope implements \Doctr
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -344,7 +344,7 @@ class ServiceScope extends \Entity\Authentication\ServiceScope implements \Doctr
     public function setService(\Entity\Authentication\Service $service = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setService', array($service));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setService', [$service]);
 
         return parent::setService($service);
     }
@@ -355,7 +355,7 @@ class ServiceScope extends \Entity\Authentication\ServiceScope implements \Doctr
     public function getService()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getService', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getService', []);
 
         return parent::getService();
     }

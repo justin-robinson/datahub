@@ -36,7 +36,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'group_id', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'content_type', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'display_name', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'group_class', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'placement', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'max_instances', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_story_items', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_group_title', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_group_teaser', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_curate', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_auto', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'min_items', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'max_items', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_external_items', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_gallery_items', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_video_items', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_image_upload', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_kicker', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'use_short_headline', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'default_image_ratio', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'first_image_ratio', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'LeadinGroupPub', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'Publication');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'group_id', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'content_type', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'display_name', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'group_class', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'placement', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'max_instances', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_story_items', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_group_title', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_group_teaser', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_curate', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_auto', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'min_items', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'max_items', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_external_items', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_gallery_items', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_video_items', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_image_upload', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_kicker', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'use_short_headline', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'default_image_ratio', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'first_image_ratio', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'LeadinGroupPub', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'Publication'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'group_id', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'content_type', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'display_name', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'group_class', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'placement', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'max_instances', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_story_items', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_group_title', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_group_teaser', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_curate', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_auto', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'min_items', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'max_items', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_external_items', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_gallery_items', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_video_items', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_image_upload', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_kicker', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'use_short_headline', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'default_image_ratio', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'first_image_ratio', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'LeadinGroupPub', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'Publication');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'group_id', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'content_type', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'display_name', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'group_class', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'placement', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'max_instances', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_story_items', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_group_title', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_group_teaser', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_curate', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_auto', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'min_items', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'max_items', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_external_items', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_gallery_items', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_video_items', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_image_upload', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'allow_kicker', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'use_short_headline', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'default_image_ratio', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'first_image_ratio', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'LeadinGroupPub', '' . "\0" . 'Entity\\Cms\\LeadinGroup' . "\0" . 'Publication'];
     }
 
     /**
@@ -97,7 +97,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function getGroupId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupId', []);
 
         return parent::getGroupId();
     }
@@ -190,7 +190,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function setContentType($contentType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContentType', array($contentType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContentType', [$contentType]);
 
         return parent::setContentType($contentType);
     }
@@ -201,7 +201,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function getContentType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContentType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContentType', []);
 
         return parent::getContentType();
     }
@@ -212,7 +212,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function setDisplayName($displayName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDisplayName', array($displayName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDisplayName', [$displayName]);
 
         return parent::setDisplayName($displayName);
     }
@@ -223,7 +223,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function getDisplayName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDisplayName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDisplayName', []);
 
         return parent::getDisplayName();
     }
@@ -234,7 +234,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function setGroupClass($groupClass)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupClass', array($groupClass));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupClass', [$groupClass]);
 
         return parent::setGroupClass($groupClass);
     }
@@ -245,7 +245,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function getGroupClass()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupClass', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupClass', []);
 
         return parent::getGroupClass();
     }
@@ -256,7 +256,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function setPlacement($placement)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPlacement', array($placement));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPlacement', [$placement]);
 
         return parent::setPlacement($placement);
     }
@@ -267,7 +267,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function getPlacement()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPlacement', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPlacement', []);
 
         return parent::getPlacement();
     }
@@ -278,7 +278,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function setMaxInstances($maxInstances)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMaxInstances', array($maxInstances));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMaxInstances', [$maxInstances]);
 
         return parent::setMaxInstances($maxInstances);
     }
@@ -289,7 +289,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function getMaxInstances()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMaxInstances', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMaxInstances', []);
 
         return parent::getMaxInstances();
     }
@@ -300,7 +300,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function setAllowStoryItems($allowStoryItems)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowStoryItems', array($allowStoryItems));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowStoryItems', [$allowStoryItems]);
 
         return parent::setAllowStoryItems($allowStoryItems);
     }
@@ -311,7 +311,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function getAllowStoryItems()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowStoryItems', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowStoryItems', []);
 
         return parent::getAllowStoryItems();
     }
@@ -322,7 +322,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function setAllowGroupTitle($allowGroupTitle)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowGroupTitle', array($allowGroupTitle));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowGroupTitle', [$allowGroupTitle]);
 
         return parent::setAllowGroupTitle($allowGroupTitle);
     }
@@ -333,7 +333,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function getAllowGroupTitle()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowGroupTitle', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowGroupTitle', []);
 
         return parent::getAllowGroupTitle();
     }
@@ -344,7 +344,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function setAllowGroupTeaser($allowGroupTeaser)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowGroupTeaser', array($allowGroupTeaser));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowGroupTeaser', [$allowGroupTeaser]);
 
         return parent::setAllowGroupTeaser($allowGroupTeaser);
     }
@@ -355,7 +355,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function getAllowGroupTeaser()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowGroupTeaser', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowGroupTeaser', []);
 
         return parent::getAllowGroupTeaser();
     }
@@ -366,7 +366,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function setAllowCurate($allowCurate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowCurate', array($allowCurate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowCurate', [$allowCurate]);
 
         return parent::setAllowCurate($allowCurate);
     }
@@ -377,7 +377,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function getAllowCurate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowCurate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowCurate', []);
 
         return parent::getAllowCurate();
     }
@@ -388,7 +388,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function setAllowAuto($allowAuto)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowAuto', array($allowAuto));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowAuto', [$allowAuto]);
 
         return parent::setAllowAuto($allowAuto);
     }
@@ -399,7 +399,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function getAllowAuto()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowAuto', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowAuto', []);
 
         return parent::getAllowAuto();
     }
@@ -410,7 +410,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function setMinItems($minItems)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMinItems', array($minItems));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMinItems', [$minItems]);
 
         return parent::setMinItems($minItems);
     }
@@ -421,7 +421,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function getMinItems()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMinItems', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMinItems', []);
 
         return parent::getMinItems();
     }
@@ -432,7 +432,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function setMaxItems($maxItems)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMaxItems', array($maxItems));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMaxItems', [$maxItems]);
 
         return parent::setMaxItems($maxItems);
     }
@@ -443,7 +443,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function getMaxItems()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMaxItems', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMaxItems', []);
 
         return parent::getMaxItems();
     }
@@ -454,7 +454,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function setAllowExternalItems($allowExternalItems)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowExternalItems', array($allowExternalItems));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowExternalItems', [$allowExternalItems]);
 
         return parent::setAllowExternalItems($allowExternalItems);
     }
@@ -465,7 +465,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function getAllowExternalItems()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowExternalItems', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowExternalItems', []);
 
         return parent::getAllowExternalItems();
     }
@@ -476,7 +476,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function setAllowGalleryItems($allowGalleryItems)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowGalleryItems', array($allowGalleryItems));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowGalleryItems', [$allowGalleryItems]);
 
         return parent::setAllowGalleryItems($allowGalleryItems);
     }
@@ -487,7 +487,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function getAllowGalleryItems()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowGalleryItems', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowGalleryItems', []);
 
         return parent::getAllowGalleryItems();
     }
@@ -498,7 +498,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function setAllowVideoItems($allowVideoItems)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowVideoItems', array($allowVideoItems));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowVideoItems', [$allowVideoItems]);
 
         return parent::setAllowVideoItems($allowVideoItems);
     }
@@ -509,7 +509,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function getAllowVideoItems()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowVideoItems', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowVideoItems', []);
 
         return parent::getAllowVideoItems();
     }
@@ -520,7 +520,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function setAllowImageUpload($allowImageUpload)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowImageUpload', array($allowImageUpload));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowImageUpload', [$allowImageUpload]);
 
         return parent::setAllowImageUpload($allowImageUpload);
     }
@@ -531,7 +531,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function getAllowImageUpload()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowImageUpload', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowImageUpload', []);
 
         return parent::getAllowImageUpload();
     }
@@ -542,7 +542,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function setAllowKicker($allowKicker)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowKicker', array($allowKicker));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowKicker', [$allowKicker]);
 
         return parent::setAllowKicker($allowKicker);
     }
@@ -553,7 +553,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function getAllowKicker()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowKicker', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowKicker', []);
 
         return parent::getAllowKicker();
     }
@@ -564,7 +564,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function setUseShortHeadline($useShortHeadline)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUseShortHeadline', array($useShortHeadline));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUseShortHeadline', [$useShortHeadline]);
 
         return parent::setUseShortHeadline($useShortHeadline);
     }
@@ -575,7 +575,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function getUseShortHeadline()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUseShortHeadline', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUseShortHeadline', []);
 
         return parent::getUseShortHeadline();
     }
@@ -586,7 +586,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function setDefaultImageRatio($defaultImageRatio)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDefaultImageRatio', array($defaultImageRatio));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDefaultImageRatio', [$defaultImageRatio]);
 
         return parent::setDefaultImageRatio($defaultImageRatio);
     }
@@ -597,7 +597,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function getDefaultImageRatio()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDefaultImageRatio', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDefaultImageRatio', []);
 
         return parent::getDefaultImageRatio();
     }
@@ -608,7 +608,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function setFirstImageRatio($firstImageRatio)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFirstImageRatio', array($firstImageRatio));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFirstImageRatio', [$firstImageRatio]);
 
         return parent::setFirstImageRatio($firstImageRatio);
     }
@@ -619,7 +619,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function getFirstImageRatio()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFirstImageRatio', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFirstImageRatio', []);
 
         return parent::getFirstImageRatio();
     }
@@ -630,7 +630,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function addLeadinGroupPub(\Entity\Cms\LeadinGroupPub $leadinGroupPub)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addLeadinGroupPub', array($leadinGroupPub));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addLeadinGroupPub', [$leadinGroupPub]);
 
         return parent::addLeadinGroupPub($leadinGroupPub);
     }
@@ -641,7 +641,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function removeLeadinGroupPub(\Entity\Cms\LeadinGroupPub $leadinGroupPub)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeLeadinGroupPub', array($leadinGroupPub));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeLeadinGroupPub', [$leadinGroupPub]);
 
         return parent::removeLeadinGroupPub($leadinGroupPub);
     }
@@ -652,7 +652,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function getLeadinGroupPub()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLeadinGroupPub', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLeadinGroupPub', []);
 
         return parent::getLeadinGroupPub();
     }
@@ -663,7 +663,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function addPublication(\Entity\Cms\Publication $publication)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addPublication', array($publication));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addPublication', [$publication]);
 
         return parent::addPublication($publication);
     }
@@ -674,7 +674,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function removePublication(\Entity\Cms\Publication $publication)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removePublication', array($publication));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removePublication', [$publication]);
 
         return parent::removePublication($publication);
     }
@@ -685,7 +685,7 @@ class LeadinGroup extends \Entity\Cms\LeadinGroup implements \Doctrine\ORM\Proxy
     public function getPublication()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublication', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublication', []);
 
         return parent::getPublication();
     }

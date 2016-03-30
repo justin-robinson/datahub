@@ -36,7 +36,7 @@ class CtClick extends \Entity\Bizj\CtClick implements \Doctrine\ORM\Proxy\Proxy
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class CtClick extends \Entity\Bizj\CtClick implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\CtClick' . "\0" . 'click_id', '' . "\0" . 'Entity\\Bizj\\CtClick' . "\0" . 'campaign_id', '' . "\0" . 'Entity\\Bizj\\CtClick' . "\0" . 'source_url', '' . "\0" . 'Entity\\Bizj\\CtClick' . "\0" . 'dest_url', '' . "\0" . 'Entity\\Bizj\\CtClick' . "\0" . 'description');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\CtClick' . "\0" . 'click_id', '' . "\0" . 'Entity\\Bizj\\CtClick' . "\0" . 'campaign_id', '' . "\0" . 'Entity\\Bizj\\CtClick' . "\0" . 'source_url', '' . "\0" . 'Entity\\Bizj\\CtClick' . "\0" . 'dest_url', '' . "\0" . 'Entity\\Bizj\\CtClick' . "\0" . 'description'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\CtClick' . "\0" . 'click_id', '' . "\0" . 'Entity\\Bizj\\CtClick' . "\0" . 'campaign_id', '' . "\0" . 'Entity\\Bizj\\CtClick' . "\0" . 'source_url', '' . "\0" . 'Entity\\Bizj\\CtClick' . "\0" . 'dest_url', '' . "\0" . 'Entity\\Bizj\\CtClick' . "\0" . 'description');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\CtClick' . "\0" . 'click_id', '' . "\0" . 'Entity\\Bizj\\CtClick' . "\0" . 'campaign_id', '' . "\0" . 'Entity\\Bizj\\CtClick' . "\0" . 'source_url', '' . "\0" . 'Entity\\Bizj\\CtClick' . "\0" . 'dest_url', '' . "\0" . 'Entity\\Bizj\\CtClick' . "\0" . 'description'];
     }
 
     /**
@@ -97,7 +97,7 @@ class CtClick extends \Entity\Bizj\CtClick implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class CtClick extends \Entity\Bizj\CtClick implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class CtClick extends \Entity\Bizj\CtClick implements \Doctrine\ORM\Proxy\Proxy
     public function getClickId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClickId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClickId', []);
 
         return parent::getClickId();
     }
@@ -190,7 +190,7 @@ class CtClick extends \Entity\Bizj\CtClick implements \Doctrine\ORM\Proxy\Proxy
     public function setCampaignId($campaignId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCampaignId', array($campaignId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCampaignId', [$campaignId]);
 
         return parent::setCampaignId($campaignId);
     }
@@ -201,7 +201,7 @@ class CtClick extends \Entity\Bizj\CtClick implements \Doctrine\ORM\Proxy\Proxy
     public function getCampaignId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCampaignId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCampaignId', []);
 
         return parent::getCampaignId();
     }
@@ -212,7 +212,7 @@ class CtClick extends \Entity\Bizj\CtClick implements \Doctrine\ORM\Proxy\Proxy
     public function setSourceUrl($sourceUrl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSourceUrl', array($sourceUrl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSourceUrl', [$sourceUrl]);
 
         return parent::setSourceUrl($sourceUrl);
     }
@@ -223,7 +223,7 @@ class CtClick extends \Entity\Bizj\CtClick implements \Doctrine\ORM\Proxy\Proxy
     public function getSourceUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSourceUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSourceUrl', []);
 
         return parent::getSourceUrl();
     }
@@ -234,7 +234,7 @@ class CtClick extends \Entity\Bizj\CtClick implements \Doctrine\ORM\Proxy\Proxy
     public function setDestUrl($destUrl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDestUrl', array($destUrl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDestUrl', [$destUrl]);
 
         return parent::setDestUrl($destUrl);
     }
@@ -245,7 +245,7 @@ class CtClick extends \Entity\Bizj\CtClick implements \Doctrine\ORM\Proxy\Proxy
     public function getDestUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDestUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDestUrl', []);
 
         return parent::getDestUrl();
     }
@@ -256,7 +256,7 @@ class CtClick extends \Entity\Bizj\CtClick implements \Doctrine\ORM\Proxy\Proxy
     public function setDescription($description)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', array($description));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', [$description]);
 
         return parent::setDescription($description);
     }
@@ -267,7 +267,7 @@ class CtClick extends \Entity\Bizj\CtClick implements \Doctrine\ORM\Proxy\Proxy
     public function getDescription()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', []);
 
         return parent::getDescription();
     }

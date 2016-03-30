@@ -36,7 +36,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'md5_hash', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'media_size', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'category', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'source_file', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'expires_at', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'filename', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'height', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'width', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'is_image', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'image_format', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'mime_type', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'is_pub_restricted', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'copyright_notice', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'is_live', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'upload_date', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'MediaCrop', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'MediaMetadata', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'MediaLinks', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'MediaTags', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'UploadBatches', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'MediaPubs', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'GalleryMedia', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'Tags', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'Publications');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'md5_hash', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'media_size', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'category', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'source_file', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'expires_at', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'filename', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'height', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'width', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'is_image', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'image_format', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'mime_type', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'is_pub_restricted', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'copyright_notice', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'is_live', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'upload_date', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'MediaCrop', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'MediaMetadata', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'MediaLinks', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'MediaTags', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'UploadBatches', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'MediaPubs', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'GalleryMedia', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'Tags', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'Publications'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'md5_hash', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'media_size', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'category', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'source_file', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'expires_at', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'filename', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'height', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'width', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'is_image', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'image_format', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'mime_type', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'is_pub_restricted', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'copyright_notice', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'is_live', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'upload_date', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'MediaCrop', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'MediaMetadata', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'MediaLinks', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'MediaTags', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'UploadBatches', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'MediaPubs', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'GalleryMedia', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'Tags', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'Publications');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'md5_hash', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'media_size', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'category', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'source_file', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'expires_at', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'filename', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'height', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'width', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'is_image', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'image_format', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'mime_type', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'is_pub_restricted', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'copyright_notice', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'is_live', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'upload_date', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'MediaCrop', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'MediaMetadata', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'MediaLinks', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'MediaTags', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'UploadBatches', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'MediaPubs', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'GalleryMedia', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'Tags', '' . "\0" . 'Entity\\Medialibrary\\Media' . "\0" . 'Publications'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function getMediaId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaId', []);
 
         return parent::getMediaId();
     }
@@ -190,7 +190,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function setMd5Hash($md5Hash)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMd5Hash', array($md5Hash));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMd5Hash', [$md5Hash]);
 
         return parent::setMd5Hash($md5Hash);
     }
@@ -201,7 +201,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function getMd5Hash()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMd5Hash', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMd5Hash', []);
 
         return parent::getMd5Hash();
     }
@@ -212,7 +212,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function setMediaSize($mediaSize)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaSize', array($mediaSize));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaSize', [$mediaSize]);
 
         return parent::setMediaSize($mediaSize);
     }
@@ -223,7 +223,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function getMediaSize()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaSize', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaSize', []);
 
         return parent::getMediaSize();
     }
@@ -234,7 +234,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function setCategory($category)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCategory', array($category));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCategory', [$category]);
 
         return parent::setCategory($category);
     }
@@ -245,7 +245,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function getCategory()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategory', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategory', []);
 
         return parent::getCategory();
     }
@@ -256,7 +256,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function setSourceFile($sourceFile)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSourceFile', array($sourceFile));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSourceFile', [$sourceFile]);
 
         return parent::setSourceFile($sourceFile);
     }
@@ -267,7 +267,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function getSourceFile()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSourceFile', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSourceFile', []);
 
         return parent::getSourceFile();
     }
@@ -278,7 +278,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -289,7 +289,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -300,7 +300,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -311,7 +311,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -322,7 +322,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function setExpiresAt($expiresAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExpiresAt', array($expiresAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExpiresAt', [$expiresAt]);
 
         return parent::setExpiresAt($expiresAt);
     }
@@ -333,7 +333,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function getExpiresAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExpiresAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExpiresAt', []);
 
         return parent::getExpiresAt();
     }
@@ -344,7 +344,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function setFilename($filename)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFilename', array($filename));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFilename', [$filename]);
 
         return parent::setFilename($filename);
     }
@@ -355,7 +355,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function getFilename()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFilename', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFilename', []);
 
         return parent::getFilename();
     }
@@ -366,7 +366,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function setHeight($height)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHeight', array($height));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHeight', [$height]);
 
         return parent::setHeight($height);
     }
@@ -377,7 +377,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function getHeight()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHeight', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHeight', []);
 
         return parent::getHeight();
     }
@@ -388,7 +388,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function setWidth($width)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setWidth', array($width));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setWidth', [$width]);
 
         return parent::setWidth($width);
     }
@@ -399,7 +399,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function getWidth()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getWidth', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getWidth', []);
 
         return parent::getWidth();
     }
@@ -410,7 +410,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function setIsImage($isImage)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsImage', array($isImage));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsImage', [$isImage]);
 
         return parent::setIsImage($isImage);
     }
@@ -421,7 +421,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function getIsImage()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsImage', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsImage', []);
 
         return parent::getIsImage();
     }
@@ -432,7 +432,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function setImageFormat($imageFormat)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setImageFormat', array($imageFormat));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setImageFormat', [$imageFormat]);
 
         return parent::setImageFormat($imageFormat);
     }
@@ -443,7 +443,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function getImageFormat()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getImageFormat', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getImageFormat', []);
 
         return parent::getImageFormat();
     }
@@ -454,7 +454,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function setMimeType($mimeType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMimeType', array($mimeType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMimeType', [$mimeType]);
 
         return parent::setMimeType($mimeType);
     }
@@ -465,7 +465,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function getMimeType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMimeType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMimeType', []);
 
         return parent::getMimeType();
     }
@@ -476,7 +476,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function setIsPubRestricted($isPubRestricted)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsPubRestricted', array($isPubRestricted));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsPubRestricted', [$isPubRestricted]);
 
         return parent::setIsPubRestricted($isPubRestricted);
     }
@@ -487,7 +487,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function getIsPubRestricted()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsPubRestricted', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsPubRestricted', []);
 
         return parent::getIsPubRestricted();
     }
@@ -498,7 +498,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function setCopyrightNotice($copyrightNotice)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCopyrightNotice', array($copyrightNotice));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCopyrightNotice', [$copyrightNotice]);
 
         return parent::setCopyrightNotice($copyrightNotice);
     }
@@ -509,7 +509,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function getCopyrightNotice()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCopyrightNotice', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCopyrightNotice', []);
 
         return parent::getCopyrightNotice();
     }
@@ -520,7 +520,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function setIsLive($isLive)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsLive', array($isLive));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsLive', [$isLive]);
 
         return parent::setIsLive($isLive);
     }
@@ -531,7 +531,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function getIsLive()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsLive', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsLive', []);
 
         return parent::getIsLive();
     }
@@ -542,7 +542,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function setUploadDate($uploadDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUploadDate', array($uploadDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUploadDate', [$uploadDate]);
 
         return parent::setUploadDate($uploadDate);
     }
@@ -553,7 +553,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function getUploadDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUploadDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUploadDate', []);
 
         return parent::getUploadDate();
     }
@@ -564,7 +564,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function addMediaCrop(\Entity\Medialibrary\MediaCrop $mediaCrop)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMediaCrop', array($mediaCrop));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMediaCrop', [$mediaCrop]);
 
         return parent::addMediaCrop($mediaCrop);
     }
@@ -575,7 +575,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function removeMediaCrop(\Entity\Medialibrary\MediaCrop $mediaCrop)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMediaCrop', array($mediaCrop));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMediaCrop', [$mediaCrop]);
 
         return parent::removeMediaCrop($mediaCrop);
     }
@@ -586,7 +586,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function getMediaCrop()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaCrop', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaCrop', []);
 
         return parent::getMediaCrop();
     }
@@ -597,7 +597,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function addMediaMetadatum(\Entity\Medialibrary\MediaMetadata $mediaMetadatum)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMediaMetadatum', array($mediaMetadatum));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMediaMetadatum', [$mediaMetadatum]);
 
         return parent::addMediaMetadatum($mediaMetadatum);
     }
@@ -608,7 +608,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function removeMediaMetadatum(\Entity\Medialibrary\MediaMetadata $mediaMetadatum)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMediaMetadatum', array($mediaMetadatum));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMediaMetadatum', [$mediaMetadatum]);
 
         return parent::removeMediaMetadatum($mediaMetadatum);
     }
@@ -619,7 +619,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function getMediaMetadata()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaMetadata', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaMetadata', []);
 
         return parent::getMediaMetadata();
     }
@@ -630,7 +630,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function addMediaLink(\Entity\Medialibrary\MediaLink $mediaLink)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMediaLink', array($mediaLink));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMediaLink', [$mediaLink]);
 
         return parent::addMediaLink($mediaLink);
     }
@@ -641,7 +641,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function removeMediaLink(\Entity\Medialibrary\MediaLink $mediaLink)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMediaLink', array($mediaLink));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMediaLink', [$mediaLink]);
 
         return parent::removeMediaLink($mediaLink);
     }
@@ -652,7 +652,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function getMediaLinks()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaLinks', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaLinks', []);
 
         return parent::getMediaLinks();
     }
@@ -663,7 +663,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function addMediaTag(\Entity\Medialibrary\MediaTag $mediaTag)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMediaTag', array($mediaTag));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMediaTag', [$mediaTag]);
 
         return parent::addMediaTag($mediaTag);
     }
@@ -674,7 +674,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function removeMediaTag(\Entity\Medialibrary\MediaTag $mediaTag)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMediaTag', array($mediaTag));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMediaTag', [$mediaTag]);
 
         return parent::removeMediaTag($mediaTag);
     }
@@ -685,7 +685,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function getMediaTags()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaTags', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaTags', []);
 
         return parent::getMediaTags();
     }
@@ -696,7 +696,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function addUploadBatch(\Entity\Medialibrary\BatchMedia $uploadBatch)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addUploadBatch', array($uploadBatch));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addUploadBatch', [$uploadBatch]);
 
         return parent::addUploadBatch($uploadBatch);
     }
@@ -707,7 +707,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function removeUploadBatch(\Entity\Medialibrary\BatchMedia $uploadBatch)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeUploadBatch', array($uploadBatch));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeUploadBatch', [$uploadBatch]);
 
         return parent::removeUploadBatch($uploadBatch);
     }
@@ -718,7 +718,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function getUploadBatches()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUploadBatches', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUploadBatches', []);
 
         return parent::getUploadBatches();
     }
@@ -729,7 +729,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function addMediaPub(\Entity\Medialibrary\MediaPub $mediaPub)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMediaPub', array($mediaPub));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMediaPub', [$mediaPub]);
 
         return parent::addMediaPub($mediaPub);
     }
@@ -740,7 +740,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function removeMediaPub(\Entity\Medialibrary\MediaPub $mediaPub)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMediaPub', array($mediaPub));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMediaPub', [$mediaPub]);
 
         return parent::removeMediaPub($mediaPub);
     }
@@ -751,7 +751,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function getMediaPubs()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaPubs', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaPubs', []);
 
         return parent::getMediaPubs();
     }
@@ -762,7 +762,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function addGalleryMedia(\Entity\Medialibrary\GalleryMedia $galleryMedia)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addGalleryMedia', array($galleryMedia));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addGalleryMedia', [$galleryMedia]);
 
         return parent::addGalleryMedia($galleryMedia);
     }
@@ -773,7 +773,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function removeGalleryMedia(\Entity\Medialibrary\GalleryMedia $galleryMedia)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeGalleryMedia', array($galleryMedia));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeGalleryMedia', [$galleryMedia]);
 
         return parent::removeGalleryMedia($galleryMedia);
     }
@@ -784,7 +784,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function getGalleryMedia()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGalleryMedia', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGalleryMedia', []);
 
         return parent::getGalleryMedia();
     }
@@ -795,7 +795,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function addTag(\Entity\Medialibrary\Tag $tag)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addTag', array($tag));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addTag', [$tag]);
 
         return parent::addTag($tag);
     }
@@ -806,7 +806,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function removeTag(\Entity\Medialibrary\Tag $tag)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeTag', array($tag));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeTag', [$tag]);
 
         return parent::removeTag($tag);
     }
@@ -817,7 +817,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function getTags()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTags', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTags', []);
 
         return parent::getTags();
     }
@@ -828,7 +828,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function addPublication(\Entity\Medialibrary\Publication $publication)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addPublication', array($publication));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addPublication', [$publication]);
 
         return parent::addPublication($publication);
     }
@@ -839,7 +839,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function removePublication(\Entity\Medialibrary\Publication $publication)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removePublication', array($publication));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removePublication', [$publication]);
 
         return parent::removePublication($publication);
     }
@@ -850,7 +850,7 @@ class Media extends \Entity\Medialibrary\Media implements \Doctrine\ORM\Proxy\Pr
     public function getPublications()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublications', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublications', []);
 
         return parent::getPublications();
     }

@@ -36,7 +36,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'market_id', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'market_code', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'market_name', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'market_abbrev', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'city', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'state', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'region', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'region_objective', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'analytics_code', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'local_sales_tax', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'primary_zip_code', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'center_latitude', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'center_longitude', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'timezone', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'utc_std_offset', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'utc_dst_offset', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'payment_contact_id', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'nomination_faq', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'created_at', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'updated_at');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'market_id', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'market_code', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'market_name', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'market_abbrev', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'city', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'state', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'region', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'region_objective', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'analytics_code', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'local_sales_tax', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'primary_zip_code', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'center_latitude', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'center_longitude', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'timezone', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'utc_std_offset', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'utc_dst_offset', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'payment_contact_id', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'nomination_faq', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'created_at', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'updated_at'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'market_id', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'market_code', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'market_name', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'market_abbrev', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'city', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'state', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'region', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'region_objective', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'analytics_code', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'local_sales_tax', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'primary_zip_code', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'center_latitude', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'center_longitude', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'timezone', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'utc_std_offset', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'utc_dst_offset', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'payment_contact_id', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'nomination_faq', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'created_at', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'updated_at');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'market_id', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'market_code', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'market_name', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'market_abbrev', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'city', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'state', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'region', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'region_objective', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'analytics_code', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'local_sales_tax', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'primary_zip_code', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'center_latitude', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'center_longitude', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'timezone', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'utc_std_offset', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'utc_dst_offset', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'payment_contact_id', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'nomination_faq', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'created_at', '' . "\0" . 'Entity\\Datahub\\Market' . "\0" . 'updated_at'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function getMarketId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketId', []);
 
         return parent::getMarketId();
     }
@@ -190,7 +190,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function setMarketCode($marketCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketCode', array($marketCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketCode', [$marketCode]);
 
         return parent::setMarketCode($marketCode);
     }
@@ -201,7 +201,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function getMarketCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketCode', []);
 
         return parent::getMarketCode();
     }
@@ -212,7 +212,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function setMarketName($marketName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketName', array($marketName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketName', [$marketName]);
 
         return parent::setMarketName($marketName);
     }
@@ -223,7 +223,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function getMarketName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketName', []);
 
         return parent::getMarketName();
     }
@@ -234,7 +234,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function setMarketAbbrev($marketAbbrev)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketAbbrev', array($marketAbbrev));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketAbbrev', [$marketAbbrev]);
 
         return parent::setMarketAbbrev($marketAbbrev);
     }
@@ -245,7 +245,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function getMarketAbbrev()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketAbbrev', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketAbbrev', []);
 
         return parent::getMarketAbbrev();
     }
@@ -256,7 +256,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function setCity($city)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCity', array($city));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCity', [$city]);
 
         return parent::setCity($city);
     }
@@ -267,7 +267,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function getCity()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCity', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCity', []);
 
         return parent::getCity();
     }
@@ -278,7 +278,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function setState($state)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setState', array($state));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setState', [$state]);
 
         return parent::setState($state);
     }
@@ -289,7 +289,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function getState()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getState', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getState', []);
 
         return parent::getState();
     }
@@ -300,7 +300,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function setRegion($region)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRegion', array($region));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRegion', [$region]);
 
         return parent::setRegion($region);
     }
@@ -311,7 +311,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function getRegion()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRegion', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRegion', []);
 
         return parent::getRegion();
     }
@@ -322,7 +322,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function setRegionObjective($regionObjective)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRegionObjective', array($regionObjective));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRegionObjective', [$regionObjective]);
 
         return parent::setRegionObjective($regionObjective);
     }
@@ -333,7 +333,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function getRegionObjective()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRegionObjective', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRegionObjective', []);
 
         return parent::getRegionObjective();
     }
@@ -344,7 +344,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function setAnalyticsCode($analyticsCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAnalyticsCode', array($analyticsCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAnalyticsCode', [$analyticsCode]);
 
         return parent::setAnalyticsCode($analyticsCode);
     }
@@ -355,7 +355,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function getAnalyticsCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAnalyticsCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAnalyticsCode', []);
 
         return parent::getAnalyticsCode();
     }
@@ -366,7 +366,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function setLocalSalesTax($localSalesTax)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLocalSalesTax', array($localSalesTax));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLocalSalesTax', [$localSalesTax]);
 
         return parent::setLocalSalesTax($localSalesTax);
     }
@@ -377,7 +377,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function getLocalSalesTax()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLocalSalesTax', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLocalSalesTax', []);
 
         return parent::getLocalSalesTax();
     }
@@ -388,7 +388,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function setPrimaryZipCode($primaryZipCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPrimaryZipCode', array($primaryZipCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPrimaryZipCode', [$primaryZipCode]);
 
         return parent::setPrimaryZipCode($primaryZipCode);
     }
@@ -399,7 +399,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function getPrimaryZipCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPrimaryZipCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPrimaryZipCode', []);
 
         return parent::getPrimaryZipCode();
     }
@@ -410,7 +410,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function setCenterLatitude($centerLatitude)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCenterLatitude', array($centerLatitude));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCenterLatitude', [$centerLatitude]);
 
         return parent::setCenterLatitude($centerLatitude);
     }
@@ -421,7 +421,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function getCenterLatitude()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCenterLatitude', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCenterLatitude', []);
 
         return parent::getCenterLatitude();
     }
@@ -432,7 +432,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function setCenterLongitude($centerLongitude)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCenterLongitude', array($centerLongitude));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCenterLongitude', [$centerLongitude]);
 
         return parent::setCenterLongitude($centerLongitude);
     }
@@ -443,7 +443,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function getCenterLongitude()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCenterLongitude', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCenterLongitude', []);
 
         return parent::getCenterLongitude();
     }
@@ -454,7 +454,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function setTimezone($timezone)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTimezone', array($timezone));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTimezone', [$timezone]);
 
         return parent::setTimezone($timezone);
     }
@@ -465,7 +465,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function getTimezone()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTimezone', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTimezone', []);
 
         return parent::getTimezone();
     }
@@ -476,7 +476,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function setUtcStdOffset($utcStdOffset)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUtcStdOffset', array($utcStdOffset));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUtcStdOffset', [$utcStdOffset]);
 
         return parent::setUtcStdOffset($utcStdOffset);
     }
@@ -487,7 +487,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function getUtcStdOffset()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUtcStdOffset', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUtcStdOffset', []);
 
         return parent::getUtcStdOffset();
     }
@@ -498,7 +498,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function setUtcDstOffset($utcDstOffset)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUtcDstOffset', array($utcDstOffset));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUtcDstOffset', [$utcDstOffset]);
 
         return parent::setUtcDstOffset($utcDstOffset);
     }
@@ -509,7 +509,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function getUtcDstOffset()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUtcDstOffset', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUtcDstOffset', []);
 
         return parent::getUtcDstOffset();
     }
@@ -520,7 +520,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function setPaymentContactId($paymentContactId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPaymentContactId', array($paymentContactId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPaymentContactId', [$paymentContactId]);
 
         return parent::setPaymentContactId($paymentContactId);
     }
@@ -531,7 +531,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function getPaymentContactId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPaymentContactId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPaymentContactId', []);
 
         return parent::getPaymentContactId();
     }
@@ -542,7 +542,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function setNominationFaq($nominationFaq)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNominationFaq', array($nominationFaq));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNominationFaq', [$nominationFaq]);
 
         return parent::setNominationFaq($nominationFaq);
     }
@@ -553,7 +553,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function getNominationFaq()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNominationFaq', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNominationFaq', []);
 
         return parent::getNominationFaq();
     }
@@ -564,7 +564,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -575,7 +575,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -586,7 +586,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -597,7 +597,7 @@ class Market extends \Entity\Datahub\Market implements \Doctrine\ORM\Proxy\Proxy
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }

@@ -36,7 +36,7 @@ class PageType extends \Entity\Bizj\PageType implements \Doctrine\ORM\Proxy\Prox
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class PageType extends \Entity\Bizj\PageType implements \Doctrine\ORM\Proxy\Prox
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageType' . "\0" . 'type_id', '' . "\0" . 'Entity\\Bizj\\PageType' . "\0" . 'type_name', '' . "\0" . 'Entity\\Bizj\\PageType' . "\0" . 'description', '' . "\0" . 'Entity\\Bizj\\PageType' . "\0" . 'use_template', '' . "\0" . 'Entity\\Bizj\\PageType' . "\0" . 'active', '' . "\0" . 'Entity\\Bizj\\PageType' . "\0" . 'in_search_results');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageType' . "\0" . 'type_id', '' . "\0" . 'Entity\\Bizj\\PageType' . "\0" . 'type_name', '' . "\0" . 'Entity\\Bizj\\PageType' . "\0" . 'description', '' . "\0" . 'Entity\\Bizj\\PageType' . "\0" . 'use_template', '' . "\0" . 'Entity\\Bizj\\PageType' . "\0" . 'active', '' . "\0" . 'Entity\\Bizj\\PageType' . "\0" . 'in_search_results'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageType' . "\0" . 'type_id', '' . "\0" . 'Entity\\Bizj\\PageType' . "\0" . 'type_name', '' . "\0" . 'Entity\\Bizj\\PageType' . "\0" . 'description', '' . "\0" . 'Entity\\Bizj\\PageType' . "\0" . 'use_template', '' . "\0" . 'Entity\\Bizj\\PageType' . "\0" . 'active', '' . "\0" . 'Entity\\Bizj\\PageType' . "\0" . 'in_search_results');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageType' . "\0" . 'type_id', '' . "\0" . 'Entity\\Bizj\\PageType' . "\0" . 'type_name', '' . "\0" . 'Entity\\Bizj\\PageType' . "\0" . 'description', '' . "\0" . 'Entity\\Bizj\\PageType' . "\0" . 'use_template', '' . "\0" . 'Entity\\Bizj\\PageType' . "\0" . 'active', '' . "\0" . 'Entity\\Bizj\\PageType' . "\0" . 'in_search_results'];
     }
 
     /**
@@ -97,7 +97,7 @@ class PageType extends \Entity\Bizj\PageType implements \Doctrine\ORM\Proxy\Prox
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class PageType extends \Entity\Bizj\PageType implements \Doctrine\ORM\Proxy\Prox
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class PageType extends \Entity\Bizj\PageType implements \Doctrine\ORM\Proxy\Prox
     public function getTypeId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTypeId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTypeId', []);
 
         return parent::getTypeId();
     }
@@ -190,7 +190,7 @@ class PageType extends \Entity\Bizj\PageType implements \Doctrine\ORM\Proxy\Prox
     public function setTypeName($typeName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTypeName', array($typeName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTypeName', [$typeName]);
 
         return parent::setTypeName($typeName);
     }
@@ -201,7 +201,7 @@ class PageType extends \Entity\Bizj\PageType implements \Doctrine\ORM\Proxy\Prox
     public function getTypeName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTypeName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTypeName', []);
 
         return parent::getTypeName();
     }
@@ -212,7 +212,7 @@ class PageType extends \Entity\Bizj\PageType implements \Doctrine\ORM\Proxy\Prox
     public function setDescription($description)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', array($description));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', [$description]);
 
         return parent::setDescription($description);
     }
@@ -223,7 +223,7 @@ class PageType extends \Entity\Bizj\PageType implements \Doctrine\ORM\Proxy\Prox
     public function getDescription()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', []);
 
         return parent::getDescription();
     }
@@ -234,7 +234,7 @@ class PageType extends \Entity\Bizj\PageType implements \Doctrine\ORM\Proxy\Prox
     public function setUseTemplate($useTemplate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUseTemplate', array($useTemplate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUseTemplate', [$useTemplate]);
 
         return parent::setUseTemplate($useTemplate);
     }
@@ -245,7 +245,7 @@ class PageType extends \Entity\Bizj\PageType implements \Doctrine\ORM\Proxy\Prox
     public function getUseTemplate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUseTemplate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUseTemplate', []);
 
         return parent::getUseTemplate();
     }
@@ -256,7 +256,7 @@ class PageType extends \Entity\Bizj\PageType implements \Doctrine\ORM\Proxy\Prox
     public function setActive($active)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setActive', array($active));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setActive', [$active]);
 
         return parent::setActive($active);
     }
@@ -267,7 +267,7 @@ class PageType extends \Entity\Bizj\PageType implements \Doctrine\ORM\Proxy\Prox
     public function getActive()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getActive', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getActive', []);
 
         return parent::getActive();
     }
@@ -278,7 +278,7 @@ class PageType extends \Entity\Bizj\PageType implements \Doctrine\ORM\Proxy\Prox
     public function setInSearchResults($inSearchResults)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setInSearchResults', array($inSearchResults));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setInSearchResults', [$inSearchResults]);
 
         return parent::setInSearchResults($inSearchResults);
     }
@@ -289,7 +289,7 @@ class PageType extends \Entity\Bizj\PageType implements \Doctrine\ORM\Proxy\Prox
     public function getInSearchResults()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getInSearchResults', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getInSearchResults', []);
 
         return parent::getInSearchResults();
     }

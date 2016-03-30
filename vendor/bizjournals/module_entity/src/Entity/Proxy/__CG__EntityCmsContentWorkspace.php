@@ -36,7 +36,7 @@ class ContentWorkspace extends \Entity\Cms\ContentWorkspace implements \Doctrine
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class ContentWorkspace extends \Entity\Cms\ContentWorkspace implements \Doctrine
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Cms\\ContentWorkspace' . "\0" . 'content_id', '' . "\0" . 'Entity\\Cms\\ContentWorkspace' . "\0" . 'user_id', '' . "\0" . 'Entity\\Cms\\ContentWorkspace' . "\0" . 'user_name', '' . "\0" . 'Entity\\Cms\\ContentWorkspace' . "\0" . 'Content');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Cms\\ContentWorkspace' . "\0" . 'content_id', '' . "\0" . 'Entity\\Cms\\ContentWorkspace' . "\0" . 'user_id', '' . "\0" . 'Entity\\Cms\\ContentWorkspace' . "\0" . 'user_name', '' . "\0" . 'Entity\\Cms\\ContentWorkspace' . "\0" . 'Content'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Cms\\ContentWorkspace' . "\0" . 'content_id', '' . "\0" . 'Entity\\Cms\\ContentWorkspace' . "\0" . 'user_id', '' . "\0" . 'Entity\\Cms\\ContentWorkspace' . "\0" . 'user_name', '' . "\0" . 'Entity\\Cms\\ContentWorkspace' . "\0" . 'Content');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Cms\\ContentWorkspace' . "\0" . 'content_id', '' . "\0" . 'Entity\\Cms\\ContentWorkspace' . "\0" . 'user_id', '' . "\0" . 'Entity\\Cms\\ContentWorkspace' . "\0" . 'user_name', '' . "\0" . 'Entity\\Cms\\ContentWorkspace' . "\0" . 'Content'];
     }
 
     /**
@@ -97,7 +97,7 @@ class ContentWorkspace extends \Entity\Cms\ContentWorkspace implements \Doctrine
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class ContentWorkspace extends \Entity\Cms\ContentWorkspace implements \Doctrine
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class ContentWorkspace extends \Entity\Cms\ContentWorkspace implements \Doctrine
     public function setContentId($contentId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContentId', array($contentId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContentId', [$contentId]);
 
         return parent::setContentId($contentId);
     }
@@ -190,7 +190,7 @@ class ContentWorkspace extends \Entity\Cms\ContentWorkspace implements \Doctrine
     public function getContentId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContentId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContentId', []);
 
         return parent::getContentId();
     }
@@ -201,7 +201,7 @@ class ContentWorkspace extends \Entity\Cms\ContentWorkspace implements \Doctrine
     public function setUserId($userId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUserId', array($userId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUserId', [$userId]);
 
         return parent::setUserId($userId);
     }
@@ -212,7 +212,7 @@ class ContentWorkspace extends \Entity\Cms\ContentWorkspace implements \Doctrine
     public function getUserId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUserId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUserId', []);
 
         return parent::getUserId();
     }
@@ -223,7 +223,7 @@ class ContentWorkspace extends \Entity\Cms\ContentWorkspace implements \Doctrine
     public function setUserName($userName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUserName', array($userName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUserName', [$userName]);
 
         return parent::setUserName($userName);
     }
@@ -234,7 +234,7 @@ class ContentWorkspace extends \Entity\Cms\ContentWorkspace implements \Doctrine
     public function getUserName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUserName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUserName', []);
 
         return parent::getUserName();
     }
@@ -245,7 +245,7 @@ class ContentWorkspace extends \Entity\Cms\ContentWorkspace implements \Doctrine
     public function setContent(\Entity\Cms\Content $content = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContent', array($content));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContent', [$content]);
 
         return parent::setContent($content);
     }
@@ -256,7 +256,7 @@ class ContentWorkspace extends \Entity\Cms\ContentWorkspace implements \Doctrine
     public function getContent()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContent', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContent', []);
 
         return parent::getContent();
     }

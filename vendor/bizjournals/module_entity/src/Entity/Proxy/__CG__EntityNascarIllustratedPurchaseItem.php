@@ -36,7 +36,7 @@ class PurchaseItem extends \Entity\NascarIllustrated\PurchaseItem implements \Do
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class PurchaseItem extends \Entity\NascarIllustrated\PurchaseItem implements \Do
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'purchase_id', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'product_id', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'product_name', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'is_subscription', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'key_code', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'quantity', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'unit_price', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'unit_shipping', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'item_metadata', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'created_at', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'updated_at', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'Purchase', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'Product');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'purchase_id', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'product_id', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'product_name', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'is_subscription', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'key_code', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'quantity', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'unit_price', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'unit_shipping', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'item_metadata', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'created_at', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'updated_at', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'Purchase', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'Product'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'purchase_id', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'product_id', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'product_name', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'is_subscription', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'key_code', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'quantity', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'unit_price', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'unit_shipping', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'item_metadata', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'created_at', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'updated_at', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'Purchase', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'Product');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'purchase_id', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'product_id', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'product_name', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'is_subscription', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'key_code', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'quantity', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'unit_price', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'unit_shipping', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'item_metadata', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'created_at', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'updated_at', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'Purchase', '' . "\0" . 'Entity\\NascarIllustrated\\PurchaseItem' . "\0" . 'Product'];
     }
 
     /**
@@ -97,7 +97,7 @@ class PurchaseItem extends \Entity\NascarIllustrated\PurchaseItem implements \Do
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class PurchaseItem extends \Entity\NascarIllustrated\PurchaseItem implements \Do
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class PurchaseItem extends \Entity\NascarIllustrated\PurchaseItem implements \Do
     public function setPurchaseId($purchaseId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPurchaseId', array($purchaseId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPurchaseId', [$purchaseId]);
 
         return parent::setPurchaseId($purchaseId);
     }
@@ -190,7 +190,7 @@ class PurchaseItem extends \Entity\NascarIllustrated\PurchaseItem implements \Do
     public function getPurchaseId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPurchaseId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPurchaseId', []);
 
         return parent::getPurchaseId();
     }
@@ -201,7 +201,7 @@ class PurchaseItem extends \Entity\NascarIllustrated\PurchaseItem implements \Do
     public function setProductId($productId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductId', array($productId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductId', [$productId]);
 
         return parent::setProductId($productId);
     }
@@ -212,7 +212,7 @@ class PurchaseItem extends \Entity\NascarIllustrated\PurchaseItem implements \Do
     public function getProductId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductId', []);
 
         return parent::getProductId();
     }
@@ -223,7 +223,7 @@ class PurchaseItem extends \Entity\NascarIllustrated\PurchaseItem implements \Do
     public function setProductName($productName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductName', array($productName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductName', [$productName]);
 
         return parent::setProductName($productName);
     }
@@ -234,7 +234,7 @@ class PurchaseItem extends \Entity\NascarIllustrated\PurchaseItem implements \Do
     public function getProductName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductName', []);
 
         return parent::getProductName();
     }
@@ -245,7 +245,7 @@ class PurchaseItem extends \Entity\NascarIllustrated\PurchaseItem implements \Do
     public function setIsSubscription($isSubscription)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsSubscription', array($isSubscription));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsSubscription', [$isSubscription]);
 
         return parent::setIsSubscription($isSubscription);
     }
@@ -256,7 +256,7 @@ class PurchaseItem extends \Entity\NascarIllustrated\PurchaseItem implements \Do
     public function getIsSubscription()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsSubscription', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsSubscription', []);
 
         return parent::getIsSubscription();
     }
@@ -267,7 +267,7 @@ class PurchaseItem extends \Entity\NascarIllustrated\PurchaseItem implements \Do
     public function setKeyCode($keyCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setKeyCode', array($keyCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setKeyCode', [$keyCode]);
 
         return parent::setKeyCode($keyCode);
     }
@@ -278,7 +278,7 @@ class PurchaseItem extends \Entity\NascarIllustrated\PurchaseItem implements \Do
     public function getKeyCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getKeyCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getKeyCode', []);
 
         return parent::getKeyCode();
     }
@@ -289,7 +289,7 @@ class PurchaseItem extends \Entity\NascarIllustrated\PurchaseItem implements \Do
     public function setQuantity($quantity)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setQuantity', array($quantity));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setQuantity', [$quantity]);
 
         return parent::setQuantity($quantity);
     }
@@ -300,7 +300,7 @@ class PurchaseItem extends \Entity\NascarIllustrated\PurchaseItem implements \Do
     public function getQuantity()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQuantity', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQuantity', []);
 
         return parent::getQuantity();
     }
@@ -311,7 +311,7 @@ class PurchaseItem extends \Entity\NascarIllustrated\PurchaseItem implements \Do
     public function setUnitPrice($unitPrice)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUnitPrice', array($unitPrice));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUnitPrice', [$unitPrice]);
 
         return parent::setUnitPrice($unitPrice);
     }
@@ -322,7 +322,7 @@ class PurchaseItem extends \Entity\NascarIllustrated\PurchaseItem implements \Do
     public function getUnitPrice()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUnitPrice', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUnitPrice', []);
 
         return parent::getUnitPrice();
     }
@@ -333,7 +333,7 @@ class PurchaseItem extends \Entity\NascarIllustrated\PurchaseItem implements \Do
     public function setUnitShipping($unitShipping)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUnitShipping', array($unitShipping));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUnitShipping', [$unitShipping]);
 
         return parent::setUnitShipping($unitShipping);
     }
@@ -344,7 +344,7 @@ class PurchaseItem extends \Entity\NascarIllustrated\PurchaseItem implements \Do
     public function getUnitShipping()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUnitShipping', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUnitShipping', []);
 
         return parent::getUnitShipping();
     }
@@ -355,7 +355,7 @@ class PurchaseItem extends \Entity\NascarIllustrated\PurchaseItem implements \Do
     public function setItemMetadata($itemMetadata)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setItemMetadata', array($itemMetadata));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setItemMetadata', [$itemMetadata]);
 
         return parent::setItemMetadata($itemMetadata);
     }
@@ -366,7 +366,7 @@ class PurchaseItem extends \Entity\NascarIllustrated\PurchaseItem implements \Do
     public function getItemMetadata()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getItemMetadata', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getItemMetadata', []);
 
         return parent::getItemMetadata();
     }
@@ -377,7 +377,7 @@ class PurchaseItem extends \Entity\NascarIllustrated\PurchaseItem implements \Do
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -388,7 +388,7 @@ class PurchaseItem extends \Entity\NascarIllustrated\PurchaseItem implements \Do
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -399,7 +399,7 @@ class PurchaseItem extends \Entity\NascarIllustrated\PurchaseItem implements \Do
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -410,7 +410,7 @@ class PurchaseItem extends \Entity\NascarIllustrated\PurchaseItem implements \Do
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -421,7 +421,7 @@ class PurchaseItem extends \Entity\NascarIllustrated\PurchaseItem implements \Do
     public function setPurchase(\Entity\NascarIllustrated\Purchase $purchase = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPurchase', array($purchase));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPurchase', [$purchase]);
 
         return parent::setPurchase($purchase);
     }
@@ -432,7 +432,7 @@ class PurchaseItem extends \Entity\NascarIllustrated\PurchaseItem implements \Do
     public function getPurchase()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPurchase', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPurchase', []);
 
         return parent::getPurchase();
     }
@@ -443,7 +443,7 @@ class PurchaseItem extends \Entity\NascarIllustrated\PurchaseItem implements \Do
     public function setProduct(\Entity\NascarIllustrated\Product $product = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProduct', array($product));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProduct', [$product]);
 
         return parent::setProduct($product);
     }
@@ -454,7 +454,7 @@ class PurchaseItem extends \Entity\NascarIllustrated\PurchaseItem implements \Do
     public function getProduct()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProduct', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProduct', []);
 
         return parent::getProduct();
     }

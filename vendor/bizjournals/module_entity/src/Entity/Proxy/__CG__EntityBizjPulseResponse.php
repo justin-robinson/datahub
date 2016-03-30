@@ -36,7 +36,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'response_id', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'pulse_id', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'market_id', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'uin', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'ip_address', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'score', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'rating', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'is_complete', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'is_invalid', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'is_geocoded', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'postal_code', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'state_province', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'country', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'ResponseData', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'Pulse');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'response_id', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'pulse_id', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'market_id', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'uin', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'ip_address', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'score', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'rating', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'is_complete', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'is_invalid', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'is_geocoded', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'postal_code', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'state_province', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'country', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'ResponseData', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'Pulse'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'response_id', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'pulse_id', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'market_id', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'uin', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'ip_address', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'score', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'rating', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'is_complete', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'is_invalid', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'is_geocoded', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'postal_code', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'state_province', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'country', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'ResponseData', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'Pulse');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'response_id', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'pulse_id', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'market_id', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'uin', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'ip_address', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'score', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'rating', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'is_complete', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'is_invalid', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'is_geocoded', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'postal_code', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'state_province', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'country', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'ResponseData', '' . "\0" . 'Entity\\Bizj\\PulseResponse' . "\0" . 'Pulse'];
     }
 
     /**
@@ -97,7 +97,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function getResponseId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getResponseId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getResponseId', []);
 
         return parent::getResponseId();
     }
@@ -190,7 +190,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function setPulseId($pulseId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPulseId', array($pulseId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPulseId', [$pulseId]);
 
         return parent::setPulseId($pulseId);
     }
@@ -201,7 +201,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function getPulseId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPulseId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPulseId', []);
 
         return parent::getPulseId();
     }
@@ -212,7 +212,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function setMarketId($marketId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketId', array($marketId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketId', [$marketId]);
 
         return parent::setMarketId($marketId);
     }
@@ -223,7 +223,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function getMarketId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketId', []);
 
         return parent::getMarketId();
     }
@@ -234,7 +234,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function setUin($uin)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUin', array($uin));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUin', [$uin]);
 
         return parent::setUin($uin);
     }
@@ -245,7 +245,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function getUin()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUin', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUin', []);
 
         return parent::getUin();
     }
@@ -256,7 +256,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function setIpAddress($ipAddress)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIpAddress', array($ipAddress));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIpAddress', [$ipAddress]);
 
         return parent::setIpAddress($ipAddress);
     }
@@ -267,7 +267,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function getIpAddress()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIpAddress', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIpAddress', []);
 
         return parent::getIpAddress();
     }
@@ -278,7 +278,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function setScore($score)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setScore', array($score));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setScore', [$score]);
 
         return parent::setScore($score);
     }
@@ -289,7 +289,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function getScore()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getScore', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getScore', []);
 
         return parent::getScore();
     }
@@ -300,7 +300,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function setRating($rating)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRating', array($rating));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRating', [$rating]);
 
         return parent::setRating($rating);
     }
@@ -311,7 +311,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function getRating()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRating', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRating', []);
 
         return parent::getRating();
     }
@@ -322,7 +322,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function setIsComplete($isComplete)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsComplete', array($isComplete));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsComplete', [$isComplete]);
 
         return parent::setIsComplete($isComplete);
     }
@@ -333,7 +333,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function getIsComplete()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsComplete', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsComplete', []);
 
         return parent::getIsComplete();
     }
@@ -344,7 +344,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function setIsInvalid($isInvalid)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsInvalid', array($isInvalid));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsInvalid', [$isInvalid]);
 
         return parent::setIsInvalid($isInvalid);
     }
@@ -355,7 +355,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function getIsInvalid()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsInvalid', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsInvalid', []);
 
         return parent::getIsInvalid();
     }
@@ -366,7 +366,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function setIsGeocoded($isGeocoded)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsGeocoded', array($isGeocoded));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsGeocoded', [$isGeocoded]);
 
         return parent::setIsGeocoded($isGeocoded);
     }
@@ -377,7 +377,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function getIsGeocoded()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsGeocoded', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsGeocoded', []);
 
         return parent::getIsGeocoded();
     }
@@ -388,7 +388,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function setPostalCode($postalCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPostalCode', array($postalCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPostalCode', [$postalCode]);
 
         return parent::setPostalCode($postalCode);
     }
@@ -399,7 +399,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function getPostalCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPostalCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPostalCode', []);
 
         return parent::getPostalCode();
     }
@@ -410,7 +410,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function setStateProvince($stateProvince)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStateProvince', array($stateProvince));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStateProvince', [$stateProvince]);
 
         return parent::setStateProvince($stateProvince);
     }
@@ -421,7 +421,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function getStateProvince()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStateProvince', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStateProvince', []);
 
         return parent::getStateProvince();
     }
@@ -432,7 +432,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function setCountry($country)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountry', array($country));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountry', [$country]);
 
         return parent::setCountry($country);
     }
@@ -443,7 +443,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function getCountry()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountry', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountry', []);
 
         return parent::getCountry();
     }
@@ -454,7 +454,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -465,7 +465,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -476,7 +476,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -487,7 +487,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -498,7 +498,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function addResponseDatum(\Entity\Bizj\PulseResponseData $responseDatum)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addResponseDatum', array($responseDatum));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addResponseDatum', [$responseDatum]);
 
         return parent::addResponseDatum($responseDatum);
     }
@@ -509,7 +509,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function removeResponseDatum(\Entity\Bizj\PulseResponseData $responseDatum)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeResponseDatum', array($responseDatum));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeResponseDatum', [$responseDatum]);
 
         return parent::removeResponseDatum($responseDatum);
     }
@@ -520,7 +520,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function getResponseData()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getResponseData', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getResponseData', []);
 
         return parent::getResponseData();
     }
@@ -531,7 +531,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function setPulse(\Entity\Bizj\Pulse $pulse = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPulse', array($pulse));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPulse', [$pulse]);
 
         return parent::setPulse($pulse);
     }
@@ -542,7 +542,7 @@ class PulseResponse extends \Entity\Bizj\PulseResponse implements \Doctrine\ORM\
     public function getPulse()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPulse', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPulse', []);
 
         return parent::getPulse();
     }

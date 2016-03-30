@@ -163,11 +163,17 @@ class Company extends \Entity\Entity\Base
     private $Contacts;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $CompanyMeroveusIndustries;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->Contacts = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->CompanyMeroveusIndustries = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -909,4 +915,39 @@ class Company extends \Entity\Entity\Base
     {
         return $this->Contacts;
     }
+
+    /**
+     * Add companyMeroveusIndustry
+     *
+     * @param \Entity\Datahub\CompanyMeroveusIndustry $companyMeroveusIndustry
+     *
+     * @return Company
+     */
+    public function addCompanyMeroveusIndustry(\Entity\Datahub\CompanyMeroveusIndustry $companyMeroveusIndustry)
+    {
+        $this->CompanyMeroveusIndustries[] = $companyMeroveusIndustry;
+
+        return $this;
+    }
+
+    /**
+     * Remove companyMeroveusIndustry
+     *
+     * @param \Entity\Datahub\CompanyMeroveusIndustry $companyMeroveusIndustry
+     */
+    public function removeCompanyMeroveusIndustry(\Entity\Datahub\CompanyMeroveusIndustry $companyMeroveusIndustry)
+    {
+        $this->CompanyMeroveusIndustries->removeElement($companyMeroveusIndustry);
+    }
+
+    /**
+     * Get companyMeroveusIndustries
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCompanyMeroveusIndustries()
+    {
+        return $this->CompanyMeroveusIndustries;
+    }
 }
+

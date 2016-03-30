@@ -36,7 +36,7 @@ class StateList extends \Entity\NascarIllustrated\StateList implements \Doctrine
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class StateList extends \Entity\NascarIllustrated\StateList implements \Doctrine
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\StateList' . "\0" . 'state_code', '' . "\0" . 'Entity\\NascarIllustrated\\StateList' . "\0" . 'state_name', '' . "\0" . 'Entity\\NascarIllustrated\\StateList' . "\0" . 'is_active', '' . "\0" . 'Entity\\NascarIllustrated\\StateList' . "\0" . 'ord');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\StateList' . "\0" . 'state_code', '' . "\0" . 'Entity\\NascarIllustrated\\StateList' . "\0" . 'state_name', '' . "\0" . 'Entity\\NascarIllustrated\\StateList' . "\0" . 'is_active', '' . "\0" . 'Entity\\NascarIllustrated\\StateList' . "\0" . 'ord'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\StateList' . "\0" . 'state_code', '' . "\0" . 'Entity\\NascarIllustrated\\StateList' . "\0" . 'state_name', '' . "\0" . 'Entity\\NascarIllustrated\\StateList' . "\0" . 'is_active', '' . "\0" . 'Entity\\NascarIllustrated\\StateList' . "\0" . 'ord');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\StateList' . "\0" . 'state_code', '' . "\0" . 'Entity\\NascarIllustrated\\StateList' . "\0" . 'state_name', '' . "\0" . 'Entity\\NascarIllustrated\\StateList' . "\0" . 'is_active', '' . "\0" . 'Entity\\NascarIllustrated\\StateList' . "\0" . 'ord'];
     }
 
     /**
@@ -97,7 +97,7 @@ class StateList extends \Entity\NascarIllustrated\StateList implements \Doctrine
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class StateList extends \Entity\NascarIllustrated\StateList implements \Doctrine
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class StateList extends \Entity\NascarIllustrated\StateList implements \Doctrine
     public function setStateCode($stateCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStateCode', array($stateCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStateCode', [$stateCode]);
 
         return parent::setStateCode($stateCode);
     }
@@ -190,7 +190,7 @@ class StateList extends \Entity\NascarIllustrated\StateList implements \Doctrine
     public function getStateCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStateCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStateCode', []);
 
         return parent::getStateCode();
     }
@@ -201,7 +201,7 @@ class StateList extends \Entity\NascarIllustrated\StateList implements \Doctrine
     public function setStateName($stateName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStateName', array($stateName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStateName', [$stateName]);
 
         return parent::setStateName($stateName);
     }
@@ -212,7 +212,7 @@ class StateList extends \Entity\NascarIllustrated\StateList implements \Doctrine
     public function getStateName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStateName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStateName', []);
 
         return parent::getStateName();
     }
@@ -223,7 +223,7 @@ class StateList extends \Entity\NascarIllustrated\StateList implements \Doctrine
     public function setIsActive($isActive)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', array($isActive));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', [$isActive]);
 
         return parent::setIsActive($isActive);
     }
@@ -234,7 +234,7 @@ class StateList extends \Entity\NascarIllustrated\StateList implements \Doctrine
     public function getIsActive()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', []);
 
         return parent::getIsActive();
     }
@@ -245,7 +245,7 @@ class StateList extends \Entity\NascarIllustrated\StateList implements \Doctrine
     public function setOrd($ord)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrd', array($ord));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrd', [$ord]);
 
         return parent::setOrd($ord);
     }
@@ -256,7 +256,7 @@ class StateList extends \Entity\NascarIllustrated\StateList implements \Doctrine
     public function getOrd()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrd', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrd', []);
 
         return parent::getOrd();
     }

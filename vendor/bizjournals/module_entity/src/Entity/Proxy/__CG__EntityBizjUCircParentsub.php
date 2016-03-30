@@ -36,7 +36,7 @@ class UCircParentsub extends \Entity\Bizj\UCircParentsub implements \Doctrine\OR
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class UCircParentsub extends \Entity\Bizj\UCircParentsub implements \Doctrine\OR
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\UCircParentsub' . "\0" . 'user_id', '' . "\0" . 'Entity\\Bizj\\UCircParentsub' . "\0" . 'parent_id', '' . "\0" . 'Entity\\Bizj\\UCircParentsub' . "\0" . 'id');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\UCircParentsub' . "\0" . 'user_id', '' . "\0" . 'Entity\\Bizj\\UCircParentsub' . "\0" . 'parent_id', '' . "\0" . 'Entity\\Bizj\\UCircParentsub' . "\0" . 'id'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\UCircParentsub' . "\0" . 'user_id', '' . "\0" . 'Entity\\Bizj\\UCircParentsub' . "\0" . 'parent_id', '' . "\0" . 'Entity\\Bizj\\UCircParentsub' . "\0" . 'id');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\UCircParentsub' . "\0" . 'user_id', '' . "\0" . 'Entity\\Bizj\\UCircParentsub' . "\0" . 'parent_id', '' . "\0" . 'Entity\\Bizj\\UCircParentsub' . "\0" . 'id'];
     }
 
     /**
@@ -97,7 +97,7 @@ class UCircParentsub extends \Entity\Bizj\UCircParentsub implements \Doctrine\OR
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class UCircParentsub extends \Entity\Bizj\UCircParentsub implements \Doctrine\OR
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class UCircParentsub extends \Entity\Bizj\UCircParentsub implements \Doctrine\OR
     public function setUserId($userId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUserId', array($userId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUserId', [$userId]);
 
         return parent::setUserId($userId);
     }
@@ -190,7 +190,7 @@ class UCircParentsub extends \Entity\Bizj\UCircParentsub implements \Doctrine\OR
     public function getUserId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUserId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUserId', []);
 
         return parent::getUserId();
     }
@@ -201,7 +201,7 @@ class UCircParentsub extends \Entity\Bizj\UCircParentsub implements \Doctrine\OR
     public function setParentId($parentId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParentId', array($parentId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParentId', [$parentId]);
 
         return parent::setParentId($parentId);
     }
@@ -212,7 +212,7 @@ class UCircParentsub extends \Entity\Bizj\UCircParentsub implements \Doctrine\OR
     public function getParentId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParentId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParentId', []);
 
         return parent::getParentId();
     }
@@ -227,7 +227,7 @@ class UCircParentsub extends \Entity\Bizj\UCircParentsub implements \Doctrine\OR
         }
 
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }

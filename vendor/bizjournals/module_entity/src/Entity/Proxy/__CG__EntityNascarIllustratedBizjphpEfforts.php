@@ -36,7 +36,7 @@ class BizjphpEfforts extends \Entity\NascarIllustrated\BizjphpEfforts implements
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class BizjphpEfforts extends \Entity\NascarIllustrated\BizjphpEfforts implements
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'market_code', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'subscription_number', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'source_code', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'effort_number', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'zip', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'start_date', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'end_date', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'billing_data', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'rate_data', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'premium_code', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'copies', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'finder');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'market_code', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'subscription_number', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'source_code', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'effort_number', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'zip', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'start_date', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'end_date', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'billing_data', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'rate_data', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'premium_code', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'copies', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'finder'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'market_code', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'subscription_number', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'source_code', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'effort_number', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'zip', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'start_date', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'end_date', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'billing_data', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'rate_data', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'premium_code', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'copies', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'finder');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'market_code', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'subscription_number', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'source_code', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'effort_number', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'zip', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'start_date', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'end_date', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'billing_data', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'rate_data', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'premium_code', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'copies', '' . "\0" . 'Entity\\NascarIllustrated\\BizjphpEfforts' . "\0" . 'finder'];
     }
 
     /**
@@ -97,7 +97,7 @@ class BizjphpEfforts extends \Entity\NascarIllustrated\BizjphpEfforts implements
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class BizjphpEfforts extends \Entity\NascarIllustrated\BizjphpEfforts implements
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class BizjphpEfforts extends \Entity\NascarIllustrated\BizjphpEfforts implements
     public function setMarketCode($marketCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketCode', array($marketCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketCode', [$marketCode]);
 
         return parent::setMarketCode($marketCode);
     }
@@ -190,7 +190,7 @@ class BizjphpEfforts extends \Entity\NascarIllustrated\BizjphpEfforts implements
     public function getMarketCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketCode', []);
 
         return parent::getMarketCode();
     }
@@ -201,7 +201,7 @@ class BizjphpEfforts extends \Entity\NascarIllustrated\BizjphpEfforts implements
     public function setSubscriptionNumber($subscriptionNumber)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSubscriptionNumber', array($subscriptionNumber));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSubscriptionNumber', [$subscriptionNumber]);
 
         return parent::setSubscriptionNumber($subscriptionNumber);
     }
@@ -212,7 +212,7 @@ class BizjphpEfforts extends \Entity\NascarIllustrated\BizjphpEfforts implements
     public function getSubscriptionNumber()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSubscriptionNumber', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSubscriptionNumber', []);
 
         return parent::getSubscriptionNumber();
     }
@@ -223,7 +223,7 @@ class BizjphpEfforts extends \Entity\NascarIllustrated\BizjphpEfforts implements
     public function setSourceCode($sourceCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSourceCode', array($sourceCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSourceCode', [$sourceCode]);
 
         return parent::setSourceCode($sourceCode);
     }
@@ -234,7 +234,7 @@ class BizjphpEfforts extends \Entity\NascarIllustrated\BizjphpEfforts implements
     public function getSourceCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSourceCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSourceCode', []);
 
         return parent::getSourceCode();
     }
@@ -245,7 +245,7 @@ class BizjphpEfforts extends \Entity\NascarIllustrated\BizjphpEfforts implements
     public function setEffortNumber($effortNumber)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEffortNumber', array($effortNumber));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEffortNumber', [$effortNumber]);
 
         return parent::setEffortNumber($effortNumber);
     }
@@ -256,7 +256,7 @@ class BizjphpEfforts extends \Entity\NascarIllustrated\BizjphpEfforts implements
     public function getEffortNumber()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEffortNumber', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEffortNumber', []);
 
         return parent::getEffortNumber();
     }
@@ -267,7 +267,7 @@ class BizjphpEfforts extends \Entity\NascarIllustrated\BizjphpEfforts implements
     public function setZip($zip)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setZip', array($zip));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setZip', [$zip]);
 
         return parent::setZip($zip);
     }
@@ -278,7 +278,7 @@ class BizjphpEfforts extends \Entity\NascarIllustrated\BizjphpEfforts implements
     public function getZip()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getZip', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getZip', []);
 
         return parent::getZip();
     }
@@ -289,7 +289,7 @@ class BizjphpEfforts extends \Entity\NascarIllustrated\BizjphpEfforts implements
     public function setStartDate($startDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStartDate', array($startDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStartDate', [$startDate]);
 
         return parent::setStartDate($startDate);
     }
@@ -300,7 +300,7 @@ class BizjphpEfforts extends \Entity\NascarIllustrated\BizjphpEfforts implements
     public function getStartDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStartDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStartDate', []);
 
         return parent::getStartDate();
     }
@@ -311,7 +311,7 @@ class BizjphpEfforts extends \Entity\NascarIllustrated\BizjphpEfforts implements
     public function setEndDate($endDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEndDate', array($endDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEndDate', [$endDate]);
 
         return parent::setEndDate($endDate);
     }
@@ -322,7 +322,7 @@ class BizjphpEfforts extends \Entity\NascarIllustrated\BizjphpEfforts implements
     public function getEndDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEndDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEndDate', []);
 
         return parent::getEndDate();
     }
@@ -333,7 +333,7 @@ class BizjphpEfforts extends \Entity\NascarIllustrated\BizjphpEfforts implements
     public function setBillingData($billingData)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBillingData', array($billingData));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBillingData', [$billingData]);
 
         return parent::setBillingData($billingData);
     }
@@ -344,7 +344,7 @@ class BizjphpEfforts extends \Entity\NascarIllustrated\BizjphpEfforts implements
     public function getBillingData()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBillingData', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBillingData', []);
 
         return parent::getBillingData();
     }
@@ -355,7 +355,7 @@ class BizjphpEfforts extends \Entity\NascarIllustrated\BizjphpEfforts implements
     public function setRateData($rateData)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRateData', array($rateData));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRateData', [$rateData]);
 
         return parent::setRateData($rateData);
     }
@@ -366,7 +366,7 @@ class BizjphpEfforts extends \Entity\NascarIllustrated\BizjphpEfforts implements
     public function getRateData()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRateData', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRateData', []);
 
         return parent::getRateData();
     }
@@ -377,7 +377,7 @@ class BizjphpEfforts extends \Entity\NascarIllustrated\BizjphpEfforts implements
     public function setPremiumCode($premiumCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPremiumCode', array($premiumCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPremiumCode', [$premiumCode]);
 
         return parent::setPremiumCode($premiumCode);
     }
@@ -388,7 +388,7 @@ class BizjphpEfforts extends \Entity\NascarIllustrated\BizjphpEfforts implements
     public function getPremiumCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPremiumCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPremiumCode', []);
 
         return parent::getPremiumCode();
     }
@@ -399,7 +399,7 @@ class BizjphpEfforts extends \Entity\NascarIllustrated\BizjphpEfforts implements
     public function setCopies($copies)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCopies', array($copies));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCopies', [$copies]);
 
         return parent::setCopies($copies);
     }
@@ -410,7 +410,7 @@ class BizjphpEfforts extends \Entity\NascarIllustrated\BizjphpEfforts implements
     public function getCopies()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCopies', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCopies', []);
 
         return parent::getCopies();
     }
@@ -421,7 +421,7 @@ class BizjphpEfforts extends \Entity\NascarIllustrated\BizjphpEfforts implements
     public function setFinder($finder)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFinder', array($finder));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFinder', [$finder]);
 
         return parent::setFinder($finder);
     }
@@ -432,7 +432,7 @@ class BizjphpEfforts extends \Entity\NascarIllustrated\BizjphpEfforts implements
     public function getFinder()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFinder', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFinder', []);
 
         return parent::getFinder();
     }

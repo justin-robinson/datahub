@@ -36,7 +36,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'ad_id', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'product_id', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'placement', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'start_date', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'end_date', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'sponsor_name', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'sponsor_link', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'tracking_pixel', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'image_url', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'ad_headline', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'ad_text', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'call_to_action', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'approval', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'c_time', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'Products');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'ad_id', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'product_id', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'placement', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'start_date', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'end_date', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'sponsor_name', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'sponsor_link', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'tracking_pixel', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'image_url', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'ad_headline', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'ad_text', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'call_to_action', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'approval', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'c_time', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'Products'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'ad_id', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'product_id', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'placement', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'start_date', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'end_date', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'sponsor_name', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'sponsor_link', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'tracking_pixel', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'image_url', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'ad_headline', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'ad_text', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'call_to_action', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'approval', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'c_time', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'Products');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'ad_id', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'product_id', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'placement', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'start_date', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'end_date', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'sponsor_name', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'sponsor_link', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'tracking_pixel', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'image_url', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'ad_headline', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'ad_text', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'call_to_action', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'approval', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'c_time', '' . "\0" . 'Entity\\Email\\EmailAds' . "\0" . 'Products'];
     }
 
     /**
@@ -97,7 +97,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
     public function getAdId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAdId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAdId', []);
 
         return parent::getAdId();
     }
@@ -190,7 +190,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
     public function setProductId($productId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductId', array($productId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductId', [$productId]);
 
         return parent::setProductId($productId);
     }
@@ -201,7 +201,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
     public function getProductId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductId', []);
 
         return parent::getProductId();
     }
@@ -212,7 +212,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
     public function setPlacement($placement)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPlacement', array($placement));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPlacement', [$placement]);
 
         return parent::setPlacement($placement);
     }
@@ -223,7 +223,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
     public function getPlacement()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPlacement', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPlacement', []);
 
         return parent::getPlacement();
     }
@@ -234,7 +234,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
     public function setStartDate($startDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStartDate', array($startDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStartDate', [$startDate]);
 
         return parent::setStartDate($startDate);
     }
@@ -245,7 +245,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
     public function getStartDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStartDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStartDate', []);
 
         return parent::getStartDate();
     }
@@ -256,7 +256,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
     public function setEndDate($endDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEndDate', array($endDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEndDate', [$endDate]);
 
         return parent::setEndDate($endDate);
     }
@@ -267,7 +267,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
     public function getEndDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEndDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEndDate', []);
 
         return parent::getEndDate();
     }
@@ -278,7 +278,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
     public function setSponsorName($sponsorName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSponsorName', array($sponsorName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSponsorName', [$sponsorName]);
 
         return parent::setSponsorName($sponsorName);
     }
@@ -289,7 +289,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
     public function getSponsorName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSponsorName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSponsorName', []);
 
         return parent::getSponsorName();
     }
@@ -300,7 +300,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
     public function setSponsorLink($sponsorLink)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSponsorLink', array($sponsorLink));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSponsorLink', [$sponsorLink]);
 
         return parent::setSponsorLink($sponsorLink);
     }
@@ -311,7 +311,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
     public function getSponsorLink()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSponsorLink', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSponsorLink', []);
 
         return parent::getSponsorLink();
     }
@@ -322,7 +322,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
     public function setTrackingPixel($trackingPixel)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTrackingPixel', array($trackingPixel));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTrackingPixel', [$trackingPixel]);
 
         return parent::setTrackingPixel($trackingPixel);
     }
@@ -333,7 +333,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
     public function getTrackingPixel()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTrackingPixel', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTrackingPixel', []);
 
         return parent::getTrackingPixel();
     }
@@ -344,7 +344,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
     public function setImageUrl($imageUrl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setImageUrl', array($imageUrl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setImageUrl', [$imageUrl]);
 
         return parent::setImageUrl($imageUrl);
     }
@@ -355,7 +355,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
     public function getImageUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getImageUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getImageUrl', []);
 
         return parent::getImageUrl();
     }
@@ -366,7 +366,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
     public function setAdHeadline($adHeadline)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAdHeadline', array($adHeadline));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAdHeadline', [$adHeadline]);
 
         return parent::setAdHeadline($adHeadline);
     }
@@ -377,7 +377,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
     public function getAdHeadline()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAdHeadline', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAdHeadline', []);
 
         return parent::getAdHeadline();
     }
@@ -388,7 +388,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
     public function setAdText($adText)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAdText', array($adText));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAdText', [$adText]);
 
         return parent::setAdText($adText);
     }
@@ -399,7 +399,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
     public function getAdText()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAdText', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAdText', []);
 
         return parent::getAdText();
     }
@@ -410,7 +410,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
     public function setCallToAction($callToAction)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCallToAction', array($callToAction));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCallToAction', [$callToAction]);
 
         return parent::setCallToAction($callToAction);
     }
@@ -421,7 +421,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
     public function getCallToAction()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCallToAction', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCallToAction', []);
 
         return parent::getCallToAction();
     }
@@ -432,7 +432,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
     public function setApproval($approval)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setApproval', array($approval));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setApproval', [$approval]);
 
         return parent::setApproval($approval);
     }
@@ -443,7 +443,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
     public function getApproval()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getApproval', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getApproval', []);
 
         return parent::getApproval();
     }
@@ -454,7 +454,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
     public function setCTime($cTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCTime', array($cTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCTime', [$cTime]);
 
         return parent::setCTime($cTime);
     }
@@ -465,7 +465,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
     public function getCTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCTime', []);
 
         return parent::getCTime();
     }
@@ -476,7 +476,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
     public function setProducts(\Entity\Email\EmailType $products = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProducts', array($products));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProducts', [$products]);
 
         return parent::setProducts($products);
     }
@@ -487,7 +487,7 @@ class EmailAds extends \Entity\Email\EmailAds implements \Doctrine\ORM\Proxy\Pro
     public function getProducts()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProducts', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProducts', []);
 
         return parent::getProducts();
     }

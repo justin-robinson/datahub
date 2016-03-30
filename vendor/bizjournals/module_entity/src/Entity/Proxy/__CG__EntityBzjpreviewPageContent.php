@@ -36,7 +36,7 @@ class PageContent extends \Entity\Bzjpreview\PageContent implements \Doctrine\OR
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class PageContent extends \Entity\Bzjpreview\PageContent implements \Doctrine\OR
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PageContent' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bzjpreview\\PageContent' . "\0" . 'ord', '' . "\0" . 'Entity\\Bzjpreview\\PageContent' . "\0" . 'content_type', '' . "\0" . 'Entity\\Bzjpreview\\PageContent' . "\0" . 'content_html', '' . "\0" . 'Entity\\Bzjpreview\\PageContent' . "\0" . 'word_count', '' . "\0" . 'Entity\\Bzjpreview\\PageContent' . "\0" . 'Page');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PageContent' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bzjpreview\\PageContent' . "\0" . 'ord', '' . "\0" . 'Entity\\Bzjpreview\\PageContent' . "\0" . 'content_type', '' . "\0" . 'Entity\\Bzjpreview\\PageContent' . "\0" . 'content_html', '' . "\0" . 'Entity\\Bzjpreview\\PageContent' . "\0" . 'word_count', '' . "\0" . 'Entity\\Bzjpreview\\PageContent' . "\0" . 'Page'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PageContent' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bzjpreview\\PageContent' . "\0" . 'ord', '' . "\0" . 'Entity\\Bzjpreview\\PageContent' . "\0" . 'content_type', '' . "\0" . 'Entity\\Bzjpreview\\PageContent' . "\0" . 'content_html', '' . "\0" . 'Entity\\Bzjpreview\\PageContent' . "\0" . 'word_count', '' . "\0" . 'Entity\\Bzjpreview\\PageContent' . "\0" . 'Page');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PageContent' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bzjpreview\\PageContent' . "\0" . 'ord', '' . "\0" . 'Entity\\Bzjpreview\\PageContent' . "\0" . 'content_type', '' . "\0" . 'Entity\\Bzjpreview\\PageContent' . "\0" . 'content_html', '' . "\0" . 'Entity\\Bzjpreview\\PageContent' . "\0" . 'word_count', '' . "\0" . 'Entity\\Bzjpreview\\PageContent' . "\0" . 'Page'];
     }
 
     /**
@@ -97,7 +97,7 @@ class PageContent extends \Entity\Bzjpreview\PageContent implements \Doctrine\OR
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class PageContent extends \Entity\Bzjpreview\PageContent implements \Doctrine\OR
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class PageContent extends \Entity\Bzjpreview\PageContent implements \Doctrine\OR
     public function setPageId($pageId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPageId', array($pageId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPageId', [$pageId]);
 
         return parent::setPageId($pageId);
     }
@@ -190,7 +190,7 @@ class PageContent extends \Entity\Bzjpreview\PageContent implements \Doctrine\OR
     public function getPageId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageId', []);
 
         return parent::getPageId();
     }
@@ -201,7 +201,7 @@ class PageContent extends \Entity\Bzjpreview\PageContent implements \Doctrine\OR
     public function setOrd($ord)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrd', array($ord));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrd', [$ord]);
 
         return parent::setOrd($ord);
     }
@@ -216,7 +216,7 @@ class PageContent extends \Entity\Bzjpreview\PageContent implements \Doctrine\OR
         }
 
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrd', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrd', []);
 
         return parent::getOrd();
     }
@@ -227,7 +227,7 @@ class PageContent extends \Entity\Bzjpreview\PageContent implements \Doctrine\OR
     public function setContentType($contentType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContentType', array($contentType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContentType', [$contentType]);
 
         return parent::setContentType($contentType);
     }
@@ -238,7 +238,7 @@ class PageContent extends \Entity\Bzjpreview\PageContent implements \Doctrine\OR
     public function getContentType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContentType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContentType', []);
 
         return parent::getContentType();
     }
@@ -249,7 +249,7 @@ class PageContent extends \Entity\Bzjpreview\PageContent implements \Doctrine\OR
     public function setContentHtml($contentHtml)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContentHtml', array($contentHtml));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContentHtml', [$contentHtml]);
 
         return parent::setContentHtml($contentHtml);
     }
@@ -260,7 +260,7 @@ class PageContent extends \Entity\Bzjpreview\PageContent implements \Doctrine\OR
     public function getContentHtml()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContentHtml', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContentHtml', []);
 
         return parent::getContentHtml();
     }
@@ -271,7 +271,7 @@ class PageContent extends \Entity\Bzjpreview\PageContent implements \Doctrine\OR
     public function setWordCount($wordCount)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setWordCount', array($wordCount));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setWordCount', [$wordCount]);
 
         return parent::setWordCount($wordCount);
     }
@@ -282,7 +282,7 @@ class PageContent extends \Entity\Bzjpreview\PageContent implements \Doctrine\OR
     public function getWordCount()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getWordCount', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getWordCount', []);
 
         return parent::getWordCount();
     }
@@ -293,7 +293,7 @@ class PageContent extends \Entity\Bzjpreview\PageContent implements \Doctrine\OR
     public function setPage(\Entity\Bzjpreview\Page $page = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPage', array($page));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPage', [$page]);
 
         return parent::setPage($page);
     }
@@ -304,7 +304,7 @@ class PageContent extends \Entity\Bzjpreview\PageContent implements \Doctrine\OR
     public function getPage()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPage', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPage', []);
 
         return parent::getPage();
     }

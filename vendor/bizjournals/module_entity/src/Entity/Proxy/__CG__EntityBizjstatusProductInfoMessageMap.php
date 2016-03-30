@@ -36,7 +36,7 @@ class ProductInfoMessageMap extends \Entity\Bizjstatus\ProductInfoMessageMap imp
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class ProductInfoMessageMap extends \Entity\Bizjstatus\ProductInfoMessageMap imp
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizjstatus\\ProductInfoMessageMap' . "\0" . 'message_id', '' . "\0" . 'Entity\\Bizjstatus\\ProductInfoMessageMap' . "\0" . 'product_id', '' . "\0" . 'Entity\\Bizjstatus\\ProductInfoMessageMap' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizjstatus\\ProductInfoMessageMap' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizjstatus\\ProductInfoMessageMap' . "\0" . 'Event', '' . "\0" . 'Entity\\Bizjstatus\\ProductInfoMessageMap' . "\0" . 'Product');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizjstatus\\ProductInfoMessageMap' . "\0" . 'message_id', '' . "\0" . 'Entity\\Bizjstatus\\ProductInfoMessageMap' . "\0" . 'product_id', '' . "\0" . 'Entity\\Bizjstatus\\ProductInfoMessageMap' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizjstatus\\ProductInfoMessageMap' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizjstatus\\ProductInfoMessageMap' . "\0" . 'Event', '' . "\0" . 'Entity\\Bizjstatus\\ProductInfoMessageMap' . "\0" . 'Product'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizjstatus\\ProductInfoMessageMap' . "\0" . 'message_id', '' . "\0" . 'Entity\\Bizjstatus\\ProductInfoMessageMap' . "\0" . 'product_id', '' . "\0" . 'Entity\\Bizjstatus\\ProductInfoMessageMap' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizjstatus\\ProductInfoMessageMap' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizjstatus\\ProductInfoMessageMap' . "\0" . 'Event', '' . "\0" . 'Entity\\Bizjstatus\\ProductInfoMessageMap' . "\0" . 'Product');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizjstatus\\ProductInfoMessageMap' . "\0" . 'message_id', '' . "\0" . 'Entity\\Bizjstatus\\ProductInfoMessageMap' . "\0" . 'product_id', '' . "\0" . 'Entity\\Bizjstatus\\ProductInfoMessageMap' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizjstatus\\ProductInfoMessageMap' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizjstatus\\ProductInfoMessageMap' . "\0" . 'Event', '' . "\0" . 'Entity\\Bizjstatus\\ProductInfoMessageMap' . "\0" . 'Product'];
     }
 
     /**
@@ -97,7 +97,7 @@ class ProductInfoMessageMap extends \Entity\Bizjstatus\ProductInfoMessageMap imp
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class ProductInfoMessageMap extends \Entity\Bizjstatus\ProductInfoMessageMap imp
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class ProductInfoMessageMap extends \Entity\Bizjstatus\ProductInfoMessageMap imp
     public function setMessageId($messageId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMessageId', array($messageId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMessageId', [$messageId]);
 
         return parent::setMessageId($messageId);
     }
@@ -190,7 +190,7 @@ class ProductInfoMessageMap extends \Entity\Bizjstatus\ProductInfoMessageMap imp
     public function getMessageId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMessageId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMessageId', []);
 
         return parent::getMessageId();
     }
@@ -201,7 +201,7 @@ class ProductInfoMessageMap extends \Entity\Bizjstatus\ProductInfoMessageMap imp
     public function setProductId($productId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductId', array($productId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductId', [$productId]);
 
         return parent::setProductId($productId);
     }
@@ -212,7 +212,7 @@ class ProductInfoMessageMap extends \Entity\Bizjstatus\ProductInfoMessageMap imp
     public function getProductId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductId', []);
 
         return parent::getProductId();
     }
@@ -223,7 +223,7 @@ class ProductInfoMessageMap extends \Entity\Bizjstatus\ProductInfoMessageMap imp
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -234,7 +234,7 @@ class ProductInfoMessageMap extends \Entity\Bizjstatus\ProductInfoMessageMap imp
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -245,7 +245,7 @@ class ProductInfoMessageMap extends \Entity\Bizjstatus\ProductInfoMessageMap imp
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -256,7 +256,7 @@ class ProductInfoMessageMap extends \Entity\Bizjstatus\ProductInfoMessageMap imp
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -267,7 +267,7 @@ class ProductInfoMessageMap extends \Entity\Bizjstatus\ProductInfoMessageMap imp
     public function setEvent(\Entity\Bizjstatus\InfoMessage $event = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEvent', array($event));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEvent', [$event]);
 
         return parent::setEvent($event);
     }
@@ -278,7 +278,7 @@ class ProductInfoMessageMap extends \Entity\Bizjstatus\ProductInfoMessageMap imp
     public function getEvent()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEvent', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEvent', []);
 
         return parent::getEvent();
     }
@@ -289,7 +289,7 @@ class ProductInfoMessageMap extends \Entity\Bizjstatus\ProductInfoMessageMap imp
     public function setProduct(\Entity\Bizjstatus\Product $product = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProduct', array($product));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProduct', [$product]);
 
         return parent::setProduct($product);
     }
@@ -300,7 +300,7 @@ class ProductInfoMessageMap extends \Entity\Bizjstatus\ProductInfoMessageMap imp
     public function getProduct()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProduct', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProduct', []);
 
         return parent::getProduct();
     }

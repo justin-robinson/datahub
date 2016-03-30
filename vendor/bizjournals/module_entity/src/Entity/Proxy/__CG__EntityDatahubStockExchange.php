@@ -36,7 +36,7 @@ class StockExchange extends \Entity\Datahub\StockExchange implements \Doctrine\O
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class StockExchange extends \Entity\Datahub\StockExchange implements \Doctrine\O
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Datahub\\StockExchange' . "\0" . 'id', '' . "\0" . 'Entity\\Datahub\\StockExchange' . "\0" . 'exchange_name', '' . "\0" . 'Entity\\Datahub\\StockExchange' . "\0" . 'echange_abbrev', '' . "\0" . 'Entity\\Datahub\\StockExchange' . "\0" . 'yahoo_code');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Datahub\\StockExchange' . "\0" . 'id', '' . "\0" . 'Entity\\Datahub\\StockExchange' . "\0" . 'exchange_name', '' . "\0" . 'Entity\\Datahub\\StockExchange' . "\0" . 'echange_abbrev', '' . "\0" . 'Entity\\Datahub\\StockExchange' . "\0" . 'yahoo_code'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Datahub\\StockExchange' . "\0" . 'id', '' . "\0" . 'Entity\\Datahub\\StockExchange' . "\0" . 'exchange_name', '' . "\0" . 'Entity\\Datahub\\StockExchange' . "\0" . 'echange_abbrev', '' . "\0" . 'Entity\\Datahub\\StockExchange' . "\0" . 'yahoo_code');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Datahub\\StockExchange' . "\0" . 'id', '' . "\0" . 'Entity\\Datahub\\StockExchange' . "\0" . 'exchange_name', '' . "\0" . 'Entity\\Datahub\\StockExchange' . "\0" . 'echange_abbrev', '' . "\0" . 'Entity\\Datahub\\StockExchange' . "\0" . 'yahoo_code'];
     }
 
     /**
@@ -97,7 +97,7 @@ class StockExchange extends \Entity\Datahub\StockExchange implements \Doctrine\O
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class StockExchange extends \Entity\Datahub\StockExchange implements \Doctrine\O
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -183,7 +183,7 @@ class StockExchange extends \Entity\Datahub\StockExchange implements \Doctrine\O
         }
 
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -194,7 +194,7 @@ class StockExchange extends \Entity\Datahub\StockExchange implements \Doctrine\O
     public function setExchangeName($exchangeName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExchangeName', array($exchangeName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExchangeName', [$exchangeName]);
 
         return parent::setExchangeName($exchangeName);
     }
@@ -205,7 +205,7 @@ class StockExchange extends \Entity\Datahub\StockExchange implements \Doctrine\O
     public function getExchangeName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExchangeName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExchangeName', []);
 
         return parent::getExchangeName();
     }
@@ -216,7 +216,7 @@ class StockExchange extends \Entity\Datahub\StockExchange implements \Doctrine\O
     public function setEchangeAbbrev($echangeAbbrev)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEchangeAbbrev', array($echangeAbbrev));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEchangeAbbrev', [$echangeAbbrev]);
 
         return parent::setEchangeAbbrev($echangeAbbrev);
     }
@@ -227,7 +227,7 @@ class StockExchange extends \Entity\Datahub\StockExchange implements \Doctrine\O
     public function getEchangeAbbrev()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEchangeAbbrev', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEchangeAbbrev', []);
 
         return parent::getEchangeAbbrev();
     }
@@ -238,7 +238,7 @@ class StockExchange extends \Entity\Datahub\StockExchange implements \Doctrine\O
     public function setYahooCode($yahooCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setYahooCode', array($yahooCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setYahooCode', [$yahooCode]);
 
         return parent::setYahooCode($yahooCode);
     }
@@ -249,7 +249,7 @@ class StockExchange extends \Entity\Datahub\StockExchange implements \Doctrine\O
     public function getYahooCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getYahooCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getYahooCode', []);
 
         return parent::getYahooCode();
     }

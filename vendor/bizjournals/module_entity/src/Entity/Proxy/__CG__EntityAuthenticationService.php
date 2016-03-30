@@ -36,7 +36,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'service_id', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'unit_id', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'service_name', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'public_key', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'secret_key', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'access_token_ttl', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'refresh_token_ttl', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'authorization_code_ttl', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'rate_limit', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'description', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'service_url', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'documentation_url', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'repository_url', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'is_active', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'created_at', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'ServiceScopes', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'Clients', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'AccessTokens', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'RefreshTokens', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'AuthorizationCodes', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'Unit');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'service_id', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'unit_id', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'service_name', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'public_key', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'secret_key', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'access_token_ttl', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'refresh_token_ttl', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'authorization_code_ttl', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'rate_limit', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'description', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'service_url', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'documentation_url', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'repository_url', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'is_active', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'created_at', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'ServiceScopes', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'Clients', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'AccessTokens', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'RefreshTokens', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'AuthorizationCodes', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'Unit'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'service_id', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'unit_id', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'service_name', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'public_key', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'secret_key', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'access_token_ttl', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'refresh_token_ttl', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'authorization_code_ttl', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'rate_limit', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'description', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'service_url', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'documentation_url', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'repository_url', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'is_active', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'created_at', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'ServiceScopes', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'Clients', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'AccessTokens', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'RefreshTokens', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'AuthorizationCodes', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'Unit');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'service_id', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'unit_id', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'service_name', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'public_key', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'secret_key', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'access_token_ttl', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'refresh_token_ttl', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'authorization_code_ttl', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'rate_limit', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'description', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'service_url', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'documentation_url', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'repository_url', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'is_active', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'created_at', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'ServiceScopes', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'Clients', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'AccessTokens', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'RefreshTokens', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'AuthorizationCodes', '' . "\0" . 'Entity\\Authentication\\Service' . "\0" . 'Unit'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function getServiceId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getServiceId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getServiceId', []);
 
         return parent::getServiceId();
     }
@@ -190,7 +190,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function setUnitId($unitId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUnitId', array($unitId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUnitId', [$unitId]);
 
         return parent::setUnitId($unitId);
     }
@@ -201,7 +201,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function getUnitId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUnitId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUnitId', []);
 
         return parent::getUnitId();
     }
@@ -212,7 +212,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function setServiceName($serviceName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setServiceName', array($serviceName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setServiceName', [$serviceName]);
 
         return parent::setServiceName($serviceName);
     }
@@ -223,7 +223,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function getServiceName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getServiceName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getServiceName', []);
 
         return parent::getServiceName();
     }
@@ -234,7 +234,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function setPublicKey($publicKey)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublicKey', array($publicKey));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublicKey', [$publicKey]);
 
         return parent::setPublicKey($publicKey);
     }
@@ -245,7 +245,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function getPublicKey()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublicKey', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublicKey', []);
 
         return parent::getPublicKey();
     }
@@ -256,7 +256,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function setSecretKey($secretKey)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSecretKey', array($secretKey));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSecretKey', [$secretKey]);
 
         return parent::setSecretKey($secretKey);
     }
@@ -267,7 +267,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function getSecretKey()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSecretKey', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSecretKey', []);
 
         return parent::getSecretKey();
     }
@@ -278,7 +278,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function setAccessTokenTtl($accessTokenTtl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAccessTokenTtl', array($accessTokenTtl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAccessTokenTtl', [$accessTokenTtl]);
 
         return parent::setAccessTokenTtl($accessTokenTtl);
     }
@@ -289,7 +289,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function getAccessTokenTtl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAccessTokenTtl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAccessTokenTtl', []);
 
         return parent::getAccessTokenTtl();
     }
@@ -300,7 +300,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function setRefreshTokenTtl($refreshTokenTtl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRefreshTokenTtl', array($refreshTokenTtl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRefreshTokenTtl', [$refreshTokenTtl]);
 
         return parent::setRefreshTokenTtl($refreshTokenTtl);
     }
@@ -311,7 +311,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function getRefreshTokenTtl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefreshTokenTtl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefreshTokenTtl', []);
 
         return parent::getRefreshTokenTtl();
     }
@@ -322,7 +322,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function setAuthorizationCodeTtl($authorizationCodeTtl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAuthorizationCodeTtl', array($authorizationCodeTtl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAuthorizationCodeTtl', [$authorizationCodeTtl]);
 
         return parent::setAuthorizationCodeTtl($authorizationCodeTtl);
     }
@@ -333,7 +333,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function getAuthorizationCodeTtl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAuthorizationCodeTtl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAuthorizationCodeTtl', []);
 
         return parent::getAuthorizationCodeTtl();
     }
@@ -344,7 +344,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function setRateLimit($rateLimit)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRateLimit', array($rateLimit));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRateLimit', [$rateLimit]);
 
         return parent::setRateLimit($rateLimit);
     }
@@ -355,7 +355,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function getRateLimit()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRateLimit', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRateLimit', []);
 
         return parent::getRateLimit();
     }
@@ -366,7 +366,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function setDescription($description)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', array($description));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', [$description]);
 
         return parent::setDescription($description);
     }
@@ -377,7 +377,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function getDescription()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', []);
 
         return parent::getDescription();
     }
@@ -388,7 +388,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function setServiceUrl($serviceUrl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setServiceUrl', array($serviceUrl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setServiceUrl', [$serviceUrl]);
 
         return parent::setServiceUrl($serviceUrl);
     }
@@ -399,7 +399,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function getServiceUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getServiceUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getServiceUrl', []);
 
         return parent::getServiceUrl();
     }
@@ -410,7 +410,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function setDocumentationUrl($documentationUrl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDocumentationUrl', array($documentationUrl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDocumentationUrl', [$documentationUrl]);
 
         return parent::setDocumentationUrl($documentationUrl);
     }
@@ -421,7 +421,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function getDocumentationUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDocumentationUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDocumentationUrl', []);
 
         return parent::getDocumentationUrl();
     }
@@ -432,7 +432,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function setRepositoryUrl($repositoryUrl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRepositoryUrl', array($repositoryUrl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRepositoryUrl', [$repositoryUrl]);
 
         return parent::setRepositoryUrl($repositoryUrl);
     }
@@ -443,7 +443,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function getRepositoryUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRepositoryUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRepositoryUrl', []);
 
         return parent::getRepositoryUrl();
     }
@@ -454,7 +454,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function setIsActive($isActive)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', array($isActive));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', [$isActive]);
 
         return parent::setIsActive($isActive);
     }
@@ -465,7 +465,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function getIsActive()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', []);
 
         return parent::getIsActive();
     }
@@ -476,7 +476,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -487,7 +487,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -498,7 +498,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -509,7 +509,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -520,7 +520,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function addServiceScope(\Entity\Authentication\ServiceScope $serviceScope)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addServiceScope', array($serviceScope));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addServiceScope', [$serviceScope]);
 
         return parent::addServiceScope($serviceScope);
     }
@@ -531,7 +531,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function removeServiceScope(\Entity\Authentication\ServiceScope $serviceScope)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeServiceScope', array($serviceScope));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeServiceScope', [$serviceScope]);
 
         return parent::removeServiceScope($serviceScope);
     }
@@ -542,7 +542,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function getServiceScopes()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getServiceScopes', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getServiceScopes', []);
 
         return parent::getServiceScopes();
     }
@@ -553,7 +553,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function addClient(\Entity\Authentication\Client $client)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addClient', array($client));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addClient', [$client]);
 
         return parent::addClient($client);
     }
@@ -564,7 +564,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function removeClient(\Entity\Authentication\Client $client)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeClient', array($client));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeClient', [$client]);
 
         return parent::removeClient($client);
     }
@@ -575,7 +575,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function getClients()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClients', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClients', []);
 
         return parent::getClients();
     }
@@ -586,7 +586,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function addAccessToken(\Entity\Authentication\AccessToken $accessToken)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAccessToken', array($accessToken));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAccessToken', [$accessToken]);
 
         return parent::addAccessToken($accessToken);
     }
@@ -597,7 +597,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function removeAccessToken(\Entity\Authentication\AccessToken $accessToken)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAccessToken', array($accessToken));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAccessToken', [$accessToken]);
 
         return parent::removeAccessToken($accessToken);
     }
@@ -608,7 +608,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function getAccessTokens()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAccessTokens', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAccessTokens', []);
 
         return parent::getAccessTokens();
     }
@@ -619,7 +619,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function addRefreshToken(\Entity\Authentication\RefreshToken $refreshToken)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addRefreshToken', array($refreshToken));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addRefreshToken', [$refreshToken]);
 
         return parent::addRefreshToken($refreshToken);
     }
@@ -630,7 +630,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function removeRefreshToken(\Entity\Authentication\RefreshToken $refreshToken)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeRefreshToken', array($refreshToken));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeRefreshToken', [$refreshToken]);
 
         return parent::removeRefreshToken($refreshToken);
     }
@@ -641,7 +641,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function getRefreshTokens()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefreshTokens', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefreshTokens', []);
 
         return parent::getRefreshTokens();
     }
@@ -652,7 +652,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function addAuthorizationCode(\Entity\Authentication\AuthorizationCode $authorizationCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAuthorizationCode', array($authorizationCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAuthorizationCode', [$authorizationCode]);
 
         return parent::addAuthorizationCode($authorizationCode);
     }
@@ -663,7 +663,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function removeAuthorizationCode(\Entity\Authentication\AuthorizationCode $authorizationCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAuthorizationCode', array($authorizationCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAuthorizationCode', [$authorizationCode]);
 
         return parent::removeAuthorizationCode($authorizationCode);
     }
@@ -674,7 +674,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function getAuthorizationCodes()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAuthorizationCodes', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAuthorizationCodes', []);
 
         return parent::getAuthorizationCodes();
     }
@@ -685,7 +685,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function setUnit(\Entity\Authentication\Unit $unit = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUnit', array($unit));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUnit', [$unit]);
 
         return parent::setUnit($unit);
     }
@@ -696,7 +696,7 @@ class Service extends \Entity\Authentication\Service implements \Doctrine\ORM\Pr
     public function getUnit()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUnit', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUnit', []);
 
         return parent::getUnit();
     }

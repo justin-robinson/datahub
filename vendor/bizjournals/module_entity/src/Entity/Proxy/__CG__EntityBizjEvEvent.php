@@ -36,7 +36,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'event_id', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'title', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'owner', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'event_date', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'start_time', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'end_time', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'max_attendees', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'location_address', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'location_city', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'location_state', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'location_zip', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'contact_name', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'contact_title', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'contact_email', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'contact_phone', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'teaser', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'location_address_2', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'dress_code', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'duration', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'cancel_policy', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'admin_reg_notification', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'm_time', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'expected_attendance', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'avg_past_attendance', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'number_years_held', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'marketing_start_date', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'marketing_duration_in_weeks', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'nomination_id', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'nomination_deadline', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'nomination_description', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'nomination_marketing_start_date', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'nomination_marketing_duration_in_weeks', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'marketing_includes', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'nomination_marketing_includes', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'map_href', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'sort_order', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_active', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_soldout', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_suspended', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_cancelled', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_invite_only', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'close_registration', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'has_admin_threshold_alert', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'show_on_bizj_calendar', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'has_nominations', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'venue_can_support_autos', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'has_sponsor_signage', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'sponsor_signage_type_id', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_approx_date', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_approx_time', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'contact_only', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'microsite_url', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'prefer_microsite', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'skin', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'body_text', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'has_sponsors', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'has_single_sponsor_tier', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'has_supplement', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_supplement_handed_out', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'supplement_deadline', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'supplement_pub_date', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'market_owned', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_custom_event', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'event_type', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'custom_reminder_email', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_brand_extension', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'brand_extension_year', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'brand_id', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'redirect_event_id', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'sponsor_display_start_date', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'sponsor_display_end_date', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'admin_email', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'shipping_address', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'hashtag', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'notes', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'setup_time', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'modified_by', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'deleted_at');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'event_id', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'title', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'owner', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'event_date', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'start_time', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'end_time', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'max_attendees', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'location_address', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'location_city', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'location_state', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'location_zip', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'contact_name', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'contact_title', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'contact_email', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'contact_phone', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'teaser', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'location_address_2', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'dress_code', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'duration', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'cancel_policy', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'admin_reg_notification', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'm_time', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'expected_attendance', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'avg_past_attendance', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'number_years_held', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'marketing_start_date', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'marketing_duration_in_weeks', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'nomination_id', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'nomination_deadline', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'nomination_description', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'nomination_marketing_start_date', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'nomination_marketing_duration_in_weeks', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'marketing_includes', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'nomination_marketing_includes', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'map_href', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'sort_order', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_active', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_soldout', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_suspended', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_cancelled', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_invite_only', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'close_registration', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'has_admin_threshold_alert', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'show_on_bizj_calendar', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'has_nominations', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'venue_can_support_autos', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'has_sponsor_signage', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'sponsor_signage_type_id', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_approx_date', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_approx_time', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'contact_only', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'microsite_url', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'prefer_microsite', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'skin', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'body_text', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'has_sponsors', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'has_single_sponsor_tier', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'has_supplement', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_supplement_handed_out', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'supplement_deadline', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'supplement_pub_date', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'market_owned', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_custom_event', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'event_type', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'custom_reminder_email', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_brand_extension', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'brand_extension_year', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'brand_id', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'redirect_event_id', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'sponsor_display_start_date', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'sponsor_display_end_date', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'admin_email', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'shipping_address', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'hashtag', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'notes', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'setup_time', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'modified_by', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'deleted_at'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'event_id', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'title', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'owner', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'event_date', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'start_time', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'end_time', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'max_attendees', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'location_address', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'location_city', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'location_state', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'location_zip', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'contact_name', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'contact_title', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'contact_email', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'contact_phone', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'teaser', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'location_address_2', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'dress_code', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'duration', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'cancel_policy', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'admin_reg_notification', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'm_time', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'expected_attendance', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'avg_past_attendance', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'number_years_held', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'marketing_start_date', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'marketing_duration_in_weeks', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'nomination_id', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'nomination_deadline', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'nomination_description', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'nomination_marketing_start_date', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'nomination_marketing_duration_in_weeks', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'marketing_includes', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'nomination_marketing_includes', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'map_href', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'sort_order', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_active', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_soldout', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_suspended', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_cancelled', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_invite_only', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'close_registration', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'has_admin_threshold_alert', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'show_on_bizj_calendar', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'has_nominations', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'venue_can_support_autos', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'has_sponsor_signage', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'sponsor_signage_type_id', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_approx_date', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_approx_time', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'contact_only', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'microsite_url', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'prefer_microsite', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'skin', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'body_text', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'has_sponsors', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'has_single_sponsor_tier', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'has_supplement', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_supplement_handed_out', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'supplement_deadline', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'supplement_pub_date', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'market_owned', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_custom_event', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'event_type', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'custom_reminder_email', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_brand_extension', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'brand_extension_year', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'brand_id', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'redirect_event_id', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'sponsor_display_start_date', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'sponsor_display_end_date', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'admin_email', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'shipping_address', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'hashtag', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'notes', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'setup_time', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'modified_by', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'deleted_at');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'event_id', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'title', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'owner', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'event_date', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'start_time', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'end_time', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'max_attendees', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'location_address', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'location_city', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'location_state', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'location_zip', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'contact_name', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'contact_title', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'contact_email', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'contact_phone', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'teaser', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'location_address_2', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'dress_code', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'duration', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'cancel_policy', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'admin_reg_notification', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'm_time', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'expected_attendance', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'avg_past_attendance', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'number_years_held', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'marketing_start_date', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'marketing_duration_in_weeks', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'nomination_id', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'nomination_deadline', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'nomination_description', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'nomination_marketing_start_date', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'nomination_marketing_duration_in_weeks', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'marketing_includes', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'nomination_marketing_includes', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'map_href', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'sort_order', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_active', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_soldout', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_suspended', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_cancelled', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_invite_only', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'close_registration', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'has_admin_threshold_alert', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'show_on_bizj_calendar', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'has_nominations', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'venue_can_support_autos', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'has_sponsor_signage', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'sponsor_signage_type_id', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_approx_date', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_approx_time', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'contact_only', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'microsite_url', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'prefer_microsite', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'skin', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'body_text', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'has_sponsors', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'has_single_sponsor_tier', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'has_supplement', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_supplement_handed_out', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'supplement_deadline', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'supplement_pub_date', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'market_owned', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_custom_event', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'event_type', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'custom_reminder_email', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'is_brand_extension', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'brand_extension_year', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'brand_id', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'redirect_event_id', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'sponsor_display_start_date', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'sponsor_display_end_date', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'admin_email', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'shipping_address', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'hashtag', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'notes', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'setup_time', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'modified_by', '' . "\0" . 'Entity\\Bizj\\EvEvent' . "\0" . 'deleted_at'];
     }
 
     /**
@@ -97,7 +97,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getEventId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEventId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEventId', []);
 
         return parent::getEventId();
     }
@@ -190,7 +190,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setTitle($title)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', array($title));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', [$title]);
 
         return parent::setTitle($title);
     }
@@ -201,7 +201,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getTitle()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', []);
 
         return parent::getTitle();
     }
@@ -212,7 +212,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setOwner($owner)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOwner', array($owner));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOwner', [$owner]);
 
         return parent::setOwner($owner);
     }
@@ -223,7 +223,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getOwner()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOwner', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOwner', []);
 
         return parent::getOwner();
     }
@@ -234,7 +234,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setEventDate($eventDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEventDate', array($eventDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEventDate', [$eventDate]);
 
         return parent::setEventDate($eventDate);
     }
@@ -245,7 +245,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getEventDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEventDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEventDate', []);
 
         return parent::getEventDate();
     }
@@ -256,7 +256,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setStartTime($startTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStartTime', array($startTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStartTime', [$startTime]);
 
         return parent::setStartTime($startTime);
     }
@@ -267,7 +267,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getStartTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStartTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStartTime', []);
 
         return parent::getStartTime();
     }
@@ -278,7 +278,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setEndTime($endTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEndTime', array($endTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEndTime', [$endTime]);
 
         return parent::setEndTime($endTime);
     }
@@ -289,7 +289,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getEndTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEndTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEndTime', []);
 
         return parent::getEndTime();
     }
@@ -300,7 +300,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setMaxAttendees($maxAttendees)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMaxAttendees', array($maxAttendees));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMaxAttendees', [$maxAttendees]);
 
         return parent::setMaxAttendees($maxAttendees);
     }
@@ -311,7 +311,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getMaxAttendees()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMaxAttendees', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMaxAttendees', []);
 
         return parent::getMaxAttendees();
     }
@@ -322,7 +322,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setLocationAddress($locationAddress)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLocationAddress', array($locationAddress));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLocationAddress', [$locationAddress]);
 
         return parent::setLocationAddress($locationAddress);
     }
@@ -333,7 +333,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getLocationAddress()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLocationAddress', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLocationAddress', []);
 
         return parent::getLocationAddress();
     }
@@ -344,7 +344,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setLocationCity($locationCity)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLocationCity', array($locationCity));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLocationCity', [$locationCity]);
 
         return parent::setLocationCity($locationCity);
     }
@@ -355,7 +355,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getLocationCity()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLocationCity', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLocationCity', []);
 
         return parent::getLocationCity();
     }
@@ -366,7 +366,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setLocationState($locationState)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLocationState', array($locationState));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLocationState', [$locationState]);
 
         return parent::setLocationState($locationState);
     }
@@ -377,7 +377,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getLocationState()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLocationState', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLocationState', []);
 
         return parent::getLocationState();
     }
@@ -388,7 +388,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setLocationZip($locationZip)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLocationZip', array($locationZip));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLocationZip', [$locationZip]);
 
         return parent::setLocationZip($locationZip);
     }
@@ -399,7 +399,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getLocationZip()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLocationZip', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLocationZip', []);
 
         return parent::getLocationZip();
     }
@@ -410,7 +410,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setContactName($contactName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContactName', array($contactName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContactName', [$contactName]);
 
         return parent::setContactName($contactName);
     }
@@ -421,7 +421,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getContactName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactName', []);
 
         return parent::getContactName();
     }
@@ -432,7 +432,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setContactTitle($contactTitle)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContactTitle', array($contactTitle));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContactTitle', [$contactTitle]);
 
         return parent::setContactTitle($contactTitle);
     }
@@ -443,7 +443,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getContactTitle()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactTitle', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactTitle', []);
 
         return parent::getContactTitle();
     }
@@ -454,7 +454,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setContactEmail($contactEmail)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContactEmail', array($contactEmail));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContactEmail', [$contactEmail]);
 
         return parent::setContactEmail($contactEmail);
     }
@@ -465,7 +465,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getContactEmail()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactEmail', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactEmail', []);
 
         return parent::getContactEmail();
     }
@@ -476,7 +476,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setContactPhone($contactPhone)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContactPhone', array($contactPhone));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContactPhone', [$contactPhone]);
 
         return parent::setContactPhone($contactPhone);
     }
@@ -487,7 +487,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getContactPhone()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactPhone', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactPhone', []);
 
         return parent::getContactPhone();
     }
@@ -498,7 +498,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setCTime($cTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCTime', array($cTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCTime', [$cTime]);
 
         return parent::setCTime($cTime);
     }
@@ -509,7 +509,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getCTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCTime', []);
 
         return parent::getCTime();
     }
@@ -520,7 +520,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setTeaser($teaser)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTeaser', array($teaser));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTeaser', [$teaser]);
 
         return parent::setTeaser($teaser);
     }
@@ -531,7 +531,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getTeaser()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTeaser', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTeaser', []);
 
         return parent::getTeaser();
     }
@@ -542,7 +542,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setLocationAddress2($locationAddress2)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLocationAddress2', array($locationAddress2));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLocationAddress2', [$locationAddress2]);
 
         return parent::setLocationAddress2($locationAddress2);
     }
@@ -553,7 +553,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getLocationAddress2()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLocationAddress2', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLocationAddress2', []);
 
         return parent::getLocationAddress2();
     }
@@ -564,7 +564,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setDressCode($dressCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDressCode', array($dressCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDressCode', [$dressCode]);
 
         return parent::setDressCode($dressCode);
     }
@@ -575,7 +575,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getDressCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDressCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDressCode', []);
 
         return parent::getDressCode();
     }
@@ -586,7 +586,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setDuration($duration)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDuration', array($duration));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDuration', [$duration]);
 
         return parent::setDuration($duration);
     }
@@ -597,7 +597,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getDuration()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDuration', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDuration', []);
 
         return parent::getDuration();
     }
@@ -608,7 +608,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setCancelPolicy($cancelPolicy)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCancelPolicy', array($cancelPolicy));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCancelPolicy', [$cancelPolicy]);
 
         return parent::setCancelPolicy($cancelPolicy);
     }
@@ -619,7 +619,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getCancelPolicy()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCancelPolicy', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCancelPolicy', []);
 
         return parent::getCancelPolicy();
     }
@@ -630,7 +630,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setAdminRegNotification($adminRegNotification)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAdminRegNotification', array($adminRegNotification));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAdminRegNotification', [$adminRegNotification]);
 
         return parent::setAdminRegNotification($adminRegNotification);
     }
@@ -641,7 +641,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getAdminRegNotification()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAdminRegNotification', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAdminRegNotification', []);
 
         return parent::getAdminRegNotification();
     }
@@ -652,7 +652,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setMTime($mTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMTime', array($mTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMTime', [$mTime]);
 
         return parent::setMTime($mTime);
     }
@@ -663,7 +663,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getMTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMTime', []);
 
         return parent::getMTime();
     }
@@ -674,7 +674,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setExpectedAttendance($expectedAttendance)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExpectedAttendance', array($expectedAttendance));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExpectedAttendance', [$expectedAttendance]);
 
         return parent::setExpectedAttendance($expectedAttendance);
     }
@@ -685,7 +685,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getExpectedAttendance()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExpectedAttendance', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExpectedAttendance', []);
 
         return parent::getExpectedAttendance();
     }
@@ -696,7 +696,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setAvgPastAttendance($avgPastAttendance)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAvgPastAttendance', array($avgPastAttendance));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAvgPastAttendance', [$avgPastAttendance]);
 
         return parent::setAvgPastAttendance($avgPastAttendance);
     }
@@ -707,7 +707,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getAvgPastAttendance()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAvgPastAttendance', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAvgPastAttendance', []);
 
         return parent::getAvgPastAttendance();
     }
@@ -718,7 +718,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setNumberYearsHeld($numberYearsHeld)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNumberYearsHeld', array($numberYearsHeld));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNumberYearsHeld', [$numberYearsHeld]);
 
         return parent::setNumberYearsHeld($numberYearsHeld);
     }
@@ -729,7 +729,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getNumberYearsHeld()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNumberYearsHeld', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNumberYearsHeld', []);
 
         return parent::getNumberYearsHeld();
     }
@@ -740,7 +740,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setMarketingStartDate($marketingStartDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketingStartDate', array($marketingStartDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketingStartDate', [$marketingStartDate]);
 
         return parent::setMarketingStartDate($marketingStartDate);
     }
@@ -751,7 +751,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getMarketingStartDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketingStartDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketingStartDate', []);
 
         return parent::getMarketingStartDate();
     }
@@ -762,7 +762,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setMarketingDurationInWeeks($marketingDurationInWeeks)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketingDurationInWeeks', array($marketingDurationInWeeks));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketingDurationInWeeks', [$marketingDurationInWeeks]);
 
         return parent::setMarketingDurationInWeeks($marketingDurationInWeeks);
     }
@@ -773,7 +773,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getMarketingDurationInWeeks()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketingDurationInWeeks', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketingDurationInWeeks', []);
 
         return parent::getMarketingDurationInWeeks();
     }
@@ -784,7 +784,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setNominationId($nominationId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNominationId', array($nominationId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNominationId', [$nominationId]);
 
         return parent::setNominationId($nominationId);
     }
@@ -795,7 +795,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getNominationId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNominationId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNominationId', []);
 
         return parent::getNominationId();
     }
@@ -806,7 +806,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setNominationDeadline($nominationDeadline)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNominationDeadline', array($nominationDeadline));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNominationDeadline', [$nominationDeadline]);
 
         return parent::setNominationDeadline($nominationDeadline);
     }
@@ -817,7 +817,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getNominationDeadline()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNominationDeadline', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNominationDeadline', []);
 
         return parent::getNominationDeadline();
     }
@@ -828,7 +828,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setNominationDescription($nominationDescription)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNominationDescription', array($nominationDescription));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNominationDescription', [$nominationDescription]);
 
         return parent::setNominationDescription($nominationDescription);
     }
@@ -839,7 +839,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getNominationDescription()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNominationDescription', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNominationDescription', []);
 
         return parent::getNominationDescription();
     }
@@ -850,7 +850,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setNominationMarketingStartDate($nominationMarketingStartDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNominationMarketingStartDate', array($nominationMarketingStartDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNominationMarketingStartDate', [$nominationMarketingStartDate]);
 
         return parent::setNominationMarketingStartDate($nominationMarketingStartDate);
     }
@@ -861,7 +861,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getNominationMarketingStartDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNominationMarketingStartDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNominationMarketingStartDate', []);
 
         return parent::getNominationMarketingStartDate();
     }
@@ -872,7 +872,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setNominationMarketingDurationInWeeks($nominationMarketingDurationInWeeks)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNominationMarketingDurationInWeeks', array($nominationMarketingDurationInWeeks));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNominationMarketingDurationInWeeks', [$nominationMarketingDurationInWeeks]);
 
         return parent::setNominationMarketingDurationInWeeks($nominationMarketingDurationInWeeks);
     }
@@ -883,7 +883,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getNominationMarketingDurationInWeeks()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNominationMarketingDurationInWeeks', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNominationMarketingDurationInWeeks', []);
 
         return parent::getNominationMarketingDurationInWeeks();
     }
@@ -894,7 +894,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setMarketingIncludes($marketingIncludes)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketingIncludes', array($marketingIncludes));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketingIncludes', [$marketingIncludes]);
 
         return parent::setMarketingIncludes($marketingIncludes);
     }
@@ -905,7 +905,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getMarketingIncludes()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketingIncludes', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketingIncludes', []);
 
         return parent::getMarketingIncludes();
     }
@@ -916,7 +916,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setNominationMarketingIncludes($nominationMarketingIncludes)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNominationMarketingIncludes', array($nominationMarketingIncludes));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNominationMarketingIncludes', [$nominationMarketingIncludes]);
 
         return parent::setNominationMarketingIncludes($nominationMarketingIncludes);
     }
@@ -927,7 +927,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getNominationMarketingIncludes()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNominationMarketingIncludes', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNominationMarketingIncludes', []);
 
         return parent::getNominationMarketingIncludes();
     }
@@ -938,7 +938,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setMapHref($mapHref)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMapHref', array($mapHref));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMapHref', [$mapHref]);
 
         return parent::setMapHref($mapHref);
     }
@@ -949,7 +949,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getMapHref()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMapHref', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMapHref', []);
 
         return parent::getMapHref();
     }
@@ -960,7 +960,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setSortOrder($sortOrder)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSortOrder', array($sortOrder));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSortOrder', [$sortOrder]);
 
         return parent::setSortOrder($sortOrder);
     }
@@ -971,7 +971,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getSortOrder()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSortOrder', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSortOrder', []);
 
         return parent::getSortOrder();
     }
@@ -982,7 +982,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setIsActive($isActive)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', array($isActive));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', [$isActive]);
 
         return parent::setIsActive($isActive);
     }
@@ -993,7 +993,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getIsActive()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', []);
 
         return parent::getIsActive();
     }
@@ -1004,7 +1004,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setIsSoldout($isSoldout)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsSoldout', array($isSoldout));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsSoldout', [$isSoldout]);
 
         return parent::setIsSoldout($isSoldout);
     }
@@ -1015,7 +1015,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getIsSoldout()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsSoldout', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsSoldout', []);
 
         return parent::getIsSoldout();
     }
@@ -1026,7 +1026,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setIsSuspended($isSuspended)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsSuspended', array($isSuspended));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsSuspended', [$isSuspended]);
 
         return parent::setIsSuspended($isSuspended);
     }
@@ -1037,7 +1037,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getIsSuspended()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsSuspended', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsSuspended', []);
 
         return parent::getIsSuspended();
     }
@@ -1048,7 +1048,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setIsCancelled($isCancelled)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsCancelled', array($isCancelled));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsCancelled', [$isCancelled]);
 
         return parent::setIsCancelled($isCancelled);
     }
@@ -1059,7 +1059,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getIsCancelled()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsCancelled', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsCancelled', []);
 
         return parent::getIsCancelled();
     }
@@ -1070,7 +1070,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setIsInviteOnly($isInviteOnly)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsInviteOnly', array($isInviteOnly));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsInviteOnly', [$isInviteOnly]);
 
         return parent::setIsInviteOnly($isInviteOnly);
     }
@@ -1081,7 +1081,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getIsInviteOnly()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsInviteOnly', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsInviteOnly', []);
 
         return parent::getIsInviteOnly();
     }
@@ -1092,7 +1092,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setCloseRegistration($closeRegistration)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCloseRegistration', array($closeRegistration));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCloseRegistration', [$closeRegistration]);
 
         return parent::setCloseRegistration($closeRegistration);
     }
@@ -1103,7 +1103,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getCloseRegistration()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCloseRegistration', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCloseRegistration', []);
 
         return parent::getCloseRegistration();
     }
@@ -1114,7 +1114,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setHasAdminThresholdAlert($hasAdminThresholdAlert)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasAdminThresholdAlert', array($hasAdminThresholdAlert));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasAdminThresholdAlert', [$hasAdminThresholdAlert]);
 
         return parent::setHasAdminThresholdAlert($hasAdminThresholdAlert);
     }
@@ -1125,7 +1125,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getHasAdminThresholdAlert()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasAdminThresholdAlert', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasAdminThresholdAlert', []);
 
         return parent::getHasAdminThresholdAlert();
     }
@@ -1136,7 +1136,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setShowOnBizjCalendar($showOnBizjCalendar)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setShowOnBizjCalendar', array($showOnBizjCalendar));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setShowOnBizjCalendar', [$showOnBizjCalendar]);
 
         return parent::setShowOnBizjCalendar($showOnBizjCalendar);
     }
@@ -1147,7 +1147,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getShowOnBizjCalendar()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getShowOnBizjCalendar', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getShowOnBizjCalendar', []);
 
         return parent::getShowOnBizjCalendar();
     }
@@ -1158,7 +1158,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setHasNominations($hasNominations)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasNominations', array($hasNominations));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasNominations', [$hasNominations]);
 
         return parent::setHasNominations($hasNominations);
     }
@@ -1169,7 +1169,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getHasNominations()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasNominations', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasNominations', []);
 
         return parent::getHasNominations();
     }
@@ -1180,7 +1180,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setVenueCanSupportAutos($venueCanSupportAutos)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setVenueCanSupportAutos', array($venueCanSupportAutos));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setVenueCanSupportAutos', [$venueCanSupportAutos]);
 
         return parent::setVenueCanSupportAutos($venueCanSupportAutos);
     }
@@ -1191,7 +1191,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getVenueCanSupportAutos()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getVenueCanSupportAutos', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getVenueCanSupportAutos', []);
 
         return parent::getVenueCanSupportAutos();
     }
@@ -1202,7 +1202,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setHasSponsorSignage($hasSponsorSignage)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasSponsorSignage', array($hasSponsorSignage));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasSponsorSignage', [$hasSponsorSignage]);
 
         return parent::setHasSponsorSignage($hasSponsorSignage);
     }
@@ -1213,7 +1213,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getHasSponsorSignage()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasSponsorSignage', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasSponsorSignage', []);
 
         return parent::getHasSponsorSignage();
     }
@@ -1224,7 +1224,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setSponsorSignageTypeId($sponsorSignageTypeId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSponsorSignageTypeId', array($sponsorSignageTypeId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSponsorSignageTypeId', [$sponsorSignageTypeId]);
 
         return parent::setSponsorSignageTypeId($sponsorSignageTypeId);
     }
@@ -1235,7 +1235,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getSponsorSignageTypeId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSponsorSignageTypeId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSponsorSignageTypeId', []);
 
         return parent::getSponsorSignageTypeId();
     }
@@ -1246,7 +1246,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setIsApproxDate($isApproxDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsApproxDate', array($isApproxDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsApproxDate', [$isApproxDate]);
 
         return parent::setIsApproxDate($isApproxDate);
     }
@@ -1257,7 +1257,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getIsApproxDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsApproxDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsApproxDate', []);
 
         return parent::getIsApproxDate();
     }
@@ -1268,7 +1268,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setIsApproxTime($isApproxTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsApproxTime', array($isApproxTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsApproxTime', [$isApproxTime]);
 
         return parent::setIsApproxTime($isApproxTime);
     }
@@ -1279,7 +1279,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getIsApproxTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsApproxTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsApproxTime', []);
 
         return parent::getIsApproxTime();
     }
@@ -1290,7 +1290,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setContactOnly($contactOnly)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContactOnly', array($contactOnly));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContactOnly', [$contactOnly]);
 
         return parent::setContactOnly($contactOnly);
     }
@@ -1301,7 +1301,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getContactOnly()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactOnly', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactOnly', []);
 
         return parent::getContactOnly();
     }
@@ -1312,7 +1312,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setMicrositeUrl($micrositeUrl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMicrositeUrl', array($micrositeUrl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMicrositeUrl', [$micrositeUrl]);
 
         return parent::setMicrositeUrl($micrositeUrl);
     }
@@ -1323,7 +1323,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getMicrositeUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMicrositeUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMicrositeUrl', []);
 
         return parent::getMicrositeUrl();
     }
@@ -1334,7 +1334,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setPreferMicrosite($preferMicrosite)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPreferMicrosite', array($preferMicrosite));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPreferMicrosite', [$preferMicrosite]);
 
         return parent::setPreferMicrosite($preferMicrosite);
     }
@@ -1345,7 +1345,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getPreferMicrosite()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPreferMicrosite', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPreferMicrosite', []);
 
         return parent::getPreferMicrosite();
     }
@@ -1356,7 +1356,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setSkin($skin)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSkin', array($skin));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSkin', [$skin]);
 
         return parent::setSkin($skin);
     }
@@ -1367,7 +1367,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getSkin()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSkin', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSkin', []);
 
         return parent::getSkin();
     }
@@ -1378,7 +1378,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setBodyText($bodyText)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBodyText', array($bodyText));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBodyText', [$bodyText]);
 
         return parent::setBodyText($bodyText);
     }
@@ -1389,7 +1389,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getBodyText()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBodyText', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBodyText', []);
 
         return parent::getBodyText();
     }
@@ -1400,7 +1400,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setHasSponsors($hasSponsors)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasSponsors', array($hasSponsors));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasSponsors', [$hasSponsors]);
 
         return parent::setHasSponsors($hasSponsors);
     }
@@ -1411,7 +1411,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getHasSponsors()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasSponsors', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasSponsors', []);
 
         return parent::getHasSponsors();
     }
@@ -1422,7 +1422,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setHasSingleSponsorTier($hasSingleSponsorTier)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasSingleSponsorTier', array($hasSingleSponsorTier));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasSingleSponsorTier', [$hasSingleSponsorTier]);
 
         return parent::setHasSingleSponsorTier($hasSingleSponsorTier);
     }
@@ -1433,7 +1433,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getHasSingleSponsorTier()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasSingleSponsorTier', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasSingleSponsorTier', []);
 
         return parent::getHasSingleSponsorTier();
     }
@@ -1444,7 +1444,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setHasSupplement($hasSupplement)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasSupplement', array($hasSupplement));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasSupplement', [$hasSupplement]);
 
         return parent::setHasSupplement($hasSupplement);
     }
@@ -1455,7 +1455,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getHasSupplement()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasSupplement', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasSupplement', []);
 
         return parent::getHasSupplement();
     }
@@ -1466,7 +1466,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setIsSupplementHandedOut($isSupplementHandedOut)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsSupplementHandedOut', array($isSupplementHandedOut));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsSupplementHandedOut', [$isSupplementHandedOut]);
 
         return parent::setIsSupplementHandedOut($isSupplementHandedOut);
     }
@@ -1477,7 +1477,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getIsSupplementHandedOut()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsSupplementHandedOut', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsSupplementHandedOut', []);
 
         return parent::getIsSupplementHandedOut();
     }
@@ -1488,7 +1488,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setSupplementDeadline($supplementDeadline)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSupplementDeadline', array($supplementDeadline));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSupplementDeadline', [$supplementDeadline]);
 
         return parent::setSupplementDeadline($supplementDeadline);
     }
@@ -1499,7 +1499,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getSupplementDeadline()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSupplementDeadline', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSupplementDeadline', []);
 
         return parent::getSupplementDeadline();
     }
@@ -1510,7 +1510,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setSupplementPubDate($supplementPubDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSupplementPubDate', array($supplementPubDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSupplementPubDate', [$supplementPubDate]);
 
         return parent::setSupplementPubDate($supplementPubDate);
     }
@@ -1521,7 +1521,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getSupplementPubDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSupplementPubDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSupplementPubDate', []);
 
         return parent::getSupplementPubDate();
     }
@@ -1532,7 +1532,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setMarketOwned($marketOwned)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketOwned', array($marketOwned));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketOwned', [$marketOwned]);
 
         return parent::setMarketOwned($marketOwned);
     }
@@ -1543,7 +1543,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getMarketOwned()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketOwned', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketOwned', []);
 
         return parent::getMarketOwned();
     }
@@ -1554,7 +1554,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setIsCustomEvent($isCustomEvent)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsCustomEvent', array($isCustomEvent));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsCustomEvent', [$isCustomEvent]);
 
         return parent::setIsCustomEvent($isCustomEvent);
     }
@@ -1565,7 +1565,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getIsCustomEvent()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsCustomEvent', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsCustomEvent', []);
 
         return parent::getIsCustomEvent();
     }
@@ -1576,7 +1576,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setEventType($eventType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEventType', array($eventType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEventType', [$eventType]);
 
         return parent::setEventType($eventType);
     }
@@ -1587,7 +1587,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getEventType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEventType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEventType', []);
 
         return parent::getEventType();
     }
@@ -1598,7 +1598,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setCustomReminderEmail($customReminderEmail)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCustomReminderEmail', array($customReminderEmail));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCustomReminderEmail', [$customReminderEmail]);
 
         return parent::setCustomReminderEmail($customReminderEmail);
     }
@@ -1609,7 +1609,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getCustomReminderEmail()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCustomReminderEmail', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCustomReminderEmail', []);
 
         return parent::getCustomReminderEmail();
     }
@@ -1620,7 +1620,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setIsBrandExtension($isBrandExtension)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsBrandExtension', array($isBrandExtension));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsBrandExtension', [$isBrandExtension]);
 
         return parent::setIsBrandExtension($isBrandExtension);
     }
@@ -1631,7 +1631,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getIsBrandExtension()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsBrandExtension', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsBrandExtension', []);
 
         return parent::getIsBrandExtension();
     }
@@ -1642,7 +1642,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setBrandExtensionYear($brandExtensionYear)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBrandExtensionYear', array($brandExtensionYear));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBrandExtensionYear', [$brandExtensionYear]);
 
         return parent::setBrandExtensionYear($brandExtensionYear);
     }
@@ -1653,7 +1653,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getBrandExtensionYear()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBrandExtensionYear', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBrandExtensionYear', []);
 
         return parent::getBrandExtensionYear();
     }
@@ -1664,7 +1664,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setBrandId($brandId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBrandId', array($brandId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBrandId', [$brandId]);
 
         return parent::setBrandId($brandId);
     }
@@ -1675,7 +1675,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getBrandId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBrandId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBrandId', []);
 
         return parent::getBrandId();
     }
@@ -1686,7 +1686,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setRedirectEventId($redirectEventId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRedirectEventId', array($redirectEventId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRedirectEventId', [$redirectEventId]);
 
         return parent::setRedirectEventId($redirectEventId);
     }
@@ -1697,7 +1697,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getRedirectEventId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRedirectEventId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRedirectEventId', []);
 
         return parent::getRedirectEventId();
     }
@@ -1708,7 +1708,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setSponsorDisplayStartDate($sponsorDisplayStartDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSponsorDisplayStartDate', array($sponsorDisplayStartDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSponsorDisplayStartDate', [$sponsorDisplayStartDate]);
 
         return parent::setSponsorDisplayStartDate($sponsorDisplayStartDate);
     }
@@ -1719,7 +1719,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getSponsorDisplayStartDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSponsorDisplayStartDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSponsorDisplayStartDate', []);
 
         return parent::getSponsorDisplayStartDate();
     }
@@ -1730,7 +1730,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setSponsorDisplayEndDate($sponsorDisplayEndDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSponsorDisplayEndDate', array($sponsorDisplayEndDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSponsorDisplayEndDate', [$sponsorDisplayEndDate]);
 
         return parent::setSponsorDisplayEndDate($sponsorDisplayEndDate);
     }
@@ -1741,7 +1741,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getSponsorDisplayEndDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSponsorDisplayEndDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSponsorDisplayEndDate', []);
 
         return parent::getSponsorDisplayEndDate();
     }
@@ -1752,7 +1752,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setAdminEmail($adminEmail)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAdminEmail', array($adminEmail));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAdminEmail', [$adminEmail]);
 
         return parent::setAdminEmail($adminEmail);
     }
@@ -1763,7 +1763,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getAdminEmail()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAdminEmail', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAdminEmail', []);
 
         return parent::getAdminEmail();
     }
@@ -1774,7 +1774,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setShippingAddress($shippingAddress)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setShippingAddress', array($shippingAddress));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setShippingAddress', [$shippingAddress]);
 
         return parent::setShippingAddress($shippingAddress);
     }
@@ -1785,7 +1785,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getShippingAddress()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getShippingAddress', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getShippingAddress', []);
 
         return parent::getShippingAddress();
     }
@@ -1796,7 +1796,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setHashtag($hashtag)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHashtag', array($hashtag));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHashtag', [$hashtag]);
 
         return parent::setHashtag($hashtag);
     }
@@ -1807,7 +1807,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getHashtag()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHashtag', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHashtag', []);
 
         return parent::getHashtag();
     }
@@ -1818,7 +1818,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setNotes($notes)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNotes', array($notes));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNotes', [$notes]);
 
         return parent::setNotes($notes);
     }
@@ -1829,7 +1829,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getNotes()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNotes', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNotes', []);
 
         return parent::getNotes();
     }
@@ -1840,7 +1840,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setSetupTime($setupTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSetupTime', array($setupTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSetupTime', [$setupTime]);
 
         return parent::setSetupTime($setupTime);
     }
@@ -1851,7 +1851,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getSetupTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSetupTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSetupTime', []);
 
         return parent::getSetupTime();
     }
@@ -1862,7 +1862,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setModifiedBy($modifiedBy)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setModifiedBy', array($modifiedBy));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setModifiedBy', [$modifiedBy]);
 
         return parent::setModifiedBy($modifiedBy);
     }
@@ -1873,7 +1873,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getModifiedBy()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getModifiedBy', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getModifiedBy', []);
 
         return parent::getModifiedBy();
     }
@@ -1884,7 +1884,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function setDeletedAt($deletedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeletedAt', array($deletedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeletedAt', [$deletedAt]);
 
         return parent::setDeletedAt($deletedAt);
     }
@@ -1895,7 +1895,7 @@ class EvEvent extends \Entity\Bizj\EvEvent implements \Doctrine\ORM\Proxy\Proxy
     public function getDeletedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeletedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeletedAt', []);
 
         return parent::getDeletedAt();
     }

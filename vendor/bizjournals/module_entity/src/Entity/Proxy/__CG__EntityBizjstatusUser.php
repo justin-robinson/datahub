@@ -36,7 +36,7 @@ class User extends \Entity\Bizjstatus\User implements \Doctrine\ORM\Proxy\Proxy
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class User extends \Entity\Bizjstatus\User implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'user_id', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'username', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'email', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'display_name', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'password', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'state', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'updated_at');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'user_id', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'username', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'email', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'display_name', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'password', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'state', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'updated_at'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'user_id', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'username', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'email', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'display_name', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'password', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'state', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'updated_at');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'user_id', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'username', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'email', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'display_name', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'password', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'state', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizjstatus\\User' . "\0" . 'updated_at'];
     }
 
     /**
@@ -97,7 +97,7 @@ class User extends \Entity\Bizjstatus\User implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class User extends \Entity\Bizjstatus\User implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class User extends \Entity\Bizjstatus\User implements \Doctrine\ORM\Proxy\Proxy
     public function getUserId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUserId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUserId', []);
 
         return parent::getUserId();
     }
@@ -190,7 +190,7 @@ class User extends \Entity\Bizjstatus\User implements \Doctrine\ORM\Proxy\Proxy
     public function setUsername($username)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUsername', array($username));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUsername', [$username]);
 
         return parent::setUsername($username);
     }
@@ -201,7 +201,7 @@ class User extends \Entity\Bizjstatus\User implements \Doctrine\ORM\Proxy\Proxy
     public function getUsername()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUsername', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUsername', []);
 
         return parent::getUsername();
     }
@@ -212,7 +212,7 @@ class User extends \Entity\Bizjstatus\User implements \Doctrine\ORM\Proxy\Proxy
     public function setEmail($email)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail', array($email));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail', [$email]);
 
         return parent::setEmail($email);
     }
@@ -223,7 +223,7 @@ class User extends \Entity\Bizjstatus\User implements \Doctrine\ORM\Proxy\Proxy
     public function getEmail()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail', []);
 
         return parent::getEmail();
     }
@@ -234,7 +234,7 @@ class User extends \Entity\Bizjstatus\User implements \Doctrine\ORM\Proxy\Proxy
     public function setDisplayName($displayName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDisplayName', array($displayName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDisplayName', [$displayName]);
 
         return parent::setDisplayName($displayName);
     }
@@ -245,7 +245,7 @@ class User extends \Entity\Bizjstatus\User implements \Doctrine\ORM\Proxy\Proxy
     public function getDisplayName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDisplayName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDisplayName', []);
 
         return parent::getDisplayName();
     }
@@ -256,7 +256,7 @@ class User extends \Entity\Bizjstatus\User implements \Doctrine\ORM\Proxy\Proxy
     public function setPassword($password)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPassword', array($password));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPassword', [$password]);
 
         return parent::setPassword($password);
     }
@@ -267,7 +267,7 @@ class User extends \Entity\Bizjstatus\User implements \Doctrine\ORM\Proxy\Proxy
     public function getPassword()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPassword', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPassword', []);
 
         return parent::getPassword();
     }
@@ -278,7 +278,7 @@ class User extends \Entity\Bizjstatus\User implements \Doctrine\ORM\Proxy\Proxy
     public function setState($state)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setState', array($state));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setState', [$state]);
 
         return parent::setState($state);
     }
@@ -289,7 +289,7 @@ class User extends \Entity\Bizjstatus\User implements \Doctrine\ORM\Proxy\Proxy
     public function getState()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getState', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getState', []);
 
         return parent::getState();
     }
@@ -300,7 +300,7 @@ class User extends \Entity\Bizjstatus\User implements \Doctrine\ORM\Proxy\Proxy
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -311,7 +311,7 @@ class User extends \Entity\Bizjstatus\User implements \Doctrine\ORM\Proxy\Proxy
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -322,7 +322,7 @@ class User extends \Entity\Bizjstatus\User implements \Doctrine\ORM\Proxy\Proxy
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -333,7 +333,7 @@ class User extends \Entity\Bizjstatus\User implements \Doctrine\ORM\Proxy\Proxy
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }

@@ -36,7 +36,7 @@ class PulseQuestion extends \Entity\Bzjpreview\PulseQuestion implements \Doctrin
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class PulseQuestion extends \Entity\Bzjpreview\PulseQuestion implements \Doctrin
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'question_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'pulse_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'question', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'ord', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'option_type', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'is_required', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'results_cache', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'Options', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'Pulse');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'question_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'pulse_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'question', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'ord', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'option_type', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'is_required', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'results_cache', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'Options', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'Pulse'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'question_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'pulse_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'question', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'ord', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'option_type', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'is_required', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'results_cache', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'Options', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'Pulse');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'question_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'pulse_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'question', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'ord', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'option_type', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'is_required', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'results_cache', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'Options', '' . "\0" . 'Entity\\Bzjpreview\\PulseQuestion' . "\0" . 'Pulse'];
     }
 
     /**
@@ -97,7 +97,7 @@ class PulseQuestion extends \Entity\Bzjpreview\PulseQuestion implements \Doctrin
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class PulseQuestion extends \Entity\Bzjpreview\PulseQuestion implements \Doctrin
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class PulseQuestion extends \Entity\Bzjpreview\PulseQuestion implements \Doctrin
     public function getQuestionId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQuestionId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQuestionId', []);
 
         return parent::getQuestionId();
     }
@@ -190,7 +190,7 @@ class PulseQuestion extends \Entity\Bzjpreview\PulseQuestion implements \Doctrin
     public function setPulseId($pulseId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPulseId', array($pulseId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPulseId', [$pulseId]);
 
         return parent::setPulseId($pulseId);
     }
@@ -201,7 +201,7 @@ class PulseQuestion extends \Entity\Bzjpreview\PulseQuestion implements \Doctrin
     public function getPulseId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPulseId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPulseId', []);
 
         return parent::getPulseId();
     }
@@ -212,7 +212,7 @@ class PulseQuestion extends \Entity\Bzjpreview\PulseQuestion implements \Doctrin
     public function setQuestion($question)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setQuestion', array($question));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setQuestion', [$question]);
 
         return parent::setQuestion($question);
     }
@@ -223,7 +223,7 @@ class PulseQuestion extends \Entity\Bzjpreview\PulseQuestion implements \Doctrin
     public function getQuestion()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQuestion', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQuestion', []);
 
         return parent::getQuestion();
     }
@@ -234,7 +234,7 @@ class PulseQuestion extends \Entity\Bzjpreview\PulseQuestion implements \Doctrin
     public function setOrd($ord)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrd', array($ord));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrd', [$ord]);
 
         return parent::setOrd($ord);
     }
@@ -245,7 +245,7 @@ class PulseQuestion extends \Entity\Bzjpreview\PulseQuestion implements \Doctrin
     public function getOrd()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrd', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrd', []);
 
         return parent::getOrd();
     }
@@ -256,7 +256,7 @@ class PulseQuestion extends \Entity\Bzjpreview\PulseQuestion implements \Doctrin
     public function setOptionType($optionType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOptionType', array($optionType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOptionType', [$optionType]);
 
         return parent::setOptionType($optionType);
     }
@@ -267,7 +267,7 @@ class PulseQuestion extends \Entity\Bzjpreview\PulseQuestion implements \Doctrin
     public function getOptionType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOptionType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOptionType', []);
 
         return parent::getOptionType();
     }
@@ -278,7 +278,7 @@ class PulseQuestion extends \Entity\Bzjpreview\PulseQuestion implements \Doctrin
     public function setIsRequired($isRequired)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsRequired', array($isRequired));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsRequired', [$isRequired]);
 
         return parent::setIsRequired($isRequired);
     }
@@ -289,7 +289,7 @@ class PulseQuestion extends \Entity\Bzjpreview\PulseQuestion implements \Doctrin
     public function getIsRequired()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsRequired', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsRequired', []);
 
         return parent::getIsRequired();
     }
@@ -300,7 +300,7 @@ class PulseQuestion extends \Entity\Bzjpreview\PulseQuestion implements \Doctrin
     public function setResultsCache($resultsCache)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setResultsCache', array($resultsCache));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setResultsCache', [$resultsCache]);
 
         return parent::setResultsCache($resultsCache);
     }
@@ -311,7 +311,7 @@ class PulseQuestion extends \Entity\Bzjpreview\PulseQuestion implements \Doctrin
     public function getResultsCache()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getResultsCache', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getResultsCache', []);
 
         return parent::getResultsCache();
     }
@@ -322,7 +322,7 @@ class PulseQuestion extends \Entity\Bzjpreview\PulseQuestion implements \Doctrin
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -333,7 +333,7 @@ class PulseQuestion extends \Entity\Bzjpreview\PulseQuestion implements \Doctrin
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -344,7 +344,7 @@ class PulseQuestion extends \Entity\Bzjpreview\PulseQuestion implements \Doctrin
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -355,7 +355,7 @@ class PulseQuestion extends \Entity\Bzjpreview\PulseQuestion implements \Doctrin
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -366,7 +366,7 @@ class PulseQuestion extends \Entity\Bzjpreview\PulseQuestion implements \Doctrin
     public function setDeletedAt($deletedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeletedAt', array($deletedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeletedAt', [$deletedAt]);
 
         return parent::setDeletedAt($deletedAt);
     }
@@ -377,7 +377,7 @@ class PulseQuestion extends \Entity\Bzjpreview\PulseQuestion implements \Doctrin
     public function getDeletedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeletedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeletedAt', []);
 
         return parent::getDeletedAt();
     }
@@ -388,7 +388,7 @@ class PulseQuestion extends \Entity\Bzjpreview\PulseQuestion implements \Doctrin
     public function addOption(\Entity\Bzjpreview\PulseQuestionOption $option)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addOption', array($option));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addOption', [$option]);
 
         return parent::addOption($option);
     }
@@ -399,7 +399,7 @@ class PulseQuestion extends \Entity\Bzjpreview\PulseQuestion implements \Doctrin
     public function removeOption(\Entity\Bzjpreview\PulseQuestionOption $option)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeOption', array($option));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeOption', [$option]);
 
         return parent::removeOption($option);
     }
@@ -410,7 +410,7 @@ class PulseQuestion extends \Entity\Bzjpreview\PulseQuestion implements \Doctrin
     public function getOptions()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOptions', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOptions', []);
 
         return parent::getOptions();
     }
@@ -421,7 +421,7 @@ class PulseQuestion extends \Entity\Bzjpreview\PulseQuestion implements \Doctrin
     public function setPulse(\Entity\Bzjpreview\Pulse $pulse = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPulse', array($pulse));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPulse', [$pulse]);
 
         return parent::setPulse($pulse);
     }
@@ -432,7 +432,7 @@ class PulseQuestion extends \Entity\Bzjpreview\PulseQuestion implements \Doctrin
     public function getPulse()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPulse', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPulse', []);
 
         return parent::getPulse();
     }

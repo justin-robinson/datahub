@@ -36,7 +36,7 @@ class MediaMetadata extends \Entity\Medialibrary\MediaMetadata implements \Doctr
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class MediaMetadata extends \Entity\Medialibrary\MediaMetadata implements \Doctr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'meta_id', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'meta_group', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'meta_name', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'meta_value', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'is_preferred', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'is_original', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'Media');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'meta_id', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'meta_group', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'meta_name', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'meta_value', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'is_preferred', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'is_original', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'Media'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'meta_id', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'meta_group', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'meta_name', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'meta_value', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'is_preferred', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'is_original', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'Media');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'meta_id', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'meta_group', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'meta_name', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'meta_value', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'is_preferred', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'is_original', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Medialibrary\\MediaMetadata' . "\0" . 'Media'];
     }
 
     /**
@@ -97,7 +97,7 @@ class MediaMetadata extends \Entity\Medialibrary\MediaMetadata implements \Doctr
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class MediaMetadata extends \Entity\Medialibrary\MediaMetadata implements \Doctr
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class MediaMetadata extends \Entity\Medialibrary\MediaMetadata implements \Doctr
     public function getMetaId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetaId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetaId', []);
 
         return parent::getMetaId();
     }
@@ -190,7 +190,7 @@ class MediaMetadata extends \Entity\Medialibrary\MediaMetadata implements \Doctr
     public function setMediaId($mediaId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaId', array($mediaId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaId', [$mediaId]);
 
         return parent::setMediaId($mediaId);
     }
@@ -201,7 +201,7 @@ class MediaMetadata extends \Entity\Medialibrary\MediaMetadata implements \Doctr
     public function getMediaId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaId', []);
 
         return parent::getMediaId();
     }
@@ -212,7 +212,7 @@ class MediaMetadata extends \Entity\Medialibrary\MediaMetadata implements \Doctr
     public function setMetaGroup($metaGroup)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMetaGroup', array($metaGroup));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMetaGroup', [$metaGroup]);
 
         return parent::setMetaGroup($metaGroup);
     }
@@ -223,7 +223,7 @@ class MediaMetadata extends \Entity\Medialibrary\MediaMetadata implements \Doctr
     public function getMetaGroup()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetaGroup', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetaGroup', []);
 
         return parent::getMetaGroup();
     }
@@ -234,7 +234,7 @@ class MediaMetadata extends \Entity\Medialibrary\MediaMetadata implements \Doctr
     public function setMetaName($metaName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMetaName', array($metaName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMetaName', [$metaName]);
 
         return parent::setMetaName($metaName);
     }
@@ -245,7 +245,7 @@ class MediaMetadata extends \Entity\Medialibrary\MediaMetadata implements \Doctr
     public function getMetaName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetaName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetaName', []);
 
         return parent::getMetaName();
     }
@@ -256,7 +256,7 @@ class MediaMetadata extends \Entity\Medialibrary\MediaMetadata implements \Doctr
     public function setMetaValue($metaValue)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMetaValue', array($metaValue));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMetaValue', [$metaValue]);
 
         return parent::setMetaValue($metaValue);
     }
@@ -267,7 +267,7 @@ class MediaMetadata extends \Entity\Medialibrary\MediaMetadata implements \Doctr
     public function getMetaValue()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetaValue', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetaValue', []);
 
         return parent::getMetaValue();
     }
@@ -278,7 +278,7 @@ class MediaMetadata extends \Entity\Medialibrary\MediaMetadata implements \Doctr
     public function setIsPreferred($isPreferred)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsPreferred', array($isPreferred));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsPreferred', [$isPreferred]);
 
         return parent::setIsPreferred($isPreferred);
     }
@@ -289,7 +289,7 @@ class MediaMetadata extends \Entity\Medialibrary\MediaMetadata implements \Doctr
     public function getIsPreferred()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsPreferred', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsPreferred', []);
 
         return parent::getIsPreferred();
     }
@@ -300,7 +300,7 @@ class MediaMetadata extends \Entity\Medialibrary\MediaMetadata implements \Doctr
     public function setIsOriginal($isOriginal)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsOriginal', array($isOriginal));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsOriginal', [$isOriginal]);
 
         return parent::setIsOriginal($isOriginal);
     }
@@ -311,7 +311,7 @@ class MediaMetadata extends \Entity\Medialibrary\MediaMetadata implements \Doctr
     public function getIsOriginal()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsOriginal', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsOriginal', []);
 
         return parent::getIsOriginal();
     }
@@ -322,7 +322,7 @@ class MediaMetadata extends \Entity\Medialibrary\MediaMetadata implements \Doctr
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -333,7 +333,7 @@ class MediaMetadata extends \Entity\Medialibrary\MediaMetadata implements \Doctr
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -344,7 +344,7 @@ class MediaMetadata extends \Entity\Medialibrary\MediaMetadata implements \Doctr
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -355,7 +355,7 @@ class MediaMetadata extends \Entity\Medialibrary\MediaMetadata implements \Doctr
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -366,7 +366,7 @@ class MediaMetadata extends \Entity\Medialibrary\MediaMetadata implements \Doctr
     public function setMedia(\Entity\Medialibrary\Media $media = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMedia', array($media));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMedia', [$media]);
 
         return parent::setMedia($media);
     }
@@ -377,7 +377,7 @@ class MediaMetadata extends \Entity\Medialibrary\MediaMetadata implements \Doctr
     public function getMedia()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMedia', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMedia', []);
 
         return parent::getMedia();
     }

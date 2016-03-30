@@ -36,7 +36,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'nomination_id', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'title', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'subheader', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'market_id', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'active', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'archived', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'invitation_only', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'start_date', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'end_date', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'short_description', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'long_description', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'media_id', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'media_url', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'contact_email_list', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'preview_for_id', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'sponsor_media_id', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'sponsor_media_url', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'sponsor_name', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'external_url', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'updated_by', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'nomination_type', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'event_id', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'parameters', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'sponsors', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'is_brand_extension', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'brand_extension_year', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'brand_id', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'has_locked_form', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'sponsor_display_start_date', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'sponsor_display_end_date', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'winners_visible_at', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'ord', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'Market');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'nomination_id', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'title', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'subheader', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'market_id', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'active', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'archived', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'invitation_only', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'start_date', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'end_date', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'short_description', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'long_description', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'media_id', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'media_url', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'contact_email_list', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'preview_for_id', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'sponsor_media_id', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'sponsor_media_url', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'sponsor_name', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'external_url', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'updated_by', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'nomination_type', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'event_id', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'parameters', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'sponsors', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'is_brand_extension', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'brand_extension_year', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'brand_id', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'has_locked_form', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'sponsor_display_start_date', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'sponsor_display_end_date', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'winners_visible_at', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'ord', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'Market'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'nomination_id', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'title', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'subheader', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'market_id', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'active', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'archived', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'invitation_only', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'start_date', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'end_date', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'short_description', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'long_description', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'media_id', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'media_url', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'contact_email_list', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'preview_for_id', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'sponsor_media_id', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'sponsor_media_url', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'sponsor_name', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'external_url', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'updated_by', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'nomination_type', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'event_id', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'parameters', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'sponsors', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'is_brand_extension', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'brand_extension_year', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'brand_id', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'has_locked_form', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'sponsor_display_start_date', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'sponsor_display_end_date', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'winners_visible_at', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'ord', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'Market');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'nomination_id', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'title', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'subheader', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'market_id', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'active', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'archived', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'invitation_only', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'start_date', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'end_date', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'short_description', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'long_description', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'media_id', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'media_url', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'contact_email_list', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'preview_for_id', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'sponsor_media_id', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'sponsor_media_url', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'sponsor_name', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'external_url', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'updated_by', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'nomination_type', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'event_id', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'parameters', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'sponsors', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'is_brand_extension', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'brand_extension_year', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'brand_id', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'has_locked_form', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'sponsor_display_start_date', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'sponsor_display_end_date', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'winners_visible_at', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'ord', '' . "\0" . 'Entity\\Bizj\\Nomination' . "\0" . 'Market'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getNominationId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNominationId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNominationId', []);
 
         return parent::getNominationId();
     }
@@ -190,7 +190,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setTitle($title)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', array($title));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', [$title]);
 
         return parent::setTitle($title);
     }
@@ -201,7 +201,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getTitle()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', []);
 
         return parent::getTitle();
     }
@@ -212,7 +212,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setSubheader($subheader)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSubheader', array($subheader));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSubheader', [$subheader]);
 
         return parent::setSubheader($subheader);
     }
@@ -223,7 +223,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getSubheader()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSubheader', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSubheader', []);
 
         return parent::getSubheader();
     }
@@ -234,7 +234,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setMarketId($marketId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketId', array($marketId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketId', [$marketId]);
 
         return parent::setMarketId($marketId);
     }
@@ -245,7 +245,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getMarketId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketId', []);
 
         return parent::getMarketId();
     }
@@ -256,7 +256,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setActive($active)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setActive', array($active));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setActive', [$active]);
 
         return parent::setActive($active);
     }
@@ -267,7 +267,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getActive()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getActive', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getActive', []);
 
         return parent::getActive();
     }
@@ -278,7 +278,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setArchived($archived)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setArchived', array($archived));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setArchived', [$archived]);
 
         return parent::setArchived($archived);
     }
@@ -289,7 +289,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getArchived()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getArchived', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getArchived', []);
 
         return parent::getArchived();
     }
@@ -300,7 +300,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setInvitationOnly($invitationOnly)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setInvitationOnly', array($invitationOnly));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setInvitationOnly', [$invitationOnly]);
 
         return parent::setInvitationOnly($invitationOnly);
     }
@@ -311,7 +311,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getInvitationOnly()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getInvitationOnly', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getInvitationOnly', []);
 
         return parent::getInvitationOnly();
     }
@@ -322,7 +322,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setStartDate($startDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStartDate', array($startDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStartDate', [$startDate]);
 
         return parent::setStartDate($startDate);
     }
@@ -333,7 +333,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getStartDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStartDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStartDate', []);
 
         return parent::getStartDate();
     }
@@ -344,7 +344,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setEndDate($endDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEndDate', array($endDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEndDate', [$endDate]);
 
         return parent::setEndDate($endDate);
     }
@@ -355,7 +355,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getEndDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEndDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEndDate', []);
 
         return parent::getEndDate();
     }
@@ -366,7 +366,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setShortDescription($shortDescription)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setShortDescription', array($shortDescription));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setShortDescription', [$shortDescription]);
 
         return parent::setShortDescription($shortDescription);
     }
@@ -377,7 +377,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getShortDescription()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getShortDescription', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getShortDescription', []);
 
         return parent::getShortDescription();
     }
@@ -388,7 +388,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setLongDescription($longDescription)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLongDescription', array($longDescription));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLongDescription', [$longDescription]);
 
         return parent::setLongDescription($longDescription);
     }
@@ -399,7 +399,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getLongDescription()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLongDescription', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLongDescription', []);
 
         return parent::getLongDescription();
     }
@@ -410,7 +410,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setMediaId($mediaId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaId', array($mediaId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaId', [$mediaId]);
 
         return parent::setMediaId($mediaId);
     }
@@ -421,7 +421,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getMediaId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaId', []);
 
         return parent::getMediaId();
     }
@@ -432,7 +432,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setMediaUrl($mediaUrl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaUrl', array($mediaUrl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaUrl', [$mediaUrl]);
 
         return parent::setMediaUrl($mediaUrl);
     }
@@ -443,7 +443,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getMediaUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaUrl', []);
 
         return parent::getMediaUrl();
     }
@@ -454,7 +454,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setContactEmailList($contactEmailList)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContactEmailList', array($contactEmailList));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContactEmailList', [$contactEmailList]);
 
         return parent::setContactEmailList($contactEmailList);
     }
@@ -465,7 +465,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getContactEmailList()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactEmailList', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactEmailList', []);
 
         return parent::getContactEmailList();
     }
@@ -476,7 +476,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setPreviewForId($previewForId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPreviewForId', array($previewForId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPreviewForId', [$previewForId]);
 
         return parent::setPreviewForId($previewForId);
     }
@@ -487,7 +487,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getPreviewForId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPreviewForId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPreviewForId', []);
 
         return parent::getPreviewForId();
     }
@@ -498,7 +498,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setSponsorMediaId($sponsorMediaId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSponsorMediaId', array($sponsorMediaId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSponsorMediaId', [$sponsorMediaId]);
 
         return parent::setSponsorMediaId($sponsorMediaId);
     }
@@ -509,7 +509,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getSponsorMediaId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSponsorMediaId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSponsorMediaId', []);
 
         return parent::getSponsorMediaId();
     }
@@ -520,7 +520,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setSponsorMediaUrl($sponsorMediaUrl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSponsorMediaUrl', array($sponsorMediaUrl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSponsorMediaUrl', [$sponsorMediaUrl]);
 
         return parent::setSponsorMediaUrl($sponsorMediaUrl);
     }
@@ -531,7 +531,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getSponsorMediaUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSponsorMediaUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSponsorMediaUrl', []);
 
         return parent::getSponsorMediaUrl();
     }
@@ -542,7 +542,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setSponsorName($sponsorName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSponsorName', array($sponsorName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSponsorName', [$sponsorName]);
 
         return parent::setSponsorName($sponsorName);
     }
@@ -553,7 +553,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getSponsorName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSponsorName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSponsorName', []);
 
         return parent::getSponsorName();
     }
@@ -564,7 +564,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -575,7 +575,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -586,7 +586,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -597,7 +597,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -608,7 +608,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setExternalUrl($externalUrl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExternalUrl', array($externalUrl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExternalUrl', [$externalUrl]);
 
         return parent::setExternalUrl($externalUrl);
     }
@@ -619,7 +619,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getExternalUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExternalUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExternalUrl', []);
 
         return parent::getExternalUrl();
     }
@@ -630,7 +630,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setUpdatedBy($updatedBy)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedBy', array($updatedBy));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedBy', [$updatedBy]);
 
         return parent::setUpdatedBy($updatedBy);
     }
@@ -641,7 +641,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getUpdatedBy()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedBy', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedBy', []);
 
         return parent::getUpdatedBy();
     }
@@ -652,7 +652,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setNominationType($nominationType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNominationType', array($nominationType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNominationType', [$nominationType]);
 
         return parent::setNominationType($nominationType);
     }
@@ -663,7 +663,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getNominationType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNominationType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNominationType', []);
 
         return parent::getNominationType();
     }
@@ -674,7 +674,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setEventId($eventId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEventId', array($eventId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEventId', [$eventId]);
 
         return parent::setEventId($eventId);
     }
@@ -685,7 +685,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getEventId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEventId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEventId', []);
 
         return parent::getEventId();
     }
@@ -696,7 +696,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setParameters($parameters)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParameters', array($parameters));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParameters', [$parameters]);
 
         return parent::setParameters($parameters);
     }
@@ -707,7 +707,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getParameters()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParameters', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParameters', []);
 
         return parent::getParameters();
     }
@@ -718,7 +718,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setSponsors($sponsors)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSponsors', array($sponsors));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSponsors', [$sponsors]);
 
         return parent::setSponsors($sponsors);
     }
@@ -729,7 +729,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getSponsors()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSponsors', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSponsors', []);
 
         return parent::getSponsors();
     }
@@ -740,7 +740,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setIsBrandExtension($isBrandExtension)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsBrandExtension', array($isBrandExtension));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsBrandExtension', [$isBrandExtension]);
 
         return parent::setIsBrandExtension($isBrandExtension);
     }
@@ -751,7 +751,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getIsBrandExtension()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsBrandExtension', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsBrandExtension', []);
 
         return parent::getIsBrandExtension();
     }
@@ -762,7 +762,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setBrandExtensionYear($brandExtensionYear)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBrandExtensionYear', array($brandExtensionYear));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBrandExtensionYear', [$brandExtensionYear]);
 
         return parent::setBrandExtensionYear($brandExtensionYear);
     }
@@ -773,7 +773,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getBrandExtensionYear()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBrandExtensionYear', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBrandExtensionYear', []);
 
         return parent::getBrandExtensionYear();
     }
@@ -784,7 +784,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setBrandId($brandId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBrandId', array($brandId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBrandId', [$brandId]);
 
         return parent::setBrandId($brandId);
     }
@@ -795,7 +795,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getBrandId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBrandId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBrandId', []);
 
         return parent::getBrandId();
     }
@@ -806,7 +806,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setHasLockedForm($hasLockedForm)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasLockedForm', array($hasLockedForm));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasLockedForm', [$hasLockedForm]);
 
         return parent::setHasLockedForm($hasLockedForm);
     }
@@ -817,7 +817,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getHasLockedForm()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasLockedForm', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasLockedForm', []);
 
         return parent::getHasLockedForm();
     }
@@ -828,7 +828,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setSponsorDisplayStartDate($sponsorDisplayStartDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSponsorDisplayStartDate', array($sponsorDisplayStartDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSponsorDisplayStartDate', [$sponsorDisplayStartDate]);
 
         return parent::setSponsorDisplayStartDate($sponsorDisplayStartDate);
     }
@@ -839,7 +839,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getSponsorDisplayStartDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSponsorDisplayStartDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSponsorDisplayStartDate', []);
 
         return parent::getSponsorDisplayStartDate();
     }
@@ -850,7 +850,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setSponsorDisplayEndDate($sponsorDisplayEndDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSponsorDisplayEndDate', array($sponsorDisplayEndDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSponsorDisplayEndDate', [$sponsorDisplayEndDate]);
 
         return parent::setSponsorDisplayEndDate($sponsorDisplayEndDate);
     }
@@ -861,7 +861,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getSponsorDisplayEndDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSponsorDisplayEndDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSponsorDisplayEndDate', []);
 
         return parent::getSponsorDisplayEndDate();
     }
@@ -872,7 +872,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setWinnersVisibleAt($winnersVisibleAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setWinnersVisibleAt', array($winnersVisibleAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setWinnersVisibleAt', [$winnersVisibleAt]);
 
         return parent::setWinnersVisibleAt($winnersVisibleAt);
     }
@@ -883,7 +883,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getWinnersVisibleAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getWinnersVisibleAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getWinnersVisibleAt', []);
 
         return parent::getWinnersVisibleAt();
     }
@@ -894,7 +894,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setOrd($ord)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrd', array($ord));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrd', [$ord]);
 
         return parent::setOrd($ord);
     }
@@ -905,7 +905,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getOrd()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrd', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrd', []);
 
         return parent::getOrd();
     }
@@ -916,7 +916,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function setMarket(\Entity\Bizj\Market $market = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarket', array($market));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarket', [$market]);
 
         return parent::setMarket($market);
     }
@@ -927,7 +927,7 @@ class Nomination extends \Entity\Bizj\Nomination implements \Doctrine\ORM\Proxy\
     public function getMarket()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarket', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarket', []);
 
         return parent::getMarket();
     }

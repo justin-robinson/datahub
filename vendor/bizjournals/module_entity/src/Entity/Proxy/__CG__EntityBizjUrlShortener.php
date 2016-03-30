@@ -36,7 +36,7 @@ class UrlShortener extends \Entity\Bizj\UrlShortener implements \Doctrine\ORM\Pr
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class UrlShortener extends \Entity\Bizj\UrlShortener implements \Doctrine\ORM\Pr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'url_id', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'url', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'market', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'created_time', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'modified_time');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'url_id', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'url', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'market', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'created_time', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'modified_time'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'url_id', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'url', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'market', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'created_time', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'modified_time');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'url_id', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'url', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'market', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'created_time', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'modified_time'];
     }
 
     /**
@@ -97,7 +97,7 @@ class UrlShortener extends \Entity\Bizj\UrlShortener implements \Doctrine\ORM\Pr
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class UrlShortener extends \Entity\Bizj\UrlShortener implements \Doctrine\ORM\Pr
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class UrlShortener extends \Entity\Bizj\UrlShortener implements \Doctrine\ORM\Pr
     public function getUrlId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUrlId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUrlId', []);
 
         return parent::getUrlId();
     }
@@ -190,7 +190,7 @@ class UrlShortener extends \Entity\Bizj\UrlShortener implements \Doctrine\ORM\Pr
     public function setUrl($url)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUrl', array($url));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUrl', [$url]);
 
         return parent::setUrl($url);
     }
@@ -201,7 +201,7 @@ class UrlShortener extends \Entity\Bizj\UrlShortener implements \Doctrine\ORM\Pr
     public function getUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUrl', []);
 
         return parent::getUrl();
     }
@@ -212,7 +212,7 @@ class UrlShortener extends \Entity\Bizj\UrlShortener implements \Doctrine\ORM\Pr
     public function setMarket($market)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarket', array($market));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarket', [$market]);
 
         return parent::setMarket($market);
     }
@@ -223,7 +223,7 @@ class UrlShortener extends \Entity\Bizj\UrlShortener implements \Doctrine\ORM\Pr
     public function getMarket()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarket', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarket', []);
 
         return parent::getMarket();
     }
@@ -234,7 +234,7 @@ class UrlShortener extends \Entity\Bizj\UrlShortener implements \Doctrine\ORM\Pr
     public function setCreatedTime($createdTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedTime', array($createdTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedTime', [$createdTime]);
 
         return parent::setCreatedTime($createdTime);
     }
@@ -245,7 +245,7 @@ class UrlShortener extends \Entity\Bizj\UrlShortener implements \Doctrine\ORM\Pr
     public function getCreatedTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedTime', []);
 
         return parent::getCreatedTime();
     }
@@ -256,7 +256,7 @@ class UrlShortener extends \Entity\Bizj\UrlShortener implements \Doctrine\ORM\Pr
     public function setModifiedTime($modifiedTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setModifiedTime', array($modifiedTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setModifiedTime', [$modifiedTime]);
 
         return parent::setModifiedTime($modifiedTime);
     }
@@ -267,7 +267,7 @@ class UrlShortener extends \Entity\Bizj\UrlShortener implements \Doctrine\ORM\Pr
     public function getModifiedTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getModifiedTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getModifiedTime', []);
 
         return parent::getModifiedTime();
     }

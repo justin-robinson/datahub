@@ -36,7 +36,7 @@ class PulseMarketMap extends \Entity\Bzjpreview\PulseMarketMap implements \Doctr
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class PulseMarketMap extends \Entity\Bzjpreview\PulseMarketMap implements \Doctr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PulseMarketMap' . "\0" . 'pulse_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseMarketMap' . "\0" . 'market_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseMarketMap' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseMarketMap' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseMarketMap' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseMarketMap' . "\0" . 'Pulse');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PulseMarketMap' . "\0" . 'pulse_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseMarketMap' . "\0" . 'market_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseMarketMap' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseMarketMap' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseMarketMap' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseMarketMap' . "\0" . 'Pulse'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PulseMarketMap' . "\0" . 'pulse_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseMarketMap' . "\0" . 'market_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseMarketMap' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseMarketMap' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseMarketMap' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseMarketMap' . "\0" . 'Pulse');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PulseMarketMap' . "\0" . 'pulse_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseMarketMap' . "\0" . 'market_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseMarketMap' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseMarketMap' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseMarketMap' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseMarketMap' . "\0" . 'Pulse'];
     }
 
     /**
@@ -97,7 +97,7 @@ class PulseMarketMap extends \Entity\Bzjpreview\PulseMarketMap implements \Doctr
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class PulseMarketMap extends \Entity\Bzjpreview\PulseMarketMap implements \Doctr
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class PulseMarketMap extends \Entity\Bzjpreview\PulseMarketMap implements \Doctr
     public function setPulseId($pulseId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPulseId', array($pulseId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPulseId', [$pulseId]);
 
         return parent::setPulseId($pulseId);
     }
@@ -190,7 +190,7 @@ class PulseMarketMap extends \Entity\Bzjpreview\PulseMarketMap implements \Doctr
     public function getPulseId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPulseId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPulseId', []);
 
         return parent::getPulseId();
     }
@@ -201,7 +201,7 @@ class PulseMarketMap extends \Entity\Bzjpreview\PulseMarketMap implements \Doctr
     public function setMarketId($marketId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketId', array($marketId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketId', [$marketId]);
 
         return parent::setMarketId($marketId);
     }
@@ -212,7 +212,7 @@ class PulseMarketMap extends \Entity\Bzjpreview\PulseMarketMap implements \Doctr
     public function getMarketId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketId', []);
 
         return parent::getMarketId();
     }
@@ -223,7 +223,7 @@ class PulseMarketMap extends \Entity\Bzjpreview\PulseMarketMap implements \Doctr
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -234,7 +234,7 @@ class PulseMarketMap extends \Entity\Bzjpreview\PulseMarketMap implements \Doctr
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -245,7 +245,7 @@ class PulseMarketMap extends \Entity\Bzjpreview\PulseMarketMap implements \Doctr
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -256,7 +256,7 @@ class PulseMarketMap extends \Entity\Bzjpreview\PulseMarketMap implements \Doctr
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -267,7 +267,7 @@ class PulseMarketMap extends \Entity\Bzjpreview\PulseMarketMap implements \Doctr
     public function setDeletedAt($deletedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeletedAt', array($deletedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeletedAt', [$deletedAt]);
 
         return parent::setDeletedAt($deletedAt);
     }
@@ -278,7 +278,7 @@ class PulseMarketMap extends \Entity\Bzjpreview\PulseMarketMap implements \Doctr
     public function getDeletedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeletedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeletedAt', []);
 
         return parent::getDeletedAt();
     }
@@ -289,7 +289,7 @@ class PulseMarketMap extends \Entity\Bzjpreview\PulseMarketMap implements \Doctr
     public function setPulse(\Entity\Bzjpreview\Pulse $pulse = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPulse', array($pulse));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPulse', [$pulse]);
 
         return parent::setPulse($pulse);
     }
@@ -300,7 +300,7 @@ class PulseMarketMap extends \Entity\Bzjpreview\PulseMarketMap implements \Doctr
     public function getPulse()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPulse', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPulse', []);
 
         return parent::getPulse();
     }

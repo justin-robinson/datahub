@@ -36,7 +36,7 @@ class Metadata extends \Entity\Medialibrary\Metadata implements \Doctrine\ORM\Pr
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Metadata extends \Entity\Medialibrary\Metadata implements \Doctrine\ORM\Pr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\Metadata' . "\0" . 'meta_id', '' . "\0" . 'Entity\\Medialibrary\\Metadata' . "\0" . 'object_type', '' . "\0" . 'Entity\\Medialibrary\\Metadata' . "\0" . 'object_id', '' . "\0" . 'Entity\\Medialibrary\\Metadata' . "\0" . 'meta_name', '' . "\0" . 'Entity\\Medialibrary\\Metadata' . "\0" . 'meta_value', '' . "\0" . 'Entity\\Medialibrary\\Metadata' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\Metadata' . "\0" . 'updated_at');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\Metadata' . "\0" . 'meta_id', '' . "\0" . 'Entity\\Medialibrary\\Metadata' . "\0" . 'object_type', '' . "\0" . 'Entity\\Medialibrary\\Metadata' . "\0" . 'object_id', '' . "\0" . 'Entity\\Medialibrary\\Metadata' . "\0" . 'meta_name', '' . "\0" . 'Entity\\Medialibrary\\Metadata' . "\0" . 'meta_value', '' . "\0" . 'Entity\\Medialibrary\\Metadata' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\Metadata' . "\0" . 'updated_at'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\Metadata' . "\0" . 'meta_id', '' . "\0" . 'Entity\\Medialibrary\\Metadata' . "\0" . 'object_type', '' . "\0" . 'Entity\\Medialibrary\\Metadata' . "\0" . 'object_id', '' . "\0" . 'Entity\\Medialibrary\\Metadata' . "\0" . 'meta_name', '' . "\0" . 'Entity\\Medialibrary\\Metadata' . "\0" . 'meta_value', '' . "\0" . 'Entity\\Medialibrary\\Metadata' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\Metadata' . "\0" . 'updated_at');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\Metadata' . "\0" . 'meta_id', '' . "\0" . 'Entity\\Medialibrary\\Metadata' . "\0" . 'object_type', '' . "\0" . 'Entity\\Medialibrary\\Metadata' . "\0" . 'object_id', '' . "\0" . 'Entity\\Medialibrary\\Metadata' . "\0" . 'meta_name', '' . "\0" . 'Entity\\Medialibrary\\Metadata' . "\0" . 'meta_value', '' . "\0" . 'Entity\\Medialibrary\\Metadata' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\Metadata' . "\0" . 'updated_at'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Metadata extends \Entity\Medialibrary\Metadata implements \Doctrine\ORM\Pr
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Metadata extends \Entity\Medialibrary\Metadata implements \Doctrine\ORM\Pr
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class Metadata extends \Entity\Medialibrary\Metadata implements \Doctrine\ORM\Pr
     public function getMetaId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetaId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetaId', []);
 
         return parent::getMetaId();
     }
@@ -190,7 +190,7 @@ class Metadata extends \Entity\Medialibrary\Metadata implements \Doctrine\ORM\Pr
     public function setObjectType($objectType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setObjectType', array($objectType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setObjectType', [$objectType]);
 
         return parent::setObjectType($objectType);
     }
@@ -201,7 +201,7 @@ class Metadata extends \Entity\Medialibrary\Metadata implements \Doctrine\ORM\Pr
     public function getObjectType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getObjectType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getObjectType', []);
 
         return parent::getObjectType();
     }
@@ -212,7 +212,7 @@ class Metadata extends \Entity\Medialibrary\Metadata implements \Doctrine\ORM\Pr
     public function setObjectId($objectId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setObjectId', array($objectId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setObjectId', [$objectId]);
 
         return parent::setObjectId($objectId);
     }
@@ -223,7 +223,7 @@ class Metadata extends \Entity\Medialibrary\Metadata implements \Doctrine\ORM\Pr
     public function getObjectId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getObjectId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getObjectId', []);
 
         return parent::getObjectId();
     }
@@ -234,7 +234,7 @@ class Metadata extends \Entity\Medialibrary\Metadata implements \Doctrine\ORM\Pr
     public function setMetaName($metaName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMetaName', array($metaName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMetaName', [$metaName]);
 
         return parent::setMetaName($metaName);
     }
@@ -245,7 +245,7 @@ class Metadata extends \Entity\Medialibrary\Metadata implements \Doctrine\ORM\Pr
     public function getMetaName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetaName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetaName', []);
 
         return parent::getMetaName();
     }
@@ -256,7 +256,7 @@ class Metadata extends \Entity\Medialibrary\Metadata implements \Doctrine\ORM\Pr
     public function setMetaValue($metaValue)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMetaValue', array($metaValue));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMetaValue', [$metaValue]);
 
         return parent::setMetaValue($metaValue);
     }
@@ -267,7 +267,7 @@ class Metadata extends \Entity\Medialibrary\Metadata implements \Doctrine\ORM\Pr
     public function getMetaValue()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetaValue', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetaValue', []);
 
         return parent::getMetaValue();
     }
@@ -278,7 +278,7 @@ class Metadata extends \Entity\Medialibrary\Metadata implements \Doctrine\ORM\Pr
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -289,7 +289,7 @@ class Metadata extends \Entity\Medialibrary\Metadata implements \Doctrine\ORM\Pr
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -300,7 +300,7 @@ class Metadata extends \Entity\Medialibrary\Metadata implements \Doctrine\ORM\Pr
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -311,7 +311,7 @@ class Metadata extends \Entity\Medialibrary\Metadata implements \Doctrine\ORM\Pr
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }

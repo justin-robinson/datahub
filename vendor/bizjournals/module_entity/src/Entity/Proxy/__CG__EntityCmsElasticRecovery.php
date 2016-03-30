@@ -36,7 +36,7 @@ class ElasticRecovery extends \Entity\Cms\ElasticRecovery implements \Doctrine\O
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class ElasticRecovery extends \Entity\Cms\ElasticRecovery implements \Doctrine\O
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'id', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'action', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'index_name', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'type_name', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'elasticid', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'struct_data', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'is_processed', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'created_at');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'id', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'action', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'index_name', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'type_name', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'elasticid', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'struct_data', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'is_processed', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'created_at'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'id', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'action', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'index_name', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'type_name', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'elasticid', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'struct_data', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'is_processed', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'created_at');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'id', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'action', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'index_name', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'type_name', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'elasticid', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'struct_data', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'is_processed', '' . "\0" . 'Entity\\Cms\\ElasticRecovery' . "\0" . 'created_at'];
     }
 
     /**
@@ -97,7 +97,7 @@ class ElasticRecovery extends \Entity\Cms\ElasticRecovery implements \Doctrine\O
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class ElasticRecovery extends \Entity\Cms\ElasticRecovery implements \Doctrine\O
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -183,7 +183,7 @@ class ElasticRecovery extends \Entity\Cms\ElasticRecovery implements \Doctrine\O
         }
 
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -194,7 +194,7 @@ class ElasticRecovery extends \Entity\Cms\ElasticRecovery implements \Doctrine\O
     public function setAction($action)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAction', array($action));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAction', [$action]);
 
         return parent::setAction($action);
     }
@@ -205,7 +205,7 @@ class ElasticRecovery extends \Entity\Cms\ElasticRecovery implements \Doctrine\O
     public function getAction()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAction', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAction', []);
 
         return parent::getAction();
     }
@@ -216,7 +216,7 @@ class ElasticRecovery extends \Entity\Cms\ElasticRecovery implements \Doctrine\O
     public function setIndexName($indexName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIndexName', array($indexName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIndexName', [$indexName]);
 
         return parent::setIndexName($indexName);
     }
@@ -227,7 +227,7 @@ class ElasticRecovery extends \Entity\Cms\ElasticRecovery implements \Doctrine\O
     public function getIndexName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIndexName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIndexName', []);
 
         return parent::getIndexName();
     }
@@ -238,7 +238,7 @@ class ElasticRecovery extends \Entity\Cms\ElasticRecovery implements \Doctrine\O
     public function setTypeName($typeName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTypeName', array($typeName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTypeName', [$typeName]);
 
         return parent::setTypeName($typeName);
     }
@@ -249,7 +249,7 @@ class ElasticRecovery extends \Entity\Cms\ElasticRecovery implements \Doctrine\O
     public function getTypeName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTypeName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTypeName', []);
 
         return parent::getTypeName();
     }
@@ -260,7 +260,7 @@ class ElasticRecovery extends \Entity\Cms\ElasticRecovery implements \Doctrine\O
     public function setElasticid($elasticid)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setElasticid', array($elasticid));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setElasticid', [$elasticid]);
 
         return parent::setElasticid($elasticid);
     }
@@ -271,7 +271,7 @@ class ElasticRecovery extends \Entity\Cms\ElasticRecovery implements \Doctrine\O
     public function getElasticid()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getElasticid', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getElasticid', []);
 
         return parent::getElasticid();
     }
@@ -282,7 +282,7 @@ class ElasticRecovery extends \Entity\Cms\ElasticRecovery implements \Doctrine\O
     public function setStructData($structData)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStructData', array($structData));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStructData', [$structData]);
 
         return parent::setStructData($structData);
     }
@@ -293,7 +293,7 @@ class ElasticRecovery extends \Entity\Cms\ElasticRecovery implements \Doctrine\O
     public function getStructData()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStructData', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStructData', []);
 
         return parent::getStructData();
     }
@@ -304,7 +304,7 @@ class ElasticRecovery extends \Entity\Cms\ElasticRecovery implements \Doctrine\O
     public function setIsProcessed($isProcessed)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsProcessed', array($isProcessed));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsProcessed', [$isProcessed]);
 
         return parent::setIsProcessed($isProcessed);
     }
@@ -315,7 +315,7 @@ class ElasticRecovery extends \Entity\Cms\ElasticRecovery implements \Doctrine\O
     public function getIsProcessed()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsProcessed', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsProcessed', []);
 
         return parent::getIsProcessed();
     }
@@ -326,7 +326,7 @@ class ElasticRecovery extends \Entity\Cms\ElasticRecovery implements \Doctrine\O
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -337,7 +337,7 @@ class ElasticRecovery extends \Entity\Cms\ElasticRecovery implements \Doctrine\O
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }

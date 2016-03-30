@@ -36,7 +36,7 @@ class EmailJob extends \Entity\Email\EmailJob implements \Doctrine\ORM\Proxy\Pro
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class EmailJob extends \Entity\Email\EmailJob implements \Doctrine\ORM\Proxy\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'job_id', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'description', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'product_id', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'from_field', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'reply_to', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'sender_host', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'send_priority', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'message_count', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'message_sent_count', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'c_time');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'job_id', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'description', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'product_id', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'from_field', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'reply_to', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'sender_host', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'send_priority', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'message_count', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'message_sent_count', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'c_time'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'job_id', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'description', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'product_id', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'from_field', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'reply_to', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'sender_host', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'send_priority', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'message_count', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'message_sent_count', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'c_time');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'job_id', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'description', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'product_id', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'from_field', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'reply_to', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'sender_host', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'send_priority', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'message_count', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'message_sent_count', '' . "\0" . 'Entity\\Email\\EmailJob' . "\0" . 'c_time'];
     }
 
     /**
@@ -97,7 +97,7 @@ class EmailJob extends \Entity\Email\EmailJob implements \Doctrine\ORM\Proxy\Pro
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class EmailJob extends \Entity\Email\EmailJob implements \Doctrine\ORM\Proxy\Pro
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class EmailJob extends \Entity\Email\EmailJob implements \Doctrine\ORM\Proxy\Pro
     public function getJobId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJobId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJobId', []);
 
         return parent::getJobId();
     }
@@ -190,7 +190,7 @@ class EmailJob extends \Entity\Email\EmailJob implements \Doctrine\ORM\Proxy\Pro
     public function setDescription($description)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', array($description));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', [$description]);
 
         return parent::setDescription($description);
     }
@@ -201,7 +201,7 @@ class EmailJob extends \Entity\Email\EmailJob implements \Doctrine\ORM\Proxy\Pro
     public function getDescription()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', []);
 
         return parent::getDescription();
     }
@@ -212,7 +212,7 @@ class EmailJob extends \Entity\Email\EmailJob implements \Doctrine\ORM\Proxy\Pro
     public function setProductId($productId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductId', array($productId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductId', [$productId]);
 
         return parent::setProductId($productId);
     }
@@ -223,7 +223,7 @@ class EmailJob extends \Entity\Email\EmailJob implements \Doctrine\ORM\Proxy\Pro
     public function getProductId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductId', []);
 
         return parent::getProductId();
     }
@@ -234,7 +234,7 @@ class EmailJob extends \Entity\Email\EmailJob implements \Doctrine\ORM\Proxy\Pro
     public function setFromField($fromField)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFromField', array($fromField));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFromField', [$fromField]);
 
         return parent::setFromField($fromField);
     }
@@ -245,7 +245,7 @@ class EmailJob extends \Entity\Email\EmailJob implements \Doctrine\ORM\Proxy\Pro
     public function getFromField()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFromField', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFromField', []);
 
         return parent::getFromField();
     }
@@ -256,7 +256,7 @@ class EmailJob extends \Entity\Email\EmailJob implements \Doctrine\ORM\Proxy\Pro
     public function setReplyTo($replyTo)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setReplyTo', array($replyTo));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setReplyTo', [$replyTo]);
 
         return parent::setReplyTo($replyTo);
     }
@@ -267,7 +267,7 @@ class EmailJob extends \Entity\Email\EmailJob implements \Doctrine\ORM\Proxy\Pro
     public function getReplyTo()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getReplyTo', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getReplyTo', []);
 
         return parent::getReplyTo();
     }
@@ -278,7 +278,7 @@ class EmailJob extends \Entity\Email\EmailJob implements \Doctrine\ORM\Proxy\Pro
     public function setSenderHost($senderHost)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSenderHost', array($senderHost));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSenderHost', [$senderHost]);
 
         return parent::setSenderHost($senderHost);
     }
@@ -289,7 +289,7 @@ class EmailJob extends \Entity\Email\EmailJob implements \Doctrine\ORM\Proxy\Pro
     public function getSenderHost()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSenderHost', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSenderHost', []);
 
         return parent::getSenderHost();
     }
@@ -300,7 +300,7 @@ class EmailJob extends \Entity\Email\EmailJob implements \Doctrine\ORM\Proxy\Pro
     public function setSendPriority($sendPriority)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSendPriority', array($sendPriority));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSendPriority', [$sendPriority]);
 
         return parent::setSendPriority($sendPriority);
     }
@@ -311,7 +311,7 @@ class EmailJob extends \Entity\Email\EmailJob implements \Doctrine\ORM\Proxy\Pro
     public function getSendPriority()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSendPriority', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSendPriority', []);
 
         return parent::getSendPriority();
     }
@@ -322,7 +322,7 @@ class EmailJob extends \Entity\Email\EmailJob implements \Doctrine\ORM\Proxy\Pro
     public function setMessageCount($messageCount)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMessageCount', array($messageCount));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMessageCount', [$messageCount]);
 
         return parent::setMessageCount($messageCount);
     }
@@ -333,7 +333,7 @@ class EmailJob extends \Entity\Email\EmailJob implements \Doctrine\ORM\Proxy\Pro
     public function getMessageCount()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMessageCount', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMessageCount', []);
 
         return parent::getMessageCount();
     }
@@ -344,7 +344,7 @@ class EmailJob extends \Entity\Email\EmailJob implements \Doctrine\ORM\Proxy\Pro
     public function setMessageSentCount($messageSentCount)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMessageSentCount', array($messageSentCount));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMessageSentCount', [$messageSentCount]);
 
         return parent::setMessageSentCount($messageSentCount);
     }
@@ -355,7 +355,7 @@ class EmailJob extends \Entity\Email\EmailJob implements \Doctrine\ORM\Proxy\Pro
     public function getMessageSentCount()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMessageSentCount', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMessageSentCount', []);
 
         return parent::getMessageSentCount();
     }
@@ -366,7 +366,7 @@ class EmailJob extends \Entity\Email\EmailJob implements \Doctrine\ORM\Proxy\Pro
     public function setCTime($cTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCTime', array($cTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCTime', [$cTime]);
 
         return parent::setCTime($cTime);
     }
@@ -377,7 +377,7 @@ class EmailJob extends \Entity\Email\EmailJob implements \Doctrine\ORM\Proxy\Pro
     public function getCTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCTime', []);
 
         return parent::getCTime();
     }

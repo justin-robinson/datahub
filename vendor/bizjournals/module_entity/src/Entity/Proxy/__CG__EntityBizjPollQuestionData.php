@@ -36,7 +36,7 @@ class PollQuestionData extends \Entity\Bizj\PollQuestionData implements \Doctrin
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class PollQuestionData extends \Entity\Bizj\PollQuestionData implements \Doctrin
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PollQuestionData' . "\0" . 'question_data_id', '' . "\0" . 'Entity\\Bizj\\PollQuestionData' . "\0" . 'position', '' . "\0" . 'Entity\\Bizj\\PollQuestionData' . "\0" . 'answer', '' . "\0" . 'Entity\\Bizj\\PollQuestionData' . "\0" . 'poll_question_id', '' . "\0" . 'Entity\\Bizj\\PollQuestionData' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\PollQuestionData' . "\0" . 'is_deleted', '' . "\0" . 'Entity\\Bizj\\PollQuestionData' . "\0" . 'PollQuestion');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PollQuestionData' . "\0" . 'question_data_id', '' . "\0" . 'Entity\\Bizj\\PollQuestionData' . "\0" . 'position', '' . "\0" . 'Entity\\Bizj\\PollQuestionData' . "\0" . 'answer', '' . "\0" . 'Entity\\Bizj\\PollQuestionData' . "\0" . 'poll_question_id', '' . "\0" . 'Entity\\Bizj\\PollQuestionData' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\PollQuestionData' . "\0" . 'is_deleted', '' . "\0" . 'Entity\\Bizj\\PollQuestionData' . "\0" . 'PollQuestion'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PollQuestionData' . "\0" . 'question_data_id', '' . "\0" . 'Entity\\Bizj\\PollQuestionData' . "\0" . 'position', '' . "\0" . 'Entity\\Bizj\\PollQuestionData' . "\0" . 'answer', '' . "\0" . 'Entity\\Bizj\\PollQuestionData' . "\0" . 'poll_question_id', '' . "\0" . 'Entity\\Bizj\\PollQuestionData' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\PollQuestionData' . "\0" . 'is_deleted', '' . "\0" . 'Entity\\Bizj\\PollQuestionData' . "\0" . 'PollQuestion');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PollQuestionData' . "\0" . 'question_data_id', '' . "\0" . 'Entity\\Bizj\\PollQuestionData' . "\0" . 'position', '' . "\0" . 'Entity\\Bizj\\PollQuestionData' . "\0" . 'answer', '' . "\0" . 'Entity\\Bizj\\PollQuestionData' . "\0" . 'poll_question_id', '' . "\0" . 'Entity\\Bizj\\PollQuestionData' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\PollQuestionData' . "\0" . 'is_deleted', '' . "\0" . 'Entity\\Bizj\\PollQuestionData' . "\0" . 'PollQuestion'];
     }
 
     /**
@@ -97,7 +97,7 @@ class PollQuestionData extends \Entity\Bizj\PollQuestionData implements \Doctrin
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class PollQuestionData extends \Entity\Bizj\PollQuestionData implements \Doctrin
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class PollQuestionData extends \Entity\Bizj\PollQuestionData implements \Doctrin
     public function getQuestionDataId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQuestionDataId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQuestionDataId', []);
 
         return parent::getQuestionDataId();
     }
@@ -190,7 +190,7 @@ class PollQuestionData extends \Entity\Bizj\PollQuestionData implements \Doctrin
     public function setPosition($position)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPosition', array($position));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPosition', [$position]);
 
         return parent::setPosition($position);
     }
@@ -201,7 +201,7 @@ class PollQuestionData extends \Entity\Bizj\PollQuestionData implements \Doctrin
     public function getPosition()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPosition', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPosition', []);
 
         return parent::getPosition();
     }
@@ -212,7 +212,7 @@ class PollQuestionData extends \Entity\Bizj\PollQuestionData implements \Doctrin
     public function setAnswer($answer)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAnswer', array($answer));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAnswer', [$answer]);
 
         return parent::setAnswer($answer);
     }
@@ -223,7 +223,7 @@ class PollQuestionData extends \Entity\Bizj\PollQuestionData implements \Doctrin
     public function getAnswer()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAnswer', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAnswer', []);
 
         return parent::getAnswer();
     }
@@ -234,7 +234,7 @@ class PollQuestionData extends \Entity\Bizj\PollQuestionData implements \Doctrin
     public function setPollQuestionId($pollQuestionId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPollQuestionId', array($pollQuestionId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPollQuestionId', [$pollQuestionId]);
 
         return parent::setPollQuestionId($pollQuestionId);
     }
@@ -245,7 +245,7 @@ class PollQuestionData extends \Entity\Bizj\PollQuestionData implements \Doctrin
     public function getPollQuestionId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPollQuestionId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPollQuestionId', []);
 
         return parent::getPollQuestionId();
     }
@@ -256,7 +256,7 @@ class PollQuestionData extends \Entity\Bizj\PollQuestionData implements \Doctrin
     public function setCTime($cTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCTime', array($cTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCTime', [$cTime]);
 
         return parent::setCTime($cTime);
     }
@@ -267,7 +267,7 @@ class PollQuestionData extends \Entity\Bizj\PollQuestionData implements \Doctrin
     public function getCTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCTime', []);
 
         return parent::getCTime();
     }
@@ -278,7 +278,7 @@ class PollQuestionData extends \Entity\Bizj\PollQuestionData implements \Doctrin
     public function setIsDeleted($isDeleted)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsDeleted', array($isDeleted));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsDeleted', [$isDeleted]);
 
         return parent::setIsDeleted($isDeleted);
     }
@@ -289,7 +289,7 @@ class PollQuestionData extends \Entity\Bizj\PollQuestionData implements \Doctrin
     public function getIsDeleted()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsDeleted', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsDeleted', []);
 
         return parent::getIsDeleted();
     }
@@ -300,7 +300,7 @@ class PollQuestionData extends \Entity\Bizj\PollQuestionData implements \Doctrin
     public function setPollQuestion(\Entity\Bizj\PollQuestion $pollQuestion = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPollQuestion', array($pollQuestion));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPollQuestion', [$pollQuestion]);
 
         return parent::setPollQuestion($pollQuestion);
     }
@@ -311,7 +311,7 @@ class PollQuestionData extends \Entity\Bizj\PollQuestionData implements \Doctrin
     public function getPollQuestion()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPollQuestion', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPollQuestion', []);
 
         return parent::getPollQuestion();
     }

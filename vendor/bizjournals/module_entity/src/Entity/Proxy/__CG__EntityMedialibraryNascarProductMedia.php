@@ -36,7 +36,7 @@ class NascarProductMedia extends \Entity\Medialibrary\NascarProductMedia impleme
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class NascarProductMedia extends \Entity\Medialibrary\NascarProductMedia impleme
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\NascarProductMedia' . "\0" . 'id', '' . "\0" . 'Entity\\Medialibrary\\NascarProductMedia' . "\0" . 'product_id', '' . "\0" . 'Entity\\Medialibrary\\NascarProductMedia' . "\0" . 'image_type', '' . "\0" . 'Entity\\Medialibrary\\NascarProductMedia' . "\0" . 'mime_type', '' . "\0" . 'Entity\\Medialibrary\\NascarProductMedia' . "\0" . 'file_size', '' . "\0" . 'Entity\\Medialibrary\\NascarProductMedia' . "\0" . 'file_path');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\NascarProductMedia' . "\0" . 'id', '' . "\0" . 'Entity\\Medialibrary\\NascarProductMedia' . "\0" . 'product_id', '' . "\0" . 'Entity\\Medialibrary\\NascarProductMedia' . "\0" . 'image_type', '' . "\0" . 'Entity\\Medialibrary\\NascarProductMedia' . "\0" . 'mime_type', '' . "\0" . 'Entity\\Medialibrary\\NascarProductMedia' . "\0" . 'file_size', '' . "\0" . 'Entity\\Medialibrary\\NascarProductMedia' . "\0" . 'file_path'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\NascarProductMedia' . "\0" . 'id', '' . "\0" . 'Entity\\Medialibrary\\NascarProductMedia' . "\0" . 'product_id', '' . "\0" . 'Entity\\Medialibrary\\NascarProductMedia' . "\0" . 'image_type', '' . "\0" . 'Entity\\Medialibrary\\NascarProductMedia' . "\0" . 'mime_type', '' . "\0" . 'Entity\\Medialibrary\\NascarProductMedia' . "\0" . 'file_size', '' . "\0" . 'Entity\\Medialibrary\\NascarProductMedia' . "\0" . 'file_path');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\NascarProductMedia' . "\0" . 'id', '' . "\0" . 'Entity\\Medialibrary\\NascarProductMedia' . "\0" . 'product_id', '' . "\0" . 'Entity\\Medialibrary\\NascarProductMedia' . "\0" . 'image_type', '' . "\0" . 'Entity\\Medialibrary\\NascarProductMedia' . "\0" . 'mime_type', '' . "\0" . 'Entity\\Medialibrary\\NascarProductMedia' . "\0" . 'file_size', '' . "\0" . 'Entity\\Medialibrary\\NascarProductMedia' . "\0" . 'file_path'];
     }
 
     /**
@@ -97,7 +97,7 @@ class NascarProductMedia extends \Entity\Medialibrary\NascarProductMedia impleme
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class NascarProductMedia extends \Entity\Medialibrary\NascarProductMedia impleme
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class NascarProductMedia extends \Entity\Medialibrary\NascarProductMedia impleme
     public function setId($id)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setId', array($id));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setId', [$id]);
 
         return parent::setId($id);
     }
@@ -194,7 +194,7 @@ class NascarProductMedia extends \Entity\Medialibrary\NascarProductMedia impleme
         }
 
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -205,7 +205,7 @@ class NascarProductMedia extends \Entity\Medialibrary\NascarProductMedia impleme
     public function setProductId($productId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductId', array($productId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductId', [$productId]);
 
         return parent::setProductId($productId);
     }
@@ -216,7 +216,7 @@ class NascarProductMedia extends \Entity\Medialibrary\NascarProductMedia impleme
     public function getProductId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductId', []);
 
         return parent::getProductId();
     }
@@ -227,7 +227,7 @@ class NascarProductMedia extends \Entity\Medialibrary\NascarProductMedia impleme
     public function setImageType($imageType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setImageType', array($imageType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setImageType', [$imageType]);
 
         return parent::setImageType($imageType);
     }
@@ -238,7 +238,7 @@ class NascarProductMedia extends \Entity\Medialibrary\NascarProductMedia impleme
     public function getImageType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getImageType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getImageType', []);
 
         return parent::getImageType();
     }
@@ -249,7 +249,7 @@ class NascarProductMedia extends \Entity\Medialibrary\NascarProductMedia impleme
     public function setMimeType($mimeType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMimeType', array($mimeType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMimeType', [$mimeType]);
 
         return parent::setMimeType($mimeType);
     }
@@ -260,7 +260,7 @@ class NascarProductMedia extends \Entity\Medialibrary\NascarProductMedia impleme
     public function getMimeType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMimeType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMimeType', []);
 
         return parent::getMimeType();
     }
@@ -271,7 +271,7 @@ class NascarProductMedia extends \Entity\Medialibrary\NascarProductMedia impleme
     public function setFileSize($fileSize)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFileSize', array($fileSize));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFileSize', [$fileSize]);
 
         return parent::setFileSize($fileSize);
     }
@@ -282,7 +282,7 @@ class NascarProductMedia extends \Entity\Medialibrary\NascarProductMedia impleme
     public function getFileSize()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFileSize', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFileSize', []);
 
         return parent::getFileSize();
     }
@@ -293,7 +293,7 @@ class NascarProductMedia extends \Entity\Medialibrary\NascarProductMedia impleme
     public function setFilePath($filePath)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFilePath', array($filePath));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFilePath', [$filePath]);
 
         return parent::setFilePath($filePath);
     }
@@ -304,7 +304,7 @@ class NascarProductMedia extends \Entity\Medialibrary\NascarProductMedia impleme
     public function getFilePath()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFilePath', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFilePath', []);
 
         return parent::getFilePath();
     }

@@ -36,7 +36,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'hub_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'refinery_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'meroveus_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'generate_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'record_source', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'company_name', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'public_ticker', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'ticker_exchange', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'source_modified_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'address1', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'address2', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'city', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'state', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'postal_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'country', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'latitude', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'longitude', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'phone', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'website', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'is_active', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'sic_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'employee_count', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'created_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'Contacts');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'hub_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'refinery_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'meroveus_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'generate_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'record_source', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'company_name', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'public_ticker', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'ticker_exchange', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'source_modified_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'address1', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'address2', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'city', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'state', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'postal_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'country', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'latitude', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'longitude', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'phone', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'website', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'is_active', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'sic_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'employee_count', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_revenue_volume_static', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_employee_count_static', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_employee_local_static', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_established_year_static', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_profile_blob_static', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'created_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'Contacts', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'CompanyMeroveusIndustries'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'hub_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'refinery_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'meroveus_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'generate_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'record_source', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'company_name', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'public_ticker', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'ticker_exchange', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'source_modified_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'address1', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'address2', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'city', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'state', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'postal_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'country', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'latitude', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'longitude', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'phone', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'website', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'is_active', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'sic_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'employee_count', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'created_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'Contacts');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'hub_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'refinery_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'meroveus_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'generate_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'record_source', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'company_name', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'public_ticker', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'ticker_exchange', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'source_modified_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'address1', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'address2', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'city', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'state', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'postal_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'country', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'latitude', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'longitude', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'phone', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'website', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'is_active', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'sic_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'employee_count', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_revenue_volume_static', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_employee_count_static', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_employee_local_static', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_established_year_static', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_profile_blob_static', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'created_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'Contacts', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'CompanyMeroveusIndustries'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function getHubId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHubId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHubId', []);
 
         return parent::getHubId();
     }
@@ -190,7 +190,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function setRefineryId($refineryId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRefineryId', array($refineryId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRefineryId', [$refineryId]);
 
         return parent::setRefineryId($refineryId);
     }
@@ -201,7 +201,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function getRefineryId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefineryId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefineryId', []);
 
         return parent::getRefineryId();
     }
@@ -212,7 +212,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function setMeroveusId($meroveusId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMeroveusId', array($meroveusId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMeroveusId', [$meroveusId]);
 
         return parent::setMeroveusId($meroveusId);
     }
@@ -223,7 +223,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function getMeroveusId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMeroveusId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMeroveusId', []);
 
         return parent::getMeroveusId();
     }
@@ -234,7 +234,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function setGenerateCode($generateCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGenerateCode', array($generateCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGenerateCode', [$generateCode]);
 
         return parent::setGenerateCode($generateCode);
     }
@@ -245,7 +245,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function getGenerateCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGenerateCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGenerateCode', []);
 
         return parent::getGenerateCode();
     }
@@ -256,7 +256,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function setRecordSource($recordSource)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRecordSource', array($recordSource));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRecordSource', [$recordSource]);
 
         return parent::setRecordSource($recordSource);
     }
@@ -267,7 +267,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function getRecordSource()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRecordSource', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRecordSource', []);
 
         return parent::getRecordSource();
     }
@@ -278,7 +278,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function setCompanyName($companyName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCompanyName', array($companyName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCompanyName', [$companyName]);
 
         return parent::setCompanyName($companyName);
     }
@@ -289,7 +289,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function getCompanyName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCompanyName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCompanyName', []);
 
         return parent::getCompanyName();
     }
@@ -300,7 +300,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function setPublicTicker($publicTicker)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublicTicker', array($publicTicker));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublicTicker', [$publicTicker]);
 
         return parent::setPublicTicker($publicTicker);
     }
@@ -311,7 +311,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function getPublicTicker()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublicTicker', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublicTicker', []);
 
         return parent::getPublicTicker();
     }
@@ -322,7 +322,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function setTickerExchange($tickerExchange)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTickerExchange', array($tickerExchange));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTickerExchange', [$tickerExchange]);
 
         return parent::setTickerExchange($tickerExchange);
     }
@@ -333,7 +333,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function getTickerExchange()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTickerExchange', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTickerExchange', []);
 
         return parent::getTickerExchange();
     }
@@ -344,7 +344,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function setSourceModifiedAt($sourceModifiedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSourceModifiedAt', array($sourceModifiedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSourceModifiedAt', [$sourceModifiedAt]);
 
         return parent::setSourceModifiedAt($sourceModifiedAt);
     }
@@ -355,7 +355,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function getSourceModifiedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSourceModifiedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSourceModifiedAt', []);
 
         return parent::getSourceModifiedAt();
     }
@@ -366,7 +366,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function setAddress1($address1)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAddress1', array($address1));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAddress1', [$address1]);
 
         return parent::setAddress1($address1);
     }
@@ -377,7 +377,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function getAddress1()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAddress1', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAddress1', []);
 
         return parent::getAddress1();
     }
@@ -388,7 +388,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function setAddress2($address2)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAddress2', array($address2));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAddress2', [$address2]);
 
         return parent::setAddress2($address2);
     }
@@ -399,7 +399,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function getAddress2()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAddress2', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAddress2', []);
 
         return parent::getAddress2();
     }
@@ -410,7 +410,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function setCity($city)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCity', array($city));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCity', [$city]);
 
         return parent::setCity($city);
     }
@@ -421,7 +421,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function getCity()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCity', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCity', []);
 
         return parent::getCity();
     }
@@ -432,7 +432,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function setState($state)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setState', array($state));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setState', [$state]);
 
         return parent::setState($state);
     }
@@ -443,7 +443,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function getState()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getState', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getState', []);
 
         return parent::getState();
     }
@@ -454,7 +454,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function setPostalCode($postalCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPostalCode', array($postalCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPostalCode', [$postalCode]);
 
         return parent::setPostalCode($postalCode);
     }
@@ -465,7 +465,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function getPostalCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPostalCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPostalCode', []);
 
         return parent::getPostalCode();
     }
@@ -476,7 +476,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function setCountry($country)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountry', array($country));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountry', [$country]);
 
         return parent::setCountry($country);
     }
@@ -487,7 +487,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function getCountry()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountry', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountry', []);
 
         return parent::getCountry();
     }
@@ -498,7 +498,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function setLatitude($latitude)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLatitude', array($latitude));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLatitude', [$latitude]);
 
         return parent::setLatitude($latitude);
     }
@@ -509,7 +509,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function getLatitude()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLatitude', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLatitude', []);
 
         return parent::getLatitude();
     }
@@ -520,7 +520,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function setLongitude($longitude)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLongitude', array($longitude));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLongitude', [$longitude]);
 
         return parent::setLongitude($longitude);
     }
@@ -531,7 +531,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function getLongitude()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLongitude', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLongitude', []);
 
         return parent::getLongitude();
     }
@@ -542,7 +542,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function setPhone($phone)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhone', array($phone));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhone', [$phone]);
 
         return parent::setPhone($phone);
     }
@@ -553,7 +553,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function getPhone()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhone', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhone', []);
 
         return parent::getPhone();
     }
@@ -564,7 +564,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function setWebsite($website)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setWebsite', array($website));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setWebsite', [$website]);
 
         return parent::setWebsite($website);
     }
@@ -575,7 +575,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function getWebsite()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getWebsite', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getWebsite', []);
 
         return parent::getWebsite();
     }
@@ -586,7 +586,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function setIsActive($isActive)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', array($isActive));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', [$isActive]);
 
         return parent::setIsActive($isActive);
     }
@@ -597,7 +597,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function getIsActive()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', []);
 
         return parent::getIsActive();
     }
@@ -608,7 +608,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function setSicCode($sicCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSicCode', array($sicCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSicCode', [$sicCode]);
 
         return parent::setSicCode($sicCode);
     }
@@ -619,7 +619,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function getSicCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSicCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSicCode', []);
 
         return parent::getSicCode();
     }
@@ -630,7 +630,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function setEmployeeCount($employeeCount)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmployeeCount', array($employeeCount));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmployeeCount', [$employeeCount]);
 
         return parent::setEmployeeCount($employeeCount);
     }
@@ -641,9 +641,119 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function getEmployeeCount()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmployeeCount', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmployeeCount', []);
 
         return parent::getEmployeeCount();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setUniversalRevenueVolumeStatic($universalRevenueVolumeStatic)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUniversalRevenueVolumeStatic', [$universalRevenueVolumeStatic]);
+
+        return parent::setUniversalRevenueVolumeStatic($universalRevenueVolumeStatic);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getUniversalRevenueVolumeStatic()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUniversalRevenueVolumeStatic', []);
+
+        return parent::getUniversalRevenueVolumeStatic();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setUniversalEmployeeCountStatic($universalEmployeeCountStatic)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUniversalEmployeeCountStatic', [$universalEmployeeCountStatic]);
+
+        return parent::setUniversalEmployeeCountStatic($universalEmployeeCountStatic);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getUniversalEmployeeCountStatic()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUniversalEmployeeCountStatic', []);
+
+        return parent::getUniversalEmployeeCountStatic();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setUniversalEmployeeLocalStatic($universalEmployeeLocalStatic)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUniversalEmployeeLocalStatic', [$universalEmployeeLocalStatic]);
+
+        return parent::setUniversalEmployeeLocalStatic($universalEmployeeLocalStatic);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getUniversalEmployeeLocalStatic()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUniversalEmployeeLocalStatic', []);
+
+        return parent::getUniversalEmployeeLocalStatic();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setUniversalEstablishedYearStatic($universalEstablishedYearStatic)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUniversalEstablishedYearStatic', [$universalEstablishedYearStatic]);
+
+        return parent::setUniversalEstablishedYearStatic($universalEstablishedYearStatic);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getUniversalEstablishedYearStatic()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUniversalEstablishedYearStatic', []);
+
+        return parent::getUniversalEstablishedYearStatic();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setUniversalProfileBlobStatic($universalProfileBlobStatic)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUniversalProfileBlobStatic', [$universalProfileBlobStatic]);
+
+        return parent::setUniversalProfileBlobStatic($universalProfileBlobStatic);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getUniversalProfileBlobStatic()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUniversalProfileBlobStatic', []);
+
+        return parent::getUniversalProfileBlobStatic();
     }
 
     /**
@@ -652,7 +762,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -663,7 +773,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -674,7 +784,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -685,7 +795,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -696,7 +806,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function setDeletedAt($deletedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeletedAt', array($deletedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeletedAt', [$deletedAt]);
 
         return parent::setDeletedAt($deletedAt);
     }
@@ -707,7 +817,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function getDeletedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeletedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeletedAt', []);
 
         return parent::getDeletedAt();
     }
@@ -718,7 +828,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function addContact(\Entity\Datahub\Contact $contact)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addContact', array($contact));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addContact', [$contact]);
 
         return parent::addContact($contact);
     }
@@ -729,7 +839,7 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function removeContact(\Entity\Datahub\Contact $contact)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeContact', array($contact));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeContact', [$contact]);
 
         return parent::removeContact($contact);
     }
@@ -740,9 +850,42 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function getContacts()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContacts', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContacts', []);
 
         return parent::getContacts();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addCompanyMeroveusIndustry(\Entity\Datahub\CompanyMeroveusIndustry $companyMeroveusIndustry)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCompanyMeroveusIndustry', [$companyMeroveusIndustry]);
+
+        return parent::addCompanyMeroveusIndustry($companyMeroveusIndustry);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeCompanyMeroveusIndustry(\Entity\Datahub\CompanyMeroveusIndustry $companyMeroveusIndustry)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCompanyMeroveusIndustry', [$companyMeroveusIndustry]);
+
+        return parent::removeCompanyMeroveusIndustry($companyMeroveusIndustry);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getCompanyMeroveusIndustries()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCompanyMeroveusIndustries', []);
+
+        return parent::getCompanyMeroveusIndustries();
     }
 
 }

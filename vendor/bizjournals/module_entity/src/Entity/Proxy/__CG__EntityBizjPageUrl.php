@@ -36,7 +36,7 @@ class PageUrl extends \Entity\Bizj\PageUrl implements \Doctrine\ORM\Proxy\Proxy
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class PageUrl extends \Entity\Bizj\PageUrl implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'url_id', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'site', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'path', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'slug', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'issue_date', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'is_primary', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'is_active', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'is_redirect', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'Page');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'url_id', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'site', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'path', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'slug', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'issue_date', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'is_primary', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'is_active', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'is_redirect', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'Page'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'url_id', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'site', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'path', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'slug', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'issue_date', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'is_primary', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'is_active', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'is_redirect', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'Page');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'url_id', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'site', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'path', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'slug', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'issue_date', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'is_primary', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'is_active', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'is_redirect', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\PageUrl' . "\0" . 'Page'];
     }
 
     /**
@@ -97,7 +97,7 @@ class PageUrl extends \Entity\Bizj\PageUrl implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class PageUrl extends \Entity\Bizj\PageUrl implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class PageUrl extends \Entity\Bizj\PageUrl implements \Doctrine\ORM\Proxy\Proxy
     public function getUrlId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUrlId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUrlId', []);
 
         return parent::getUrlId();
     }
@@ -190,7 +190,7 @@ class PageUrl extends \Entity\Bizj\PageUrl implements \Doctrine\ORM\Proxy\Proxy
     public function setSite($site)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSite', array($site));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSite', [$site]);
 
         return parent::setSite($site);
     }
@@ -201,7 +201,7 @@ class PageUrl extends \Entity\Bizj\PageUrl implements \Doctrine\ORM\Proxy\Proxy
     public function getSite()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSite', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSite', []);
 
         return parent::getSite();
     }
@@ -212,7 +212,7 @@ class PageUrl extends \Entity\Bizj\PageUrl implements \Doctrine\ORM\Proxy\Proxy
     public function setPath($path)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPath', array($path));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPath', [$path]);
 
         return parent::setPath($path);
     }
@@ -223,7 +223,7 @@ class PageUrl extends \Entity\Bizj\PageUrl implements \Doctrine\ORM\Proxy\Proxy
     public function getPath()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPath', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPath', []);
 
         return parent::getPath();
     }
@@ -234,7 +234,7 @@ class PageUrl extends \Entity\Bizj\PageUrl implements \Doctrine\ORM\Proxy\Proxy
     public function setSlug($slug)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSlug', array($slug));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSlug', [$slug]);
 
         return parent::setSlug($slug);
     }
@@ -245,7 +245,7 @@ class PageUrl extends \Entity\Bizj\PageUrl implements \Doctrine\ORM\Proxy\Proxy
     public function getSlug()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSlug', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSlug', []);
 
         return parent::getSlug();
     }
@@ -256,7 +256,7 @@ class PageUrl extends \Entity\Bizj\PageUrl implements \Doctrine\ORM\Proxy\Proxy
     public function setIssueDate($issueDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIssueDate', array($issueDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIssueDate', [$issueDate]);
 
         return parent::setIssueDate($issueDate);
     }
@@ -267,7 +267,7 @@ class PageUrl extends \Entity\Bizj\PageUrl implements \Doctrine\ORM\Proxy\Proxy
     public function getIssueDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIssueDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIssueDate', []);
 
         return parent::getIssueDate();
     }
@@ -278,7 +278,7 @@ class PageUrl extends \Entity\Bizj\PageUrl implements \Doctrine\ORM\Proxy\Proxy
     public function setPageId($pageId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPageId', array($pageId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPageId', [$pageId]);
 
         return parent::setPageId($pageId);
     }
@@ -289,7 +289,7 @@ class PageUrl extends \Entity\Bizj\PageUrl implements \Doctrine\ORM\Proxy\Proxy
     public function getPageId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageId', []);
 
         return parent::getPageId();
     }
@@ -300,7 +300,7 @@ class PageUrl extends \Entity\Bizj\PageUrl implements \Doctrine\ORM\Proxy\Proxy
     public function setIsPrimary($isPrimary)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsPrimary', array($isPrimary));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsPrimary', [$isPrimary]);
 
         return parent::setIsPrimary($isPrimary);
     }
@@ -311,7 +311,7 @@ class PageUrl extends \Entity\Bizj\PageUrl implements \Doctrine\ORM\Proxy\Proxy
     public function getIsPrimary()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsPrimary', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsPrimary', []);
 
         return parent::getIsPrimary();
     }
@@ -322,7 +322,7 @@ class PageUrl extends \Entity\Bizj\PageUrl implements \Doctrine\ORM\Proxy\Proxy
     public function setIsActive($isActive)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', array($isActive));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', [$isActive]);
 
         return parent::setIsActive($isActive);
     }
@@ -333,7 +333,7 @@ class PageUrl extends \Entity\Bizj\PageUrl implements \Doctrine\ORM\Proxy\Proxy
     public function getIsActive()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', []);
 
         return parent::getIsActive();
     }
@@ -344,7 +344,7 @@ class PageUrl extends \Entity\Bizj\PageUrl implements \Doctrine\ORM\Proxy\Proxy
     public function setIsRedirect($isRedirect)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsRedirect', array($isRedirect));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsRedirect', [$isRedirect]);
 
         return parent::setIsRedirect($isRedirect);
     }
@@ -355,7 +355,7 @@ class PageUrl extends \Entity\Bizj\PageUrl implements \Doctrine\ORM\Proxy\Proxy
     public function getIsRedirect()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsRedirect', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsRedirect', []);
 
         return parent::getIsRedirect();
     }
@@ -366,7 +366,7 @@ class PageUrl extends \Entity\Bizj\PageUrl implements \Doctrine\ORM\Proxy\Proxy
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -377,7 +377,7 @@ class PageUrl extends \Entity\Bizj\PageUrl implements \Doctrine\ORM\Proxy\Proxy
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -388,7 +388,7 @@ class PageUrl extends \Entity\Bizj\PageUrl implements \Doctrine\ORM\Proxy\Proxy
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -399,7 +399,7 @@ class PageUrl extends \Entity\Bizj\PageUrl implements \Doctrine\ORM\Proxy\Proxy
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -410,7 +410,7 @@ class PageUrl extends \Entity\Bizj\PageUrl implements \Doctrine\ORM\Proxy\Proxy
     public function setPage(\Entity\Bizj\Page $page = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPage', array($page));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPage', [$page]);
 
         return parent::setPage($page);
     }
@@ -421,7 +421,7 @@ class PageUrl extends \Entity\Bizj\PageUrl implements \Doctrine\ORM\Proxy\Proxy
     public function getPage()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPage', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPage', []);
 
         return parent::getPage();
     }

@@ -36,7 +36,7 @@ class StoryCorrections extends \Entity\Bizj\StoryCorrections implements \Doctrin
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class StoryCorrections extends \Entity\Bizj\StoryCorrections implements \Doctrin
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\StoryCorrections' . "\0" . 'id', '' . "\0" . 'Entity\\Bizj\\StoryCorrections' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bizj\\StoryCorrections' . "\0" . 'market', '' . "\0" . 'Entity\\Bizj\\StoryCorrections' . "\0" . 'text', '' . "\0" . 'Entity\\Bizj\\StoryCorrections' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\StoryCorrections' . "\0" . 'is_daily', '' . "\0" . 'Entity\\Bizj\\StoryCorrections' . "\0" . 'StoryRead');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\StoryCorrections' . "\0" . 'id', '' . "\0" . 'Entity\\Bizj\\StoryCorrections' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bizj\\StoryCorrections' . "\0" . 'market', '' . "\0" . 'Entity\\Bizj\\StoryCorrections' . "\0" . 'text', '' . "\0" . 'Entity\\Bizj\\StoryCorrections' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\StoryCorrections' . "\0" . 'is_daily', '' . "\0" . 'Entity\\Bizj\\StoryCorrections' . "\0" . 'StoryRead'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\StoryCorrections' . "\0" . 'id', '' . "\0" . 'Entity\\Bizj\\StoryCorrections' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bizj\\StoryCorrections' . "\0" . 'market', '' . "\0" . 'Entity\\Bizj\\StoryCorrections' . "\0" . 'text', '' . "\0" . 'Entity\\Bizj\\StoryCorrections' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\StoryCorrections' . "\0" . 'is_daily', '' . "\0" . 'Entity\\Bizj\\StoryCorrections' . "\0" . 'StoryRead');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\StoryCorrections' . "\0" . 'id', '' . "\0" . 'Entity\\Bizj\\StoryCorrections' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bizj\\StoryCorrections' . "\0" . 'market', '' . "\0" . 'Entity\\Bizj\\StoryCorrections' . "\0" . 'text', '' . "\0" . 'Entity\\Bizj\\StoryCorrections' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\StoryCorrections' . "\0" . 'is_daily', '' . "\0" . 'Entity\\Bizj\\StoryCorrections' . "\0" . 'StoryRead'];
     }
 
     /**
@@ -97,7 +97,7 @@ class StoryCorrections extends \Entity\Bizj\StoryCorrections implements \Doctrin
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class StoryCorrections extends \Entity\Bizj\StoryCorrections implements \Doctrin
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -183,7 +183,7 @@ class StoryCorrections extends \Entity\Bizj\StoryCorrections implements \Doctrin
         }
 
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -194,7 +194,7 @@ class StoryCorrections extends \Entity\Bizj\StoryCorrections implements \Doctrin
     public function setStoryId($storyId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryId', array($storyId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryId', [$storyId]);
 
         return parent::setStoryId($storyId);
     }
@@ -205,7 +205,7 @@ class StoryCorrections extends \Entity\Bizj\StoryCorrections implements \Doctrin
     public function getStoryId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryId', []);
 
         return parent::getStoryId();
     }
@@ -216,7 +216,7 @@ class StoryCorrections extends \Entity\Bizj\StoryCorrections implements \Doctrin
     public function setMarket($market)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarket', array($market));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarket', [$market]);
 
         return parent::setMarket($market);
     }
@@ -227,7 +227,7 @@ class StoryCorrections extends \Entity\Bizj\StoryCorrections implements \Doctrin
     public function getMarket()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarket', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarket', []);
 
         return parent::getMarket();
     }
@@ -238,7 +238,7 @@ class StoryCorrections extends \Entity\Bizj\StoryCorrections implements \Doctrin
     public function setText($text)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setText', array($text));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setText', [$text]);
 
         return parent::setText($text);
     }
@@ -249,7 +249,7 @@ class StoryCorrections extends \Entity\Bizj\StoryCorrections implements \Doctrin
     public function getText()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getText', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getText', []);
 
         return parent::getText();
     }
@@ -260,7 +260,7 @@ class StoryCorrections extends \Entity\Bizj\StoryCorrections implements \Doctrin
     public function setCTime($cTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCTime', array($cTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCTime', [$cTime]);
 
         return parent::setCTime($cTime);
     }
@@ -271,7 +271,7 @@ class StoryCorrections extends \Entity\Bizj\StoryCorrections implements \Doctrin
     public function getCTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCTime', []);
 
         return parent::getCTime();
     }
@@ -282,7 +282,7 @@ class StoryCorrections extends \Entity\Bizj\StoryCorrections implements \Doctrin
     public function setIsDaily($isDaily)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsDaily', array($isDaily));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsDaily', [$isDaily]);
 
         return parent::setIsDaily($isDaily);
     }
@@ -293,7 +293,7 @@ class StoryCorrections extends \Entity\Bizj\StoryCorrections implements \Doctrin
     public function getIsDaily()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsDaily', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsDaily', []);
 
         return parent::getIsDaily();
     }
@@ -304,7 +304,7 @@ class StoryCorrections extends \Entity\Bizj\StoryCorrections implements \Doctrin
     public function setStoryRead(\Entity\Bizj\StoryRead $storyRead = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryRead', array($storyRead));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryRead', [$storyRead]);
 
         return parent::setStoryRead($storyRead);
     }
@@ -315,7 +315,7 @@ class StoryCorrections extends \Entity\Bizj\StoryCorrections implements \Doctrin
     public function getStoryRead()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryRead', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryRead', []);
 
         return parent::getStoryRead();
     }

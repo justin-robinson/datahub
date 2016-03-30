@@ -36,7 +36,7 @@ class KrangMediaIdMap extends \Entity\Medialibrary\KrangMediaIdMap implements \D
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class KrangMediaIdMap extends \Entity\Medialibrary\KrangMediaIdMap implements \D
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaIdMap' . "\0" . 'bizj_media_id', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaIdMap' . "\0" . 'krang_media_id', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaIdMap' . "\0" . 'frontend_type', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaIdMap' . "\0" . 'crop_data', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaIdMap' . "\0" . 'KrangMedia');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaIdMap' . "\0" . 'bizj_media_id', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaIdMap' . "\0" . 'krang_media_id', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaIdMap' . "\0" . 'frontend_type', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaIdMap' . "\0" . 'crop_data', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaIdMap' . "\0" . 'KrangMedia'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaIdMap' . "\0" . 'bizj_media_id', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaIdMap' . "\0" . 'krang_media_id', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaIdMap' . "\0" . 'frontend_type', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaIdMap' . "\0" . 'crop_data', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaIdMap' . "\0" . 'KrangMedia');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaIdMap' . "\0" . 'bizj_media_id', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaIdMap' . "\0" . 'krang_media_id', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaIdMap' . "\0" . 'frontend_type', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaIdMap' . "\0" . 'crop_data', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaIdMap' . "\0" . 'KrangMedia'];
     }
 
     /**
@@ -97,7 +97,7 @@ class KrangMediaIdMap extends \Entity\Medialibrary\KrangMediaIdMap implements \D
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class KrangMediaIdMap extends \Entity\Medialibrary\KrangMediaIdMap implements \D
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class KrangMediaIdMap extends \Entity\Medialibrary\KrangMediaIdMap implements \D
     public function setBizjMediaId($bizjMediaId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBizjMediaId', array($bizjMediaId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBizjMediaId', [$bizjMediaId]);
 
         return parent::setBizjMediaId($bizjMediaId);
     }
@@ -190,7 +190,7 @@ class KrangMediaIdMap extends \Entity\Medialibrary\KrangMediaIdMap implements \D
     public function getBizjMediaId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBizjMediaId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBizjMediaId', []);
 
         return parent::getBizjMediaId();
     }
@@ -201,7 +201,7 @@ class KrangMediaIdMap extends \Entity\Medialibrary\KrangMediaIdMap implements \D
     public function setKrangMediaId($krangMediaId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setKrangMediaId', array($krangMediaId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setKrangMediaId', [$krangMediaId]);
 
         return parent::setKrangMediaId($krangMediaId);
     }
@@ -212,7 +212,7 @@ class KrangMediaIdMap extends \Entity\Medialibrary\KrangMediaIdMap implements \D
     public function getKrangMediaId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getKrangMediaId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getKrangMediaId', []);
 
         return parent::getKrangMediaId();
     }
@@ -223,7 +223,7 @@ class KrangMediaIdMap extends \Entity\Medialibrary\KrangMediaIdMap implements \D
     public function setFrontendType($frontendType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFrontendType', array($frontendType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFrontendType', [$frontendType]);
 
         return parent::setFrontendType($frontendType);
     }
@@ -234,7 +234,7 @@ class KrangMediaIdMap extends \Entity\Medialibrary\KrangMediaIdMap implements \D
     public function getFrontendType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFrontendType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFrontendType', []);
 
         return parent::getFrontendType();
     }
@@ -245,7 +245,7 @@ class KrangMediaIdMap extends \Entity\Medialibrary\KrangMediaIdMap implements \D
     public function setCropData($cropData)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCropData', array($cropData));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCropData', [$cropData]);
 
         return parent::setCropData($cropData);
     }
@@ -256,7 +256,7 @@ class KrangMediaIdMap extends \Entity\Medialibrary\KrangMediaIdMap implements \D
     public function getCropData()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCropData', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCropData', []);
 
         return parent::getCropData();
     }
@@ -267,7 +267,7 @@ class KrangMediaIdMap extends \Entity\Medialibrary\KrangMediaIdMap implements \D
     public function setKrangMedia(\Entity\Medialibrary\KrangMediaExport $krangMedia = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setKrangMedia', array($krangMedia));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setKrangMedia', [$krangMedia]);
 
         return parent::setKrangMedia($krangMedia);
     }
@@ -278,7 +278,7 @@ class KrangMediaIdMap extends \Entity\Medialibrary\KrangMediaIdMap implements \D
     public function getKrangMedia()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getKrangMedia', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getKrangMedia', []);
 
         return parent::getKrangMedia();
     }

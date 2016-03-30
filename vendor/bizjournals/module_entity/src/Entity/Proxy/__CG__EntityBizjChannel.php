@@ -36,7 +36,7 @@ class Channel extends \Entity\Bizj\Channel implements \Doctrine\ORM\Proxy\Proxy
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Channel extends \Entity\Bizj\Channel implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Channel' . "\0" . 'channel_id', '' . "\0" . 'Entity\\Bizj\\Channel' . "\0" . 'channel_name', '' . "\0" . 'Entity\\Bizj\\Channel' . "\0" . 'is_active', '' . "\0" . 'Entity\\Bizj\\Channel' . "\0" . 'industries');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Channel' . "\0" . 'channel_id', '' . "\0" . 'Entity\\Bizj\\Channel' . "\0" . 'channel_name', '' . "\0" . 'Entity\\Bizj\\Channel' . "\0" . 'is_active', '' . "\0" . 'Entity\\Bizj\\Channel' . "\0" . 'industries'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Channel' . "\0" . 'channel_id', '' . "\0" . 'Entity\\Bizj\\Channel' . "\0" . 'channel_name', '' . "\0" . 'Entity\\Bizj\\Channel' . "\0" . 'is_active', '' . "\0" . 'Entity\\Bizj\\Channel' . "\0" . 'industries');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Channel' . "\0" . 'channel_id', '' . "\0" . 'Entity\\Bizj\\Channel' . "\0" . 'channel_name', '' . "\0" . 'Entity\\Bizj\\Channel' . "\0" . 'is_active', '' . "\0" . 'Entity\\Bizj\\Channel' . "\0" . 'industries'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Channel extends \Entity\Bizj\Channel implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Channel extends \Entity\Bizj\Channel implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class Channel extends \Entity\Bizj\Channel implements \Doctrine\ORM\Proxy\Proxy
     public function getChannelId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getChannelId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getChannelId', []);
 
         return parent::getChannelId();
     }
@@ -190,7 +190,7 @@ class Channel extends \Entity\Bizj\Channel implements \Doctrine\ORM\Proxy\Proxy
     public function setChannelName($channelName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setChannelName', array($channelName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setChannelName', [$channelName]);
 
         return parent::setChannelName($channelName);
     }
@@ -201,7 +201,7 @@ class Channel extends \Entity\Bizj\Channel implements \Doctrine\ORM\Proxy\Proxy
     public function getChannelName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getChannelName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getChannelName', []);
 
         return parent::getChannelName();
     }
@@ -212,7 +212,7 @@ class Channel extends \Entity\Bizj\Channel implements \Doctrine\ORM\Proxy\Proxy
     public function setIsActive($isActive)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', array($isActive));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', [$isActive]);
 
         return parent::setIsActive($isActive);
     }
@@ -223,7 +223,7 @@ class Channel extends \Entity\Bizj\Channel implements \Doctrine\ORM\Proxy\Proxy
     public function getIsActive()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', []);
 
         return parent::getIsActive();
     }
@@ -234,7 +234,7 @@ class Channel extends \Entity\Bizj\Channel implements \Doctrine\ORM\Proxy\Proxy
     public function addIndustry(\Entity\Bizj\Industry $industry)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addIndustry', array($industry));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addIndustry', [$industry]);
 
         return parent::addIndustry($industry);
     }
@@ -245,7 +245,7 @@ class Channel extends \Entity\Bizj\Channel implements \Doctrine\ORM\Proxy\Proxy
     public function removeIndustry(\Entity\Bizj\Industry $industry)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeIndustry', array($industry));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeIndustry', [$industry]);
 
         return parent::removeIndustry($industry);
     }
@@ -256,7 +256,7 @@ class Channel extends \Entity\Bizj\Channel implements \Doctrine\ORM\Proxy\Proxy
     public function getIndustries()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIndustries', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIndustries', []);
 
         return parent::getIndustries();
     }

@@ -36,7 +36,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'contact_id', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'hub_id', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'meroveus_id', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'relevate_id', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'is_duplicate', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'is_current_employee', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'first_name', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'middle_initial', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'last_name', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'suffix', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'honorific', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'job_title', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'job_position_id', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'email', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'phone', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'address1', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'address2', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'city', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'state', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'postal_code', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'created_at', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'Company');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'contact_id', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'hub_id', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'meroveus_id', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'relevate_id', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'is_duplicate', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'is_current_employee', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'first_name', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'middle_initial', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'last_name', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'suffix', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'honorific', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'job_title', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'job_position_id', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'email', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'phone', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'address1', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'address2', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'city', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'state', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'postal_code', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'created_at', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'Company'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'contact_id', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'hub_id', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'meroveus_id', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'relevate_id', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'is_duplicate', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'is_current_employee', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'first_name', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'middle_initial', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'last_name', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'suffix', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'honorific', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'job_title', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'job_position_id', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'email', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'phone', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'address1', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'address2', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'city', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'state', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'postal_code', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'created_at', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'Company');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'contact_id', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'hub_id', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'meroveus_id', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'relevate_id', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'is_duplicate', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'is_current_employee', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'first_name', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'middle_initial', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'last_name', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'suffix', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'honorific', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'job_title', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'job_position_id', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'email', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'phone', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'address1', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'address2', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'city', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'state', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'postal_code', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'created_at', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Datahub\\Contact' . "\0" . 'Company'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function getContactId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactId', []);
 
         return parent::getContactId();
     }
@@ -190,7 +190,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function setHubId($hubId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHubId', array($hubId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHubId', [$hubId]);
 
         return parent::setHubId($hubId);
     }
@@ -201,7 +201,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function getHubId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHubId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHubId', []);
 
         return parent::getHubId();
     }
@@ -212,7 +212,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function setMeroveusId($meroveusId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMeroveusId', array($meroveusId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMeroveusId', [$meroveusId]);
 
         return parent::setMeroveusId($meroveusId);
     }
@@ -223,7 +223,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function getMeroveusId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMeroveusId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMeroveusId', []);
 
         return parent::getMeroveusId();
     }
@@ -234,7 +234,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function setRelevateId($relevateId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRelevateId', array($relevateId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRelevateId', [$relevateId]);
 
         return parent::setRelevateId($relevateId);
     }
@@ -245,7 +245,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function getRelevateId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRelevateId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRelevateId', []);
 
         return parent::getRelevateId();
     }
@@ -256,7 +256,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function setIsDuplicate($isDuplicate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsDuplicate', array($isDuplicate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsDuplicate', [$isDuplicate]);
 
         return parent::setIsDuplicate($isDuplicate);
     }
@@ -267,7 +267,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function getIsDuplicate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsDuplicate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsDuplicate', []);
 
         return parent::getIsDuplicate();
     }
@@ -278,7 +278,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function setIsCurrentEmployee($isCurrentEmployee)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsCurrentEmployee', array($isCurrentEmployee));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsCurrentEmployee', [$isCurrentEmployee]);
 
         return parent::setIsCurrentEmployee($isCurrentEmployee);
     }
@@ -289,7 +289,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function getIsCurrentEmployee()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsCurrentEmployee', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsCurrentEmployee', []);
 
         return parent::getIsCurrentEmployee();
     }
@@ -300,7 +300,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function setFirstName($firstName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFirstName', array($firstName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFirstName', [$firstName]);
 
         return parent::setFirstName($firstName);
     }
@@ -311,7 +311,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function getFirstName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFirstName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFirstName', []);
 
         return parent::getFirstName();
     }
@@ -322,7 +322,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function setMiddleInitial($middleInitial)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMiddleInitial', array($middleInitial));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMiddleInitial', [$middleInitial]);
 
         return parent::setMiddleInitial($middleInitial);
     }
@@ -333,7 +333,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function getMiddleInitial()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMiddleInitial', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMiddleInitial', []);
 
         return parent::getMiddleInitial();
     }
@@ -344,7 +344,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function setLastName($lastName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLastName', array($lastName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLastName', [$lastName]);
 
         return parent::setLastName($lastName);
     }
@@ -355,7 +355,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function getLastName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLastName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLastName', []);
 
         return parent::getLastName();
     }
@@ -366,7 +366,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function setSuffix($suffix)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSuffix', array($suffix));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSuffix', [$suffix]);
 
         return parent::setSuffix($suffix);
     }
@@ -377,7 +377,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function getSuffix()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSuffix', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSuffix', []);
 
         return parent::getSuffix();
     }
@@ -388,7 +388,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function setHonorific($honorific)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHonorific', array($honorific));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHonorific', [$honorific]);
 
         return parent::setHonorific($honorific);
     }
@@ -399,7 +399,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function getHonorific()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHonorific', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHonorific', []);
 
         return parent::getHonorific();
     }
@@ -410,7 +410,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function setJobTitle($jobTitle)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setJobTitle', array($jobTitle));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setJobTitle', [$jobTitle]);
 
         return parent::setJobTitle($jobTitle);
     }
@@ -421,7 +421,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function getJobTitle()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJobTitle', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJobTitle', []);
 
         return parent::getJobTitle();
     }
@@ -432,7 +432,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function setJobPositionId($jobPositionId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setJobPositionId', array($jobPositionId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setJobPositionId', [$jobPositionId]);
 
         return parent::setJobPositionId($jobPositionId);
     }
@@ -443,7 +443,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function getJobPositionId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJobPositionId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJobPositionId', []);
 
         return parent::getJobPositionId();
     }
@@ -454,7 +454,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function setEmail($email)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail', array($email));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail', [$email]);
 
         return parent::setEmail($email);
     }
@@ -465,7 +465,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function getEmail()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail', []);
 
         return parent::getEmail();
     }
@@ -476,7 +476,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function setPhone($phone)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhone', array($phone));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhone', [$phone]);
 
         return parent::setPhone($phone);
     }
@@ -487,7 +487,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function getPhone()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhone', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhone', []);
 
         return parent::getPhone();
     }
@@ -498,7 +498,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function setAddress1($address1)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAddress1', array($address1));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAddress1', [$address1]);
 
         return parent::setAddress1($address1);
     }
@@ -509,7 +509,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function getAddress1()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAddress1', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAddress1', []);
 
         return parent::getAddress1();
     }
@@ -520,7 +520,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function setAddress2($address2)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAddress2', array($address2));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAddress2', [$address2]);
 
         return parent::setAddress2($address2);
     }
@@ -531,7 +531,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function getAddress2()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAddress2', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAddress2', []);
 
         return parent::getAddress2();
     }
@@ -542,7 +542,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function setCity($city)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCity', array($city));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCity', [$city]);
 
         return parent::setCity($city);
     }
@@ -553,7 +553,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function getCity()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCity', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCity', []);
 
         return parent::getCity();
     }
@@ -564,7 +564,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function setState($state)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setState', array($state));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setState', [$state]);
 
         return parent::setState($state);
     }
@@ -575,7 +575,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function getState()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getState', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getState', []);
 
         return parent::getState();
     }
@@ -586,7 +586,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function setPostalCode($postalCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPostalCode', array($postalCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPostalCode', [$postalCode]);
 
         return parent::setPostalCode($postalCode);
     }
@@ -597,7 +597,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function getPostalCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPostalCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPostalCode', []);
 
         return parent::getPostalCode();
     }
@@ -608,7 +608,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -619,7 +619,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -630,7 +630,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -641,7 +641,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -652,7 +652,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function setDeletedAt($deletedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeletedAt', array($deletedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeletedAt', [$deletedAt]);
 
         return parent::setDeletedAt($deletedAt);
     }
@@ -663,7 +663,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function getDeletedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeletedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeletedAt', []);
 
         return parent::getDeletedAt();
     }
@@ -674,7 +674,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function setCompany(\Entity\Datahub\Company $company = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCompany', array($company));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCompany', [$company]);
 
         return parent::setCompany($company);
     }
@@ -685,7 +685,7 @@ class Contact extends \Entity\Datahub\Contact implements \Doctrine\ORM\Proxy\Pro
     public function getCompany()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCompany', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCompany', []);
 
         return parent::getCompany();
     }

@@ -146,3 +146,8 @@ Entity\Datahub\Company:
        mappedBy: Company
        cascade: [ 'all' ]
        orphanRemoval: true
+     CompanyMeroveusIndustries:
+       targetEntity: CompanyMeroveusIndustry
+       mappedBy: Company
+       cascade: [ 'all' ]
+       orphanRemoval: true

@@ -36,7 +36,7 @@ class GalleryMedia extends \Entity\Medialibrary\GalleryMedia implements \Doctrin
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class GalleryMedia extends \Entity\Medialibrary\GalleryMedia implements \Doctrin
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'gallery_id', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'ord', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'crop_data', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'title', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'caption', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'Gallery', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'Media');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'gallery_id', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'ord', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'crop_data', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'title', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'caption', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'Gallery', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'Media'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'gallery_id', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'ord', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'crop_data', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'title', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'caption', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'Gallery', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'Media');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'gallery_id', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'ord', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'crop_data', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'title', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'caption', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'Gallery', '' . "\0" . 'Entity\\Medialibrary\\GalleryMedia' . "\0" . 'Media'];
     }
 
     /**
@@ -97,7 +97,7 @@ class GalleryMedia extends \Entity\Medialibrary\GalleryMedia implements \Doctrin
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class GalleryMedia extends \Entity\Medialibrary\GalleryMedia implements \Doctrin
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class GalleryMedia extends \Entity\Medialibrary\GalleryMedia implements \Doctrin
     public function setGalleryId($galleryId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGalleryId', array($galleryId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGalleryId', [$galleryId]);
 
         return parent::setGalleryId($galleryId);
     }
@@ -190,7 +190,7 @@ class GalleryMedia extends \Entity\Medialibrary\GalleryMedia implements \Doctrin
     public function getGalleryId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGalleryId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGalleryId', []);
 
         return parent::getGalleryId();
     }
@@ -201,7 +201,7 @@ class GalleryMedia extends \Entity\Medialibrary\GalleryMedia implements \Doctrin
     public function setMediaId($mediaId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaId', array($mediaId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaId', [$mediaId]);
 
         return parent::setMediaId($mediaId);
     }
@@ -212,7 +212,7 @@ class GalleryMedia extends \Entity\Medialibrary\GalleryMedia implements \Doctrin
     public function getMediaId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaId', []);
 
         return parent::getMediaId();
     }
@@ -223,7 +223,7 @@ class GalleryMedia extends \Entity\Medialibrary\GalleryMedia implements \Doctrin
     public function setOrd($ord)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrd', array($ord));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrd', [$ord]);
 
         return parent::setOrd($ord);
     }
@@ -234,7 +234,7 @@ class GalleryMedia extends \Entity\Medialibrary\GalleryMedia implements \Doctrin
     public function getOrd()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrd', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrd', []);
 
         return parent::getOrd();
     }
@@ -245,7 +245,7 @@ class GalleryMedia extends \Entity\Medialibrary\GalleryMedia implements \Doctrin
     public function setCropData($cropData)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCropData', array($cropData));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCropData', [$cropData]);
 
         return parent::setCropData($cropData);
     }
@@ -256,7 +256,7 @@ class GalleryMedia extends \Entity\Medialibrary\GalleryMedia implements \Doctrin
     public function getCropData()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCropData', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCropData', []);
 
         return parent::getCropData();
     }
@@ -267,7 +267,7 @@ class GalleryMedia extends \Entity\Medialibrary\GalleryMedia implements \Doctrin
     public function setTitle($title)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', array($title));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', [$title]);
 
         return parent::setTitle($title);
     }
@@ -278,7 +278,7 @@ class GalleryMedia extends \Entity\Medialibrary\GalleryMedia implements \Doctrin
     public function getTitle()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', []);
 
         return parent::getTitle();
     }
@@ -289,7 +289,7 @@ class GalleryMedia extends \Entity\Medialibrary\GalleryMedia implements \Doctrin
     public function setCaption($caption)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCaption', array($caption));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCaption', [$caption]);
 
         return parent::setCaption($caption);
     }
@@ -300,7 +300,7 @@ class GalleryMedia extends \Entity\Medialibrary\GalleryMedia implements \Doctrin
     public function getCaption()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCaption', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCaption', []);
 
         return parent::getCaption();
     }
@@ -311,7 +311,7 @@ class GalleryMedia extends \Entity\Medialibrary\GalleryMedia implements \Doctrin
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -322,7 +322,7 @@ class GalleryMedia extends \Entity\Medialibrary\GalleryMedia implements \Doctrin
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -333,7 +333,7 @@ class GalleryMedia extends \Entity\Medialibrary\GalleryMedia implements \Doctrin
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -344,7 +344,7 @@ class GalleryMedia extends \Entity\Medialibrary\GalleryMedia implements \Doctrin
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -355,7 +355,7 @@ class GalleryMedia extends \Entity\Medialibrary\GalleryMedia implements \Doctrin
     public function setGallery(\Entity\Medialibrary\Gallery $gallery = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGallery', array($gallery));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGallery', [$gallery]);
 
         return parent::setGallery($gallery);
     }
@@ -366,7 +366,7 @@ class GalleryMedia extends \Entity\Medialibrary\GalleryMedia implements \Doctrin
     public function getGallery()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGallery', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGallery', []);
 
         return parent::getGallery();
     }
@@ -377,7 +377,7 @@ class GalleryMedia extends \Entity\Medialibrary\GalleryMedia implements \Doctrin
     public function setMedia(\Entity\Medialibrary\Media $media = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMedia', array($media));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMedia', [$media]);
 
         return parent::setMedia($media);
     }
@@ -388,7 +388,7 @@ class GalleryMedia extends \Entity\Medialibrary\GalleryMedia implements \Doctrin
     public function getMedia()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMedia', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMedia', []);
 
         return parent::getMedia();
     }

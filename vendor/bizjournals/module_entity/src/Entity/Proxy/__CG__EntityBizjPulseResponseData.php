@@ -36,7 +36,7 @@ class PulseResponseData extends \Entity\Bizj\PulseResponseData implements \Doctr
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class PulseResponseData extends \Entity\Bizj\PulseResponseData implements \Doctr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PulseResponseData' . "\0" . 'response_id', '' . "\0" . 'Entity\\Bizj\\PulseResponseData' . "\0" . 'question_id', '' . "\0" . 'Entity\\Bizj\\PulseResponseData' . "\0" . 'option_id', '' . "\0" . 'Entity\\Bizj\\PulseResponseData' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\PulseResponseData' . "\0" . 'response', '' . "\0" . 'Entity\\Bizj\\PulseResponseData' . "\0" . 'Response', '' . "\0" . 'Entity\\Bizj\\PulseResponseData' . "\0" . 'Question');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PulseResponseData' . "\0" . 'response_id', '' . "\0" . 'Entity\\Bizj\\PulseResponseData' . "\0" . 'question_id', '' . "\0" . 'Entity\\Bizj\\PulseResponseData' . "\0" . 'option_id', '' . "\0" . 'Entity\\Bizj\\PulseResponseData' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\PulseResponseData' . "\0" . 'response', '' . "\0" . 'Entity\\Bizj\\PulseResponseData' . "\0" . 'Response', '' . "\0" . 'Entity\\Bizj\\PulseResponseData' . "\0" . 'Question'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PulseResponseData' . "\0" . 'response_id', '' . "\0" . 'Entity\\Bizj\\PulseResponseData' . "\0" . 'question_id', '' . "\0" . 'Entity\\Bizj\\PulseResponseData' . "\0" . 'option_id', '' . "\0" . 'Entity\\Bizj\\PulseResponseData' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\PulseResponseData' . "\0" . 'response', '' . "\0" . 'Entity\\Bizj\\PulseResponseData' . "\0" . 'Response', '' . "\0" . 'Entity\\Bizj\\PulseResponseData' . "\0" . 'Question');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PulseResponseData' . "\0" . 'response_id', '' . "\0" . 'Entity\\Bizj\\PulseResponseData' . "\0" . 'question_id', '' . "\0" . 'Entity\\Bizj\\PulseResponseData' . "\0" . 'option_id', '' . "\0" . 'Entity\\Bizj\\PulseResponseData' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\PulseResponseData' . "\0" . 'response', '' . "\0" . 'Entity\\Bizj\\PulseResponseData' . "\0" . 'Response', '' . "\0" . 'Entity\\Bizj\\PulseResponseData' . "\0" . 'Question'];
     }
 
     /**
@@ -97,7 +97,7 @@ class PulseResponseData extends \Entity\Bizj\PulseResponseData implements \Doctr
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class PulseResponseData extends \Entity\Bizj\PulseResponseData implements \Doctr
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class PulseResponseData extends \Entity\Bizj\PulseResponseData implements \Doctr
     public function setResponseId($responseId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setResponseId', array($responseId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setResponseId', [$responseId]);
 
         return parent::setResponseId($responseId);
     }
@@ -190,7 +190,7 @@ class PulseResponseData extends \Entity\Bizj\PulseResponseData implements \Doctr
     public function getResponseId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getResponseId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getResponseId', []);
 
         return parent::getResponseId();
     }
@@ -201,7 +201,7 @@ class PulseResponseData extends \Entity\Bizj\PulseResponseData implements \Doctr
     public function setQuestionId($questionId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setQuestionId', array($questionId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setQuestionId', [$questionId]);
 
         return parent::setQuestionId($questionId);
     }
@@ -212,7 +212,7 @@ class PulseResponseData extends \Entity\Bizj\PulseResponseData implements \Doctr
     public function getQuestionId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQuestionId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQuestionId', []);
 
         return parent::getQuestionId();
     }
@@ -223,7 +223,7 @@ class PulseResponseData extends \Entity\Bizj\PulseResponseData implements \Doctr
     public function setOptionId($optionId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOptionId', array($optionId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOptionId', [$optionId]);
 
         return parent::setOptionId($optionId);
     }
@@ -234,7 +234,7 @@ class PulseResponseData extends \Entity\Bizj\PulseResponseData implements \Doctr
     public function getOptionId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOptionId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOptionId', []);
 
         return parent::getOptionId();
     }
@@ -245,7 +245,7 @@ class PulseResponseData extends \Entity\Bizj\PulseResponseData implements \Doctr
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -256,7 +256,7 @@ class PulseResponseData extends \Entity\Bizj\PulseResponseData implements \Doctr
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -267,7 +267,7 @@ class PulseResponseData extends \Entity\Bizj\PulseResponseData implements \Doctr
     public function setResponse($response)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setResponse', array($response));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setResponse', [$response]);
 
         return parent::setResponse($response);
     }
@@ -278,7 +278,7 @@ class PulseResponseData extends \Entity\Bizj\PulseResponseData implements \Doctr
     public function getResponse()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getResponse', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getResponse', []);
 
         return parent::getResponse();
     }
@@ -289,7 +289,7 @@ class PulseResponseData extends \Entity\Bizj\PulseResponseData implements \Doctr
     public function setQuestion(\Entity\Bizj\PulseQuestion $question = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setQuestion', array($question));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setQuestion', [$question]);
 
         return parent::setQuestion($question);
     }
@@ -300,7 +300,7 @@ class PulseResponseData extends \Entity\Bizj\PulseResponseData implements \Doctr
     public function getQuestion()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQuestion', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQuestion', []);
 
         return parent::getQuestion();
     }
