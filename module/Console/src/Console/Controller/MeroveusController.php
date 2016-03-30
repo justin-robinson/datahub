@@ -7,16 +7,14 @@
 
 namespace Console\Controller;
 
-use Console\Record\Formatter\Factory;
 use Console\CsvIterator;
-use Doctrine\DBAL\Driver\PDOException;
+use Console\Record\Formatter\Factory;
 use Elastica\Client as ElasticaClient;
 use Elastica\Query as ElasticaQuery;
 use Elastica\QueryBuilder as QueryBuilder;
 use Elastica\Search as ElasticaSearch;
-use Elastica\Result;
-use Services\Meroveus\CompanyService;
 use Services\Meroveus\Client as MeroveusClient;
+use Services\Meroveus\CompanyService;
 use Zend\Mvc\MvcEvent;
 
 //use Services\Meroveus\CompanyService;
@@ -215,11 +213,11 @@ class MeroveusController extends AbstractActionController
             LIMIT :offset, :limit',
         'insertMeroveusIndustry' => '
             INSERT INTO
-              `datahub`.`meroveus_industries` (external_id, industry)
+              `datahub`.`meroveus_industry` (external_id, industry)
             VALUES (:external_id, :industry)',
         'insertCompanyMeroveusIndustry' => '
             INSERT INTO
-              `datahub`.`company_meroveus_industries`
+              `datahub`.`company_meroveus_industry_map`
             (hub_id, meroveus_industry_id)
             VALUES
             (:hub_id, :meroveus_industry_id)',
@@ -407,7 +405,7 @@ class MeroveusController extends AbstractActionController
                                                 SELECT
                                                     *
                                                 FROM
-                                                  `datahub`.`meroveus_industries`
+                                                  `datahub`.`meroveus_industry`
                                                 WHERE `external_id` IN ({$target['firm-industry_static']})");
 
                         if ( $selectMeroveusIndustry->execute() ) {
@@ -585,7 +583,7 @@ class MeroveusController extends AbstractActionController
     }
 
     /**
-     * Updates meroveus_industries table with payload from meroveus
+     * Updates meroveus_industry table with payload from meroveus
      */
     public function updateIndustriesAction() {
 
@@ -643,19 +641,36 @@ class MeroveusController extends AbstractActionController
 
             $sql = $this->db->prepare(
                 "INSERT INTO
-	              `datahub`.`sic_code_meroveus_industries` (`sic`, `meroveus_industry_id`)
+	              `datahub`.`sic_code_meroveus_industry_map` (`sic`, `meroveus_industry_id`)
                 select
                     s.sic,
                     m.meroveus_industry_id
                 from
                     `datahub`.`sic_code` s
-                    left join `datahub`.`meroveus_industries` m ON m.industry = ?
+                    left join `datahub`.`meroveus_industry` m ON m.industry = ?
                 where
                     s.sic LIKE ?
-                    AND m.meroveus_industry_id IS NOT NULL");
+                    AND m.meroveus_industry_id IS NOT NULL
+
+                UNION
+
+                select
+                    c.sic_code,
+                    m.meroveus_industry_id
+                from
+                    `datahub`.`company` c
+                    left join `datahub`.`meroveus_industry` m ON m.industry = ?
+                WHERE
+                    c.sic_code LIKE ? ");
 
 
-            $sql->execute([$line['DataHub Industry'], $line['SIC'] . '%']);
+            $sql->execute(
+                [
+                    $line['DataHub Industry'],
+                    $line['SIC'] . '%',
+                    $line['DataHub Industry'],
+                    $line['SIC'] . '%',
+                ]);
         }
 
     }
