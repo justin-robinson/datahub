@@ -173,6 +173,11 @@ class Company extends \Entity\Entity\Base
     private $SicIndustries;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $ThirdPartyIndustries;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -180,6 +185,7 @@ class Company extends \Entity\Entity\Base
         $this->Contacts = new \Doctrine\Common\Collections\ArrayCollection();
         $this->MeroveusIndustries = new \Doctrine\Common\Collections\ArrayCollection();
         $this->SicIndustries = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->ThirdPartyIndustries = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -988,6 +994,40 @@ class Company extends \Entity\Entity\Base
     public function getSicIndustries()
     {
         return $this->SicIndustries;
+    }
+
+    /**
+     * Add thirdPartyIndustry
+     *
+     * @param \Entity\Datahub\MeroveusIndustry $thirdPartyIndustry
+     *
+     * @return Company
+     */
+    public function addThirdPartyIndustry(\Entity\Datahub\MeroveusIndustry $thirdPartyIndustry)
+    {
+        $this->ThirdPartyIndustries[] = $thirdPartyIndustry;
+
+        return $this;
+    }
+
+    /**
+     * Remove thirdPartyIndustry
+     *
+     * @param \Entity\Datahub\MeroveusIndustry $thirdPartyIndustry
+     */
+    public function removeThirdPartyIndustry(\Entity\Datahub\MeroveusIndustry $thirdPartyIndustry)
+    {
+        $this->ThirdPartyIndustries->removeElement($thirdPartyIndustry);
+    }
+
+    /**
+     * Get thirdPartyIndustries
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getThirdPartyIndustries()
+    {
+        return $this->ThirdPartyIndustries;
     }
 }
 

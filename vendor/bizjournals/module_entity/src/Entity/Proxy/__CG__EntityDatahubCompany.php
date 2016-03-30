@@ -64,10 +64,10 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'hub_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'refinery_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'meroveus_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'generate_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'record_source', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'company_name', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'public_ticker', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'ticker_exchange', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'source_modified_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'address1', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'address2', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'city', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'state', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'postal_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'country', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'latitude', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'longitude', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'phone', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'website', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'is_active', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'sic_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'employee_count', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_revenue_volume_static', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_employee_count_static', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_employee_local_static', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_established_year_static', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_profile_blob_static', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'created_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'Contacts', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'MeroveusIndustries', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'SicIndustries'];
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'hub_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'refinery_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'meroveus_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'generate_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'record_source', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'company_name', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'public_ticker', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'ticker_exchange', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'source_modified_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'address1', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'address2', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'city', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'state', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'postal_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'country', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'latitude', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'longitude', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'phone', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'website', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'is_active', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'sic_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'employee_count', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_revenue_volume_static', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_employee_count_static', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_employee_local_static', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_established_year_static', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_profile_blob_static', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'created_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'Contacts', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'MeroveusIndustries', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'SicIndustries', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'ThirdPartyIndustries'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'hub_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'refinery_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'meroveus_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'generate_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'record_source', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'company_name', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'public_ticker', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'ticker_exchange', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'source_modified_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'address1', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'address2', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'city', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'state', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'postal_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'country', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'latitude', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'longitude', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'phone', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'website', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'is_active', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'sic_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'employee_count', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_revenue_volume_static', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_employee_count_static', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_employee_local_static', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_established_year_static', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_profile_blob_static', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'created_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'Contacts', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'MeroveusIndustries', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'SicIndustries'];
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'hub_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'refinery_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'meroveus_id', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'generate_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'record_source', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'company_name', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'public_ticker', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'ticker_exchange', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'source_modified_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'address1', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'address2', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'city', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'state', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'postal_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'country', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'latitude', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'longitude', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'phone', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'website', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'is_active', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'sic_code', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'employee_count', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_revenue_volume_static', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_employee_count_static', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_employee_local_static', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_established_year_static', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'universal_profile_blob_static', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'created_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'Contacts', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'MeroveusIndustries', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'SicIndustries', '' . "\0" . 'Entity\\Datahub\\Company' . "\0" . 'ThirdPartyIndustries'];
     }
 
     /**
@@ -919,6 +919,39 @@ class Company extends \Entity\Datahub\Company implements \Doctrine\ORM\Proxy\Pro
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSicIndustries', []);
 
         return parent::getSicIndustries();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addThirdPartyIndustry(\Entity\Datahub\MeroveusIndustry $thirdPartyIndustry)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addThirdPartyIndustry', [$thirdPartyIndustry]);
+
+        return parent::addThirdPartyIndustry($thirdPartyIndustry);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeThirdPartyIndustry(\Entity\Datahub\MeroveusIndustry $thirdPartyIndustry)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeThirdPartyIndustry', [$thirdPartyIndustry]);
+
+        return parent::removeThirdPartyIndustry($thirdPartyIndustry);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getThirdPartyIndustries()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getThirdPartyIndustries', []);
+
+        return parent::getThirdPartyIndustries();
     }
 
 }

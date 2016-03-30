@@ -636,34 +636,33 @@ class MeroveusController extends AbstractActionController
         $file = new CsvIterator($filePath);
         $file->setHasHeaderRow(true);
 
+        $sql = $this->db->prepare(
+            "INSERT INTO
+              `datahub`.`sic_code_meroveus_industry_map` (`sic`, `meroveus_industry_id`)
+            select
+                s.sic,
+                m.meroveus_industry_id
+            from
+                `datahub`.`sic_code` s
+                left join `datahub`.`meroveus_industry` m ON m.industry = ?
+            where
+                s.sic LIKE ?
+                AND m.meroveus_industry_id IS NOT NULL
+
+            UNION
+
+            select
+                c.sic_code,
+                m.meroveus_industry_id
+            from
+                `datahub`.`company` c
+                left join `datahub`.`meroveus_industry` m ON m.industry = ?
+            WHERE
+                c.sic_code LIKE ?
+                AND m.meroveus_industry_id IS NOT NULL");
+
         foreach ( $file as $line ) {
             $line = $file->mergeWithHeaderRow($line);
-
-            $sql = $this->db->prepare(
-                "INSERT INTO
-	              `datahub`.`sic_code_meroveus_industry_map` (`sic`, `meroveus_industry_id`)
-                select
-                    s.sic,
-                    m.meroveus_industry_id
-                from
-                    `datahub`.`sic_code` s
-                    left join `datahub`.`meroveus_industry` m ON m.industry = ?
-                where
-                    s.sic LIKE ?
-                    AND m.meroveus_industry_id IS NOT NULL
-
-                UNION
-
-                select
-                    c.sic_code,
-                    m.meroveus_industry_id
-                from
-                    `datahub`.`company` c
-                    left join `datahub`.`meroveus_industry` m ON m.industry = ?
-                WHERE
-                    c.sic_code LIKE ?
-                    AND m.meroveus_industry_id IS NOT NULL");
-
 
             $sql->execute(
                 [
@@ -673,6 +672,52 @@ class MeroveusController extends AbstractActionController
                     $line['SIC'] . '%',
                 ]);
         }
+
+    }
+
+    public function mapThirdPartySicAction () {
+
+        // hardcoding filepath to work around cli arg bug
+        $filePath = "/Users/justinrobinson/Documents/datahub/qtqB1259rel_Out_25159.csv";
+
+        if ( !$filePath ) {
+            die ( 'run with arg --file /path/to/file ');
+        }
+
+        $filePath = realpath($filePath);
+        if ( !$filePath ) {
+            die ( "--file does not exist: " . $this->getRequest()->getParam('file') );
+        }
+
+        $file = new CsvIterator($filePath);
+        $file->setHasHeaderRow(true);
+
+        $sql = $this->db->prepare(
+            'INSERT INTO
+                `datahub`.`company_meroveus_industry_third_party_map` (`meroveus_industry_id`, `meroveus_id`)
+            SELECT
+                DISTINCT(m.meroveus_industry_id),
+                ?
+            FROM
+                `datahub`.`sic_code` s
+                LEFT JOIN `datahub`.`sic_code_meroveus_industry_map` m USING (`sic`)
+            WHERE
+                s.sic LIKE ?');
+
+        foreach ( $file as $line ) {
+            $line = $file->mergeWithHeaderRow($line);
+
+            if ( empty($line['meroveus_id']) ) {
+                continue;
+            }
+
+            $sql->execute(
+                [
+                    $line['meroveus_id'],
+                    substr($line['PrimarySIC'], 0, 2) . '%'
+                ]);
+        }
+
 
     }
 

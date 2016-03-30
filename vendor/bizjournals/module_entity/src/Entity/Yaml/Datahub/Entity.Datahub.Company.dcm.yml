@@ -169,3 +169,14 @@ Entity\Datahub\Company:
             meroveus_industry_id:
               referencedColumnName: meroveus_industry_id
               unique: true
+     ThirdPartyIndustries:
+        targetEntity: MeroveusIndustry
+        joinTable:
+          name: company_meroveus_industry_third_party_map
+          joinColumns:
+            meroveus_id:
+              referencedColumnName: meroveus_id
+          inverseJoinColumns:
+            meroveus_industry_id:
+              referencedColumnName: meroveus_industry_id
+              unique: true
