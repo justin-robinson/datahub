@@ -146,8 +146,26 @@ Entity\Datahub\Company:
        mappedBy: Company
        cascade: [ 'all' ]
        orphanRemoval: true
-     CompanyMeroveusIndustries:
-       targetEntity: CompanyMeroveusIndustry
-       mappedBy: Company
-       cascade: [ 'all' ]
-       orphanRemoval: true
+  manyToMany:
+     MeroveusIndustries:
+       targetEntity: MeroveusIndustry
+       joinTable:
+        name: company_meroveus_industry_map
+        joinColumns:
+          hub_id:
+            referencedColumnName: hub_id
+        inverseJoinColumns:
+          meroveus_industry_id:
+            referencedColumnName: meroveus_industry_id
+            unique: true
+     SicIndustries:
+        targetEntity: MeroveusIndustry
+        joinTable:
+          name: sic_code_meroveus_industry_map
+          joinColumns:
+            sic:
+              referencedColumnName: sic_code
+          inverseJoinColumns:
+            meroveus_industry_id:
+              referencedColumnName: meroveus_industry_id
+              unique: true

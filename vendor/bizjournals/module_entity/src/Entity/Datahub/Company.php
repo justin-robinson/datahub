@@ -165,7 +165,12 @@ class Company extends \Entity\Entity\Base
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $CompanyMeroveusIndustries;
+    private $MeroveusIndustries;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $SicIndustries;
 
     /**
      * Constructor
@@ -173,7 +178,8 @@ class Company extends \Entity\Entity\Base
     public function __construct()
     {
         $this->Contacts = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->CompanyMeroveusIndustries = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->MeroveusIndustries = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->SicIndustries = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -917,37 +923,71 @@ class Company extends \Entity\Entity\Base
     }
 
     /**
-     * Add companyMeroveusIndustry
+     * Add meroveusIndustry
      *
-     * @param \Entity\Datahub\CompanyMeroveusIndustry $companyMeroveusIndustry
+     * @param \Entity\Datahub\MeroveusIndustry $meroveusIndustry
      *
      * @return Company
      */
-    public function addCompanyMeroveusIndustry(\Entity\Datahub\CompanyMeroveusIndustry $companyMeroveusIndustry)
+    public function addMeroveusIndustry(\Entity\Datahub\MeroveusIndustry $meroveusIndustry)
     {
-        $this->CompanyMeroveusIndustries[] = $companyMeroveusIndustry;
+        $this->MeroveusIndustries[] = $meroveusIndustry;
 
         return $this;
     }
 
     /**
-     * Remove companyMeroveusIndustry
+     * Remove meroveusIndustry
      *
-     * @param \Entity\Datahub\CompanyMeroveusIndustry $companyMeroveusIndustry
+     * @param \Entity\Datahub\MeroveusIndustry $meroveusIndustry
      */
-    public function removeCompanyMeroveusIndustry(\Entity\Datahub\CompanyMeroveusIndustry $companyMeroveusIndustry)
+    public function removeMeroveusIndustry(\Entity\Datahub\MeroveusIndustry $meroveusIndustry)
     {
-        $this->CompanyMeroveusIndustries->removeElement($companyMeroveusIndustry);
+        $this->MeroveusIndustries->removeElement($meroveusIndustry);
     }
 
     /**
-     * Get companyMeroveusIndustries
+     * Get meroveusIndustries
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getCompanyMeroveusIndustries()
+    public function getMeroveusIndustries()
     {
-        return $this->CompanyMeroveusIndustries;
+        return $this->MeroveusIndustries;
+    }
+
+    /**
+     * Add sicIndustry
+     *
+     * @param \Entity\Datahub\MeroveusIndustry $sicIndustry
+     *
+     * @return Company
+     */
+    public function addSicIndustry(\Entity\Datahub\MeroveusIndustry $sicIndustry)
+    {
+        $this->SicIndustries[] = $sicIndustry;
+
+        return $this;
+    }
+
+    /**
+     * Remove sicIndustry
+     *
+     * @param \Entity\Datahub\MeroveusIndustry $sicIndustry
+     */
+    public function removeSicIndustry(\Entity\Datahub\MeroveusIndustry $sicIndustry)
+    {
+        $this->SicIndustries->removeElement($sicIndustry);
+    }
+
+    /**
+     * Get sicIndustries
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSicIndustries()
+    {
+        return $this->SicIndustries;
     }
 }
 
