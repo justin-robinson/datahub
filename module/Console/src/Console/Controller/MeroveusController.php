@@ -675,6 +675,11 @@ class MeroveusController extends AbstractActionController
 
     }
 
+    /**
+     * Map third party sic codes to a meroveus_industry_id and link to a company via a provided
+     * hub_id
+     * @throws \Exception
+     */
     public function mapThirdPartySicAction () {
 
         // hardcoding filepath to work around cli arg bug
@@ -689,12 +694,15 @@ class MeroveusController extends AbstractActionController
             die ( "--file does not exist: " . $this->getRequest()->getParam('file') );
         }
 
+        // load csv file
         $file = new CsvIterator($filePath);
         $file->setHasHeaderRow(true);
 
+        // get all sic_codes that match the given sic code regex and insert provided meroveus_id and mapped
+        // meroveus_industry_ids into company_meroveus_industry_third_party_map
         $sql = $this->db->prepare(
             'INSERT INTO
-                `datahub`.`company_meroveus_industry_third_party_map` (`meroveus_industry_id`, `meroveus_id`)
+                `datahub`.`company_meroveus_industry_third_party_map` (`meroveus_industry_id`, `hub_id`)
             SELECT
                 DISTINCT(m.meroveus_industry_id),
                 ?
@@ -702,19 +710,47 @@ class MeroveusController extends AbstractActionController
                 `datahub`.`sic_code` s
                 LEFT JOIN `datahub`.`sic_code_meroveus_industry_map` m USING (`sic`)
             WHERE
-                s.sic LIKE ?');
+                s.sic REGEXP ?
+                AND m.meroveus_industry_id IS NOT NULL');
 
+        // loop over each line
         foreach ( $file as $line ) {
+
             $line = $file->mergeWithHeaderRow($line);
 
-            if ( empty($line['meroveus_id']) ) {
+            // no hub_id is no good
+            if ( empty($line['hub_id']) ) {
                 continue;
             }
 
+            // build all sic codes into regex string '^\d\d.*'
+            $sicCodes = [];
+            if ( !empty($line['PrimarySIC']) ) {
+                $sicCodes[] = '^'. substr($line['PrimarySIC'], 0, 2) . '.*';
+            }
+            if ( !empty($line['SICSecondary1']) ) {
+                $sicCodes[] = '^'. substr($line['SICSecondary1'], 0, 2) . '.*';
+            }
+            if ( !empty($line['SICSecondary2']) ) {
+                $sicCodes[] = '^'. substr($line['SICSecondary2'], 0, 2) . '.*';
+            }
+            if ( !empty($line['SICSec3']) ) {
+                $sicCodes[] = '^'. substr($line['SICSec3'], 0, 2) . '.*';
+            }
+            if ( !empty($line['SICSec4']) ) {
+                $sicCodes[] = '^'. substr($line['SICSec4'], 0, 2) . '.*';
+            }
+
+            // need at least one sic code
+            if ( empty($sicCodes) ) {
+                continue;
+            }
+
+            // link matched meroveus industries to a company
             $sql->execute(
                 [
-                    $line['meroveus_id'],
-                    substr($line['PrimarySIC'], 0, 2) . '%'
+                    $line['hub_id'],
+                    implode('|', $sicCodes),
                 ]);
         }
 
