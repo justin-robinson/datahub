@@ -174,8 +174,8 @@ Entity\Datahub\Company:
         joinTable:
           name: company_meroveus_industry_third_party_map
           joinColumns:
-            meroveus_id:
-              referencedColumnName: meroveus_id
+            hub_id:
+              referencedColumnName: hub_id
           inverseJoinColumns:
             meroveus_industry_id:
               referencedColumnName: meroveus_industry_id
