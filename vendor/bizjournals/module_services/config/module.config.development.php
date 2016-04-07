@@ -1,11 +1,5 @@
 <?php
 return array(
-    'rabbitmq' => array(
-        'host' => 'mq-dev.bizjournals.int',
-        'port' => '5672',
-        'user' => 'dev',
-        'pass' => 'dev',
-    ),
     'bizjmerchant' => array(
         // key, secret
         //'api_url'      => 'http://rkunde.tech.bizjournals.com/bizjmerchant/web/api_dev.php',
@@ -13,23 +7,8 @@ return array(
         'api_url'      => 'http://mlong.tech.bizjournals.com/bizjmerchant/web/api_dev.php',
         'frontend_url' => 'http://mlong.tech.bizjournals.com/bizjmerchant/web/frontend_dev.php',
     ),
-    'elastica' => array(
-        'servers' => array(
-            array('host' => 'cms-dev-search-query.bizjournals.int', 'port' => 9200, 'timeout' => 4),
-       ),
-    ),
-    'elasticaupdate' => array(
-        'servers' => array(
-            array('host' => 'cms-dev-search-query.bizjournals.int', 'port' => 9200, 'timeout' => 4),
-        ),
-    ),
     'admin_authentication' => array(
         'base_url' => 'http://admin.dev.bizjournals.com/authapi',
-    ),
-    'medialibrary' => array(
-        'key'      => 'cmsdev',
-        'secret'   => '2CsI8ErIHzcT4c',
-        'base_url' => 'http://mediaapi.dev.bizjournals.com/api',
     ),
     // This is the development account tied to the techpartner+test1@bizjournals.com login
     'ooyala' => array(
@@ -43,30 +22,6 @@ return array(
         'options'            => array(
             'timeout'        => 1,
             'sslverifypeer'  => false,
-        ),
-    ),
-    // This is the "normal" staging SOLR server used by staging2, testing.tech, etc.
-    'solarium' => array(
-        'endpoint' => array(
-            'solr' => array(
-                'host' => 'solr-dev.bizjournals.int',
-                'port' => 8080,
-                'path' => '/solr/bizjournals/',
-            )
-        )
-    ),
-    'cache' => array(
-        'memcached' => array(
-            'adapter' => array(
-                'options' => array(
-                    'servers' => array(
-                        array(
-                            'host' => 'tech.bizjournals.int',
-                            'port' => 11212,
-                        ),
-                    ),
-                ),
-            ),
         ),
     ),
 );
