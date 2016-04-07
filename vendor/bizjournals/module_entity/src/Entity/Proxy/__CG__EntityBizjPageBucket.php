@@ -36,7 +36,7 @@ class PageBucket extends \Entity\Bizj\PageBucket implements \Doctrine\ORM\Proxy\
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class PageBucket extends \Entity\Bizj\PageBucket implements \Doctrine\ORM\Proxy\
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageBucket' . "\0" . 'bucket', '' . "\0" . 'Entity\\Bizj\\PageBucket' . "\0" . 'krang_group', '' . "\0" . 'Entity\\Bizj\\PageBucket' . "\0" . 'label', '' . "\0" . 'Entity\\Bizj\\PageBucket' . "\0" . 'special_cat_id');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageBucket' . "\0" . 'bucket', '' . "\0" . 'Entity\\Bizj\\PageBucket' . "\0" . 'krang_group', '' . "\0" . 'Entity\\Bizj\\PageBucket' . "\0" . 'label', '' . "\0" . 'Entity\\Bizj\\PageBucket' . "\0" . 'special_cat_id'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageBucket' . "\0" . 'bucket', '' . "\0" . 'Entity\\Bizj\\PageBucket' . "\0" . 'krang_group', '' . "\0" . 'Entity\\Bizj\\PageBucket' . "\0" . 'label', '' . "\0" . 'Entity\\Bizj\\PageBucket' . "\0" . 'special_cat_id');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageBucket' . "\0" . 'bucket', '' . "\0" . 'Entity\\Bizj\\PageBucket' . "\0" . 'krang_group', '' . "\0" . 'Entity\\Bizj\\PageBucket' . "\0" . 'label', '' . "\0" . 'Entity\\Bizj\\PageBucket' . "\0" . 'special_cat_id'];
     }
 
     /**
@@ -97,7 +97,7 @@ class PageBucket extends \Entity\Bizj\PageBucket implements \Doctrine\ORM\Proxy\
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class PageBucket extends \Entity\Bizj\PageBucket implements \Doctrine\ORM\Proxy\
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class PageBucket extends \Entity\Bizj\PageBucket implements \Doctrine\ORM\Proxy\
     public function setBucket($bucket)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBucket', array($bucket));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBucket', [$bucket]);
 
         return parent::setBucket($bucket);
     }
@@ -194,7 +194,7 @@ class PageBucket extends \Entity\Bizj\PageBucket implements \Doctrine\ORM\Proxy\
         }
 
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBucket', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBucket', []);
 
         return parent::getBucket();
     }
@@ -205,7 +205,7 @@ class PageBucket extends \Entity\Bizj\PageBucket implements \Doctrine\ORM\Proxy\
     public function setKrangGroup($krangGroup)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setKrangGroup', array($krangGroup));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setKrangGroup', [$krangGroup]);
 
         return parent::setKrangGroup($krangGroup);
     }
@@ -216,7 +216,7 @@ class PageBucket extends \Entity\Bizj\PageBucket implements \Doctrine\ORM\Proxy\
     public function getKrangGroup()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getKrangGroup', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getKrangGroup', []);
 
         return parent::getKrangGroup();
     }
@@ -227,7 +227,7 @@ class PageBucket extends \Entity\Bizj\PageBucket implements \Doctrine\ORM\Proxy\
     public function setLabel($label)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLabel', array($label));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLabel', [$label]);
 
         return parent::setLabel($label);
     }
@@ -238,7 +238,7 @@ class PageBucket extends \Entity\Bizj\PageBucket implements \Doctrine\ORM\Proxy\
     public function getLabel()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLabel', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLabel', []);
 
         return parent::getLabel();
     }
@@ -249,7 +249,7 @@ class PageBucket extends \Entity\Bizj\PageBucket implements \Doctrine\ORM\Proxy\
     public function setSpecialCatId($specialCatId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSpecialCatId', array($specialCatId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSpecialCatId', [$specialCatId]);
 
         return parent::setSpecialCatId($specialCatId);
     }
@@ -260,7 +260,7 @@ class PageBucket extends \Entity\Bizj\PageBucket implements \Doctrine\ORM\Proxy\
     public function getSpecialCatId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSpecialCatId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSpecialCatId', []);
 
         return parent::getSpecialCatId();
     }

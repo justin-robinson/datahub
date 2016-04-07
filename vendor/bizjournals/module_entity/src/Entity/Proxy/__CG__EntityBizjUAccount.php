@@ -36,7 +36,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'user_id', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'uin', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'email', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'password', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'country_code', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'postal_code', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'business_type_id', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'employee_count', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'may_email_features', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'first_name', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'last_name', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'm_time', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'has_undeliverable_email', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'undeliverable_email_count', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'has_html_email', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'gender', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'job_title_id', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'company_postal_code', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'subscriber_info_id', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'income_level_id', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'has_confirmed_email', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'company_name', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'company_address', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'company_city', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'company_state', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'receive_partner_email', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'comp_access', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'source_id', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'email_domain', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'undeliverable_time', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'use_external_auth', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'last_login', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'is_archived', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'has_suppressed_email');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'user_id', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'uin', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'email', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'password', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'country_code', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'postal_code', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'business_type_id', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'employee_count', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'may_email_features', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'first_name', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'last_name', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'm_time', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'has_undeliverable_email', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'undeliverable_email_count', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'has_html_email', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'gender', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'job_title_id', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'company_postal_code', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'subscriber_info_id', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'income_level_id', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'has_confirmed_email', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'company_name', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'company_address', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'company_city', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'company_state', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'receive_partner_email', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'comp_access', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'source_id', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'email_domain', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'undeliverable_time', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'use_external_auth', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'last_login', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'is_archived', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'has_suppressed_email'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'user_id', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'uin', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'email', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'password', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'country_code', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'postal_code', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'business_type_id', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'employee_count', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'may_email_features', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'first_name', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'last_name', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'm_time', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'has_undeliverable_email', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'undeliverable_email_count', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'has_html_email', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'gender', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'job_title_id', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'company_postal_code', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'subscriber_info_id', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'income_level_id', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'has_confirmed_email', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'company_name', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'company_address', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'company_city', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'company_state', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'receive_partner_email', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'comp_access', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'source_id', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'email_domain', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'undeliverable_time', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'use_external_auth', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'last_login', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'is_archived', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'has_suppressed_email');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'user_id', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'uin', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'email', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'password', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'country_code', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'postal_code', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'business_type_id', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'employee_count', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'may_email_features', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'first_name', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'last_name', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'm_time', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'has_undeliverable_email', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'undeliverable_email_count', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'has_html_email', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'gender', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'job_title_id', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'company_postal_code', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'subscriber_info_id', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'income_level_id', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'has_confirmed_email', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'company_name', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'company_address', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'company_city', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'company_state', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'receive_partner_email', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'comp_access', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'source_id', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'email_domain', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'undeliverable_time', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'use_external_auth', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'last_login', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'is_archived', '' . "\0" . 'Entity\\Bizj\\UAccount' . "\0" . 'has_suppressed_email'];
     }
 
     /**
@@ -97,7 +97,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getUserId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUserId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUserId', []);
 
         return parent::getUserId();
     }
@@ -190,7 +190,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setUin($uin)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUin', array($uin));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUin', [$uin]);
 
         return parent::setUin($uin);
     }
@@ -201,7 +201,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getUin()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUin', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUin', []);
 
         return parent::getUin();
     }
@@ -212,7 +212,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setEmail($email)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail', array($email));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail', [$email]);
 
         return parent::setEmail($email);
     }
@@ -223,7 +223,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getEmail()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail', []);
 
         return parent::getEmail();
     }
@@ -234,7 +234,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setPassword($password)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPassword', array($password));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPassword', [$password]);
 
         return parent::setPassword($password);
     }
@@ -245,7 +245,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getPassword()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPassword', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPassword', []);
 
         return parent::getPassword();
     }
@@ -256,7 +256,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setCountryCode($countryCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountryCode', array($countryCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountryCode', [$countryCode]);
 
         return parent::setCountryCode($countryCode);
     }
@@ -267,7 +267,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getCountryCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountryCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountryCode', []);
 
         return parent::getCountryCode();
     }
@@ -278,7 +278,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setPostalCode($postalCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPostalCode', array($postalCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPostalCode', [$postalCode]);
 
         return parent::setPostalCode($postalCode);
     }
@@ -289,7 +289,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getPostalCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPostalCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPostalCode', []);
 
         return parent::getPostalCode();
     }
@@ -300,7 +300,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setBusinessTypeId($businessTypeId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBusinessTypeId', array($businessTypeId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBusinessTypeId', [$businessTypeId]);
 
         return parent::setBusinessTypeId($businessTypeId);
     }
@@ -311,7 +311,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getBusinessTypeId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBusinessTypeId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBusinessTypeId', []);
 
         return parent::getBusinessTypeId();
     }
@@ -322,7 +322,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setEmployeeCount($employeeCount)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmployeeCount', array($employeeCount));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmployeeCount', [$employeeCount]);
 
         return parent::setEmployeeCount($employeeCount);
     }
@@ -333,7 +333,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getEmployeeCount()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmployeeCount', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmployeeCount', []);
 
         return parent::getEmployeeCount();
     }
@@ -344,7 +344,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setMayEmailFeatures($mayEmailFeatures)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMayEmailFeatures', array($mayEmailFeatures));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMayEmailFeatures', [$mayEmailFeatures]);
 
         return parent::setMayEmailFeatures($mayEmailFeatures);
     }
@@ -355,7 +355,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getMayEmailFeatures()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMayEmailFeatures', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMayEmailFeatures', []);
 
         return parent::getMayEmailFeatures();
     }
@@ -366,7 +366,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setFirstName($firstName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFirstName', array($firstName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFirstName', [$firstName]);
 
         return parent::setFirstName($firstName);
     }
@@ -377,7 +377,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getFirstName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFirstName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFirstName', []);
 
         return parent::getFirstName();
     }
@@ -388,7 +388,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setLastName($lastName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLastName', array($lastName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLastName', [$lastName]);
 
         return parent::setLastName($lastName);
     }
@@ -399,7 +399,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getLastName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLastName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLastName', []);
 
         return parent::getLastName();
     }
@@ -410,7 +410,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setCTime($cTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCTime', array($cTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCTime', [$cTime]);
 
         return parent::setCTime($cTime);
     }
@@ -421,7 +421,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getCTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCTime', []);
 
         return parent::getCTime();
     }
@@ -432,7 +432,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setMTime($mTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMTime', array($mTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMTime', [$mTime]);
 
         return parent::setMTime($mTime);
     }
@@ -443,7 +443,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getMTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMTime', []);
 
         return parent::getMTime();
     }
@@ -454,7 +454,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setHasUndeliverableEmail($hasUndeliverableEmail)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasUndeliverableEmail', array($hasUndeliverableEmail));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasUndeliverableEmail', [$hasUndeliverableEmail]);
 
         return parent::setHasUndeliverableEmail($hasUndeliverableEmail);
     }
@@ -465,7 +465,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getHasUndeliverableEmail()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasUndeliverableEmail', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasUndeliverableEmail', []);
 
         return parent::getHasUndeliverableEmail();
     }
@@ -476,7 +476,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setUndeliverableEmailCount($undeliverableEmailCount)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUndeliverableEmailCount', array($undeliverableEmailCount));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUndeliverableEmailCount', [$undeliverableEmailCount]);
 
         return parent::setUndeliverableEmailCount($undeliverableEmailCount);
     }
@@ -487,7 +487,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getUndeliverableEmailCount()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUndeliverableEmailCount', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUndeliverableEmailCount', []);
 
         return parent::getUndeliverableEmailCount();
     }
@@ -498,7 +498,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setHasHtmlEmail($hasHtmlEmail)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasHtmlEmail', array($hasHtmlEmail));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasHtmlEmail', [$hasHtmlEmail]);
 
         return parent::setHasHtmlEmail($hasHtmlEmail);
     }
@@ -509,7 +509,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getHasHtmlEmail()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasHtmlEmail', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasHtmlEmail', []);
 
         return parent::getHasHtmlEmail();
     }
@@ -520,7 +520,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setGender($gender)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGender', array($gender));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGender', [$gender]);
 
         return parent::setGender($gender);
     }
@@ -531,7 +531,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getGender()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGender', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGender', []);
 
         return parent::getGender();
     }
@@ -542,7 +542,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setJobTitleId($jobTitleId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setJobTitleId', array($jobTitleId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setJobTitleId', [$jobTitleId]);
 
         return parent::setJobTitleId($jobTitleId);
     }
@@ -553,7 +553,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getJobTitleId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJobTitleId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJobTitleId', []);
 
         return parent::getJobTitleId();
     }
@@ -564,7 +564,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setCompanyPostalCode($companyPostalCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCompanyPostalCode', array($companyPostalCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCompanyPostalCode', [$companyPostalCode]);
 
         return parent::setCompanyPostalCode($companyPostalCode);
     }
@@ -575,7 +575,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getCompanyPostalCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCompanyPostalCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCompanyPostalCode', []);
 
         return parent::getCompanyPostalCode();
     }
@@ -586,7 +586,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setSubscriberInfoId($subscriberInfoId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSubscriberInfoId', array($subscriberInfoId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSubscriberInfoId', [$subscriberInfoId]);
 
         return parent::setSubscriberInfoId($subscriberInfoId);
     }
@@ -597,7 +597,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getSubscriberInfoId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSubscriberInfoId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSubscriberInfoId', []);
 
         return parent::getSubscriberInfoId();
     }
@@ -608,7 +608,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setIncomeLevelId($incomeLevelId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIncomeLevelId', array($incomeLevelId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIncomeLevelId', [$incomeLevelId]);
 
         return parent::setIncomeLevelId($incomeLevelId);
     }
@@ -619,7 +619,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getIncomeLevelId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIncomeLevelId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIncomeLevelId', []);
 
         return parent::getIncomeLevelId();
     }
@@ -630,7 +630,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setHasConfirmedEmail($hasConfirmedEmail)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasConfirmedEmail', array($hasConfirmedEmail));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasConfirmedEmail', [$hasConfirmedEmail]);
 
         return parent::setHasConfirmedEmail($hasConfirmedEmail);
     }
@@ -641,7 +641,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getHasConfirmedEmail()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasConfirmedEmail', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasConfirmedEmail', []);
 
         return parent::getHasConfirmedEmail();
     }
@@ -652,7 +652,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setCompanyName($companyName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCompanyName', array($companyName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCompanyName', [$companyName]);
 
         return parent::setCompanyName($companyName);
     }
@@ -663,7 +663,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getCompanyName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCompanyName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCompanyName', []);
 
         return parent::getCompanyName();
     }
@@ -674,7 +674,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setCompanyAddress($companyAddress)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCompanyAddress', array($companyAddress));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCompanyAddress', [$companyAddress]);
 
         return parent::setCompanyAddress($companyAddress);
     }
@@ -685,7 +685,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getCompanyAddress()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCompanyAddress', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCompanyAddress', []);
 
         return parent::getCompanyAddress();
     }
@@ -696,7 +696,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setCompanyCity($companyCity)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCompanyCity', array($companyCity));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCompanyCity', [$companyCity]);
 
         return parent::setCompanyCity($companyCity);
     }
@@ -707,7 +707,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getCompanyCity()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCompanyCity', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCompanyCity', []);
 
         return parent::getCompanyCity();
     }
@@ -718,7 +718,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setCompanyState($companyState)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCompanyState', array($companyState));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCompanyState', [$companyState]);
 
         return parent::setCompanyState($companyState);
     }
@@ -729,7 +729,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getCompanyState()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCompanyState', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCompanyState', []);
 
         return parent::getCompanyState();
     }
@@ -740,7 +740,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setReceivePartnerEmail($receivePartnerEmail)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setReceivePartnerEmail', array($receivePartnerEmail));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setReceivePartnerEmail', [$receivePartnerEmail]);
 
         return parent::setReceivePartnerEmail($receivePartnerEmail);
     }
@@ -751,7 +751,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getReceivePartnerEmail()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getReceivePartnerEmail', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getReceivePartnerEmail', []);
 
         return parent::getReceivePartnerEmail();
     }
@@ -762,7 +762,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setCompAccess($compAccess)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCompAccess', array($compAccess));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCompAccess', [$compAccess]);
 
         return parent::setCompAccess($compAccess);
     }
@@ -773,7 +773,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getCompAccess()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCompAccess', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCompAccess', []);
 
         return parent::getCompAccess();
     }
@@ -784,7 +784,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setSourceId($sourceId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSourceId', array($sourceId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSourceId', [$sourceId]);
 
         return parent::setSourceId($sourceId);
     }
@@ -795,7 +795,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getSourceId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSourceId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSourceId', []);
 
         return parent::getSourceId();
     }
@@ -806,7 +806,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setEmailDomain($emailDomain)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmailDomain', array($emailDomain));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmailDomain', [$emailDomain]);
 
         return parent::setEmailDomain($emailDomain);
     }
@@ -817,7 +817,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getEmailDomain()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmailDomain', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmailDomain', []);
 
         return parent::getEmailDomain();
     }
@@ -828,7 +828,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setUndeliverableTime($undeliverableTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUndeliverableTime', array($undeliverableTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUndeliverableTime', [$undeliverableTime]);
 
         return parent::setUndeliverableTime($undeliverableTime);
     }
@@ -839,7 +839,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getUndeliverableTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUndeliverableTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUndeliverableTime', []);
 
         return parent::getUndeliverableTime();
     }
@@ -850,7 +850,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setUseExternalAuth($useExternalAuth)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUseExternalAuth', array($useExternalAuth));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUseExternalAuth', [$useExternalAuth]);
 
         return parent::setUseExternalAuth($useExternalAuth);
     }
@@ -861,7 +861,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getUseExternalAuth()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUseExternalAuth', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUseExternalAuth', []);
 
         return parent::getUseExternalAuth();
     }
@@ -872,7 +872,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setLastLogin($lastLogin)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLastLogin', array($lastLogin));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLastLogin', [$lastLogin]);
 
         return parent::setLastLogin($lastLogin);
     }
@@ -883,7 +883,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getLastLogin()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLastLogin', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLastLogin', []);
 
         return parent::getLastLogin();
     }
@@ -894,7 +894,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setIsArchived($isArchived)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsArchived', array($isArchived));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsArchived', [$isArchived]);
 
         return parent::setIsArchived($isArchived);
     }
@@ -905,7 +905,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getIsArchived()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsArchived', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsArchived', []);
 
         return parent::getIsArchived();
     }
@@ -916,7 +916,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function setHasSuppressedEmail($hasSuppressedEmail)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasSuppressedEmail', array($hasSuppressedEmail));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasSuppressedEmail', [$hasSuppressedEmail]);
 
         return parent::setHasSuppressedEmail($hasSuppressedEmail);
     }
@@ -927,7 +927,7 @@ class UAccount extends \Entity\Bizj\UAccount implements \Doctrine\ORM\Proxy\Prox
     public function getHasSuppressedEmail()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasSuppressedEmail', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasSuppressedEmail', []);
 
         return parent::getHasSuppressedEmail();
     }

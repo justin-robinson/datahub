@@ -36,7 +36,7 @@ class LeadinGroupPub extends \Entity\Cms\LeadinGroupPub implements \Doctrine\ORM
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class LeadinGroupPub extends \Entity\Cms\LeadinGroupPub implements \Doctrine\ORM
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Cms\\LeadinGroupPub' . "\0" . 'group_id', '' . "\0" . 'Entity\\Cms\\LeadinGroupPub' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Cms\\LeadinGroupPub' . "\0" . 'LeadinGroup', '' . "\0" . 'Entity\\Cms\\LeadinGroupPub' . "\0" . 'Publication');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Cms\\LeadinGroupPub' . "\0" . 'group_id', '' . "\0" . 'Entity\\Cms\\LeadinGroupPub' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Cms\\LeadinGroupPub' . "\0" . 'LeadinGroup', '' . "\0" . 'Entity\\Cms\\LeadinGroupPub' . "\0" . 'Publication'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Cms\\LeadinGroupPub' . "\0" . 'group_id', '' . "\0" . 'Entity\\Cms\\LeadinGroupPub' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Cms\\LeadinGroupPub' . "\0" . 'LeadinGroup', '' . "\0" . 'Entity\\Cms\\LeadinGroupPub' . "\0" . 'Publication');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Cms\\LeadinGroupPub' . "\0" . 'group_id', '' . "\0" . 'Entity\\Cms\\LeadinGroupPub' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Cms\\LeadinGroupPub' . "\0" . 'LeadinGroup', '' . "\0" . 'Entity\\Cms\\LeadinGroupPub' . "\0" . 'Publication'];
     }
 
     /**
@@ -97,7 +97,7 @@ class LeadinGroupPub extends \Entity\Cms\LeadinGroupPub implements \Doctrine\ORM
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class LeadinGroupPub extends \Entity\Cms\LeadinGroupPub implements \Doctrine\ORM
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class LeadinGroupPub extends \Entity\Cms\LeadinGroupPub implements \Doctrine\ORM
     public function setGroupId($groupId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupId', array($groupId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupId', [$groupId]);
 
         return parent::setGroupId($groupId);
     }
@@ -190,7 +190,7 @@ class LeadinGroupPub extends \Entity\Cms\LeadinGroupPub implements \Doctrine\ORM
     public function getGroupId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupId', []);
 
         return parent::getGroupId();
     }
@@ -201,7 +201,7 @@ class LeadinGroupPub extends \Entity\Cms\LeadinGroupPub implements \Doctrine\ORM
     public function setPubId($pubId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPubId', array($pubId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPubId', [$pubId]);
 
         return parent::setPubId($pubId);
     }
@@ -212,7 +212,7 @@ class LeadinGroupPub extends \Entity\Cms\LeadinGroupPub implements \Doctrine\ORM
     public function getPubId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPubId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPubId', []);
 
         return parent::getPubId();
     }
@@ -223,7 +223,7 @@ class LeadinGroupPub extends \Entity\Cms\LeadinGroupPub implements \Doctrine\ORM
     public function setLeadinGroup(\Entity\Cms\LeadinGroup $leadinGroup = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLeadinGroup', array($leadinGroup));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLeadinGroup', [$leadinGroup]);
 
         return parent::setLeadinGroup($leadinGroup);
     }
@@ -234,7 +234,7 @@ class LeadinGroupPub extends \Entity\Cms\LeadinGroupPub implements \Doctrine\ORM
     public function getLeadinGroup()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLeadinGroup', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLeadinGroup', []);
 
         return parent::getLeadinGroup();
     }
@@ -245,7 +245,7 @@ class LeadinGroupPub extends \Entity\Cms\LeadinGroupPub implements \Doctrine\ORM
     public function setPublication(\Entity\Cms\Publication $publication = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublication', array($publication));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublication', [$publication]);
 
         return parent::setPublication($publication);
     }
@@ -256,7 +256,7 @@ class LeadinGroupPub extends \Entity\Cms\LeadinGroupPub implements \Doctrine\ORM
     public function getPublication()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublication', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublication', []);
 
         return parent::getPublication();
     }

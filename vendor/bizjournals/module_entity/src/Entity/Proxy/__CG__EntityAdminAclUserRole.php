@@ -36,7 +36,7 @@ class AclUserRole extends \Entity\Admin\AclUserRole implements \Doctrine\ORM\Pro
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class AclUserRole extends \Entity\Admin\AclUserRole implements \Doctrine\ORM\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'acl_user_role_id', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'user_id', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'acl_role_id', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'role_order', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'created_at', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'AclUserRoleMarket', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'AclRole', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'User');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'acl_user_role_id', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'user_id', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'acl_role_id', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'role_order', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'created_at', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'AclUserRoleMarket', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'AclRole', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'User'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'acl_user_role_id', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'user_id', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'acl_role_id', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'role_order', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'created_at', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'AclUserRoleMarket', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'AclRole', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'User');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'acl_user_role_id', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'user_id', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'acl_role_id', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'role_order', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'created_at', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'AclUserRoleMarket', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'AclRole', '' . "\0" . 'Entity\\Admin\\AclUserRole' . "\0" . 'User'];
     }
 
     /**
@@ -97,7 +97,7 @@ class AclUserRole extends \Entity\Admin\AclUserRole implements \Doctrine\ORM\Pro
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class AclUserRole extends \Entity\Admin\AclUserRole implements \Doctrine\ORM\Pro
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class AclUserRole extends \Entity\Admin\AclUserRole implements \Doctrine\ORM\Pro
     public function getAclUserRoleId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAclUserRoleId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAclUserRoleId', []);
 
         return parent::getAclUserRoleId();
     }
@@ -190,7 +190,7 @@ class AclUserRole extends \Entity\Admin\AclUserRole implements \Doctrine\ORM\Pro
     public function setUserId($userId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUserId', array($userId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUserId', [$userId]);
 
         return parent::setUserId($userId);
     }
@@ -201,7 +201,7 @@ class AclUserRole extends \Entity\Admin\AclUserRole implements \Doctrine\ORM\Pro
     public function getUserId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUserId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUserId', []);
 
         return parent::getUserId();
     }
@@ -212,7 +212,7 @@ class AclUserRole extends \Entity\Admin\AclUserRole implements \Doctrine\ORM\Pro
     public function setAclRoleId($aclRoleId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAclRoleId', array($aclRoleId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAclRoleId', [$aclRoleId]);
 
         return parent::setAclRoleId($aclRoleId);
     }
@@ -223,7 +223,7 @@ class AclUserRole extends \Entity\Admin\AclUserRole implements \Doctrine\ORM\Pro
     public function getAclRoleId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAclRoleId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAclRoleId', []);
 
         return parent::getAclRoleId();
     }
@@ -234,7 +234,7 @@ class AclUserRole extends \Entity\Admin\AclUserRole implements \Doctrine\ORM\Pro
     public function setRoleOrder($roleOrder)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRoleOrder', array($roleOrder));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRoleOrder', [$roleOrder]);
 
         return parent::setRoleOrder($roleOrder);
     }
@@ -245,7 +245,7 @@ class AclUserRole extends \Entity\Admin\AclUserRole implements \Doctrine\ORM\Pro
     public function getRoleOrder()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRoleOrder', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRoleOrder', []);
 
         return parent::getRoleOrder();
     }
@@ -256,7 +256,7 @@ class AclUserRole extends \Entity\Admin\AclUserRole implements \Doctrine\ORM\Pro
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -267,7 +267,7 @@ class AclUserRole extends \Entity\Admin\AclUserRole implements \Doctrine\ORM\Pro
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -278,7 +278,7 @@ class AclUserRole extends \Entity\Admin\AclUserRole implements \Doctrine\ORM\Pro
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -289,7 +289,7 @@ class AclUserRole extends \Entity\Admin\AclUserRole implements \Doctrine\ORM\Pro
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -300,7 +300,7 @@ class AclUserRole extends \Entity\Admin\AclUserRole implements \Doctrine\ORM\Pro
     public function addAclUserRoleMarket(\Entity\Admin\AclUserRoleMarket $aclUserRoleMarket)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAclUserRoleMarket', array($aclUserRoleMarket));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAclUserRoleMarket', [$aclUserRoleMarket]);
 
         return parent::addAclUserRoleMarket($aclUserRoleMarket);
     }
@@ -311,7 +311,7 @@ class AclUserRole extends \Entity\Admin\AclUserRole implements \Doctrine\ORM\Pro
     public function removeAclUserRoleMarket(\Entity\Admin\AclUserRoleMarket $aclUserRoleMarket)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAclUserRoleMarket', array($aclUserRoleMarket));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAclUserRoleMarket', [$aclUserRoleMarket]);
 
         return parent::removeAclUserRoleMarket($aclUserRoleMarket);
     }
@@ -322,7 +322,7 @@ class AclUserRole extends \Entity\Admin\AclUserRole implements \Doctrine\ORM\Pro
     public function getAclUserRoleMarket()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAclUserRoleMarket', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAclUserRoleMarket', []);
 
         return parent::getAclUserRoleMarket();
     }
@@ -333,7 +333,7 @@ class AclUserRole extends \Entity\Admin\AclUserRole implements \Doctrine\ORM\Pro
     public function setAclRole(\Entity\Admin\AclRole $aclRole = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAclRole', array($aclRole));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAclRole', [$aclRole]);
 
         return parent::setAclRole($aclRole);
     }
@@ -344,7 +344,7 @@ class AclUserRole extends \Entity\Admin\AclUserRole implements \Doctrine\ORM\Pro
     public function getAclRole()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAclRole', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAclRole', []);
 
         return parent::getAclRole();
     }
@@ -355,7 +355,7 @@ class AclUserRole extends \Entity\Admin\AclUserRole implements \Doctrine\ORM\Pro
     public function setUser(\Entity\Admin\User $user = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUser', array($user));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUser', [$user]);
 
         return parent::setUser($user);
     }
@@ -366,7 +366,7 @@ class AclUserRole extends \Entity\Admin\AclUserRole implements \Doctrine\ORM\Pro
     public function getUser()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUser', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUser', []);
 
         return parent::getUser();
     }

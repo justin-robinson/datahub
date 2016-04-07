@@ -1,0 +1,13 @@
+Entity\Datahub\MeroveusIndustry:
+  type: entity
+  table: meroveus_industry
+  fields:
+    meroveus_industry_id:
+      type: integer
+      unsigned: true
+      id: true
+    external_id:
+      type: integer
+      unsigned: true
+    industry:
+      type: string

@@ -36,7 +36,7 @@ class ClickTrack extends \Entity\Email\ClickTrack implements \Doctrine\ORM\Proxy
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class ClickTrack extends \Entity\Email\ClickTrack implements \Doctrine\ORM\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Email\\ClickTrack' . "\0" . 'track_id', '' . "\0" . 'Entity\\Email\\ClickTrack' . "\0" . 'click_id', '' . "\0" . 'Entity\\Email\\ClickTrack' . "\0" . 'job_id', '' . "\0" . 'Entity\\Email\\ClickTrack' . "\0" . 'user_id', '' . "\0" . 'Entity\\Email\\ClickTrack' . "\0" . 'remote_ip', '' . "\0" . 'Entity\\Email\\ClickTrack' . "\0" . 'created_at');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Email\\ClickTrack' . "\0" . 'track_id', '' . "\0" . 'Entity\\Email\\ClickTrack' . "\0" . 'click_id', '' . "\0" . 'Entity\\Email\\ClickTrack' . "\0" . 'job_id', '' . "\0" . 'Entity\\Email\\ClickTrack' . "\0" . 'user_id', '' . "\0" . 'Entity\\Email\\ClickTrack' . "\0" . 'remote_ip', '' . "\0" . 'Entity\\Email\\ClickTrack' . "\0" . 'created_at'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Email\\ClickTrack' . "\0" . 'track_id', '' . "\0" . 'Entity\\Email\\ClickTrack' . "\0" . 'click_id', '' . "\0" . 'Entity\\Email\\ClickTrack' . "\0" . 'job_id', '' . "\0" . 'Entity\\Email\\ClickTrack' . "\0" . 'user_id', '' . "\0" . 'Entity\\Email\\ClickTrack' . "\0" . 'remote_ip', '' . "\0" . 'Entity\\Email\\ClickTrack' . "\0" . 'created_at');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Email\\ClickTrack' . "\0" . 'track_id', '' . "\0" . 'Entity\\Email\\ClickTrack' . "\0" . 'click_id', '' . "\0" . 'Entity\\Email\\ClickTrack' . "\0" . 'job_id', '' . "\0" . 'Entity\\Email\\ClickTrack' . "\0" . 'user_id', '' . "\0" . 'Entity\\Email\\ClickTrack' . "\0" . 'remote_ip', '' . "\0" . 'Entity\\Email\\ClickTrack' . "\0" . 'created_at'];
     }
 
     /**
@@ -97,7 +97,7 @@ class ClickTrack extends \Entity\Email\ClickTrack implements \Doctrine\ORM\Proxy
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class ClickTrack extends \Entity\Email\ClickTrack implements \Doctrine\ORM\Proxy
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class ClickTrack extends \Entity\Email\ClickTrack implements \Doctrine\ORM\Proxy
     public function getTrackId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTrackId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTrackId', []);
 
         return parent::getTrackId();
     }
@@ -190,7 +190,7 @@ class ClickTrack extends \Entity\Email\ClickTrack implements \Doctrine\ORM\Proxy
     public function setClickId($clickId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setClickId', array($clickId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setClickId', [$clickId]);
 
         return parent::setClickId($clickId);
     }
@@ -201,7 +201,7 @@ class ClickTrack extends \Entity\Email\ClickTrack implements \Doctrine\ORM\Proxy
     public function getClickId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClickId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClickId', []);
 
         return parent::getClickId();
     }
@@ -212,7 +212,7 @@ class ClickTrack extends \Entity\Email\ClickTrack implements \Doctrine\ORM\Proxy
     public function setJobId($jobId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setJobId', array($jobId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setJobId', [$jobId]);
 
         return parent::setJobId($jobId);
     }
@@ -223,7 +223,7 @@ class ClickTrack extends \Entity\Email\ClickTrack implements \Doctrine\ORM\Proxy
     public function getJobId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJobId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJobId', []);
 
         return parent::getJobId();
     }
@@ -234,7 +234,7 @@ class ClickTrack extends \Entity\Email\ClickTrack implements \Doctrine\ORM\Proxy
     public function setUserId($userId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUserId', array($userId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUserId', [$userId]);
 
         return parent::setUserId($userId);
     }
@@ -245,7 +245,7 @@ class ClickTrack extends \Entity\Email\ClickTrack implements \Doctrine\ORM\Proxy
     public function getUserId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUserId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUserId', []);
 
         return parent::getUserId();
     }
@@ -256,7 +256,7 @@ class ClickTrack extends \Entity\Email\ClickTrack implements \Doctrine\ORM\Proxy
     public function setRemoteIp($remoteIp)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRemoteIp', array($remoteIp));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRemoteIp', [$remoteIp]);
 
         return parent::setRemoteIp($remoteIp);
     }
@@ -267,7 +267,7 @@ class ClickTrack extends \Entity\Email\ClickTrack implements \Doctrine\ORM\Proxy
     public function getRemoteIp()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRemoteIp', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRemoteIp', []);
 
         return parent::getRemoteIp();
     }
@@ -278,7 +278,7 @@ class ClickTrack extends \Entity\Email\ClickTrack implements \Doctrine\ORM\Proxy
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -289,7 +289,7 @@ class ClickTrack extends \Entity\Email\ClickTrack implements \Doctrine\ORM\Proxy
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }

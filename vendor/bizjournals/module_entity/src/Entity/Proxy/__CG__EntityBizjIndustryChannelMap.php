@@ -36,7 +36,7 @@ class IndustryChannelMap extends \Entity\Bizj\IndustryChannelMap implements \Doc
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class IndustryChannelMap extends \Entity\Bizj\IndustryChannelMap implements \Doc
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\IndustryChannelMap' . "\0" . 'industry_id', '' . "\0" . 'Entity\\Bizj\\IndustryChannelMap' . "\0" . 'channel_id', '' . "\0" . 'Entity\\Bizj\\IndustryChannelMap' . "\0" . 'Industry', '' . "\0" . 'Entity\\Bizj\\IndustryChannelMap' . "\0" . 'Channel');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\IndustryChannelMap' . "\0" . 'industry_id', '' . "\0" . 'Entity\\Bizj\\IndustryChannelMap' . "\0" . 'channel_id', '' . "\0" . 'Entity\\Bizj\\IndustryChannelMap' . "\0" . 'Industry', '' . "\0" . 'Entity\\Bizj\\IndustryChannelMap' . "\0" . 'Channel'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\IndustryChannelMap' . "\0" . 'industry_id', '' . "\0" . 'Entity\\Bizj\\IndustryChannelMap' . "\0" . 'channel_id', '' . "\0" . 'Entity\\Bizj\\IndustryChannelMap' . "\0" . 'Industry', '' . "\0" . 'Entity\\Bizj\\IndustryChannelMap' . "\0" . 'Channel');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\IndustryChannelMap' . "\0" . 'industry_id', '' . "\0" . 'Entity\\Bizj\\IndustryChannelMap' . "\0" . 'channel_id', '' . "\0" . 'Entity\\Bizj\\IndustryChannelMap' . "\0" . 'Industry', '' . "\0" . 'Entity\\Bizj\\IndustryChannelMap' . "\0" . 'Channel'];
     }
 
     /**
@@ -97,7 +97,7 @@ class IndustryChannelMap extends \Entity\Bizj\IndustryChannelMap implements \Doc
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class IndustryChannelMap extends \Entity\Bizj\IndustryChannelMap implements \Doc
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class IndustryChannelMap extends \Entity\Bizj\IndustryChannelMap implements \Doc
     public function setIndustryId($industryId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIndustryId', array($industryId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIndustryId', [$industryId]);
 
         return parent::setIndustryId($industryId);
     }
@@ -190,7 +190,7 @@ class IndustryChannelMap extends \Entity\Bizj\IndustryChannelMap implements \Doc
     public function getIndustryId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIndustryId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIndustryId', []);
 
         return parent::getIndustryId();
     }
@@ -201,7 +201,7 @@ class IndustryChannelMap extends \Entity\Bizj\IndustryChannelMap implements \Doc
     public function setChannelId($channelId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setChannelId', array($channelId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setChannelId', [$channelId]);
 
         return parent::setChannelId($channelId);
     }
@@ -212,7 +212,7 @@ class IndustryChannelMap extends \Entity\Bizj\IndustryChannelMap implements \Doc
     public function getChannelId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getChannelId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getChannelId', []);
 
         return parent::getChannelId();
     }
@@ -223,7 +223,7 @@ class IndustryChannelMap extends \Entity\Bizj\IndustryChannelMap implements \Doc
     public function setIndustry(\Entity\Bizj\Industry $industry = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIndustry', array($industry));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIndustry', [$industry]);
 
         return parent::setIndustry($industry);
     }
@@ -234,7 +234,7 @@ class IndustryChannelMap extends \Entity\Bizj\IndustryChannelMap implements \Doc
     public function getIndustry()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIndustry', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIndustry', []);
 
         return parent::getIndustry();
     }
@@ -245,7 +245,7 @@ class IndustryChannelMap extends \Entity\Bizj\IndustryChannelMap implements \Doc
     public function setChannel(\Entity\Bizj\Channel $channel = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setChannel', array($channel));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setChannel', [$channel]);
 
         return parent::setChannel($channel);
     }
@@ -256,7 +256,7 @@ class IndustryChannelMap extends \Entity\Bizj\IndustryChannelMap implements \Doc
     public function getChannel()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getChannel', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getChannel', []);
 
         return parent::getChannel();
     }

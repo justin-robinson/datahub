@@ -36,7 +36,7 @@ class EmailAdStats extends \Entity\Email\EmailAdStats implements \Doctrine\ORM\P
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class EmailAdStats extends \Entity\Email\EmailAdStats implements \Doctrine\ORM\P
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'ad_id', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'job_id', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'click_id', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'click_unique', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'click_unique_rate', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'click_cumulative', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'click_cumulative_rate', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'Ad');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'ad_id', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'job_id', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'click_id', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'click_unique', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'click_unique_rate', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'click_cumulative', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'click_cumulative_rate', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'Ad'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'ad_id', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'job_id', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'click_id', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'click_unique', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'click_unique_rate', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'click_cumulative', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'click_cumulative_rate', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'Ad');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'ad_id', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'job_id', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'click_id', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'click_unique', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'click_unique_rate', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'click_cumulative', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'click_cumulative_rate', '' . "\0" . 'Entity\\Email\\EmailAdStats' . "\0" . 'Ad'];
     }
 
     /**
@@ -97,7 +97,7 @@ class EmailAdStats extends \Entity\Email\EmailAdStats implements \Doctrine\ORM\P
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class EmailAdStats extends \Entity\Email\EmailAdStats implements \Doctrine\ORM\P
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class EmailAdStats extends \Entity\Email\EmailAdStats implements \Doctrine\ORM\P
     public function setAdId($adId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAdId', array($adId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAdId', [$adId]);
 
         return parent::setAdId($adId);
     }
@@ -190,7 +190,7 @@ class EmailAdStats extends \Entity\Email\EmailAdStats implements \Doctrine\ORM\P
     public function getAdId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAdId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAdId', []);
 
         return parent::getAdId();
     }
@@ -201,7 +201,7 @@ class EmailAdStats extends \Entity\Email\EmailAdStats implements \Doctrine\ORM\P
     public function setJobId($jobId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setJobId', array($jobId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setJobId', [$jobId]);
 
         return parent::setJobId($jobId);
     }
@@ -212,7 +212,7 @@ class EmailAdStats extends \Entity\Email\EmailAdStats implements \Doctrine\ORM\P
     public function getJobId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJobId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJobId', []);
 
         return parent::getJobId();
     }
@@ -223,7 +223,7 @@ class EmailAdStats extends \Entity\Email\EmailAdStats implements \Doctrine\ORM\P
     public function setClickId($clickId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setClickId', array($clickId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setClickId', [$clickId]);
 
         return parent::setClickId($clickId);
     }
@@ -234,7 +234,7 @@ class EmailAdStats extends \Entity\Email\EmailAdStats implements \Doctrine\ORM\P
     public function getClickId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClickId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClickId', []);
 
         return parent::getClickId();
     }
@@ -245,7 +245,7 @@ class EmailAdStats extends \Entity\Email\EmailAdStats implements \Doctrine\ORM\P
     public function setClickUnique($clickUnique)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setClickUnique', array($clickUnique));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setClickUnique', [$clickUnique]);
 
         return parent::setClickUnique($clickUnique);
     }
@@ -256,7 +256,7 @@ class EmailAdStats extends \Entity\Email\EmailAdStats implements \Doctrine\ORM\P
     public function getClickUnique()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClickUnique', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClickUnique', []);
 
         return parent::getClickUnique();
     }
@@ -267,7 +267,7 @@ class EmailAdStats extends \Entity\Email\EmailAdStats implements \Doctrine\ORM\P
     public function setClickUniqueRate($clickUniqueRate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setClickUniqueRate', array($clickUniqueRate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setClickUniqueRate', [$clickUniqueRate]);
 
         return parent::setClickUniqueRate($clickUniqueRate);
     }
@@ -278,7 +278,7 @@ class EmailAdStats extends \Entity\Email\EmailAdStats implements \Doctrine\ORM\P
     public function getClickUniqueRate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClickUniqueRate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClickUniqueRate', []);
 
         return parent::getClickUniqueRate();
     }
@@ -289,7 +289,7 @@ class EmailAdStats extends \Entity\Email\EmailAdStats implements \Doctrine\ORM\P
     public function setClickCumulative($clickCumulative)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setClickCumulative', array($clickCumulative));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setClickCumulative', [$clickCumulative]);
 
         return parent::setClickCumulative($clickCumulative);
     }
@@ -300,7 +300,7 @@ class EmailAdStats extends \Entity\Email\EmailAdStats implements \Doctrine\ORM\P
     public function getClickCumulative()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClickCumulative', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClickCumulative', []);
 
         return parent::getClickCumulative();
     }
@@ -311,7 +311,7 @@ class EmailAdStats extends \Entity\Email\EmailAdStats implements \Doctrine\ORM\P
     public function setClickCumulativeRate($clickCumulativeRate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setClickCumulativeRate', array($clickCumulativeRate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setClickCumulativeRate', [$clickCumulativeRate]);
 
         return parent::setClickCumulativeRate($clickCumulativeRate);
     }
@@ -322,7 +322,7 @@ class EmailAdStats extends \Entity\Email\EmailAdStats implements \Doctrine\ORM\P
     public function getClickCumulativeRate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClickCumulativeRate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClickCumulativeRate', []);
 
         return parent::getClickCumulativeRate();
     }
@@ -333,7 +333,7 @@ class EmailAdStats extends \Entity\Email\EmailAdStats implements \Doctrine\ORM\P
     public function setAd(\Entity\Email\EmailAds $ad = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAd', array($ad));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAd', [$ad]);
 
         return parent::setAd($ad);
     }
@@ -344,7 +344,7 @@ class EmailAdStats extends \Entity\Email\EmailAdStats implements \Doctrine\ORM\P
     public function getAd()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAd', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAd', []);
 
         return parent::getAd();
     }

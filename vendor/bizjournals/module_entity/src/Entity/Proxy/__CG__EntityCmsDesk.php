@@ -36,7 +36,7 @@ class Desk extends \Entity\Cms\Desk implements \Doctrine\ORM\Proxy\Proxy
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Desk extends \Entity\Cms\Desk implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Cms\\Desk' . "\0" . 'desk_id', '' . "\0" . 'Entity\\Cms\\Desk' . "\0" . 'desk_name', '' . "\0" . 'Entity\\Cms\\Desk' . "\0" . 'Content');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Cms\\Desk' . "\0" . 'desk_id', '' . "\0" . 'Entity\\Cms\\Desk' . "\0" . 'desk_name', '' . "\0" . 'Entity\\Cms\\Desk' . "\0" . 'Content'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Cms\\Desk' . "\0" . 'desk_id', '' . "\0" . 'Entity\\Cms\\Desk' . "\0" . 'desk_name', '' . "\0" . 'Entity\\Cms\\Desk' . "\0" . 'Content');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Cms\\Desk' . "\0" . 'desk_id', '' . "\0" . 'Entity\\Cms\\Desk' . "\0" . 'desk_name', '' . "\0" . 'Entity\\Cms\\Desk' . "\0" . 'Content'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Desk extends \Entity\Cms\Desk implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Desk extends \Entity\Cms\Desk implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class Desk extends \Entity\Cms\Desk implements \Doctrine\ORM\Proxy\Proxy
     public function setDeskId($deskId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeskId', array($deskId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeskId', [$deskId]);
 
         return parent::setDeskId($deskId);
     }
@@ -190,7 +190,7 @@ class Desk extends \Entity\Cms\Desk implements \Doctrine\ORM\Proxy\Proxy
     public function getDeskId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeskId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeskId', []);
 
         return parent::getDeskId();
     }
@@ -201,7 +201,7 @@ class Desk extends \Entity\Cms\Desk implements \Doctrine\ORM\Proxy\Proxy
     public function setDeskName($deskName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeskName', array($deskName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeskName', [$deskName]);
 
         return parent::setDeskName($deskName);
     }
@@ -212,7 +212,7 @@ class Desk extends \Entity\Cms\Desk implements \Doctrine\ORM\Proxy\Proxy
     public function getDeskName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeskName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeskName', []);
 
         return parent::getDeskName();
     }
@@ -223,7 +223,7 @@ class Desk extends \Entity\Cms\Desk implements \Doctrine\ORM\Proxy\Proxy
     public function addContent(\Entity\Cms\Content $content)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addContent', array($content));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addContent', [$content]);
 
         return parent::addContent($content);
     }
@@ -234,7 +234,7 @@ class Desk extends \Entity\Cms\Desk implements \Doctrine\ORM\Proxy\Proxy
     public function removeContent(\Entity\Cms\Content $content)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeContent', array($content));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeContent', [$content]);
 
         return parent::removeContent($content);
     }
@@ -245,7 +245,7 @@ class Desk extends \Entity\Cms\Desk implements \Doctrine\ORM\Proxy\Proxy
     public function getContent()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContent', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContent', []);
 
         return parent::getContent();
     }

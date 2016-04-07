@@ -36,7 +36,7 @@ class ProductCategory extends \Entity\NascarIllustrated\ProductCategory implemen
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class ProductCategory extends \Entity\NascarIllustrated\ProductCategory implemen
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'category_id', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'category_name', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'slug', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'ord', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'is_active', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'is_hidden', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'can_group_by_year', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'group_id', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'created_at', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'updated_at', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'Products');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'category_id', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'category_name', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'slug', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'ord', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'is_active', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'is_hidden', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'can_group_by_year', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'group_id', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'created_at', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'updated_at', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'Products'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'category_id', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'category_name', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'slug', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'ord', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'is_active', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'is_hidden', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'can_group_by_year', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'group_id', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'created_at', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'updated_at', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'Products');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'category_id', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'category_name', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'slug', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'ord', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'is_active', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'is_hidden', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'can_group_by_year', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'group_id', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'created_at', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'updated_at', '' . "\0" . 'Entity\\NascarIllustrated\\ProductCategory' . "\0" . 'Products'];
     }
 
     /**
@@ -97,7 +97,7 @@ class ProductCategory extends \Entity\NascarIllustrated\ProductCategory implemen
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class ProductCategory extends \Entity\NascarIllustrated\ProductCategory implemen
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class ProductCategory extends \Entity\NascarIllustrated\ProductCategory implemen
     public function getCategoryId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategoryId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategoryId', []);
 
         return parent::getCategoryId();
     }
@@ -190,7 +190,7 @@ class ProductCategory extends \Entity\NascarIllustrated\ProductCategory implemen
     public function setCategoryName($categoryName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCategoryName', array($categoryName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCategoryName', [$categoryName]);
 
         return parent::setCategoryName($categoryName);
     }
@@ -201,7 +201,7 @@ class ProductCategory extends \Entity\NascarIllustrated\ProductCategory implemen
     public function getCategoryName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategoryName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategoryName', []);
 
         return parent::getCategoryName();
     }
@@ -212,7 +212,7 @@ class ProductCategory extends \Entity\NascarIllustrated\ProductCategory implemen
     public function setSlug($slug)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSlug', array($slug));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSlug', [$slug]);
 
         return parent::setSlug($slug);
     }
@@ -223,7 +223,7 @@ class ProductCategory extends \Entity\NascarIllustrated\ProductCategory implemen
     public function getSlug()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSlug', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSlug', []);
 
         return parent::getSlug();
     }
@@ -234,7 +234,7 @@ class ProductCategory extends \Entity\NascarIllustrated\ProductCategory implemen
     public function setOrd($ord)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrd', array($ord));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrd', [$ord]);
 
         return parent::setOrd($ord);
     }
@@ -245,7 +245,7 @@ class ProductCategory extends \Entity\NascarIllustrated\ProductCategory implemen
     public function getOrd()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrd', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrd', []);
 
         return parent::getOrd();
     }
@@ -256,7 +256,7 @@ class ProductCategory extends \Entity\NascarIllustrated\ProductCategory implemen
     public function setIsActive($isActive)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', array($isActive));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', [$isActive]);
 
         return parent::setIsActive($isActive);
     }
@@ -267,7 +267,7 @@ class ProductCategory extends \Entity\NascarIllustrated\ProductCategory implemen
     public function getIsActive()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', []);
 
         return parent::getIsActive();
     }
@@ -278,7 +278,7 @@ class ProductCategory extends \Entity\NascarIllustrated\ProductCategory implemen
     public function setIsHidden($isHidden)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsHidden', array($isHidden));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsHidden', [$isHidden]);
 
         return parent::setIsHidden($isHidden);
     }
@@ -289,7 +289,7 @@ class ProductCategory extends \Entity\NascarIllustrated\ProductCategory implemen
     public function getIsHidden()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsHidden', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsHidden', []);
 
         return parent::getIsHidden();
     }
@@ -300,7 +300,7 @@ class ProductCategory extends \Entity\NascarIllustrated\ProductCategory implemen
     public function setCanGroupByYear($canGroupByYear)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCanGroupByYear', array($canGroupByYear));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCanGroupByYear', [$canGroupByYear]);
 
         return parent::setCanGroupByYear($canGroupByYear);
     }
@@ -311,7 +311,7 @@ class ProductCategory extends \Entity\NascarIllustrated\ProductCategory implemen
     public function getCanGroupByYear()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCanGroupByYear', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCanGroupByYear', []);
 
         return parent::getCanGroupByYear();
     }
@@ -322,7 +322,7 @@ class ProductCategory extends \Entity\NascarIllustrated\ProductCategory implemen
     public function setGroupId($groupId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupId', array($groupId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupId', [$groupId]);
 
         return parent::setGroupId($groupId);
     }
@@ -333,7 +333,7 @@ class ProductCategory extends \Entity\NascarIllustrated\ProductCategory implemen
     public function getGroupId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupId', []);
 
         return parent::getGroupId();
     }
@@ -344,7 +344,7 @@ class ProductCategory extends \Entity\NascarIllustrated\ProductCategory implemen
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -355,7 +355,7 @@ class ProductCategory extends \Entity\NascarIllustrated\ProductCategory implemen
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -366,7 +366,7 @@ class ProductCategory extends \Entity\NascarIllustrated\ProductCategory implemen
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -377,7 +377,7 @@ class ProductCategory extends \Entity\NascarIllustrated\ProductCategory implemen
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -388,7 +388,7 @@ class ProductCategory extends \Entity\NascarIllustrated\ProductCategory implemen
     public function addProduct(\Entity\NascarIllustrated\Product $product)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addProduct', array($product));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addProduct', [$product]);
 
         return parent::addProduct($product);
     }
@@ -399,7 +399,7 @@ class ProductCategory extends \Entity\NascarIllustrated\ProductCategory implemen
     public function removeProduct(\Entity\NascarIllustrated\Product $product)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeProduct', array($product));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeProduct', [$product]);
 
         return parent::removeProduct($product);
     }
@@ -410,7 +410,7 @@ class ProductCategory extends \Entity\NascarIllustrated\ProductCategory implemen
     public function getProducts()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProducts', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProducts', []);
 
         return parent::getProducts();
     }

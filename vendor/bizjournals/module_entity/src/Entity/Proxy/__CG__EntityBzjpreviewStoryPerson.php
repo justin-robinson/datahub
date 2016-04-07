@@ -36,7 +36,7 @@ class StoryPerson extends \Entity\Bzjpreview\StoryPerson implements \Doctrine\OR
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class StoryPerson extends \Entity\Bzjpreview\StoryPerson implements \Doctrine\OR
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\StoryPerson' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryPerson' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bzjpreview\\StoryPerson' . "\0" . 'person_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryPerson' . "\0" . 'weight', '' . "\0" . 'Entity\\Bzjpreview\\StoryPerson' . "\0" . 'frequency', '' . "\0" . 'Entity\\Bzjpreview\\StoryPerson' . "\0" . 'StoryRead');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\StoryPerson' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryPerson' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bzjpreview\\StoryPerson' . "\0" . 'person_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryPerson' . "\0" . 'weight', '' . "\0" . 'Entity\\Bzjpreview\\StoryPerson' . "\0" . 'frequency', '' . "\0" . 'Entity\\Bzjpreview\\StoryPerson' . "\0" . 'StoryRead'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\StoryPerson' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryPerson' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bzjpreview\\StoryPerson' . "\0" . 'person_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryPerson' . "\0" . 'weight', '' . "\0" . 'Entity\\Bzjpreview\\StoryPerson' . "\0" . 'frequency', '' . "\0" . 'Entity\\Bzjpreview\\StoryPerson' . "\0" . 'StoryRead');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\StoryPerson' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryPerson' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bzjpreview\\StoryPerson' . "\0" . 'person_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryPerson' . "\0" . 'weight', '' . "\0" . 'Entity\\Bzjpreview\\StoryPerson' . "\0" . 'frequency', '' . "\0" . 'Entity\\Bzjpreview\\StoryPerson' . "\0" . 'StoryRead'];
     }
 
     /**
@@ -97,7 +97,7 @@ class StoryPerson extends \Entity\Bzjpreview\StoryPerson implements \Doctrine\OR
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class StoryPerson extends \Entity\Bzjpreview\StoryPerson implements \Doctrine\OR
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class StoryPerson extends \Entity\Bzjpreview\StoryPerson implements \Doctrine\OR
     public function setStoryId($storyId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryId', array($storyId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryId', [$storyId]);
 
         return parent::setStoryId($storyId);
     }
@@ -190,7 +190,7 @@ class StoryPerson extends \Entity\Bzjpreview\StoryPerson implements \Doctrine\OR
     public function getStoryId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryId', []);
 
         return parent::getStoryId();
     }
@@ -201,7 +201,7 @@ class StoryPerson extends \Entity\Bzjpreview\StoryPerson implements \Doctrine\OR
     public function setCTime($cTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCTime', array($cTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCTime', [$cTime]);
 
         return parent::setCTime($cTime);
     }
@@ -212,7 +212,7 @@ class StoryPerson extends \Entity\Bzjpreview\StoryPerson implements \Doctrine\OR
     public function getCTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCTime', []);
 
         return parent::getCTime();
     }
@@ -223,7 +223,7 @@ class StoryPerson extends \Entity\Bzjpreview\StoryPerson implements \Doctrine\OR
     public function setPersonId($personId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPersonId', array($personId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPersonId', [$personId]);
 
         return parent::setPersonId($personId);
     }
@@ -234,7 +234,7 @@ class StoryPerson extends \Entity\Bzjpreview\StoryPerson implements \Doctrine\OR
     public function getPersonId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPersonId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPersonId', []);
 
         return parent::getPersonId();
     }
@@ -245,7 +245,7 @@ class StoryPerson extends \Entity\Bzjpreview\StoryPerson implements \Doctrine\OR
     public function setWeight($weight)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setWeight', array($weight));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setWeight', [$weight]);
 
         return parent::setWeight($weight);
     }
@@ -256,7 +256,7 @@ class StoryPerson extends \Entity\Bzjpreview\StoryPerson implements \Doctrine\OR
     public function getWeight()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getWeight', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getWeight', []);
 
         return parent::getWeight();
     }
@@ -267,7 +267,7 @@ class StoryPerson extends \Entity\Bzjpreview\StoryPerson implements \Doctrine\OR
     public function setFrequency($frequency)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFrequency', array($frequency));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFrequency', [$frequency]);
 
         return parent::setFrequency($frequency);
     }
@@ -278,7 +278,7 @@ class StoryPerson extends \Entity\Bzjpreview\StoryPerson implements \Doctrine\OR
     public function getFrequency()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFrequency', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFrequency', []);
 
         return parent::getFrequency();
     }
@@ -289,7 +289,7 @@ class StoryPerson extends \Entity\Bzjpreview\StoryPerson implements \Doctrine\OR
     public function setStoryRead(\Entity\Bzjpreview\StoryRead $storyRead = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryRead', array($storyRead));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryRead', [$storyRead]);
 
         return parent::setStoryRead($storyRead);
     }
@@ -300,7 +300,7 @@ class StoryPerson extends \Entity\Bzjpreview\StoryPerson implements \Doctrine\OR
     public function getStoryRead()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryRead', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryRead', []);
 
         return parent::getStoryRead();
     }

@@ -36,7 +36,7 @@ class SicCode extends \Entity\Datahub\SicCode implements \Doctrine\ORM\Proxy\Pro
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class SicCode extends \Entity\Datahub\SicCode implements \Doctrine\ORM\Proxy\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Datahub\\SicCode' . "\0" . 'sic', '' . "\0" . 'Entity\\Datahub\\SicCode' . "\0" . 'title');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Datahub\\SicCode' . "\0" . 'sic', '' . "\0" . 'Entity\\Datahub\\SicCode' . "\0" . 'title'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Datahub\\SicCode' . "\0" . 'sic', '' . "\0" . 'Entity\\Datahub\\SicCode' . "\0" . 'title');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Datahub\\SicCode' . "\0" . 'sic', '' . "\0" . 'Entity\\Datahub\\SicCode' . "\0" . 'title'];
     }
 
     /**
@@ -97,7 +97,7 @@ class SicCode extends \Entity\Datahub\SicCode implements \Doctrine\ORM\Proxy\Pro
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class SicCode extends \Entity\Datahub\SicCode implements \Doctrine\ORM\Proxy\Pro
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class SicCode extends \Entity\Datahub\SicCode implements \Doctrine\ORM\Proxy\Pro
     public function setSic($sic)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSic', array($sic));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSic', [$sic]);
 
         return parent::setSic($sic);
     }
@@ -194,7 +194,7 @@ class SicCode extends \Entity\Datahub\SicCode implements \Doctrine\ORM\Proxy\Pro
         }
 
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSic', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSic', []);
 
         return parent::getSic();
     }
@@ -205,7 +205,7 @@ class SicCode extends \Entity\Datahub\SicCode implements \Doctrine\ORM\Proxy\Pro
     public function setTitle($title)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', array($title));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', [$title]);
 
         return parent::setTitle($title);
     }
@@ -216,7 +216,7 @@ class SicCode extends \Entity\Datahub\SicCode implements \Doctrine\ORM\Proxy\Pro
     public function getTitle()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', []);
 
         return parent::getTitle();
     }

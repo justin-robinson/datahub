@@ -36,7 +36,7 @@ class MsaPmsa extends \Entity\Datahub\MsaPmsa implements \Doctrine\ORM\Proxy\Pro
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class MsaPmsa extends \Entity\Datahub\MsaPmsa implements \Doctrine\ORM\Proxy\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Datahub\\MsaPmsa' . "\0" . 'sa_code', '' . "\0" . 'Entity\\Datahub\\MsaPmsa' . "\0" . 'sa_name', '' . "\0" . 'Entity\\Datahub\\MsaPmsa' . "\0" . 'sa_state', '' . "\0" . 'Entity\\Datahub\\MsaPmsa' . "\0" . 'is_combined', '' . "\0" . 'Entity\\Datahub\\MsaPmsa' . "\0" . 'parent_sa', '' . "\0" . 'Entity\\Datahub\\MsaPmsa' . "\0" . 'ZipCodes');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Datahub\\MsaPmsa' . "\0" . 'sa_code', '' . "\0" . 'Entity\\Datahub\\MsaPmsa' . "\0" . 'sa_name', '' . "\0" . 'Entity\\Datahub\\MsaPmsa' . "\0" . 'sa_state', '' . "\0" . 'Entity\\Datahub\\MsaPmsa' . "\0" . 'is_combined', '' . "\0" . 'Entity\\Datahub\\MsaPmsa' . "\0" . 'parent_sa', '' . "\0" . 'Entity\\Datahub\\MsaPmsa' . "\0" . 'ZipCodes'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Datahub\\MsaPmsa' . "\0" . 'sa_code', '' . "\0" . 'Entity\\Datahub\\MsaPmsa' . "\0" . 'sa_name', '' . "\0" . 'Entity\\Datahub\\MsaPmsa' . "\0" . 'sa_state', '' . "\0" . 'Entity\\Datahub\\MsaPmsa' . "\0" . 'is_combined', '' . "\0" . 'Entity\\Datahub\\MsaPmsa' . "\0" . 'parent_sa', '' . "\0" . 'Entity\\Datahub\\MsaPmsa' . "\0" . 'ZipCodes');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Datahub\\MsaPmsa' . "\0" . 'sa_code', '' . "\0" . 'Entity\\Datahub\\MsaPmsa' . "\0" . 'sa_name', '' . "\0" . 'Entity\\Datahub\\MsaPmsa' . "\0" . 'sa_state', '' . "\0" . 'Entity\\Datahub\\MsaPmsa' . "\0" . 'is_combined', '' . "\0" . 'Entity\\Datahub\\MsaPmsa' . "\0" . 'parent_sa', '' . "\0" . 'Entity\\Datahub\\MsaPmsa' . "\0" . 'ZipCodes'];
     }
 
     /**
@@ -97,7 +97,7 @@ class MsaPmsa extends \Entity\Datahub\MsaPmsa implements \Doctrine\ORM\Proxy\Pro
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class MsaPmsa extends \Entity\Datahub\MsaPmsa implements \Doctrine\ORM\Proxy\Pro
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class MsaPmsa extends \Entity\Datahub\MsaPmsa implements \Doctrine\ORM\Proxy\Pro
     public function setSaCode($saCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSaCode', array($saCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSaCode', [$saCode]);
 
         return parent::setSaCode($saCode);
     }
@@ -190,7 +190,7 @@ class MsaPmsa extends \Entity\Datahub\MsaPmsa implements \Doctrine\ORM\Proxy\Pro
     public function getSaCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSaCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSaCode', []);
 
         return parent::getSaCode();
     }
@@ -201,7 +201,7 @@ class MsaPmsa extends \Entity\Datahub\MsaPmsa implements \Doctrine\ORM\Proxy\Pro
     public function setSaName($saName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSaName', array($saName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSaName', [$saName]);
 
         return parent::setSaName($saName);
     }
@@ -212,7 +212,7 @@ class MsaPmsa extends \Entity\Datahub\MsaPmsa implements \Doctrine\ORM\Proxy\Pro
     public function getSaName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSaName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSaName', []);
 
         return parent::getSaName();
     }
@@ -223,7 +223,7 @@ class MsaPmsa extends \Entity\Datahub\MsaPmsa implements \Doctrine\ORM\Proxy\Pro
     public function setSaState($saState)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSaState', array($saState));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSaState', [$saState]);
 
         return parent::setSaState($saState);
     }
@@ -234,7 +234,7 @@ class MsaPmsa extends \Entity\Datahub\MsaPmsa implements \Doctrine\ORM\Proxy\Pro
     public function getSaState()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSaState', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSaState', []);
 
         return parent::getSaState();
     }
@@ -245,7 +245,7 @@ class MsaPmsa extends \Entity\Datahub\MsaPmsa implements \Doctrine\ORM\Proxy\Pro
     public function setIsCombined($isCombined)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsCombined', array($isCombined));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsCombined', [$isCombined]);
 
         return parent::setIsCombined($isCombined);
     }
@@ -256,7 +256,7 @@ class MsaPmsa extends \Entity\Datahub\MsaPmsa implements \Doctrine\ORM\Proxy\Pro
     public function getIsCombined()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsCombined', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsCombined', []);
 
         return parent::getIsCombined();
     }
@@ -267,7 +267,7 @@ class MsaPmsa extends \Entity\Datahub\MsaPmsa implements \Doctrine\ORM\Proxy\Pro
     public function setParentSa($parentSa)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParentSa', array($parentSa));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParentSa', [$parentSa]);
 
         return parent::setParentSa($parentSa);
     }
@@ -278,7 +278,7 @@ class MsaPmsa extends \Entity\Datahub\MsaPmsa implements \Doctrine\ORM\Proxy\Pro
     public function getParentSa()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParentSa', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParentSa', []);
 
         return parent::getParentSa();
     }
@@ -289,7 +289,7 @@ class MsaPmsa extends \Entity\Datahub\MsaPmsa implements \Doctrine\ORM\Proxy\Pro
     public function addZipCode(\Entity\Datahub\ZipCode $zipCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addZipCode', array($zipCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addZipCode', [$zipCode]);
 
         return parent::addZipCode($zipCode);
     }
@@ -300,7 +300,7 @@ class MsaPmsa extends \Entity\Datahub\MsaPmsa implements \Doctrine\ORM\Proxy\Pro
     public function removeZipCode(\Entity\Datahub\ZipCode $zipCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeZipCode', array($zipCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeZipCode', [$zipCode]);
 
         return parent::removeZipCode($zipCode);
     }
@@ -311,7 +311,7 @@ class MsaPmsa extends \Entity\Datahub\MsaPmsa implements \Doctrine\ORM\Proxy\Pro
     public function getZipCodes()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getZipCodes', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getZipCodes', []);
 
         return parent::getZipCodes();
     }

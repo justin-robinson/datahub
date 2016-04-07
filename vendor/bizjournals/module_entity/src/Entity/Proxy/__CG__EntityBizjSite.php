@@ -36,7 +36,7 @@ class Site extends \Entity\Bizj\Site implements \Doctrine\ORM\Proxy\Proxy
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Site extends \Entity\Bizj\Site implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Site' . "\0" . 'site_id', '' . "\0" . 'Entity\\Bizj\\Site' . "\0" . 'site_host', '' . "\0" . 'Entity\\Bizj\\Site' . "\0" . 'site_name', '' . "\0" . 'Entity\\Bizj\\Site' . "\0" . 'product_name', '' . "\0" . 'Entity\\Bizj\\Site' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\Site' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\Site' . "\0" . 'Sections');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Site' . "\0" . 'site_id', '' . "\0" . 'Entity\\Bizj\\Site' . "\0" . 'site_host', '' . "\0" . 'Entity\\Bizj\\Site' . "\0" . 'site_name', '' . "\0" . 'Entity\\Bizj\\Site' . "\0" . 'product_name', '' . "\0" . 'Entity\\Bizj\\Site' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\Site' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\Site' . "\0" . 'Sections'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Site' . "\0" . 'site_id', '' . "\0" . 'Entity\\Bizj\\Site' . "\0" . 'site_host', '' . "\0" . 'Entity\\Bizj\\Site' . "\0" . 'site_name', '' . "\0" . 'Entity\\Bizj\\Site' . "\0" . 'product_name', '' . "\0" . 'Entity\\Bizj\\Site' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\Site' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\Site' . "\0" . 'Sections');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Site' . "\0" . 'site_id', '' . "\0" . 'Entity\\Bizj\\Site' . "\0" . 'site_host', '' . "\0" . 'Entity\\Bizj\\Site' . "\0" . 'site_name', '' . "\0" . 'Entity\\Bizj\\Site' . "\0" . 'product_name', '' . "\0" . 'Entity\\Bizj\\Site' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\Site' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\Site' . "\0" . 'Sections'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Site extends \Entity\Bizj\Site implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Site extends \Entity\Bizj\Site implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class Site extends \Entity\Bizj\Site implements \Doctrine\ORM\Proxy\Proxy
     public function getSiteId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSiteId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSiteId', []);
 
         return parent::getSiteId();
     }
@@ -190,7 +190,7 @@ class Site extends \Entity\Bizj\Site implements \Doctrine\ORM\Proxy\Proxy
     public function setSiteHost($siteHost)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSiteHost', array($siteHost));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSiteHost', [$siteHost]);
 
         return parent::setSiteHost($siteHost);
     }
@@ -201,7 +201,7 @@ class Site extends \Entity\Bizj\Site implements \Doctrine\ORM\Proxy\Proxy
     public function getSiteHost()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSiteHost', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSiteHost', []);
 
         return parent::getSiteHost();
     }
@@ -212,7 +212,7 @@ class Site extends \Entity\Bizj\Site implements \Doctrine\ORM\Proxy\Proxy
     public function setSiteName($siteName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSiteName', array($siteName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSiteName', [$siteName]);
 
         return parent::setSiteName($siteName);
     }
@@ -223,7 +223,7 @@ class Site extends \Entity\Bizj\Site implements \Doctrine\ORM\Proxy\Proxy
     public function getSiteName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSiteName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSiteName', []);
 
         return parent::getSiteName();
     }
@@ -234,7 +234,7 @@ class Site extends \Entity\Bizj\Site implements \Doctrine\ORM\Proxy\Proxy
     public function setProductName($productName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductName', array($productName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductName', [$productName]);
 
         return parent::setProductName($productName);
     }
@@ -245,7 +245,7 @@ class Site extends \Entity\Bizj\Site implements \Doctrine\ORM\Proxy\Proxy
     public function getProductName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductName', []);
 
         return parent::getProductName();
     }
@@ -256,7 +256,7 @@ class Site extends \Entity\Bizj\Site implements \Doctrine\ORM\Proxy\Proxy
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -267,7 +267,7 @@ class Site extends \Entity\Bizj\Site implements \Doctrine\ORM\Proxy\Proxy
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -278,7 +278,7 @@ class Site extends \Entity\Bizj\Site implements \Doctrine\ORM\Proxy\Proxy
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -289,7 +289,7 @@ class Site extends \Entity\Bizj\Site implements \Doctrine\ORM\Proxy\Proxy
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -300,7 +300,7 @@ class Site extends \Entity\Bizj\Site implements \Doctrine\ORM\Proxy\Proxy
     public function addSection(\Entity\Bizj\SiteSection $section)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addSection', array($section));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addSection', [$section]);
 
         return parent::addSection($section);
     }
@@ -311,7 +311,7 @@ class Site extends \Entity\Bizj\Site implements \Doctrine\ORM\Proxy\Proxy
     public function removeSection(\Entity\Bizj\SiteSection $section)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeSection', array($section));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeSection', [$section]);
 
         return parent::removeSection($section);
     }
@@ -322,7 +322,7 @@ class Site extends \Entity\Bizj\Site implements \Doctrine\ORM\Proxy\Proxy
     public function getSections()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSections', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSections', []);
 
         return parent::getSections();
     }

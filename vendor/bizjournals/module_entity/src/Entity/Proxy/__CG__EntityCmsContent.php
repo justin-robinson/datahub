@@ -36,7 +36,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'content_id', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'version', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'content_type', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'title', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'slug', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'frontend_id', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'last_published_version', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'json_data', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'db_created_at', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'db_updated_at', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'last_updated_by', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'nilsimsa_digest', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'parent_frontend_id', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'parent_content_id', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'Versions', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'AuditLog', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'ContentDesk', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'ContentWorkspace', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'Publication');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'content_id', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'version', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'content_type', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'title', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'slug', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'frontend_id', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'last_published_version', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'json_data', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'db_created_at', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'db_updated_at', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'last_updated_by', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'nilsimsa_digest', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'parent_frontend_id', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'parent_content_id', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'Versions', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'AuditLog', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'ContentDesk', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'ContentWorkspace', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'Publication'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'content_id', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'version', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'content_type', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'title', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'slug', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'frontend_id', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'last_published_version', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'json_data', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'db_created_at', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'db_updated_at', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'last_updated_by', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'nilsimsa_digest', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'parent_frontend_id', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'parent_content_id', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'Versions', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'AuditLog', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'ContentDesk', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'ContentWorkspace', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'Publication');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'content_id', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'version', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'content_type', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'title', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'slug', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'frontend_id', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'last_published_version', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'json_data', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'db_created_at', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'db_updated_at', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'last_updated_by', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'nilsimsa_digest', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'parent_frontend_id', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'parent_content_id', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'Versions', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'AuditLog', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'ContentDesk', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'ContentWorkspace', '' . "\0" . 'Entity\\Cms\\Content' . "\0" . 'Publication'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function getContentId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContentId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContentId', []);
 
         return parent::getContentId();
     }
@@ -190,7 +190,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function setVersion($version)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setVersion', array($version));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setVersion', [$version]);
 
         return parent::setVersion($version);
     }
@@ -201,7 +201,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function getVersion()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getVersion', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getVersion', []);
 
         return parent::getVersion();
     }
@@ -212,7 +212,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function setContentType($contentType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContentType', array($contentType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContentType', [$contentType]);
 
         return parent::setContentType($contentType);
     }
@@ -223,7 +223,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function getContentType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContentType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContentType', []);
 
         return parent::getContentType();
     }
@@ -234,7 +234,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function setTitle($title)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', array($title));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', [$title]);
 
         return parent::setTitle($title);
     }
@@ -245,7 +245,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function getTitle()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', []);
 
         return parent::getTitle();
     }
@@ -256,7 +256,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function setSlug($slug)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSlug', array($slug));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSlug', [$slug]);
 
         return parent::setSlug($slug);
     }
@@ -267,7 +267,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function getSlug()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSlug', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSlug', []);
 
         return parent::getSlug();
     }
@@ -278,7 +278,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function setPubId($pubId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPubId', array($pubId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPubId', [$pubId]);
 
         return parent::setPubId($pubId);
     }
@@ -289,7 +289,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function getPubId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPubId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPubId', []);
 
         return parent::getPubId();
     }
@@ -300,7 +300,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function setFrontendId($frontendId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFrontendId', array($frontendId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFrontendId', [$frontendId]);
 
         return parent::setFrontendId($frontendId);
     }
@@ -311,7 +311,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function getFrontendId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFrontendId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFrontendId', []);
 
         return parent::getFrontendId();
     }
@@ -322,7 +322,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function setLastPublishedVersion($lastPublishedVersion)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLastPublishedVersion', array($lastPublishedVersion));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLastPublishedVersion', [$lastPublishedVersion]);
 
         return parent::setLastPublishedVersion($lastPublishedVersion);
     }
@@ -333,7 +333,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function getLastPublishedVersion()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLastPublishedVersion', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLastPublishedVersion', []);
 
         return parent::getLastPublishedVersion();
     }
@@ -344,7 +344,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function setJsonData($jsonData)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setJsonData', array($jsonData));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setJsonData', [$jsonData]);
 
         return parent::setJsonData($jsonData);
     }
@@ -355,7 +355,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function getJsonData()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJsonData', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJsonData', []);
 
         return parent::getJsonData();
     }
@@ -366,7 +366,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function setDbCreatedAt($dbCreatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDbCreatedAt', array($dbCreatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDbCreatedAt', [$dbCreatedAt]);
 
         return parent::setDbCreatedAt($dbCreatedAt);
     }
@@ -377,7 +377,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function getDbCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDbCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDbCreatedAt', []);
 
         return parent::getDbCreatedAt();
     }
@@ -388,7 +388,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function setDbUpdatedAt($dbUpdatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDbUpdatedAt', array($dbUpdatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDbUpdatedAt', [$dbUpdatedAt]);
 
         return parent::setDbUpdatedAt($dbUpdatedAt);
     }
@@ -399,7 +399,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function getDbUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDbUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDbUpdatedAt', []);
 
         return parent::getDbUpdatedAt();
     }
@@ -410,7 +410,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function setLastUpdatedBy($lastUpdatedBy)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLastUpdatedBy', array($lastUpdatedBy));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLastUpdatedBy', [$lastUpdatedBy]);
 
         return parent::setLastUpdatedBy($lastUpdatedBy);
     }
@@ -421,7 +421,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function getLastUpdatedBy()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLastUpdatedBy', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLastUpdatedBy', []);
 
         return parent::getLastUpdatedBy();
     }
@@ -432,7 +432,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function setNilsimsaDigest($nilsimsaDigest)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNilsimsaDigest', array($nilsimsaDigest));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNilsimsaDigest', [$nilsimsaDigest]);
 
         return parent::setNilsimsaDigest($nilsimsaDigest);
     }
@@ -443,7 +443,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function getNilsimsaDigest()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNilsimsaDigest', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNilsimsaDigest', []);
 
         return parent::getNilsimsaDigest();
     }
@@ -454,7 +454,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function setParentFrontendId($parentFrontendId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParentFrontendId', array($parentFrontendId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParentFrontendId', [$parentFrontendId]);
 
         return parent::setParentFrontendId($parentFrontendId);
     }
@@ -465,7 +465,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function getParentFrontendId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParentFrontendId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParentFrontendId', []);
 
         return parent::getParentFrontendId();
     }
@@ -476,7 +476,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function setParentContentId($parentContentId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParentContentId', array($parentContentId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParentContentId', [$parentContentId]);
 
         return parent::setParentContentId($parentContentId);
     }
@@ -487,7 +487,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function getParentContentId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParentContentId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParentContentId', []);
 
         return parent::getParentContentId();
     }
@@ -498,7 +498,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function addVersion(\Entity\Cms\ContentVersion $version)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addVersion', array($version));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addVersion', [$version]);
 
         return parent::addVersion($version);
     }
@@ -509,7 +509,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function removeVersion(\Entity\Cms\ContentVersion $version)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeVersion', array($version));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeVersion', [$version]);
 
         return parent::removeVersion($version);
     }
@@ -520,7 +520,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function getVersions()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getVersions', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getVersions', []);
 
         return parent::getVersions();
     }
@@ -531,7 +531,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function addAuditLog(\Entity\Cms\AuditLog $auditLog)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAuditLog', array($auditLog));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAuditLog', [$auditLog]);
 
         return parent::addAuditLog($auditLog);
     }
@@ -542,7 +542,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function removeAuditLog(\Entity\Cms\AuditLog $auditLog)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAuditLog', array($auditLog));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAuditLog', [$auditLog]);
 
         return parent::removeAuditLog($auditLog);
     }
@@ -553,7 +553,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function getAuditLog()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAuditLog', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAuditLog', []);
 
         return parent::getAuditLog();
     }
@@ -564,7 +564,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function addContentDesk(\Entity\Cms\ContentDesk $contentDesk)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addContentDesk', array($contentDesk));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addContentDesk', [$contentDesk]);
 
         return parent::addContentDesk($contentDesk);
     }
@@ -575,7 +575,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function removeContentDesk(\Entity\Cms\ContentDesk $contentDesk)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeContentDesk', array($contentDesk));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeContentDesk', [$contentDesk]);
 
         return parent::removeContentDesk($contentDesk);
     }
@@ -586,7 +586,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function getContentDesk()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContentDesk', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContentDesk', []);
 
         return parent::getContentDesk();
     }
@@ -597,7 +597,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function addContentWorkspace(\Entity\Cms\ContentWorkspace $contentWorkspace)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addContentWorkspace', array($contentWorkspace));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addContentWorkspace', [$contentWorkspace]);
 
         return parent::addContentWorkspace($contentWorkspace);
     }
@@ -608,7 +608,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function removeContentWorkspace(\Entity\Cms\ContentWorkspace $contentWorkspace)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeContentWorkspace', array($contentWorkspace));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeContentWorkspace', [$contentWorkspace]);
 
         return parent::removeContentWorkspace($contentWorkspace);
     }
@@ -619,7 +619,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function getContentWorkspace()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContentWorkspace', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContentWorkspace', []);
 
         return parent::getContentWorkspace();
     }
@@ -630,7 +630,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function setPublication(\Entity\Cms\Publication $publication = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublication', array($publication));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublication', [$publication]);
 
         return parent::setPublication($publication);
     }
@@ -641,7 +641,7 @@ class Content extends \Entity\Cms\Content implements \Doctrine\ORM\Proxy\Proxy
     public function getPublication()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublication', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublication', []);
 
         return parent::getPublication();
     }

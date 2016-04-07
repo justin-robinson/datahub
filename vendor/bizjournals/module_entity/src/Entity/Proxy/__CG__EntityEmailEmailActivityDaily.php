@@ -36,7 +36,7 @@ class EmailActivityDaily extends \Entity\Email\EmailActivityDaily implements \Do
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class EmailActivityDaily extends \Entity\Email\EmailActivityDaily implements \Do
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'activity_id', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'job_id', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'product_id', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'user_id', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'activity', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'remote_ip', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'user_agent', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'referer', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'created_at', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'updated_at');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'activity_id', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'job_id', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'product_id', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'user_id', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'activity', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'remote_ip', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'user_agent', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'referer', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'created_at', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'updated_at'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'activity_id', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'job_id', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'product_id', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'user_id', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'activity', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'remote_ip', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'user_agent', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'referer', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'created_at', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'updated_at');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'activity_id', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'job_id', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'product_id', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'user_id', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'activity', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'remote_ip', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'user_agent', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'referer', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'created_at', '' . "\0" . 'Entity\\Email\\EmailActivityDaily' . "\0" . 'updated_at'];
     }
 
     /**
@@ -97,7 +97,7 @@ class EmailActivityDaily extends \Entity\Email\EmailActivityDaily implements \Do
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class EmailActivityDaily extends \Entity\Email\EmailActivityDaily implements \Do
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class EmailActivityDaily extends \Entity\Email\EmailActivityDaily implements \Do
     public function getActivityId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getActivityId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getActivityId', []);
 
         return parent::getActivityId();
     }
@@ -190,7 +190,7 @@ class EmailActivityDaily extends \Entity\Email\EmailActivityDaily implements \Do
     public function setJobId($jobId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setJobId', array($jobId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setJobId', [$jobId]);
 
         return parent::setJobId($jobId);
     }
@@ -201,7 +201,7 @@ class EmailActivityDaily extends \Entity\Email\EmailActivityDaily implements \Do
     public function getJobId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJobId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJobId', []);
 
         return parent::getJobId();
     }
@@ -212,7 +212,7 @@ class EmailActivityDaily extends \Entity\Email\EmailActivityDaily implements \Do
     public function setProductId($productId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductId', array($productId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductId', [$productId]);
 
         return parent::setProductId($productId);
     }
@@ -223,7 +223,7 @@ class EmailActivityDaily extends \Entity\Email\EmailActivityDaily implements \Do
     public function getProductId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductId', []);
 
         return parent::getProductId();
     }
@@ -234,7 +234,7 @@ class EmailActivityDaily extends \Entity\Email\EmailActivityDaily implements \Do
     public function setUserId($userId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUserId', array($userId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUserId', [$userId]);
 
         return parent::setUserId($userId);
     }
@@ -245,7 +245,7 @@ class EmailActivityDaily extends \Entity\Email\EmailActivityDaily implements \Do
     public function getUserId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUserId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUserId', []);
 
         return parent::getUserId();
     }
@@ -256,7 +256,7 @@ class EmailActivityDaily extends \Entity\Email\EmailActivityDaily implements \Do
     public function setActivity($activity)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setActivity', array($activity));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setActivity', [$activity]);
 
         return parent::setActivity($activity);
     }
@@ -267,7 +267,7 @@ class EmailActivityDaily extends \Entity\Email\EmailActivityDaily implements \Do
     public function getActivity()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getActivity', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getActivity', []);
 
         return parent::getActivity();
     }
@@ -278,7 +278,7 @@ class EmailActivityDaily extends \Entity\Email\EmailActivityDaily implements \Do
     public function setRemoteIp($remoteIp)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRemoteIp', array($remoteIp));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRemoteIp', [$remoteIp]);
 
         return parent::setRemoteIp($remoteIp);
     }
@@ -289,7 +289,7 @@ class EmailActivityDaily extends \Entity\Email\EmailActivityDaily implements \Do
     public function getRemoteIp()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRemoteIp', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRemoteIp', []);
 
         return parent::getRemoteIp();
     }
@@ -300,7 +300,7 @@ class EmailActivityDaily extends \Entity\Email\EmailActivityDaily implements \Do
     public function setUserAgent($userAgent)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUserAgent', array($userAgent));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUserAgent', [$userAgent]);
 
         return parent::setUserAgent($userAgent);
     }
@@ -311,7 +311,7 @@ class EmailActivityDaily extends \Entity\Email\EmailActivityDaily implements \Do
     public function getUserAgent()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUserAgent', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUserAgent', []);
 
         return parent::getUserAgent();
     }
@@ -322,7 +322,7 @@ class EmailActivityDaily extends \Entity\Email\EmailActivityDaily implements \Do
     public function setReferer($referer)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setReferer', array($referer));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setReferer', [$referer]);
 
         return parent::setReferer($referer);
     }
@@ -333,7 +333,7 @@ class EmailActivityDaily extends \Entity\Email\EmailActivityDaily implements \Do
     public function getReferer()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getReferer', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getReferer', []);
 
         return parent::getReferer();
     }
@@ -344,7 +344,7 @@ class EmailActivityDaily extends \Entity\Email\EmailActivityDaily implements \Do
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -355,7 +355,7 @@ class EmailActivityDaily extends \Entity\Email\EmailActivityDaily implements \Do
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -366,7 +366,7 @@ class EmailActivityDaily extends \Entity\Email\EmailActivityDaily implements \Do
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -377,7 +377,7 @@ class EmailActivityDaily extends \Entity\Email\EmailActivityDaily implements \Do
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }

@@ -36,7 +36,7 @@ class PulseCrossref extends \Entity\Bzjpreview\PulseCrossref implements \Doctrin
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class PulseCrossref extends \Entity\Bzjpreview\PulseCrossref implements \Doctrin
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'ref_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'pulse_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'ref_type', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'ref_key', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'ref_value', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'ref_weight', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'Pulse');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'ref_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'pulse_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'ref_type', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'ref_key', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'ref_value', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'ref_weight', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'Pulse'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'ref_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'pulse_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'ref_type', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'ref_key', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'ref_value', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'ref_weight', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'Pulse');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'ref_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'pulse_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'ref_type', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'ref_key', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'ref_value', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'ref_weight', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseCrossref' . "\0" . 'Pulse'];
     }
 
     /**
@@ -97,7 +97,7 @@ class PulseCrossref extends \Entity\Bzjpreview\PulseCrossref implements \Doctrin
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class PulseCrossref extends \Entity\Bzjpreview\PulseCrossref implements \Doctrin
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class PulseCrossref extends \Entity\Bzjpreview\PulseCrossref implements \Doctrin
     public function getRefId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefId', []);
 
         return parent::getRefId();
     }
@@ -190,7 +190,7 @@ class PulseCrossref extends \Entity\Bzjpreview\PulseCrossref implements \Doctrin
     public function setPulseId($pulseId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPulseId', array($pulseId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPulseId', [$pulseId]);
 
         return parent::setPulseId($pulseId);
     }
@@ -201,7 +201,7 @@ class PulseCrossref extends \Entity\Bzjpreview\PulseCrossref implements \Doctrin
     public function getPulseId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPulseId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPulseId', []);
 
         return parent::getPulseId();
     }
@@ -212,7 +212,7 @@ class PulseCrossref extends \Entity\Bzjpreview\PulseCrossref implements \Doctrin
     public function setRefType($refType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRefType', array($refType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRefType', [$refType]);
 
         return parent::setRefType($refType);
     }
@@ -223,7 +223,7 @@ class PulseCrossref extends \Entity\Bzjpreview\PulseCrossref implements \Doctrin
     public function getRefType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefType', []);
 
         return parent::getRefType();
     }
@@ -234,7 +234,7 @@ class PulseCrossref extends \Entity\Bzjpreview\PulseCrossref implements \Doctrin
     public function setRefKey($refKey)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRefKey', array($refKey));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRefKey', [$refKey]);
 
         return parent::setRefKey($refKey);
     }
@@ -245,7 +245,7 @@ class PulseCrossref extends \Entity\Bzjpreview\PulseCrossref implements \Doctrin
     public function getRefKey()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefKey', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefKey', []);
 
         return parent::getRefKey();
     }
@@ -256,7 +256,7 @@ class PulseCrossref extends \Entity\Bzjpreview\PulseCrossref implements \Doctrin
     public function setRefValue($refValue)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRefValue', array($refValue));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRefValue', [$refValue]);
 
         return parent::setRefValue($refValue);
     }
@@ -267,7 +267,7 @@ class PulseCrossref extends \Entity\Bzjpreview\PulseCrossref implements \Doctrin
     public function getRefValue()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefValue', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefValue', []);
 
         return parent::getRefValue();
     }
@@ -278,7 +278,7 @@ class PulseCrossref extends \Entity\Bzjpreview\PulseCrossref implements \Doctrin
     public function setRefWeight($refWeight)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRefWeight', array($refWeight));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRefWeight', [$refWeight]);
 
         return parent::setRefWeight($refWeight);
     }
@@ -289,7 +289,7 @@ class PulseCrossref extends \Entity\Bzjpreview\PulseCrossref implements \Doctrin
     public function getRefWeight()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefWeight', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefWeight', []);
 
         return parent::getRefWeight();
     }
@@ -300,7 +300,7 @@ class PulseCrossref extends \Entity\Bzjpreview\PulseCrossref implements \Doctrin
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -311,7 +311,7 @@ class PulseCrossref extends \Entity\Bzjpreview\PulseCrossref implements \Doctrin
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -322,7 +322,7 @@ class PulseCrossref extends \Entity\Bzjpreview\PulseCrossref implements \Doctrin
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -333,7 +333,7 @@ class PulseCrossref extends \Entity\Bzjpreview\PulseCrossref implements \Doctrin
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -344,7 +344,7 @@ class PulseCrossref extends \Entity\Bzjpreview\PulseCrossref implements \Doctrin
     public function setDeletedAt($deletedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeletedAt', array($deletedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeletedAt', [$deletedAt]);
 
         return parent::setDeletedAt($deletedAt);
     }
@@ -355,7 +355,7 @@ class PulseCrossref extends \Entity\Bzjpreview\PulseCrossref implements \Doctrin
     public function getDeletedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeletedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeletedAt', []);
 
         return parent::getDeletedAt();
     }
@@ -366,7 +366,7 @@ class PulseCrossref extends \Entity\Bzjpreview\PulseCrossref implements \Doctrin
     public function setPulse(\Entity\Bzjpreview\Pulse $pulse = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPulse', array($pulse));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPulse', [$pulse]);
 
         return parent::setPulse($pulse);
     }
@@ -377,7 +377,7 @@ class PulseCrossref extends \Entity\Bzjpreview\PulseCrossref implements \Doctrin
     public function getPulse()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPulse', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPulse', []);
 
         return parent::getPulse();
     }

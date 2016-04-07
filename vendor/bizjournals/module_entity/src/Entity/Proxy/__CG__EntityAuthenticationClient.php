@@ -36,7 +36,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'client_id', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'service_id', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'public_key', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'secret_key', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'redirect_uri', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'grant_types', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'scope', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'rate_limit', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'client_name', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'description', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'unit_id', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'is_active', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'created_at', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'AccessTokens', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'RefreshTokens', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'AuthorizationCodes', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'Service', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'Unit');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'client_id', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'service_id', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'public_key', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'secret_key', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'redirect_uri', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'grant_types', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'scope', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'rate_limit', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'client_name', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'description', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'unit_id', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'is_active', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'created_at', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'AccessTokens', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'RefreshTokens', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'AuthorizationCodes', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'Service', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'Unit'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'client_id', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'service_id', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'public_key', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'secret_key', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'redirect_uri', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'grant_types', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'scope', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'rate_limit', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'client_name', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'description', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'unit_id', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'is_active', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'created_at', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'AccessTokens', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'RefreshTokens', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'AuthorizationCodes', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'Service', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'Unit');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'client_id', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'service_id', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'public_key', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'secret_key', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'redirect_uri', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'grant_types', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'scope', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'rate_limit', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'client_name', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'description', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'unit_id', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'is_active', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'created_at', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'AccessTokens', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'RefreshTokens', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'AuthorizationCodes', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'Service', '' . "\0" . 'Entity\\Authentication\\Client' . "\0" . 'Unit'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function getClientId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClientId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClientId', []);
 
         return parent::getClientId();
     }
@@ -190,7 +190,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function setServiceId($serviceId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setServiceId', array($serviceId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setServiceId', [$serviceId]);
 
         return parent::setServiceId($serviceId);
     }
@@ -201,7 +201,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function getServiceId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getServiceId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getServiceId', []);
 
         return parent::getServiceId();
     }
@@ -212,7 +212,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function setPublicKey($publicKey)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublicKey', array($publicKey));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublicKey', [$publicKey]);
 
         return parent::setPublicKey($publicKey);
     }
@@ -223,7 +223,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function getPublicKey()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublicKey', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublicKey', []);
 
         return parent::getPublicKey();
     }
@@ -234,7 +234,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function setSecretKey($secretKey)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSecretKey', array($secretKey));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSecretKey', [$secretKey]);
 
         return parent::setSecretKey($secretKey);
     }
@@ -245,7 +245,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function getSecretKey()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSecretKey', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSecretKey', []);
 
         return parent::getSecretKey();
     }
@@ -256,7 +256,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function setRedirectUri($redirectUri)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRedirectUri', array($redirectUri));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRedirectUri', [$redirectUri]);
 
         return parent::setRedirectUri($redirectUri);
     }
@@ -267,7 +267,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function getRedirectUri()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRedirectUri', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRedirectUri', []);
 
         return parent::getRedirectUri();
     }
@@ -278,7 +278,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function setGrantTypes($grantTypes)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGrantTypes', array($grantTypes));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGrantTypes', [$grantTypes]);
 
         return parent::setGrantTypes($grantTypes);
     }
@@ -289,7 +289,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function getGrantTypes()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGrantTypes', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGrantTypes', []);
 
         return parent::getGrantTypes();
     }
@@ -300,7 +300,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function setScope($scope)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setScope', array($scope));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setScope', [$scope]);
 
         return parent::setScope($scope);
     }
@@ -311,7 +311,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function getScope()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getScope', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getScope', []);
 
         return parent::getScope();
     }
@@ -322,7 +322,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function setRateLimit($rateLimit)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRateLimit', array($rateLimit));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRateLimit', [$rateLimit]);
 
         return parent::setRateLimit($rateLimit);
     }
@@ -333,7 +333,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function getRateLimit()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRateLimit', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRateLimit', []);
 
         return parent::getRateLimit();
     }
@@ -344,7 +344,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function setClientName($clientName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setClientName', array($clientName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setClientName', [$clientName]);
 
         return parent::setClientName($clientName);
     }
@@ -355,7 +355,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function getClientName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClientName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClientName', []);
 
         return parent::getClientName();
     }
@@ -366,7 +366,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function setDescription($description)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', array($description));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', [$description]);
 
         return parent::setDescription($description);
     }
@@ -377,7 +377,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function getDescription()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', []);
 
         return parent::getDescription();
     }
@@ -388,7 +388,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function setUnitId($unitId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUnitId', array($unitId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUnitId', [$unitId]);
 
         return parent::setUnitId($unitId);
     }
@@ -399,7 +399,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function getUnitId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUnitId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUnitId', []);
 
         return parent::getUnitId();
     }
@@ -410,7 +410,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function setIsActive($isActive)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', array($isActive));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', [$isActive]);
 
         return parent::setIsActive($isActive);
     }
@@ -421,7 +421,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function getIsActive()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', []);
 
         return parent::getIsActive();
     }
@@ -432,7 +432,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -443,7 +443,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -454,7 +454,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -465,7 +465,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -476,7 +476,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function addAccessToken(\Entity\Authentication\AccessToken $accessToken)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAccessToken', array($accessToken));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAccessToken', [$accessToken]);
 
         return parent::addAccessToken($accessToken);
     }
@@ -487,7 +487,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function removeAccessToken(\Entity\Authentication\AccessToken $accessToken)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAccessToken', array($accessToken));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAccessToken', [$accessToken]);
 
         return parent::removeAccessToken($accessToken);
     }
@@ -498,7 +498,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function getAccessTokens()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAccessTokens', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAccessTokens', []);
 
         return parent::getAccessTokens();
     }
@@ -509,7 +509,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function addRefreshToken(\Entity\Authentication\RefreshToken $refreshToken)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addRefreshToken', array($refreshToken));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addRefreshToken', [$refreshToken]);
 
         return parent::addRefreshToken($refreshToken);
     }
@@ -520,7 +520,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function removeRefreshToken(\Entity\Authentication\RefreshToken $refreshToken)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeRefreshToken', array($refreshToken));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeRefreshToken', [$refreshToken]);
 
         return parent::removeRefreshToken($refreshToken);
     }
@@ -531,7 +531,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function getRefreshTokens()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefreshTokens', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefreshTokens', []);
 
         return parent::getRefreshTokens();
     }
@@ -542,7 +542,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function addAuthorizationCode(\Entity\Authentication\AuthorizationCode $authorizationCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAuthorizationCode', array($authorizationCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAuthorizationCode', [$authorizationCode]);
 
         return parent::addAuthorizationCode($authorizationCode);
     }
@@ -553,7 +553,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function removeAuthorizationCode(\Entity\Authentication\AuthorizationCode $authorizationCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAuthorizationCode', array($authorizationCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAuthorizationCode', [$authorizationCode]);
 
         return parent::removeAuthorizationCode($authorizationCode);
     }
@@ -564,7 +564,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function getAuthorizationCodes()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAuthorizationCodes', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAuthorizationCodes', []);
 
         return parent::getAuthorizationCodes();
     }
@@ -575,7 +575,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function setService(\Entity\Authentication\Service $service = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setService', array($service));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setService', [$service]);
 
         return parent::setService($service);
     }
@@ -586,7 +586,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function getService()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getService', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getService', []);
 
         return parent::getService();
     }
@@ -597,7 +597,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function setUnit(\Entity\Authentication\Unit $unit = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUnit', array($unit));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUnit', [$unit]);
 
         return parent::setUnit($unit);
     }
@@ -608,7 +608,7 @@ class Client extends \Entity\Authentication\Client implements \Doctrine\ORM\Prox
     public function getUnit()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUnit', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUnit', []);
 
         return parent::getUnit();
     }

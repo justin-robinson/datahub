@@ -36,7 +36,7 @@ class Country extends \Entity\Datahub\Country implements \Doctrine\ORM\Proxy\Pro
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Country extends \Entity\Datahub\Country implements \Doctrine\ORM\Proxy\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Datahub\\Country' . "\0" . 'country_code', '' . "\0" . 'Entity\\Datahub\\Country' . "\0" . 'country');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Datahub\\Country' . "\0" . 'country_code', '' . "\0" . 'Entity\\Datahub\\Country' . "\0" . 'country'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Datahub\\Country' . "\0" . 'country_code', '' . "\0" . 'Entity\\Datahub\\Country' . "\0" . 'country');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Datahub\\Country' . "\0" . 'country_code', '' . "\0" . 'Entity\\Datahub\\Country' . "\0" . 'country'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Country extends \Entity\Datahub\Country implements \Doctrine\ORM\Proxy\Pro
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Country extends \Entity\Datahub\Country implements \Doctrine\ORM\Proxy\Pro
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class Country extends \Entity\Datahub\Country implements \Doctrine\ORM\Proxy\Pro
     public function setCountryCode($countryCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountryCode', array($countryCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountryCode', [$countryCode]);
 
         return parent::setCountryCode($countryCode);
     }
@@ -190,7 +190,7 @@ class Country extends \Entity\Datahub\Country implements \Doctrine\ORM\Proxy\Pro
     public function getCountryCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountryCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountryCode', []);
 
         return parent::getCountryCode();
     }
@@ -201,7 +201,7 @@ class Country extends \Entity\Datahub\Country implements \Doctrine\ORM\Proxy\Pro
     public function setCountry($country)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountry', array($country));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountry', [$country]);
 
         return parent::setCountry($country);
     }
@@ -212,7 +212,7 @@ class Country extends \Entity\Datahub\Country implements \Doctrine\ORM\Proxy\Pro
     public function getCountry()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountry', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountry', []);
 
         return parent::getCountry();
     }

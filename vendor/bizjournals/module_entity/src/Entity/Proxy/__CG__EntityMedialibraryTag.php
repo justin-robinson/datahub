@@ -36,7 +36,7 @@ class Tag extends \Entity\Medialibrary\Tag implements \Doctrine\ORM\Proxy\Proxy
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Tag extends \Entity\Medialibrary\Tag implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\Tag' . "\0" . 'tag_id', '' . "\0" . 'Entity\\Medialibrary\\Tag' . "\0" . 'tag_name', '' . "\0" . 'Entity\\Medialibrary\\Tag' . "\0" . 'tag_type', '' . "\0" . 'Entity\\Medialibrary\\Tag' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Medialibrary\\Tag' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\Tag' . "\0" . 'MediaTags', '' . "\0" . 'Entity\\Medialibrary\\Tag' . "\0" . 'Publication');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\Tag' . "\0" . 'tag_id', '' . "\0" . 'Entity\\Medialibrary\\Tag' . "\0" . 'tag_name', '' . "\0" . 'Entity\\Medialibrary\\Tag' . "\0" . 'tag_type', '' . "\0" . 'Entity\\Medialibrary\\Tag' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Medialibrary\\Tag' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\Tag' . "\0" . 'MediaTags', '' . "\0" . 'Entity\\Medialibrary\\Tag' . "\0" . 'Publication'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\Tag' . "\0" . 'tag_id', '' . "\0" . 'Entity\\Medialibrary\\Tag' . "\0" . 'tag_name', '' . "\0" . 'Entity\\Medialibrary\\Tag' . "\0" . 'tag_type', '' . "\0" . 'Entity\\Medialibrary\\Tag' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Medialibrary\\Tag' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\Tag' . "\0" . 'MediaTags', '' . "\0" . 'Entity\\Medialibrary\\Tag' . "\0" . 'Publication');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\Tag' . "\0" . 'tag_id', '' . "\0" . 'Entity\\Medialibrary\\Tag' . "\0" . 'tag_name', '' . "\0" . 'Entity\\Medialibrary\\Tag' . "\0" . 'tag_type', '' . "\0" . 'Entity\\Medialibrary\\Tag' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Medialibrary\\Tag' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\Tag' . "\0" . 'MediaTags', '' . "\0" . 'Entity\\Medialibrary\\Tag' . "\0" . 'Publication'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Tag extends \Entity\Medialibrary\Tag implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Tag extends \Entity\Medialibrary\Tag implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class Tag extends \Entity\Medialibrary\Tag implements \Doctrine\ORM\Proxy\Proxy
     public function getTagId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTagId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTagId', []);
 
         return parent::getTagId();
     }
@@ -190,7 +190,7 @@ class Tag extends \Entity\Medialibrary\Tag implements \Doctrine\ORM\Proxy\Proxy
     public function setTagName($tagName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTagName', array($tagName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTagName', [$tagName]);
 
         return parent::setTagName($tagName);
     }
@@ -201,7 +201,7 @@ class Tag extends \Entity\Medialibrary\Tag implements \Doctrine\ORM\Proxy\Proxy
     public function getTagName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTagName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTagName', []);
 
         return parent::getTagName();
     }
@@ -212,7 +212,7 @@ class Tag extends \Entity\Medialibrary\Tag implements \Doctrine\ORM\Proxy\Proxy
     public function setTagType($tagType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTagType', array($tagType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTagType', [$tagType]);
 
         return parent::setTagType($tagType);
     }
@@ -223,7 +223,7 @@ class Tag extends \Entity\Medialibrary\Tag implements \Doctrine\ORM\Proxy\Proxy
     public function getTagType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTagType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTagType', []);
 
         return parent::getTagType();
     }
@@ -234,7 +234,7 @@ class Tag extends \Entity\Medialibrary\Tag implements \Doctrine\ORM\Proxy\Proxy
     public function setPubId($pubId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPubId', array($pubId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPubId', [$pubId]);
 
         return parent::setPubId($pubId);
     }
@@ -245,7 +245,7 @@ class Tag extends \Entity\Medialibrary\Tag implements \Doctrine\ORM\Proxy\Proxy
     public function getPubId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPubId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPubId', []);
 
         return parent::getPubId();
     }
@@ -256,7 +256,7 @@ class Tag extends \Entity\Medialibrary\Tag implements \Doctrine\ORM\Proxy\Proxy
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -267,7 +267,7 @@ class Tag extends \Entity\Medialibrary\Tag implements \Doctrine\ORM\Proxy\Proxy
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -278,7 +278,7 @@ class Tag extends \Entity\Medialibrary\Tag implements \Doctrine\ORM\Proxy\Proxy
     public function addMediaTag(\Entity\Medialibrary\MediaTag $mediaTag)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMediaTag', array($mediaTag));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMediaTag', [$mediaTag]);
 
         return parent::addMediaTag($mediaTag);
     }
@@ -289,7 +289,7 @@ class Tag extends \Entity\Medialibrary\Tag implements \Doctrine\ORM\Proxy\Proxy
     public function removeMediaTag(\Entity\Medialibrary\MediaTag $mediaTag)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMediaTag', array($mediaTag));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMediaTag', [$mediaTag]);
 
         return parent::removeMediaTag($mediaTag);
     }
@@ -300,7 +300,7 @@ class Tag extends \Entity\Medialibrary\Tag implements \Doctrine\ORM\Proxy\Proxy
     public function getMediaTags()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaTags', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaTags', []);
 
         return parent::getMediaTags();
     }
@@ -311,7 +311,7 @@ class Tag extends \Entity\Medialibrary\Tag implements \Doctrine\ORM\Proxy\Proxy
     public function setPublication(\Entity\Medialibrary\Publication $publication = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublication', array($publication));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublication', [$publication]);
 
         return parent::setPublication($publication);
     }
@@ -322,7 +322,7 @@ class Tag extends \Entity\Medialibrary\Tag implements \Doctrine\ORM\Proxy\Proxy
     public function getPublication()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublication', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublication', []);
 
         return parent::getPublication();
     }

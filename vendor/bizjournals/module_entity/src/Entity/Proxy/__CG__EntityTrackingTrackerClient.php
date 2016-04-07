@@ -36,7 +36,7 @@ class TrackerClient extends \Entity\Tracking\TrackerClient implements \Doctrine\
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class TrackerClient extends \Entity\Tracking\TrackerClient implements \Doctrine\
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'client_id', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'public_key', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'secret_key', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'client_name', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'description', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'is_active', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'created_at', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'updated_at');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'client_id', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'public_key', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'secret_key', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'client_name', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'description', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'is_active', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'created_at', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'updated_at'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'client_id', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'public_key', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'secret_key', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'client_name', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'description', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'is_active', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'created_at', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'updated_at');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'client_id', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'public_key', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'secret_key', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'client_name', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'description', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'is_active', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'created_at', '' . "\0" . 'Entity\\Tracking\\TrackerClient' . "\0" . 'updated_at'];
     }
 
     /**
@@ -97,7 +97,7 @@ class TrackerClient extends \Entity\Tracking\TrackerClient implements \Doctrine\
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class TrackerClient extends \Entity\Tracking\TrackerClient implements \Doctrine\
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class TrackerClient extends \Entity\Tracking\TrackerClient implements \Doctrine\
     public function getClientId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClientId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClientId', []);
 
         return parent::getClientId();
     }
@@ -190,7 +190,7 @@ class TrackerClient extends \Entity\Tracking\TrackerClient implements \Doctrine\
     public function setPublicKey($publicKey)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublicKey', array($publicKey));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublicKey', [$publicKey]);
 
         return parent::setPublicKey($publicKey);
     }
@@ -201,7 +201,7 @@ class TrackerClient extends \Entity\Tracking\TrackerClient implements \Doctrine\
     public function getPublicKey()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublicKey', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublicKey', []);
 
         return parent::getPublicKey();
     }
@@ -212,7 +212,7 @@ class TrackerClient extends \Entity\Tracking\TrackerClient implements \Doctrine\
     public function setSecretKey($secretKey)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSecretKey', array($secretKey));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSecretKey', [$secretKey]);
 
         return parent::setSecretKey($secretKey);
     }
@@ -223,7 +223,7 @@ class TrackerClient extends \Entity\Tracking\TrackerClient implements \Doctrine\
     public function getSecretKey()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSecretKey', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSecretKey', []);
 
         return parent::getSecretKey();
     }
@@ -234,7 +234,7 @@ class TrackerClient extends \Entity\Tracking\TrackerClient implements \Doctrine\
     public function setClientName($clientName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setClientName', array($clientName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setClientName', [$clientName]);
 
         return parent::setClientName($clientName);
     }
@@ -245,7 +245,7 @@ class TrackerClient extends \Entity\Tracking\TrackerClient implements \Doctrine\
     public function getClientName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClientName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClientName', []);
 
         return parent::getClientName();
     }
@@ -256,7 +256,7 @@ class TrackerClient extends \Entity\Tracking\TrackerClient implements \Doctrine\
     public function setDescription($description)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', array($description));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', [$description]);
 
         return parent::setDescription($description);
     }
@@ -267,7 +267,7 @@ class TrackerClient extends \Entity\Tracking\TrackerClient implements \Doctrine\
     public function getDescription()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', []);
 
         return parent::getDescription();
     }
@@ -278,7 +278,7 @@ class TrackerClient extends \Entity\Tracking\TrackerClient implements \Doctrine\
     public function setIsActive($isActive)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', array($isActive));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', [$isActive]);
 
         return parent::setIsActive($isActive);
     }
@@ -289,7 +289,7 @@ class TrackerClient extends \Entity\Tracking\TrackerClient implements \Doctrine\
     public function getIsActive()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', []);
 
         return parent::getIsActive();
     }
@@ -300,7 +300,7 @@ class TrackerClient extends \Entity\Tracking\TrackerClient implements \Doctrine\
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -311,7 +311,7 @@ class TrackerClient extends \Entity\Tracking\TrackerClient implements \Doctrine\
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -322,7 +322,7 @@ class TrackerClient extends \Entity\Tracking\TrackerClient implements \Doctrine\
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -333,7 +333,7 @@ class TrackerClient extends \Entity\Tracking\TrackerClient implements \Doctrine\
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }

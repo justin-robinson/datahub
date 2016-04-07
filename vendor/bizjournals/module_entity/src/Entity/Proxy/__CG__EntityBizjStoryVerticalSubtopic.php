@@ -36,7 +36,7 @@ class StoryVerticalSubtopic extends \Entity\Bizj\StoryVerticalSubtopic implement
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class StoryVerticalSubtopic extends \Entity\Bizj\StoryVerticalSubtopic implement
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\StoryVerticalSubtopic' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bizj\\StoryVerticalSubtopic' . "\0" . 'vertical_subtopic_id', '' . "\0" . 'Entity\\Bizj\\StoryVerticalSubtopic' . "\0" . 'market', '' . "\0" . 'Entity\\Bizj\\StoryVerticalSubtopic' . "\0" . 'story_date', '' . "\0" . 'Entity\\Bizj\\StoryVerticalSubtopic' . "\0" . 'relevance', '' . "\0" . 'Entity\\Bizj\\StoryVerticalSubtopic' . "\0" . 'is_daily', '' . "\0" . 'Entity\\Bizj\\StoryVerticalSubtopic' . "\0" . 'StoryRead');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\StoryVerticalSubtopic' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bizj\\StoryVerticalSubtopic' . "\0" . 'vertical_subtopic_id', '' . "\0" . 'Entity\\Bizj\\StoryVerticalSubtopic' . "\0" . 'market', '' . "\0" . 'Entity\\Bizj\\StoryVerticalSubtopic' . "\0" . 'story_date', '' . "\0" . 'Entity\\Bizj\\StoryVerticalSubtopic' . "\0" . 'relevance', '' . "\0" . 'Entity\\Bizj\\StoryVerticalSubtopic' . "\0" . 'is_daily', '' . "\0" . 'Entity\\Bizj\\StoryVerticalSubtopic' . "\0" . 'StoryRead'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\StoryVerticalSubtopic' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bizj\\StoryVerticalSubtopic' . "\0" . 'vertical_subtopic_id', '' . "\0" . 'Entity\\Bizj\\StoryVerticalSubtopic' . "\0" . 'market', '' . "\0" . 'Entity\\Bizj\\StoryVerticalSubtopic' . "\0" . 'story_date', '' . "\0" . 'Entity\\Bizj\\StoryVerticalSubtopic' . "\0" . 'relevance', '' . "\0" . 'Entity\\Bizj\\StoryVerticalSubtopic' . "\0" . 'is_daily', '' . "\0" . 'Entity\\Bizj\\StoryVerticalSubtopic' . "\0" . 'StoryRead');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\StoryVerticalSubtopic' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bizj\\StoryVerticalSubtopic' . "\0" . 'vertical_subtopic_id', '' . "\0" . 'Entity\\Bizj\\StoryVerticalSubtopic' . "\0" . 'market', '' . "\0" . 'Entity\\Bizj\\StoryVerticalSubtopic' . "\0" . 'story_date', '' . "\0" . 'Entity\\Bizj\\StoryVerticalSubtopic' . "\0" . 'relevance', '' . "\0" . 'Entity\\Bizj\\StoryVerticalSubtopic' . "\0" . 'is_daily', '' . "\0" . 'Entity\\Bizj\\StoryVerticalSubtopic' . "\0" . 'StoryRead'];
     }
 
     /**
@@ -97,7 +97,7 @@ class StoryVerticalSubtopic extends \Entity\Bizj\StoryVerticalSubtopic implement
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class StoryVerticalSubtopic extends \Entity\Bizj\StoryVerticalSubtopic implement
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class StoryVerticalSubtopic extends \Entity\Bizj\StoryVerticalSubtopic implement
     public function setStoryId($storyId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryId', array($storyId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryId', [$storyId]);
 
         return parent::setStoryId($storyId);
     }
@@ -190,7 +190,7 @@ class StoryVerticalSubtopic extends \Entity\Bizj\StoryVerticalSubtopic implement
     public function getStoryId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryId', []);
 
         return parent::getStoryId();
     }
@@ -201,7 +201,7 @@ class StoryVerticalSubtopic extends \Entity\Bizj\StoryVerticalSubtopic implement
     public function setVerticalSubtopicId($verticalSubtopicId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setVerticalSubtopicId', array($verticalSubtopicId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setVerticalSubtopicId', [$verticalSubtopicId]);
 
         return parent::setVerticalSubtopicId($verticalSubtopicId);
     }
@@ -212,7 +212,7 @@ class StoryVerticalSubtopic extends \Entity\Bizj\StoryVerticalSubtopic implement
     public function getVerticalSubtopicId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getVerticalSubtopicId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getVerticalSubtopicId', []);
 
         return parent::getVerticalSubtopicId();
     }
@@ -223,7 +223,7 @@ class StoryVerticalSubtopic extends \Entity\Bizj\StoryVerticalSubtopic implement
     public function setMarket($market)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarket', array($market));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarket', [$market]);
 
         return parent::setMarket($market);
     }
@@ -234,7 +234,7 @@ class StoryVerticalSubtopic extends \Entity\Bizj\StoryVerticalSubtopic implement
     public function getMarket()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarket', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarket', []);
 
         return parent::getMarket();
     }
@@ -245,7 +245,7 @@ class StoryVerticalSubtopic extends \Entity\Bizj\StoryVerticalSubtopic implement
     public function setStoryDate($storyDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryDate', array($storyDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryDate', [$storyDate]);
 
         return parent::setStoryDate($storyDate);
     }
@@ -256,7 +256,7 @@ class StoryVerticalSubtopic extends \Entity\Bizj\StoryVerticalSubtopic implement
     public function getStoryDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryDate', []);
 
         return parent::getStoryDate();
     }
@@ -267,7 +267,7 @@ class StoryVerticalSubtopic extends \Entity\Bizj\StoryVerticalSubtopic implement
     public function setRelevance($relevance)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRelevance', array($relevance));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRelevance', [$relevance]);
 
         return parent::setRelevance($relevance);
     }
@@ -278,7 +278,7 @@ class StoryVerticalSubtopic extends \Entity\Bizj\StoryVerticalSubtopic implement
     public function getRelevance()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRelevance', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRelevance', []);
 
         return parent::getRelevance();
     }
@@ -289,7 +289,7 @@ class StoryVerticalSubtopic extends \Entity\Bizj\StoryVerticalSubtopic implement
     public function setIsDaily($isDaily)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsDaily', array($isDaily));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsDaily', [$isDaily]);
 
         return parent::setIsDaily($isDaily);
     }
@@ -300,7 +300,7 @@ class StoryVerticalSubtopic extends \Entity\Bizj\StoryVerticalSubtopic implement
     public function getIsDaily()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsDaily', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsDaily', []);
 
         return parent::getIsDaily();
     }
@@ -311,7 +311,7 @@ class StoryVerticalSubtopic extends \Entity\Bizj\StoryVerticalSubtopic implement
     public function setStoryRead(\Entity\Bizj\StoryRead $storyRead = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryRead', array($storyRead));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryRead', [$storyRead]);
 
         return parent::setStoryRead($storyRead);
     }
@@ -322,7 +322,7 @@ class StoryVerticalSubtopic extends \Entity\Bizj\StoryVerticalSubtopic implement
     public function getStoryRead()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryRead', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryRead', []);
 
         return parent::getStoryRead();
     }

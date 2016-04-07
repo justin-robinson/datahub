@@ -36,7 +36,7 @@ class PageCmsLink extends \Entity\Bizj\PageCmsLink implements \Doctrine\ORM\Prox
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class PageCmsLink extends \Entity\Bizj\PageCmsLink implements \Doctrine\ORM\Prox
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'reserve_time', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'publish_time', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'revision_time', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'delete_time', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'delete_issue_date', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'url', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'headline', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'type_id', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'source');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'reserve_time', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'publish_time', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'revision_time', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'delete_time', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'delete_issue_date', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'url', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'headline', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'type_id', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'source'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'reserve_time', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'publish_time', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'revision_time', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'delete_time', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'delete_issue_date', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'url', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'headline', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'type_id', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'source');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'reserve_time', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'publish_time', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'revision_time', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'delete_time', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'delete_issue_date', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'url', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'headline', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'type_id', '' . "\0" . 'Entity\\Bizj\\PageCmsLink' . "\0" . 'source'];
     }
 
     /**
@@ -97,7 +97,7 @@ class PageCmsLink extends \Entity\Bizj\PageCmsLink implements \Doctrine\ORM\Prox
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class PageCmsLink extends \Entity\Bizj\PageCmsLink implements \Doctrine\ORM\Prox
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class PageCmsLink extends \Entity\Bizj\PageCmsLink implements \Doctrine\ORM\Prox
     public function getPageId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageId', []);
 
         return parent::getPageId();
     }
@@ -190,7 +190,7 @@ class PageCmsLink extends \Entity\Bizj\PageCmsLink implements \Doctrine\ORM\Prox
     public function setReserveTime($reserveTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setReserveTime', array($reserveTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setReserveTime', [$reserveTime]);
 
         return parent::setReserveTime($reserveTime);
     }
@@ -201,7 +201,7 @@ class PageCmsLink extends \Entity\Bizj\PageCmsLink implements \Doctrine\ORM\Prox
     public function getReserveTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getReserveTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getReserveTime', []);
 
         return parent::getReserveTime();
     }
@@ -212,7 +212,7 @@ class PageCmsLink extends \Entity\Bizj\PageCmsLink implements \Doctrine\ORM\Prox
     public function setPublishTime($publishTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublishTime', array($publishTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublishTime', [$publishTime]);
 
         return parent::setPublishTime($publishTime);
     }
@@ -223,7 +223,7 @@ class PageCmsLink extends \Entity\Bizj\PageCmsLink implements \Doctrine\ORM\Prox
     public function getPublishTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublishTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublishTime', []);
 
         return parent::getPublishTime();
     }
@@ -234,7 +234,7 @@ class PageCmsLink extends \Entity\Bizj\PageCmsLink implements \Doctrine\ORM\Prox
     public function setRevisionTime($revisionTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRevisionTime', array($revisionTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRevisionTime', [$revisionTime]);
 
         return parent::setRevisionTime($revisionTime);
     }
@@ -245,7 +245,7 @@ class PageCmsLink extends \Entity\Bizj\PageCmsLink implements \Doctrine\ORM\Prox
     public function getRevisionTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRevisionTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRevisionTime', []);
 
         return parent::getRevisionTime();
     }
@@ -256,7 +256,7 @@ class PageCmsLink extends \Entity\Bizj\PageCmsLink implements \Doctrine\ORM\Prox
     public function setDeleteTime($deleteTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeleteTime', array($deleteTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeleteTime', [$deleteTime]);
 
         return parent::setDeleteTime($deleteTime);
     }
@@ -267,7 +267,7 @@ class PageCmsLink extends \Entity\Bizj\PageCmsLink implements \Doctrine\ORM\Prox
     public function getDeleteTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeleteTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeleteTime', []);
 
         return parent::getDeleteTime();
     }
@@ -278,7 +278,7 @@ class PageCmsLink extends \Entity\Bizj\PageCmsLink implements \Doctrine\ORM\Prox
     public function setDeleteIssueDate($deleteIssueDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeleteIssueDate', array($deleteIssueDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeleteIssueDate', [$deleteIssueDate]);
 
         return parent::setDeleteIssueDate($deleteIssueDate);
     }
@@ -289,7 +289,7 @@ class PageCmsLink extends \Entity\Bizj\PageCmsLink implements \Doctrine\ORM\Prox
     public function getDeleteIssueDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeleteIssueDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeleteIssueDate', []);
 
         return parent::getDeleteIssueDate();
     }
@@ -300,7 +300,7 @@ class PageCmsLink extends \Entity\Bizj\PageCmsLink implements \Doctrine\ORM\Prox
     public function setUrl($url)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUrl', array($url));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUrl', [$url]);
 
         return parent::setUrl($url);
     }
@@ -311,7 +311,7 @@ class PageCmsLink extends \Entity\Bizj\PageCmsLink implements \Doctrine\ORM\Prox
     public function getUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUrl', []);
 
         return parent::getUrl();
     }
@@ -322,7 +322,7 @@ class PageCmsLink extends \Entity\Bizj\PageCmsLink implements \Doctrine\ORM\Prox
     public function setHeadline($headline)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHeadline', array($headline));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHeadline', [$headline]);
 
         return parent::setHeadline($headline);
     }
@@ -333,7 +333,7 @@ class PageCmsLink extends \Entity\Bizj\PageCmsLink implements \Doctrine\ORM\Prox
     public function getHeadline()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHeadline', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHeadline', []);
 
         return parent::getHeadline();
     }
@@ -344,7 +344,7 @@ class PageCmsLink extends \Entity\Bizj\PageCmsLink implements \Doctrine\ORM\Prox
     public function setTypeId($typeId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTypeId', array($typeId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTypeId', [$typeId]);
 
         return parent::setTypeId($typeId);
     }
@@ -355,7 +355,7 @@ class PageCmsLink extends \Entity\Bizj\PageCmsLink implements \Doctrine\ORM\Prox
     public function getTypeId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTypeId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTypeId', []);
 
         return parent::getTypeId();
     }
@@ -366,7 +366,7 @@ class PageCmsLink extends \Entity\Bizj\PageCmsLink implements \Doctrine\ORM\Prox
     public function setSource($source)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSource', array($source));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSource', [$source]);
 
         return parent::setSource($source);
     }
@@ -377,7 +377,7 @@ class PageCmsLink extends \Entity\Bizj\PageCmsLink implements \Doctrine\ORM\Prox
     public function getSource()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSource', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSource', []);
 
         return parent::getSource();
     }

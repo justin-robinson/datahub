@@ -36,7 +36,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'pulse_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'question_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'media_type', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'option_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'media_host', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'media_uri', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'crop_data', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'media_source', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'external_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'alt_text', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'art_credit', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'orig_height', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'orig_width', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'additional_data', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'Pulse');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'pulse_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'question_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'media_type', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'option_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'media_host', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'media_uri', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'crop_data', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'media_source', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'external_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'alt_text', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'art_credit', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'orig_height', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'orig_width', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'additional_data', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'Pulse'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'pulse_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'question_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'media_type', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'option_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'media_host', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'media_uri', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'crop_data', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'media_source', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'external_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'alt_text', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'art_credit', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'orig_height', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'orig_width', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'additional_data', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'Pulse');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'pulse_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'question_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'media_type', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'option_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'media_host', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'media_uri', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'crop_data', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'media_source', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'external_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'alt_text', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'art_credit', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'orig_height', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'orig_width', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'additional_data', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseMedia' . "\0" . 'Pulse'];
     }
 
     /**
@@ -97,7 +97,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function setPulseId($pulseId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPulseId', array($pulseId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPulseId', [$pulseId]);
 
         return parent::setPulseId($pulseId);
     }
@@ -190,7 +190,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function getPulseId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPulseId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPulseId', []);
 
         return parent::getPulseId();
     }
@@ -201,7 +201,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function setQuestionId($questionId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setQuestionId', array($questionId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setQuestionId', [$questionId]);
 
         return parent::setQuestionId($questionId);
     }
@@ -212,7 +212,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function getQuestionId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQuestionId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQuestionId', []);
 
         return parent::getQuestionId();
     }
@@ -223,7 +223,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function setMediaType($mediaType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaType', array($mediaType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaType', [$mediaType]);
 
         return parent::setMediaType($mediaType);
     }
@@ -234,7 +234,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function getMediaType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaType', []);
 
         return parent::getMediaType();
     }
@@ -245,7 +245,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function setOptionId($optionId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOptionId', array($optionId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOptionId', [$optionId]);
 
         return parent::setOptionId($optionId);
     }
@@ -256,7 +256,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function getOptionId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOptionId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOptionId', []);
 
         return parent::getOptionId();
     }
@@ -267,7 +267,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function setMediaHost($mediaHost)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaHost', array($mediaHost));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaHost', [$mediaHost]);
 
         return parent::setMediaHost($mediaHost);
     }
@@ -278,7 +278,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function getMediaHost()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaHost', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaHost', []);
 
         return parent::getMediaHost();
     }
@@ -289,7 +289,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function setMediaUri($mediaUri)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaUri', array($mediaUri));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaUri', [$mediaUri]);
 
         return parent::setMediaUri($mediaUri);
     }
@@ -300,7 +300,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function getMediaUri()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaUri', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaUri', []);
 
         return parent::getMediaUri();
     }
@@ -311,7 +311,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function setCropData($cropData)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCropData', array($cropData));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCropData', [$cropData]);
 
         return parent::setCropData($cropData);
     }
@@ -322,7 +322,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function getCropData()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCropData', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCropData', []);
 
         return parent::getCropData();
     }
@@ -333,7 +333,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function setMediaSource($mediaSource)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaSource', array($mediaSource));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaSource', [$mediaSource]);
 
         return parent::setMediaSource($mediaSource);
     }
@@ -344,7 +344,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function getMediaSource()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaSource', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaSource', []);
 
         return parent::getMediaSource();
     }
@@ -355,7 +355,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function setExternalId($externalId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExternalId', array($externalId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExternalId', [$externalId]);
 
         return parent::setExternalId($externalId);
     }
@@ -366,7 +366,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function getExternalId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExternalId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExternalId', []);
 
         return parent::getExternalId();
     }
@@ -377,7 +377,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function setAltText($altText)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAltText', array($altText));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAltText', [$altText]);
 
         return parent::setAltText($altText);
     }
@@ -388,7 +388,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function getAltText()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAltText', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAltText', []);
 
         return parent::getAltText();
     }
@@ -399,7 +399,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function setArtCredit($artCredit)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setArtCredit', array($artCredit));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setArtCredit', [$artCredit]);
 
         return parent::setArtCredit($artCredit);
     }
@@ -410,7 +410,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function getArtCredit()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getArtCredit', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getArtCredit', []);
 
         return parent::getArtCredit();
     }
@@ -421,7 +421,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function setOrigHeight($origHeight)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrigHeight', array($origHeight));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrigHeight', [$origHeight]);
 
         return parent::setOrigHeight($origHeight);
     }
@@ -432,7 +432,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function getOrigHeight()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrigHeight', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrigHeight', []);
 
         return parent::getOrigHeight();
     }
@@ -443,7 +443,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function setOrigWidth($origWidth)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrigWidth', array($origWidth));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrigWidth', [$origWidth]);
 
         return parent::setOrigWidth($origWidth);
     }
@@ -454,7 +454,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function getOrigWidth()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrigWidth', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrigWidth', []);
 
         return parent::getOrigWidth();
     }
@@ -465,7 +465,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function setAdditionalData($additionalData)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAdditionalData', array($additionalData));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAdditionalData', [$additionalData]);
 
         return parent::setAdditionalData($additionalData);
     }
@@ -476,7 +476,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function getAdditionalData()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAdditionalData', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAdditionalData', []);
 
         return parent::getAdditionalData();
     }
@@ -487,7 +487,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -498,7 +498,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -509,7 +509,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -520,7 +520,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -531,7 +531,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function setDeletedAt($deletedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeletedAt', array($deletedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeletedAt', [$deletedAt]);
 
         return parent::setDeletedAt($deletedAt);
     }
@@ -542,7 +542,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function getDeletedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeletedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeletedAt', []);
 
         return parent::getDeletedAt();
     }
@@ -553,7 +553,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function setPulse(\Entity\Bzjpreview\Pulse $pulse = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPulse', array($pulse));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPulse', [$pulse]);
 
         return parent::setPulse($pulse);
     }
@@ -564,7 +564,7 @@ class PulseMedia extends \Entity\Bzjpreview\PulseMedia implements \Doctrine\ORM\
     public function getPulse()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPulse', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPulse', []);
 
         return parent::getPulse();
     }

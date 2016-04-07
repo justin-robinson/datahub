@@ -36,7 +36,7 @@ class CountryList extends \Entity\NascarIllustrated\CountryList implements \Doct
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class CountryList extends \Entity\NascarIllustrated\CountryList implements \Doct
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\CountryList' . "\0" . 'country_code', '' . "\0" . 'Entity\\NascarIllustrated\\CountryList' . "\0" . 'alpha3', '' . "\0" . 'Entity\\NascarIllustrated\\CountryList' . "\0" . 'country');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\CountryList' . "\0" . 'country_code', '' . "\0" . 'Entity\\NascarIllustrated\\CountryList' . "\0" . 'alpha3', '' . "\0" . 'Entity\\NascarIllustrated\\CountryList' . "\0" . 'country'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\CountryList' . "\0" . 'country_code', '' . "\0" . 'Entity\\NascarIllustrated\\CountryList' . "\0" . 'alpha3', '' . "\0" . 'Entity\\NascarIllustrated\\CountryList' . "\0" . 'country');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\CountryList' . "\0" . 'country_code', '' . "\0" . 'Entity\\NascarIllustrated\\CountryList' . "\0" . 'alpha3', '' . "\0" . 'Entity\\NascarIllustrated\\CountryList' . "\0" . 'country'];
     }
 
     /**
@@ -97,7 +97,7 @@ class CountryList extends \Entity\NascarIllustrated\CountryList implements \Doct
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class CountryList extends \Entity\NascarIllustrated\CountryList implements \Doct
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class CountryList extends \Entity\NascarIllustrated\CountryList implements \Doct
     public function setCountryCode($countryCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountryCode', array($countryCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountryCode', [$countryCode]);
 
         return parent::setCountryCode($countryCode);
     }
@@ -190,7 +190,7 @@ class CountryList extends \Entity\NascarIllustrated\CountryList implements \Doct
     public function getCountryCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountryCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountryCode', []);
 
         return parent::getCountryCode();
     }
@@ -201,7 +201,7 @@ class CountryList extends \Entity\NascarIllustrated\CountryList implements \Doct
     public function setAlpha3($alpha3)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAlpha3', array($alpha3));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAlpha3', [$alpha3]);
 
         return parent::setAlpha3($alpha3);
     }
@@ -212,7 +212,7 @@ class CountryList extends \Entity\NascarIllustrated\CountryList implements \Doct
     public function getAlpha3()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAlpha3', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAlpha3', []);
 
         return parent::getAlpha3();
     }
@@ -223,7 +223,7 @@ class CountryList extends \Entity\NascarIllustrated\CountryList implements \Doct
     public function setCountry($country)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountry', array($country));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountry', [$country]);
 
         return parent::setCountry($country);
     }
@@ -234,7 +234,7 @@ class CountryList extends \Entity\NascarIllustrated\CountryList implements \Doct
     public function getCountry()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountry', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountry', []);
 
         return parent::getCountry();
     }

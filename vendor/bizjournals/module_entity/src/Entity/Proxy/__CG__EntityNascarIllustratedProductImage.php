@@ -36,7 +36,7 @@ class ProductImage extends \Entity\NascarIllustrated\ProductImage implements \Do
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class ProductImage extends \Entity\NascarIllustrated\ProductImage implements \Do
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'product_image_id', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'product_id', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'image_type', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'media_id', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'media_url', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'ord', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'created_at', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'updated_at', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'Product');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'product_image_id', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'product_id', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'image_type', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'media_id', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'media_url', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'ord', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'created_at', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'updated_at', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'Product'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'product_image_id', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'product_id', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'image_type', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'media_id', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'media_url', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'ord', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'created_at', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'updated_at', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'Product');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'product_image_id', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'product_id', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'image_type', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'media_id', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'media_url', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'ord', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'created_at', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'updated_at', '' . "\0" . 'Entity\\NascarIllustrated\\ProductImage' . "\0" . 'Product'];
     }
 
     /**
@@ -97,7 +97,7 @@ class ProductImage extends \Entity\NascarIllustrated\ProductImage implements \Do
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class ProductImage extends \Entity\NascarIllustrated\ProductImage implements \Do
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class ProductImage extends \Entity\NascarIllustrated\ProductImage implements \Do
     public function getProductImageId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductImageId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductImageId', []);
 
         return parent::getProductImageId();
     }
@@ -190,7 +190,7 @@ class ProductImage extends \Entity\NascarIllustrated\ProductImage implements \Do
     public function setProductId($productId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductId', array($productId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductId', [$productId]);
 
         return parent::setProductId($productId);
     }
@@ -201,7 +201,7 @@ class ProductImage extends \Entity\NascarIllustrated\ProductImage implements \Do
     public function getProductId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductId', []);
 
         return parent::getProductId();
     }
@@ -212,7 +212,7 @@ class ProductImage extends \Entity\NascarIllustrated\ProductImage implements \Do
     public function setImageType($imageType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setImageType', array($imageType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setImageType', [$imageType]);
 
         return parent::setImageType($imageType);
     }
@@ -223,7 +223,7 @@ class ProductImage extends \Entity\NascarIllustrated\ProductImage implements \Do
     public function getImageType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getImageType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getImageType', []);
 
         return parent::getImageType();
     }
@@ -234,7 +234,7 @@ class ProductImage extends \Entity\NascarIllustrated\ProductImage implements \Do
     public function setMediaId($mediaId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaId', array($mediaId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaId', [$mediaId]);
 
         return parent::setMediaId($mediaId);
     }
@@ -245,7 +245,7 @@ class ProductImage extends \Entity\NascarIllustrated\ProductImage implements \Do
     public function getMediaId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaId', []);
 
         return parent::getMediaId();
     }
@@ -256,7 +256,7 @@ class ProductImage extends \Entity\NascarIllustrated\ProductImage implements \Do
     public function setMediaUrl($mediaUrl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaUrl', array($mediaUrl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaUrl', [$mediaUrl]);
 
         return parent::setMediaUrl($mediaUrl);
     }
@@ -267,7 +267,7 @@ class ProductImage extends \Entity\NascarIllustrated\ProductImage implements \Do
     public function getMediaUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaUrl', []);
 
         return parent::getMediaUrl();
     }
@@ -278,7 +278,7 @@ class ProductImage extends \Entity\NascarIllustrated\ProductImage implements \Do
     public function setOrd($ord)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrd', array($ord));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrd', [$ord]);
 
         return parent::setOrd($ord);
     }
@@ -289,7 +289,7 @@ class ProductImage extends \Entity\NascarIllustrated\ProductImage implements \Do
     public function getOrd()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrd', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrd', []);
 
         return parent::getOrd();
     }
@@ -300,7 +300,7 @@ class ProductImage extends \Entity\NascarIllustrated\ProductImage implements \Do
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -311,7 +311,7 @@ class ProductImage extends \Entity\NascarIllustrated\ProductImage implements \Do
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -322,7 +322,7 @@ class ProductImage extends \Entity\NascarIllustrated\ProductImage implements \Do
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -333,7 +333,7 @@ class ProductImage extends \Entity\NascarIllustrated\ProductImage implements \Do
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -344,7 +344,7 @@ class ProductImage extends \Entity\NascarIllustrated\ProductImage implements \Do
     public function setProduct(\Entity\NascarIllustrated\Product $product = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProduct', array($product));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProduct', [$product]);
 
         return parent::setProduct($product);
     }
@@ -355,7 +355,7 @@ class ProductImage extends \Entity\NascarIllustrated\ProductImage implements \Do
     public function getProduct()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProduct', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProduct', []);
 
         return parent::getProduct();
     }

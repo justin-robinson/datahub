@@ -36,7 +36,7 @@ class PageMetadata extends \Entity\Bzjpreview\PageMetadata implements \Doctrine\
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class PageMetadata extends \Entity\Bzjpreview\PageMetadata implements \Doctrine\
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PageMetadata' . "\0" . 'meta_id', '' . "\0" . 'Entity\\Bzjpreview\\PageMetadata' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bzjpreview\\PageMetadata' . "\0" . 'ord', '' . "\0" . 'Entity\\Bzjpreview\\PageMetadata' . "\0" . 'meta_name', '' . "\0" . 'Entity\\Bzjpreview\\PageMetadata' . "\0" . 'meta_value', '' . "\0" . 'Entity\\Bzjpreview\\PageMetadata' . "\0" . 'Page');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PageMetadata' . "\0" . 'meta_id', '' . "\0" . 'Entity\\Bzjpreview\\PageMetadata' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bzjpreview\\PageMetadata' . "\0" . 'ord', '' . "\0" . 'Entity\\Bzjpreview\\PageMetadata' . "\0" . 'meta_name', '' . "\0" . 'Entity\\Bzjpreview\\PageMetadata' . "\0" . 'meta_value', '' . "\0" . 'Entity\\Bzjpreview\\PageMetadata' . "\0" . 'Page'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PageMetadata' . "\0" . 'meta_id', '' . "\0" . 'Entity\\Bzjpreview\\PageMetadata' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bzjpreview\\PageMetadata' . "\0" . 'ord', '' . "\0" . 'Entity\\Bzjpreview\\PageMetadata' . "\0" . 'meta_name', '' . "\0" . 'Entity\\Bzjpreview\\PageMetadata' . "\0" . 'meta_value', '' . "\0" . 'Entity\\Bzjpreview\\PageMetadata' . "\0" . 'Page');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PageMetadata' . "\0" . 'meta_id', '' . "\0" . 'Entity\\Bzjpreview\\PageMetadata' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bzjpreview\\PageMetadata' . "\0" . 'ord', '' . "\0" . 'Entity\\Bzjpreview\\PageMetadata' . "\0" . 'meta_name', '' . "\0" . 'Entity\\Bzjpreview\\PageMetadata' . "\0" . 'meta_value', '' . "\0" . 'Entity\\Bzjpreview\\PageMetadata' . "\0" . 'Page'];
     }
 
     /**
@@ -97,7 +97,7 @@ class PageMetadata extends \Entity\Bzjpreview\PageMetadata implements \Doctrine\
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class PageMetadata extends \Entity\Bzjpreview\PageMetadata implements \Doctrine\
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class PageMetadata extends \Entity\Bzjpreview\PageMetadata implements \Doctrine\
     public function getMetaId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetaId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetaId', []);
 
         return parent::getMetaId();
     }
@@ -190,7 +190,7 @@ class PageMetadata extends \Entity\Bzjpreview\PageMetadata implements \Doctrine\
     public function setPageId($pageId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPageId', array($pageId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPageId', [$pageId]);
 
         return parent::setPageId($pageId);
     }
@@ -201,7 +201,7 @@ class PageMetadata extends \Entity\Bzjpreview\PageMetadata implements \Doctrine\
     public function getPageId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageId', []);
 
         return parent::getPageId();
     }
@@ -212,7 +212,7 @@ class PageMetadata extends \Entity\Bzjpreview\PageMetadata implements \Doctrine\
     public function setOrd($ord)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrd', array($ord));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrd', [$ord]);
 
         return parent::setOrd($ord);
     }
@@ -223,7 +223,7 @@ class PageMetadata extends \Entity\Bzjpreview\PageMetadata implements \Doctrine\
     public function getOrd()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrd', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrd', []);
 
         return parent::getOrd();
     }
@@ -234,7 +234,7 @@ class PageMetadata extends \Entity\Bzjpreview\PageMetadata implements \Doctrine\
     public function setMetaName($metaName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMetaName', array($metaName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMetaName', [$metaName]);
 
         return parent::setMetaName($metaName);
     }
@@ -245,7 +245,7 @@ class PageMetadata extends \Entity\Bzjpreview\PageMetadata implements \Doctrine\
     public function getMetaName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetaName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetaName', []);
 
         return parent::getMetaName();
     }
@@ -256,7 +256,7 @@ class PageMetadata extends \Entity\Bzjpreview\PageMetadata implements \Doctrine\
     public function setMetaValue($metaValue)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMetaValue', array($metaValue));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMetaValue', [$metaValue]);
 
         return parent::setMetaValue($metaValue);
     }
@@ -267,7 +267,7 @@ class PageMetadata extends \Entity\Bzjpreview\PageMetadata implements \Doctrine\
     public function getMetaValue()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetaValue', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetaValue', []);
 
         return parent::getMetaValue();
     }
@@ -278,7 +278,7 @@ class PageMetadata extends \Entity\Bzjpreview\PageMetadata implements \Doctrine\
     public function setPage(\Entity\Bzjpreview\Page $page = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPage', array($page));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPage', [$page]);
 
         return parent::setPage($page);
     }
@@ -289,7 +289,7 @@ class PageMetadata extends \Entity\Bzjpreview\PageMetadata implements \Doctrine\
     public function getPage()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPage', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPage', []);
 
         return parent::getPage();
     }

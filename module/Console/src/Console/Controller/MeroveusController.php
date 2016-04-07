@@ -7,15 +7,14 @@
 
 namespace Console\Controller;
 
+use Console\CsvIterator;
 use Console\Record\Formatter\Factory;
-use Doctrine\DBAL\Driver\PDOException;
 use Elastica\Client as ElasticaClient;
 use Elastica\Query as ElasticaQuery;
 use Elastica\QueryBuilder as QueryBuilder;
 use Elastica\Search as ElasticaSearch;
-use Elastica\Result;
-use Services\Meroveus\CompanyService;
 use Services\Meroveus\Client as MeroveusClient;
+use Services\Meroveus\CompanyService;
 use Zend\Mvc\MvcEvent;
 
 //use Services\Meroveus\CompanyService;
@@ -212,6 +211,16 @@ class MeroveusController extends AbstractActionController
             WHERE
               meroveus_id IS NULL
             LIMIT :offset, :limit',
+        'insertMeroveusIndustry' => '
+            INSERT INTO
+              `datahub`.`meroveus_industry` (external_id, industry)
+            VALUES (:external_id, :industry)',
+        'insertCompanyMeroveusIndustry' => '
+            INSERT INTO
+              `datahub`.`company_meroveus_industry_map`
+            (hub_id, meroveus_industry_id)
+            VALUES
+            (:hub_id, :meroveus_industry_id)',
     ];
 
 
@@ -330,6 +339,7 @@ class MeroveusController extends AbstractActionController
             $meroveusParams['ENV']      = $env;
             $meroveusParams['STARTROW'] = 1; // reset our pagination offset
             $marketMatched              = $marketInserted = 0; // reset counts for this market
+            $insertCompanyMeroveusIndustry = $this->sqlStatementsArray['insertCompanyMeroveusIndustry'];
 
             // paginate over companies
             while ($marketCompanyList = $this->companyService->fetchByMarket($meroveusParams)) {
@@ -353,6 +363,7 @@ class MeroveusController extends AbstractActionController
                             try {
                                 $selectCompany->execute([$target['meroveusId']]);
                                 $hubId = ($selectCompany->rowCount() > 0) ? $selectCompany->fetch(\PDO::FETCH_ASSOC)['hub_id'] : false;
+
                                 $selectCompany->closeCursor();
                                 if ($sanity) {
                                     $this->writeSanityFiles($market, $target, $match);
@@ -384,6 +395,37 @@ class MeroveusController extends AbstractActionController
                                 echo 'PDO ERROR on company insert: ' . $e->getMessage() . PHP_EOL;
                             }
                         }
+                    }
+
+                    // does this company have an industry?
+                    if ( isset($target['firm-industry_static']) ) {
+
+                        // get all meroveus industries for this company by ID
+                        $selectMeroveusIndustry = $this->db->prepare("
+                                                SELECT
+                                                    *
+                                                FROM
+                                                  `datahub`.`meroveus_industry`
+                                                WHERE `external_id` IN ({$target['firm-industry_static']})");
+
+                        if ( $selectMeroveusIndustry->execute() ) {
+
+                            // link each industry to the company
+                            while ( $industry = $selectMeroveusIndustry->fetch(\PDO::FETCH_ASSOC) ) {
+                                try {
+                                    $insertCompanyMeroveusIndustry->execute (
+                                        [
+                                            ':hub_id'               => $hubId,
+                                            ':meroveus_industry_id' => $industry['meroveus_industry_id'],
+                                        ]);
+                                } catch (\Exception $e) {
+                                    // probably a dupe, no biggie
+                                }
+                            }
+
+                        }
+
+                        $selectMeroveusIndustry->closeCursor();
                     }
 
                     // process contacts
@@ -535,6 +577,181 @@ class MeroveusController extends AbstractActionController
             fclose($file);
 
             echo PHP_EOL . "exported {$count} companies to " . realpath($outFilePath);
+        }
+
+
+    }
+
+    /**
+     * Updates meroveus_industry table with payload from meroveus
+     */
+    public function updateIndustriesAction() {
+
+        $meroveusParams = [
+            "KEYWORDS" => "",
+            "MODE" => "LABELSEARCH",
+            "LABELS" => [
+                [
+                    "NAME" => "",
+                    "DATACLASS" => [
+                        "KEY" => "industry"
+                    ]
+                ]
+            ]
+        ];
+
+        // @todo handle deletions
+        $industries = $this->companyService->queryMeroveusRoot($meroveusParams);
+
+        foreach ( $industries as $industry ) {
+            $this->sqlStatementsArray['insertMeroveusIndustry']->execute(
+                [
+                    ':external_id' => $industry['LABELID'],
+                    ':industry' => trim($industry['NAME'], 'Â ')
+                ]
+            );
+
+        }
+    }
+
+    public function sicToMerovuesAction () {
+
+        // https://docs.google.com/spreadsheets/d/1FbPmppl5ehF0Kbwu6UXcJAOhmYSmIMIiXiD2AXtYklY/edit#gid=939757750
+        // just save link as csv
+
+        $filePath = $this->getRequest()->getParam('file');
+
+        // hardcoding filepath to work around cli arg bug
+        $filePath = "/Users/justinrobinson/Documents/datahub/sicToMeroveus.csv";
+
+        if ( !$filePath ) {
+            die ( 'run with arg --file /path/to/file ');
+        }
+
+        $filePath = realpath($filePath);
+        if ( !$filePath ) {
+            die ( "--file does not exist: " . $this->getRequest()->getParam('file') );
+        }
+
+        $file = new CsvIterator($filePath);
+        $file->setHasHeaderRow(true);
+
+        $sql = $this->db->prepare(
+            "INSERT INTO
+              `datahub`.`sic_code_meroveus_industry_map` (`sic`, `meroveus_industry_id`)
+            select
+                s.sic,
+                m.meroveus_industry_id
+            from
+                `datahub`.`sic_code` s
+                left join `datahub`.`meroveus_industry` m ON m.industry = ?
+            where
+                s.sic LIKE ?
+                AND m.meroveus_industry_id IS NOT NULL
+
+            UNION
+
+            select
+                c.sic_code,
+                m.meroveus_industry_id
+            from
+                `datahub`.`company` c
+                left join `datahub`.`meroveus_industry` m ON m.industry = ?
+            WHERE
+                c.sic_code LIKE ?
+                AND m.meroveus_industry_id IS NOT NULL");
+
+        foreach ( $file as $line ) {
+            $line = $file->mergeWithHeaderRow($line);
+
+            $sql->execute(
+                [
+                    $line['DataHub Industry'],
+                    $line['SIC'] . '%',
+                    $line['DataHub Industry'],
+                    $line['SIC'] . '%',
+                ]);
+        }
+
+    }
+
+    /**
+     * Map third party sic codes to a meroveus_industry_id and link to a company via a provided
+     * hub_id
+     * @throws \Exception
+     */
+    public function mapThirdPartySicAction () {
+
+        // hardcoding filepath to work around cli arg bug
+        $filePath = "/Users/justinrobinson/Documents/datahub/qtqB1259rel_Out_25159.csv";
+
+        if ( !$filePath ) {
+            die ( 'run with arg --file /path/to/file ');
+        }
+
+        $filePath = realpath($filePath);
+        if ( !$filePath ) {
+            die ( "--file does not exist: " . $this->getRequest()->getParam('file') );
+        }
+
+        // load csv file
+        $file = new CsvIterator($filePath);
+        $file->setHasHeaderRow(true);
+
+        // get all sic_codes that match the given sic code regex and insert provided meroveus_id and mapped
+        // meroveus_industry_ids into company_meroveus_industry_third_party_map
+        $sql = $this->db->prepare(
+            'INSERT INTO
+                `datahub`.`company_meroveus_industry_third_party_map` (`meroveus_industry_id`, `hub_id`)
+            SELECT
+                DISTINCT(m.meroveus_industry_id),
+                ?
+            FROM
+                `datahub`.`sic_code` s
+                LEFT JOIN `datahub`.`sic_code_meroveus_industry_map` m USING (`sic`)
+            WHERE
+                s.sic REGEXP ?
+                AND m.meroveus_industry_id IS NOT NULL');
+
+        // loop over each line
+        foreach ( $file as $line ) {
+
+            $line = $file->mergeWithHeaderRow($line);
+
+            // no hub_id is no good
+            if ( empty($line['hub_id']) ) {
+                continue;
+            }
+
+            // build all sic codes into regex string '^\d\d.*'
+            $sicCodes = [];
+            if ( !empty($line['PrimarySIC']) ) {
+                $sicCodes[] = '^'. substr($line['PrimarySIC'], 0, 2) . '.*';
+            }
+            if ( !empty($line['SICSecondary1']) ) {
+                $sicCodes[] = '^'. substr($line['SICSecondary1'], 0, 2) . '.*';
+            }
+            if ( !empty($line['SICSecondary2']) ) {
+                $sicCodes[] = '^'. substr($line['SICSecondary2'], 0, 2) . '.*';
+            }
+            if ( !empty($line['SICSec3']) ) {
+                $sicCodes[] = '^'. substr($line['SICSec3'], 0, 2) . '.*';
+            }
+            if ( !empty($line['SICSec4']) ) {
+                $sicCodes[] = '^'. substr($line['SICSec4'], 0, 2) . '.*';
+            }
+
+            // need at least one sic code
+            if ( empty($sicCodes) ) {
+                continue;
+            }
+
+            // link matched meroveus industries to a company
+            $sql->execute(
+                [
+                    $line['hub_id'],
+                    implode('|', $sicCodes),
+                ]);
         }
 
 
@@ -693,5 +910,7 @@ class MeroveusController extends AbstractActionController
 
         return @round($size / pow(1024, ($i = (int)floor(log($size, 1024)))), 2) . ' ' . $unit[$i];
     }
+
+
 
 }

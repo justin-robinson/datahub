@@ -36,7 +36,7 @@ class AuthSession extends \Entity\Medialibrary\AuthSession implements \Doctrine\
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class AuthSession extends \Entity\Medialibrary\AuthSession implements \Doctrine\
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'session_id', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'auth_id', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'session_hash', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'username', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'ip_address', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'expires_at', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'AuthToken');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'session_id', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'auth_id', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'session_hash', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'username', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'ip_address', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'expires_at', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'AuthToken'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'session_id', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'auth_id', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'session_hash', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'username', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'ip_address', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'expires_at', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'AuthToken');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'session_id', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'auth_id', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'session_hash', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'username', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'ip_address', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'expires_at', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\AuthSession' . "\0" . 'AuthToken'];
     }
 
     /**
@@ -97,7 +97,7 @@ class AuthSession extends \Entity\Medialibrary\AuthSession implements \Doctrine\
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class AuthSession extends \Entity\Medialibrary\AuthSession implements \Doctrine\
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class AuthSession extends \Entity\Medialibrary\AuthSession implements \Doctrine\
     public function getSessionId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSessionId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSessionId', []);
 
         return parent::getSessionId();
     }
@@ -190,7 +190,7 @@ class AuthSession extends \Entity\Medialibrary\AuthSession implements \Doctrine\
     public function setAuthId($authId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAuthId', array($authId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAuthId', [$authId]);
 
         return parent::setAuthId($authId);
     }
@@ -201,7 +201,7 @@ class AuthSession extends \Entity\Medialibrary\AuthSession implements \Doctrine\
     public function getAuthId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAuthId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAuthId', []);
 
         return parent::getAuthId();
     }
@@ -212,7 +212,7 @@ class AuthSession extends \Entity\Medialibrary\AuthSession implements \Doctrine\
     public function setSessionHash($sessionHash)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSessionHash', array($sessionHash));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSessionHash', [$sessionHash]);
 
         return parent::setSessionHash($sessionHash);
     }
@@ -223,7 +223,7 @@ class AuthSession extends \Entity\Medialibrary\AuthSession implements \Doctrine\
     public function getSessionHash()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSessionHash', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSessionHash', []);
 
         return parent::getSessionHash();
     }
@@ -234,7 +234,7 @@ class AuthSession extends \Entity\Medialibrary\AuthSession implements \Doctrine\
     public function setUsername($username)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUsername', array($username));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUsername', [$username]);
 
         return parent::setUsername($username);
     }
@@ -245,7 +245,7 @@ class AuthSession extends \Entity\Medialibrary\AuthSession implements \Doctrine\
     public function getUsername()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUsername', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUsername', []);
 
         return parent::getUsername();
     }
@@ -256,7 +256,7 @@ class AuthSession extends \Entity\Medialibrary\AuthSession implements \Doctrine\
     public function setIpAddress($ipAddress)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIpAddress', array($ipAddress));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIpAddress', [$ipAddress]);
 
         return parent::setIpAddress($ipAddress);
     }
@@ -267,7 +267,7 @@ class AuthSession extends \Entity\Medialibrary\AuthSession implements \Doctrine\
     public function getIpAddress()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIpAddress', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIpAddress', []);
 
         return parent::getIpAddress();
     }
@@ -278,7 +278,7 @@ class AuthSession extends \Entity\Medialibrary\AuthSession implements \Doctrine\
     public function setExpiresAt($expiresAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExpiresAt', array($expiresAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExpiresAt', [$expiresAt]);
 
         return parent::setExpiresAt($expiresAt);
     }
@@ -289,7 +289,7 @@ class AuthSession extends \Entity\Medialibrary\AuthSession implements \Doctrine\
     public function getExpiresAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExpiresAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExpiresAt', []);
 
         return parent::getExpiresAt();
     }
@@ -300,7 +300,7 @@ class AuthSession extends \Entity\Medialibrary\AuthSession implements \Doctrine\
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -311,7 +311,7 @@ class AuthSession extends \Entity\Medialibrary\AuthSession implements \Doctrine\
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -322,7 +322,7 @@ class AuthSession extends \Entity\Medialibrary\AuthSession implements \Doctrine\
     public function setAuthToken(\Entity\Medialibrary\AuthToken $authToken = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAuthToken', array($authToken));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAuthToken', [$authToken]);
 
         return parent::setAuthToken($authToken);
     }
@@ -333,7 +333,7 @@ class AuthSession extends \Entity\Medialibrary\AuthSession implements \Doctrine\
     public function getAuthToken()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAuthToken', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAuthToken', []);
 
         return parent::getAuthToken();
     }

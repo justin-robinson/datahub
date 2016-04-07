@@ -36,7 +36,7 @@ class ClickUrl extends \Entity\Email\ClickUrl implements \Doctrine\ORM\Proxy\Pro
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class ClickUrl extends \Entity\Email\ClickUrl implements \Doctrine\ORM\Proxy\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Email\\ClickUrl' . "\0" . 'click_id', '' . "\0" . 'Entity\\Email\\ClickUrl' . "\0" . 'job_id', '' . "\0" . 'Entity\\Email\\ClickUrl' . "\0" . 'ref_type', '' . "\0" . 'Entity\\Email\\ClickUrl' . "\0" . 'ref_id', '' . "\0" . 'Entity\\Email\\ClickUrl' . "\0" . 'dest_url', '' . "\0" . 'Entity\\Email\\ClickUrl' . "\0" . 'description', '' . "\0" . 'Entity\\Email\\ClickUrl' . "\0" . 'created_at');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Email\\ClickUrl' . "\0" . 'click_id', '' . "\0" . 'Entity\\Email\\ClickUrl' . "\0" . 'job_id', '' . "\0" . 'Entity\\Email\\ClickUrl' . "\0" . 'ref_type', '' . "\0" . 'Entity\\Email\\ClickUrl' . "\0" . 'ref_id', '' . "\0" . 'Entity\\Email\\ClickUrl' . "\0" . 'dest_url', '' . "\0" . 'Entity\\Email\\ClickUrl' . "\0" . 'description', '' . "\0" . 'Entity\\Email\\ClickUrl' . "\0" . 'created_at'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Email\\ClickUrl' . "\0" . 'click_id', '' . "\0" . 'Entity\\Email\\ClickUrl' . "\0" . 'job_id', '' . "\0" . 'Entity\\Email\\ClickUrl' . "\0" . 'ref_type', '' . "\0" . 'Entity\\Email\\ClickUrl' . "\0" . 'ref_id', '' . "\0" . 'Entity\\Email\\ClickUrl' . "\0" . 'dest_url', '' . "\0" . 'Entity\\Email\\ClickUrl' . "\0" . 'description', '' . "\0" . 'Entity\\Email\\ClickUrl' . "\0" . 'created_at');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Email\\ClickUrl' . "\0" . 'click_id', '' . "\0" . 'Entity\\Email\\ClickUrl' . "\0" . 'job_id', '' . "\0" . 'Entity\\Email\\ClickUrl' . "\0" . 'ref_type', '' . "\0" . 'Entity\\Email\\ClickUrl' . "\0" . 'ref_id', '' . "\0" . 'Entity\\Email\\ClickUrl' . "\0" . 'dest_url', '' . "\0" . 'Entity\\Email\\ClickUrl' . "\0" . 'description', '' . "\0" . 'Entity\\Email\\ClickUrl' . "\0" . 'created_at'];
     }
 
     /**
@@ -97,7 +97,7 @@ class ClickUrl extends \Entity\Email\ClickUrl implements \Doctrine\ORM\Proxy\Pro
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class ClickUrl extends \Entity\Email\ClickUrl implements \Doctrine\ORM\Proxy\Pro
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class ClickUrl extends \Entity\Email\ClickUrl implements \Doctrine\ORM\Proxy\Pro
     public function getClickId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClickId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClickId', []);
 
         return parent::getClickId();
     }
@@ -190,7 +190,7 @@ class ClickUrl extends \Entity\Email\ClickUrl implements \Doctrine\ORM\Proxy\Pro
     public function setJobId($jobId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setJobId', array($jobId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setJobId', [$jobId]);
 
         return parent::setJobId($jobId);
     }
@@ -201,7 +201,7 @@ class ClickUrl extends \Entity\Email\ClickUrl implements \Doctrine\ORM\Proxy\Pro
     public function getJobId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJobId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJobId', []);
 
         return parent::getJobId();
     }
@@ -212,7 +212,7 @@ class ClickUrl extends \Entity\Email\ClickUrl implements \Doctrine\ORM\Proxy\Pro
     public function setRefType($refType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRefType', array($refType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRefType', [$refType]);
 
         return parent::setRefType($refType);
     }
@@ -223,7 +223,7 @@ class ClickUrl extends \Entity\Email\ClickUrl implements \Doctrine\ORM\Proxy\Pro
     public function getRefType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefType', []);
 
         return parent::getRefType();
     }
@@ -234,7 +234,7 @@ class ClickUrl extends \Entity\Email\ClickUrl implements \Doctrine\ORM\Proxy\Pro
     public function setRefId($refId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRefId', array($refId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRefId', [$refId]);
 
         return parent::setRefId($refId);
     }
@@ -245,7 +245,7 @@ class ClickUrl extends \Entity\Email\ClickUrl implements \Doctrine\ORM\Proxy\Pro
     public function getRefId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefId', []);
 
         return parent::getRefId();
     }
@@ -256,7 +256,7 @@ class ClickUrl extends \Entity\Email\ClickUrl implements \Doctrine\ORM\Proxy\Pro
     public function setDestUrl($destUrl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDestUrl', array($destUrl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDestUrl', [$destUrl]);
 
         return parent::setDestUrl($destUrl);
     }
@@ -267,7 +267,7 @@ class ClickUrl extends \Entity\Email\ClickUrl implements \Doctrine\ORM\Proxy\Pro
     public function getDestUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDestUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDestUrl', []);
 
         return parent::getDestUrl();
     }
@@ -278,7 +278,7 @@ class ClickUrl extends \Entity\Email\ClickUrl implements \Doctrine\ORM\Proxy\Pro
     public function setDescription($description)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', array($description));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', [$description]);
 
         return parent::setDescription($description);
     }
@@ -289,7 +289,7 @@ class ClickUrl extends \Entity\Email\ClickUrl implements \Doctrine\ORM\Proxy\Pro
     public function getDescription()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', []);
 
         return parent::getDescription();
     }
@@ -300,7 +300,7 @@ class ClickUrl extends \Entity\Email\ClickUrl implements \Doctrine\ORM\Proxy\Pro
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -311,7 +311,7 @@ class ClickUrl extends \Entity\Email\ClickUrl implements \Doctrine\ORM\Proxy\Pro
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }

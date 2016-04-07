@@ -36,7 +36,7 @@ class TrackerKey extends \Entity\Tracking\TrackerKey implements \Doctrine\ORM\Pr
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class TrackerKey extends \Entity\Tracking\TrackerKey implements \Doctrine\ORM\Pr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'tracker_key_id', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'tracker_key', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'client_id', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'tracker_type', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'tracker_subtype', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'url', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'campaign_ref', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'tracker_properties', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'is_active', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'created_at', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'updated_at');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'tracker_key_id', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'tracker_key', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'client_id', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'tracker_type', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'tracker_subtype', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'url', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'campaign_ref', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'tracker_properties', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'is_active', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'created_at', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'updated_at'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'tracker_key_id', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'tracker_key', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'client_id', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'tracker_type', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'tracker_subtype', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'url', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'campaign_ref', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'tracker_properties', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'is_active', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'created_at', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'updated_at');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'tracker_key_id', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'tracker_key', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'client_id', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'tracker_type', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'tracker_subtype', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'url', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'campaign_ref', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'tracker_properties', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'is_active', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'created_at', '' . "\0" . 'Entity\\Tracking\\TrackerKey' . "\0" . 'updated_at'];
     }
 
     /**
@@ -97,7 +97,7 @@ class TrackerKey extends \Entity\Tracking\TrackerKey implements \Doctrine\ORM\Pr
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class TrackerKey extends \Entity\Tracking\TrackerKey implements \Doctrine\ORM\Pr
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class TrackerKey extends \Entity\Tracking\TrackerKey implements \Doctrine\ORM\Pr
     public function getTrackerKeyId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTrackerKeyId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTrackerKeyId', []);
 
         return parent::getTrackerKeyId();
     }
@@ -190,7 +190,7 @@ class TrackerKey extends \Entity\Tracking\TrackerKey implements \Doctrine\ORM\Pr
     public function setTrackerKey($trackerKey)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTrackerKey', array($trackerKey));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTrackerKey', [$trackerKey]);
 
         return parent::setTrackerKey($trackerKey);
     }
@@ -201,7 +201,7 @@ class TrackerKey extends \Entity\Tracking\TrackerKey implements \Doctrine\ORM\Pr
     public function getTrackerKey()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTrackerKey', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTrackerKey', []);
 
         return parent::getTrackerKey();
     }
@@ -212,7 +212,7 @@ class TrackerKey extends \Entity\Tracking\TrackerKey implements \Doctrine\ORM\Pr
     public function setClientId($clientId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setClientId', array($clientId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setClientId', [$clientId]);
 
         return parent::setClientId($clientId);
     }
@@ -223,7 +223,7 @@ class TrackerKey extends \Entity\Tracking\TrackerKey implements \Doctrine\ORM\Pr
     public function getClientId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClientId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClientId', []);
 
         return parent::getClientId();
     }
@@ -234,7 +234,7 @@ class TrackerKey extends \Entity\Tracking\TrackerKey implements \Doctrine\ORM\Pr
     public function setTrackerType($trackerType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTrackerType', array($trackerType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTrackerType', [$trackerType]);
 
         return parent::setTrackerType($trackerType);
     }
@@ -245,7 +245,7 @@ class TrackerKey extends \Entity\Tracking\TrackerKey implements \Doctrine\ORM\Pr
     public function getTrackerType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTrackerType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTrackerType', []);
 
         return parent::getTrackerType();
     }
@@ -256,7 +256,7 @@ class TrackerKey extends \Entity\Tracking\TrackerKey implements \Doctrine\ORM\Pr
     public function setTrackerSubtype($trackerSubtype)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTrackerSubtype', array($trackerSubtype));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTrackerSubtype', [$trackerSubtype]);
 
         return parent::setTrackerSubtype($trackerSubtype);
     }
@@ -267,7 +267,7 @@ class TrackerKey extends \Entity\Tracking\TrackerKey implements \Doctrine\ORM\Pr
     public function getTrackerSubtype()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTrackerSubtype', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTrackerSubtype', []);
 
         return parent::getTrackerSubtype();
     }
@@ -278,7 +278,7 @@ class TrackerKey extends \Entity\Tracking\TrackerKey implements \Doctrine\ORM\Pr
     public function setUrl($url)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUrl', array($url));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUrl', [$url]);
 
         return parent::setUrl($url);
     }
@@ -289,7 +289,7 @@ class TrackerKey extends \Entity\Tracking\TrackerKey implements \Doctrine\ORM\Pr
     public function getUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUrl', []);
 
         return parent::getUrl();
     }
@@ -300,7 +300,7 @@ class TrackerKey extends \Entity\Tracking\TrackerKey implements \Doctrine\ORM\Pr
     public function setCampaignRef($campaignRef)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCampaignRef', array($campaignRef));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCampaignRef', [$campaignRef]);
 
         return parent::setCampaignRef($campaignRef);
     }
@@ -311,7 +311,7 @@ class TrackerKey extends \Entity\Tracking\TrackerKey implements \Doctrine\ORM\Pr
     public function getCampaignRef()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCampaignRef', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCampaignRef', []);
 
         return parent::getCampaignRef();
     }
@@ -322,7 +322,7 @@ class TrackerKey extends \Entity\Tracking\TrackerKey implements \Doctrine\ORM\Pr
     public function setTrackerProperties($trackerProperties)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTrackerProperties', array($trackerProperties));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTrackerProperties', [$trackerProperties]);
 
         return parent::setTrackerProperties($trackerProperties);
     }
@@ -333,7 +333,7 @@ class TrackerKey extends \Entity\Tracking\TrackerKey implements \Doctrine\ORM\Pr
     public function getTrackerProperties()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTrackerProperties', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTrackerProperties', []);
 
         return parent::getTrackerProperties();
     }
@@ -344,7 +344,7 @@ class TrackerKey extends \Entity\Tracking\TrackerKey implements \Doctrine\ORM\Pr
     public function setIsActive($isActive)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', array($isActive));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', [$isActive]);
 
         return parent::setIsActive($isActive);
     }
@@ -355,7 +355,7 @@ class TrackerKey extends \Entity\Tracking\TrackerKey implements \Doctrine\ORM\Pr
     public function getIsActive()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', []);
 
         return parent::getIsActive();
     }
@@ -366,7 +366,7 @@ class TrackerKey extends \Entity\Tracking\TrackerKey implements \Doctrine\ORM\Pr
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -377,7 +377,7 @@ class TrackerKey extends \Entity\Tracking\TrackerKey implements \Doctrine\ORM\Pr
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -388,7 +388,7 @@ class TrackerKey extends \Entity\Tracking\TrackerKey implements \Doctrine\ORM\Pr
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -399,7 +399,7 @@ class TrackerKey extends \Entity\Tracking\TrackerKey implements \Doctrine\ORM\Pr
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }

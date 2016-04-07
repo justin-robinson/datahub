@@ -36,7 +36,7 @@ class MarketStaff extends \Entity\Bizj\MarketStaff implements \Doctrine\ORM\Prox
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class MarketStaff extends \Entity\Bizj\MarketStaff implements \Doctrine\ORM\Prox
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'staff_id', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'market_id', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'contact_id', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'is_writer', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'is_former_staff', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'is_contributor', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'Market', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'ContactData');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'staff_id', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'market_id', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'contact_id', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'is_writer', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'is_former_staff', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'is_contributor', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'Market', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'ContactData'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'staff_id', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'market_id', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'contact_id', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'is_writer', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'is_former_staff', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'is_contributor', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'Market', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'ContactData');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'staff_id', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'market_id', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'contact_id', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'is_writer', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'is_former_staff', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'is_contributor', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'Market', '' . "\0" . 'Entity\\Bizj\\MarketStaff' . "\0" . 'ContactData'];
     }
 
     /**
@@ -97,7 +97,7 @@ class MarketStaff extends \Entity\Bizj\MarketStaff implements \Doctrine\ORM\Prox
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class MarketStaff extends \Entity\Bizj\MarketStaff implements \Doctrine\ORM\Prox
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class MarketStaff extends \Entity\Bizj\MarketStaff implements \Doctrine\ORM\Prox
     public function getStaffId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStaffId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStaffId', []);
 
         return parent::getStaffId();
     }
@@ -190,7 +190,7 @@ class MarketStaff extends \Entity\Bizj\MarketStaff implements \Doctrine\ORM\Prox
     public function setMarketId($marketId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketId', array($marketId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketId', [$marketId]);
 
         return parent::setMarketId($marketId);
     }
@@ -201,7 +201,7 @@ class MarketStaff extends \Entity\Bizj\MarketStaff implements \Doctrine\ORM\Prox
     public function getMarketId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketId', []);
 
         return parent::getMarketId();
     }
@@ -212,7 +212,7 @@ class MarketStaff extends \Entity\Bizj\MarketStaff implements \Doctrine\ORM\Prox
     public function setContactId($contactId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContactId', array($contactId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContactId', [$contactId]);
 
         return parent::setContactId($contactId);
     }
@@ -223,7 +223,7 @@ class MarketStaff extends \Entity\Bizj\MarketStaff implements \Doctrine\ORM\Prox
     public function getContactId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactId', []);
 
         return parent::getContactId();
     }
@@ -234,7 +234,7 @@ class MarketStaff extends \Entity\Bizj\MarketStaff implements \Doctrine\ORM\Prox
     public function setIsWriter($isWriter)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsWriter', array($isWriter));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsWriter', [$isWriter]);
 
         return parent::setIsWriter($isWriter);
     }
@@ -245,7 +245,7 @@ class MarketStaff extends \Entity\Bizj\MarketStaff implements \Doctrine\ORM\Prox
     public function getIsWriter()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsWriter', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsWriter', []);
 
         return parent::getIsWriter();
     }
@@ -256,7 +256,7 @@ class MarketStaff extends \Entity\Bizj\MarketStaff implements \Doctrine\ORM\Prox
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -267,7 +267,7 @@ class MarketStaff extends \Entity\Bizj\MarketStaff implements \Doctrine\ORM\Prox
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -278,7 +278,7 @@ class MarketStaff extends \Entity\Bizj\MarketStaff implements \Doctrine\ORM\Prox
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -289,7 +289,7 @@ class MarketStaff extends \Entity\Bizj\MarketStaff implements \Doctrine\ORM\Prox
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -300,7 +300,7 @@ class MarketStaff extends \Entity\Bizj\MarketStaff implements \Doctrine\ORM\Prox
     public function setIsFormerStaff($isFormerStaff)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsFormerStaff', array($isFormerStaff));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsFormerStaff', [$isFormerStaff]);
 
         return parent::setIsFormerStaff($isFormerStaff);
     }
@@ -311,7 +311,7 @@ class MarketStaff extends \Entity\Bizj\MarketStaff implements \Doctrine\ORM\Prox
     public function getIsFormerStaff()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsFormerStaff', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsFormerStaff', []);
 
         return parent::getIsFormerStaff();
     }
@@ -322,7 +322,7 @@ class MarketStaff extends \Entity\Bizj\MarketStaff implements \Doctrine\ORM\Prox
     public function setIsContributor($isContributor)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsContributor', array($isContributor));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsContributor', [$isContributor]);
 
         return parent::setIsContributor($isContributor);
     }
@@ -333,7 +333,7 @@ class MarketStaff extends \Entity\Bizj\MarketStaff implements \Doctrine\ORM\Prox
     public function getIsContributor()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsContributor', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsContributor', []);
 
         return parent::getIsContributor();
     }
@@ -344,7 +344,7 @@ class MarketStaff extends \Entity\Bizj\MarketStaff implements \Doctrine\ORM\Prox
     public function setMarket(\Entity\Bizj\Market $market = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarket', array($market));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarket', [$market]);
 
         return parent::setMarket($market);
     }
@@ -355,7 +355,7 @@ class MarketStaff extends \Entity\Bizj\MarketStaff implements \Doctrine\ORM\Prox
     public function getMarket()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarket', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarket', []);
 
         return parent::getMarket();
     }
@@ -366,7 +366,7 @@ class MarketStaff extends \Entity\Bizj\MarketStaff implements \Doctrine\ORM\Prox
     public function setContactData(\Entity\Bizj\ContactData $contactData = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContactData', array($contactData));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContactData', [$contactData]);
 
         return parent::setContactData($contactData);
     }
@@ -377,7 +377,7 @@ class MarketStaff extends \Entity\Bizj\MarketStaff implements \Doctrine\ORM\Prox
     public function getContactData()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactData', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactData', []);
 
         return parent::getContactData();
     }

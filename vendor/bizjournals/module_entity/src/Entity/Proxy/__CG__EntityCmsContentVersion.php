@@ -36,7 +36,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'content_id', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'version', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'content_type', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'title', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'slug', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'frontend_id', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'last_published_version', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'json_data', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'db_created_at', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'db_updated_at', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'last_updated_by', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'nilsimsa_digest', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'parent_frontend_id', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'AuditLog', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'Content');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'content_id', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'version', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'content_type', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'title', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'slug', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'frontend_id', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'last_published_version', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'json_data', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'db_created_at', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'db_updated_at', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'last_updated_by', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'nilsimsa_digest', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'parent_frontend_id', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'AuditLog', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'Content'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'content_id', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'version', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'content_type', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'title', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'slug', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'frontend_id', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'last_published_version', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'json_data', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'db_created_at', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'db_updated_at', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'last_updated_by', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'nilsimsa_digest', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'parent_frontend_id', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'AuditLog', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'Content');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'content_id', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'version', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'content_type', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'title', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'slug', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'frontend_id', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'last_published_version', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'json_data', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'db_created_at', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'db_updated_at', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'last_updated_by', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'nilsimsa_digest', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'parent_frontend_id', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'AuditLog', '' . "\0" . 'Entity\\Cms\\ContentVersion' . "\0" . 'Content'];
     }
 
     /**
@@ -97,7 +97,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function setContentId($contentId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContentId', array($contentId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContentId', [$contentId]);
 
         return parent::setContentId($contentId);
     }
@@ -190,7 +190,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function getContentId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContentId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContentId', []);
 
         return parent::getContentId();
     }
@@ -201,7 +201,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function setVersion($version)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setVersion', array($version));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setVersion', [$version]);
 
         return parent::setVersion($version);
     }
@@ -216,7 +216,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
         }
 
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getVersion', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getVersion', []);
 
         return parent::getVersion();
     }
@@ -227,7 +227,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function setContentType($contentType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContentType', array($contentType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContentType', [$contentType]);
 
         return parent::setContentType($contentType);
     }
@@ -238,7 +238,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function getContentType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContentType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContentType', []);
 
         return parent::getContentType();
     }
@@ -249,7 +249,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function setTitle($title)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', array($title));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', [$title]);
 
         return parent::setTitle($title);
     }
@@ -260,7 +260,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function getTitle()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', []);
 
         return parent::getTitle();
     }
@@ -271,7 +271,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function setSlug($slug)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSlug', array($slug));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSlug', [$slug]);
 
         return parent::setSlug($slug);
     }
@@ -282,7 +282,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function getSlug()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSlug', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSlug', []);
 
         return parent::getSlug();
     }
@@ -293,7 +293,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function setPubId($pubId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPubId', array($pubId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPubId', [$pubId]);
 
         return parent::setPubId($pubId);
     }
@@ -304,7 +304,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function getPubId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPubId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPubId', []);
 
         return parent::getPubId();
     }
@@ -315,7 +315,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function setFrontendId($frontendId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFrontendId', array($frontendId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFrontendId', [$frontendId]);
 
         return parent::setFrontendId($frontendId);
     }
@@ -326,7 +326,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function getFrontendId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFrontendId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFrontendId', []);
 
         return parent::getFrontendId();
     }
@@ -337,7 +337,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function setLastPublishedVersion($lastPublishedVersion)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLastPublishedVersion', array($lastPublishedVersion));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLastPublishedVersion', [$lastPublishedVersion]);
 
         return parent::setLastPublishedVersion($lastPublishedVersion);
     }
@@ -348,7 +348,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function getLastPublishedVersion()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLastPublishedVersion', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLastPublishedVersion', []);
 
         return parent::getLastPublishedVersion();
     }
@@ -359,7 +359,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function setJsonData($jsonData)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setJsonData', array($jsonData));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setJsonData', [$jsonData]);
 
         return parent::setJsonData($jsonData);
     }
@@ -370,7 +370,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function getJsonData()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJsonData', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJsonData', []);
 
         return parent::getJsonData();
     }
@@ -381,7 +381,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function setDbCreatedAt($dbCreatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDbCreatedAt', array($dbCreatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDbCreatedAt', [$dbCreatedAt]);
 
         return parent::setDbCreatedAt($dbCreatedAt);
     }
@@ -392,7 +392,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function getDbCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDbCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDbCreatedAt', []);
 
         return parent::getDbCreatedAt();
     }
@@ -403,7 +403,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function setDbUpdatedAt($dbUpdatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDbUpdatedAt', array($dbUpdatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDbUpdatedAt', [$dbUpdatedAt]);
 
         return parent::setDbUpdatedAt($dbUpdatedAt);
     }
@@ -414,7 +414,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function getDbUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDbUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDbUpdatedAt', []);
 
         return parent::getDbUpdatedAt();
     }
@@ -425,7 +425,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function setLastUpdatedBy($lastUpdatedBy)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLastUpdatedBy', array($lastUpdatedBy));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLastUpdatedBy', [$lastUpdatedBy]);
 
         return parent::setLastUpdatedBy($lastUpdatedBy);
     }
@@ -436,7 +436,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function getLastUpdatedBy()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLastUpdatedBy', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLastUpdatedBy', []);
 
         return parent::getLastUpdatedBy();
     }
@@ -447,7 +447,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function setNilsimsaDigest($nilsimsaDigest)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNilsimsaDigest', array($nilsimsaDigest));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNilsimsaDigest', [$nilsimsaDigest]);
 
         return parent::setNilsimsaDigest($nilsimsaDigest);
     }
@@ -458,7 +458,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function getNilsimsaDigest()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNilsimsaDigest', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNilsimsaDigest', []);
 
         return parent::getNilsimsaDigest();
     }
@@ -469,7 +469,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function setParentFrontendId($parentFrontendId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParentFrontendId', array($parentFrontendId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParentFrontendId', [$parentFrontendId]);
 
         return parent::setParentFrontendId($parentFrontendId);
     }
@@ -480,7 +480,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function getParentFrontendId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParentFrontendId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParentFrontendId', []);
 
         return parent::getParentFrontendId();
     }
@@ -491,7 +491,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function addAuditLog(\Entity\Cms\AuditLog $auditLog)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAuditLog', array($auditLog));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAuditLog', [$auditLog]);
 
         return parent::addAuditLog($auditLog);
     }
@@ -502,7 +502,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function removeAuditLog(\Entity\Cms\AuditLog $auditLog)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAuditLog', array($auditLog));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAuditLog', [$auditLog]);
 
         return parent::removeAuditLog($auditLog);
     }
@@ -513,7 +513,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function getAuditLog()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAuditLog', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAuditLog', []);
 
         return parent::getAuditLog();
     }
@@ -524,7 +524,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function setContent(\Entity\Cms\Content $content = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContent', array($content));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContent', [$content]);
 
         return parent::setContent($content);
     }
@@ -535,7 +535,7 @@ class ContentVersion extends \Entity\Cms\ContentVersion implements \Doctrine\ORM
     public function getContent()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContent', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContent', []);
 
         return parent::getContent();
     }

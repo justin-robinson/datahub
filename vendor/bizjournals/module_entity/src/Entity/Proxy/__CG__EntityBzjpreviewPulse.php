@@ -36,7 +36,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'pulse_id', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'pulse_type', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'primary_market_id', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'headline', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'short_headline', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'description', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'start_time', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'end_time', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'is_evergreen', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'is_featured', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'is_national', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'has_sponsor', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'allow_comments', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'display_results', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'meta_title', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'meta_description', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'estimated_response_count', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'Crossrefs', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'Media', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'Markets', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'Questions', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'LeadinGroups');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'pulse_id', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'pulse_type', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'primary_market_id', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'headline', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'short_headline', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'description', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'start_time', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'end_time', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'is_evergreen', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'is_featured', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'is_national', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'has_sponsor', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'allow_comments', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'display_results', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'meta_title', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'meta_description', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'estimated_response_count', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'Crossrefs', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'Media', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'Markets', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'Questions', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'LeadinGroups'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'pulse_id', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'pulse_type', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'primary_market_id', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'headline', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'short_headline', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'description', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'start_time', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'end_time', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'is_evergreen', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'is_featured', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'is_national', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'has_sponsor', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'allow_comments', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'display_results', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'meta_title', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'meta_description', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'estimated_response_count', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'Crossrefs', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'Media', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'Markets', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'Questions', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'LeadinGroups');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'pulse_id', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'pulse_type', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'primary_market_id', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'headline', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'short_headline', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'description', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'start_time', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'end_time', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'is_evergreen', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'is_featured', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'is_national', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'has_sponsor', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'allow_comments', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'display_results', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'meta_title', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'meta_description', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'estimated_response_count', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'Crossrefs', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'Media', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'Markets', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'Questions', '' . "\0" . 'Entity\\Bzjpreview\\Pulse' . "\0" . 'LeadinGroups'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function setPulseId($pulseId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPulseId', array($pulseId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPulseId', [$pulseId]);
 
         return parent::setPulseId($pulseId);
     }
@@ -190,7 +190,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function getPulseId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPulseId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPulseId', []);
 
         return parent::getPulseId();
     }
@@ -201,7 +201,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function setPulseType($pulseType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPulseType', array($pulseType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPulseType', [$pulseType]);
 
         return parent::setPulseType($pulseType);
     }
@@ -212,7 +212,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function getPulseType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPulseType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPulseType', []);
 
         return parent::getPulseType();
     }
@@ -223,7 +223,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function setPrimaryMarketId($primaryMarketId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPrimaryMarketId', array($primaryMarketId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPrimaryMarketId', [$primaryMarketId]);
 
         return parent::setPrimaryMarketId($primaryMarketId);
     }
@@ -234,7 +234,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function getPrimaryMarketId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPrimaryMarketId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPrimaryMarketId', []);
 
         return parent::getPrimaryMarketId();
     }
@@ -245,7 +245,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function setHeadline($headline)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHeadline', array($headline));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHeadline', [$headline]);
 
         return parent::setHeadline($headline);
     }
@@ -256,7 +256,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function getHeadline()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHeadline', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHeadline', []);
 
         return parent::getHeadline();
     }
@@ -267,7 +267,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function setShortHeadline($shortHeadline)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setShortHeadline', array($shortHeadline));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setShortHeadline', [$shortHeadline]);
 
         return parent::setShortHeadline($shortHeadline);
     }
@@ -278,7 +278,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function getShortHeadline()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getShortHeadline', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getShortHeadline', []);
 
         return parent::getShortHeadline();
     }
@@ -289,7 +289,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function setDescription($description)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', array($description));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', [$description]);
 
         return parent::setDescription($description);
     }
@@ -300,7 +300,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function getDescription()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', []);
 
         return parent::getDescription();
     }
@@ -311,7 +311,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function setStartTime($startTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStartTime', array($startTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStartTime', [$startTime]);
 
         return parent::setStartTime($startTime);
     }
@@ -322,7 +322,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function getStartTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStartTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStartTime', []);
 
         return parent::getStartTime();
     }
@@ -333,7 +333,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function setEndTime($endTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEndTime', array($endTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEndTime', [$endTime]);
 
         return parent::setEndTime($endTime);
     }
@@ -344,7 +344,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function getEndTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEndTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEndTime', []);
 
         return parent::getEndTime();
     }
@@ -355,7 +355,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function setIsEvergreen($isEvergreen)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsEvergreen', array($isEvergreen));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsEvergreen', [$isEvergreen]);
 
         return parent::setIsEvergreen($isEvergreen);
     }
@@ -366,7 +366,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function getIsEvergreen()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsEvergreen', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsEvergreen', []);
 
         return parent::getIsEvergreen();
     }
@@ -377,7 +377,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function setIsFeatured($isFeatured)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsFeatured', array($isFeatured));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsFeatured', [$isFeatured]);
 
         return parent::setIsFeatured($isFeatured);
     }
@@ -388,7 +388,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function getIsFeatured()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsFeatured', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsFeatured', []);
 
         return parent::getIsFeatured();
     }
@@ -399,7 +399,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function setIsNational($isNational)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsNational', array($isNational));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsNational', [$isNational]);
 
         return parent::setIsNational($isNational);
     }
@@ -410,7 +410,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function getIsNational()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsNational', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsNational', []);
 
         return parent::getIsNational();
     }
@@ -421,7 +421,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function setHasSponsor($hasSponsor)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasSponsor', array($hasSponsor));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasSponsor', [$hasSponsor]);
 
         return parent::setHasSponsor($hasSponsor);
     }
@@ -432,7 +432,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function getHasSponsor()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasSponsor', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasSponsor', []);
 
         return parent::getHasSponsor();
     }
@@ -443,7 +443,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function setAllowComments($allowComments)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowComments', array($allowComments));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowComments', [$allowComments]);
 
         return parent::setAllowComments($allowComments);
     }
@@ -454,7 +454,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function getAllowComments()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowComments', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowComments', []);
 
         return parent::getAllowComments();
     }
@@ -465,7 +465,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function setDisplayResults($displayResults)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDisplayResults', array($displayResults));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDisplayResults', [$displayResults]);
 
         return parent::setDisplayResults($displayResults);
     }
@@ -476,7 +476,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function getDisplayResults()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDisplayResults', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDisplayResults', []);
 
         return parent::getDisplayResults();
     }
@@ -487,7 +487,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function setMetaTitle($metaTitle)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMetaTitle', array($metaTitle));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMetaTitle', [$metaTitle]);
 
         return parent::setMetaTitle($metaTitle);
     }
@@ -498,7 +498,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function getMetaTitle()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetaTitle', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetaTitle', []);
 
         return parent::getMetaTitle();
     }
@@ -509,7 +509,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function setMetaDescription($metaDescription)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMetaDescription', array($metaDescription));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMetaDescription', [$metaDescription]);
 
         return parent::setMetaDescription($metaDescription);
     }
@@ -520,7 +520,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function getMetaDescription()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetaDescription', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetaDescription', []);
 
         return parent::getMetaDescription();
     }
@@ -531,7 +531,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function setEstimatedResponseCount($estimatedResponseCount)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEstimatedResponseCount', array($estimatedResponseCount));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEstimatedResponseCount', [$estimatedResponseCount]);
 
         return parent::setEstimatedResponseCount($estimatedResponseCount);
     }
@@ -542,7 +542,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function getEstimatedResponseCount()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEstimatedResponseCount', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEstimatedResponseCount', []);
 
         return parent::getEstimatedResponseCount();
     }
@@ -553,7 +553,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -564,7 +564,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -575,7 +575,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -586,7 +586,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -597,7 +597,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function setDeletedAt($deletedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeletedAt', array($deletedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeletedAt', [$deletedAt]);
 
         return parent::setDeletedAt($deletedAt);
     }
@@ -608,7 +608,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function getDeletedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeletedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeletedAt', []);
 
         return parent::getDeletedAt();
     }
@@ -619,7 +619,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function addCrossref(\Entity\Bzjpreview\PulseCrossref $crossref)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCrossref', array($crossref));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCrossref', [$crossref]);
 
         return parent::addCrossref($crossref);
     }
@@ -630,7 +630,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function removeCrossref(\Entity\Bzjpreview\PulseCrossref $crossref)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCrossref', array($crossref));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCrossref', [$crossref]);
 
         return parent::removeCrossref($crossref);
     }
@@ -641,7 +641,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function getCrossrefs()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCrossrefs', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCrossrefs', []);
 
         return parent::getCrossrefs();
     }
@@ -652,7 +652,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function addMedia(\Entity\Bzjpreview\PulseMedia $medium)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMedia', array($medium));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMedia', [$medium]);
 
         return parent::addMedia($medium);
     }
@@ -663,7 +663,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function removeMedia(\Entity\Bzjpreview\PulseMedia $medium)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMedia', array($medium));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMedia', [$medium]);
 
         return parent::removeMedia($medium);
     }
@@ -674,7 +674,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function getMedia()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMedia', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMedia', []);
 
         return parent::getMedia();
     }
@@ -685,7 +685,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function addMarket(\Entity\Bzjpreview\PulseMarketMap $market)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMarket', array($market));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMarket', [$market]);
 
         return parent::addMarket($market);
     }
@@ -696,7 +696,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function removeMarket(\Entity\Bzjpreview\PulseMarketMap $market)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMarket', array($market));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMarket', [$market]);
 
         return parent::removeMarket($market);
     }
@@ -707,7 +707,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function getMarkets()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarkets', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarkets', []);
 
         return parent::getMarkets();
     }
@@ -718,7 +718,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function addQuestion(\Entity\Bzjpreview\PulseQuestion $question)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addQuestion', array($question));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addQuestion', [$question]);
 
         return parent::addQuestion($question);
     }
@@ -729,7 +729,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function removeQuestion(\Entity\Bzjpreview\PulseQuestion $question)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeQuestion', array($question));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeQuestion', [$question]);
 
         return parent::removeQuestion($question);
     }
@@ -740,7 +740,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function getQuestions()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQuestions', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQuestions', []);
 
         return parent::getQuestions();
     }
@@ -751,7 +751,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function addLeadinGroup(\Entity\Bzjpreview\PulseLeadinGroup $leadinGroup)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addLeadinGroup', array($leadinGroup));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addLeadinGroup', [$leadinGroup]);
 
         return parent::addLeadinGroup($leadinGroup);
     }
@@ -762,7 +762,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function removeLeadinGroup(\Entity\Bzjpreview\PulseLeadinGroup $leadinGroup)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeLeadinGroup', array($leadinGroup));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeLeadinGroup', [$leadinGroup]);
 
         return parent::removeLeadinGroup($leadinGroup);
     }
@@ -773,7 +773,7 @@ class Pulse extends \Entity\Bzjpreview\Pulse implements \Doctrine\ORM\Proxy\Prox
     public function getLeadinGroups()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLeadinGroups', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLeadinGroups', []);
 
         return parent::getLeadinGroups();
     }

@@ -36,7 +36,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'product_id', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'category_id', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'sku_code', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'product_name', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'slug', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'issue_date', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'teaser', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'description', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'is_active', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'is_hidden', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'is_subscription', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'key_code', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'price', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'domestic_ratecode', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'domestic_charge', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'ca_mx_ratecode', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'ca_mx_charge', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'international_ratecode', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'international_charge', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'original_issue_id', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'created_at', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'updated_at', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'Images', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'Category');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'product_id', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'category_id', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'sku_code', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'product_name', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'slug', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'issue_date', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'teaser', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'description', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'is_active', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'is_hidden', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'is_subscription', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'key_code', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'price', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'domestic_ratecode', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'domestic_charge', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'ca_mx_ratecode', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'ca_mx_charge', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'international_ratecode', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'international_charge', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'original_issue_id', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'created_at', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'updated_at', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'Images', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'Category'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'product_id', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'category_id', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'sku_code', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'product_name', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'slug', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'issue_date', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'teaser', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'description', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'is_active', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'is_hidden', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'is_subscription', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'key_code', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'price', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'domestic_ratecode', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'domestic_charge', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'ca_mx_ratecode', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'ca_mx_charge', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'international_ratecode', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'international_charge', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'original_issue_id', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'created_at', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'updated_at', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'Images', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'Category');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'product_id', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'category_id', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'sku_code', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'product_name', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'slug', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'issue_date', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'teaser', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'description', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'is_active', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'is_hidden', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'is_subscription', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'key_code', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'price', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'domestic_ratecode', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'domestic_charge', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'ca_mx_ratecode', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'ca_mx_charge', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'international_ratecode', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'international_charge', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'original_issue_id', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'created_at', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'updated_at', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'Images', '' . "\0" . 'Entity\\NascarIllustrated\\Product' . "\0" . 'Category'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function getProductId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductId', []);
 
         return parent::getProductId();
     }
@@ -190,7 +190,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function setCategoryId($categoryId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCategoryId', array($categoryId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCategoryId', [$categoryId]);
 
         return parent::setCategoryId($categoryId);
     }
@@ -201,7 +201,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function getCategoryId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategoryId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategoryId', []);
 
         return parent::getCategoryId();
     }
@@ -212,7 +212,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function setSkuCode($skuCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSkuCode', array($skuCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSkuCode', [$skuCode]);
 
         return parent::setSkuCode($skuCode);
     }
@@ -223,7 +223,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function getSkuCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSkuCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSkuCode', []);
 
         return parent::getSkuCode();
     }
@@ -234,7 +234,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function setProductName($productName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductName', array($productName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductName', [$productName]);
 
         return parent::setProductName($productName);
     }
@@ -245,7 +245,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function getProductName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductName', []);
 
         return parent::getProductName();
     }
@@ -256,7 +256,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function setSlug($slug)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSlug', array($slug));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSlug', [$slug]);
 
         return parent::setSlug($slug);
     }
@@ -267,7 +267,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function getSlug()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSlug', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSlug', []);
 
         return parent::getSlug();
     }
@@ -278,7 +278,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function setIssueDate($issueDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIssueDate', array($issueDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIssueDate', [$issueDate]);
 
         return parent::setIssueDate($issueDate);
     }
@@ -289,7 +289,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function getIssueDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIssueDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIssueDate', []);
 
         return parent::getIssueDate();
     }
@@ -300,7 +300,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function setTeaser($teaser)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTeaser', array($teaser));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTeaser', [$teaser]);
 
         return parent::setTeaser($teaser);
     }
@@ -311,7 +311,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function getTeaser()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTeaser', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTeaser', []);
 
         return parent::getTeaser();
     }
@@ -322,7 +322,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function setDescription($description)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', array($description));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', [$description]);
 
         return parent::setDescription($description);
     }
@@ -333,7 +333,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function getDescription()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', []);
 
         return parent::getDescription();
     }
@@ -344,7 +344,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function setIsActive($isActive)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', array($isActive));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', [$isActive]);
 
         return parent::setIsActive($isActive);
     }
@@ -355,7 +355,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function getIsActive()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', []);
 
         return parent::getIsActive();
     }
@@ -366,7 +366,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function setIsHidden($isHidden)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsHidden', array($isHidden));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsHidden', [$isHidden]);
 
         return parent::setIsHidden($isHidden);
     }
@@ -377,7 +377,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function getIsHidden()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsHidden', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsHidden', []);
 
         return parent::getIsHidden();
     }
@@ -388,7 +388,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function setIsSubscription($isSubscription)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsSubscription', array($isSubscription));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsSubscription', [$isSubscription]);
 
         return parent::setIsSubscription($isSubscription);
     }
@@ -399,7 +399,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function getIsSubscription()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsSubscription', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsSubscription', []);
 
         return parent::getIsSubscription();
     }
@@ -410,7 +410,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function setKeyCode($keyCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setKeyCode', array($keyCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setKeyCode', [$keyCode]);
 
         return parent::setKeyCode($keyCode);
     }
@@ -421,7 +421,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function getKeyCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getKeyCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getKeyCode', []);
 
         return parent::getKeyCode();
     }
@@ -432,7 +432,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function setPrice($price)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPrice', array($price));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPrice', [$price]);
 
         return parent::setPrice($price);
     }
@@ -443,7 +443,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function getPrice()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPrice', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPrice', []);
 
         return parent::getPrice();
     }
@@ -454,7 +454,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function setDomesticRatecode($domesticRatecode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDomesticRatecode', array($domesticRatecode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDomesticRatecode', [$domesticRatecode]);
 
         return parent::setDomesticRatecode($domesticRatecode);
     }
@@ -465,7 +465,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function getDomesticRatecode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDomesticRatecode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDomesticRatecode', []);
 
         return parent::getDomesticRatecode();
     }
@@ -476,7 +476,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function setDomesticCharge($domesticCharge)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDomesticCharge', array($domesticCharge));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDomesticCharge', [$domesticCharge]);
 
         return parent::setDomesticCharge($domesticCharge);
     }
@@ -487,7 +487,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function getDomesticCharge()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDomesticCharge', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDomesticCharge', []);
 
         return parent::getDomesticCharge();
     }
@@ -498,7 +498,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function setCaMxRatecode($caMxRatecode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCaMxRatecode', array($caMxRatecode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCaMxRatecode', [$caMxRatecode]);
 
         return parent::setCaMxRatecode($caMxRatecode);
     }
@@ -509,7 +509,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function getCaMxRatecode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCaMxRatecode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCaMxRatecode', []);
 
         return parent::getCaMxRatecode();
     }
@@ -520,7 +520,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function setCaMxCharge($caMxCharge)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCaMxCharge', array($caMxCharge));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCaMxCharge', [$caMxCharge]);
 
         return parent::setCaMxCharge($caMxCharge);
     }
@@ -531,7 +531,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function getCaMxCharge()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCaMxCharge', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCaMxCharge', []);
 
         return parent::getCaMxCharge();
     }
@@ -542,7 +542,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function setInternationalRatecode($internationalRatecode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setInternationalRatecode', array($internationalRatecode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setInternationalRatecode', [$internationalRatecode]);
 
         return parent::setInternationalRatecode($internationalRatecode);
     }
@@ -553,7 +553,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function getInternationalRatecode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getInternationalRatecode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getInternationalRatecode', []);
 
         return parent::getInternationalRatecode();
     }
@@ -564,7 +564,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function setInternationalCharge($internationalCharge)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setInternationalCharge', array($internationalCharge));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setInternationalCharge', [$internationalCharge]);
 
         return parent::setInternationalCharge($internationalCharge);
     }
@@ -575,7 +575,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function getInternationalCharge()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getInternationalCharge', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getInternationalCharge', []);
 
         return parent::getInternationalCharge();
     }
@@ -586,7 +586,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function setOriginalIssueId($originalIssueId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOriginalIssueId', array($originalIssueId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOriginalIssueId', [$originalIssueId]);
 
         return parent::setOriginalIssueId($originalIssueId);
     }
@@ -597,7 +597,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function getOriginalIssueId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOriginalIssueId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOriginalIssueId', []);
 
         return parent::getOriginalIssueId();
     }
@@ -608,7 +608,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -619,7 +619,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -630,7 +630,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -641,7 +641,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -652,7 +652,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function addImage(\Entity\NascarIllustrated\ProductImage $image)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addImage', array($image));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addImage', [$image]);
 
         return parent::addImage($image);
     }
@@ -663,7 +663,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function removeImage(\Entity\NascarIllustrated\ProductImage $image)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeImage', array($image));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeImage', [$image]);
 
         return parent::removeImage($image);
     }
@@ -674,7 +674,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function getImages()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getImages', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getImages', []);
 
         return parent::getImages();
     }
@@ -685,7 +685,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function setCategory(\Entity\NascarIllustrated\ProductCategory $category = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCategory', array($category));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCategory', [$category]);
 
         return parent::setCategory($category);
     }
@@ -696,7 +696,7 @@ class Product extends \Entity\NascarIllustrated\Product implements \Doctrine\ORM
     public function getCategory()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategory', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategory', []);
 
         return parent::getCategory();
     }

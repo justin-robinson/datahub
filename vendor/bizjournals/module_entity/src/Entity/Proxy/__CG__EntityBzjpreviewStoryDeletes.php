@@ -36,7 +36,7 @@ class StoryDeletes extends \Entity\Bzjpreview\StoryDeletes implements \Doctrine\
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class StoryDeletes extends \Entity\Bzjpreview\StoryDeletes implements \Doctrine\
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\StoryDeletes' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryDeletes' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bzjpreview\\StoryDeletes' . "\0" . 'issue_date', '' . "\0" . 'Entity\\Bzjpreview\\StoryDeletes' . "\0" . 'pub', '' . "\0" . 'Entity\\Bzjpreview\\StoryDeletes' . "\0" . 'slug', '' . "\0" . 'Entity\\Bzjpreview\\StoryDeletes' . "\0" . 'headline');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\StoryDeletes' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryDeletes' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bzjpreview\\StoryDeletes' . "\0" . 'issue_date', '' . "\0" . 'Entity\\Bzjpreview\\StoryDeletes' . "\0" . 'pub', '' . "\0" . 'Entity\\Bzjpreview\\StoryDeletes' . "\0" . 'slug', '' . "\0" . 'Entity\\Bzjpreview\\StoryDeletes' . "\0" . 'headline'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\StoryDeletes' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryDeletes' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bzjpreview\\StoryDeletes' . "\0" . 'issue_date', '' . "\0" . 'Entity\\Bzjpreview\\StoryDeletes' . "\0" . 'pub', '' . "\0" . 'Entity\\Bzjpreview\\StoryDeletes' . "\0" . 'slug', '' . "\0" . 'Entity\\Bzjpreview\\StoryDeletes' . "\0" . 'headline');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\StoryDeletes' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryDeletes' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bzjpreview\\StoryDeletes' . "\0" . 'issue_date', '' . "\0" . 'Entity\\Bzjpreview\\StoryDeletes' . "\0" . 'pub', '' . "\0" . 'Entity\\Bzjpreview\\StoryDeletes' . "\0" . 'slug', '' . "\0" . 'Entity\\Bzjpreview\\StoryDeletes' . "\0" . 'headline'];
     }
 
     /**
@@ -97,7 +97,7 @@ class StoryDeletes extends \Entity\Bzjpreview\StoryDeletes implements \Doctrine\
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class StoryDeletes extends \Entity\Bzjpreview\StoryDeletes implements \Doctrine\
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class StoryDeletes extends \Entity\Bzjpreview\StoryDeletes implements \Doctrine\
     public function setStoryId($storyId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryId', array($storyId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryId', [$storyId]);
 
         return parent::setStoryId($storyId);
     }
@@ -190,7 +190,7 @@ class StoryDeletes extends \Entity\Bzjpreview\StoryDeletes implements \Doctrine\
     public function getStoryId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryId', []);
 
         return parent::getStoryId();
     }
@@ -201,7 +201,7 @@ class StoryDeletes extends \Entity\Bzjpreview\StoryDeletes implements \Doctrine\
     public function setCTime($cTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCTime', array($cTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCTime', [$cTime]);
 
         return parent::setCTime($cTime);
     }
@@ -212,7 +212,7 @@ class StoryDeletes extends \Entity\Bzjpreview\StoryDeletes implements \Doctrine\
     public function getCTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCTime', []);
 
         return parent::getCTime();
     }
@@ -223,7 +223,7 @@ class StoryDeletes extends \Entity\Bzjpreview\StoryDeletes implements \Doctrine\
     public function setIssueDate($issueDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIssueDate', array($issueDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIssueDate', [$issueDate]);
 
         return parent::setIssueDate($issueDate);
     }
@@ -234,7 +234,7 @@ class StoryDeletes extends \Entity\Bzjpreview\StoryDeletes implements \Doctrine\
     public function getIssueDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIssueDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIssueDate', []);
 
         return parent::getIssueDate();
     }
@@ -245,7 +245,7 @@ class StoryDeletes extends \Entity\Bzjpreview\StoryDeletes implements \Doctrine\
     public function setPub($pub)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPub', array($pub));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPub', [$pub]);
 
         return parent::setPub($pub);
     }
@@ -256,7 +256,7 @@ class StoryDeletes extends \Entity\Bzjpreview\StoryDeletes implements \Doctrine\
     public function getPub()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPub', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPub', []);
 
         return parent::getPub();
     }
@@ -267,7 +267,7 @@ class StoryDeletes extends \Entity\Bzjpreview\StoryDeletes implements \Doctrine\
     public function setSlug($slug)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSlug', array($slug));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSlug', [$slug]);
 
         return parent::setSlug($slug);
     }
@@ -278,7 +278,7 @@ class StoryDeletes extends \Entity\Bzjpreview\StoryDeletes implements \Doctrine\
     public function getSlug()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSlug', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSlug', []);
 
         return parent::getSlug();
     }
@@ -289,7 +289,7 @@ class StoryDeletes extends \Entity\Bzjpreview\StoryDeletes implements \Doctrine\
     public function setHeadline($headline)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHeadline', array($headline));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHeadline', [$headline]);
 
         return parent::setHeadline($headline);
     }
@@ -300,7 +300,7 @@ class StoryDeletes extends \Entity\Bzjpreview\StoryDeletes implements \Doctrine\
     public function getHeadline()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHeadline', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHeadline', []);
 
         return parent::getHeadline();
     }

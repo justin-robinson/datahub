@@ -36,7 +36,7 @@ class PageCrossref extends \Entity\Bizj\PageCrossref implements \Doctrine\ORM\Pr
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class PageCrossref extends \Entity\Bizj\PageCrossref implements \Doctrine\ORM\Pr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'ref_id', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'ref_type', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'issue_date', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'ref_key', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'ref_value', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'ref_weight', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'Page');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'ref_id', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'ref_type', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'issue_date', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'ref_key', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'ref_value', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'ref_weight', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'Page'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'ref_id', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'ref_type', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'issue_date', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'ref_key', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'ref_value', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'ref_weight', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'Page');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'ref_id', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'ref_type', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'issue_date', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'ref_key', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'ref_value', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'ref_weight', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\PageCrossref' . "\0" . 'Page'];
     }
 
     /**
@@ -97,7 +97,7 @@ class PageCrossref extends \Entity\Bizj\PageCrossref implements \Doctrine\ORM\Pr
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class PageCrossref extends \Entity\Bizj\PageCrossref implements \Doctrine\ORM\Pr
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class PageCrossref extends \Entity\Bizj\PageCrossref implements \Doctrine\ORM\Pr
     public function getRefId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefId', []);
 
         return parent::getRefId();
     }
@@ -190,7 +190,7 @@ class PageCrossref extends \Entity\Bizj\PageCrossref implements \Doctrine\ORM\Pr
     public function setPageId($pageId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPageId', array($pageId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPageId', [$pageId]);
 
         return parent::setPageId($pageId);
     }
@@ -201,7 +201,7 @@ class PageCrossref extends \Entity\Bizj\PageCrossref implements \Doctrine\ORM\Pr
     public function getPageId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageId', []);
 
         return parent::getPageId();
     }
@@ -212,7 +212,7 @@ class PageCrossref extends \Entity\Bizj\PageCrossref implements \Doctrine\ORM\Pr
     public function setRefType($refType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRefType', array($refType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRefType', [$refType]);
 
         return parent::setRefType($refType);
     }
@@ -223,7 +223,7 @@ class PageCrossref extends \Entity\Bizj\PageCrossref implements \Doctrine\ORM\Pr
     public function getRefType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefType', []);
 
         return parent::getRefType();
     }
@@ -234,7 +234,7 @@ class PageCrossref extends \Entity\Bizj\PageCrossref implements \Doctrine\ORM\Pr
     public function setIssueDate($issueDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIssueDate', array($issueDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIssueDate', [$issueDate]);
 
         return parent::setIssueDate($issueDate);
     }
@@ -245,7 +245,7 @@ class PageCrossref extends \Entity\Bizj\PageCrossref implements \Doctrine\ORM\Pr
     public function getIssueDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIssueDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIssueDate', []);
 
         return parent::getIssueDate();
     }
@@ -256,7 +256,7 @@ class PageCrossref extends \Entity\Bizj\PageCrossref implements \Doctrine\ORM\Pr
     public function setRefKey($refKey)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRefKey', array($refKey));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRefKey', [$refKey]);
 
         return parent::setRefKey($refKey);
     }
@@ -267,7 +267,7 @@ class PageCrossref extends \Entity\Bizj\PageCrossref implements \Doctrine\ORM\Pr
     public function getRefKey()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefKey', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefKey', []);
 
         return parent::getRefKey();
     }
@@ -278,7 +278,7 @@ class PageCrossref extends \Entity\Bizj\PageCrossref implements \Doctrine\ORM\Pr
     public function setRefValue($refValue)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRefValue', array($refValue));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRefValue', [$refValue]);
 
         return parent::setRefValue($refValue);
     }
@@ -289,7 +289,7 @@ class PageCrossref extends \Entity\Bizj\PageCrossref implements \Doctrine\ORM\Pr
     public function getRefValue()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefValue', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefValue', []);
 
         return parent::getRefValue();
     }
@@ -300,7 +300,7 @@ class PageCrossref extends \Entity\Bizj\PageCrossref implements \Doctrine\ORM\Pr
     public function setRefWeight($refWeight)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRefWeight', array($refWeight));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRefWeight', [$refWeight]);
 
         return parent::setRefWeight($refWeight);
     }
@@ -311,7 +311,7 @@ class PageCrossref extends \Entity\Bizj\PageCrossref implements \Doctrine\ORM\Pr
     public function getRefWeight()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefWeight', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRefWeight', []);
 
         return parent::getRefWeight();
     }
@@ -322,7 +322,7 @@ class PageCrossref extends \Entity\Bizj\PageCrossref implements \Doctrine\ORM\Pr
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -333,7 +333,7 @@ class PageCrossref extends \Entity\Bizj\PageCrossref implements \Doctrine\ORM\Pr
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -344,7 +344,7 @@ class PageCrossref extends \Entity\Bizj\PageCrossref implements \Doctrine\ORM\Pr
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -355,7 +355,7 @@ class PageCrossref extends \Entity\Bizj\PageCrossref implements \Doctrine\ORM\Pr
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -366,7 +366,7 @@ class PageCrossref extends \Entity\Bizj\PageCrossref implements \Doctrine\ORM\Pr
     public function setPage(\Entity\Bizj\Page $page = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPage', array($page));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPage', [$page]);
 
         return parent::setPage($page);
     }
@@ -377,7 +377,7 @@ class PageCrossref extends \Entity\Bizj\PageCrossref implements \Doctrine\ORM\Pr
     public function getPage()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPage', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPage', []);
 
         return parent::getPage();
     }
