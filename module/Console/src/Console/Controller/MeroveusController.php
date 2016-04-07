@@ -406,7 +406,7 @@ class MeroveusController extends AbstractActionController
                                                     *
                                                 FROM
                                                   `datahub`.`meroveus_industry`
-                                                WHERE `external_id` IN ({$target['firm-industry_static']})");
+                                                WHERE `industry` IN ({$target['firm-industry_static']})");
 
                         if ( $selectMeroveusIndustry->execute() ) {
 
