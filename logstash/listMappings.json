@@ -7,7 +7,7 @@
           "format": "strict_date_optional_time||epoch_millis"
         },
         "@version":       {
-          "type": "string",
+          "type": "string"
         },
         "address1":       {
           "type":  "string",
