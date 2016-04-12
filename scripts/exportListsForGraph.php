@@ -8,7 +8,7 @@
 
 echo "export started: " . date('h:i:s A') . PHP_EOL;
 
-$file = fopen('lists.json', 'w');
+$file = fopen('/home/vagrant/files/lists.json', 'w');
 
 $db = new PDO('mysql:host=reportdb.bizjournals.int; dbname=bizj', 'operations', 'operations');
 
