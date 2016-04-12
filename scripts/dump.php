@@ -264,7 +264,7 @@ $fd = fopen($filename, 'w');
 
 fputs($fd, '');
 
-$db  = new PDO('mysql:host=radb.bizjournals.int; dbname=recon', 'operations', 'operations');
+
 $db2 = new PDO('mysql:host=reportdb.bizjournals.int; dbname=bizj', 'operations', 'operations');
 
 $SQL = "

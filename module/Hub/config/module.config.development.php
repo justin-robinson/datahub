@@ -1,7 +1,7 @@
 <?php
 $defaultMysqlConnectionParams = [
     'charset'       => 'utf8',
-    'host'          => 'devdb.bizjournals.int',
+    'host'          => 'devdb.bizj-internal.com',
     'port'          => '3306',
     'user'          => 'web',
     'password'      => '',
