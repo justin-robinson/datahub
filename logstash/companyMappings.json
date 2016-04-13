@@ -11,98 +11,77 @@
         },
         "Addr1":          {
           "type":  "string",
-          "store": true,
           "index": "not_analyzed"
         },
         "Addr2":          {
           "type":  "string",
-          "store": true,
           "index": "not_analyzed"
         },
         "City":           {
           "type":  "string",
-          "store": true,
           "index": "not_analyzed"
         },
         "Country":        {
           "type":  "string",
-          "store": true,
           "index": "not_analyzed"
         },
         "DateModified":   {
-          "type":  "string",
-          "store": true
+          "type": "string",
         },
         "GenId":          {
-          "type":  "string",
-          "store": true
+          "type": "string",
         },
         "InternalId":     {
-          "type":  "string",
-          "store": true
+          "type": "string",
         },
         "Lat":            {
-          "type":  "string",
-          "store": true
+          "type": "string",
         },
         "Lon":            {
-          "type":  "string",
-          "store": true
+          "type": "string",
         },
-        "Name": {
-          "type":   "multi_field",
+        "Name":           {
+          "type":   "string",
           "fields": {
-            "Name":      {"type": "string", "index": "analyzed"},
-            "Name_Raw": {"type": "string", "index": "not_analyzed"}
+            "Name":     {"type": "string", "index": "analyzed",},
+            "Name_Raw": {"type": "string", "index": "not_analyzed",}
           }
         },
         "OfficePhone1":   {
-          "type":  "string",
-          "store": true
+          "type": "string",
         },
         "PostalCode":     {
-          "type":  "string",
-          "store": true
+          "type": "string",
         },
         "Sic":            {
-          "type":  "string",
-          "store": true
+          "type": "string",
         },
         "SourceID":       {
-          "type":  "string",
-          "store": true
+          "type": "string",
         },
         "State":          {
-          "type":  "string",
-          "store": true
+          "type": "string",
         },
         "Ticker":         {
-          "type":  "string",
-          "store": true
+          "type": "string",
         },
         "TickerExchange": {
-          "type":  "string",
-          "store": true
+          "type": "string",
         },
         "Url":            {
-          "type":  "string",
-          "store": true
+          "type": "string",
         },
         "host":           {
-          "type":  "string",
-          "store": true
+          "type": "string",
         },
         "message":        {
-          "type":  "string",
-          "store": true
+          "type": "string",
         },
         "tags":           {
-          "type":  "string",
-          "store": true
+          "type": "string",
         },
         "type":           {
-          "type":  "string",
-          "store": true
+          "type": "string",
         }
       }
     }

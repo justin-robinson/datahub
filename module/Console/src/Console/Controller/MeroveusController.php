@@ -768,7 +768,7 @@ class MeroveusController extends AbstractActionController
      * query elastic for match
      *
      */
-    private function elasticMatch(array $target, $minScore = 9.9)
+    private function elasticMatch(array $target, $minScore = 19)
     {
 
         if (empty($target)) {
@@ -792,14 +792,31 @@ class MeroveusController extends AbstractActionController
                 return false;
             }
         }
-
+//{
+//    "query": {
+//        "bool": {
+//            "should": [
+//                {"match": {"Name.raw": "White Construction Company"}}
+//            ],
+//            "must":   [
+//                {"match": {"Name": "White Construction Company"}},
+//                {"match": {"Addr1": "613 Crescent Circle Ste. 100"}},
+//                {"match": {"City": "Ridgeland"}},
+//                {"match": {"State": "MS"}},
+//                {"match": {"PostalCode": "39157"}}
+//            ]
+//        }
+//    }
+//}
         // set up the elastic query
-        $this->elasticQuery->setQuery($this->elasticQueryBuilder->query()->bool()->addShould($this->elasticQueryBuilder->query()->match('Name',
-            $queryFields['Name']))->addShould($this->elasticQueryBuilder->query()->match('Addr1',
-            $queryFields['Addr1']))->addMust($this->elasticQueryBuilder->query()->match('City',
-            $queryFields['City']))->addMust($this->elasticQueryBuilder->query()->match('State',
-            $queryFields['State']))->addMust($this->elasticQueryBuilder->query()->match('PostalCode',
-            $queryFields['PostalCode'])));
+        $this->elasticQuery->setQuery(
+            $this->elasticQueryBuilder->query()->bool()
+            ->addShould($this->elasticQueryBuilder->query()->match('Name.raw', $queryFields['Name']))
+            ->addMust($this->elasticQueryBuilder->query()->match('Name', $queryFields['Name']))
+            ->addMust($this->elasticQueryBuilder->query()->match('Addr1', $queryFields['Addr1']))
+            ->addMust($this->elasticQueryBuilder->query()->match('City', $queryFields['City']))
+            ->addMust($this->elasticQueryBuilder->query()->match('State', $queryFields['State']))
+            ->addMust($this->elasticQueryBuilder->query()->match('PostalCode', $queryFields['PostalCode'])));
 
         // set the minimum score that we consider a match
         // https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-min-score.html
