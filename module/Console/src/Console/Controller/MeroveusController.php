@@ -768,9 +768,8 @@ class MeroveusController extends AbstractActionController
      * query elastic for match
      *
      */
-    private function elasticMatch(array $target, $minScore = 19)
+    private function elasticMatch(array $target, $minScore = 11.9)
     {
-
         if (empty($target)) {
             echo 'empty target passed to elasticMatch' . PHP_EOL;
 
