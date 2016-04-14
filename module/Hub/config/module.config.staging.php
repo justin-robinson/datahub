@@ -16,6 +16,10 @@ return [
                 'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
                 'params'      => array_merge($defaultMysqlConnectionParams, ['dbname' => 'datahub',]),
             ],
+            'orm_default' => [
+                'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
+                'params'      => array_merge($defaultMysqlConnectionParams, ['dbname' => 'bizj',]),
+            ],
         ],
     ],
     'elastica' => [
