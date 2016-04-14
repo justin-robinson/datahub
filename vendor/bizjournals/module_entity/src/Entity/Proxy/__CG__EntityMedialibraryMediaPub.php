@@ -36,7 +36,7 @@ class MediaPub extends \Entity\Medialibrary\MediaPub implements \Doctrine\ORM\Pr
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class MediaPub extends \Entity\Medialibrary\MediaPub implements \Doctrine\ORM\Pr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\MediaPub' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\MediaPub' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Medialibrary\\MediaPub' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\MediaPub' . "\0" . 'Media', '' . "\0" . 'Entity\\Medialibrary\\MediaPub' . "\0" . 'Publication');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\MediaPub' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\MediaPub' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Medialibrary\\MediaPub' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\MediaPub' . "\0" . 'Media', '' . "\0" . 'Entity\\Medialibrary\\MediaPub' . "\0" . 'Publication'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\MediaPub' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\MediaPub' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Medialibrary\\MediaPub' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\MediaPub' . "\0" . 'Media', '' . "\0" . 'Entity\\Medialibrary\\MediaPub' . "\0" . 'Publication');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\MediaPub' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\MediaPub' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Medialibrary\\MediaPub' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\MediaPub' . "\0" . 'Media', '' . "\0" . 'Entity\\Medialibrary\\MediaPub' . "\0" . 'Publication'];
     }
 
     /**
@@ -97,7 +97,7 @@ class MediaPub extends \Entity\Medialibrary\MediaPub implements \Doctrine\ORM\Pr
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class MediaPub extends \Entity\Medialibrary\MediaPub implements \Doctrine\ORM\Pr
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class MediaPub extends \Entity\Medialibrary\MediaPub implements \Doctrine\ORM\Pr
     public function setMediaId($mediaId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaId', array($mediaId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaId', [$mediaId]);
 
         return parent::setMediaId($mediaId);
     }
@@ -190,7 +190,7 @@ class MediaPub extends \Entity\Medialibrary\MediaPub implements \Doctrine\ORM\Pr
     public function getMediaId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaId', []);
 
         return parent::getMediaId();
     }
@@ -201,7 +201,7 @@ class MediaPub extends \Entity\Medialibrary\MediaPub implements \Doctrine\ORM\Pr
     public function setPubId($pubId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPubId', array($pubId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPubId', [$pubId]);
 
         return parent::setPubId($pubId);
     }
@@ -212,7 +212,7 @@ class MediaPub extends \Entity\Medialibrary\MediaPub implements \Doctrine\ORM\Pr
     public function getPubId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPubId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPubId', []);
 
         return parent::getPubId();
     }
@@ -223,7 +223,7 @@ class MediaPub extends \Entity\Medialibrary\MediaPub implements \Doctrine\ORM\Pr
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -234,7 +234,7 @@ class MediaPub extends \Entity\Medialibrary\MediaPub implements \Doctrine\ORM\Pr
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -245,7 +245,7 @@ class MediaPub extends \Entity\Medialibrary\MediaPub implements \Doctrine\ORM\Pr
     public function setMedia(\Entity\Medialibrary\Media $media = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMedia', array($media));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMedia', [$media]);
 
         return parent::setMedia($media);
     }
@@ -256,7 +256,7 @@ class MediaPub extends \Entity\Medialibrary\MediaPub implements \Doctrine\ORM\Pr
     public function getMedia()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMedia', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMedia', []);
 
         return parent::getMedia();
     }
@@ -267,7 +267,7 @@ class MediaPub extends \Entity\Medialibrary\MediaPub implements \Doctrine\ORM\Pr
     public function setPublication(\Entity\Medialibrary\Publication $publication = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublication', array($publication));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublication', [$publication]);
 
         return parent::setPublication($publication);
     }
@@ -278,7 +278,7 @@ class MediaPub extends \Entity\Medialibrary\MediaPub implements \Doctrine\ORM\Pr
     public function getPublication()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublication', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublication', []);
 
         return parent::getPublication();
     }

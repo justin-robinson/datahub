@@ -36,7 +36,7 @@ class TrackerEvent extends \Entity\Tracking\TrackerEvent implements \Doctrine\OR
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class TrackerEvent extends \Entity\Tracking\TrackerEvent implements \Doctrine\OR
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Tracking\\TrackerEvent' . "\0" . 'event_id', '' . "\0" . 'Entity\\Tracking\\TrackerEvent' . "\0" . 'tracker_key_id', '' . "\0" . 'Entity\\Tracking\\TrackerEvent' . "\0" . 'client_id', '' . "\0" . 'Entity\\Tracking\\TrackerEvent' . "\0" . 'user_ref', '' . "\0" . 'Entity\\Tracking\\TrackerEvent' . "\0" . 'event_properties', '' . "\0" . 'Entity\\Tracking\\TrackerEvent' . "\0" . 'created_at');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Tracking\\TrackerEvent' . "\0" . 'event_id', '' . "\0" . 'Entity\\Tracking\\TrackerEvent' . "\0" . 'tracker_key_id', '' . "\0" . 'Entity\\Tracking\\TrackerEvent' . "\0" . 'client_id', '' . "\0" . 'Entity\\Tracking\\TrackerEvent' . "\0" . 'user_ref', '' . "\0" . 'Entity\\Tracking\\TrackerEvent' . "\0" . 'event_properties', '' . "\0" . 'Entity\\Tracking\\TrackerEvent' . "\0" . 'created_at'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Tracking\\TrackerEvent' . "\0" . 'event_id', '' . "\0" . 'Entity\\Tracking\\TrackerEvent' . "\0" . 'tracker_key_id', '' . "\0" . 'Entity\\Tracking\\TrackerEvent' . "\0" . 'client_id', '' . "\0" . 'Entity\\Tracking\\TrackerEvent' . "\0" . 'user_ref', '' . "\0" . 'Entity\\Tracking\\TrackerEvent' . "\0" . 'event_properties', '' . "\0" . 'Entity\\Tracking\\TrackerEvent' . "\0" . 'created_at');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Tracking\\TrackerEvent' . "\0" . 'event_id', '' . "\0" . 'Entity\\Tracking\\TrackerEvent' . "\0" . 'tracker_key_id', '' . "\0" . 'Entity\\Tracking\\TrackerEvent' . "\0" . 'client_id', '' . "\0" . 'Entity\\Tracking\\TrackerEvent' . "\0" . 'user_ref', '' . "\0" . 'Entity\\Tracking\\TrackerEvent' . "\0" . 'event_properties', '' . "\0" . 'Entity\\Tracking\\TrackerEvent' . "\0" . 'created_at'];
     }
 
     /**
@@ -97,7 +97,7 @@ class TrackerEvent extends \Entity\Tracking\TrackerEvent implements \Doctrine\OR
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class TrackerEvent extends \Entity\Tracking\TrackerEvent implements \Doctrine\OR
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class TrackerEvent extends \Entity\Tracking\TrackerEvent implements \Doctrine\OR
     public function getEventId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEventId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEventId', []);
 
         return parent::getEventId();
     }
@@ -190,7 +190,7 @@ class TrackerEvent extends \Entity\Tracking\TrackerEvent implements \Doctrine\OR
     public function setTrackerKeyId($trackerKeyId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTrackerKeyId', array($trackerKeyId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTrackerKeyId', [$trackerKeyId]);
 
         return parent::setTrackerKeyId($trackerKeyId);
     }
@@ -201,7 +201,7 @@ class TrackerEvent extends \Entity\Tracking\TrackerEvent implements \Doctrine\OR
     public function getTrackerKeyId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTrackerKeyId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTrackerKeyId', []);
 
         return parent::getTrackerKeyId();
     }
@@ -212,7 +212,7 @@ class TrackerEvent extends \Entity\Tracking\TrackerEvent implements \Doctrine\OR
     public function setClientId($clientId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setClientId', array($clientId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setClientId', [$clientId]);
 
         return parent::setClientId($clientId);
     }
@@ -223,7 +223,7 @@ class TrackerEvent extends \Entity\Tracking\TrackerEvent implements \Doctrine\OR
     public function getClientId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClientId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClientId', []);
 
         return parent::getClientId();
     }
@@ -234,7 +234,7 @@ class TrackerEvent extends \Entity\Tracking\TrackerEvent implements \Doctrine\OR
     public function setUserRef($userRef)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUserRef', array($userRef));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUserRef', [$userRef]);
 
         return parent::setUserRef($userRef);
     }
@@ -245,7 +245,7 @@ class TrackerEvent extends \Entity\Tracking\TrackerEvent implements \Doctrine\OR
     public function getUserRef()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUserRef', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUserRef', []);
 
         return parent::getUserRef();
     }
@@ -256,7 +256,7 @@ class TrackerEvent extends \Entity\Tracking\TrackerEvent implements \Doctrine\OR
     public function setEventProperties($eventProperties)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEventProperties', array($eventProperties));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEventProperties', [$eventProperties]);
 
         return parent::setEventProperties($eventProperties);
     }
@@ -267,7 +267,7 @@ class TrackerEvent extends \Entity\Tracking\TrackerEvent implements \Doctrine\OR
     public function getEventProperties()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEventProperties', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEventProperties', []);
 
         return parent::getEventProperties();
     }
@@ -278,7 +278,7 @@ class TrackerEvent extends \Entity\Tracking\TrackerEvent implements \Doctrine\OR
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -289,7 +289,7 @@ class TrackerEvent extends \Entity\Tracking\TrackerEvent implements \Doctrine\OR
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }

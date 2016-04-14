@@ -36,7 +36,7 @@ class MediaCacheQueue extends \Entity\Medialibrary\MediaCacheQueue implements \D
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class MediaCacheQueue extends \Entity\Medialibrary\MediaCacheQueue implements \D
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\MediaCacheQueue' . "\0" . 'id', '' . "\0" . 'Entity\\Medialibrary\\MediaCacheQueue' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\MediaCacheQueue' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\MediaCacheQueue' . "\0" . 'akamai_sent_at', '' . "\0" . 'Entity\\Medialibrary\\MediaCacheQueue' . "\0" . 'akamai_cleared_at');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\MediaCacheQueue' . "\0" . 'id', '' . "\0" . 'Entity\\Medialibrary\\MediaCacheQueue' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\MediaCacheQueue' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\MediaCacheQueue' . "\0" . 'akamai_sent_at', '' . "\0" . 'Entity\\Medialibrary\\MediaCacheQueue' . "\0" . 'akamai_cleared_at'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\MediaCacheQueue' . "\0" . 'id', '' . "\0" . 'Entity\\Medialibrary\\MediaCacheQueue' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\MediaCacheQueue' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\MediaCacheQueue' . "\0" . 'akamai_sent_at', '' . "\0" . 'Entity\\Medialibrary\\MediaCacheQueue' . "\0" . 'akamai_cleared_at');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\MediaCacheQueue' . "\0" . 'id', '' . "\0" . 'Entity\\Medialibrary\\MediaCacheQueue' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\MediaCacheQueue' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\MediaCacheQueue' . "\0" . 'akamai_sent_at', '' . "\0" . 'Entity\\Medialibrary\\MediaCacheQueue' . "\0" . 'akamai_cleared_at'];
     }
 
     /**
@@ -97,7 +97,7 @@ class MediaCacheQueue extends \Entity\Medialibrary\MediaCacheQueue implements \D
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class MediaCacheQueue extends \Entity\Medialibrary\MediaCacheQueue implements \D
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -183,7 +183,7 @@ class MediaCacheQueue extends \Entity\Medialibrary\MediaCacheQueue implements \D
         }
 
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -194,7 +194,7 @@ class MediaCacheQueue extends \Entity\Medialibrary\MediaCacheQueue implements \D
     public function setMediaId($mediaId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaId', array($mediaId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaId', [$mediaId]);
 
         return parent::setMediaId($mediaId);
     }
@@ -205,7 +205,7 @@ class MediaCacheQueue extends \Entity\Medialibrary\MediaCacheQueue implements \D
     public function getMediaId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaId', []);
 
         return parent::getMediaId();
     }
@@ -216,7 +216,7 @@ class MediaCacheQueue extends \Entity\Medialibrary\MediaCacheQueue implements \D
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -227,7 +227,7 @@ class MediaCacheQueue extends \Entity\Medialibrary\MediaCacheQueue implements \D
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -238,7 +238,7 @@ class MediaCacheQueue extends \Entity\Medialibrary\MediaCacheQueue implements \D
     public function setAkamaiSentAt($akamaiSentAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAkamaiSentAt', array($akamaiSentAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAkamaiSentAt', [$akamaiSentAt]);
 
         return parent::setAkamaiSentAt($akamaiSentAt);
     }
@@ -249,7 +249,7 @@ class MediaCacheQueue extends \Entity\Medialibrary\MediaCacheQueue implements \D
     public function getAkamaiSentAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAkamaiSentAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAkamaiSentAt', []);
 
         return parent::getAkamaiSentAt();
     }
@@ -260,7 +260,7 @@ class MediaCacheQueue extends \Entity\Medialibrary\MediaCacheQueue implements \D
     public function setAkamaiClearedAt($akamaiClearedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAkamaiClearedAt', array($akamaiClearedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAkamaiClearedAt', [$akamaiClearedAt]);
 
         return parent::setAkamaiClearedAt($akamaiClearedAt);
     }
@@ -271,7 +271,7 @@ class MediaCacheQueue extends \Entity\Medialibrary\MediaCacheQueue implements \D
     public function getAkamaiClearedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAkamaiClearedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAkamaiClearedAt', []);
 
         return parent::getAkamaiClearedAt();
     }

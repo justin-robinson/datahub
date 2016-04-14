@@ -36,7 +36,7 @@ class OoyalaVideoList extends \Entity\Bizj\OoyalaVideoList implements \Doctrine\
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class OoyalaVideoList extends \Entity\Bizj\OoyalaVideoList implements \Doctrine\
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'market_code', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'embed_code', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'title', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'description', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'preview_image_url', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'status', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'metadata', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'deleted_at');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'market_code', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'embed_code', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'title', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'description', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'preview_image_url', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'status', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'metadata', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'deleted_at'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'market_code', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'embed_code', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'title', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'description', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'preview_image_url', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'status', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'metadata', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'deleted_at');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'market_code', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'embed_code', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'title', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'description', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'preview_image_url', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'status', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'metadata', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\OoyalaVideoList' . "\0" . 'deleted_at'];
     }
 
     /**
@@ -97,7 +97,7 @@ class OoyalaVideoList extends \Entity\Bizj\OoyalaVideoList implements \Doctrine\
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class OoyalaVideoList extends \Entity\Bizj\OoyalaVideoList implements \Doctrine\
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class OoyalaVideoList extends \Entity\Bizj\OoyalaVideoList implements \Doctrine\
     public function setMarketCode($marketCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketCode', array($marketCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketCode', [$marketCode]);
 
         return parent::setMarketCode($marketCode);
     }
@@ -190,7 +190,7 @@ class OoyalaVideoList extends \Entity\Bizj\OoyalaVideoList implements \Doctrine\
     public function getMarketCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketCode', []);
 
         return parent::getMarketCode();
     }
@@ -201,7 +201,7 @@ class OoyalaVideoList extends \Entity\Bizj\OoyalaVideoList implements \Doctrine\
     public function setEmbedCode($embedCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmbedCode', array($embedCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmbedCode', [$embedCode]);
 
         return parent::setEmbedCode($embedCode);
     }
@@ -212,7 +212,7 @@ class OoyalaVideoList extends \Entity\Bizj\OoyalaVideoList implements \Doctrine\
     public function getEmbedCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmbedCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmbedCode', []);
 
         return parent::getEmbedCode();
     }
@@ -223,7 +223,7 @@ class OoyalaVideoList extends \Entity\Bizj\OoyalaVideoList implements \Doctrine\
     public function setTitle($title)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', array($title));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', [$title]);
 
         return parent::setTitle($title);
     }
@@ -234,7 +234,7 @@ class OoyalaVideoList extends \Entity\Bizj\OoyalaVideoList implements \Doctrine\
     public function getTitle()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', []);
 
         return parent::getTitle();
     }
@@ -245,7 +245,7 @@ class OoyalaVideoList extends \Entity\Bizj\OoyalaVideoList implements \Doctrine\
     public function setDescription($description)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', array($description));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', [$description]);
 
         return parent::setDescription($description);
     }
@@ -256,7 +256,7 @@ class OoyalaVideoList extends \Entity\Bizj\OoyalaVideoList implements \Doctrine\
     public function getDescription()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', []);
 
         return parent::getDescription();
     }
@@ -267,7 +267,7 @@ class OoyalaVideoList extends \Entity\Bizj\OoyalaVideoList implements \Doctrine\
     public function setPreviewImageUrl($previewImageUrl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPreviewImageUrl', array($previewImageUrl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPreviewImageUrl', [$previewImageUrl]);
 
         return parent::setPreviewImageUrl($previewImageUrl);
     }
@@ -278,7 +278,7 @@ class OoyalaVideoList extends \Entity\Bizj\OoyalaVideoList implements \Doctrine\
     public function getPreviewImageUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPreviewImageUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPreviewImageUrl', []);
 
         return parent::getPreviewImageUrl();
     }
@@ -289,7 +289,7 @@ class OoyalaVideoList extends \Entity\Bizj\OoyalaVideoList implements \Doctrine\
     public function setStatus($status)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatus', array($status));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatus', [$status]);
 
         return parent::setStatus($status);
     }
@@ -300,7 +300,7 @@ class OoyalaVideoList extends \Entity\Bizj\OoyalaVideoList implements \Doctrine\
     public function getStatus()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatus', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatus', []);
 
         return parent::getStatus();
     }
@@ -311,7 +311,7 @@ class OoyalaVideoList extends \Entity\Bizj\OoyalaVideoList implements \Doctrine\
     public function setMetadata($metadata)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMetadata', array($metadata));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMetadata', [$metadata]);
 
         return parent::setMetadata($metadata);
     }
@@ -322,7 +322,7 @@ class OoyalaVideoList extends \Entity\Bizj\OoyalaVideoList implements \Doctrine\
     public function getMetadata()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetadata', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetadata', []);
 
         return parent::getMetadata();
     }
@@ -333,7 +333,7 @@ class OoyalaVideoList extends \Entity\Bizj\OoyalaVideoList implements \Doctrine\
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -344,7 +344,7 @@ class OoyalaVideoList extends \Entity\Bizj\OoyalaVideoList implements \Doctrine\
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -355,7 +355,7 @@ class OoyalaVideoList extends \Entity\Bizj\OoyalaVideoList implements \Doctrine\
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -366,7 +366,7 @@ class OoyalaVideoList extends \Entity\Bizj\OoyalaVideoList implements \Doctrine\
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -377,7 +377,7 @@ class OoyalaVideoList extends \Entity\Bizj\OoyalaVideoList implements \Doctrine\
     public function setDeletedAt($deletedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeletedAt', array($deletedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeletedAt', [$deletedAt]);
 
         return parent::setDeletedAt($deletedAt);
     }
@@ -388,7 +388,7 @@ class OoyalaVideoList extends \Entity\Bizj\OoyalaVideoList implements \Doctrine\
     public function getDeletedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeletedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeletedAt', []);
 
         return parent::getDeletedAt();
     }

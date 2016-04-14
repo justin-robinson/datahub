@@ -36,7 +36,7 @@ class StatusCode extends \Entity\Bizjstatus\StatusCode implements \Doctrine\ORM\
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class StatusCode extends \Entity\Bizjstatus\StatusCode implements \Doctrine\ORM\
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizjstatus\\StatusCode' . "\0" . 'code_id', '' . "\0" . 'Entity\\Bizjstatus\\StatusCode' . "\0" . 'code_name', '' . "\0" . 'Entity\\Bizjstatus\\StatusCode' . "\0" . 'display_order', '' . "\0" . 'Entity\\Bizjstatus\\StatusCode' . "\0" . 'is_active', '' . "\0" . 'Entity\\Bizjstatus\\StatusCode' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizjstatus\\StatusCode' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizjstatus\\StatusCode' . "\0" . 'Events');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizjstatus\\StatusCode' . "\0" . 'code_id', '' . "\0" . 'Entity\\Bizjstatus\\StatusCode' . "\0" . 'code_name', '' . "\0" . 'Entity\\Bizjstatus\\StatusCode' . "\0" . 'display_order', '' . "\0" . 'Entity\\Bizjstatus\\StatusCode' . "\0" . 'is_active', '' . "\0" . 'Entity\\Bizjstatus\\StatusCode' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizjstatus\\StatusCode' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizjstatus\\StatusCode' . "\0" . 'Events'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizjstatus\\StatusCode' . "\0" . 'code_id', '' . "\0" . 'Entity\\Bizjstatus\\StatusCode' . "\0" . 'code_name', '' . "\0" . 'Entity\\Bizjstatus\\StatusCode' . "\0" . 'display_order', '' . "\0" . 'Entity\\Bizjstatus\\StatusCode' . "\0" . 'is_active', '' . "\0" . 'Entity\\Bizjstatus\\StatusCode' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizjstatus\\StatusCode' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizjstatus\\StatusCode' . "\0" . 'Events');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizjstatus\\StatusCode' . "\0" . 'code_id', '' . "\0" . 'Entity\\Bizjstatus\\StatusCode' . "\0" . 'code_name', '' . "\0" . 'Entity\\Bizjstatus\\StatusCode' . "\0" . 'display_order', '' . "\0" . 'Entity\\Bizjstatus\\StatusCode' . "\0" . 'is_active', '' . "\0" . 'Entity\\Bizjstatus\\StatusCode' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizjstatus\\StatusCode' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizjstatus\\StatusCode' . "\0" . 'Events'];
     }
 
     /**
@@ -97,7 +97,7 @@ class StatusCode extends \Entity\Bizjstatus\StatusCode implements \Doctrine\ORM\
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class StatusCode extends \Entity\Bizjstatus\StatusCode implements \Doctrine\ORM\
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class StatusCode extends \Entity\Bizjstatus\StatusCode implements \Doctrine\ORM\
     public function getCodeId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCodeId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCodeId', []);
 
         return parent::getCodeId();
     }
@@ -190,7 +190,7 @@ class StatusCode extends \Entity\Bizjstatus\StatusCode implements \Doctrine\ORM\
     public function setCodeName($codeName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCodeName', array($codeName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCodeName', [$codeName]);
 
         return parent::setCodeName($codeName);
     }
@@ -201,7 +201,7 @@ class StatusCode extends \Entity\Bizjstatus\StatusCode implements \Doctrine\ORM\
     public function getCodeName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCodeName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCodeName', []);
 
         return parent::getCodeName();
     }
@@ -212,7 +212,7 @@ class StatusCode extends \Entity\Bizjstatus\StatusCode implements \Doctrine\ORM\
     public function setDisplayOrder($displayOrder)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDisplayOrder', array($displayOrder));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDisplayOrder', [$displayOrder]);
 
         return parent::setDisplayOrder($displayOrder);
     }
@@ -223,7 +223,7 @@ class StatusCode extends \Entity\Bizjstatus\StatusCode implements \Doctrine\ORM\
     public function getDisplayOrder()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDisplayOrder', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDisplayOrder', []);
 
         return parent::getDisplayOrder();
     }
@@ -234,7 +234,7 @@ class StatusCode extends \Entity\Bizjstatus\StatusCode implements \Doctrine\ORM\
     public function setIsActive($isActive)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', array($isActive));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', [$isActive]);
 
         return parent::setIsActive($isActive);
     }
@@ -245,7 +245,7 @@ class StatusCode extends \Entity\Bizjstatus\StatusCode implements \Doctrine\ORM\
     public function getIsActive()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', []);
 
         return parent::getIsActive();
     }
@@ -256,7 +256,7 @@ class StatusCode extends \Entity\Bizjstatus\StatusCode implements \Doctrine\ORM\
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -267,7 +267,7 @@ class StatusCode extends \Entity\Bizjstatus\StatusCode implements \Doctrine\ORM\
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -278,7 +278,7 @@ class StatusCode extends \Entity\Bizjstatus\StatusCode implements \Doctrine\ORM\
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -289,7 +289,7 @@ class StatusCode extends \Entity\Bizjstatus\StatusCode implements \Doctrine\ORM\
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -300,7 +300,7 @@ class StatusCode extends \Entity\Bizjstatus\StatusCode implements \Doctrine\ORM\
     public function addEvent(\Entity\Bizjstatus\StatusCode $event)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addEvent', array($event));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addEvent', [$event]);
 
         return parent::addEvent($event);
     }
@@ -311,7 +311,7 @@ class StatusCode extends \Entity\Bizjstatus\StatusCode implements \Doctrine\ORM\
     public function removeEvent(\Entity\Bizjstatus\StatusCode $event)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeEvent', array($event));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeEvent', [$event]);
 
         return parent::removeEvent($event);
     }
@@ -322,7 +322,7 @@ class StatusCode extends \Entity\Bizjstatus\StatusCode implements \Doctrine\ORM\
     public function getEvents()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEvents', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEvents', []);
 
         return parent::getEvents();
     }

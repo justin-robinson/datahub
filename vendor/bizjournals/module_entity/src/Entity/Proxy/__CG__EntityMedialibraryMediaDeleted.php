@@ -36,7 +36,7 @@ class MediaDeleted extends \Entity\Medialibrary\MediaDeleted implements \Doctrin
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class MediaDeleted extends \Entity\Medialibrary\MediaDeleted implements \Doctrin
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\MediaDeleted' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\MediaDeleted' . "\0" . 'relative_path', '' . "\0" . 'Entity\\Medialibrary\\MediaDeleted' . "\0" . 'filename', '' . "\0" . 'Entity\\Medialibrary\\MediaDeleted' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\MediaDeleted' . "\0" . 'deleted_at');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\MediaDeleted' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\MediaDeleted' . "\0" . 'relative_path', '' . "\0" . 'Entity\\Medialibrary\\MediaDeleted' . "\0" . 'filename', '' . "\0" . 'Entity\\Medialibrary\\MediaDeleted' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\MediaDeleted' . "\0" . 'deleted_at'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\MediaDeleted' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\MediaDeleted' . "\0" . 'relative_path', '' . "\0" . 'Entity\\Medialibrary\\MediaDeleted' . "\0" . 'filename', '' . "\0" . 'Entity\\Medialibrary\\MediaDeleted' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\MediaDeleted' . "\0" . 'deleted_at');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\MediaDeleted' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\MediaDeleted' . "\0" . 'relative_path', '' . "\0" . 'Entity\\Medialibrary\\MediaDeleted' . "\0" . 'filename', '' . "\0" . 'Entity\\Medialibrary\\MediaDeleted' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\MediaDeleted' . "\0" . 'deleted_at'];
     }
 
     /**
@@ -97,7 +97,7 @@ class MediaDeleted extends \Entity\Medialibrary\MediaDeleted implements \Doctrin
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class MediaDeleted extends \Entity\Medialibrary\MediaDeleted implements \Doctrin
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class MediaDeleted extends \Entity\Medialibrary\MediaDeleted implements \Doctrin
     public function setMediaId($mediaId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaId', array($mediaId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaId', [$mediaId]);
 
         return parent::setMediaId($mediaId);
     }
@@ -190,7 +190,7 @@ class MediaDeleted extends \Entity\Medialibrary\MediaDeleted implements \Doctrin
     public function getMediaId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaId', []);
 
         return parent::getMediaId();
     }
@@ -201,7 +201,7 @@ class MediaDeleted extends \Entity\Medialibrary\MediaDeleted implements \Doctrin
     public function setRelativePath($relativePath)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRelativePath', array($relativePath));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRelativePath', [$relativePath]);
 
         return parent::setRelativePath($relativePath);
     }
@@ -212,7 +212,7 @@ class MediaDeleted extends \Entity\Medialibrary\MediaDeleted implements \Doctrin
     public function getRelativePath()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRelativePath', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRelativePath', []);
 
         return parent::getRelativePath();
     }
@@ -223,7 +223,7 @@ class MediaDeleted extends \Entity\Medialibrary\MediaDeleted implements \Doctrin
     public function setFilename($filename)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFilename', array($filename));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFilename', [$filename]);
 
         return parent::setFilename($filename);
     }
@@ -234,7 +234,7 @@ class MediaDeleted extends \Entity\Medialibrary\MediaDeleted implements \Doctrin
     public function getFilename()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFilename', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFilename', []);
 
         return parent::getFilename();
     }
@@ -245,7 +245,7 @@ class MediaDeleted extends \Entity\Medialibrary\MediaDeleted implements \Doctrin
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -256,7 +256,7 @@ class MediaDeleted extends \Entity\Medialibrary\MediaDeleted implements \Doctrin
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -267,7 +267,7 @@ class MediaDeleted extends \Entity\Medialibrary\MediaDeleted implements \Doctrin
     public function setDeletedAt($deletedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeletedAt', array($deletedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeletedAt', [$deletedAt]);
 
         return parent::setDeletedAt($deletedAt);
     }
@@ -278,7 +278,7 @@ class MediaDeleted extends \Entity\Medialibrary\MediaDeleted implements \Doctrin
     public function getDeletedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeletedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeletedAt', []);
 
         return parent::getDeletedAt();
     }

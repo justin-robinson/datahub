@@ -36,7 +36,7 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'queue_id', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'content_id', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'version', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'action', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'run_at', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'queued_by', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'queued_at', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'is_complete', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'completed_at', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'has_succeeded', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'has_failed', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'is_overridden', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'override_auditlog_id', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'Content');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'queue_id', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'content_id', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'version', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'action', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'run_at', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'queued_by', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'queued_at', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'is_complete', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'completed_at', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'has_succeeded', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'has_failed', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'is_overridden', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'override_auditlog_id', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'Content'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'queue_id', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'content_id', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'version', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'action', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'run_at', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'queued_by', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'queued_at', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'is_complete', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'completed_at', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'has_succeeded', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'has_failed', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'is_overridden', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'override_auditlog_id', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'Content');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'queue_id', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'content_id', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'version', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'action', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'run_at', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'queued_by', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'queued_at', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'is_complete', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'completed_at', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'has_succeeded', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'has_failed', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'is_overridden', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'override_auditlog_id', '' . "\0" . 'Entity\\Cms\\PublishQueue' . "\0" . 'Content'];
     }
 
     /**
@@ -97,7 +97,7 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
     public function getQueueId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQueueId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQueueId', []);
 
         return parent::getQueueId();
     }
@@ -190,7 +190,7 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
     public function setContentId($contentId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContentId', array($contentId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContentId', [$contentId]);
 
         return parent::setContentId($contentId);
     }
@@ -201,7 +201,7 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
     public function getContentId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContentId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContentId', []);
 
         return parent::getContentId();
     }
@@ -212,7 +212,7 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
     public function setVersion($version)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setVersion', array($version));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setVersion', [$version]);
 
         return parent::setVersion($version);
     }
@@ -223,7 +223,7 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
     public function getVersion()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getVersion', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getVersion', []);
 
         return parent::getVersion();
     }
@@ -234,7 +234,7 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
     public function setAction($action)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAction', array($action));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAction', [$action]);
 
         return parent::setAction($action);
     }
@@ -245,7 +245,7 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
     public function getAction()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAction', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAction', []);
 
         return parent::getAction();
     }
@@ -256,7 +256,7 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
     public function setRunAt($runAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRunAt', array($runAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRunAt', [$runAt]);
 
         return parent::setRunAt($runAt);
     }
@@ -267,7 +267,7 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
     public function getRunAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRunAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRunAt', []);
 
         return parent::getRunAt();
     }
@@ -278,7 +278,7 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
     public function setQueuedBy($queuedBy)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setQueuedBy', array($queuedBy));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setQueuedBy', [$queuedBy]);
 
         return parent::setQueuedBy($queuedBy);
     }
@@ -289,7 +289,7 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
     public function getQueuedBy()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQueuedBy', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQueuedBy', []);
 
         return parent::getQueuedBy();
     }
@@ -300,7 +300,7 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
     public function setQueuedAt($queuedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setQueuedAt', array($queuedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setQueuedAt', [$queuedAt]);
 
         return parent::setQueuedAt($queuedAt);
     }
@@ -311,7 +311,7 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
     public function getQueuedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQueuedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQueuedAt', []);
 
         return parent::getQueuedAt();
     }
@@ -322,7 +322,7 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
     public function setIsComplete($isComplete)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsComplete', array($isComplete));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsComplete', [$isComplete]);
 
         return parent::setIsComplete($isComplete);
     }
@@ -333,7 +333,7 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
     public function getIsComplete()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsComplete', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsComplete', []);
 
         return parent::getIsComplete();
     }
@@ -344,7 +344,7 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
     public function setCompletedAt($completedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCompletedAt', array($completedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCompletedAt', [$completedAt]);
 
         return parent::setCompletedAt($completedAt);
     }
@@ -355,7 +355,7 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
     public function getCompletedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCompletedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCompletedAt', []);
 
         return parent::getCompletedAt();
     }
@@ -366,7 +366,7 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
     public function setHasSucceeded($hasSucceeded)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasSucceeded', array($hasSucceeded));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasSucceeded', [$hasSucceeded]);
 
         return parent::setHasSucceeded($hasSucceeded);
     }
@@ -377,7 +377,7 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
     public function getHasSucceeded()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasSucceeded', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasSucceeded', []);
 
         return parent::getHasSucceeded();
     }
@@ -388,7 +388,7 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
     public function setHasFailed($hasFailed)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasFailed', array($hasFailed));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasFailed', [$hasFailed]);
 
         return parent::setHasFailed($hasFailed);
     }
@@ -399,7 +399,7 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
     public function getHasFailed()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasFailed', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasFailed', []);
 
         return parent::getHasFailed();
     }
@@ -410,7 +410,7 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
     public function setIsOverridden($isOverridden)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsOverridden', array($isOverridden));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsOverridden', [$isOverridden]);
 
         return parent::setIsOverridden($isOverridden);
     }
@@ -421,7 +421,7 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
     public function getIsOverridden()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsOverridden', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsOverridden', []);
 
         return parent::getIsOverridden();
     }
@@ -432,7 +432,7 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
     public function setOverrideAuditlogId($overrideAuditlogId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOverrideAuditlogId', array($overrideAuditlogId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOverrideAuditlogId', [$overrideAuditlogId]);
 
         return parent::setOverrideAuditlogId($overrideAuditlogId);
     }
@@ -443,7 +443,7 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
     public function getOverrideAuditlogId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOverrideAuditlogId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOverrideAuditlogId', []);
 
         return parent::getOverrideAuditlogId();
     }
@@ -454,7 +454,7 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
     public function setContent(\Entity\Cms\Content $content = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContent', array($content));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContent', [$content]);
 
         return parent::setContent($content);
     }
@@ -465,7 +465,7 @@ class PublishQueue extends \Entity\Cms\PublishQueue implements \Doctrine\ORM\Pro
     public function getContent()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContent', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContent', []);
 
         return parent::getContent();
     }

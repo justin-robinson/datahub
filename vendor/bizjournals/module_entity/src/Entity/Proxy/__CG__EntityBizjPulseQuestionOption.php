@@ -36,7 +36,7 @@ class PulseQuestionOption extends \Entity\Bizj\PulseQuestionOption implements \D
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class PulseQuestionOption extends \Entity\Bizj\PulseQuestionOption implements \D
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'option_id', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'question_id', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'ord', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'choice', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'is_correct', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'Question');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'option_id', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'question_id', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'ord', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'choice', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'is_correct', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'Question'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'option_id', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'question_id', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'ord', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'choice', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'is_correct', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'Question');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'option_id', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'question_id', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'ord', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'choice', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'is_correct', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Bizj\\PulseQuestionOption' . "\0" . 'Question'];
     }
 
     /**
@@ -97,7 +97,7 @@ class PulseQuestionOption extends \Entity\Bizj\PulseQuestionOption implements \D
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class PulseQuestionOption extends \Entity\Bizj\PulseQuestionOption implements \D
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class PulseQuestionOption extends \Entity\Bizj\PulseQuestionOption implements \D
     public function getOptionId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOptionId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOptionId', []);
 
         return parent::getOptionId();
     }
@@ -190,7 +190,7 @@ class PulseQuestionOption extends \Entity\Bizj\PulseQuestionOption implements \D
     public function setQuestionId($questionId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setQuestionId', array($questionId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setQuestionId', [$questionId]);
 
         return parent::setQuestionId($questionId);
     }
@@ -201,7 +201,7 @@ class PulseQuestionOption extends \Entity\Bizj\PulseQuestionOption implements \D
     public function getQuestionId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQuestionId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQuestionId', []);
 
         return parent::getQuestionId();
     }
@@ -212,7 +212,7 @@ class PulseQuestionOption extends \Entity\Bizj\PulseQuestionOption implements \D
     public function setOrd($ord)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrd', array($ord));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrd', [$ord]);
 
         return parent::setOrd($ord);
     }
@@ -223,7 +223,7 @@ class PulseQuestionOption extends \Entity\Bizj\PulseQuestionOption implements \D
     public function getOrd()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrd', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrd', []);
 
         return parent::getOrd();
     }
@@ -234,7 +234,7 @@ class PulseQuestionOption extends \Entity\Bizj\PulseQuestionOption implements \D
     public function setChoice($choice)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setChoice', array($choice));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setChoice', [$choice]);
 
         return parent::setChoice($choice);
     }
@@ -245,7 +245,7 @@ class PulseQuestionOption extends \Entity\Bizj\PulseQuestionOption implements \D
     public function getChoice()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getChoice', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getChoice', []);
 
         return parent::getChoice();
     }
@@ -256,7 +256,7 @@ class PulseQuestionOption extends \Entity\Bizj\PulseQuestionOption implements \D
     public function setIsCorrect($isCorrect)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsCorrect', array($isCorrect));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsCorrect', [$isCorrect]);
 
         return parent::setIsCorrect($isCorrect);
     }
@@ -267,7 +267,7 @@ class PulseQuestionOption extends \Entity\Bizj\PulseQuestionOption implements \D
     public function getIsCorrect()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsCorrect', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsCorrect', []);
 
         return parent::getIsCorrect();
     }
@@ -278,7 +278,7 @@ class PulseQuestionOption extends \Entity\Bizj\PulseQuestionOption implements \D
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -289,7 +289,7 @@ class PulseQuestionOption extends \Entity\Bizj\PulseQuestionOption implements \D
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -300,7 +300,7 @@ class PulseQuestionOption extends \Entity\Bizj\PulseQuestionOption implements \D
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -311,7 +311,7 @@ class PulseQuestionOption extends \Entity\Bizj\PulseQuestionOption implements \D
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -322,7 +322,7 @@ class PulseQuestionOption extends \Entity\Bizj\PulseQuestionOption implements \D
     public function setDeletedAt($deletedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeletedAt', array($deletedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeletedAt', [$deletedAt]);
 
         return parent::setDeletedAt($deletedAt);
     }
@@ -333,7 +333,7 @@ class PulseQuestionOption extends \Entity\Bizj\PulseQuestionOption implements \D
     public function getDeletedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeletedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeletedAt', []);
 
         return parent::getDeletedAt();
     }
@@ -344,7 +344,7 @@ class PulseQuestionOption extends \Entity\Bizj\PulseQuestionOption implements \D
     public function setQuestion(\Entity\Bizj\PulseQuestion $question = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setQuestion', array($question));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setQuestion', [$question]);
 
         return parent::setQuestion($question);
     }
@@ -355,7 +355,7 @@ class PulseQuestionOption extends \Entity\Bizj\PulseQuestionOption implements \D
     public function getQuestion()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQuestion', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQuestion', []);
 
         return parent::getQuestion();
     }

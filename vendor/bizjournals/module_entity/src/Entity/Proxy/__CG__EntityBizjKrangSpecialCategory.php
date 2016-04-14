@@ -36,7 +36,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'special_cat_id', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'category_name', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'sponsor_name', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'content_label', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'market_code', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'krang_page_type', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'krang_category', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'is_active', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'skin', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'extraheader', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'adtag_spf', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'blog_extraheader', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'start_date', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'end_date', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'modified_by', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'deleted_at');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'special_cat_id', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'category_name', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'sponsor_name', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'content_label', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'market_code', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'krang_page_type', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'krang_category', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'is_active', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'skin', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'extraheader', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'adtag_spf', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'blog_extraheader', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'start_date', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'end_date', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'modified_by', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'deleted_at'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'special_cat_id', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'category_name', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'sponsor_name', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'content_label', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'market_code', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'krang_page_type', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'krang_category', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'is_active', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'skin', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'extraheader', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'adtag_spf', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'blog_extraheader', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'start_date', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'end_date', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'modified_by', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'deleted_at');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'special_cat_id', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'category_name', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'sponsor_name', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'content_label', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'market_code', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'krang_page_type', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'krang_category', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'is_active', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'skin', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'extraheader', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'adtag_spf', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'blog_extraheader', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'start_date', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'end_date', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'modified_by', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\KrangSpecialCategory' . "\0" . 'deleted_at'];
     }
 
     /**
@@ -97,7 +97,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function getSpecialCatId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSpecialCatId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSpecialCatId', []);
 
         return parent::getSpecialCatId();
     }
@@ -190,7 +190,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function setCategoryName($categoryName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCategoryName', array($categoryName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCategoryName', [$categoryName]);
 
         return parent::setCategoryName($categoryName);
     }
@@ -201,7 +201,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function getCategoryName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategoryName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategoryName', []);
 
         return parent::getCategoryName();
     }
@@ -212,7 +212,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function setSponsorName($sponsorName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSponsorName', array($sponsorName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSponsorName', [$sponsorName]);
 
         return parent::setSponsorName($sponsorName);
     }
@@ -223,7 +223,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function getSponsorName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSponsorName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSponsorName', []);
 
         return parent::getSponsorName();
     }
@@ -234,7 +234,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function setContentLabel($contentLabel)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContentLabel', array($contentLabel));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContentLabel', [$contentLabel]);
 
         return parent::setContentLabel($contentLabel);
     }
@@ -245,7 +245,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function getContentLabel()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContentLabel', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContentLabel', []);
 
         return parent::getContentLabel();
     }
@@ -256,7 +256,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function setMarketCode($marketCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketCode', array($marketCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketCode', [$marketCode]);
 
         return parent::setMarketCode($marketCode);
     }
@@ -267,7 +267,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function getMarketCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketCode', []);
 
         return parent::getMarketCode();
     }
@@ -278,7 +278,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function setKrangPageType($krangPageType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setKrangPageType', array($krangPageType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setKrangPageType', [$krangPageType]);
 
         return parent::setKrangPageType($krangPageType);
     }
@@ -289,7 +289,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function getKrangPageType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getKrangPageType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getKrangPageType', []);
 
         return parent::getKrangPageType();
     }
@@ -300,7 +300,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function setKrangCategory($krangCategory)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setKrangCategory', array($krangCategory));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setKrangCategory', [$krangCategory]);
 
         return parent::setKrangCategory($krangCategory);
     }
@@ -311,7 +311,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function getKrangCategory()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getKrangCategory', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getKrangCategory', []);
 
         return parent::getKrangCategory();
     }
@@ -322,7 +322,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function setIsActive($isActive)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', array($isActive));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', [$isActive]);
 
         return parent::setIsActive($isActive);
     }
@@ -333,7 +333,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function getIsActive()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', []);
 
         return parent::getIsActive();
     }
@@ -344,7 +344,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function setSkin($skin)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSkin', array($skin));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSkin', [$skin]);
 
         return parent::setSkin($skin);
     }
@@ -355,7 +355,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function getSkin()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSkin', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSkin', []);
 
         return parent::getSkin();
     }
@@ -366,7 +366,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function setExtraheader($extraheader)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExtraheader', array($extraheader));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExtraheader', [$extraheader]);
 
         return parent::setExtraheader($extraheader);
     }
@@ -377,7 +377,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function getExtraheader()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExtraheader', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExtraheader', []);
 
         return parent::getExtraheader();
     }
@@ -388,7 +388,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function setAdtagSpf($adtagSpf)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAdtagSpf', array($adtagSpf));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAdtagSpf', [$adtagSpf]);
 
         return parent::setAdtagSpf($adtagSpf);
     }
@@ -399,7 +399,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function getAdtagSpf()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAdtagSpf', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAdtagSpf', []);
 
         return parent::getAdtagSpf();
     }
@@ -410,7 +410,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function setBlogExtraheader($blogExtraheader)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBlogExtraheader', array($blogExtraheader));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBlogExtraheader', [$blogExtraheader]);
 
         return parent::setBlogExtraheader($blogExtraheader);
     }
@@ -421,7 +421,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function getBlogExtraheader()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBlogExtraheader', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBlogExtraheader', []);
 
         return parent::getBlogExtraheader();
     }
@@ -432,7 +432,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function setStartDate($startDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStartDate', array($startDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStartDate', [$startDate]);
 
         return parent::setStartDate($startDate);
     }
@@ -443,7 +443,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function getStartDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStartDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStartDate', []);
 
         return parent::getStartDate();
     }
@@ -454,7 +454,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function setEndDate($endDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEndDate', array($endDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEndDate', [$endDate]);
 
         return parent::setEndDate($endDate);
     }
@@ -465,7 +465,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function getEndDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEndDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEndDate', []);
 
         return parent::getEndDate();
     }
@@ -476,7 +476,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function setModifiedBy($modifiedBy)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setModifiedBy', array($modifiedBy));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setModifiedBy', [$modifiedBy]);
 
         return parent::setModifiedBy($modifiedBy);
     }
@@ -487,7 +487,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function getModifiedBy()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getModifiedBy', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getModifiedBy', []);
 
         return parent::getModifiedBy();
     }
@@ -498,7 +498,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -509,7 +509,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -520,7 +520,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -531,7 +531,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -542,7 +542,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function setDeletedAt($deletedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeletedAt', array($deletedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeletedAt', [$deletedAt]);
 
         return parent::setDeletedAt($deletedAt);
     }
@@ -553,7 +553,7 @@ class KrangSpecialCategory extends \Entity\Bizj\KrangSpecialCategory implements 
     public function getDeletedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeletedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeletedAt', []);
 
         return parent::getDeletedAt();
     }

@@ -36,7 +36,7 @@ class AuthToken extends \Entity\Medialibrary\AuthToken implements \Doctrine\ORM\
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class AuthToken extends \Entity\Medialibrary\AuthToken implements \Doctrine\ORM\
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'auth_id', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'purpose', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'category', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'api_key', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'shared_secret', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'is_active', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'expires_at', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'is_superuser', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'AuthSessions');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'auth_id', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'purpose', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'category', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'api_key', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'shared_secret', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'is_active', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'expires_at', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'is_superuser', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'AuthSessions'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'auth_id', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'purpose', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'category', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'api_key', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'shared_secret', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'is_active', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'expires_at', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'is_superuser', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'AuthSessions');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'auth_id', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'purpose', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'category', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'api_key', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'shared_secret', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'is_active', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'expires_at', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'is_superuser', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Medialibrary\\AuthToken' . "\0" . 'AuthSessions'];
     }
 
     /**
@@ -97,7 +97,7 @@ class AuthToken extends \Entity\Medialibrary\AuthToken implements \Doctrine\ORM\
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class AuthToken extends \Entity\Medialibrary\AuthToken implements \Doctrine\ORM\
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class AuthToken extends \Entity\Medialibrary\AuthToken implements \Doctrine\ORM\
     public function getAuthId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAuthId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAuthId', []);
 
         return parent::getAuthId();
     }
@@ -190,7 +190,7 @@ class AuthToken extends \Entity\Medialibrary\AuthToken implements \Doctrine\ORM\
     public function setPurpose($purpose)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPurpose', array($purpose));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPurpose', [$purpose]);
 
         return parent::setPurpose($purpose);
     }
@@ -201,7 +201,7 @@ class AuthToken extends \Entity\Medialibrary\AuthToken implements \Doctrine\ORM\
     public function getPurpose()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPurpose', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPurpose', []);
 
         return parent::getPurpose();
     }
@@ -212,7 +212,7 @@ class AuthToken extends \Entity\Medialibrary\AuthToken implements \Doctrine\ORM\
     public function setCategory($category)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCategory', array($category));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCategory', [$category]);
 
         return parent::setCategory($category);
     }
@@ -223,7 +223,7 @@ class AuthToken extends \Entity\Medialibrary\AuthToken implements \Doctrine\ORM\
     public function getCategory()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategory', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategory', []);
 
         return parent::getCategory();
     }
@@ -234,7 +234,7 @@ class AuthToken extends \Entity\Medialibrary\AuthToken implements \Doctrine\ORM\
     public function setApiKey($apiKey)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setApiKey', array($apiKey));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setApiKey', [$apiKey]);
 
         return parent::setApiKey($apiKey);
     }
@@ -245,7 +245,7 @@ class AuthToken extends \Entity\Medialibrary\AuthToken implements \Doctrine\ORM\
     public function getApiKey()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getApiKey', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getApiKey', []);
 
         return parent::getApiKey();
     }
@@ -256,7 +256,7 @@ class AuthToken extends \Entity\Medialibrary\AuthToken implements \Doctrine\ORM\
     public function setSharedSecret($sharedSecret)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSharedSecret', array($sharedSecret));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSharedSecret', [$sharedSecret]);
 
         return parent::setSharedSecret($sharedSecret);
     }
@@ -267,7 +267,7 @@ class AuthToken extends \Entity\Medialibrary\AuthToken implements \Doctrine\ORM\
     public function getSharedSecret()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSharedSecret', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSharedSecret', []);
 
         return parent::getSharedSecret();
     }
@@ -278,7 +278,7 @@ class AuthToken extends \Entity\Medialibrary\AuthToken implements \Doctrine\ORM\
     public function setIsActive($isActive)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', array($isActive));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', [$isActive]);
 
         return parent::setIsActive($isActive);
     }
@@ -289,7 +289,7 @@ class AuthToken extends \Entity\Medialibrary\AuthToken implements \Doctrine\ORM\
     public function getIsActive()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', []);
 
         return parent::getIsActive();
     }
@@ -300,7 +300,7 @@ class AuthToken extends \Entity\Medialibrary\AuthToken implements \Doctrine\ORM\
     public function setExpiresAt($expiresAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExpiresAt', array($expiresAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExpiresAt', [$expiresAt]);
 
         return parent::setExpiresAt($expiresAt);
     }
@@ -311,7 +311,7 @@ class AuthToken extends \Entity\Medialibrary\AuthToken implements \Doctrine\ORM\
     public function getExpiresAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExpiresAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExpiresAt', []);
 
         return parent::getExpiresAt();
     }
@@ -322,7 +322,7 @@ class AuthToken extends \Entity\Medialibrary\AuthToken implements \Doctrine\ORM\
     public function setIsSuperuser($isSuperuser)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsSuperuser', array($isSuperuser));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsSuperuser', [$isSuperuser]);
 
         return parent::setIsSuperuser($isSuperuser);
     }
@@ -333,7 +333,7 @@ class AuthToken extends \Entity\Medialibrary\AuthToken implements \Doctrine\ORM\
     public function getIsSuperuser()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsSuperuser', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsSuperuser', []);
 
         return parent::getIsSuperuser();
     }
@@ -344,7 +344,7 @@ class AuthToken extends \Entity\Medialibrary\AuthToken implements \Doctrine\ORM\
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -355,7 +355,7 @@ class AuthToken extends \Entity\Medialibrary\AuthToken implements \Doctrine\ORM\
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -366,7 +366,7 @@ class AuthToken extends \Entity\Medialibrary\AuthToken implements \Doctrine\ORM\
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -377,7 +377,7 @@ class AuthToken extends \Entity\Medialibrary\AuthToken implements \Doctrine\ORM\
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -388,7 +388,7 @@ class AuthToken extends \Entity\Medialibrary\AuthToken implements \Doctrine\ORM\
     public function addAuthSession(\Entity\Medialibrary\AuthSession $authSession)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAuthSession', array($authSession));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAuthSession', [$authSession]);
 
         return parent::addAuthSession($authSession);
     }
@@ -399,7 +399,7 @@ class AuthToken extends \Entity\Medialibrary\AuthToken implements \Doctrine\ORM\
     public function removeAuthSession(\Entity\Medialibrary\AuthSession $authSession)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAuthSession', array($authSession));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAuthSession', [$authSession]);
 
         return parent::removeAuthSession($authSession);
     }
@@ -410,7 +410,7 @@ class AuthToken extends \Entity\Medialibrary\AuthToken implements \Doctrine\ORM\
     public function getAuthSessions()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAuthSessions', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAuthSessions', []);
 
         return parent::getAuthSessions();
     }

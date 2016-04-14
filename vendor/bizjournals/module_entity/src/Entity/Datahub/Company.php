@@ -163,11 +163,29 @@ class Company extends \Entity\Entity\Base
     private $Contacts;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $MeroveusIndustries;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $SicIndustries;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $ThirdPartyIndustries;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->Contacts = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->MeroveusIndustries = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->SicIndustries = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->ThirdPartyIndustries = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -909,4 +927,107 @@ class Company extends \Entity\Entity\Base
     {
         return $this->Contacts;
     }
+
+    /**
+     * Add meroveusIndustry
+     *
+     * @param \Entity\Datahub\MeroveusIndustry $meroveusIndustry
+     *
+     * @return Company
+     */
+    public function addMeroveusIndustry(\Entity\Datahub\MeroveusIndustry $meroveusIndustry)
+    {
+        $this->MeroveusIndustries[] = $meroveusIndustry;
+
+        return $this;
+    }
+
+    /**
+     * Remove meroveusIndustry
+     *
+     * @param \Entity\Datahub\MeroveusIndustry $meroveusIndustry
+     */
+    public function removeMeroveusIndustry(\Entity\Datahub\MeroveusIndustry $meroveusIndustry)
+    {
+        $this->MeroveusIndustries->removeElement($meroveusIndustry);
+    }
+
+    /**
+     * Get meroveusIndustries
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMeroveusIndustries()
+    {
+        return $this->MeroveusIndustries;
+    }
+
+    /**
+     * Add sicIndustry
+     *
+     * @param \Entity\Datahub\MeroveusIndustry $sicIndustry
+     *
+     * @return Company
+     */
+    public function addSicIndustry(\Entity\Datahub\MeroveusIndustry $sicIndustry)
+    {
+        $this->SicIndustries[] = $sicIndustry;
+
+        return $this;
+    }
+
+    /**
+     * Remove sicIndustry
+     *
+     * @param \Entity\Datahub\MeroveusIndustry $sicIndustry
+     */
+    public function removeSicIndustry(\Entity\Datahub\MeroveusIndustry $sicIndustry)
+    {
+        $this->SicIndustries->removeElement($sicIndustry);
+    }
+
+    /**
+     * Get sicIndustries
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSicIndustries()
+    {
+        return $this->SicIndustries;
+    }
+
+    /**
+     * Add thirdPartyIndustry
+     *
+     * @param \Entity\Datahub\MeroveusIndustry $thirdPartyIndustry
+     *
+     * @return Company
+     */
+    public function addThirdPartyIndustry(\Entity\Datahub\MeroveusIndustry $thirdPartyIndustry)
+    {
+        $this->ThirdPartyIndustries[] = $thirdPartyIndustry;
+
+        return $this;
+    }
+
+    /**
+     * Remove thirdPartyIndustry
+     *
+     * @param \Entity\Datahub\MeroveusIndustry $thirdPartyIndustry
+     */
+    public function removeThirdPartyIndustry(\Entity\Datahub\MeroveusIndustry $thirdPartyIndustry)
+    {
+        $this->ThirdPartyIndustries->removeElement($thirdPartyIndustry);
+    }
+
+    /**
+     * Get thirdPartyIndustries
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getThirdPartyIndustries()
+    {
+        return $this->ThirdPartyIndustries;
+    }
 }
+

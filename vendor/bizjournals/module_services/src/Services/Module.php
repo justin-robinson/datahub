@@ -120,6 +120,16 @@ class Module
                     return new Multipub\LookupService($client);
                 },
 
+                // CircApi
+                'Services\Circ\Client' => function (ServiceManager $sm) {
+                    $config = $sm->get('Config');
+                    return new Circ\Client($config['circapi']);
+                },
+                'Services\Circ\AddressService' => function (ServiceManager $sm) {
+                    $client = $sm->get('Services\Circ\Client');
+                    return new Circ\AddressService($client);
+                },
+
                 // AdminAuthentication
                 'Services\AdminAuthentication\Client' => function (ServiceManager $sm) {
                     $config = $sm->get('Config');
@@ -134,17 +144,6 @@ class Module
                 'Services\Bizjmerchant\MerchantService' => function (ServiceManager $sm) {
                     $client = $sm->get('Services\Bizjmerchant\Client');
                     return new Bizjmerchant\MerchantService($client);
-                },
-
-                // CircApi
-                'Services\Circ\CircApiClient' => function (ServiceManager $sm) {
-                    $config = $sm->get('Config');
-                    return new Circ\CircApiClient($config['circapi']);
-                },
-                'Services\Circ\CircApiService' => function (ServiceManager $sm) {
-                    $client = $sm->get('Services\Circ\CircApiClient');
-                    $service = new Circ\CircApiService($client);
-                    return $service;
                 },
 
                 // Nstein

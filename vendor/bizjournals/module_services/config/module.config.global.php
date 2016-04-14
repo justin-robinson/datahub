@@ -6,6 +6,7 @@ return array(
         ),
     ),
     'circapi' => array(
+        'base_url' => 'https://subscribe.bizjournals.com/servlet/',
         'options'  => array(
             'sslverifypeer' => false,
         ),
@@ -25,8 +26,6 @@ return array(
         ),
     ),
     'nstein' => array(
-        'host' => 'otca.bizjournals.com',
-        'request_version' => 3,
         'industry_map' => array(
             'full' => array(
                 'Economic View: Bankruptcies'                         => 66, // Banking & Financial Services

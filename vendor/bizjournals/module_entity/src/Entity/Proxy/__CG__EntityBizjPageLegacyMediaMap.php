@@ -36,7 +36,7 @@ class PageLegacyMediaMap extends \Entity\Bizj\PageLegacyMediaMap implements \Doc
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class PageLegacyMediaMap extends \Entity\Bizj\PageLegacyMediaMap implements \Doc
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'media_id', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'media_type', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'caption', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'alt_text', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'link_url', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'ord', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'title', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'flag', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'Page');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'media_id', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'media_type', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'caption', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'alt_text', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'link_url', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'ord', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'title', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'flag', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'Page'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'media_id', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'media_type', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'caption', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'alt_text', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'link_url', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'ord', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'title', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'flag', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'Page');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'media_id', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'media_type', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'caption', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'alt_text', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'link_url', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'ord', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'title', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'flag', '' . "\0" . 'Entity\\Bizj\\PageLegacyMediaMap' . "\0" . 'Page'];
     }
 
     /**
@@ -97,7 +97,7 @@ class PageLegacyMediaMap extends \Entity\Bizj\PageLegacyMediaMap implements \Doc
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class PageLegacyMediaMap extends \Entity\Bizj\PageLegacyMediaMap implements \Doc
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class PageLegacyMediaMap extends \Entity\Bizj\PageLegacyMediaMap implements \Doc
     public function setPageId($pageId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPageId', array($pageId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPageId', [$pageId]);
 
         return parent::setPageId($pageId);
     }
@@ -190,7 +190,7 @@ class PageLegacyMediaMap extends \Entity\Bizj\PageLegacyMediaMap implements \Doc
     public function getPageId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageId', []);
 
         return parent::getPageId();
     }
@@ -201,7 +201,7 @@ class PageLegacyMediaMap extends \Entity\Bizj\PageLegacyMediaMap implements \Doc
     public function setMediaId($mediaId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaId', array($mediaId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaId', [$mediaId]);
 
         return parent::setMediaId($mediaId);
     }
@@ -212,7 +212,7 @@ class PageLegacyMediaMap extends \Entity\Bizj\PageLegacyMediaMap implements \Doc
     public function getMediaId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaId', []);
 
         return parent::getMediaId();
     }
@@ -223,7 +223,7 @@ class PageLegacyMediaMap extends \Entity\Bizj\PageLegacyMediaMap implements \Doc
     public function setMediaType($mediaType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaType', array($mediaType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaType', [$mediaType]);
 
         return parent::setMediaType($mediaType);
     }
@@ -234,7 +234,7 @@ class PageLegacyMediaMap extends \Entity\Bizj\PageLegacyMediaMap implements \Doc
     public function getMediaType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaType', []);
 
         return parent::getMediaType();
     }
@@ -245,7 +245,7 @@ class PageLegacyMediaMap extends \Entity\Bizj\PageLegacyMediaMap implements \Doc
     public function setCaption($caption)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCaption', array($caption));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCaption', [$caption]);
 
         return parent::setCaption($caption);
     }
@@ -256,7 +256,7 @@ class PageLegacyMediaMap extends \Entity\Bizj\PageLegacyMediaMap implements \Doc
     public function getCaption()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCaption', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCaption', []);
 
         return parent::getCaption();
     }
@@ -267,7 +267,7 @@ class PageLegacyMediaMap extends \Entity\Bizj\PageLegacyMediaMap implements \Doc
     public function setAltText($altText)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAltText', array($altText));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAltText', [$altText]);
 
         return parent::setAltText($altText);
     }
@@ -278,7 +278,7 @@ class PageLegacyMediaMap extends \Entity\Bizj\PageLegacyMediaMap implements \Doc
     public function getAltText()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAltText', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAltText', []);
 
         return parent::getAltText();
     }
@@ -289,7 +289,7 @@ class PageLegacyMediaMap extends \Entity\Bizj\PageLegacyMediaMap implements \Doc
     public function setLinkUrl($linkUrl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLinkUrl', array($linkUrl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLinkUrl', [$linkUrl]);
 
         return parent::setLinkUrl($linkUrl);
     }
@@ -300,7 +300,7 @@ class PageLegacyMediaMap extends \Entity\Bizj\PageLegacyMediaMap implements \Doc
     public function getLinkUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLinkUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLinkUrl', []);
 
         return parent::getLinkUrl();
     }
@@ -311,7 +311,7 @@ class PageLegacyMediaMap extends \Entity\Bizj\PageLegacyMediaMap implements \Doc
     public function setOrd($ord)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrd', array($ord));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrd', [$ord]);
 
         return parent::setOrd($ord);
     }
@@ -326,7 +326,7 @@ class PageLegacyMediaMap extends \Entity\Bizj\PageLegacyMediaMap implements \Doc
         }
 
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrd', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrd', []);
 
         return parent::getOrd();
     }
@@ -337,7 +337,7 @@ class PageLegacyMediaMap extends \Entity\Bizj\PageLegacyMediaMap implements \Doc
     public function setTitle($title)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', array($title));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', [$title]);
 
         return parent::setTitle($title);
     }
@@ -348,7 +348,7 @@ class PageLegacyMediaMap extends \Entity\Bizj\PageLegacyMediaMap implements \Doc
     public function getTitle()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', []);
 
         return parent::getTitle();
     }
@@ -359,7 +359,7 @@ class PageLegacyMediaMap extends \Entity\Bizj\PageLegacyMediaMap implements \Doc
     public function setFlag($flag)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFlag', array($flag));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFlag', [$flag]);
 
         return parent::setFlag($flag);
     }
@@ -370,7 +370,7 @@ class PageLegacyMediaMap extends \Entity\Bizj\PageLegacyMediaMap implements \Doc
     public function getFlag()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFlag', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFlag', []);
 
         return parent::getFlag();
     }
@@ -381,7 +381,7 @@ class PageLegacyMediaMap extends \Entity\Bizj\PageLegacyMediaMap implements \Doc
     public function setPage(\Entity\Bizj\Page $page = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPage', array($page));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPage', [$page]);
 
         return parent::setPage($page);
     }
@@ -392,7 +392,7 @@ class PageLegacyMediaMap extends \Entity\Bizj\PageLegacyMediaMap implements \Doc
     public function getPage()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPage', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPage', []);
 
         return parent::getPage();
     }

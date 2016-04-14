@@ -36,7 +36,7 @@ class KrangMediaExport extends \Entity\Medialibrary\KrangMediaExport implements 
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class KrangMediaExport extends \Entity\Medialibrary\KrangMediaExport implements 
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'media_type_id', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'mime_type', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'location_url', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'filename', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'title', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'caption', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'copyright', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'publish_date', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'IdMap');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'media_type_id', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'mime_type', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'location_url', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'filename', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'title', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'caption', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'copyright', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'publish_date', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'IdMap'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'media_type_id', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'mime_type', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'location_url', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'filename', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'title', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'caption', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'copyright', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'publish_date', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'IdMap');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'media_type_id', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'mime_type', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'location_url', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'filename', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'title', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'caption', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'copyright', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'publish_date', '' . "\0" . 'Entity\\Medialibrary\\KrangMediaExport' . "\0" . 'IdMap'];
     }
 
     /**
@@ -97,7 +97,7 @@ class KrangMediaExport extends \Entity\Medialibrary\KrangMediaExport implements 
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class KrangMediaExport extends \Entity\Medialibrary\KrangMediaExport implements 
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class KrangMediaExport extends \Entity\Medialibrary\KrangMediaExport implements 
     public function setMediaId($mediaId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaId', array($mediaId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaId', [$mediaId]);
 
         return parent::setMediaId($mediaId);
     }
@@ -190,7 +190,7 @@ class KrangMediaExport extends \Entity\Medialibrary\KrangMediaExport implements 
     public function getMediaId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaId', []);
 
         return parent::getMediaId();
     }
@@ -201,7 +201,7 @@ class KrangMediaExport extends \Entity\Medialibrary\KrangMediaExport implements 
     public function setMediaTypeId($mediaTypeId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaTypeId', array($mediaTypeId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaTypeId', [$mediaTypeId]);
 
         return parent::setMediaTypeId($mediaTypeId);
     }
@@ -212,7 +212,7 @@ class KrangMediaExport extends \Entity\Medialibrary\KrangMediaExport implements 
     public function getMediaTypeId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaTypeId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaTypeId', []);
 
         return parent::getMediaTypeId();
     }
@@ -223,7 +223,7 @@ class KrangMediaExport extends \Entity\Medialibrary\KrangMediaExport implements 
     public function setMimeType($mimeType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMimeType', array($mimeType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMimeType', [$mimeType]);
 
         return parent::setMimeType($mimeType);
     }
@@ -234,7 +234,7 @@ class KrangMediaExport extends \Entity\Medialibrary\KrangMediaExport implements 
     public function getMimeType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMimeType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMimeType', []);
 
         return parent::getMimeType();
     }
@@ -245,7 +245,7 @@ class KrangMediaExport extends \Entity\Medialibrary\KrangMediaExport implements 
     public function setLocationUrl($locationUrl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLocationUrl', array($locationUrl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLocationUrl', [$locationUrl]);
 
         return parent::setLocationUrl($locationUrl);
     }
@@ -256,7 +256,7 @@ class KrangMediaExport extends \Entity\Medialibrary\KrangMediaExport implements 
     public function getLocationUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLocationUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLocationUrl', []);
 
         return parent::getLocationUrl();
     }
@@ -267,7 +267,7 @@ class KrangMediaExport extends \Entity\Medialibrary\KrangMediaExport implements 
     public function setFilename($filename)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFilename', array($filename));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFilename', [$filename]);
 
         return parent::setFilename($filename);
     }
@@ -278,7 +278,7 @@ class KrangMediaExport extends \Entity\Medialibrary\KrangMediaExport implements 
     public function getFilename()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFilename', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFilename', []);
 
         return parent::getFilename();
     }
@@ -289,7 +289,7 @@ class KrangMediaExport extends \Entity\Medialibrary\KrangMediaExport implements 
     public function setTitle($title)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', array($title));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', [$title]);
 
         return parent::setTitle($title);
     }
@@ -300,7 +300,7 @@ class KrangMediaExport extends \Entity\Medialibrary\KrangMediaExport implements 
     public function getTitle()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', []);
 
         return parent::getTitle();
     }
@@ -311,7 +311,7 @@ class KrangMediaExport extends \Entity\Medialibrary\KrangMediaExport implements 
     public function setCaption($caption)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCaption', array($caption));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCaption', [$caption]);
 
         return parent::setCaption($caption);
     }
@@ -322,7 +322,7 @@ class KrangMediaExport extends \Entity\Medialibrary\KrangMediaExport implements 
     public function getCaption()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCaption', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCaption', []);
 
         return parent::getCaption();
     }
@@ -333,7 +333,7 @@ class KrangMediaExport extends \Entity\Medialibrary\KrangMediaExport implements 
     public function setCopyright($copyright)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCopyright', array($copyright));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCopyright', [$copyright]);
 
         return parent::setCopyright($copyright);
     }
@@ -344,7 +344,7 @@ class KrangMediaExport extends \Entity\Medialibrary\KrangMediaExport implements 
     public function getCopyright()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCopyright', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCopyright', []);
 
         return parent::getCopyright();
     }
@@ -355,7 +355,7 @@ class KrangMediaExport extends \Entity\Medialibrary\KrangMediaExport implements 
     public function setPublishDate($publishDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublishDate', array($publishDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublishDate', [$publishDate]);
 
         return parent::setPublishDate($publishDate);
     }
@@ -366,7 +366,7 @@ class KrangMediaExport extends \Entity\Medialibrary\KrangMediaExport implements 
     public function getPublishDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublishDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublishDate', []);
 
         return parent::getPublishDate();
     }
@@ -377,7 +377,7 @@ class KrangMediaExport extends \Entity\Medialibrary\KrangMediaExport implements 
     public function addIdMap(\Entity\Medialibrary\KrangMediaIdMap $idMap)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addIdMap', array($idMap));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addIdMap', [$idMap]);
 
         return parent::addIdMap($idMap);
     }
@@ -388,7 +388,7 @@ class KrangMediaExport extends \Entity\Medialibrary\KrangMediaExport implements 
     public function removeIdMap(\Entity\Medialibrary\KrangMediaIdMap $idMap)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeIdMap', array($idMap));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeIdMap', [$idMap]);
 
         return parent::removeIdMap($idMap);
     }
@@ -399,7 +399,7 @@ class KrangMediaExport extends \Entity\Medialibrary\KrangMediaExport implements 
     public function getIdMap()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdMap', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdMap', []);
 
         return parent::getIdMap();
     }

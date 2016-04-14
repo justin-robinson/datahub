@@ -36,7 +36,7 @@ class Publication extends \Entity\Cms\Publication implements \Doctrine\ORM\Proxy
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Publication extends \Entity\Cms\Publication implements \Doctrine\ORM\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'pub_name', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'short_name', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'market_code', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'publisher_config', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'timezone', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'default_copyright_notice', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'created_at', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'Content');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'pub_name', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'short_name', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'market_code', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'publisher_config', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'timezone', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'default_copyright_notice', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'created_at', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'Content'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'pub_name', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'short_name', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'market_code', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'publisher_config', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'timezone', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'default_copyright_notice', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'created_at', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'Content');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'pub_name', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'short_name', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'market_code', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'publisher_config', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'timezone', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'default_copyright_notice', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'created_at', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Cms\\Publication' . "\0" . 'Content'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Publication extends \Entity\Cms\Publication implements \Doctrine\ORM\Proxy
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Publication extends \Entity\Cms\Publication implements \Doctrine\ORM\Proxy
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class Publication extends \Entity\Cms\Publication implements \Doctrine\ORM\Proxy
     public function setPubId($pubId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPubId', array($pubId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPubId', [$pubId]);
 
         return parent::setPubId($pubId);
     }
@@ -190,7 +190,7 @@ class Publication extends \Entity\Cms\Publication implements \Doctrine\ORM\Proxy
     public function getPubId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPubId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPubId', []);
 
         return parent::getPubId();
     }
@@ -201,7 +201,7 @@ class Publication extends \Entity\Cms\Publication implements \Doctrine\ORM\Proxy
     public function setPubName($pubName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPubName', array($pubName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPubName', [$pubName]);
 
         return parent::setPubName($pubName);
     }
@@ -212,7 +212,7 @@ class Publication extends \Entity\Cms\Publication implements \Doctrine\ORM\Proxy
     public function getPubName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPubName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPubName', []);
 
         return parent::getPubName();
     }
@@ -223,7 +223,7 @@ class Publication extends \Entity\Cms\Publication implements \Doctrine\ORM\Proxy
     public function setShortName($shortName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setShortName', array($shortName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setShortName', [$shortName]);
 
         return parent::setShortName($shortName);
     }
@@ -234,7 +234,7 @@ class Publication extends \Entity\Cms\Publication implements \Doctrine\ORM\Proxy
     public function getShortName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getShortName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getShortName', []);
 
         return parent::getShortName();
     }
@@ -245,7 +245,7 @@ class Publication extends \Entity\Cms\Publication implements \Doctrine\ORM\Proxy
     public function setMarketCode($marketCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketCode', array($marketCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketCode', [$marketCode]);
 
         return parent::setMarketCode($marketCode);
     }
@@ -256,7 +256,7 @@ class Publication extends \Entity\Cms\Publication implements \Doctrine\ORM\Proxy
     public function getMarketCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketCode', []);
 
         return parent::getMarketCode();
     }
@@ -267,7 +267,7 @@ class Publication extends \Entity\Cms\Publication implements \Doctrine\ORM\Proxy
     public function setPublisherConfig($publisherConfig)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublisherConfig', array($publisherConfig));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublisherConfig', [$publisherConfig]);
 
         return parent::setPublisherConfig($publisherConfig);
     }
@@ -278,7 +278,7 @@ class Publication extends \Entity\Cms\Publication implements \Doctrine\ORM\Proxy
     public function getPublisherConfig()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublisherConfig', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublisherConfig', []);
 
         return parent::getPublisherConfig();
     }
@@ -289,7 +289,7 @@ class Publication extends \Entity\Cms\Publication implements \Doctrine\ORM\Proxy
     public function setTimezone($timezone)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTimezone', array($timezone));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTimezone', [$timezone]);
 
         return parent::setTimezone($timezone);
     }
@@ -300,7 +300,7 @@ class Publication extends \Entity\Cms\Publication implements \Doctrine\ORM\Proxy
     public function getTimezone()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTimezone', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTimezone', []);
 
         return parent::getTimezone();
     }
@@ -311,7 +311,7 @@ class Publication extends \Entity\Cms\Publication implements \Doctrine\ORM\Proxy
     public function setDefaultCopyrightNotice($defaultCopyrightNotice)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDefaultCopyrightNotice', array($defaultCopyrightNotice));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDefaultCopyrightNotice', [$defaultCopyrightNotice]);
 
         return parent::setDefaultCopyrightNotice($defaultCopyrightNotice);
     }
@@ -322,7 +322,7 @@ class Publication extends \Entity\Cms\Publication implements \Doctrine\ORM\Proxy
     public function getDefaultCopyrightNotice()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDefaultCopyrightNotice', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDefaultCopyrightNotice', []);
 
         return parent::getDefaultCopyrightNotice();
     }
@@ -333,7 +333,7 @@ class Publication extends \Entity\Cms\Publication implements \Doctrine\ORM\Proxy
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -344,7 +344,7 @@ class Publication extends \Entity\Cms\Publication implements \Doctrine\ORM\Proxy
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -355,7 +355,7 @@ class Publication extends \Entity\Cms\Publication implements \Doctrine\ORM\Proxy
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -366,7 +366,7 @@ class Publication extends \Entity\Cms\Publication implements \Doctrine\ORM\Proxy
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -377,7 +377,7 @@ class Publication extends \Entity\Cms\Publication implements \Doctrine\ORM\Proxy
     public function addContent(\Entity\Cms\Content $content)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addContent', array($content));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addContent', [$content]);
 
         return parent::addContent($content);
     }
@@ -388,7 +388,7 @@ class Publication extends \Entity\Cms\Publication implements \Doctrine\ORM\Proxy
     public function removeContent(\Entity\Cms\Content $content)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeContent', array($content));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeContent', [$content]);
 
         return parent::removeContent($content);
     }
@@ -399,7 +399,7 @@ class Publication extends \Entity\Cms\Publication implements \Doctrine\ORM\Proxy
     public function getContent()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContent', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContent', []);
 
         return parent::getContent();
     }

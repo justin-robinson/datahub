@@ -36,7 +36,7 @@ class InfoMessage extends \Entity\Bizjstatus\InfoMessage implements \Doctrine\OR
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class InfoMessage extends \Entity\Bizjstatus\InfoMessage implements \Doctrine\OR
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'message_id', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'allow_syndication', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'title', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'details', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'created_by', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'updated_by', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'expires_at', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'ProductMap');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'message_id', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'allow_syndication', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'title', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'details', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'created_by', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'updated_by', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'expires_at', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'ProductMap'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'message_id', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'allow_syndication', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'title', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'details', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'created_by', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'updated_by', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'expires_at', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'ProductMap');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'message_id', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'allow_syndication', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'title', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'details', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'created_by', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'updated_by', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'expires_at', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizjstatus\\InfoMessage' . "\0" . 'ProductMap'];
     }
 
     /**
@@ -97,7 +97,7 @@ class InfoMessage extends \Entity\Bizjstatus\InfoMessage implements \Doctrine\OR
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class InfoMessage extends \Entity\Bizjstatus\InfoMessage implements \Doctrine\OR
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class InfoMessage extends \Entity\Bizjstatus\InfoMessage implements \Doctrine\OR
     public function getMessageId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMessageId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMessageId', []);
 
         return parent::getMessageId();
     }
@@ -190,7 +190,7 @@ class InfoMessage extends \Entity\Bizjstatus\InfoMessage implements \Doctrine\OR
     public function setAllowSyndication($allowSyndication)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowSyndication', array($allowSyndication));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowSyndication', [$allowSyndication]);
 
         return parent::setAllowSyndication($allowSyndication);
     }
@@ -201,7 +201,7 @@ class InfoMessage extends \Entity\Bizjstatus\InfoMessage implements \Doctrine\OR
     public function getAllowSyndication()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowSyndication', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowSyndication', []);
 
         return parent::getAllowSyndication();
     }
@@ -212,7 +212,7 @@ class InfoMessage extends \Entity\Bizjstatus\InfoMessage implements \Doctrine\OR
     public function setTitle($title)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', array($title));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', [$title]);
 
         return parent::setTitle($title);
     }
@@ -223,7 +223,7 @@ class InfoMessage extends \Entity\Bizjstatus\InfoMessage implements \Doctrine\OR
     public function getTitle()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', []);
 
         return parent::getTitle();
     }
@@ -234,7 +234,7 @@ class InfoMessage extends \Entity\Bizjstatus\InfoMessage implements \Doctrine\OR
     public function setDetails($details)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDetails', array($details));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDetails', [$details]);
 
         return parent::setDetails($details);
     }
@@ -245,7 +245,7 @@ class InfoMessage extends \Entity\Bizjstatus\InfoMessage implements \Doctrine\OR
     public function getDetails()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDetails', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDetails', []);
 
         return parent::getDetails();
     }
@@ -256,7 +256,7 @@ class InfoMessage extends \Entity\Bizjstatus\InfoMessage implements \Doctrine\OR
     public function setCreatedBy($createdBy)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedBy', array($createdBy));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedBy', [$createdBy]);
 
         return parent::setCreatedBy($createdBy);
     }
@@ -267,7 +267,7 @@ class InfoMessage extends \Entity\Bizjstatus\InfoMessage implements \Doctrine\OR
     public function getCreatedBy()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedBy', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedBy', []);
 
         return parent::getCreatedBy();
     }
@@ -278,7 +278,7 @@ class InfoMessage extends \Entity\Bizjstatus\InfoMessage implements \Doctrine\OR
     public function setUpdatedBy($updatedBy)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedBy', array($updatedBy));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedBy', [$updatedBy]);
 
         return parent::setUpdatedBy($updatedBy);
     }
@@ -289,7 +289,7 @@ class InfoMessage extends \Entity\Bizjstatus\InfoMessage implements \Doctrine\OR
     public function getUpdatedBy()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedBy', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedBy', []);
 
         return parent::getUpdatedBy();
     }
@@ -300,7 +300,7 @@ class InfoMessage extends \Entity\Bizjstatus\InfoMessage implements \Doctrine\OR
     public function setExpiresAt($expiresAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExpiresAt', array($expiresAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExpiresAt', [$expiresAt]);
 
         return parent::setExpiresAt($expiresAt);
     }
@@ -311,7 +311,7 @@ class InfoMessage extends \Entity\Bizjstatus\InfoMessage implements \Doctrine\OR
     public function getExpiresAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExpiresAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExpiresAt', []);
 
         return parent::getExpiresAt();
     }
@@ -322,7 +322,7 @@ class InfoMessage extends \Entity\Bizjstatus\InfoMessage implements \Doctrine\OR
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -333,7 +333,7 @@ class InfoMessage extends \Entity\Bizjstatus\InfoMessage implements \Doctrine\OR
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -344,7 +344,7 @@ class InfoMessage extends \Entity\Bizjstatus\InfoMessage implements \Doctrine\OR
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -355,7 +355,7 @@ class InfoMessage extends \Entity\Bizjstatus\InfoMessage implements \Doctrine\OR
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -366,7 +366,7 @@ class InfoMessage extends \Entity\Bizjstatus\InfoMessage implements \Doctrine\OR
     public function addProductMap(\Entity\Bizjstatus\ProductEventMap $productMap)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addProductMap', array($productMap));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addProductMap', [$productMap]);
 
         return parent::addProductMap($productMap);
     }
@@ -377,7 +377,7 @@ class InfoMessage extends \Entity\Bizjstatus\InfoMessage implements \Doctrine\OR
     public function removeProductMap(\Entity\Bizjstatus\ProductEventMap $productMap)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeProductMap', array($productMap));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeProductMap', [$productMap]);
 
         return parent::removeProductMap($productMap);
     }
@@ -388,7 +388,7 @@ class InfoMessage extends \Entity\Bizjstatus\InfoMessage implements \Doctrine\OR
     public function getProductMap()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductMap', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductMap', []);
 
         return parent::getProductMap();
     }

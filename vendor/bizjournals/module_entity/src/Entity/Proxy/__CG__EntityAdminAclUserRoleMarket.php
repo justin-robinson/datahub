@@ -36,7 +36,7 @@ class AclUserRoleMarket extends \Entity\Admin\AclUserRoleMarket implements \Doct
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class AclUserRoleMarket extends \Entity\Admin\AclUserRoleMarket implements \Doct
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Admin\\AclUserRoleMarket' . "\0" . 'acl_user_role_id', '' . "\0" . 'Entity\\Admin\\AclUserRoleMarket' . "\0" . 'market_code', '' . "\0" . 'Entity\\Admin\\AclUserRoleMarket' . "\0" . 'AclUserRole');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Admin\\AclUserRoleMarket' . "\0" . 'acl_user_role_id', '' . "\0" . 'Entity\\Admin\\AclUserRoleMarket' . "\0" . 'market_code', '' . "\0" . 'Entity\\Admin\\AclUserRoleMarket' . "\0" . 'AclUserRole'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Admin\\AclUserRoleMarket' . "\0" . 'acl_user_role_id', '' . "\0" . 'Entity\\Admin\\AclUserRoleMarket' . "\0" . 'market_code', '' . "\0" . 'Entity\\Admin\\AclUserRoleMarket' . "\0" . 'AclUserRole');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Admin\\AclUserRoleMarket' . "\0" . 'acl_user_role_id', '' . "\0" . 'Entity\\Admin\\AclUserRoleMarket' . "\0" . 'market_code', '' . "\0" . 'Entity\\Admin\\AclUserRoleMarket' . "\0" . 'AclUserRole'];
     }
 
     /**
@@ -97,7 +97,7 @@ class AclUserRoleMarket extends \Entity\Admin\AclUserRoleMarket implements \Doct
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class AclUserRoleMarket extends \Entity\Admin\AclUserRoleMarket implements \Doct
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class AclUserRoleMarket extends \Entity\Admin\AclUserRoleMarket implements \Doct
     public function setAclUserRoleId($aclUserRoleId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAclUserRoleId', array($aclUserRoleId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAclUserRoleId', [$aclUserRoleId]);
 
         return parent::setAclUserRoleId($aclUserRoleId);
     }
@@ -190,7 +190,7 @@ class AclUserRoleMarket extends \Entity\Admin\AclUserRoleMarket implements \Doct
     public function getAclUserRoleId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAclUserRoleId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAclUserRoleId', []);
 
         return parent::getAclUserRoleId();
     }
@@ -201,7 +201,7 @@ class AclUserRoleMarket extends \Entity\Admin\AclUserRoleMarket implements \Doct
     public function setMarketCode($marketCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketCode', array($marketCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketCode', [$marketCode]);
 
         return parent::setMarketCode($marketCode);
     }
@@ -212,7 +212,7 @@ class AclUserRoleMarket extends \Entity\Admin\AclUserRoleMarket implements \Doct
     public function getMarketCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketCode', []);
 
         return parent::getMarketCode();
     }
@@ -223,7 +223,7 @@ class AclUserRoleMarket extends \Entity\Admin\AclUserRoleMarket implements \Doct
     public function setAclUserRole(\Entity\Admin\AclUserRole $aclUserRole = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAclUserRole', array($aclUserRole));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAclUserRole', [$aclUserRole]);
 
         return parent::setAclUserRole($aclUserRole);
     }
@@ -234,7 +234,7 @@ class AclUserRoleMarket extends \Entity\Admin\AclUserRoleMarket implements \Doct
     public function getAclUserRole()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAclUserRole', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAclUserRole', []);
 
         return parent::getAclUserRole();
     }

@@ -36,7 +36,7 @@ class CartItem extends \Entity\NascarIllustrated\CartItem implements \Doctrine\O
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class CartItem extends \Entity\NascarIllustrated\CartItem implements \Doctrine\O
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'cart_id', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'item_id', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'product_name', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'price', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'quantity', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'added_time', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'tax', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'parent_item_id', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'metadata', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'created_at', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'updated_at', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'Cart', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'Product');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'cart_id', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'item_id', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'product_name', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'price', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'quantity', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'added_time', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'tax', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'parent_item_id', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'metadata', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'created_at', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'updated_at', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'Cart', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'Product'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'cart_id', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'item_id', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'product_name', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'price', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'quantity', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'added_time', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'tax', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'parent_item_id', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'metadata', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'created_at', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'updated_at', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'Cart', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'Product');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'cart_id', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'item_id', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'product_name', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'price', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'quantity', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'added_time', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'tax', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'parent_item_id', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'metadata', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'created_at', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'updated_at', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'Cart', '' . "\0" . 'Entity\\NascarIllustrated\\CartItem' . "\0" . 'Product'];
     }
 
     /**
@@ -97,7 +97,7 @@ class CartItem extends \Entity\NascarIllustrated\CartItem implements \Doctrine\O
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class CartItem extends \Entity\NascarIllustrated\CartItem implements \Doctrine\O
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class CartItem extends \Entity\NascarIllustrated\CartItem implements \Doctrine\O
     public function setCartId($cartId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCartId', array($cartId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCartId', [$cartId]);
 
         return parent::setCartId($cartId);
     }
@@ -190,7 +190,7 @@ class CartItem extends \Entity\NascarIllustrated\CartItem implements \Doctrine\O
     public function getCartId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCartId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCartId', []);
 
         return parent::getCartId();
     }
@@ -201,7 +201,7 @@ class CartItem extends \Entity\NascarIllustrated\CartItem implements \Doctrine\O
     public function setItemId($itemId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setItemId', array($itemId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setItemId', [$itemId]);
 
         return parent::setItemId($itemId);
     }
@@ -212,7 +212,7 @@ class CartItem extends \Entity\NascarIllustrated\CartItem implements \Doctrine\O
     public function getItemId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getItemId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getItemId', []);
 
         return parent::getItemId();
     }
@@ -223,7 +223,7 @@ class CartItem extends \Entity\NascarIllustrated\CartItem implements \Doctrine\O
     public function setProductName($productName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductName', array($productName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductName', [$productName]);
 
         return parent::setProductName($productName);
     }
@@ -234,7 +234,7 @@ class CartItem extends \Entity\NascarIllustrated\CartItem implements \Doctrine\O
     public function getProductName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductName', []);
 
         return parent::getProductName();
     }
@@ -245,7 +245,7 @@ class CartItem extends \Entity\NascarIllustrated\CartItem implements \Doctrine\O
     public function setPrice($price)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPrice', array($price));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPrice', [$price]);
 
         return parent::setPrice($price);
     }
@@ -256,7 +256,7 @@ class CartItem extends \Entity\NascarIllustrated\CartItem implements \Doctrine\O
     public function getPrice()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPrice', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPrice', []);
 
         return parent::getPrice();
     }
@@ -267,7 +267,7 @@ class CartItem extends \Entity\NascarIllustrated\CartItem implements \Doctrine\O
     public function setQuantity($quantity)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setQuantity', array($quantity));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setQuantity', [$quantity]);
 
         return parent::setQuantity($quantity);
     }
@@ -278,7 +278,7 @@ class CartItem extends \Entity\NascarIllustrated\CartItem implements \Doctrine\O
     public function getQuantity()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQuantity', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQuantity', []);
 
         return parent::getQuantity();
     }
@@ -289,7 +289,7 @@ class CartItem extends \Entity\NascarIllustrated\CartItem implements \Doctrine\O
     public function setAddedTime($addedTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAddedTime', array($addedTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAddedTime', [$addedTime]);
 
         return parent::setAddedTime($addedTime);
     }
@@ -300,7 +300,7 @@ class CartItem extends \Entity\NascarIllustrated\CartItem implements \Doctrine\O
     public function getAddedTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAddedTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAddedTime', []);
 
         return parent::getAddedTime();
     }
@@ -311,7 +311,7 @@ class CartItem extends \Entity\NascarIllustrated\CartItem implements \Doctrine\O
     public function setTax($tax)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTax', array($tax));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTax', [$tax]);
 
         return parent::setTax($tax);
     }
@@ -322,7 +322,7 @@ class CartItem extends \Entity\NascarIllustrated\CartItem implements \Doctrine\O
     public function getTax()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTax', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTax', []);
 
         return parent::getTax();
     }
@@ -333,7 +333,7 @@ class CartItem extends \Entity\NascarIllustrated\CartItem implements \Doctrine\O
     public function setParentItemId($parentItemId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParentItemId', array($parentItemId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParentItemId', [$parentItemId]);
 
         return parent::setParentItemId($parentItemId);
     }
@@ -344,7 +344,7 @@ class CartItem extends \Entity\NascarIllustrated\CartItem implements \Doctrine\O
     public function getParentItemId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParentItemId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParentItemId', []);
 
         return parent::getParentItemId();
     }
@@ -355,7 +355,7 @@ class CartItem extends \Entity\NascarIllustrated\CartItem implements \Doctrine\O
     public function setMetadata($metadata)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMetadata', array($metadata));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMetadata', [$metadata]);
 
         return parent::setMetadata($metadata);
     }
@@ -366,7 +366,7 @@ class CartItem extends \Entity\NascarIllustrated\CartItem implements \Doctrine\O
     public function getMetadata()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetadata', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetadata', []);
 
         return parent::getMetadata();
     }
@@ -377,7 +377,7 @@ class CartItem extends \Entity\NascarIllustrated\CartItem implements \Doctrine\O
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -388,7 +388,7 @@ class CartItem extends \Entity\NascarIllustrated\CartItem implements \Doctrine\O
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -399,7 +399,7 @@ class CartItem extends \Entity\NascarIllustrated\CartItem implements \Doctrine\O
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -410,7 +410,7 @@ class CartItem extends \Entity\NascarIllustrated\CartItem implements \Doctrine\O
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -421,7 +421,7 @@ class CartItem extends \Entity\NascarIllustrated\CartItem implements \Doctrine\O
     public function setCart(\Entity\NascarIllustrated\Cart $cart = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCart', array($cart));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCart', [$cart]);
 
         return parent::setCart($cart);
     }
@@ -432,7 +432,7 @@ class CartItem extends \Entity\NascarIllustrated\CartItem implements \Doctrine\O
     public function getCart()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCart', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCart', []);
 
         return parent::getCart();
     }
@@ -443,7 +443,7 @@ class CartItem extends \Entity\NascarIllustrated\CartItem implements \Doctrine\O
     public function setProduct(\Entity\NascarIllustrated\Product $product = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProduct', array($product));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProduct', [$product]);
 
         return parent::setProduct($product);
     }
@@ -454,7 +454,7 @@ class CartItem extends \Entity\NascarIllustrated\CartItem implements \Doctrine\O
     public function getProduct()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProduct', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProduct', []);
 
         return parent::getProduct();
     }

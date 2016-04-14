@@ -36,7 +36,7 @@ class JobPosition extends \Entity\Datahub\JobPosition implements \Doctrine\ORM\P
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class JobPosition extends \Entity\Datahub\JobPosition implements \Doctrine\ORM\P
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Datahub\\JobPosition' . "\0" . 'job_position_id', '' . "\0" . 'Entity\\Datahub\\JobPosition' . "\0" . 'position');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Datahub\\JobPosition' . "\0" . 'job_position_id', '' . "\0" . 'Entity\\Datahub\\JobPosition' . "\0" . 'position'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Datahub\\JobPosition' . "\0" . 'job_position_id', '' . "\0" . 'Entity\\Datahub\\JobPosition' . "\0" . 'position');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Datahub\\JobPosition' . "\0" . 'job_position_id', '' . "\0" . 'Entity\\Datahub\\JobPosition' . "\0" . 'position'];
     }
 
     /**
@@ -97,7 +97,7 @@ class JobPosition extends \Entity\Datahub\JobPosition implements \Doctrine\ORM\P
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class JobPosition extends \Entity\Datahub\JobPosition implements \Doctrine\ORM\P
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class JobPosition extends \Entity\Datahub\JobPosition implements \Doctrine\ORM\P
     public function setJobPositionId($jobPositionId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setJobPositionId', array($jobPositionId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setJobPositionId', [$jobPositionId]);
 
         return parent::setJobPositionId($jobPositionId);
     }
@@ -190,7 +190,7 @@ class JobPosition extends \Entity\Datahub\JobPosition implements \Doctrine\ORM\P
     public function getJobPositionId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJobPositionId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJobPositionId', []);
 
         return parent::getJobPositionId();
     }
@@ -201,7 +201,7 @@ class JobPosition extends \Entity\Datahub\JobPosition implements \Doctrine\ORM\P
     public function setPosition($position)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPosition', array($position));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPosition', [$position]);
 
         return parent::setPosition($position);
     }
@@ -212,7 +212,7 @@ class JobPosition extends \Entity\Datahub\JobPosition implements \Doctrine\ORM\P
     public function getPosition()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPosition', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPosition', []);
 
         return parent::getPosition();
     }

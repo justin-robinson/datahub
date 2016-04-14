@@ -36,7 +36,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'site', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'path', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'slug', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'issue_date', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'release_time', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'rev_number', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'headline', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'short_headline', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'is_premium', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'is_native', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'journal_id', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'type_id', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'parent_page_id', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'published_at', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'revised_at', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'allow_syndication', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'Contents', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'Corrections', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'Metadata', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'LeadinGroups', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'Crossrefs', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'LegacyMediaMap', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'Media', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'Urls');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'site', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'path', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'slug', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'issue_date', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'release_time', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'rev_number', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'headline', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'short_headline', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'is_premium', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'is_native', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'journal_id', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'type_id', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'parent_page_id', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'published_at', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'revised_at', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'allow_syndication', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'Contents', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'Corrections', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'Metadata', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'LeadinGroups', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'Crossrefs', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'LegacyMediaMap', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'Media', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'Urls'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'site', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'path', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'slug', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'issue_date', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'release_time', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'rev_number', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'headline', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'short_headline', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'is_premium', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'is_native', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'journal_id', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'type_id', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'parent_page_id', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'published_at', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'revised_at', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'allow_syndication', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'Contents', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'Corrections', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'Metadata', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'LeadinGroups', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'Crossrefs', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'LegacyMediaMap', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'Media', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'Urls');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'site', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'path', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'slug', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'issue_date', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'release_time', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'rev_number', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'headline', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'short_headline', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'is_premium', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'is_native', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'journal_id', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'type_id', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'parent_page_id', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'published_at', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'revised_at', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'allow_syndication', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'Contents', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'Corrections', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'Metadata', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'LeadinGroups', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'Crossrefs', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'LegacyMediaMap', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'Media', '' . "\0" . 'Entity\\Bizj\\Page' . "\0" . 'Urls'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function setPageId($pageId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPageId', array($pageId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPageId', [$pageId]);
 
         return parent::setPageId($pageId);
     }
@@ -190,7 +190,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function getPageId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageId', []);
 
         return parent::getPageId();
     }
@@ -201,7 +201,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function setSite($site)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSite', array($site));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSite', [$site]);
 
         return parent::setSite($site);
     }
@@ -212,7 +212,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function getSite()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSite', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSite', []);
 
         return parent::getSite();
     }
@@ -223,7 +223,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function setPath($path)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPath', array($path));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPath', [$path]);
 
         return parent::setPath($path);
     }
@@ -234,7 +234,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function getPath()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPath', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPath', []);
 
         return parent::getPath();
     }
@@ -245,7 +245,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function setSlug($slug)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSlug', array($slug));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSlug', [$slug]);
 
         return parent::setSlug($slug);
     }
@@ -256,7 +256,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function getSlug()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSlug', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSlug', []);
 
         return parent::getSlug();
     }
@@ -267,7 +267,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function setIssueDate($issueDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIssueDate', array($issueDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIssueDate', [$issueDate]);
 
         return parent::setIssueDate($issueDate);
     }
@@ -278,7 +278,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function getIssueDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIssueDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIssueDate', []);
 
         return parent::getIssueDate();
     }
@@ -289,7 +289,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function setReleaseTime($releaseTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setReleaseTime', array($releaseTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setReleaseTime', [$releaseTime]);
 
         return parent::setReleaseTime($releaseTime);
     }
@@ -300,7 +300,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function getReleaseTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getReleaseTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getReleaseTime', []);
 
         return parent::getReleaseTime();
     }
@@ -311,7 +311,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -322,7 +322,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -333,7 +333,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -344,7 +344,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -355,7 +355,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function setRevNumber($revNumber)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRevNumber', array($revNumber));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRevNumber', [$revNumber]);
 
         return parent::setRevNumber($revNumber);
     }
@@ -366,7 +366,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function getRevNumber()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRevNumber', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRevNumber', []);
 
         return parent::getRevNumber();
     }
@@ -377,7 +377,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function setHeadline($headline)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHeadline', array($headline));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHeadline', [$headline]);
 
         return parent::setHeadline($headline);
     }
@@ -388,7 +388,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function getHeadline()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHeadline', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHeadline', []);
 
         return parent::getHeadline();
     }
@@ -399,7 +399,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function setShortHeadline($shortHeadline)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setShortHeadline', array($shortHeadline));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setShortHeadline', [$shortHeadline]);
 
         return parent::setShortHeadline($shortHeadline);
     }
@@ -410,7 +410,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function getShortHeadline()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getShortHeadline', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getShortHeadline', []);
 
         return parent::getShortHeadline();
     }
@@ -421,7 +421,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function setIsPremium($isPremium)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsPremium', array($isPremium));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsPremium', [$isPremium]);
 
         return parent::setIsPremium($isPremium);
     }
@@ -432,7 +432,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function getIsPremium()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsPremium', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsPremium', []);
 
         return parent::getIsPremium();
     }
@@ -443,7 +443,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function setIsNative($isNative)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsNative', array($isNative));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsNative', [$isNative]);
 
         return parent::setIsNative($isNative);
     }
@@ -454,7 +454,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function getIsNative()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsNative', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsNative', []);
 
         return parent::getIsNative();
     }
@@ -465,7 +465,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function setJournalId($journalId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setJournalId', array($journalId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setJournalId', [$journalId]);
 
         return parent::setJournalId($journalId);
     }
@@ -476,7 +476,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function getJournalId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJournalId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJournalId', []);
 
         return parent::getJournalId();
     }
@@ -487,7 +487,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function setTypeId($typeId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTypeId', array($typeId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTypeId', [$typeId]);
 
         return parent::setTypeId($typeId);
     }
@@ -498,7 +498,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function getTypeId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTypeId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTypeId', []);
 
         return parent::getTypeId();
     }
@@ -509,7 +509,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function setParentPageId($parentPageId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParentPageId', array($parentPageId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParentPageId', [$parentPageId]);
 
         return parent::setParentPageId($parentPageId);
     }
@@ -520,7 +520,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function getParentPageId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParentPageId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParentPageId', []);
 
         return parent::getParentPageId();
     }
@@ -531,7 +531,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function setPublishedAt($publishedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublishedAt', array($publishedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublishedAt', [$publishedAt]);
 
         return parent::setPublishedAt($publishedAt);
     }
@@ -542,7 +542,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function getPublishedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublishedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublishedAt', []);
 
         return parent::getPublishedAt();
     }
@@ -553,7 +553,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function setRevisedAt($revisedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRevisedAt', array($revisedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRevisedAt', [$revisedAt]);
 
         return parent::setRevisedAt($revisedAt);
     }
@@ -564,7 +564,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function getRevisedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRevisedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRevisedAt', []);
 
         return parent::getRevisedAt();
     }
@@ -575,7 +575,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function setAllowSyndication($allowSyndication)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowSyndication', array($allowSyndication));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowSyndication', [$allowSyndication]);
 
         return parent::setAllowSyndication($allowSyndication);
     }
@@ -586,7 +586,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function getAllowSyndication()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowSyndication', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowSyndication', []);
 
         return parent::getAllowSyndication();
     }
@@ -597,7 +597,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function addContent(\Entity\Bizj\PageContent $content)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addContent', array($content));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addContent', [$content]);
 
         return parent::addContent($content);
     }
@@ -608,7 +608,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function removeContent(\Entity\Bizj\PageContent $content)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeContent', array($content));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeContent', [$content]);
 
         return parent::removeContent($content);
     }
@@ -619,7 +619,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function getContents()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContents', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContents', []);
 
         return parent::getContents();
     }
@@ -630,7 +630,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function addCorrection(\Entity\Bizj\PageCorrection $correction)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCorrection', array($correction));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCorrection', [$correction]);
 
         return parent::addCorrection($correction);
     }
@@ -641,7 +641,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function removeCorrection(\Entity\Bizj\PageCorrection $correction)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCorrection', array($correction));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCorrection', [$correction]);
 
         return parent::removeCorrection($correction);
     }
@@ -652,7 +652,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function getCorrections()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCorrections', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCorrections', []);
 
         return parent::getCorrections();
     }
@@ -663,7 +663,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function addMetadatum(\Entity\Bizj\PageMetadata $metadatum)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMetadatum', array($metadatum));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMetadatum', [$metadatum]);
 
         return parent::addMetadatum($metadatum);
     }
@@ -674,7 +674,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function removeMetadatum(\Entity\Bizj\PageMetadata $metadatum)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMetadatum', array($metadatum));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMetadatum', [$metadatum]);
 
         return parent::removeMetadatum($metadatum);
     }
@@ -685,7 +685,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function getMetadata()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetadata', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetadata', []);
 
         return parent::getMetadata();
     }
@@ -696,7 +696,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function addLeadinGroup(\Entity\Bizj\PageLeadinGroup $leadinGroup)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addLeadinGroup', array($leadinGroup));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addLeadinGroup', [$leadinGroup]);
 
         return parent::addLeadinGroup($leadinGroup);
     }
@@ -707,7 +707,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function removeLeadinGroup(\Entity\Bizj\PageLeadinGroup $leadinGroup)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeLeadinGroup', array($leadinGroup));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeLeadinGroup', [$leadinGroup]);
 
         return parent::removeLeadinGroup($leadinGroup);
     }
@@ -718,7 +718,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function getLeadinGroups()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLeadinGroups', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLeadinGroups', []);
 
         return parent::getLeadinGroups();
     }
@@ -729,7 +729,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function addCrossref(\Entity\Bizj\PageCrossref $crossref)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCrossref', array($crossref));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCrossref', [$crossref]);
 
         return parent::addCrossref($crossref);
     }
@@ -740,7 +740,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function removeCrossref(\Entity\Bizj\PageCrossref $crossref)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCrossref', array($crossref));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCrossref', [$crossref]);
 
         return parent::removeCrossref($crossref);
     }
@@ -751,7 +751,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function getCrossrefs()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCrossrefs', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCrossrefs', []);
 
         return parent::getCrossrefs();
     }
@@ -762,7 +762,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function addLegacyMediaMap(\Entity\Bizj\PageLegacyMediaMap $legacyMediaMap)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addLegacyMediaMap', array($legacyMediaMap));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addLegacyMediaMap', [$legacyMediaMap]);
 
         return parent::addLegacyMediaMap($legacyMediaMap);
     }
@@ -773,7 +773,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function removeLegacyMediaMap(\Entity\Bizj\PageLegacyMediaMap $legacyMediaMap)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeLegacyMediaMap', array($legacyMediaMap));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeLegacyMediaMap', [$legacyMediaMap]);
 
         return parent::removeLegacyMediaMap($legacyMediaMap);
     }
@@ -784,7 +784,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function getLegacyMediaMap()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLegacyMediaMap', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLegacyMediaMap', []);
 
         return parent::getLegacyMediaMap();
     }
@@ -795,7 +795,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function addMedia(\Entity\Bizj\PageMedia $medium)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMedia', array($medium));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMedia', [$medium]);
 
         return parent::addMedia($medium);
     }
@@ -806,7 +806,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function removeMedia(\Entity\Bizj\PageMedia $medium)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMedia', array($medium));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMedia', [$medium]);
 
         return parent::removeMedia($medium);
     }
@@ -817,7 +817,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function getMedia()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMedia', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMedia', []);
 
         return parent::getMedia();
     }
@@ -828,7 +828,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function addUrl(\Entity\Bizj\PageUrl $url)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addUrl', array($url));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addUrl', [$url]);
 
         return parent::addUrl($url);
     }
@@ -839,7 +839,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function removeUrl(\Entity\Bizj\PageUrl $url)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeUrl', array($url));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeUrl', [$url]);
 
         return parent::removeUrl($url);
     }
@@ -850,7 +850,7 @@ class Page extends \Entity\Bizj\Page implements \Doctrine\ORM\Proxy\Proxy
     public function getUrls()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUrls', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUrls', []);
 
         return parent::getUrls();
     }

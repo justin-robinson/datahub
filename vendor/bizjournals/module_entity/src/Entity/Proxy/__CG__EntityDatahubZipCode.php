@@ -36,7 +36,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'zip_code', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'city_name', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'state_code', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'area_code', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'fips_code', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'msa_or_pmsa', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'utc_std_offset', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'utc_dst_offset', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'latitude', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'longitude', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'city_type', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'zip_type', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'Msa', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'FipsCounty', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'Market');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'zip_code', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'city_name', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'state_code', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'area_code', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'fips_code', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'msa_or_pmsa', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'utc_std_offset', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'utc_dst_offset', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'latitude', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'longitude', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'city_type', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'zip_type', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'Msa', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'FipsCounty', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'Market'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'zip_code', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'city_name', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'state_code', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'area_code', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'fips_code', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'msa_or_pmsa', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'utc_std_offset', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'utc_dst_offset', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'latitude', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'longitude', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'city_type', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'zip_type', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'Msa', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'FipsCounty', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'Market');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'zip_code', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'city_name', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'state_code', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'area_code', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'fips_code', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'msa_or_pmsa', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'utc_std_offset', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'utc_dst_offset', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'latitude', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'longitude', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'city_type', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'zip_type', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'Msa', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'FipsCounty', '' . "\0" . 'Entity\\Datahub\\ZipCode' . "\0" . 'Market'];
     }
 
     /**
@@ -97,7 +97,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function setZipCode($zipCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setZipCode', array($zipCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setZipCode', [$zipCode]);
 
         return parent::setZipCode($zipCode);
     }
@@ -190,7 +190,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function getZipCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getZipCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getZipCode', []);
 
         return parent::getZipCode();
     }
@@ -201,7 +201,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function setCityName($cityName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCityName', array($cityName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCityName', [$cityName]);
 
         return parent::setCityName($cityName);
     }
@@ -212,7 +212,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function getCityName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCityName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCityName', []);
 
         return parent::getCityName();
     }
@@ -223,7 +223,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function setStateCode($stateCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStateCode', array($stateCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStateCode', [$stateCode]);
 
         return parent::setStateCode($stateCode);
     }
@@ -234,7 +234,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function getStateCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStateCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStateCode', []);
 
         return parent::getStateCode();
     }
@@ -245,7 +245,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function setAreaCode($areaCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAreaCode', array($areaCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAreaCode', [$areaCode]);
 
         return parent::setAreaCode($areaCode);
     }
@@ -256,7 +256,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function getAreaCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAreaCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAreaCode', []);
 
         return parent::getAreaCode();
     }
@@ -267,7 +267,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function setFipsCode($fipsCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFipsCode', array($fipsCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFipsCode', [$fipsCode]);
 
         return parent::setFipsCode($fipsCode);
     }
@@ -278,7 +278,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function getFipsCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFipsCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFipsCode', []);
 
         return parent::getFipsCode();
     }
@@ -289,7 +289,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function setMsaOrPmsa($msaOrPmsa)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMsaOrPmsa', array($msaOrPmsa));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMsaOrPmsa', [$msaOrPmsa]);
 
         return parent::setMsaOrPmsa($msaOrPmsa);
     }
@@ -300,7 +300,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function getMsaOrPmsa()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMsaOrPmsa', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMsaOrPmsa', []);
 
         return parent::getMsaOrPmsa();
     }
@@ -311,7 +311,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function setUtcStdOffset($utcStdOffset)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUtcStdOffset', array($utcStdOffset));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUtcStdOffset', [$utcStdOffset]);
 
         return parent::setUtcStdOffset($utcStdOffset);
     }
@@ -322,7 +322,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function getUtcStdOffset()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUtcStdOffset', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUtcStdOffset', []);
 
         return parent::getUtcStdOffset();
     }
@@ -333,7 +333,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function setUtcDstOffset($utcDstOffset)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUtcDstOffset', array($utcDstOffset));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUtcDstOffset', [$utcDstOffset]);
 
         return parent::setUtcDstOffset($utcDstOffset);
     }
@@ -344,7 +344,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function getUtcDstOffset()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUtcDstOffset', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUtcDstOffset', []);
 
         return parent::getUtcDstOffset();
     }
@@ -355,7 +355,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function setLatitude($latitude)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLatitude', array($latitude));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLatitude', [$latitude]);
 
         return parent::setLatitude($latitude);
     }
@@ -366,7 +366,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function getLatitude()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLatitude', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLatitude', []);
 
         return parent::getLatitude();
     }
@@ -377,7 +377,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function setLongitude($longitude)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLongitude', array($longitude));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLongitude', [$longitude]);
 
         return parent::setLongitude($longitude);
     }
@@ -388,7 +388,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function getLongitude()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLongitude', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLongitude', []);
 
         return parent::getLongitude();
     }
@@ -399,7 +399,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function setCityType($cityType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCityType', array($cityType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCityType', [$cityType]);
 
         return parent::setCityType($cityType);
     }
@@ -410,7 +410,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function getCityType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCityType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCityType', []);
 
         return parent::getCityType();
     }
@@ -421,7 +421,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function setZipType($zipType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setZipType', array($zipType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setZipType', [$zipType]);
 
         return parent::setZipType($zipType);
     }
@@ -432,7 +432,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function getZipType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getZipType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getZipType', []);
 
         return parent::getZipType();
     }
@@ -443,7 +443,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function setMsa(\Entity\Datahub\MsaPmsa $msa = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMsa', array($msa));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMsa', [$msa]);
 
         return parent::setMsa($msa);
     }
@@ -454,7 +454,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function getMsa()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMsa', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMsa', []);
 
         return parent::getMsa();
     }
@@ -465,7 +465,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function setFipsCounty(\Entity\Datahub\FipsCounty $fipsCounty = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFipsCounty', array($fipsCounty));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFipsCounty', [$fipsCounty]);
 
         return parent::setFipsCounty($fipsCounty);
     }
@@ -476,7 +476,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function getFipsCounty()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFipsCounty', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFipsCounty', []);
 
         return parent::getFipsCounty();
     }
@@ -487,7 +487,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function setMarket(\Entity\Datahub\MarketMsaPmsaMap $market = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarket', array($market));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarket', [$market]);
 
         return parent::setMarket($market);
     }
@@ -498,7 +498,7 @@ class ZipCode extends \Entity\Datahub\ZipCode implements \Doctrine\ORM\Proxy\Pro
     public function getMarket()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarket', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarket', []);
 
         return parent::getMarket();
     }

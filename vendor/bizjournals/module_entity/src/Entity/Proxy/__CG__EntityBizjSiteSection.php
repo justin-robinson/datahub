@@ -36,7 +36,7 @@ class SiteSection extends \Entity\Bizj\SiteSection implements \Doctrine\ORM\Prox
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class SiteSection extends \Entity\Bizj\SiteSection implements \Doctrine\ORM\Prox
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'section_id', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'site_id', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'section_slug', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'section_name', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'section_crumb', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'section_url', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'parent_id', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'lft', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'rgt', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'level', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'Site');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'section_id', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'site_id', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'section_slug', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'section_name', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'section_crumb', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'section_url', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'parent_id', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'lft', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'rgt', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'level', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'Site'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'section_id', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'site_id', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'section_slug', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'section_name', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'section_crumb', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'section_url', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'parent_id', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'lft', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'rgt', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'level', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'Site');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'section_id', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'site_id', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'section_slug', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'section_name', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'section_crumb', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'section_url', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'parent_id', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'lft', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'rgt', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'level', '' . "\0" . 'Entity\\Bizj\\SiteSection' . "\0" . 'Site'];
     }
 
     /**
@@ -97,7 +97,7 @@ class SiteSection extends \Entity\Bizj\SiteSection implements \Doctrine\ORM\Prox
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class SiteSection extends \Entity\Bizj\SiteSection implements \Doctrine\ORM\Prox
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class SiteSection extends \Entity\Bizj\SiteSection implements \Doctrine\ORM\Prox
     public function getSectionId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSectionId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSectionId', []);
 
         return parent::getSectionId();
     }
@@ -190,7 +190,7 @@ class SiteSection extends \Entity\Bizj\SiteSection implements \Doctrine\ORM\Prox
     public function setSiteId($siteId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSiteId', array($siteId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSiteId', [$siteId]);
 
         return parent::setSiteId($siteId);
     }
@@ -201,7 +201,7 @@ class SiteSection extends \Entity\Bizj\SiteSection implements \Doctrine\ORM\Prox
     public function getSiteId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSiteId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSiteId', []);
 
         return parent::getSiteId();
     }
@@ -212,7 +212,7 @@ class SiteSection extends \Entity\Bizj\SiteSection implements \Doctrine\ORM\Prox
     public function setSectionSlug($sectionSlug)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSectionSlug', array($sectionSlug));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSectionSlug', [$sectionSlug]);
 
         return parent::setSectionSlug($sectionSlug);
     }
@@ -223,7 +223,7 @@ class SiteSection extends \Entity\Bizj\SiteSection implements \Doctrine\ORM\Prox
     public function getSectionSlug()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSectionSlug', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSectionSlug', []);
 
         return parent::getSectionSlug();
     }
@@ -234,7 +234,7 @@ class SiteSection extends \Entity\Bizj\SiteSection implements \Doctrine\ORM\Prox
     public function setSectionName($sectionName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSectionName', array($sectionName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSectionName', [$sectionName]);
 
         return parent::setSectionName($sectionName);
     }
@@ -245,7 +245,7 @@ class SiteSection extends \Entity\Bizj\SiteSection implements \Doctrine\ORM\Prox
     public function getSectionName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSectionName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSectionName', []);
 
         return parent::getSectionName();
     }
@@ -256,7 +256,7 @@ class SiteSection extends \Entity\Bizj\SiteSection implements \Doctrine\ORM\Prox
     public function setSectionCrumb($sectionCrumb)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSectionCrumb', array($sectionCrumb));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSectionCrumb', [$sectionCrumb]);
 
         return parent::setSectionCrumb($sectionCrumb);
     }
@@ -267,7 +267,7 @@ class SiteSection extends \Entity\Bizj\SiteSection implements \Doctrine\ORM\Prox
     public function getSectionCrumb()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSectionCrumb', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSectionCrumb', []);
 
         return parent::getSectionCrumb();
     }
@@ -278,7 +278,7 @@ class SiteSection extends \Entity\Bizj\SiteSection implements \Doctrine\ORM\Prox
     public function setSectionUrl($sectionUrl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSectionUrl', array($sectionUrl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSectionUrl', [$sectionUrl]);
 
         return parent::setSectionUrl($sectionUrl);
     }
@@ -289,7 +289,7 @@ class SiteSection extends \Entity\Bizj\SiteSection implements \Doctrine\ORM\Prox
     public function getSectionUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSectionUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSectionUrl', []);
 
         return parent::getSectionUrl();
     }
@@ -300,7 +300,7 @@ class SiteSection extends \Entity\Bizj\SiteSection implements \Doctrine\ORM\Prox
     public function setParentId($parentId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParentId', array($parentId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParentId', [$parentId]);
 
         return parent::setParentId($parentId);
     }
@@ -311,7 +311,7 @@ class SiteSection extends \Entity\Bizj\SiteSection implements \Doctrine\ORM\Prox
     public function getParentId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParentId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParentId', []);
 
         return parent::getParentId();
     }
@@ -322,7 +322,7 @@ class SiteSection extends \Entity\Bizj\SiteSection implements \Doctrine\ORM\Prox
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -333,7 +333,7 @@ class SiteSection extends \Entity\Bizj\SiteSection implements \Doctrine\ORM\Prox
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -344,7 +344,7 @@ class SiteSection extends \Entity\Bizj\SiteSection implements \Doctrine\ORM\Prox
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -355,7 +355,7 @@ class SiteSection extends \Entity\Bizj\SiteSection implements \Doctrine\ORM\Prox
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -366,7 +366,7 @@ class SiteSection extends \Entity\Bizj\SiteSection implements \Doctrine\ORM\Prox
     public function setLft($lft)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLft', array($lft));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLft', [$lft]);
 
         return parent::setLft($lft);
     }
@@ -377,7 +377,7 @@ class SiteSection extends \Entity\Bizj\SiteSection implements \Doctrine\ORM\Prox
     public function getLft()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLft', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLft', []);
 
         return parent::getLft();
     }
@@ -388,7 +388,7 @@ class SiteSection extends \Entity\Bizj\SiteSection implements \Doctrine\ORM\Prox
     public function setRgt($rgt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRgt', array($rgt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRgt', [$rgt]);
 
         return parent::setRgt($rgt);
     }
@@ -399,7 +399,7 @@ class SiteSection extends \Entity\Bizj\SiteSection implements \Doctrine\ORM\Prox
     public function getRgt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRgt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRgt', []);
 
         return parent::getRgt();
     }
@@ -410,7 +410,7 @@ class SiteSection extends \Entity\Bizj\SiteSection implements \Doctrine\ORM\Prox
     public function setLevel($level)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLevel', array($level));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLevel', [$level]);
 
         return parent::setLevel($level);
     }
@@ -421,7 +421,7 @@ class SiteSection extends \Entity\Bizj\SiteSection implements \Doctrine\ORM\Prox
     public function getLevel()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLevel', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLevel', []);
 
         return parent::getLevel();
     }
@@ -432,7 +432,7 @@ class SiteSection extends \Entity\Bizj\SiteSection implements \Doctrine\ORM\Prox
     public function setSite(\Entity\Bizj\Site $site = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSite', array($site));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSite', [$site]);
 
         return parent::setSite($site);
     }
@@ -443,7 +443,7 @@ class SiteSection extends \Entity\Bizj\SiteSection implements \Doctrine\ORM\Prox
     public function getSite()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSite', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSite', []);
 
         return parent::getSite();
     }

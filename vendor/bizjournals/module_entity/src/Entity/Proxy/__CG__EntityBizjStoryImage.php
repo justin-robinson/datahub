@@ -36,7 +36,7 @@ class StoryImage extends \Entity\Bizj\StoryImage implements \Doctrine\ORM\Proxy\
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class StoryImage extends \Entity\Bizj\StoryImage implements \Doctrine\ORM\Proxy\
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'image_id', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'major_rev', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'rev_time', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'caption', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'media_producer', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'image_data', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'width', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'height', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'size_hint', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'display_order', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'StoryRead');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'image_id', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'major_rev', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'rev_time', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'caption', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'media_producer', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'image_data', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'width', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'height', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'size_hint', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'display_order', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'StoryRead'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'image_id', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'major_rev', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'rev_time', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'caption', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'media_producer', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'image_data', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'width', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'height', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'size_hint', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'display_order', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'StoryRead');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'image_id', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'major_rev', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'rev_time', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'caption', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'media_producer', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'image_data', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'width', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'height', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'size_hint', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'display_order', '' . "\0" . 'Entity\\Bizj\\StoryImage' . "\0" . 'StoryRead'];
     }
 
     /**
@@ -97,7 +97,7 @@ class StoryImage extends \Entity\Bizj\StoryImage implements \Doctrine\ORM\Proxy\
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class StoryImage extends \Entity\Bizj\StoryImage implements \Doctrine\ORM\Proxy\
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class StoryImage extends \Entity\Bizj\StoryImage implements \Doctrine\ORM\Proxy\
     public function setImageId($imageId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setImageId', array($imageId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setImageId', [$imageId]);
 
         return parent::setImageId($imageId);
     }
@@ -190,7 +190,7 @@ class StoryImage extends \Entity\Bizj\StoryImage implements \Doctrine\ORM\Proxy\
     public function getImageId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getImageId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getImageId', []);
 
         return parent::getImageId();
     }
@@ -201,7 +201,7 @@ class StoryImage extends \Entity\Bizj\StoryImage implements \Doctrine\ORM\Proxy\
     public function setCTime($cTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCTime', array($cTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCTime', [$cTime]);
 
         return parent::setCTime($cTime);
     }
@@ -212,7 +212,7 @@ class StoryImage extends \Entity\Bizj\StoryImage implements \Doctrine\ORM\Proxy\
     public function getCTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCTime', []);
 
         return parent::getCTime();
     }
@@ -223,7 +223,7 @@ class StoryImage extends \Entity\Bizj\StoryImage implements \Doctrine\ORM\Proxy\
     public function setStoryId($storyId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryId', array($storyId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryId', [$storyId]);
 
         return parent::setStoryId($storyId);
     }
@@ -234,7 +234,7 @@ class StoryImage extends \Entity\Bizj\StoryImage implements \Doctrine\ORM\Proxy\
     public function getStoryId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryId', []);
 
         return parent::getStoryId();
     }
@@ -245,7 +245,7 @@ class StoryImage extends \Entity\Bizj\StoryImage implements \Doctrine\ORM\Proxy\
     public function setMajorRev($majorRev)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMajorRev', array($majorRev));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMajorRev', [$majorRev]);
 
         return parent::setMajorRev($majorRev);
     }
@@ -256,7 +256,7 @@ class StoryImage extends \Entity\Bizj\StoryImage implements \Doctrine\ORM\Proxy\
     public function getMajorRev()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMajorRev', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMajorRev', []);
 
         return parent::getMajorRev();
     }
@@ -267,7 +267,7 @@ class StoryImage extends \Entity\Bizj\StoryImage implements \Doctrine\ORM\Proxy\
     public function setRevTime($revTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRevTime', array($revTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRevTime', [$revTime]);
 
         return parent::setRevTime($revTime);
     }
@@ -278,7 +278,7 @@ class StoryImage extends \Entity\Bizj\StoryImage implements \Doctrine\ORM\Proxy\
     public function getRevTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRevTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRevTime', []);
 
         return parent::getRevTime();
     }
@@ -289,7 +289,7 @@ class StoryImage extends \Entity\Bizj\StoryImage implements \Doctrine\ORM\Proxy\
     public function setCaption($caption)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCaption', array($caption));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCaption', [$caption]);
 
         return parent::setCaption($caption);
     }
@@ -300,7 +300,7 @@ class StoryImage extends \Entity\Bizj\StoryImage implements \Doctrine\ORM\Proxy\
     public function getCaption()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCaption', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCaption', []);
 
         return parent::getCaption();
     }
@@ -311,7 +311,7 @@ class StoryImage extends \Entity\Bizj\StoryImage implements \Doctrine\ORM\Proxy\
     public function setMediaProducer($mediaProducer)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaProducer', array($mediaProducer));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaProducer', [$mediaProducer]);
 
         return parent::setMediaProducer($mediaProducer);
     }
@@ -322,7 +322,7 @@ class StoryImage extends \Entity\Bizj\StoryImage implements \Doctrine\ORM\Proxy\
     public function getMediaProducer()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaProducer', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaProducer', []);
 
         return parent::getMediaProducer();
     }
@@ -333,7 +333,7 @@ class StoryImage extends \Entity\Bizj\StoryImage implements \Doctrine\ORM\Proxy\
     public function setImageData($imageData)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setImageData', array($imageData));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setImageData', [$imageData]);
 
         return parent::setImageData($imageData);
     }
@@ -344,7 +344,7 @@ class StoryImage extends \Entity\Bizj\StoryImage implements \Doctrine\ORM\Proxy\
     public function getImageData()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getImageData', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getImageData', []);
 
         return parent::getImageData();
     }
@@ -355,7 +355,7 @@ class StoryImage extends \Entity\Bizj\StoryImage implements \Doctrine\ORM\Proxy\
     public function setWidth($width)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setWidth', array($width));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setWidth', [$width]);
 
         return parent::setWidth($width);
     }
@@ -366,7 +366,7 @@ class StoryImage extends \Entity\Bizj\StoryImage implements \Doctrine\ORM\Proxy\
     public function getWidth()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getWidth', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getWidth', []);
 
         return parent::getWidth();
     }
@@ -377,7 +377,7 @@ class StoryImage extends \Entity\Bizj\StoryImage implements \Doctrine\ORM\Proxy\
     public function setHeight($height)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHeight', array($height));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHeight', [$height]);
 
         return parent::setHeight($height);
     }
@@ -388,7 +388,7 @@ class StoryImage extends \Entity\Bizj\StoryImage implements \Doctrine\ORM\Proxy\
     public function getHeight()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHeight', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHeight', []);
 
         return parent::getHeight();
     }
@@ -399,7 +399,7 @@ class StoryImage extends \Entity\Bizj\StoryImage implements \Doctrine\ORM\Proxy\
     public function setSizeHint($sizeHint)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSizeHint', array($sizeHint));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSizeHint', [$sizeHint]);
 
         return parent::setSizeHint($sizeHint);
     }
@@ -410,7 +410,7 @@ class StoryImage extends \Entity\Bizj\StoryImage implements \Doctrine\ORM\Proxy\
     public function getSizeHint()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSizeHint', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSizeHint', []);
 
         return parent::getSizeHint();
     }
@@ -421,7 +421,7 @@ class StoryImage extends \Entity\Bizj\StoryImage implements \Doctrine\ORM\Proxy\
     public function setDisplayOrder($displayOrder)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDisplayOrder', array($displayOrder));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDisplayOrder', [$displayOrder]);
 
         return parent::setDisplayOrder($displayOrder);
     }
@@ -432,7 +432,7 @@ class StoryImage extends \Entity\Bizj\StoryImage implements \Doctrine\ORM\Proxy\
     public function getDisplayOrder()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDisplayOrder', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDisplayOrder', []);
 
         return parent::getDisplayOrder();
     }
@@ -443,7 +443,7 @@ class StoryImage extends \Entity\Bizj\StoryImage implements \Doctrine\ORM\Proxy\
     public function setStoryRead(\Entity\Bizj\StoryRead $storyRead = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryRead', array($storyRead));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryRead', [$storyRead]);
 
         return parent::setStoryRead($storyRead);
     }
@@ -454,7 +454,7 @@ class StoryImage extends \Entity\Bizj\StoryImage implements \Doctrine\ORM\Proxy\
     public function getStoryRead()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryRead', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryRead', []);
 
         return parent::getStoryRead();
     }

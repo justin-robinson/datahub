@@ -36,7 +36,7 @@ class Unit extends \Entity\Authentication\Unit implements \Doctrine\ORM\Proxy\Pr
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Unit extends \Entity\Authentication\Unit implements \Doctrine\ORM\Proxy\Pr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'unit_id', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'unit_name', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'description', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'is_active', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'created_at', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'Services', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'Clients');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'unit_id', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'unit_name', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'description', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'is_active', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'created_at', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'Services', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'Clients'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'unit_id', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'unit_name', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'description', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'is_active', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'created_at', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'Services', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'Clients');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'unit_id', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'unit_name', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'description', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'is_active', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'created_at', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'Services', '' . "\0" . 'Entity\\Authentication\\Unit' . "\0" . 'Clients'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Unit extends \Entity\Authentication\Unit implements \Doctrine\ORM\Proxy\Pr
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Unit extends \Entity\Authentication\Unit implements \Doctrine\ORM\Proxy\Pr
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class Unit extends \Entity\Authentication\Unit implements \Doctrine\ORM\Proxy\Pr
     public function getUnitId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUnitId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUnitId', []);
 
         return parent::getUnitId();
     }
@@ -190,7 +190,7 @@ class Unit extends \Entity\Authentication\Unit implements \Doctrine\ORM\Proxy\Pr
     public function setUnitName($unitName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUnitName', array($unitName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUnitName', [$unitName]);
 
         return parent::setUnitName($unitName);
     }
@@ -201,7 +201,7 @@ class Unit extends \Entity\Authentication\Unit implements \Doctrine\ORM\Proxy\Pr
     public function getUnitName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUnitName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUnitName', []);
 
         return parent::getUnitName();
     }
@@ -212,7 +212,7 @@ class Unit extends \Entity\Authentication\Unit implements \Doctrine\ORM\Proxy\Pr
     public function setDescription($description)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', array($description));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', [$description]);
 
         return parent::setDescription($description);
     }
@@ -223,7 +223,7 @@ class Unit extends \Entity\Authentication\Unit implements \Doctrine\ORM\Proxy\Pr
     public function getDescription()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', []);
 
         return parent::getDescription();
     }
@@ -234,7 +234,7 @@ class Unit extends \Entity\Authentication\Unit implements \Doctrine\ORM\Proxy\Pr
     public function setIsActive($isActive)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', array($isActive));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', [$isActive]);
 
         return parent::setIsActive($isActive);
     }
@@ -245,7 +245,7 @@ class Unit extends \Entity\Authentication\Unit implements \Doctrine\ORM\Proxy\Pr
     public function getIsActive()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', []);
 
         return parent::getIsActive();
     }
@@ -256,7 +256,7 @@ class Unit extends \Entity\Authentication\Unit implements \Doctrine\ORM\Proxy\Pr
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -267,7 +267,7 @@ class Unit extends \Entity\Authentication\Unit implements \Doctrine\ORM\Proxy\Pr
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -278,7 +278,7 @@ class Unit extends \Entity\Authentication\Unit implements \Doctrine\ORM\Proxy\Pr
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -289,7 +289,7 @@ class Unit extends \Entity\Authentication\Unit implements \Doctrine\ORM\Proxy\Pr
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -300,7 +300,7 @@ class Unit extends \Entity\Authentication\Unit implements \Doctrine\ORM\Proxy\Pr
     public function addService(\Entity\Authentication\Service $service)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addService', array($service));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addService', [$service]);
 
         return parent::addService($service);
     }
@@ -311,7 +311,7 @@ class Unit extends \Entity\Authentication\Unit implements \Doctrine\ORM\Proxy\Pr
     public function removeService(\Entity\Authentication\Service $service)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeService', array($service));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeService', [$service]);
 
         return parent::removeService($service);
     }
@@ -322,7 +322,7 @@ class Unit extends \Entity\Authentication\Unit implements \Doctrine\ORM\Proxy\Pr
     public function getServices()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getServices', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getServices', []);
 
         return parent::getServices();
     }
@@ -333,7 +333,7 @@ class Unit extends \Entity\Authentication\Unit implements \Doctrine\ORM\Proxy\Pr
     public function addClient(\Entity\Authentication\Client $client)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addClient', array($client));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addClient', [$client]);
 
         return parent::addClient($client);
     }
@@ -344,7 +344,7 @@ class Unit extends \Entity\Authentication\Unit implements \Doctrine\ORM\Proxy\Pr
     public function removeClient(\Entity\Authentication\Client $client)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeClient', array($client));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeClient', [$client]);
 
         return parent::removeClient($client);
     }
@@ -355,7 +355,7 @@ class Unit extends \Entity\Authentication\Unit implements \Doctrine\ORM\Proxy\Pr
     public function getClients()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClients', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClients', []);
 
         return parent::getClients();
     }

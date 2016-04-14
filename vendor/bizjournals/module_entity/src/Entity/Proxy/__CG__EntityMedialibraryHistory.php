@@ -36,7 +36,7 @@ class History extends \Entity\Medialibrary\History implements \Doctrine\ORM\Prox
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class History extends \Entity\Medialibrary\History implements \Doctrine\ORM\Prox
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\History' . "\0" . 'history_id', '' . "\0" . 'Entity\\Medialibrary\\History' . "\0" . 'object_type', '' . "\0" . 'Entity\\Medialibrary\\History' . "\0" . 'object_id', '' . "\0" . 'Entity\\Medialibrary\\History' . "\0" . 'detail', '' . "\0" . 'Entity\\Medialibrary\\History' . "\0" . 'note', '' . "\0" . 'Entity\\Medialibrary\\History' . "\0" . 'username', '' . "\0" . 'Entity\\Medialibrary\\History' . "\0" . 'created_at');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\History' . "\0" . 'history_id', '' . "\0" . 'Entity\\Medialibrary\\History' . "\0" . 'object_type', '' . "\0" . 'Entity\\Medialibrary\\History' . "\0" . 'object_id', '' . "\0" . 'Entity\\Medialibrary\\History' . "\0" . 'detail', '' . "\0" . 'Entity\\Medialibrary\\History' . "\0" . 'note', '' . "\0" . 'Entity\\Medialibrary\\History' . "\0" . 'username', '' . "\0" . 'Entity\\Medialibrary\\History' . "\0" . 'created_at'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\History' . "\0" . 'history_id', '' . "\0" . 'Entity\\Medialibrary\\History' . "\0" . 'object_type', '' . "\0" . 'Entity\\Medialibrary\\History' . "\0" . 'object_id', '' . "\0" . 'Entity\\Medialibrary\\History' . "\0" . 'detail', '' . "\0" . 'Entity\\Medialibrary\\History' . "\0" . 'note', '' . "\0" . 'Entity\\Medialibrary\\History' . "\0" . 'username', '' . "\0" . 'Entity\\Medialibrary\\History' . "\0" . 'created_at');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\History' . "\0" . 'history_id', '' . "\0" . 'Entity\\Medialibrary\\History' . "\0" . 'object_type', '' . "\0" . 'Entity\\Medialibrary\\History' . "\0" . 'object_id', '' . "\0" . 'Entity\\Medialibrary\\History' . "\0" . 'detail', '' . "\0" . 'Entity\\Medialibrary\\History' . "\0" . 'note', '' . "\0" . 'Entity\\Medialibrary\\History' . "\0" . 'username', '' . "\0" . 'Entity\\Medialibrary\\History' . "\0" . 'created_at'];
     }
 
     /**
@@ -97,7 +97,7 @@ class History extends \Entity\Medialibrary\History implements \Doctrine\ORM\Prox
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class History extends \Entity\Medialibrary\History implements \Doctrine\ORM\Prox
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class History extends \Entity\Medialibrary\History implements \Doctrine\ORM\Prox
     public function getHistoryId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHistoryId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHistoryId', []);
 
         return parent::getHistoryId();
     }
@@ -190,7 +190,7 @@ class History extends \Entity\Medialibrary\History implements \Doctrine\ORM\Prox
     public function setObjectType($objectType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setObjectType', array($objectType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setObjectType', [$objectType]);
 
         return parent::setObjectType($objectType);
     }
@@ -201,7 +201,7 @@ class History extends \Entity\Medialibrary\History implements \Doctrine\ORM\Prox
     public function getObjectType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getObjectType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getObjectType', []);
 
         return parent::getObjectType();
     }
@@ -212,7 +212,7 @@ class History extends \Entity\Medialibrary\History implements \Doctrine\ORM\Prox
     public function setObjectId($objectId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setObjectId', array($objectId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setObjectId', [$objectId]);
 
         return parent::setObjectId($objectId);
     }
@@ -223,7 +223,7 @@ class History extends \Entity\Medialibrary\History implements \Doctrine\ORM\Prox
     public function getObjectId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getObjectId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getObjectId', []);
 
         return parent::getObjectId();
     }
@@ -234,7 +234,7 @@ class History extends \Entity\Medialibrary\History implements \Doctrine\ORM\Prox
     public function setDetail($detail)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDetail', array($detail));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDetail', [$detail]);
 
         return parent::setDetail($detail);
     }
@@ -245,7 +245,7 @@ class History extends \Entity\Medialibrary\History implements \Doctrine\ORM\Prox
     public function getDetail()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDetail', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDetail', []);
 
         return parent::getDetail();
     }
@@ -256,7 +256,7 @@ class History extends \Entity\Medialibrary\History implements \Doctrine\ORM\Prox
     public function setNote($note)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNote', array($note));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNote', [$note]);
 
         return parent::setNote($note);
     }
@@ -267,7 +267,7 @@ class History extends \Entity\Medialibrary\History implements \Doctrine\ORM\Prox
     public function getNote()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNote', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNote', []);
 
         return parent::getNote();
     }
@@ -278,7 +278,7 @@ class History extends \Entity\Medialibrary\History implements \Doctrine\ORM\Prox
     public function setUsername($username)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUsername', array($username));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUsername', [$username]);
 
         return parent::setUsername($username);
     }
@@ -289,7 +289,7 @@ class History extends \Entity\Medialibrary\History implements \Doctrine\ORM\Prox
     public function getUsername()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUsername', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUsername', []);
 
         return parent::getUsername();
     }
@@ -300,7 +300,7 @@ class History extends \Entity\Medialibrary\History implements \Doctrine\ORM\Prox
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -311,7 +311,7 @@ class History extends \Entity\Medialibrary\History implements \Doctrine\ORM\Prox
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }

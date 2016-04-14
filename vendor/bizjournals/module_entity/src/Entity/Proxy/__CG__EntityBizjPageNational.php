@@ -36,7 +36,7 @@ class PageNational extends \Entity\Bizj\PageNational implements \Doctrine\ORM\Pr
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class PageNational extends \Entity\Bizj\PageNational implements \Doctrine\ORM\Pr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageNational' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bizj\\PageNational' . "\0" . 'created_at');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageNational' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bizj\\PageNational' . "\0" . 'created_at'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageNational' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bizj\\PageNational' . "\0" . 'created_at');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\PageNational' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bizj\\PageNational' . "\0" . 'created_at'];
     }
 
     /**
@@ -97,7 +97,7 @@ class PageNational extends \Entity\Bizj\PageNational implements \Doctrine\ORM\Pr
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class PageNational extends \Entity\Bizj\PageNational implements \Doctrine\ORM\Pr
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class PageNational extends \Entity\Bizj\PageNational implements \Doctrine\ORM\Pr
     public function setPageId($pageId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPageId', array($pageId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPageId', [$pageId]);
 
         return parent::setPageId($pageId);
     }
@@ -190,7 +190,7 @@ class PageNational extends \Entity\Bizj\PageNational implements \Doctrine\ORM\Pr
     public function getPageId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageId', []);
 
         return parent::getPageId();
     }
@@ -201,7 +201,7 @@ class PageNational extends \Entity\Bizj\PageNational implements \Doctrine\ORM\Pr
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -212,7 +212,7 @@ class PageNational extends \Entity\Bizj\PageNational implements \Doctrine\ORM\Pr
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }

@@ -36,7 +36,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'path_id', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'site', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'path', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'description', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'date_format', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'allow_story', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'allow_section_front', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'allow_homepage', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'allow_poll', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'allow_new_content', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'syndication_default', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'is_premium', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'sort_order', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'created_at', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'Publication');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'path_id', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'site', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'path', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'description', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'date_format', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'allow_story', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'allow_section_front', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'allow_homepage', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'allow_poll', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'allow_new_content', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'syndication_default', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'is_premium', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'sort_order', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'created_at', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'Publication'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'path_id', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'site', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'path', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'description', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'date_format', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'allow_story', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'allow_section_front', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'allow_homepage', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'allow_poll', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'allow_new_content', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'syndication_default', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'is_premium', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'sort_order', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'created_at', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'Publication');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'path_id', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'site', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'path', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'description', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'date_format', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'allow_story', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'allow_section_front', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'allow_homepage', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'allow_poll', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'allow_new_content', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'syndication_default', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'is_premium', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'sort_order', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'created_at', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Cms\\Path' . "\0" . 'Publication'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function getPathId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPathId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPathId', []);
 
         return parent::getPathId();
     }
@@ -190,7 +190,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function setSite($site)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSite', array($site));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSite', [$site]);
 
         return parent::setSite($site);
     }
@@ -201,7 +201,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function getSite()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSite', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSite', []);
 
         return parent::getSite();
     }
@@ -212,7 +212,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function setPath($path)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPath', array($path));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPath', [$path]);
 
         return parent::setPath($path);
     }
@@ -223,7 +223,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function getPath()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPath', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPath', []);
 
         return parent::getPath();
     }
@@ -234,7 +234,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function setDescription($description)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', array($description));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', [$description]);
 
         return parent::setDescription($description);
     }
@@ -245,7 +245,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function getDescription()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', []);
 
         return parent::getDescription();
     }
@@ -256,7 +256,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function setPubId($pubId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPubId', array($pubId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPubId', [$pubId]);
 
         return parent::setPubId($pubId);
     }
@@ -267,7 +267,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function getPubId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPubId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPubId', []);
 
         return parent::getPubId();
     }
@@ -278,7 +278,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function setDateFormat($dateFormat)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDateFormat', array($dateFormat));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDateFormat', [$dateFormat]);
 
         return parent::setDateFormat($dateFormat);
     }
@@ -289,7 +289,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function getDateFormat()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDateFormat', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDateFormat', []);
 
         return parent::getDateFormat();
     }
@@ -300,7 +300,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function setAllowStory($allowStory)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowStory', array($allowStory));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowStory', [$allowStory]);
 
         return parent::setAllowStory($allowStory);
     }
@@ -311,7 +311,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function getAllowStory()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowStory', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowStory', []);
 
         return parent::getAllowStory();
     }
@@ -322,7 +322,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function setAllowSectionFront($allowSectionFront)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowSectionFront', array($allowSectionFront));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowSectionFront', [$allowSectionFront]);
 
         return parent::setAllowSectionFront($allowSectionFront);
     }
@@ -333,7 +333,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function getAllowSectionFront()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowSectionFront', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowSectionFront', []);
 
         return parent::getAllowSectionFront();
     }
@@ -344,7 +344,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function setAllowHomepage($allowHomepage)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowHomepage', array($allowHomepage));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowHomepage', [$allowHomepage]);
 
         return parent::setAllowHomepage($allowHomepage);
     }
@@ -355,7 +355,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function getAllowHomepage()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowHomepage', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowHomepage', []);
 
         return parent::getAllowHomepage();
     }
@@ -366,7 +366,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function setAllowPoll($allowPoll)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowPoll', array($allowPoll));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowPoll', [$allowPoll]);
 
         return parent::setAllowPoll($allowPoll);
     }
@@ -377,7 +377,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function getAllowPoll()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowPoll', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowPoll', []);
 
         return parent::getAllowPoll();
     }
@@ -388,7 +388,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function setAllowNewContent($allowNewContent)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowNewContent', array($allowNewContent));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowNewContent', [$allowNewContent]);
 
         return parent::setAllowNewContent($allowNewContent);
     }
@@ -399,7 +399,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function getAllowNewContent()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowNewContent', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowNewContent', []);
 
         return parent::getAllowNewContent();
     }
@@ -410,7 +410,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function setSyndicationDefault($syndicationDefault)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSyndicationDefault', array($syndicationDefault));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSyndicationDefault', [$syndicationDefault]);
 
         return parent::setSyndicationDefault($syndicationDefault);
     }
@@ -421,7 +421,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function getSyndicationDefault()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSyndicationDefault', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSyndicationDefault', []);
 
         return parent::getSyndicationDefault();
     }
@@ -432,7 +432,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function setIsPremium($isPremium)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsPremium', array($isPremium));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsPremium', [$isPremium]);
 
         return parent::setIsPremium($isPremium);
     }
@@ -443,7 +443,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function getIsPremium()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsPremium', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsPremium', []);
 
         return parent::getIsPremium();
     }
@@ -454,7 +454,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function setSortOrder($sortOrder)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSortOrder', array($sortOrder));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSortOrder', [$sortOrder]);
 
         return parent::setSortOrder($sortOrder);
     }
@@ -465,7 +465,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function getSortOrder()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSortOrder', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSortOrder', []);
 
         return parent::getSortOrder();
     }
@@ -476,7 +476,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -487,7 +487,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -498,7 +498,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -509,7 +509,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -520,7 +520,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function setPublication(\Entity\Cms\Publication $publication = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublication', array($publication));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublication', [$publication]);
 
         return parent::setPublication($publication);
     }
@@ -531,7 +531,7 @@ class Path extends \Entity\Cms\Path implements \Doctrine\ORM\Proxy\Proxy
     public function getPublication()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublication', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublication', []);
 
         return parent::getPublication();
     }

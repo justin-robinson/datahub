@@ -36,7 +36,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'contact_id', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'backlink_class', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'backlink_id', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'contact_type', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'contact_name', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'contact_title', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'contact_description', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'address1', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'address2', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'address3', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'community', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'state_province', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'country', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'postal_code', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone1', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone1_type', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone1_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone2', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone2_type', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone2_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone3', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone3_type', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone3_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'email1', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'email1_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'email2', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'email2_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'email3', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'email3_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social1', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social1_type', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social1_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social2', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social2_type', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social2_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social3', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social3_type', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social3_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'headshot_media_id', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'photo_headshot_url', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'photo_social_url', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'contact_subtype', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'Staff');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'contact_id', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'backlink_class', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'backlink_id', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'contact_type', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'contact_name', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'contact_title', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'contact_description', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'address1', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'address2', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'address3', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'community', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'state_province', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'country', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'postal_code', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone1', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone1_type', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone1_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone2', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone2_type', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone2_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone3', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone3_type', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone3_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'email1', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'email1_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'email2', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'email2_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'email3', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'email3_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social1', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social1_type', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social1_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social2', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social2_type', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social2_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social3', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social3_type', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social3_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'headshot_media_id', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'photo_headshot_url', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'photo_social_url', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'contact_subtype', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'Staff'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'contact_id', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'backlink_class', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'backlink_id', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'contact_type', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'contact_name', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'contact_title', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'contact_description', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'address1', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'address2', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'address3', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'community', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'state_province', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'country', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'postal_code', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone1', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone1_type', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone1_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone2', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone2_type', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone2_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone3', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone3_type', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone3_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'email1', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'email1_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'email2', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'email2_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'email3', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'email3_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social1', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social1_type', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social1_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social2', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social2_type', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social2_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social3', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social3_type', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social3_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'headshot_media_id', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'photo_headshot_url', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'photo_social_url', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'contact_subtype', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'Staff');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'contact_id', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'backlink_class', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'backlink_id', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'contact_type', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'contact_name', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'contact_title', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'contact_description', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'address1', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'address2', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'address3', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'community', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'state_province', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'country', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'postal_code', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone1', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone1_type', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone1_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone2', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone2_type', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone2_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone3', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone3_type', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'phone3_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'email1', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'email1_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'email2', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'email2_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'email3', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'email3_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social1', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social1_type', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social1_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social2', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social2_type', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social2_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social3', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social3_type', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'social3_notes', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'headshot_media_id', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'photo_headshot_url', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'photo_social_url', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'contact_subtype', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\ContactData' . "\0" . 'Staff'];
     }
 
     /**
@@ -97,7 +97,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getContactId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactId', []);
 
         return parent::getContactId();
     }
@@ -190,7 +190,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setBacklinkClass($backlinkClass)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBacklinkClass', array($backlinkClass));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBacklinkClass', [$backlinkClass]);
 
         return parent::setBacklinkClass($backlinkClass);
     }
@@ -201,7 +201,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getBacklinkClass()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBacklinkClass', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBacklinkClass', []);
 
         return parent::getBacklinkClass();
     }
@@ -212,7 +212,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setBacklinkId($backlinkId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBacklinkId', array($backlinkId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBacklinkId', [$backlinkId]);
 
         return parent::setBacklinkId($backlinkId);
     }
@@ -223,7 +223,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getBacklinkId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBacklinkId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBacklinkId', []);
 
         return parent::getBacklinkId();
     }
@@ -234,7 +234,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setContactType($contactType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContactType', array($contactType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContactType', [$contactType]);
 
         return parent::setContactType($contactType);
     }
@@ -245,7 +245,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getContactType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactType', []);
 
         return parent::getContactType();
     }
@@ -256,7 +256,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setContactName($contactName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContactName', array($contactName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContactName', [$contactName]);
 
         return parent::setContactName($contactName);
     }
@@ -267,7 +267,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getContactName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactName', []);
 
         return parent::getContactName();
     }
@@ -278,7 +278,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setContactTitle($contactTitle)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContactTitle', array($contactTitle));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContactTitle', [$contactTitle]);
 
         return parent::setContactTitle($contactTitle);
     }
@@ -289,7 +289,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getContactTitle()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactTitle', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactTitle', []);
 
         return parent::getContactTitle();
     }
@@ -300,7 +300,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setContactDescription($contactDescription)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContactDescription', array($contactDescription));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContactDescription', [$contactDescription]);
 
         return parent::setContactDescription($contactDescription);
     }
@@ -311,7 +311,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getContactDescription()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactDescription', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactDescription', []);
 
         return parent::getContactDescription();
     }
@@ -322,7 +322,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setAddress1($address1)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAddress1', array($address1));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAddress1', [$address1]);
 
         return parent::setAddress1($address1);
     }
@@ -333,7 +333,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getAddress1()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAddress1', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAddress1', []);
 
         return parent::getAddress1();
     }
@@ -344,7 +344,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setAddress2($address2)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAddress2', array($address2));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAddress2', [$address2]);
 
         return parent::setAddress2($address2);
     }
@@ -355,7 +355,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getAddress2()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAddress2', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAddress2', []);
 
         return parent::getAddress2();
     }
@@ -366,7 +366,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setAddress3($address3)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAddress3', array($address3));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAddress3', [$address3]);
 
         return parent::setAddress3($address3);
     }
@@ -377,7 +377,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getAddress3()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAddress3', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAddress3', []);
 
         return parent::getAddress3();
     }
@@ -388,7 +388,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setCommunity($community)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCommunity', array($community));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCommunity', [$community]);
 
         return parent::setCommunity($community);
     }
@@ -399,7 +399,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getCommunity()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCommunity', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCommunity', []);
 
         return parent::getCommunity();
     }
@@ -410,7 +410,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setStateProvince($stateProvince)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStateProvince', array($stateProvince));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStateProvince', [$stateProvince]);
 
         return parent::setStateProvince($stateProvince);
     }
@@ -421,7 +421,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getStateProvince()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStateProvince', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStateProvince', []);
 
         return parent::getStateProvince();
     }
@@ -432,7 +432,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setCountry($country)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountry', array($country));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountry', [$country]);
 
         return parent::setCountry($country);
     }
@@ -443,7 +443,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getCountry()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountry', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountry', []);
 
         return parent::getCountry();
     }
@@ -454,7 +454,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setPostalCode($postalCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPostalCode', array($postalCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPostalCode', [$postalCode]);
 
         return parent::setPostalCode($postalCode);
     }
@@ -465,7 +465,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getPostalCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPostalCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPostalCode', []);
 
         return parent::getPostalCode();
     }
@@ -476,7 +476,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setPhone1($phone1)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhone1', array($phone1));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhone1', [$phone1]);
 
         return parent::setPhone1($phone1);
     }
@@ -487,7 +487,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getPhone1()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhone1', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhone1', []);
 
         return parent::getPhone1();
     }
@@ -498,7 +498,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setPhone1Type($phone1Type)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhone1Type', array($phone1Type));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhone1Type', [$phone1Type]);
 
         return parent::setPhone1Type($phone1Type);
     }
@@ -509,7 +509,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getPhone1Type()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhone1Type', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhone1Type', []);
 
         return parent::getPhone1Type();
     }
@@ -520,7 +520,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setPhone1Notes($phone1Notes)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhone1Notes', array($phone1Notes));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhone1Notes', [$phone1Notes]);
 
         return parent::setPhone1Notes($phone1Notes);
     }
@@ -531,7 +531,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getPhone1Notes()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhone1Notes', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhone1Notes', []);
 
         return parent::getPhone1Notes();
     }
@@ -542,7 +542,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setPhone2($phone2)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhone2', array($phone2));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhone2', [$phone2]);
 
         return parent::setPhone2($phone2);
     }
@@ -553,7 +553,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getPhone2()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhone2', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhone2', []);
 
         return parent::getPhone2();
     }
@@ -564,7 +564,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setPhone2Type($phone2Type)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhone2Type', array($phone2Type));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhone2Type', [$phone2Type]);
 
         return parent::setPhone2Type($phone2Type);
     }
@@ -575,7 +575,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getPhone2Type()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhone2Type', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhone2Type', []);
 
         return parent::getPhone2Type();
     }
@@ -586,7 +586,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setPhone2Notes($phone2Notes)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhone2Notes', array($phone2Notes));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhone2Notes', [$phone2Notes]);
 
         return parent::setPhone2Notes($phone2Notes);
     }
@@ -597,7 +597,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getPhone2Notes()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhone2Notes', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhone2Notes', []);
 
         return parent::getPhone2Notes();
     }
@@ -608,7 +608,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setPhone3($phone3)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhone3', array($phone3));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhone3', [$phone3]);
 
         return parent::setPhone3($phone3);
     }
@@ -619,7 +619,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getPhone3()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhone3', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhone3', []);
 
         return parent::getPhone3();
     }
@@ -630,7 +630,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setPhone3Type($phone3Type)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhone3Type', array($phone3Type));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhone3Type', [$phone3Type]);
 
         return parent::setPhone3Type($phone3Type);
     }
@@ -641,7 +641,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getPhone3Type()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhone3Type', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhone3Type', []);
 
         return parent::getPhone3Type();
     }
@@ -652,7 +652,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setPhone3Notes($phone3Notes)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhone3Notes', array($phone3Notes));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhone3Notes', [$phone3Notes]);
 
         return parent::setPhone3Notes($phone3Notes);
     }
@@ -663,7 +663,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getPhone3Notes()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhone3Notes', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhone3Notes', []);
 
         return parent::getPhone3Notes();
     }
@@ -674,7 +674,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setEmail1($email1)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail1', array($email1));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail1', [$email1]);
 
         return parent::setEmail1($email1);
     }
@@ -685,7 +685,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getEmail1()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail1', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail1', []);
 
         return parent::getEmail1();
     }
@@ -696,7 +696,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setEmail1Notes($email1Notes)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail1Notes', array($email1Notes));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail1Notes', [$email1Notes]);
 
         return parent::setEmail1Notes($email1Notes);
     }
@@ -707,7 +707,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getEmail1Notes()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail1Notes', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail1Notes', []);
 
         return parent::getEmail1Notes();
     }
@@ -718,7 +718,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setEmail2($email2)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail2', array($email2));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail2', [$email2]);
 
         return parent::setEmail2($email2);
     }
@@ -729,7 +729,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getEmail2()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail2', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail2', []);
 
         return parent::getEmail2();
     }
@@ -740,7 +740,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setEmail2Notes($email2Notes)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail2Notes', array($email2Notes));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail2Notes', [$email2Notes]);
 
         return parent::setEmail2Notes($email2Notes);
     }
@@ -751,7 +751,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getEmail2Notes()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail2Notes', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail2Notes', []);
 
         return parent::getEmail2Notes();
     }
@@ -762,7 +762,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setEmail3($email3)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail3', array($email3));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail3', [$email3]);
 
         return parent::setEmail3($email3);
     }
@@ -773,7 +773,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getEmail3()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail3', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail3', []);
 
         return parent::getEmail3();
     }
@@ -784,7 +784,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setEmail3Notes($email3Notes)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail3Notes', array($email3Notes));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail3Notes', [$email3Notes]);
 
         return parent::setEmail3Notes($email3Notes);
     }
@@ -795,7 +795,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getEmail3Notes()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail3Notes', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail3Notes', []);
 
         return parent::getEmail3Notes();
     }
@@ -806,7 +806,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setSocial1($social1)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSocial1', array($social1));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSocial1', [$social1]);
 
         return parent::setSocial1($social1);
     }
@@ -817,7 +817,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getSocial1()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSocial1', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSocial1', []);
 
         return parent::getSocial1();
     }
@@ -828,7 +828,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setSocial1Type($social1Type)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSocial1Type', array($social1Type));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSocial1Type', [$social1Type]);
 
         return parent::setSocial1Type($social1Type);
     }
@@ -839,7 +839,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getSocial1Type()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSocial1Type', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSocial1Type', []);
 
         return parent::getSocial1Type();
     }
@@ -850,7 +850,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setSocial1Notes($social1Notes)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSocial1Notes', array($social1Notes));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSocial1Notes', [$social1Notes]);
 
         return parent::setSocial1Notes($social1Notes);
     }
@@ -861,7 +861,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getSocial1Notes()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSocial1Notes', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSocial1Notes', []);
 
         return parent::getSocial1Notes();
     }
@@ -872,7 +872,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setSocial2($social2)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSocial2', array($social2));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSocial2', [$social2]);
 
         return parent::setSocial2($social2);
     }
@@ -883,7 +883,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getSocial2()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSocial2', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSocial2', []);
 
         return parent::getSocial2();
     }
@@ -894,7 +894,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setSocial2Type($social2Type)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSocial2Type', array($social2Type));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSocial2Type', [$social2Type]);
 
         return parent::setSocial2Type($social2Type);
     }
@@ -905,7 +905,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getSocial2Type()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSocial2Type', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSocial2Type', []);
 
         return parent::getSocial2Type();
     }
@@ -916,7 +916,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setSocial2Notes($social2Notes)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSocial2Notes', array($social2Notes));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSocial2Notes', [$social2Notes]);
 
         return parent::setSocial2Notes($social2Notes);
     }
@@ -927,7 +927,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getSocial2Notes()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSocial2Notes', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSocial2Notes', []);
 
         return parent::getSocial2Notes();
     }
@@ -938,7 +938,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setSocial3($social3)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSocial3', array($social3));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSocial3', [$social3]);
 
         return parent::setSocial3($social3);
     }
@@ -949,7 +949,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getSocial3()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSocial3', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSocial3', []);
 
         return parent::getSocial3();
     }
@@ -960,7 +960,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setSocial3Type($social3Type)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSocial3Type', array($social3Type));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSocial3Type', [$social3Type]);
 
         return parent::setSocial3Type($social3Type);
     }
@@ -971,7 +971,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getSocial3Type()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSocial3Type', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSocial3Type', []);
 
         return parent::getSocial3Type();
     }
@@ -982,7 +982,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setSocial3Notes($social3Notes)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSocial3Notes', array($social3Notes));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSocial3Notes', [$social3Notes]);
 
         return parent::setSocial3Notes($social3Notes);
     }
@@ -993,7 +993,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getSocial3Notes()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSocial3Notes', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSocial3Notes', []);
 
         return parent::getSocial3Notes();
     }
@@ -1004,7 +1004,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setHeadshotMediaId($headshotMediaId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHeadshotMediaId', array($headshotMediaId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHeadshotMediaId', [$headshotMediaId]);
 
         return parent::setHeadshotMediaId($headshotMediaId);
     }
@@ -1015,7 +1015,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getHeadshotMediaId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHeadshotMediaId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHeadshotMediaId', []);
 
         return parent::getHeadshotMediaId();
     }
@@ -1026,7 +1026,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setPhotoHeadshotUrl($photoHeadshotUrl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhotoHeadshotUrl', array($photoHeadshotUrl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhotoHeadshotUrl', [$photoHeadshotUrl]);
 
         return parent::setPhotoHeadshotUrl($photoHeadshotUrl);
     }
@@ -1037,7 +1037,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getPhotoHeadshotUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhotoHeadshotUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhotoHeadshotUrl', []);
 
         return parent::getPhotoHeadshotUrl();
     }
@@ -1048,7 +1048,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setPhotoSocialUrl($photoSocialUrl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhotoSocialUrl', array($photoSocialUrl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhotoSocialUrl', [$photoSocialUrl]);
 
         return parent::setPhotoSocialUrl($photoSocialUrl);
     }
@@ -1059,7 +1059,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getPhotoSocialUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhotoSocialUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhotoSocialUrl', []);
 
         return parent::getPhotoSocialUrl();
     }
@@ -1070,7 +1070,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setContactSubtype($contactSubtype)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContactSubtype', array($contactSubtype));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContactSubtype', [$contactSubtype]);
 
         return parent::setContactSubtype($contactSubtype);
     }
@@ -1081,7 +1081,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getContactSubtype()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactSubtype', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactSubtype', []);
 
         return parent::getContactSubtype();
     }
@@ -1092,7 +1092,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -1103,7 +1103,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -1114,7 +1114,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -1125,7 +1125,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -1136,7 +1136,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function addStaff(\Entity\Bizj\MarketStaff $staff)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addStaff', array($staff));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addStaff', [$staff]);
 
         return parent::addStaff($staff);
     }
@@ -1147,7 +1147,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function removeStaff(\Entity\Bizj\MarketStaff $staff)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeStaff', array($staff));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeStaff', [$staff]);
 
         return parent::removeStaff($staff);
     }
@@ -1158,7 +1158,7 @@ class ContactData extends \Entity\Bizj\ContactData implements \Doctrine\ORM\Prox
     public function getStaff()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStaff', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStaff', []);
 
         return parent::getStaff();
     }

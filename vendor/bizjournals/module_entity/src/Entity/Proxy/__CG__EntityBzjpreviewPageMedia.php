@@ -36,7 +36,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'ord', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'media_host', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'media_uri', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'crop_data', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'media_source', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'external_id', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'media_type', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'title', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'caption', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'alt_text', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'link_url', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'art_credit', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'orig_height', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'orig_width', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'flag', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'additional_data', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'Page');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'ord', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'media_host', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'media_uri', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'crop_data', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'media_source', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'external_id', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'media_type', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'title', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'caption', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'alt_text', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'link_url', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'art_credit', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'orig_height', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'orig_width', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'flag', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'additional_data', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'Page'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'ord', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'media_host', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'media_uri', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'crop_data', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'media_source', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'external_id', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'media_type', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'title', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'caption', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'alt_text', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'link_url', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'art_credit', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'orig_height', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'orig_width', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'flag', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'additional_data', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'Page');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'ord', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'media_host', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'media_uri', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'crop_data', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'media_source', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'external_id', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'media_type', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'title', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'caption', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'alt_text', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'link_url', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'art_credit', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'orig_height', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'orig_width', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'flag', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'additional_data', '' . "\0" . 'Entity\\Bzjpreview\\PageMedia' . "\0" . 'Page'];
     }
 
     /**
@@ -97,7 +97,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function setPageId($pageId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPageId', array($pageId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPageId', [$pageId]);
 
         return parent::setPageId($pageId);
     }
@@ -190,7 +190,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function getPageId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageId', []);
 
         return parent::getPageId();
     }
@@ -201,7 +201,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function setOrd($ord)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrd', array($ord));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrd', [$ord]);
 
         return parent::setOrd($ord);
     }
@@ -216,7 +216,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
         }
 
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrd', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrd', []);
 
         return parent::getOrd();
     }
@@ -227,7 +227,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function setMediaHost($mediaHost)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaHost', array($mediaHost));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaHost', [$mediaHost]);
 
         return parent::setMediaHost($mediaHost);
     }
@@ -238,7 +238,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function getMediaHost()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaHost', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaHost', []);
 
         return parent::getMediaHost();
     }
@@ -249,7 +249,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function setMediaUri($mediaUri)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaUri', array($mediaUri));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaUri', [$mediaUri]);
 
         return parent::setMediaUri($mediaUri);
     }
@@ -260,7 +260,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function getMediaUri()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaUri', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaUri', []);
 
         return parent::getMediaUri();
     }
@@ -271,7 +271,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function setCropData($cropData)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCropData', array($cropData));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCropData', [$cropData]);
 
         return parent::setCropData($cropData);
     }
@@ -282,7 +282,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function getCropData()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCropData', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCropData', []);
 
         return parent::getCropData();
     }
@@ -293,7 +293,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function setMediaSource($mediaSource)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaSource', array($mediaSource));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaSource', [$mediaSource]);
 
         return parent::setMediaSource($mediaSource);
     }
@@ -304,7 +304,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function getMediaSource()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaSource', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaSource', []);
 
         return parent::getMediaSource();
     }
@@ -315,7 +315,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function setExternalId($externalId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExternalId', array($externalId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExternalId', [$externalId]);
 
         return parent::setExternalId($externalId);
     }
@@ -326,7 +326,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function getExternalId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExternalId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExternalId', []);
 
         return parent::getExternalId();
     }
@@ -337,7 +337,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function setMediaType($mediaType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaType', array($mediaType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaType', [$mediaType]);
 
         return parent::setMediaType($mediaType);
     }
@@ -348,7 +348,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function getMediaType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaType', []);
 
         return parent::getMediaType();
     }
@@ -359,7 +359,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function setTitle($title)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', array($title));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', [$title]);
 
         return parent::setTitle($title);
     }
@@ -370,7 +370,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function getTitle()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', []);
 
         return parent::getTitle();
     }
@@ -381,7 +381,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function setCaption($caption)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCaption', array($caption));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCaption', [$caption]);
 
         return parent::setCaption($caption);
     }
@@ -392,7 +392,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function getCaption()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCaption', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCaption', []);
 
         return parent::getCaption();
     }
@@ -403,7 +403,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function setAltText($altText)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAltText', array($altText));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAltText', [$altText]);
 
         return parent::setAltText($altText);
     }
@@ -414,7 +414,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function getAltText()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAltText', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAltText', []);
 
         return parent::getAltText();
     }
@@ -425,7 +425,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function setLinkUrl($linkUrl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLinkUrl', array($linkUrl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLinkUrl', [$linkUrl]);
 
         return parent::setLinkUrl($linkUrl);
     }
@@ -436,7 +436,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function getLinkUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLinkUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLinkUrl', []);
 
         return parent::getLinkUrl();
     }
@@ -447,7 +447,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function setArtCredit($artCredit)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setArtCredit', array($artCredit));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setArtCredit', [$artCredit]);
 
         return parent::setArtCredit($artCredit);
     }
@@ -458,7 +458,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function getArtCredit()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getArtCredit', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getArtCredit', []);
 
         return parent::getArtCredit();
     }
@@ -469,7 +469,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function setOrigHeight($origHeight)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrigHeight', array($origHeight));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrigHeight', [$origHeight]);
 
         return parent::setOrigHeight($origHeight);
     }
@@ -480,7 +480,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function getOrigHeight()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrigHeight', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrigHeight', []);
 
         return parent::getOrigHeight();
     }
@@ -491,7 +491,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function setOrigWidth($origWidth)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrigWidth', array($origWidth));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrigWidth', [$origWidth]);
 
         return parent::setOrigWidth($origWidth);
     }
@@ -502,7 +502,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function getOrigWidth()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrigWidth', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrigWidth', []);
 
         return parent::getOrigWidth();
     }
@@ -513,7 +513,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function setFlag($flag)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFlag', array($flag));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFlag', [$flag]);
 
         return parent::setFlag($flag);
     }
@@ -524,7 +524,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function getFlag()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFlag', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFlag', []);
 
         return parent::getFlag();
     }
@@ -535,7 +535,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function setAdditionalData($additionalData)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAdditionalData', array($additionalData));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAdditionalData', [$additionalData]);
 
         return parent::setAdditionalData($additionalData);
     }
@@ -546,7 +546,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function getAdditionalData()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAdditionalData', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAdditionalData', []);
 
         return parent::getAdditionalData();
     }
@@ -557,7 +557,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function setPage(\Entity\Bzjpreview\Page $page = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPage', array($page));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPage', [$page]);
 
         return parent::setPage($page);
     }
@@ -568,7 +568,7 @@ class PageMedia extends \Entity\Bzjpreview\PageMedia implements \Doctrine\ORM\Pr
     public function getPage()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPage', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPage', []);
 
         return parent::getPage();
     }

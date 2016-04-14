@@ -36,7 +36,7 @@ class Product extends \Entity\Bizjstatus\Product implements \Doctrine\ORM\Proxy\
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Product extends \Entity\Bizjstatus\Product implements \Doctrine\ORM\Proxy\
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'product_id', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'product_name', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'product_url', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'is_active', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'Events', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'Messages');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'product_id', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'product_name', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'product_url', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'is_active', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'Events', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'Messages'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'product_id', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'product_name', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'product_url', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'is_active', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'Events', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'Messages');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'product_id', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'product_name', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'product_url', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'is_active', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'Events', '' . "\0" . 'Entity\\Bizjstatus\\Product' . "\0" . 'Messages'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Product extends \Entity\Bizjstatus\Product implements \Doctrine\ORM\Proxy\
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Product extends \Entity\Bizjstatus\Product implements \Doctrine\ORM\Proxy\
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class Product extends \Entity\Bizjstatus\Product implements \Doctrine\ORM\Proxy\
     public function getProductId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductId', []);
 
         return parent::getProductId();
     }
@@ -190,7 +190,7 @@ class Product extends \Entity\Bizjstatus\Product implements \Doctrine\ORM\Proxy\
     public function setProductName($productName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductName', array($productName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductName', [$productName]);
 
         return parent::setProductName($productName);
     }
@@ -201,7 +201,7 @@ class Product extends \Entity\Bizjstatus\Product implements \Doctrine\ORM\Proxy\
     public function getProductName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductName', []);
 
         return parent::getProductName();
     }
@@ -212,7 +212,7 @@ class Product extends \Entity\Bizjstatus\Product implements \Doctrine\ORM\Proxy\
     public function setProductUrl($productUrl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductUrl', array($productUrl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setProductUrl', [$productUrl]);
 
         return parent::setProductUrl($productUrl);
     }
@@ -223,7 +223,7 @@ class Product extends \Entity\Bizjstatus\Product implements \Doctrine\ORM\Proxy\
     public function getProductUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductUrl', []);
 
         return parent::getProductUrl();
     }
@@ -234,7 +234,7 @@ class Product extends \Entity\Bizjstatus\Product implements \Doctrine\ORM\Proxy\
     public function setIsActive($isActive)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', array($isActive));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', [$isActive]);
 
         return parent::setIsActive($isActive);
     }
@@ -245,7 +245,7 @@ class Product extends \Entity\Bizjstatus\Product implements \Doctrine\ORM\Proxy\
     public function getIsActive()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', []);
 
         return parent::getIsActive();
     }
@@ -256,7 +256,7 @@ class Product extends \Entity\Bizjstatus\Product implements \Doctrine\ORM\Proxy\
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -267,7 +267,7 @@ class Product extends \Entity\Bizjstatus\Product implements \Doctrine\ORM\Proxy\
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -278,7 +278,7 @@ class Product extends \Entity\Bizjstatus\Product implements \Doctrine\ORM\Proxy\
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -289,7 +289,7 @@ class Product extends \Entity\Bizjstatus\Product implements \Doctrine\ORM\Proxy\
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -300,7 +300,7 @@ class Product extends \Entity\Bizjstatus\Product implements \Doctrine\ORM\Proxy\
     public function addEvent(\Entity\Bizjstatus\ProductEventMap $event)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addEvent', array($event));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addEvent', [$event]);
 
         return parent::addEvent($event);
     }
@@ -311,7 +311,7 @@ class Product extends \Entity\Bizjstatus\Product implements \Doctrine\ORM\Proxy\
     public function removeEvent(\Entity\Bizjstatus\ProductEventMap $event)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeEvent', array($event));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeEvent', [$event]);
 
         return parent::removeEvent($event);
     }
@@ -322,7 +322,7 @@ class Product extends \Entity\Bizjstatus\Product implements \Doctrine\ORM\Proxy\
     public function getEvents()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEvents', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEvents', []);
 
         return parent::getEvents();
     }
@@ -333,7 +333,7 @@ class Product extends \Entity\Bizjstatus\Product implements \Doctrine\ORM\Proxy\
     public function addMessage(\Entity\Bizjstatus\ProductInfoMessageMap $message)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMessage', array($message));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMessage', [$message]);
 
         return parent::addMessage($message);
     }
@@ -344,7 +344,7 @@ class Product extends \Entity\Bizjstatus\Product implements \Doctrine\ORM\Proxy\
     public function removeMessage(\Entity\Bizjstatus\ProductInfoMessageMap $message)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMessage', array($message));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMessage', [$message]);
 
         return parent::removeMessage($message);
     }
@@ -355,7 +355,7 @@ class Product extends \Entity\Bizjstatus\Product implements \Doctrine\ORM\Proxy\
     public function getMessages()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMessages', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMessages', []);
 
         return parent::getMessages();
     }

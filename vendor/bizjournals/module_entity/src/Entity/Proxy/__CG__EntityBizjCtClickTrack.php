@@ -36,7 +36,7 @@ class CtClickTrack extends \Entity\Bizj\CtClickTrack implements \Doctrine\ORM\Pr
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class CtClickTrack extends \Entity\Bizj\CtClickTrack implements \Doctrine\ORM\Pr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'id', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'event_type', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'campaign_id', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'click_id', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'remote_ip', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'uin', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'user_agent', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'dest_url', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'referer');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'id', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'event_type', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'campaign_id', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'click_id', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'remote_ip', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'uin', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'user_agent', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'dest_url', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'referer'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'id', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'event_type', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'campaign_id', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'click_id', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'remote_ip', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'uin', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'user_agent', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'dest_url', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'referer');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'id', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'event_type', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'campaign_id', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'click_id', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'remote_ip', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'uin', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'user_agent', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'dest_url', '' . "\0" . 'Entity\\Bizj\\CtClickTrack' . "\0" . 'referer'];
     }
 
     /**
@@ -97,7 +97,7 @@ class CtClickTrack extends \Entity\Bizj\CtClickTrack implements \Doctrine\ORM\Pr
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class CtClickTrack extends \Entity\Bizj\CtClickTrack implements \Doctrine\ORM\Pr
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -183,7 +183,7 @@ class CtClickTrack extends \Entity\Bizj\CtClickTrack implements \Doctrine\ORM\Pr
         }
 
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -194,7 +194,7 @@ class CtClickTrack extends \Entity\Bizj\CtClickTrack implements \Doctrine\ORM\Pr
     public function setEventType($eventType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEventType', array($eventType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEventType', [$eventType]);
 
         return parent::setEventType($eventType);
     }
@@ -205,7 +205,7 @@ class CtClickTrack extends \Entity\Bizj\CtClickTrack implements \Doctrine\ORM\Pr
     public function getEventType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEventType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEventType', []);
 
         return parent::getEventType();
     }
@@ -216,7 +216,7 @@ class CtClickTrack extends \Entity\Bizj\CtClickTrack implements \Doctrine\ORM\Pr
     public function setCampaignId($campaignId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCampaignId', array($campaignId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCampaignId', [$campaignId]);
 
         return parent::setCampaignId($campaignId);
     }
@@ -227,7 +227,7 @@ class CtClickTrack extends \Entity\Bizj\CtClickTrack implements \Doctrine\ORM\Pr
     public function getCampaignId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCampaignId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCampaignId', []);
 
         return parent::getCampaignId();
     }
@@ -238,7 +238,7 @@ class CtClickTrack extends \Entity\Bizj\CtClickTrack implements \Doctrine\ORM\Pr
     public function setClickId($clickId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setClickId', array($clickId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setClickId', [$clickId]);
 
         return parent::setClickId($clickId);
     }
@@ -249,7 +249,7 @@ class CtClickTrack extends \Entity\Bizj\CtClickTrack implements \Doctrine\ORM\Pr
     public function getClickId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClickId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClickId', []);
 
         return parent::getClickId();
     }
@@ -260,7 +260,7 @@ class CtClickTrack extends \Entity\Bizj\CtClickTrack implements \Doctrine\ORM\Pr
     public function setCTime($cTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCTime', array($cTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCTime', [$cTime]);
 
         return parent::setCTime($cTime);
     }
@@ -271,7 +271,7 @@ class CtClickTrack extends \Entity\Bizj\CtClickTrack implements \Doctrine\ORM\Pr
     public function getCTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCTime', []);
 
         return parent::getCTime();
     }
@@ -282,7 +282,7 @@ class CtClickTrack extends \Entity\Bizj\CtClickTrack implements \Doctrine\ORM\Pr
     public function setRemoteIp($remoteIp)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRemoteIp', array($remoteIp));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRemoteIp', [$remoteIp]);
 
         return parent::setRemoteIp($remoteIp);
     }
@@ -293,7 +293,7 @@ class CtClickTrack extends \Entity\Bizj\CtClickTrack implements \Doctrine\ORM\Pr
     public function getRemoteIp()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRemoteIp', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRemoteIp', []);
 
         return parent::getRemoteIp();
     }
@@ -304,7 +304,7 @@ class CtClickTrack extends \Entity\Bizj\CtClickTrack implements \Doctrine\ORM\Pr
     public function setUin($uin)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUin', array($uin));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUin', [$uin]);
 
         return parent::setUin($uin);
     }
@@ -315,7 +315,7 @@ class CtClickTrack extends \Entity\Bizj\CtClickTrack implements \Doctrine\ORM\Pr
     public function getUin()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUin', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUin', []);
 
         return parent::getUin();
     }
@@ -326,7 +326,7 @@ class CtClickTrack extends \Entity\Bizj\CtClickTrack implements \Doctrine\ORM\Pr
     public function setUserAgent($userAgent)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUserAgent', array($userAgent));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUserAgent', [$userAgent]);
 
         return parent::setUserAgent($userAgent);
     }
@@ -337,7 +337,7 @@ class CtClickTrack extends \Entity\Bizj\CtClickTrack implements \Doctrine\ORM\Pr
     public function getUserAgent()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUserAgent', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUserAgent', []);
 
         return parent::getUserAgent();
     }
@@ -348,7 +348,7 @@ class CtClickTrack extends \Entity\Bizj\CtClickTrack implements \Doctrine\ORM\Pr
     public function setDestUrl($destUrl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDestUrl', array($destUrl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDestUrl', [$destUrl]);
 
         return parent::setDestUrl($destUrl);
     }
@@ -359,7 +359,7 @@ class CtClickTrack extends \Entity\Bizj\CtClickTrack implements \Doctrine\ORM\Pr
     public function getDestUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDestUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDestUrl', []);
 
         return parent::getDestUrl();
     }
@@ -370,7 +370,7 @@ class CtClickTrack extends \Entity\Bizj\CtClickTrack implements \Doctrine\ORM\Pr
     public function setReferer($referer)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setReferer', array($referer));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setReferer', [$referer]);
 
         return parent::setReferer($referer);
     }
@@ -381,7 +381,7 @@ class CtClickTrack extends \Entity\Bizj\CtClickTrack implements \Doctrine\ORM\Pr
     public function getReferer()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getReferer', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getReferer', []);
 
         return parent::getReferer();
     }

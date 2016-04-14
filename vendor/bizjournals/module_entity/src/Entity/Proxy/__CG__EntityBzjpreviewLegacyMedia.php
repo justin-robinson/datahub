@@ -36,7 +36,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'media_id', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'location_url', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'filename', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'media_type', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'mime_type', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'rev_number', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'default_height', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'default_width', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'default_caption', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'default_copyright', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'default_alt_text', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'content', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'filesize', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'PageLegacyMediaMap');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'media_id', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'location_url', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'filename', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'media_type', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'mime_type', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'rev_number', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'default_height', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'default_width', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'default_caption', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'default_copyright', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'default_alt_text', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'content', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'filesize', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'PageLegacyMediaMap'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'media_id', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'location_url', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'filename', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'media_type', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'mime_type', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'rev_number', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'default_height', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'default_width', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'default_caption', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'default_copyright', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'default_alt_text', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'content', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'filesize', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'PageLegacyMediaMap');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'media_id', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'location_url', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'filename', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'media_type', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'mime_type', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'rev_number', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'default_height', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'default_width', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'default_caption', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'default_copyright', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'default_alt_text', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'content', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'filesize', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\LegacyMedia' . "\0" . 'PageLegacyMediaMap'];
     }
 
     /**
@@ -97,7 +97,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function getMediaId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaId', []);
 
         return parent::getMediaId();
     }
@@ -190,7 +190,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function setLocationUrl($locationUrl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLocationUrl', array($locationUrl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLocationUrl', [$locationUrl]);
 
         return parent::setLocationUrl($locationUrl);
     }
@@ -201,7 +201,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function getLocationUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLocationUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLocationUrl', []);
 
         return parent::getLocationUrl();
     }
@@ -212,7 +212,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function setFilename($filename)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFilename', array($filename));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFilename', [$filename]);
 
         return parent::setFilename($filename);
     }
@@ -223,7 +223,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function getFilename()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFilename', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFilename', []);
 
         return parent::getFilename();
     }
@@ -234,7 +234,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function setMediaType($mediaType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaType', array($mediaType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaType', [$mediaType]);
 
         return parent::setMediaType($mediaType);
     }
@@ -245,7 +245,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function getMediaType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaType', []);
 
         return parent::getMediaType();
     }
@@ -256,7 +256,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function setMimeType($mimeType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMimeType', array($mimeType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMimeType', [$mimeType]);
 
         return parent::setMimeType($mimeType);
     }
@@ -267,7 +267,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function getMimeType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMimeType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMimeType', []);
 
         return parent::getMimeType();
     }
@@ -278,7 +278,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function setRevNumber($revNumber)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRevNumber', array($revNumber));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRevNumber', [$revNumber]);
 
         return parent::setRevNumber($revNumber);
     }
@@ -289,7 +289,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function getRevNumber()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRevNumber', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRevNumber', []);
 
         return parent::getRevNumber();
     }
@@ -300,7 +300,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function setDefaultHeight($defaultHeight)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDefaultHeight', array($defaultHeight));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDefaultHeight', [$defaultHeight]);
 
         return parent::setDefaultHeight($defaultHeight);
     }
@@ -311,7 +311,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function getDefaultHeight()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDefaultHeight', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDefaultHeight', []);
 
         return parent::getDefaultHeight();
     }
@@ -322,7 +322,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function setDefaultWidth($defaultWidth)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDefaultWidth', array($defaultWidth));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDefaultWidth', [$defaultWidth]);
 
         return parent::setDefaultWidth($defaultWidth);
     }
@@ -333,7 +333,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function getDefaultWidth()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDefaultWidth', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDefaultWidth', []);
 
         return parent::getDefaultWidth();
     }
@@ -344,7 +344,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function setDefaultCaption($defaultCaption)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDefaultCaption', array($defaultCaption));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDefaultCaption', [$defaultCaption]);
 
         return parent::setDefaultCaption($defaultCaption);
     }
@@ -355,7 +355,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function getDefaultCaption()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDefaultCaption', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDefaultCaption', []);
 
         return parent::getDefaultCaption();
     }
@@ -366,7 +366,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function setDefaultCopyright($defaultCopyright)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDefaultCopyright', array($defaultCopyright));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDefaultCopyright', [$defaultCopyright]);
 
         return parent::setDefaultCopyright($defaultCopyright);
     }
@@ -377,7 +377,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function getDefaultCopyright()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDefaultCopyright', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDefaultCopyright', []);
 
         return parent::getDefaultCopyright();
     }
@@ -388,7 +388,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function setDefaultAltText($defaultAltText)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDefaultAltText', array($defaultAltText));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDefaultAltText', [$defaultAltText]);
 
         return parent::setDefaultAltText($defaultAltText);
     }
@@ -399,7 +399,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function getDefaultAltText()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDefaultAltText', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDefaultAltText', []);
 
         return parent::getDefaultAltText();
     }
@@ -410,7 +410,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function setContent($content)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContent', array($content));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContent', [$content]);
 
         return parent::setContent($content);
     }
@@ -421,7 +421,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function getContent()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContent', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContent', []);
 
         return parent::getContent();
     }
@@ -432,7 +432,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function setFilesize($filesize)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFilesize', array($filesize));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFilesize', [$filesize]);
 
         return parent::setFilesize($filesize);
     }
@@ -443,7 +443,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function getFilesize()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFilesize', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFilesize', []);
 
         return parent::getFilesize();
     }
@@ -454,7 +454,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -465,7 +465,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -476,7 +476,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -487,7 +487,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -498,7 +498,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function addPageLegacyMediaMap(\Entity\Bzjpreview\PageLegacyMediaMap $pageLegacyMediaMap)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addPageLegacyMediaMap', array($pageLegacyMediaMap));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addPageLegacyMediaMap', [$pageLegacyMediaMap]);
 
         return parent::addPageLegacyMediaMap($pageLegacyMediaMap);
     }
@@ -509,7 +509,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function removePageLegacyMediaMap(\Entity\Bzjpreview\PageLegacyMediaMap $pageLegacyMediaMap)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removePageLegacyMediaMap', array($pageLegacyMediaMap));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removePageLegacyMediaMap', [$pageLegacyMediaMap]);
 
         return parent::removePageLegacyMediaMap($pageLegacyMediaMap);
     }
@@ -520,7 +520,7 @@ class LegacyMedia extends \Entity\Bzjpreview\LegacyMedia implements \Doctrine\OR
     public function getPageLegacyMediaMap()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageLegacyMediaMap', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageLegacyMediaMap', []);
 
         return parent::getPageLegacyMediaMap();
     }

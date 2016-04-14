@@ -36,7 +36,7 @@ class StorySpecialCategory extends \Entity\Bizj\StorySpecialCategory implements 
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class StorySpecialCategory extends \Entity\Bizj\StorySpecialCategory implements 
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\StorySpecialCategory' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bizj\\StorySpecialCategory' . "\0" . 'special_cat_id', '' . "\0" . 'Entity\\Bizj\\StorySpecialCategory' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\StorySpecialCategory' . "\0" . 'StoryRead');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\StorySpecialCategory' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bizj\\StorySpecialCategory' . "\0" . 'special_cat_id', '' . "\0" . 'Entity\\Bizj\\StorySpecialCategory' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\StorySpecialCategory' . "\0" . 'StoryRead'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\StorySpecialCategory' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bizj\\StorySpecialCategory' . "\0" . 'special_cat_id', '' . "\0" . 'Entity\\Bizj\\StorySpecialCategory' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\StorySpecialCategory' . "\0" . 'StoryRead');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\StorySpecialCategory' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bizj\\StorySpecialCategory' . "\0" . 'special_cat_id', '' . "\0" . 'Entity\\Bizj\\StorySpecialCategory' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\StorySpecialCategory' . "\0" . 'StoryRead'];
     }
 
     /**
@@ -97,7 +97,7 @@ class StorySpecialCategory extends \Entity\Bizj\StorySpecialCategory implements 
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class StorySpecialCategory extends \Entity\Bizj\StorySpecialCategory implements 
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class StorySpecialCategory extends \Entity\Bizj\StorySpecialCategory implements 
     public function setStoryId($storyId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryId', array($storyId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryId', [$storyId]);
 
         return parent::setStoryId($storyId);
     }
@@ -190,7 +190,7 @@ class StorySpecialCategory extends \Entity\Bizj\StorySpecialCategory implements 
     public function getStoryId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryId', []);
 
         return parent::getStoryId();
     }
@@ -201,7 +201,7 @@ class StorySpecialCategory extends \Entity\Bizj\StorySpecialCategory implements 
     public function setSpecialCatId($specialCatId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSpecialCatId', array($specialCatId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSpecialCatId', [$specialCatId]);
 
         return parent::setSpecialCatId($specialCatId);
     }
@@ -212,7 +212,7 @@ class StorySpecialCategory extends \Entity\Bizj\StorySpecialCategory implements 
     public function getSpecialCatId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSpecialCatId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSpecialCatId', []);
 
         return parent::getSpecialCatId();
     }
@@ -223,7 +223,7 @@ class StorySpecialCategory extends \Entity\Bizj\StorySpecialCategory implements 
     public function setCTime($cTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCTime', array($cTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCTime', [$cTime]);
 
         return parent::setCTime($cTime);
     }
@@ -234,7 +234,7 @@ class StorySpecialCategory extends \Entity\Bizj\StorySpecialCategory implements 
     public function getCTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCTime', []);
 
         return parent::getCTime();
     }
@@ -245,7 +245,7 @@ class StorySpecialCategory extends \Entity\Bizj\StorySpecialCategory implements 
     public function setStoryRead(\Entity\Bizj\StoryRead $storyRead = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryRead', array($storyRead));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryRead', [$storyRead]);
 
         return parent::setStoryRead($storyRead);
     }
@@ -256,7 +256,7 @@ class StorySpecialCategory extends \Entity\Bizj\StorySpecialCategory implements 
     public function getStoryRead()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryRead', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryRead', []);
 
         return parent::getStoryRead();
     }

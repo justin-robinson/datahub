@@ -36,7 +36,7 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'group_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'group_type', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'group_title', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'group_class', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'group_topic', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'group_teaser', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'placement', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'ord', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'group_url', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'auto_query', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'LeadinItems', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'Page');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'group_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'group_type', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'group_title', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'group_class', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'group_topic', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'group_teaser', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'placement', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'ord', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'group_url', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'auto_query', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'LeadinItems', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'Page'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'group_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'group_type', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'group_title', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'group_class', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'group_topic', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'group_teaser', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'placement', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'ord', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'group_url', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'auto_query', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'LeadinItems', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'Page');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'group_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'group_type', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'group_title', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'group_class', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'group_topic', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'group_teaser', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'placement', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'ord', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'group_url', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'auto_query', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'LeadinItems', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinGroup' . "\0" . 'Page'];
     }
 
     /**
@@ -97,7 +97,7 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
     public function getGroupId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupId', []);
 
         return parent::getGroupId();
     }
@@ -190,7 +190,7 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
     public function setPageId($pageId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPageId', array($pageId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPageId', [$pageId]);
 
         return parent::setPageId($pageId);
     }
@@ -201,7 +201,7 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
     public function getPageId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageId', []);
 
         return parent::getPageId();
     }
@@ -212,7 +212,7 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
     public function setGroupType($groupType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupType', array($groupType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupType', [$groupType]);
 
         return parent::setGroupType($groupType);
     }
@@ -223,7 +223,7 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
     public function getGroupType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupType', []);
 
         return parent::getGroupType();
     }
@@ -234,7 +234,7 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
     public function setGroupTitle($groupTitle)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupTitle', array($groupTitle));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupTitle', [$groupTitle]);
 
         return parent::setGroupTitle($groupTitle);
     }
@@ -245,7 +245,7 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
     public function getGroupTitle()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupTitle', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupTitle', []);
 
         return parent::getGroupTitle();
     }
@@ -256,7 +256,7 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
     public function setGroupClass($groupClass)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupClass', array($groupClass));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupClass', [$groupClass]);
 
         return parent::setGroupClass($groupClass);
     }
@@ -267,7 +267,7 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
     public function getGroupClass()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupClass', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupClass', []);
 
         return parent::getGroupClass();
     }
@@ -278,7 +278,7 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
     public function setGroupTopic($groupTopic)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupTopic', array($groupTopic));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupTopic', [$groupTopic]);
 
         return parent::setGroupTopic($groupTopic);
     }
@@ -289,7 +289,7 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
     public function getGroupTopic()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupTopic', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupTopic', []);
 
         return parent::getGroupTopic();
     }
@@ -300,7 +300,7 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
     public function setGroupTeaser($groupTeaser)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupTeaser', array($groupTeaser));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupTeaser', [$groupTeaser]);
 
         return parent::setGroupTeaser($groupTeaser);
     }
@@ -311,7 +311,7 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
     public function getGroupTeaser()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupTeaser', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupTeaser', []);
 
         return parent::getGroupTeaser();
     }
@@ -322,7 +322,7 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
     public function setPlacement($placement)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPlacement', array($placement));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPlacement', [$placement]);
 
         return parent::setPlacement($placement);
     }
@@ -333,7 +333,7 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
     public function getPlacement()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPlacement', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPlacement', []);
 
         return parent::getPlacement();
     }
@@ -344,7 +344,7 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
     public function setOrd($ord)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrd', array($ord));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrd', [$ord]);
 
         return parent::setOrd($ord);
     }
@@ -355,7 +355,7 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
     public function getOrd()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrd', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrd', []);
 
         return parent::getOrd();
     }
@@ -366,7 +366,7 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
     public function setGroupUrl($groupUrl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupUrl', array($groupUrl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupUrl', [$groupUrl]);
 
         return parent::setGroupUrl($groupUrl);
     }
@@ -377,7 +377,7 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
     public function getGroupUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupUrl', []);
 
         return parent::getGroupUrl();
     }
@@ -388,7 +388,7 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
     public function setAutoQuery($autoQuery)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAutoQuery', array($autoQuery));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAutoQuery', [$autoQuery]);
 
         return parent::setAutoQuery($autoQuery);
     }
@@ -399,7 +399,7 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
     public function getAutoQuery()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAutoQuery', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAutoQuery', []);
 
         return parent::getAutoQuery();
     }
@@ -410,7 +410,7 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
     public function addLeadinItem(\Entity\Bzjpreview\PageLeadinItem $leadinItem)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addLeadinItem', array($leadinItem));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addLeadinItem', [$leadinItem]);
 
         return parent::addLeadinItem($leadinItem);
     }
@@ -421,7 +421,7 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
     public function removeLeadinItem(\Entity\Bzjpreview\PageLeadinItem $leadinItem)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeLeadinItem', array($leadinItem));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeLeadinItem', [$leadinItem]);
 
         return parent::removeLeadinItem($leadinItem);
     }
@@ -432,7 +432,7 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
     public function getLeadinItems()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLeadinItems', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLeadinItems', []);
 
         return parent::getLeadinItems();
     }
@@ -443,7 +443,7 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
     public function setPage(\Entity\Bzjpreview\Page $page = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPage', array($page));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPage', [$page]);
 
         return parent::setPage($page);
     }
@@ -454,7 +454,7 @@ class PageLeadinGroup extends \Entity\Bzjpreview\PageLeadinGroup implements \Doc
     public function getPage()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPage', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPage', []);
 
         return parent::getPage();
     }

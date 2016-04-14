@@ -36,7 +36,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'group_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'pulse_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'group_type', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'group_title', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'group_class', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'group_topic', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'group_teaser', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'placement', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'ord', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'group_url', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'auto_query', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'LeadinItems', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'Pulse');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'group_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'pulse_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'group_type', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'group_title', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'group_class', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'group_topic', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'group_teaser', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'placement', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'ord', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'group_url', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'auto_query', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'LeadinItems', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'Pulse'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'group_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'pulse_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'group_type', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'group_title', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'group_class', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'group_topic', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'group_teaser', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'placement', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'ord', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'group_url', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'auto_query', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'LeadinItems', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'Pulse');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'group_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'pulse_id', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'group_type', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'group_title', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'group_class', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'group_topic', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'group_teaser', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'placement', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'ord', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'group_url', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'auto_query', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'deleted_at', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'LeadinItems', '' . "\0" . 'Entity\\Bzjpreview\\PulseLeadinGroup' . "\0" . 'Pulse'];
     }
 
     /**
@@ -97,7 +97,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function getGroupId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupId', []);
 
         return parent::getGroupId();
     }
@@ -190,7 +190,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function setPulseId($pulseId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPulseId', array($pulseId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPulseId', [$pulseId]);
 
         return parent::setPulseId($pulseId);
     }
@@ -201,7 +201,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function getPulseId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPulseId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPulseId', []);
 
         return parent::getPulseId();
     }
@@ -212,7 +212,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function setGroupType($groupType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupType', array($groupType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupType', [$groupType]);
 
         return parent::setGroupType($groupType);
     }
@@ -223,7 +223,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function getGroupType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupType', []);
 
         return parent::getGroupType();
     }
@@ -234,7 +234,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function setGroupTitle($groupTitle)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupTitle', array($groupTitle));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupTitle', [$groupTitle]);
 
         return parent::setGroupTitle($groupTitle);
     }
@@ -245,7 +245,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function getGroupTitle()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupTitle', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupTitle', []);
 
         return parent::getGroupTitle();
     }
@@ -256,7 +256,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function setGroupClass($groupClass)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupClass', array($groupClass));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupClass', [$groupClass]);
 
         return parent::setGroupClass($groupClass);
     }
@@ -267,7 +267,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function getGroupClass()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupClass', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupClass', []);
 
         return parent::getGroupClass();
     }
@@ -278,7 +278,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function setGroupTopic($groupTopic)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupTopic', array($groupTopic));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupTopic', [$groupTopic]);
 
         return parent::setGroupTopic($groupTopic);
     }
@@ -289,7 +289,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function getGroupTopic()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupTopic', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupTopic', []);
 
         return parent::getGroupTopic();
     }
@@ -300,7 +300,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function setGroupTeaser($groupTeaser)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupTeaser', array($groupTeaser));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupTeaser', [$groupTeaser]);
 
         return parent::setGroupTeaser($groupTeaser);
     }
@@ -311,7 +311,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function getGroupTeaser()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupTeaser', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupTeaser', []);
 
         return parent::getGroupTeaser();
     }
@@ -322,7 +322,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function setPlacement($placement)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPlacement', array($placement));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPlacement', [$placement]);
 
         return parent::setPlacement($placement);
     }
@@ -333,7 +333,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function getPlacement()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPlacement', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPlacement', []);
 
         return parent::getPlacement();
     }
@@ -344,7 +344,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function setOrd($ord)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrd', array($ord));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrd', [$ord]);
 
         return parent::setOrd($ord);
     }
@@ -355,7 +355,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function getOrd()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrd', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrd', []);
 
         return parent::getOrd();
     }
@@ -366,7 +366,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function setGroupUrl($groupUrl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupUrl', array($groupUrl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupUrl', [$groupUrl]);
 
         return parent::setGroupUrl($groupUrl);
     }
@@ -377,7 +377,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function getGroupUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupUrl', []);
 
         return parent::getGroupUrl();
     }
@@ -388,7 +388,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function setAutoQuery($autoQuery)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAutoQuery', array($autoQuery));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAutoQuery', [$autoQuery]);
 
         return parent::setAutoQuery($autoQuery);
     }
@@ -399,7 +399,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function getAutoQuery()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAutoQuery', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAutoQuery', []);
 
         return parent::getAutoQuery();
     }
@@ -410,7 +410,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -421,7 +421,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -432,7 +432,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -443,7 +443,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -454,7 +454,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function setDeletedAt($deletedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeletedAt', array($deletedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDeletedAt', [$deletedAt]);
 
         return parent::setDeletedAt($deletedAt);
     }
@@ -465,7 +465,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function getDeletedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeletedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDeletedAt', []);
 
         return parent::getDeletedAt();
     }
@@ -476,7 +476,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function addLeadinItem(\Entity\Bzjpreview\PulseLeadinItem $leadinItem)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addLeadinItem', array($leadinItem));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addLeadinItem', [$leadinItem]);
 
         return parent::addLeadinItem($leadinItem);
     }
@@ -487,7 +487,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function removeLeadinItem(\Entity\Bzjpreview\PulseLeadinItem $leadinItem)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeLeadinItem', array($leadinItem));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeLeadinItem', [$leadinItem]);
 
         return parent::removeLeadinItem($leadinItem);
     }
@@ -498,7 +498,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function getLeadinItems()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLeadinItems', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLeadinItems', []);
 
         return parent::getLeadinItems();
     }
@@ -509,7 +509,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function setPulse(\Entity\Bzjpreview\Pulse $pulse = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPulse', array($pulse));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPulse', [$pulse]);
 
         return parent::setPulse($pulse);
     }
@@ -520,7 +520,7 @@ class PulseLeadinGroup extends \Entity\Bzjpreview\PulseLeadinGroup implements \D
     public function getPulse()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPulse', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPulse', []);
 
         return parent::getPulse();
     }

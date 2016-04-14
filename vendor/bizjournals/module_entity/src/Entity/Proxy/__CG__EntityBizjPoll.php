@@ -36,7 +36,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'poll_id', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'market', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'headline', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'teaser', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'start_time', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'end_time', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'active', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'display_results', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'recipients_final', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'recipients_daily', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'site_id', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'description', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'has_comments', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'has_sponsor', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'm_time', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'featured', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'site', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'path', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'meta_title', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'meta_description', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'meta_keywords', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'Questions');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'poll_id', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'market', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'headline', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'teaser', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'start_time', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'end_time', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'active', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'display_results', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'recipients_final', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'recipients_daily', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'site_id', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'description', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'has_comments', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'has_sponsor', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'm_time', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'featured', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'site', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'path', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'meta_title', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'meta_description', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'meta_keywords', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'Questions'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'poll_id', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'market', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'headline', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'teaser', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'start_time', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'end_time', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'active', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'display_results', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'recipients_final', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'recipients_daily', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'site_id', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'description', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'has_comments', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'has_sponsor', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'm_time', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'featured', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'site', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'path', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'meta_title', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'meta_description', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'meta_keywords', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'Questions');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'poll_id', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'market', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'headline', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'teaser', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'start_time', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'end_time', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'active', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'display_results', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'recipients_final', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'recipients_daily', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'site_id', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'description', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'has_comments', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'has_sponsor', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'm_time', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'featured', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'site', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'path', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'meta_title', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'meta_description', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'meta_keywords', '' . "\0" . 'Entity\\Bizj\\Poll' . "\0" . 'Questions'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function setPollId($pollId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPollId', array($pollId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPollId', [$pollId]);
 
         return parent::setPollId($pollId);
     }
@@ -190,7 +190,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function getPollId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPollId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPollId', []);
 
         return parent::getPollId();
     }
@@ -201,7 +201,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function setMarket($market)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarket', array($market));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarket', [$market]);
 
         return parent::setMarket($market);
     }
@@ -212,7 +212,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function getMarket()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarket', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarket', []);
 
         return parent::getMarket();
     }
@@ -223,7 +223,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function setHeadline($headline)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHeadline', array($headline));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHeadline', [$headline]);
 
         return parent::setHeadline($headline);
     }
@@ -234,7 +234,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function getHeadline()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHeadline', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHeadline', []);
 
         return parent::getHeadline();
     }
@@ -245,7 +245,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function setTeaser($teaser)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTeaser', array($teaser));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTeaser', [$teaser]);
 
         return parent::setTeaser($teaser);
     }
@@ -256,7 +256,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function getTeaser()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTeaser', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTeaser', []);
 
         return parent::getTeaser();
     }
@@ -267,7 +267,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function setStartTime($startTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStartTime', array($startTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStartTime', [$startTime]);
 
         return parent::setStartTime($startTime);
     }
@@ -278,7 +278,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function getStartTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStartTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStartTime', []);
 
         return parent::getStartTime();
     }
@@ -289,7 +289,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function setEndTime($endTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEndTime', array($endTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEndTime', [$endTime]);
 
         return parent::setEndTime($endTime);
     }
@@ -300,7 +300,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function getEndTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEndTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEndTime', []);
 
         return parent::getEndTime();
     }
@@ -311,7 +311,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function setActive($active)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setActive', array($active));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setActive', [$active]);
 
         return parent::setActive($active);
     }
@@ -322,7 +322,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function getActive()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getActive', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getActive', []);
 
         return parent::getActive();
     }
@@ -333,7 +333,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function setDisplayResults($displayResults)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDisplayResults', array($displayResults));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDisplayResults', [$displayResults]);
 
         return parent::setDisplayResults($displayResults);
     }
@@ -344,7 +344,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function getDisplayResults()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDisplayResults', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDisplayResults', []);
 
         return parent::getDisplayResults();
     }
@@ -355,7 +355,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function setRecipientsFinal($recipientsFinal)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRecipientsFinal', array($recipientsFinal));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRecipientsFinal', [$recipientsFinal]);
 
         return parent::setRecipientsFinal($recipientsFinal);
     }
@@ -366,7 +366,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function getRecipientsFinal()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRecipientsFinal', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRecipientsFinal', []);
 
         return parent::getRecipientsFinal();
     }
@@ -377,7 +377,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function setRecipientsDaily($recipientsDaily)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRecipientsDaily', array($recipientsDaily));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRecipientsDaily', [$recipientsDaily]);
 
         return parent::setRecipientsDaily($recipientsDaily);
     }
@@ -388,7 +388,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function getRecipientsDaily()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRecipientsDaily', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRecipientsDaily', []);
 
         return parent::getRecipientsDaily();
     }
@@ -399,7 +399,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function setSiteId($siteId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSiteId', array($siteId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSiteId', [$siteId]);
 
         return parent::setSiteId($siteId);
     }
@@ -410,7 +410,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function getSiteId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSiteId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSiteId', []);
 
         return parent::getSiteId();
     }
@@ -421,7 +421,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function setDescription($description)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', array($description));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', [$description]);
 
         return parent::setDescription($description);
     }
@@ -432,7 +432,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function getDescription()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', []);
 
         return parent::getDescription();
     }
@@ -443,7 +443,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function setHasComments($hasComments)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasComments', array($hasComments));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasComments', [$hasComments]);
 
         return parent::setHasComments($hasComments);
     }
@@ -454,7 +454,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function getHasComments()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasComments', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasComments', []);
 
         return parent::getHasComments();
     }
@@ -465,7 +465,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function setHasSponsor($hasSponsor)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasSponsor', array($hasSponsor));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasSponsor', [$hasSponsor]);
 
         return parent::setHasSponsor($hasSponsor);
     }
@@ -476,7 +476,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function getHasSponsor()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasSponsor', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasSponsor', []);
 
         return parent::getHasSponsor();
     }
@@ -487,7 +487,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function setCTime($cTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCTime', array($cTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCTime', [$cTime]);
 
         return parent::setCTime($cTime);
     }
@@ -498,7 +498,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function getCTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCTime', []);
 
         return parent::getCTime();
     }
@@ -509,7 +509,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function setMTime($mTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMTime', array($mTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMTime', [$mTime]);
 
         return parent::setMTime($mTime);
     }
@@ -520,7 +520,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function getMTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMTime', []);
 
         return parent::getMTime();
     }
@@ -531,7 +531,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function setFeatured($featured)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFeatured', array($featured));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFeatured', [$featured]);
 
         return parent::setFeatured($featured);
     }
@@ -542,7 +542,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function getFeatured()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFeatured', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFeatured', []);
 
         return parent::getFeatured();
     }
@@ -553,7 +553,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function setSite($site)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSite', array($site));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSite', [$site]);
 
         return parent::setSite($site);
     }
@@ -564,7 +564,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function getSite()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSite', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSite', []);
 
         return parent::getSite();
     }
@@ -575,7 +575,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function setPath($path)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPath', array($path));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPath', [$path]);
 
         return parent::setPath($path);
     }
@@ -586,7 +586,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function getPath()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPath', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPath', []);
 
         return parent::getPath();
     }
@@ -597,7 +597,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function setMetaTitle($metaTitle)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMetaTitle', array($metaTitle));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMetaTitle', [$metaTitle]);
 
         return parent::setMetaTitle($metaTitle);
     }
@@ -608,7 +608,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function getMetaTitle()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetaTitle', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetaTitle', []);
 
         return parent::getMetaTitle();
     }
@@ -619,7 +619,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function setMetaDescription($metaDescription)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMetaDescription', array($metaDescription));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMetaDescription', [$metaDescription]);
 
         return parent::setMetaDescription($metaDescription);
     }
@@ -630,7 +630,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function getMetaDescription()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetaDescription', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetaDescription', []);
 
         return parent::getMetaDescription();
     }
@@ -641,7 +641,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function setMetaKeywords($metaKeywords)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMetaKeywords', array($metaKeywords));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMetaKeywords', [$metaKeywords]);
 
         return parent::setMetaKeywords($metaKeywords);
     }
@@ -652,7 +652,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function getMetaKeywords()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetaKeywords', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMetaKeywords', []);
 
         return parent::getMetaKeywords();
     }
@@ -663,7 +663,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function addQuestion(\Entity\Bizj\PollQuestion $question)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addQuestion', array($question));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addQuestion', [$question]);
 
         return parent::addQuestion($question);
     }
@@ -674,7 +674,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function removeQuestion(\Entity\Bizj\PollQuestion $question)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeQuestion', array($question));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeQuestion', [$question]);
 
         return parent::removeQuestion($question);
     }
@@ -685,7 +685,7 @@ class Poll extends \Entity\Bizj\Poll implements \Doctrine\ORM\Proxy\Proxy
     public function getQuestions()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQuestions', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQuestions', []);
 
         return parent::getQuestions();
     }

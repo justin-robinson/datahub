@@ -36,7 +36,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'premium_id', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'user_id', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'market_id', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'subscription_number', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'start_date', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'end_date', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'source', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'premium_type', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'added_by', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'modified_by', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'User', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'Market', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'UAccount');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'premium_id', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'user_id', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'market_id', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'subscription_number', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'start_date', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'end_date', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'source', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'premium_type', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'added_by', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'modified_by', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'User', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'Market', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'UAccount'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'premium_id', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'user_id', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'market_id', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'subscription_number', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'start_date', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'end_date', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'source', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'premium_type', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'added_by', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'modified_by', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'User', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'Market', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'UAccount');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'premium_id', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'user_id', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'market_id', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'subscription_number', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'start_date', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'end_date', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'source', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'premium_type', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'added_by', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'modified_by', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'User', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'Market', '' . "\0" . 'Entity\\Bizj\\UAccountPremium' . "\0" . 'UAccount'];
     }
 
     /**
@@ -97,7 +97,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
     public function getPremiumId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPremiumId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPremiumId', []);
 
         return parent::getPremiumId();
     }
@@ -190,7 +190,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
     public function setUserId($userId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUserId', array($userId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUserId', [$userId]);
 
         return parent::setUserId($userId);
     }
@@ -201,7 +201,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
     public function getUserId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUserId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUserId', []);
 
         return parent::getUserId();
     }
@@ -212,7 +212,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
     public function setMarketId($marketId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketId', array($marketId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketId', [$marketId]);
 
         return parent::setMarketId($marketId);
     }
@@ -223,7 +223,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
     public function getMarketId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketId', []);
 
         return parent::getMarketId();
     }
@@ -234,7 +234,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
     public function setSubscriptionNumber($subscriptionNumber)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSubscriptionNumber', array($subscriptionNumber));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSubscriptionNumber', [$subscriptionNumber]);
 
         return parent::setSubscriptionNumber($subscriptionNumber);
     }
@@ -245,7 +245,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
     public function getSubscriptionNumber()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSubscriptionNumber', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSubscriptionNumber', []);
 
         return parent::getSubscriptionNumber();
     }
@@ -256,7 +256,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
     public function setStartDate($startDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStartDate', array($startDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStartDate', [$startDate]);
 
         return parent::setStartDate($startDate);
     }
@@ -267,7 +267,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
     public function getStartDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStartDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStartDate', []);
 
         return parent::getStartDate();
     }
@@ -278,7 +278,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
     public function setEndDate($endDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEndDate', array($endDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEndDate', [$endDate]);
 
         return parent::setEndDate($endDate);
     }
@@ -289,7 +289,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
     public function getEndDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEndDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEndDate', []);
 
         return parent::getEndDate();
     }
@@ -300,7 +300,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
     public function setSource($source)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSource', array($source));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSource', [$source]);
 
         return parent::setSource($source);
     }
@@ -311,7 +311,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
     public function getSource()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSource', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSource', []);
 
         return parent::getSource();
     }
@@ -322,7 +322,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
     public function setPremiumType($premiumType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPremiumType', array($premiumType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPremiumType', [$premiumType]);
 
         return parent::setPremiumType($premiumType);
     }
@@ -333,7 +333,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
     public function getPremiumType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPremiumType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPremiumType', []);
 
         return parent::getPremiumType();
     }
@@ -344,7 +344,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
     public function setAddedBy($addedBy)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAddedBy', array($addedBy));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAddedBy', [$addedBy]);
 
         return parent::setAddedBy($addedBy);
     }
@@ -355,7 +355,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
     public function getAddedBy()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAddedBy', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAddedBy', []);
 
         return parent::getAddedBy();
     }
@@ -366,7 +366,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
     public function setModifiedBy($modifiedBy)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setModifiedBy', array($modifiedBy));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setModifiedBy', [$modifiedBy]);
 
         return parent::setModifiedBy($modifiedBy);
     }
@@ -377,7 +377,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
     public function getModifiedBy()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getModifiedBy', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getModifiedBy', []);
 
         return parent::getModifiedBy();
     }
@@ -388,7 +388,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -399,7 +399,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -410,7 +410,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -421,7 +421,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -432,7 +432,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
     public function setUser(\Entity\Bizj\UAccount $user = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUser', array($user));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUser', [$user]);
 
         return parent::setUser($user);
     }
@@ -443,7 +443,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
     public function getUser()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUser', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUser', []);
 
         return parent::getUser();
     }
@@ -454,7 +454,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
     public function setMarket(\Entity\Bizj\Market $market = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarket', array($market));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarket', [$market]);
 
         return parent::setMarket($market);
     }
@@ -465,7 +465,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
     public function getMarket()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarket', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarket', []);
 
         return parent::getMarket();
     }
@@ -476,7 +476,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
     public function setUAccount(\Entity\Bizj\UAccount $uAccount = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUAccount', array($uAccount));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUAccount', [$uAccount]);
 
         return parent::setUAccount($uAccount);
     }
@@ -487,7 +487,7 @@ class UAccountPremium extends \Entity\Bizj\UAccountPremium implements \Doctrine\
     public function getUAccount()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUAccount', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUAccount', []);
 
         return parent::getUAccount();
     }

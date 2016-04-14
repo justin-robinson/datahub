@@ -36,7 +36,7 @@ class User extends \Entity\Admin\User implements \Doctrine\ORM\Proxy\Proxy
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class User extends \Entity\Admin\User implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'user_id', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'email', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'password', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'use_ldap', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'expires', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'modified_by', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'created_at', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'AclUserRole');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'user_id', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'email', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'password', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'use_ldap', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'expires', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'modified_by', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'created_at', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'AclUserRole'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'user_id', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'email', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'password', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'use_ldap', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'expires', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'modified_by', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'created_at', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'AclUserRole');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'user_id', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'email', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'password', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'use_ldap', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'expires', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'modified_by', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'created_at', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Admin\\User' . "\0" . 'AclUserRole'];
     }
 
     /**
@@ -97,7 +97,7 @@ class User extends \Entity\Admin\User implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class User extends \Entity\Admin\User implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class User extends \Entity\Admin\User implements \Doctrine\ORM\Proxy\Proxy
     public function getUserId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUserId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUserId', []);
 
         return parent::getUserId();
     }
@@ -190,7 +190,7 @@ class User extends \Entity\Admin\User implements \Doctrine\ORM\Proxy\Proxy
     public function setEmail($email)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail', array($email));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail', [$email]);
 
         return parent::setEmail($email);
     }
@@ -201,7 +201,7 @@ class User extends \Entity\Admin\User implements \Doctrine\ORM\Proxy\Proxy
     public function getEmail()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail', []);
 
         return parent::getEmail();
     }
@@ -212,7 +212,7 @@ class User extends \Entity\Admin\User implements \Doctrine\ORM\Proxy\Proxy
     public function setPassword($password)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPassword', array($password));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPassword', [$password]);
 
         return parent::setPassword($password);
     }
@@ -223,7 +223,7 @@ class User extends \Entity\Admin\User implements \Doctrine\ORM\Proxy\Proxy
     public function getPassword()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPassword', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPassword', []);
 
         return parent::getPassword();
     }
@@ -234,7 +234,7 @@ class User extends \Entity\Admin\User implements \Doctrine\ORM\Proxy\Proxy
     public function setUseLdap($useLdap)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUseLdap', array($useLdap));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUseLdap', [$useLdap]);
 
         return parent::setUseLdap($useLdap);
     }
@@ -245,7 +245,7 @@ class User extends \Entity\Admin\User implements \Doctrine\ORM\Proxy\Proxy
     public function getUseLdap()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUseLdap', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUseLdap', []);
 
         return parent::getUseLdap();
     }
@@ -256,7 +256,7 @@ class User extends \Entity\Admin\User implements \Doctrine\ORM\Proxy\Proxy
     public function setExpires($expires)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExpires', array($expires));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExpires', [$expires]);
 
         return parent::setExpires($expires);
     }
@@ -267,7 +267,7 @@ class User extends \Entity\Admin\User implements \Doctrine\ORM\Proxy\Proxy
     public function getExpires()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExpires', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExpires', []);
 
         return parent::getExpires();
     }
@@ -278,7 +278,7 @@ class User extends \Entity\Admin\User implements \Doctrine\ORM\Proxy\Proxy
     public function setModifiedBy($modifiedBy)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setModifiedBy', array($modifiedBy));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setModifiedBy', [$modifiedBy]);
 
         return parent::setModifiedBy($modifiedBy);
     }
@@ -289,7 +289,7 @@ class User extends \Entity\Admin\User implements \Doctrine\ORM\Proxy\Proxy
     public function getModifiedBy()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getModifiedBy', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getModifiedBy', []);
 
         return parent::getModifiedBy();
     }
@@ -300,7 +300,7 @@ class User extends \Entity\Admin\User implements \Doctrine\ORM\Proxy\Proxy
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -311,7 +311,7 @@ class User extends \Entity\Admin\User implements \Doctrine\ORM\Proxy\Proxy
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -322,7 +322,7 @@ class User extends \Entity\Admin\User implements \Doctrine\ORM\Proxy\Proxy
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -333,7 +333,7 @@ class User extends \Entity\Admin\User implements \Doctrine\ORM\Proxy\Proxy
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -344,7 +344,7 @@ class User extends \Entity\Admin\User implements \Doctrine\ORM\Proxy\Proxy
     public function addAclUserRole(\Entity\Admin\AclUserRole $aclUserRole)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAclUserRole', array($aclUserRole));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAclUserRole', [$aclUserRole]);
 
         return parent::addAclUserRole($aclUserRole);
     }
@@ -355,7 +355,7 @@ class User extends \Entity\Admin\User implements \Doctrine\ORM\Proxy\Proxy
     public function removeAclUserRole(\Entity\Admin\AclUserRole $aclUserRole)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAclUserRole', array($aclUserRole));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAclUserRole', [$aclUserRole]);
 
         return parent::removeAclUserRole($aclUserRole);
     }
@@ -366,7 +366,7 @@ class User extends \Entity\Admin\User implements \Doctrine\ORM\Proxy\Proxy
     public function getAclUserRole()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAclUserRole', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAclUserRole', []);
 
         return parent::getAclUserRole();
     }

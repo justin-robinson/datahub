@@ -36,7 +36,7 @@ class IndustryTopicMap extends \Entity\Bizj\IndustryTopicMap implements \Doctrin
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class IndustryTopicMap extends \Entity\Bizj\IndustryTopicMap implements \Doctrin
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\IndustryTopicMap' . "\0" . 'industry_id', '' . "\0" . 'Entity\\Bizj\\IndustryTopicMap' . "\0" . 'topic_id', '' . "\0" . 'Entity\\Bizj\\IndustryTopicMap' . "\0" . 'Topic', '' . "\0" . 'Entity\\Bizj\\IndustryTopicMap' . "\0" . 'Channel');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\IndustryTopicMap' . "\0" . 'industry_id', '' . "\0" . 'Entity\\Bizj\\IndustryTopicMap' . "\0" . 'topic_id', '' . "\0" . 'Entity\\Bizj\\IndustryTopicMap' . "\0" . 'Topic', '' . "\0" . 'Entity\\Bizj\\IndustryTopicMap' . "\0" . 'Channel'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\IndustryTopicMap' . "\0" . 'industry_id', '' . "\0" . 'Entity\\Bizj\\IndustryTopicMap' . "\0" . 'topic_id', '' . "\0" . 'Entity\\Bizj\\IndustryTopicMap' . "\0" . 'Topic', '' . "\0" . 'Entity\\Bizj\\IndustryTopicMap' . "\0" . 'Channel');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\IndustryTopicMap' . "\0" . 'industry_id', '' . "\0" . 'Entity\\Bizj\\IndustryTopicMap' . "\0" . 'topic_id', '' . "\0" . 'Entity\\Bizj\\IndustryTopicMap' . "\0" . 'Topic', '' . "\0" . 'Entity\\Bizj\\IndustryTopicMap' . "\0" . 'Channel'];
     }
 
     /**
@@ -97,7 +97,7 @@ class IndustryTopicMap extends \Entity\Bizj\IndustryTopicMap implements \Doctrin
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class IndustryTopicMap extends \Entity\Bizj\IndustryTopicMap implements \Doctrin
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class IndustryTopicMap extends \Entity\Bizj\IndustryTopicMap implements \Doctrin
     public function setIndustryId($industryId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIndustryId', array($industryId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIndustryId', [$industryId]);
 
         return parent::setIndustryId($industryId);
     }
@@ -190,7 +190,7 @@ class IndustryTopicMap extends \Entity\Bizj\IndustryTopicMap implements \Doctrin
     public function getIndustryId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIndustryId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIndustryId', []);
 
         return parent::getIndustryId();
     }
@@ -201,7 +201,7 @@ class IndustryTopicMap extends \Entity\Bizj\IndustryTopicMap implements \Doctrin
     public function setTopicId($topicId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTopicId', array($topicId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTopicId', [$topicId]);
 
         return parent::setTopicId($topicId);
     }
@@ -212,7 +212,7 @@ class IndustryTopicMap extends \Entity\Bizj\IndustryTopicMap implements \Doctrin
     public function getTopicId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTopicId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTopicId', []);
 
         return parent::getTopicId();
     }
@@ -223,7 +223,7 @@ class IndustryTopicMap extends \Entity\Bizj\IndustryTopicMap implements \Doctrin
     public function setTopic(\Entity\Bizj\Topic $topic = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTopic', array($topic));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTopic', [$topic]);
 
         return parent::setTopic($topic);
     }
@@ -234,7 +234,7 @@ class IndustryTopicMap extends \Entity\Bizj\IndustryTopicMap implements \Doctrin
     public function getTopic()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTopic', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTopic', []);
 
         return parent::getTopic();
     }
@@ -245,7 +245,7 @@ class IndustryTopicMap extends \Entity\Bizj\IndustryTopicMap implements \Doctrin
     public function setChannel(\Entity\Bizj\Channel $channel = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setChannel', array($channel));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setChannel', [$channel]);
 
         return parent::setChannel($channel);
     }
@@ -256,7 +256,7 @@ class IndustryTopicMap extends \Entity\Bizj\IndustryTopicMap implements \Doctrin
     public function getChannel()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getChannel', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getChannel', []);
 
         return parent::getChannel();
     }

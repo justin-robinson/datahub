@@ -36,7 +36,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'journal_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'journal_code', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'market_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'journal_name', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'descriptive_name', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'short_name', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'objective_name', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'objective_short_name', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'print_product_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'online_product_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'primary_contact_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'publisher_contact_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'circ_mgr_contact_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'ad_mgr_contact_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'editor_contact_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'research_dir_contact_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'circ_product_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'Market');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'journal_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'journal_code', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'market_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'journal_name', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'descriptive_name', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'short_name', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'objective_name', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'objective_short_name', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'print_product_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'online_product_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'primary_contact_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'publisher_contact_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'circ_mgr_contact_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'ad_mgr_contact_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'editor_contact_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'research_dir_contact_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'circ_product_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'Market'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'journal_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'journal_code', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'market_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'journal_name', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'descriptive_name', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'short_name', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'objective_name', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'objective_short_name', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'print_product_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'online_product_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'primary_contact_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'publisher_contact_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'circ_mgr_contact_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'ad_mgr_contact_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'editor_contact_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'research_dir_contact_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'circ_product_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'Market');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'journal_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'journal_code', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'market_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'journal_name', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'descriptive_name', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'short_name', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'objective_name', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'objective_short_name', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'print_product_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'online_product_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'primary_contact_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'publisher_contact_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'circ_mgr_contact_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'ad_mgr_contact_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'editor_contact_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'research_dir_contact_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'circ_product_id', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizj\\Journal' . "\0" . 'Market'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function getJournalId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJournalId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJournalId', []);
 
         return parent::getJournalId();
     }
@@ -190,7 +190,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function setJournalCode($journalCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setJournalCode', array($journalCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setJournalCode', [$journalCode]);
 
         return parent::setJournalCode($journalCode);
     }
@@ -201,7 +201,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function getJournalCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJournalCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJournalCode', []);
 
         return parent::getJournalCode();
     }
@@ -212,7 +212,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function setMarketId($marketId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketId', array($marketId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketId', [$marketId]);
 
         return parent::setMarketId($marketId);
     }
@@ -223,7 +223,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function getMarketId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketId', []);
 
         return parent::getMarketId();
     }
@@ -234,7 +234,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function setJournalName($journalName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setJournalName', array($journalName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setJournalName', [$journalName]);
 
         return parent::setJournalName($journalName);
     }
@@ -245,7 +245,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function getJournalName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJournalName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJournalName', []);
 
         return parent::getJournalName();
     }
@@ -256,7 +256,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function setDescriptiveName($descriptiveName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescriptiveName', array($descriptiveName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescriptiveName', [$descriptiveName]);
 
         return parent::setDescriptiveName($descriptiveName);
     }
@@ -267,7 +267,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function getDescriptiveName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescriptiveName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescriptiveName', []);
 
         return parent::getDescriptiveName();
     }
@@ -278,7 +278,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function setShortName($shortName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setShortName', array($shortName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setShortName', [$shortName]);
 
         return parent::setShortName($shortName);
     }
@@ -289,7 +289,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function getShortName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getShortName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getShortName', []);
 
         return parent::getShortName();
     }
@@ -300,7 +300,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function setObjectiveName($objectiveName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setObjectiveName', array($objectiveName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setObjectiveName', [$objectiveName]);
 
         return parent::setObjectiveName($objectiveName);
     }
@@ -311,7 +311,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function getObjectiveName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getObjectiveName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getObjectiveName', []);
 
         return parent::getObjectiveName();
     }
@@ -322,7 +322,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function setObjectiveShortName($objectiveShortName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setObjectiveShortName', array($objectiveShortName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setObjectiveShortName', [$objectiveShortName]);
 
         return parent::setObjectiveShortName($objectiveShortName);
     }
@@ -333,7 +333,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function getObjectiveShortName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getObjectiveShortName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getObjectiveShortName', []);
 
         return parent::getObjectiveShortName();
     }
@@ -344,7 +344,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function setPrintProductId($printProductId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPrintProductId', array($printProductId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPrintProductId', [$printProductId]);
 
         return parent::setPrintProductId($printProductId);
     }
@@ -355,7 +355,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function getPrintProductId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPrintProductId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPrintProductId', []);
 
         return parent::getPrintProductId();
     }
@@ -366,7 +366,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function setOnlineProductId($onlineProductId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOnlineProductId', array($onlineProductId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOnlineProductId', [$onlineProductId]);
 
         return parent::setOnlineProductId($onlineProductId);
     }
@@ -377,7 +377,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function getOnlineProductId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOnlineProductId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOnlineProductId', []);
 
         return parent::getOnlineProductId();
     }
@@ -388,7 +388,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function setPrimaryContactId($primaryContactId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPrimaryContactId', array($primaryContactId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPrimaryContactId', [$primaryContactId]);
 
         return parent::setPrimaryContactId($primaryContactId);
     }
@@ -399,7 +399,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function getPrimaryContactId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPrimaryContactId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPrimaryContactId', []);
 
         return parent::getPrimaryContactId();
     }
@@ -410,7 +410,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function setPublisherContactId($publisherContactId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublisherContactId', array($publisherContactId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublisherContactId', [$publisherContactId]);
 
         return parent::setPublisherContactId($publisherContactId);
     }
@@ -421,7 +421,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function getPublisherContactId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublisherContactId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublisherContactId', []);
 
         return parent::getPublisherContactId();
     }
@@ -432,7 +432,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function setCircMgrContactId($circMgrContactId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCircMgrContactId', array($circMgrContactId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCircMgrContactId', [$circMgrContactId]);
 
         return parent::setCircMgrContactId($circMgrContactId);
     }
@@ -443,7 +443,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function getCircMgrContactId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCircMgrContactId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCircMgrContactId', []);
 
         return parent::getCircMgrContactId();
     }
@@ -454,7 +454,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function setAdMgrContactId($adMgrContactId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAdMgrContactId', array($adMgrContactId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAdMgrContactId', [$adMgrContactId]);
 
         return parent::setAdMgrContactId($adMgrContactId);
     }
@@ -465,7 +465,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function getAdMgrContactId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAdMgrContactId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAdMgrContactId', []);
 
         return parent::getAdMgrContactId();
     }
@@ -476,7 +476,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function setEditorContactId($editorContactId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEditorContactId', array($editorContactId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEditorContactId', [$editorContactId]);
 
         return parent::setEditorContactId($editorContactId);
     }
@@ -487,7 +487,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function getEditorContactId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEditorContactId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEditorContactId', []);
 
         return parent::getEditorContactId();
     }
@@ -498,7 +498,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function setResearchDirContactId($researchDirContactId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setResearchDirContactId', array($researchDirContactId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setResearchDirContactId', [$researchDirContactId]);
 
         return parent::setResearchDirContactId($researchDirContactId);
     }
@@ -509,7 +509,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function getResearchDirContactId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getResearchDirContactId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getResearchDirContactId', []);
 
         return parent::getResearchDirContactId();
     }
@@ -520,7 +520,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function setCircProductId($circProductId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCircProductId', array($circProductId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCircProductId', [$circProductId]);
 
         return parent::setCircProductId($circProductId);
     }
@@ -531,7 +531,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function getCircProductId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCircProductId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCircProductId', []);
 
         return parent::getCircProductId();
     }
@@ -542,7 +542,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -553,7 +553,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -564,7 +564,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -575,7 +575,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -586,7 +586,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function setMarket(\Entity\Bizj\Market $market = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarket', array($market));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarket', [$market]);
 
         return parent::setMarket($market);
     }
@@ -597,7 +597,7 @@ class Journal extends \Entity\Bizj\Journal implements \Doctrine\ORM\Proxy\Proxy
     public function getMarket()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarket', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarket', []);
 
         return parent::getMarket();
     }

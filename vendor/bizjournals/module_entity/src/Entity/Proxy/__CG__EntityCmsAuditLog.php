@@ -36,7 +36,7 @@ class AuditLog extends \Entity\Cms\AuditLog implements \Doctrine\ORM\Proxy\Proxy
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class AuditLog extends \Entity\Cms\AuditLog implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'id', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'content_id', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'version', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'action', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'detail', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'updated_by', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'created_at', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'Content', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'ContentVersion');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'id', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'content_id', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'version', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'action', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'detail', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'updated_by', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'created_at', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'Content', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'ContentVersion'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'id', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'content_id', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'version', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'action', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'detail', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'updated_by', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'created_at', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'Content', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'ContentVersion');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'id', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'content_id', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'version', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'action', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'detail', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'updated_by', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'created_at', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'Content', '' . "\0" . 'Entity\\Cms\\AuditLog' . "\0" . 'ContentVersion'];
     }
 
     /**
@@ -97,7 +97,7 @@ class AuditLog extends \Entity\Cms\AuditLog implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class AuditLog extends \Entity\Cms\AuditLog implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -183,7 +183,7 @@ class AuditLog extends \Entity\Cms\AuditLog implements \Doctrine\ORM\Proxy\Proxy
         }
 
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -194,7 +194,7 @@ class AuditLog extends \Entity\Cms\AuditLog implements \Doctrine\ORM\Proxy\Proxy
     public function setContentId($contentId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContentId', array($contentId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContentId', [$contentId]);
 
         return parent::setContentId($contentId);
     }
@@ -205,7 +205,7 @@ class AuditLog extends \Entity\Cms\AuditLog implements \Doctrine\ORM\Proxy\Proxy
     public function getContentId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContentId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContentId', []);
 
         return parent::getContentId();
     }
@@ -216,7 +216,7 @@ class AuditLog extends \Entity\Cms\AuditLog implements \Doctrine\ORM\Proxy\Proxy
     public function setVersion($version)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setVersion', array($version));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setVersion', [$version]);
 
         return parent::setVersion($version);
     }
@@ -227,7 +227,7 @@ class AuditLog extends \Entity\Cms\AuditLog implements \Doctrine\ORM\Proxy\Proxy
     public function getVersion()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getVersion', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getVersion', []);
 
         return parent::getVersion();
     }
@@ -238,7 +238,7 @@ class AuditLog extends \Entity\Cms\AuditLog implements \Doctrine\ORM\Proxy\Proxy
     public function setAction($action)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAction', array($action));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAction', [$action]);
 
         return parent::setAction($action);
     }
@@ -249,7 +249,7 @@ class AuditLog extends \Entity\Cms\AuditLog implements \Doctrine\ORM\Proxy\Proxy
     public function getAction()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAction', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAction', []);
 
         return parent::getAction();
     }
@@ -260,7 +260,7 @@ class AuditLog extends \Entity\Cms\AuditLog implements \Doctrine\ORM\Proxy\Proxy
     public function setDetail($detail)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDetail', array($detail));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDetail', [$detail]);
 
         return parent::setDetail($detail);
     }
@@ -271,7 +271,7 @@ class AuditLog extends \Entity\Cms\AuditLog implements \Doctrine\ORM\Proxy\Proxy
     public function getDetail()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDetail', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDetail', []);
 
         return parent::getDetail();
     }
@@ -282,7 +282,7 @@ class AuditLog extends \Entity\Cms\AuditLog implements \Doctrine\ORM\Proxy\Proxy
     public function setUpdatedBy($updatedBy)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedBy', array($updatedBy));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedBy', [$updatedBy]);
 
         return parent::setUpdatedBy($updatedBy);
     }
@@ -293,7 +293,7 @@ class AuditLog extends \Entity\Cms\AuditLog implements \Doctrine\ORM\Proxy\Proxy
     public function getUpdatedBy()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedBy', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedBy', []);
 
         return parent::getUpdatedBy();
     }
@@ -304,7 +304,7 @@ class AuditLog extends \Entity\Cms\AuditLog implements \Doctrine\ORM\Proxy\Proxy
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -315,7 +315,7 @@ class AuditLog extends \Entity\Cms\AuditLog implements \Doctrine\ORM\Proxy\Proxy
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -326,7 +326,7 @@ class AuditLog extends \Entity\Cms\AuditLog implements \Doctrine\ORM\Proxy\Proxy
     public function setContent(\Entity\Cms\Content $content = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContent', array($content));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContent', [$content]);
 
         return parent::setContent($content);
     }
@@ -337,7 +337,7 @@ class AuditLog extends \Entity\Cms\AuditLog implements \Doctrine\ORM\Proxy\Proxy
     public function getContent()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContent', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContent', []);
 
         return parent::getContent();
     }
@@ -348,7 +348,7 @@ class AuditLog extends \Entity\Cms\AuditLog implements \Doctrine\ORM\Proxy\Proxy
     public function setContentVersion(\Entity\Cms\ContentVersion $contentVersion = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContentVersion', array($contentVersion));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContentVersion', [$contentVersion]);
 
         return parent::setContentVersion($contentVersion);
     }
@@ -359,7 +359,7 @@ class AuditLog extends \Entity\Cms\AuditLog implements \Doctrine\ORM\Proxy\Proxy
     public function getContentVersion()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContentVersion', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContentVersion', []);
 
         return parent::getContentVersion();
     }

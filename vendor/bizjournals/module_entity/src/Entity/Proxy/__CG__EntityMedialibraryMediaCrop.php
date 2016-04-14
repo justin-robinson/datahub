@@ -36,7 +36,7 @@ class MediaCrop extends \Entity\Medialibrary\MediaCrop implements \Doctrine\ORM\
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class MediaCrop extends \Entity\Medialibrary\MediaCrop implements \Doctrine\ORM\
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'crop_id', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'ratio', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'cropdata', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'is_default', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'Media');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'crop_id', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'ratio', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'cropdata', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'is_default', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'Media'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'crop_id', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'ratio', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'cropdata', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'is_default', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'Media');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'crop_id', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'ratio', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'cropdata', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'is_default', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Medialibrary\\MediaCrop' . "\0" . 'Media'];
     }
 
     /**
@@ -97,7 +97,7 @@ class MediaCrop extends \Entity\Medialibrary\MediaCrop implements \Doctrine\ORM\
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class MediaCrop extends \Entity\Medialibrary\MediaCrop implements \Doctrine\ORM\
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class MediaCrop extends \Entity\Medialibrary\MediaCrop implements \Doctrine\ORM\
     public function getCropId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCropId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCropId', []);
 
         return parent::getCropId();
     }
@@ -190,7 +190,7 @@ class MediaCrop extends \Entity\Medialibrary\MediaCrop implements \Doctrine\ORM\
     public function setMediaId($mediaId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaId', array($mediaId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaId', [$mediaId]);
 
         return parent::setMediaId($mediaId);
     }
@@ -201,7 +201,7 @@ class MediaCrop extends \Entity\Medialibrary\MediaCrop implements \Doctrine\ORM\
     public function getMediaId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaId', []);
 
         return parent::getMediaId();
     }
@@ -212,7 +212,7 @@ class MediaCrop extends \Entity\Medialibrary\MediaCrop implements \Doctrine\ORM\
     public function setRatio($ratio)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRatio', array($ratio));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRatio', [$ratio]);
 
         return parent::setRatio($ratio);
     }
@@ -223,7 +223,7 @@ class MediaCrop extends \Entity\Medialibrary\MediaCrop implements \Doctrine\ORM\
     public function getRatio()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRatio', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRatio', []);
 
         return parent::getRatio();
     }
@@ -234,7 +234,7 @@ class MediaCrop extends \Entity\Medialibrary\MediaCrop implements \Doctrine\ORM\
     public function setCropdata($cropdata)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCropdata', array($cropdata));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCropdata', [$cropdata]);
 
         return parent::setCropdata($cropdata);
     }
@@ -245,7 +245,7 @@ class MediaCrop extends \Entity\Medialibrary\MediaCrop implements \Doctrine\ORM\
     public function getCropdata()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCropdata', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCropdata', []);
 
         return parent::getCropdata();
     }
@@ -256,7 +256,7 @@ class MediaCrop extends \Entity\Medialibrary\MediaCrop implements \Doctrine\ORM\
     public function setIsDefault($isDefault)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsDefault', array($isDefault));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsDefault', [$isDefault]);
 
         return parent::setIsDefault($isDefault);
     }
@@ -267,7 +267,7 @@ class MediaCrop extends \Entity\Medialibrary\MediaCrop implements \Doctrine\ORM\
     public function getIsDefault()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsDefault', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsDefault', []);
 
         return parent::getIsDefault();
     }
@@ -278,7 +278,7 @@ class MediaCrop extends \Entity\Medialibrary\MediaCrop implements \Doctrine\ORM\
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -289,7 +289,7 @@ class MediaCrop extends \Entity\Medialibrary\MediaCrop implements \Doctrine\ORM\
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -300,7 +300,7 @@ class MediaCrop extends \Entity\Medialibrary\MediaCrop implements \Doctrine\ORM\
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -311,7 +311,7 @@ class MediaCrop extends \Entity\Medialibrary\MediaCrop implements \Doctrine\ORM\
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -322,7 +322,7 @@ class MediaCrop extends \Entity\Medialibrary\MediaCrop implements \Doctrine\ORM\
     public function setMedia(\Entity\Medialibrary\Media $media = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMedia', array($media));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMedia', [$media]);
 
         return parent::setMedia($media);
     }
@@ -333,7 +333,7 @@ class MediaCrop extends \Entity\Medialibrary\MediaCrop implements \Doctrine\ORM\
     public function getMedia()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMedia', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMedia', []);
 
         return parent::getMedia();
     }

@@ -36,7 +36,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'item_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'group_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'ord', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'item_page_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'url', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'headline', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'teaser', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'item_media_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'item_media_url', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'media_caption', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'media_alt_text', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'thumb_media_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'kicker', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'item_video_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'additional_data', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'PageLeadinGroup');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'item_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'group_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'ord', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'item_page_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'url', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'headline', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'teaser', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'item_media_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'item_media_url', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'media_caption', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'media_alt_text', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'thumb_media_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'kicker', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'item_video_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'additional_data', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'PageLeadinGroup'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'item_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'group_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'ord', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'item_page_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'url', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'headline', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'teaser', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'item_media_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'item_media_url', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'media_caption', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'media_alt_text', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'thumb_media_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'kicker', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'item_video_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'additional_data', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'PageLeadinGroup');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'item_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'group_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'ord', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'item_page_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'url', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'headline', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'teaser', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'item_media_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'item_media_url', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'media_caption', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'media_alt_text', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'thumb_media_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'kicker', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'item_video_id', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'additional_data', '' . "\0" . 'Entity\\Bzjpreview\\PageLeadinItem' . "\0" . 'PageLeadinGroup'];
     }
 
     /**
@@ -97,7 +97,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function getItemId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getItemId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getItemId', []);
 
         return parent::getItemId();
     }
@@ -190,7 +190,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function setGroupId($groupId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupId', array($groupId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupId', [$groupId]);
 
         return parent::setGroupId($groupId);
     }
@@ -201,7 +201,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function getGroupId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupId', []);
 
         return parent::getGroupId();
     }
@@ -212,7 +212,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function setOrd($ord)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrd', array($ord));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrd', [$ord]);
 
         return parent::setOrd($ord);
     }
@@ -223,7 +223,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function getOrd()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrd', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrd', []);
 
         return parent::getOrd();
     }
@@ -234,7 +234,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function setItemPageId($itemPageId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setItemPageId', array($itemPageId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setItemPageId', [$itemPageId]);
 
         return parent::setItemPageId($itemPageId);
     }
@@ -245,7 +245,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function getItemPageId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getItemPageId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getItemPageId', []);
 
         return parent::getItemPageId();
     }
@@ -256,7 +256,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function setUrl($url)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUrl', array($url));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUrl', [$url]);
 
         return parent::setUrl($url);
     }
@@ -267,7 +267,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function getUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUrl', []);
 
         return parent::getUrl();
     }
@@ -278,7 +278,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function setHeadline($headline)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHeadline', array($headline));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHeadline', [$headline]);
 
         return parent::setHeadline($headline);
     }
@@ -289,7 +289,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function getHeadline()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHeadline', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHeadline', []);
 
         return parent::getHeadline();
     }
@@ -300,7 +300,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function setTeaser($teaser)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTeaser', array($teaser));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTeaser', [$teaser]);
 
         return parent::setTeaser($teaser);
     }
@@ -311,7 +311,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function getTeaser()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTeaser', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTeaser', []);
 
         return parent::getTeaser();
     }
@@ -322,7 +322,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function setItemMediaId($itemMediaId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setItemMediaId', array($itemMediaId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setItemMediaId', [$itemMediaId]);
 
         return parent::setItemMediaId($itemMediaId);
     }
@@ -333,7 +333,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function getItemMediaId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getItemMediaId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getItemMediaId', []);
 
         return parent::getItemMediaId();
     }
@@ -344,7 +344,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function setItemMediaUrl($itemMediaUrl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setItemMediaUrl', array($itemMediaUrl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setItemMediaUrl', [$itemMediaUrl]);
 
         return parent::setItemMediaUrl($itemMediaUrl);
     }
@@ -355,7 +355,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function getItemMediaUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getItemMediaUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getItemMediaUrl', []);
 
         return parent::getItemMediaUrl();
     }
@@ -366,7 +366,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function setMediaCaption($mediaCaption)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaCaption', array($mediaCaption));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaCaption', [$mediaCaption]);
 
         return parent::setMediaCaption($mediaCaption);
     }
@@ -377,7 +377,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function getMediaCaption()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaCaption', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaCaption', []);
 
         return parent::getMediaCaption();
     }
@@ -388,7 +388,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function setMediaAltText($mediaAltText)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaAltText', array($mediaAltText));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaAltText', [$mediaAltText]);
 
         return parent::setMediaAltText($mediaAltText);
     }
@@ -399,7 +399,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function getMediaAltText()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaAltText', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaAltText', []);
 
         return parent::getMediaAltText();
     }
@@ -410,7 +410,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function setThumbMediaId($thumbMediaId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setThumbMediaId', array($thumbMediaId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setThumbMediaId', [$thumbMediaId]);
 
         return parent::setThumbMediaId($thumbMediaId);
     }
@@ -421,7 +421,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function getThumbMediaId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getThumbMediaId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getThumbMediaId', []);
 
         return parent::getThumbMediaId();
     }
@@ -432,7 +432,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function setKicker($kicker)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setKicker', array($kicker));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setKicker', [$kicker]);
 
         return parent::setKicker($kicker);
     }
@@ -443,7 +443,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function getKicker()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getKicker', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getKicker', []);
 
         return parent::getKicker();
     }
@@ -454,7 +454,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function setItemVideoId($itemVideoId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setItemVideoId', array($itemVideoId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setItemVideoId', [$itemVideoId]);
 
         return parent::setItemVideoId($itemVideoId);
     }
@@ -465,7 +465,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function getItemVideoId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getItemVideoId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getItemVideoId', []);
 
         return parent::getItemVideoId();
     }
@@ -476,7 +476,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function setAdditionalData($additionalData)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAdditionalData', array($additionalData));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAdditionalData', [$additionalData]);
 
         return parent::setAdditionalData($additionalData);
     }
@@ -487,7 +487,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function getAdditionalData()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAdditionalData', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAdditionalData', []);
 
         return parent::getAdditionalData();
     }
@@ -498,7 +498,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function setPageLeadinGroup(\Entity\Bzjpreview\PageLeadinGroup $pageLeadinGroup = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPageLeadinGroup', array($pageLeadinGroup));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPageLeadinGroup', [$pageLeadinGroup]);
 
         return parent::setPageLeadinGroup($pageLeadinGroup);
     }
@@ -509,7 +509,7 @@ class PageLeadinItem extends \Entity\Bzjpreview\PageLeadinItem implements \Doctr
     public function getPageLeadinGroup()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageLeadinGroup', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageLeadinGroup', []);
 
         return parent::getPageLeadinGroup();
     }

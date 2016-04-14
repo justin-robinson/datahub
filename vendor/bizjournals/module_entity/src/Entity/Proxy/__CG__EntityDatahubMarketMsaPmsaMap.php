@@ -36,7 +36,7 @@ class MarketMsaPmsaMap extends \Entity\Datahub\MarketMsaPmsaMap implements \Doct
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class MarketMsaPmsaMap extends \Entity\Datahub\MarketMsaPmsaMap implements \Doct
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Datahub\\MarketMsaPmsaMap' . "\0" . 'market_id', '' . "\0" . 'Entity\\Datahub\\MarketMsaPmsaMap' . "\0" . 'sa_code', '' . "\0" . 'Entity\\Datahub\\MarketMsaPmsaMap' . "\0" . 'Markets', '' . "\0" . 'Entity\\Datahub\\MarketMsaPmsaMap' . "\0" . 'MsaPmsas');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Datahub\\MarketMsaPmsaMap' . "\0" . 'market_id', '' . "\0" . 'Entity\\Datahub\\MarketMsaPmsaMap' . "\0" . 'sa_code', '' . "\0" . 'Entity\\Datahub\\MarketMsaPmsaMap' . "\0" . 'Markets', '' . "\0" . 'Entity\\Datahub\\MarketMsaPmsaMap' . "\0" . 'MsaPmsas'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Datahub\\MarketMsaPmsaMap' . "\0" . 'market_id', '' . "\0" . 'Entity\\Datahub\\MarketMsaPmsaMap' . "\0" . 'sa_code', '' . "\0" . 'Entity\\Datahub\\MarketMsaPmsaMap' . "\0" . 'Markets', '' . "\0" . 'Entity\\Datahub\\MarketMsaPmsaMap' . "\0" . 'MsaPmsas');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Datahub\\MarketMsaPmsaMap' . "\0" . 'market_id', '' . "\0" . 'Entity\\Datahub\\MarketMsaPmsaMap' . "\0" . 'sa_code', '' . "\0" . 'Entity\\Datahub\\MarketMsaPmsaMap' . "\0" . 'Markets', '' . "\0" . 'Entity\\Datahub\\MarketMsaPmsaMap' . "\0" . 'MsaPmsas'];
     }
 
     /**
@@ -97,7 +97,7 @@ class MarketMsaPmsaMap extends \Entity\Datahub\MarketMsaPmsaMap implements \Doct
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class MarketMsaPmsaMap extends \Entity\Datahub\MarketMsaPmsaMap implements \Doct
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class MarketMsaPmsaMap extends \Entity\Datahub\MarketMsaPmsaMap implements \Doct
     public function setMarketId($marketId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketId', array($marketId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketId', [$marketId]);
 
         return parent::setMarketId($marketId);
     }
@@ -190,7 +190,7 @@ class MarketMsaPmsaMap extends \Entity\Datahub\MarketMsaPmsaMap implements \Doct
     public function getMarketId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketId', []);
 
         return parent::getMarketId();
     }
@@ -201,7 +201,7 @@ class MarketMsaPmsaMap extends \Entity\Datahub\MarketMsaPmsaMap implements \Doct
     public function setSaCode($saCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSaCode', array($saCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSaCode', [$saCode]);
 
         return parent::setSaCode($saCode);
     }
@@ -212,7 +212,7 @@ class MarketMsaPmsaMap extends \Entity\Datahub\MarketMsaPmsaMap implements \Doct
     public function getSaCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSaCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSaCode', []);
 
         return parent::getSaCode();
     }
@@ -223,7 +223,7 @@ class MarketMsaPmsaMap extends \Entity\Datahub\MarketMsaPmsaMap implements \Doct
     public function addMarket(\Entity\Datahub\Market $market)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMarket', array($market));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMarket', [$market]);
 
         return parent::addMarket($market);
     }
@@ -234,7 +234,7 @@ class MarketMsaPmsaMap extends \Entity\Datahub\MarketMsaPmsaMap implements \Doct
     public function removeMarket(\Entity\Datahub\Market $market)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMarket', array($market));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMarket', [$market]);
 
         return parent::removeMarket($market);
     }
@@ -245,7 +245,7 @@ class MarketMsaPmsaMap extends \Entity\Datahub\MarketMsaPmsaMap implements \Doct
     public function getMarkets()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarkets', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarkets', []);
 
         return parent::getMarkets();
     }
@@ -256,7 +256,7 @@ class MarketMsaPmsaMap extends \Entity\Datahub\MarketMsaPmsaMap implements \Doct
     public function addMsaPmsa(\Entity\Datahub\MsaPmsa $msaPmsa)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMsaPmsa', array($msaPmsa));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addMsaPmsa', [$msaPmsa]);
 
         return parent::addMsaPmsa($msaPmsa);
     }
@@ -267,7 +267,7 @@ class MarketMsaPmsaMap extends \Entity\Datahub\MarketMsaPmsaMap implements \Doct
     public function removeMsaPmsa(\Entity\Datahub\MsaPmsa $msaPmsa)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMsaPmsa', array($msaPmsa));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeMsaPmsa', [$msaPmsa]);
 
         return parent::removeMsaPmsa($msaPmsa);
     }
@@ -278,7 +278,7 @@ class MarketMsaPmsaMap extends \Entity\Datahub\MarketMsaPmsaMap implements \Doct
     public function getMsaPmsas()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMsaPmsas', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMsaPmsas', []);
 
         return parent::getMsaPmsas();
     }

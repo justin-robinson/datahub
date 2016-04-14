@@ -36,7 +36,7 @@ class FipsCounty extends \Entity\Datahub\FipsCounty implements \Doctrine\ORM\Pro
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class FipsCounty extends \Entity\Datahub\FipsCounty implements \Doctrine\ORM\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Datahub\\FipsCounty' . "\0" . 'fips_code', '' . "\0" . 'Entity\\Datahub\\FipsCounty' . "\0" . 'state_code', '' . "\0" . 'Entity\\Datahub\\FipsCounty' . "\0" . 'county', '' . "\0" . 'Entity\\Datahub\\FipsCounty' . "\0" . 'msa', '' . "\0" . 'Entity\\Datahub\\FipsCounty' . "\0" . 'pmsa', '' . "\0" . 'Entity\\Datahub\\FipsCounty' . "\0" . 'is_outlying', '' . "\0" . 'Entity\\Datahub\\FipsCounty' . "\0" . 'ZipCodes');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Datahub\\FipsCounty' . "\0" . 'fips_code', '' . "\0" . 'Entity\\Datahub\\FipsCounty' . "\0" . 'state_code', '' . "\0" . 'Entity\\Datahub\\FipsCounty' . "\0" . 'county', '' . "\0" . 'Entity\\Datahub\\FipsCounty' . "\0" . 'msa', '' . "\0" . 'Entity\\Datahub\\FipsCounty' . "\0" . 'pmsa', '' . "\0" . 'Entity\\Datahub\\FipsCounty' . "\0" . 'is_outlying', '' . "\0" . 'Entity\\Datahub\\FipsCounty' . "\0" . 'ZipCodes'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Datahub\\FipsCounty' . "\0" . 'fips_code', '' . "\0" . 'Entity\\Datahub\\FipsCounty' . "\0" . 'state_code', '' . "\0" . 'Entity\\Datahub\\FipsCounty' . "\0" . 'county', '' . "\0" . 'Entity\\Datahub\\FipsCounty' . "\0" . 'msa', '' . "\0" . 'Entity\\Datahub\\FipsCounty' . "\0" . 'pmsa', '' . "\0" . 'Entity\\Datahub\\FipsCounty' . "\0" . 'is_outlying', '' . "\0" . 'Entity\\Datahub\\FipsCounty' . "\0" . 'ZipCodes');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Datahub\\FipsCounty' . "\0" . 'fips_code', '' . "\0" . 'Entity\\Datahub\\FipsCounty' . "\0" . 'state_code', '' . "\0" . 'Entity\\Datahub\\FipsCounty' . "\0" . 'county', '' . "\0" . 'Entity\\Datahub\\FipsCounty' . "\0" . 'msa', '' . "\0" . 'Entity\\Datahub\\FipsCounty' . "\0" . 'pmsa', '' . "\0" . 'Entity\\Datahub\\FipsCounty' . "\0" . 'is_outlying', '' . "\0" . 'Entity\\Datahub\\FipsCounty' . "\0" . 'ZipCodes'];
     }
 
     /**
@@ -97,7 +97,7 @@ class FipsCounty extends \Entity\Datahub\FipsCounty implements \Doctrine\ORM\Pro
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class FipsCounty extends \Entity\Datahub\FipsCounty implements \Doctrine\ORM\Pro
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class FipsCounty extends \Entity\Datahub\FipsCounty implements \Doctrine\ORM\Pro
     public function setFipsCode($fipsCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFipsCode', array($fipsCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFipsCode', [$fipsCode]);
 
         return parent::setFipsCode($fipsCode);
     }
@@ -190,7 +190,7 @@ class FipsCounty extends \Entity\Datahub\FipsCounty implements \Doctrine\ORM\Pro
     public function getFipsCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFipsCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFipsCode', []);
 
         return parent::getFipsCode();
     }
@@ -201,7 +201,7 @@ class FipsCounty extends \Entity\Datahub\FipsCounty implements \Doctrine\ORM\Pro
     public function setStateCode($stateCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStateCode', array($stateCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStateCode', [$stateCode]);
 
         return parent::setStateCode($stateCode);
     }
@@ -212,7 +212,7 @@ class FipsCounty extends \Entity\Datahub\FipsCounty implements \Doctrine\ORM\Pro
     public function getStateCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStateCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStateCode', []);
 
         return parent::getStateCode();
     }
@@ -223,7 +223,7 @@ class FipsCounty extends \Entity\Datahub\FipsCounty implements \Doctrine\ORM\Pro
     public function setCounty($county)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCounty', array($county));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCounty', [$county]);
 
         return parent::setCounty($county);
     }
@@ -234,7 +234,7 @@ class FipsCounty extends \Entity\Datahub\FipsCounty implements \Doctrine\ORM\Pro
     public function getCounty()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCounty', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCounty', []);
 
         return parent::getCounty();
     }
@@ -245,7 +245,7 @@ class FipsCounty extends \Entity\Datahub\FipsCounty implements \Doctrine\ORM\Pro
     public function setMsa($msa)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMsa', array($msa));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMsa', [$msa]);
 
         return parent::setMsa($msa);
     }
@@ -256,7 +256,7 @@ class FipsCounty extends \Entity\Datahub\FipsCounty implements \Doctrine\ORM\Pro
     public function getMsa()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMsa', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMsa', []);
 
         return parent::getMsa();
     }
@@ -267,7 +267,7 @@ class FipsCounty extends \Entity\Datahub\FipsCounty implements \Doctrine\ORM\Pro
     public function setPmsa($pmsa)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPmsa', array($pmsa));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPmsa', [$pmsa]);
 
         return parent::setPmsa($pmsa);
     }
@@ -278,7 +278,7 @@ class FipsCounty extends \Entity\Datahub\FipsCounty implements \Doctrine\ORM\Pro
     public function getPmsa()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPmsa', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPmsa', []);
 
         return parent::getPmsa();
     }
@@ -289,7 +289,7 @@ class FipsCounty extends \Entity\Datahub\FipsCounty implements \Doctrine\ORM\Pro
     public function setIsOutlying($isOutlying)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsOutlying', array($isOutlying));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsOutlying', [$isOutlying]);
 
         return parent::setIsOutlying($isOutlying);
     }
@@ -300,7 +300,7 @@ class FipsCounty extends \Entity\Datahub\FipsCounty implements \Doctrine\ORM\Pro
     public function getIsOutlying()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsOutlying', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsOutlying', []);
 
         return parent::getIsOutlying();
     }
@@ -311,7 +311,7 @@ class FipsCounty extends \Entity\Datahub\FipsCounty implements \Doctrine\ORM\Pro
     public function addZipCode(\Entity\Datahub\ZipCode $zipCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addZipCode', array($zipCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addZipCode', [$zipCode]);
 
         return parent::addZipCode($zipCode);
     }
@@ -322,7 +322,7 @@ class FipsCounty extends \Entity\Datahub\FipsCounty implements \Doctrine\ORM\Pro
     public function removeZipCode(\Entity\Datahub\ZipCode $zipCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeZipCode', array($zipCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeZipCode', [$zipCode]);
 
         return parent::removeZipCode($zipCode);
     }
@@ -333,7 +333,7 @@ class FipsCounty extends \Entity\Datahub\FipsCounty implements \Doctrine\ORM\Pro
     public function getZipCodes()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getZipCodes', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getZipCodes', []);
 
         return parent::getZipCodes();
     }

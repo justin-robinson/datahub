@@ -36,7 +36,7 @@ class UsState extends \Entity\Datahub\UsState implements \Doctrine\ORM\Proxy\Pro
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class UsState extends \Entity\Datahub\UsState implements \Doctrine\ORM\Proxy\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Datahub\\UsState' . "\0" . 'state_long', '' . "\0" . 'Entity\\Datahub\\UsState' . "\0" . 'state_postal', '' . "\0" . 'Entity\\Datahub\\UsState' . "\0" . 'state_ap_style', '' . "\0" . 'Entity\\Datahub\\UsState' . "\0" . 'is_active', '' . "\0" . 'Entity\\Datahub\\UsState' . "\0" . 'ord');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Datahub\\UsState' . "\0" . 'state_long', '' . "\0" . 'Entity\\Datahub\\UsState' . "\0" . 'state_postal', '' . "\0" . 'Entity\\Datahub\\UsState' . "\0" . 'state_ap_style', '' . "\0" . 'Entity\\Datahub\\UsState' . "\0" . 'is_active', '' . "\0" . 'Entity\\Datahub\\UsState' . "\0" . 'ord'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Datahub\\UsState' . "\0" . 'state_long', '' . "\0" . 'Entity\\Datahub\\UsState' . "\0" . 'state_postal', '' . "\0" . 'Entity\\Datahub\\UsState' . "\0" . 'state_ap_style', '' . "\0" . 'Entity\\Datahub\\UsState' . "\0" . 'is_active', '' . "\0" . 'Entity\\Datahub\\UsState' . "\0" . 'ord');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Datahub\\UsState' . "\0" . 'state_long', '' . "\0" . 'Entity\\Datahub\\UsState' . "\0" . 'state_postal', '' . "\0" . 'Entity\\Datahub\\UsState' . "\0" . 'state_ap_style', '' . "\0" . 'Entity\\Datahub\\UsState' . "\0" . 'is_active', '' . "\0" . 'Entity\\Datahub\\UsState' . "\0" . 'ord'];
     }
 
     /**
@@ -97,7 +97,7 @@ class UsState extends \Entity\Datahub\UsState implements \Doctrine\ORM\Proxy\Pro
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class UsState extends \Entity\Datahub\UsState implements \Doctrine\ORM\Proxy\Pro
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class UsState extends \Entity\Datahub\UsState implements \Doctrine\ORM\Proxy\Pro
     public function setStateLong($stateLong)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStateLong', array($stateLong));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStateLong', [$stateLong]);
 
         return parent::setStateLong($stateLong);
     }
@@ -190,7 +190,7 @@ class UsState extends \Entity\Datahub\UsState implements \Doctrine\ORM\Proxy\Pro
     public function getStateLong()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStateLong', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStateLong', []);
 
         return parent::getStateLong();
     }
@@ -201,7 +201,7 @@ class UsState extends \Entity\Datahub\UsState implements \Doctrine\ORM\Proxy\Pro
     public function setStatePostal($statePostal)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatePostal', array($statePostal));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatePostal', [$statePostal]);
 
         return parent::setStatePostal($statePostal);
     }
@@ -212,7 +212,7 @@ class UsState extends \Entity\Datahub\UsState implements \Doctrine\ORM\Proxy\Pro
     public function getStatePostal()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatePostal', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatePostal', []);
 
         return parent::getStatePostal();
     }
@@ -223,7 +223,7 @@ class UsState extends \Entity\Datahub\UsState implements \Doctrine\ORM\Proxy\Pro
     public function setStateApStyle($stateApStyle)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStateApStyle', array($stateApStyle));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStateApStyle', [$stateApStyle]);
 
         return parent::setStateApStyle($stateApStyle);
     }
@@ -234,7 +234,7 @@ class UsState extends \Entity\Datahub\UsState implements \Doctrine\ORM\Proxy\Pro
     public function getStateApStyle()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStateApStyle', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStateApStyle', []);
 
         return parent::getStateApStyle();
     }
@@ -245,7 +245,7 @@ class UsState extends \Entity\Datahub\UsState implements \Doctrine\ORM\Proxy\Pro
     public function setIsActive($isActive)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', array($isActive));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', [$isActive]);
 
         return parent::setIsActive($isActive);
     }
@@ -256,7 +256,7 @@ class UsState extends \Entity\Datahub\UsState implements \Doctrine\ORM\Proxy\Pro
     public function getIsActive()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', []);
 
         return parent::getIsActive();
     }
@@ -267,7 +267,7 @@ class UsState extends \Entity\Datahub\UsState implements \Doctrine\ORM\Proxy\Pro
     public function setOrd($ord)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrd', array($ord));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrd', [$ord]);
 
         return parent::setOrd($ord);
     }
@@ -278,7 +278,7 @@ class UsState extends \Entity\Datahub\UsState implements \Doctrine\ORM\Proxy\Pro
     public function getOrd()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrd', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrd', []);
 
         return parent::getOrd();
     }

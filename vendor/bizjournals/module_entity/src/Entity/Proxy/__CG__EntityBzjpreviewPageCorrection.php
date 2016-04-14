@@ -36,7 +36,7 @@ class PageCorrection extends \Entity\Bzjpreview\PageCorrection implements \Doctr
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class PageCorrection extends \Entity\Bzjpreview\PageCorrection implements \Doctr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PageCorrection' . "\0" . 'id', '' . "\0" . 'Entity\\Bzjpreview\\PageCorrection' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bzjpreview\\PageCorrection' . "\0" . 'market_code', '' . "\0" . 'Entity\\Bzjpreview\\PageCorrection' . "\0" . 'correction', '' . "\0" . 'Entity\\Bzjpreview\\PageCorrection' . "\0" . 'is_daily', '' . "\0" . 'Entity\\Bzjpreview\\PageCorrection' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\PageCorrection' . "\0" . 'Page');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PageCorrection' . "\0" . 'id', '' . "\0" . 'Entity\\Bzjpreview\\PageCorrection' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bzjpreview\\PageCorrection' . "\0" . 'market_code', '' . "\0" . 'Entity\\Bzjpreview\\PageCorrection' . "\0" . 'correction', '' . "\0" . 'Entity\\Bzjpreview\\PageCorrection' . "\0" . 'is_daily', '' . "\0" . 'Entity\\Bzjpreview\\PageCorrection' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\PageCorrection' . "\0" . 'Page'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PageCorrection' . "\0" . 'id', '' . "\0" . 'Entity\\Bzjpreview\\PageCorrection' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bzjpreview\\PageCorrection' . "\0" . 'market_code', '' . "\0" . 'Entity\\Bzjpreview\\PageCorrection' . "\0" . 'correction', '' . "\0" . 'Entity\\Bzjpreview\\PageCorrection' . "\0" . 'is_daily', '' . "\0" . 'Entity\\Bzjpreview\\PageCorrection' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\PageCorrection' . "\0" . 'Page');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\PageCorrection' . "\0" . 'id', '' . "\0" . 'Entity\\Bzjpreview\\PageCorrection' . "\0" . 'page_id', '' . "\0" . 'Entity\\Bzjpreview\\PageCorrection' . "\0" . 'market_code', '' . "\0" . 'Entity\\Bzjpreview\\PageCorrection' . "\0" . 'correction', '' . "\0" . 'Entity\\Bzjpreview\\PageCorrection' . "\0" . 'is_daily', '' . "\0" . 'Entity\\Bzjpreview\\PageCorrection' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bzjpreview\\PageCorrection' . "\0" . 'Page'];
     }
 
     /**
@@ -97,7 +97,7 @@ class PageCorrection extends \Entity\Bzjpreview\PageCorrection implements \Doctr
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class PageCorrection extends \Entity\Bzjpreview\PageCorrection implements \Doctr
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -183,7 +183,7 @@ class PageCorrection extends \Entity\Bzjpreview\PageCorrection implements \Doctr
         }
 
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -194,7 +194,7 @@ class PageCorrection extends \Entity\Bzjpreview\PageCorrection implements \Doctr
     public function setPageId($pageId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPageId', array($pageId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPageId', [$pageId]);
 
         return parent::setPageId($pageId);
     }
@@ -205,7 +205,7 @@ class PageCorrection extends \Entity\Bzjpreview\PageCorrection implements \Doctr
     public function getPageId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageId', []);
 
         return parent::getPageId();
     }
@@ -216,7 +216,7 @@ class PageCorrection extends \Entity\Bzjpreview\PageCorrection implements \Doctr
     public function setMarketCode($marketCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketCode', array($marketCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMarketCode', [$marketCode]);
 
         return parent::setMarketCode($marketCode);
     }
@@ -227,7 +227,7 @@ class PageCorrection extends \Entity\Bzjpreview\PageCorrection implements \Doctr
     public function getMarketCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMarketCode', []);
 
         return parent::getMarketCode();
     }
@@ -238,7 +238,7 @@ class PageCorrection extends \Entity\Bzjpreview\PageCorrection implements \Doctr
     public function setCorrection($correction)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCorrection', array($correction));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCorrection', [$correction]);
 
         return parent::setCorrection($correction);
     }
@@ -249,7 +249,7 @@ class PageCorrection extends \Entity\Bzjpreview\PageCorrection implements \Doctr
     public function getCorrection()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCorrection', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCorrection', []);
 
         return parent::getCorrection();
     }
@@ -260,7 +260,7 @@ class PageCorrection extends \Entity\Bzjpreview\PageCorrection implements \Doctr
     public function setIsDaily($isDaily)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsDaily', array($isDaily));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsDaily', [$isDaily]);
 
         return parent::setIsDaily($isDaily);
     }
@@ -271,7 +271,7 @@ class PageCorrection extends \Entity\Bzjpreview\PageCorrection implements \Doctr
     public function getIsDaily()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsDaily', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsDaily', []);
 
         return parent::getIsDaily();
     }
@@ -282,7 +282,7 @@ class PageCorrection extends \Entity\Bzjpreview\PageCorrection implements \Doctr
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -293,7 +293,7 @@ class PageCorrection extends \Entity\Bzjpreview\PageCorrection implements \Doctr
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -304,7 +304,7 @@ class PageCorrection extends \Entity\Bzjpreview\PageCorrection implements \Doctr
     public function setPage(\Entity\Bzjpreview\Page $page = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPage', array($page));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPage', [$page]);
 
         return parent::setPage($page);
     }
@@ -315,7 +315,7 @@ class PageCorrection extends \Entity\Bzjpreview\PageCorrection implements \Doctr
     public function getPage()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPage', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPage', []);
 
         return parent::getPage();
     }

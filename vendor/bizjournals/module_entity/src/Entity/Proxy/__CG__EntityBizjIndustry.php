@@ -36,7 +36,7 @@ class Industry extends \Entity\Bizj\Industry implements \Doctrine\ORM\Proxy\Prox
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Industry extends \Entity\Bizj\Industry implements \Doctrine\ORM\Proxy\Prox
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'industry_id', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'industry_code', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'industry_name', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'short_name', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'active', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'hidden', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'feed_id', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'nstein_name', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'iana_value', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'Channels', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'Topics');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'industry_id', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'industry_code', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'industry_name', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'short_name', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'active', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'hidden', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'feed_id', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'nstein_name', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'iana_value', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'Channels', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'Topics'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'industry_id', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'industry_code', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'industry_name', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'short_name', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'active', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'hidden', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'feed_id', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'nstein_name', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'iana_value', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'Channels', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'Topics');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'industry_id', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'industry_code', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'industry_name', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'short_name', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'active', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'hidden', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'feed_id', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'nstein_name', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'iana_value', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'Channels', '' . "\0" . 'Entity\\Bizj\\Industry' . "\0" . 'Topics'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Industry extends \Entity\Bizj\Industry implements \Doctrine\ORM\Proxy\Prox
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Industry extends \Entity\Bizj\Industry implements \Doctrine\ORM\Proxy\Prox
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class Industry extends \Entity\Bizj\Industry implements \Doctrine\ORM\Proxy\Prox
     public function getIndustryId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIndustryId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIndustryId', []);
 
         return parent::getIndustryId();
     }
@@ -190,7 +190,7 @@ class Industry extends \Entity\Bizj\Industry implements \Doctrine\ORM\Proxy\Prox
     public function setIndustryCode($industryCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIndustryCode', array($industryCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIndustryCode', [$industryCode]);
 
         return parent::setIndustryCode($industryCode);
     }
@@ -201,7 +201,7 @@ class Industry extends \Entity\Bizj\Industry implements \Doctrine\ORM\Proxy\Prox
     public function getIndustryCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIndustryCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIndustryCode', []);
 
         return parent::getIndustryCode();
     }
@@ -212,7 +212,7 @@ class Industry extends \Entity\Bizj\Industry implements \Doctrine\ORM\Proxy\Prox
     public function setIndustryName($industryName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIndustryName', array($industryName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIndustryName', [$industryName]);
 
         return parent::setIndustryName($industryName);
     }
@@ -223,7 +223,7 @@ class Industry extends \Entity\Bizj\Industry implements \Doctrine\ORM\Proxy\Prox
     public function getIndustryName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIndustryName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIndustryName', []);
 
         return parent::getIndustryName();
     }
@@ -234,7 +234,7 @@ class Industry extends \Entity\Bizj\Industry implements \Doctrine\ORM\Proxy\Prox
     public function setShortName($shortName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setShortName', array($shortName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setShortName', [$shortName]);
 
         return parent::setShortName($shortName);
     }
@@ -245,7 +245,7 @@ class Industry extends \Entity\Bizj\Industry implements \Doctrine\ORM\Proxy\Prox
     public function getShortName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getShortName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getShortName', []);
 
         return parent::getShortName();
     }
@@ -256,7 +256,7 @@ class Industry extends \Entity\Bizj\Industry implements \Doctrine\ORM\Proxy\Prox
     public function setActive($active)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setActive', array($active));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setActive', [$active]);
 
         return parent::setActive($active);
     }
@@ -267,7 +267,7 @@ class Industry extends \Entity\Bizj\Industry implements \Doctrine\ORM\Proxy\Prox
     public function getActive()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getActive', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getActive', []);
 
         return parent::getActive();
     }
@@ -278,7 +278,7 @@ class Industry extends \Entity\Bizj\Industry implements \Doctrine\ORM\Proxy\Prox
     public function setHidden($hidden)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHidden', array($hidden));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHidden', [$hidden]);
 
         return parent::setHidden($hidden);
     }
@@ -289,7 +289,7 @@ class Industry extends \Entity\Bizj\Industry implements \Doctrine\ORM\Proxy\Prox
     public function getHidden()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHidden', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHidden', []);
 
         return parent::getHidden();
     }
@@ -300,7 +300,7 @@ class Industry extends \Entity\Bizj\Industry implements \Doctrine\ORM\Proxy\Prox
     public function setFeedId($feedId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFeedId', array($feedId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFeedId', [$feedId]);
 
         return parent::setFeedId($feedId);
     }
@@ -311,7 +311,7 @@ class Industry extends \Entity\Bizj\Industry implements \Doctrine\ORM\Proxy\Prox
     public function getFeedId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFeedId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFeedId', []);
 
         return parent::getFeedId();
     }
@@ -322,7 +322,7 @@ class Industry extends \Entity\Bizj\Industry implements \Doctrine\ORM\Proxy\Prox
     public function setNsteinName($nsteinName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNsteinName', array($nsteinName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNsteinName', [$nsteinName]);
 
         return parent::setNsteinName($nsteinName);
     }
@@ -333,7 +333,7 @@ class Industry extends \Entity\Bizj\Industry implements \Doctrine\ORM\Proxy\Prox
     public function getNsteinName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNsteinName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNsteinName', []);
 
         return parent::getNsteinName();
     }
@@ -344,7 +344,7 @@ class Industry extends \Entity\Bizj\Industry implements \Doctrine\ORM\Proxy\Prox
     public function setIanaValue($ianaValue)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIanaValue', array($ianaValue));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIanaValue', [$ianaValue]);
 
         return parent::setIanaValue($ianaValue);
     }
@@ -355,7 +355,7 @@ class Industry extends \Entity\Bizj\Industry implements \Doctrine\ORM\Proxy\Prox
     public function getIanaValue()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIanaValue', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIanaValue', []);
 
         return parent::getIanaValue();
     }
@@ -366,7 +366,7 @@ class Industry extends \Entity\Bizj\Industry implements \Doctrine\ORM\Proxy\Prox
     public function addChannel(\Entity\Bizj\Channel $channel)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addChannel', array($channel));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addChannel', [$channel]);
 
         return parent::addChannel($channel);
     }
@@ -377,7 +377,7 @@ class Industry extends \Entity\Bizj\Industry implements \Doctrine\ORM\Proxy\Prox
     public function removeChannel(\Entity\Bizj\Channel $channel)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeChannel', array($channel));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeChannel', [$channel]);
 
         return parent::removeChannel($channel);
     }
@@ -388,7 +388,7 @@ class Industry extends \Entity\Bizj\Industry implements \Doctrine\ORM\Proxy\Prox
     public function getChannels()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getChannels', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getChannels', []);
 
         return parent::getChannels();
     }
@@ -399,7 +399,7 @@ class Industry extends \Entity\Bizj\Industry implements \Doctrine\ORM\Proxy\Prox
     public function addTopic(\Entity\Bizj\Topic $topic)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addTopic', array($topic));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addTopic', [$topic]);
 
         return parent::addTopic($topic);
     }
@@ -410,7 +410,7 @@ class Industry extends \Entity\Bizj\Industry implements \Doctrine\ORM\Proxy\Prox
     public function removeTopic(\Entity\Bizj\Topic $topic)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeTopic', array($topic));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeTopic', [$topic]);
 
         return parent::removeTopic($topic);
     }
@@ -421,7 +421,7 @@ class Industry extends \Entity\Bizj\Industry implements \Doctrine\ORM\Proxy\Prox
     public function getTopics()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTopics', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTopics', []);
 
         return parent::getTopics();
     }

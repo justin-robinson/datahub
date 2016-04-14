@@ -111,8 +111,15 @@ class CompanyService extends AbstractService
      */
     private function formatResult(array $result)
     {
+        $labels = [];
 
-        $labels = isset($result['LABELS']) ? $result['LABELS'] : null;
+        if ( isset($result['LABELS']) ) {
+
+            foreach ( $result['LABELS'] as &$label ) {
+                $labels[$label['LABELID']] = $label;
+            }
+        }
+
         $list   = [];
         if (isset($result['SET']['RECS'])) {
 
@@ -126,19 +133,23 @@ class CompanyService extends AbstractService
 
                     $company['meroveusId'] = isset($record['ID']) ? $record['ID'] : null;
 
-                    // figure out the correct state vaule
-                    $stateId = null;
-                    $state   = null;
+                    // figure out the correct state value
                     if (!isset($data['VAL']) && $data['KEY'] === "street-state_static") {
-                        $stateId = $data['LABELIDS'][0];
-
-                        $state = $this->getStateFromId($stateId, $labels);
+                        $data['VAL'] = $this->getValueFromLabelId($data['LABELIDS'][0], $labels, 'PostalCode');
+                    }
+                    // figure out the correct industry values
+                    else if (!isset($data['VAL']) && $data['KEY'] === 'firm-industry_static') {
+                        $industries = [];
+                        foreach ( $data['LABELIDS'] as $labelId ) {
+                            $industries[] = "'" . $this->getValueFromLabelId($labelId, $labels) . "'";
+                        }
+                        $data['VAL'] = implode(',', $industries);
                     }
 
                     if (isset($data['VAL'])) {
                         $value = !is_array($data['VAL']) ? $data['VAL'] : null;
                     } else {
-                        $value = $state;
+                        $value = null;
                     }
 
                     $company[$data['KEY']] = $value;
@@ -180,23 +191,24 @@ class CompanyService extends AbstractService
     }
 
     /**
-     * used for getting state data in the form that we want by extracing them from the labels
-     * returned by meroveus
+     * lookup a label value by id and key name
      *
-     * @param $stateId
-     * @param array $labelsArray
+     * @param        $labelId
+     * @param array  $labels
+     * @param string $key
+     *
      * @return null|string
      */
-    private function getStateFromId($stateId, array $labelsArray)
-    {
-        if (!$stateId) {
+    private function getValueFromLabelId($labelId, array &$labels, $key = 'NAME'){
+        if (!$labelId) {
             return null;
         }
-        foreach ($labelsArray as $k => $label) {
-            if ($label['LABELID'] === $stateId) {
-                return isset($label['PostalCode']) ? $label['PostalCode'] : 'not available';
-            }
+
+        if ( empty($labels[$labelId]) ) {
+            return null;
         }
+
+        return isset($labels[$labelId][$key]) ? $labels[$labelId][$key] : 'not available';
     }
 
     /**
@@ -215,7 +227,7 @@ class CompanyService extends AbstractService
      * @param $meroveusParams
      * @return bool
      */
-    private function queryMeroveus(array $meroveusParams = [])
+    private function queryMeroveus(array $meroveusParams = [], $isRootQuery = false)
     {
 
         /* Uncomment to simulate all requests after the first one
@@ -233,7 +245,7 @@ class CompanyService extends AbstractService
         $sendJson  = json_encode($sendArray);
         /* send a request to Meroveus! takes JSON string, posts via curl, returns JSON string */
         $json = str_replace('%2B', '+', $sendJson);
-        curl_setopt($this->curl, CURLOPT_POSTFIELDS, 'MCORE=' . urlencode($json));
+        curl_setopt($this->curl, CURLOPT_POSTFIELDS, ($isRootQuery ? 'MROOT' : 'MCORE') . '=' . urlencode($json));
         $result = curl_exec($this->curl);
         if ($result) {
             $resp   = str_replace(":NaN", ":0", gzinflate(substr($result, 10, -8)));
@@ -242,19 +254,31 @@ class CompanyService extends AbstractService
             } catch ( \RuntimeException $e ) {
                 $return = $resp;
             }
-/* Uncomment to simulate all requests after the first one
- *             $this->return = $return;
-            $return['Labels'] = [];
-            $return['RECCOUNT'] = 0;
-            unset($return['FOOTNOTES']);
-            unset($return['SET']['RECS']);
-            $this->returnEmpty = $return;
-*/
+            /* Uncomment to simulate all requests after the first one
+             *             $this->return = $return;
+                        $return['Labels'] = [];
+                        $return['RECCOUNT'] = 0;
+                        unset($return['FOOTNOTES']);
+                        unset($return['SET']['RECS']);
+                        $this->returnEmpty = $return;
+            */
             return $return;
         } else {
             echo 'no meroveus reaponse';
             return false;
         }
     }
+
+    /**
+     * Query meroveus with MROOT payload
+     * @param array $meroveusParams
+     *
+     * @return bool
+     */
+    public function queryMeroveusRoot(array $meroveusParams) {
+        return $this->queryMeroveus($meroveusParams, true);
+    }
+
+
 }
 

@@ -36,7 +36,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'event_id', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'parent_id', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'grandparent_id', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'has_child', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'code_id', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'allow_syndication', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'is_resolved', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'title', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'details', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'created_by', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'updated_by', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'expires_at', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'ProductMap', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'Status');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'event_id', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'parent_id', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'grandparent_id', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'has_child', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'code_id', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'allow_syndication', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'is_resolved', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'title', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'details', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'created_by', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'updated_by', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'expires_at', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'ProductMap', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'Status'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'event_id', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'parent_id', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'grandparent_id', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'has_child', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'code_id', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'allow_syndication', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'is_resolved', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'title', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'details', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'created_by', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'updated_by', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'expires_at', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'ProductMap', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'Status');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'event_id', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'parent_id', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'grandparent_id', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'has_child', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'code_id', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'allow_syndication', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'is_resolved', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'title', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'details', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'created_by', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'updated_by', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'expires_at', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'created_at', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'ProductMap', '' . "\0" . 'Entity\\Bizjstatus\\Event' . "\0" . 'Status'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function getEventId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEventId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEventId', []);
 
         return parent::getEventId();
     }
@@ -190,7 +190,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function setParentId($parentId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParentId', array($parentId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParentId', [$parentId]);
 
         return parent::setParentId($parentId);
     }
@@ -201,7 +201,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function getParentId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParentId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParentId', []);
 
         return parent::getParentId();
     }
@@ -212,7 +212,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function setGrandparentId($grandparentId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGrandparentId', array($grandparentId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGrandparentId', [$grandparentId]);
 
         return parent::setGrandparentId($grandparentId);
     }
@@ -223,7 +223,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function getGrandparentId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGrandparentId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGrandparentId', []);
 
         return parent::getGrandparentId();
     }
@@ -234,7 +234,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function setHasChild($hasChild)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasChild', array($hasChild));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHasChild', [$hasChild]);
 
         return parent::setHasChild($hasChild);
     }
@@ -245,7 +245,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function getHasChild()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasChild', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHasChild', []);
 
         return parent::getHasChild();
     }
@@ -256,7 +256,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function setCodeId($codeId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCodeId', array($codeId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCodeId', [$codeId]);
 
         return parent::setCodeId($codeId);
     }
@@ -267,7 +267,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function getCodeId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCodeId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCodeId', []);
 
         return parent::getCodeId();
     }
@@ -278,7 +278,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function setAllowSyndication($allowSyndication)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowSyndication', array($allowSyndication));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAllowSyndication', [$allowSyndication]);
 
         return parent::setAllowSyndication($allowSyndication);
     }
@@ -289,7 +289,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function getAllowSyndication()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowSyndication', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAllowSyndication', []);
 
         return parent::getAllowSyndication();
     }
@@ -300,7 +300,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function setIsResolved($isResolved)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsResolved', array($isResolved));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsResolved', [$isResolved]);
 
         return parent::setIsResolved($isResolved);
     }
@@ -311,7 +311,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function getIsResolved()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsResolved', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsResolved', []);
 
         return parent::getIsResolved();
     }
@@ -322,7 +322,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function setTitle($title)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', array($title));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', [$title]);
 
         return parent::setTitle($title);
     }
@@ -333,7 +333,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function getTitle()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', []);
 
         return parent::getTitle();
     }
@@ -344,7 +344,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function setDetails($details)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDetails', array($details));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDetails', [$details]);
 
         return parent::setDetails($details);
     }
@@ -355,7 +355,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function getDetails()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDetails', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDetails', []);
 
         return parent::getDetails();
     }
@@ -366,7 +366,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function setCreatedBy($createdBy)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedBy', array($createdBy));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedBy', [$createdBy]);
 
         return parent::setCreatedBy($createdBy);
     }
@@ -377,7 +377,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function getCreatedBy()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedBy', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedBy', []);
 
         return parent::getCreatedBy();
     }
@@ -388,7 +388,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function setUpdatedBy($updatedBy)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedBy', array($updatedBy));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedBy', [$updatedBy]);
 
         return parent::setUpdatedBy($updatedBy);
     }
@@ -399,7 +399,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function getUpdatedBy()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedBy', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedBy', []);
 
         return parent::getUpdatedBy();
     }
@@ -410,7 +410,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function setExpiresAt($expiresAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExpiresAt', array($expiresAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExpiresAt', [$expiresAt]);
 
         return parent::setExpiresAt($expiresAt);
     }
@@ -421,7 +421,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function getExpiresAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExpiresAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExpiresAt', []);
 
         return parent::getExpiresAt();
     }
@@ -432,7 +432,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -443,7 +443,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -454,7 +454,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -465,7 +465,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -476,7 +476,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function addProductMap(\Entity\Bizjstatus\ProductEventMap $productMap)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addProductMap', array($productMap));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addProductMap', [$productMap]);
 
         return parent::addProductMap($productMap);
     }
@@ -487,7 +487,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function removeProductMap(\Entity\Bizjstatus\ProductEventMap $productMap)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeProductMap', array($productMap));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeProductMap', [$productMap]);
 
         return parent::removeProductMap($productMap);
     }
@@ -498,7 +498,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function getProductMap()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductMap', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProductMap', []);
 
         return parent::getProductMap();
     }
@@ -509,7 +509,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function setStatus(\Entity\Bizjstatus\StatusCode $status = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatus', array($status));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatus', [$status]);
 
         return parent::setStatus($status);
     }
@@ -520,7 +520,7 @@ class Event extends \Entity\Bizjstatus\Event implements \Doctrine\ORM\Proxy\Prox
     public function getStatus()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatus', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatus', []);
 
         return parent::getStatus();
     }

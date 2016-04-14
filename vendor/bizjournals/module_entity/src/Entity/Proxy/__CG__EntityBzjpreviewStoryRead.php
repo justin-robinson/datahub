@@ -36,7 +36,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'site_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'major_rev', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'minor_rev', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'rev_time', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'release_status', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'release_time', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'issue_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'issue_date', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'pub', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'slug', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'story_type', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'story_type_order_num', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'story_sequence_num', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'display_timeofday', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'display_date', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'named_section_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'fixture', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'byline', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'bylineinfo', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'original_byline', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'tagline', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'copyrite', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'teaser', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'editors_note', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'headline', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'subhead', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'external_url', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'publication_src', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'body_content', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'is_premium', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'teaser_headline', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'default_skin', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'parent_story_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'Companies', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'People', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'Industries', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'Images', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'SpecialCategories', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'Corrections');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'site_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'major_rev', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'minor_rev', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'rev_time', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'release_status', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'release_time', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'issue_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'issue_date', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'pub', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'slug', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'story_type', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'story_type_order_num', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'story_sequence_num', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'display_timeofday', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'display_date', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'named_section_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'fixture', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'byline', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'bylineinfo', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'original_byline', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'tagline', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'copyrite', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'teaser', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'editors_note', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'headline', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'subhead', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'external_url', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'publication_src', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'body_content', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'is_premium', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'teaser_headline', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'default_skin', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'parent_story_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'Companies', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'People', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'Industries', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'Images', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'SpecialCategories', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'Corrections'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'site_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'major_rev', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'minor_rev', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'rev_time', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'release_status', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'release_time', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'issue_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'issue_date', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'pub', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'slug', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'story_type', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'story_type_order_num', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'story_sequence_num', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'display_timeofday', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'display_date', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'named_section_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'fixture', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'byline', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'bylineinfo', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'original_byline', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'tagline', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'copyrite', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'teaser', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'editors_note', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'headline', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'subhead', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'external_url', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'publication_src', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'body_content', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'is_premium', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'teaser_headline', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'default_skin', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'parent_story_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'Companies', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'People', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'Industries', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'Images', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'SpecialCategories', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'Corrections');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'story_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'site_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'c_time', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'major_rev', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'minor_rev', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'rev_time', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'release_status', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'release_time', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'issue_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'issue_date', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'pub', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'slug', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'story_type', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'story_type_order_num', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'story_sequence_num', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'display_timeofday', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'display_date', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'named_section_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'fixture', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'byline', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'bylineinfo', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'original_byline', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'tagline', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'copyrite', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'teaser', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'editors_note', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'headline', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'subhead', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'external_url', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'publication_src', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'body_content', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'is_premium', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'teaser_headline', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'default_skin', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'parent_story_id', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'Companies', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'People', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'Industries', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'Images', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'SpecialCategories', '' . "\0" . 'Entity\\Bzjpreview\\StoryRead' . "\0" . 'Corrections'];
     }
 
     /**
@@ -97,7 +97,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setStoryId($storyId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryId', array($storyId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryId', [$storyId]);
 
         return parent::setStoryId($storyId);
     }
@@ -190,7 +190,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getStoryId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryId', []);
 
         return parent::getStoryId();
     }
@@ -201,7 +201,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setSiteId($siteId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSiteId', array($siteId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSiteId', [$siteId]);
 
         return parent::setSiteId($siteId);
     }
@@ -212,7 +212,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getSiteId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSiteId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSiteId', []);
 
         return parent::getSiteId();
     }
@@ -223,7 +223,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setCTime($cTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCTime', array($cTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCTime', [$cTime]);
 
         return parent::setCTime($cTime);
     }
@@ -234,7 +234,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getCTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCTime', []);
 
         return parent::getCTime();
     }
@@ -245,7 +245,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setMajorRev($majorRev)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMajorRev', array($majorRev));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMajorRev', [$majorRev]);
 
         return parent::setMajorRev($majorRev);
     }
@@ -256,7 +256,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getMajorRev()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMajorRev', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMajorRev', []);
 
         return parent::getMajorRev();
     }
@@ -267,7 +267,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setMinorRev($minorRev)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMinorRev', array($minorRev));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMinorRev', [$minorRev]);
 
         return parent::setMinorRev($minorRev);
     }
@@ -278,7 +278,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getMinorRev()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMinorRev', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMinorRev', []);
 
         return parent::getMinorRev();
     }
@@ -289,7 +289,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setRevTime($revTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRevTime', array($revTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRevTime', [$revTime]);
 
         return parent::setRevTime($revTime);
     }
@@ -300,7 +300,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getRevTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRevTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRevTime', []);
 
         return parent::getRevTime();
     }
@@ -311,7 +311,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setReleaseStatus($releaseStatus)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setReleaseStatus', array($releaseStatus));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setReleaseStatus', [$releaseStatus]);
 
         return parent::setReleaseStatus($releaseStatus);
     }
@@ -322,7 +322,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getReleaseStatus()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getReleaseStatus', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getReleaseStatus', []);
 
         return parent::getReleaseStatus();
     }
@@ -333,7 +333,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setReleaseTime($releaseTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setReleaseTime', array($releaseTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setReleaseTime', [$releaseTime]);
 
         return parent::setReleaseTime($releaseTime);
     }
@@ -344,7 +344,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getReleaseTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getReleaseTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getReleaseTime', []);
 
         return parent::getReleaseTime();
     }
@@ -355,7 +355,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setIssueId($issueId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIssueId', array($issueId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIssueId', [$issueId]);
 
         return parent::setIssueId($issueId);
     }
@@ -366,7 +366,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getIssueId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIssueId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIssueId', []);
 
         return parent::getIssueId();
     }
@@ -377,7 +377,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setIssueDate($issueDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIssueDate', array($issueDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIssueDate', [$issueDate]);
 
         return parent::setIssueDate($issueDate);
     }
@@ -388,7 +388,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getIssueDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIssueDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIssueDate', []);
 
         return parent::getIssueDate();
     }
@@ -399,7 +399,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setPub($pub)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPub', array($pub));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPub', [$pub]);
 
         return parent::setPub($pub);
     }
@@ -410,7 +410,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getPub()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPub', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPub', []);
 
         return parent::getPub();
     }
@@ -421,7 +421,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setSlug($slug)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSlug', array($slug));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSlug', [$slug]);
 
         return parent::setSlug($slug);
     }
@@ -432,7 +432,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getSlug()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSlug', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSlug', []);
 
         return parent::getSlug();
     }
@@ -443,7 +443,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setStoryType($storyType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryType', array($storyType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryType', [$storyType]);
 
         return parent::setStoryType($storyType);
     }
@@ -454,7 +454,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getStoryType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryType', []);
 
         return parent::getStoryType();
     }
@@ -465,7 +465,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setStoryTypeOrderNum($storyTypeOrderNum)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryTypeOrderNum', array($storyTypeOrderNum));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStoryTypeOrderNum', [$storyTypeOrderNum]);
 
         return parent::setStoryTypeOrderNum($storyTypeOrderNum);
     }
@@ -476,7 +476,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getStoryTypeOrderNum()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryTypeOrderNum', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStoryTypeOrderNum', []);
 
         return parent::getStoryTypeOrderNum();
     }
@@ -487,7 +487,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setStorySequenceNum($storySequenceNum)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStorySequenceNum', array($storySequenceNum));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStorySequenceNum', [$storySequenceNum]);
 
         return parent::setStorySequenceNum($storySequenceNum);
     }
@@ -498,7 +498,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getStorySequenceNum()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStorySequenceNum', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStorySequenceNum', []);
 
         return parent::getStorySequenceNum();
     }
@@ -509,7 +509,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setDisplayTimeofday($displayTimeofday)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDisplayTimeofday', array($displayTimeofday));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDisplayTimeofday', [$displayTimeofday]);
 
         return parent::setDisplayTimeofday($displayTimeofday);
     }
@@ -520,7 +520,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getDisplayTimeofday()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDisplayTimeofday', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDisplayTimeofday', []);
 
         return parent::getDisplayTimeofday();
     }
@@ -531,7 +531,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setDisplayDate($displayDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDisplayDate', array($displayDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDisplayDate', [$displayDate]);
 
         return parent::setDisplayDate($displayDate);
     }
@@ -542,7 +542,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getDisplayDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDisplayDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDisplayDate', []);
 
         return parent::getDisplayDate();
     }
@@ -553,7 +553,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setNamedSectionId($namedSectionId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNamedSectionId', array($namedSectionId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNamedSectionId', [$namedSectionId]);
 
         return parent::setNamedSectionId($namedSectionId);
     }
@@ -564,7 +564,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getNamedSectionId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNamedSectionId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNamedSectionId', []);
 
         return parent::getNamedSectionId();
     }
@@ -575,7 +575,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setFixture($fixture)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFixture', array($fixture));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFixture', [$fixture]);
 
         return parent::setFixture($fixture);
     }
@@ -586,7 +586,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getFixture()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFixture', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFixture', []);
 
         return parent::getFixture();
     }
@@ -597,7 +597,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setByline($byline)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setByline', array($byline));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setByline', [$byline]);
 
         return parent::setByline($byline);
     }
@@ -608,7 +608,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getByline()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getByline', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getByline', []);
 
         return parent::getByline();
     }
@@ -619,7 +619,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setBylineinfo($bylineinfo)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBylineinfo', array($bylineinfo));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBylineinfo', [$bylineinfo]);
 
         return parent::setBylineinfo($bylineinfo);
     }
@@ -630,7 +630,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getBylineinfo()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBylineinfo', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBylineinfo', []);
 
         return parent::getBylineinfo();
     }
@@ -641,7 +641,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setOriginalByline($originalByline)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOriginalByline', array($originalByline));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOriginalByline', [$originalByline]);
 
         return parent::setOriginalByline($originalByline);
     }
@@ -652,7 +652,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getOriginalByline()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOriginalByline', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOriginalByline', []);
 
         return parent::getOriginalByline();
     }
@@ -663,7 +663,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setTagline($tagline)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTagline', array($tagline));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTagline', [$tagline]);
 
         return parent::setTagline($tagline);
     }
@@ -674,7 +674,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getTagline()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTagline', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTagline', []);
 
         return parent::getTagline();
     }
@@ -685,7 +685,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setCopyrite($copyrite)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCopyrite', array($copyrite));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCopyrite', [$copyrite]);
 
         return parent::setCopyrite($copyrite);
     }
@@ -696,7 +696,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getCopyrite()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCopyrite', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCopyrite', []);
 
         return parent::getCopyrite();
     }
@@ -707,7 +707,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setTeaser($teaser)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTeaser', array($teaser));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTeaser', [$teaser]);
 
         return parent::setTeaser($teaser);
     }
@@ -718,7 +718,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getTeaser()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTeaser', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTeaser', []);
 
         return parent::getTeaser();
     }
@@ -729,7 +729,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setEditorsNote($editorsNote)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEditorsNote', array($editorsNote));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEditorsNote', [$editorsNote]);
 
         return parent::setEditorsNote($editorsNote);
     }
@@ -740,7 +740,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getEditorsNote()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEditorsNote', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEditorsNote', []);
 
         return parent::getEditorsNote();
     }
@@ -751,7 +751,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setHeadline($headline)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHeadline', array($headline));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHeadline', [$headline]);
 
         return parent::setHeadline($headline);
     }
@@ -762,7 +762,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getHeadline()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHeadline', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHeadline', []);
 
         return parent::getHeadline();
     }
@@ -773,7 +773,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setSubhead($subhead)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSubhead', array($subhead));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSubhead', [$subhead]);
 
         return parent::setSubhead($subhead);
     }
@@ -784,7 +784,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getSubhead()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSubhead', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSubhead', []);
 
         return parent::getSubhead();
     }
@@ -795,7 +795,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setExternalUrl($externalUrl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExternalUrl', array($externalUrl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setExternalUrl', [$externalUrl]);
 
         return parent::setExternalUrl($externalUrl);
     }
@@ -806,7 +806,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getExternalUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExternalUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getExternalUrl', []);
 
         return parent::getExternalUrl();
     }
@@ -817,7 +817,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setPublicationSrc($publicationSrc)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublicationSrc', array($publicationSrc));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublicationSrc', [$publicationSrc]);
 
         return parent::setPublicationSrc($publicationSrc);
     }
@@ -828,7 +828,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getPublicationSrc()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublicationSrc', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublicationSrc', []);
 
         return parent::getPublicationSrc();
     }
@@ -839,7 +839,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setBodyContent($bodyContent)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBodyContent', array($bodyContent));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBodyContent', [$bodyContent]);
 
         return parent::setBodyContent($bodyContent);
     }
@@ -850,7 +850,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getBodyContent()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBodyContent', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBodyContent', []);
 
         return parent::getBodyContent();
     }
@@ -861,7 +861,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setIsPremium($isPremium)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsPremium', array($isPremium));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsPremium', [$isPremium]);
 
         return parent::setIsPremium($isPremium);
     }
@@ -872,7 +872,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getIsPremium()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsPremium', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsPremium', []);
 
         return parent::getIsPremium();
     }
@@ -883,7 +883,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setTeaserHeadline($teaserHeadline)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTeaserHeadline', array($teaserHeadline));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTeaserHeadline', [$teaserHeadline]);
 
         return parent::setTeaserHeadline($teaserHeadline);
     }
@@ -894,7 +894,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getTeaserHeadline()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTeaserHeadline', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTeaserHeadline', []);
 
         return parent::getTeaserHeadline();
     }
@@ -905,7 +905,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setDefaultSkin($defaultSkin)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDefaultSkin', array($defaultSkin));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDefaultSkin', [$defaultSkin]);
 
         return parent::setDefaultSkin($defaultSkin);
     }
@@ -916,7 +916,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getDefaultSkin()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDefaultSkin', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDefaultSkin', []);
 
         return parent::getDefaultSkin();
     }
@@ -927,7 +927,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function setParentStoryId($parentStoryId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParentStoryId', array($parentStoryId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParentStoryId', [$parentStoryId]);
 
         return parent::setParentStoryId($parentStoryId);
     }
@@ -938,7 +938,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getParentStoryId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParentStoryId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParentStoryId', []);
 
         return parent::getParentStoryId();
     }
@@ -949,7 +949,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function addCompany(\Entity\Bzjpreview\StoryEntityCompany $company)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCompany', array($company));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCompany', [$company]);
 
         return parent::addCompany($company);
     }
@@ -960,7 +960,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function removeCompany(\Entity\Bzjpreview\StoryEntityCompany $company)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCompany', array($company));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCompany', [$company]);
 
         return parent::removeCompany($company);
     }
@@ -971,7 +971,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getCompanies()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCompanies', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCompanies', []);
 
         return parent::getCompanies();
     }
@@ -982,7 +982,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function addPerson(\Entity\Bzjpreview\StoryPerson $person)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addPerson', array($person));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addPerson', [$person]);
 
         return parent::addPerson($person);
     }
@@ -993,7 +993,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function removePerson(\Entity\Bzjpreview\StoryPerson $person)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removePerson', array($person));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removePerson', [$person]);
 
         return parent::removePerson($person);
     }
@@ -1004,7 +1004,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getPeople()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPeople', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPeople', []);
 
         return parent::getPeople();
     }
@@ -1015,7 +1015,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function addIndustry(\Entity\Bzjpreview\StoryVerticalSubtopic $industry)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addIndustry', array($industry));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addIndustry', [$industry]);
 
         return parent::addIndustry($industry);
     }
@@ -1026,7 +1026,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function removeIndustry(\Entity\Bzjpreview\StoryVerticalSubtopic $industry)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeIndustry', array($industry));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeIndustry', [$industry]);
 
         return parent::removeIndustry($industry);
     }
@@ -1037,7 +1037,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getIndustries()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIndustries', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIndustries', []);
 
         return parent::getIndustries();
     }
@@ -1048,7 +1048,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function addImage(\Entity\Bzjpreview\StoryImage $image)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addImage', array($image));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addImage', [$image]);
 
         return parent::addImage($image);
     }
@@ -1059,7 +1059,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function removeImage(\Entity\Bzjpreview\StoryImage $image)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeImage', array($image));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeImage', [$image]);
 
         return parent::removeImage($image);
     }
@@ -1070,7 +1070,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getImages()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getImages', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getImages', []);
 
         return parent::getImages();
     }
@@ -1081,7 +1081,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function addSpecialCategory(\Entity\Bzjpreview\StorySpecialCategory $specialCategory)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addSpecialCategory', array($specialCategory));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addSpecialCategory', [$specialCategory]);
 
         return parent::addSpecialCategory($specialCategory);
     }
@@ -1092,7 +1092,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function removeSpecialCategory(\Entity\Bzjpreview\StorySpecialCategory $specialCategory)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeSpecialCategory', array($specialCategory));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeSpecialCategory', [$specialCategory]);
 
         return parent::removeSpecialCategory($specialCategory);
     }
@@ -1103,7 +1103,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getSpecialCategories()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSpecialCategories', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSpecialCategories', []);
 
         return parent::getSpecialCategories();
     }
@@ -1114,7 +1114,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function addCorrection(\Entity\Bzjpreview\StoryCorrections $correction)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCorrection', array($correction));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCorrection', [$correction]);
 
         return parent::addCorrection($correction);
     }
@@ -1125,7 +1125,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function removeCorrection(\Entity\Bzjpreview\StoryCorrections $correction)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCorrection', array($correction));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCorrection', [$correction]);
 
         return parent::removeCorrection($correction);
     }
@@ -1136,7 +1136,7 @@ class StoryRead extends \Entity\Bzjpreview\StoryRead implements \Doctrine\ORM\Pr
     public function getCorrections()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCorrections', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCorrections', []);
 
         return parent::getCorrections();
     }

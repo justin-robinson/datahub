@@ -36,7 +36,7 @@ class MediaLink extends \Entity\Medialibrary\MediaLink implements \Doctrine\ORM\
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class MediaLink extends \Entity\Medialibrary\MediaLink implements \Doctrine\ORM\
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'link_id', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'use_source', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'cms_id', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'page_url', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'Media', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'Publication');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'link_id', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'use_source', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'cms_id', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'page_url', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'Media', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'Publication'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'link_id', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'use_source', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'cms_id', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'page_url', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'Media', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'Publication');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'link_id', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'media_id', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'pub_id', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'use_source', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'cms_id', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'page_url', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'created_at', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'Media', '' . "\0" . 'Entity\\Medialibrary\\MediaLink' . "\0" . 'Publication'];
     }
 
     /**
@@ -97,7 +97,7 @@ class MediaLink extends \Entity\Medialibrary\MediaLink implements \Doctrine\ORM\
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class MediaLink extends \Entity\Medialibrary\MediaLink implements \Doctrine\ORM\
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class MediaLink extends \Entity\Medialibrary\MediaLink implements \Doctrine\ORM\
     public function getLinkId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLinkId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLinkId', []);
 
         return parent::getLinkId();
     }
@@ -190,7 +190,7 @@ class MediaLink extends \Entity\Medialibrary\MediaLink implements \Doctrine\ORM\
     public function setMediaId($mediaId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaId', array($mediaId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMediaId', [$mediaId]);
 
         return parent::setMediaId($mediaId);
     }
@@ -201,7 +201,7 @@ class MediaLink extends \Entity\Medialibrary\MediaLink implements \Doctrine\ORM\
     public function getMediaId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMediaId', []);
 
         return parent::getMediaId();
     }
@@ -212,7 +212,7 @@ class MediaLink extends \Entity\Medialibrary\MediaLink implements \Doctrine\ORM\
     public function setPubId($pubId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPubId', array($pubId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPubId', [$pubId]);
 
         return parent::setPubId($pubId);
     }
@@ -223,7 +223,7 @@ class MediaLink extends \Entity\Medialibrary\MediaLink implements \Doctrine\ORM\
     public function getPubId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPubId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPubId', []);
 
         return parent::getPubId();
     }
@@ -234,7 +234,7 @@ class MediaLink extends \Entity\Medialibrary\MediaLink implements \Doctrine\ORM\
     public function setUseSource($useSource)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUseSource', array($useSource));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUseSource', [$useSource]);
 
         return parent::setUseSource($useSource);
     }
@@ -245,7 +245,7 @@ class MediaLink extends \Entity\Medialibrary\MediaLink implements \Doctrine\ORM\
     public function getUseSource()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUseSource', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUseSource', []);
 
         return parent::getUseSource();
     }
@@ -256,7 +256,7 @@ class MediaLink extends \Entity\Medialibrary\MediaLink implements \Doctrine\ORM\
     public function setCmsId($cmsId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCmsId', array($cmsId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCmsId', [$cmsId]);
 
         return parent::setCmsId($cmsId);
     }
@@ -267,7 +267,7 @@ class MediaLink extends \Entity\Medialibrary\MediaLink implements \Doctrine\ORM\
     public function getCmsId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCmsId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCmsId', []);
 
         return parent::getCmsId();
     }
@@ -278,7 +278,7 @@ class MediaLink extends \Entity\Medialibrary\MediaLink implements \Doctrine\ORM\
     public function setPageUrl($pageUrl)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPageUrl', array($pageUrl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPageUrl', [$pageUrl]);
 
         return parent::setPageUrl($pageUrl);
     }
@@ -289,7 +289,7 @@ class MediaLink extends \Entity\Medialibrary\MediaLink implements \Doctrine\ORM\
     public function getPageUrl()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPageUrl', []);
 
         return parent::getPageUrl();
     }
@@ -300,7 +300,7 @@ class MediaLink extends \Entity\Medialibrary\MediaLink implements \Doctrine\ORM\
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -311,7 +311,7 @@ class MediaLink extends \Entity\Medialibrary\MediaLink implements \Doctrine\ORM\
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -322,7 +322,7 @@ class MediaLink extends \Entity\Medialibrary\MediaLink implements \Doctrine\ORM\
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -333,7 +333,7 @@ class MediaLink extends \Entity\Medialibrary\MediaLink implements \Doctrine\ORM\
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -344,7 +344,7 @@ class MediaLink extends \Entity\Medialibrary\MediaLink implements \Doctrine\ORM\
     public function setMedia(\Entity\Medialibrary\Media $media = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMedia', array($media));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMedia', [$media]);
 
         return parent::setMedia($media);
     }
@@ -355,7 +355,7 @@ class MediaLink extends \Entity\Medialibrary\MediaLink implements \Doctrine\ORM\
     public function getMedia()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMedia', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMedia', []);
 
         return parent::getMedia();
     }
@@ -366,7 +366,7 @@ class MediaLink extends \Entity\Medialibrary\MediaLink implements \Doctrine\ORM\
     public function setPublication(\Entity\Medialibrary\Publication $publication = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublication', array($publication));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPublication', [$publication]);
 
         return parent::setPublication($publication);
     }
@@ -377,7 +377,7 @@ class MediaLink extends \Entity\Medialibrary\MediaLink implements \Doctrine\ORM\
     public function getPublication()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublication', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPublication', []);
 
         return parent::getPublication();
     }

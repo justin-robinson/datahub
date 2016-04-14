@@ -36,7 +36,7 @@ class Topic extends \Entity\Bizj\Topic implements \Doctrine\ORM\Proxy\Proxy
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Topic extends \Entity\Bizj\Topic implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'topic_id', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'usage_market', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'topic_code', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'topic_name', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'hidden', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'is_active');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'topic_id', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'usage_market', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'topic_code', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'topic_name', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'hidden', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'is_active'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'topic_id', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'usage_market', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'topic_code', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'topic_name', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'hidden', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'is_active');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'topic_id', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'usage_market', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'topic_code', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'topic_name', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'hidden', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'is_active'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Topic extends \Entity\Bizj\Topic implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Topic extends \Entity\Bizj\Topic implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class Topic extends \Entity\Bizj\Topic implements \Doctrine\ORM\Proxy\Proxy
     public function getTopicId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTopicId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTopicId', []);
 
         return parent::getTopicId();
     }
@@ -190,7 +190,7 @@ class Topic extends \Entity\Bizj\Topic implements \Doctrine\ORM\Proxy\Proxy
     public function setUsageMarket($usageMarket)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUsageMarket', array($usageMarket));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUsageMarket', [$usageMarket]);
 
         return parent::setUsageMarket($usageMarket);
     }
@@ -201,7 +201,7 @@ class Topic extends \Entity\Bizj\Topic implements \Doctrine\ORM\Proxy\Proxy
     public function getUsageMarket()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUsageMarket', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUsageMarket', []);
 
         return parent::getUsageMarket();
     }
@@ -212,7 +212,7 @@ class Topic extends \Entity\Bizj\Topic implements \Doctrine\ORM\Proxy\Proxy
     public function setTopicCode($topicCode)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTopicCode', array($topicCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTopicCode', [$topicCode]);
 
         return parent::setTopicCode($topicCode);
     }
@@ -223,7 +223,7 @@ class Topic extends \Entity\Bizj\Topic implements \Doctrine\ORM\Proxy\Proxy
     public function getTopicCode()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTopicCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTopicCode', []);
 
         return parent::getTopicCode();
     }
@@ -234,7 +234,7 @@ class Topic extends \Entity\Bizj\Topic implements \Doctrine\ORM\Proxy\Proxy
     public function setTopicName($topicName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTopicName', array($topicName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTopicName', [$topicName]);
 
         return parent::setTopicName($topicName);
     }
@@ -245,7 +245,7 @@ class Topic extends \Entity\Bizj\Topic implements \Doctrine\ORM\Proxy\Proxy
     public function getTopicName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTopicName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTopicName', []);
 
         return parent::getTopicName();
     }
@@ -256,7 +256,7 @@ class Topic extends \Entity\Bizj\Topic implements \Doctrine\ORM\Proxy\Proxy
     public function setHidden($hidden)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHidden', array($hidden));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHidden', [$hidden]);
 
         return parent::setHidden($hidden);
     }
@@ -267,7 +267,7 @@ class Topic extends \Entity\Bizj\Topic implements \Doctrine\ORM\Proxy\Proxy
     public function getHidden()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHidden', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHidden', []);
 
         return parent::getHidden();
     }
@@ -278,7 +278,7 @@ class Topic extends \Entity\Bizj\Topic implements \Doctrine\ORM\Proxy\Proxy
     public function setIsActive($isActive)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', array($isActive));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsActive', [$isActive]);
 
         return parent::setIsActive($isActive);
     }
@@ -289,7 +289,7 @@ class Topic extends \Entity\Bizj\Topic implements \Doctrine\ORM\Proxy\Proxy
     public function getIsActive()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', []);
 
         return parent::getIsActive();
     }

@@ -36,7 +36,7 @@ class AclResource extends \Entity\Admin\AclResource implements \Doctrine\ORM\Pro
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class AclResource extends \Entity\Admin\AclResource implements \Doctrine\ORM\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'acl_resource_id', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'parent_id', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'resource_name', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'description', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'resource_type', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'created_at', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'AclRolePrivilege');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'acl_resource_id', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'parent_id', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'resource_name', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'description', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'resource_type', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'created_at', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'AclRolePrivilege'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'acl_resource_id', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'parent_id', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'resource_name', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'description', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'resource_type', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'created_at', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'AclRolePrivilege');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'acl_resource_id', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'parent_id', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'resource_name', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'description', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'resource_type', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'created_at', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'updated_at', '' . "\0" . 'Entity\\Admin\\AclResource' . "\0" . 'AclRolePrivilege'];
     }
 
     /**
@@ -97,7 +97,7 @@ class AclResource extends \Entity\Admin\AclResource implements \Doctrine\ORM\Pro
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class AclResource extends \Entity\Admin\AclResource implements \Doctrine\ORM\Pro
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -179,7 +179,7 @@ class AclResource extends \Entity\Admin\AclResource implements \Doctrine\ORM\Pro
     public function getAclResourceId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAclResourceId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAclResourceId', []);
 
         return parent::getAclResourceId();
     }
@@ -190,7 +190,7 @@ class AclResource extends \Entity\Admin\AclResource implements \Doctrine\ORM\Pro
     public function setParentId($parentId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParentId', array($parentId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParentId', [$parentId]);
 
         return parent::setParentId($parentId);
     }
@@ -201,7 +201,7 @@ class AclResource extends \Entity\Admin\AclResource implements \Doctrine\ORM\Pro
     public function getParentId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParentId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParentId', []);
 
         return parent::getParentId();
     }
@@ -212,7 +212,7 @@ class AclResource extends \Entity\Admin\AclResource implements \Doctrine\ORM\Pro
     public function setResourceName($resourceName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setResourceName', array($resourceName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setResourceName', [$resourceName]);
 
         return parent::setResourceName($resourceName);
     }
@@ -223,7 +223,7 @@ class AclResource extends \Entity\Admin\AclResource implements \Doctrine\ORM\Pro
     public function getResourceName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getResourceName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getResourceName', []);
 
         return parent::getResourceName();
     }
@@ -234,7 +234,7 @@ class AclResource extends \Entity\Admin\AclResource implements \Doctrine\ORM\Pro
     public function setDescription($description)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', array($description));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', [$description]);
 
         return parent::setDescription($description);
     }
@@ -245,7 +245,7 @@ class AclResource extends \Entity\Admin\AclResource implements \Doctrine\ORM\Pro
     public function getDescription()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', []);
 
         return parent::getDescription();
     }
@@ -256,7 +256,7 @@ class AclResource extends \Entity\Admin\AclResource implements \Doctrine\ORM\Pro
     public function setResourceType($resourceType)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setResourceType', array($resourceType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setResourceType', [$resourceType]);
 
         return parent::setResourceType($resourceType);
     }
@@ -267,7 +267,7 @@ class AclResource extends \Entity\Admin\AclResource implements \Doctrine\ORM\Pro
     public function getResourceType()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getResourceType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getResourceType', []);
 
         return parent::getResourceType();
     }
@@ -278,7 +278,7 @@ class AclResource extends \Entity\Admin\AclResource implements \Doctrine\ORM\Pro
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -289,7 +289,7 @@ class AclResource extends \Entity\Admin\AclResource implements \Doctrine\ORM\Pro
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -300,7 +300,7 @@ class AclResource extends \Entity\Admin\AclResource implements \Doctrine\ORM\Pro
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -311,7 +311,7 @@ class AclResource extends \Entity\Admin\AclResource implements \Doctrine\ORM\Pro
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -322,7 +322,7 @@ class AclResource extends \Entity\Admin\AclResource implements \Doctrine\ORM\Pro
     public function addAclRolePrivilege(\Entity\Admin\AclRolePrivilege $aclRolePrivilege)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAclRolePrivilege', array($aclRolePrivilege));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addAclRolePrivilege', [$aclRolePrivilege]);
 
         return parent::addAclRolePrivilege($aclRolePrivilege);
     }
@@ -333,7 +333,7 @@ class AclResource extends \Entity\Admin\AclResource implements \Doctrine\ORM\Pro
     public function removeAclRolePrivilege(\Entity\Admin\AclRolePrivilege $aclRolePrivilege)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAclRolePrivilege', array($aclRolePrivilege));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeAclRolePrivilege', [$aclRolePrivilege]);
 
         return parent::removeAclRolePrivilege($aclRolePrivilege);
     }
@@ -344,7 +344,7 @@ class AclResource extends \Entity\Admin\AclResource implements \Doctrine\ORM\Pro
     public function getAclRolePrivilege()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAclRolePrivilege', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAclRolePrivilege', []);
 
         return parent::getAclRolePrivilege();
     }
