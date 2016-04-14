@@ -13,12 +13,16 @@
 		"zendframework/zend-developer-tools" : "@stable"
 	},
 	"minimum-stability" : "stable",
+	"config" : {
+	    "preferred-install" : "dist",
+	    "secure-http" : false
+	},
 	"repositories" : [{
 			"type" : "composer",
-			"url" : "http://packages.zendframework.com/"
+			"url" : "https://packages.zendframework.com/"
 		}, {
 			"type" : "composer",
-			"url" : "http://packages.bizjournals.int/"
+			"url" : "http://packages.bizj-internal.com/"
 		}
 	]
 }
