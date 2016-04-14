@@ -18,7 +18,7 @@ return [
             ],
             'orm_default' => [
                 'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
-                'params'      => array_merge($defaultMysqlConnectionParams, ['dbname' => 'bizj',]),
+                'params'      => array_merge($defaultMysqlConnectionParams, ['dbname' => 'datahub',]),
             ],
         ],
     ],
