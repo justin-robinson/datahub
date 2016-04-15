@@ -269,7 +269,7 @@ fputs($fd, '');
 
 
 //$db = new PDO('mysql:host=reportdb.bizjournals.int; dbname=recon', 'operations', 'operations');
-$db = new PDO('mysql:host=db02.bizjournals.int; dbname=recon', 'datahub', 'readonly');
+$db = new PDO('mysql:host=db02.bizjournals.int:3318; dbname=recon', 'datahub', 'readonly');
 //host: db02 db:recon
 //username: datahub
 //password: readonly
