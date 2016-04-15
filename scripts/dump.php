@@ -261,7 +261,7 @@ $secondChanceCountries = [
 //@$filename = '/tmp/refineryDump.csv';
  // if you're using vagrant this will "ust work" you will find it under dev/files on your host
 //@$filename = '/home/vagrant/files/refineryDump.csv';
-@$filename = '~/refineryDumpThatsWorthACrap.csv';
+@$filename = '/home/dbullard/refineryDumpThatsWorthACrap.csv';
 
 $fd = fopen($filename, 'w');
 
