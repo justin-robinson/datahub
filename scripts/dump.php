@@ -260,14 +260,20 @@ $secondChanceCountries = [
 
 //@$filename = '/tmp/refineryDump.csv';
  // if you're using vagrant this will "ust work" you will find it under dev/files on your host
-@$filename = '/home/vagrant/files/refineryDump.csv';
+//@$filename = '/home/vagrant/files/refineryDump.csv';
+@$filename = '~/refineryDumpThatsWorthACrap.csv';
 
 $fd = fopen($filename, 'w');
 
 fputs($fd, '');
 
 
-$db = new PDO('mysql:host=reportdb.bizjournals.int; dbname=recon', 'operations', 'operations');
+//$db = new PDO('mysql:host=reportdb.bizjournals.int; dbname=recon', 'operations', 'operations');
+$db = new PDO('mysql:host=db02.bizjournals.int; dbname=recon', 'datahub', 'readonly');
+//host: db02 db:recon
+//username: datahub
+//password: readonly
+
 $SQL = "
   SELECT
     id,

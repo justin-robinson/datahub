@@ -245,14 +245,7 @@ class MeroveusController extends AbstractActionController
         $this->addContactPdo    = $this->db->prepare($this->contactSql);
         $this->addCompanyPdo    = $this->db->prepare($this->createCompanySql);
         $this->updateCompanyPdo = $this->db->prepare($this->updateCompanySql);
-        // job title pdo and data
-        $this->getJobDictionaryPdo    = $this->db->prepare($this->getJobDictionarySql);
-        $this->updateJobDictionaryPdo = $this->db->prepare($this->updateJobTitleSql);
-        $query                        = $this->db->query($this->getJobDictionarySql);
-        $results                      = $query->fetchAll(\PDO::FETCH_OBJ);
-        foreach ($results as $result) {
-            $this->jobIdDictionary[$result->job_title] = $result->job_position_id;
-        }
+
     }
 
 
@@ -432,8 +425,8 @@ class MeroveusController extends AbstractActionController
                     if ($hubId || $debug) {
                         $this->processContacts($hubId, $target['execs'], $debug);
                     } else {
-                        echo "line 375" . ' in ' . "MeroveusController.php" . PHP_EOL;
-                        die(var_dump($target));
+//                        echo "line 435" . ' in ' . "MeroveusController.php" . PHP_EOL;
+//                        die(var_dump($target));
                     }
                     // track memory and total count
                     echo "\033[{$lastMemUsageMessageLength}D";
@@ -768,7 +761,7 @@ class MeroveusController extends AbstractActionController
      * query elastic for match
      *
      */
-    private function elasticMatch(array $target, $minScore = 11.9)
+    private function elasticMatch(array $target, $minScore = 9.9)
     {
         if (empty($target)) {
             echo 'empty target passed to elasticMatch' . PHP_EOL;
@@ -807,8 +800,7 @@ class MeroveusController extends AbstractActionController
 //        }
 //    }
 //}
-        // set up the elastic query
-        $this->elasticQuery->setQuery(
+            $this->elasticQuery->setQuery(
             $this->elasticQueryBuilder->query()->bool()
             ->addShould($this->elasticQueryBuilder->query()->match('Name.raw', $queryFields['Name']))
             ->addMust($this->elasticQueryBuilder->query()->match('Name', $queryFields['Name']))
@@ -816,6 +808,15 @@ class MeroveusController extends AbstractActionController
             ->addMust($this->elasticQueryBuilder->query()->match('City', $queryFields['City']))
             ->addMust($this->elasticQueryBuilder->query()->match('State', $queryFields['State']))
             ->addMust($this->elasticQueryBuilder->query()->match('PostalCode', $queryFields['PostalCode'])));
+
+        // set up the elastic query old
+
+//        $this->elasticQuery->setQuery($this->elasticQueryBuilder->query()->bool()->addShould($this->elasticQueryBuilder->query()->match('Name',
+//            $queryFields['Name']))->addShould($this->elasticQueryBuilder->query()->match('Addr1',
+//            $queryFields['Addr1']))->addMust($this->elasticQueryBuilder->query()->match('City',
+//            $queryFields['City']))->addMust($this->elasticQueryBuilder->query()->match('State',
+//            $queryFields['State']))->addMust($this->elasticQueryBuilder->query()->match('PostalCode',
+//            $queryFields['PostalCode'])));
 
         // set the minimum score that we consider a match
         // https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-min-score.html
