@@ -2,6 +2,7 @@
 $defaultMysqlConnectionParams = [
     'charset'       => 'utf8',
     'host'          => 'devdb.bizjournals.int',
+    'dbname'        => 'datahub',
     'port'          => '3306',
     'user'          => 'web',
     'password'      => '',

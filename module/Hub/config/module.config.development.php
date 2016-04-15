@@ -2,12 +2,14 @@
 $defaultMysqlConnectionParams = [
     'charset'       => 'utf8',
     'host'          => 'devdb.bizj-internal.com',
+    'dbname'        => 'datahub',
     'port'          => '3306',
     'user'          => 'web',
     'password'      => '',
     'driverOptions' => [
         1002 => 'SET NAMES utf8'
     ],
+
 ];
 return [
 
@@ -60,11 +62,6 @@ return [
 //        'url'  => '127.0.0.1:9200/companies',
 //    ],
 
-    'pdo-datahub'=> [
-        'host' => 'devdb.bizjournals.int',
-        'dbname' => 'datahub',
-        'usename' => 'web',
-        'pword' => '',
-    ],
+    'pdo-datahub'=> $defaultMysqlConnectionParams,
 
 ];

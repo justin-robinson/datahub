@@ -107,22 +107,6 @@ class MeroveusController extends AbstractActionController
      */
     private $elasticQueryBuilder;
 
-    /**
-     * @var \PDO
-     */
-    private $dataHubDb;
-
-    /**
-     * @var string
-     */
-    private $updateJobTitleSql = 'INSERT INTO
-            job_position_dictionary(
-              job_position_id, job_title
-            )
-            VALUES(
-              :job_position_id, :job_title
-            ) ';
-
     /** @var string */
     private $contactSql = 'INSERT INTO
             contact (
@@ -156,9 +140,6 @@ class MeroveusController extends AbstractActionController
             ';
 
     /** @var string */
-    private $getJobDictionarySql = 'SELECT job_title, job_position_id FROM job_position_dictionary ORDER BY job_position_id ASC';
-
-    /** @var string */
     private $updateCompanySql = '
       UPDATE
        company
@@ -180,12 +161,6 @@ class MeroveusController extends AbstractActionController
 
     /** @var \PDOStatement */
     private $updateCompanyPdo = null;
-
-    /** @var \PDOStatement */
-    private $getJobDictionaryPdo = null;
-
-    /** @var \PDOStatement */
-    private $updateJobDictionaryPdo = null;
 
     /**
      * @var array
