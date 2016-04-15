@@ -589,9 +589,6 @@ class MeroveusController extends AbstractActionController
 
         $filePath = $this->getRequest()->getParam('file');
 
-        // hardcoding filepath to work around cli arg bug
-        $filePath = "/Users/justinrobinson/Documents/datahub/sicToMeroveus.csv";
-
         if ( !$filePath ) {
             die ( 'run with arg --file /path/to/file ');
         }
@@ -650,8 +647,7 @@ class MeroveusController extends AbstractActionController
      */
     public function mapThirdPartySicAction () {
 
-        // hardcoding filepath to work around cli arg bug
-        $filePath = "/Users/justinrobinson/Documents/datahub/qtqB1259rel_Out_25159.csv";
+        $filePath = $this->getRequest()->getParam('file');
 
         if ( !$filePath ) {
             die ( 'run with arg --file /path/to/file ');
