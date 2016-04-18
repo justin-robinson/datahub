@@ -1,7 +1,8 @@
 <?php
 $defaultMysqlConnectionParams = [
     'charset'       => 'utf8',
-    'host'          => 'hubdb.bizj-staging.com',
+    'host'          => 'acbj-data-staging-datahub.calx84y1wzxr.us-east-1.rds.amazonaws.com',
+    'dbname'        => 'datahub',
     'port'          => '3306',
     'user'          => 'datahub-read',
     'password'      => 'f7e20051-a346-40dc-8240-5871cb3948cc',

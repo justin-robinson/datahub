@@ -1,0 +1,43 @@
+input {
+  stdin {
+    type => lists
+  }
+}
+filter {
+    if [type] == "lists" {
+      csv {
+        source => "message"
+        columns => [
+          "row_id",
+          "list_id",
+          "rank",
+          "rank_value",
+          "prior_rank",
+          "object_type",
+          "object_id",
+          "company_name",
+          "address1",
+          "address2",
+          "city",
+          "state ",
+          "zipcode ",
+          "phone_number",
+          "public_email",
+          "website ",
+          "recon_id ",
+          "display_data ",
+          "footnote_data ",
+          "is_active ",
+          "list_order  ",
+          "created_at  ",
+          "updated_at"
+          ]
+      }
+    }
+}
+output {
+  elasticsearch {
+      hosts => ["172.17.0.1:9200"]
+      index => "lists"
+  }
+}

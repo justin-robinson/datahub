@@ -1,0 +1,41 @@
+{
+  "query":       {
+    "bool": {
+      "should": [
+        {
+          "match": {
+            "company_name": "M+W U.S. Inc. - A Company of the M+W Group"
+          }
+        },
+        {
+          "match": {
+            "object_id": "260175"
+          }
+        }
+      ]
+    }
+  },
+  "controls":    {
+    "use_significance": true,
+    "sample_size":      2000,
+    "timeout":          5000
+  },
+  "connections": {
+    "vertices": [
+      {
+        "field":         "list_id",
+        "size":          20,
+        "min_doc_count": 1
+      }
+    ]
+  },
+  "vertices":    [
+    {
+      "field": "list_id"
+    },
+    {
+      "field": "company_name"
+    }
+  ]
+}
+

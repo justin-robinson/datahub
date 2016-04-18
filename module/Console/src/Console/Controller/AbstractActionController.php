@@ -50,9 +50,13 @@ abstract class AbstractActionController extends ZendAbstractActionController
 
     public function init(MvcEvent $e)
     {
-        //@todo redo the env stuff
         try{
-            $this->db = new \PDO('mysql:host=devdb.bizjournals.int;dbname=datahub', 'web', '');
+            $config = $this->getServiceLocator()->get('Config')['pdo-datahub'];
+            $this->db = new \PDO(
+                "mysql:host={$config['host']};dbname={$config['dbname']}",
+                $config['user'],
+                $config['password'],
+                $config['driverOptions']);
             $this->db->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
 
         } catch (\PDOException $e){
@@ -62,6 +66,10 @@ abstract class AbstractActionController extends ZendAbstractActionController
         // prepare sql statements
         foreach ( $this->sqlStringsArray as $name => $sqlString ) {
             $this->sqlStatementsArray[$name] = $this->db->prepare( $sqlString );
+            if (!$this->sqlStatementsArray[$name]) {
+                echo PHP_EOL . "PDO::errorInfo():" . PHP_EOL;
+                print_r($this->db->errorInfo());
+            }
             $this->sqlStatementsArray[$name]->setFetchMode(\PDO::FETCH_ASSOC);
         }
     }

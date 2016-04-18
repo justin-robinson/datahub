@@ -6,7 +6,7 @@
 | url | http://elb.es.datahub.bizj-dev.com:9200 | http://elb.es.datahub.bizj-dev.com:9200 | http://elb.es.datahub.bizj-internal.com:9200 | http://elb.es.datahub.bizj-internal.com:9200 |
 ### to delete indexes from elastic:
 ```shell
-curl -sXDELETE <path_to_your_elastic_instance>:<port>/<index> 
+curl -sXDELETE <path_to_your_elastic_instance>:<port>/<index>
 ```
 ### example
 ```shell
@@ -14,11 +14,11 @@ curl -sXDELETE http://datahub.listsandleads.elasticsearch.bizj-dev.com:9200/rere
 ```
 ## before you reimport data
 delete any “.sincedb_<hash?> files from your home dir
-    
+
 ## to run the logstash export:
     run :<path/to/logstash -f <your_file>.conf
 ### example
-```shell    
+```shell
 /opt/logstash/bin/logstash -f listLeads.conf
 ```
 you may want to symlink config/logstash/refineryDump.conf to wherever your logstash install lives
@@ -33,7 +33,7 @@ go to http://localhost:5601/
 ```shell
 sudo /var/www/datahub/scripts/run.php import refinery -e development --file=/home/vagrant/files/refineryDump.csv
 ```
-    
+
 ## matching:
 run it from /scripts
 ```shell
@@ -53,3 +53,47 @@ or
 ```shell
 aws s3 cp /datahub/repo/logstash/company_stash.json s3://acbj-team-data/datahub/<environment>/company_stash.json
 ```
+
+## graph notes
+here's a basic graph query
+```json
+GET lists/_graph/explore
+{
+    "query": {
+		"query_string": {
+			"default_field": "_all",
+			"query": "chiquita"
+		}
+	},
+	"controls": {
+		"use_significance": true,
+		"sample_size": 2000,
+		"timeout": 5000
+	},
+	"connections": {
+		"vertices": [
+			{
+				"field": "list_id",
+				"size": 5,
+				"min_doc_count": 3
+			}
+		]
+	},
+	"vertices": [
+		{
+			"field": "company_name",
+			"size": 5,
+			"min_doc_count": 3
+		},
+		{
+			"field": "list_id",
+			"size": 5,
+			"min_doc_count": 3
+		},
+        {
+    		"field": "object_id",
+			"size": 5,
+			"min_doc_count": 3
+		}
+	]
+}

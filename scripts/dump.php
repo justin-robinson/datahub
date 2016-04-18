@@ -258,14 +258,21 @@ $secondChanceCountries = [
     'NL' => 'THE NETHERLANDS',
 ];
 
-@$filename = '/tmp/refineryDump.csv';
+//@$filename = '/tmp/refineryDump.csv';
+ // if you're using vagrant this will "ust work" you will find it under dev/files on your host
+//@$filename = '/home/vagrant/files/refineryDump.csv';
+@$filename = '/home/dbullard/refineryDumpThatsWorthACrap.csv';
 
 $fd = fopen($filename, 'w');
 
 fputs($fd, '');
 
-$db  = new PDO('mysql:host=radb.bizjournals.int; dbname=recon', 'operations', 'operations');
-$db2 = new PDO('mysql:host=reportdb.bizjournals.int; dbname=bizj', 'operations', 'operations');
+
+//$db = new PDO('mysql:host=reportdb.bizjournals.int; dbname=recon', 'operations', 'operations');
+$db = new PDO('mysql:host=db02.bizjournals.int:3318; dbname=recon', 'datahub', 'readonly');
+//host: db02 db:recon
+//username: datahub
+//password: readonly
 
 $SQL = "
   SELECT

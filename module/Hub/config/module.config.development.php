@@ -1,13 +1,15 @@
 <?php
 $defaultMysqlConnectionParams = [
     'charset'       => 'utf8',
-    'host'          => 'devdb.bizjournals.int',
+    'host'          => 'devdb.bizj-internal.com',
+    'dbname'        => 'datahub',
     'port'          => '3306',
     'user'          => 'web',
     'password'      => '',
     'driverOptions' => [
         1002 => 'SET NAMES utf8'
     ],
+
 ];
 return [
 
@@ -50,14 +52,16 @@ return [
         'host' => 'http://elb.elasticsearch.datahub.bizj-dev.com',
         'path' => 'current/',
         'port' => '9200',
-        'url'  => 'http://elb.elasticsearch.datahub.bizj-dev.com:9200/current',
+        'url'  => 'http://elb.elasticsearch.datahub.bizj-dev.com:9200/companies',
     ],
+//
+//    'elastica-datahub' => [
+//        'host' => '127.0.0.1',
+//        'path' => 'companies/',
+//        'port' => '9200',
+//        'url'  => '127.0.0.1:9200/companies',
+//    ],
 
-    'pdo-datahub'=> [
-        'host' => 'devdb.bizjournals.int',
-        'dbname' => 'datahub',
-        'usename' => 'web',
-        'pword' => '',
-    ],
+    'pdo-datahub'=> $defaultMysqlConnectionParams,
 
 ];

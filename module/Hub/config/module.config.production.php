@@ -1,10 +1,11 @@
 <?php
 $defaultMysqlConnectionParams = [
     'charset'       => 'utf8',
-    'host'          => 'hubdb.bizj-production.com',
-    'name'          => 'datahub',
-    'user'          => 'datahub-read',
-    'password'      => 'f7e20051-a346-40dc-8240-5871cb3948cc',
+    'host'          => 'acbj-data-production-datahub.calx84y1wzxr.us-east-1.rds.amazonaws.com',
+    'dbname'        => 'datahub',
+    'port'          => '3306',
+    'user'          => 'datahub-write',
+    'password'      => '9c6a57fe-7132-4d9c-8ab2-6ed0a85c64ac',
     'driverOptions' => [
         1002 => 'SET NAMES utf8',
     ],
