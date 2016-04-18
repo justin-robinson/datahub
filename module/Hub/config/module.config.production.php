@@ -28,7 +28,7 @@ return [
         ],
     ],
 
-    'elastica-datahub' => [
+    'elastica' => [
         'host' => 'http://elb.elasticsearch.datahub.bizj-internal.com',
         'path' => 'current/',
         'port' => '9200',
