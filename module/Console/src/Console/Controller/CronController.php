@@ -24,15 +24,12 @@ class CronController extends AbstractActionController {
         // that looks like a good spot to save a file
         $timestamp = time();
         $csvFilePath = "/tmp/datahub-cron-recon-dump-{$timestamp}.csv";
-        $jsonFilePath = "/tmp/datahub-cron-recon-dump-{$timestamp}.json";
 
         // tell em where it's at
         echo $csvFilePath . PHP_EOL;
-        echo $jsonFilePath . PHP_EOL;
 
         // get something to write to deez ladies
         $csvFileHandle = new CsvIterator( $csvFilePath, 'w' );
-        $jsonFileHandle = new \SplFileObject($jsonFilePath, 'w');
 
         // these are our fancy column names/object properties
         $headers = [
@@ -112,8 +109,17 @@ class CronController extends AbstractActionController {
 
         $results = $db->query( $sql, \PDO::FETCH_ASSOC );
 
+        $elasticChunkNumber = 0;
         // parse each row into a csv and json file
         foreach ( $results as $index => $row ) {
+
+            // chunk elastic bulk data into 50000 entries
+            if ( $index % 50000 === 0 ) {
+                ++$elasticChunkNumber;
+                $jsonFilePath = "/tmp/datahub-cron-recon-dump-{$timestamp}-{$elasticChunkNumber}.json";
+                $jsonFileHandle = new \SplFileObject($jsonFilePath, 'w');
+                echo $jsonFilePath . PHP_EOL;
+            }
             $row['TickerExchange'] = strpos( $row['TickerExchange'], 'NASDAQ' ) !== false ? 'NASDAQ' : $row['TickerExchange'];
             $row['TickerExchange'] = strpos( $row['TickerExchange'], 'York Stock' ) !== false ? 'NYSE' : $row['TickerExchange'];
             $row['ExternalId'] = strlen( $row['ExternalId'] ) > 12 ? $row['ExternalId'] : '';
