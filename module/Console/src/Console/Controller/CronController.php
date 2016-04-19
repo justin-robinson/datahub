@@ -5,6 +5,7 @@ namespace Console\Controller;
 use Console\Countries;
 use Console\CsvIterator;
 use Console\DB\Connection\DB;
+use Console\Importer\Refinery;
 
 /**
  * Class CronController
@@ -195,6 +196,10 @@ class CronController extends AbstractActionController {
             $jsonFileHandle->fwrite($elasticActionRow);
             $jsonFileHandle->fwrite(json_encode(array_combine($headers, $outputLine)) . "\n");
         }
+
+        // import the new data into meroveus
+        $importer = new Refinery();
+        $importer->import($csvFilePath, $this->db);
 
     }
 
