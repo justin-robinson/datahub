@@ -10,6 +10,7 @@ abstract class ImporterAbstract {
 
     /**
      * @param $filePath
+     * @param $db \PDO
      *
      * @return mixed
      */
