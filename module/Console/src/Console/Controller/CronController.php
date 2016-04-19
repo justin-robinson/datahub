@@ -186,7 +186,7 @@ class CronController extends AbstractActionController {
                 $row['SIC'],
             ];
             $csvFileHandle->fputcsv($outputLine);
-            $jsonFileHandle->fwrite($elasticActionRow);
+            $jsonFileHandle->fwrite($elasticActionRow . '\n');
             $jsonFileHandle->fwrite(json_encode(array_combine($headers, $outputLine)) . '\n');
         }
 
