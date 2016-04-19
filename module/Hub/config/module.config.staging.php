@@ -29,4 +29,19 @@ return [
         'port' => '9200',
         'url'  => 'http://elb.elasticsearch.datahub.bizj-staging.com/:9200/current/',
     ],
+
+    'pdo' => [
+        'datahub' => $defaultMysqlConnectionParams,
+        'db02' => [
+            'charset'       => 'utf8',
+            'host'          => 'db02.bizj-internal.com',
+            'dbname'        => 'recon',
+            'port'          => '3318',
+            'user'          => 'datahub',
+            'password'      => 'readonly',
+            'driverOptions' => [
+                1002 => 'SET NAMES utf8'
+            ],
+        ],
+    ]
 ];
