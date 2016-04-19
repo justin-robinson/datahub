@@ -63,7 +63,7 @@ class CronController extends AbstractActionController {
                 "_index" => 'companies',
                 "_type"  => 'company',
             ],
-        ]) . '\n';
+        ]) . "\n";
 
         // write the header rows to the csv
         $csvFileHandle->fputcsv( $headers );
@@ -187,7 +187,7 @@ class CronController extends AbstractActionController {
             ];
             $csvFileHandle->fputcsv($outputLine);
             $jsonFileHandle->fwrite($elasticActionRow);
-            $jsonFileHandle->fwrite(json_encode(array_combine($headers, $outputLine)) . '\n');
+            $jsonFileHandle->fwrite(json_encode(array_combine($headers, $outputLine)) . "\n");
         }
 
     }
