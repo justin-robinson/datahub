@@ -85,6 +85,8 @@ class Buffer {
     /**
      * Buffers the insertion values and flushes the buffer if it has grown too large
      *
+     * NOTE: the order of $columnValues must match the order of $this->columnNames
+     *
      * @param $columnValues
      */
     public function insert ( $columnValues ) {
