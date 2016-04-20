@@ -5,7 +5,7 @@ namespace Console\DB\Query;
 use Console\DB\Error\BufferException;
 
 /**
- * Buffers multiple db inserts into one large insert statements
+ * Buffers multiple db inserts into one large insert statement
  *
  * Class Buffer
  * @package Console\DB\Query
