@@ -5,6 +5,8 @@ namespace Console\DB\Query;
 use Console\DB\Error\BufferException;
 
 /**
+ * Buffers multiple db inserts into one large insert statements
+ *
  * Class Buffer
  * @package Console\DB\Query
  */
@@ -138,7 +140,7 @@ class Buffer {
     }
 
     /**
-     * Resets the buffer
+     * Destructively clears the buffers content
      */
     private function reset () {
 
