@@ -10,7 +10,7 @@ use Console\Record\Formatter\Factory;
  * Class Refinery
  * @package Console\Importer
  */
-class Refinery extends ImporterAbstract{
+class Refinery extends ImporterAbstract {
 
     /**
      * @param $csvFile
@@ -22,10 +22,10 @@ class Refinery extends ImporterAbstract{
     public function import ( $csvFile, $db ) {
 
         // open file as csv
-        $file = new CsvIterator($csvFile);
+        $file = new CsvIterator( $csvFile );
 
         // we have a header row woohoo!
-        $file->setHasHeaderRow(true);
+        $file->setHasHeaderRow( true );
 
         // how many rows we processed
         $count = 0;
@@ -60,15 +60,15 @@ class Refinery extends ImporterAbstract{
             'deleted_at',
         ];
         $bufferLimit = 1000;
-        $sqlValuesTemplate = '(' . implode( ',', array_fill( 0, count($columnNames) - 3, '?')) . ', NOW(), NOW(), 0)';
+        $sqlValuesTemplate = '(' . implode( ',', array_fill( 0, count( $columnNames ) - 3, '?' ) ) . ', NOW(), NOW(), 0)';
 
-        $queryBuffer = new Buffer($bufferLimit, $db, $bufferTable, $columnNames, $sqlValuesTemplate);
+        $queryBuffer = new Buffer( $bufferLimit, $db, $bufferTable, $columnNames, $sqlValuesTemplate );
 
         // data formatter
-        $formatter = Factory::factory('importmeroveus');
+        $formatter = Factory::factory( 'importmeroveus' );
 
         // process the rows
-        foreach ($file as $record) {
+        foreach ( $file as $record ) {
 
             try {
                 // why don't we merge automatically?
@@ -76,12 +76,12 @@ class Refinery extends ImporterAbstract{
                 // cause the loop to break.  This way we can continue processing the remaining rows
                 $queryBuffer->insert(
                     $formatter->format(
-                        $file->mergeWithHeaderRow($record)
+                        $file->mergeWithHeaderRow( $record )
                     )
                 );
 
                 $count++;
-            } catch (\Exception $e) {
+            } catch ( \Exception $e ) {
                 // CsvIterator throws an exception when number of columns in the header row
                 // and the current line do not match
                 echo $e->getMessage() . PHP_EOL;

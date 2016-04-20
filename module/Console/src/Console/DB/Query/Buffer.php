@@ -13,7 +13,7 @@ class Buffer {
     /**
      * @var string[]
      */
-    private $buffer = [];
+    private $buffer = [ ];
 
     /**
      * The size of the buffer to trigger an insert
@@ -57,10 +57,10 @@ class Buffer {
     /**
      * Buffer constructor.
      *
-     * @param      $bufferLimit int
-     * @param      $db \PDO
-     * @param      $table string
-     * @param      $columnNames string[]
+     * @param      $bufferLimit       int
+     * @param      $db                \PDO
+     * @param      $table             string
+     * @param      $columnNames       string[]
      * @param null $sqlValuesTemplate string
      */
     public function __construct ( $bufferLimit, \PDO $db, $table, array $columnNames, $sqlValuesTemplate = null ) {
@@ -68,12 +68,12 @@ class Buffer {
         $this->bufferLimit = $bufferLimit;
         $this->db = $db;
         $this->table = $table;
-        $this->columnNames = implode(',', $columnNames);
+        $this->columnNames = implode( ',', $columnNames );
 
         // if no values template was given create one
         // ( ?, ?, ?)
-        if ( $sqlValuesTemplate === null ) {
-            $sqlValuesTemplate = '(' . implode( ',', array_fill( 0, count( $columnNames), '?')) . ')';
+        if( $sqlValuesTemplate === null ) {
+            $sqlValuesTemplate = '(' . implode( ',', array_fill( 0, count( $columnNames ), '?' ) ) . ')';
         }
         $this->sqlValuesTemplate = $sqlValuesTemplate;
 
@@ -82,12 +82,13 @@ class Buffer {
 
     /**
      * Buffers the insertion values and flush the buffer if it has grown too large
+     *
      * @param $columnValues
      */
     public function insert ( $columnValues ) {
 
         // add new values to the buffer
-        $this->buffer = array_merge($this->buffer, $columnValues);
+        $this->buffer = array_merge( $this->buffer, $columnValues );
 
         // increment buffer size
         $this->bufferSize++;
@@ -96,7 +97,7 @@ class Buffer {
         $this->sqlValues .= $this->sqlValuesTemplate . ',';
 
         // flush if buffer is too large
-        if ( $this->bufferSize >= $this->bufferLimit ) {
+        if( $this->bufferSize >= $this->bufferLimit ) {
             $this->flush();
         }
     }
@@ -106,12 +107,12 @@ class Buffer {
      */
     public function flush () {
 
-        if ( $this->bufferSize === 0 ){
+        if( $this->bufferSize === 0 ) {
             return;
         }
 
         //  remove trailing commas from built sql values
-        $this->sqlValues = rtrim($this->sqlValues, ',');
+        $this->sqlValues = rtrim( $this->sqlValues, ',' );
 
         // build insert statement
         $sql =
@@ -124,13 +125,13 @@ class Buffer {
             ";
 
         // prepare the sql
-        $preparedSql = $this->db->prepare($sql);
-        if ( !$preparedSql ) {
-            throw new BufferException(var_export($this->db->errorInfo()));
+        $preparedSql = $this->db->prepare( $sql );
+        if( !$preparedSql ) {
+            throw new BufferException( var_export( $this->db->errorInfo() ) );
         }
 
         // INSERT
-        $preparedSql->execute($this->buffer);
+        $preparedSql->execute( $this->buffer );
 
         // reset the buffer
         $this->reset();
@@ -139,9 +140,10 @@ class Buffer {
     /**
      * Resets the buffer
      */
-    private function reset() {
+    private function reset () {
+
         $this->bufferSize = 0;
-        $this->buffer = [];
+        $this->buffer = [ ];
         $this->sqlValues = '';
     }
 
