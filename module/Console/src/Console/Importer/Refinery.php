@@ -3,6 +3,7 @@
 namespace Console\Importer;
 
 use Console\CsvIterator;
+use Console\DB\Query\Buffer;
 use Console\Record\Formatter\Factory;
 
 /**
@@ -29,61 +30,39 @@ class Refinery extends ImporterAbstract{
         // how many rows we processed
         $count = 0;
 
-        // prepare our insert
-        $insertCompanyStmt = $db->prepare('
-            INSERT INTO
-                datahub.company(
-                    refinery_id,
-                    meroveus_id,
-                    generate_code,
-                    record_source,
-                    company_name,
-                    public_ticker,
-                    ticker_exchange,
-                    source_modified_at,
-                    address1,
-                    address2,
-                    city,
-                    state,
-                    postal_code,
-                    country,
-                    latitude,
-                    longitude,
-                    phone,
-                    website,
-                    is_active,
-                    sic_code,
-                    employee_count,
-                    created_at,
-                    updated_at,
-                    deleted_at
-                    )
-                VALUES (
-                    :refinery_id,
-                    :meroveus_id,
-                    :generate_code,
-                    :record_source,
-                    :company_name,
-                    :public_ticker,
-                    :ticker_exchange,
-                    :source_modified_at,
-                    :address1,
-                    :address2,
-                    :city,
-                    :state,
-                    :postal_code,
-                    :country,
-                    :latitude,
-                    :longitude,
-                    :phone,
-                    :website,
-                    :is_active,
-                    :sic_code,
-                    :employee_count,
-                    NOW(),
-                    NOW(),
-                    0
-                )');
+        // There is limit 65,535 (2^16-1) place holders in prepared sql statements in mariadb
+        // we have 21 per insert which gives us 3,120 max buffered inserts
+        $bufferTable = 'datahub.company';
+        $columnNames = [
+            'refinery_id',
+            'meroveus_id',
+            'generate_code',
+            'record_source',
+            'company_name',
+            'public_ticker',
+            'ticker_exchange',
+            'source_modified_at',
+            'address1',
+            'address2',
+            'city',
+            'state',
+            'postal_code',
+            'country',
+            'latitude',
+            'longitude',
+            'phone',
+            'website',
+            'is_active',
+            'sic_code',
+            'employee_count',
+            'created_at',
+            'updated_at',
+            'deleted_at',
+        ];
+        $bufferLimit = 1000;
+        $sqlValuesTemplate = '(' . implode( ',', array_fill( 0, count($columnNames) - 3, '?')) . ', NOW(), NOW(), 0)';
+
+        $queryBuffer = new Buffer($bufferLimit, $db, $bufferTable, $columnNames, $sqlValuesTemplate);
 
         // data formatter
         $formatter = Factory::factory('importmeroveus');
@@ -95,11 +74,11 @@ class Refinery extends ImporterAbstract{
                 // why don't we merge automatically?
                 // because then we would have to try catch around the foreach loop and that would
                 // cause the loop to break.  This way we can continue processing the remaining rows
-                $record = $file->mergeWithHeaderRow($record);
-
-                $queryParams = $formatter->format($record);
-
-                $insertCompanyStmt->execute($queryParams);
+                $queryBuffer->insert(
+                    $formatter->format(
+                        $file->mergeWithHeaderRow($record)
+                    )
+                );
 
                 $count++;
             } catch (\Exception $e) {
@@ -109,6 +88,8 @@ class Refinery extends ImporterAbstract{
             }
 
         }
+
+        $queryBuffer->flush();
 
         return $count;
     }

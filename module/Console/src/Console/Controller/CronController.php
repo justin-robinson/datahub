@@ -199,7 +199,9 @@ class CronController extends AbstractActionController {
 
         // import the new data into meroveus
         $importer = new Refinery();
-        $importer->import($csvFilePath, $this->db);
+        $count = $importer->import($csvFilePath, $this->db);
+
+        printf("Imported %s record(s) into Meroveus", $count);
 
     }
 
