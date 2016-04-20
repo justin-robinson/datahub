@@ -83,7 +83,7 @@ class Buffer {
     }
 
     /**
-     * Buffers the insertion values and flush the buffer if it has grown too large
+     * Buffers the insertion values and flushes the buffer if it has grown too large
      *
      * @param $columnValues
      */
