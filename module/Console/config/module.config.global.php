@@ -24,13 +24,22 @@ return array(
                 ),
                 'meroveus' => array(
                     'options' => array(
-                        'route' => 'meroveus [<action>] [--env=] [--id=s] [-c=s] [-e=s]',
+                        'route' => 'meroveus [<action>] [--env=] [--id=s] [-c=s] [--file=s] [-e=s]',
                         'defaults' => array(
                             'controller' => 'Console\Controller\Meroveus',
                             'action' => 'index',
                         ),
                     ),
                 ),
+                'cron' => [
+                    'options' => [
+                        'route' => 'cron [<action>] [--env=] [-e=s] [--days=s]',
+                        'defaults' => [
+                            'controller' => 'Console\Controller\Cron',
+                            'action' => 'index'
+                        ]
+                    ]
+                ]
             ),
         ),
     ),
@@ -39,6 +48,7 @@ return array(
             'Console\Controller\Index'      => 'Console\Controller\IndexController',
             'Console\Controller\Import'     => 'Console\Controller\ImportController',
             'Console\Controller\Meroveus'   => 'Console\Controller\MeroveusController',
+            'Console\Controller\Cron'       => 'Console\Controller\CronController',
         ),
     ),
     'logger' => array(

@@ -1,0 +1,112 @@
+{
+  "mappings": {
+    "lists": {
+      "properties": {
+        "@timestamp":     {
+          "type":   "date",
+          "format": "strict_date_optional_time||epoch_millis"
+        },
+        "@version":       {
+          "type": "string"
+        },
+        "address1":       {
+          "type":  "string",
+          "store": true,
+          "index": "not_analyzed"
+        },
+        "address2":       {
+          "type":  "string",
+          "store": true,
+          "index": "not_analyzed"
+        },
+        "city":           {
+          "type":  "string",
+          "store": true,
+          "index": "not_analyzed"
+        },
+        "company_name":   {
+          "type":  "string",
+          "store": true,
+          "index": "not_analyzed"
+        },
+        "created_at":   {
+          "type": "string"
+        },
+        "display_data ":  {
+          "type": "string"
+        },
+        "footnote_data ": {
+          "type": "string"
+        },
+        "host":           {
+          "type": "string"
+        },
+        "is_active ":     {
+          "type": "string"
+        },
+        "list_id":        {
+          "type": "integer"
+        },
+        "list_order  ":   {
+          "type": "string"
+        },
+        "message":        {
+          "type": "string"
+        },
+        "object_id":      {
+          "type": "string"
+        },
+        "object_type":    {
+          "type": "string"
+        },
+        "phone_number":   {
+          "type": "string",
+          "store": true,
+          "index": "not_analyzed"
+        },
+        "prior_rank":     {
+          "type": "string"
+        },
+        "public_email":   {
+          "type": "string",
+          "store": true,
+          "index": "not_analyzed"
+        },
+        "rank":           {
+          "type": "string"
+        },
+        "rank_value":     {
+          "type": "string"
+        },
+        "recon_id ":      {
+          "type": "string"
+        },
+        "row_id":         {
+          "type": "string"
+        },
+        "state ":         {
+          "type": "string",
+          "store": true,
+          "index": "not_analyzed"
+        },
+        "tags":           {
+          "type": "string"
+        },
+        "type":           {
+          "type": "string"
+        },
+        "updated_at":     {
+          "type": "string"
+        },
+        "website ":       {
+          "type": "string",
+          "store": true,
+          "index": "not_analyzed"
+        },
+        "zipcode ":       {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

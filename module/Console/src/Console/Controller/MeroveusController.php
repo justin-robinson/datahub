@@ -107,22 +107,6 @@ class MeroveusController extends AbstractActionController
      */
     private $elasticQueryBuilder;
 
-    /**
-     * @var \PDO
-     */
-    private $dataHubDb;
-
-    /**
-     * @var string
-     */
-    private $updateJobTitleSql = 'INSERT INTO
-            job_position_dictionary(
-              job_position_id, job_title
-            )
-            VALUES(
-              :job_position_id, :job_title
-            ) ';
-
     /** @var string */
     private $contactSql = 'INSERT INTO
             contact (
@@ -156,9 +140,6 @@ class MeroveusController extends AbstractActionController
             ';
 
     /** @var string */
-    private $getJobDictionarySql = 'SELECT job_title, job_position_id FROM job_position_dictionary ORDER BY job_position_id ASC';
-
-    /** @var string */
     private $updateCompanySql = '
       UPDATE
        company
@@ -180,12 +161,6 @@ class MeroveusController extends AbstractActionController
 
     /** @var \PDOStatement */
     private $updateCompanyPdo = null;
-
-    /** @var \PDOStatement */
-    private $getJobDictionaryPdo = null;
-
-    /** @var \PDOStatement */
-    private $updateJobDictionaryPdo = null;
 
     /**
      * @var array
@@ -245,14 +220,7 @@ class MeroveusController extends AbstractActionController
         $this->addContactPdo    = $this->db->prepare($this->contactSql);
         $this->addCompanyPdo    = $this->db->prepare($this->createCompanySql);
         $this->updateCompanyPdo = $this->db->prepare($this->updateCompanySql);
-        // job title pdo and data
-        $this->getJobDictionaryPdo    = $this->db->prepare($this->getJobDictionarySql);
-        $this->updateJobDictionaryPdo = $this->db->prepare($this->updateJobTitleSql);
-        $query                        = $this->db->query($this->getJobDictionarySql);
-        $results                      = $query->fetchAll(\PDO::FETCH_OBJ);
-        foreach ($results as $result) {
-            $this->jobIdDictionary[$result->job_title] = $result->job_position_id;
-        }
+
     }
 
 
@@ -432,8 +400,8 @@ class MeroveusController extends AbstractActionController
                     if ($hubId || $debug) {
                         $this->processContacts($hubId, $target['execs'], $debug);
                     } else {
-                        echo "line 375" . ' in ' . "MeroveusController.php" . PHP_EOL;
-                        die(var_dump($target));
+//                        echo "line 435" . ' in ' . "MeroveusController.php" . PHP_EOL;
+//                        die(var_dump($target));
                     }
                     // track memory and total count
                     echo "\033[{$lastMemUsageMessageLength}D";
@@ -621,9 +589,6 @@ class MeroveusController extends AbstractActionController
 
         $filePath = $this->getRequest()->getParam('file');
 
-        // hardcoding filepath to work around cli arg bug
-        $filePath = "/Users/justinrobinson/Documents/datahub/sicToMeroveus.csv";
-
         if ( !$filePath ) {
             die ( 'run with arg --file /path/to/file ');
         }
@@ -682,8 +647,7 @@ class MeroveusController extends AbstractActionController
      */
     public function mapThirdPartySicAction () {
 
-        // hardcoding filepath to work around cli arg bug
-        $filePath = "/Users/justinrobinson/Documents/datahub/qtqB1259rel_Out_25159.csv";
+        $filePath = $this->getRequest()->getParam('file');
 
         if ( !$filePath ) {
             die ( 'run with arg --file /path/to/file ');
@@ -770,7 +734,6 @@ class MeroveusController extends AbstractActionController
      */
     private function elasticMatch(array $target, $minScore = 9.9)
     {
-
         if (empty($target)) {
             echo 'empty target passed to elasticMatch' . PHP_EOL;
 
@@ -792,14 +755,39 @@ class MeroveusController extends AbstractActionController
                 return false;
             }
         }
+//{
+//    "query": {
+//        "bool": {
+//            "should": [
+//                {"match": {"Name.raw": "White Construction Company"}}
+//            ],
+//            "must":   [
+//                {"match": {"Name": "White Construction Company"}},
+//                {"match": {"Addr1": "613 Crescent Circle Ste. 100"}},
+//                {"match": {"City": "Ridgeland"}},
+//                {"match": {"State": "MS"}},
+//                {"match": {"PostalCode": "39157"}}
+//            ]
+//        }
+//    }
+//}
+            $this->elasticQuery->setQuery(
+            $this->elasticQueryBuilder->query()->bool()
+            ->addShould($this->elasticQueryBuilder->query()->match('Name.raw', $queryFields['Name']))
+            ->addMust($this->elasticQueryBuilder->query()->match('Name', $queryFields['Name']))
+            ->addMust($this->elasticQueryBuilder->query()->match('Addr1', $queryFields['Addr1']))
+            ->addMust($this->elasticQueryBuilder->query()->match('City', $queryFields['City']))
+            ->addMust($this->elasticQueryBuilder->query()->match('State', $queryFields['State']))
+            ->addMust($this->elasticQueryBuilder->query()->match('PostalCode', $queryFields['PostalCode'])));
 
-        // set up the elastic query
-        $this->elasticQuery->setQuery($this->elasticQueryBuilder->query()->bool()->addShould($this->elasticQueryBuilder->query()->match('Name',
-            $queryFields['Name']))->addShould($this->elasticQueryBuilder->query()->match('Addr1',
-            $queryFields['Addr1']))->addMust($this->elasticQueryBuilder->query()->match('City',
-            $queryFields['City']))->addMust($this->elasticQueryBuilder->query()->match('State',
-            $queryFields['State']))->addMust($this->elasticQueryBuilder->query()->match('PostalCode',
-            $queryFields['PostalCode'])));
+        // set up the elastic query old
+
+//        $this->elasticQuery->setQuery($this->elasticQueryBuilder->query()->bool()->addShould($this->elasticQueryBuilder->query()->match('Name',
+//            $queryFields['Name']))->addShould($this->elasticQueryBuilder->query()->match('Addr1',
+//            $queryFields['Addr1']))->addMust($this->elasticQueryBuilder->query()->match('City',
+//            $queryFields['City']))->addMust($this->elasticQueryBuilder->query()->match('State',
+//            $queryFields['State']))->addMust($this->elasticQueryBuilder->query()->match('PostalCode',
+//            $queryFields['PostalCode'])));
 
         // set the minimum score that we consider a match
         // https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-min-score.html

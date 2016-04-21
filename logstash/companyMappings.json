@@ -1,0 +1,89 @@
+{
+  "mappings": {
+    "company": {
+      "properties": {
+        "@timestamp":     {
+          "type":   "date",
+          "format": "strict_date_optional_time||epoch_millis"
+        },
+        "@version":       {
+          "type": "string"
+        },
+        "Addr1":          {
+          "type":  "string",
+          "index": "not_analyzed"
+        },
+        "Addr2":          {
+          "type":  "string",
+          "index": "not_analyzed"
+        },
+        "City":           {
+          "type":  "string",
+          "index": "not_analyzed"
+        },
+        "Country":        {
+          "type":  "string",
+          "index": "not_analyzed"
+        },
+        "DateModified":   {
+          "type": "string",
+        },
+        "GenId":          {
+          "type": "string",
+        },
+        "InternalId":     {
+          "type": "string",
+        },
+        "Lat":            {
+          "type": "string",
+        },
+        "Lon":            {
+          "type": "string",
+        },
+        "Name":           {
+          "type":   "string",
+          "fields": {
+            "Name":     {"type": "string", "index": "analyzed",},
+            "Name_Raw": {"type": "string", "index": "not_analyzed",}
+          }
+        },
+        "OfficePhone1":   {
+          "type": "string",
+        },
+        "PostalCode":     {
+          "type": "string",
+        },
+        "Sic":            {
+          "type": "string",
+        },
+        "SourceID":       {
+          "type": "string",
+        },
+        "State":          {
+          "type": "string",
+        },
+        "Ticker":         {
+          "type": "string",
+        },
+        "TickerExchange": {
+          "type": "string",
+        },
+        "Url":            {
+          "type": "string",
+        },
+        "host":           {
+          "type": "string",
+        },
+        "message":        {
+          "type": "string",
+        },
+        "tags":           {
+          "type": "string",
+        },
+        "type":           {
+          "type": "string",
+        }
+      }
+    }
+  }
+}

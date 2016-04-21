@@ -2,6 +2,7 @@
 
 namespace Console\Controller;
 
+use Console\Importer\Refinery;
 use Console\Record\Formatter\Factory;
 use Console\CsvIterator;
 use Zend\Db\Adapter as dbAdapter;
@@ -113,60 +114,6 @@ class ImportController extends AbstractActionController
             FROM
               `datahub`.`company`
             WHERE meroveus_id = ?',
-        'insertCompany'     => '
-            INSERT INTO
-                datahub.company(
-                    refinery_id,
-                    meroveus_id,
-                    generate_code,
-                    record_source,
-                    company_name,
-                    public_ticker,
-                    ticker_exchange,
-                    source_modified_at,
-                    address1,
-                    address2,
-                    city,
-                    state,
-                    postal_code,
-                    country,
-                    latitude,
-                    longitude,
-                    phone,
-                    website,
-                    is_active,
-                    sic_code,
-                    employee_count,
-                    created_at,
-                    updated_at,
-                    deleted_at
-                    )
-                VALUES (
-                    :refinery_id,
-                    :meroveus_id,
-                    :generate_code,
-                    :record_source,
-                    :company_name,
-                    :public_ticker,
-                    :ticker_exchange,
-                    :source_modified_at,
-                    :address1,
-                    :address2,
-                    :city,
-                    :state,
-                    :postal_code,
-                    :country,
-                    :latitude,
-                    :longitude,
-                    :phone,
-                    :website,
-                    :is_active,
-                    :sic_code,
-                    :employee_count,
-                    NOW(),
-                    NOW(),
-                    0
-            )',
         'insertContact'     => '
             INSERT INTO
               datahub.contact (
@@ -316,45 +263,11 @@ class ImportController extends AbstractActionController
             die('Parameter must be a CSV file.');
         }
 
-
         echo "Processing File: " . $csvFile . PHP_EOL;
 
-        // open file as csv
-        $file = new CsvIterator($csvFile);
+        $importer = new Refinery();
 
-        // we have a header row woohoo!
-        $file->setHasHeaderRow(true);
-
-        // how many rows we processed
-        $count = 0;
-
-        // prepare our insert
-        $insertCompany = $this->sqlStatementsArray['insertCompany'];
-
-        // data formatter
-        $formatter = Factory::factory('importmeroveus');
-
-        // process the rows
-        foreach ($file as $record) {
-
-            try {
-                // why don't we merge automatically?
-                // because then we would have to try catch around the foreach loop and that would
-                // cause the loop to break.  This way we can continue processing the remaining rows
-                $record = $file->mergeWithHeaderRow($record);
-
-                $queryParams = $formatter->format($record);
-
-                $insertCompany->execute($queryParams);
-
-                $count++;
-            } catch (\Exception $e) {
-                // CsvIterator throws an exception when number of columns in the header row
-                // and the current line do not match
-                echo $e->getMessage() . PHP_EOL;
-            }
-
-        }
+        $count = $importer->import($csvFile, $this->db);
 
         echo "ended at " . date('h:i:s A') . PHP_EOL . 'imported ' . $count . ' records' . PHP_EOL;
     }

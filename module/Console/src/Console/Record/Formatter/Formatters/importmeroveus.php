@@ -22,28 +22,27 @@ class ImportMeroveus {
         $data['TickerExchange'] = strpos( $data['TickerExchange'], 'York Stock') ? 'NYSE' : $data['TickerExchange'];
 
         return [
-            
-            ':refinery_id'        => $data['InternalId'],
-            ':meroveus_id'        => null,
-            ':generate_code'      => $data['GenId'],
-            ':record_source'      => (empty( $data['SourceID']) ? 'Refinery' : 'Refinery:' . $data['SourceID']),
-            ':company_name'       => $data['Name'],
-            ':public_ticker'      => $data['Ticker'],
-            ':ticker_exchange'    => $data['TickerExchange'],
-            ':source_modified_at' => $data['DateModified'],
-            ':address1'           => $data['Addr1'],
-            ':address2'           => $data['Addr2'],
-            ':city'               => $data['City'],
-            ':state'              => $data['State'],
-            ':postal_code'        => $data['PostalCode'], // validate
-            ':country'            => $data['Country'], // validate
-            ':latitude'           => $data['Lat'],
-            ':longitude'          => $data['Lon'],
-            ':phone'              => $data['OfficePhone1'],
-            ':website'            => $data['Url'],
-            ':is_active'          => true,
-            ':sic_code'           => $data['Sic'],
-            ':employee_count'     => 0,
+            $data['InternalId'],
+            null,
+            $data['GenId'],
+            (empty( $data['SourceID']) ? 'Refinery' : 'Refinery:' . $data['SourceID']),
+            $data['Name'],
+            $data['Ticker'],
+            $data['TickerExchange'],
+            $data['DateModified'],
+            $data['Addr1'],
+            $data['Addr2'],
+            $data['City'],
+            $data['State'],
+            $data['PostalCode'], // validate
+            $data['Country'], // validate
+            $data['Lat'],
+            $data['Lon'],
+            $data['OfficePhone1'],
+            $data['Url'],
+            true,
+            $data['Sic'],
+            0,
         ];
 
     }
