@@ -97,7 +97,7 @@ class CsvIterator extends \SplFileObject {
 
         if ( $row === false ) {
             $lineNumber = $this->key()+1;
-            throw new \Exception(
+            throw new CsvIteratorException(
                 "line {$lineNumber} is not properly formatted and failed to insert");
         }
 

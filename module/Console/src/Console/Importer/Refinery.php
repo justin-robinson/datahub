@@ -3,6 +3,8 @@
 namespace Console\Importer;
 
 use Console\CsvIterator;
+use Console\CsvIteratorException;
+use Console\DB\Error\BufferException;
 use Console\DB\Query\Buffer;
 use Console\Record\Formatter\Factory;
 
@@ -86,7 +88,7 @@ class Refinery extends ImporterAbstract {
                 );
 
                 $count++;
-            } catch ( \Exception $e ) {
+            } catch ( CsvIteratorException $e ) {
                 // CsvIterator throws an exception when number of columns in the header row
                 // and the current line do not match
                 echo $e->getMessage() . PHP_EOL;
