@@ -60,7 +60,7 @@ class Buffer {
     /**
      * @var string[]
      */
-    private $buffer = [ ];
+    private $buffer;
 
     /**
      * The size of the buffer to trigger an insert
@@ -93,7 +93,7 @@ class Buffer {
      * sql to insert all buffered inserts
      * @var string
      */
-    private $sqlValues = '';
+    private $sqlValues;
 
     /**
      * sql used to insert a single row
