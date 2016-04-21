@@ -5,7 +5,52 @@ namespace Console\DB\Query;
 use Console\DB\Error\BufferException;
 
 /**
- * Buffers multiple db inserts into one large insert statement
+ * Buffers multiple pdo db inserts into one large insert statement
+ *
+ * EX:
+ * <?php
+ *
+ * // how many inserts we will do at once
+ * $limit = 1000;
+ *
+ * // the table we are inserting into
+ * $table = 'datahub.company';
+ *
+ * // names of columns to insert
+ * $columnNames = [
+ *     'id',
+ *     'city',
+ *     'state',
+ *     'created_at',
+ *     'updated_at',
+ *     'deleted_at',
+ * ];
+ *
+ * // the pdo string used for injecting placeholders
+ * // This is only required if you need to use literals for your values
+ * // otherwise the buffer will create this for you
+ * $sqlValuesTemplate = '(?,?,?, NOW(), NOW(), NULL)';
+ *
+ * // create the buffer
+ * $buffer = new Buffer($limit, $table, $columnNames, $sqlValuesTemplate);
+ *
+ * // do some inserts
+ * foreach ( range(0,10500) as $i ) {
+ *
+ *     // buffer with flush to the db every 1000 inserts
+ *
+ *     // buffer this insert
+ *     $buffer->insert([
+ *         $i,
+ *         'Charlotte',
+ *         'North Carolina'
+ *     ]);
+ * }
+ *
+ * // still 500 inserts left in buffer, so we need to manually flush
+ * $buffer->flush();
+ *
+ * ?>
  *
  * Class Buffer
  * @package Console\DB\Query
