@@ -155,7 +155,7 @@ class Buffer {
 
         // build insert statement
         $sql =
-            "INSERT INTOaa
+            "INSERT INTO
               {$this->table}(
                 {$this->columnNames}  
               )
