@@ -177,7 +177,7 @@ class Buffer {
     }
 
     /**
-     * Destructively clears the buffers content
+     * Destructively clears the buffer's content
      */
     private function reset () {
 
