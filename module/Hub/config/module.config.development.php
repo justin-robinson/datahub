@@ -62,6 +62,19 @@ return [
 //        'url'  => '127.0.0.1:9200/companies',
 //    ],
 
-    'pdo-datahub'=> $defaultMysqlConnectionParams,
+    'pdo' => [
+        'datahub' => $defaultMysqlConnectionParams,
+        'db02' => [
+            'charset'       => 'utf8',
+            'host'          => 'radb.bizj-internal.com',
+            'dbname'        => 'recon',
+            'port'          => '3306',
+            'user'          => 'directory-read',
+            'password'      => 'readonly',
+            'driverOptions' => [
+                1002 => 'SET NAMES utf8'
+            ],
+        ],
+    ]
 
 ];

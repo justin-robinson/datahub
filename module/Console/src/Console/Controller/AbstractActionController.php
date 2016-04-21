@@ -2,7 +2,8 @@
 
 namespace Console\Controller;
 
-use Doctrine\DBAL\Driver\PDOException;
+use Console\DB\Connection\DB;
+use Console\DB\Error\ConfigException;
 use Zend\Mvc\Controller\AbstractActionController as ZendAbstractActionController;
 use Zend\Mvc\MvcEvent;
 
@@ -29,6 +30,11 @@ abstract class AbstractActionController extends ZendAbstractActionController
     protected $db;
 
     /**
+     * @var array
+     */
+    protected $config;
+
+    /**
      * AbstractActionController constructor.
      */
     public function __construct () {
@@ -50,17 +56,16 @@ abstract class AbstractActionController extends ZendAbstractActionController
 
     public function init(MvcEvent $e)
     {
-        try{
-            $config = $this->getServiceLocator()->get('Config')['pdo-datahub'];
-            $this->db = new \PDO(
-                "mysql:host={$config['host']};dbname={$config['dbname']}",
-                $config['user'],
-                $config['password'],
-                $config['driverOptions']);
-            $this->db->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
+        $this->config = $this->getServiceLocator()->get( 'Config' );
 
+        try{
+            $this->db = DB::createPdo(
+                $this->config['pdo']['datahub']
+            );
         } catch (\PDOException $e){
             die("PDO Error!: " . $e->getMessage().PHP_EOL);
+        } catch (ConfigException $e){
+            die("PDO Config Error!: " . $e->getMessage() . PHP_EOL);
         }
 
         // prepare sql statements
