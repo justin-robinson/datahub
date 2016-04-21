@@ -37,39 +37,35 @@ class Refinery extends ImporterAbstract {
         $bufferTable = 'datahub.company';
 
         // names of columns to insert
-        $columnNames = [
-            'refinery_id',
-            'meroveus_id',
-            'generate_code',
-            'record_source',
-            'company_name',
-            'public_ticker',
-            'ticker_exchange',
-            'source_modified_at',
-            'address1',
-            'address2',
-            'city',
-            'state',
-            'postal_code',
-            'country',
-            'latitude',
-            'longitude',
-            'phone',
-            'website',
-            'is_active',
-            'sic_code',
-            'employee_count',
-            'created_at',
-            'updated_at',
-            'deleted_at',
+        $columns = [
+            'refinery_id'        => '?',
+            'meroveus_id'        => '?',
+            'generate_code'      => '?',
+            'record_source'      => '?',
+            'company_name'       => '?',
+            'public_ticker'      => '?',
+            'ticker_exchange'    => '?',
+            'source_modified_at' => '?',
+            'address1'           => '?',
+            'address2'           => '?',
+            'city'               => '?',
+            'state'              => '?',
+            'postal_code'        => '?',
+            'country'            => '?',
+            'latitude'           => '?',
+            'longitude'          => '?',
+            'phone'              => '?',
+            'website'            => '?',
+            'is_active'          => '?',
+            'sic_code'           => '?',
+            'employee_count'     => '?',
+            'created_at'         => 'NOW()',
+            'updated_at'         => 'NOW()',
+            'deleted_at'         => 0,
         ];
 
-        // pdo sql placeholders string
-        // notice last three are hardcoded to NOW(), NOW(), and 0
-        $sqlValuesTemplate = '(' . implode( ',', array_fill( 0, count( $columnNames ) - 3, '?' ) ) . ', NOW(), NOW(), 0)';
-
         // make dat buffer
-        $queryBuffer = new Buffer( $bufferLimit, $db, $bufferTable, $columnNames, $sqlValuesTemplate );
+        $queryBuffer = new Buffer( $bufferLimit, $db, $bufferTable, $columns);
 
         // data formatter
         $formatter = Factory::factory( 'importmeroveus' );

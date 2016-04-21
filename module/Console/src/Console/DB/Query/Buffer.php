@@ -16,20 +16,15 @@ use Console\DB\Error\BufferException;
  * // the table we are inserting into
  * $table = 'datahub.company';
  *
- * // names of columns to insert
+ * // names and values of columns to insert
  * $columnNames = [
- *     'id',
- *     'city',
- *     'state',
- *     'created_at',
- *     'updated_at',
- *     'deleted_at',
+ *     'id'          => '?',
+ *     'city'        => '?',
+ *     'state'       => '?',
+ *     'created_at'  => 'NOW()',
+ *     'updated_at'  => 'NOW()',
+ *     'deleted_at'  => 0,
  * ];
- *
- * // the pdo string used for injecting placeholders
- * // This is only required if you need to use literals for your values
- * // otherwise the buffer will create this for you
- * $sqlValuesTemplate = '(?,?,?, NOW(), NOW(), NULL)';
  *
  * // create the buffer
  * $buffer = new Buffer($limit, $table, $columnNames, $sqlValuesTemplate);
@@ -103,26 +98,21 @@ class Buffer {
 
     /**
      * Buffer constructor.
+
      *
      * @param      $bufferLimit       int
      * @param      $db                \PDO
      * @param      $table             string
-     * @param      $columnNames       string[]
-     * @param null $sqlValuesTemplate string
+     * @param      $columns       string[]
      */
-    public function __construct ( $bufferLimit, \PDO $db, $table, array $columnNames, $sqlValuesTemplate = null ) {
+
+    public function __construct ( $bufferLimit, \PDO $db, $table, array $columns) {
 
         $this->bufferLimit = $bufferLimit;
         $this->db = $db;
         $this->table = $table;
-        $this->columnNames = implode( ',', $columnNames );
-
-        // if no values template was given create one
-        // ( ?, ?, ?)
-        if( $sqlValuesTemplate === null ) {
-            $sqlValuesTemplate = '(' . implode( ',', array_fill( 0, count( $columnNames ), '?' ) ) . ')';
-        }
-        $this->sqlValuesTemplate = $sqlValuesTemplate;
+        $this->columnNames = implode( ',', array_keys($columns) );
+        $this->sqlValuesTemplate = '(' . implode( ',', $columns ) . ')';
 
         $this->reset();
     }
