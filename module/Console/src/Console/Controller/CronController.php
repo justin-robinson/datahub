@@ -102,7 +102,7 @@ class CronController extends AbstractActionController {
                 LEFT JOIN OrgUrl     url   ON ( org.id = url.OrgId AND url.isPrimary = 1 )
                 LEFT JOIN OrgSIC     sic   ON ( org.id = sic.OrgId AND sic.isPrimary = 1 )
               WHERE
-                org.DateModified > (NOW() - INTERVAL {$daysToLookBack} DAY )
+                org.DateCreated > (NOW() - INTERVAL {$daysToLookBack} DAY )
                 AND addr.City IS NOT NULL
                 AND addr.City != ''";
 
