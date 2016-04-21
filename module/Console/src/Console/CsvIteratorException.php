@@ -1,12 +1,12 @@
 <?php
 
-namespace Console\DB\Error;
+namespace Console;
 
 /**
  * Class ConfigException
  * @package Console\DB\Error
  */
-class BufferException extends \Exception {
+class CsvIteratorException extends \Exception {
 
     /**
      * @return string
