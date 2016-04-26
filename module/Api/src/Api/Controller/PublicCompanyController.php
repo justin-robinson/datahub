@@ -17,36 +17,48 @@ use Zend\View\Model\JsonModel;
 class PublicCompanyController extends AbstractRestfulController {
 
     /**
+     * @var PublicCompanyResponse
+     */
+    private $apiResponse;
+
+    /**
+     * PublicCompanyController constructor.
+     */
+    public function __construct () {
+        $this->apiResponse = new PublicCompanyResponse();
+    }
+
+    /**
      * @return JsonModel
      */
     public function indexAction () {
 
-        $response = new PublicCompanyResponse();
-
         switch ( $_SERVER['REQUEST_METHOD'] ) {
             case 'GET':
-            case 'POST':
-                if( empty($_REQUEST['search']) || !is_array( $_REQUEST['search'] ) ) {
-                    $response->message = "missing 'search' parameter array";
+                if( empty($_GET['search']) || !is_array( $_GET['search'] ) ) {
+                    $this->apiResponse->message = "missing 'search' parameter array";
                 } else {
-                    $response = $this->findDatahubCompanyThroughElastic( $_REQUEST['search'] );
+                    $this->_get( $_GET['search']);
                 }
                 break;
+            case 'POST':
+
+                $this->_post();
+                break;
             default:
-                $response->message = $_SERVER['REQUEST_METHOD'] . ' not allowed';
+                $this->apiResponse->message = $_SERVER['REQUEST_METHOD'] . ' not allowed';
                 break;
         }
 
-        return new JsonModel($response->toArray());
+        return new JsonModel($this->apiResponse->toArray());
+
 
     }
 
     /**
-     * @param array $elasticSearchTerms
-     *
-     * @return array
+     * @param $elasticSearchTerms
      */
-    private function findDatahubCompanyThroughElastic ( array $elasticSearchTerms ) {
+    private function _get ( $elasticSearchTerms ) {
 
         // load our datahub config
         $config = $this->getServiceLocator()->get( 'Config' )['elastica-datahub'];
@@ -77,9 +89,6 @@ class PublicCompanyController extends AbstractRestfulController {
         // query elastic
         $elasticResponse = $elasticClient->search( $params );
 
-        // our api response
-        $response = new PublicCompanyResponse();
-
         // did we get a hit?
         if( isset($elasticResponse['hits']['hits'][0]) ) {
 
@@ -90,16 +99,17 @@ class PublicCompanyController extends AbstractRestfulController {
 
             // we find?
             if ( $record ) {
-                $response->success = true;
-                $response->body = $record->toArray( true );
+                $this->apiResponse->success = true;
+                $this->apiResponse->body = $record->toArray( true );
             } else {
-                $response->message = 'record not found';
+                $this->apiResponse->message = 'record not found';
             }
         } else {
-            $response->message = 'match not found';
+            $this->apiResponse->message = 'match not found';
         }
+    }
 
-        return $response;
+    private function _post ( ) {
     }
 
 }
