@@ -1,16 +1,17 @@
 <?php
 return [
 
-    'controllers' => [
+    'controllers'  => [
         'invokables' => [
-            'Api\Controller\Abstract' => 'Api\Controller\AbstractRestfulController',
-            'Api\Controller\Search'   => 'Api\Controller\SearchController',
-            'Api\Controller\Company'  => 'Api\Controller\CompanyController',
+            'Api\Controller\Abstract'      => 'Api\Controller\AbstractRestfulController',
+            'Api\Controller\Search'        => 'Api\Controller\SearchController',
+            'Api\Controller\Company'       => 'Api\Controller\CompanyController',
+            'Api\Controller\PublicCompany' => 'Api\Controller\PublicCompanyController',
         ],
     ],
-    'router' => [
+    'router'       => [
         'routes' => [
-            'company'  => [
+            'company'       => [
                 'type'         => 'Literal',
                 'options'      => [
                     'route'    => '/api/company',
@@ -32,7 +33,7 @@ return [
 
                 ],
             ],
-            'refinery' => [
+            'refinery'      => [
                 'type'         => 'Segment',
                 'options'      => [
                     'route'    => '/api/refinery',
@@ -52,6 +53,16 @@ return [
                                 'action' => 'refinery',
                             ],
                         ],
+                    ],
+                ],
+            ],
+            'publicCompany' => [
+                'type'    => 'Segment',
+                'options' => [
+                    'route'    => '/api/public/company',
+                    'defaults' => [
+                        'controller' => 'Api\Controller\PublicCompany',
+                        'action'     => 'index',
                     ],
                 ],
             ],
