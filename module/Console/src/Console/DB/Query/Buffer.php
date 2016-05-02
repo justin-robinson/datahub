@@ -26,8 +26,15 @@ use Console\DB\Error\BufferException;
  *     'deleted_at'  => 0,
  * ];
  *
+ * // names of columns to update upon duplicate key detection
+ * $updateColumns = [
+ *      'city',
+ *      'state',
+ *      'updated_at',
+ * ];
+ *
  * // create the buffer
- * $buffer = new Buffer($limit, $table, $columnNames, $sqlValuesTemplate);
+ * $buffer = new Buffer($limit, $table, $columnNames, $sqlValuesTemplate, $updateColumns);
  *
  * // do some inserts
  * foreach ( range(0,10500) as $i ) {
@@ -70,14 +77,27 @@ class Buffer {
     private $bufferSize;
 
     /**
-     * @var string[]
-     */
-    private $columnNames;
-
-    /**
      * @var \PDO
      */
     private $db;
+
+    /**
+     * sql used for declaring which columns to insert into it
+     * @var string[]
+     */
+    private $insertColumnNamesSql;
+
+    /**
+     * sql used for declaring all values
+     * @var string
+     */
+    private $insertValuesSql;
+
+    /**
+     * sql used for declaring values to insert per row
+     * @var string
+     */
+    private $insertValuesSqlTemplate;
 
     /**
      * @var string
@@ -85,41 +105,39 @@ class Buffer {
     private $table;
 
     /**
-     * sql to insert all buffered inserts
-     * @var string
+     * Columns and values to update on duplicate key detection
+     * @var boolean
      */
-    private $sqlValues;
-
-    /**
-     * sql used to insert a single row
-     * @var string
-     */
-    private $sqlValuesTemplate;
+    private $updateColumnsSql;
 
     /**
      * Buffer constructor.
-
      *
      * @param      $bufferLimit       int
      * @param      $db                \PDO
      * @param      $table             string
-     * @param      $columns       string[]
+     * @param      $insertColumns     string[]
+     * @param      $updateColumns     string[]
      */
-
-    public function __construct ( $bufferLimit, \PDO $db, $table, array $columns) {
+    public function __construct ( $bufferLimit, \PDO $db, $table, array $insertColumns, array $updateColumns = [ ] ) {
 
         $this->bufferLimit = $bufferLimit;
         $this->db = $db;
         $this->table = $table;
-        $this->columnNames = implode( ',', array_keys($columns) );
-        $this->sqlValuesTemplate = '(' . implode( ',', $columns ) . ')';
+        $this->insertColumnNamesSql = implode( ',', array_keys( $insertColumns ) );
+        $this->insertValuesSqlTemplate = '(' . implode( ',', $insertColumns ) . ')';
+
+        $this->updateColumnsSql = '';
+        foreach ( $updateColumns as $updateColumnName ) {
+            $this->updateColumnsSql .= "{$updateColumnName}=VALUES({$updateColumnName}),";
+        }
+        $this->updateColumnsSql = rtrim( $this->updateColumnsSql, ',' );
 
         $this->reset();
     }
 
     /**
      * Buffers the insertion values and flushes the buffer if it has grown too large
-     *
      * NOTE: the order of $columnValues must match the order of $this->columnNames
      *
      * @param $columnValues
@@ -127,13 +145,13 @@ class Buffer {
     public function insert ( $columnValues ) {
 
         // add new values to the buffer
-        $this->buffer = array_merge( $this->buffer, $columnValues );
+        $this->buffer = array_merge( $this->buffer, array_values($columnValues) );
 
         // increment buffer size
         $this->bufferSize++;
 
         // add to the sql values string
-        $this->sqlValues .= $this->sqlValuesTemplate . ',';
+        $this->insertValuesSql .= $this->insertValuesSqlTemplate . ',';
 
         // flush if buffer is too large
         if( $this->bufferSize >= $this->bufferLimit ) {
@@ -151,17 +169,22 @@ class Buffer {
         }
 
         //  remove trailing commas from built sql values
-        $this->sqlValues = rtrim( $this->sqlValues, ',' );
+        $this->insertValuesSql = rtrim( $this->insertValuesSql, ',' );
 
         // build insert statement
         $sql =
             "INSERT INTO
               {$this->table}(
-                {$this->columnNames}  
+                {$this->insertColumnNamesSql}
               )
               VALUES
-              {$this->sqlValues}
+              {$this->insertValuesSql}
             ";
+
+        // update a conflicting row when we can
+        if( !empty($this->updateColumnsSql) ) {
+            $sql .= "ON DUPLICATE KEY UPDATE {$this->updateColumnsSql}";
+        }
 
         // prepare the sql
         $preparedSql = $this->db->prepare( $sql );
@@ -183,7 +206,7 @@ class Buffer {
 
         $this->bufferSize = 0;
         $this->buffer = [ ];
-        $this->sqlValues = '';
+        $this->insertValuesSql = '';
     }
 
 }

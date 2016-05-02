@@ -73,7 +73,7 @@ class CronController extends AbstractActionController {
         $db = DB::createPdo( $this->config['pdo']['db02'] );
 
         // gets all organizations and relevant information created in the specified time period
-        $sql = "
+        $getModifiedCompaniesSql = "
               SELECT
                 org.id,
                 org.ExternalId,
@@ -102,13 +102,13 @@ class CronController extends AbstractActionController {
                 LEFT JOIN OrgUrl     url   ON ( org.id = url.OrgId AND url.isPrimary = 1 )
                 LEFT JOIN OrgSIC     sic   ON ( org.id = sic.OrgId AND sic.isPrimary = 1 )
               WHERE
-                org.DateCreated > (NOW() - INTERVAL {$daysToLookBack} DAY )
+                org.DateModified > (NOW() - INTERVAL {$daysToLookBack} DAY )
                 AND addr.City IS NOT NULL
                 AND addr.City != ''";
 
         $db->setAttribute( \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, false );
 
-        $results = $db->query( $sql, \PDO::FETCH_ASSOC );
+        $results = $db->query( $getModifiedCompaniesSql, \PDO::FETCH_ASSOC );
 
         $elasticChunkNumber = 0;
         // parse each row into a csv and json file

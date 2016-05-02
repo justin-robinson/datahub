@@ -4,7 +4,6 @@ namespace Console\Importer;
 
 use Console\CsvIterator;
 use Console\CsvIteratorException;
-use Console\DB\Error\BufferException;
 use Console\DB\Query\Buffer;
 use Console\Record\Formatter\Factory;
 
@@ -39,7 +38,7 @@ class Refinery extends ImporterAbstract {
         $bufferTable = 'datahub.company';
 
         // names of columns to insert
-        $columns = [
+        $insertColumns = [
             'refinery_id'        => '?',
             'meroveus_id'        => '?',
             'generate_code'      => '?',
@@ -66,8 +65,34 @@ class Refinery extends ImporterAbstract {
             'deleted_at'         => 0,
         ];
 
+        // columns to update upon duplicate key detection
+        // removed refinery_id, created_at, and deleted_at
+        $updateColumns = [
+            'meroveus_id',
+            'generate_code',
+            'record_source',
+            'company_name',
+            'public_ticker',
+            'ticker_exchange',
+            'source_modified_at',
+            'address1',
+            'address2',
+            'city',
+            'state',
+            'postal_code',
+            'country',
+            'latitude',
+            'longitude',
+            'phone',
+            'website',
+            'is_active',
+            'sic_code',
+            'employee_count',
+            'updated_at',
+        ];
+
         // make dat buffer
-        $queryBuffer = new Buffer( $bufferLimit, $db, $bufferTable, $columns);
+        $queryBuffer = new Buffer( $bufferLimit, $db, $bufferTable, $insertColumns, $updateColumns);
 
         // data formatter
         $formatter = Factory::factory( 'importmeroveus' );
