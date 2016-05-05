@@ -10,6 +10,7 @@ use Scoop\Database\Model;
  * @author jrobinson (robotically)
  * @date 2016/05/05
  * @property mixed $contact_id
+ * @property mixed $meroveus_id
  * @property mixed $relevate_id
  * @property mixed $is_duplicate
  * @property mixed $is_current_employee
@@ -58,6 +59,9 @@ class Contact extends Model {
           array (
             0 => 1,
             1 => 0,
+          ),
+          'meroveus_id' => 
+          array (
           ),
           'relevate_id' => 
           array (
@@ -125,6 +129,7 @@ class Contact extends Model {
     protected $dBValuesArray = 
         array (
           'contact_id' => NULL,
+          'meroveus_id' => NULL,
           'relevate_id' => NULL,
           'is_duplicate' => NULL,
           'is_current_employee' => NULL,
