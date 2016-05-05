@@ -1874,5 +1874,226 @@
             }
         },
         "description": "bizjournals Services Module"
+    },
+    {
+        "name": "filp/whoops",
+        "version": "2.1.2",
+        "version_normalized": "2.1.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/filp/whoops.git",
+            "reference": "d13505b240a6f580bc75ba591da30299d6cb0eec"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/filp/whoops/zipball/d13505b240a6f580bc75ba591da30299d6cb0eec",
+            "reference": "d13505b240a6f580bc75ba591da30299d6cb0eec",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5.9"
+        },
+        "require-dev": {
+            "mockery/mockery": "0.9.*",
+            "phpunit/phpunit": "^4.8 || ^5.0",
+            "symfony/var-dumper": "~3.0"
+        },
+        "suggest": {
+            "symfony/var-dumper": "Pretty print complex values better with var-dumper available",
+            "whoops/soap": "Formats errors as SOAP responses"
+        },
+        "time": "2016-04-07 06:16:25",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Whoops\\": "src/Whoops/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Filipe Dobreira",
+                "homepage": "https://github.com/filp",
+                "role": "Developer"
+            }
+        ],
+        "description": "php error handling for cool kids",
+        "homepage": "https://github.com/filp/whoops",
+        "keywords": [
+            "error",
+            "exception",
+            "handling",
+            "library",
+            "whoops",
+            "zf2"
+        ]
+    },
+    {
+        "name": "kevinlebrun/colors.php",
+        "version": "0.4.1",
+        "version_normalized": "0.4.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kevinlebrun/colors.php.git",
+            "reference": "d132f36d06e48ea080855af19b4bcb1fb615224a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kevinlebrun/colors.php/zipball/d132f36d06e48ea080855af19b4bcb1fb615224a",
+            "reference": "d132f36d06e48ea080855af19b4bcb1fb615224a",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "3.7.*",
+            "satooshi/php-coveralls": "dev-master",
+            "squizlabs/php_codesniffer": "1.*"
+        },
+        "time": "2014-12-23 01:23:37",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Colors": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Kevin Le Brun",
+                "email": "lebrun.k@gmail.com",
+                "homepage": "http://kevinlebrun.fr",
+                "role": "developer"
+            }
+        ],
+        "description": "Colors for PHP CLI scripts",
+        "homepage": "https://github.com/kevinlebrun/colors.php",
+        "keywords": [
+            "cli",
+            "color",
+            "colors",
+            "console",
+            "shell"
+        ]
+    },
+    {
+        "name": "justin-robinson/scoop",
+        "version": "dev-php56",
+        "version_normalized": "dev-php56",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/justin-robinson/scoop.git",
+            "reference": "257f19e007972128f18ad7e12e1650cc6c4e51fc"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/justin-robinson/scoop/zipball/257f19e007972128f18ad7e12e1650cc6c4e51fc",
+            "reference": "257f19e007972128f18ad7e12e1650cc6c4e51fc",
+            "shasum": ""
+        },
+        "require": {
+            "filp/whoops": "2.*",
+            "justin-robinson/lrucache": "*",
+            "kevinlebrun/colors.php": "0.4.1",
+            "php": ">=5.6.0"
+        },
+        "time": "2016-05-05 17:36:27",
+        "bin": [
+            "bin/scoop"
+        ],
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "scoop\\": "scoop/"
+            },
+            "files": [
+                "bootstrap.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "Justin Robinson",
+                "email": "jrob09bhs@gmail.com"
+            }
+        ],
+        "description": "Scoop framework and orm for php 7+ and apache 2.4+",
+        "keywords": [
+            "apache",
+            "database",
+            "mysql",
+            "orm",
+            "php",
+            "php 7"
+        ]
+    },
+    {
+        "name": "justin-robinson/lrucache",
+        "version": "v0.5.2",
+        "version_normalized": "0.5.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/justin-robinson/php-lrucache.git",
+            "reference": "914d60585f5e2e3765618577d879b98dc07ee152"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/justin-robinson/php-lrucache/zipball/914d60585f5e2e3765618577d879b98dc07ee152",
+            "reference": "914d60585f5e2e3765618577d879b98dc07ee152",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "phpunit/php-code-coverage": "*",
+            "phpunit/phpunit": "*",
+            "phpunit/phpunit-mock-objects": "*"
+        },
+        "time": "2016-05-05 17:38:42",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "LRUCache": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "Justin Robinson",
+                "email": "jrob09bhs@gmail.com",
+                "homepage": "https://jor.pw",
+                "role": "Developer"
+            }
+        ],
+        "description": "PHP LRU Cache implementation",
+        "homepage": "https://github.com/justin-robinson/php-lrucache",
+        "keywords": [
+            "cache",
+            "lru",
+            "php"
+        ]
     }
 ]

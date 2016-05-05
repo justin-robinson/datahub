@@ -9,9 +9,14 @@ class ComposerStaticInit80ce7eceae09e36de01171fc8eae3626
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'ad155f8f1cf0d418fe49e248db8c661b' => __DIR__ . '/..' . '/react/promise/src/functions_include.php',
+        'fbf91eb452f3c64f9771417b3413b83c' => __DIR__ . '/..' . '/justin-robinson/scoop/bootstrap.php',
     );
 
     public static $prefixLengthsPsr4 = array (
+        'W' => 
+        array (
+            'Whoops\\' => 7,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
@@ -46,6 +51,10 @@ class ComposerStaticInit80ce7eceae09e36de01171fc8eae3626
     );
 
     public static $prefixDirsPsr4 = array (
+        'Whoops\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/filp/whoops/src/Whoops',
+        ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
@@ -101,6 +110,13 @@ class ComposerStaticInit80ce7eceae09e36de01171fc8eae3626
     );
 
     public static $prefixesPsr0 = array (
+        's' => 
+        array (
+            'scoop\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/justin-robinson/scoop/scoop',
+            ),
+        ),
         'Z' => 
         array (
             'Zend\\' => 
@@ -132,6 +148,13 @@ class ComposerStaticInit80ce7eceae09e36de01171fc8eae3626
             'Psr\\Log\\' => 
             array (
                 0 => __DIR__ . '/..' . '/psr/log',
+            ),
+        ),
+        'L' => 
+        array (
+            'LRUCache' => 
+            array (
+                0 => __DIR__ . '/..' . '/justin-robinson/lrucache/src',
             ),
         ),
         'G' => 
@@ -181,6 +204,13 @@ class ComposerStaticInit80ce7eceae09e36de01171fc8eae3626
             'DoctrineModule\\' => 
             array (
                 0 => __DIR__ . '/..' . '/doctrine/doctrine-module/src',
+            ),
+        ),
+        'C' => 
+        array (
+            'Colors' => 
+            array (
+                0 => __DIR__ . '/..' . '/kevinlebrun/colors.php/src',
             ),
         ),
         'B' => 
