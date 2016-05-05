@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'host'     => 'devdb.bizj-internal.com',
-    'user'     => 'web',
-    'password' => '',
-    'port'     => '3306',
+    'host'     => 'jor.pw',
+    'user'     => 'test',
+    'password' => 'test',
+    'port'     => ' 3306',
 ];
