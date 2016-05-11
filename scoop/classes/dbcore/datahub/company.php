@@ -17,7 +17,6 @@ use Scoop\Database\Model;
  * @property mixed $name
  * @property mixed $owernship
  * @property mixed $stateId
- * @property mixed $stockSymbol
  * @property mixed $createdAt
  * @property mixed $updatedAt
  * @property mixed $deletedAt
@@ -70,9 +69,6 @@ class Company extends Model {
           'stateId' => 
           array (
           ),
-          'stockSymbol' => 
-          array (
-          ),
           'createdAt' => 
           array (
           ),
@@ -95,7 +91,6 @@ class Company extends Model {
           'name' => NULL,
           'owernship' => NULL,
           'stateId' => NULL,
-          'stockSymbol' => NULL,
           'createdAt' => NULL,
           'updatedAt' => NULL,
           'deletedAt' => NULL,
