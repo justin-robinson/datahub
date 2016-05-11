@@ -1,0 +1,29 @@
+<?php
+
+namespace DB\Datahub;
+
+/**
+ * Class CompanyInstanceProperty
+ * @package DB\Datahub
+ * @author jrobinson (robotically)
+ * @date 2016/05/09
+ * @inheritdoc
+ * This file is only generated once
+ * Put your class specific code in here
+ */
+class CompanyInstanceProperty extends \DBCore\Datahub\CompanyInstanceProperty {
+
+    public function save () {
+
+        if ( empty($this->createdAt) ) {
+            $this->set_literal('createdAt', 'NOW()');
+        }
+
+        $this->set_literal('updatedAt', 'NOW()');
+        
+        parent::save();
+    }
+
+}
+
+?>

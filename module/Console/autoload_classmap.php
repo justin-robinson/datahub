@@ -10,7 +10,7 @@ return array(
     'Console\Record\Formatter\Exception\NotFound'        => __DIR__ . '/src/Console/Record/Formatter/Exception/NotFound.php',
     'Console\Record\Formatter\Factory'                   => __DIR__ . '/src/Console/Record/Formatter/Factory.php',
     'Console\Record\Formatter\FormatterTrait'            => __DIR__ . '/src/Console/Record/Formatter/FormatterTrait.php',
-    'Console\Record\Formatter\Formatters\ImportMeroveus' => __DIR__ . '/src/Console/Record/Formatter/Formatters/importmeroveus.php',
+    'Console\Record\Formatter\Formatters\ImportRefinery' => __DIR__ . '/src/Console/Record/Formatter/Formatters/importrefinery.php',
     'Console\Record\Formatter\Formatters\Meroveus'       => __DIR__ . '/src/Console/Record/Formatter/Formatters/Meroveus.php',
     'Console\Record\Formatter\Formatters\Relevate'       => __DIR__ . '/src/Console/Record/Formatter/Formatters/relevate.php',
 );

@@ -31,25 +31,25 @@ class Relevate {
          */
         $jobTitle = $this->cut_line_by_index_and_length ( $line, 325, 30, true );
         return [
-            ':hub_id'              => '',
-            ':meroveus_id'         => $currentMeroveusId,
-            ':relevate_id'         => $currentMeroveusId,
-            ':is_duplicate'        => 0,
-            ':is_current_employee' => 1,
-            ':first_name'          => $this->cut_line_by_index_and_length ( $line, 296, 11, true ),
-            ':middle_initial'      => $this->cut_line_by_index_and_length ( $line, 307, 1, true ),
-            ':last_name'           => $this->cut_line_by_index_and_length ( $line, 308, 14, true ),
-            ':suffix'              => $this->cut_line_by_index_and_length ( $line, 322, 3, true ),
-            ':honorific'           => '',
-            ':job_title'           => $jobTitle,
-            ':job_position_id'     => $contactService->getJobPositionId($jobTitle, []),
-            ':email'               => '',
-            ':phone'               => '',
-            ':address1'            => '',
-            ':address2'            => null,
-            ':city'                => null,
-            ':state'               => null,
-            ':postal_code'         => null
+            'hub_id'              => '',
+            'meroveus_id'         => $currentMeroveusId,
+            'relevate_id'         => $currentMeroveusId,
+            'is_duplicate'        => 0,
+            'is_current_employee' => 1,
+            'first_name'          => $this->cut_line_by_index_and_length ( $line, 296, 11, true ),
+            'middle_initial'      => $this->cut_line_by_index_and_length ( $line, 307, 1, true ),
+            'last_name'           => $this->cut_line_by_index_and_length ( $line, 308, 14, true ),
+            'suffix'              => $this->cut_line_by_index_and_length ( $line, 322, 3, true ),
+            'honorific'           => '',
+            'job_title'           => $jobTitle,
+            'job_position_id'     => $contactService->getJobPositionId($jobTitle, []),
+            'email'               => '',
+            'phone'               => '',
+            'address1'            => '',
+            'address2'            => null,
+            'city'                => null,
+            'state'               => null,
+            'postal_code'         => null
         ];
     }
 

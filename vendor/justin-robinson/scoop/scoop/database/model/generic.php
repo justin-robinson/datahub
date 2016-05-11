@@ -145,6 +145,16 @@ class Generic implements \JsonSerializable {
     }
 
     /**
+     * @param $name
+     *
+     * @return bool
+     */
+    public function __isset ( $name ) {
+
+        return isset($this->dBValuesArray[$name]);
+    }
+
+    /**
      * @return array
      */
     public function to_array () {
@@ -158,6 +168,60 @@ class Generic implements \JsonSerializable {
     public function get_column_names () {
 
         return array_keys ( $this->orignalDbValuesArray );
+    }
+
+    /**
+     * get column names of the model
+     * @return array
+     */
+    public function get_db_values_array () {
+
+        return $this->dBValuesArray;
+    }
+
+    public function get_sql_insert_values () {
+
+        $columns = $this->get_db_values_array ();
+
+        // remove columns marked by the db to be NON NULL but we have them locally as null
+        foreach ( static::NON_NULL_COLUMNS as $columnName ) {
+            if ( array_key_exists ( $columnName, $columns ) && is_null ( $columns[$columnName] ) ) {
+                unset( $columns[$columnName] );
+            }
+        }
+
+        $columnNames = '';
+        $values = '';
+        $queryParams = [];
+        $updateColumnValues = '';
+        foreach ( $columns as $columnName => $value ) {
+
+            // add column name
+            $columnNames .= "`{$columnName}`,";
+            $updateColumnValues .= "{$columnName}=VALUES({$columnName}),";
+
+            if ( is_object($value) && is_a($value, '\Scoop\Database\Literal') ) {
+                $values .= "{$value},";
+            } else {
+                // value placeholder
+                $values .= '?,';
+
+                // value param
+                $queryParams[] = $value;
+            }
+        }
+
+        // remove last comma
+        $columnNames = rtrim ( $columnNames, ',' );
+        $values = rtrim ( $values, ',' );
+        $updateColumnValues = rtrim( $updateColumnValues, ',' );
+
+        return [
+            $columnNames,
+            $values,
+            $queryParams,
+            $updateColumnValues,
+        ];
     }
 
     /**

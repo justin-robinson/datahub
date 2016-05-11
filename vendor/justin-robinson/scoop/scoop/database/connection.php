@@ -35,7 +35,7 @@ class Connection {
     /**
      * @var bool
      */
-    private static $loggingEnabled = true;
+    private static $loggingEnabled = false;
 
     /**
      * @var Connection
@@ -127,7 +127,8 @@ class Connection {
         // execute statement
         if ( !$statement->execute () ) {
             $self->mysqli->rollback ();
-            trigger_error ( 'MySQL Error Number ( ' . $statement->errno . ' )' . $statement->error . PHP_EOL . $sql );
+            throw new \Exception(
+                'MySQL Error Number ( ' . $statement->errno . ' )' . $statement->error . PHP_EOL . $sql . PHP_EOL);
         }
 
         // commit this transaction
@@ -247,6 +248,7 @@ class Connection {
         $valueType = gettype ( $value );
 
         switch ( $valueType ) {
+            case "NULL":
             case "string":
                 $bindType = 's';
                 break;
@@ -257,6 +259,11 @@ class Connection {
             case "double":
                 $bindType = 'd';
                 break;
+            case "object":
+                if ( method_exists($value, '__toString') ) {
+                    $bindType = 's';
+                    break;
+                }
             default:
                 throw new \Exception( "Query param has type of {$valueType}" );
         }

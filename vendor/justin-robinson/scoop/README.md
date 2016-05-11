@@ -83,7 +83,7 @@ $sql=
 
 ###Setup
 
-####Composer
+Require via composer
 ```json
 {
   "require": {
@@ -91,21 +91,41 @@ $sql=
   }
 }
 ```
-
 ```shell
-composer install
-# edit ./vendor/justin-robinson/scoop/configs/db.php
-./vendor/bin/scoop --action generate_db_models
-# Classes will be generated in ../scoop-classes
+composer update
 ```
+Create scoop folder in project root ( beside vendor folder )
+```shell
+mkdir -p scoop/classes
+mkdir -p scoop/configs
+```
+Setup db connection paramters
+```shell
+touch scoop/configs/db.php
+```
+```php
+<?php
 
+return [
+    'host'     => 'jor.pw',
+    'user'     => 'test',
+    'password' => 'test',
+    'port'     => '3306',
+];
+```
+Generate DB models
+```shell
+./vendor/bin/scoop --action generate_db_models
+# Classes will be generated in ./scoop/classes/
+```
+Require the composer autloader
 ```php
 <?php
 
 require_once 'vendor/autoload.php';
 ```
 
-#####Customize your setup by creating a ./vendor/justin-robinson/scoop/configs/custom.php
+##### Customize your setup by creating a ./scoop/custom.php
 ```php
 <?php
 
@@ -116,35 +136,6 @@ return [
     'timezone' => 'America/Chicago' // http://php.net/manual/en/timezones.php
 ];
 ```
-
-####Git
-```shell
-git clone git@github.com:justin-robinson/scoop.git
-cd scoop
-composer install
-# edit .configs/db.php
-./bin/scoop --action generate_db_models
-# Classes will be generated in ../scoop-classes
-```
-
-```php
-<?php
-
-require_once 'scoop/bootstrap.php';
-```
-
-#####Customize your setup by creating a ./scoop/configs/custom.php
-```php
-<?php
-
-// all options can be found in ./scoop/configs/framework.php
-
-return [
-    'sites_folder' => '/var/www/sites',
-    'timezone' => 'America/Chicago' // http://php.net/manual/en/timezones.php
-];
-```
-
 
 
 ###Generate DB Models

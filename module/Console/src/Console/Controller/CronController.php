@@ -97,14 +97,17 @@ class CronController extends AbstractActionController {
                 url.Url,
                 sic.SIC
               FROM Org org
-                LEFT JOIN OrgAddress addr  ON ( org.id = addr.OrgId AND addr.isPrimary = 1 )
-                LEFT JOIN OrgPhone   phone ON ( org.id = phone.OrgId AND phone.isPrimary = 1 )
-                LEFT JOIN OrgUrl     url   ON ( org.id = url.OrgId AND url.isPrimary = 1 )
-                LEFT JOIN OrgSIC     sic   ON ( org.id = sic.OrgId AND sic.isPrimary = 1 )
+                LEFT JOIN OrgAddress addr  ON ( org.id = addr.OrgId )
+                LEFT JOIN OrgPhone   phone ON ( org.id = phone.OrgId )
+                LEFT JOIN OrgUrl     url   ON ( org.id = url.OrgId )
+                LEFT JOIN OrgSIC     sic   ON ( org.id = sic.OrgId )
               WHERE
                 org.DateModified > (NOW() - INTERVAL {$daysToLookBack} DAY )
                 AND addr.City IS NOT NULL
-                AND addr.City != ''";
+                AND addr.City != ''
+                AND org.Name != ''
+              ORDER BY
+                org.QName";
 
         $db->setAttribute( \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, false );
 

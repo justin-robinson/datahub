@@ -16,11 +16,25 @@ trait FormatterTrait {
     protected static $instance;
 
     /**
+     * @var \DB\Datahub\SourceType[]
+     */
+    protected static $sourceTypes;
+
+    /**
      * FormatterAbstract constructor.
      *
      * blocks the new keyword
      */
     protected function __construct () {
+
+        if ( is_null(self::$sourceTypes) ) {
+            self::$sourceTypes = [];
+
+            foreach ( \DB\Datahub\SourceType::fetch() as $sourceType ) {
+                self::$sourceTypes[$sourceType->name] = $sourceType;
+            }
+        }
+
     }
 
     /**

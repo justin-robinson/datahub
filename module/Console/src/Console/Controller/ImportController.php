@@ -5,6 +5,7 @@ namespace Console\Controller;
 use Console\Importer\Refinery;
 use Console\Record\Formatter\Factory;
 use Console\CsvIterator;
+use Scoop\Database\Literal;
 use Zend\Db\Adapter as dbAdapter;
 
 /**
@@ -108,12 +109,6 @@ class ImportController extends AbstractActionController
               `datahub`.`contact`
             WHERE meroveus_id = ?
             LIMIT 1000',
-        'selectCompany'     => '
-            SELECT
-                *
-            FROM
-              `datahub`.`company`
-            WHERE meroveus_id = ?',
         'insertContact'     => '
             INSERT INTO
               datahub.contact (
@@ -239,6 +234,7 @@ class ImportController extends AbstractActionController
      */
     public function refineryAction()
     {
+
         //@todo set up environment sniffing
         echo '
          ██▓    ███▄ ▄███▓    ██▓███      ▒█████      ██▀███     ▄▄▄█████▓    ██▓    ███▄    █      ▄████
@@ -301,11 +297,7 @@ class ImportController extends AbstractActionController
         // meroveus ids are grouped together so we can use this to reduce sql queries down to 1 for each company
         $lastMeroveusId = -1;
 
-
-        $selectAllContacts = $this->sqlStatementsArray['selectContacts'];
-        $selectCompany     = $this->sqlStatementsArray['selectCompany'];
-        $insertContact     = $this->sqlStatementsArray['insertContact'];
-        $updateContact     = $this->sqlStatementsArray['updateContact'];
+        $updateContact     = null;//$this->sqlStatementsArray['updateContact'];
 
         // some stats
         $totalCount = $insertCount = $updateCount = 0;
@@ -316,42 +308,44 @@ class ImportController extends AbstractActionController
 
         foreach ($file as $line) {
 
-            $contactDataArray  = $formatter->format($line);
-            $currentMeroveusId = $contactDataArray[':meroveus_id'];
+            $contact = new \DB\Datahub\Contact($formatter->format($line));
 
             // get the hub id
-            $selectCompany->execute([$currentMeroveusId]);
-            if ($selectCompany->rowCount() > 0) {
-                $company                     = $selectCompany->fetch();
-                $contactDataArray[':hub_id'] = $company['hub_id'];
+            $company = \DB\Datahub\CompanyOld::fetch_one_where(
+                'meroveus_id = ?',
+                [$contact->meroveus_id]);
+            if ($company) {
+                $contact->hub_id = $company->hub_id;
             }
 
             // if we have a new meroveus id, get all the contacts related to it
-            if ($lastMeroveusId !== $currentMeroveusId) {
+            if ($lastMeroveusId !== $contact->meroveus_id) {
 
                 // update meroveus id
-                $lastMeroveusId = $currentMeroveusId;
+                $lastMeroveusId = $contact->meroveus_id;
 
                 // get all contacts for this meroveus id
                 $allContacts = [];
 
-                $selectAllContacts->execute([$currentMeroveusId]);
-
                 // add each contact to our contacts array index by their name
-                foreach ($selectAllContacts as $contact) {
-                    $key               = strtolower($contact['first_name'] . $contact['last_name']);
+                foreach (\DB\Datahub\Contact::fetch_where('meroveus_id = ?', [$contact->meroveus_id]) as &$contact) {
+                    $key               = strtolower($contact->first_name . $contact->last_name);
                     $allContacts[$key] = $contact;
                 }
+
             }
 
             // key used to find this contact on our contacts array
-            $key = strtolower($contactDataArray[':first_name'] . $contactDataArray[':last_name']);
+            $key = strtolower($contact->first_name . $contact->last_name);
 
             // does this contact exist?
             if (empty($allContacts[$key])) {
 
+                $contact->created_at = new Literal('NOW()');
+                $contact->updated_at = new Literal('NOW()');
+
                 // insert new contact
-                $insertCount += $insertContact->execute($contactDataArray);
+                $contact->save();
 
             } else {
 
