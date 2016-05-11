@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class MsaPmsa
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/05/10
+ * @date 2016/05/11
  * @property mixed $sa_code
  * @property mixed $sa_name
  * @property mixed $sa_state
