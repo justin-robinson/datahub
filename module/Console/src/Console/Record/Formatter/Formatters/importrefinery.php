@@ -36,8 +36,6 @@ class ImportRefinery {
         $data['TickerExchange'] = strpos( $data['TickerExchange'], 'NASDAQ' ) ? 'NASDAQ' : $data['TickerExchange'];
         $data['TickerExchange'] = strpos( $data['TickerExchange'], 'York Stock' ) ? 'NYSE' : $data['TickerExchange'];
 
-        $data['OfficePhone1'] = '1' . $data['OfficePhone1'] . ' x1234';
-
 
         // get phone extension
         // matches x. 123, ext. 123
