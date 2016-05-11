@@ -13,13 +13,20 @@ namespace DB\Datahub;
  */
 class CompanyInstanceProperty extends \DBCore\Datahub\CompanyInstanceProperty {
 
-    public function save () {
+    /**
+     * @param bool $setTimestamps
+     */
+    public function save ( $setTimestamps = true ) {
 
-        if ( empty($this->createdAt) ) {
-            $this->set_literal('createdAt', 'NOW()');
+        if ( $setTimestamps ) {
+
+            // set timestamps
+            if ( empty($this->createdAt) ) {
+                $this->set_literal('createdAt', 'NOW()');
+            }
+            $this->set_literal('updatedAt', 'NOW()');
+
         }
-
-        $this->set_literal('updatedAt', 'NOW()');
         
         parent::save();
     }

@@ -51,10 +51,10 @@ class Refinery extends ImporterAbstract {
 
                     if ( $instance ) {
                         $instance->companyId = $lastCompany->companyId;
-                        $instance->save();
+                        $instance->save(false);
                     }
                 } else {
-                    $company->save();
+                    $company->save(false);
                     $lastCompany = $company;
                 }
 

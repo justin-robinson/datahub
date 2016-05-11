@@ -92,6 +92,8 @@ class ImportRefinery {
                 'isActive'      => true,
                 'name'          => $data['Name'],
                 'stateId'       => $state ? $state->stateId : null,
+                'createdAt'     => $data['DateModified'],
+                'updatedAt'     => $data['DateModified'],
             ] );
 
         $companyInstance = new \DB\Datahub\CompanyInstance(
@@ -103,13 +105,17 @@ class ImportRefinery {
                 'tickerExchange' => $data['TickerExchange'],
                 'url'            => $data['Url'],
                 'marketCode'     => $marketCode,
+                'createdAt'      => $data['DateModified'],
+                'updatedAt'      => $data['DateModified'],
             ] );
 
         $sourceName = 'refinery' . strtolower((empty($data['SourceID']) ? '' : ":{$data['SourceID']}"));
 
         $propertyArray = [
             'sourceTypeId' => self::$sourceTypes[$sourceName]->sourceTypeId,
-            'sourceId' => $data['InternalId'],
+            'sourceId'     => $data['InternalId'],
+            'createdAt'    => $data['DateModified'],
+            'updatedAt'    => $data['DateModified'],
         ];
 
         $propertyArray['name'] = 'address1';
