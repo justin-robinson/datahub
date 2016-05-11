@@ -10,14 +10,17 @@ use Scoop\Database\Model;
  * @author jrobinson (robotically)
  * @date 2016/05/11
  * @property mixed $companyId
+ * @property mixed $parentId
+ * @property mixed $description
  * @property mixed $employeeCount
  * @property mixed $generateCode
  * @property mixed $isActive
  * @property mixed $name
+ * @property mixed $owernship
  * @property mixed $sourceModifiedAt
+ * @property mixed $stateId
  * @property mixed $stockSymbol
  * @property mixed $createdAt
- * @property mixed $stateId
  * @property mixed $updatedAt
  * @property mixed $deletedAt
  * AUTO-GENERATED FILE
@@ -48,6 +51,12 @@ class Company extends Model {
             0 => 1,
             1 => 0,
           ),
+          'parentId' => 
+          array (
+          ),
+          'description' => 
+          array (
+          ),
           'employeeCount' => 
           array (
           ),
@@ -60,16 +69,19 @@ class Company extends Model {
           'name' => 
           array (
           ),
+          'owernship' => 
+          array (
+          ),
           'sourceModifiedAt' => 
+          array (
+          ),
+          'stateId' => 
           array (
           ),
           'stockSymbol' => 
           array (
           ),
           'createdAt' => 
-          array (
-          ),
-          'stateId' => 
           array (
           ),
           'updatedAt' => 
@@ -84,14 +96,17 @@ class Company extends Model {
     protected $dBValuesArray = 
         array (
           'companyId' => NULL,
+          'parentId' => NULL,
+          'description' => NULL,
           'employeeCount' => NULL,
           'generateCode' => NULL,
           'isActive' => NULL,
           'name' => NULL,
+          'owernship' => NULL,
           'sourceModifiedAt' => NULL,
+          'stateId' => NULL,
           'stockSymbol' => NULL,
           'createdAt' => NULL,
-          'stateId' => NULL,
           'updatedAt' => NULL,
           'deletedAt' => NULL,
         );
