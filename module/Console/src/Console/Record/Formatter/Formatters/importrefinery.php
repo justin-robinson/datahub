@@ -33,7 +33,7 @@ class ImportRefinery {
 
         $this->init();
 
-        $data['TickerExchange'] = strpos( $data['TickerExchange'], 'NASDAQ' ) ? 'NASDAQ' : $data['TickerExchange'];
+        $data['TickerExchange'] = strpos( $data['TickerExchange'], 'NASDAQ' ) >= 0 ? 'NASDAQ' : $data['TickerExchange'];
         $data['TickerExchange'] = strpos( $data['TickerExchange'], 'York Stock' ) ? 'NYSE' : $data['TickerExchange'];
 
 
