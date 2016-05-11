@@ -1,6 +1,7 @@
 <?php
 
 namespace DB\Datahub;
+use Scoop\Database\Query\Buffer;
 
 /**
  * Class CompanyInstance
@@ -92,20 +93,31 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance {
 
     public function save () {
 
+        // set timestamps
         if ( empty($this->createdAt) ) {
             $this->set_literal('createdAt', 'NOW()');
         }
-
         $this->set_literal('updatedAt', 'NOW()');
 
+        // save to db
         parent::save();
+
+        // save properties to db with a query buffer
+        $propertyBuffer = new Buffer(1000, get_class(new \DB\Datahub\CompanyInstanceProperty()));
 
         foreach ( $this->properties as $sourceProperties ) {
             foreach ( $sourceProperties as $property ) {
+
+                // link this property to this company instance
                 $property->companyInstanceId = $this->companyInstanceId;
-                $property->save();
+
+                // buffer the property insertion
+                $propertyBuffer->insert($property);
             }
         }
+
+        // save buffered properties to db
+        $propertyBuffer->flush();
     }
 
 }
