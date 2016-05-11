@@ -22,21 +22,6 @@ class Refinery extends ImporterAbstract {
      */
     public function import ( $csvFile, $db ) {
 
-
-//        $a = new \DB\Datahub\Address();
-//        $a->address1 = (string)rand(10000,99999);
-//
-//        $buffer = new \Scoop\Database\Query\Buffer(5, '\DB\Datahub\Address');
-//
-//        $buffer->insert($a);
-//        $buffer->insert($a);
-//        $buffer->insert($a);
-//        $buffer->insert($a);
-//        $buffer->insert($a);
-//        $buffer->insert($a);
-//
-//        die;
-
         // open file as csv
         $file = new CsvIterator( $csvFile );
 
