@@ -113,8 +113,10 @@ class ImportRefinery {
                 'marketCode'     => $marketCode,
             ] );
 
+        $sourceName = 'refinery' . strtolower((empty($data['SourceID']) ? '' : ":{$data['SourceID']}"));
+
         $propertyArray = [
-            'sourceTypeId' => self::$sourceTypes['refinery']->sourceTypeId,
+            'sourceTypeId' => self::$sourceTypes[$sourceName]->sourceTypeId,
             'sourceId' => $data['InternalId'],
         ];
 
