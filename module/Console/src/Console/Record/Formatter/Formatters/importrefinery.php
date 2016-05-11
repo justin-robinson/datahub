@@ -69,19 +69,13 @@ class ImportRefinery {
             $countryCode = 1;
         }
 
-        if ( strlen($data['State']) > 2 ) {
-            $stateKey = strtolower($data['State']);
-            $stateCode = self::$statesCache->get($stateKey);
-            if ( !$stateCode ) {
-                $usState = \DB\Datahub\UsState::fetch_one_where("LOWER(state_long) = ?", [$stateKey]);
-                if ( $usState ) {
-                    $stateCode = strtolower($usState->state_postal);
-                    self::$statesCache->put($stateKey, $stateCode);
-                }
-            }
-        } else {
-            $stateCode = strtolower($data['State']);
+        $stateKey = strtolower($data['State']);
+        $state = self::$statesCache->get($stateKey);
+        if ( !$state ) {
+            $state = \DB\Datahub\State::fetch_one_where("LOWER(name) = ? OR LOWER(code) = ?", [$stateKey, $stateKey]);
+            self::$statesCache->put($stateKey, $state);
         }
+        $stateCode = $state ? strtolower($state->code) : false;
         if ( $stateCode ) {
             $marketCode = $this->get_market_by_city_state($data['City'], $stateCode);
             if ( !empty($marketCode) ) {
@@ -101,6 +95,7 @@ class ImportRefinery {
                 'isActive'         => true,
                 'name'             => $data['Name'],
                 'sourceModifiedAt' => $data['DateModified'],
+                'stateId'          => $state ? $state->stateId : null,
                 'stockSymbol'      => $data['Ticker'],
                 'url'              => $data['Url'],
             ]);
