@@ -2048,12 +2048,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/justin-robinson/scoop.git",
-            "reference": "3a470ef6a768a417a23988ac97ee91b442d305be"
+            "reference": "01793e8d7d9dd825d0ca13699427f8da0c372b1c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/justin-robinson/scoop/zipball/3a470ef6a768a417a23988ac97ee91b442d305be",
-            "reference": "3a470ef6a768a417a23988ac97ee91b442d305be",
+            "url": "https://api.github.com/repos/justin-robinson/scoop/zipball/01793e8d7d9dd825d0ca13699427f8da0c372b1c",
+            "reference": "01793e8d7d9dd825d0ca13699427f8da0c372b1c",
             "shasum": ""
         },
         "require": {
@@ -2062,7 +2062,7 @@
             "kevinlebrun/colors.php": "0.4.1",
             "php": ">=5.6.0"
         },
-        "time": "2016-05-10 12:37:17",
+        "time": "2016-05-11 12:15:03",
         "bin": [
             "bin/scoop"
         ],

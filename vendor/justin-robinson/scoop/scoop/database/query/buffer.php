@@ -16,7 +16,7 @@ class Buffer {
     private $insertValuesSql;
 
     /**
-     * @var \Sccop\Database\Model[]
+     * @var \Scoop\Database\Model[]
      */
     private $models;
 
@@ -48,10 +48,12 @@ class Buffer {
     /**
      * Buffer constructor.
      *
-     * @param int    $maxSize
-     * @param string $modelClass
+     * @param $maxSize
+     * @param $modelClass
+     *
+     * @throws \Exception
      */
-    public function __construct ( int $maxSize, string $modelClass ) {
+    public function __construct ( $maxSize, $modelClass ) {
 
         $model = new $modelClass();
 
@@ -59,8 +61,7 @@ class Buffer {
             throw new \Exception( "model class must implement 'Scoop\\Database\\Model'" );
         }
 
-        list($this->columnNames, $values, $queryParams, $_) =
-            $model->get_sql_insert_values();
+        list($this->columnNames, $_, $_, $_) = $model->get_sql_insert_values();
 
         $this->maxSize = $maxSize;
         $this->modelClass = get_class( $model );
