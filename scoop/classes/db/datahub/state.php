@@ -3,15 +3,15 @@
 namespace DB\Datahub;
 
 /**
- * Class UsState
+ * Class State
  * @package DB\Datahub
  * @author jrobinson (robotically)
- * @date 2016/05/05
+ * @date 2016/05/11
  * @inheritdoc
  * This file is only generated once
  * Put your class specific code in here
  */
-class UsState extends \DBCore\Datahub\UsState {
+class State extends \DBCore\Datahub\State {
 
 
 

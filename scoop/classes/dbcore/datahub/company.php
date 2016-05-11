@@ -16,8 +16,8 @@ use Scoop\Database\Model;
  * @property mixed $name
  * @property mixed $sourceModifiedAt
  * @property mixed $stockSymbol
- * @property mixed $url
  * @property mixed $createdAt
+ * @property mixed $stateId
  * @property mixed $updatedAt
  * @property mixed $deletedAt
  * AUTO-GENERATED FILE
@@ -66,10 +66,10 @@ class Company extends Model {
           'stockSymbol' => 
           array (
           ),
-          'url' => 
+          'createdAt' => 
           array (
           ),
-          'createdAt' => 
+          'stateId' => 
           array (
           ),
           'updatedAt' => 
@@ -90,8 +90,8 @@ class Company extends Model {
           'name' => NULL,
           'sourceModifiedAt' => NULL,
           'stockSymbol' => NULL,
-          'url' => NULL,
           'createdAt' => NULL,
+          'stateId' => NULL,
           'updatedAt' => NULL,
           'deletedAt' => NULL,
         );
