@@ -2048,12 +2048,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/justin-robinson/scoop.git",
-            "reference": "e042d0c3bc3db9068f5b393052101b328bfe44f9"
+            "reference": "6ab4396417b828ebb9ca9538fc7b9154fad8bc4d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/justin-robinson/scoop/zipball/e042d0c3bc3db9068f5b393052101b328bfe44f9",
-            "reference": "e042d0c3bc3db9068f5b393052101b328bfe44f9",
+            "url": "https://api.github.com/repos/justin-robinson/scoop/zipball/6ab4396417b828ebb9ca9538fc7b9154fad8bc4d",
+            "reference": "6ab4396417b828ebb9ca9538fc7b9154fad8bc4d",
             "shasum": ""
         },
         "require": {
@@ -2062,7 +2062,12 @@
             "kevinlebrun/colors.php": "0.4.1",
             "php": ">=5.6.0"
         },
-        "time": "2016-05-11 12:36:18",
+        "require-dev": {
+            "phpunit/php-code-coverage": "*",
+            "phpunit/phpunit": "*",
+            "phpunit/phpunit-mock-objects": "*"
+        },
+        "time": "2016-05-11 16:51:13",
         "bin": [
             "bin/scoop"
         ],
