@@ -3,7 +3,7 @@
 namespace Console\Record\Formatter\Formatters;
 
 use Console\Record\Formatter\FormatterTrait;
-use \DB\Datahub\CompanyInstanceProperty;
+use DB\Datahub\CompanyInstanceProperty;
 use LRUCache\LRUCache;
 
 /**
@@ -88,19 +88,18 @@ class ImportRefinery {
 
         $company = new \DB\Datahub\Company(
             [
-                'employeeCount'    => 0,
-                'generateCode'     => $data['GenId'],
-                'isActive'         => true,
-                'name'             => $data['Name'],
-                'sourceModifiedAt' => $data['DateModified'],
-                'stateId'          => $state ? $state->stateId : null,
-                'stockSymbol'      => $data['Ticker'],
-                'url'              => $data['Url'],
-            ]);
+                'employeeCount' => 0,
+                'isActive'      => true,
+                'name'          => $data['Name'],
+                'stateId'       => $state ? $state->stateId : null,
+            ] );
 
         $companyInstance = new \DB\Datahub\CompanyInstance(
             [
+                'generateCode'   => $data['GenId'],
+                'name'           => $data['Name'],
                 'sicCode'        => $data['Sic'],
+                'stockSymbol'    => $data['Ticker'],
                 'tickerExchange' => $data['TickerExchange'],
                 'url'            => $data['Url'],
                 'marketCode'     => $marketCode,
@@ -158,7 +157,7 @@ class ImportRefinery {
         $companyInstance->add_property(new CompanyInstanceProperty($propertyArray));
 
         $company->add_company_instance( $companyInstance);
-        
+
         return $company;
 
     }
