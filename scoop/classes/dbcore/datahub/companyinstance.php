@@ -11,18 +11,16 @@ use Scoop\Database\Model;
  * @date 2016/05/11
  * @property mixed $companyInstanceId
  * @property mixed $companyId
- * @property mixed $name
+ * @property mixed $description
+ * @property mixed $generateCode
  * @property mixed $isHeadquarters
  * @property mixed $marketCode
- * @property mixed $meta
+ * @property mixed $marketOfRecord
+ * @property mixed $name
  * @property mixed $sicCode
+ * @property mixed $stockSymbol
  * @property mixed $tickerExchange
  * @property mixed $tierLevel
- * @property mixed $employeeCountInstance
- * @property mixed $employeeCountCompany
- * @property mixed $establishedYear
- * @property mixed $revenue
- * @property mixed $description
  * @property mixed $url
  * @property mixed $createdAt
  * @property mixed $updatedAt
@@ -58,7 +56,10 @@ class CompanyInstance extends Model {
           'companyId' => 
           array (
           ),
-          'name' => 
+          'description' => 
+          array (
+          ),
+          'generateCode' => 
           array (
           ),
           'isHeadquarters' => 
@@ -67,31 +68,22 @@ class CompanyInstance extends Model {
           'marketCode' => 
           array (
           ),
-          'meta' => 
+          'marketOfRecord' => 
+          array (
+          ),
+          'name' => 
           array (
           ),
           'sicCode' => 
+          array (
+          ),
+          'stockSymbol' => 
           array (
           ),
           'tickerExchange' => 
           array (
           ),
           'tierLevel' => 
-          array (
-          ),
-          'employeeCountInstance' => 
-          array (
-          ),
-          'employeeCountCompany' => 
-          array (
-          ),
-          'establishedYear' => 
-          array (
-          ),
-          'revenue' => 
-          array (
-          ),
-          'description' => 
           array (
           ),
           'url' => 
@@ -113,18 +105,16 @@ class CompanyInstance extends Model {
         array (
           'companyInstanceId' => NULL,
           'companyId' => NULL,
-          'name' => NULL,
+          'description' => NULL,
+          'generateCode' => NULL,
           'isHeadquarters' => NULL,
           'marketCode' => NULL,
-          'meta' => NULL,
+          'marketOfRecord' => NULL,
+          'name' => NULL,
           'sicCode' => NULL,
+          'stockSymbol' => NULL,
           'tickerExchange' => NULL,
           'tierLevel' => NULL,
-          'employeeCountInstance' => NULL,
-          'employeeCountCompany' => NULL,
-          'establishedYear' => NULL,
-          'revenue' => NULL,
-          'description' => NULL,
           'url' => NULL,
           'createdAt' => NULL,
           'updatedAt' => NULL,

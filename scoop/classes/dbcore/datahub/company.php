@@ -13,11 +13,9 @@ use Scoop\Database\Model;
  * @property mixed $parentId
  * @property mixed $description
  * @property mixed $employeeCount
- * @property mixed $generateCode
  * @property mixed $isActive
  * @property mixed $name
  * @property mixed $owernship
- * @property mixed $sourceModifiedAt
  * @property mixed $stateId
  * @property mixed $stockSymbol
  * @property mixed $createdAt
@@ -60,9 +58,6 @@ class Company extends Model {
           'employeeCount' => 
           array (
           ),
-          'generateCode' => 
-          array (
-          ),
           'isActive' => 
           array (
           ),
@@ -70,9 +65,6 @@ class Company extends Model {
           array (
           ),
           'owernship' => 
-          array (
-          ),
-          'sourceModifiedAt' => 
           array (
           ),
           'stateId' => 
@@ -99,11 +91,9 @@ class Company extends Model {
           'parentId' => NULL,
           'description' => NULL,
           'employeeCount' => NULL,
-          'generateCode' => NULL,
           'isActive' => NULL,
           'name' => NULL,
           'owernship' => NULL,
-          'sourceModifiedAt' => NULL,
           'stateId' => NULL,
           'stockSymbol' => NULL,
           'createdAt' => NULL,
