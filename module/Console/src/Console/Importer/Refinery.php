@@ -4,7 +4,6 @@ namespace Console\Importer;
 
 use Console\CsvIterator;
 use Console\CsvIteratorException;
-use Console\DB\Query\Buffer;
 use Console\Record\Formatter\Factory;
 
 /**
