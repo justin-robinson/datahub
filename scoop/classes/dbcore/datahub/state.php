@@ -10,6 +10,7 @@ use Scoop\Database\Model;
  * @author jrobinson (robotically)
  * @date 2016/05/11
  * @property mixed $stateId
+ * @property mixed $countryId
  * @property mixed $name
  * @property mixed $code
  * @property mixed $state_ap_style
@@ -42,6 +43,9 @@ class State extends Model {
             0 => 1,
             1 => 0,
           ),
+          'countryId' => 
+          array (
+          ),
           'name' => 
           array (
           ),
@@ -63,6 +67,7 @@ class State extends Model {
     protected $dBValuesArray = 
         array (
           'stateId' => NULL,
+          'countryId' => NULL,
           'name' => NULL,
           'code' => NULL,
           'state_ap_style' => NULL,
