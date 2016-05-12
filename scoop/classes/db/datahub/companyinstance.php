@@ -37,7 +37,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance {
             return;
         }
 
-        $properties = \DB\Datahub\CompanyInstanceProperty::query(
+        $properties = CompanyInstanceProperty::query(
             "SELECT
                *
              FROM
