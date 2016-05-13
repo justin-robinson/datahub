@@ -142,9 +142,11 @@ class ImportRefinery {
         $propertyArray['value'] = $data['Lon'];
         $companyInstance->add_property(new CompanyInstanceProperty($propertyArray));
 
-        $propertyArray['name'] = 'state';
-        $propertyArray['value'] = $data['State'];
-        $companyInstance->add_property(new CompanyInstanceProperty($propertyArray));
+        if ( $state ) {
+            $propertyArray['name'] = 'state';
+            $propertyArray['value'] = $state->name;
+            $companyInstance->add_property(new CompanyInstanceProperty($propertyArray));
+        }
 
         $propertyArray['name'] = 'zipCode';
         $propertyArray['value'] = $data['PostalCode'];
