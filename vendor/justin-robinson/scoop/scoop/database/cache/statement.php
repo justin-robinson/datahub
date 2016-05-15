@@ -28,9 +28,19 @@ class Statement {
      */
     public function __destruct () {
 
-        $this->cache->foreach(function($statement){
+        $this->cache->each(function($statement){
             $statement->close();
         });
+    }
+
+    /**
+     * @param $key
+     *
+     * @return bool
+     */
+    public function exists ( $key ) {
+
+        return !is_null($this->cache->get($key));
     }
 
     /**
@@ -41,16 +51,6 @@ class Statement {
     public function get ( $key ) {
 
         return $this->cache->get($key);
-    }
-
-    /**
-     * @param $key
-     *
-     * @return bool
-     */
-    public function exists ( $key ) {
-
-        return is_null($this->cache->get($key));
     }
 
     /**

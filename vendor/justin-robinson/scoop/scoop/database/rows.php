@@ -13,17 +13,17 @@ class Rows implements \Iterator, \ArrayAccess, \JsonSerializable {
     /**
      * @var int
      */
-    public $numRows = 0;
-
-    /**
-     * @var $rowsStorageArray Generic[]
-     */
-    private $rowsStorageArray = [ ];
+    private $numRows = 0;
 
     /**
      * @var int
      */
     private $position = 0;
+
+    /**
+     * @var $rowsStorageArray Generic[]
+     */
+    private $rowsStorageArray = [ ];
 
     /**
      * @return string
@@ -34,20 +34,20 @@ class Rows implements \Iterator, \ArrayAccess, \JsonSerializable {
     }
 
     /**
-     * Set position to beginning
-     */
-    public function rewind () {
-
-        $this->position = 0;
-    }
-
-    /**
      * @param $row Generic
      */
     public function add_row ( Generic $row ) {
 
         $this->rowsStorageArray[] = $row;
         ++$this->numRows;
+    }
+
+    /**
+     * @return Generic
+     */
+    public function first () {
+
+        return $this->get(0);
     }
 
     /**
@@ -73,11 +73,11 @@ class Rows implements \Iterator, \ArrayAccess, \JsonSerializable {
     }
 
     /**
-     * @return Generic
+     * @return int
      */
-    public function first () {
+    public function get_num_rows () {
 
-        return $this->get(0);
+        return $this->numRows;
     }
 
     /**
@@ -85,20 +85,8 @@ class Rows implements \Iterator, \ArrayAccess, \JsonSerializable {
      */
     public function is_last_row () {
 
-        return $this->key () === ( $this->numRows - 1 );
-    }
-
-    /**********************************
-     * Iterator functions
-     **********************************/
-
-    /**
-     * get the current position
-     * @return int
-     */
-    public function key () {
-
-        return $this->position;
+        $keys = array_keys($this->rowsStorageArray);
+        return $this->key () === end($keys);
     }
 
     /**
@@ -119,9 +107,21 @@ class Rows implements \Iterator, \ArrayAccess, \JsonSerializable {
      * get Model at current index
      * @return Model
      */
+
+    /**********************************
+     * Iterator functions
+     **********************************/
     public function current () {
 
-        return $this->rowsStorageArray[$this->position];
+        return $this->rowsStorageArray[$this->key()];
+    }
+    /**
+     * get the current position
+     * @return int
+     */
+    public function key () {
+
+        return array_keys($this->rowsStorageArray)[$this->position];
     }
 
     /**
@@ -132,23 +132,25 @@ class Rows implements \Iterator, \ArrayAccess, \JsonSerializable {
         ++$this->position;
     }
 
+    /**
+     * Set position to beginning
+     */
+    public function rewind () {
+
+        $this->position = 0;
+    }
+
+    /**
+     * @return bool
+     */
+    public function valid () {
+
+        return isset( array_keys($this->rowsStorageArray)[$this->position] );
+    }
+
     /**********************************
      *  ArrayAccess functions
      **********************************/
-
-    /**
-     * @param mixed $offset
-     * @param mixed $value
-     */
-    public function offsetSet ( $offset, $value ) {
-
-        if ( is_null ( $offset ) ) {
-            $this->rowsStorageArray[] = $value;
-        } else {
-            $this->rowsStorageArray[$offset] = $value;
-        }
-    }
-
     /**
      * @param mixed $offset
      *
@@ -157,14 +159,6 @@ class Rows implements \Iterator, \ArrayAccess, \JsonSerializable {
     public function offsetExists ( $offset ) {
 
         return isset( $this->rowsStorageArray[$offset] );
-    }
-
-    /**
-     * @param mixed $offset
-     */
-    public function offsetUnset ( $offset ) {
-
-        unset( $this->rowsStorageArray[$offset] );
     }
 
     /**
@@ -178,17 +172,43 @@ class Rows implements \Iterator, \ArrayAccess, \JsonSerializable {
     }
 
     /**
-     * @return bool
+     * @param mixed $offset
+     * @param mixed $value
      */
-    public function valid () {
+    public function offsetSet ( $offset, $value ) {
 
-        return isset( $this->rowsStorageArray[$this->position] );
+        // only allow our models in here
+        if ( !is_a($value, Generic::class) ) {
+            return;
+        }
+
+        // no offset? just append
+        if ( is_null ( $offset ) ) {
+            $this->rowsStorageArray[] = $value;
+            ++$this->numRows;
+        } else {
+            if ( !array_key_exists( $offset, $this->rowsStorageArray )) {
+                ++$this->numRows;
+            }
+            $this->rowsStorageArray[$offset] = $value;
+        }
+    }
+
+    /**
+     * @param mixed $offset
+     */
+    public function offsetUnset ( $offset ) {
+
+        if ( array_key_exists( $offset, $this->rowsStorageArray ) ) {
+            --$this->numRows;
+        }
+
+        unset( $this->rowsStorageArray[$offset] );
     }
 
     /**********************************
      * JSONSerialize functions
      **********************************/
-
     /**
      * @return array|Model[]
      */

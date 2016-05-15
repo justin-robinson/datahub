@@ -1816,57 +1816,6 @@
         ]
     },
     {
-        "name": "justin-robinson/lrucache",
-        "version": "v0.5.2",
-        "version_normalized": "0.5.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/justin-robinson/php-lrucache.git",
-            "reference": "914d60585f5e2e3765618577d879b98dc07ee152"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/justin-robinson/php-lrucache/zipball/914d60585f5e2e3765618577d879b98dc07ee152",
-            "reference": "914d60585f5e2e3765618577d879b98dc07ee152",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.4.0"
-        },
-        "require-dev": {
-            "phpunit/php-code-coverage": "*",
-            "phpunit/phpunit": "*",
-            "phpunit/phpunit-mock-objects": "*"
-        },
-        "time": "2016-05-05 17:38:42",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "LRUCache": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "Apache-2.0"
-        ],
-        "authors": [
-            {
-                "name": "Justin Robinson",
-                "email": "jrob09bhs@gmail.com",
-                "homepage": "https://jor.pw",
-                "role": "Developer"
-            }
-        ],
-        "description": "PHP LRU Cache implementation",
-        "homepage": "https://github.com/justin-robinson/php-lrucache",
-        "keywords": [
-            "cache",
-            "lru",
-            "php"
-        ]
-    },
-    {
         "name": "symfony/yaml",
         "version": "v3.0.6",
         "version_normalized": "3.0.6.0",
@@ -2042,18 +1991,69 @@
         "homepage": "https://symfony.com"
     },
     {
+        "name": "justin-robinson/lrucache",
+        "version": "v0.5.3",
+        "version_normalized": "0.5.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/justin-robinson/php-lrucache.git",
+            "reference": "6cbb4b67253ca4410ee38439f9a5f73792c37fef"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/justin-robinson/php-lrucache/zipball/6cbb4b67253ca4410ee38439f9a5f73792c37fef",
+            "reference": "6cbb4b67253ca4410ee38439f9a5f73792c37fef",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "phpunit/php-code-coverage": "*",
+            "phpunit/phpunit": "*",
+            "phpunit/phpunit-mock-objects": "*"
+        },
+        "time": "2016-05-15 12:10:48",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "LRUCache": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "Justin Robinson",
+                "email": "jrob09bhs@gmail.com",
+                "homepage": "https://jor.pw",
+                "role": "Developer"
+            }
+        ],
+        "description": "PHP LRU Cache implementation",
+        "homepage": "https://github.com/justin-robinson/php-lrucache",
+        "keywords": [
+            "cache",
+            "lru",
+            "php"
+        ]
+    },
+    {
         "name": "justin-robinson/scoop",
         "version": "dev-php56",
         "version_normalized": "dev-php56",
         "source": {
             "type": "git",
             "url": "https://github.com/justin-robinson/scoop.git",
-            "reference": "6ab4396417b828ebb9ca9538fc7b9154fad8bc4d"
+            "reference": "aad7671f586da54ff339f1d408fb6c00032b9b47"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/justin-robinson/scoop/zipball/6ab4396417b828ebb9ca9538fc7b9154fad8bc4d",
-            "reference": "6ab4396417b828ebb9ca9538fc7b9154fad8bc4d",
+            "url": "https://api.github.com/repos/justin-robinson/scoop/zipball/aad7671f586da54ff339f1d408fb6c00032b9b47",
+            "reference": "aad7671f586da54ff339f1d408fb6c00032b9b47",
             "shasum": ""
         },
         "require": {
@@ -2067,7 +2067,7 @@
             "phpunit/phpunit": "*",
             "phpunit/phpunit-mock-objects": "*"
         },
-        "time": "2016-05-11 16:51:13",
+        "time": "2016-05-15 12:13:17",
         "bin": [
             "bin/scoop"
         ],
