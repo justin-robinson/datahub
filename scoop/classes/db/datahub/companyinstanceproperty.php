@@ -18,6 +18,16 @@ class CompanyInstanceProperty extends \DBCore\Datahub\CompanyInstanceProperty {
      */
     public function save ( $setTimestamps = true ) {
 
+        $this->pre_save($setTimestamps);
+        
+        parent::save();
+    }
+
+    /**
+     * @param bool $setTimestamps
+     */
+    public function pre_save ( $setTimestamps = true ) {
+
         if ( $setTimestamps ) {
 
             // set timestamps
@@ -27,8 +37,8 @@ class CompanyInstanceProperty extends \DBCore\Datahub\CompanyInstanceProperty {
             $this->set_literal('updatedAt', 'NOW()');
 
         }
-        
-        parent::save();
+
+        $this->valueMd5 = md5($this->value);
     }
 
 }

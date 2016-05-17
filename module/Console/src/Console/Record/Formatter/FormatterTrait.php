@@ -2,6 +2,8 @@
 
 namespace Console\Record\Formatter;
 
+use DB\Datahub\SourceType;
+
 /**
  * Singleton that formats company data into named query parameters for pdo insertions
  *
@@ -30,7 +32,7 @@ trait FormatterTrait {
         if ( is_null(self::$sourceTypes) ) {
             self::$sourceTypes = [];
 
-            foreach ( \DB\Datahub\SourceType::fetch() as $sourceType ) {
+            foreach ( SourceType::fetch() as $sourceType ) {
                 self::$sourceTypes[$sourceType->name] = $sourceType;
             }
         }

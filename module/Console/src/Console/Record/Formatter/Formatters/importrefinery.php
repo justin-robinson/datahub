@@ -3,7 +3,11 @@
 namespace Console\Record\Formatter\Formatters;
 
 use Console\Record\Formatter\FormatterTrait;
+use DB\Datahub\Company;
+use DB\Datahub\CompanyInstance;
 use DB\Datahub\CompanyInstanceProperty;
+use DB\Datahub\Market;
+use DB\Datahub\State;
 use LRUCache\LRUCache;
 
 /**
@@ -33,9 +37,8 @@ class ImportRefinery {
 
         $this->init();
 
-        $data['TickerExchange'] = (strpos( $data['TickerExchange'], 'NASDAQ' ) === false ) ? $data['TickerExchange'] : 'NASDAQ';
-        $data['TickerExchange'] = (strpos( $data['TickerExchange'], 'York Stock' ) === false ) ? $data['TickerExchange'] : 'NYSE';
-
+        $data['TickerExchange'] = (strpos( $data['TickerExchange'], 'NASDAQ' ) === false) ? $data['TickerExchange'] : 'NASDAQ';
+        $data['TickerExchange'] = (strpos( $data['TickerExchange'], 'York Stock' ) === false) ? $data['TickerExchange'] : 'NYSE';
 
         // get phone extension
         // matches x. 123, ext. 123
@@ -43,40 +46,40 @@ class ImportRefinery {
         // 'x' and 'ext' are case insensitive
         // number of digits is infinite
         $phoneNumber = $data['OfficePhone1'];
-        if ( preg_match('/(x|(e(xt)?\.?))\s*(\d*)/i', $phoneNumber, $phoneMatches, PREG_OFFSET_CAPTURE) ) {
+        if( preg_match( '/(x|(e(xt)?\.?))\s*(\d*)/i', $phoneNumber, $phoneMatches, PREG_OFFSET_CAPTURE ) ) {
             // 4th group is the extension
             // 0 index is the text
             // 1 is the offset for the group into the original string
             $phoneExtension = $phoneMatches[4][0];
 
             // remove entire extension text from phone number
-            $phoneNumber = substr($phoneNumber, 0, $phoneMatches[0][1]);
+            $phoneNumber = substr( $phoneNumber, 0, $phoneMatches[0][1] );
         } else {
             $phoneExtension = '';
         }
 
         // ensure we only have digits
-        $phoneNumber = preg_replace('/\D/', '', $phoneNumber);
+        $phoneNumber = preg_replace( '/\D/', '', $phoneNumber );
 
         // ensure phone number is 10 digits and extract country code
-        $phoneLength = strlen($phoneNumber);
-        if ( $phoneLength > 10 ) {
-            $countryCode = substr($phoneNumber, 0, $phoneLength - 10);
-            $phoneNumber = substr($phoneNumber, strlen($countryCode), 10);
+        $phoneLength = strlen( $phoneNumber );
+        if( $phoneLength > 10 ) {
+            $countryCode = substr( $phoneNumber, 0, $phoneLength - 10 );
+            $phoneNumber = substr( $phoneNumber, strlen( $countryCode ), 10 );
         } else {
             $countryCode = 1;
         }
 
-        $stateKey = strtolower($data['State']);
-        $state = self::$statesCache->get($stateKey);
-        if ( !$state ) {
-            $state = \DB\Datahub\State::fetch_one_where("LOWER(name) = ? OR LOWER(code) = ?", [$stateKey, $stateKey]);
-            self::$statesCache->put($stateKey, $state);
+        $stateKey = strtolower( $data['State'] );
+        $state = self::$statesCache->get( $stateKey );
+        if( !$state ) {
+            $state = State::fetch_one_where( "LOWER(name) = ? OR LOWER(code) = ?", [ $stateKey, $stateKey ] );
+            self::$statesCache->put( $stateKey, $state );
         }
-        $stateCode = $state ? strtolower($state->code) : false;
-        if ( $stateCode ) {
-            $marketCode = $this->get_market_by_city_state($data['City'], $stateCode);
-            if ( !empty($marketCode) ) {
+        $stateCode = $state ? strtolower( $state->code ) : false;
+        if( $stateCode ) {
+            $marketCode = $this->get_market_by_city_state( $data['City'], $stateCode );
+            if( !empty($marketCode) ) {
                 $marketCode = $marketCode->market_code;
             } else {
                 $marketCode = '';
@@ -85,8 +88,7 @@ class ImportRefinery {
             $marketCode = '';
         }
 
-
-        $company = new \DB\Datahub\Company(
+        $company = new Company(
             [
                 'employeeCount' => 0,
                 'isActive'      => true,
@@ -96,7 +98,7 @@ class ImportRefinery {
                 'updatedAt'     => $data['DateModified'],
             ] );
 
-        $companyInstance = new \DB\Datahub\CompanyInstance(
+        $companyInstance = new CompanyInstance(
             [
                 'generateCode'   => $data['GenId'],
                 'name'           => $data['Name'],
@@ -109,7 +111,7 @@ class ImportRefinery {
                 'updatedAt'      => $data['DateModified'],
             ] );
 
-        $sourceName = 'refinery' . strtolower((empty($data['SourceID']) ? '' : ":{$data['SourceID']}"));
+        $sourceName = 'refinery' . strtolower( (empty($data['SourceID']) ? '' : ":{$data['SourceID']}") );
 
         $propertyArray = [
             'sourceTypeId' => self::$sourceTypes[$sourceName]->sourceTypeId,
@@ -120,75 +122,84 @@ class ImportRefinery {
 
         $propertyArray['name'] = 'address1';
         $propertyArray['value'] = $data['Addr1'];
-        $companyInstance->add_property(new CompanyInstanceProperty($propertyArray));
+        $companyInstance->add_property( new CompanyInstanceProperty( $propertyArray ) );
 
         $propertyArray['name'] = 'address2';
         $propertyArray['value'] = $data['Addr2'];
-        $companyInstance->add_property(new CompanyInstanceProperty($propertyArray));
+        $companyInstance->add_property( new CompanyInstanceProperty( $propertyArray ) );
 
         $propertyArray['name'] = 'city';
         $propertyArray['value'] = $data['City'];
-        $companyInstance->add_property(new CompanyInstanceProperty($propertyArray));
+        $companyInstance->add_property( new CompanyInstanceProperty( $propertyArray ) );
 
         $propertyArray['name'] = 'country';
         $propertyArray['value'] = $data['Country'];
-        $companyInstance->add_property(new CompanyInstanceProperty($propertyArray));
+        $companyInstance->add_property( new CompanyInstanceProperty( $propertyArray ) );
+
+        $propertyArray['name'] = 'description';
+        $propertyArray['value'] = $data['Description'];
+        $companyInstance->add_property( new CompanyInstanceProperty( $propertyArray ) );
 
         $propertyArray['name'] = 'latitude';
         $propertyArray['value'] = $data['Lat'];
-        $companyInstance->add_property(new CompanyInstanceProperty($propertyArray));
+        $companyInstance->add_property( new CompanyInstanceProperty( $propertyArray ) );
 
         $propertyArray['name'] = 'longitude';
         $propertyArray['value'] = $data['Lon'];
-        $companyInstance->add_property(new CompanyInstanceProperty($propertyArray));
+        $companyInstance->add_property( new CompanyInstanceProperty( $propertyArray ) );
 
-        if ( $state ) {
-            $propertyArray['name'] = 'state';
-            $propertyArray['value'] = $state->name;
-            $companyInstance->add_property(new CompanyInstanceProperty($propertyArray));
-        }
+        $propertyArray['name'] = 'state';
+        $propertyArray['value'] = isset($state->name) ? $state->name : '';
+        $companyInstance->add_property( new CompanyInstanceProperty( $propertyArray ) );
 
         $propertyArray['name'] = 'zipCode';
         $propertyArray['value'] = $data['PostalCode'];
-        $companyInstance->add_property(new CompanyInstanceProperty($propertyArray));
+        $companyInstance->add_property( new CompanyInstanceProperty( $propertyArray ) );
 
         $propertyArray['name'] = 'phoneExtension';
         $propertyArray['value'] = $phoneExtension;
-        $companyInstance->add_property(new CompanyInstanceProperty($propertyArray));
+        $companyInstance->add_property( new CompanyInstanceProperty( $propertyArray ) );
 
         $propertyArray['name'] = 'phoneNumber';
         $propertyArray['value'] = $phoneNumber;
-        $companyInstance->add_property(new CompanyInstanceProperty($propertyArray));
+        $companyInstance->add_property( new CompanyInstanceProperty( $propertyArray ) );
 
         $propertyArray['name'] = 'phoneCountryCode';
         $propertyArray['value'] = $countryCode;
-        $companyInstance->add_property(new CompanyInstanceProperty($propertyArray));
+        $companyInstance->add_property( new CompanyInstanceProperty( $propertyArray ) );
 
-        $company->add_company_instance( $companyInstance);
+        $company->add_company_instance( $companyInstance );
 
         return $company;
 
     }
 
     private function init () {
-        if ( is_null ( self::$marketsCache) ) {
-            self::$marketsCache = new LRUCache(50);
+
+        if( is_null( self::$marketsCache ) ) {
+            self::$marketsCache = new LRUCache( 50 );
         }
 
-        if ( is_null( self::$statesCache) ) {
-            self::$statesCache = new LRUCache(50);
+        if( is_null( self::$statesCache ) ) {
+            self::$statesCache = new LRUCache( 50 );
         }
     }
 
+    /**
+     * @param $city
+     * @param $stateCode
+     *
+     * @return bool|int|mixed|\Scoop\Database\Model\Generic|\Scoop\Database\Rows
+     */
     private function get_market_by_city_state ( $city, $stateCode ) {
 
-        $marketKey = strtolower($city.$stateCode);
+        $marketKey = strtolower( $city . $stateCode );
 
-        $market = self::$marketsCache->get($marketKey);
+        $market = self::$marketsCache->get( $marketKey );
 
-        if ( !$market ) {
-            $market = \DB\Datahub\Market::query(
-            "SELECT
+        if( !$market ) {
+            $market = Market::query(
+                "SELECT
               m.*
             FROM
               `datahub`.`msa_pmsa` msa
@@ -197,17 +208,16 @@ class ImportRefinery {
             WHERE
               msa.sa_name = ?
             LIMIT 1",
-            [ "{$city}, {$stateCode}" ]
+                [ "{$city}, {$stateCode}" ]
             );
 
-            if ( $market ) {
+            if( $market ) {
                 $market = $market->first();
             }
 
-            self::$marketsCache->put($marketKey, $market);
+            self::$marketsCache->put( $marketKey, $market );
 
         }
-
 
         return $market;
     }

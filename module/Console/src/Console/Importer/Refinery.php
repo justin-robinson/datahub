@@ -4,7 +4,10 @@ namespace Console\Importer;
 
 use Console\CsvIterator;
 use Console\CsvIteratorException;
-use Console\Record\Formatter\Factory;
+use Console\Record\Formatter\Formatters\ImportRefinery;
+use DB\Datahub\Company;
+use DB\Datahub\CompanyInstance;
+use LRUCache\LRUCache;
 
 /**
  * Class Refinery
@@ -30,12 +33,10 @@ class Refinery extends ImporterAbstract {
         // how many rows we processed
         $count = 0;
 
-        /**
-         * @var $formatter \Console\Record\Formatter\Formatters\ImportRefinery
-         */
-        $formatter = Factory::factory( 'importrefinery' );
+        $formatter = ImportRefinery::get_instance();
 
-        $lastCompany = new \DB\Datahub\Company();
+        $companyCache = new LRUCache( 1000 );
+        $companyInstanceCache = new LRUCache ( 1000 );
 
         // process the rows
         foreach ( $file as $record ) {
@@ -44,18 +45,81 @@ class Refinery extends ImporterAbstract {
                 // why don't we merge automatically?
                 // because then we would have to try catch around the foreach loop and that would
                 // cause the loop to break.  This way we can continue processing the remaining rows
-                $company = $formatter->format( $file->mergeWithHeaderRow( $record ) );
+                $record = $file->mergeWithHeaderRow( $record );
 
-                if ( $lastCompany->name === $company->name ) {
+                // format record into some db models
+                $company = $formatter->format( $record );
+
+                // does this company exist in the cache?
+                $existingCompany = $companyCache->get( $record['InternalId'] );
+
+                // look up to db on cache miss
+                if( !$existingCompany ) {
+                    $existingCompany = Company::fetch_one_where( 'name = ? AND stateId = ?', [ $company->companyId, $company->stateId ] );
+                }
+
+                // just save the company instance if the company already exists
+                if( $existingCompany ) {
                     $instance = $company->get_company_instances()->first();
 
-                    if ( $instance ) {
-                        $instance->companyId = $lastCompany->companyId;
-                        $instance->save(false);
+                    if( $instance ) {
+
+                        // link this instance to the company
+                        $instance->companyId = $existingCompany->companyId;
+
+                        // our cache key
+                        $instanceKey = "{$instance->companyId}-{$instance->namne}";
+
+                        // flag to determine if this instance is in the db
+                        // check our cache first to determine if the instance has been created in this run
+                        $instanceExists = $companyInstanceCache->exists( $instanceKey );
+
+                        // not in cache? try to save
+                        if ( !$instanceExists ) {
+                            try{
+
+                                // false means don't autoset the timestamps since we are using the ones from the imported data
+                                $instance->save( false );
+
+                                // put this instance in the cache
+                                $companyInstanceCache->put( $instanceKey, $instance );
+                            } catch ( \Exception $e ) {
+                                // insertion failed, probably a dupe
+                                $instanceExists = true;
+                            }
+                        }
+
+                        // add properties to an existing instance
+                        if ( $instanceExists ) {
+
+                            // new properties to add
+                            $properties = $instance->get_properties();
+
+                            // find the existing instance
+                            $instance = CompanyInstance::fetch_one_where( 'companyId = ? AND name = ?', [$instance->companyId, $instance->name] );
+
+                            // add properties to this instance
+                            foreach ( $properties as $propertyType ) {
+                                foreach ( $propertyType as $property ) {
+                                    $instance->add_property( $property );
+                                }
+                            }
+
+                            // save that mess
+                            $instance->save();
+
+                            // put this instance in the cache
+                            $companyInstanceCache->put( $instanceKey, $instance );
+                        }
+
                     }
                 } else {
-                    $company->save(false);
-                    $lastCompany = $company;
+
+                    // false means don't autoset the timestamps since we are using the ones from the imported data
+                    $company->save( false );
+
+                    // put company in cache for later
+                    $companyCache->put( $record['InternalId'], $company );
                 }
 
                 $count++;

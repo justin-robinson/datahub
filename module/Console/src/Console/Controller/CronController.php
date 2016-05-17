@@ -52,6 +52,7 @@ class CronController extends AbstractActionController {
             "OfficePhone1",
             "Url",
             "Sic",
+            "Description"
         ];
 
         // each row in the elastic dump needs another row telling it to what to do with the data it's
@@ -95,12 +96,14 @@ class CronController extends AbstractActionController {
                 addr.Lon,
                 phone.OfficePhone1,
                 url.Url,
-                sic.SIC
+                sic.SIC,
+                descr.Description
               FROM Org org
                 LEFT JOIN OrgAddress addr  ON ( org.id = addr.OrgId )
                 LEFT JOIN OrgPhone   phone ON ( org.id = phone.OrgId )
                 LEFT JOIN OrgUrl     url   ON ( org.id = url.OrgId )
                 LEFT JOIN OrgSIC     sic   ON ( org.id = sic.OrgId )
+                LEFT JOIN OrgDesc    descr ON ( org.id = descr.OrgId )
               WHERE
                 org.DateModified > (NOW() - INTERVAL {$daysToLookBack} DAY )
                 AND addr.City IS NOT NULL
@@ -194,6 +197,7 @@ class CronController extends AbstractActionController {
                 $phone,
                 $url,
                 $row['SIC'],
+                $row['Description']
             ];
             $csvFileHandle->fputcsv($outputLine);
             $jsonFileHandle->fwrite($elasticActionRow);

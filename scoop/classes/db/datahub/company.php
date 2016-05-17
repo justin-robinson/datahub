@@ -38,6 +38,36 @@ class Company extends \DBCore\Datahub\Company {
         $this->companyInstances->add_row( $instance );
     }
 
+    /**
+     * @param $name
+     * @param $id
+     *
+     * @return bool|int|\DB\Datahub\Company
+     */
+    public static function fetch_by_source_name_and_id ( $name, $id ) {
+
+        // using a LIKE clause on the name since we have source names like refinery:b2 :gen :bol etc
+        // that all belong to refinery
+        $companies = self::query(
+            "SELECT
+                c.*,
+                p.sourceId
+            FROM
+                `datahub`.`sourceType` s
+                LEFT JOIN `datahub`.`companyInstanceProperty` p USING (sourceTypeId)
+                LEFT JOIN `datahub`.`companyInstance` i USING ( companyInstanceId )
+                LEFT JOIN `datahub`.`company` c USING ( companyId )
+            WHERE
+                s.name LIKE ?
+                AND p.sourceId = ?
+            GROUP BY
+                c.companyId",
+            [$name, $id] );
+
+        return $companies ? $companies->first() : $companies;
+
+    }
+
     public function fetch_company_instances () {
 
         if( empty($this->companyId) ) {

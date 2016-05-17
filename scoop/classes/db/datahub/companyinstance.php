@@ -1,6 +1,7 @@
 <?php
 
 namespace DB\Datahub;
+
 use Scoop\Database\Query\Buffer;
 
 /**
@@ -57,6 +58,29 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance {
     }
 
     /**
+     * @param $name
+     * @param $id
+     *
+     * @return bool|int|\Scoop\Database\Rows|void
+     */
+    public static function fetch_by_source_name_and_id ( $name, $id ) {
+
+        return self::query(
+            "SELECT
+                i.*
+            FROM
+                `datahub`.`sourceType` s
+                LEFT JOIN `datahub`.`companyInstanceProperty` p USING (sourceTypeId)
+                LEFT JOIN `datahub`.`companyInstance` i USING ( companyInstanceId )
+            WHERE
+                s.name LIKE ?
+                AND p.sourceId = ?
+            GROUP BY
+                i.companyInstanceId",
+            [$name, $id] );
+    }
+
+    /**
      * @return \Scoop\Database\Rows
      */
     public function get_properties () {
@@ -110,7 +134,8 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance {
         parent::save();
 
         // save properties to db with a query buffer
-        $propertyBuffer = new Buffer(1000, get_class(new \DB\Datahub\CompanyInstanceProperty()));
+        $propertyBuffer = new Buffer(1000, get_class(new CompanyInstanceProperty()));
+        $propertyBuffer->set_insert_ignore(true);
 
         foreach ( $this->properties as $sourceProperties ) {
             foreach ( $sourceProperties as $property ) {
@@ -118,8 +143,12 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance {
                 // link this property to this company instance
                 $property->companyInstanceId = $this->companyInstanceId;
 
-                // buffer the property insertion
-                $propertyBuffer->insert($property);
+                $property->pre_save(false);
+
+                if ( !empty($property->value) ) {
+                    // buffer the property insertion
+                    $propertyBuffer->insert($property);
+                }
             }
         }
 

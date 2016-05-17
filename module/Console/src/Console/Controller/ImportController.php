@@ -3,8 +3,8 @@
 namespace Console\Controller;
 
 use Console\Importer\Refinery;
-use Console\Record\Formatter\Factory;
 use Console\CsvIterator;
+use Console\Record\Formatter\Formatters\Relevate;
 use Scoop\Database\Literal;
 use Zend\Db\Adapter as dbAdapter;
 
@@ -304,7 +304,7 @@ class ImportController extends AbstractActionController
 
         echo "started at " . date('h:i:s A') . PHP_EOL;
 
-        $formatter = Factory::factory('relevate');
+        $formatter = Relevate::get_instance();
 
         foreach ($file as $line) {
 
@@ -341,8 +341,8 @@ class ImportController extends AbstractActionController
             // does this contact exist?
             if (empty($allContacts[$key])) {
 
-                $contact->created_at = new Literal('NOW()');
-                $contact->updated_at = new Literal('NOW()');
+                $contact->set_literal( 'created_at', 'NOW()' );
+                $contact->set_literal( 'updated_at', 'NOW()' );
 
                 // insert new contact
                 $contact->save();
@@ -379,9 +379,6 @@ class ImportController extends AbstractActionController
                     $contactDataArray[$pdoColumnName] = $valueInDB;
 
                 }
-
-                // this is set to NOW() in the prepared sql statement
-                unset($contactDataArray[':updated_at']);
 
                 // update the contact record
                 if ($contactNeedsUpdate) {
