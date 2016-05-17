@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class CompanyOld
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/05/11
+ * @date 2016/05/16
  * @property mixed $hub_id
  * @property mixed $refinery_id
  * @property mixed $meroveus_id
@@ -60,6 +60,7 @@ class CompanyOld extends Model {
           3 => 'created_at',
           4 => 'updated_at',
         );
+
     public static $dBColumnPropertiesArray = 
         array (
           'hub_id' => 
@@ -156,7 +157,6 @@ class CompanyOld extends Model {
           ),
         );
 
-
     protected $dBValuesArray = 
         array (
           'hub_id' => NULL,
@@ -190,8 +190,6 @@ class CompanyOld extends Model {
           'universal_established_year_static' => NULL,
           'universal_profile_blob_static' => NULL,
         );
-
-
 
 }
 

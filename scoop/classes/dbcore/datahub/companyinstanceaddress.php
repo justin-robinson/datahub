@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class CompanyInstanceAddress
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/05/11
+ * @date 2016/05/16
  * @property mixed $companyInstanceId
  * @property mixed $addressId
  * AUTO-GENERATED FILE
@@ -29,6 +29,7 @@ class CompanyInstanceAddress extends Model {
           0 => 'companyInstanceId',
           1 => 'addressId',
         );
+
     public static $dBColumnPropertiesArray = 
         array (
           'companyInstanceId' => 
@@ -40,14 +41,11 @@ class CompanyInstanceAddress extends Model {
           ),
         );
 
-
     protected $dBValuesArray = 
         array (
           'companyInstanceId' => NULL,
           'addressId' => NULL,
         );
-
-
 
 }
 

@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class Market
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/05/11
+ * @date 2016/05/16
  * @property mixed $market_id
  * @property mixed $market_code
  * @property mixed $market_name
@@ -60,6 +60,7 @@ class Market extends Model {
           12 => 'created_at',
           13 => 'updated_at',
         );
+
     public static $dBColumnPropertiesArray = 
         array (
           'market_id' => 
@@ -128,7 +129,6 @@ class Market extends Model {
           ),
         );
 
-
     protected $dBValuesArray = 
         array (
           'market_id' => NULL,
@@ -153,8 +153,6 @@ class Market extends Model {
           'created_at' => NULL,
           'updated_at' => NULL,
         );
-
-
 
 }
 

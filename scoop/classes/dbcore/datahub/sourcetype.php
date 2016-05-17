@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class SourceType
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/05/11
+ * @date 2016/05/16
  * @property mixed $sourceTypeId
  * @property mixed $name
  * @property mixed $order
@@ -29,6 +29,7 @@ class SourceType extends Model {
         array (
           0 => 'sourceTypeId',
         );
+
     public static $dBColumnPropertiesArray = 
         array (
           'sourceTypeId' => 
@@ -44,15 +45,12 @@ class SourceType extends Model {
           ),
         );
 
-
     protected $dBValuesArray = 
         array (
           'sourceTypeId' => NULL,
           'name' => NULL,
           'order' => NULL,
         );
-
-
 
 }
 

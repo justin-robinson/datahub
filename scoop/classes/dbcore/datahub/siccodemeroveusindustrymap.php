@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class SicCodeMeroveusIndustryMap
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/05/11
+ * @date 2016/05/16
  * @property mixed $sic
  * @property mixed $meroveus_industry_id
  * AUTO-GENERATED FILE
@@ -30,6 +30,7 @@ class SicCodeMeroveusIndustryMap extends Model {
           0 => 'sic',
           1 => 'meroveus_industry_id',
         );
+
     public static $dBColumnPropertiesArray = 
         array (
           'sic' => 
@@ -42,14 +43,11 @@ class SicCodeMeroveusIndustryMap extends Model {
           ),
         );
 
-
     protected $dBValuesArray = 
         array (
           'sic' => NULL,
           'meroveus_industry_id' => NULL,
         );
-
-
 
 }
 

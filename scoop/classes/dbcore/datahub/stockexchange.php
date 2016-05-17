@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class StockExchange
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/05/11
+ * @date 2016/05/16
  * @property mixed $id
  * @property mixed $exchange_name
  * @property mixed $exchange_abbrev
@@ -32,6 +32,7 @@ class StockExchange extends Model {
           1 => 'exchange_name',
           2 => 'exchange_abbrev',
         );
+
     public static $dBColumnPropertiesArray = 
         array (
           'id' => 
@@ -50,7 +51,6 @@ class StockExchange extends Model {
           ),
         );
 
-
     protected $dBValuesArray = 
         array (
           'id' => NULL,
@@ -58,8 +58,6 @@ class StockExchange extends Model {
           'exchange_abbrev' => NULL,
           'yahoo_code' => NULL,
         );
-
-
 
 }
 

@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class CompanyMeroveusIndustryThirdPartyMap
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/05/11
+ * @date 2016/05/16
  * @property mixed $hub_id
  * @property mixed $meroveus_industry_id
  * AUTO-GENERATED FILE
@@ -30,6 +30,7 @@ class CompanyMeroveusIndustryThirdPartyMap extends Model {
           0 => 'hub_id',
           1 => 'meroveus_industry_id',
         );
+
     public static $dBColumnPropertiesArray = 
         array (
           'hub_id' => 
@@ -42,14 +43,11 @@ class CompanyMeroveusIndustryThirdPartyMap extends Model {
           ),
         );
 
-
     protected $dBValuesArray = 
         array (
           'hub_id' => NULL,
           'meroveus_industry_id' => NULL,
         );
-
-
 
 }
 

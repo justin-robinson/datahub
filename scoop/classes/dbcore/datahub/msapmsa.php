@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class MsaPmsa
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/05/11
+ * @date 2016/05/16
  * @property mixed $sa_code
  * @property mixed $sa_name
  * @property mixed $sa_state
@@ -33,6 +33,7 @@ class MsaPmsa extends Model {
           1 => 'sa_name',
           2 => 'is_combined',
         );
+
     public static $dBColumnPropertiesArray = 
         array (
           'sa_code' => 
@@ -53,7 +54,6 @@ class MsaPmsa extends Model {
           ),
         );
 
-
     protected $dBValuesArray = 
         array (
           'sa_code' => NULL,
@@ -62,8 +62,6 @@ class MsaPmsa extends Model {
           'is_combined' => NULL,
           'parent_sa' => NULL,
         );
-
-
 
 }
 

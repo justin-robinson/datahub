@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class SicCode
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/05/11
+ * @date 2016/05/16
  * @property mixed $sic
  * @property mixed $title
  * AUTO-GENERATED FILE
@@ -29,6 +29,7 @@ class SicCode extends Model {
           0 => 'sic',
           1 => 'title',
         );
+
     public static $dBColumnPropertiesArray = 
         array (
           'sic' => 
@@ -40,14 +41,11 @@ class SicCode extends Model {
           ),
         );
 
-
     protected $dBValuesArray = 
         array (
           'sic' => NULL,
           'title' => NULL,
         );
-
-
 
 }
 

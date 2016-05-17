@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class Metadata
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/05/11
+ * @date 2016/05/16
  * @property mixed $meta_id
  * @property mixed $object_type
  * @property mixed $object_id
@@ -39,6 +39,7 @@ class Metadata extends Model {
           5 => 'created_at',
           6 => 'updated_at',
         );
+
     public static $dBColumnPropertiesArray = 
         array (
           'meta_id' => 
@@ -66,7 +67,6 @@ class Metadata extends Model {
           ),
         );
 
-
     protected $dBValuesArray = 
         array (
           'meta_id' => NULL,
@@ -77,8 +77,6 @@ class Metadata extends Model {
           'created_at' => NULL,
           'updated_at' => NULL,
         );
-
-
 
 }
 
