@@ -139,7 +139,7 @@ class Company extends \DBCore\Datahub\Company
             }
 
             // is this a new instance??
-            if (!isset($instance) || $row->companyInstanceId !== $lastInstanceId) {
+            if (!isset($instance) || $row['companyInstanceId'] !== $lastInstanceId) {
                 $instance = new CompanyInstance($row);
                 // add the instance to the entity record
                 $company->add_company_instance($instance);
@@ -147,7 +147,7 @@ class Company extends \DBCore\Datahub\Company
 
             $instance->add_property(new CompanyInstanceProperty($row));
 
-            $lastInstanceId = $row->companyInstanceId;
+            $lastInstanceId = $row['companyInstanceId'];
         }
 
         return $company;
