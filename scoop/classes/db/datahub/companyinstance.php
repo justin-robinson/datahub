@@ -32,6 +32,22 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance {
         parent::__construct( $dataArray );
     }
 
+    /**
+     * @param CompanyInstanceProperty $property
+     */
+    public function add_property( CompanyInstanceProperty $property ) {
+
+        if ( !isset($this->properties[$property->sourceTypeId]) || !is_array($this->properties[$property->sourceTypeId]) ) {
+            $this->properties[$property->sourceTypeId] = [];
+        }
+
+        if ( !isset($this->properties[$property->sourceTypeId][$property->name]) || !is_array( $this->properties[$property->sourceTypeId][$property->name] )) {
+            $this->properties[$property->sourceTypeId][$property->name] = [];
+        }
+
+        $this->properties[$property->sourceTypeId][$property->name][] = $property;
+    }
+
     public function fetch_properties () {
 
         if ( empty($this->companyInstanceId) ) {
@@ -104,18 +120,6 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance {
     }
 
     /**
-     * @param CompanyInstanceProperty $property
-     */
-    public function add_property( CompanyInstanceProperty $property ) {
-
-        if ( !isset($this->properties[$property->sourceTypeId]) || !is_array($this->properties[$property->sourceTypeId]) ) {
-            $this->properties[$property->sourceTypeId] = [];
-        }
-
-        $this->properties[$property->sourceTypeId][$property->name] = $property;
-    }
-
-    /**
      * @param bool $setTimestamps
      */
     public function save ( $setTimestamps = true ) {
@@ -138,22 +142,32 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance {
         $propertyBuffer->set_insert_ignore(true);
 
         foreach ( $this->properties as $sourceProperties ) {
-            foreach ( $sourceProperties as $property ) {
+            foreach ( $sourceProperties as $propertyName ) {
+                foreach ( $propertyName as $property ) {
+                    // link this property to this company instance
+                    $property->companyInstanceId = $this->companyInstanceId;
 
-                // link this property to this company instance
-                $property->companyInstanceId = $this->companyInstanceId;
+                    $property->pre_save(false);
 
-                $property->pre_save(false);
-
-                if ( !empty($property->value) ) {
-                    // buffer the property insertion
-                    $propertyBuffer->insert($property);
+                    if ( !empty($property->value) ) {
+                        // buffer the property insertion
+                        $propertyBuffer->insert($property);
+                    }
                 }
+
             }
         }
 
         // save buffered properties to db
         $propertyBuffer->flush();
+    }
+
+    /**
+     * @param array $properties
+     */
+    public function set_properties ( array $properties ) {
+
+        $this->properties = $properties;
     }
 
 }

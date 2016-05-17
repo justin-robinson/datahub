@@ -51,11 +51,11 @@ class Refinery extends ImporterAbstract {
                 $company = $formatter->format( $record );
 
                 // does this company exist in the cache?
-                $existingCompany = $companyCache->get( $record['InternalId'] );
+                $existingCompany = $companyCache->get( $record['Name'] );
 
                 // look up to db on cache miss
                 if( !$existingCompany ) {
-                    $existingCompany = Company::fetch_one_where( 'name = ? AND stateId = ?', [ $company->companyId, $company->stateId ] );
+                    $existingCompany = Company::fetch_one_where( 'name = ? AND stateId = ?', [ $company->name, $company->stateId ] );
                 }
 
                 // just save the company instance if the company already exists
@@ -99,11 +99,7 @@ class Refinery extends ImporterAbstract {
                             $instance = CompanyInstance::fetch_one_where( 'companyId = ? AND name = ?', [$instance->companyId, $instance->name] );
 
                             // add properties to this instance
-                            foreach ( $properties as $propertyType ) {
-                                foreach ( $propertyType as $property ) {
-                                    $instance->add_property( $property );
-                                }
-                            }
+                            $instance->set_properties( $properties );
 
                             // save that mess
                             $instance->save();
@@ -119,7 +115,7 @@ class Refinery extends ImporterAbstract {
                     $company->save( false );
 
                     // put company in cache for later
-                    $companyCache->put( $record['InternalId'], $company );
+                    $companyCache->put( $record['Name'], $company );
                 }
 
                 $count++;
