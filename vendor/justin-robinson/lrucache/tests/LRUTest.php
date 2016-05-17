@@ -44,12 +44,12 @@ class LRUCacheTest extends PHPUnit_Framework_TestCase {
     }
 
     public function testMassivePut() {
-        $numEntries = 90000;
+        $numEntries = 80000;
         $lru = new \LRUCache\LRUCache($numEntries);
 
 
         for ( $i = 0; $i < $numEntries; $i++ ) {
-            $lru->put($i, 'some value...');
+            $lru->put($i, 0);
         }
     }
 
@@ -103,7 +103,7 @@ class LRUCacheTest extends PHPUnit_Framework_TestCase {
         $this->assertNull($lru->get($key1));
     }
 
-    public function testCacheWalk () {
+    public function testCacheEach () {
         $numEntries = 5;
         $lru = new \LRUCache\LRUCache($numEntries);
 
@@ -111,11 +111,22 @@ class LRUCacheTest extends PHPUnit_Framework_TestCase {
             $lru->put($i, $i);
         }
 
-        $lru->walkCache(function (&$node) {
+        $lru->each(function ($node) {
             $node->setData($node->getData() * 2);
         });
 
         $this->assertEquals($lru->get(4), 8);
 
+    }
+    
+    public function testExists () {
+        
+        $lru = new \LRUCache\LRUCache( 5 );
+        
+        $this->assertFalse( $lru->exists( 'test' ) );
+
+        $lru->put('test', false);
+
+        $this->assertTrue( $lru->exists( 'test' ) );
     }
 }

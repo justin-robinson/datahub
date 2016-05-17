@@ -11,11 +11,6 @@ class ClassGenClass extends ClassGenAbstract {
     /**
      * @var string
      */
-    public $name;
-
-    /**
-     * @var string
-     */
     public $extends;
 
     /**
@@ -26,12 +21,17 @@ class ClassGenClass extends ClassGenAbstract {
     /**
      * @var string
      */
-    public $phpDoc = '';
+    public $name;
 
     /**
      * @var string
      */
     public $namespace;
+
+    /**
+     * @var string
+     */
+    public $phpDoc = '';
 
     /**
      * @var array
@@ -57,15 +57,72 @@ class ClassGenClass extends ClassGenAbstract {
     }
 
     /**
-     * @param $name string
+     * @param $use
      *
      * @return $this
      */
-    public function set_name ( $name ) {
+    public function append_use ( $use ) {
 
-        $this->name = $name;
+        $this->use[] = $use;
 
         return $this;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function get_footer () {
+
+        $footer = '}' . PHP_EOL . PHP_EOL . '?>';
+
+        return $footer;
+    }
+
+    /**
+     * @return string
+     * @throws \Exception
+     */
+    public function get_header () {
+
+        if ( $this->is_final () && $this->is_abstract () ) {
+            throw new \Exception( 'Class can\'t be final and abstract' );
+        }
+
+        $classModifierArray = [ ];
+
+        if ( $this->is_final () ) {
+            $classModifierArray[] = $this->modifierStrings[self::MODIFIER_FINAL];
+        }
+
+        if ( $this->is_abstract () ) {
+            $classModifierArray[] = $this->modifierStrings[self::MODIFIER_ABSTRACT];
+        }
+
+        $classModifier = implode ( ' ', $classModifierArray );
+        if ( !empty( $classModifier ) ) {
+            $classModifier .= ' ';
+        }
+
+        // class name and phpdoc
+        $header = "<?php" . PHP_EOL . PHP_EOL;
+
+        $header .= $this->get_namespace();
+
+        $header .= $this->get_use();
+
+        $header .= $this->get_phpDoc();
+        $header .= $classModifier . "class {$this->name}";
+
+        // class extends
+        $header .= $this->get_extends_code ();
+
+        // class implements
+        $header .= $this->get_implements_code ();
+
+        $header .= " {" . PHP_EOL;
+
+        return $header;
     }
 
     /**
@@ -93,6 +150,18 @@ class ClassGenClass extends ClassGenAbstract {
     }
 
     /**
+     * @param $name string
+     *
+     * @return $this
+     */
+    public function set_name ( $name ) {
+
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
      * @param $namespace string
      *
      * @return $this
@@ -102,6 +171,14 @@ class ClassGenClass extends ClassGenAbstract {
         $this->namespace = $namespace;
 
         return $this;
+    }
+
+    /**
+     * @param $phpDoc string
+     */
+    public function set_phpDoc ( $phpDoc ) {
+
+        $this->phpDoc = $phpDoc;
     }
 
     /**
@@ -117,78 +194,6 @@ class ClassGenClass extends ClassGenAbstract {
     }
 
     /**
-     * @param $use
-     *
-     * @return $this
-     */
-    public function append_use ( $use ) {
-
-        $this->use[] = $use;
-
-        return $this;
-    }
-
-
-    /**
-     * @return string
-     * @throws \Exception
-     */
-    public function getHeader () {
-
-        if ( $this->is_final () && $this->is_abstract () ) {
-            throw new \Exception( 'Class can\'t be final and abstract' );
-        }
-
-        $classModifierArray = [ ];
-
-        if ( $this->is_final () ) {
-            $classModifierArray[] = $this->modifierStrings[self::MODIFIER_FINAL];
-        }
-
-        if ( $this->is_abstract () ) {
-            $classModifierArray[] = $this->modifierStrings[self::MODIFIER_ABSTRACT];
-        }
-
-        $classModifier = implode ( ' ', $classModifierArray );
-        if ( !empty( $classModifier ) ) {
-            $classModifier .= ' ';
-        }
-
-        // class name and phpdoc
-        $header =
-            "<?php
-
-";
-        if ( !empty( $this->namespace ) ) {
-            $header .= "namespace {$this->namespace};
-
-";
-        }
-
-        if ( !empty( $this->use ) ) {
-            foreach ( $this->use as $use ) {
-                $header .= "use {$use};
-
-";
-            }
-        }
-        $header .= $this->phpDoc . PHP_EOL;
-        $header .= $classModifier . "class {$this->name} ";
-
-        // class extends
-        $header .= $this->get_extends_code ();
-
-        // class implements
-        $header .= $this->get_implements_code ();
-
-        $header .= " {
-
-";
-
-        return $header;
-    }
-
-    /**
      * @return string
      */
     private function get_extends_code () {
@@ -196,7 +201,7 @@ class ClassGenClass extends ClassGenAbstract {
         if ( empty( $this->extends ) ) {
             $code = '';
         } else {
-            $code = 'extends ' . $this->extends;
+            $code = " extends {$this->extends}";
         }
 
         return $code;
@@ -210,7 +215,7 @@ class ClassGenClass extends ClassGenAbstract {
         if ( empty( $this->implements ) ) {
             $code = '';
         } else {
-            $code = 'implements ' . implode ( ',', $this->implements );
+            $code = ' implements ' . implode ( ', ', $this->implements );
         }
 
         return $code;
@@ -219,14 +224,44 @@ class ClassGenClass extends ClassGenAbstract {
     /**
      * @return string
      */
-    public function getFooter () {
+    private function get_namespace () {
 
-        $footer = "
-}
+        if ( !empty( $this->namespace ) ) {
+            return "namespace {$this->namespace};" . PHP_EOL . PHP_EOL;
+        }
 
-?>";
+        return '';
+    }
 
-        return $footer;
+    /**
+     * @return string
+     */
+    private function get_phpDoc () {
+
+        if ( empty($this->phpDoc) ) {
+            return '';
+        }
+
+        return $this->phpDoc . PHP_EOL;
+    }
+
+    /**
+     * @return mixed|string
+     */
+    private function get_use () {
+
+        if ( empty($this->use) ) {
+            return '';
+        }
+
+        $use = '';
+        sort($this->use);
+        foreach ( $this->use as $useClass ) {
+            $use .= "use {$useClass};" . PHP_EOL;
+        }
+        $use .= PHP_EOL;
+
+        return $use;
     }
 
 

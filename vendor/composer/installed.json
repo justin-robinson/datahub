@@ -1992,17 +1992,17 @@
     },
     {
         "name": "justin-robinson/lrucache",
-        "version": "v0.5.3",
-        "version_normalized": "0.5.3.0",
+        "version": "v0.6.0",
+        "version_normalized": "0.6.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/justin-robinson/php-lrucache.git",
-            "reference": "6cbb4b67253ca4410ee38439f9a5f73792c37fef"
+            "reference": "a80d2768d65b2c06efbc68a075b607f71759ba94"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/justin-robinson/php-lrucache/zipball/6cbb4b67253ca4410ee38439f9a5f73792c37fef",
-            "reference": "6cbb4b67253ca4410ee38439f9a5f73792c37fef",
+            "url": "https://api.github.com/repos/justin-robinson/php-lrucache/zipball/a80d2768d65b2c06efbc68a075b607f71759ba94",
+            "reference": "a80d2768d65b2c06efbc68a075b607f71759ba94",
             "shasum": ""
         },
         "require": {
@@ -2013,7 +2013,7 @@
             "phpunit/phpunit": "*",
             "phpunit/phpunit-mock-objects": "*"
         },
-        "time": "2016-05-15 12:10:48",
+        "time": "2016-05-16 18:10:11",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -2048,12 +2048,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/justin-robinson/scoop.git",
-            "reference": "aad7671f586da54ff339f1d408fb6c00032b9b47"
+            "reference": "9e688b32b0850ae98dfee203095f288158c7362c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/justin-robinson/scoop/zipball/aad7671f586da54ff339f1d408fb6c00032b9b47",
-            "reference": "aad7671f586da54ff339f1d408fb6c00032b9b47",
+            "url": "https://api.github.com/repos/justin-robinson/scoop/zipball/9e688b32b0850ae98dfee203095f288158c7362c",
+            "reference": "9e688b32b0850ae98dfee203095f288158c7362c",
             "shasum": ""
         },
         "require": {
@@ -2067,7 +2067,7 @@
             "phpunit/phpunit": "*",
             "phpunit/phpunit-mock-objects": "*"
         },
-        "time": "2016-05-15 12:13:17",
+        "time": "2016-05-16 19:28:44",
         "bin": [
             "bin/scoop"
         ],
