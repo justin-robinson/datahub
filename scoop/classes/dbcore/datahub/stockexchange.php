@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class StockExchange
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/05/16
+ * @date 2016/05/17
  * @property mixed $id
  * @property mixed $exchange_name
  * @property mixed $exchange_abbrev

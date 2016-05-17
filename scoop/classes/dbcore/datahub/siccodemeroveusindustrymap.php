@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class SicCodeMeroveusIndustryMap
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/05/16
+ * @date 2016/05/17
  * @property mixed $sic
  * @property mixed $meroveus_industry_id
  * AUTO-GENERATED FILE

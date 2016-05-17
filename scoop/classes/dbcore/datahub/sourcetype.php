@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class SourceType
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/05/16
+ * @date 2016/05/17
  * @property mixed $sourceTypeId
  * @property mixed $name
  * @property mixed $order

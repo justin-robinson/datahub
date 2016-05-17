@@ -8,10 +8,9 @@ use Scoop\Database\Model;
  * Class CompanyCopy
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/05/16
+ * @date 2016/05/17
  * @property mixed $companyId
  * @property mixed $parentId
- * @property mixed $description
  * @property mixed $employeeCount
  * @property mixed $isActive
  * @property mixed $name
@@ -52,9 +51,6 @@ class CompanyCopy extends Model {
           'parentId' => 
           array (
           ),
-          'description' => 
-          array (
-          ),
           'employeeCount' => 
           array (
           ),
@@ -85,7 +81,6 @@ class CompanyCopy extends Model {
         array (
           'companyId' => NULL,
           'parentId' => NULL,
-          'description' => NULL,
           'employeeCount' => NULL,
           'isActive' => NULL,
           'name' => NULL,
