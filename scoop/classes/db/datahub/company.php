@@ -129,8 +129,10 @@ class Company extends \DBCore\Datahub\Company
             WHERE c.companyId = ?;", [$companyId]);
 
         $lastInstanceId = null;
+        $company = false;
 
         foreach ($rows as $i => $row) {
+            $row = $row->to_array();
             // is this the entity row?
             if ($i === 0) {
                 $company = new self($row);
@@ -138,15 +140,17 @@ class Company extends \DBCore\Datahub\Company
 
             // is this a new instance??
             if (!isset($instance) || $row->companyInstanceId !== $lastInstanceId) {
-                $instance = new \DB\Datahub\CompanyInstance($row);
+                $instance = new CompanyInstance($row);
                 // add the instance to the entity record
                 $company->add_company_instance($instance);
             }
 
-            $instance->add_property(new \DB\Datahub\CompanyInstanceProperty($row));
+            $instance->add_property(new CompanyInstanceProperty($row));
 
             $lastInstanceId = $row->companyInstanceId;
         }
+
+        return $company;
     }
 
 }
