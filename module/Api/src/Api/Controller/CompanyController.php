@@ -7,6 +7,7 @@
 
 namespace Api\Controller;
 
+use DB\Datahub\Company;
 use Zend\View\Model\JsonModel;
 
 /**
@@ -23,7 +24,8 @@ class CompanyController extends AbstractRestfulController
      */
     public function get($companyId)
     {
-        return $this->lookupBy('hub_id', $companyId);
+       return Company::fetchCompanyAndInstances(55);
+//        return $this->lookupBy('hub_id', $companyId);
     }
 
     /**
@@ -106,5 +108,7 @@ class CompanyController extends AbstractRestfulController
         return new JsonModel($record);
 
     }
+
+
 
 }

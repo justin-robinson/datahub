@@ -4,14 +4,16 @@ namespace DB\Datahub;
 
 /**
  * Class Company
+ *
  * @package DB\Datahub
  * @author  jrobinson (robotically)
  * @date    2016/05/05
  * @inheritdoc
- * This file is only generated once
- * Put your class specific code in here
+ *          This file is only generated once
+ *          Put your class specific code in here
  */
-class Company extends \DBCore\Datahub\Company {
+class Company extends \DBCore\Datahub\Company
+{
 
     /**
      * @var \Scoop\Database\Rows
@@ -23,19 +25,21 @@ class Company extends \DBCore\Datahub\Company {
      *
      * @param array $dataArray
      */
-    public function __construct ( array $dataArray = [ ]) {
+    public function __construct(array $dataArray = [])
+    {
 
         $this->companyInstances = new \Scoop\Database\Rows();
 
-        parent::__construct( $dataArray );
+        parent::__construct($dataArray);
     }
 
     /**
      * @param CompanyInstance $instance
      */
-    public function add_company_instance ( CompanyInstance $instance ) {
+    public function add_company_instance(CompanyInstance $instance)
+    {
 
-        $this->companyInstances->add_row( $instance );
+        $this->companyInstances->add_row($instance);
     }
 
     /**
@@ -44,12 +48,12 @@ class Company extends \DBCore\Datahub\Company {
      *
      * @return bool|int|\DB\Datahub\Company
      */
-    public static function fetch_by_source_name_and_id ( $name, $id ) {
+    public static function fetch_by_source_name_and_id($name, $id)
+    {
 
         // using a LIKE clause on the name since we have source names like refinery:b2 :gen :bol etc
         // that all belong to refinery
-        $companies = self::query(
-            "SELECT
+        $companies = self::query("SELECT
                 c.*,
                 p.sourceId
             FROM
@@ -61,26 +65,27 @@ class Company extends \DBCore\Datahub\Company {
                 s.name LIKE ?
                 AND p.sourceId = ?
             GROUP BY
-                c.companyId",
-            [$name, $id] );
+                c.companyId", [$name, $id]);
 
         return $companies ? $companies->first() : $companies;
 
     }
 
-    public function fetch_company_instances () {
+    public function fetch_company_instances()
+    {
 
-        if( empty($this->companyId) ) {
+        if (empty($this->companyId)) {
             return;
         }
 
-        $this->companyInstances = CompanyInstance::fetch_where( 'companyId = ?', [ $this->companyId ] );
+        $this->companyInstances = CompanyInstance::fetch_where('companyId = ?', [$this->companyId]);
     }
 
     /**
      * @return \Scoop\Database\Rows
      */
-    public function get_company_instances () {
+    public function get_company_instances()
+    {
 
         return $this->companyInstances;
     }
@@ -88,12 +93,13 @@ class Company extends \DBCore\Datahub\Company {
     /**
      * @param bool $setTimestamps
      */
-    public function save ( $setTimestamps = true ) {
+    public function save($setTimestamps = true)
+    {
 
-        if ( $setTimestamps ) {
+        if ($setTimestamps) {
 
             // set timestamps
-            if ( empty($this->createdAt) ) {
+            if (empty($this->createdAt)) {
                 $this->set_literal('createdAt', 'NOW()');
             }
             $this->set_literal('updatedAt', 'NOW()');
@@ -102,9 +108,44 @@ class Company extends \DBCore\Datahub\Company {
 
         parent::save();
 
-        foreach ( $this->get_company_instances() as $companyInstance ) {
+        foreach ($this->get_company_instances() as $companyInstance) {
             $companyInstance->companyId = $this->companyId;
             $companyInstance->save();
+        }
+    }
+
+    /**
+     * returns all data about a company with one query
+     *
+     * @param $companyId
+     */
+    public static function fetchCompanyAndInstances($companyId)
+    {
+        $rows           = \Scoop\Database\Model\Generic::query("
+            SELECT *
+            FROM datahub.company c
+              JOIN datahub.companyInstance ci USING (companyId)
+              JOIN datahub.companyInstanceProperty cip USING (companyInstanceId)
+            WHERE c.companyId = ?;", [$companyId]);
+
+        $lastInstanceId = null;
+
+        foreach ($rows as $i => $row) {
+            // is this the entity row?
+            if ($i === 0) {
+                $company = new self($row);
+            }
+
+            // is this a new instance??
+            if (!isset($instance) || $row->companyInstanceId !== $lastInstanceId) {
+                $instance = new \DB\Datahub\CompanyInstance($row);
+                // add the instance to the entity record
+                $company->add_company_instance($instance);
+            }
+
+            $instance->add_property(new \DB\Datahub\CompanyInstanceProperty($row));
+
+            $lastInstanceId = $row->companyInstanceId;
         }
     }
 
