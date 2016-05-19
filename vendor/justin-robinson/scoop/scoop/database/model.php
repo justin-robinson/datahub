@@ -58,30 +58,9 @@ abstract class Model extends Model\Generic {
      */
     public static function fetch_one () {
 
-        $one = self::fetch ( 1 );
+        $one = static::fetch ( 1 );
 
         return $one ? $one->current () : $one;
-
-    }
-
-    /**
-     * @param int $limit
-     * @param int $offset
-     *
-     * @return bool|int|Rows
-     */
-    public static function fetch ( $limit = 1000, $offset = 0 ) {
-
-        // build sql
-        $sql =
-            "SELECT
-                *
-            FROM
-              " . static::get_sql_table_name () . "
-            LIMIT ?,?";
-
-        // run sql
-        return self::query ( $sql, [ $offset, $limit ] );
 
     }
 
@@ -138,20 +117,7 @@ abstract class Model extends Model\Generic {
      */
     public static function fetch_where ( $where, array $queryParams = [ ], $limit = 1000, $offset = 0 ) {
 
-        $sql = "
-            SELECT
-                *
-            FROM
-              " . static::get_sql_table_name () . "
-            WHERE " . $where . "
-            LIMIT ?,?";
-
-        $queryParams[] = $offset;
-        $queryParams[] = $limit;
-
-        // run sql
-        return self::query ( $sql, $queryParams );
-
+        return static::fetch($limit, $offset, $where, $queryParams);
     }
 
     /**
@@ -195,7 +161,7 @@ abstract class Model extends Model\Generic {
                 {$primaryKeys}
         ";
 
-        $result = self::query($sql, $queryParams);
+        $result = static::query($sql, $queryParams);
 
         if ( $result ) {
             $this->loadedFromDb = false;
@@ -238,7 +204,7 @@ abstract class Model extends Model\Generic {
         }
 
         // execute sql statement
-        $result = self::query ( $sql, $queryParams );
+        $result = static::query ( $sql, $queryParams );
 
         // log change on success
         if ( $result ) {
@@ -358,5 +324,28 @@ abstract class Model extends Model\Generic {
             $queryParams,
             $updateColumnValues,
         ];
+    }
+
+    /**
+     * @param int    $limit
+     * @param int    $offset
+     * @param string $where
+     * @param array  $queryParams
+     *
+     * @return bool|int|Rows
+     */
+    protected static function fetch ( $limit = 1000, $offset = 0, $where = '', array $queryParams = [] ) {
+
+        $where = empty($where) ? $where : "WHERE {$where} ";
+
+        // build sql
+        $sql = "SELECT * FROM " . static::get_sql_table_name () . " {$where} LIMIT ?,?";
+
+        $queryParams[] = $offset;
+        $queryParams[] = $limit;
+
+        // run sql
+        return static::query ( $sql, $queryParams );
+
     }
 }
