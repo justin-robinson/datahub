@@ -24,7 +24,8 @@ class CompanyController extends AbstractRestfulController
      */
     public function get($companyId)
     {
-       return Company::fetchCompanyAndInstances($companyId);
+        $company = Company::fetchCompanyAndInstances($companyId);
+       return  new JsonModel($company->to_array());
 //        return $this->lookupBy('hub_id', $companyId);
     }
 

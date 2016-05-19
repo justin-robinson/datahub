@@ -153,6 +153,59 @@ class Company extends \DBCore\Datahub\Company
         return $company;
     }
 
+    //    tier 1 definition:
+    //        Basic Company Fields:
+    //            name
+    //            address:
+    //                address1
+    //                address2
+    //                city
+    //                country
+    //                latitude
+    //                longitude
+    //                zipCode
+    //                state
+    //        Identifying Fields:
+    //            stockSymbol
+    //            stockExchange
+    //            phone
+    //            website
+    //        Contacts:
+    //            < 1 complete Contact (name and title)
+    //        Researched:
+    //            All the above data must be verified by humans ( source id on the properties )
+    //        Fresh:
+    //            Has been reviewed/updated in last year.
+    //        Site presence:
+    //            Appearance on 1 or more lists AND/OR Verified on 1 or more articles
+    //                If it has a meroveus Id, it's been on a list plus a look up in the page crossref table
+    //    Tier Two:
+    //        An expired tier 1, or a record that otherwise meets tier 1 with the following exceptions:
+    //        Has its data attributes provided by ACBJ partners (industry, or externally provided data attributes)
+    //
+    //    Tier Three
+    //        Missing one or more from basic fields
+    //        Has zero or more identifying fields.
+    //        Has zero or more from grouping fields.
+    //        Has zero or more from enhanced fields.
+    //        Has 1 or more contacts.
+    //
+    //    Tier Four
+    //        An otherwise tier one, two, or three record that has zero contacts.
+    //
+    //    Tier Five
+    //        Aged beyond the record-freshness target.
+    //
+    //    Tier Six
+    //        Records that haven’t been updated or reviewed in longer than 3 years.
+    //
+    //    Tier Seven
+    //        Stub record - doesn't meet basic fields, regardless of other attributes or contacts it has
+    public function rankCompany()
+    {
+
+    }
+
 }
 
 ?>
