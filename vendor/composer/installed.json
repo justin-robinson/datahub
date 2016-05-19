@@ -2048,12 +2048,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/justin-robinson/scoop.git",
-            "reference": "eb20e7f35e3afb119d487bbe078555bc9f93c727"
+            "reference": "e0ca16ce2dcb6b8e8183ba99b8a9170ab136fe5d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/justin-robinson/scoop/zipball/eb20e7f35e3afb119d487bbe078555bc9f93c727",
-            "reference": "eb20e7f35e3afb119d487bbe078555bc9f93c727",
+            "url": "https://api.github.com/repos/justin-robinson/scoop/zipball/e0ca16ce2dcb6b8e8183ba99b8a9170ab136fe5d",
+            "reference": "e0ca16ce2dcb6b8e8183ba99b8a9170ab136fe5d",
             "shasum": ""
         },
         "require": {
@@ -2067,7 +2067,7 @@
             "phpunit/phpunit": "*",
             "phpunit/phpunit-mock-objects": "*"
         },
-        "time": "2016-05-18 18:21:58",
+        "time": "2016-05-19 12:04:58",
         "bin": [
             "bin/scoop"
         ],
