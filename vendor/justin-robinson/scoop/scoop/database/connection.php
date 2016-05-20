@@ -221,7 +221,7 @@ class Connection {
 
         $key = md5 ( $sql );
 
-        if ( empty( $this->statementCache->get ( $key ) ) ) {
+        if ( !$this->statementCache->exists( $key ) ) {
 
             // prepare the statement
             $statement = $this->mysqli->prepare ( $sql );
@@ -230,7 +230,7 @@ class Connection {
                 throw new \Exception( "statment preparation failed: ({$this->mysqli->errno}) {$this->mysqli->error}" . PHP_EOL . $sql );
             }
 
-            $this->statementCache->set ( $key, $statement );
+            $this->statementCache->put ( $key, $statement );
         }
 
         return $this->statementCache->get ( $key );

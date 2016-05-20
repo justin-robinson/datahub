@@ -7,6 +7,7 @@ use DB\Datahub\Company;
 use DB\Datahub\CompanyInstance;
 use DB\Datahub\CompanyInstanceProperty;
 use DB\Datahub\Market;
+use DB\Datahub\SourceType;
 use DB\Datahub\State;
 use LRUCache\LRUCache;
 
@@ -93,7 +94,6 @@ class ImportRefinery {
                 'employeeCount' => 0,
                 'isActive'      => true,
                 'name'          => $data['Name'],
-                'stateId'       => $state ? $state->stateId : null,
                 'createdAt'     => $data['DateModified'],
                 'updatedAt'     => $data['DateModified'],
             ] );
@@ -103,6 +103,7 @@ class ImportRefinery {
                 'generateCode'   => $data['GenId'],
                 'name'           => $data['Name'],
                 'sicCode'        => $data['Sic'],
+                'stateId'        => $state ? $state->stateId : null,
                 'stockSymbol'    => $data['Ticker'],
                 'tickerExchange' => $data['TickerExchange'],
                 'url'            => $data['Url'],
@@ -112,9 +113,10 @@ class ImportRefinery {
             ] );
 
         $sourceName = 'refinery' . strtolower( (empty($data['SourceID']) ? '' : ":{$data['SourceID']}") );
+        $source = SourceType::fetch_one_where( 'name = ?', [$sourceName] );
 
         $propertyArray = [
-            'sourceTypeId' => self::$sourceTypes[$sourceName]->sourceTypeId,
+            'sourceTypeId' => $source->sourceTypeId,
             'sourceId'     => $data['InternalId'],
             'createdAt'    => $data['DateModified'],
             'updatedAt'    => $data['DateModified'],

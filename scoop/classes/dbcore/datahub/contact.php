@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class Contact
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/05/17
+ * @date 2016/05/19
  * @property mixed $contactId
  * @property mixed $meroveusId
  * @property mixed $relevateId

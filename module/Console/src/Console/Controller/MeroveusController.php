@@ -8,9 +8,7 @@
 namespace Console\Controller;
 
 use Console\CsvIterator;
-use Console\Record\Formatter\Formatters\Meroveus;
-use DB\Datahub\Company;
-use DB\Datahub\CompanyInstance;
+use Console\Record\Formatter\Factory;
 use Elastica\Client as ElasticaClient;
 use Elastica\Query as ElasticaQuery;
 use Elastica\QueryBuilder as QueryBuilder;
@@ -271,9 +269,9 @@ class MeroveusController extends AbstractActionController
 
         $lastMemUsageMessageLength = 0;
 
-//        $selectCompany = $this->sqlStatementsArray['selectOneCompanyByMeroveusId'];
+        $selectCompany = $this->sqlStatementsArray['selectOneCompanyByMeroveusId'];
 
-        $formatter = Meroveus::get_instance();
+        $formatter = Factory::factory('Meroveus');
 
         // setup our meroveus params
         $meroveusParams = [
@@ -309,11 +307,7 @@ class MeroveusController extends AbstractActionController
             $meroveusParams['ENV']      = $env;
             $meroveusParams['STARTROW'] = 1; // reset our pagination offset
             $marketMatched              = $marketInserted = 0; // reset counts for this market
-//            $insertCompanyMeroveusIndustry = $this->sqlStatementsArray['insertCompanyMeroveusIndustry'];
-
-            $meroveusSourceType = \DB\Datahub\SourceType::fetch_one_where( 'name = ?', ['meroveus'] );
-
-            $company = CompanyInstance::fetch_by_source_name_and_id('refinery%', 3280424);
+            $insertCompanyMeroveusIndustry = $this->sqlStatementsArray['insertCompanyMeroveusIndustry'];
 
             // paginate over companies
             while ($marketCompanyList = $this->companyService->fetchByMarket($meroveusParams)) {
@@ -332,19 +326,21 @@ class MeroveusController extends AbstractActionController
                         if (!$debug) {
                             // updates the existing record
                             $refineryId = $match->getSource()['InternalId'];
-                            $company = Company::fetch_by_source_name_and_id('refinery%', [$refineryId]);
-
-                            $company->fetch_company_instances();
-
-
                             $this->processMatch($refineryId, $target, $this->updateCompanyPdo);
 
-                            $hubId = $company ? $company->companyId : false;
-                            if ($sanity) {
-                                $this->writeSanityFiles($market, $target, $match);
+                            try {
+                                $selectCompany->execute([$target['meroveusId']]);
+                                $hubId = ($selectCompany->rowCount() > 0) ? $selectCompany->fetch(\PDO::FETCH_ASSOC)['hub_id'] : false;
+
+                                $selectCompany->closeCursor();
+                                if ($sanity) {
+                                    $this->writeSanityFiles($market, $target, $match);
+                                }
+                                $marketMatched++;
+                                $totalMatched++;
+                            } catch (\PDOException $e) {
+                                die('PDO ERROR on Select Company ' . $e->getMessage());
                             }
-                            $marketMatched++;
-                            $totalMatched++;
                         }
 
                     } else { // create a new record
@@ -427,7 +423,7 @@ class MeroveusController extends AbstractActionController
             echo "              post market out of loop memory usage is " . $this->convert_memory_usage(memory_get_usage(true)) . PHP_EOL;
         }
 
-        echo $totalMatched . ' total venrecords matched ' . PHP_EOL;
+        echo $totalMatched . ' total  records matched ' . PHP_EOL;
         echo $totalInserted . ' total records inserted ' . PHP_EOL;
         $end = date('h:i:s A');
         echo "ended at " . $end . PHP_EOL;

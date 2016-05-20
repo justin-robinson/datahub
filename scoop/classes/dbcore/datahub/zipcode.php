@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class ZipCode
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/05/17
+ * @date 2016/05/19
  * @property mixed $zip_code
  * @property mixed $city_name
  * @property mixed $state_code

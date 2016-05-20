@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class CompanyInstanceCopy
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/05/17
+ * @date 2016/05/19
  * @property mixed $companyInstanceId
  * @property mixed $companyId
  * @property mixed $generateCode
@@ -17,6 +17,7 @@ use Scoop\Database\Model;
  * @property mixed $marketOfRecord
  * @property mixed $name
  * @property mixed $sicCode
+ * @property mixed $stateId
  * @property mixed $stockSymbol
  * @property mixed $tickerExchange
  * @property mixed $tierLevel
@@ -74,6 +75,9 @@ class CompanyInstanceCopy extends Model {
           'sicCode' => 
           array (
           ),
+          'stateId' => 
+          array (
+          ),
           'stockSymbol' => 
           array (
           ),
@@ -107,6 +111,7 @@ class CompanyInstanceCopy extends Model {
           'marketOfRecord' => NULL,
           'name' => NULL,
           'sicCode' => NULL,
+          'stateId' => NULL,
           'stockSymbol' => NULL,
           'tickerExchange' => NULL,
           'tierLevel' => NULL,
