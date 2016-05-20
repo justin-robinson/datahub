@@ -6,10 +6,8 @@ use Console\Record\Formatter\FormatterTrait;
 use DB\Datahub\Company;
 use DB\Datahub\CompanyInstance;
 use DB\Datahub\CompanyInstanceProperty;
-use DB\Datahub\Market;
 use DB\Datahub\SourceType;
 use DB\Datahub\State;
-use LRUCache\LRUCache;
 
 /**
  * Class ImportRefinery
@@ -18,16 +16,6 @@ use LRUCache\LRUCache;
 class ImportRefinery {
 
     use FormatterTrait;
-
-    /**
-     * @var \LRUCache\LRUCache
-     */
-    static $marketsCache;
-
-    /**
-     * @var \LRUCache\LRUCache
-     */
-    static $statesCache;
 
     /**
      * @param $data
@@ -174,54 +162,6 @@ class ImportRefinery {
 
         return $company;
 
-    }
-
-    private function init () {
-
-        if( is_null( self::$marketsCache ) ) {
-            self::$marketsCache = new LRUCache( 50 );
-        }
-
-        if( is_null( self::$statesCache ) ) {
-            self::$statesCache = new LRUCache( 50 );
-        }
-    }
-
-    /**
-     * @param $city
-     * @param $stateCode
-     *
-     * @return bool|int|mixed|\Scoop\Database\Model\Generic|\Scoop\Database\Rows
-     */
-    private function get_market_by_city_state ( $city, $stateCode ) {
-
-        $marketKey = strtolower( $city . $stateCode );
-
-        $market = self::$marketsCache->get( $marketKey );
-
-        if( !$market ) {
-            $market = Market::query(
-                "SELECT
-              m.*
-            FROM
-              `datahub`.`msa_pmsa` msa
-              INNER JOIN `datahub`.`market_msa_pmsa_map` USING ( sa_code )
-              INNER JOIN `datahub`.`market` m USING ( market_id )
-            WHERE
-              msa.sa_name = ?
-            LIMIT 1",
-                [ "{$city}, {$stateCode}" ]
-            );
-
-            if( $market ) {
-                $market = $market->first();
-            }
-
-            self::$marketsCache->put( $marketKey, $market );
-
-        }
-
-        return $market;
     }
 
 }
