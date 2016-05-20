@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class Country
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/05/19
+ * @date 2016/05/20
  * @property mixed $countryId
  * @property mixed $code
  * @property mixed $country
