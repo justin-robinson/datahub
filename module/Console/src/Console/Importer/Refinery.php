@@ -31,7 +31,8 @@ class Refinery extends ImporterAbstract {
         $file->setHasHeaderRow( true );
 
         // how many rows we processed
-        $count = 0;
+        $companiesProcessed = 0;
+        $instancesProcessed = 0;
 
         $formatter = ImportRefinery::get_instance();
 
@@ -50,12 +51,14 @@ class Refinery extends ImporterAbstract {
                 // format record into some db models
                 $company = $formatter->format( $record );
 
+                $companyKey = $company->normalizedName;
+
                 // does this company exist in the cache?
-                $existingCompany = $companyCache->get( $record['Name'] );
+                $existingCompany = $companyCache->get( $companyKey );
 
                 // look up to db on cache miss
                 if( !$existingCompany ) {
-                    $existingCompany = Company::fetch_one_where( 'name = ? AND stateId = ?', [ $company->name, $company->stateId ] );
+                    $existingCompany = Company::fetch_one_where( 'normalizedName = ?', [ $company->normalizedName ] );
                 }
 
                 // just save the company instance if the company already exists
@@ -68,44 +71,51 @@ class Refinery extends ImporterAbstract {
                         $instance->companyId = $existingCompany->companyId;
 
                         // our cache key
-                        $instanceKey = "{$instance->companyId}-{$instance->namne}";
+                        $zip = $instance->get_property('zipCode');
+                        $addr1 = $instance->get_property('address1');
+                        $keyValues = [$instance->companyId,$instance->name,$zip->value,$addr1->value];
+                        $instanceKey = strtolower(implode( '-', $keyValues ));
 
-                        // flag to determine if this instance is in the db
-                        // check our cache first to determine if the instance has been created in this run
-                        $instanceExists = $companyInstanceCache->exists( $instanceKey );
+                        // check cache and db for this instance
+                        $existingInstance = $companyInstanceCache->get( $instanceKey );
 
-                        // not in cache? try to save
-                        if ( !$instanceExists ) {
-                            try{
+                        if ( !$existingInstance ) {
+                            $existingInstance = CompanyInstance::query(
+                                "SELECT
+                                  i.*
+                                 FROM
+                                  `datahub`.`companyInstance` i
+                                  LEFT JOIN `datahub`.`companyInstanceProperty` p USING ( companyInstanceId )
+                                 WHERE
+                                  i.companyId = ?
+                                  AND i.name = ?
+                                  AND (
+                                    ( p.name = 'zipCode' AND p.value = ? )
+                                    OR
+                                    ( p.name = 'address1' AND p.value = ? )
+                                    )",
+                                $keyValues);
 
-                                // false means don't autoset the timestamps since we are using the ones from the imported data
-                                $instance->save( false );
-
-                                // put this instance in the cache
-                                $companyInstanceCache->put( $instanceKey, $instance );
-                            } catch ( \Exception $e ) {
-                                // insertion failed, probably a dupe
-                                $instanceExists = true;
+                            if ( $existingInstance ) {
+                                $existingInstance = $existingInstance->first();
                             }
                         }
 
                         // add properties to an existing instance
-                        if ( $instanceExists ) {
-
-                            // new properties to add
-                            $properties = $instance->get_properties();
-
-                            // find the existing instance
-                            $instance = CompanyInstance::fetch_one_where( 'companyId = ? AND name = ?', [$instance->companyId, $instance->name] );
+                        if ( $existingInstance ) {
 
                             // add properties to this instance
-                            $instance->set_properties( $properties );
+                            $existingInstance->set_properties( $instance->get_properties() );
 
-                            // save that mess
+                            $existingInstance->save_properties();
+
+                        } else {
+                            // save instance and properties
                             $instance->save();
 
-                            // put this instance in the cache
                             $companyInstanceCache->put( $instanceKey, $instance );
+
+                            ++$instancesProcessed;
                         }
 
                     }
@@ -115,10 +125,12 @@ class Refinery extends ImporterAbstract {
                     $company->save( false );
 
                     // put company in cache for later
-                    $companyCache->put( $record['Name'], $company );
+                    $companyCache->put( $companyKey, $company );
+
+                    ++$companiesProcessed;
+                    ++$instancesProcessed;
                 }
 
-                $count++;
             } catch ( CsvIteratorException $e ) {
                 // CsvIterator throws an exception when number of columns in the header row
                 // and the current line do not match
@@ -127,6 +139,6 @@ class Refinery extends ImporterAbstract {
 
         }
 
-        return $count;
+        return [$companiesProcessed, $instancesProcessed];
     }
 }

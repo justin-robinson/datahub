@@ -25,7 +25,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance {
      *
      * @param array $dataArray
      */
-    public function __construct ( array $dataArray ) {
+    public function __construct ( array $dataArray = [] ) {
 
         $this->properties = [];
 
@@ -37,15 +37,21 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance {
      */
     public function add_property( CompanyInstanceProperty $property ) {
 
-        if ( !isset($this->properties[$property->sourceTypeId]) || !is_array($this->properties[$property->sourceTypeId]) ) {
-            $this->properties[$property->sourceTypeId] = [];
+        $sourceType = SourceType::fetch_one_where( 'sourceTypeId = ?', [$property->sourceTypeId] );
+
+        if ( !$sourceType ) {
+            return;
         }
 
-        if ( !isset($this->properties[$property->sourceTypeId][$property->name]) || !is_array( $this->properties[$property->sourceTypeId][$property->name] )) {
-            $this->properties[$property->sourceTypeId][$property->name] = [];
+        if ( !isset($this->properties[$sourceType->order]) || !is_array($this->properties[$sourceType->order]) ) {
+            $this->properties[$sourceType->order] = [];
         }
 
-        $this->properties[$property->sourceTypeId][$property->name][] = $property;
+        if ( !isset($this->properties[$sourceType->order][$property->name]) || !is_array( $this->properties[$sourceType->order][$property->name] )) {
+            $this->properties[$sourceType->order][$property->name] = [];
+        }
+
+        $this->properties[$sourceType->order][$property->name][$property->value] = $property;
     }
 
     public function fetch_properties () {
@@ -106,17 +112,22 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance {
 
     /**
      * @param $name
-     * @param $sourceTypeId
      *
      * @return null
      */
-    public function get_property($name, $sourceTypeId) {
+    public function get_property($name) {
 
-        if ( empty($this->properties[$sourceTypeId][$name]) ) {
-            return null;
+        $sourceOrders = array_keys($this->properties);
+        sort($sourceOrders);
+
+        foreach ( $sourceOrders as $sourceOrder ) {
+            if ( !empty($this->properties[$sourceOrder][$name]) ) {
+                reset($this->properties[$sourceOrder][$name]);
+                return $this->properties[$sourceOrder][$name][key($this->properties[$sourceOrder][$name])];
+            }
         }
 
-        return $this->properties[$sourceTypeId][$name];
+        return null;
     }
 
     /**
@@ -137,6 +148,10 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance {
         // save to db
         parent::save();
 
+        $this->save_properties();
+    }
+
+    public function save_properties () {
         // save properties to db with a query buffer
         $propertyBuffer = new Buffer(1000, get_class(new CompanyInstanceProperty()));
         $propertyBuffer->set_insert_ignore(true);

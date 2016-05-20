@@ -18,28 +18,6 @@ trait FormatterTrait {
     protected static $instance;
 
     /**
-     * @var \DB\Datahub\SourceType[]
-     */
-    protected static $sourceTypes;
-
-    /**
-     * FormatterAbstract constructor.
-     *
-     * blocks the new keyword
-     */
-    protected function __construct () {
-
-        if ( is_null(self::$sourceTypes) ) {
-            self::$sourceTypes = [];
-
-            foreach ( SourceType::fetch() as $sourceType ) {
-                self::$sourceTypes[$sourceType->name] = $sourceType;
-            }
-        }
-
-    }
-
-    /**
      * So we can't clone
      */
     protected function __clone() {

@@ -14,6 +14,7 @@ use Scoop\Database\Model;
  * @property mixed $employeeCount
  * @property mixed $isActive
  * @property mixed $name
+ * @property mixed $normalizedName
  * @property mixed $owernship
  * @property mixed $createdAt
  * @property mixed $updatedAt
@@ -59,6 +60,9 @@ class Company extends Model {
           'name' => 
           array (
           ),
+          'normalizedName' => 
+          array (
+          ),
           'owernship' => 
           array (
           ),
@@ -80,6 +84,7 @@ class Company extends Model {
           'employeeCount' => NULL,
           'isActive' => NULL,
           'name' => NULL,
+          'normalizedName' => NULL,
           'owernship' => NULL,
           'createdAt' => NULL,
           'updatedAt' => NULL,
