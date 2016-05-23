@@ -8,7 +8,9 @@
 namespace Console\Controller;
 
 use Console\CsvIterator;
+use Console\Importer\Refinery;
 use Console\Record\Formatter\Factory;
+use Console\Record\Formatter\Formatters\Meroveus;
 use Elastica\Client as ElasticaClient;
 use Elastica\Query as ElasticaQuery;
 use Elastica\QueryBuilder as QueryBuilder;
@@ -269,9 +271,9 @@ class MeroveusController extends AbstractActionController
 
         $lastMemUsageMessageLength = 0;
 
-        $selectCompany = $this->sqlStatementsArray['selectOneCompanyByMeroveusId'];
+       // $selectCompany = $this->sqlStatementsArray['selectOneCompanyByMeroveusId'];
 
-        $formatter = Factory::factory('Meroveus');
+        $formatter = Meroveus::get_instance();
 
         // setup our meroveus params
         $meroveusParams = [
@@ -307,7 +309,7 @@ class MeroveusController extends AbstractActionController
             $meroveusParams['ENV']      = $env;
             $meroveusParams['STARTROW'] = 1; // reset our pagination offset
             $marketMatched              = $marketInserted = 0; // reset counts for this market
-            $insertCompanyMeroveusIndustry = $this->sqlStatementsArray['insertCompanyMeroveusIndustry'];
+            //$insertCompanyMeroveusIndustry = $this->sqlStatementsArray['insertCompanyMeroveusIndustry'];
 
             // paginate over companies
             while ($marketCompanyList = $this->companyService->fetchByMarket($meroveusParams)) {
@@ -317,6 +319,8 @@ class MeroveusController extends AbstractActionController
                 }
 
                 foreach ($marketCompanyList as $index => $target) {
+
+                    $company = $formatter->format( $target );
 
                     $match = $this->elasticMatch($target);
                     $hubId = null;
@@ -344,29 +348,13 @@ class MeroveusController extends AbstractActionController
                         }
 
                     } else { // create a new record
-                        $queryParams = $formatter->format($target);
-                        if (!$debug) {
-                            try {
-                                $this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-                                $this->addCompanyPdo->execute($queryParams);
-                                // good ole pdo has the hubId for us
-                                $hubId = $this->db->lastInsertId();
-                                // write some debug files if you want
-                                if ($sanity) {
-                                    $this->writeSanityFiles($market, $target, false);
-                                }
-
-                                $marketInserted++;
-                                $totalInserted++;
-
-                            } catch (\PDOException $e) {
-                                echo 'PDO ERROR on company insert: ' . $e->getMessage() . PHP_EOL;
-                            }
-                        }
+                        $importer = new Refinery();
+                        $importer->save( $company );
+                        $hubId = $company->get_company_instances()->first()->companyInstanceId;
                     }
 
                     // does this company have an industry?
-                    if ( isset($target['firm-industry_static']) ) {
+                    /*if ( isset($target['firm-industry_static']) ) {
 
                         // get all meroveus industries for this company by ID
                         $selectMeroveusIndustry = $this->db->prepare("
@@ -394,7 +382,7 @@ class MeroveusController extends AbstractActionController
                         }
 
                         $selectMeroveusIndustry->closeCursor();
-                    }
+                    }*/
 
                     // process contacts
                     if ($hubId || $debug) {
@@ -745,7 +733,7 @@ class MeroveusController extends AbstractActionController
             'Name'       => isset($target['firm-name_static']) ? $target['firm-name_static'] : false,
             'State'      => isset($target['street-state_static']) ? $target['street-state_static'] : false,
             'City'       => isset($target['street-city_static']) ? $target['street-city_static'] : false,
-            'Addr1'      => isset($target['street-address_static']) ? $target['street-address_static'] : false,
+//            'Addr1'      => isset($target['street-address_static']) ? $target['street-address_static'] : false,
             'PostalCode' => isset($target['street-zip_static']) ? $target['street-zip_static'] : false,
         ];
 
