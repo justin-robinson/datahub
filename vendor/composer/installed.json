@@ -1235,38 +1235,6 @@
         ]
     },
     {
-        "name": "bizjournals/module_entity",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "git@gitlab.bizjournals.com:bizjournals/module_entity.git",
-            "reference": "561fc9e13b384beac0f5e50448d8aba47f2ab4bd"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "http://packages.bizjournals.int/dist/module_entity-657-561fc9e13b384beac0f5e50448d8aba47f2ab4bd.zip",
-            "reference": "561fc9e13b384beac0f5e50448d8aba47f2ab4bd",
-            "shasum": null
-        },
-        "require": {
-            "doctrine/doctrine-orm-module": "@stable",
-            "symfony/yaml": "@stable"
-        },
-        "require-dev": {
-            "zendframework/zendframework": "2.4.*"
-        },
-        "time": "2016-03-31 11:42:31",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "psr-0": {
-                "Entity\\": "src/"
-            }
-        },
-        "description": "bizjournals Entity Module"
-    },
-    {
         "name": "monolog/monolog",
         "version": "1.19.0",
         "version_normalized": "1.19.0.0",
@@ -2100,5 +2068,37 @@
             "php",
             "php 7"
         ]
+    },
+    {
+        "name": "bizjournals/module_entity",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "git@gitlab.bizjournals.com:bizjournals/module_entity.git",
+            "reference": "179eea71eccde9c0feda13fcee7a1237631bed72"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "http://packages.bizj-internal.com/dist/module_entity-657-179eea71eccde9c0feda13fcee7a1237631bed72.zip",
+            "reference": "179eea71eccde9c0feda13fcee7a1237631bed72",
+            "shasum": null
+        },
+        "require": {
+            "doctrine/doctrine-orm-module": "@stable",
+            "symfony/yaml": "@stable"
+        },
+        "require-dev": {
+            "zendframework/zendframework": "2.4.*"
+        },
+        "time": "2016-05-24 12:33:20",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Entity\\": "src/"
+            }
+        },
+        "description": "bizjournals Entity Module"
     }
 ]
