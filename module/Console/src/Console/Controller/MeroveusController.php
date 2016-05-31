@@ -17,6 +17,7 @@ use Elastica\QueryBuilder as QueryBuilder;
 use Elastica\Search as ElasticaSearch;
 use Services\Meroveus\Client as MeroveusClient;
 use Services\Meroveus\CompanyService;
+use Zend\Db\Sql\Insert;
 use Zend\Mvc\MvcEvent;
 
 //use Services\Meroveus\CompanyService;
@@ -34,23 +35,23 @@ class MeroveusController extends AbstractActionController
      * map of our market names to their respective meroveus environments
      */
     private $markets = [
-        'albany'       => '12',
-        'albuquerque'  => '9',
-        'atlanta'      => '11',
-        'austin'       => '22',
-        'baltimore'    => '15',
-        'birmingham'   => '30',
-        'boston'       => '34',
-        'buffalo'      => '3',
-        'charlotte'    => '26',
-        'cincinnati'   => '6',
-        'columbus'     => '31',
-        'dallas'       => '7',
-        'dayton'       => '19',
-        'denver'       => '2',
-        'houston'      => '8',
-        'jacksonville' => '23',
-        'kansascity'   => '13',
+//        'albany'       => '12',
+//        'albuquerque'  => '9',
+//        'atlanta'      => '11',
+//        'austin'       => '22',
+//        'baltimore'    => '15',
+//        'birmingham'   => '30',
+//        'boston'       => '34',
+//        'buffalo'      => '3',
+//        'charlotte'    => '26',
+//        'cincinnati'   => '6',
+//        'columbus'     => '31',
+//        'dallas'       => '7',
+//        'dayton'       => '19',
+//        'denver'       => '2',
+//        'houston'      => '8',
+//        'jacksonville' => '23',
+//        'kansascity'   => '13',
         'louisville'   => '32',
         'memphis'      => '10',
         'milwaukee'    => '33',
@@ -110,18 +111,18 @@ class MeroveusController extends AbstractActionController
     private $elasticQueryBuilder;
 
     /** @var string */
-    private $contactSql = 'INSERT INTO
-            contact (
-              hub_id, meroveus_id, relevate_id, is_duplicate, is_current_employee, first_name, middle_initial, last_name,
-              suffix, honorific, job_title, job_position_id, email, phone, address1, address2, city, state, postal_code,
-              created_at, updated_at, deleted_at
-            )
-            VALUES (
-              :hub_id, :meroveus_id, :relevate_id, :is_duplicate, :is_current_employee, :first_name, :middle_initial,
-              :last_name, :suffix, :honorific, :job_title, :job_position_id, :email, :phone, :address1, :address2, :city,
-              :state, :postal_code, :created_at, :updated_at, :deleted_at
-            )';
 
+    private $contactSql = '
+        INSERT INTO 
+          contact( 
+            companyInstanceId, meroveusId, relevateId, isDuplicate, isCurrentEmployee, firstName, middleInitial, 
+            lastName, suffix, honorific, jobTitle, jobPositionId, email, phone, address1, address2, city, state, postalCode
+          )
+          VALUES (
+            :companyInstanceId, :meroveusId, :relevateId, :isDuplicate, :isCurrentEmployee, :firstName, :middleInitial, 
+            :lastName, :suffix, :honorific, :jobTitle, :jobPositionId, :email, :phone, :address1, :address2, :city, :state, :postalCode
+            )
+        ';
     /** @var string */
     private $createCompanySql = '
             INSERT INTO
@@ -157,7 +158,7 @@ class MeroveusController extends AbstractActionController
       refinery_id = :refinery_id';
 
     /** @var \PDOStatement */
-    private $insertPropeertiesPdo = null;
+    private $insertPropertiesPdo = null;
     /** @var string */
     private $insertPropertiesSql = '
       INSERT INTO companyInstanceProperty
@@ -231,7 +232,7 @@ class MeroveusController extends AbstractActionController
     public function init(MvcEvent $e)
     {
         parent::init($e);
-
+        $this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         $this->companyService = new CompanyService($this->meroveusClient);
         //@todo make this environment aware
         // set up elastic
@@ -241,11 +242,11 @@ class MeroveusController extends AbstractActionController
         $this->elasticQueryBuilder = new QueryBuilder();
         $this->contactService      = $this->getServiceLocator()->get('Services\Meroveus\ContactService');
         // prepare pdo outside the loop for memory purposes
-        $this->addContactPdo        = $this->db->prepare($this->contactSql);
-        $this->addCompanyPdo        = $this->db->prepare($this->createCompanySql);
-        $this->updateCompanyPdo     = $this->db->prepare($this->updateCompanySql);
-        $this->getInstancePdo       = $this->db->prepare($this->getInstanceSql);
-        $this->insertPropeertiesPdo = $this->db->prepare($this->insertPropertiesSql);
+        $this->addContactPdo = $this->db->prepare($this->contactSql);
+//        $this->addCompanyPdo        = $this->db->prepare($this->createCompanySql);
+//        $this->updateCompanyPdo     = $this->db->prepare($this->updateCompanySql);
+        $this->getInstancePdo      = $this->db->prepare($this->getInstanceSql);
+        $this->insertPropertiesPdo = $this->db->prepare($this->insertPropertiesSql);
 
     }
 
@@ -269,7 +270,7 @@ class MeroveusController extends AbstractActionController
      */
     public function matchAction($sanity = false, $debug = false)
     {
-        $debug = true;
+//        $debug = true;
         echo '
              ███▄ ▄███▓    ▄▄▄         ▄▄▄█████▓    ▄████▄      ██░ ██     ██▓    ███▄    █      ▄████
             ▓██▒▀█▀ ██▒   ▒████▄       ▓  ██▒ ▓▒   ▒██▀ ▀█     ▓██░ ██▒   ▓██▒    ██ ▀█   █     ██▒ ▀█▒
@@ -354,14 +355,17 @@ class MeroveusController extends AbstractActionController
                         if (!$debug) {
                             // updates the existing record
                             $refineryId = $match->getSource()['InternalId'];
-                            $this->processMatch($refineryId, $target, $this->insertPropeertiesPdo);
+//                            $this->processMatch($refineryId, $target, $this->insertPropertiesPdo);
+
+                            $this->processMatch($refineryId, $target);
 
                             try {
 
-                                $selectCompany->execute([$target['meroveusId']]);
-                                $hubId = ($selectCompany->rowCount() > 0) ? $selectCompany->fetch(\PDO::FETCH_ASSOC)['hub_id'] : false;
+                                $this->getInstancePdo->execute([$target['meroveusId']]);
 
-                                $selectCompany->closeCursor();
+                                $hubId = ($this->getInstancePdo->rowCount() > 0) ? $this->getInstancePdo->fetch(\PDO::FETCH_ASSOC)['companyInstanceId'] : false;
+
+                                $this->getInstancePdo->closeCursor();
                                 if ($sanity) {
                                     $this->writeSanityFiles($market, $target, $match);
                                 }
@@ -373,6 +377,7 @@ class MeroveusController extends AbstractActionController
                         }
 
                     } else { // create a new record
+
                         if (!$debug) {
                             $importer = new Refinery();
                             $importer->save($company);
@@ -455,23 +460,28 @@ class MeroveusController extends AbstractActionController
     {
 
         foreach ($contacts as $contact) {
-            // attach the company hub id to the contact, format it and add it
-            $contact['hub_id'] = $companyHubId;
-            $formattedContact  = $this->contactService->formatMeroveusContact($contact, $this->jobIdDictionary);
+            if (!empty($contact)) {
+                // attach the company hub id to the contact, format it and add it
+                $contact['hub_id'] = $companyHubId;
+                $formattedContact  = $this->contactService->formatMeroveusContact($contact, $this->jobIdDictionary);
+                /** @var \DB\Datahub\Contact $formattedContact */
 
-            if (!$debug) {
-                if ($formattedContact) {
-                    try {
-                        $this->addContactPdo->execute($formattedContact);
-                    } catch (\PDOException $e) {
-                        echo "PDO ERROR: " . $e->getMessage() . PHP_EOL;
-                    }
-                    if ($formattedContact['job_position_id'] === 1001 && $formattedContact['job_title']) {
-                        $unrankedJobs[$formattedContact['job_title']] = 1001;
+
+                if (!$debug) {
+                    if (!empty($formattedContact)) {
+                        $formattedContact->companyInstanceId = $companyHubId;
+                        $formattedContact->save();
+//                    try {
+//                        $this->addContactPdo->execute($formattedContact);
+//                    } catch (\PDOException $e) {
+//                        echo "PDO ERROR: " . $e->getMessage() . PHP_EOL;
+//                    }
+//                    if ($formattedContact['job_position_id'] === 1001 && $formattedContact['job_title']) {
+//                        $unrankedJobs[$formattedContact['job_title']] = 1001;
+//                    }
                     }
                 }
             }
-
         }
     }
 
@@ -767,14 +777,32 @@ class MeroveusController extends AbstractActionController
                 return false;
             }
         }
+//{
+//    "query": {
+//        "bool": {
+//            "should": [
+//                {"match": {"Name.raw": "White Construction Company"}},
+//                {"match": {"Addr1": "613 Crescent Circle Ste. 100"}}
+//            ],
+//            "must":   [
+//                {"match": {"Name": "White Construction Company"}},
+//                {"match": {"City": "Ridgeland"}},
+//                {"match": {"State": "MS"}},
+//                {"match": {"PostalCode": "39157"}}
+//            ]
+//        }
+//    }
+//}
+            $this->elasticQuery->setQuery(
+            $this->elasticQueryBuilder->query()->bool()
+            ->addShould($this->elasticQueryBuilder->query()->match('Name.raw', $queryFields['Name']))
+            ->addShould($this->elasticQueryBuilder->query()->match('Addr1', $queryFields['Addr1']))
+            ->addMust($this->elasticQueryBuilder->query()->match('Name', $queryFields['Name']))
+            ->addMust($this->elasticQueryBuilder->query()->match('City', $queryFields['City']))
+            ->addMust($this->elasticQueryBuilder->query()->match('State', $queryFields['State']))
+            ->addMust($this->elasticQueryBuilder->query()->match('PostalCode', $queryFields['PostalCode'])));
 
-        $this->elasticQuery->setQuery($this->elasticQueryBuilder->query()->bool()->addShould($this->elasticQueryBuilder->query()->match('Name.raw',
-            $queryFields['Name']))->addMust($this->elasticQueryBuilder->query()->match('Name',
-            $queryFields['Name']))//            ->addMust($this->elasticQueryBuilder->query()->match('Addr1', $queryFields['Addr1']))
-                                                                ->addMust($this->elasticQueryBuilder->query()->match('City',
-            $queryFields['City']))->addMust($this->elasticQueryBuilder->query()->match('State',
-            $queryFields['State']))->addMust($this->elasticQueryBuilder->query()->match('PostalCode',
-            $queryFields['PostalCode'])));
+
         // set the minimum score that we consider a match
         // https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-min-score.html
         $this->elasticQuery->setMinScore($minScore);
@@ -799,20 +827,53 @@ class MeroveusController extends AbstractActionController
      *
      * @return bool
      */
-    private function processMatch($refineryId, array $target, \PDOStatement $pdo)
+    // gross!!!
+    private function processMatch($refineryId, array $target)
     {
+//        echo "line 815". ' in '."MeroveusController.php".PHP_EOL;
+//        die(var_dump( $target ));
+
+        $meroveusId = $target['meroveusId'];
 
         $params = [
-            ':meroveus_id'                       => $target['meroveusId'],
-            ':universal_revenue_volume_static'   => empty($target['universal-revenue-volume_static']) ? null : $target['universal-revenue-volume_static'],
-            ':universal_employee_count_static'   => empty($target['universal-employee-count_static']) ? null : $target['universal-employee-count_static'],
-            ':universal_employee_local_static'   => empty($target['universal-employee-local_static']) ? null : $target['universal-employee-local_static'],
-            ':universal_established_year_static' => empty($target['universal-established-year_static']) ? null : $target['universal-established-year_static'],
-            ':universal_profile_blob_static'     => empty($target['universal-profile-blob_static']) ? null : $target['universal-profile-blob_static'],
-            ':refinery_id'                       => $refineryId,
+            'universal_revenue_volume_static'   => empty($target['universal-revenue-volume_static']) ? null : $target['universal-revenue-volume_static'],
+            'universal_employee_count_static'   => empty($target['universal-employee-count_static']) ? null : $target['universal-employee-count_static'],
+            'universal_employee_local_static'   => empty($target['universal-employee-local_static']) ? null : $target['universal-employee-local_static'],
+            'universal_established_year_static' => empty($target['universal-established-year_static']) ? null : $target['universal-established-year_static'],
+            'universal_profile_blob_static'     => empty($target['universal-profile-blob_static']) ? null : $target['universal-profile-blob_static'],
         ];
+
+        $insert = ' 
+          INSERT INTO companyInstanceProperty
+            (companyInstanceId, name, value, valueMd5, sourceTypeId, sourceId)
+          VALUES ';
+        $count  = false;
+        foreach ($params as $name => $param) {
+            if (!empty($param)) {
+                $count = true;
+                $hash  = md5($param);                             //HA HA HA HA!!!!
+                $insert .= '("' . $refineryId . '", "' . $name . '", "' . addslashes($param) . '", "' . $hash . '", 2, "' . $meroveusId . '"),';
+            }
+        }
+        if (!$count) {
+            return false;
+        }
+        $insert   = rtrim($insert, ',');
+        $prepared = $this->db->prepare($insert);
+//        $insert = "
+//        INSERT INTO companyInstanceProperty
+//          (companyInstanceId, name, value, valueMd5, sourceTypeId, sourceId)
+//          VALUES
+//          ({$refineryId}, 'revenue', :{$target['universal-revenue-volume_static']}, " . md5($target['universal-revenue-volume_static']) . ", 2,{$target['meroveusId']}),          ({$refineryId}, 'revenue', :{$target['universal-revenue-volume_static']}, " . md5($target['universal-revenue-volume_static']) . ", 2,{$target['meroveusId']}),
+//          ({$refineryId}, 'employeeCount', :{$target['universal-employee-count_static']}, " . md5($target['universal-employee-count_static']) . ", 2,{$target['meroveusId']}),
+//          ({$refineryId}, 'employeesLocal', :{$target['universal-employee-local_static']}, " . md5($target['universal-employee-local_static']) . ", 2,{$target['meroveusId']}),
+//          ({$refineryId}, 'yearEstablished', :{$target['universal-established-year_static']}, " . md5($target['universal-established-year_static']) . ", 2,{$target['meroveusId']}),
+//          ({$refineryId}, 'description', :{$target['universal-profile-blob_static']}, " . md5($target['universal-profile-blob_static']) . ", 2,{$target['meroveusId']});
+//        ";
+
+
         try {
-            return $pdo->execute($params);
+            return $prepared->execute();
         } catch (\PDOException $e) {
             echo 'ERROR' . $e->getMessage() . PHP_EOL;
             echo 'processMatch called for no good reason. did you run the import?' . PHP_EOL;
