@@ -767,6 +767,7 @@ class MeroveusController extends AbstractActionController
         $queryFields = [
             'Name'       => isset($target['firm-name_static']) ? $target['firm-name_static'] : false,
             'State'      => isset($target['street-state_static']) ? $target['street-state_static'] : false,
+            'Addr1'      => isset($target['street-address_static']) ? $target['street-address_static'] : false,
             'City'       => isset($target['street-city_static']) ? $target['street-city_static'] : false,
             'PostalCode' => isset($target['street-zip_static']) ? $target['street-zip_static'] : false,
         ];
@@ -795,8 +796,8 @@ class MeroveusController extends AbstractActionController
 //}
             $this->elasticQuery->setQuery(
             $this->elasticQueryBuilder->query()->bool()
-            ->addShould($this->elasticQueryBuilder->query()->match('Name.raw', $queryFields['Name']))
-            ->addShould($this->elasticQueryBuilder->query()->match('Addr1', $queryFields['Addr1']))
+//            ->addShould($this->elasticQueryBuilder->query()->match('Name.raw', $queryFields['Name']))
+//            ->addShould($this->elasticQueryBuilder->query()->match('Addr1', $queryFields['Addr1']))
             ->addMust($this->elasticQueryBuilder->query()->match('Name', $queryFields['Name']))
             ->addMust($this->elasticQueryBuilder->query()->match('City', $queryFields['City']))
             ->addMust($this->elasticQueryBuilder->query()->match('State', $queryFields['State']))
@@ -809,6 +810,7 @@ class MeroveusController extends AbstractActionController
         $resultSet    = $this->elasticSearch->search($this->elasticQuery);
         $topScore     = $resultSet->getMaxScore();
         $resultsArray = $resultSet->getResults();
+
         $result       = false;
         if (!empty($resultsArray)) {
             $result = ($resultsArray[0]->getScore() === $topScore) ? $resultsArray[0] : $result;
