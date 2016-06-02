@@ -25,7 +25,8 @@ class Meroveus
      */
     public function format($data)
     {
-
+        echo "line 28". ' in '."Meroveus.php".PHP_EOL;
+        die(var_dump( $data ));
         $this->init();
 
         $phoneNumber = isset($data['contact-phone_static']) ? $data['contact-phone_static'] : '';
@@ -122,6 +123,7 @@ class Meroveus
 
         /**
          * @TODO search $data keys for business-services-blob_YEAR for descriptions
+         * @todo    actully don't do this
          */
 //        $propertyArray['name'] = 'description';
 //        $propertyArray['value'] = $data['Description'];

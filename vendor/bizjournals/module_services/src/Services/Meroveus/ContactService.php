@@ -28,13 +28,13 @@ class ContactService extends AbstractService
     private $patternDictionary = [
 
         '/^.*(^|\s)(CHIEF\sEXECUTIVE\sOFFICER).*$/i'                 => 10,
-        // the following matches any occurrce of "CEO" thats
+        // the following matches any occurrence of "CEO" thats
         // not part of a word and can contain spaces or periods
         '/^.*(^|\s|\D|\W)(C\.?\s?E\.?\s?O\.?\s?)(\s|\D|\W)*.*$/i'    => 10,
         '/^.*(^|\s|\b)(PRESIDENT)(\s|\b|$).*$/i'                     => 11,
         '/^.*(^|\s|\b)(OWNER)(\s|\b|$).*$/i'                         => 22,
         '/^.*(^|\s|\b)(CHIEF\s*([^\s]*)\s*OFFICER).*$/i'             => 30,
-        // the following matches any occurrce of a three letter group in the form of "C<whatevet>O" thats
+        // the following matches any occurrence of a three letter group in the form of "C<whatever>O" that's
         // not part of a word and can contain spaces or periods
         '/^.*(^|\s|\b)(C\.?\s?[a-z]\.?\s?O\.?\s?)(\s|\b|$).*$/i'     => 30,
         '/^.*(^|\s|\b)(PARTNER)(\s|\b|$).*$/i'                       => 50,

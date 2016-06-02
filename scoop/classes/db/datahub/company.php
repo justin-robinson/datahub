@@ -69,40 +69,7 @@ class Company extends \DBCore\Datahub\Company
     ];
 
 
-    /**
-     * @var array
-     */
-    private $tieringFields = [
-        'basic'        => [
-            'address1',
-            'city',
-            'country',
-            'zipCode',
-            'state',
-        ],
-        'identity'     => [
-            'stockSymbol',
-            'stockExchange',
-            'phone',
-            'website',
-        ],
-        'bizjPresence' => [
-            'lists'   => [],
-            'stories' => [],
-        ],
-        'enhanced'     => [
-            'description',
-            'logo',
-            'researched' => [
-                'employeeCount',
-                'totalEmployee',
-                'minorityOwnedPercentage',
-                'womanOwnedPercent',
-                'familyOwned',
-                'yearFounded',
-            ],
-        ],
-    ];
+
 // page_crssref
 //    refKey is name, rev value is refineryid
 
