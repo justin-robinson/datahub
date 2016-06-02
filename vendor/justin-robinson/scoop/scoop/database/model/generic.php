@@ -68,10 +68,10 @@ class Generic implements \JsonSerializable {
             $rows = new Rows();
 
             // put all rows in the collection
-            foreach ( $result as $row ) {
+            while ( $row = $result->fetch_object(static::class) ) {
 
                 // add a new instance of this row to the collection
-                $rows->add_row ( ( new static( $row ) )->loaded_from_database () );
+                $rows->add_row ( $row->loaded_from_database () );
 
             }
 
@@ -96,13 +96,7 @@ class Generic implements \JsonSerializable {
      */
     public function __get ( $name ) {
 
-        if ( isset( $this->dBValuesArray[$name] ) ) {
-            $property = $this->dBValuesArray[$name];
-        } else {
-            $property = null;
-        }
-
-        return $property;
+        return array_key_exists($name, $this->dBValuesArray) ? $this->dBValuesArray[$name] : null;
     }
 
     /**
@@ -112,7 +106,7 @@ class Generic implements \JsonSerializable {
      */
     public function __isset ( $name ) {
 
-        return isset($this->dBValuesArray[$name]);
+        return array_key_exists($name, $this->dBValuesArray);
     }
 
     /**
