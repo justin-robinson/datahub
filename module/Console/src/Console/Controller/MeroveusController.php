@@ -11,6 +11,9 @@ use Console\CsvIterator;
 use Console\Importer\Refinery;
 use Console\Record\Formatter\Factory;
 use Console\Record\Formatter\Formatters\Meroveus;
+use DB\Datahub\CompanyInstance;
+use DB\Datahub\CompanyInstanceProperty;
+use DB\Datahub\SourceType;
 use Elastica\Client as ElasticaClient;
 use Elastica\Query as ElasticaQuery;
 use Elastica\QueryBuilder as QueryBuilder;
@@ -353,11 +356,7 @@ class MeroveusController extends AbstractActionController
                     if ($match) {
 
                         if (!$debug) {
-                            // updates the existing record
-                            $refineryId = $match->getSource()['InternalId'];
-//                            $this->processMatch($refineryId, $target, $this->insertPropertiesPdo);
-
-                            $this->processMatch($refineryId, $target);
+                            $this->processMatch($target);
 
                             try {
 
@@ -822,20 +821,21 @@ class MeroveusController extends AbstractActionController
     /**
      * updates the existing refinery record
      *
-     * @param  $refineryId
      * @param  $target                array
-     * @param  $pdo                   \PDOStatement specifically the update company one
      *                                //@todo rethink this in light of testing
      *
      * @return bool
      */
-    // gross!!!
-    private function processMatch($refineryId, array $target)
+    private function processMatch(array $target)
     {
-//        echo "line 815". ' in '."MeroveusController.php".PHP_EOL;
-//        die(var_dump( $target ));
 
         $meroveusId = $target['meroveusId'];
+
+        $companyInstances = CompanyInstance::fetch_by_source_name_and_id('meroveus', $meroveusId);
+
+        if ( $companyInstances === false ) {
+            return false;
+        }
 
         $params = [
             'universal_revenue_volume_static'   => empty($target['universal-revenue-volume_static']) ? null : $target['universal-revenue-volume_static'],
@@ -845,43 +845,19 @@ class MeroveusController extends AbstractActionController
             'universal_profile_blob_static'     => empty($target['universal-profile-blob_static']) ? null : $target['universal-profile-blob_static'],
         ];
 
-        $insert = ' 
-          INSERT INTO companyInstanceProperty
-            (companyInstanceId, name, value, valueMd5, sourceTypeId, sourceId)
-          VALUES ';
-        $count  = false;
-        foreach ($params as $name => $param) {
-            if (!empty($param)) {
-                $count = true;
-                $hash  = md5($param);                             //HA HA HA HA!!!!
-                $insert .= '("' . $refineryId . '", "' . $name . '", "' . addslashes($param) . '", "' . $hash . '", 2, "' . $meroveusId . '"),';
-            }
+        foreach ( $params as $name => $value ) {
+            $companyInstances->first()->add_property(new CompanyInstanceProperty(
+                [
+                    'name' => $name,
+                    'value' => $value,
+                    'sourceTypeId' => SourceType::fetch_one_where("name = 'meroveus'")->sourceTypeId,
+                    'sourceId' => $meroveusId
+                ] ));
         }
-        if (!$count) {
-            return false;
-        }
-        $insert   = rtrim($insert, ',');
-        $prepared = $this->db->prepare($insert);
-//        $insert = "
-//        INSERT INTO companyInstanceProperty
-//          (companyInstanceId, name, value, valueMd5, sourceTypeId, sourceId)
-//          VALUES
-//          ({$refineryId}, 'revenue', :{$target['universal-revenue-volume_static']}, " . md5($target['universal-revenue-volume_static']) . ", 2,{$target['meroveusId']}),          ({$refineryId}, 'revenue', :{$target['universal-revenue-volume_static']}, " . md5($target['universal-revenue-volume_static']) . ", 2,{$target['meroveusId']}),
-//          ({$refineryId}, 'employeeCount', :{$target['universal-employee-count_static']}, " . md5($target['universal-employee-count_static']) . ", 2,{$target['meroveusId']}),
-//          ({$refineryId}, 'employeesLocal', :{$target['universal-employee-local_static']}, " . md5($target['universal-employee-local_static']) . ", 2,{$target['meroveusId']}),
-//          ({$refineryId}, 'yearEstablished', :{$target['universal-established-year_static']}, " . md5($target['universal-established-year_static']) . ", 2,{$target['meroveusId']}),
-//          ({$refineryId}, 'description', :{$target['universal-profile-blob_static']}, " . md5($target['universal-profile-blob_static']) . ", 2,{$target['meroveusId']});
-//        ";
 
+        $companyInstances->first()->save();
 
-        try {
-            return $prepared->execute();
-        } catch (\PDOException $e) {
-            echo 'ERROR' . $e->getMessage() . PHP_EOL;
-            echo 'processMatch called for no good reason. did you run the import?' . PHP_EOL;
-
-            return false;
-        }
+        return true;
     }
 
 
