@@ -122,6 +122,7 @@ class Meroveus
 
         /**
          * @TODO search $data keys for business-services-blob_YEAR for descriptions
+         * @todo    actully don't do this
          */
 //        $propertyArray['name'] = 'description';
 //        $propertyArray['value'] = $data['Description'];
