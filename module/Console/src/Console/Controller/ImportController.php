@@ -5,6 +5,8 @@ namespace Console\Controller;
 use Console\Importer\Refinery;
 use Console\CsvIterator;
 use Console\Record\Formatter\Formatters\Relevate;
+use DB\Datahub\CompanyInstance;
+use DB\Datahub\Contact;
 use Scoop\Database\Literal;
 use Zend\Db\Adapter as dbAdapter;
 
@@ -309,82 +311,71 @@ class ImportController extends AbstractActionController
 
         foreach ($file as $line) {
 
-            $contact = new \DB\Datahub\Contact($formatter->format($line));
+            $currentContact = $formatter->format($line);
 
-            // get the hub id
-            $company = \DB\Datahub\CompanyOld::fetch_one_where(
-                'meroveus_id = ?',
-                [$contact->meroveus_id]);
-            if ($company) {
-                $contact->hub_id = $company->hub_id;
+            $companyInstances = CompanyInstance::fetch_by_source_name_and_id('meroveus', $currentContact->meroveusId);
+
+            if ( $companyInstances ) {
+                $currentContact->companyInstanceId = $companyInstances->first()->companyInstanceId;
             }
 
             // if we have a new meroveus id, get all the contacts related to it
-            if ($lastMeroveusId !== $contact->meroveus_id) {
+            if ($lastMeroveusId !== $currentContact->meroveusId) {
 
                 // update meroveus id
-                $lastMeroveusId = $contact->meroveus_id;
+                $lastMeroveusId = $currentContact->meroveusId;
 
                 // get all contacts for this meroveus id
                 $allContacts = [];
 
                 // add each contact to our contacts array index by their name
-                foreach (\DB\Datahub\Contact::fetch_where('meroveus_id = ?', [$contact->meroveus_id]) as &$contact) {
-                    $key               = strtolower($contact->first_name . $contact->last_name);
-                    $allContacts[$key] = $contact;
+                $contacts = Contact::fetch_where('meroveusId = ?', [$currentContact->meroveusId]);
+                if ( $contacts ) {
+                    foreach ( $contacts as &$contact) {
+                        $key               = strtolower($contact->firstName . $contact->lastName);
+                        $allContacts[$key] = $contact;
+                    }
+
                 }
 
             }
 
             // key used to find this contact on our contacts array
-            $key = strtolower($contact->first_name . $contact->last_name);
+            $key = strtolower($currentContact->firstName . $currentContact->lastName);
 
             // does this contact exist?
             if (empty($allContacts[$key])) {
 
-                $contact->set_literal( 'created_at', 'NOW()' );
-                $contact->set_literal( 'updated_at', 'NOW()' );
+                $currentContact->set_literal( 'created_at', 'NOW()' );
+                $currentContact->set_literal( 'updated_at', 'NOW()' );
 
                 // insert new contact
-                $contact->save();
+                $currentContact->save();
 
             } else {
 
                 // the contact in the db
                 $existingContact = $allContacts[$key];
 
-                // flag that we updated a contact
-                $contactNeedsUpdate = false;
-
-                foreach ($existingContact as $columnName => $valueInDB) {
-
-                    // pdo sql statements use this column prefix naming convention
-                    $pdoColumnName = ':' . $columnName;
+                // overwrite empty values in the db with non empty values from the csv
+                foreach ($existingContact->get_db_values_array() as $columnName => $valueInDB) {
 
                     // the value loaded from the csv
-                    $newValue = isset($contactDataArray[$pdoColumnName]) ? $contactDataArray[$pdoColumnName] : null;
+                    $newValue = isset($currentContact->$columnName) ? $currentContact->$columnName : null;
 
                     // is the new value different from what we have?
-                    $newValueisDifferent = $existingContact[$columnName] != $newValue;
+                    $newValueisDifferent = $valueInDB != $newValue;
 
                     // current value is null or empty string
-                    $existingValueIsUseless = is_null($existingContact[$columnName]) || $existingContact[$columnName] === '';
+                    $existingValueIsUseless = is_null($valueInDB) || $valueInDB === '';
 
                     // update db value with new value
                     if ($newValueisDifferent && $existingValueIsUseless) {
-                        $valueInDB          = $newValue;
-                        $contactNeedsUpdate = true;
+                        $existingContact->$columnName = $currentContact->$columnName;
                     }
-
-                    // set value to be sent as update
-                    $contactDataArray[$pdoColumnName] = $valueInDB;
-
                 }
 
-                // update the contact record
-                if ($contactNeedsUpdate) {
-                    $updateCount += $updateContact->execute($contactDataArray);
-                }
+                $existingContact->save();
             }
 
             $totalCount++;

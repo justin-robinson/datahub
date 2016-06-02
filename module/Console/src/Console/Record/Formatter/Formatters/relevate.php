@@ -3,7 +3,8 @@
 namespace Console\Record\Formatter\Formatters;
 
 use Console\Record\Formatter\FormatterTrait;
-use \Services\Meroveus\ContactService;
+use DB\Datahub\Contact;
+use Services\Meroveus\ContactService;
 
 /**
  * Class Relevate
@@ -14,7 +15,7 @@ class Relevate {
 
     /**
      * @param $line string
-     * @return array
+     * @return Contact
      */
     public function format ( $line ) {
 
@@ -30,27 +31,29 @@ class Relevate {
          *          - justin robinson
          */
         $jobTitle = $this->cut_line_by_index_and_length ( $line, 325, 30, true );
-        return [
-            'hub_id'              => '',
-            'meroveus_id'         => $currentMeroveusId,
-            'relevate_id'         => $currentMeroveusId,
-            'is_duplicate'        => 0,
-            'is_current_employee' => 1,
-            'first_name'          => $this->cut_line_by_index_and_length ( $line, 296, 11, true ),
-            'middle_initial'      => $this->cut_line_by_index_and_length ( $line, 307, 1, true ),
-            'last_name'           => $this->cut_line_by_index_and_length ( $line, 308, 14, true ),
-            'suffix'              => $this->cut_line_by_index_and_length ( $line, 322, 3, true ),
-            'honorific'           => '',
-            'job_title'           => $jobTitle,
-            'job_position_id'     => $contactService->getJobPositionId($jobTitle, []),
-            'email'               => '',
-            'phone'               => '',
-            'address1'            => '',
-            'address2'            => null,
-            'city'                => null,
-            'state'               => null,
-            'postal_code'         => null
-        ];
+
+        return new Contact(
+            [
+                'meroveusId'        => $currentMeroveusId,
+                'relevateId'        => $currentMeroveusId,
+                'isDuplicate'       => 0,
+                'isCurrentEmployee' => 1,
+                'firstName'         => $this->cut_line_by_index_and_length( $line, 296, 11, true ),
+                'middleInitial'     => $this->cut_line_by_index_and_length( $line, 307, 1, true ),
+                'lastName'          => $this->cut_line_by_index_and_length( $line, 308, 14, true ),
+                'suffix'            => $this->cut_line_by_index_and_length( $line, 322, 3, true ),
+                'honorific'         => '',
+                'jobTitle'          => $jobTitle,
+                'jobPositionId'     => $contactService->getJobPositionId( $jobTitle, [ ] ),
+                'email'             => '',
+                'phone'             => '',
+                'address1'          => '',
+                'address2'          => null,
+                'city'              => null,
+                'state'             => null,
+                'postalCode'        => null,
+            ]
+        );
     }
 
     /**
