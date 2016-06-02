@@ -11,9 +11,6 @@ use Console\CsvIterator;
 use Console\Importer\Refinery;
 use Console\Record\Formatter\Factory;
 use Console\Record\Formatter\Formatters\Meroveus;
-use DB\Datahub\CompanyInstance;
-use DB\Datahub\CompanyInstanceProperty;
-use DB\Datahub\SourceType;
 use Elastica\Client as ElasticaClient;
 use Elastica\Query as ElasticaQuery;
 use Elastica\QueryBuilder as QueryBuilder;
@@ -38,23 +35,23 @@ class MeroveusController extends AbstractActionController
      * map of our market names to their respective meroveus environments
      */
     private $markets = [
-//        'albany'       => '12',
-//        'albuquerque'  => '9',
-//        'atlanta'      => '11',
-//        'austin'       => '22',
-//        'baltimore'    => '15',
-//        'birmingham'   => '30',
-//        'boston'       => '34',
-//        'buffalo'      => '3',
-//        'charlotte'    => '26',
-//        'cincinnati'   => '6',
-//        'columbus'     => '31',
-//        'dallas'       => '7',
-//        'dayton'       => '19',
-//        'denver'       => '2',
-//        'houston'      => '8',
-//        'jacksonville' => '23',
-//        'kansascity'   => '13',
+        'albany'       => '12',
+        'albuquerque'  => '9',
+        'atlanta'      => '11',
+        'austin'       => '22',
+        'baltimore'    => '15',
+        'birmingham'   => '30',
+        'boston'       => '34',
+        'buffalo'      => '3',
+        'charlotte'    => '26',
+        'cincinnati'   => '6',
+        'columbus'     => '31',
+        'dallas'       => '7',
+        'dayton'       => '19',
+        'denver'       => '2',
+        'houston'      => '8',
+        'jacksonville' => '23',
+        'kansascity'   => '13',
         'louisville'   => '32',
         'memphis'      => '10',
         'milwaukee'    => '33',
@@ -349,14 +346,35 @@ class MeroveusController extends AbstractActionController
                 foreach ($marketCompanyList as $index => $target) {
 
                     $company = $formatter->format($target);
-
+                    $instances = $company->get_company_instances();
+                    foreach ($instances as $instance){
+                        die(var_dump($instance->tier()));
+                    }
                     $match = $this->elasticMatch($target);
                     $hubId = null;
 
+                    /**
+                     *
+                     * company should handle all prop saves including contacts
+                     * add properies to company(instance)
+                     * link contacts to company(instance)
+                     *
+                     *
+                     *
+                     *
+                     *
+                     *
+                     *
+                     *
+                     */
                     if ($match) {
 
                         if (!$debug) {
-                            $this->processMatch($target);
+                            // updates the existing record
+                            $refineryId = $match->getSource()['InternalId'];
+//                            $this->processMatch($refineryId, $target, $this->insertPropertiesPdo);
+
+                            $this->processMatch($refineryId, $target);
 
                             try {
 
@@ -777,30 +795,12 @@ class MeroveusController extends AbstractActionController
                 return false;
             }
         }
-//{
-//    "query": {
-//        "bool": {
-//            "should": [
-//                {"match": {"Name.raw": "White Construction Company"}},
-//                {"match": {"Addr1": "613 Crescent Circle Ste. 100"}}
-//            ],
-//            "must":   [
-//                {"match": {"Name": "White Construction Company"}},
-//                {"match": {"City": "Ridgeland"}},
-//                {"match": {"State": "MS"}},
-//                {"match": {"PostalCode": "39157"}}
-//            ]
-//        }
-//    }
-//}
-            $this->elasticQuery->setQuery(
-            $this->elasticQueryBuilder->query()->bool()
-//            ->addShould($this->elasticQueryBuilder->query()->match('Name.raw', $queryFields['Name']))
-//            ->addShould($this->elasticQueryBuilder->query()->match('Addr1', $queryFields['Addr1']))
-            ->addMust($this->elasticQueryBuilder->query()->match('Name', $queryFields['Name']))
-            ->addMust($this->elasticQueryBuilder->query()->match('City', $queryFields['City']))
-            ->addMust($this->elasticQueryBuilder->query()->match('State', $queryFields['State']))
-            ->addMust($this->elasticQueryBuilder->query()->match('PostalCode', $queryFields['PostalCode'])));
+
+        $this->elasticQuery->setQuery($this->elasticQueryBuilder->query()->bool()->addMust($this->elasticQueryBuilder->query()->match('Name',
+                $queryFields['Name']))->addMust($this->elasticQueryBuilder->query()->match('City',
+                $queryFields['City']))->addMust($this->elasticQueryBuilder->query()->match('State',
+                $queryFields['State']))->addMust($this->elasticQueryBuilder->query()->match('PostalCode',
+                $queryFields['PostalCode'])));
 
 
         // set the minimum score that we consider a match
@@ -810,7 +810,7 @@ class MeroveusController extends AbstractActionController
         $topScore     = $resultSet->getMaxScore();
         $resultsArray = $resultSet->getResults();
 
-        $result       = false;
+        $result = false;
         if (!empty($resultsArray)) {
             $result = ($resultsArray[0]->getScore() === $topScore) ? $resultsArray[0] : $result;
         }
@@ -821,13 +821,18 @@ class MeroveusController extends AbstractActionController
     /**
      * updates the existing refinery record
      *
+     * @param  $refineryId
      * @param  $target                array
+     * @param  $pdo                   \PDOStatement specifically the update company one
      *                                //@todo rethink this in light of testing
      *
      * @return bool
      */
-    private function processMatch(array $target)
+    // gross!!!
+    private function processMatch($refineryId, array $target)
     {
+//        echo "line 815". ' in '."MeroveusController.php".PHP_EOL;
+//        die(var_dump( $target ));
 
         $meroveusId = $target['meroveusId'];
 
