@@ -3,6 +3,7 @@
 namespace DB\Datahub;
 
 use Scoop\Database\Query\Buffer;
+use Scoop\Database\Rows;
 
 /**
  * Class CompanyInstance
@@ -21,6 +22,11 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance {
     protected $properties;
 
     /**
+     * @var Rows
+     */
+    protected $contacts;
+
+    /**
      * CompanyInstance constructor.
      *
      * @param array $dataArray
@@ -29,7 +35,17 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance {
 
         $this->properties = [];
 
+        $this->contacts = new Rows();
+
         parent::__construct( $dataArray );
+    }
+
+    /**
+     * @param Contact $contact
+     */
+    public function add_contact ( Contact $contact ) {
+
+        $this->contacts->add_row($contact);
     }
 
     /**
@@ -52,6 +68,15 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance {
         }
 
         $this->properties[$sourceType->order][$property->name][$property->value] = $property;
+    }
+
+    public function fetch_contacts () {
+
+        if ( empty($this->companyInstanceId) ) {
+            return;
+        }
+
+        $this->contacts = Contact::fetch_where('companyInstanceId = ?', [$this->companyInstanceId]);
     }
 
     public function fetch_properties () {
@@ -103,6 +128,14 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance {
     }
 
     /**
+     * @return Rows
+     */
+    public function get_contacts () {
+
+        return $this->contacts;
+    }
+
+    /**
      * @return \Scoop\Database\Rows
      */
     public function get_properties () {
@@ -148,12 +181,35 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance {
         // save to db
         parent::save();
 
+        $this->save_contacts();
         $this->save_properties();
     }
 
+    /**
+     * Save all contacts to the db
+     */
+    public function save_contacts () {
+
+        // buffer all inserts
+        $contactBuffer = new Buffer(1000, Contact::class);
+        $contactBuffer->set_insert_ignore(true);
+
+        foreach ( $this->contacts as $contact ) {
+            $contact->companyInstanceId = $this->companyInstanceId;
+
+            $contactBuffer->insert($contact);
+        }
+
+        $contactBuffer->flush();
+    }
+
+    /**
+     * Save all properties to the db
+     */
     public function save_properties () {
+
         // save properties to db with a query buffer
-        $propertyBuffer = new Buffer(1000, get_class(new CompanyInstanceProperty()));
+        $propertyBuffer = new Buffer(1000, CompanyInstanceProperty::class);
         $propertyBuffer->set_insert_ignore(true);
 
         foreach ( $this->properties as $sourceProperties ) {
