@@ -11,13 +11,14 @@ use Console\CsvIterator;
 use Console\Importer\Refinery;
 use Console\Record\Formatter\Factory;
 use Console\Record\Formatter\Formatters\Meroveus;
+use DB\Datahub\CompanyInstance;
+use DB\Datahub\SourceType;
 use Elastica\Client as ElasticaClient;
 use Elastica\Query as ElasticaQuery;
 use Elastica\QueryBuilder as QueryBuilder;
 use Elastica\Search as ElasticaSearch;
 use Services\Meroveus\Client as MeroveusClient;
 use Services\Meroveus\CompanyService;
-use Zend\Db\Sql\Insert;
 use Zend\Mvc\MvcEvent;
 
 //use Services\Meroveus\CompanyService;
@@ -346,27 +347,9 @@ class MeroveusController extends AbstractActionController
                 foreach ($marketCompanyList as $index => $target) {
 
                     $company = $formatter->format($target);
-                    $instances = $company->get_company_instances();
-                    foreach ($instances as $instance){
-                        die(var_dump($instance->tier()));
-                    }
                     $match = $this->elasticMatch($target);
                     $hubId = null;
 
-                    /**
-                     *
-                     * company should handle all prop saves including contacts
-                     * add properies to company(instance)
-                     * link contacts to company(instance)
-                     *
-                     *
-                     *
-                     *
-                     *
-                     *
-                     *
-                     *
-                     */
                     if ($match) {
 
                         if (!$debug) {

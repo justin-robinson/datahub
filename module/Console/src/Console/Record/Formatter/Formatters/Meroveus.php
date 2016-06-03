@@ -25,8 +25,6 @@ class Meroveus
      */
     public function format($data)
     {
-        echo "line 28". ' in '."Meroveus.php".PHP_EOL;
-        die(var_dump( $data ));
         $this->init();
 
         $phoneNumber = isset($data['contact-phone_static']) ? $data['contact-phone_static'] : '';
