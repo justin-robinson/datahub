@@ -1,5 +1,4 @@
 <?php
-
 namespace Elastica\Query;
 
 use Elastica\Exception\InvalidException;
@@ -9,7 +8,7 @@ use Elastica\Exception\InvalidException;
  *
  * @author Nicolas Ruflin <spam@ruflin.com>
  *
- * @link https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-fuzzy-query.html
+ * @link http://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-fuzzy-query.html
  */
 class Fuzzy extends AbstractQuery
 {
@@ -70,7 +69,7 @@ class Fuzzy extends AbstractQuery
     /**
      * Deprecated method of setting a field.
      *
-     * @deprecated Use setField and setFieldOption instead. This method will be removed in further Elastica releases
+     * @deprecated
      *
      * @param $fieldName
      * @param $args
@@ -79,8 +78,6 @@ class Fuzzy extends AbstractQuery
      */
     public function addField($fieldName, $args)
     {
-        trigger_error('Query\Fuzzy::addField is deprecated. Use setField and setFieldOption instead. This method will be removed in further Elastica releases', E_USER_DEPRECATED);
-
         if (!array_key_exists('value', $args)) {
             throw new InvalidException('Fuzzy query can only support a single field.');
         }

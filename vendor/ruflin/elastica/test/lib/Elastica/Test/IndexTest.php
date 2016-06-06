@@ -1,5 +1,4 @@
 <?php
-
 namespace Elastica\Test;
 
 use Elastica\Document;
@@ -27,7 +26,7 @@ class IndexTest extends BaseTest
         $type = $index->getType('test');
 
         $mapping = array('id' => array('type' => 'integer', 'store' => true), 'email' => array('type' => 'string', 'store' => 'no'),
-            'username' => array('type' => 'string', 'store' => 'no'), 'test' => array('type' => 'integer', 'store' => 'no'), );
+            'username' => array('type' => 'string', 'store' => 'no'), 'test' => array('type' => 'integer', 'store' => 'no'),);
         $type->setMapping($mapping);
 
         $type->addDocument($doc);
@@ -121,8 +120,8 @@ class IndexTest extends BaseTest
      */
     public function testAddPdfFile()
     {
-        $this->_checkPlugin('elasticsearch-mapper-attachments');
-        $indexMapping = array('file' => array('type' => 'attachment'), 'text' => array('type' => 'string', 'store' => false));
+        $this->_checkPlugin('mapper-attachments');
+        $indexMapping = array('file' => array('type' => 'attachment', 'store' => 'no'), 'text' => array('type' => 'string', 'store' => 'no'));
 
         $indexParams = array('index' => array('number_of_shards' => 1, 'number_of_replicas' => 0));
 
@@ -163,8 +162,8 @@ class IndexTest extends BaseTest
      */
     public function testAddPdfFileContent()
     {
-        $this->_checkPlugin('elasticsearch-mapper-attachments');
-        $indexMapping = array('file' => array('type' => 'attachment'), 'text' => array('type' => 'string', 'store' => false));
+        $this->_checkPlugin('mapper-attachments');
+        $indexMapping = array('file' => array('type' => 'attachment', 'store' => 'no'), 'text' => array('type' => 'string', 'store' => 'no'));
 
         $indexParams = array('index' => array('number_of_shards' => 1, 'number_of_replicas' => 0));
 
@@ -205,7 +204,7 @@ class IndexTest extends BaseTest
      */
     public function testAddWordxFile()
     {
-        $this->_checkPlugin('elasticsearch-mapper-attachments');
+        $this->_checkPlugin('mapper-attachments');
         $indexMapping = array('file' => array('type' => 'attachment'), 'text' => array('type' => 'string', 'store' => 'no'));
 
         $indexParams = array('index' => array('number_of_shards' => 1, 'number_of_replicas' => 0));
@@ -246,9 +245,9 @@ class IndexTest extends BaseTest
      */
     public function testExcludeFileSource()
     {
-        $this->_checkPlugin('elasticsearch-mapper-attachments');
-        $indexMapping = array('file' => array('type' => 'attachment'), 'text' => array('type' => 'string', 'store' => true),
-            'title' => array('type' => 'string', 'store' => true), );
+        $this->_checkPlugin('mapper-attachments');
+        $indexMapping = array('file' => array('type' => 'attachment', 'store' => 'yes'), 'text' => array('type' => 'string', 'store' => 'yes'),
+            'title' => array('type' => 'string', 'store' => 'yes'),);
 
         $indexParams = array('index' => array('number_of_shards' => 1, 'number_of_replicas' => 0));
 
@@ -354,8 +353,6 @@ class IndexTest extends BaseTest
      */
     public function testDeleteByQueryWithQueryString()
     {
-        $this->_checkPlugin('delete-by-query');
-
         $index = $this->_createIndex();
         $type1 = new Type($index, 'test1');
         $type1->addDocument(new Document(1, array('name' => 'ruflin nicolas')));
@@ -390,8 +387,6 @@ class IndexTest extends BaseTest
      */
     public function testDeleteByQueryWithQuery()
     {
-        $this->_checkPlugin('delete-by-query');
-
         $index = $this->_createIndex();
         $type1 = new Type($index, 'test1');
         $type1->addDocument(new Document(1, array('name' => 'ruflin nicolas')));
@@ -424,11 +419,9 @@ class IndexTest extends BaseTest
     /**
      * @group functional
      */
-    public function testDeleteByQueryWithArrayQuery()
+    public function testDeleteByQueryWithQueryAndOptions()
     {
-        $this->_checkPlugin('delete-by-query');
-
-        $index = $this->_createIndex();
+        $index = $this->_createIndex(null, true, 2);
         $type1 = new Type($index, 'test1');
         $type1->addDocument(new Document(1, array('name' => 'ruflin nicolas')));
         $type1->addDocument(new Document(2, array('name' => 'ruflin')));
@@ -443,56 +436,8 @@ class IndexTest extends BaseTest
         $response = $index->search('nicolas');
         $this->assertEquals(2, $response->count());
 
-        // Delete first document
-        $response = $index->deleteByQuery(array('query' => array('query_string' => array('query' => 'nicolas'))));
-        $this->assertTrue($response->isOk());
-
-        $index->refresh();
-
-        // Makes sure, document is deleted
-        $response = $index->search('ruflin*');
-        $this->assertEquals(2, $response->count());
-
-        $response = $index->search('nicolas');
-        $this->assertEquals(0, $response->count());
-    }
-
-    /**
-     * @group functional
-     */
-    public function testDeleteByQueryWithQueryAndOptions()
-    {
-        $this->_checkPlugin('delete-by-query');
-
-        $index = $this->_createIndex(null, true, 2);
-
-        $routing1 = 'first_routing';
-        $routing2 = 'second_routing';
-
-        for ($i = 1; $i <= 2; ++$i) {
-            $type = new Type($index, 'test'.$i);
-            $doc = new Document(1, array('name' => 'ruflin nicolas'));
-            $doc->setRouting($routing1);
-            $type->addDocument($doc);
-
-            $doc = new Document(2, array('name' => 'ruflin'));
-            $doc->setRouting($routing1);
-            $type->addDocument($doc);
-        }
-
-        $index->refresh();
-
-        $response = $index->search('ruflin*');
-        $this->assertEquals(4, $response->count());
-
-        $response = $index->search('ruflin*', array('routing' => $routing2));
-        $this->assertEquals(0, $response->count());
-
-        $response = $index->search('nicolas');
-        $this->assertEquals(2, $response->count());
-
         // Route to the wrong document id; should not delete
-        $response = $index->deleteByQuery(new SimpleQueryString('nicolas'), array('routing' => $routing2));
+        $response = $index->deleteByQuery(new SimpleQueryString('nicolas'), array('routing' => '2'));
         $this->assertTrue($response->isOk());
 
         $index->refresh();
@@ -504,7 +449,7 @@ class IndexTest extends BaseTest
         $this->assertEquals(2, $response->count());
 
         // Delete first document
-        $response = $index->deleteByQuery(new SimpleQueryString('nicolas'), array('routing' => $routing1));
+        $response = $index->deleteByQuery(new SimpleQueryString('nicolas'), array('routing' => '1'));
         $this->assertTrue($response->isOk());
 
         $index->refresh();
@@ -573,12 +518,12 @@ class IndexTest extends BaseTest
         $this->assertTrue($status->indexExists($indexName2));
 
         $this->assertTrue($status->aliasExists($aliasName));
-        $this->assertTrue($index1->hasAlias($aliasName));
-        $this->assertFalse($index2->hasAlias($aliasName));
+        $this->assertTrue($index1->getStatus()->hasAlias($aliasName));
+        $this->assertFalse($index2->getStatus()->hasAlias($aliasName));
 
         $index2->addAlias($aliasName);
-        $this->assertTrue($index1->hasAlias($aliasName));
-        $this->assertTrue($index2->hasAlias($aliasName));
+        $this->assertTrue($index1->getStatus()->hasAlias($aliasName));
+        $this->assertTrue($index2->getStatus()->hasAlias($aliasName));
     }
 
     /**
@@ -606,12 +551,12 @@ class IndexTest extends BaseTest
         $this->assertTrue($status->indexExists($indexName1));
         $this->assertTrue($status->indexExists($indexName2));
         $this->assertTrue($status->aliasExists($aliasName));
-        $this->assertTrue($index1->hasAlias($aliasName));
-        $this->assertFalse($index2->hasAlias($aliasName));
+        $this->assertTrue($index1->getStatus()->hasAlias($aliasName));
+        $this->assertFalse($index2->getStatus()->hasAlias($aliasName));
 
         $index2->addAlias($aliasName, true);
-        $this->assertFalse($index1->hasAlias($aliasName));
-        $this->assertTrue($index2->hasAlias($aliasName));
+        $this->assertFalse($index1->getStatus()->hasAlias($aliasName));
+        $this->assertTrue($index2->getStatus()->hasAlias($aliasName));
     }
 
     /**
@@ -705,8 +650,8 @@ class IndexTest extends BaseTest
         $index = $this->_createIndex();
         $type = $index->getType('test');
 
-        $mapping = array('id' => array('type' => 'integer', 'store' => true), 'email' => array('type' => 'string', 'store' => false),
-            'username' => array('type' => 'string', 'store' => false), 'test' => array('type' => 'integer', 'store' => false), );
+        $mapping = array('id' => array('type' => 'integer', 'store' => true), 'email' => array('type' => 'string', 'store' => 'no'),
+            'username' => array('type' => 'string', 'store' => 'no'), 'test' => array('type' => 'integer', 'store' => 'no'),);
 
         $type->setMapping($mapping);
         $index->refresh();
@@ -904,7 +849,8 @@ class IndexTest extends BaseTest
     public function testAnalyze()
     {
         $index = $this->_createIndex();
-        $index->refresh();
+        $index->optimize();
+        sleep(2);
         $returnedTokens = $index->analyze('foo');
 
         $tokens = array(
@@ -913,7 +859,7 @@ class IndexTest extends BaseTest
                 'start_offset' => 0,
                 'end_offset' => 3,
                 'type' => '<ALPHANUM>',
-                'position' => 0,
+                'position' => 1,
             ),
         );
 
@@ -940,23 +886,5 @@ class IndexTest extends BaseTest
 
         $this->assertEquals('1', $index->getName());
         $this->assertInternalType('string', $index->getName());
-    }
-
-    /**
-     * @group functional
-     */
-    public function testGetEmptyAliases()
-    {
-        $indexName = 'test-getaliases';
-
-        $client = $this->_getClient();
-        $index = $client->getIndex($indexName);
-
-        $index->create(array(), true);
-        $this->_waitForAllocation($index);
-        $index->refresh();
-        $index->optimize();
-
-        $this->assertEquals(array(), $index->getAliases());
     }
 }

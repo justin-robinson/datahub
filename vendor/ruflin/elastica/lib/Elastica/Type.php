@@ -1,13 +1,9 @@
 <?php
-
 namespace Elastica;
 
-use Elastica\Exception\DeprecatedException;
 use Elastica\Exception\InvalidException;
 use Elastica\Exception\NotFoundException;
 use Elastica\Exception\RuntimeException;
-use Elastica\ResultSet\BuilderInterface;
-use Elastica\Script\AbstractScript;
 use Elastica\Type\Mapping;
 
 /**
@@ -134,10 +130,10 @@ class Type implements SearchableInterface
     /**
      * Update document, using update script. Requires elasticsearch >= 0.19.0.
      *
-     * @link https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update.html
+     * @link http://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update.html
      *
-     * @param \Elastica\Document|\Elastica\Script\AbstractScript $data    Document with update data
-     * @param array                                              $options array of query params to use for query. For possible options check es api
+     * @param \Elastica\Document|\Elastica\Script $data    Document with update data
+     * @param array                               $options array of query params to use for query. For possible options check es api
      *
      * @throws \Elastica\Exception\InvalidException
      *
@@ -145,7 +141,7 @@ class Type implements SearchableInterface
      */
     public function updateDocument($data, array $options = array())
     {
-        if (!($data instanceof Document) && !($data instanceof AbstractScript)) {
+        if (!($data instanceof Document) && !($data instanceof Script)) {
             throw new \InvalidArgumentException('Data should be a Document or Script');
         }
 
@@ -171,7 +167,7 @@ class Type implements SearchableInterface
      *
      * @return \Elastica\Bulk\ResponseSet
      *
-     * @link https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html
+     * @link http://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html
      */
     public function updateDocuments(array $docs)
     {
@@ -189,7 +185,7 @@ class Type implements SearchableInterface
      *
      * @return \Elastica\Bulk\ResponseSet
      *
-     * @link https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html
+     * @link http://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html
      */
     public function addDocuments(array $docs)
     {
@@ -207,7 +203,7 @@ class Type implements SearchableInterface
      *
      * @return \Elastica\Bulk\ResponseSet
      *
-     * @link https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html
+     * @link http://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html
      */
     public function addObjects(array $objects)
     {
@@ -325,16 +321,17 @@ class Type implements SearchableInterface
     /**
      * Create search object.
      *
-     * @param string|array|\Elastica\Query $query Array with all query data inside or a Elastica\Query object
-     * @param int|array $options OPTIONAL Limit or associative array of options (option=>value)
-     * @param BuilderInterface $builder
+     * @param string|array|\Elastica\Query $query   Array with all query data inside or a Elastica\Query object
+     * @param int|array                    $options OPTIONAL Limit or associative array of options (option=>value)
      *
-     * @return Search
+     * @return \Elastica\Search
      */
-    public function createSearch($query = '', $options = null, BuilderInterface $builder = null)
+    public function createSearch($query = '', $options = null)
     {
-        $search = $this->getIndex()->createSearch($query, $options, $builder);
+        $search = new Search($this->getIndex()->getClient());
+        $search->addIndex($this->getIndex());
         $search->addType($this);
+        $search->setOptionsAndQuery($options, $query);
 
         return $search;
     }
@@ -412,7 +409,7 @@ class Type implements SearchableInterface
      *
      * @return \Elastica\Bulk\ResponseSet
      *
-     * @link https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html
+     * @link http://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html
      */
     public function deleteDocuments(array $docs)
     {
@@ -426,7 +423,7 @@ class Type implements SearchableInterface
     /**
      * Deletes an entry by its unique identifier.
      *
-     * @link https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-delete.html
+     * @link http://www.elastic.co/guide/en/elasticsearch/reference/current/docs-delete.html
      *
      * @param int|string $id      Document id
      * @param array      $options
@@ -476,7 +473,7 @@ class Type implements SearchableInterface
      *
      * @return \Elastica\Response
      *
-     * @link https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-delete-by-query.html
+     * @link http://www.elastic.co/guide/en/elasticsearch/reference/current/docs-delete-by-query.html
      */
     public function deleteByQuery($query, array $options = array())
     {
@@ -488,19 +485,43 @@ class Type implements SearchableInterface
         }
         $query = Query::create($query);
 
-        return $this->request('_query', Request::DELETE, array('query' => is_array($query) ? $query : $query->toArray()), $options);
+        return $this->request('_query', Request::DELETE, array('query' => $query->getQuery()->toArray()), $options);
     }
 
     /**
      * Deletes the index type.
      *
-     * @deprecated It is no longer possible to delete the mapping for a type. Instead you should delete the index and recreate it with the new mappings. This method will be removed in further Elastica releases.
-     *
-     * @throws DeprecatedException It is no longer possible to delete the mapping for a type. Instead you should delete the index and recreate it with the new mappings. This method will be removed in further Elastica releases.
+     * @return \Elastica\Response
      */
     public function delete()
     {
-        throw new DeprecatedException('It is no longer possible to delete the mapping for a type. Instead you should delete the index and recreate it with the new mappings. This method will be removed in further Elastica releases.');
+        $response = $this->request('', Request::DELETE);
+
+        return $response;
+    }
+
+    /**
+     * More like this query based on the given object.
+     *
+     * The id in the given object has to be set
+     *
+     * @param \Elastica\Document           $doc    Document to query for similar objects
+     * @param array                        $params OPTIONAL Additional arguments for the query
+     * @param string|array|\Elastica\Query $query  OPTIONAL Query to filter the moreLikeThis results
+     *
+     * @return \Elastica\ResultSet ResultSet with all results inside
+     *
+     * @link http://www.elastic.co/guide/en/elasticsearch/reference/current/search-more-like-this.html
+     */
+    public function moreLikeThis(Document $doc, $params = array(), $query = array())
+    {
+        $path = $doc->getId().'/_mlt';
+
+        $query = Query::create($query);
+
+        $response = $this->request($path, Request::GET, $query->toArray(), $params);
+
+        return ResultSet::create($response, $query);
     }
 
     /**

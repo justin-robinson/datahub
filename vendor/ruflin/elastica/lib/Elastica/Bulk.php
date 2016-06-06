@@ -1,5 +1,4 @@
 <?php
-
 namespace Elastica;
 
 use Elastica\Bulk\Action;
@@ -7,12 +6,15 @@ use Elastica\Bulk\Action\AbstractDocument as AbstractDocumentAction;
 use Elastica\Bulk\Response as BulkResponse;
 use Elastica\Bulk\ResponseSet;
 use Elastica\Exception\Bulk\ResponseException as BulkResponseException;
+use Elastica\Exception\Bulk\UdpException;
 use Elastica\Exception\InvalidException;
-use Elastica\Script\AbstractScript;
 
 class Bulk
 {
     const DELIMITER = "\n";
+
+    const UDP_DEFAULT_HOST = 'localhost';
+    const UDP_DEFAULT_PORT = 9700;
 
     /**
      * @var \Elastica\Client
@@ -192,12 +194,12 @@ class Bulk
     }
 
     /**
-     * @param \Elastica\Script\AbstractScript $script
-     * @param string                          $opType
+     * @param \Elastica\Script $script
+     * @param string           $opType
      *
      * @return $this
      */
-    public function addScript(AbstractScript $script, $opType = null)
+    public function addScript(Script $script, $opType = null)
     {
         $action = AbstractDocumentAction::create($script, $opType);
 
@@ -220,8 +222,8 @@ class Bulk
     }
 
     /**
-     * @param \Elastica\Script\AbstractScript|\Elastica\Document|array $data
-     * @param string                                                   $opType
+     * @param \Elastica\Script|\Elastica\Document|array $data
+     * @param string                                    $opType
      *
      * @return $this
      */
@@ -232,7 +234,7 @@ class Bulk
         }
 
         foreach ($data as $actionData) {
-            if ($actionData instanceof AbstractScript) {
+            if ($actionData instanceof Script) {
                 $this->addScript($actionData, $opType);
             } elseif ($actionData instanceof Document) {
                 $this->addDocument($actionData, $opType);
@@ -355,7 +357,7 @@ class Bulk
         $path = $this->getPath();
         $data = $this->toString();
 
-        $response = $this->_client->request($path, Request::POST, $data, $this->_requestParams);
+        $response = $this->_client->request($path, Request::PUT, $data, $this->_requestParams);
 
         return $this->_processResponse($response);
     }
@@ -412,5 +414,29 @@ class Bulk
         }
 
         return $bulkResponseSet;
+    }
+
+    /**
+     * @param string $host
+     * @param int    $port
+     *
+     * @throws \Elastica\Exception\Bulk\UdpException
+     */
+    public function sendUdp($host = null, $port = null)
+    {
+        if (null === $host) {
+            $host = $this->_client->getConfigValue(array('udp', 'host'), self::UDP_DEFAULT_HOST);
+        }
+        if (null === $port) {
+            $port = $this->_client->getConfigValue(array('udp', 'port'), self::UDP_DEFAULT_PORT);
+        }
+
+        $message = $this->toString();
+        $socket = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP);
+        $result = socket_sendto($socket, $message, strlen($message), 0, $host, $port);
+        socket_close($socket);
+        if (false === $result) {
+            throw new UdpException('UDP request failed');
+        }
     }
 }

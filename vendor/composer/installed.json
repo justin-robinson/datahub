@@ -1463,6 +1463,36 @@
         "description": "A lightweight implementation of CommonJS Promises/A for PHP"
     },
     {
+        "name": "bizjournals/module_services",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "git@gitlab.bizjournals.com:bizjournals/module_services.git",
+            "reference": "a095ee2a2555c8963822179e3c9ad732b6114c86"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "http://packages.bizjournals.int/dist/module_services-670-a095ee2a2555c8963822179e3c9ad732b6114c86.zip",
+            "reference": "a095ee2a2555c8963822179e3c9ad732b6114c86",
+            "shasum": null
+        },
+        "require": {
+            "monolog/monolog": "@stable",
+            "ruflin/elastica": "2.*",
+            "solarium/solarium": "@stable"
+        },
+        "time": "2016-05-03 13:12:45",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "Services\\": "src/"
+            }
+        },
+        "description": "bizjournals Services Module"
+    },
+    {
         "name": "filp/whoops",
         "version": "2.1.2",
         "version_normalized": "2.1.2.0",
@@ -1784,6 +1814,67 @@
         "homepage": "https://symfony.com"
     },
     {
+        "name": "justin-robinson/scoop",
+        "version": "dev-php56",
+        "version_normalized": "dev-php56",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/justin-robinson/scoop.git",
+            "reference": "fe995536c1e04642b86a6de9f5915228a21422e8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/justin-robinson/scoop/zipball/fe995536c1e04642b86a6de9f5915228a21422e8",
+            "reference": "fe995536c1e04642b86a6de9f5915228a21422e8",
+            "shasum": ""
+        },
+        "require": {
+            "filp/whoops": "2.*",
+            "justin-robinson/lrucache": "*",
+            "kevinlebrun/colors.php": "0.4.1",
+            "php": ">=5.6.0",
+            "satooshi/php-coveralls": "^1.0"
+        },
+        "require-dev": {
+            "phpunit/php-code-coverage": "*",
+            "phpunit/phpunit": "*",
+            "phpunit/phpunit-mock-objects": "*"
+        },
+        "time": "2016-05-31 16:49:07",
+        "bin": [
+            "bin/scoop"
+        ],
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "scoop\\": "scoop/"
+            },
+            "files": [
+                "bootstrap.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "Justin Robinson",
+                "email": "jrob09bhs@gmail.com"
+            }
+        ],
+        "description": "Scoop framework and orm for php 7+ and apache 2.4+",
+        "keywords": [
+            "apache",
+            "database",
+            "mysql",
+            "orm",
+            "php",
+            "php 7"
+        ]
+    },
+    {
         "name": "elasticsearch/elasticsearch",
         "version": "v2.2.0",
         "version_normalized": "2.2.0.0",
@@ -1840,153 +1931,39 @@
         ]
     },
     {
-        "name": "symfony/event-dispatcher",
-        "version": "v2.8.6",
-        "version_normalized": "2.8.6.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/event-dispatcher.git",
-            "reference": "a158f13992a3147d466af7a23b564ac719a4ddd8"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/a158f13992a3147d466af7a23b564ac719a4ddd8",
-            "reference": "a158f13992a3147d466af7a23b564ac719a4ddd8",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.9"
-        },
-        "require-dev": {
-            "psr/log": "~1.0",
-            "symfony/config": "~2.0,>=2.0.5|~3.0.0",
-            "symfony/dependency-injection": "~2.6|~3.0.0",
-            "symfony/expression-language": "~2.6|~3.0.0",
-            "symfony/stopwatch": "~2.3|~3.0.0"
-        },
-        "suggest": {
-            "symfony/dependency-injection": "",
-            "symfony/http-kernel": ""
-        },
-        "time": "2016-05-03 18:59:18",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.8-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Component\\EventDispatcher\\": ""
-            },
-            "exclude-from-classmap": [
-                "/Tests/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony EventDispatcher Component",
-        "homepage": "https://symfony.com"
-    },
-    {
-        "name": "justin-robinson/lrucache",
-        "version": "v1.1.0",
-        "version_normalized": "1.1.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/justin-robinson/php-lrucache.git",
-            "reference": "14e9d6e038d5d1db694820bb27f076a525a8483a"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/justin-robinson/php-lrucache/zipball/14e9d6e038d5d1db694820bb27f076a525a8483a",
-            "reference": "14e9d6e038d5d1db694820bb27f076a525a8483a",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.4.0",
-            "satooshi/php-coveralls": "^1.0"
-        },
-        "require-dev": {
-            "phpunit/php-code-coverage": "*",
-            "phpunit/phpunit": "*",
-            "phpunit/phpunit-mock-objects": "*"
-        },
-        "time": "2016-06-03 19:04:18",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "LRUCache": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "Apache-2.0"
-        ],
-        "authors": [
-            {
-                "name": "Justin Robinson",
-                "email": "jrob09bhs@gmail.com",
-                "homepage": "https://jor.pw",
-                "role": "Developer"
-            }
-        ],
-        "description": "PHP LRU Cache implementation",
-        "homepage": "https://github.com/justin-robinson/php-lrucache",
-        "keywords": [
-            "cache",
-            "lru",
-            "php"
-        ]
-    },
-    {
         "name": "ruflin/elastica",
-        "version": "3.2",
-        "version_normalized": "3.2.0.0",
+        "version": "2.3.1",
+        "version_normalized": "2.3.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/ruflin/Elastica.git",
-            "reference": "fcf0737837c70d7385d32dcdce3e3d46d67aba23"
+            "reference": "0df1d7b513960ba11d3075652dcd71fcab8dd37a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/ruflin/Elastica/zipball/fcf0737837c70d7385d32dcdce3e3d46d67aba23",
-            "reference": "fcf0737837c70d7385d32dcdce3e3d46d67aba23",
+            "url": "https://api.github.com/repos/ruflin/Elastica/zipball/0df1d7b513960ba11d3075652dcd71fcab8dd37a",
+            "reference": "0df1d7b513960ba11d3075652dcd71fcab8dd37a",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.4.0",
+            "php": ">=5.3.3",
             "psr/log": "~1.0"
         },
         "require-dev": {
-            "aws/aws-sdk-php": "~3.0",
-            "guzzlehttp/guzzle": "~6.0"
+            "guzzlehttp/guzzle": "5.3.*",
+            "munkie/elasticsearch-thrift-php": "1.4.*"
         },
         "suggest": {
-            "aws/aws-sdk-php": "Allow using IAM authentication with Amazon ElasticSearch Service",
             "egeloen/http-adapter": "Allow using httpadapter transport",
-            "guzzlehttp/guzzle": "Allow using guzzle 6 as the http transport (Requires php 5.5)",
-            "monolog/monolog": "Logging request"
+            "guzzlehttp/guzzle": "Allow using guzzle 5.3.x as the http transport (Requires php 5.4)",
+            "monolog/monolog": "Logging request",
+            "munkie/elasticsearch-thrift-php": "Allow using thrift transport"
         },
-        "time": "2016-05-02 06:33:10",
+        "time": "2015-10-19 07:09:10",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "3.1.x-dev"
+                "dev-master": "2.2.x-dev"
             }
         },
         "installation-source": "dist",
@@ -2170,6 +2147,68 @@
         "homepage": "https://symfony.com"
     },
     {
+        "name": "symfony/event-dispatcher",
+        "version": "v2.8.6",
+        "version_normalized": "2.8.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/event-dispatcher.git",
+            "reference": "a158f13992a3147d466af7a23b564ac719a4ddd8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/a158f13992a3147d466af7a23b564ac719a4ddd8",
+            "reference": "a158f13992a3147d466af7a23b564ac719a4ddd8",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.9"
+        },
+        "require-dev": {
+            "psr/log": "~1.0",
+            "symfony/config": "~2.0,>=2.0.5|~3.0.0",
+            "symfony/dependency-injection": "~2.6|~3.0.0",
+            "symfony/expression-language": "~2.6|~3.0.0",
+            "symfony/stopwatch": "~2.3|~3.0.0"
+        },
+        "suggest": {
+            "symfony/dependency-injection": "",
+            "symfony/http-kernel": ""
+        },
+        "time": "2016-05-03 18:59:18",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.8-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Component\\EventDispatcher\\": ""
+            },
+            "exclude-from-classmap": [
+                "/Tests/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony EventDispatcher Component",
+        "homepage": "https://symfony.com"
+    },
+    {
         "name": "guzzle/guzzle",
         "version": "v3.9.3",
         "version_normalized": "3.9.3.0",
@@ -2327,55 +2366,22 @@
         ]
     },
     {
-        "name": "bizjournals/module_services",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "name": "justin-robinson/lrucache",
+        "version": "v1.1.0",
+        "version_normalized": "1.1.0.0",
         "source": {
             "type": "git",
-            "url": "git@gitlab.bizjournals.com:bizjournals/module_services.git",
-            "reference": "a8c74f74eb32d7e977b989951ee9512a35da8fad"
+            "url": "https://github.com/justin-robinson/php-lrucache.git",
+            "reference": "14e9d6e038d5d1db694820bb27f076a525a8483a"
         },
         "dist": {
             "type": "zip",
-            "url": "http://packages.bizj-internal.com/dist/module_services-670-a8c74f74eb32d7e977b989951ee9512a35da8fad.zip",
-            "reference": "a8c74f74eb32d7e977b989951ee9512a35da8fad",
-            "shasum": null
-        },
-        "require": {
-            "monolog/monolog": "@stable",
-            "ruflin/elastica": "3.*",
-            "solarium/solarium": "@stable"
-        },
-        "time": "2016-06-06 10:08:44",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "psr-0": {
-                "Services\\": "src/"
-            }
-        },
-        "description": "bizjournals Services Module"
-    },
-    {
-        "name": "justin-robinson/scoop",
-        "version": "dev-php56",
-        "version_normalized": "dev-php56",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/justin-robinson/scoop.git",
-            "reference": "105328400a7ff89c7c7783b609d89f08ff4ae14d"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/justin-robinson/scoop/zipball/105328400a7ff89c7c7783b609d89f08ff4ae14d",
-            "reference": "105328400a7ff89c7c7783b609d89f08ff4ae14d",
+            "url": "https://api.github.com/repos/justin-robinson/php-lrucache/zipball/14e9d6e038d5d1db694820bb27f076a525a8483a",
+            "reference": "14e9d6e038d5d1db694820bb27f076a525a8483a",
             "shasum": ""
         },
         "require": {
-            "filp/whoops": "2.*",
-            "justin-robinson/lrucache": "*",
-            "kevinlebrun/colors.php": "0.4.1",
-            "php": ">=5.6.0",
+            "php": ">=5.4.0",
             "satooshi/php-coveralls": "^1.0"
         },
         "require-dev": {
@@ -2383,19 +2389,13 @@
             "phpunit/phpunit": "*",
             "phpunit/phpunit-mock-objects": "*"
         },
-        "time": "2016-06-06 13:53:35",
-        "bin": [
-            "bin/scoop"
-        ],
+        "time": "2016-06-03 19:04:18",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
             "psr-0": {
-                "scoop\\": "scoop/"
-            },
-            "files": [
-                "bootstrap.php"
-            ]
+                "LRUCache": "src"
+            }
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
@@ -2404,17 +2404,17 @@
         "authors": [
             {
                 "name": "Justin Robinson",
-                "email": "jrob09bhs@gmail.com"
+                "email": "jrob09bhs@gmail.com",
+                "homepage": "https://jor.pw",
+                "role": "Developer"
             }
         ],
-        "description": "Scoop framework and orm for php 7+ and apache 2.4+",
+        "description": "PHP LRU Cache implementation",
+        "homepage": "https://github.com/justin-robinson/php-lrucache",
         "keywords": [
-            "apache",
-            "database",
-            "mysql",
-            "orm",
-            "php",
-            "php 7"
+            "cache",
+            "lru",
+            "php"
         ]
     }
 ]

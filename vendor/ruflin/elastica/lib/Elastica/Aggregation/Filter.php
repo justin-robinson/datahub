@@ -1,33 +1,25 @@
 <?php
-
 namespace Elastica\Aggregation;
 
 use Elastica\Exception\InvalidException;
 use Elastica\Filter\AbstractFilter;
-use Elastica\Query\AbstractQuery;
 
 /**
  * Class Filter.
  *
- * @link https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-filter-aggregation.html
+ * @link http://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-filter-aggregation.html
  */
 class Filter extends AbstractAggregation
 {
     /**
-     * @param string        $name
-     * @param AbstractQuery $filter
+     * @param string         $name
+     * @param AbstractFilter $filter
      */
-    public function __construct($name, $filter = null)
+    public function __construct($name, AbstractFilter $filter = null)
     {
         parent::__construct($name);
 
         if ($filter !== null) {
-            if ($filter instanceof AbstractFilter) {
-                trigger_error('Deprecated: Elastica\Aggregation\Filter passing filter as AbstractFilter is deprecated. Pass instance of AbstractQuery instead.', E_USER_DEPRECATED);
-            } elseif (!($filter instanceof AbstractQuery)) {
-                throw new InvalidException('Filter must be instance of AbstractQuery');
-            }
-
             $this->setFilter($filter);
         }
     }
@@ -35,18 +27,12 @@ class Filter extends AbstractAggregation
     /**
      * Set the filter for this aggregation.
      *
-     * @param AbstractQuery $filter
+     * @param AbstractFilter $filter
      *
      * @return $this
      */
-    public function setFilter($filter)
+    public function setFilter(AbstractFilter $filter)
     {
-        if ($filter instanceof AbstractFilter) {
-            trigger_error('Deprecated: Elastica\Aggregation\Filter\setFilter() passing filter as AbstractFilter is deprecated. Pass instance of AbstractQuery instead.', E_USER_DEPRECATED);
-        } elseif (!($filter instanceof AbstractQuery)) {
-            throw new InvalidException('Filter must be instance of AbstractQuery');
-        }
-
         return $this->setParam('filter', $filter);
     }
 
