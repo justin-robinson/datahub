@@ -265,42 +265,6 @@ class HttpTest extends BaseTest
         $this->_checkConnection($url['host'], $url['port']);
     }
 
-    protected function checkProxy($url)
-    {
-        $url = parse_url($url);
-        $this->_checkConnection($url['host'], $url['port']);
-    }
-
-    protected function checkProxy($url)
-    {
-        $url = parse_url($url);
-        $this->_checkConnection($url['host'], $url['port']);
-    }
-
-    protected function checkProxy($url)
-    {
-        $url = parse_url($url);
-        $this->_checkConnection($url['host'], $url['port']);
-    }
-
-    protected function checkProxy($url)
-    {
-        $url = parse_url($url);
-        $this->_checkConnection($url['host'], $url['port']);
-    }
-
-    protected function checkProxy($url)
-    {
-        $url = parse_url($url);
-        $this->_checkConnection($url['host'], $url['port']);
-    }
-
-    protected function checkProxy($url)
-    {
-        $url = parse_url($url);
-        $this->_checkConnection($url['host'], $url['port']);
-    }
-
     protected function tearDown()
     {
         parent::tearDown();

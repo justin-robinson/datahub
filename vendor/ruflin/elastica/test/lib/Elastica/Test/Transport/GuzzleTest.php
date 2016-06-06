@@ -1,4 +1,5 @@
 <?php
+
 namespace Elastica\Test\Transport;
 
 use Elastica\Document;
@@ -159,7 +160,9 @@ class GuzzleTest extends BaseTest
         $this->assertEquals(0, $resultSet->getTotalHits());
 
         $response = $index->request('/_search', 'POST');
-        $resultSet = new ResultSet($response, Query::create(array()));
+
+        $builder = new ResultSet\Builder();
+        $resultSet = $builder->buildResultSet($response, Query::create(array()));
 
         $this->assertEquals(1, $resultSet->getTotalHits());
     }
@@ -171,6 +174,7 @@ class GuzzleTest extends BaseTest
     public function testInvalidConnection()
     {
         $client = $this->_getClient(array('transport' => 'Guzzle', 'port' => 4500, 'persistent' => false));
+        $response = $client->request('_stats', 'GET');
         $client->request('_status', 'GET');
     }
 
