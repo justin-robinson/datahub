@@ -129,7 +129,7 @@ class ContactService extends AbstractService
             $contact->jobTitle      = null;
         } else {
             $contact->jobPositionId = $this->getJobPositionId($contactData['department-title_static'],
-                $jobIdDictionary) ?: 1001;
+                                                              $jobIdDictionary) ?: 1001;
             $contact->jobTitle      = $contactData['department-title_static'];
         }
 

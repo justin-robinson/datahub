@@ -1,4 +1,5 @@
 <?php
+
 namespace Elastica\Test\Transport;
 
 use Elastica\Document;
@@ -74,6 +75,7 @@ class GuzzleTest extends BaseTest
      */
     public function testWithEnvironmentalProxy()
     {
+        $this->checkProxy($this->_getProxyUrl());
         putenv('http_proxy='.$this->_getProxyUrl().'/');
 
         $client = $this->_getClient(array('transport' => 'Guzzle', 'persistent' => false));
@@ -92,6 +94,7 @@ class GuzzleTest extends BaseTest
      */
     public function testWithEnabledEnvironmentalProxy()
     {
+        $this->checkProxy($this->_getProxyUrl403());
         putenv('http_proxy='.$this->_getProxyUrl403().'/');
 
         $client = $this->_getClient(array('transport' => 'Guzzle', 'persistent' => false));
@@ -111,6 +114,7 @@ class GuzzleTest extends BaseTest
      */
     public function testWithProxy()
     {
+        $this->checkProxy($this->_getProxyUrl());
         $client = $this->_getClient(array('transport' => 'Guzzle', 'persistent' => false));
         $client->getConnection()->setProxy($this->_getProxyUrl());
 
@@ -136,7 +140,6 @@ class GuzzleTest extends BaseTest
     public function testBodyReuse()
     {
         $client = $this->_getClient(array('transport' => 'Guzzle', 'persistent' => false));
-
         $index = $client->getIndex('elastica_body_reuse_test');
         $index->create(array(), true);
         $this->_waitForAllocation($index);
@@ -157,7 +160,9 @@ class GuzzleTest extends BaseTest
         $this->assertEquals(0, $resultSet->getTotalHits());
 
         $response = $index->request('/_search', 'POST');
-        $resultSet = new ResultSet($response, Query::create(array()));
+
+        $builder = new ResultSet\Builder();
+        $resultSet = $builder->buildResultSet($response, Query::create(array()));
 
         $this->assertEquals(1, $resultSet->getTotalHits());
     }
@@ -169,7 +174,19 @@ class GuzzleTest extends BaseTest
     public function testInvalidConnection()
     {
         $client = $this->_getClient(array('transport' => 'Guzzle', 'port' => 4500, 'persistent' => false));
-        $response = $client->request('_status', 'GET');
+        $response = $client->request('_stats', 'GET');
+        $client->request('_status', 'GET');
+    }
+
+    protected function checkProxy($url)
+    {
+        $url = parse_url($url);
+        $this->_checkConnection($url['host'], $url['port']);
+    }
+
+    protected function setUp()
+    {
+        putenv('http_proxy=');
     }
 
     protected function tearDown()

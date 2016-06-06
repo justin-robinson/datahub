@@ -7,6 +7,13 @@ use Scoop\Config;
  */
 class ConfigTest extends PHPUnit_Framework_TestCase {
 
+    public function test_get_db_config () {
+
+        $expected = require __DIR__ . "/../configs/db.php";
+
+        $this->assertEquals($expected, Config::get_db_config());
+    }
+
     public function test_option_exists () {
 
         $value = rand(1,99999);
@@ -20,5 +27,20 @@ class ConfigTest extends PHPUnit_Framework_TestCase {
         $returnedValue = Config::get_option($optionName);
         $this->assertEquals($value, $returnedValue, "{$optionName} should equal {$value}, got {$returnedValue}");
 
+    }
+    
+    public function test_set_options () {
+        
+        $options = [
+            'dummy1' => 'value1',
+            'dummy2' => 'value2',
+            'dummy3' => 'value3',
+        ];
+        
+        Config::set_options($options);
+        
+        $this->assertEquals('value1', Config::get_option('dummy1'));
+        $this->assertEquals('value2', Config::get_option('dummy2'));
+        $this->assertEquals('value3', Config::get_option('dummy3'));
     }
 }

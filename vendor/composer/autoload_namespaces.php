@@ -14,6 +14,8 @@ return array(
     'Services\\' => array($vendorDir . '/bizjournals/module_services/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log'),
     'LRUCache' => array($vendorDir . '/justin-robinson/lrucache/src'),
+    'Guzzle\\Tests' => array($vendorDir . '/guzzle/guzzle/tests'),
+    'Guzzle' => array($vendorDir . '/guzzle/guzzle/src'),
     'Gedmo\\' => array($vendorDir . '/gedmo/doctrine-extensions/lib'),
     'Entity\\' => array($vendorDir . '/bizjournals/module_entity/src'),
     'Doctrine\\ORM\\' => array($vendorDir . '/doctrine/orm/lib'),

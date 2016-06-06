@@ -127,11 +127,16 @@ class CompanyService extends AbstractService
             // each record is a company in the queried market
             foreach ($result['SET']['RECS'] as $k => $record) {
 
-                $company = [];
+                $company = [
+                    'meroveusId' => isset($record['ID']) ? $record['ID'] : null,
+                    'createdAt'  => isset($record['CREATEDATE']) ? $record['CREATEDATE'] : null,
+                    'updatedAt'  => isset($record['LASTUPDATE']) ? $record['LASTUPDATE'] : null,
+                    'contacts'   => [ ],
+                    'execs'      => [ ],
+                ];
+
                 // walk the company data, extract and normalise
                 foreach ($record['DATA'] as $dk => $data) {
-
-                    $company['meroveusId'] = isset($record['ID']) ? $record['ID'] : null;
 
                     // figure out the correct state value
                     if (!isset($data['VAL']) && $data['KEY'] === "street-state_static") {
@@ -160,28 +165,28 @@ class CompanyService extends AbstractService
                         'long' => isset($record['LATLONG']) ? $record['LATLONG'][1] : 0,
                     ];
 
-                    $company['contacts']    = [];
                     if (!empty($data['SET']) && $data['KEY'] === 'keycontact-set_static') {
                         if (!empty($data['SET']['RECS'])) {
                             foreach ($data['SET']['RECS'] as $meroveusContact) {
-                                array_push($company['contacts'], $meroveusContact);
+                                $company['contacts'][] = $meroveusContact;
                             }
                         }
                     }
 
-                    $company['execs']    = [];
+
                     if (!empty($data['SET']) && $data['KEY'] === 'keyexec-set_static') {
                         if (!empty($data['SET']['RECS'])) {
                             foreach ($data['SET']['RECS'] as $execs) {
-                                array_push($company['execs'], $execs);
+                                $company['execs'][] = $execs;
                             }
                         }
                     }
-
-                    // We want consistency in the field order
-                    ksort($company);
                 }
-                array_push($list, $company);
+
+                // We want consistency in the field order
+                ksort($company);
+
+                $list[] = $company;
             }
 
             return $list;

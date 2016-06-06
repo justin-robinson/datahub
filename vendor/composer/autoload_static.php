@@ -21,8 +21,12 @@ class ComposerStaticInit80ce7eceae09e36de01171fc8eae3626
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\Yaml\\' => 23,
+            'Symfony\\Component\\Stopwatch\\' => 28,
+            'Symfony\\Component\\Filesystem\\' => 29,
             'Symfony\\Component\\EventDispatcher\\' => 34,
             'Symfony\\Component\\Console\\' => 26,
+            'Symfony\\Component\\Config\\' => 25,
+            'Satooshi\\' => 9,
         ),
         'R' => 
         array (
@@ -63,6 +67,14 @@ class ComposerStaticInit80ce7eceae09e36de01171fc8eae3626
         array (
             0 => __DIR__ . '/..' . '/symfony/yaml',
         ),
+        'Symfony\\Component\\Stopwatch\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/stopwatch',
+        ),
+        'Symfony\\Component\\Filesystem\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/filesystem',
+        ),
         'Symfony\\Component\\EventDispatcher\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/event-dispatcher',
@@ -70,6 +82,14 @@ class ComposerStaticInit80ce7eceae09e36de01171fc8eae3626
         'Symfony\\Component\\Console\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
+        ),
+        'Symfony\\Component\\Config\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/config',
+        ),
+        'Satooshi\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/satooshi/php-coveralls/src/Satooshi',
         ),
         'React\\Promise\\' => 
         array (
@@ -159,6 +179,14 @@ class ComposerStaticInit80ce7eceae09e36de01171fc8eae3626
         ),
         'G' => 
         array (
+            'Guzzle\\Tests' => 
+            array (
+                0 => __DIR__ . '/..' . '/guzzle/guzzle/tests',
+            ),
+            'Guzzle' => 
+            array (
+                0 => __DIR__ . '/..' . '/guzzle/guzzle/src',
+            ),
             'Gedmo\\' => 
             array (
                 0 => __DIR__ . '/..' . '/gedmo/doctrine-extensions/lib',

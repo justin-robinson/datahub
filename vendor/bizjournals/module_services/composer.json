@@ -4,7 +4,7 @@
 	"type" : "library",
 	"require" : {
 		"monolog/monolog" : "@stable",
-		"ruflin/elastica" : "2.2.*",
+		"ruflin/elastica" : "3.*",
 		"solarium/solarium" : "@stable"
 	},
 	"autoload" : {
