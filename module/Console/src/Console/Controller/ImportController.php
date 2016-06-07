@@ -331,7 +331,7 @@ class ImportController extends AbstractActionController
                 // add each contact to our contacts array index by their name
                 $contacts = Contact::fetch_where('meroveusId = ?', [$currentContact->meroveusId]);
                 if ( $contacts ) {
-                    foreach ( $contacts as &$contact) {
+                    foreach ( $contacts as $contact) {
                         $key               = strtolower($contact->firstName . $contact->lastName);
                         $allContacts[$key] = $contact;
                     }
