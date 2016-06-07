@@ -325,6 +325,26 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance {
         $this->properties = $properties;
     }
 
+    public function sort_properties () {
+
+        $properties = [];
+
+        // order the properties by source order
+        ksort($this->properties);
+
+        foreach ( $this->properties as $orderedPropertyGroup ) {
+            foreach ( $orderedPropertyGroup as $propertyName ) {
+                foreach ( $propertyName as $property ) {
+                    if ( !isset($properties[$property->name]) ) {
+                        $properties[$property->name] = $property->value;
+                    }
+                }
+            }
+        }
+
+        return $properties;
+    }
+
     /**
      * @param bool $recursive
      *
