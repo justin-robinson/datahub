@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class ScratchIndChannelMap
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/05/20
+ * @date 2016/06/06
  * @property mixed $industry_id
  * @property mixed $channel_id
  * AUTO-GENERATED FILE

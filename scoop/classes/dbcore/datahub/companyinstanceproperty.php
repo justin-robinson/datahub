@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class CompanyInstanceProperty
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/05/20
+ * @date 2016/06/06
  * @property mixed $companyInstancePropertyId
  * @property mixed $companyInstanceId
  * @property mixed $name
@@ -35,9 +35,10 @@ class CompanyInstanceProperty extends Model {
     const NON_NULL_COLUMNS = 
         array (
           0 => 'companyInstancePropertyId',
-          1 => 'name',
-          2 => 'sourceTypeId',
-          3 => 'sourceId',
+          1 => 'companyInstanceId',
+          2 => 'name',
+          3 => 'sourceTypeId',
+          4 => 'sourceId',
         );
 
     public static $dBColumnPropertiesArray = 

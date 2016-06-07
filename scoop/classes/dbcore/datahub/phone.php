@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class Phone
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/05/20
+ * @date 2016/06/06
  * @property mixed $companyInstanceId
  * @property mixed $number
  * @property mixed $countryCode
