@@ -197,8 +197,15 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance {
 
         // our cache key
         $zip = $this->get_property('zipCode');
+        $zip = $zip ? $zip->value : '';
         $addr1 = $this->get_property('address1');
-        $queryParams = [$this->companyId,$this->name,$zip->value,$addr1->value];
+        $addr1 = $addr1 ? $addr1->value : '';
+        $queryParams = [
+            $this->companyId,
+            $this->name,
+            $zip,
+            $addr1,
+        ];
         $companyInstanceCacheKey = strtolower(implode( '-', $queryParams ));
 
         // check cache for this instance
