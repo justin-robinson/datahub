@@ -1,4 +1,5 @@
 <?php
+use DB\Datahub\Company;
 /**
  * Created by PhpStorm.
  * User: dbullard
@@ -6,19 +7,7 @@
  * Time: 2:36 PM
  */
 
-$property['updatedAt'] = 7;
-switch ($property['updatedAt']) {
-            case ($property['updatedAt'] >= 3);
-                $return = 4;
-                break;
-            case (($property['updatedAt'] > 1) && ($property['updatedAt'] <= 3));
-                $return = 3;
-                break;
-            case (($property['updatedAt'] > 1) && ($property['updatedAt'] <= 2));
-                $return = 2;
-                break;
-            case (($property['updatedAt'] <= 1));
-                $return = 1;
-                break;
-        }
-echo $return.PHP_EOL;
+$company = Company::fetch_company_and_instances(1);
+
+echo "line 12". ' in '."tierScratch.php".PHP_EOL;
+die(var_dump( $company ));

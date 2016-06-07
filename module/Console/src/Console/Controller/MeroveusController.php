@@ -11,6 +11,7 @@ use Console\CsvIterator;
 use Console\Importer\Refinery;
 use Console\Record\Formatter\Factory;
 use Console\Record\Formatter\Formatters\Meroveus;
+use DB\Datahub\Company;
 use DB\Datahub\CompanyInstance;
 use DB\Datahub\CompanyInstanceProperty;
 use DB\Datahub\SourceType;
@@ -179,7 +180,11 @@ class MeroveusController extends AbstractActionController
      */
     public function indexAction()
     {
-        echo $this->contactService->getJobPositionId("Managing Partner, Strategy", $this->jobIdDictionary) . PHP_EOL;
+        $company = Company::fetch_company_and_instances(1);
+
+        $instances =  $company->get_company_instances();
+
+        var_dump($instances->get_rows()[0]->instanceTierThyself(1));
     }
 
 
@@ -263,8 +268,8 @@ class MeroveusController extends AbstractActionController
 
                 foreach ($marketCompanyList as $index => $target) {
 
-                    $company = $formatter->format($target);
-                    $match = $this->elasticMatch($target);
+                    $company           = $formatter->format($target);
+                    $match             = $this->elasticMatch($target);
                     $companyInstanceId = null;
 
                     if ($match) {
@@ -328,7 +333,7 @@ class MeroveusController extends AbstractActionController
                         $this->processContacts($companyInstanceId, $target['execs'], $debug);
                     }
 
-                    if ( $debug ) {
+                    if ($debug) {
                         // track memory and total count
                         echo "\033[{$lastMemUsageMessageLength}D";
                         $total                     = $totalInserted + $totalMatched;
@@ -687,10 +692,10 @@ class MeroveusController extends AbstractActionController
         }
 
         $this->elasticQuery->setQuery($this->elasticQueryBuilder->query()->bool()->addMust($this->elasticQueryBuilder->query()->match('Name',
-                $queryFields['Name']))->addMust($this->elasticQueryBuilder->query()->match('City',
-                $queryFields['City']))->addMust($this->elasticQueryBuilder->query()->match('State',
-                $queryFields['State']))->addMust($this->elasticQueryBuilder->query()->match('PostalCode',
-                $queryFields['PostalCode'])));
+            $queryFields['Name']))->addMust($this->elasticQueryBuilder->query()->match('City',
+            $queryFields['City']))->addMust($this->elasticQueryBuilder->query()->match('State',
+            $queryFields['State']))->addMust($this->elasticQueryBuilder->query()->match('PostalCode',
+            $queryFields['PostalCode'])));
 
 
         // set the minimum score that we consider a match
@@ -711,8 +716,8 @@ class MeroveusController extends AbstractActionController
     /**
      * updates the existing refinery record
      *
-     * @param  $refineryId int
-     * @param  $target     array
+     * @param  $refineryId            int
+     * @param  $target                array
      *                                //@todo rethink this in light of testing
      *
      * @return bool
@@ -723,7 +728,7 @@ class MeroveusController extends AbstractActionController
 
         $companyInstances = CompanyInstance::fetch_by_source_name_and_id('refinery%', $refineryId);
 
-        if ( $companyInstances === false ) {
+        if ($companyInstances === false) {
             return false;
         }
 
@@ -735,16 +740,15 @@ class MeroveusController extends AbstractActionController
             'universal_profile_blob_static'     => empty($target['universal-profile-blob_static']) ? null : $target['universal-profile-blob_static'],
         ];
 
-        foreach ( $params as $name => $value ) {
-            $companyInstances->first()->add_property(new CompanyInstanceProperty(
-                [
-                    'name' => $name,
-                    'value' => $value,
-                    'sourceTypeId' => SourceType::fetch_one_where("name = 'meroveus'")->sourceTypeId,
-                    'sourceId' => $target['meroveusId'],
-                    'createdAt' => $target['createdAt'],
-                    'updatedAt' => $target['updatedAt'],
-                ] ));
+        foreach ($params as $name => $value) {
+            $companyInstances->first()->add_property(new CompanyInstanceProperty([
+                'name'         => $name,
+                'value'        => $value,
+                'sourceTypeId' => SourceType::fetch_one_where("name = 'meroveus'")->sourceTypeId,
+                'sourceId'     => $target['meroveusId'],
+                'createdAt'    => $target['createdAt'],
+                'updatedAt'    => $target['updatedAt'],
+            ]));
         }
 
         $companyInstances->first()->save();

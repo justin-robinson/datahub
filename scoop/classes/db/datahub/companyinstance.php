@@ -47,7 +47,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         'address1',
         'city',
         'state',
-        'zipcode',
+        'zipCode',
     ];
 
     /**
@@ -450,11 +450,9 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
      * @param        $instance
      * @param bolean $firstRun
      */
-    public function tierInstance($instance, bolean $firstRun)
+    public function tierInstance($firstRun = 1)
     {
 
-        // no contact = tiers 4 -7
-        //
 
 
     }
@@ -516,17 +514,19 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     /**
      * @param $instance
      *
-     * @return bool
+     * @return inty
      */
-    private function hasBasicFields()
+    private function countBasicFields()
     {
-        $return = false;
-
+        $basicPropCount = 0;
         foreach ($this->properties as $prop) {
-            // do some in array stuff and count up the number of basic properties as defined
+            foreach ($prop as $k =>$v){
+                if (in_array($k, $this->basicFieldsDefinition)) {
+                    $basicPropCount++;
+                }}
         }
 
-        return $return;
+        return $basicPropCount;
     }
 
 
@@ -583,11 +583,13 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
     }
 
-    public function instanceTierThyself()
+    public function instanceTierThyself($firstRun = 1)
     {
         $tier = 7;
 
-        if (!$this->hasBasicFields()) {
+        $basicCount = $this->countBasicFields();
+
+        if (($basicCount === 0) ) {
             return $tier;
         }
 
@@ -597,10 +599,10 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
             // everyone starts at the bottom
             switch ($freshness) {
 
-                case(4):// older than 3 years : t6 or t7
+                case(4):// older than 3 years : t6 
                     $tier = 6;
                     break;
-                case(3):// older than 2 but less than 3 years: t5 or t7
+                case(3):// older than 2 but less than 3 years: t5 
                     $tier = 5;
                     break;
                 case(2)://older than 1 but less than 2 years old t3 - t2
