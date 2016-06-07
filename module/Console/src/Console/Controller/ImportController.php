@@ -265,7 +265,7 @@ class ImportController extends AbstractActionController
 
         $importer = new Refinery();
 
-        list($companiesProcessed, $instancesProcessed) = $importer->import($csvFile, $this->db);
+        list($companiesProcessed, $instancesProcessed) = $importer->import($csvFile);
 
         printf("ended at %s%sImported: %s\t%s companies%s\t%s instances%s", date('h:i:s A'),
                PHP_EOL, PHP_EOL,$companiesProcessed,PHP_EOL,$instancesProcessed,PHP_EOL);

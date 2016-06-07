@@ -2,6 +2,7 @@
 
 namespace DB\Datahub;
 
+use LRUCache\LRUCache;
 use Scoop\Database\Query\Buffer;
 use Scoop\Database\Rows;
 
@@ -15,6 +16,10 @@ use Scoop\Database\Rows;
  * Put your class specific code in here
  */
 class CompanyInstance extends \DBCore\Datahub\CompanyInstance {
+
+    public static $companyInstanceCache;
+
+    public static $instancesSaved = 0;
 
     /**
      * @var int[\DB\Datahub\CompanyInstanceProperty[]]
@@ -36,6 +41,10 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance {
         $this->properties = [];
 
         $this->contacts = new Rows();
+
+        if ( is_null(self::$companyInstanceCache) ) {
+            self::$companyInstanceCache = new LRUCache ( 1000 );
+        }
 
         parent::__construct( $dataArray );
     }
@@ -144,6 +153,24 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance {
     }
 
     /**
+     * @param array $dataArray
+     */
+    public function populate ( array $dataArray ) {
+
+        parent::populate( $dataArray );
+
+        foreach ( $this->properties as $i => $instanceOrder ) {
+            foreach ( $instanceOrder as $j => $propertyName ) {
+                foreach ( $propertyName as $k => $property ) {
+                    if ( is_array($property) ) {
+                        $this->add_property(new CompanyInstanceProperty($property));
+                    }
+                }
+            }
+        }
+    }
+
+    /**
      * @param $name
      *
      * @return null
@@ -168,21 +195,74 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance {
      */
     public function save ( $setTimestamps = true ) {
 
-        if ( $setTimestamps ) {
+        // our cache key
+        $zip = $this->get_property('zipCode');
+        $addr1 = $this->get_property('address1');
+        $queryParams = [$this->companyId,$this->name,$zip->value,$addr1->value];
+        $companyInstanceCacheKey = strtolower(implode( '-', $queryParams ));
 
-            // set timestamps
-            if ( empty($this->createdAt) ) {
-                $this->set_literal('createdAt', 'NOW()');
-            }
-            $this->set_literal('updatedAt', 'NOW()');
+        // check cache for this instance
+        $existingInstance = self::$companyInstanceCache->get( $companyInstanceCacheKey );
 
+        // if the instance has an id, then it exists
+        if ( isset($this->companyInstanceId) ) {
+            $existingInstance = $this;
         }
 
-        // save to db
-        parent::save();
+        // no cache hit or id? look it up in the db
+        if ( !$existingInstance ) {
+            $existingInstance = CompanyInstance::query(
+                "SELECT
+                      i.*
+                     FROM
+                      `datahub`.`companyInstance` i
+                      LEFT JOIN `datahub`.`companyInstanceProperty` p USING ( companyInstanceId )
+                     WHERE
+                      i.companyId = ?
+                      AND i.name = ?
+                      AND (
+                        ( p.name = 'zipCode' AND p.value = ? )
+                        OR
+                        ( p.name = 'address1' AND p.value = ? )
+                      )",
+                $queryParams);
 
-        $this->save_contacts();
-        $this->save_properties();
+            if ( $existingInstance ) {
+                $existingInstance = $existingInstance->first();
+            }
+        }
+
+        // add properties to an existing instance
+        if ( $existingInstance ) {
+
+            // add properties to this instance
+            $existingInstance->set_properties( $this->get_properties() );
+
+            $existingInstance->save_properties();
+
+        } else {
+
+            if ( $setTimestamps ) {
+
+                // set timestamps
+                if ( empty($this->createdAt) ) {
+                    $this->set_literal('createdAt', 'NOW()');
+                }
+                $this->set_literal('updatedAt', 'NOW()');
+
+            }
+
+            // save to db
+            parent::save();
+
+            $this->save_contacts();
+            $this->save_properties();
+
+            ++self::$instancesSaved;
+
+            self::$companyInstanceCache->put( $companyInstanceCacheKey, $this );
+        }
+
     }
 
     /**
@@ -207,6 +287,10 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance {
      * Save all properties to the db
      */
     public function save_properties () {
+
+        if ( empty($this->companyInstanceId) ) {
+            return;
+        }
 
         // save properties to db with a query buffer
         $propertyBuffer = new Buffer(1000, CompanyInstanceProperty::class);
@@ -239,6 +323,31 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance {
     public function set_properties ( array $properties ) {
 
         $this->properties = $properties;
+    }
+
+    /**
+     * @param bool $recursive
+     *
+     * @return array
+     */
+    public function to_array ( $recursive = true ) {
+
+        $array = parent::to_array();
+
+        if ( $recursive ) {
+            $array['properties'] = $this->get_properties();
+            $array['contacts'] = $this->get_contacts();
+
+            foreach ( $array['properties'] as &$orderedPropertyGroup ) {
+                foreach ( $orderedPropertyGroup as &$propertyName ) {
+                    foreach ( $propertyName as &$property) {
+                        $property = $property->to_array();
+                    }
+                }
+            }
+        }
+
+        return $array;
     }
 
 }

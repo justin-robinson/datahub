@@ -81,7 +81,18 @@ class CompanyController extends AbstractRestfulController
         // get id from url
         $refineryId = $this->params()->fromRoute('id');
 
-        return $this->lookupBy('refinery_id', $refineryId);
+        $company = Company::fetch_by_source_name_and_id('refinery%', $refineryId);
+
+        $company->fetch_company_instances();
+
+        foreach ( $company->get_company_instances() as $instance ) {
+            $instance->fetch_properties();
+            $instance->fetch_contacts();
+        }
+
+        $company = $company ? $company->to_array() : [];
+
+        return new JsonModel($company);
     }
 
     /**

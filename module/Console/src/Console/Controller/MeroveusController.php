@@ -12,11 +12,13 @@ use Console\Importer\Refinery;
 use Console\Record\Formatter\Factory;
 use Console\Record\Formatter\Formatters\Meroveus;
 use DB\Datahub\CompanyInstance;
+use DB\Datahub\CompanyInstanceProperty;
 use DB\Datahub\SourceType;
 use Elastica\Client as ElasticaClient;
 use Elastica\Query as ElasticaQuery;
 use Elastica\QueryBuilder as QueryBuilder;
 use Elastica\Search as ElasticaSearch;
+use Scoop\Database\Literal;
 use Services\Meroveus\Client as MeroveusClient;
 use Services\Meroveus\CompanyService;
 use Zend\Mvc\MvcEvent;
@@ -111,83 +113,6 @@ class MeroveusController extends AbstractActionController
      */
     private $elasticQueryBuilder;
 
-    /** @var string */
-
-    private $contactSql = '
-        INSERT INTO 
-          contact( 
-            companyInstanceId, meroveusId, relevateId, isDuplicate, isCurrentEmployee, firstName, middleInitial, 
-            lastName, suffix, honorific, jobTitle, jobPositionId, email, phone, address1, address2, city, state, postalCode
-          )
-          VALUES (
-            :companyInstanceId, :meroveusId, :relevateId, :isDuplicate, :isCurrentEmployee, :firstName, :middleInitial, 
-            :lastName, :suffix, :honorific, :jobTitle, :jobPositionId, :email, :phone, :address1, :address2, :city, :state, :postalCode
-            )
-        ';
-    /** @var string */
-    private $createCompanySql = '
-            INSERT INTO
-                 company(
-                    refinery_id, meroveus_id, generate_code, record_source, company_name, public_ticker, ticker_exchange,
-                    source_modified_at, address1, address2, city, state, postal_code, country, latitude, longitude,
-                    phone, website, is_active, sic_code, employee_count, created_at, updated_at, deleted_at,
-                    universal_revenue_volume_static, universal_employee_count_static, universal_employee_local_static,
-                    universal_established_year_static, universal_profile_blob_static
-                    )
-                VALUES (
-                    :refinery_id, :meroveus_id, :generate_code, :record_source, :company_name, :public_ticker, :ticker_exchange,
-                    :source_modified_at, :address1, :address2, :city, :state, :postal_code, :country, :latitude, :longitude,
-                    :phone, :website, :is_active, :sic_code, :employee_count, :created_at, :updated_at, :deleted_at,
-                    :universal_revenue_volume_static, :universal_employee_count_static, :universal_employee_local_static,
-                    :universal_established_year_static, :universal_profile_blob_static
-                )
-            ';
-
-
-    /** @var string */
-    private $updateCompanySql = '
-      UPDATE
-       company
-      SET
-        meroveus_id                       = :meroveus_id,
-        universal_revenue_volume_static   = :universal_revenue_volume_static,
-        universal_employee_count_static   = :universal_employee_count_static,
-        universal_employee_local_static   = :universal_employee_local_static,
-        universal_established_year_static = :universal_established_year_static,
-        universal_profile_blob_static     = :universal_profile_blob_static
-    WHERE
-      refinery_id = :refinery_id';
-
-    /** @var \PDOStatement */
-    private $insertPropertiesPdo = null;
-    /** @var string */
-    private $insertPropertiesSql = '
-      INSERT INTO companyInstanceProperty
-        (companyInstanceId, name, value, valueMd5, sourceTypeId, sourceId)
-      VALUES 
-        (:companyInstanceId, :name, :value, :valueMd5, :sourceTypeId, :sourceId)';
-
-
-    /** @var \PDOStatement */
-    private $getInstancePdo = null;
-
-    /** @var string */
-    private $getInstanceSql = '
-      SELECT DISTINCT companyInstanceId
-      FROM companyInstanceProperty cip
-          JOIN companyInstance ci USING (companyInstanceId)
-          JOIN company c USING (companyId)
-      WHERE cip.sourceId = :id';
-
-    /** @var \PDOStatement */
-    private $addContactPdo = null;
-
-    /** @var \PDOStatement */
-    private $addCompanyPdo = null;
-
-    /** @var \PDOStatement */
-    private $updateCompanyPdo = null;
-
     /**
      * @var array
      */
@@ -243,11 +168,6 @@ class MeroveusController extends AbstractActionController
         $this->elasticQueryBuilder = new QueryBuilder();
         $this->contactService      = $this->getServiceLocator()->get('Services\Meroveus\ContactService');
         // prepare pdo outside the loop for memory purposes
-        $this->addContactPdo = $this->db->prepare($this->contactSql);
-//        $this->addCompanyPdo        = $this->db->prepare($this->createCompanySql);
-//        $this->updateCompanyPdo     = $this->db->prepare($this->updateCompanySql);
-        $this->getInstancePdo      = $this->db->prepare($this->getInstanceSql);
-        $this->insertPropertiesPdo = $this->db->prepare($this->insertPropertiesSql);
 
     }
 
@@ -297,8 +217,6 @@ class MeroveusController extends AbstractActionController
 
         $lastMemUsageMessageLength = 0;
 
-        // $selectCompany = $this->sqlStatementsArray['selectOneCompanyByMeroveusId'];
-
         $formatter = Meroveus::get_instance();
 
         // setup our meroveus params
@@ -335,7 +253,6 @@ class MeroveusController extends AbstractActionController
             $meroveusParams['ENV']      = $env;
             $meroveusParams['STARTROW'] = 1; // reset our pagination offset
             $marketMatched              = $marketInserted = 0; // reset counts for this market
-            //$insertCompanyMeroveusIndustry = $this->sqlStatementsArray['insertCompanyMeroveusIndustry'];
 
             // paginate over companies
             while ($marketCompanyList = $this->companyService->fetchByMarket($meroveusParams)) {
@@ -348,41 +265,31 @@ class MeroveusController extends AbstractActionController
 
                     $company = $formatter->format($target);
                     $match = $this->elasticMatch($target);
-                    $hubId = null;
+                    $companyInstanceId = null;
 
                     if ($match) {
 
                         if (!$debug) {
-                            // updates the existing record
-                            $refineryId = $match->getSource()['InternalId'];
-//                            $this->processMatch($refineryId, $target, $this->insertPropertiesPdo);
 
-                            $this->processMatch($refineryId, $target);
+                            $companyInstanceId = $this->processMatch($match->getSource()['InternalId'], $target);
 
-                            try {
-
-                                $this->getInstancePdo->execute([$target['meroveusId']]);
-
-                                $hubId = ($this->getInstancePdo->rowCount() > 0) ? $this->getInstancePdo->fetch(\PDO::FETCH_ASSOC)['companyInstanceId'] : false;
-
-                                $this->getInstancePdo->closeCursor();
-                                if ($sanity) {
-                                    $this->writeSanityFiles($market, $target, $match);
-                                }
-                                $marketMatched++;
-                                $totalMatched++;
-                            } catch (\PDOException $e) {
-                                die('PDO ERROR on Select Company ' . $e->getMessage());
+                            if ($sanity) {
+                                $this->writeSanityFiles($market, $target, $match);
                             }
+
+                            $marketMatched++;
+                            $totalMatched++;
                         }
 
                     } else { // create a new record
 
                         if (!$debug) {
-                            $importer = new Refinery();
-                            $importer->save($company);
-                            $hubId = $company->get_company_instances()->first()->companyInstanceId;
+                            $company->save();
+                            $companyInstanceId = $company->get_company_instances()->first()->companyInstanceId;
                         }
+
+                        $marketInserted++;
+                        $totalInserted++;
                     }
 
                     // does this company have an industry?
@@ -417,19 +324,19 @@ class MeroveusController extends AbstractActionController
                     }*/
 
                     // process contacts
-                    if ($hubId || $debug) {
-                        $this->processContacts($hubId, $target['execs'], $debug);
-                    } else {
-//                        echo "line 435" . ' in ' . "MeroveusController.php" . PHP_EOL;
-//                        die(var_dump($target));
+                    if ($companyInstanceId || $debug) {
+                        $this->processContacts($companyInstanceId, $target['execs'], $debug);
                     }
-                    // track memory and total count
-                    echo "\033[{$lastMemUsageMessageLength}D";
-                    $total                     = $totalInserted + $totalMatched;
-                    $currentLoopInsertionCount = $index + 1;
-                    $memory                    = $total . ':' . $currentLoopInsertionCount . ':' . $this->convert_memory_usage(memory_get_usage(true));
-                    $lastMemUsageMessageLength = strlen($memory);
-                    echo $memory;
+
+                    if ( $debug ) {
+                        // track memory and total count
+                        echo "\033[{$lastMemUsageMessageLength}D";
+                        $total                     = $totalInserted + $totalMatched;
+                        $currentLoopInsertionCount = $index + 1;
+                        $memory                    = $total . ':' . $currentLoopInsertionCount . ':' . $this->convert_memory_usage(memory_get_usage(true));
+                        $lastMemUsageMessageLength = strlen($memory);
+                        echo $memory;
+                    }
                 }
 
                 // get next chunk of rows
@@ -804,9 +711,8 @@ class MeroveusController extends AbstractActionController
     /**
      * updates the existing refinery record
      *
-     * @param  $refineryId
-     * @param  $target                array
-     * @param  $pdo                   \PDOStatement specifically the update company one
+     * @param  $refineryId int
+     * @param  $target     array
      *                                //@todo rethink this in light of testing
      *
      * @return bool
@@ -814,12 +720,8 @@ class MeroveusController extends AbstractActionController
     // gross!!!
     private function processMatch($refineryId, array $target)
     {
-//        echo "line 815". ' in '."MeroveusController.php".PHP_EOL;
-//        die(var_dump( $target ));
 
-        $meroveusId = $target['meroveusId'];
-
-        $companyInstances = CompanyInstance::fetch_by_source_name_and_id('meroveus', $meroveusId);
+        $companyInstances = CompanyInstance::fetch_by_source_name_and_id('refinery%', $refineryId);
 
         if ( $companyInstances === false ) {
             return false;
@@ -839,13 +741,15 @@ class MeroveusController extends AbstractActionController
                     'name' => $name,
                     'value' => $value,
                     'sourceTypeId' => SourceType::fetch_one_where("name = 'meroveus'")->sourceTypeId,
-                    'sourceId' => $meroveusId
+                    'sourceId' => $target['meroveusId'],
+                    'createdAt' => $target['createdAt'],
+                    'updatedAt' => $target['updatedAt'],
                 ] ));
         }
 
         $companyInstances->first()->save();
 
-        return true;
+        return $companyInstances->first()->companyInstanceId;
     }
 
 

@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class MarketMsaPmsaMap
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/05/20
+ * @date 2016/06/06
  * @property mixed $market_id
  * @property mixed $sa_code
  * AUTO-GENERATED FILE

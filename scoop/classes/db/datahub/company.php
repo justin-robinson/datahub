@@ -2,6 +2,7 @@
 
 namespace DB\Datahub;
 
+use LRUCache\LRUCache;
 use Scoop\Database\Connection;
 use Scoop\Database\Rows;
 
@@ -17,6 +18,10 @@ use Scoop\Database\Rows;
  */
 class Company extends \DBCore\Datahub\Company
 {
+
+    public static $companyCache;
+
+    public static $companiesSaved = 0;
 
     /**
      * @var \Scoop\Database\Rows
@@ -103,6 +108,10 @@ class Company extends \DBCore\Datahub\Company
                     self::$companyNameNormalizationReplace[] = $replacement;
                 }
             }
+        }
+
+        if ( is_null(self::$companyCache) ) {
+            self::$companyCache = new LRUCache( 1000 );
         }
 
         $this->companyInstances = new Rows();
@@ -199,21 +208,59 @@ class Company extends \DBCore\Datahub\Company
     public function save($setTimestamps = true)
     {
 
-        if ($setTimestamps) {
+        $companyKey = $this->normalizedName;
 
-            // set timestamps
-            if (empty($this->createdAt)) {
-                $this->set_literal('createdAt', 'NOW()');
-            }
-            $this->set_literal('updatedAt', 'NOW()');
+        // does this company exist in the cache?
+        $existingCompany = self::$companyCache->get( $companyKey );
 
+        // look up to db on cache miss
+        if( !$existingCompany ) {
+            $existingCompany = Company::fetch_one_where( 'normalizedName = ?', [ $this->normalizedName ] );
         }
 
-        parent::save();
+        // save new company on cache miss and db lookup failure
+        if( $existingCompany ) {
+
+            $this->populate($existingCompany->to_array(false));
+            $this->loaded_from_database();
+
+        } else {
+
+            if( $setTimestamps ) {
+
+                // set timestamps
+                if( empty($this->createdAt) ) {
+                    $this->set_literal( 'createdAt', 'NOW()' );
+                }
+                $this->set_literal( 'updatedAt', 'NOW()' );
+
+            }
+
+            parent::save();
+
+            ++self::$companiesSaved;
+
+            // put company in cache for later
+            self::$companyCache->put( $companyKey, $this );
+        }
+
+        $this->save_company_instances();
+
+    }
+
+    public function save_company_instances () {
+
+        if ( empty($this->companyId) ) {
+            return;
+        }
 
         foreach ($this->get_company_instances() as $companyInstance) {
+
+            // link this instance to the company
             $companyInstance->companyId = $this->companyId;
+
             $companyInstance->save();
+
         }
     }
 
@@ -293,6 +340,39 @@ class Company extends \DBCore\Datahub\Company
         $mysqliResult->free();
 
         return $company;
+    }
+
+    /**
+     * @param array $dataArray
+     */
+    public function populate ( array $dataArray ) {
+
+        parent::populate( $dataArray );
+
+        foreach ( $this->companyInstances as $index => $instance ) {
+            if ( is_array($instance) ) {
+                $this->companyInstances[$index] = new CompanyInstance($instance);
+            }
+        }
+    }
+
+    /**
+     * @param bool $recursive
+     *
+     * @return array
+     */
+    public function to_array ( $recursive = true ) {
+
+        $array = parent::to_array();
+
+        if ( $recursive ) {
+            $array['companyInstances'] = [];
+            foreach ( $this->get_company_instances() as $instance ) {
+                $array['companyInstances'][] = $instance->to_array();
+            }
+        }
+
+        return $array;
     }
 
 //    tier 1 definition:
