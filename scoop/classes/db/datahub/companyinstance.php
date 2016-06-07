@@ -432,7 +432,6 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
         if ($recursive) {
             $array['properties'] = $this->get_properties();
-            $array['contacts']   = $this->get_contacts();
             $array['contacts'] = $this->get_contacts() ? $this->get_contacts() : [];
 
             foreach ($array['properties'] as &$orderedPropertyGroup) {
@@ -591,7 +590,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         if (!$this->hasBasicFields()) {
             return $tier;
         }
-        
+
         foreach ($this->properties as $property) {
 
             $freshness = $this->calcFreshnessRating($property);
