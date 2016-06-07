@@ -356,7 +356,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance {
 
         if ( $recursive ) {
             $array['properties'] = $this->get_properties();
-            $array['contacts'] = $this->get_contacts();
+            $array['contacts'] = $this->get_contacts() ? $this->get_contacts() : [];
 
             foreach ( $array['properties'] as &$orderedPropertyGroup ) {
                 foreach ( $orderedPropertyGroup as &$propertyName ) {
