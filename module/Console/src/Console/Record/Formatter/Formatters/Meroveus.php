@@ -71,13 +71,16 @@ class Meroveus
             $marketCode = '';
         }
 
+        $createdAt = isset($data['createdAt']) ? $data['createdAt'] : new Literal( 'NOW()' );
+        $updatedAt = isset($data['updatedAt']) ? $data['updatedAt'] : new Literal( 'NOW()' );
+
         $company = new Company(
             [
                 'employeeCount' => 0,
                 'isActive'      => true,
                 'name'          => isset($data['firm-name_static']) ? $data['firm-name_static'] : '',
-                'createdAt'     => new Literal( 'NOW()' ),
-                'updatedAt'     => new Literal( 'NOW()' ),
+                'createdAt'     => $createdAt,
+                'updatedAt'     => $updatedAt,
             ] );
 
         $companyInstance = new CompanyInstance(
@@ -90,8 +93,8 @@ class Meroveus
                 'tickerExchange' => isset($data['idk']) ? $data['idk'] : null,
                 'url'            => isset($data['contact-website_static']) ? $data['contact-website_static'] : null,
                 'marketCode'     => $marketCode,
-                'createdAt'      => new Literal( 'NOW()' ),
-                'updatedAt'      => new Literal( 'NOW()' ),
+                'createdAt'      => $createdAt,
+                'updatedAt'      => $updatedAt,
             ] );
 
         $source = SourceType::fetch_one_where( "name = 'meroveus'" );
@@ -99,8 +102,8 @@ class Meroveus
         $propertyArray = [
             'sourceTypeId' => $source->sourceTypeId,
             'sourceId'     => isset($data['meroveusId']) ? $data['meroveusId'] : null,
-            'createdAt'    => new Literal( 'NOW()' ),
-            'updatedAt'    => new Literal( 'NOW()' ),
+            'createdAt'    => $createdAt,
+            'updatedAt'    => $updatedAt
         ];
 
         $propertyArray['name'] = 'address1';

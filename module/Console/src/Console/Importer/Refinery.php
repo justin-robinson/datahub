@@ -7,7 +7,6 @@ use Console\CsvIteratorException;
 use Console\Record\Formatter\Formatters\ImportRefinery;
 use DB\Datahub\Company;
 use DB\Datahub\CompanyInstance;
-use LRUCache\LRUCache;
 
 /**
  * Class Refinery
@@ -16,13 +15,11 @@ use LRUCache\LRUCache;
 class Refinery extends ImporterAbstract {
 
     /**
-     * @param $csvFile
-     * @param $db \PDO
+     * @param      $csvFile
      *
-     * @return int
-     * @throws \Console\Record\Formatter\Exception\NotFound
+     * @return array
      */
-    public function import ( $csvFile, $db ) {
+    public function import ( $csvFile ) {
 
         // open file as csv
         $file = new CsvIterator( $csvFile );
@@ -30,13 +27,7 @@ class Refinery extends ImporterAbstract {
         // we have a header row woohoo!
         $file->setHasHeaderRow( true );
 
-        // how many rows we processed
-        $companiesProcessed = 0;
-        $instancesProcessed = 0;
-
         $formatter = ImportRefinery::get_instance();
-
-        
 
         // process the rows
         foreach ( $file as $record ) {
@@ -50,7 +41,7 @@ class Refinery extends ImporterAbstract {
                 // format record into some db models
                 $company = $formatter->format( $record );
 
-                $this->save( $company );
+                $company->save();
 
             } catch ( CsvIteratorException $e ) {
                 // CsvIterator throws an exception when number of columns in the header row
@@ -60,6 +51,6 @@ class Refinery extends ImporterAbstract {
 
         }
 
-        return [$companiesProcessed, $instancesProcessed];
+        return [Company::$companiesSaved, CompanyInstance::$instancesSaved];
     }
 }
