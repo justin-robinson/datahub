@@ -366,9 +366,9 @@ class Company extends \DBCore\Datahub\Company
         $array = parent::to_array();
 
         if ( $recursive ) {
-            $array['companyInstances'] = [];
+            $array['instances'] = [];
             foreach ( $this->get_company_instances() as $instance ) {
-                $array['companyInstances'][] = $instance->to_array();
+                $array['instances'][] = $instance->to_array();
             }
         }
 

@@ -263,6 +263,17 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         $addr1                   = $this->get_property('address1');
         $queryParams             = [$this->companyId, $this->name, $zip->value, $addr1->value];
         $companyInstanceCacheKey = strtolower(implode('-', $queryParams));
+        $zip = $this->get_property('zipCode');
+        $zip = $zip ? $zip->value : '';
+        $addr1 = $this->get_property('address1');
+        $addr1 = $addr1 ? $addr1->value : '';
+        $queryParams = [
+            $this->companyId,
+            $this->name,
+            $zip,
+            $addr1,
+        ];
+        $companyInstanceCacheKey = strtolower(implode( '-', $queryParams ));
 
         // check cache for this instance
         $existingInstance = self::$companyInstanceCache->get($companyInstanceCacheKey);
@@ -389,6 +400,26 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         $this->properties = $properties;
     }
 
+    public function sort_properties () {
+
+        $properties = [];
+
+        // order the properties by source order
+        ksort($this->properties);
+
+        foreach ( $this->properties as $orderedPropertyGroup ) {
+            foreach ( $orderedPropertyGroup as $propertyName ) {
+                foreach ( $propertyName as $property ) {
+                    if ( !isset($properties[$property->name]) ) {
+                        $properties[$property->name] = $property->value;
+                    }
+                }
+            }
+        }
+
+        return $properties;
+    }
+
     /**
      * @param bool $recursive
      *
@@ -402,6 +433,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         if ($recursive) {
             $array['properties'] = $this->get_properties();
             $array['contacts']   = $this->get_contacts();
+            $array['contacts'] = $this->get_contacts() ? $this->get_contacts() : [];
 
             foreach ($array['properties'] as &$orderedPropertyGroup) {
                 foreach ($orderedPropertyGroup as &$propertyName) {

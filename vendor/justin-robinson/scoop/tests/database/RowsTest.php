@@ -35,6 +35,135 @@ class RowsTest extends PHPUnit_Framework_TestCase {
         }
     }
 
+    public function test___toString () {
+
+        $expected = "array (
+  0 => 
+  DB\Scoop\Test::__set_state(array(
+     'dBValuesArray' => 
+    array (
+      'id' => NULL,
+      'name' => 0,
+      'dateTimeAdded' => NULL,
+    ),
+     'loadedFromDb' => false,
+     'orignalDbValuesArray' => NULL,
+  )),
+  1 => 
+  DB\Scoop\Test::__set_state(array(
+     'dBValuesArray' => 
+    array (
+      'id' => NULL,
+      'name' => 1,
+      'dateTimeAdded' => NULL,
+    ),
+     'loadedFromDb' => false,
+     'orignalDbValuesArray' => NULL,
+  )),
+  2 => 
+  DB\Scoop\Test::__set_state(array(
+     'dBValuesArray' => 
+    array (
+      'id' => NULL,
+      'name' => 2,
+      'dateTimeAdded' => NULL,
+    ),
+     'loadedFromDb' => false,
+     'orignalDbValuesArray' => NULL,
+  )),
+  3 => 
+  DB\Scoop\Test::__set_state(array(
+     'dBValuesArray' => 
+    array (
+      'id' => NULL,
+      'name' => 3,
+      'dateTimeAdded' => NULL,
+    ),
+     'loadedFromDb' => false,
+     'orignalDbValuesArray' => NULL,
+  )),
+  4 => 
+  DB\Scoop\Test::__set_state(array(
+     'dBValuesArray' => 
+    array (
+      'id' => NULL,
+      'name' => 4,
+      'dateTimeAdded' => NULL,
+    ),
+     'loadedFromDb' => false,
+     'orignalDbValuesArray' => NULL,
+  )),
+  5 => 
+  DB\Scoop\Test::__set_state(array(
+     'dBValuesArray' => 
+    array (
+      'id' => NULL,
+      'name' => 5,
+      'dateTimeAdded' => NULL,
+    ),
+     'loadedFromDb' => false,
+     'orignalDbValuesArray' => NULL,
+  )),
+  6 => 
+  DB\Scoop\Test::__set_state(array(
+     'dBValuesArray' => 
+    array (
+      'id' => NULL,
+      'name' => 6,
+      'dateTimeAdded' => NULL,
+    ),
+     'loadedFromDb' => false,
+     'orignalDbValuesArray' => NULL,
+  )),
+  7 => 
+  DB\Scoop\Test::__set_state(array(
+     'dBValuesArray' => 
+    array (
+      'id' => NULL,
+      'name' => 7,
+      'dateTimeAdded' => NULL,
+    ),
+     'loadedFromDb' => false,
+     'orignalDbValuesArray' => NULL,
+  )),
+  8 => 
+  DB\Scoop\Test::__set_state(array(
+     'dBValuesArray' => 
+    array (
+      'id' => NULL,
+      'name' => 8,
+      'dateTimeAdded' => NULL,
+    ),
+     'loadedFromDb' => false,
+     'orignalDbValuesArray' => NULL,
+  )),
+  9 => 
+  DB\Scoop\Test::__set_state(array(
+     'dBValuesArray' => 
+    array (
+      'id' => NULL,
+      'name' => 9,
+      'dateTimeAdded' => NULL,
+    ),
+     'loadedFromDb' => false,
+     'orignalDbValuesArray' => NULL,
+  )),
+  10 => 
+  DB\Scoop\Test::__set_state(array(
+     'dBValuesArray' => 
+    array (
+      'id' => NULL,
+      'name' => 10,
+      'dateTimeAdded' => NULL,
+    ),
+     'loadedFromDb' => false,
+     'orignalDbValuesArray' => NULL,
+  )),
+)";
+
+        $this->assertEquals($expected, (string)$this->rows);
+    }
+
     public function test_add_row () {
 
         $rows = new Rows();
@@ -54,6 +183,8 @@ class RowsTest extends PHPUnit_Framework_TestCase {
         foreach ( range(0,10) as $i) {
             $this->assertEquals( $i, $this->rows->get( $i )->name, "get should return the correct index" );
         }
+
+        $this->assertNull($this->rows->get(++$i), "get should return null if the index dne");
     }
 
     public function test_get_rows () {
@@ -115,38 +246,74 @@ class RowsTest extends PHPUnit_Framework_TestCase {
 
     public function test_iterator () {
 
-        foreach ( $this->rows as $i => $row ) {
+        $rows = new Rows();
 
-            $this->assertEquals( $i, $row->name );
+        $numRows = 0;
+
+        foreach ( range(0,10) as $i ) {
+            $rows->add_row(new \Scoop\Database\Model\Generic(['v'=>$i]));
+            $numRows++;
+        }
+
+        foreach ( $rows as $i => $row ) {
+
+            $this->assertEquals( $i, $row->v );
 
             if ( $i > 5 ) {
                 break;
             }
         }
 
-        foreach ( $this->rows as $i => $row ) {
+        foreach ( $rows as $i => $row ) {
 
             if ( $i <= 5 ) {
                 continue;
             }
 
-            $this->assertEquals( $i, $row->name );
+            $this->assertEquals( $i, $row->v );
         }
+
+        $rowsIteratedOver = 0;
+        foreach ( $rows as $i => $row ) {
+
+            $this->assertEquals( $i, $row->v );
+            ++$rowsIteratedOver;
+        }
+
+        $this->assertEquals($numRows, $rowsIteratedOver, "iterator should iterate over all rows");
     }
 
     public function test_arrayAccess () {
 
-        $this->assertEquals( 0, $this->rows[0]->name, "getting row by array index should work"  );
+        $rows = new Rows();
 
-        $i = $this->lastIndex+1;
+        $numRows = 0;
 
-        $this->rows[$i] = new Test(['name' => $i]);
+        foreach ( range(0,10) as $i ) {
+            $rows->add_row(new Test(['name'=>$i]));
+            $numRows++;
+        }
 
-        $this->assertEquals( $i, $this->rows[$i]->name, "setting row by array index should work" );
+        $this->assertEquals( 0, $rows[0]->name, "getting row by array index should work"  );
 
-        unset($this->rows[$i]);
+        ++$i;
 
-        $this->assertNull( $this->rows[$i], "unset on rows should remove row from storage array");
+        $this->assertFalse(isset($rows[$i]), "new offset shouldn't exist yet");
+        $rows[$i] = new Test(['name' => $i]);
+        $this->assertTrue(isset($rows[$i]), "setting an offset should work if it's a generic class");
+
+        $rows[$i+1] = new stdClass();
+        $this->assertFalse(isset($rows[$i+1]), "setting an offset should fail if it's not a generic class");
+
+        ++$i;
+        $this->assertFalse(isset($rows[$i]), "new offset shouldn't exist yet");
+        $rows[] = new Test(['name' => $i]);
+        $this->assertTrue(isset($rows[$i]), "appending to the rows class should append to the internal storage array");
+
+        $this->assertEquals( $i, $rows[$i]->name, "setting row by array index should work" );
+
+        unset($rows[$i]);
+        $this->assertNull( $rows[$i], "unset on rows should remove row from storage array");
     }
     
     public function test_jsonSerialize () {

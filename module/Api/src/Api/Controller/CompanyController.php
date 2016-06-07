@@ -7,7 +7,9 @@
 
 namespace Api\Controller;
 
+use Api\Response\CompanyResponse;
 use DB\Datahub\Company;
+use Zend\Json\Json;
 use Zend\View\Model\JsonModel;
 
 /**
@@ -75,7 +77,7 @@ class CompanyController extends AbstractRestfulController
      * since datahub will eventually replace refinery, it will be depricated
      * at that time
      */
-    public function  refineryAction()
+    public function refineryAction()
     {
 
         // get id from url
@@ -83,42 +85,37 @@ class CompanyController extends AbstractRestfulController
 
         $company = Company::fetch_by_source_name_and_id('refinery%', $refineryId);
 
-        $company->fetch_company_instances();
+        $response = new CompanyResponse();
 
-        foreach ( $company->get_company_instances() as $instance ) {
-            $instance->fetch_properties();
-            $instance->fetch_contacts();
+        if ( $company ) {
+
+            $company->fetch_company_instances();
+
+            $sortedProperties = [];
+            foreach ( $company->get_company_instances() as $instance ) {
+                $instance->fetch_properties();
+                $sortedProperties[] = $instance->sort_properties();
+                $instance->fetch_contacts();
+            }
+
+            $company = $company->to_array();
+
+            reset($sortedProperties);
+            foreach ( $company['instances'] as &$instance ) {
+                $instance['properties'] = current($sortedProperties);
+                next($sortedProperties);
+            }
+
+            $response->success = true;
+        } else {
+
+            $response->message = "company not found";
         }
 
-        $company = $company ? $company->to_array() : [];
+        $response->body = $company;
 
-        return new JsonModel($company);
-    }
 
-    /**
-     * @param $name
-     * @param $id
-     *
-     * @return JsonModel
-     */
-    private function lookupBy($name, $id)
-    {
-
-        // load company model
-        /** @var $company \Hub\Model\Company */
-        $company = $this->getServiceLocator()->get('\Hub\Model\Company');
-        // find company by refinery_id in url
-        $record = $company->findOneBy([$name => $id]);
-
-        // ensure we don't return something falsey
-        $record = empty($record) ? [
-            'success'  => false,
-            'messsage' => 'not found',
-        ] : $record->toArray(true);
-
-        // return
-        return new JsonModel($record);
-
+        return new JsonModel($response->toArray());
     }
 
 

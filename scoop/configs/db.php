@@ -1,7 +1,7 @@
 <?php
 
 if ( isset($_SERVER['argv']) ){
-    $args = \Scoop\CommandLine::parseArgs($_SERVER['argv']);
+    $args = \Scoop\CommandLine::parse_args($_SERVER['argv']);
 
     switch ( true ) {
         case isset($args['e']):

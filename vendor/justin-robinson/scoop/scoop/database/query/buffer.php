@@ -93,13 +93,17 @@ class Buffer {
     /**
      * Buffers inserts to the db
      * @param \Scoop\Database\Model $model
+     *
+     * @return bool
      */
     public function insert ( \Scoop\Database\Model &$model ) {
 
+        // don't insert if the maxSize is less than 1
         // don't insert something that isn't the model we are expecting
-        if( $this->modelClass !== get_class( $model ) ) {
-            return;
+        if( $this->maxSize <= 0 || $this->modelClass !== get_class( $model ) ) {
+            return false;
         }
+
 
         list($_, $values, $queryParams, $_) = $model->get_sql_insert_values();
 
@@ -120,6 +124,8 @@ class Buffer {
             $this->flush();
         }
 
+        return true;
+
     }
 
     /**
@@ -130,7 +136,7 @@ class Buffer {
     public function flush () {
 
         if( $this->size === 0 ) {
-            return;
+            return false;
         }
 
         //  remove trailing commas from built sql values
@@ -159,6 +165,16 @@ class Buffer {
         }
 
         $this->reset();
+
+        return true;
+    }
+
+    /**
+     * @return bool
+     */
+    public function get_insert_ignore () {
+
+        return $this->insertIgnore;
     }
 
     /**
@@ -166,7 +182,7 @@ class Buffer {
      */
     public function set_insert_ignore ( $insertIgnore = true ) {
 
-        $this->insertIgnore = $insertIgnore;
+        $this->insertIgnore = (bool)$insertIgnore;
     }
 
     /**
