@@ -10,80 +10,154 @@ namespace Console\Controller;
 
 use Console\DB\Connection\DB;
 use DBCore\Datahub\CompanyInstance;
-use Hub\Model\Company;
 
 
+/**
+ * Class TierController
+ *
+ * @package Console\Controller
+ */
 class TierController extends AbstractActionController
 {
-    public function reportAction() {
-        /**
-         * generates 7 files, 1 for each tier
-         * files contain
-         * instance_name, instance_id, entity_id (company id)
-         *
-         *
-         *
-         *
-         *
-         */
+    /**
+     * @param        $instance
+     * @param bolean $firstRun
+     */
+    public function tierInstance($instance, bolean $firstRun)
+    {
 
-        $basicFields = [
-            'address1',
-            //    'address2',
-            'city',
-            'country',
-            'latitude',
-            'longitude',
-            'zipCode',
-            'state',
-        ];
-
-        $tier_1 = fopen('/home/vagrant/files/tier_1.csv', 'w');
-        $tier_2 = fopen('/home/vagrant/files/tier_2.csv', 'w');
-        $tier_3 = fopen('/home/vagrant/files/tier_3.csv', 'w');
-        $tier_4 = fopen('/home/vagrant/files/tier_4.csv', 'w');
-        $tier_5 = fopen('/home/vagrant/files/tier_5.csv', 'w');
-        $tier_6 = fopen('/home/vagrant/files/tier_6.csv', 'w');
-        $tier_7 = fopen('/home/vagrant/files/tier_7.csv', 'w');
-
-        $paginate = 500;
-        $db = DB::createPdo([
-            'host'=> 'devdb.bizj-internal.com',
-            'dbname'=>'datahub',
-            'user'=>'web',
-            'password'=>''
-        ]);
-
-        // potential tier one companies have properties that are less than 1 year old
-        $tier1sql = "
-            SELECT DISTINCT c.name, c.companyId
-            FROM companyInstanceProperty cip
-              JOIN companyInstance using(companyInstanceId)
-              JOIN company c USING (companyId)
-            WHERE cip.updatedAt >= DATE_SUB(NOW(), INTERVAL 1 YEAR);
-        ";
-        $stmnt = $db->prepare($tier1sql);
-
-        $stmnt->execute();
-        $results = $stmnt->fetchAll(\PDO::FETCH_ASSOC);
-
-        foreach ($results as $result) {
-            $company = new \DB\Datahub\Company();
-            $companyData = $company::fetch_company_and_instances($result['companyId']);
-            foreach ($companyData->get_company_instances() as $instance) {
-                if($company->tierOneValidate($instance)){
-                    echo 'tier1 company';
-                }
-                elseif($company->tierTwoValidate($instance)){
-                    echo 'tier2 company';
-                }
-            }
-
-        }
-
-        // justin loves this sort of code
-        // store off the unique instance names
+        // no contact = tiers 4 -7
+        //
 
 
     }
+
+
+    /**
+     * @param $property
+     */
+    private function calcFreshnessRating($property)
+    {
+        switch ($property['updatedAt']) {
+            case ($property['updatedAt'] >= 3);
+                $return = 4;
+                break;
+            case (($property['updatedAt'] > 1) && ($property['updatedAt'] <= 3));
+                $return = 3;
+                break;
+            case (($property['updatedAt'] > 1) && ($property['updatedAt'] <= 2));
+                $return = 2;
+                break;
+            case (($property['updatedAt'] <= 1));
+                $return = 1;
+                break;
+        }
+    }
+
+
+    /**
+     * @param $instance
+     *
+     * @return bool
+     */private function hasStory($instance)
+    {
+        $return = false;
+        if ($instance->hasStory) {
+            $return = true;
+        }
+
+        return $return;
+    }
+
+
+    /**
+     * @param $instance
+     *
+     * @return bool
+     */private function hasBasicFields($instance)
+    {
+        $return = false;
+        if ($instance->hasBasicFields) {
+            $return = true;
+        }
+
+        return $return;
+    }
+
+    /**
+     * @param $instance
+     *
+     * @return bool
+     */
+    private function hasIdFields($instance)
+    {
+        $return = false;
+        if ($instance->hasIdFields) {
+            $return = true;
+        }
+
+        return $return;
+    }
+
+    /**
+     * @param $instance
+     *
+     * @return bool
+     */
+    private function hasEnhancedFields($instance)
+    {
+        $return = false;
+        if ($instance->hasEnhancedFields) {
+            $return = true;
+        }
+
+        return $return;
+    }
+
+    /**
+     * @param $instance
+     *
+     * @return bool
+     */
+    private function hasGroupingFields($instance)
+    {
+        $return = false;
+        if ($instance->hasGroupingFields) {
+            $return = true;
+        }
+
+        return $return;
+    }
+
+
+    /**
+     * @param     $field
+     * @param int $sourceTypeId
+     *
+     * @return bool
+     */private function sourceField($field, $sourceTypeId = 1)
+    {
+        $return = false;
+        if ($field->sourceTypeId <= $sourceTypeId) {
+            $return = true;
+
+        }
+        return $return;
+    }
+
+      /**
+     * @param $instance
+     *
+     * @return bool
+     */
+    private function hasContact($instance)
+    {
+        $return = false;
+        if ($instance->hasContact) {
+            $return = true;
+
+        }
+        return $return;
+    }
+    
 }

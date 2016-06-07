@@ -26,19 +26,19 @@
           "index": "not_analyzed"
         },
         "DateModified":   {
-          "type": "string",
+          "type": "string"
         },
         "GenId":          {
-          "type": "string",
+          "type": "string"
         },
         "InternalId":     {
-          "type": "string",
+          "type": "string"
         },
         "Lat":            {
-          "type": "string",
+          "type": "string"
         },
         "Lon":            {
-          "type": "string",
+          "type": "string"
         },
         "Name":           {
           "type":   "string",
@@ -48,40 +48,40 @@
           }
         },
         "OfficePhone1":   {
-          "type": "string",
+          "type": "string"
         },
         "PostalCode":     {
-          "type": "string",
+          "type": "string"
         },
         "Sic":            {
-          "type": "string",
+          "type": "string"
         },
         "SourceID":       {
-          "type": "string",
+          "type": "string"
         },
         "State":          {
-          "type": "string",
+          "type": "string"
         },
         "Ticker":         {
-          "type": "string",
+          "type": "string"
         },
         "TickerExchange": {
-          "type": "string",
+          "type": "string"
         },
         "Url":            {
-          "type": "string",
+          "type": "string"
         },
         "host":           {
-          "type": "string",
+          "type": "string"
         },
         "message":        {
-          "type": "string",
+          "type": "string"
         },
         "tags":           {
-          "type": "string",
+          "type": "string"
         },
         "type":           {
-          "type": "string",
+          "type": "string"
         }
       }
     }
