@@ -1,0 +1,43 @@
+{
+  "entityProperties": {
+    "name":               {},
+    "meroveusId":         {},
+    "headquarters":       {},
+    "marketOfRecord":     {},
+    "sic":                {},
+    "stockSymbol":        {},
+    "tickerExchange":     {},
+    "url":                {},
+    "ownership":          {},
+    "instanceProperties": {
+      "updatedAt":             {},
+      "description":           {},
+      "revenue":               {},
+      "locationEmployeeCount": {},
+      "totalEmployeeCount":    {},
+      "industry":              {},
+      "address":               {
+        "address1":  {},
+        "address2":  {},
+        "city":      {},
+        "state":     {},
+        "zipCode":   {},
+        "country":   {},
+        "latitude":  {},
+        "longitude": {},
+        "phone":     {}
+      },
+      "executives":            [
+        {
+          "fName":     {},
+          "mName":     {},
+          "lName":     {},
+          "title":     {},
+          "email":     {},
+          "phone":     {},
+          "extension": {}
+        }
+      ]
+    }
+  }
+}
