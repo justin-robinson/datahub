@@ -21,6 +21,7 @@ class ClassGenGeneratorTest extends PHPUnit_Framework_TestCase {
         $generator = new ClassGenGenerator( $this->class, '/tmp/testClass.php' );
 
         $property = new ClassGenProperty( 'p1' );
+        $property->set_public();
         $generator->add_property( $property );
 
         $property = new ClassGenProperty( 'p2' );
@@ -61,6 +62,18 @@ class test {
 ?>';
 
         $this->assertEquals( $expectedContents, $fileContents, "class properties should be included and sorted correctly" );
+
+        if ( file_exists($generator->filepath) ) {
+            unlink($generator->filepath);
+        }
+
+        $generator->save();
+
+        $this->assertFileExists($generator->filepath, "saving a class generator should write to the file system");
+
+        if ( file_exists($generator->filepath) ) {
+            unlink($generator->filepath);
+        }
     }
 
 }

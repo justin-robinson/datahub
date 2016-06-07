@@ -16,11 +16,6 @@ class Rows implements \Iterator, \ArrayAccess, \JsonSerializable {
     private $numRows = 0;
 
     /**
-     * @var int
-     */
-    private $position = 0;
-
-    /**
      * @var $rowsStorageArray Generic[]
      */
     private $rowsStorageArray = [ ];
@@ -53,7 +48,7 @@ class Rows implements \Iterator, \ArrayAccess, \JsonSerializable {
     /**
      * @param int $index
      *
-     * @return Generic
+     * @return Generic|null
      */
     public function get ( $index ) {
 
@@ -113,7 +108,7 @@ class Rows implements \Iterator, \ArrayAccess, \JsonSerializable {
      */
     public function current () {
 
-        return $this->rowsStorageArray[$this->key()];
+        return current($this->rowsStorageArray);
     }
     /**
      * get the current position
@@ -121,7 +116,7 @@ class Rows implements \Iterator, \ArrayAccess, \JsonSerializable {
      */
     public function key () {
 
-        return array_keys($this->rowsStorageArray)[$this->position];
+        return key($this->rowsStorageArray);
     }
 
     /**
@@ -129,7 +124,7 @@ class Rows implements \Iterator, \ArrayAccess, \JsonSerializable {
      */
     public function next () {
 
-        ++$this->position;
+        next($this->rowsStorageArray);
     }
 
     /**
@@ -137,7 +132,7 @@ class Rows implements \Iterator, \ArrayAccess, \JsonSerializable {
      */
     public function rewind () {
 
-        $this->position = 0;
+        reset($this->rowsStorageArray);
     }
 
     /**
@@ -145,7 +140,8 @@ class Rows implements \Iterator, \ArrayAccess, \JsonSerializable {
      */
     public function valid () {
 
-        return isset( array_keys($this->rowsStorageArray)[$this->position] );
+        // this isn't safe usually, but we are only storing objects in here
+        return $this->current() !== false;
     }
 
     /**********************************
