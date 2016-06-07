@@ -1,0 +1,12 @@
+Meroveus=>Daatahub
+    if !meroveusid
+        query elastic by name for dhubId//refineryId
+        PUT json to /company/refinery/{id}
+        OR
+        PUT jon to /company/{id}
+    else
+        PUT json to /company/meroveus/{id} or
+
+
+New company
+    POST json to /company using createCompany.json format
