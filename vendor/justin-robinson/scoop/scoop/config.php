@@ -82,7 +82,7 @@ class Config {
                 self::get_option ( 'shared_classpath_parent_directory' ) . self::get_option ( 'classpath_folder_name' ) );
         }
 
-        return null;
+        return '';
 
     }
 
@@ -129,5 +129,15 @@ class Config {
     public static function set_option ( $name, $option ) {
 
         self::$options[$name] = $option;
+    }
+
+    /**
+     * @param $name
+     */
+    public static function unset_option ( $name ) {
+
+        if ( self::option_exists($name) ) {
+            unset(self::$options[$name]);
+        }
     }
 }
