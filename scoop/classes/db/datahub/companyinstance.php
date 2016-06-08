@@ -263,17 +263,17 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         $addr1                   = $this->get_property('address1');
         $queryParams             = [$this->companyId, $this->name, $zip->value, $addr1->value];
         $companyInstanceCacheKey = strtolower(implode('-', $queryParams));
-        $zip = $this->get_property('zipCode');
-        $zip = $zip ? $zip->value : '';
-        $addr1 = $this->get_property('address1');
-        $addr1 = $addr1 ? $addr1->value : '';
-        $queryParams = [
+        $zip                     = $this->get_property('zipCode');
+        $zip                     = $zip ? $zip->value : '';
+        $addr1                   = $this->get_property('address1');
+        $addr1                   = $addr1 ? $addr1->value : '';
+        $queryParams             = [
             $this->companyId,
             $this->name,
             $zip,
             $addr1,
         ];
-        $companyInstanceCacheKey = strtolower(implode( '-', $queryParams ));
+        $companyInstanceCacheKey = strtolower(implode('-', $queryParams));
 
         // check cache for this instance
         $existingInstance = self::$companyInstanceCache->get($companyInstanceCacheKey);
@@ -400,17 +400,21 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         $this->properties = $properties;
     }
 
-    public function sort_properties () {
+    /**
+     * @return array
+     */
+    public function sort_properties()
+    {
 
         $properties = [];
 
         // order the properties by source order
         ksort($this->properties);
 
-        foreach ( $this->properties as $orderedPropertyGroup ) {
-            foreach ( $orderedPropertyGroup as $propertyName ) {
-                foreach ( $propertyName as $property ) {
-                    if ( !isset($properties[$property->name]) ) {
+        foreach ($this->properties as $orderedPropertyGroup) {
+            foreach ($orderedPropertyGroup as $propertyName) {
+                foreach ($propertyName as $property) {
+                    if (!isset($properties[$property->name])) {
                         $properties[$property->name] = $property->value;
                     }
                 }
@@ -432,7 +436,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
         if ($recursive) {
             $array['properties'] = $this->get_properties();
-            $array['contacts'] = $this->get_contacts() ? $this->get_contacts() : [];
+            $array['contacts']   = $this->get_contacts() ? $this->get_contacts() : [];
 
             foreach ($array['properties'] as &$orderedPropertyGroup) {
                 foreach ($orderedPropertyGroup as &$propertyName) {
@@ -447,36 +451,39 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     }
 
     /**
-     * @param        $instance
-     * @param bolean $firstRun
-     */
-    public function tierInstance($firstRun = 1)
-    {
-
-
-
-    }
-
-
-    /**
-     * @param $property
-     *
      * @return int
      */
-    private function calcFreshnessRating($property)
+    private function calcFreshnessRating()
     {
 
-        switch ($property['updatedAt']) {
-            case ($property['updatedAt'] >= 3):
+        $now = new \DateTime('now');
+        // make a datetime of the newest existing property
+        $updatedAt = null;
+
+        foreach ($this->properties as $field) {
+            foreach ($field as $entry) {
+                foreach ($entry as $prop) {
+                    $compare = new \DateTime($prop->updatedAt);
+                    if ($compare > $updatedAt) {
+                        $updatedAt = $compare;
+                    }
+                }
+            }
+        }
+
+        $interval = $updatedAt->diff($now)->format('%y');
+
+        switch ($interval) {
+            case ($interval >= 3):
                 $return = 4;
                 break;
-            case (($property['updatedAt'] > 1) && ($property['updatedAt'] <= 3)):
+            case (($interval > 1) && ($interval <= 3)):
                 $return = 3;
                 break;
-            case (($property['updatedAt'] > 1) && ($property['updatedAt'] <= 2)):
+            case (($interval > 1) && ($interval <= 2)):
                 $return = 2;
                 break;
-            case (($property['updatedAt'] <= 1)):
+            case (($interval <= 1)):
                 $return = 1;
                 break;
             default:
@@ -514,28 +521,42 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     /**
      * @param $instance
      *
-     * @return inty
+     * @return integer
      */
     private function countBasicFields()
     {
+        // if there's no name, this is tier 7
+        if (empty($this->name)) {
+            return $basicPropCount = 0;
+        }
+
         $basicPropCount = 0;
+
         foreach ($this->properties as $prop) {
-            foreach ($prop as $k =>$v){
+            foreach ($prop as $k => $v) {
                 if (in_array($k, $this->basicFieldsDefinition)) {
                     $basicPropCount++;
-                }}
+                }
+            }
         }
 
         return $basicPropCount;
     }
 
+    /**
+     * @return int
+     */
+    private function getBestSource()
+    {
+        return 1;
+    }
+
 
     /**
-     * @param $instance
      *
-     * @return bool
+     * @return int
      */
-    private function hasIdFields()
+    private function countIdFields()
     {
         $return = false;
         // if any of the vals in the matching fields array are present in the properties,
@@ -546,11 +567,10 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
 
     /**
-     * @param $instance
      *
-     * @return bool
+     * @return int
      */
-    private function hasEnhancedFields()
+    private function countEnhancedFields()
     {
         $return = false;
         // if any of the vals in the matching fields array are present in the properties,
@@ -561,11 +581,10 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
 
     /**
-     * @param $instance
      *
-     * @return bool
+     * @return int
      */
-    private function hasGroupingFields()
+    private function countGroupingFields()
     {
         $return = false;
         // if any of the vals in the matching fields array are present in the properties,
@@ -583,66 +602,78 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
     }
 
+    /**
+     *
+     * @param int $firstRun
+     *
+     * @return int
+     */
     public function instanceTierThyself($firstRun = 1)
     {
+
         $tier = 7;
 
         $basicCount = $this->countBasicFields();
 
-        if (($basicCount === 0) ) {
+        if (($basicCount === 0)) {
             return $tier;
         }
 
-        foreach ($this->properties as $property) {
 
-            $freshness = $this->calcFreshnessRating($property);
-            // everyone starts at the bottom
-            switch ($freshness) {
+        $freshness = $this->calcFreshnessRating();
+        // everyone starts at the bottom
+        switch ($freshness) {
 
-                case(4):// older than 3 years : t6 
-                    $tier = 6;
-                    break;
-                case(3):// older than 2 but less than 3 years: t5 
-                    $tier = 5;
-                    break;
-                case(2)://older than 1 but less than 2 years old t3 - t2
-                    if ($tier3 = true /* however this works returns true or whatever */) {
-                        if ($this->contacts) {
-
-                            $tier = 3;
-                        } else {
-                            $tier = 4;
-                        }
+            case(4):// older than 3 years : t6
+                $tier = 6;
+                break;
+            case(3):// older than 2 but less than 3 years: t5
+                $tier = 5;
+                break;
+            case(2)://older than 1 but less than 2 years old t3 - t2
+                if ($tier3 = true /* however this works returns true or whatever */) {
+                    if ($this->contacts) {
+                        $tier = 3;
                     } else {
-                        if ($this->contacts) {
-                            $tier = 4;
+                        $tier = 4;
+                    }
+                } else {
+                    if ($this->contacts) {
+                        $tier = 4;
+                    } else {
+                        $tier = 2;
+                    }
+                }
+                break;
+            case(1):// t1, t2, t3, t4
+                if ($this->contacts) {
+                    if (
+                        !empty ($this->countEnhancedFields())
+                        && !empty ($this->countIdFields())
+                        && !empty ($this->countGroupingFields())
+                    ) {
+                        if ($this->getBestSource() <= 2) {
+                            $tier = 1; // finF***ingLy
                         } else {
                             $tier = 2;
                         }
+                        // name is a basic property but not stored as such
+                    } elseif ($basicCount >= 4) {
+                        $tier = 2;
+                    } else {
+                        $tier = 3;
                     }
-                    break;
-                case(1):// t1, t4, 0r t7
-
-                    if ($this->hasEnhancedFields() && $this->hasIdFields() && $this->hasGroupingFields() && $this->contacts) {
-
-                        if ($this->contacts) {
-
-                            $tier = 1; // finF***ingLy
-                        } else {
-                            $tier = 4;
-                        }
-
-                    }
-
-                    break;
-                case(0):// t7 no properties!
-                    $tier = 7;
-                    break;
-            }
-
-            return $tier;
+                } else {
+                    $tier = 4;
+                }
+                break;
+            case
+            (0):// t7 no properties!
+                $tier = 7;
+                break;
         }
 
+        return $tier;
 
     }
 
