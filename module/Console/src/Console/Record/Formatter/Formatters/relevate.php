@@ -4,6 +4,7 @@ namespace Console\Record\Formatter\Formatters;
 
 use Console\Record\Formatter\FormatterTrait;
 use DB\Datahub\Contact;
+use Scoop\Database\Literal;
 use Services\Meroveus\ContactService;
 
 /**
@@ -52,6 +53,8 @@ class Relevate {
                 'city'              => null,
                 'state'             => null,
                 'postalCode'        => null,
+                'createdAt'         => new Literal('NOW()'),
+                'updatedAt'         => new Literal('NOW()'),
             ]
         );
     }

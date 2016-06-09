@@ -7,7 +7,9 @@ use Console\CsvIterator;
 use Console\Record\Formatter\Formatters\Relevate;
 use DB\Datahub\CompanyInstance;
 use DB\Datahub\Contact;
+use LRUCache\LRUCache;
 use Scoop\Database\Literal;
+use Scoop\Database\Query\Buffer;
 use Zend\Db\Adapter as dbAdapter;
 
 /**
@@ -309,14 +311,27 @@ class ImportController extends AbstractActionController
 
         $formatter = Relevate::get_instance();
 
+        // cache company instance lookups
+        $companyInstanceCache = new LRUCache(1000);
+
+        // buffer contact insertions
+        $contactInsertionBuffer = new Buffer(1000, Contact::class);
+
+        // so we can update existing contacts
+        $contactInsertionBuffer->set_insert_ignore(true);
+
         foreach ($file as $line) {
 
             $currentContact = $formatter->format($line);
 
-            $companyInstances = CompanyInstance::fetch_by_source_name_and_id('meroveus', $currentContact->meroveusId);
+            $companyInstances =
+                $companyInstanceCache->exists($currentContact->meroveusId)
+                ? $companyInstanceCache->get($currentContact->meroveusId)
+                : CompanyInstance::fetch_by_source_name_and_id('meroveus', $currentContact->meroveusId);
 
             if ( $companyInstances ) {
                 $currentContact->companyInstanceId = $companyInstances->first()->companyInstanceId;
+                $companyInstanceCache->put($currentContact->meroveusId, $companyInstances);
             }
 
             // if we have a new meroveus id, get all the contacts related to it
@@ -350,7 +365,7 @@ class ImportController extends AbstractActionController
                 $currentContact->set_literal( 'updated_at', 'NOW()' );
 
                 // insert new contact
-                $currentContact->save();
+                $contactInsertionBuffer->insert($currentContact);
 
             } else {
 
@@ -375,12 +390,14 @@ class ImportController extends AbstractActionController
                     }
                 }
 
-                $existingContact->save();
+                $contactInsertionBuffer->insert($existingContact);
             }
 
             $totalCount++;
 
         }
+
+        $contactInsertionBuffer->flush();
 
         echo "ended at " . date('h:i:s A') . PHP_EOL;
         echo "imported {$totalCount} records" . PHP_EOL;
