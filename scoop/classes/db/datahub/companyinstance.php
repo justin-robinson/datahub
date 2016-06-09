@@ -643,6 +643,10 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         return $this->sources;
     }
 
+    private function countExtraFields()
+    {
+        return $this->countEnhancedFields() + $this->countIdFields() + $this->countGroupingFields();
+    }
 
     private function countStories($id)
     {
@@ -666,75 +670,81 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
         $tier = 7;
 
-        $basicCount    = $this->countBasicFields();
+        $basicCount = $this->countBasicFields();
+        if (($basicCount === 0)) {
+            return $tier;
+        }
+
+
+        $extraFieldsCount = $this->countExtraFields();
+        $freshness = $this->calcFreshnessRating();
         $this->sources = $this->getSources();
 
-
+        // find the "best" source (meroveus or datahub)
+        // is there more than one source?
         if (count($this->sources) > 1) {
             $bestSource = $this->getBestSource();
         } else {
             $bestSource = array_pop($this->sources);
         }
 
-        $stories = $this->countStories($bestSource);
-
-        if (($basicCount === 0)) {
-            return $tier;
+        // tier one
+        if(
+            ($bestSource >= 2)
+            && ($basicCount >= 4)
+            && ($this->countStories($bestSource) > 0)
+            && ($extraFieldsCount > 0)
+            && ($freshness = 1)
+            && (!empty($this->contacts))
+        ) {
+            $tier = 1;
         }
 
+        // tier 2
 
-        $freshness = $this->calcFreshnessRating();
-        // everyone starts at the bottom
-        switch ($freshness) {
+        if(
+            ($bestSource<=2)
+            && ($basicCount >= 4)
+            && ($this->countStories($bestSource) > 0)
+            && ($extraFieldsCount > 0)
+            && (($freshness === 1) || ($freshness === 2))
+            && (!empty($this->contacts))
+        ){
+            $tier = 2;
+        }
 
-            case(4):// older than 3 years : t6
-                $tier = 6;
-                break;
-            case(3):// older than 2 but less than 3 years: t5
-                $tier = 5;
-                break;
-            case(2)://older than 1 but less than 2 years old t3 - t2
-                if ($tier3 = true /* however this works returns true or whatever */) {
-                    if ($this->contacts) {
-                        $tier = 3;
-                    } else {
-                        $tier = 4;
-                    }
-                } else {
-                    if ($this->contacts) {
-                        $tier = 4;
-                    } else {
-                        $tier = 2;
-                    }
-                }
-                break;
-            case(1):// t1, t2, t3, t4
-                if ($this->contacts) {
-                    if (!empty ($this->countEnhancedFields())
-                        && !empty ($this->countIdFields())
-                        && !empty ($this->countGroupingFields())
-                    ) {
-                        if ($stories > 0) {
-                            if ($bestSource <= 2) {
-                                $tier = 1; // finF***ingLy
-                            } elseif ($basicCount >= 4) {
-                                $tier = 3;
-                            } else {
-                                $tier = 2;
-                            }
-                        } else {
-                            $tier = 3;
-                        }
-                    }
+        // tier 3
+        if(
+            ($bestSource<=2)
+            && ($basicCount > 0 )
+            && ($this->countStories($bestSource) > 0)
+            && ($extraFieldsCount > 0)
+            && (($freshness === 1) || ($freshness === 2))
+            && (!empty($this->contacts))
+        ){
+            $tier = 2;
+        }
 
-                } else {
-                    $tier = 4;
-                }
-                break;
-            case
-            (0):// t7 no properties!
-                $tier = 7;
-                break;
+        // tier 4
+        if(
+            ($bestSource<=2)
+            && ($basicCount > 0 )
+            && ($this->countStories($bestSource) > 0)
+            && ($extraFieldsCount >= 0)
+            && (($freshness === 1) || ($freshness === 2))
+            && (empty($this->contacts))
+        ){
+            $tier = 4;
+        }
+
+        // tier 5
+        if($freshness === 3) {
+            $tier = 5;
+        }
+
+        // tier 6
+        if($freshness >= 4) {
+            $tier = 6;
         }
 
         return $tier;
