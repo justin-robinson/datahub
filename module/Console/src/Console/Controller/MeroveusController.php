@@ -180,7 +180,7 @@ class MeroveusController extends AbstractActionController
      */
     public function indexAction()
     {
-        $company = Company::fetch_company_and_instances(1);
+        $company = Company::fetch_company_and_instances(26602);
 
         $instances =  $company->get_company_instances();
 

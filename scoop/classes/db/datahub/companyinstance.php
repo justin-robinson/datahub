@@ -6,6 +6,7 @@ use LRUCache\LRUCache;
 use Scoop\Database\Query\Buffer;
 use Scoop\Database\Rows;
 
+
 /**
  * Class CompanyInstance
  *
@@ -75,11 +76,13 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         'yearFounded',
     ];
 
+    private $curl;
     /**
      * @var array
      */
     protected $groupingFieldsDefinition = ['industry', 'ownershipType'];
 
+    protected $sources = [];
 
     /**
      * CompanyInstance constructor.
@@ -97,7 +100,20 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
             self::$companyInstanceCache = new LRUCache (1000);
         }
 
+        $this->curl = curl_init();
+        curl_setopt($this->curl, CURLOPT_POST, true);
+        curl_setopt($this->curl, CURLOPT_HTTPHEADER, ['Expect:']);
+        curl_setopt($this->curl, CURLOPT_HEADER, false);
+        curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($this->curl, CURLOPT_SSL_VERIFYHOST, 0);
+
         parent::__construct($dataArray);
+    }
+
+    public function __destruct()
+    {
+        curl_close($this->curl);
     }
 
     /**
@@ -548,7 +564,14 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
      */
     private function getBestSource()
     {
-        return 1;
+        $best = 8;
+        foreach ($this->sources as $typeId => $sourceId) {
+            if ($typeId < $best) {
+                $best = $sourceId;
+            }
+        }
+
+        return $best;
     }
 
 
@@ -602,6 +625,35 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
     }
 
+
+    private function getSources()
+    {
+
+
+        foreach ($this->properties as $property) {
+            foreach ($property as $entry) {
+                foreach ($entry as $data) {
+                    if (!isset($sources[$data->sourceTypeId]) || $sources[$data->sourceTypeId] !== $data->sourceId) {
+                        $this->sources[$data->sourceTypeId] = $data->sourceId;
+                    }
+                }
+            }
+        }
+
+        return $this->sources;
+    }
+
+
+    private function countStories($id)
+    {
+
+        curl_setopt($this->curl, CURLOPT_URL,
+            "http://solrdev.bizjournals.int:8080/solr/bizjournals/select?defType=edismax&q=company_id:$id&rows=0&wt=json");
+        $result = curl_exec($this->curl);
+
+        return json_decode($result, true)['response']['numFound'];
+    }
+
     /**
      *
      * @param int $firstRun
@@ -611,9 +663,20 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     public function instanceTierThyself($firstRun = 1)
     {
 
+
         $tier = 7;
 
-        $basicCount = $this->countBasicFields();
+        $basicCount    = $this->countBasicFields();
+        $this->sources = $this->getSources();
+
+
+        if (count($this->sources) > 1) {
+            $bestSource = $this->getBestSource();
+        } else {
+            $bestSource = array_pop($this->sources);
+        }
+
+        $stories = $this->countStories($bestSource);
 
         if (($basicCount === 0)) {
             return $tier;
@@ -647,22 +710,23 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
                 break;
             case(1):// t1, t2, t3, t4
                 if ($this->contacts) {
-                    if (
-                        !empty ($this->countEnhancedFields())
+                    if (!empty ($this->countEnhancedFields())
                         && !empty ($this->countIdFields())
                         && !empty ($this->countGroupingFields())
                     ) {
-                        if ($this->getBestSource() <= 2) {
-                            $tier = 1; // finF***ingLy
+                        if ($stories > 0) {
+                            if ($bestSource <= 2) {
+                                $tier = 1; // finF***ingLy
+                            } elseif ($basicCount >= 4) {
+                                $tier = 3;
+                            } else {
+                                $tier = 2;
+                            }
                         } else {
-                            $tier = 2;
+                            $tier = 3;
                         }
-                        // name is a basic property but not stored as such
-                    } elseif ($basicCount >= 4) {
-                        $tier = 2;
-                    } else {
-                        $tier = 3;
                     }
+
                 } else {
                     $tier = 4;
                 }

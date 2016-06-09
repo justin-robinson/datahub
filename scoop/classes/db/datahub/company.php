@@ -5,6 +5,7 @@ namespace DB\Datahub;
 use LRUCache\LRUCache;
 use Scoop\Database\Connection;
 use Scoop\Database\Rows;
+use Scoop\Database\Model\Generic;
 
 /**
  * Class Company
@@ -273,8 +274,8 @@ class Company extends \DBCore\Datahub\Company
      */
     public static function fetch_company_and_instances($companyId)
     {
-
-        $mysqliResult = Connection::execute("SELECT
+        Generic::connect();
+        $mysqliResult = Generic::$connection->execute("SELECT
               *
             FROM datahub.company c
               JOIN datahub.companyInstance ci USING (companyId)
@@ -433,7 +434,7 @@ class Company extends \DBCore\Datahub\Company
      */
     public function tierOneValidate(CompanyInstance $instance)
     {
- 
+
         $return = true;
         $props = $instance->get_properties();
         if (count($props[2]) < 10) {
