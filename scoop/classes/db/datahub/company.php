@@ -282,7 +282,7 @@ class Company extends \DBCore\Datahub\Company
             FROM datahub.company c
               LEFT JOIN datahub.companyInstance ci USING (companyId)
               LEFT JOIN datahub.companyInstanceProperty cip USING (companyInstanceId)
-              LEFT JOIN datahub.contact cn USING( companyInstanceId )
+              LEFT JOIN datahub.contact cn USING ( companyInstanceId )
             WHERE
               c.companyId = ?;", [$companyId]);
 
@@ -322,7 +322,7 @@ class Company extends \DBCore\Datahub\Company
               ) c
               LEFT JOIN datahub.companyInstance ci USING (companyId)
               LEFT JOIN datahub.companyInstanceProperty cip USING (companyInstanceId)
-              LEFT JOIN datahub.contact cn USING( companyInstanceId )
+              LEFT JOIN datahub.contact cn USING ( companyInstanceId )
             WHERE
               ci.updatedAt BETWEEN ? and ?
               OR cip.updatedAt BETWEEN ? and ?;",
