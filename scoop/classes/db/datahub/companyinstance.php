@@ -458,6 +458,11 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
             }
         }
 
+        // convert all sorted properties to raw values
+        foreach ( $sortedProperties as &$property ) {
+            $property = $property->value;
+        }
+
         return $sortedProperties;
     }
 

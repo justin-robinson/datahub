@@ -304,7 +304,9 @@ class Company extends \DBCore\Datahub\Company
         Generic::connect();
         $mysqliResult = Generic::$connection->execute(
             "SELECT
-              *
+              c.*,
+              ci.*,
+              cip.*
             FROM
               (
                 SELECT
