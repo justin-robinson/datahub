@@ -2168,36 +2168,6 @@
         ]
     },
     {
-        "name": "bizjournals/module_services",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "git@gitlab.bizjournals.com:bizjournals/module_services.git",
-            "reference": "a8c74f74eb32d7e977b989951ee9512a35da8fad"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "http://packages.bizj-internal.com/dist/module_services-670-a8c74f74eb32d7e977b989951ee9512a35da8fad.zip",
-            "reference": "a8c74f74eb32d7e977b989951ee9512a35da8fad",
-            "shasum": null
-        },
-        "require": {
-            "monolog/monolog": "@stable",
-            "ruflin/elastica": "3.*",
-            "solarium/solarium": "@stable"
-        },
-        "time": "2016-06-06 10:08:44",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "psr-0": {
-                "Services\\": "src/"
-            }
-        },
-        "description": "bizjournals Services Module"
-    },
-    {
         "name": "symfony/event-dispatcher",
         "version": "v3.1.0",
         "version_normalized": "3.1.0.0",
@@ -2413,5 +2383,35 @@
             "php",
             "php 7"
         ]
+    },
+    {
+        "name": "bizjournals/module_services",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "git@gitlab.bizjournals.com:bizjournals/module_services.git",
+            "reference": "46d5507013043c2867c2232c1e24cf10441b1c87"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "http://packages.bizj-internal.com/dist/module_services-670-46d5507013043c2867c2232c1e24cf10441b1c87.zip",
+            "reference": "46d5507013043c2867c2232c1e24cf10441b1c87",
+            "shasum": null
+        },
+        "require": {
+            "monolog/monolog": "@stable",
+            "ruflin/elastica": "3.*",
+            "solarium/solarium": "@stable"
+        },
+        "time": "2016-06-10 09:42:15",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "Services\\": "src/"
+            }
+        },
+        "description": "bizjournals Services Module"
     }
 ]

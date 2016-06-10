@@ -139,8 +139,8 @@ class ContactService extends AbstractService
         $contact->city       = null;
         $contact->state      = null;
         $contact->postalCode = null;
-        $contact->createdAt  = new Literal('NOW()');
-        $contact->updatedAt  = new Literal('NOW()');
+        $contact->createdAt  = isset($contactData['CREATEDATE']) ? $contactData['CREATEDATE'] : new Literal('NOW()');
+        $contact->updatedAt  = isset($contactData['LASTUPDATE']) ? $contactData['LASTUPDATE'] : new Literal('NOW()');
         unset($meroveusReturn);
 
         return $contact;
