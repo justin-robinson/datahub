@@ -280,9 +280,9 @@ class Company extends \DBCore\Datahub\Company
               cip.*,
               cn.*
             FROM datahub.company c
-              JOIN datahub.companyInstance ci USING (companyId)
-              JOIN datahub.companyInstanceProperty cip USING (companyInstanceId)
-              JOIN datahub.contact cn USING( companyInstanceId )
+              LEFT JOIN datahub.companyInstance ci USING (companyId)
+              LEFT JOIN datahub.companyInstanceProperty cip USING (companyInstanceId)
+              LEFT JOIN datahub.contact cn USING( companyInstanceId )
             WHERE
               c.companyId = ?;", [$companyId]);
 
@@ -320,9 +320,9 @@ class Company extends \DBCore\Datahub\Company
                     c.updatedAt BETWEEN ? and ?
                 LIMIT ?, 1000
               ) c
-              JOIN datahub.companyInstance ci USING (companyId)
-              JOIN datahub.companyInstanceProperty cip USING (companyInstanceId)
-              JOIN datahub.contact cn USING( companyInstanceId )
+              LEFT JOIN datahub.companyInstance ci USING (companyId)
+              LEFT JOIN datahub.companyInstanceProperty cip USING (companyInstanceId)
+              LEFT JOIN datahub.contact cn USING( companyInstanceId )
             WHERE
               ci.updatedAt BETWEEN ? and ?
               OR cip.updatedAt BETWEEN ? and ?;",
@@ -486,7 +486,7 @@ class Company extends \DBCore\Datahub\Company
             $companyId = $row[$fields[Company::TABLE][Company::AUTO_INCREMENT_COLUMN]];
 
             // is this row a new company?
-            if (!isset($company) || $companyId !== $prevCompanyId) {
+            if ( $companyId !== $prevCompanyId) {
 
                 // add previous company to the rows collection
                 if ( isset($company) ){
@@ -507,7 +507,7 @@ class Company extends \DBCore\Datahub\Company
             $companyInstanceId = $row[$fields[CompanyInstance::TABLE][CompanyInstance::AUTO_INCREMENT_COLUMN]];
 
             // is this row a new instance?
-            if (!isset($instance) || $companyInstanceId !== $prevCompanyInstanceId) {
+            if ( $companyInstanceId !== $prevCompanyInstanceId) {
 
                 // create the new instance model
                 $instance = new CompanyInstance();
@@ -524,7 +524,7 @@ class Company extends \DBCore\Datahub\Company
             // the company instance property id of this row
             $companyInstancePropertyId = $row[$fields[CompanyInstanceProperty::TABLE][CompanyInstanceProperty::AUTO_INCREMENT_COLUMN]];
 
-            if ( !isset($property) || $companyInstancePropertyId !== $prevCompanyInstancePropertyId ) {
+            if ( $companyInstancePropertyId !== $prevCompanyInstancePropertyId ) {
                 // all rows are properties so just create, populate, and add the the instance
                 $property = new CompanyInstanceProperty();
                 foreach ($fields[CompanyInstanceProperty::TABLE] as $columnName => $rowIndex) {
@@ -535,7 +535,7 @@ class Company extends \DBCore\Datahub\Company
 
             // the company instance property id of this row
             $contactId = $row[$fields[Contact::TABLE][Contact::AUTO_INCREMENT_COLUMN]];
-            if ( !isset($contact) || $contactId !== $prevContactId ) {
+            if ( $contactId !== $prevContactId ) {
                 $contact = new Contact();
                 foreach ( $fields[Contact::TABLE] as $columnName => $rowIndex ) {
                     $contact->$columnName = $row[$rowIndex];
