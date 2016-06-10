@@ -98,7 +98,7 @@ class CompanyController extends AbstractRestfulController
         $from = isset($_GET['from']) ? $_GET['from'] : '1970-01-01 00:00:00';
         $to = isset($_GET['to']) ? $_GET['to'] : date('Y-m-d H:i:s');
         $offset = isset($_GET['offset']) ? $_GET['offset'] : 0;
-        $companies = Company::fetch_company_and_instances_modified_in_range($from, $to, $offset);
+        $companies = Company::fetch_modified_in_range( $from, $to, $offset);
 
         $sortedProperties = [];
         foreach ( $companies as $company ) {
