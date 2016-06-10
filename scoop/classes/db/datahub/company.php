@@ -297,11 +297,12 @@ class Company extends \DBCore\Datahub\Company
      * @param     $from
      * @param     $to
      * @param int $offset
+     * @param int $limit
      *
      * @return Rows
      * @throws \Exception
      */
-    public static function fetch_modified_in_range( $from, $to, $offset = 0) {
+    public static function fetch_modified_in_range( $from, $to, $offset = 0, $limit = 1000) {
 
         Generic::connect();
         $mysqliResult = Generic::$connection->execute(
@@ -318,7 +319,7 @@ class Company extends \DBCore\Datahub\Company
                     datahub.company c
                 WHERE
                     c.updatedAt BETWEEN ? and ?
-                LIMIT ?, 1000
+                LIMIT ?, ?
               ) c
               LEFT JOIN datahub.companyInstance ci USING (companyId)
               LEFT JOIN datahub.companyInstanceProperty cip USING (companyInstanceId)
@@ -326,7 +327,7 @@ class Company extends \DBCore\Datahub\Company
             WHERE
               ci.updatedAt BETWEEN ? and ?
               OR cip.updatedAt BETWEEN ? and ?;",
-            [$from, $to, $offset, $from, $to, $from, $to]);
+            [$from, $to, $offset, $limit, $from, $to, $from, $to]);
 
         $companies = self::create_rows_from_mysqli_result($mysqliResult);
 
