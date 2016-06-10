@@ -488,25 +488,24 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         }
 
         $interval = $updatedAt->diff($now)->format('%y');
-
         switch ($interval) {
-            case ($interval >= 3):
+            case ($interval > 3):
                 $return = 4;
                 break;
-            case (($interval > 1) && ($interval <= 3)):
+            case ($interval == 3):
+//                echo "line 496". ' in '."companyinstance.php".PHP_EOL;
                 $return = 3;
                 break;
-            case (($interval > 1) && ($interval <= 2)):
+            case ($interval == 2):
+//                echo "line 500". ' in '."companyinstance.php".PHP_EOL;
                 $return = 2;
                 break;
             case (($interval <= 1)):
                 $return = 1;
                 break;
-            default:
-                $return = 0;
-                break;
         }
 
+//        echo $return.PHP_EOL;
         return $return;
     }
 
@@ -574,18 +573,40 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         return $best;
     }
 
-
     /**
+     * @return int
+     */
+    private function getBestSourceType()
+    {
+        $best = 8;
+        foreach ($this->sources as $typeId => $sourceId) {
+            if ($typeId < $best) {
+                $best = $typeId;
+            }
+        }
+
+        return $best;
+    }
+
+
+    /** I'm aware that I can generalize these count property fields
      *
      * @return int
      */
     private function countIdFields()
     {
-        $return = false;
-        // if any of the vals in the matching fields array are present in the properties,
-        // return true
+        $idPropCount = 0;
 
-        return $return;
+        foreach ($this->properties as $prop) {
+            foreach ($prop as $k => $v) {
+                if (in_array($k, $this->idFieldsDefinition)) {
+                    $idPropCount++;
+                }
+            }
+        }
+
+        return $idPropCount;
+
     }
 
 
@@ -595,11 +616,17 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
      */
     private function countEnhancedFields()
     {
-        $return = false;
-        // if any of the vals in the matching fields array are present in the properties,
-        // return true
+        $count = 0;
 
-        return $return;
+        foreach ($this->properties as $prop) {
+            foreach ($prop as $k => $v) {
+                if (in_array($k, $this->enhancedFieldsDefinition)) {
+                    $count++;
+                }
+            }
+        }
+
+        return $count;
     }
 
 
@@ -609,20 +636,17 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
      */
     private function countGroupingFields()
     {
-        $return = false;
-        // if any of the vals in the matching fields array are present in the properties,
-        // return true
+        $count = 0;
 
-        return $return;
-    }
+        foreach ($this->properties as $prop) {
+            foreach ($prop as $k => $v) {
+                if (in_array($k, $this->groupingFieldsDefinition)) {
+                    $count++;
+                }
+            }
+        }
 
-
-    /**
-     *
-     */
-    private function getStories()
-    {
-
+        return $count;
     }
 
 
@@ -670,82 +694,106 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
         $tier = 7;
 
+        // early return if there's no basic fields set
         $basicCount = $this->countBasicFields();
-        if (($basicCount === 0)) {
+        if (($basicCount == 0)) {
             return $tier;
         }
 
-
+        // fetch the basic tierinf metrics
+        $freshness        = $this->calcFreshnessRating();
         $extraFieldsCount = $this->countExtraFields();
-        $freshness = $this->calcFreshnessRating();
-        $this->sources = $this->getSources();
+        $sources          = $this->getSources();
+        $contactCount     = $this->contacts->get_num_rows();
+        $bestSourceType   = $this->getBestSourceType();
 
         // find the "best" source (meroveus or datahub)
         // is there more than one source?
-        if (count($this->sources) > 1) {
-            $bestSource = $this->getBestSource();
+        if (count($sources) > 1) {
+            $bestSourceId = $this->getBestSource();
         } else {
-            $bestSource = array_pop($this->sources);
+            $bestSourceId = array_pop($sources);
         }
 
+        // early returns to not run the solr query
+        // tier 5
+        if ($freshness == 3) {
+            return $tier = 5;
+        }
+
+        // tier 6
+        if ($freshness >= 4) {
+            return $tier = 6;
+        }
+
+
+
+
+        $storyCount = $this->countStories($bestSourceId);
+
         // tier one
-        if(
-            ($bestSource >= 2)
-            && ($basicCount >= 4)
-            && ($this->countStories($bestSource) > 0)
-            && ($extraFieldsCount > 0)
-            && ($freshness = 1)
-            && (!empty($this->contacts))
+        if (
+            ($freshness <= 1) // less than 1 year old
+            && ($basicCount > 3) // has all basic fields (by count more Precision in the future)
+            && ($extraFieldsCount > 0) // any of the extra fields
+            && ($contactCount > 0) // a contact
+            && ($bestSourceType <= 2 || ($storyCount > 0)) // either on a list or has a story in solr
         ) {
             $tier = 1;
         }
 
         // tier 2
 
-        if(
-            ($bestSource<=2)
-            && ($basicCount >= 4)
-            && ($this->countStories($bestSource) > 0)
+        if (
+            ($freshness <= 2)
+            && ($basicCount > 3)
             && ($extraFieldsCount > 0)
-            && (($freshness === 1) || ($freshness === 2))
-            && (!empty($this->contacts))
-        ){
+            && ($contactCount > 0)
+            && ($storyCount > 0)
+        ) {
             $tier = 2;
         }
 
         // tier 3
-        if(
-            ($bestSource<=2)
-            && ($basicCount > 0 )
-            && ($this->countStories($bestSource) > 0)
-            && ($extraFieldsCount > 0)
-            && (($freshness === 1) || ($freshness === 2))
-            && (!empty($this->contacts))
-        ){
-            $tier = 2;
+        if (
+            ($freshness <= 2)
+            && ($basicCount > 0)
+            && ($storyCount > 0)
+            && ($contactCount > 0)
+        ) {
+            $tier = 3;
         }
 
-        // tier 4
-        if(
-            ($bestSource<=2)
-            && ($basicCount > 0 )
-            && ($this->countStories($bestSource) > 0)
-            && ($extraFieldsCount >= 0)
-            && (($freshness === 1) || ($freshness === 2))
-            && (empty($this->contacts))
-        ){
+        // t4 last chances
+
+        if (
+            $tier <= 3
+            && ($contactCount === 0)
+        ) {
             $tier = 4;
         }
 
-        // tier 5
-        if($freshness === 3) {
-            $tier = 5;
+        // fresh leftovers with  basic fields intact  and a meroveusid means lists = 4
+        if (
+            $tier === 7
+            && $basicCount > 0
+            && ($bestSourceType <= 2 || ($storyCount > 0))
+        ) {
+            $tier = 4;
         }
 
-        // tier 6
-        if($freshness >= 4) {
-            $tier = 6;
-        }
+// why tier 7 debug
+//        if ($tier === 7) {
+//            echo(
+//                'freshness ' . $freshness . PHP_EOL
+//                .'bestSourceType ' . $this->getBestSourceType() . PHP_EOL
+//                . 'extraFields ' . $extraFieldsCount . PHP_EOL
+//                . 'basicFields ' . $basicCount . PHP_EOL
+//                . 'stories ' . $this->countStories($bestSource) . PHP_EOL
+//                . 'contacts ' . $this->contacts->get_num_rows() . PHP_EOL
+//                . '-----------------------------'.PHP_EOL
+//            );
+//        }
 
         return $tier;
 
