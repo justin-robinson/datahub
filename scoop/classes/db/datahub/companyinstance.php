@@ -276,10 +276,6 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
         // our cache key
         $zip                     = $this->get_property('zipCode');
-        $addr1                   = $this->get_property('address1');
-        $queryParams             = [$this->companyId, $this->name, $zip->value, $addr1->value];
-        $companyInstanceCacheKey = strtolower(implode('-', $queryParams));
-        $zip                     = $this->get_property('zipCode');
         $zip                     = $zip ? $zip->value : '';
         $addr1                   = $this->get_property('address1');
         $addr1                   = $addr1 ? $addr1->value : '';
@@ -422,22 +418,46 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     public function sort_properties()
     {
 
-        $properties = [];
+        // the array of sorted properties
+        $sortedProperties = [];
 
         // order the properties by source order
         ksort($this->properties);
 
-        foreach ($this->properties as $orderedPropertyGroup) {
+        // loop over property order
+        foreach ($this->properties as $order => $orderedPropertyGroup) {
+
+            // property name
             foreach ($orderedPropertyGroup as $propertyName) {
+
+                // property
                 foreach ($propertyName as $property) {
-                    if (!isset($properties[$property->name])) {
-                        $properties[$property->name] = $property->value;
+
+                    $property->order = $order;
+
+                    // add if property isn't set
+                    if (!isset($sortedProperties[$property->name])) {
+                        $sortedProperties[$property->name] = $property;
+                    } else {
+
+                        // new property should be ignored if of a higher order
+                        if ( $property->order > $sortedProperties[$property->name]->order ) {
+                            continue;
+                        }
+
+                        // add if property is newer than set one
+                        $newTime = new \DateTime($propertyName[$property->value]->updatedAt);
+                        $existingTime = new \DateTime($sortedProperties[$property->name]->updatedAt);
+
+                        if ( $newTime > $existingTime ) {
+                            $sortedProperties[$property->name] = $property;
+                        }
                     }
                 }
             }
         }
 
-        return $properties;
+        return $sortedProperties;
     }
 
     /**

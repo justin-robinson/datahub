@@ -6,6 +6,7 @@ use LRUCache\LRUCache;
 use Scoop\Database\Connection;
 use Scoop\Database\Rows;
 use Scoop\Database\Model\Generic;
+use Zend\Text\Table\Row;
 
 /**
  * Class Company
@@ -283,64 +284,49 @@ class Company extends \DBCore\Datahub\Company
             WHERE
               c.companyId = ?;", [$companyId]);
 
-        $prevCompanyInstanceId = null;
-        $company               = false;
-        $i                     = 0;
-
-        // organize the fields where we can lookup by $fields['tableName']['columnName']
-        // and get the index into the raw $rows array
-        $fields = [];
-        foreach ($mysqliResult->fetch_fields() as $fieldNumber => $field) {
-            if (empty($fields[$field->orgtable])) {
-                $fields[$field->orgtable] = [];
-            }
-            $fields[$field->orgtable][$field->orgname] = $fieldNumber;
-        }
-
-        while ($row = $mysqliResult->fetch_row()) {
-
-            // is this the entity row?
-            if ($i === 0) {
-                $company = new self();
-                foreach ($fields[Company::TABLE] as $columnName => $rowIndex) {
-                    $company->__set($columnName, $row[$rowIndex]);
-                }
-            }
-
-            // the company instance id of this row
-            $companyInstanceId = $row[$fields[CompanyInstance::TABLE][CompanyInstance::AUTO_INCREMENT_COLUMN]];
-
-            // is this row a new instance?
-            if (!isset($instance) || $companyInstanceId !== $prevCompanyInstanceId) {
-
-                // create the new instance model
-                $instance = new CompanyInstance();
-
-                // populate the model
-                foreach ($fields[CompanyInstance::TABLE] as $columnName => $rowIndex) {
-                    $instance->__set($columnName, $row[$rowIndex]);
-                }
-
-                // add the instance to the company record
-                $company->add_company_instance($instance);
-            }
-
-            // all rows are properties so just create, populate, and add the the instance
-            $property = new CompanyInstanceProperty();
-            foreach ($fields[CompanyInstanceProperty::TABLE] as $columnName => $rowIndex) {
-                $property->__set($columnName, $row[$rowIndex]);
-            }
-            $instance->add_property($property);
-
-            // need this for the next iteration
-            $prevCompanyInstanceId = $companyInstanceId;
-
-            ++$i;
-        }
+        $companies = self::create_rows_from_mysqli_result($mysqliResult);
 
         $mysqliResult->free();
 
-        return $company;
+        return $companies->first();
+    }
+
+    /**
+     * @param     $from
+     * @param     $to
+     * @param int $offset
+     *
+     * @return Rows
+     * @throws \Exception
+     */
+    public static function fetch_company_and_instances_modified_in_range($from, $to, $offset = 0) {
+
+        Generic::connect();
+        $mysqliResult = Generic::$connection->execute(
+            "SELECT
+              *
+            FROM
+              (
+                SELECT
+                    *
+                FROM
+                    datahub.company c
+                WHERE
+                    c.updatedAt BETWEEN ? and ?
+                LIMIT ?, 1000
+              ) c
+              JOIN datahub.companyInstance ci USING (companyId)
+              JOIN datahub.companyInstanceProperty cip USING (companyInstanceId)
+            WHERE
+              ci.updatedAt BETWEEN ? and ?
+              OR cip.updatedAt BETWEEN ? and ?;",
+            [$from, $to, $offset, $from, $to,$from, $to]);
+
+        $companies = self::create_rows_from_mysqli_result($mysqliResult);
+
+        $mysqliResult->free();
+
+        return $companies;
     }
 
     /**
@@ -462,6 +448,90 @@ class Company extends \DBCore\Datahub\Company
      */
     public function tierTwoValidate(CompanyInstance $instance){
 
+    }
+
+    /**
+     * @param \mysqli_result $mysqliResult
+     *
+     * @return Rows
+     */
+    private static function create_rows_from_mysqli_result ( \mysqli_result $mysqliResult ) {
+        $rows = new Rows();
+        $prevCompanyId         = null;
+        $prevCompanyInstanceId = null;
+        $i                     = 0;
+
+        // organize the fields where we can lookup by $fields['tableName']['columnName']
+        // and get the index into the raw $rows array
+        $fields = [];
+        foreach ($mysqliResult->fetch_fields() as $fieldNumber => $field) {
+            if (empty($fields[$field->orgtable])) {
+                $fields[$field->orgtable] = [];
+            }
+            $fields[$field->orgtable][$field->orgname] = $fieldNumber;
+        }
+
+        while ($row = $mysqliResult->fetch_row()) {
+
+            // the company instance id of this row
+            $companyId = $row[$fields[Company::TABLE][Company::AUTO_INCREMENT_COLUMN]];
+
+            // is this row a new company?
+            if (!isset($company) || $companyId !== $prevCompanyId) {
+
+                // add previous company to the rows collection
+                if ( isset($company) ){
+                    $rows->add_row($company);
+                }
+
+                // create a new company model
+                $company = new self();
+                foreach ($fields[Company::TABLE] as $columnName => $rowIndex) {
+                    $company->__set($columnName, $row[$rowIndex]);
+                }
+
+                // this will trigger a new company instance to be made ( just to be safe )
+                unset($instance);
+            }
+
+            // the company instance id of this row
+            $companyInstanceId = $row[$fields[CompanyInstance::TABLE][CompanyInstance::AUTO_INCREMENT_COLUMN]];
+
+            // is this row a new instance?
+            if (!isset($instance) || $companyInstanceId !== $prevCompanyInstanceId) {
+
+                // create the new instance model
+                $instance = new CompanyInstance();
+
+                // populate the model
+                foreach ($fields[CompanyInstance::TABLE] as $columnName => $rowIndex) {
+                    $instance->__set($columnName, $row[$rowIndex]);
+                }
+
+                // add the instance to the company record
+                $company->add_company_instance($instance);
+            }
+
+            // all rows are properties so just create, populate, and add the the instance
+            $property = new CompanyInstanceProperty();
+            foreach ($fields[CompanyInstanceProperty::TABLE] as $columnName => $rowIndex) {
+                $property->__set($columnName, $row[$rowIndex]);
+            }
+            $instance->add_property($property);
+
+            // need this for the next iteration
+            $prevCompanyInstanceId = $companyInstanceId;
+            $prevCompanyId = $companyId;
+
+            ++$i;
+        }
+
+        // add last company to the rows collection
+        if ( isset($company) ) {
+            $rows->add_row($company);
+        }
+
+        return $rows;
     }
 }
 
