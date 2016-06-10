@@ -9,7 +9,6 @@ namespace Api\Controller;
 
 use Api\Response\CompanyResponse;
 use DB\Datahub\Company;
-use Zend\Json\Json;
 use Zend\View\Model\JsonModel;
 
 /**
@@ -27,7 +26,36 @@ class CompanyController extends AbstractRestfulController
     public function get($companyId)
     {
         $company = Company::fetch_company_and_instances($companyId);
-        return new JsonModel($company->to_array());
+
+        if ( $company ) {
+            // sorted list of properties
+            $sortedProperties = [];
+
+            // get and sort all properties and contacts
+            foreach ( $company->get_company_instances() as $instance ) {
+
+                // get
+                $instance->fetch_properties();
+
+                // sort
+                $sortedProperties[] = $instance->sort_properties();
+
+                // contacts
+                $instance->fetch_contacts();
+            }
+
+            // convert to array
+            $company = $company->to_array();
+
+            // replace instance properties with sorted ones
+            reset($sortedProperties);
+            foreach ( $company['instances'] as &$instance ) {
+                $instance['properties'] = current($sortedProperties);
+                next($sortedProperties);
+            }
+        }
+
+        return new JsonModel($company);
     }
 
     /**
@@ -67,7 +95,30 @@ class CompanyController extends AbstractRestfulController
      */
     public function getList()
     {
-        return new JsonModel(['getList' => 'not implemented']);
+        $from = isset($_GET['from']) ? $_GET['from'] : '1970-01-01 00:00:00';
+        $to = isset($_GET['to']) ? $_GET['to'] : date('Y-m-d H:i:s');
+        $offset = isset($_GET['offset']) ? $_GET['offset'] : 0;
+        $companies = Company::fetch_company_and_instances_modified_in_range($from, $to, $offset);
+
+        $sortedProperties = [];
+        foreach ( $companies as $company ) {
+            foreach ( $company->get_company_instances() as $instance ) {
+                $sortedProperties[] = $instance->sort_properties();
+            }
+        }
+
+        $companies = $companies->to_array();
+
+        // replace instance properties with sorted ones
+        reset($sortedProperties);
+        foreach ( $companies as &$company ) {
+            foreach ( $company['instances'] as &$instance ) {
+                $instance['properties'] = current( $sortedProperties );
+                next( $sortedProperties );
+            }
+        }
+
+        return new JsonModel($companies);
     }
 
     /**
@@ -88,17 +139,29 @@ class CompanyController extends AbstractRestfulController
 
         if ( $company ) {
 
+            // the company instances
             $company->fetch_company_instances();
 
+            // sorted list of properties
             $sortedProperties = [];
+
+            // get and sort all properties and contacts
             foreach ( $company->get_company_instances() as $instance ) {
+
+                // get
                 $instance->fetch_properties();
+
+                // sort
                 $sortedProperties[] = $instance->sort_properties();
+
+                // contacts
                 $instance->fetch_contacts();
             }
 
+            // convert to array
             $company = $company->to_array();
 
+            // replace instance properties with sorted ones
             reset($sortedProperties);
             foreach ( $company['instances'] as &$instance ) {
                 $instance['properties'] = current($sortedProperties);
