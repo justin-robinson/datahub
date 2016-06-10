@@ -159,6 +159,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         }
 
         $this->contacts = Contact::fetch_where('companyInstanceId = ?', [$this->companyInstanceId]);
+
     }
 
     /**
@@ -270,6 +271,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
     /**
      * @param bool $setTimestamps
+     *
      * @return bool
      */
     public function save($setTimestamps = true)
@@ -442,15 +444,15 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
                     } else {
 
                         // new property should be ignored if of a higher order
-                        if ( $property->order > $sortedProperties[$property->name]->order ) {
+                        if ($property->order > $sortedProperties[$property->name]->order) {
                             continue;
                         }
 
                         // add if property is newer than set one
-                        $newTime = new \DateTime($propertyName[$property->value]->updatedAt);
+                        $newTime      = new \DateTime($propertyName[$property->value]->updatedAt);
                         $existingTime = new \DateTime($sortedProperties[$property->name]->updatedAt);
 
-                        if ( $newTime > $existingTime ) {
+                        if ($newTime > $existingTime) {
                             $sortedProperties[$property->name] = $property;
                         }
                     }
@@ -459,7 +461,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         }
 
         // convert all sorted properties to raw values
-        foreach ( $sortedProperties as &$property ) {
+        foreach ($sortedProperties as &$property) {
             $property = $property->value;
         }
 
@@ -513,24 +515,24 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
             }
         }
 
-        $interval = $updatedAt->diff($now)->format('%y');
+        $days = $updatedAt->diff($now)->days;
+//        echo '__________________________' . PHP_EOL;
         // determine ranges
-        switch ($interval) {
-            case ($interval > 3):
-                $return = 4;
+        switch ($days) {
+            case ($days > (3 * 365)):
+                return 4;
                 break;
-            case ($interval == 3):
-                $return = 3;
+            case (($days > (2 * 365))):
+                return 3;
                 break;
-            case ($interval == 2):
-                $return = 2;
+            case (($days > 365)):
+                return 2;
                 break;
-            case (($interval <= 1)):
-                $return = 1;
+            default:
+                return 1;
                 break;
         }
 
-        return $return;
     }
 
     /**
@@ -610,7 +612,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
         return $best;
     }
-    
+
 
     /**
      * I'm aware that I can generalize these count property fields
@@ -727,20 +729,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         }
 
         // fetch the basic tierinf metrics
-        $freshness        = $this->calcFreshnessRating();
-        $extraFieldsCount = $this->countExtraFields();
-        $sources          = $this->getSources();
-        $contactCount     = $this->contacts->get_num_rows();
-        $bestSourceType   = $this->getBestSourceType();
-
-        // find the "best" source (meroveus or datahub)
-        // is there more than one source?
-        if (count($sources) > 1) {
-            $bestSourceId = $this->getBestSource();
-        } else {
-            $bestSourceId = array_pop($sources);
-        }
-
+        $freshness = $this->calcFreshnessRating();
         // early returns to not run the solr query
         // tier 5
         if ($freshness == 3) {
@@ -752,14 +741,25 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
             return $tier = 6;
         }
 
+        $extraFieldsCount = $this->countExtraFields();
+        $sources          = $this->getSources();
+        $contactCount     = empty($this->contacts) ? 0 : $this->contacts->get_num_rows();
+//        $contactCount     = $this->contacts->get_num_rows();
+        $bestSourceType = $this->getBestSourceType();
 
+        // find the "best" source (meroveus or datahub)
+        // is there more than one source?
+        if (count($sources) > 1) {
+            $bestSourceId = $this->getBestSource();
+        } else {
+            $bestSourceId = array_pop($sources);
+        }
 
 
         $storyCount = $this->countStories($bestSourceId);
 
         // tier one
-        if (
-            ($freshness <= 1) // less than 1 year old
+        if (($freshness <= 1) // less than 1 year old
             && ($basicCount > 3) // has all basic fields (by count more Precision in the future)
             && ($extraFieldsCount > 0) // any of the extra fields
             && ($contactCount > 0) // a contact
@@ -769,9 +769,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         }
 
         // tier 2
-
-        if (
-            ($freshness <= 2)
+        if (($freshness <= 2)
             && ($basicCount > 3)
             && ($extraFieldsCount > 0)
             && ($contactCount > 0)
@@ -781,8 +779,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         }
 
         // tier 3
-        if (
-            ($freshness <= 2)
+        if (($freshness <= 2)
             && ($basicCount > 0)
             && ($storyCount > 0)
             && ($contactCount > 0)
@@ -792,16 +789,14 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
         // t4 last chances
 
-        if (
-            $tier <= 3
+        if ($tier <= 3
             && ($contactCount === 0)
         ) {
             $tier = 4;
         }
 
         // fresh leftovers with  basic fields intact  and a meroveusid means lists = 4
-        if (
-            $tier === 7
+        if ($tier === 7
             && $basicCount > 0
             && ($bestSourceType <= 2 || ($storyCount > 0))
         ) {
