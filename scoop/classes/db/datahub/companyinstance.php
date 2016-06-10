@@ -270,6 +270,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
     /**
      * @param bool $setTimestamps
+     * @return bool
      */
     public function save($setTimestamps = true)
     {
@@ -508,16 +509,15 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         }
 
         $interval = $updatedAt->diff($now)->format('%y');
+        // determine ranges
         switch ($interval) {
             case ($interval > 3):
                 $return = 4;
                 break;
             case ($interval == 3):
-//                echo "line 496". ' in '."companyinstance.php".PHP_EOL;
                 $return = 3;
                 break;
             case ($interval == 2):
-//                echo "line 500". ' in '."companyinstance.php".PHP_EOL;
                 $return = 2;
                 break;
             case (($interval <= 1)):
@@ -525,7 +525,6 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
                 break;
         }
 
-//        echo $return.PHP_EOL;
         return $return;
     }
 
@@ -554,7 +553,6 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
 
     /**
-     * @param $instance
      *
      * @return integer
      */
@@ -607,9 +605,12 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
         return $best;
     }
+    
 
-
-    /** I'm aware that I can generalize these count property fields
+    /**
+     * I'm aware that I can generalize these count property fields
+     */
+    /**
      *
      * @return int
      */
