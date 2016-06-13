@@ -8,11 +8,19 @@
 namespace Console\Controller;
 
 use Console\CsvIterator;
+use Console\Importer\Refinery;
 use Console\Record\Formatter\Factory;
+use Console\Record\Formatter\Formatters\Meroveus;
+use DB\Datahub\Company;
+use DB\Datahub\CompanyInstance;
+use DB\Datahub\CompanyInstanceProperty;
+use DB\Datahub\SourceType;
 use Elastica\Client as ElasticaClient;
 use Elastica\Query as ElasticaQuery;
 use Elastica\QueryBuilder as QueryBuilder;
 use Elastica\Search as ElasticaSearch;
+use Monolog\Handler\PHPConsoleHandler;
+use Scoop\Database\Literal;
 use Services\Meroveus\Client as MeroveusClient;
 use Services\Meroveus\CompanyService;
 use Zend\Mvc\MvcEvent;
@@ -107,61 +115,6 @@ class MeroveusController extends AbstractActionController
      */
     private $elasticQueryBuilder;
 
-    /** @var string */
-    private $contactSql = 'INSERT INTO
-            contact (
-              hub_id, meroveus_id, relevate_id, is_duplicate, is_current_employee, first_name, middle_initial, last_name,
-              suffix, honorific, job_title, job_position_id, email, phone, address1, address2, city, state, postal_code,
-              created_at, updated_at, deleted_at
-            )
-            VALUES (
-              :hub_id, :meroveus_id, :relevate_id, :is_duplicate, :is_current_employee, :first_name, :middle_initial,
-              :last_name, :suffix, :honorific, :job_title, :job_position_id, :email, :phone, :address1, :address2, :city,
-              :state, :postal_code, :created_at, :updated_at, :deleted_at
-            )';
-
-    /** @var string */
-    private $createCompanySql = '
-            INSERT INTO
-                 company(
-                    refinery_id, meroveus_id, generate_code, record_source, company_name, public_ticker, ticker_exchange,
-                    source_modified_at, address1, address2, city, state, postal_code, country, latitude, longitude,
-                    phone, website, is_active, sic_code, employee_count, created_at, updated_at, deleted_at,
-                    universal_revenue_volume_static, universal_employee_count_static, universal_employee_local_static,
-                    universal_established_year_static, universal_profile_blob_static
-                    )
-                VALUES (
-                    :refinery_id, :meroveus_id, :generate_code, :record_source, :company_name, :public_ticker, :ticker_exchange,
-                    :source_modified_at, :address1, :address2, :city, :state, :postal_code, :country, :latitude, :longitude,
-                    :phone, :website, :is_active, :sic_code, :employee_count, :created_at, :updated_at, :deleted_at,
-                    :universal_revenue_volume_static, :universal_employee_count_static, :universal_employee_local_static,
-                    :universal_established_year_static, :universal_profile_blob_static
-                )
-            ';
-
-    /** @var string */
-    private $updateCompanySql = '
-      UPDATE
-       company
-      SET
-        meroveus_id                       = :meroveus_id,
-        universal_revenue_volume_static   = :universal_revenue_volume_static,
-        universal_employee_count_static   = :universal_employee_count_static,
-        universal_employee_local_static   = :universal_employee_local_static,
-        universal_established_year_static = :universal_established_year_static,
-        universal_profile_blob_static     = :universal_profile_blob_static
-    WHERE
-      refinery_id = :refinery_id';
-
-    /** @var \PDOStatement */
-    private $addContactPdo = null;
-
-    /** @var \PDOStatement */
-    private $addCompanyPdo = null;
-
-    /** @var \PDOStatement */
-    private $updateCompanyPdo = null;
-
     /**
      * @var array
      */
@@ -186,11 +139,11 @@ class MeroveusController extends AbstractActionController
             WHERE
               meroveus_id IS NULL
             LIMIT :offset, :limit',
-        'insertMeroveusIndustry' => '
+        'insertMeroveusIndustry'           => '
             INSERT INTO
               `datahub`.`meroveus_industry` (external_id, industry)
             VALUES (:external_id, :industry)',
-        'insertCompanyMeroveusIndustry' => '
+        'insertCompanyMeroveusIndustry'    => '
             INSERT INTO
               `datahub`.`company_meroveus_industry_map`
             (hub_id, meroveus_industry_id)
@@ -207,7 +160,7 @@ class MeroveusController extends AbstractActionController
     public function init(MvcEvent $e)
     {
         parent::init($e);
-
+        $this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         $this->companyService = new CompanyService($this->meroveusClient);
         //@todo make this environment aware
         // set up elastic
@@ -217,9 +170,6 @@ class MeroveusController extends AbstractActionController
         $this->elasticQueryBuilder = new QueryBuilder();
         $this->contactService      = $this->getServiceLocator()->get('Services\Meroveus\ContactService');
         // prepare pdo outside the loop for memory purposes
-        $this->addContactPdo    = $this->db->prepare($this->contactSql);
-        $this->addCompanyPdo    = $this->db->prepare($this->createCompanySql);
-        $this->updateCompanyPdo = $this->db->prepare($this->updateCompanySql);
 
     }
 
@@ -231,7 +181,160 @@ class MeroveusController extends AbstractActionController
      */
     public function indexAction()
     {
-        echo $this->contactService->getJobPositionId("Managing Partner, Strategy", $this->jobIdDictionary) . PHP_EOL;
+        $randomIds = [
+            227813,
+            156800,
+            31281,
+            260888,
+            58231,
+            277129,
+            234856,
+            72402,
+            251682,
+            223682,
+            144910,
+            278539,
+            67287,
+            197643,
+            9999,
+            159631,
+            137704,
+            54663,
+            289924,
+            146243,
+            274768,
+            41519,
+            52635,
+            295961,
+            290000,
+            16400,
+            200577,
+            146277,
+            166248,
+            27711,
+            147375,
+            151556,
+            299597,
+            26373,
+            168252,
+            296258,
+            159458,
+            92321,
+            259509,
+            298516,
+            242819,
+            35801,
+            288491,
+            290149,
+            202717,
+            79819,
+            98280,
+            223861,
+            298285,
+            130102,
+            131538,
+            6791,
+            273485,
+            231883,
+            16416,
+            50415,
+            172327,
+            91397,
+            103395,
+            143284,
+            84033,
+            142530,
+            119218,
+            89676,
+            262037,
+            156898,
+            242875,
+            171875,
+            1068,
+            273012,
+            261589,
+            226376,
+            186576,
+            296501,
+            161597,
+            35401,
+            231911,
+            119641,
+            41235,
+            105299,
+            187183,
+            104793,
+            25709,
+            95735,
+            695,
+            189359,
+            25253,
+            172286,
+            6023,
+            242892,
+            305692,
+            181819,
+            196560,
+            110265,
+            144656,
+            88260,
+            62032,
+            213706,
+            147804,
+            235661,
+        ];
+
+
+        echo '
+        __________________ _______  _______ _________ _        _______ 
+        \__   __/\__   __/(  ____ \(  ____ )\__   __/( (    /|(  ____ \
+           ) (      ) (   | (    \/| (    )|   ) (   |  \  ( || (    \/
+           | |      | |   | (__    | (____)|   | |   |   \ | || |      
+           | |      | |   |  __)   |     __)   | |   | (\ \) || | ____ 
+           | |      | |   | (      | (\ (      | |   | | \   || | \_  )
+           | |   ___) (___| (____/\| ) \ \_____) (___| )  \  || (___) |
+           )_(   \_______/(_______/|/   \__/\_______/|/    )_)(_______)
+        ';
+
+
+        $start = date('h:i:s A');
+        echo "started at " . $start . PHP_EOL;
+        $count = 1;
+
+        $counts = [
+            1 => 0,
+            2 => 0,
+            3 => 0,
+            4 => 0,
+            5 => 0,
+            6 => 0,
+            7 => 0,
+        ];
+
+        $foundCount = 0;
+
+        foreach ($randomIds as $id) {
+            $company = Company::fetch_company_and_instances($id);
+
+            if ($company) {
+
+                $instances = $company->get_company_instances();
+                $tier      = $instances->get_rows()[0]->instanceTierThyself(1);
+                $counts[$tier]++;
+                $foundCount++;
+            } else {
+                echo $id . PHP_EOL;
+            }
+
+            $count++;
+
+        }
+        echo $count - 1 . ' records searched' . PHP_EOL;
+        echo $foundCount . ' records found' . PHP_EOL;
+        echo 'totals:' . PHP_EOL;
+//        print_r($counts);
+        $end = date('h:i:s A');
+        echo "ended at " . $end . PHP_EOL;
     }
 
 
@@ -243,7 +346,7 @@ class MeroveusController extends AbstractActionController
      */
     public function matchAction($sanity = false, $debug = false)
     {
-
+//        $debug = true;
         echo '
              ███▄ ▄███▓    ▄▄▄         ▄▄▄█████▓    ▄████▄      ██░ ██     ██▓    ███▄    █      ▄████
             ▓██▒▀█▀ ██▒   ▒████▄       ▓  ██▒ ▓▒   ▒██▀ ▀█     ▓██░ ██▒   ▓██▒    ██ ▀█   █     ██▒ ▀█▒
@@ -269,9 +372,7 @@ class MeroveusController extends AbstractActionController
 
         $lastMemUsageMessageLength = 0;
 
-        $selectCompany = $this->sqlStatementsArray['selectOneCompanyByMeroveusId'];
-
-        $formatter = Factory::factory('Meroveus');
+        $formatter = Meroveus::get_instance();
 
         // setup our meroveus params
         $meroveusParams = [
@@ -307,7 +408,6 @@ class MeroveusController extends AbstractActionController
             $meroveusParams['ENV']      = $env;
             $meroveusParams['STARTROW'] = 1; // reset our pagination offset
             $marketMatched              = $marketInserted = 0; // reset counts for this market
-            $insertCompanyMeroveusIndustry = $this->sqlStatementsArray['insertCompanyMeroveusIndustry'];
 
             // paginate over companies
             while ($marketCompanyList = $this->companyService->fetchByMarket($meroveusParams)) {
@@ -318,55 +418,37 @@ class MeroveusController extends AbstractActionController
 
                 foreach ($marketCompanyList as $index => $target) {
 
-                    $match = $this->elasticMatch($target);
-                    $hubId = null;
+                    $company           = $formatter->format($target);
+                    $match             = $this->elasticMatch($target);
+                    $companyInstanceId = null;
 
                     if ($match) {
 
                         if (!$debug) {
-                            // updates the existing record
-                            $refineryId = $match->getSource()['InternalId'];
-                            $this->processMatch($refineryId, $target, $this->updateCompanyPdo);
 
-                            try {
-                                $selectCompany->execute([$target['meroveusId']]);
-                                $hubId = ($selectCompany->rowCount() > 0) ? $selectCompany->fetch(\PDO::FETCH_ASSOC)['hub_id'] : false;
+                            $companyInstanceId = $this->processMatch($match->getSource()['InternalId'], $target);
 
-                                $selectCompany->closeCursor();
-                                if ($sanity) {
-                                    $this->writeSanityFiles($market, $target, $match);
-                                }
-                                $marketMatched++;
-                                $totalMatched++;
-                            } catch (\PDOException $e) {
-                                die('PDO ERROR on Select Company ' . $e->getMessage());
+                            if ($sanity) {
+                                $this->writeSanityFiles($market, $target, $match);
                             }
+
+                            $marketMatched++;
+                            $totalMatched++;
                         }
 
                     } else { // create a new record
-                        $queryParams = $formatter->format($target);
+
                         if (!$debug) {
-                            try {
-                                $this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-                                $this->addCompanyPdo->execute($queryParams);
-                                // good ole pdo has the hubId for us
-                                $hubId = $this->db->lastInsertId();
-                                // write some debug files if you want
-                                if ($sanity) {
-                                    $this->writeSanityFiles($market, $target, false);
-                                }
-
-                                $marketInserted++;
-                                $totalInserted++;
-
-                            } catch (\PDOException $e) {
-                                echo 'PDO ERROR on company insert: ' . $e->getMessage() . PHP_EOL;
-                            }
+                            $company->save();
+                            $companyInstanceId = $company->get_company_instances()->first()->companyInstanceId;
                         }
+
+                        $marketInserted++;
+                        $totalInserted++;
                     }
 
                     // does this company have an industry?
-                    if ( isset($target['firm-industry_static']) ) {
+                    /*if ( isset($target['firm-industry_static']) ) {
 
                         // get all meroveus industries for this company by ID
                         $selectMeroveusIndustry = $this->db->prepare("
@@ -394,22 +476,22 @@ class MeroveusController extends AbstractActionController
                         }
 
                         $selectMeroveusIndustry->closeCursor();
-                    }
+                    }*/
 
                     // process contacts
-                    if ($hubId || $debug) {
-                        $this->processContacts($hubId, $target['execs'], $debug);
-                    } else {
-//                        echo "line 435" . ' in ' . "MeroveusController.php" . PHP_EOL;
-//                        die(var_dump($target));
+                    if ($companyInstanceId || $debug) {
+                        $this->processContacts($companyInstanceId, $target['execs'], $debug);
                     }
-                    // track memory and total count
-                    echo "\033[{$lastMemUsageMessageLength}D";
-                    $total                     = $totalInserted + $totalMatched;
-                    $currentLoopInsertionCount = $index + 1;
-                    $memory                    = $total . ':' . $currentLoopInsertionCount . ':' . $this->convert_memory_usage(memory_get_usage(true));
-                    $lastMemUsageMessageLength = strlen($memory);
-                    echo $memory;
+
+                    if ($debug) {
+                        // track memory and total count
+                        echo "\033[{$lastMemUsageMessageLength}D";
+                        $total                     = $totalInserted + $totalMatched;
+                        $currentLoopInsertionCount = $index + 1;
+                        $memory                    = $total . ':' . $currentLoopInsertionCount . ':' . $this->convert_memory_usage(memory_get_usage(true));
+                        $lastMemUsageMessageLength = strlen($memory);
+                        echo $memory;
+                    }
                 }
 
                 // get next chunk of rows
@@ -440,23 +522,28 @@ class MeroveusController extends AbstractActionController
     {
 
         foreach ($contacts as $contact) {
-            // attach the company hub id to the contact, format it and add it
-            $contact['hub_id'] = $companyHubId;
-            $formattedContact  = $this->contactService->formatMeroveusContact($contact, $this->jobIdDictionary);
+            if (!empty($contact)) {
+                // attach the company hub id to the contact, format it and add it
+                $contact['hub_id'] = $companyHubId;
+                $formattedContact  = $this->contactService->formatMeroveusContact($contact, $this->jobIdDictionary);
+                /** @var \DB\Datahub\Contact $formattedContact */
 
-            if (!$debug) {
-                if ($formattedContact) {
-                    try {
-                        $this->addContactPdo->execute($formattedContact);
-                    } catch (\PDOException $e) {
-                        echo "PDO ERROR: " . $e->getMessage() . PHP_EOL;
-                    }
-                    if ($formattedContact['job_position_id'] === 1001 && $formattedContact['job_title']) {
-                        $unrankedJobs[$formattedContact['job_title']] = 1001;
+
+                if (!$debug) {
+                    if (!empty($formattedContact)) {
+                        $formattedContact->companyInstanceId = $companyHubId;
+                        $formattedContact->save();
+//                    try {
+//                        $this->addContactPdo->execute($formattedContact);
+//                    } catch (\PDOException $e) {
+//                        echo "PDO ERROR: " . $e->getMessage() . PHP_EOL;
+//                    }
+//                    if ($formattedContact['job_position_id'] === 1001 && $formattedContact['job_title']) {
+//                        $unrankedJobs[$formattedContact['job_title']] = 1001;
+//                    }
                     }
                 }
             }
-
         }
     }
 
@@ -553,89 +640,87 @@ class MeroveusController extends AbstractActionController
     /**
      * Updates meroveus_industry table with payload from meroveus
      */
-    public function updateIndustriesAction() {
+    public function updateIndustriesAction()
+    {
 
         $meroveusParams = [
             "KEYWORDS" => "",
-            "MODE" => "LABELSEARCH",
-            "LABELS" => [
+            "MODE"     => "LABELSEARCH",
+            "LABELS"   => [
                 [
-                    "NAME" => "",
+                    "NAME"      => "",
                     "DATACLASS" => [
-                        "KEY" => "industry"
-                    ]
-                ]
-            ]
+                        "KEY" => "industry",
+                    ],
+                ],
+            ],
         ];
 
         // @todo handle deletions
         $industries = $this->companyService->queryMeroveusRoot($meroveusParams);
 
-        foreach ( $industries as $industry ) {
-            $this->sqlStatementsArray['insertMeroveusIndustry']->execute(
-                [
-                    ':external_id' => $industry['LABELID'],
-                    ':industry' => trim($industry['NAME'], 'Â ')
-                ]
-            );
+        foreach ($industries as $industry) {
+            $this->sqlStatementsArray['insertMeroveusIndustry']->execute([
+                ':external_id' => $industry['LABELID'],
+                ':industry'    => trim($industry['NAME'], 'Â '),
+            ]);
 
         }
     }
 
-    public function sicToMerovuesAction () {
+    public function sicToMerovuesAction()
+    {
 
         // https://docs.google.com/spreadsheets/d/1FbPmppl5ehF0Kbwu6UXcJAOhmYSmIMIiXiD2AXtYklY/edit#gid=939757750
         // just save link as csv
 
         $filePath = $this->getRequest()->getParam('file');
 
-        if ( !$filePath ) {
-            die ( 'run with arg --file /path/to/file ');
+        if (!$filePath) {
+            die ('run with arg --file /path/to/file ');
         }
 
         $filePath = realpath($filePath);
-        if ( !$filePath ) {
-            die ( "--file does not exist: " . $this->getRequest()->getParam('file') );
+        if (!$filePath) {
+            die ("--file does not exist: " . $this->getRequest()->getParam('file'));
         }
 
         $file = new CsvIterator($filePath);
         $file->setHasHeaderRow(true);
 
-        $sql = $this->db->prepare(
-            "INSERT INTO
+        $sql = $this->db->prepare("INSERT INTO
               `datahub`.`sic_code_meroveus_industry_map` (`sic`, `meroveus_industry_id`)
-            select
+            SELECT
                 s.sic,
                 m.meroveus_industry_id
-            from
+            FROM
                 `datahub`.`sic_code` s
-                left join `datahub`.`meroveus_industry` m ON m.industry = ?
-            where
+                LEFT JOIN `datahub`.`meroveus_industry` m ON m.industry = ?
+            WHERE
                 s.sic LIKE ?
                 AND m.meroveus_industry_id IS NOT NULL
 
             UNION
 
-            select
+            SELECT
                 c.sic_code,
                 m.meroveus_industry_id
-            from
+            FROM
                 `datahub`.`company` c
-                left join `datahub`.`meroveus_industry` m ON m.industry = ?
+                LEFT JOIN `datahub`.`meroveus_industry` m ON m.industry = ?
             WHERE
                 c.sic_code LIKE ?
                 AND m.meroveus_industry_id IS NOT NULL");
 
-        foreach ( $file as $line ) {
+        foreach ($file as $line) {
             $line = $file->mergeWithHeaderRow($line);
 
-            $sql->execute(
-                [
-                    $line['DataHub Industry'],
-                    $line['SIC'] . '%',
-                    $line['DataHub Industry'],
-                    $line['SIC'] . '%',
-                ]);
+            $sql->execute([
+                $line['DataHub Industry'],
+                $line['SIC'] . '%',
+                $line['DataHub Industry'],
+                $line['SIC'] . '%',
+            ]);
         }
 
     }
@@ -643,19 +728,21 @@ class MeroveusController extends AbstractActionController
     /**
      * Map third party sic codes to a meroveus_industry_id and link to a company via a provided
      * hub_id
+     *
      * @throws \Exception
      */
-    public function mapThirdPartySicAction () {
+    public function mapThirdPartySicAction()
+    {
 
         $filePath = $this->getRequest()->getParam('file');
 
-        if ( !$filePath ) {
-            die ( 'run with arg --file /path/to/file ');
+        if (!$filePath) {
+            die ('run with arg --file /path/to/file ');
         }
 
         $filePath = realpath($filePath);
-        if ( !$filePath ) {
-            die ( "--file does not exist: " . $this->getRequest()->getParam('file') );
+        if (!$filePath) {
+            die ("--file does not exist: " . $this->getRequest()->getParam('file'));
         }
 
         // load csv file
@@ -664,8 +751,7 @@ class MeroveusController extends AbstractActionController
 
         // get all sic_codes that match the given sic code regex and insert provided meroveus_id and mapped
         // meroveus_industry_ids into company_meroveus_industry_third_party_map
-        $sql = $this->db->prepare(
-            'INSERT INTO
+        $sql = $this->db->prepare('INSERT INTO
                 `datahub`.`company_meroveus_industry_third_party_map` (`meroveus_industry_id`, `hub_id`)
             SELECT
                 DISTINCT(m.meroveus_industry_id),
@@ -678,44 +764,43 @@ class MeroveusController extends AbstractActionController
                 AND m.meroveus_industry_id IS NOT NULL');
 
         // loop over each line
-        foreach ( $file as $line ) {
+        foreach ($file as $line) {
 
             $line = $file->mergeWithHeaderRow($line);
 
             // no hub_id is no good
-            if ( empty($line['hub_id']) ) {
+            if (empty($line['hub_id'])) {
                 continue;
             }
 
             // build all sic codes into regex string '^\d\d.*'
             $sicCodes = [];
-            if ( !empty($line['PrimarySIC']) ) {
-                $sicCodes[] = '^'. substr($line['PrimarySIC'], 0, 2) . '.*';
+            if (!empty($line['PrimarySIC'])) {
+                $sicCodes[] = '^' . substr($line['PrimarySIC'], 0, 2) . '.*';
             }
-            if ( !empty($line['SICSecondary1']) ) {
-                $sicCodes[] = '^'. substr($line['SICSecondary1'], 0, 2) . '.*';
+            if (!empty($line['SICSecondary1'])) {
+                $sicCodes[] = '^' . substr($line['SICSecondary1'], 0, 2) . '.*';
             }
-            if ( !empty($line['SICSecondary2']) ) {
-                $sicCodes[] = '^'. substr($line['SICSecondary2'], 0, 2) . '.*';
+            if (!empty($line['SICSecondary2'])) {
+                $sicCodes[] = '^' . substr($line['SICSecondary2'], 0, 2) . '.*';
             }
-            if ( !empty($line['SICSec3']) ) {
-                $sicCodes[] = '^'. substr($line['SICSec3'], 0, 2) . '.*';
+            if (!empty($line['SICSec3'])) {
+                $sicCodes[] = '^' . substr($line['SICSec3'], 0, 2) . '.*';
             }
-            if ( !empty($line['SICSec4']) ) {
-                $sicCodes[] = '^'. substr($line['SICSec4'], 0, 2) . '.*';
+            if (!empty($line['SICSec4'])) {
+                $sicCodes[] = '^' . substr($line['SICSec4'], 0, 2) . '.*';
             }
 
             // need at least one sic code
-            if ( empty($sicCodes) ) {
+            if (empty($sicCodes)) {
                 continue;
             }
 
             // link matched meroveus industries to a company
-            $sql->execute(
-                [
-                    $line['hub_id'],
-                    implode('|', $sicCodes),
-                ]);
+            $sql->execute([
+                $line['hub_id'],
+                implode('|', $sicCodes),
+            ]);
         }
 
 
@@ -744,8 +829,8 @@ class MeroveusController extends AbstractActionController
         $queryFields = [
             'Name'       => isset($target['firm-name_static']) ? $target['firm-name_static'] : false,
             'State'      => isset($target['street-state_static']) ? $target['street-state_static'] : false,
-            'City'       => isset($target['street-city_static']) ? $target['street-city_static'] : false,
             'Addr1'      => isset($target['street-address_static']) ? $target['street-address_static'] : false,
+            'City'       => isset($target['street-city_static']) ? $target['street-city_static'] : false,
             'PostalCode' => isset($target['street-zip_static']) ? $target['street-zip_static'] : false,
         ];
 
@@ -755,39 +840,13 @@ class MeroveusController extends AbstractActionController
                 return false;
             }
         }
-//{
-//    "query": {
-//        "bool": {
-//            "should": [
-//                {"match": {"Name.raw": "White Construction Company"}}
-//            ],
-//            "must":   [
-//                {"match": {"Name": "White Construction Company"}},
-//                {"match": {"Addr1": "613 Crescent Circle Ste. 100"}},
-//                {"match": {"City": "Ridgeland"}},
-//                {"match": {"State": "MS"}},
-//                {"match": {"PostalCode": "39157"}}
-//            ]
-//        }
-//    }
-//}
-            $this->elasticQuery->setQuery(
-            $this->elasticQueryBuilder->query()->bool()
-            ->addShould($this->elasticQueryBuilder->query()->match('Name.raw', $queryFields['Name']))
-            ->addMust($this->elasticQueryBuilder->query()->match('Name', $queryFields['Name']))
-            ->addMust($this->elasticQueryBuilder->query()->match('Addr1', $queryFields['Addr1']))
-            ->addMust($this->elasticQueryBuilder->query()->match('City', $queryFields['City']))
-            ->addMust($this->elasticQueryBuilder->query()->match('State', $queryFields['State']))
-            ->addMust($this->elasticQueryBuilder->query()->match('PostalCode', $queryFields['PostalCode'])));
 
-        // set up the elastic query old
+        $this->elasticQuery->setQuery($this->elasticQueryBuilder->query()->bool()->addMust($this->elasticQueryBuilder->query()->match('Name',
+            $queryFields['Name']))->addMust($this->elasticQueryBuilder->query()->match('City',
+            $queryFields['City']))->addMust($this->elasticQueryBuilder->query()->match('State',
+            $queryFields['State']))->addMust($this->elasticQueryBuilder->query()->match('PostalCode',
+            $queryFields['PostalCode'])));
 
-//        $this->elasticQuery->setQuery($this->elasticQueryBuilder->query()->bool()->addShould($this->elasticQueryBuilder->query()->match('Name',
-//            $queryFields['Name']))->addShould($this->elasticQueryBuilder->query()->match('Addr1',
-//            $queryFields['Addr1']))->addMust($this->elasticQueryBuilder->query()->match('City',
-//            $queryFields['City']))->addMust($this->elasticQueryBuilder->query()->match('State',
-//            $queryFields['State']))->addMust($this->elasticQueryBuilder->query()->match('PostalCode',
-//            $queryFields['PostalCode'])));
 
         // set the minimum score that we consider a match
         // https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-min-score.html
@@ -795,7 +854,8 @@ class MeroveusController extends AbstractActionController
         $resultSet    = $this->elasticSearch->search($this->elasticQuery);
         $topScore     = $resultSet->getMaxScore();
         $resultsArray = $resultSet->getResults();
-        $result       = false;
+
+        $result = false;
         if (!empty($resultsArray)) {
             $result = ($resultsArray[0]->getScore() === $topScore) ? $resultsArray[0] : $result;
         }
@@ -806,33 +866,44 @@ class MeroveusController extends AbstractActionController
     /**
      * updates the existing refinery record
      *
-     * @param  $refineryId
+     * @param  $refineryId            int
      * @param  $target                array
-     * @param  $pdo                   \PDOStatement specifically the update company one
      *                                //@todo rethink this in light of testing
      *
      * @return bool
      */
-    private function processMatch($refineryId, array $target, \PDOStatement $pdo)
+    // gross!!!
+    private function processMatch($refineryId, array $target)
     {
 
-        $params = [
-            ':meroveus_id'                       => $target['meroveusId'],
-            ':universal_revenue_volume_static'   => empty($target['universal-revenue-volume_static']) ? null : $target['universal-revenue-volume_static'],
-            ':universal_employee_count_static'   => empty($target['universal-employee-count_static']) ? null : $target['universal-employee-count_static'],
-            ':universal_employee_local_static'   => empty($target['universal-employee-local_static']) ? null : $target['universal-employee-local_static'],
-            ':universal_established_year_static' => empty($target['universal-established-year_static']) ? null : $target['universal-established-year_static'],
-            ':universal_profile_blob_static'     => empty($target['universal-profile-blob_static']) ? null : $target['universal-profile-blob_static'],
-            ':refinery_id'                       => $refineryId,
-        ];
-        try {
-            return $pdo->execute($params);
-        } catch (\PDOException $e) {
-            echo 'ERROR' . $e->getMessage() . PHP_EOL;
-            echo 'processMatch called for no good reason. did you run the import?' . PHP_EOL;
+        $companyInstances = CompanyInstance::fetch_by_source_name_and_id('refinery%', $refineryId);
 
+        if ($companyInstances === false) {
             return false;
         }
+
+        $params = [
+            'universal_revenue_volume_static'   => empty($target['universal-revenue-volume_static']) ? null : $target['universal-revenue-volume_static'],
+            'universal_employee_count_static'   => empty($target['universal-employee-count_static']) ? null : $target['universal-employee-count_static'],
+            'universal_employee_local_static'   => empty($target['universal-employee-local_static']) ? null : $target['universal-employee-local_static'],
+            'universal_established_year_static' => empty($target['universal-established-year_static']) ? null : $target['universal-established-year_static'],
+            'universal_profile_blob_static'     => empty($target['universal-profile-blob_static']) ? null : $target['universal-profile-blob_static'],
+        ];
+
+        foreach ($params as $name => $value) {
+            $companyInstances->first()->add_property(new CompanyInstanceProperty([
+                'name'         => $name,
+                'value'        => $value,
+                'sourceTypeId' => SourceType::fetch_one_where("name = 'meroveus'")->sourceTypeId,
+                'sourceId'     => $target['meroveusId'],
+                'createdAt'    => $target['createdAt'],
+                'updatedAt'    => $target['updatedAt'],
+            ]));
+        }
+
+        $companyInstances->first()->save();
+
+        return $companyInstances->first()->companyInstanceId;
     }
 
 
@@ -898,7 +969,6 @@ class MeroveusController extends AbstractActionController
 
         return @round($size / pow(1024, ($i = (int)floor(log($size, 1024)))), 2) . ' ' . $unit[$i];
     }
-
 
 
 }

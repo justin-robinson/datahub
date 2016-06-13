@@ -1,0 +1,424 @@
+#!/usr/bin/env php
+<?php
+
+// parse cli args
+require_once dirname ( __FILE__ ) . '/../scoop/commandline.php';
+$args = \Scoop\CommandLine::parse_args ( $_SERVER['argv'] );
+
+// special help args
+if ( isset( $args['help'] ) || isset( $args['h'] ) ) {
+    $args['action'] = 'help';
+}
+
+// check for an action
+if ( empty( $args['action'] ) ) {
+    die( 'run with --action=actionName' );
+} else {
+    $action = $args['action'];
+}
+
+$scoop = new ScoopRun( $args, $action );
+
+// does that action exist?
+if ( !array_key_exists ( $action, $scoop->availableActions ) ) {
+    die( 'action ' . $action . ' does not exist' );
+}
+
+// load composer autoloader
+foreach ([__DIR__ . '/../vendor/autoload.php',
+          __DIR__ . '/../../../autoload.php'] as $autoloadFile) {
+    if (file_exists($autoloadFile)) {
+        require_once $autoloadFile;
+    }
+}
+
+// run the action
+call_user_func_array ( [ $scoop, $action ], [ ] );
+
+
+
+/**
+ * Class ScoopRun
+ * @package Scoop
+ */
+class ScoopRun {
+
+    /**
+     * @var array
+     */
+    public $args = [ ];
+
+    /**
+     * @var array
+     */
+    public $availableActions = [
+        'generate_db_models'    => true,
+        'generate_site_folders' => true,
+        'h'                     => true,
+        'help'                  => true,
+        'benchmark'             => true,
+    ];
+
+    /**
+     * Scoop constructor.
+     *
+     * @param $args
+     */
+    public function __construct ( $args ) {
+
+        $this->args = $args;
+
+        // set site name if one was provided
+        if ( array_key_exists ( 'site', $args ) ) {
+            $_SERVER['SITE_NAME'] = $args['site'];
+        }
+    }
+
+    /**
+     *
+     */
+    public function generate_db_models () {
+
+        // db connections needed
+        require_once __DIR__ . "/../bootstrap.php";
+
+        // global or site specific class path?
+        if ( array_key_exists ( 'site', $this->args ) ) {
+            $outPath = \Scoop\Config::get_site_class_path_by_name ( $this->args['site'] );
+        } else {
+            $outPath = \Scoop\Config::get_shared_class_path ();
+        }
+
+        $where = [
+            "table_schema NOT IN (
+               'information_schema',
+               'mysql',
+               'performance_schema')",
+        ];
+        $queryParams = [ ];
+
+        // process table and schema longopts
+        if ( isset( $this->args['schema'] ) ) {
+            $where[] = 'table_schema = ?';
+            $queryParams[] = $this->args['schema'];
+
+            // table is only recognized when a schema a specified
+            if ( isset( $this->args['table'] ) ) {
+                $where[] = 'table_name = ?';
+                $queryParams[] = $this->args['table'];
+            }
+        }
+
+        $where = implode ( ' AND ', $where );
+
+        /*
+         * Generates db models from all user created schemas
+         */
+        $getAllSchemas = "
+           SELECT
+             *
+           FROM
+             INFORMATION_SCHEMA.COLUMNS
+           WHERE
+             {$where}
+           ORDER BY
+             table_schema,
+             table_name,
+             ordinal_position";
+
+        $rows = \Scoop\Database\Model\Generic::query ( $getAllSchemas, $queryParams );
+        $schema = null;
+        $table = null;
+
+        if ( class_exists ( '\Colors\Color' ) ) {
+            $c = new \Colors\Color();
+        }
+
+        if ( $rows ) {
+
+            // each row is a new column in a specific table
+            foreach ( $rows as $index => $row ) {
+
+                $isNewSchema = $schema !== $row->TABLE_SCHEMA;
+                $isNewTable = $table !== $row->TABLE_NAME;
+
+                // new schema?
+                if ( $isNewSchema ) {
+                    $schema = $row->TABLE_SCHEMA;
+                    $safeSchema = $this->classSafeName ( $schema );
+                }
+
+                // new table?
+                if ( $isNewTable ) {
+                    $table = $row->TABLE_NAME;
+                    $safeTable = $this->classSafeName ( $table );
+                }
+
+                // does this row belong to a different table the last one?
+                if ( $isNewSchema || $isNewTable ) {
+
+                    echo 'processing ';
+
+                    if ( isset( $c ) ) {
+                        echo $c( "`{$schema}`" )->black->highlight ( 'cyan' );
+                        echo '.';
+                        echo $c( "`{$table}`" )->white->bold->highlight ( 'green' );
+                    } else {
+                        echo "`{$schema}`.`{$table}`";
+                    }
+
+                    echo PHP_EOL;
+
+                    // save file if we have one
+                    if ( isset( $this->coreGenerator ) ) {
+
+                        $this->save ();
+                    }
+
+                    // create class name
+                    $namespace = 'DB\\' . $safeSchema;
+                    $name = $safeTable;
+                    $coreNamespace = 'DBCore\\' . $safeSchema;
+                    $coreName = $safeTable;
+
+                    // create file path
+                    $filepath = strtolower ( $outPath . '/db/' . $safeSchema . '/' . $name . '.php' );
+                    $coreFilepath = strtolower ( $outPath . '/dbcore/' . $safeSchema . '/' . $coreName . '.php' );
+
+                    $dbClass = new \Scoop\ClassGen\ClassGenClass( $name );
+                    $dbClass->set_extends ( '\\' . $coreNamespace . '\\' . $coreName )
+                            ->set_namespace ( $namespace );
+                    $this->generator = new \Scoop\ClassGen\ClassGenGenerator( $dbClass, $filepath );
+
+                    $dbCoreClass = new \Scoop\ClassGen\ClassGenClass( $coreName );
+                    $dbCoreClass->set_extends ( 'Model' )
+                                ->set_namespace ( $coreNamespace )
+                                ->append_use ( 'Scoop\Database\Model' );
+                    $this->coreGenerator = new \Scoop\ClassGen\ClassGenGenerator( $dbCoreClass, $coreFilepath );
+
+                    // add table and schema name
+                    $schemaProperty = new \Scoop\ClassGen\ClassGenProperty( 'schema', $row->TABLE_SCHEMA );
+                    $tableProperty = new \Scoop\ClassGen\ClassGenProperty( 'table', $row->TABLE_NAME );
+
+                    $schemaProperty->set_const ();
+                    $tableProperty->set_const ();
+
+                    $this->coreGenerator->add_property ( $schemaProperty );
+                    $this->coreGenerator->add_property ( $tableProperty );
+
+                    // reset these
+                    $this->autoIncrementColumn = '';
+                    $this->primaryKeys = [ ];
+                    $this->nonNullColumns = [ ];
+                    $this->dBColumnsArray = [ ];
+
+                }
+
+                // add all columns to helper array
+                $this->dBColumnsArray[$row->COLUMN_NAME] = [ ];
+
+                // add special properties
+                if ( $row->COLUMN_KEY === 'PRI' ) {
+                    $this->primaryKeys[] = $row->COLUMN_NAME;
+                    $this->dBColumnsArray[$row->COLUMN_NAME][] = \Scoop\Database\Model::PROP_PRIMARY_KEY;
+                }
+
+                if ( $row->IS_NULLABLE === 'NO' ) {
+                    $this->nonNullColumns[] = $row->COLUMN_NAME;
+                }
+
+                // parse extra column properties into array
+                $extras = explode ( ',', $row->EXTRA );
+                if ( in_array ( 'auto_increment', $extras ) ) {
+                    $this->autoIncrementColumn = $row->COLUMN_NAME;
+                    $this->dBColumnsArray[$row->COLUMN_NAME][] = \Scoop\Database\Model::PROP_AUTO_INCREMENT;
+                }
+
+                if ( $rows->is_last_row () ) {
+
+                    $this->save ();
+
+                }
+
+            }
+        }
+
+        $outPath = realpath ( $outPath );
+        echo "files saved to {$outPath}" . PHP_EOL;
+    }
+
+    /**
+     *
+     */
+    public function generate_site_folders () {
+
+        if ( !Config::option_exists ( 'site_name' ) ) {
+            die( 'run with --site=example.com' );
+        }
+
+        // get the classpath for this site
+        $siteClassPath = \Scoop\Config::get_site_class_path ();
+        $sitePath = pathinfo ( $siteClassPath, PATHINFO_DIRNAME );
+
+        // ensure path exists
+        @mkdir ( $siteClassPath, 0777, true );
+        if ( !file_exists ( $siteClassPath ) ) {
+            die( 'error creating class path folder. check permissions' );
+        }
+
+        // get config path for this site
+        $siteConfigPath = $sitePath . '/' . \Scoop\Config::get_option ( 'configpath_folder_name' );
+        @mkdir ( $siteConfigPath );
+
+        if ( !file_exists ( $siteConfigPath ) ) {
+            die( 'error creating class path folder. check permissions' );
+        }
+
+        // copy default db config if one is not present
+        $siteDbConfig = $siteConfigPath . '/db.php';
+        if ( file_exists ( $siteDbConfig ) ) {
+            echo "db config already exists for `"
+                . \Scoop\Config::get_option ( 'site_name' )
+                . "` at :" . realpath ( $siteDbConfig );
+        } else {
+            copy ( \Scoop\Config::get_option ( 'install_dir' ) . '/configs/db.php', $siteDbConfig );
+        }
+    }
+
+    public function h () {
+
+        $this->help ();
+    }
+
+    public function help () {
+
+        echo '--action :' . PHP_EOL;
+        foreach ( $this->availableActions as $action => $enabled ) {
+            echo "\t{$action}" . PHP_EOL;
+        }
+    }
+
+    public function benchmark () {
+
+        // db connections needed
+        require_once dirname ( __FILE__ ) . "/../bootstrap.php";
+
+        $starttime = microtime ( true );
+        $startmem = memory_get_usage ();
+        $rows = \DB\JorPw\Test::fetch ();
+        $fetchMemIncrease = memory_get_usage () - $startmem;
+        $fetchTime = microtime ( true ) - $starttime;
+        echo "fetch: $fetchMemIncrease bytes $fetchTime seconds" . PHP_EOL;
+        $startLoop = microtime ( true );
+        $startLoopMem = memory_get_usage ();
+        foreach ( $rows as $row ) {
+            $one = 1;
+        }
+        $endmem = memory_get_usage ();
+        $loopEndTime = microtime ( true );
+        $loopMemIncrease = $endmem - $startLoopMem;
+        $endLoopTime = $loopEndTime - $startLoop;
+        echo "loop: $loopMemIncrease bytes $endLoopTime seconds" . PHP_EOL;
+        $endmem = $endmem - $startmem;
+        $endTime = $loopEndTime - $starttime;
+        echo "total: $endmem bytes $endTime seconds" . PHP_EOL;
+    }
+
+
+    /**
+     * @param $name
+     *
+     * @return array|string
+     */
+    private function classSafeName ( $name ) {
+
+        // strip out anything that isn't a letter
+        $name = preg_split ( '/[^a-z\d]/i', $name, -1, PREG_SPLIT_NO_EMPTY );
+
+        // capitalize first letter in each word
+        $name = array_map (
+            function ( $word ) {
+
+                return ucwords ( $word );
+            }, $name );
+
+        // glue all words back together
+        $name = implode ( '', $name );
+
+        return $name;
+
+    }
+
+    /**
+     * helper for saving classes from generate_db_models
+     */
+    private function save () {
+
+        // add comments to the class
+        $date = date ( 'Y/m/d' );
+        $this->generator->class->set_phpDoc(
+            "/**
+ * Class {$this->generator->class->name}
+ * @package {$this->generator->class->namespace}
+ * @author jrobinson (robotically)
+ * @date {$date}
+ * @inheritdoc
+ * This file is only generated once
+ * Put your class specific code in here
+ */");
+
+        $phpDoc =
+            "/**
+ * Class {$this->coreGenerator->class->name}
+ * @package {$this->coreGenerator->class->namespace}
+ * @author jrobinson (robotically)
+ * @date {$date}
+";
+
+        // add magic properties to core class
+        foreach ( $this->dBColumnsArray as $columnName => $properties ) {
+            $phpDoc .= " * @property mixed \${$columnName}
+";
+        }
+
+        $phpDoc .=
+            " * AUTO-GENERATED FILE
+ * DO NOT EDIT THIS FILE BECAUSE IT WILL BE LOST
+ * Put your code in {$this->generator->class->namespace}\\{$this->generator->class->name}
+ */";
+
+        $this->coreGenerator->class->set_phpDoc($phpDoc);
+
+        // add the primary keys and autoincrement columns
+        $AIProperty = new \Scoop\ClassGen\ClassGenProperty( 'autoIncrementColumn', $this->autoIncrementColumn );
+        $AIProperty->set_const ();
+
+        $this->primaryKeys = new \Scoop\ClassGen\ClassGenProperty( 'primaryKeys', $this->primaryKeys );
+        $this->primaryKeys->set_const ();
+
+        $this->nonNullColumns = new \Scoop\ClassGen\ClassGenProperty( 'nonNullColumns', $this->nonNullColumns );
+        $this->nonNullColumns->set_const ();
+
+        $columnProperties = new \Scoop\ClassGen\ClassGenProperty( 'dBColumnPropertiesArray', $this->dBColumnsArray );
+        $columnProperties->isStatic = true;
+
+        $columnValues = new \Scoop\ClassGen\ClassGenProperty( 'dBValuesArray', array_fill_keys ( array_keys ( $this->dBColumnsArray ), null ) );
+        $columnValues->set_protected ();
+
+        $this->coreGenerator->add_property ( $AIProperty );
+        $this->coreGenerator->add_property ( $this->primaryKeys );
+        $this->coreGenerator->add_property ( $this->nonNullColumns );
+        $this->coreGenerator->add_property ( $columnProperties );
+        $this->coreGenerator->add_property ( $columnValues );
+
+        // save file if we have one
+        if ( isset( $this->coreGenerator ) ) {
+            $this->coreGenerator->save ();
+        }
+
+        if ( !file_exists ( $this->generator->filepath ) ) {
+            $this->generator->save ();
+        }
+
+    }
+}

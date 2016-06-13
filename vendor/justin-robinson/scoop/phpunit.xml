@@ -1,0 +1,15 @@
+<phpunit bootstrap="bootstrap.php" colors="true">
+    <testsuites>
+        <testsuite name="Scoop">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+	  <whitelist processUncoveredFilesFromWhitelist="true">
+	    <directory suffix=".php">./scoop</directory>
+	  </whitelist>
+	</filter>
+    <logging>
+        <log type="coverage-clover" target="build/logs/clover.xml"/>
+    </logging>
+</phpunit>

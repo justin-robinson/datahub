@@ -6,12 +6,16 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'scoop\\' => array($vendorDir . '/justin-robinson/scoop/scoop'),
     'Zend\\' => array($vendorDir . '/zendframework/zendframework/library'),
     'ZendXml\\' => array($vendorDir . '/zendframework/zendxml/library'),
     'ZendDeveloperTools' => array($vendorDir . '/zendframework/zend-developer-tools/src'),
     'Solarium\\' => array($vendorDir . '/solarium/solarium/library'),
     'Services\\' => array($vendorDir . '/bizjournals/module_services/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log'),
+    'LRUCache' => array($vendorDir . '/justin-robinson/lrucache/src'),
+    'Guzzle\\Tests' => array($vendorDir . '/guzzle/guzzle/tests'),
+    'Guzzle' => array($vendorDir . '/guzzle/guzzle/src'),
     'Gedmo\\' => array($vendorDir . '/gedmo/doctrine-extensions/lib'),
     'Entity\\' => array($vendorDir . '/bizjournals/module_entity/src'),
     'Doctrine\\ORM\\' => array($vendorDir . '/doctrine/orm/lib'),
@@ -22,5 +26,6 @@ return array(
     'Doctrine\\Common\\Annotations\\' => array($vendorDir . '/doctrine/annotations/lib'),
     'DoctrineORMModule\\' => array($vendorDir . '/doctrine/doctrine-orm-module/src'),
     'DoctrineModule\\' => array($vendorDir . '/doctrine/doctrine-module/src'),
+    'Colors' => array($vendorDir . '/kevinlebrun/colors.php/src'),
     'Behat\\Transliterator' => array($vendorDir . '/behat/transliterator/src'),
 );

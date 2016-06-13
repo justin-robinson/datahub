@@ -4,8 +4,9 @@ namespace Console\Importer;
 
 use Console\CsvIterator;
 use Console\CsvIteratorException;
-use Console\DB\Query\Buffer;
-use Console\Record\Formatter\Factory;
+use Console\Record\Formatter\Formatters\ImportRefinery;
+use DB\Datahub\Company;
+use DB\Datahub\CompanyInstance;
 
 /**
  * Class Refinery
@@ -14,13 +15,11 @@ use Console\Record\Formatter\Factory;
 class Refinery extends ImporterAbstract {
 
     /**
-     * @param $csvFile
-     * @param $db \PDO
+     * @param      $csvFile
      *
-     * @return int
-     * @throws \Console\Record\Formatter\Exception\NotFound
+     * @return array
      */
-    public function import ( $csvFile, $db ) {
+    public function import ( $csvFile ) {
 
         // open file as csv
         $file = new CsvIterator( $csvFile );
@@ -28,74 +27,7 @@ class Refinery extends ImporterAbstract {
         // we have a header row woohoo!
         $file->setHasHeaderRow( true );
 
-        // how many rows we processed
-        $count = 0;
-
-        // how many inserts we will do at once
-        $bufferLimit = 1000;
-
-        // the table we are inserting into
-        $bufferTable = 'datahub.company';
-
-        // names of columns to insert
-        $insertColumns = [
-            'refinery_id'        => '?',
-            'meroveus_id'        => '?',
-            'generate_code'      => '?',
-            'record_source'      => '?',
-            'company_name'       => '?',
-            'public_ticker'      => '?',
-            'ticker_exchange'    => '?',
-            'source_modified_at' => '?',
-            'address1'           => '?',
-            'address2'           => '?',
-            'city'               => '?',
-            'state'              => '?',
-            'postal_code'        => '?',
-            'country'            => '?',
-            'latitude'           => '?',
-            'longitude'          => '?',
-            'phone'              => '?',
-            'website'            => '?',
-            'is_active'          => '?',
-            'sic_code'           => '?',
-            'employee_count'     => '?',
-            'created_at'         => 'NOW()',
-            'updated_at'         => 'NOW()',
-            'deleted_at'         => 0,
-        ];
-
-        // columns to update upon duplicate key detection
-        // removed refinery_id, created_at, and deleted_at
-        $updateColumns = [
-            'meroveus_id',
-            'generate_code',
-            'record_source',
-            'company_name',
-            'public_ticker',
-            'ticker_exchange',
-            'source_modified_at',
-            'address1',
-            'address2',
-            'city',
-            'state',
-            'postal_code',
-            'country',
-            'latitude',
-            'longitude',
-            'phone',
-            'website',
-            'is_active',
-            'sic_code',
-            'employee_count',
-            'updated_at',
-        ];
-
-        // make dat buffer
-        $queryBuffer = new Buffer( $bufferLimit, $db, $bufferTable, $insertColumns, $updateColumns);
-
-        // data formatter
-        $formatter = Factory::factory( 'importmeroveus' );
+        $formatter = ImportRefinery::get_instance();
 
         // process the rows
         foreach ( $file as $record ) {
@@ -104,15 +36,13 @@ class Refinery extends ImporterAbstract {
                 // why don't we merge automatically?
                 // because then we would have to try catch around the foreach loop and that would
                 // cause the loop to break.  This way we can continue processing the remaining rows
+                $record = $file->mergeWithHeaderRow( $record );
 
-                // format the record and "insert" it into the db
-                $queryBuffer->insert(
-                    $formatter->format(
-                        $file->mergeWithHeaderRow( $record )
-                    )
-                );
+                // format record into some db models
+                $company = $formatter->format( $record );
 
-                $count++;
+                $company->save();
+
             } catch ( CsvIteratorException $e ) {
                 // CsvIterator throws an exception when number of columns in the header row
                 // and the current line do not match
@@ -121,9 +51,6 @@ class Refinery extends ImporterAbstract {
 
         }
 
-        // flush remaining inserts left in buffer
-        $queryBuffer->flush();
-
-        return $count;
+        return [Company::$companiesSaved, CompanyInstance::$instancesSaved];
     }
 }

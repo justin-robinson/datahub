@@ -6,7 +6,7 @@ return array(
         'frontend_url' => 'https://merchant.bizjournals.com',
     ),
     'admin_authentication' => array(
-        'base_url' => 'http://admin.bizjournals.com/authapi',
+        'base_url' => 'https://admin.bizjournals.com/authapi',
     ),
     // This is the product account tied to the techpartner@bizjournals.com login
     'ooyala' => array(

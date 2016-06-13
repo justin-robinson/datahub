@@ -7,6 +7,8 @@
 
 namespace Api\Controller;
 
+use Api\Response\CompanyResponse;
+use DB\Datahub\Company;
 use Zend\View\Model\JsonModel;
 
 /**
@@ -23,7 +25,37 @@ class CompanyController extends AbstractRestfulController
      */
     public function get($companyId)
     {
-        return $this->lookupBy('hub_id', $companyId);
+        $company = Company::fetch_company_and_instances($companyId);
+
+        if ( $company ) {
+            // sorted list of properties
+            $sortedProperties = [];
+
+            // get and sort all properties and contacts
+            foreach ( $company->get_company_instances() as $instance ) {
+
+                // get
+                $instance->fetch_properties();
+
+                // sort
+                $sortedProperties[] = $instance->sort_properties();
+
+                // contacts
+                $instance->fetch_contacts();
+            }
+
+            // convert to array
+            $company = $company->to_array();
+
+            // replace instance properties with sorted ones
+            reset($sortedProperties);
+            foreach ( $company['instances'] as &$instance ) {
+                $instance['properties'] = current($sortedProperties);
+                next($sortedProperties);
+            }
+        }
+
+        return new JsonModel($company);
     }
 
     /**
@@ -63,7 +95,31 @@ class CompanyController extends AbstractRestfulController
      */
     public function getList()
     {
-        return new JsonModel(['getList' => 'not implemented']);
+        $from = isset($_GET['from']) ? $_GET['from'] : '0';
+        $to = isset($_GET['to']) ? $_GET['to'] : date('Y-m-d H:i:s');
+        $limit = 1000;
+        $offset = $limit * (((isset($_GET['page']) && (int)$_GET['page'] >= 1 ) ? $_GET['page'] : 1)-1);
+        $companies = Company::fetch_modified_in_range( $from, $to, $offset, $limit);
+
+        $sortedProperties = [];
+        foreach ( $companies as $company ) {
+            foreach ( $company->get_company_instances() as $instance ) {
+                $sortedProperties[] = $instance->sort_properties();
+            }
+        }
+
+        $companies = $companies->to_array();
+
+        // replace instance properties with sorted ones
+        reset($sortedProperties);
+        foreach ( $companies as &$company ) {
+            foreach ( $company['instances'] as &$instance ) {
+                $instance['properties'] = current( $sortedProperties );
+                next( $sortedProperties );
+            }
+        }
+
+        return new JsonModel($companies);
     }
 
     /**
@@ -72,39 +128,59 @@ class CompanyController extends AbstractRestfulController
      * since datahub will eventually replace refinery, it will be depricated
      * at that time
      */
-    public function  refineryAction()
+    public function refineryAction()
     {
 
         // get id from url
         $refineryId = $this->params()->fromRoute('id');
 
-        return $this->lookupBy('refinery_id', $refineryId);
+        $company = Company::fetch_by_source_name_and_id('refinery%', $refineryId);
+
+        $response = new CompanyResponse();
+
+        if ( $company ) {
+
+            // the company instances
+            $company->fetch_company_instances();
+
+            // sorted list of properties
+            $sortedProperties = [];
+
+            // get and sort all properties and contacts
+            foreach ( $company->get_company_instances() as $instance ) {
+
+                // get
+                $instance->fetch_properties();
+
+                // sort
+                $sortedProperties[] = $instance->sort_properties();
+
+                // contacts
+                $instance->fetch_contacts();
+            }
+
+            // convert to array
+            $company = $company->to_array();
+
+            // replace instance properties with sorted ones
+            reset($sortedProperties);
+            foreach ( $company['instances'] as &$instance ) {
+                $instance['properties'] = current($sortedProperties);
+                next($sortedProperties);
+            }
+
+            $response->success = true;
+        } else {
+
+            $response->message = "company not found";
+        }
+
+        $response->body = $company;
+
+
+        return new JsonModel($response->toArray());
     }
 
-    /**
-     * @param $name
-     * @param $id
-     *
-     * @return JsonModel
-     */
-    private function lookupBy($name, $id)
-    {
 
-        // load company model
-        /** @var $company \Hub\Model\Company */
-        $company = $this->getServiceLocator()->get('\Hub\Model\Company');
-        // find company by refinery_id in url
-        $record = $company->findOneBy([$name => $id]);
-
-        // ensure we don't return something falsey
-        $record = empty($record) ? [
-            'success'  => false,
-            'messsage' => 'not found',
-        ] : $record->toArray(true);
-
-        // return
-        return new JsonModel($record);
-
-    }
 
 }
