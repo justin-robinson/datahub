@@ -516,20 +516,20 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         }
 
         $days = $updatedAt->diff($now)->days;
-//        echo '__________________________' . PHP_EOL;
+        print_r($days);
         // determine ranges
         switch ($days) {
-            case ($days > (3 * 365)):
+            case ($days > 1095):// greater than 3 years
                 return 4;
                 break;
-            case (($days > (2 * 365))):
+            case ($days > 730): //greater than 2 years
                 return 3;
                 break;
-            case (($days > 365)):
+            case ($days > 365): // greater than 1 year
                 return 2;
                 break;
             default:
-                return 1;
+                return 1; // less than 1 year
                 break;
         }
 
@@ -728,7 +728,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
             return $tier;
         }
 
-        // fetch the basic tierinf metrics
+        // fetch the basic metrics
         $freshness = $this->calcFreshnessRating();
         // early returns to not run the solr query
         // tier 5

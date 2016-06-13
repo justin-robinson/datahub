@@ -181,18 +181,109 @@ class MeroveusController extends AbstractActionController
      */
     public function indexAction()
     {
+        $randomIds = [
+            227813,
+            156800,
+            31281,
+            260888,
+            58231,
+            277129,
+            234856,
+            72402,
+            251682,
+            223682,
+            144910,
+            278539,
+            67287,
+            197643,
+            9999,
+            159631,
+            137704,
+            54663,
+            289924,
+            146243,
+            274768,
+            41519,
+            52635,
+            295961,
+            290000,
+            16400,
+            200577,
+            146277,
+            166248,
+            27711,
+            147375,
+            151556,
+            299597,
+            26373,
+            168252,
+            296258,
+            159458,
+            92321,
+            259509,
+            298516,
+            242819,
+            35801,
+            288491,
+            290149,
+            202717,
+            79819,
+            98280,
+            223861,
+            298285,
+            130102,
+            131538,
+            6791,
+            273485,
+            231883,
+            16416,
+            50415,
+            172327,
+            91397,
+            103395,
+            143284,
+            84033,
+            142530,
+            119218,
+            89676,
+            262037,
+            156898,
+            242875,
+            171875,
+            1068,
+            273012,
+            261589,
+            226376,
+            186576,
+            296501,
+            161597,
+            35401,
+            231911,
+            119641,
+            41235,
+            105299,
+            187183,
+            104793,
+            25709,
+            95735,
+            695,
+            189359,
+            25253,
+            172286,
+            6023,
+            242892,
+            305692,
+            181819,
+            196560,
+            110265,
+            144656,
+            88260,
+            62032,
+            213706,
+            147804,
+            235661,
+        ];
 
-        $from      = 0;                  // beginning of time
-        $to        = date('Y-m-d H:i:s');  // until now
-        $offset    = 0;                // start at company 1
-        $limit     = 1000;              // 1000 companies
-        $companies = Company::fetch_modified_in_range($from, $to, $offset, $limit);
-
-
-//        while ($numbers > 0) {
-//            array_push($randomIds, rand(1, 400000));
-//            $numbers--;
-//        }
 
         echo '
         __________________ _______  _______ _________ _        _______ 
@@ -219,34 +310,31 @@ class MeroveusController extends AbstractActionController
             6 => 0,
             7 => 0,
         ];
-        if ($companies) {
-            $instances = $companies->first()->get_company_instances();
-            $tier      = $instances->get_rows()[0]->instanceTierThyself(1);
-            $counts[$tier]++;
+
+        $foundCount = 0;
+
+        foreach ($randomIds as $id) {
+            $company = Company::fetch_company_and_instances($id);
+
+            if ($company) {
+
+                $instances = $company->get_company_instances();
+                $tier      = $instances->get_rows()[0]->instanceTierThyself(1);
+                $counts[$tier]++;
+                $foundCount++;
+            } else {
+                echo $id . PHP_EOL;
+            }
+
             $count++;
+
         }
-        
-        
-//        while ($count <= 310198) {
-//            $company = Company::fetch_company_and_instances($count);
-//            if($company){
-//
-//                $instances = $company->get_company_instances();
-//                $tier      = $instances->get_rows()[0]->instanceTierThyself(1);
-//                $counts[$tier]++;
-//            }
-//
-//            $count++;
-//        }
-        echo $count . ' records' . PHP_EOL;
-        var_dump($counts);
+        echo $count - 1 . ' records searched' . PHP_EOL;
+        echo $foundCount . ' records found' . PHP_EOL;
+        echo 'totals:' . PHP_EOL;
+//        print_r($counts);
         $end = date('h:i:s A');
         echo "ended at " . $end . PHP_EOL;
-//        $company = Company::fetch_company_and_instances(26602);
-//
-//        $instances =  $company->get_company_instances();
-//
-//        var_dump($instances->get_rows()[0]->instanceTierThyself(1));
     }
 
 
