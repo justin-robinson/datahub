@@ -516,7 +516,6 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         }
 
         $days = $updatedAt->diff($now)->days;
-        print_r($days);
         // determine ranges
         switch ($days) {
             case ($days > 1095):// greater than 3 years

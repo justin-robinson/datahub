@@ -173,6 +173,18 @@ class MeroveusController extends AbstractActionController
 
     }
 
+    public function doTier($id)
+    {
+        $tier    = 0;
+        $company = Company::fetch_company_and_instances($id);
+        if ($company) {
+            $instances = $company->get_company_instances();
+            $tier      = $instances->get_rows()[0]->instanceTierThyself(1);
+        }
+        unset($company);
+
+        return $tier;
+    }
 
     /**
      * utility randomness
@@ -181,6 +193,7 @@ class MeroveusController extends AbstractActionController
      */
     public function indexAction()
     {
+        ini_set('memory_limit', '1024M');
         $randomIds = [
             227813,
             156800,
@@ -312,27 +325,50 @@ class MeroveusController extends AbstractActionController
         ];
 
         $foundCount = 0;
-
-        foreach ($randomIds as $id) {
-            $company = Company::fetch_company_and_instances($id);
-
-            if ($company) {
-
-                $instances = $company->get_company_instances();
-                $tier      = $instances->get_rows()[0]->instanceTierThyself(1);
-                $counts[$tier]++;
+        $count      = 1;
+        while ($count < 310200) {
+            $tier = $this->doTier($count);
+            if ($tier) {
                 $foundCount++;
-            } else {
-                echo $id . PHP_EOL;
+                $counts[$tier]++;
+
             }
 
             $count++;
-
         }
+
+//        while ($count < 310200) {
+//            $company = Company::fetch_company_and_instances($count);
+//
+//            if ($company) {
+//
+//                $instances = $company->get_company_instances();
+//                $tier      = $instances->get_rows()[0]->instanceTierThyself(1);
+//                $counts[$tier]++;
+//                $foundCount++;
+//                unset($company);
+//            }
+//
+//            $count++;
+//        }
+//        foreach ($randomIds as $id) {
+//            $company = Company::fetch_company_and_instances($id);
+//
+//            if ($company) {
+//
+//                $instances = $company->get_company_instances();
+//                $tier      = $instances->get_rows()[0]->instanceTierThyself(1);
+//                $counts[$tier]++;
+//                $foundCount++;
+//            }
+//
+//            $count++;
+//
+//        }
         echo $count - 1 . ' records searched' . PHP_EOL;
         echo $foundCount . ' records found' . PHP_EOL;
         echo 'totals:' . PHP_EOL;
-//        print_r($counts);
+        print_r($counts);
         $end = date('h:i:s A');
         echo "ended at " . $end . PHP_EOL;
     }
