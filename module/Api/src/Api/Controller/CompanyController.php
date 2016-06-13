@@ -95,10 +95,11 @@ class CompanyController extends AbstractRestfulController
      */
     public function getList()
     {
-        $from = isset($_GET['from']) ? $_GET['from'] : '1970-01-01 00:00:00';
+        $from = isset($_GET['from']) ? $_GET['from'] : '0';
         $to = isset($_GET['to']) ? $_GET['to'] : date('Y-m-d H:i:s');
-        $offset = isset($_GET['offset']) ? $_GET['offset'] : 0;
-        $companies = Company::fetch_modified_in_range( $from, $to, $offset);
+        $limit = 1000;
+        $offset = $limit * (((isset($_GET['page']) && (int)$_GET['page'] >= 1 ) ? $_GET['page'] : 1)-1);
+        $companies = Company::fetch_modified_in_range( $from, $to, $offset, $limit);
 
         $sortedProperties = [];
         foreach ( $companies as $company ) {
