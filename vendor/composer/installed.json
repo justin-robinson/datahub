@@ -2324,18 +2324,48 @@
         ]
     },
     {
+        "name": "bizjournals/module_services",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "git@gitlab.bizjournals.com:bizjournals/module_services.git",
+            "reference": "46d5507013043c2867c2232c1e24cf10441b1c87"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "http://packages.bizj-internal.com/dist/module_services-670-46d5507013043c2867c2232c1e24cf10441b1c87.zip",
+            "reference": "46d5507013043c2867c2232c1e24cf10441b1c87",
+            "shasum": null
+        },
+        "require": {
+            "monolog/monolog": "@stable",
+            "ruflin/elastica": "3.*",
+            "solarium/solarium": "@stable"
+        },
+        "time": "2016-06-10 09:42:15",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "Services\\": "src/"
+            }
+        },
+        "description": "bizjournals Services Module"
+    },
+    {
         "name": "justin-robinson/scoop",
         "version": "dev-php56",
         "version_normalized": "dev-php56",
         "source": {
             "type": "git",
             "url": "https://github.com/justin-robinson/scoop.git",
-            "reference": "8a668ac700a3d7473c0ee4bc989b5f374c82f05f"
+            "reference": "fca57950bf28b84010810a2ba08a5281a76328f4"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/justin-robinson/scoop/zipball/8a668ac700a3d7473c0ee4bc989b5f374c82f05f",
-            "reference": "8a668ac700a3d7473c0ee4bc989b5f374c82f05f",
+            "url": "https://api.github.com/repos/justin-robinson/scoop/zipball/fca57950bf28b84010810a2ba08a5281a76328f4",
+            "reference": "fca57950bf28b84010810a2ba08a5281a76328f4",
             "shasum": ""
         },
         "require": {
@@ -2350,7 +2380,7 @@
             "phpunit/phpunit": "*",
             "phpunit/phpunit-mock-objects": "*"
         },
-        "time": "2016-06-09 15:19:33",
+        "time": "2016-06-13 18:34:27",
         "bin": [
             "bin/scoop"
         ],
@@ -2383,35 +2413,5 @@
             "php",
             "php 7"
         ]
-    },
-    {
-        "name": "bizjournals/module_services",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "git@gitlab.bizjournals.com:bizjournals/module_services.git",
-            "reference": "46d5507013043c2867c2232c1e24cf10441b1c87"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "http://packages.bizj-internal.com/dist/module_services-670-46d5507013043c2867c2232c1e24cf10441b1c87.zip",
-            "reference": "46d5507013043c2867c2232c1e24cf10441b1c87",
-            "shasum": null
-        },
-        "require": {
-            "monolog/monolog": "@stable",
-            "ruflin/elastica": "3.*",
-            "solarium/solarium": "@stable"
-        },
-        "time": "2016-06-10 09:42:15",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "psr-0": {
-                "Services\\": "src/"
-            }
-        },
-        "description": "bizjournals Services Module"
     }
 ]
