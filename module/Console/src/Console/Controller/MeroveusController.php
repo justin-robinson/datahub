@@ -326,7 +326,9 @@ class MeroveusController extends AbstractActionController
 
         $foundCount = 0;
         $count      = 1;
-        while ($count < 310200) {
+//        while ($count < 310200) {
+        while ($count < 1000) {
+//        while ($count < 10000) {
             $tier = $this->doTier($count);
             if ($tier) {
                 $foundCount++;
@@ -337,20 +339,7 @@ class MeroveusController extends AbstractActionController
             $count++;
         }
 
-//        while ($count < 310200) {
-//            $company = Company::fetch_company_and_instances($count);
-//
-//            if ($company) {
-//
-//                $instances = $company->get_company_instances();
-//                $tier      = $instances->get_rows()[0]->instanceTierThyself(1);
-//                $counts[$tier]++;
-//                $foundCount++;
-//                unset($company);
-//            }
-//
-//            $count++;
-//        }
+
 //        foreach ($randomIds as $id) {
 //            $company = Company::fetch_company_and_instances($id);
 //
