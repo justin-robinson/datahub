@@ -87,7 +87,9 @@ class ModelTest extends PHPUnit_Framework_TestCase {
         $test->name = 'inserted from phpunit';
         $test->save();
 
-        $this->assertNotEmpty( $test->id, "save should save the model to the db and update the auto_increment column" );
+        $id = $test->id;
+
+        $this->assertNotEmpty( $id, "save should save the model to the db and update the auto_increment column" );
 
         $this->assertFalse($test->save(), "saving a clean db model should return false");
 
@@ -95,7 +97,7 @@ class ModelTest extends PHPUnit_Framework_TestCase {
         $test->set_literal('dateTimeAdded', 'NOW()');
         $test->save();
 
-        $this->assertEquals($test->name, Test::fetch_by_id($test->id)->name, "saving an existing db model should do an update");
+        $this->assertEquals($test->name, Test::fetch_by_id($id)->name, "saving an existing db model should do an update");
         $test->delete();
 
     }
@@ -145,6 +147,19 @@ class ModelTest extends PHPUnit_Framework_TestCase {
 
         $this->assertEquals( $dataArray['name'], $test->name );
         $this->assertEquals( $dataArray['dateTimeAdded'], $test->dateTimeAdded );
+    }
+
+    public function test_reload () {
+
+        $test = new Test(['name' => 'inserted from phpunit']);
+        $test->save();
+
+        $this->assertEquals(null, $test->dateTimeAdded);
+
+        $test->reload();
+        $this->assertNotEquals(null, $test->dateTimeAdded);
+
+        $test->delete();
     }
     
     public function test_fetch_has_many () {
