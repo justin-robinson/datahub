@@ -12,11 +12,11 @@ use DB\Datahub\Company;
 use Zend\View\Model\JsonModel;
 
 /**
- * Class CompanyController
+ * Class CompanyProfileController
  *
  * @package Api\Controller
  */
-class CompanyController extends AbstractRestfulController
+class CompanyProfileController extends AbstractRestfulController
 {
     /**
      * @param mixed $companyId
