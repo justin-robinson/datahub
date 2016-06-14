@@ -28,6 +28,9 @@ class CompanyInstanceFormatter {
             'company' => [
                 'href' => "/api/company/{$array['companyId']}",
             ],
+            'contacts' => [
+                'href' => "/api/instance/{$array['companyInstanceId']}/contacts",
+            ],
             'properties' => [
                 'href' => "/api/instance/{$array['companyInstanceId']}/properties",
             ],

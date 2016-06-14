@@ -4,14 +4,16 @@ return [
     'controllers'  => [
         'invokables' => [
             'Api\Controller\Abstract'         => 'Api\Controller\AbstractRestfulController',
-            'Api\Controller\Search'           => 'Api\Controller\SearchController',
             'Api\Controller\Company'          => 'Api\Controller\CompanyController',
             'Api\Controller\CompanyInstance'  => 'Api\Controller\CompanyInstanceController',
-            'Api\Controller\InstanceProperty' => 'Api\Controller\InstancePropertyController',
             'Api\Controller\CompanyProfile'   => 'Api\Controller\CompanyProfileController',
+            'Api\Controller\Contact'          => 'Api\Controller\ContactController',
             'Api\Controller\Instance'         => 'Api\Controller\InstanceController',
+            'Api\Controller\InstanceContact'  => 'Api\Controller\InstanceContactController',
+            'Api\Controller\InstanceProperty' => 'Api\Controller\InstancePropertyController',
             'Api\Controller\Property'         => 'Api\Controller\PropertyController',
             'Api\Controller\PublicCompany'    => 'Api\Controller\PublicCompanyController',
+            'Api\Controller\Search'           => 'Api\Controller\SearchController',
         ],
     ],
     'router'       => [
@@ -72,6 +74,15 @@ return [
                             ],
                         ],
                     ],
+                    'contacts'   => [
+                        'type'    => 'Segment',
+                        'options' => [
+                            'route'    => '[/:id]/contacts',
+                            'defaults' => [
+                                'controller' => 'Api\Controller\InstanceContact',
+                            ],
+                        ],
+                    ],
                 ],
             ],
             'property'        => [
@@ -83,7 +94,27 @@ return [
                     ],
                 ],
                 'child_routes' => [
-                    'property'   => [
+                    'property' => [
+                        'type'    => 'Segment',
+                        'options' => [
+                            'route'       => '[/:id]',
+                            'constraints' => [
+                                'id' => '[0-9]*',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'contact'         => [
+                'type'         => 'Literal',
+                'options'      => [
+                    'route'    => '/api/contact',
+                    'defaults' => [
+                        'controller' => 'Api\Controller\Contact',
+                    ],
+                ],
+                'child_routes' => [
+                    'contact' => [
                         'type'    => 'Segment',
                         'options' => [
                             'route'       => '[/:id]',

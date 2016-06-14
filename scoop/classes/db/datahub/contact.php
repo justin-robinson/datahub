@@ -71,6 +71,36 @@ class Contact extends \DBCore\Datahub\Contact {
     }
 
     /**
+     * @return bool
+     */
+    public function delete () {
+
+        if( !$this->loaded_from_database() ) {
+            return false;
+        }
+
+        $this->deletedAt = new Literal( 'NOW()' );
+
+        return $this->save( false );
+    }
+
+    /**
+     * @param int    $limit
+     * @param int    $offset
+     * @param string $where
+     * @param array  $queryParams
+     *
+     * @return bool|int|Rows
+     */
+    public static function fetch ( $limit = 1000, $offset = 0, $where = '', array $queryParams = [ ] ) {
+
+        $where .= empty($where) ? '' : ' AND ';
+        $where .= 'deletedAt IS NULL';
+
+        return parent::fetch( $limit, $offset, $where, $queryParams );
+    }
+
+    /**
      * populate a contact with data from a meroveus return
      * @param array $meroveusReturn
      *
