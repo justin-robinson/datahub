@@ -3,6 +3,7 @@
 namespace DB\Datahub;
 
 use LRUCache\LRUCache;
+use Scoop\Database\Literal;
 use Scoop\Database\Query\Buffer;
 use Scoop\Database\Rows;
 
@@ -168,43 +169,79 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     }
 
     /**
+     * @return bool
+     */
+    public function delete () {
+
+        if ( !$this->loaded_from_database() ) {
+            return false;
+        }
+
+        $this->deletedAt = new Literal('NOW()');
+        return $this->save(false);
+    }
+
+    /**
+     * @param int    $limit
+     * @param int    $offset
+     * @param string $where
+     * @param array  $queryParams
      *
+     * @return bool|int|Rows
+     */
+    public static function fetch ( $limit = 1000, $offset = 0, $where = '', array $queryParams = [] ) {
+
+        $where .= empty($where) ? '' : ' AND ';
+        $where .= 'deletedAt IS NULL';
+
+        return parent::fetch($limit, $offset, $where, $queryParams);
+    }
+
+    /**
+     * @return Rows
      */
     public function fetch_contacts()
     {
 
-        if (empty($this->companyInstanceId)) {
-            return;
+        if (!empty($this->companyInstanceId)) {
+            $contacts = Contact::fetch_where('companyInstanceId = ?', [$this->companyInstanceId]);
+
+            $this->contacts = $contacts ? $contacts : [];
         }
 
-        $this->contacts = Contact::fetch_where('companyInstanceId = ?', [$this->companyInstanceId]);
+        return $this->get_contacts();
 
     }
 
     /**
-     *
+     * @return Rows
      */
     public function fetch_properties()
     {
 
-        if (empty($this->companyInstanceId)) {
-            return;
-        }
-
-        $properties = CompanyInstanceProperty::query("SELECT
+        if (!empty($this->companyInstanceId)) {
+            $properties = CompanyInstanceProperty::query(
+             "SELECT
                *
              FROM
                `datahub`.`companyInstanceProperty`
              WHERE
                companyInstanceId = ?
-             ", [$this->companyInstanceId]);
+               AND deletedAt IS NULL",
+             [$this->companyInstanceId]);
 
-        $this->properties = [];
+            $this->properties = [];
 
-        foreach ($properties as $property) {
+            if ( $properties ) {
+                foreach ($properties as $property) {
 
-            $this->add_property($property);
+                    $this->add_property($property);
+                }
+            }
+
         }
+
+        return $this->get_properties();
     }
 
     /**
@@ -225,6 +262,8 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
             WHERE
                 s.name LIKE ?
                 AND p.sourceId = ?
+                AND p.deletedAt IS NULL
+                AND i.deletedAt IS NULL
             GROUP BY
                 i.companyInstanceId", [$name, $id]);
     }
@@ -309,17 +348,19 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         ];
         $companyInstanceCacheKey = strtolower(implode('-', $queryParams));
 
-        // check cache for this instance
-        $existingInstance = self::$companyInstanceCache->get($companyInstanceCacheKey);
+        if ( !$this->is_loaded_from_database() ) {
 
-        // if the instance has an id, then it exists
-        if (isset($this->companyInstanceId)) {
-            $existingInstance = $this;
-        }
+            // check cache for this instance
+            $existingInstance = self::$companyInstanceCache->get($companyInstanceCacheKey);
 
-        // no cache hit or id? look it up in the db
-        if (!$existingInstance) {
-            $existingInstance = CompanyInstance::query("SELECT
+            // if the instance has an id, then it exists
+            if (isset($this->companyInstanceId)) {
+                $existingInstance = $this;
+            }
+
+            // no cache hit or id? look it up in the db
+            if (!$existingInstance) {
+                $existingInstance = CompanyInstance::query("SELECT
                       i.*
                      FROM
                       `datahub`.`companyInstance` i
@@ -327,15 +368,21 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
                      WHERE
                       i.companyId = ?
                       AND i.name = ?
+                      AND p.deletedAt IS NULL
+                      AND i.deletedAt IS NULL
                       AND (
                         ( p.name = 'zipCode' AND p.value = ? )
                         OR
                         ( p.name = 'address1' AND p.value = ? )
                       )", $queryParams);
 
-            if ($existingInstance) {
-                $existingInstance = $existingInstance->first();
+                if ($existingInstance) {
+                    $existingInstance = $existingInstance->first();
+                }
             }
+
+        } else {
+            $existingInstance = false;
         }
 
         // add properties to an existing instance
@@ -499,7 +546,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
         if ($recursive) {
             $array['properties'] = $this->get_properties();
-            $array['contacts']   = $this->get_contacts() ? $this->get_contacts() : [];
+            $array['contacts'] = [];
 
             foreach ($array['properties'] as &$orderedPropertyGroup) {
                 foreach ($orderedPropertyGroup as &$propertyName) {
@@ -507,6 +554,10 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
                         $property = $property->to_array();
                     }
                 }
+            }
+
+            foreach ( $this->get_contacts() as $contact ) {
+                $array['contacts'][] = $contact->to_array();
             }
         }
 

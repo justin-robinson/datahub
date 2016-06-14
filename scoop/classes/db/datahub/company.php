@@ -152,6 +152,9 @@ class Company extends \DBCore\Datahub\Company
         $this->companyInstances->add_row($instance);
     }
 
+    /**
+     * @return bool
+     */
     public function delete () {
 
         if ( !$this->loaded_from_database() ) {
@@ -162,6 +165,14 @@ class Company extends \DBCore\Datahub\Company
         return $this->save(false);
     }
 
+    /**
+     * @param int    $limit
+     * @param int    $offset
+     * @param string $where
+     * @param array  $queryParams
+     *
+     * @return bool|int|Rows
+     */
     public static function fetch ( $limit = 1000, $offset = 0, $where = '', array $queryParams = [] ) {
 
         $where .= empty($where) ? '' : ' AND ';
@@ -181,7 +192,8 @@ class Company extends \DBCore\Datahub\Company
 
         // using a LIKE clause on the name since we have source names like refinery:b2 :gen :bol etc
         // that all belong to refinery
-        $companies = self::query("SELECT
+        $companies = self::query(
+            "SELECT
                 c.*,
                 p.sourceId
             FROM
@@ -192,26 +204,30 @@ class Company extends \DBCore\Datahub\Company
             WHERE
                 s.name LIKE ?
                 AND p.sourceId = ?
+                AND p.deletedAt IS NULL
+                AND i.deletedAt IS NULL
+                AND c.deletedAt IS NULL
             GROUP BY
-                c.companyId", [$name, $id]);
+                c.companyId",
+            [$name, $id]);
 
         return $companies ? $companies->first() : $companies;
 
     }
 
     /**
-     *
+     * @return Rows
      */
     public function fetch_company_instances()
     {
 
-        if (empty($this->companyId)) {
-            return;
+        if (!empty($this->companyId)) {
+            $instances = CompanyInstance::fetch_where('companyId = ?', [$this->companyId]);
+
+            $this->companyInstances = $instances ? $instances : new Rows();
         }
 
-        $instances = CompanyInstance::fetch_where('companyId = ?', [$this->companyId]);
-
-        $this->companyInstances = $instances ? $instances : new Rows();
+        return $this->get_company_instances();
     }
 
     /**
@@ -225,6 +241,8 @@ class Company extends \DBCore\Datahub\Company
 
     /**
      * @param bool $setTimestamps
+     *
+     * @return bool
      */
     public function save($setTimestamps = true)
     {
@@ -307,7 +325,8 @@ class Company extends \DBCore\Datahub\Company
     public static function fetch_company_and_instances($companyId)
     {
         Generic::connect();
-        $mysqliResult = Generic::$connection->execute("SELECT
+        $mysqliResult = Generic::$connection->execute(
+            "SELECT
               c.*,
               ci.*,
               cip.*,
@@ -317,7 +336,11 @@ class Company extends \DBCore\Datahub\Company
               LEFT JOIN datahub.companyInstanceProperty cip USING (companyInstanceId)
               LEFT JOIN datahub.contact cn USING ( companyInstanceId )
             WHERE
-              c.companyId = ?;", [$companyId]);
+              c.companyId = ?
+              AND cip.deletedAt IS NULL
+              AND ci.deletedAt IS NULL
+              AND c.deletedAt IS NULL;",
+            [$companyId]);
 
         $companies = self::create_rows_from_mysqli_result($mysqliResult);
 

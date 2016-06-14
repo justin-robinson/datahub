@@ -19,13 +19,13 @@ use Zend\View\Model\JsonModel;
 class CompanyProfileController extends AbstractRestfulController
 {
     /**
-     * @param mixed $companyId
-     *
-     * @return JsonModel
+     * @param mixed $companyInstanceId
+     * 
+*@return JsonModel
      */
-    public function get($companyId)
+    public function get( $companyInstanceId)
     {
-        $company = Company::fetch_company_and_instances($companyId);
+        $company = Company::fetch_company_and_instances( $companyInstanceId);
 
         if ( $company ) {
             // sorted list of properties

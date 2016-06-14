@@ -12,15 +12,16 @@ use Zend\View\Model\JsonModel;
 class ContactsController extends AbstractRestfulController
 {
     /**
-     * @param mixed $contactId
-     * @return JsonModel
+     * @param mixed $contactInstanceId
+     * 
+*@return JsonModel
      */
-    public function get($contactId)
+    public function get ( $contactInstanceId)
     {
         /** @var $company \Hub\Model\Company * */
         $company = $this->getServiceLocator()->get('\Hub\Model\Contact');
         /** @var $record \Hub\Model\Company * */
-        $record = $company->findOneBy(['hub_id' => $contactId]);
+        $record = $company->findOneBy(['hub_id' => $contactInstanceId]);
 
         $return = new JsonModel($record->toArray(true));
         return $return;
