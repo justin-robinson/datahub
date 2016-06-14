@@ -3,6 +3,7 @@
 namespace DB\Datahub;
 
 use LRUCache\LRUCache;
+use Scoop\Database\Literal;
 use Scoop\Database\Model\Generic;
 use Scoop\Database\Rows;
 
@@ -151,6 +152,24 @@ class Company extends \DBCore\Datahub\Company
         $this->companyInstances->add_row($instance);
     }
 
+    public function delete () {
+
+        if ( !$this->loaded_from_database() ) {
+            return false;
+        }
+
+        $this->deletedAt = new Literal('NOW()');
+        return $this->save(false);
+    }
+
+    public static function fetch ( $limit = 1000, $offset = 0, $where = '', array $queryParams = [] ) {
+
+        $where .= empty($where) ? '' : ' AND ';
+        $where .= 'deletedAt IS NULL';
+
+        return parent::fetch($limit, $offset, $where, $queryParams);
+    }
+
     /**
      * @param $name
      * @param $id
@@ -190,7 +209,9 @@ class Company extends \DBCore\Datahub\Company
             return;
         }
 
-        $this->companyInstances = CompanyInstance::fetch_where('companyId = ?', [$this->companyId]);
+        $instances = CompanyInstance::fetch_where('companyId = ?', [$this->companyId]);
+
+        $this->companyInstances = $instances ? $instances : new Rows();
     }
 
     /**
@@ -207,15 +228,22 @@ class Company extends \DBCore\Datahub\Company
      */
     public function save($setTimestamps = true)
     {
+        // this will renormalize the name
+        $this->name = $this->name;
 
         $companyKey = $this->normalizedName;
 
-        // does this company exist in the cache?
-        $existingCompany = self::$companyCache->get( $companyKey );
+        if (!$this->is_loaded_from_database() ) {
 
-        // look up to db on cache miss
-        if( !$existingCompany ) {
-            $existingCompany = Company::fetch_one_where( 'normalizedName = ?', [ $this->normalizedName ] );
+            // does this company exist in the cache?
+            $existingCompany = self::$companyCache->get( $companyKey );
+
+            // look up to db on cache miss
+            if( !$existingCompany ) {
+                $existingCompany = Company::fetch_one_where( 'normalizedName = ?', [ $this->normalizedName ] );
+            }
+        } else {
+            $existingCompany = false;
         }
 
         // save new company on cache miss and db lookup failure
@@ -223,6 +251,8 @@ class Company extends \DBCore\Datahub\Company
 
             $this->populate($existingCompany->to_array(false));
             $this->loaded_from_database();
+
+            $saved = false;
 
         } else {
 
@@ -236,16 +266,19 @@ class Company extends \DBCore\Datahub\Company
 
             }
 
-            parent::save();
+            if ( $saved = parent::save() ) {
 
-            ++self::$companiesSaved;
+                ++self::$companiesSaved;
 
-            // put company in cache for later
-            self::$companyCache->put( $companyKey, $this );
+                // put company in cache for later
+                self::$companyCache->put( $companyKey, $this );
+            }
+
         }
 
         $this->save_company_instances();
 
+        return $saved;
     }
 
     public function save_company_instances () {
