@@ -21,9 +21,15 @@ class CompanyCollectionFormatter {
     public static function format ( Rows $companies, $page = 1, $limit = 1000) {
 
         $host = FormatterHelpers::get_http_protocol() . $_SERVER['HTTP_HOST'] . '/api/company';
-        $lastPage = ceil(Generic::query('select count(*) as count from company')->first()->count / $limit);
+        $totalCount = Generic::query('select count(*) as count from company')->first()->count;
+        $lastPage = ceil($totalCount / $limit);
 
         $array = [
+            'count'     => [
+                'total'   => $totalCount,
+                'current' => $companies->get_num_rows(),
+                'offset'  => ($page-1) * $limit,
+            ],
             '_links' => [
                 'self'     => [
                     'href' => $host,

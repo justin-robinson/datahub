@@ -8,9 +8,11 @@
 namespace Api\Controller;
 
 use Api\Formatter\CompanyFormatter;
-use Api\Formatter\FormatterHelpers;
+use Api\Formatter\CompanyProfileCollectionFormatter;
+use Api\Formatter\CompanyProfileFormatter;
 use Api\Response\CompanyResponse;
 use DB\Datahub\Company;
+use Scoop\Database\Model\Generic;
 use Zend\View\Model\JsonModel;
 
 /**
@@ -23,41 +25,13 @@ class CompanyProfileController extends AbstractRestfulController
     /**
      * @param mixed $companyInstanceId
      * 
-*@return JsonModel
+     * @return JsonModel
      */
-    public function get( $companyInstanceId)
+    public function get( $companyInstanceId )
     {
         $company = Company::fetch_company_and_instances( $companyInstanceId);
 
-        if ( $company ) {
-
-            // pull instances off since the formatter kills them
-            $instances = $company->get_company_instances();
-
-            // format company into hal response
-            $company = CompanyFormatter::format($company);
-
-            $company['instances'] = [];
-
-            // add instances back to hal response
-            foreach ( $instances as $instance ) {
-
-                // get properties
-                $instance->fetch_properties();
-
-                // contacts
-                $instance->fetch_contacts();
-
-                // get the sorted properties
-                $sortedProperties = $instance->sort_properties();
-
-                $instance = $instance->to_array();
-
-                $instance['properties'] = $sortedProperties;
-
-                $company['instances'][] = $instance;
-            }
-        }
+        $company = empty($company) ? $company : CompanyProfileFormatter::format($company);
 
         return new JsonModel($company);
     }
@@ -69,7 +43,8 @@ class CompanyProfileController extends AbstractRestfulController
      */
     public function delete($companyId)
     {
-        return new JsonModel(['delete' => 'record deleted']);
+        $this->response->setStatusCode(404);
+        return new JsonModel(['message' => 'not allowed']);
     }
 
 
@@ -80,7 +55,8 @@ class CompanyProfileController extends AbstractRestfulController
      */
     public function create($data)
     {
-        return new JsonModel(['create' => $data]);
+        $this->response->setStatusCode(404);
+        return new JsonModel(['message' => 'not allowed']);
     }
 
     /**
@@ -91,7 +67,8 @@ class CompanyProfileController extends AbstractRestfulController
      */
     public function update($id, $data)
     {
-        return new JsonModel(['update' => $data]);
+        $this->response->setStatusCode(404);
+        return new JsonModel(['message' => 'not allowed']);
     }
 
     /**
@@ -101,29 +78,18 @@ class CompanyProfileController extends AbstractRestfulController
     {
         $from = isset($_GET['from']) ? $_GET['from'] : '0';
         $to = isset($_GET['to']) ? $_GET['to'] : date('Y-m-d H:i:s');
+        $page = (isset($_GET['page']) && (int)$_GET['page'] >= 1 ) ? $_GET['page'] : 1;
         $limit = 1000;
-        $offset = $limit * (((isset($_GET['page']) && (int)$_GET['page'] >= 1 ) ? $_GET['page'] : 1)-1);
+        $offset = $limit * ($page-1);
         $companies = Company::fetch_modified_in_range( $from, $to, $offset, $limit);
 
-        $sortedProperties = [];
-        foreach ( $companies as $company ) {
-            foreach ( $company->get_company_instances() as $instance ) {
-                $sortedProperties[] = $instance->sort_properties();
-            }
+        if ( $companies->get_num_rows() === 0 ) {
+            $this->response->setStatusCode(404);
+            return new JsonModel(['message' => 'not found']);
         }
-
-        $companies = $companies->to_array();
-
-        // replace instance properties with sorted ones
-        reset($sortedProperties);
-        foreach ( $companies as &$company ) {
-            foreach ( $company['instances'] as &$instance ) {
-                $instance['properties'] = current( $sortedProperties );
-                next( $sortedProperties );
-            }
-        }
-
-        return new JsonModel($companies);
+        
+        $count = Company::fetch_num_companies_modified_in_range($from, $to);
+        return new JsonModel(CompanyProfileCollectionFormatter::format($companies, $page, $limit, $count, $from, $to));
     }
 
     /**

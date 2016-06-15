@@ -27,6 +27,11 @@ class InstanceCollectionFormatter {
         $lastPage = ceil($totalCount / $limit);
 
         $array = [
+            'count'     => [
+                'total'   => $totalCount,
+                'current' => $instances->get_num_rows(),
+                'offset'  => ($page-1) * $limit,
+            ],
             '_links' => [
                 'self'     => [
                     'href' => $uri,
@@ -39,7 +44,7 @@ class InstanceCollectionFormatter {
                 ],
             ],
             '_embedded' => [
-                'instance' => []
+                'instances' => []
             ]
         ];
 
@@ -55,7 +60,7 @@ class InstanceCollectionFormatter {
             ];
         }
 
-        $instanceArray = &$array['_embedded']['instance'];
+        $instanceArray = &$array['_embedded']['instances'];
 
         foreach ( $instances as $instance ) {
             $instanceArray[] = CompanyInstanceFormatter::format( $instance );

@@ -27,6 +27,11 @@ class ContactCollectionFormatter {
         $lastPage = ceil($totalCount / $limit);
 
         $array = [
+            'count'     => [
+                'total'   => $totalCount,
+                'current' => $contacts->get_num_rows(),
+                'offset'  => ($page-1) * $limit,
+            ],
             '_links' => [
                 'self'     => [
                     'href' => $uri,
