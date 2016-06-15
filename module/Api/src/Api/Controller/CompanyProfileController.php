@@ -7,6 +7,8 @@
 
 namespace Api\Controller;
 
+use Api\Formatter\CompanyFormatter;
+use Api\Formatter\FormatterHelpers;
 use Api\Response\CompanyResponse;
 use DB\Datahub\Company;
 use Zend\View\Model\JsonModel;
@@ -45,12 +47,14 @@ class CompanyProfileController extends AbstractRestfulController
             }
 
             // convert to array
-            $company = $company->to_array();
+            $instances = $company->get_company_instances();
+            $company = CompanyFormatter::format($company);
+            $company['instances'] = [];
 
             // replace instance properties with sorted ones
             reset($sortedProperties);
-            foreach ( $company['instances'] as &$instance ) {
-                $instance['properties'] = current($sortedProperties);
+            foreach ( $instances as $instance ) {
+                $company['instances'][] = $instance->to_array()['properties'] = current($sortedProperties);
                 next($sortedProperties);
             }
         }
