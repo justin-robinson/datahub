@@ -30,32 +30,32 @@ class CompanyProfileController extends AbstractRestfulController
         $company = Company::fetch_company_and_instances( $companyInstanceId);
 
         if ( $company ) {
-            // sorted list of properties
-            $sortedProperties = [];
 
-            // get and sort all properties and contacts
-            foreach ( $company->get_company_instances() as $instance ) {
+            // pull instances off since the formatter kills them
+            $instances = $company->get_company_instances();
 
-                // get
+            // format company into hal response
+            $company = CompanyFormatter::format($company);
+
+            $company['instances'] = [];
+
+            // add instances back to hal response
+            foreach ( $instances as $instance ) {
+
+                // get properties
                 $instance->fetch_properties();
-
-                // sort
-                $sortedProperties[] = $instance->sort_properties();
 
                 // contacts
                 $instance->fetch_contacts();
-            }
 
-            // convert to array
-            $instances = $company->get_company_instances();
-            $company = CompanyFormatter::format($company);
-            $company['instances'] = [];
+                // get the sorted properties
+                $sortedProperties = $instance->sort_properties();
 
-            // replace instance properties with sorted ones
-            reset($sortedProperties);
-            foreach ( $instances as $instance ) {
-                $company['instances'][] = $instance->to_array()['properties'] = current($sortedProperties);
-                next($sortedProperties);
+                $instance = $instance->to_array();
+
+                $instance['properties'] = $sortedProperties;
+
+                $company['instances'][] = $instance;
             }
         }
 
