@@ -331,10 +331,10 @@ class Company extends \DBCore\Datahub\Company
               ci.*,
               cip.*,
               cn.*
-            FROM datahub.company c
-              LEFT JOIN datahub.companyInstance ci USING (companyId)
-              LEFT JOIN datahub.companyInstanceProperty cip USING (companyInstanceId)
-              LEFT JOIN datahub.contact cn USING ( companyInstanceId )
+            FROM company c
+              LEFT JOIN companyInstance ci USING (companyId)
+              LEFT JOIN companyInstanceProperty cip USING (companyInstanceId)
+              LEFT JOIN contact cn USING ( companyInstanceId )
             WHERE
               c.companyId = ?
               AND cip.deletedAt IS NULL
@@ -370,26 +370,44 @@ class Company extends \DBCore\Datahub\Company
             FROM
               (
                 SELECT
-                    *
+                  c.*
                 FROM
-                    datahub.company c
+                  company c
+                  LEFT JOIN companyInstance ci USING (companyId)
+                  LEFT JOIN companyInstanceProperty cip USING (companyInstanceId)
                 WHERE
-                    c.updatedAt BETWEEN ? and ?
+                  c.updatedAt BETWEEN ? and ?
+                  OR ci.updatedAt BETWEEN ? and ?
+                  OR cip.updatedAt BETWEEN ? and ?
+                GROUP BY c.companyID
                 LIMIT ?, ?
               ) c
-              LEFT JOIN datahub.companyInstance ci USING (companyId)
-              LEFT JOIN datahub.companyInstanceProperty cip USING (companyInstanceId)
-              LEFT JOIN datahub.contact cn USING ( companyInstanceId )
-            WHERE
-              ci.updatedAt BETWEEN ? and ?
-              OR cip.updatedAt BETWEEN ? and ?;",
-            [$from, $to, $offset, $limit, $from, $to, $from, $to]);
+              LEFT JOIN companyInstance ci USING (companyId)
+              LEFT JOIN companyInstanceProperty cip USING (companyInstanceId)
+              LEFT JOIN contact cn USING ( companyInstanceId );",
+            [$from, $to, $from, $to, $from, $to, $offset, $limit]);
 
         $companies = self::create_rows_from_mysqli_result($mysqliResult);
 
         $mysqliResult->free();
 
         return $companies;
+    }
+
+    public static function fetch_num_companies_modified_in_range ( $from, $to ) {
+
+        return Generic::query(
+            "SELECT
+              count(DISTINCT c.companyId) as count
+            FROM
+              company c
+              LEFT JOIN companyInstance ci USING (companyId)
+              LEFT JOIN companyInstanceProperty cip USING (companyInstanceId)
+            WHERE
+              c.updatedAt BETWEEN ? and ?
+              OR ci.updatedAt BETWEEN ? and ?
+              OR cip.updatedAt BETWEEN ? and ?;"
+        ,[$from, $to, $from, $to, $from, $to])->first()->count;
     }
 
     /**
