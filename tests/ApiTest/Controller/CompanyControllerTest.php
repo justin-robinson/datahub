@@ -5,7 +5,7 @@ namespace tests\ApiTest;
 use MyProject\Proxies\__CG__\stdClass;
 use tests\Bootstrap;
 
-use Api\Controller\CompanyController;
+use Api\Controller\CompanyProfileController;
 
 use Zend\Config\Reader\Json;
 use Zend\Stdlib\ArrayObject;
@@ -18,13 +18,13 @@ use Zend\Http\Response;
 use Zend\View\Model\JsonModel;
 
 /**
- * Class CompanyControllerTest
+ * Class CompanyProfileControllerTest
  *
  * @package tests\ApiTest
  *
- * @coversDefaultClass CompanyController
+ * @coversDefaultClass CompanyProfileController
  */
-class CompanyControllerTest extends AbstractHttpControllerTestCase
+class CompanyProfileControllerTest extends AbstractHttpControllerTestCase
 {
 
     protected $controller;
@@ -42,7 +42,7 @@ class CompanyControllerTest extends AbstractHttpControllerTestCase
         parent::setUp();
 
         $this->serviceManager = Bootstrap::getServiceManager();
-        $this->controller = new CompanyController();
+        $this->controller = new CompanyProfileController();
         $this->request = new Request();
         $this->routeMatch = new RouteMatch(['controller' => 'company']);
         $this->event = new MvcEvent();

@@ -8,14 +8,14 @@ use Scoop\Database\Model;
  * Class Company
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/06/06
+ * @date 2016/06/14
  * @property mixed $companyId
  * @property mixed $parentId
  * @property mixed $employeeCount
  * @property mixed $isActive
  * @property mixed $name
  * @property mixed $normalizedName
- * @property mixed $owernship
+ * @property mixed $ownership
  * @property mixed $createdAt
  * @property mixed $updatedAt
  * @property mixed $deletedAt
@@ -63,7 +63,7 @@ class Company extends Model {
           'normalizedName' => 
           array (
           ),
-          'owernship' => 
+          'ownership' => 
           array (
           ),
           'createdAt' => 
@@ -85,7 +85,7 @@ class Company extends Model {
           'isActive' => NULL,
           'name' => NULL,
           'normalizedName' => NULL,
-          'owernship' => NULL,
+          'ownership' => NULL,
           'createdAt' => NULL,
           'updatedAt' => NULL,
           'deletedAt' => NULL,
