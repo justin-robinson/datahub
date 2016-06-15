@@ -2,8 +2,9 @@
 
 namespace Api\Controller;
 
-use Api\Formatter\CompanyInstanceFormatter;
+use Api\Formatter\InstanceCollectionFormatter;
 use DB\Datahub\CompanyInstance;
+use Scoop\Database\Model\Generic;
 use Zend\View\Model\JsonModel;
 
 /**
@@ -14,18 +15,19 @@ class CompanyInstanceController extends AbstractRestfulController {
 
     public function get ($companyId) {
 
-        $companyInstances = CompanyInstance::fetch_where('companyId = ?', [$companyId]);
-        if ( $companyInstances->get_num_rows() === 0 ) {
-            $this->response->setStatusCode(404);
-            return new JsonModel(['message' => 'not found']);
+        $page = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] >= 1) ? (int)$_GET['page'] : 1;
+        $limit = 1000;
+        $offset = $limit * ($page-1);
+
+        $companyInstances = CompanyInstance::fetch_where('companyId = ?', [$companyId], $limit, $offset);
+        if ( $companyInstances ) {
+            $count = Generic::query('select count(*) as count from companyInstance where companyId = ?', [$companyId])->first()->count;
+            return new JsonModel(InstanceCollectionFormatter::format($companyInstances, $page, $limit, "/api/company/{$companyId}/instances", $count));
         }
 
-        $instances = [];
-        foreach ( $companyInstances as $instance ) {
-            $instances[] = CompanyInstanceFormatter::format($instance);
-        }
+        $this->response->setStatusCode(404);
+        return new JsonModel(['message' => 'not found']);
 
-        return new JsonModel($instances);
     }
 
     public function create ($data) {

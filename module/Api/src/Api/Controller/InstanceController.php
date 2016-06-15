@@ -3,6 +3,7 @@
 namespace Api\Controller;
 
 use Api\Formatter\CompanyInstanceFormatter;
+use Api\Formatter\InstanceCollectionFormatter;
 use DB\Datahub\CompanyInstance;
 use Zend\View\Model\JsonModel;
 
@@ -76,5 +77,21 @@ class InstanceController extends AbstractRestfulController {
         $this->response->setStatusCode( 404 );
 
         return new JsonModel( [ 'message' => 'not found' ] );
+    }
+
+    public function getList () {
+
+        $page = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] >= 1) ? (int)$_GET['page'] : 1;
+        $limit = 1000;
+        $offset = $limit * ($page-1);
+
+        $instances = CompanyInstance::fetch($limit, $offset);
+
+        if ( $instances ) {
+            return new JsonModel(InstanceCollectionFormatter::format($instances, $page, $limit));
+        }
+
+        $this->response->setStatusCode(404);
+        return new JsonModel(['message' => 'not found']);
     }
 }

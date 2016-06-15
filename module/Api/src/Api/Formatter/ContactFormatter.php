@@ -17,14 +17,16 @@ class ContactFormatter {
      */
     public static function format (Contact $property) {
 
+        $uri = FormatterHelpers::get_http_protocol() . $_SERVER['HTTP_HOST'] . '/api/';
+
         $array = $property->to_array();
 
         $array['_links'] = [
             'self'      => [
-                'href' => "/api/contact/{$array['contactId']}",
+                'href' => $uri . "contact/{$array['contactId']}",
             ],
             'instance' => [
-                'href' => "/api/instance/{$array['companyInstanceId']}",
+                'href' => $uri . "instance/{$array['companyInstanceId']}",
             ],
         ];
 

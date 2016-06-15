@@ -2,6 +2,7 @@
 
 namespace Api\Controller;
 
+use Api\Formatter\CompanyCollectionFormatter;
 use Api\Formatter\CompanyFormatter;
 use DB\Datahub\Company;
 use Zend\View\Model\JsonModel;
@@ -63,6 +64,22 @@ class CompanyController extends AbstractRestfulController {
             $company->delete();
             $company = Company::query('select * from datahub.company where companyId = ?', [$id])->first();
             return new JsonModel(CompanyFormatter::format($company));
+        }
+
+        $this->response->setStatusCode(404);
+        return new JsonModel(['message' => 'not found']);
+    }
+
+    public function getList () {
+
+        $page = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] >= 1) ? (int)$_GET['page'] : 1;
+        $limit = 1000;
+        $offset = $limit * ($page-1);
+
+        $companies = Company::fetch($limit, $offset);
+
+        if ( $companies ) {
+            return new JsonModel(CompanyCollectionFormatter::format($companies, $page, $limit));
         }
 
         $this->response->setStatusCode(404);

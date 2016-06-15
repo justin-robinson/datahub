@@ -28,6 +28,7 @@ if ( file_exists($configFilePath) ) {
 
     return [
         'host'     => $configFile['host'],
+        'database' => $configFile['dbname'],
         'user'     => $configFile['user'],
         'password' => $configFile['password'],
         'port'     => $configFile['port'],

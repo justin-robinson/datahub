@@ -17,14 +17,16 @@ class CompanyInstancePropertyFormatter {
      */
     public static function format (CompanyInstanceProperty $property) {
 
+        $uri = FormatterHelpers::get_http_protocol() . $_SERVER['HTTP_HOST'] . '/api/';
+
         $array = $property->to_array();
 
         $array['_links'] = [
             'self'      => [
-                'href' => "/api/property/{$array['companyInstancePropertyId']}",
+                'href' => $uri . "property/{$array['companyInstancePropertyId']}",
             ],
             'instance' => [
-                'href' => "/api/instance/{$array['companyInstanceId']}",
+                'href' => $uri . "instance/{$array['companyInstanceId']}",
             ],
         ];
 

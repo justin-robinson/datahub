@@ -2,8 +2,10 @@
 
 namespace Api\Controller;
 
+use Api\Formatter\ContactCollectionFormatter;
 use Api\Formatter\ContactFormatter;
 use DB\Datahub\Contact;
+use Scoop\Database\Model\Generic;
 use Zend\View\Model\JsonModel;
 
 /**
@@ -14,18 +16,19 @@ class InstanceContactController extends AbstractRestfulController {
 
     public function get ($companyInstanceId) {
 
-        $contactRows = Contact::fetch_where('companyInstanceId = ?', [$companyInstanceId]);
+        $page = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] >= 1) ? (int)$_GET['page'] : 1;
+        $limit = 1000;
+        $offset = $limit * ($page-1);
 
-        if ( $contactRows->get_num_rows() === 0 ) {
-            $this->response->setStatusCode(404);
-            return new JsonModel(['message' => 'not found']);
+        $contacts = Contact::fetch_where('companyInstanceId = ?', [$companyInstanceId], $limit, $offset);
+
+        if ( $contacts ) {
+            $count = Generic::query('select count(*) as count from contact where companyInstanceId = ?', [$companyInstanceId])->first()->count;
+            return new JsonModel(ContactCollectionFormatter::format($contacts, $page, $limit, "/api/instance/{$companyInstanceId}/contacts", $count));
         }
 
-        $contacts = [];
-        foreach ( $contactRows as $contact ) {
-            $contacts[] = ContactFormatter::format($contact);
-        }
-        return new JsonModel($contacts);
+        $this->response->setStatusCode(404);
+        return new JsonModel(['message' => 'not found']);
 
     }
 

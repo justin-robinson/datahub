@@ -17,14 +17,16 @@ class CompanyFormatter {
      */
     public static function format ( Company $company ) {
 
+        $uri = FormatterHelpers::get_http_protocol() . $_SERVER['HTTP_HOST'] . '/api/company';
+
         $array = $company->to_array();
         unset($array['instances']);
         $array['_links'] = [
             'self'      => [
-                'href' => "/api/company/{$array['companyId']}",
+                'href' => $uri . "/{$array['companyId']}",
             ],
             'instances' => [
-                'href' => "/api/company/{$array['companyId']}/instances",
+                'href' => $uri . "/{$array['companyId']}/instances",
             ],
         ];
 

@@ -21,18 +21,20 @@ class CompanyInstanceFormatter {
         unset($array['properties']);
         unset($array['contacts']);
 
+        $host = FormatterHelpers::get_http_protocol() . $_SERVER['HTTP_HOST'];
+
         $array['_links'] = [
             'self'       => [
-                'href' => "/api/instance/{$array['companyInstanceId']}",
+                'href' => $host . "/api/instance/{$array['companyInstanceId']}",
             ],
             'company' => [
-                'href' => "/api/company/{$array['companyId']}",
+                'href' => $host . "/api/company/{$array['companyId']}",
             ],
             'contacts' => [
-                'href' => "/api/instance/{$array['companyInstanceId']}/contacts",
+                'href' => $host . "/api/instance/{$array['companyInstanceId']}/contacts",
             ],
             'properties' => [
-                'href' => "/api/instance/{$array['companyInstanceId']}/properties",
+                'href' => $host . "/api/instance/{$array['companyInstanceId']}/properties",
             ],
         ];
 
