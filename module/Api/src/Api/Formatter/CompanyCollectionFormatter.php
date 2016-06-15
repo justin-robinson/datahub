@@ -34,10 +34,6 @@ class CompanyCollectionFormatter {
                 'last' => [
                     'href' => $host . '?page=' . $lastPage,
                 ],
-                'com:find' => [
-                    'href'      => $host . '/{?id}',
-                    'templated' => true,
-                ],
             ],
             '_embedded' => [
                 'company' => []

@@ -37,10 +37,6 @@ class InstanceCollectionFormatter {
                 'last' => [
                     'href' => $uri . '?page=' . $lastPage,
                 ],
-                'in:find' => [
-                    'href'      => $uri . '/{?id}',
-                    'templated' => true,
-                ],
             ],
             '_embedded' => [
                 'instance' => []
