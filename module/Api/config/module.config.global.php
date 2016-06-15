@@ -128,7 +128,7 @@ return [
             'company-profile' => [
                 'type'         => 'Literal',
                 'options'      => [
-                    'route'    => '/api/company/profile',
+                    'route'    => '/api/company',
                     'defaults' => [
                         'controller' => 'Api\Controller\CompanyProfile',
                     ],
@@ -137,7 +137,7 @@ return [
                     'rest' => [
                         'type'    => 'Segment',
                         'options' => [
-                            'route'       => '[/:id]',
+                            'route'       => '[/:id]/profile',
                             'constraints' => [
                                 'id' => '[a-zA-Z0-9_-]*',
                             ],

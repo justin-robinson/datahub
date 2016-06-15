@@ -28,6 +28,9 @@ class CompanyFormatter {
             'instances' => [
                 'href' => $uri . "/{$array['companyId']}/instances",
             ],
+            'profile' => [
+                'href' => $uri . "/{$array['companyId']}/profile",
+            ]
         ];
 
         return $array;
