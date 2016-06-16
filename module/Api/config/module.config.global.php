@@ -14,6 +14,7 @@ return [
             'Api\Controller\Property'           => 'Api\Controller\PropertyController',
             'Api\Controller\PublicCompany'      => 'Api\Controller\PublicCompanyController',
             'Api\Controller\Search'             => 'Api\Controller\SearchController',
+            'Api\Controller\State'              => 'Api\Controller\StateController',
         ],
     ],
     'router'       => [
@@ -115,6 +116,26 @@ return [
                 ],
                 'child_routes' => [
                     'contact' => [
+                        'type'    => 'Segment',
+                        'options' => [
+                            'route'       => '[/:id]',
+                            'constraints' => [
+                                'id' => '[0-9]*',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'state'         => [
+                'type'         => 'Literal',
+                'options'      => [
+                    'route'    => '/api/state',
+                    'defaults' => [
+                        'controller' => 'Api\Controller\State',
+                    ],
+                ],
+                'child_routes' => [
+                    'state' => [
                         'type'    => 'Segment',
                         'options' => [
                             'route'       => '[/:id]',

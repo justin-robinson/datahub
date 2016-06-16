@@ -41,6 +41,11 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
      */
     protected $contacts;
 
+    /**
+     * @var State|null
+     */
+    protected $state;
+
 
     /**
      * @var int
@@ -245,6 +250,18 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     }
 
     /**
+     * @return State|null
+     */
+    public function fetch_state () {
+
+        if ( is_numeric($this->stateId) ) {
+            $this->state = State::fetch_by_id($this->stateId);
+        }
+
+        return $this->get_state();
+    }
+
+    /**
      * @param $name
      * @param $id
      *
@@ -284,6 +301,14 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     {
 
         return $this->properties;
+    }
+
+    /**
+     * @return State|null
+     */
+    public function get_state(){
+
+        return $this->state;
     }
 
     /**
@@ -481,6 +506,11 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         $this->properties = $properties;
     }
 
+    public function set_state ( State $state ) {
+
+        $this->state = $state;
+    }
+
     /**
      * @return array
      */
@@ -559,6 +589,8 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
             foreach ( $this->get_contacts() as $contact ) {
                 $array['contacts'][] = $contact->to_array();
             }
+
+            $array['state'] = $this->get_state();
         }
 
         return $array;

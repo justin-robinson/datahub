@@ -330,11 +330,13 @@ class Company extends \DBCore\Datahub\Company
               c.*,
               ci.*,
               cip.*,
-              cn.*
+              cn.*,
+              s.*
             FROM company c
               LEFT JOIN companyInstance ci USING (companyId)
               LEFT JOIN companyInstanceProperty cip USING (companyInstanceId)
               LEFT JOIN contact cn USING ( companyInstanceId )
+              LEFT JOIN state s USING ( stateId )
             WHERE
               c.companyId = ?
               AND cip.deletedAt IS NULL
@@ -366,7 +368,8 @@ class Company extends \DBCore\Datahub\Company
               c.*,
               ci.*,
               cip.*,
-              cn.*
+              cn.*,
+              s.*
             FROM
               (
                 SELECT
@@ -384,7 +387,8 @@ class Company extends \DBCore\Datahub\Company
               ) c
               LEFT JOIN companyInstance ci USING (companyId)
               LEFT JOIN companyInstanceProperty cip USING (companyInstanceId)
-              LEFT JOIN contact cn USING ( companyInstanceId );",
+              LEFT JOIN contact cn USING ( companyInstanceId )
+              LEFT JOIN state s USING ( stateId );",
             [$from, $to, $from, $to, $from, $to, $offset, $limit]);
 
         $companies = self::create_rows_from_mysqli_result($mysqliResult);
@@ -543,7 +547,7 @@ class Company extends \DBCore\Datahub\Company
         $prevCompanyInstanceId = null;
         $prevCompanyInstancePropertyId = null;
         $prevContactId = null;
-        $i = 0;
+        $prevStateId = null;
 
         // organize the fields where we can lookup by $fields['tableName']['columnName']
         // and get the index into the raw $rows array
@@ -608,7 +612,7 @@ class Company extends \DBCore\Datahub\Company
                 $instance->add_property($property);
             }
 
-            // the company instance property id of this row
+            // the contact id of this row
             $contactId = $row[$fields[Contact::TABLE][Contact::AUTO_INCREMENT_COLUMN]];
             if ( $contactId !== $prevContactId ) {
                 $contact = new Contact();
@@ -618,13 +622,26 @@ class Company extends \DBCore\Datahub\Company
                 $instance->add_contact($contact);
             }
 
+            if ( isset($fields[State::TABLE]) ){
+                // the state id of this row
+                $stateId = $row[$fields[State::TABLE][State::AUTO_INCREMENT_COLUMN]];
+                if ( $stateId !== $prevStateId ) {
+                    $state = new State();
+                    foreach ( $fields[State::TABLE] as $columnName => $rowIndex ) {
+                        $state->$columnName = $row[$rowIndex];
+                    }
+                    $instance->set_state($state);
+                }
+            } else {
+                $stateId = null;
+            }
+
             // need this for the next iteration
+            $prevStateId = $stateId;
             $prevContactId = $contactId;
             $prevCompanyInstancePropertyId = $companyInstancePropertyId;
             $prevCompanyInstanceId = $companyInstanceId;
             $prevCompanyId = $companyId;
-
-            ++$i;
         }
 
         // add last company to the rows collection
