@@ -389,9 +389,9 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         if ($existingInstance) {
 
             // add properties to this instance
-            $existingInstance->set_properties($this->get_properties());
+            $this->populate($existingInstance->to_array(false));
 
-            $existingInstance->save_properties();
+            $this->save_properties();
 
         } else {
 
