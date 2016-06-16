@@ -2,7 +2,7 @@
 
 namespace Api\Controller;
 
-use Api\Formatter\CompanyInstanceFormatter;
+use Api\Formatter\InstanceFormatter;
 use Api\Formatter\InstanceCollectionFormatter;
 use DB\Datahub\CompanyInstance;
 use Zend\View\Model\JsonModel;
@@ -17,7 +17,7 @@ class InstanceController extends AbstractRestfulController {
 
         $instance = CompanyInstance::fetch_by_id( $companyInstanceId );
         if( $instance ) {
-            return new JsonModel( CompanyInstanceFormatter::format( $instance ) );
+            return new JsonModel( InstanceFormatter::format( $instance ) );
         }
 
         $this->response->setStatusCode( 404 );
@@ -38,7 +38,7 @@ class InstanceController extends AbstractRestfulController {
             $instance->reload();
         }
 
-        return new JsonModel( CompanyInstanceFormatter::format( $instance ) );
+        return new JsonModel( InstanceFormatter::format( $instance ) );
     }
 
     public function update ( $companyInstanceId, $data ) {
@@ -55,7 +55,7 @@ class InstanceController extends AbstractRestfulController {
             $instance->save();
             $instance->reload();
 
-            return new JsonModel( CompanyInstanceFormatter::format( $instance ) );
+            return new JsonModel( InstanceFormatter::format( $instance ) );
         }
 
         $this->response->setStatusCode( 404 );
@@ -71,7 +71,7 @@ class InstanceController extends AbstractRestfulController {
             $instance->delete();
             $instance = CompanyInstance::query( 'SELECT * FROM datahub.companyInstance WHERE companyInstanceId = ?', [ $id ] )->first();
 
-            return new JsonModel( CompanyInstanceFormatter::format( $instance ) );
+            return new JsonModel( InstanceFormatter::format( $instance ) );
         }
 
         $this->response->setStatusCode( 404 );

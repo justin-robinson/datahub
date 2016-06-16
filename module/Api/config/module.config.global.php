@@ -3,17 +3,17 @@ return [
 
     'controllers'  => [
         'invokables' => [
-            'Api\Controller\Abstract'         => 'Api\Controller\AbstractRestfulController',
-            'Api\Controller\Company'          => 'Api\Controller\CompanyController',
-            'Api\Controller\CompanyInstance'  => 'Api\Controller\CompanyInstanceController',
-            'Api\Controller\CompanyProfile'   => 'Api\Controller\CompanyProfileController',
-            'Api\Controller\Contact'          => 'Api\Controller\ContactController',
-            'Api\Controller\Instance'         => 'Api\Controller\InstanceController',
-            'Api\Controller\InstanceContact'  => 'Api\Controller\InstanceContactController',
-            'Api\Controller\InstanceProperty' => 'Api\Controller\InstancePropertyController',
-            'Api\Controller\Property'         => 'Api\Controller\PropertyController',
-            'Api\Controller\PublicCompany'    => 'Api\Controller\PublicCompanyController',
-            'Api\Controller\Search'           => 'Api\Controller\SearchController',
+            'Api\Controller\Abstract'           => 'Api\Controller\AbstractRestfulController',
+            'Api\Controller\Company'            => 'Api\Controller\CompanyController',
+            'Api\Controller\CompanyInstances'   => 'Api\Controller\CompanyInstancesController',
+            'Api\Controller\CompanyProfile'     => 'Api\Controller\CompanyProfileController',
+            'Api\Controller\Contact'            => 'Api\Controller\ContactController',
+            'Api\Controller\Instance'           => 'Api\Controller\InstanceController',
+            'Api\Controller\InstanceContacts'   => 'Api\Controller\InstanceContactsController',
+            'Api\Controller\InstanceProperties' => 'Api\Controller\InstancePropertiesController',
+            'Api\Controller\Property'           => 'Api\Controller\PropertyController',
+            'Api\Controller\PublicCompany'      => 'Api\Controller\PublicCompanyController',
+            'Api\Controller\Search'             => 'Api\Controller\SearchController',
         ],
     ],
     'router'       => [
@@ -41,7 +41,7 @@ return [
                         'options' => [
                             'route'    => '[/:id]/instances',
                             'defaults' => [
-                                'controller' => 'Api\Controller\CompanyInstance',
+                                'controller' => 'Api\Controller\CompanyInstances',
                             ],
                         ],
                     ],
@@ -70,7 +70,7 @@ return [
                         'options' => [
                             'route'    => '[/:id]/properties',
                             'defaults' => [
-                                'controller' => 'Api\Controller\InstanceProperty',
+                                'controller' => 'Api\Controller\InstanceProperties',
                             ],
                         ],
                     ],
@@ -79,7 +79,7 @@ return [
                         'options' => [
                             'route'    => '[/:id]/contacts',
                             'defaults' => [
-                                'controller' => 'Api\Controller\InstanceContact',
+                                'controller' => 'Api\Controller\InstanceContacts',
                             ],
                         ],
                     ],
