@@ -1,110 +1,88 @@
 <?php
-/**
- * User: daveb
- * Date: 1/6/16
- * Time: 4:43 PM
- */
 
 namespace Api\Controller;
 
+use Api\Formatter\CompanyCollectionFormatter;
+use Api\Formatter\CompanyFormatter;
+use DB\Datahub\Company;
 use Zend\View\Model\JsonModel;
 
 /**
  * Class CompanyController
- *
  * @package Api\Controller
  */
-class CompanyController extends AbstractRestfulController
-{
-    /**
-     * @param mixed $companyId
-     *
-     * @return JsonModel
-     */
-    public function get($companyId)
-    {
-        return $this->lookupBy('hub_id', $companyId);
+class CompanyController extends AbstractRestfulController {
+
+    public function get ( $companyInstanceId) {
+        $company = Company::fetch_by_id( $companyInstanceId);
+        if ( $company ) {
+            return new JsonModel(CompanyFormatter::format($company));
+        }
+
+        $this->response->setStatusCode(404);
+        return new JsonModel(['message' => 'not found']);
     }
 
-    /**
-     * @param mixed $companyId
-     *
-     * @return JsonModel
-     */
-    public function delete($companyId)
-    {
-        return new JsonModel(['delete' => 'record deleted']);
+    public function create ($data) {
+
+        // don't allow instances to be saved
+        unset($data['companyId']);
+        unset($data['instances']);
+
+        $company = new Company($data);
+        if ( $company->save() ) {
+            // get the actual timestamps
+            $company->reload();
+        }
+        return new JsonModel(CompanyFormatter::format($company));
     }
 
+    public function update ($companyId, $data) {
 
-    /**
-     * @param mixed $data
-     *
-     * @return JsonModel
-     */
-    public function create($data)
-    {
-        return new JsonModel(['create' => $data]);
-    }
+        // don't allow instances to be saved
+        unset($data['companyId']);
+        unset($data['instances']);
 
-    /**
-     * @param mixed $id
-     * @param mixed $data
-     *
-     * @return JsonModel
-     */
-    public function update($id, $data)
-    {
-        return new JsonModel(['update' => $data]);
-    }
+        $company = Company::fetch_by_id($companyId);
 
-    /**
-     * @return JsonModel
-     */
-    public function getList()
-    {
-        return new JsonModel(['getList' => 'not implemented']);
-    }
+        if ( $company ) {
+            $company->populate($data);
+            $company->save();
+            $company->reload();
+            return new JsonModel(CompanyFormatter::format($company));
+        }
 
-    /**
-     * @return JsonModel
-     * this is a bridge method to look up companies by the refinery_id
-     * since datahub will eventually replace refinery, it will be depricated
-     * at that time
-     */
-    public function  refineryAction()
-    {
-
-        // get id from url
-        $refineryId = $this->params()->fromRoute('id');
-
-        return $this->lookupBy('refinery_id', $refineryId);
-    }
-
-    /**
-     * @param $name
-     * @param $id
-     *
-     * @return JsonModel
-     */
-    private function lookupBy($name, $id)
-    {
-
-        // load company model
-        /** @var $company \Hub\Model\Company */
-        $company = $this->getServiceLocator()->get('\Hub\Model\Company');
-        // find company by refinery_id in url
-        $record = $company->findOneBy([$name => $id]);
-
-        // ensure we don't return something falsey
-        $record = empty($record) ? [
-            'success'  => false,
-            'messsage' => 'not found',
-        ] : $record->toArray(true);
-
-        // return
-        return new JsonModel($record);
+        $this->response->setStatusCode(404);
+        return new JsonModel(['message' => 'not found']);
 
     }
 
+    public function delete ( $id ) {
+
+        $company = Company::fetch_by_id($id);
+        if ( $company ) {
+            $company->delete();
+            $company = Company::query('select * from datahub.company where companyId = ?', [$id])->first();
+            return new JsonModel(CompanyFormatter::format($company));
+        }
+
+        $this->response->setStatusCode(404);
+        return new JsonModel(['message' => 'not found']);
+    }
+
+    public function getList () {
+
+        $page = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] >= 1) ? (int)$_GET['page'] : 1;
+        $limit = 1000;
+        $offset = $limit * ($page-1);
+
+        $companies = Company::fetch($limit, $offset);
+
+        if ( $companies ) {
+            return new JsonModel(CompanyCollectionFormatter::format($companies, $page, $limit));
+        }
+
+        $this->response->setStatusCode(404);
+        return new JsonModel(['message' => 'not found']);
+    }
 }

@@ -82,6 +82,11 @@ class Buffer {
     private $db;
 
     /**
+     * @var string[]
+     */
+    private $insertColumns;
+
+    /**
      * sql used for declaring which columns to insert into it
      * @var string[]
      */
@@ -105,6 +110,11 @@ class Buffer {
     private $table;
 
     /**
+     * @var string[]
+     */
+    private $updateColumns;
+
+    /**
      * Columns and values to update on duplicate key detection
      * @var boolean
      */
@@ -124,8 +134,10 @@ class Buffer {
         $this->bufferLimit = $bufferLimit;
         $this->db = $db;
         $this->table = $table;
+        $this->insertColumns = $insertColumns;
         $this->insertColumnNamesSql = implode( ',', array_keys( $insertColumns ) );
         $this->insertValuesSqlTemplate = '(' . implode( ',', $insertColumns ) . ')';
+        $this->updateColumns = $updateColumns;
 
         $this->updateColumnsSql = '';
         foreach ( $updateColumns as $updateColumnName ) {

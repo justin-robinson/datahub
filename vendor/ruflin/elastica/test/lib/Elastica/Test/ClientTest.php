@@ -1,13 +1,15 @@
 <?php
+
 namespace Elastica\Test;
 
+use Elastica\Client;
 use Elastica\Connection;
 use Elastica\Document;
 use Elastica\Exception\Connection\HttpException;
 use Elastica\Exception\InvalidException;
 use Elastica\Index;
 use Elastica\Request;
-use Elastica\Script;
+use Elastica\Script\Script;
 use Elastica\Test\Base as BaseTest;
 use Elastica\Type;
 
@@ -305,7 +307,7 @@ class ClientTest extends BaseTest
 
         // Adds 1 document to the index
         $doc = new Document(null, $data);
-        $doc->setRouting(1);
+        $doc->setRouting('first_routing');
         $result = $type->addDocument($doc);
 
         // Refresh index
@@ -328,7 +330,7 @@ class ClientTest extends BaseTest
 
         // Try to delete doc with a routing value which hashes to
         // a different shard then the id.
-        $resp = $index->getClient()->deleteIds($ids, $index, $type, 2);
+        $resp = $index->getClient()->deleteIds($ids, $index, $type, 'second_routing');
 
         // Refresh the index
         $index->refresh();
@@ -340,7 +342,7 @@ class ClientTest extends BaseTest
 
         // Using the existing $index and $type variables which
         // are \Elastica\Index and \Elastica\Type objects respectively
-        $resp = $index->getClient()->deleteIds($ids, $index, $type, 1);
+        $resp = $index->getClient()->deleteIds($ids, $index, $type, 'first_routing');
 
         // Refresh the index to clear out deleted ID information
         $index->refresh();
@@ -555,7 +557,7 @@ class ClientTest extends BaseTest
 
         $client->setConnections(array($connection1, $connection2));
 
-        $client->request('_status', Request::GET);
+        $client->request('_stats', Request::GET);
 
         $connections = $client->getConnections();
 
@@ -580,7 +582,7 @@ class ClientTest extends BaseTest
         $client->setConnections(array($connection1, $connection2));
 
         try {
-            $client->request('_status', Request::GET);
+            $client->request('_stats', Request::GET);
             $this->fail('Should throw exception as no connection valid');
         } catch (HttpException $e) {
         }
@@ -624,7 +626,7 @@ class ClientTest extends BaseTest
         $this->assertEquals(0, $count);
 
         try {
-            $client->request('_status', Request::GET);
+            $client->request('_stats', Request::GET);
             $this->fail('Should throw exception as no connection valid');
         } catch (HttpException $e) {
             $this->assertTrue(true);
@@ -644,7 +646,7 @@ class ClientTest extends BaseTest
         // Url should overwrite invalid host
         $client = $this->_getClient(array('url' => $url, 'port' => '9101', 'timeout' => 2));
 
-        $response = $client->request('_status');
+        $response = $client->request('_stats');
         $this->assertInstanceOf('Elastica\Response', $response);
     }
 
@@ -680,6 +682,7 @@ class ClientTest extends BaseTest
      */
     public function testUpdateDocumentByScript()
     {
+        $this->_checkScriptInlineSetting();
         $index = $this->_createIndex();
         $type = $index->getType('test');
         $client = $index->getClient();
@@ -708,6 +711,7 @@ class ClientTest extends BaseTest
      */
     public function testUpdateDocumentByScriptWithUpsert()
     {
+        $this->_checkScriptInlineSetting();
         $index = $this->_createIndex();
         $type = $index->getType('test');
         $client = $index->getClient();
@@ -914,14 +918,14 @@ class ClientTest extends BaseTest
     public function testLastRequestResponse()
     {
         $client = $this->_getClient();
-        $response = $client->request('_status');
+        $response = $client->request('_stats');
 
         $this->assertInstanceOf('Elastica\Response', $response);
 
         $lastRequest = $client->getLastRequest();
 
         $this->assertInstanceOf('Elastica\Request', $lastRequest);
-        $this->assertEquals('_status', $lastRequest->getPath());
+        $this->assertEquals('_stats', $lastRequest->getPath());
 
         $lastResponse = $client->getLastResponse();
         $this->assertInstanceOf('Elastica\Response', $lastResponse);
@@ -933,6 +937,7 @@ class ClientTest extends BaseTest
      */
     public function testUpdateDocumentPopulateFields()
     {
+        $this->_checkScriptInlineSetting();
         $index = $this->_createIndex();
         $type = $index->getType('test');
         $client = $index->getClient();
@@ -1156,5 +1161,81 @@ class ClientTest extends BaseTest
             $this->fail('Header name is not a string but exception not thrown');
         } catch (InvalidException $ex) {
         }
+    }
+
+    /**
+     * @group unit
+     */
+    public function testPassBigIntSettingsToConnectionConfig()
+    {
+        $client = new Client(array('bigintConversion' => true));
+
+        $this->assertTrue($client->getConnection()->getConfig('bigintConversion'));
+    }
+
+    /**
+     * @group unit
+     */
+    public function testClientConnectWithConfigSetByMethod()
+    {
+        $client = new Client();
+        $client->setConfigValue('host', $this->_getHost());
+        $client->setConfigValue('port', $this->_getPort());
+
+        $client->connect();
+        $this->assertTrue($client->hasConnection());
+
+        $connection = $client->getConnection();
+        $this->assertInstanceOf('\Elastica\Connection', $connection);
+        $this->assertEquals($this->_getHost(), $connection->getHost());
+        $this->assertEquals($this->_getPort(), $connection->getPort());
+    }
+
+    /**
+     * @group functional
+     */
+    public function testLogger()
+    {
+        $logger = $this->getMock('Psr\\Log\\LoggerInterface');
+        $client = $this->_getClient([], null, $logger);
+
+        $logger->expects($this->once())
+            ->method('debug')
+            ->with(
+                'Elastica Request',
+                $this->logicalAnd(
+                    $this->arrayHasKey('request'),
+                    $this->arrayHasKey('response'),
+                    $this->arrayHasKey('responseStatus')
+                )
+            );
+
+        $client->request('_stats', Request::GET);
+    }
+
+    /**
+     * @expectedException \Elastica\Exception\Connection\HttpException
+     * @group functional
+     */
+    public function testLoggerOnFailure()
+    {
+        $logger = $this->getMock('Psr\\Log\\LoggerInterface');
+        $client = $this->_getClient(array('connections' => array(
+            array('host' => $this->_getHost(), 'port' => 9201),
+        )), null, $logger);
+
+        $logger->expects($this->once())
+            ->method('error')
+            ->with(
+                'Elastica Request Failure',
+                $this->logicalAnd(
+                    $this->arrayHasKey('exception'),
+                    $this->arrayHasKey('request'),
+                    $this->arrayHasKey('retry'),
+                    $this->logicalNot($this->arrayHasKey('response'))
+                )
+            );
+
+        $client->request('_stats', Request::GET);
     }
 }

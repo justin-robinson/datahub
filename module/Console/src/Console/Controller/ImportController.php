@@ -3,8 +3,13 @@
 namespace Console\Controller;
 
 use Console\Importer\Refinery;
-use Console\Record\Formatter\Factory;
 use Console\CsvIterator;
+use Console\Record\Formatter\Formatters\Relevate;
+use DB\Datahub\CompanyInstance;
+use DB\Datahub\Contact;
+use LRUCache\LRUCache;
+use Scoop\Database\Literal;
+use Scoop\Database\Query\Buffer;
 use Zend\Db\Adapter as dbAdapter;
 
 /**
@@ -108,12 +113,6 @@ class ImportController extends AbstractActionController
               `datahub`.`contact`
             WHERE meroveus_id = ?
             LIMIT 1000',
-        'selectCompany'     => '
-            SELECT
-                *
-            FROM
-              `datahub`.`company`
-            WHERE meroveus_id = ?',
         'insertContact'     => '
             INSERT INTO
               datahub.contact (
@@ -239,6 +238,7 @@ class ImportController extends AbstractActionController
      */
     public function refineryAction()
     {
+
         //@todo set up environment sniffing
         echo '
          ██▓    ███▄ ▄███▓    ██▓███      ▒█████      ██▀███     ▄▄▄█████▓    ██▓    ███▄    █      ▄████
@@ -267,9 +267,10 @@ class ImportController extends AbstractActionController
 
         $importer = new Refinery();
 
-        $count = $importer->import($csvFile, $this->db);
+        list($companiesProcessed, $instancesProcessed) = $importer->import($csvFile);
 
-        echo "ended at " . date('h:i:s A') . PHP_EOL . 'imported ' . $count . ' records' . PHP_EOL;
+        printf("ended at %s%sImported: %s\t%s companies%s\t%s instances%s", date('h:i:s A'),
+               PHP_EOL, PHP_EOL,$companiesProcessed,PHP_EOL,$instancesProcessed,PHP_EOL);
     }
 
     /**
@@ -301,103 +302,102 @@ class ImportController extends AbstractActionController
         // meroveus ids are grouped together so we can use this to reduce sql queries down to 1 for each company
         $lastMeroveusId = -1;
 
-
-        $selectAllContacts = $this->sqlStatementsArray['selectContacts'];
-        $selectCompany     = $this->sqlStatementsArray['selectCompany'];
-        $insertContact     = $this->sqlStatementsArray['insertContact'];
-        $updateContact     = $this->sqlStatementsArray['updateContact'];
+        $updateContact     = null;//$this->sqlStatementsArray['updateContact'];
 
         // some stats
         $totalCount = $insertCount = $updateCount = 0;
 
         echo "started at " . date('h:i:s A') . PHP_EOL;
 
-        $formatter = Factory::factory('relevate');
+        $formatter = Relevate::get_instance();
+
+        // cache company instance lookups
+        $companyInstanceCache = new LRUCache(1000);
+
+        // buffer contact insertions
+        $contactInsertionBuffer = new Buffer(1000, Contact::class);
+
+        // so we can update existing contacts
+        $contactInsertionBuffer->set_insert_ignore(true);
 
         foreach ($file as $line) {
 
-            $contactDataArray  = $formatter->format($line);
-            $currentMeroveusId = $contactDataArray[':meroveus_id'];
+            $currentContact = $formatter->format($line);
 
-            // get the hub id
-            $selectCompany->execute([$currentMeroveusId]);
-            if ($selectCompany->rowCount() > 0) {
-                $company                     = $selectCompany->fetch();
-                $contactDataArray[':hub_id'] = $company['hub_id'];
+            $companyInstances =
+                $companyInstanceCache->exists($currentContact->meroveusId)
+                ? $companyInstanceCache->get($currentContact->meroveusId)
+                : CompanyInstance::fetch_by_source_name_and_id('meroveus', $currentContact->meroveusId);
+
+            if ( $companyInstances ) {
+                $currentContact->companyInstanceId = $companyInstances->first()->companyInstanceId;
+                $companyInstanceCache->put($currentContact->meroveusId, $companyInstances);
             }
 
             // if we have a new meroveus id, get all the contacts related to it
-            if ($lastMeroveusId !== $currentMeroveusId) {
+            if ($lastMeroveusId !== $currentContact->meroveusId) {
 
                 // update meroveus id
-                $lastMeroveusId = $currentMeroveusId;
+                $lastMeroveusId = $currentContact->meroveusId;
 
                 // get all contacts for this meroveus id
                 $allContacts = [];
 
-                $selectAllContacts->execute([$currentMeroveusId]);
-
                 // add each contact to our contacts array index by their name
-                foreach ($selectAllContacts as $contact) {
-                    $key               = strtolower($contact['first_name'] . $contact['last_name']);
-                    $allContacts[$key] = $contact;
+                $contacts = Contact::fetch_where('meroveusId = ?', [$currentContact->meroveusId]);
+                if ( $contacts ) {
+                    foreach ( $contacts as $contact) {
+                        $key               = strtolower($contact->firstName . $contact->lastName);
+                        $allContacts[$key] = $contact;
+                    }
+
                 }
+
             }
 
             // key used to find this contact on our contacts array
-            $key = strtolower($contactDataArray[':first_name'] . $contactDataArray[':last_name']);
+            $key = strtolower($currentContact->firstName . $currentContact->lastName);
 
             // does this contact exist?
             if (empty($allContacts[$key])) {
 
+                $currentContact->set_literal( 'created_at', 'NOW()' );
+                $currentContact->set_literal( 'updated_at', 'NOW()' );
+
                 // insert new contact
-                $insertCount += $insertContact->execute($contactDataArray);
+                $contactInsertionBuffer->insert($currentContact);
 
             } else {
 
                 // the contact in the db
                 $existingContact = $allContacts[$key];
 
-                // flag that we updated a contact
-                $contactNeedsUpdate = false;
-
-                foreach ($existingContact as $columnName => $valueInDB) {
-
-                    // pdo sql statements use this column prefix naming convention
-                    $pdoColumnName = ':' . $columnName;
+                // overwrite empty values in the db with non empty values from the csv
+                foreach ($existingContact->get_db_values_array() as $columnName => $valueInDB) {
 
                     // the value loaded from the csv
-                    $newValue = isset($contactDataArray[$pdoColumnName]) ? $contactDataArray[$pdoColumnName] : null;
+                    $newValue = isset($currentContact->$columnName) ? $currentContact->$columnName : null;
 
                     // is the new value different from what we have?
-                    $newValueisDifferent = $existingContact[$columnName] != $newValue;
+                    $newValueisDifferent = $valueInDB != $newValue;
 
                     // current value is null or empty string
-                    $existingValueIsUseless = is_null($existingContact[$columnName]) || $existingContact[$columnName] === '';
+                    $existingValueIsUseless = is_null($valueInDB) || $valueInDB === '';
 
                     // update db value with new value
                     if ($newValueisDifferent && $existingValueIsUseless) {
-                        $valueInDB          = $newValue;
-                        $contactNeedsUpdate = true;
+                        $existingContact->$columnName = $currentContact->$columnName;
                     }
-
-                    // set value to be sent as update
-                    $contactDataArray[$pdoColumnName] = $valueInDB;
-
                 }
 
-                // this is set to NOW() in the prepared sql statement
-                unset($contactDataArray[':updated_at']);
-
-                // update the contact record
-                if ($contactNeedsUpdate) {
-                    $updateCount += $updateContact->execute($contactDataArray);
-                }
+                $contactInsertionBuffer->insert($existingContact);
             }
 
             $totalCount++;
 
         }
+
+        $contactInsertionBuffer->flush();
 
         echo "ended at " . date('h:i:s A') . PHP_EOL;
         echo "imported {$totalCount} records" . PHP_EOL;

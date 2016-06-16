@@ -131,7 +131,7 @@ abstract class AbstractRestfulController extends AbstractController
      * @param  mixed $id
      * @return mixed
      */
-    public function get($id)
+    public function get( $instanceId)
     {
         $this->response->setStatusCode(405);
 

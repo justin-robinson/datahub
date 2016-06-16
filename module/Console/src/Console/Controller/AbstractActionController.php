@@ -67,15 +67,5 @@ abstract class AbstractActionController extends ZendAbstractActionController
         } catch (ConfigException $e){
             die("PDO Config Error!: " . $e->getMessage() . PHP_EOL);
         }
-
-        // prepare sql statements
-        foreach ( $this->sqlStringsArray as $name => $sqlString ) {
-            $this->sqlStatementsArray[$name] = $this->db->prepare( $sqlString );
-            if (!$this->sqlStatementsArray[$name]) {
-                echo PHP_EOL . "PDO::errorInfo():" . PHP_EOL;
-                print_r($this->db->errorInfo());
-            }
-            $this->sqlStatementsArray[$name]->setFetchMode(\PDO::FETCH_ASSOC);
-        }
     }
 }

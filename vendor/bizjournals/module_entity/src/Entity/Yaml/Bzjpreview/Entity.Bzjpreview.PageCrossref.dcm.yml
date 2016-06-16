@@ -16,9 +16,9 @@ Entity\Bzjpreview\PageCrossref:
     ref_type:
       type: string
       nullable: false
-      columnDefinition: enum('person', 'company', 'industry', 'tag', 'category', 'location', 'bucket', 'primary_channel', 'secondary_channel') NOT NULL,
+      columnDefinition: enum('person', 'company', 'industry', 'tag', 'category', 'location', 'bucket', 'primary_channel', 'secondary_channel', 'advertiser') NOT NULL,
       options:
-        validate: ['person', 'company', 'industry', 'tag', 'category', 'location', 'bucket', 'primary_channel', 'secondary_channel']
+        validate: ['person', 'company', 'industry', 'tag', 'category', 'location', 'bucket', 'primary_channel', 'secondary_channel', 'advertiser']
     issue_date:
       type: date
       nullable: false

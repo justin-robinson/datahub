@@ -7,6 +7,8 @@
 
 namespace Services\Meroveus;
 
+use DB\Datahub\Contact;
+use Scoop\Database\Literal;
 use Services\AbstractService;
 
 /**
@@ -26,13 +28,13 @@ class ContactService extends AbstractService
     private $patternDictionary = [
 
         '/^.*(^|\s)(CHIEF\sEXECUTIVE\sOFFICER).*$/i'                 => 10,
-        // the following matches any occurrce of "CEO" thats
+        // the following matches any occurrence of "CEO" thats
         // not part of a word and can contain spaces or periods
         '/^.*(^|\s|\D|\W)(C\.?\s?E\.?\s?O\.?\s?)(\s|\D|\W)*.*$/i'    => 10,
         '/^.*(^|\s|\b)(PRESIDENT)(\s|\b|$).*$/i'                     => 11,
         '/^.*(^|\s|\b)(OWNER)(\s|\b|$).*$/i'                         => 22,
         '/^.*(^|\s|\b)(CHIEF\s*([^\s]*)\s*OFFICER).*$/i'             => 30,
-        // the following matches any occurrce of a three letter group in the form of "C<whatevet>O" thats
+        // the following matches any occurrence of a three letter group in the form of "C<whatever>O" that's
         // not part of a word and can contain spaces or periods
         '/^.*(^|\s|\b)(C\.?\s?[a-z]\.?\s?O\.?\s?)(\s|\b|$).*$/i'     => 30,
         '/^.*(^|\s|\b)(PARTNER)(\s|\b|$).*$/i'                       => 50,
@@ -99,7 +101,7 @@ class ContactService extends AbstractService
             return false;
         }
 
-        $contact     = [];
+        $contact     = new Contact();
         $contactData = [];
         // flatten the meroveus data return in order to avoid having a bad time
         foreach ($meroveusReturn['DATA'] as $val) {
@@ -108,40 +110,38 @@ class ContactService extends AbstractService
             }
         }
 
-        $contact['meroveus_id']         = empty($meroveusReturn['ID']) ? '' : $meroveusReturn['ID'];
-        $contact['hub_id']              = empty($meroveusReturn['hub_id']) ? '' : $meroveusReturn['hub_id'];
-        $contact['relevate_id']         = null;
-        $contact['is_duplicate']        = 0;
-        $contact['is_current_employee'] = 1;
-        $contact['first_name']          = empty($contactData['first-name_static']) ? null : $contactData['first-name_static'];
-        $contact['middle_initial']      = empty($contactData['middle-name_static']) ? null : $contactData['middle-name_static'];
-        $contact['last_name']           = empty($contactData['last-name_static']) ? '' : $contactData['last-name_static'];
-        $contact['suffix']              = empty($contactData['suffix-name_static']) ? null : $contactData['suffix-name_static'];
-        $contact['honorific']           = empty($contactData['prefix-name_static']) ? null : $contactData['prefix-name_static'];
-        $contact['phone']               = empty($contactData['work-phone_static']) ? null : $contactData['work-phone_static'];
+        $contact->meroveusId        = empty($meroveusReturn['ID']) ? '' : $meroveusReturn['ID'];
+//        $contact->contactId         = empty($meroveusReturn['hub_id']) ? '' : $meroveusReturn['hub_id'];
+        $contact->relevateId        = null;
+        $contact->isDuplicate       = 0;
+        $contact->isCurrentEmployee = 1;
+        $contact->firstName         = empty($contactData['first-name_static']) ? null : $contactData['first-name_static'];
+        $contact->middleInitial     = empty($contactData['middle-name_static']) ? null : $contactData['middle-name_static'];
+        $contact->lastName          = empty($contactData['last-name_static']) ? '' : $contactData['last-name_static'];
+        $contact->suffix            = empty($contactData['suffix-name_static']) ? null : $contactData['suffix-name_static'];
+        $contact->honorific         = empty($contactData['prefix-name_static']) ? null : $contactData['prefix-name_static'];
+        $contact->phone             = empty($contactData['work-phone_static']) ? null : $contactData['work-phone_static'];
         // tack on the extension if present
-        $contact['phone'] .= empty($contactData['work-ext-phone_static']) ? '' : ' EXT: ' . $contactData['work-ext-phone_static'];
+        $contact->phone .= empty($contactData['work-ext-phone_static']) ? '' : ' EXT: ' . $contactData['work-ext-phone_static'];
 
         if (empty($contactData['department-title_static'])) {
-            $contact['job_position_id'] = null;
-            $contact['job_title']       = null;
+            $contact->jobPositionId = null;
+            $contact->jobTitle      = null;
         } else {
-            $contact['job_position_id'] = $this->getJobPositionId($contactData['department-title_static'],
-                $jobIdDictionary) ?: 1001;
-            $contact['job_title']       = $contactData['department-title_static'];
+            $contact->jobPositionId = $this->getJobPositionId($contactData['department-title_static'],
+                                                              $jobIdDictionary) ?: 1001;
+            $contact->jobTitle      = $contactData['department-title_static'];
         }
 
-        $contact['email']       = empty($contactData['work-email_static']) ? null : $contactData['work-email_static'];
-        $contact['address1']    = null;
-        $contact['address2']    = null;
-        $contact['city']        = null;
-        $contact['state']       = null;
-        $contact['postal_code'] = null;
-        $contact[':created_at'] = 'NOW()';
-        $contact[':updated_at'] = 'NOW()';
-        $contact[':deleted_at'] = null;
+        $contact->email      = empty($contactData['work-email_static']) ? null : $contactData['work-email_static'];
+        $contact->address1   = null;
+        $contact->address2   = null;
+        $contact->city       = null;
+        $contact->state      = null;
+        $contact->postalCode = null;
+        $contact->createdAt  = isset($contactData['CREATEDATE']) ? $contactData['CREATEDATE'] : new Literal('NOW()');
+        $contact->updatedAt  = isset($contactData['LASTUPDATE']) ? $contactData['LASTUPDATE'] : new Literal('NOW()');
         unset($meroveusReturn);
-        gc_collect_cycles();
 
         return $contact;
 
