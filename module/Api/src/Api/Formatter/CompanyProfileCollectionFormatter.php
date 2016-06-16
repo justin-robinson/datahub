@@ -15,11 +15,17 @@ class CompanyProfileCollectionFormatter {
         $lastPage = ceil( $totalCount / $limit );
 
         $path = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
-        $queryParams = [
+        $selfQueryParams = [
             'from' => $from,
             'to'   => $to,
             'page' => $page,
         ];
+
+        $firstQueryParams = $selfQueryParams;
+        $firstQueryParams['page'] = 1;
+
+        $lastQueryParams = $selfQueryParams;
+        $lastQueryParams['page'] = $lastPage;
 
         $array = [
             'count'     => [
@@ -29,13 +35,13 @@ class CompanyProfileCollectionFormatter {
             ],
             '_links'    => [
                 'self'  => [
-                    'href' => $host . $path . '?' . http_build_query($queryParams),
+                    'href' => $host . $path . '?' . http_build_query($selfQueryParams),
                 ],
                 'first' => [
-                    'href' => $uri . '?page=1',
+                    'href' => $uri . '?' . http_build_query($firstQueryParams),
                 ],
                 'last'  => [
-                    'href' => $uri . '?page=' . $lastPage,
+                    'href' => $uri . '?'. http_build_query($lastQueryParams),
                 ],
             ],
             '_embedded' => [
@@ -44,14 +50,18 @@ class CompanyProfileCollectionFormatter {
         ];
 
         if( $page > 1 ) {
+            $prevQueryParams = $selfQueryParams;
+            $prevQueryParams['page'] = $page - 1;
             $array['_links']['prev'] = [
-                'href' => $uri . '?page=' . ($page - 1),
+                'href' => $uri . '?' . http_build_query($prevQueryParams),
             ];
         }
 
         if( $page < $lastPage ) {
+            $nextQueryParams = $selfQueryParams;
+            $nextQueryParams['page'] = $page + 1;
             $array['_links']['next'] = [
-                'href' => $uri . '?page=' . ($page + 1),
+                'href' => $uri . '?'. http_build_query($nextQueryParams),
             ];
         }
 

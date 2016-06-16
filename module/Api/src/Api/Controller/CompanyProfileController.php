@@ -7,12 +7,10 @@
 
 namespace Api\Controller;
 
-use Api\Formatter\CompanyFormatter;
 use Api\Formatter\CompanyProfileCollectionFormatter;
 use Api\Formatter\CompanyProfileFormatter;
 use Api\Response\CompanyResponse;
 use DB\Datahub\Company;
-use Scoop\Database\Model\Generic;
 use Zend\View\Model\JsonModel;
 
 /**
