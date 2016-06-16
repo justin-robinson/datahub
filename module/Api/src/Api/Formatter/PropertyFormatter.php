@@ -8,7 +8,7 @@ use DB\Datahub\CompanyInstanceProperty;
  * Class CompanyInstancePropertyFormatter
  * @package Api\Formatter
  */
-class CompanyInstancePropertyFormatter {
+class PropertyFormatter {
 
     /**
      * @param Company $property

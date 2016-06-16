@@ -63,7 +63,7 @@ class InstanceCollectionFormatter {
         $instanceArray = &$array['_embedded']['instances'];
 
         foreach ( $instances as $instance ) {
-            $instanceArray[] = CompanyInstanceFormatter::format( $instance );
+            $instanceArray[] = InstanceFormatter::format( $instance );
         }
 
         return $array;

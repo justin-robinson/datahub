@@ -2,7 +2,7 @@
 
 namespace Api\Controller;
 
-use Api\Formatter\CompanyInstancePropertyFormatter;
+use Api\Formatter\PropertyFormatter;
 use DB\Datahub\CompanyInstanceProperty;
 use Zend\View\Model\JsonModel;
 
@@ -16,7 +16,7 @@ class PropertyController extends AbstractRestfulController {
 
         $instance = CompanyInstanceProperty::fetch_by_id( $companyInstancePropertyId );
         if( $instance ) {
-            return new JsonModel( CompanyInstancePropertyFormatter::format( $instance ) );
+            return new JsonModel( PropertyFormatter::format( $instance ) );
         }
 
         $this->response->setStatusCode( 404 );
@@ -35,7 +35,7 @@ class PropertyController extends AbstractRestfulController {
             $instance->reload();
         }
 
-        return new JsonModel( CompanyInstancePropertyFormatter::format( $instance ) );
+        return new JsonModel( PropertyFormatter::format( $instance ) );
     }
 
     public function update ( $companyInstancePropertyId, $data ) {
@@ -50,7 +50,7 @@ class PropertyController extends AbstractRestfulController {
             $instance->save();
             $instance->reload();
 
-            return new JsonModel( CompanyInstancePropertyFormatter::format( $instance ) );
+            return new JsonModel( PropertyFormatter::format( $instance ) );
         }
 
         $this->response->setStatusCode( 404 );
@@ -66,7 +66,7 @@ class PropertyController extends AbstractRestfulController {
             $instance->delete();
             $instance = CompanyInstanceProperty::query( 'SELECT * FROM datahub.companyInstanceProperty WHERE companyInstancePropertyId = ?', [ $id ] )->first();
 
-            return new JsonModel( CompanyInstancePropertyFormatter::format( $instance ) );
+            return new JsonModel( PropertyFormatter::format( $instance ) );
         }
 
         $this->response->setStatusCode( 404 );

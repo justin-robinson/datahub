@@ -5,9 +5,9 @@ namespace Api\Formatter;
 use DB\Datahub\CompanyInstance;
 
 /**
- * Class CompanyInstanceFormatter
+ * Class InstanceFormatter
  */
-class CompanyInstanceFormatter {
+class InstanceFormatter {
 
     /**
      * @param \DB\Datahub\CompanyInstance $instance

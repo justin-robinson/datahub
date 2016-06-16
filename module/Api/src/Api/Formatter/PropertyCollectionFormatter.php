@@ -60,10 +60,10 @@ class PropertyCollectionFormatter {
             ];
         }
 
-        $contactArray = &$array['_embedded']['properties'];
+        $propertyArray = &$array['_embedded']['properties'];
 
         foreach ( $properties as $property ) {
-            $contactArray[] = CompanyInstancePropertyFormatter::format( $property );
+            $propertyArray[] = PropertyFormatter::format( $property );
         }
 
         return $array;

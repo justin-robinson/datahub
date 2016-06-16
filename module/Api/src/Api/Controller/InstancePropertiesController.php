@@ -2,27 +2,28 @@
 
 namespace Api\Controller;
 
-use Api\Formatter\InstanceCollectionFormatter;
-use DB\Datahub\CompanyInstance;
+use Api\Formatter\PropertyCollectionFormatter;
+use DB\Datahub\CompanyInstanceProperty;
 use Scoop\Database\Model\Generic;
 use Zend\View\Model\JsonModel;
 
 /**
- * Class CompanyInstanceController
+ * Class InstancePropertiesController
  * @package Api\Controller
  */
-class CompanyInstanceController extends AbstractRestfulController {
+class InstancePropertiesController extends AbstractRestfulController {
 
-    public function get ($companyId) {
+    public function get ($companyInstanceId) {
 
         $page = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] >= 1) ? (int)$_GET['page'] : 1;
         $limit = 1000;
         $offset = $limit * ($page-1);
 
-        $companyInstances = CompanyInstance::fetch_where('companyId = ?', [$companyId], $limit, $offset);
-        if ( $companyInstances ) {
-            $count = Generic::query('select count(*) as count from companyInstance where companyId = ?', [$companyId])->first()->count;
-            return new JsonModel(InstanceCollectionFormatter::format($companyInstances, $page, $limit, "/api/company/{$companyId}/instances", $count));
+        $contacts = CompanyInstanceProperty::fetch_where('companyInstanceId = ?', [$companyInstanceId], $limit, $offset);
+
+        if ( $contacts ) {
+            $count = Generic::query('select count(*) as count from companyInstanceProperty where companyInstanceId = ?', [$companyInstanceId])->first()->count;
+            return new JsonModel(PropertyCollectionFormatter::format($contacts, $page, $limit, "/api/instance/{$companyInstanceId}/properties", $count));
         }
 
         $this->response->setStatusCode(404);
