@@ -6,6 +6,8 @@ use Console\Countries;
 use Console\CsvIterator;
 use Console\DB\Connection\DB;
 use Console\Importer\Refinery;
+use Scoop\Database\Connection;
+use Scoop\Database\Model\Generic;
 
 /**
  * Class CronController
@@ -71,11 +73,13 @@ class CronController extends AbstractActionController {
         $countries = Countries::getAll();
 
         // connect to the recon db
-        $db = DB::createPdo( $this->config['pdo']['db02'] );
+        $dbConfig = $this->config['pdo']['db02'];
+        $dbConfig['database'] = $dbConfig['dbname'];
 
-        // gets all organizations and relevant information created in the specified time period
-        $getModifiedCompaniesSql = "
-              SELECT
+        $connection = new Connection($dbConfig);
+
+        $results = Generic::query(
+            "SELECT
                 org.id,
                 org.ExternalId,
                 org.SourceId,
@@ -98,23 +102,29 @@ class CronController extends AbstractActionController {
                 url.Url,
                 sic.SIC,
                 descr.Description
-              FROM Org org
-                LEFT JOIN OrgAddress addr  ON ( org.id = addr.OrgId )
-                LEFT JOIN OrgPhone   phone ON ( org.id = phone.OrgId )
-                LEFT JOIN OrgUrl     url   ON ( org.id = url.OrgId )
-                LEFT JOIN OrgSIC     sic   ON ( org.id = sic.OrgId )
-                LEFT JOIN OrgDesc    descr ON ( org.id = descr.OrgId )
+              FROM
+                recon.Org org
+                LEFT JOIN recon.OrgAddress addr  ON ( org.id = addr.OrgId )
+                LEFT JOIN recon.OrgPhone   phone ON ( org.id = phone.OrgId )
+                LEFT JOIN recon.OrgUrl     url   ON ( org.id = url.OrgId )
+                LEFT JOIN recon.OrgSIC     sic   ON ( org.id = sic.OrgId )
+                LEFT JOIN recon.OrgDesc    descr ON ( org.id = descr.OrgId )
               WHERE
-                org.DateModified > (NOW() - INTERVAL {$daysToLookBack} DAY )
+                (
+                  org.DateModified      > (NOW() - INTERVAL ? DAY )
+                  OR addr.DateModified  > (NOW() - INTERVAL ? DAY )
+                  OR phone.DateModified > (NOW() - INTERVAL ? DAY )
+				  OR url.DateModified   > (NOW() - INTERVAL ? DAY )
+				  OR sic.DateModified   > (NOW() - INTERVAL ? DAY )
+				  OR descr.DateModified > (NOW() - INTERVAL ? DAY )
+				)
                 AND addr.City IS NOT NULL
                 AND addr.City != ''
                 AND org.Name != ''
               ORDER BY
-                org.QName";
-
-        $db->setAttribute( \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, false );
-
-        $results = $db->query( $getModifiedCompaniesSql, \PDO::FETCH_ASSOC );
+                org.QName",
+            [$daysToLookBack, $daysToLookBack, $daysToLookBack, $daysToLookBack, $daysToLookBack, $daysToLookBack],
+            $connection);
 
         $elasticChunkNumber = 0;
         // parse each row into a csv and json file
@@ -127,14 +137,14 @@ class CronController extends AbstractActionController {
                 $jsonFileHandle = new \SplFileObject($jsonFilePath, 'w');
                 echo $jsonFilePath . PHP_EOL;
             }
-            $row['TickerExchange'] = strpos( $row['TickerExchange'], 'NASDAQ' ) !== false ? 'NASDAQ' : $row['TickerExchange'];
-            $row['TickerExchange'] = strpos( $row['TickerExchange'], 'York Stock' ) !== false ? 'NYSE' : $row['TickerExchange'];
-            $row['ExternalId'] = strlen( $row['ExternalId'] ) > 12 ? $row['ExternalId'] : '';
-            $row['Name'] = trim( preg_replace( '/\s+/', ' ', $row['Name'] ) );
+            $row->TickerExchange = strpos( $row->TickerExchange, 'NASDAQ' ) !== false ? 'NASDAQ' : $row->TickerExchange;
+            $row->TickerExchange = strpos( $row->TickerExchange, 'York Stock' ) !== false ? 'NYSE' : $row->TickerExchange;
+            $row->ExternalId = strlen( $row->ExternalId ) > 12 ? $row->ExternalId : '';
+            $row->Name = trim( preg_replace( '/\s+/', ' ', $row->Name ) );
 
             // get the country names
             // normalize the col for array searching
-            $processed = strtoupper( $row['Country'] );
+            $processed = strtoupper( $row->Country );
             $processed = trim( explode( "(", $processed )[0] );
             $processed = preg_replace( '/,.*/', '', $processed );
             $processed = preg_replace( "/\([^)]+\)/", "", $processed );
@@ -151,9 +161,9 @@ class CronController extends AbstractActionController {
 
             // scrub phone number
             $phone = '';
-            if( !empty($row['OfficePhone1']) ) {
+            if( !empty($row->OfficePhone1) ) {
                 // remove all but digits
-                $phone = preg_replace( '/\D/', '', $row['OfficePhone1'] );
+                $phone = preg_replace( '/\D/', '', $row->OfficePhone1 );
 
                 // take off the leading 1 if it's not american
                 $phoneLength = strlen( $phone );
@@ -164,9 +174,9 @@ class CronController extends AbstractActionController {
 
             // grab OrgUrl Data, normalise and tack on
             $url = '';
-            if( !empty($row['Url']) ) {
+            if( !empty($row->Url) ) {
                 // add http to those lacking either http or https
-                $url = strpos( $row['Url'], 'http' ) === 0 ? $row['Url'] : 'http://' . $row['Url'];
+                $url = strpos( $row->Url, 'http' ) === 0 ? $row->Url : 'http://' . $row->Url;
                 // remove everything after and including the first comma if there is a comma
                 $url = strpos( $url, ',' ) ? substr( $url, 0, strpos( $url, ',' ) ) : $url;
                 // remove everything after and including the first space if there is a space
@@ -179,25 +189,25 @@ class CronController extends AbstractActionController {
 
             // format and write row to file
             $outputLine = [
-                $row['id'],
-                $row['ExternalId'],
-                $row['SourceId'],
-                $row['Name'],
-                $row['Ticker'],
-                $row['TickerExchange'],
-                $row['DateModified'],
-                trim( preg_replace( '/\s+/', ' ', $row['Address1'] ) ),
-                trim( preg_replace( '/\s+/', ' ', $row['Address2'] ) ),
-                trim( preg_replace( '/\s+/', ' ', $row['City'] ) ),
-                trim( preg_replace( '/\s+/', ' ', $row['State'] ) ),
-                trim( preg_replace( '/\s+/', ' ', $row['ZipCode'] ) ),
+                $row->id,
+                $row->ExternalId,
+                $row->SourceId,
+                $row->Name,
+                $row->Ticker,
+                $row->TickerExchange,
+                $row->DateModified,
+                trim( preg_replace( '/\s+/', ' ', $row->Address1 ) ),
+                trim( preg_replace( '/\s+/', ' ', $row->Address2 ) ),
+                trim( preg_replace( '/\s+/', ' ', $row->City ) ),
+                trim( preg_replace( '/\s+/', ' ', $row->State ) ),
+                trim( preg_replace( '/\s+/', ' ', $row->ZipCode ) ),
                 $countryCode,
-                trim( preg_replace( '/\s+/', ' ', $row['Lat'] ) ),
-                trim( preg_replace( '/\s+/', ' ', $row['Lon'] ) ),
+                trim( preg_replace( '/\s+/', ' ', $row->Lat ) ),
+                trim( preg_replace( '/\s+/', ' ', $row->Lon ) ),
                 $phone,
                 $url,
-                $row['SIC'],
-                $row['Description']
+                $row->SIC,
+                $row->Description
             ];
             $csvFileHandle->fputcsv($outputLine);
             $jsonFileHandle->fwrite($elasticActionRow);

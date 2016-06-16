@@ -282,6 +282,28 @@ abstract class Model extends Model\Generic {
     }
 
     /**
+     * Reloads model from the database
+     *
+     * @return bool
+     */
+    public function reload () {
+
+        // don't reload something that wasn't loaded from the database
+        if ( !$this->loadedFromDb ) {
+            return false;
+        }
+
+        // repopulate with fetched data
+        $model = static::fetch_by_id($this->__get(static::AUTO_INCREMENT_COLUMN));
+        if ( $model ){
+            $this->populate($model->to_array());
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
      * @return array
      */
     public function get_sql_insert_values () {
@@ -290,14 +312,20 @@ abstract class Model extends Model\Generic {
 
         // remove columns marked by the db to be NON NULL but we have them locally as null
         foreach ( static::NON_NULL_COLUMNS as $columnName ) {
-            if ( array_key_exists ( $columnName, $columns ) && is_null ( $columns[$columnName] ) ) {
+            $columnIsNull = array_key_exists ( $columnName, $columns ) && is_null ( $columns[$columnName] );
+            if ( $columnName === static::AUTO_INCREMENT_COLUMN && $this->is_loaded_from_database() ) {
+                continue;
+            }
+            if ( $columnIsNull ) {
                 unset( $columns[$columnName] );
             }
         }
 
-        // don't insert auto increment columns
-        if ( array_key_exists(static::AUTO_INCREMENT_COLUMN, $columns) ) {
-            unset($columns[static::AUTO_INCREMENT_COLUMN]);
+        if ( !$this->loaded_from_database() ) {
+            // don't insert auto increment columns
+            if ( array_key_exists(static::AUTO_INCREMENT_COLUMN, $columns) ) {
+                unset($columns[static::AUTO_INCREMENT_COLUMN]);
+            }
         }
 
         $columnNames = '';

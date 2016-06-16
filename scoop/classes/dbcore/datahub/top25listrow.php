@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class Top25ListRow
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/06/06
+ * @date 2016/06/15
  * @property mixed $row_id
  * @property mixed $list_id
  * @property mixed $rank

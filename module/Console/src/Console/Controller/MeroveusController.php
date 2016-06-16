@@ -8,19 +8,18 @@
 namespace Console\Controller;
 
 use Console\CsvIterator;
-use Console\Importer\Refinery;
 use Console\Record\Formatter\Factory;
 use Console\Record\Formatter\Formatters\Meroveus;
 use DB\Datahub\Company;
 use DB\Datahub\CompanyInstance;
+use DB\Datahub\CompanyInstanceMeroveusIndustry;
 use DB\Datahub\CompanyInstanceProperty;
+use DB\Datahub\MeroveusIndustry;
 use DB\Datahub\SourceType;
 use Elastica\Client as ElasticaClient;
 use Elastica\Query as ElasticaQuery;
 use Elastica\QueryBuilder as QueryBuilder;
 use Elastica\Search as ElasticaSearch;
-use Monolog\Handler\PHPConsoleHandler;
-use Scoop\Database\Literal;
 use Services\Meroveus\Client as MeroveusClient;
 use Services\Meroveus\CompanyService;
 use Zend\Mvc\MvcEvent;
@@ -139,10 +138,6 @@ class MeroveusController extends AbstractActionController
             WHERE
               meroveus_id IS NULL
             LIMIT :offset, :limit',
-        'insertMeroveusIndustry'           => '
-            INSERT INTO
-              `datahub`.`meroveus_industry` (external_id, industry)
-            VALUES (:external_id, :industry)',
         'insertCompanyMeroveusIndustry'    => '
             INSERT INTO
               `datahub`.`company_meroveus_industry_map`
@@ -173,6 +168,18 @@ class MeroveusController extends AbstractActionController
 
     }
 
+    public function doTier($id)
+    {
+        $tier    = 0;
+        $company = Company::fetch_company_and_instances($id);
+        if ($company) {
+            $instances = $company->get_company_instances();
+            $tier      = $instances->get_rows()[0]->instanceTierThyself(1);
+        }
+        unset($company);
+
+        return $tier;
+    }
 
     /**
      * utility randomness
@@ -181,6 +188,7 @@ class MeroveusController extends AbstractActionController
      */
     public function indexAction()
     {
+        ini_set('memory_limit', '1024M');
         $randomIds = [
             227813,
             156800,
@@ -312,27 +320,39 @@ class MeroveusController extends AbstractActionController
         ];
 
         $foundCount = 0;
-
-        foreach ($randomIds as $id) {
-            $company = Company::fetch_company_and_instances($id);
-
-            if ($company) {
-
-                $instances = $company->get_company_instances();
-                $tier      = $instances->get_rows()[0]->instanceTierThyself(1);
-                $counts[$tier]++;
+        $count      = 1;
+//        while ($count < 310200) {
+        while ($count < 1000) {
+//        while ($count < 10000) {
+            $tier = $this->doTier($count);
+            if ($tier) {
                 $foundCount++;
-            } else {
-                echo $id . PHP_EOL;
+                $counts[$tier]++;
+
             }
 
             $count++;
-
         }
+
+
+//        foreach ($randomIds as $id) {
+//            $company = Company::fetch_company_and_instances($id);
+//
+//            if ($company) {
+//
+//                $instances = $company->get_company_instances();
+//                $tier      = $instances->get_rows()[0]->instanceTierThyself(1);
+//                $counts[$tier]++;
+//                $foundCount++;
+//            }
+//
+//            $count++;
+//
+//        }
         echo $count - 1 . ' records searched' . PHP_EOL;
         echo $foundCount . ' records found' . PHP_EOL;
         echo 'totals:' . PHP_EOL;
-//        print_r($counts);
+        print_r($counts);
         $end = date('h:i:s A');
         echo "ended at " . $end . PHP_EOL;
     }
@@ -424,59 +444,48 @@ class MeroveusController extends AbstractActionController
 
                     if ($match) {
 
-                        if (!$debug) {
+                        $companyInstanceId = $this->processMatch($match->getSource()['InternalId'], $target);
 
-                            $companyInstanceId = $this->processMatch($match->getSource()['InternalId'], $target);
-
-                            if ($sanity) {
-                                $this->writeSanityFiles($market, $target, $match);
-                            }
-
-                            $marketMatched++;
-                            $totalMatched++;
+                        if ($sanity) {
+                            $this->writeSanityFiles($market, $target, $match);
                         }
+
+                        $marketMatched++;
+                        $totalMatched++;
 
                     } else { // create a new record
 
-                        if (!$debug) {
-                            $company->save();
-                            $companyInstanceId = $company->get_company_instances()->first()->companyInstanceId;
-                        }
+                        $company->save();
+                        $companyInstanceId = $company->get_company_instances()->first()->companyInstanceId;
 
                         $marketInserted++;
                         $totalInserted++;
                     }
 
                     // does this company have an industry?
-                    /*if ( isset($target['firm-industry_static']) ) {
+                    if ( isset($target['firm-industry_static']) ) {
 
-                        // get all meroveus industries for this company by ID
-                        $selectMeroveusIndustry = $this->db->prepare("
-                                                SELECT
-                                                    *
-                                                FROM
-                                                  `datahub`.`meroveus_industry`
-                                                WHERE `industry` IN ({$target['firm-industry_static']})");
+                        //$industries = explode(',', $target['firm-industry_static']);
+                        //$queryParams = rtrim(str_repeat('?,', count($industries)), ',');
 
-                        if ( $selectMeroveusIndustry->execute() ) {
+                        // @todo fix this sql injection
+                        $meroveusIndustries = MeroveusIndustry::fetch_where("industry IN ({$target['firm-industry_static']})");
 
-                            // link each industry to the company
-                            while ( $industry = $selectMeroveusIndustry->fetch(\PDO::FETCH_ASSOC) ) {
-                                try {
-                                    $insertCompanyMeroveusIndustry->execute (
+                        // companyInstanceId will be false if we didn't find a refinery id
+                        if ( $meroveusIndustries && is_numeric($companyInstanceId)) {
+
+                            foreach ( $meroveusIndustries as $meroveusIndustry ) {
+                                (new CompanyInstanceMeroveusIndustry(
                                         [
-                                            ':hub_id'               => $hubId,
-                                            ':meroveus_industry_id' => $industry['meroveus_industry_id'],
-                                        ]);
-                                } catch (\Exception $e) {
-                                    // probably a dupe, no biggie
-                                }
+                                            'companyInstanceId' => $companyInstanceId,
+                                            'meroveusIndustryId' => $meroveusIndustry->meroveusIndustryId,
+                                        ]
+                                    )
+                                )->save();
                             }
 
                         }
-
-                        $selectMeroveusIndustry->closeCursor();
-                    }*/
+                    }
 
                     // process contacts
                     if ($companyInstanceId || $debug) {
@@ -659,12 +668,13 @@ class MeroveusController extends AbstractActionController
         // @todo handle deletions
         $industries = $this->companyService->queryMeroveusRoot($meroveusParams);
 
-        foreach ($industries as $industry) {
-            $this->sqlStatementsArray['insertMeroveusIndustry']->execute([
-                ':external_id' => $industry['LABELID'],
-                ':industry'    => trim($industry['NAME'], 'Â '),
-            ]);
-
+        foreach ($industries as $industry ) {
+            ( new MeroveusIndustry(
+                [
+                    'externalId' => $industry['LABELID'],
+                    'industry'   => trim( $industry['NAME'], 'Â ' ),
+                ]
+            ) )->save();
         }
     }
 

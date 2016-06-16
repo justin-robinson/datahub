@@ -1,186 +1,88 @@
 <?php
-/**
- * User: daveb
- * Date: 1/6/16
- * Time: 4:43 PM
- */
 
 namespace Api\Controller;
 
-use Api\Response\CompanyResponse;
+use Api\Formatter\CompanyCollectionFormatter;
+use Api\Formatter\CompanyFormatter;
 use DB\Datahub\Company;
 use Zend\View\Model\JsonModel;
 
 /**
  * Class CompanyController
- *
  * @package Api\Controller
  */
-class CompanyController extends AbstractRestfulController
-{
-    /**
-     * @param mixed $companyId
-     *
-     * @return JsonModel
-     */
-    public function get($companyId)
-    {
-        $company = Company::fetch_company_and_instances($companyId);
+class CompanyController extends AbstractRestfulController {
 
+    public function get ( $companyInstanceId) {
+        $company = Company::fetch_by_id( $companyInstanceId);
         if ( $company ) {
-            // sorted list of properties
-            $sortedProperties = [];
-
-            // get and sort all properties and contacts
-            foreach ( $company->get_company_instances() as $instance ) {
-
-                // get
-                $instance->fetch_properties();
-
-                // sort
-                $sortedProperties[] = $instance->sort_properties();
-
-                // contacts
-                $instance->fetch_contacts();
-            }
-
-            // convert to array
-            $company = $company->to_array();
-
-            // replace instance properties with sorted ones
-            reset($sortedProperties);
-            foreach ( $company['instances'] as &$instance ) {
-                $instance['properties'] = current($sortedProperties);
-                next($sortedProperties);
-            }
+            return new JsonModel(CompanyFormatter::format($company));
         }
 
-        return new JsonModel($company);
+        $this->response->setStatusCode(404);
+        return new JsonModel(['message' => 'not found']);
     }
 
-    /**
-     * @param mixed $companyId
-     *
-     * @return JsonModel
-     */
-    public function delete($companyId)
-    {
-        return new JsonModel(['delete' => 'record deleted']);
+    public function create ($data) {
+
+        // don't allow instances to be saved
+        unset($data['companyId']);
+        unset($data['instances']);
+
+        $company = new Company($data);
+        if ( $company->save() ) {
+            // get the actual timestamps
+            $company->reload();
+        }
+        return new JsonModel(CompanyFormatter::format($company));
     }
 
+    public function update ($companyId, $data) {
 
-    /**
-     * @param mixed $data
-     *
-     * @return JsonModel
-     */
-    public function create($data)
-    {
-        return new JsonModel(['create' => $data]);
+        // don't allow instances to be saved
+        unset($data['companyId']);
+        unset($data['instances']);
+
+        $company = Company::fetch_by_id($companyId);
+
+        if ( $company ) {
+            $company->populate($data);
+            $company->save();
+            $company->reload();
+            return new JsonModel(CompanyFormatter::format($company));
+        }
+
+        $this->response->setStatusCode(404);
+        return new JsonModel(['message' => 'not found']);
+
     }
 
-    /**
-     * @param mixed $id
-     * @param mixed $data
-     *
-     * @return JsonModel
-     */
-    public function update($id, $data)
-    {
-        return new JsonModel(['update' => $data]);
+    public function delete ( $id ) {
+
+        $company = Company::fetch_by_id($id);
+        if ( $company ) {
+            $company->delete();
+            $company = Company::query('select * from datahub.company where companyId = ?', [$id])->first();
+            return new JsonModel(CompanyFormatter::format($company));
+        }
+
+        $this->response->setStatusCode(404);
+        return new JsonModel(['message' => 'not found']);
     }
 
-    /**
-     * @return JsonModel
-     */
-    public function getList()
-    {
-        $from = isset($_GET['from']) ? $_GET['from'] : '0';
-        $to = isset($_GET['to']) ? $_GET['to'] : date('Y-m-d H:i:s');
+    public function getList () {
+
+        $page = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] >= 1) ? (int)$_GET['page'] : 1;
         $limit = 1000;
-        $offset = $limit * (((isset($_GET['page']) && (int)$_GET['page'] >= 1 ) ? $_GET['page'] : 1)-1);
-        $companies = Company::fetch_modified_in_range( $from, $to, $offset, $limit);
+        $offset = $limit * ($page-1);
 
-        $sortedProperties = [];
-        foreach ( $companies as $company ) {
-            foreach ( $company->get_company_instances() as $instance ) {
-                $sortedProperties[] = $instance->sort_properties();
-            }
+        $companies = Company::fetch($limit, $offset);
+
+        if ( $companies ) {
+            return new JsonModel(CompanyCollectionFormatter::format($companies, $page, $limit));
         }
 
-        $companies = $companies->to_array();
-
-        // replace instance properties with sorted ones
-        reset($sortedProperties);
-        foreach ( $companies as &$company ) {
-            foreach ( $company['instances'] as &$instance ) {
-                $instance['properties'] = current( $sortedProperties );
-                next( $sortedProperties );
-            }
-        }
-
-        return new JsonModel($companies);
+        $this->response->setStatusCode(404);
+        return new JsonModel(['message' => 'not found']);
     }
-
-    /**
-     * @return JsonModel
-     * this is a bridge method to look up companies by the refinery_id
-     * since datahub will eventually replace refinery, it will be depricated
-     * at that time
-     */
-    public function refineryAction()
-    {
-
-        // get id from url
-        $refineryId = $this->params()->fromRoute('id');
-
-        $company = Company::fetch_by_source_name_and_id('refinery%', $refineryId);
-
-        $response = new CompanyResponse();
-
-        if ( $company ) {
-
-            // the company instances
-            $company->fetch_company_instances();
-
-            // sorted list of properties
-            $sortedProperties = [];
-
-            // get and sort all properties and contacts
-            foreach ( $company->get_company_instances() as $instance ) {
-
-                // get
-                $instance->fetch_properties();
-
-                // sort
-                $sortedProperties[] = $instance->sort_properties();
-
-                // contacts
-                $instance->fetch_contacts();
-            }
-
-            // convert to array
-            $company = $company->to_array();
-
-            // replace instance properties with sorted ones
-            reset($sortedProperties);
-            foreach ( $company['instances'] as &$instance ) {
-                $instance['properties'] = current($sortedProperties);
-                next($sortedProperties);
-            }
-
-            $response->success = true;
-        } else {
-
-            $response->message = "company not found";
-        }
-
-        $response->body = $company;
-
-
-        return new JsonModel($response->toArray());
-    }
-
-
-
 }
