@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class Metadata
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/06/14
+ * @date 2016/06/15
  * @property mixed $meta_id
  * @property mixed $object_type
  * @property mixed $object_id
