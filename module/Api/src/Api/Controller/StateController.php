@@ -19,9 +19,8 @@ class StateController extends AbstractRestfulController {
             return new JsonModel( $state->to_array() );
         }
 
-        $this->response->setStatusCode( 404 );
-
-        return new JsonModel( [ 'message' => 'not found' ] );
+        $this->response->setStatusCode(204);
+        return null;
     }
 
     public function create ( $data ) {
@@ -53,8 +52,8 @@ class StateController extends AbstractRestfulController {
             return new JsonModel( $state->to_array() );
         }
 
-        $this->response->setStatusCode( 404 );
-        return new JsonModel( [ 'message' => 'not found' ] );
+        $this->response->setStatusCode(204);
+        return null;
 
     }
 
@@ -68,9 +67,8 @@ class StateController extends AbstractRestfulController {
             return new JsonModel( $state->to_array() );
         }
 
-        $this->response->setStatusCode( 404 );
-
-        return new JsonModel( [ 'message' => 'not found' ] );
+        $this->response->setStatusCode(204);
+        return null;
     }
 
     public function getList () {
@@ -78,8 +76,8 @@ class StateController extends AbstractRestfulController {
         $states = State::fetch_where('1');
 
         if ( $states->get_num_rows() === 0 ) {
-            $this->response->setStatusCode( 404 );
-            return new JsonModel( [ 'message' => 'not found' ] );
+            $this->response->setStatusCode(204);
+            return null;
         }
 
         return new JsonModel($states);

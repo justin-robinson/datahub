@@ -1,35 +1,35 @@
 <?php
 
-namespace Api\Formatter;
+namespace Api\ResponseFormatter;
 
 use Scoop\Database\Model\Generic;
 use Scoop\Database\Rows;
 
 /**
- * Class ContactCollectionFormatter
- * @package Api\Formatter
+ * Class InstanceCollectionFormatter
+ * @package Api\ResponseFormatter
  */
-class ContactCollectionFormatter {
+class InstanceCollectionFormatter {
 
     /**
-     * @param Rows   $contacts
+     * @param Rows   $instances
      * @param int    $page
      * @param int    $limit
      * @param string $uri
-     * @param null   $totalCount
+     * @param int    $totalCount
      *
      * @return array
      */
-    public static function format ( Rows $contacts, $page = 1, $limit = 1000, $uri = '/api/contact', $totalCount = null) {
+    public static function format ( Rows $instances, $page = 1, $limit = 1000, $uri = '/api/instance', $totalCount = null) {
 
         $uri = FormatterHelpers::get_http_protocol() . $_SERVER['HTTP_HOST'] . $uri;
-        $totalCount = is_null($totalCount) ? Generic::query('select count(*) as count from contact')->first()->count : $totalCount;
+        $totalCount = is_null($totalCount) ? Generic::query('select count(*) as count from companyInstance')->first()->count : $totalCount;
         $lastPage = ceil($totalCount / $limit);
 
         $array = [
             'count'     => [
                 'total'   => $totalCount,
-                'current' => $contacts->get_num_rows(),
+                'current' => $instances->get_num_rows(),
                 'offset'  => ($page-1) * $limit,
             ],
             '_links' => [
@@ -44,7 +44,7 @@ class ContactCollectionFormatter {
                 ],
             ],
             '_embedded' => [
-                'contacts' => []
+                'instances' => []
             ]
         ];
 
@@ -60,10 +60,10 @@ class ContactCollectionFormatter {
             ];
         }
 
-        $contactArray = &$array['_embedded']['contacts'];
+        $instanceArray = &$array['_embedded']['instances'];
 
-        foreach ( $contacts as $contact ) {
-            $contactArray[] = ContactFormatter::format( $contact );
+        foreach ( $instances as $instance ) {
+            $instanceArray[] = InstanceFormatter::format( $instance );
         }
 
         return $array;

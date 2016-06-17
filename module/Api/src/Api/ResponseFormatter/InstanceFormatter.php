@@ -1,6 +1,6 @@
 <?php
 
-namespace Api\Formatter;
+namespace Api\ResponseFormatter;
 
 use DB\Datahub\CompanyInstance;
 

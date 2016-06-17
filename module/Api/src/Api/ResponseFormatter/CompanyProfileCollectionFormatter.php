@@ -1,6 +1,6 @@
 <?php
 
-namespace Api\Formatter;
+namespace Api\ResponseFormatter;
 
 use Scoop\Database\Model\Generic;
 use Scoop\Database\Rows;

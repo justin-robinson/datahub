@@ -1,12 +1,12 @@
 <?php
 
-namespace Api\Formatter;
+namespace Api\ResponseFormatter;
 
 use DB\Datahub\CompanyInstanceProperty;
 
 /**
  * Class CompanyInstancePropertyFormatter
- * @package Api\Formatter
+ * @package Api\ResponseFormatter
  */
 class PropertyFormatter {
 

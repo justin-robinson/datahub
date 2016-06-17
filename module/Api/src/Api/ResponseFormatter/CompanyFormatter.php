@@ -1,12 +1,12 @@
 <?php
 
-namespace Api\Formatter;
+namespace Api\ResponseFormatter;
 
 use DB\Datahub\Company;
 
 /**
  * Class CompanyFormatter
- * @package Api\Formatter
+ * @package Api\ResponseFormatter
  */
 class CompanyFormatter {
 

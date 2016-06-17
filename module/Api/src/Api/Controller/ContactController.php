@@ -2,7 +2,7 @@
 
 namespace Api\Controller;
 
-use Api\Formatter\ContactFormatter;
+use Api\ResponseFormatter\ContactFormatter;
 use DB\Datahub\Contact;
 use Zend\View\Model\JsonModel;
 
@@ -19,9 +19,8 @@ class ContactController extends AbstractRestfulController {
             return new JsonModel( ContactFormatter::format( $contact ) );
         }
 
-        $this->response->setStatusCode( 404 );
-
-        return new JsonModel( [ 'message' => 'not found' ] );
+        $this->response->setStatusCode(204);
+        return null;
     }
 
     public function create ( $data ) {
@@ -53,9 +52,8 @@ class ContactController extends AbstractRestfulController {
             return new JsonModel( ContactFormatter::format( $contact ) );
         }
 
-        $this->response->setStatusCode( 404 );
-
-        return new JsonModel( [ 'message' => 'not found' ] );
+        $this->response->setStatusCode(204);
+        return null;
 
     }
 
@@ -69,8 +67,7 @@ class ContactController extends AbstractRestfulController {
             return new JsonModel( ContactFormatter::format( $contact ) );
         }
 
-        $this->response->setStatusCode( 404 );
-
-        return new JsonModel( [ 'message' => 'not found' ] );
+        $this->response->setStatusCode(204);
+        return null;
     }
 }

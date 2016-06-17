@@ -2,7 +2,7 @@
 
 namespace Api\Controller;
 
-use Api\Formatter\PropertyFormatter;
+use Api\ResponseFormatter\PropertyFormatter;
 use DB\Datahub\CompanyInstanceProperty;
 use Zend\View\Model\JsonModel;
 
@@ -19,9 +19,8 @@ class PropertyController extends AbstractRestfulController {
             return new JsonModel( PropertyFormatter::format( $instance ) );
         }
 
-        $this->response->setStatusCode( 404 );
-
-        return new JsonModel( [ 'message' => 'not found' ] );
+        $this->response->setStatusCode(204);
+        return null;
     }
 
     public function create ( $data ) {
@@ -53,9 +52,8 @@ class PropertyController extends AbstractRestfulController {
             return new JsonModel( PropertyFormatter::format( $instance ) );
         }
 
-        $this->response->setStatusCode( 404 );
-
-        return new JsonModel( [ 'message' => 'not found' ] );
+        $this->response->setStatusCode(204);
+        return null;
 
     }
 
@@ -69,8 +67,7 @@ class PropertyController extends AbstractRestfulController {
             return new JsonModel( PropertyFormatter::format( $instance ) );
         }
 
-        $this->response->setStatusCode( 404 );
-
-        return new JsonModel( [ 'message' => 'not found' ] );
+        $this->response->setStatusCode(204);
+        return null;
     }
 }

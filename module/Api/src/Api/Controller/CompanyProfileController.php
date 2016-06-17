@@ -7,8 +7,8 @@
 
 namespace Api\Controller;
 
-use Api\Formatter\CompanyProfileCollectionFormatter;
-use Api\Formatter\CompanyProfileFormatter;
+use Api\ResponseFormatter\CompanyProfileCollectionFormatter;
+use Api\ResponseFormatter\CompanyProfileFormatter;
 use Api\Response\CompanyResponse;
 use DB\Datahub\Company;
 use Zend\View\Model\JsonModel;
@@ -22,7 +22,7 @@ class CompanyProfileController extends AbstractRestfulController
 {
     /**
      * @param mixed $companyInstanceId
-     * 
+     *
      * @return JsonModel
      */
     public function get( $companyInstanceId )
@@ -41,7 +41,7 @@ class CompanyProfileController extends AbstractRestfulController
      */
     public function delete($companyId)
     {
-        $this->response->setStatusCode(404);
+        $this->response->setStatusCode(405);
         return new JsonModel(['message' => 'not allowed']);
     }
 
@@ -53,7 +53,7 @@ class CompanyProfileController extends AbstractRestfulController
      */
     public function create($data)
     {
-        $this->response->setStatusCode(404);
+        $this->response->setStatusCode(405);
         return new JsonModel(['message' => 'not allowed']);
     }
 
@@ -65,12 +65,12 @@ class CompanyProfileController extends AbstractRestfulController
      */
     public function update($id, $data)
     {
-        $this->response->setStatusCode(404);
+        $this->response->setStatusCode(405);
         return new JsonModel(['message' => 'not allowed']);
     }
 
     /**
-     * @return JsonModel
+     * @return JsonModel|void
      */
     public function getList()
     {
@@ -82,10 +82,10 @@ class CompanyProfileController extends AbstractRestfulController
         $companies = Company::fetch_modified_in_range( $from, $to, $offset, $limit);
 
         if ( $companies->get_num_rows() === 0 ) {
-            $this->response->setStatusCode(404);
-            return new JsonModel(['message' => 'not found']);
+            $this->response->setStatusCode(204);
+            return null;
         }
-        
+
         $count = Company::fetch_num_companies_modified_in_range($from, $to);
         return new JsonModel(CompanyProfileCollectionFormatter::format($companies, $page, $limit, $count, $from, $to));
     }

@@ -2,8 +2,8 @@
 
 namespace Api\Controller;
 
-use Api\Formatter\CompanyCollectionFormatter;
-use Api\Formatter\CompanyFormatter;
+use Api\ResponseFormatter\CompanyCollectionFormatter;
+use Api\ResponseFormatter\CompanyFormatter;
 use DB\Datahub\Company;
 use Zend\View\Model\JsonModel;
 
@@ -19,8 +19,9 @@ class CompanyController extends AbstractRestfulController {
             return new JsonModel(CompanyFormatter::format($company));
         }
 
-        $this->response->setStatusCode(404);
-        return new JsonModel(['message' => 'not found']);
+        $this->response->setStatusCode(204);
+        return null;
+
     }
 
     public function create ($data) {
@@ -52,8 +53,8 @@ class CompanyController extends AbstractRestfulController {
             return new JsonModel(CompanyFormatter::format($company));
         }
 
-        $this->response->setStatusCode(404);
-        return new JsonModel(['message' => 'not found']);
+        $this->response->setStatusCode(204);
+        return null;
 
     }
 
@@ -66,8 +67,8 @@ class CompanyController extends AbstractRestfulController {
             return new JsonModel(CompanyFormatter::format($company));
         }
 
-        $this->response->setStatusCode(404);
-        return new JsonModel(['message' => 'not found']);
+        $this->response->setStatusCode(204);
+        return null;
     }
 
     public function getList () {
@@ -82,7 +83,8 @@ class CompanyController extends AbstractRestfulController {
             return new JsonModel(CompanyCollectionFormatter::format($companies, $page, $limit));
         }
 
-        $this->response->setStatusCode(404);
-        return new JsonModel(['message' => 'not found']);
+        $this->response->setStatusCode(204);
+        return null;
+
     }
 }

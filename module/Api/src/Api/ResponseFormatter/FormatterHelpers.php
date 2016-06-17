@@ -1,10 +1,10 @@
 <?php
 
-namespace Api\Formatter;
+namespace Api\ResponseFormatter;
 
 /**
  * Class FormatterHelpers
- * @package Api\Formatter
+ * @package Api\ResponseFormatter
  */
 class FormatterHelpers {
 

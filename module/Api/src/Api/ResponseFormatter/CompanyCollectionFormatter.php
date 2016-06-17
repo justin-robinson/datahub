@@ -1,13 +1,13 @@
 <?php
 
-namespace Api\Formatter;
+namespace Api\ResponseFormatter;
 
 use Scoop\Database\Model\Generic;
 use Scoop\Database\Rows;
 
 /**
  * Class CompanyCollectionFormatter
- * @package Api\Formatter
+ * @package Api\ResponseFormatter
  */
 class CompanyCollectionFormatter {
 

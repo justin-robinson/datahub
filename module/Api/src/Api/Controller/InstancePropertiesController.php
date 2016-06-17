@@ -2,7 +2,7 @@
 
 namespace Api\Controller;
 
-use Api\Formatter\PropertyCollectionFormatter;
+use Api\ResponseFormatter\PropertyCollectionFormatter;
 use DB\Datahub\CompanyInstanceProperty;
 use Scoop\Database\Model\Generic;
 use Zend\View\Model\JsonModel;
@@ -26,27 +26,27 @@ class InstancePropertiesController extends AbstractRestfulController {
             return new JsonModel(PropertyCollectionFormatter::format($contacts, $page, $limit, "/api/instance/{$companyInstanceId}/properties", $count));
         }
 
-        $this->response->setStatusCode(404);
-        return new JsonModel(['message' => 'not found']);
+        $this->response->setStatusCode(204);
+        return null;
 
     }
 
     public function create ($data) {
 
-        $this->response->setStatusCode(404);
+        $this->response->setStatusCode(405);
         return new JsonModel(['message' => 'not allowed']);
     }
 
     public function update ($companyId, $data) {
 
-        $this->response->setStatusCode(404);
+        $this->response->setStatusCode(405);
         return new JsonModel(['message' => 'not allowed']);
 
     }
 
     public function delete ( $id ) {
 
-        $this->response->setStatusCode(404);
+        $this->response->setStatusCode(405);
         return new JsonModel(['message' => 'not allowed']);
     }
 }

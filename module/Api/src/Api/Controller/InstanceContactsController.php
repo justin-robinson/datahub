@@ -2,7 +2,7 @@
 
 namespace Api\Controller;
 
-use Api\Formatter\ContactCollectionFormatter;
+use Api\ResponseFormatter\ContactCollectionFormatter;
 use DB\Datahub\Contact;
 use Scoop\Database\Model\Generic;
 use Zend\View\Model\JsonModel;
@@ -26,27 +26,27 @@ class InstanceContactsController extends AbstractRestfulController {
             return new JsonModel(ContactCollectionFormatter::format($contacts, $page, $limit, "/api/instance/{$companyInstanceId}/contacts", $count));
         }
 
-        $this->response->setStatusCode(404);
-        return new JsonModel(['message' => 'not found']);
+        $this->response->setStatusCode(204);
+        return null;
 
     }
 
     public function create ($data) {
 
-        $this->response->setStatusCode(404);
+        $this->response->setStatusCode(405);
         return new JsonModel(['message' => 'not allowed']);
     }
 
     public function update ($companyId, $data) {
 
-        $this->response->setStatusCode(404);
+        $this->response->setStatusCode(405);
         return new JsonModel(['message' => 'not allowed']);
 
     }
 
     public function delete ( $id ) {
 
-        $this->response->setStatusCode(404);
+        $this->response->setStatusCode(405);
         return new JsonModel(['message' => 'not allowed']);
     }
 }

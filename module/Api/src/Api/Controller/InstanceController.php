@@ -2,8 +2,8 @@
 
 namespace Api\Controller;
 
-use Api\Formatter\InstanceFormatter;
-use Api\Formatter\InstanceCollectionFormatter;
+use Api\ResponseFormatter\InstanceFormatter;
+use Api\ResponseFormatter\InstanceCollectionFormatter;
 use DB\Datahub\CompanyInstance;
 use Zend\View\Model\JsonModel;
 
@@ -20,9 +20,8 @@ class InstanceController extends AbstractRestfulController {
             return new JsonModel( InstanceFormatter::format( $instance ) );
         }
 
-        $this->response->setStatusCode( 404 );
-
-        return new JsonModel( [ 'message' => 'not found' ] );
+        $this->response->setStatusCode(204);
+        return null;
     }
 
     public function create ( $data ) {
@@ -58,9 +57,8 @@ class InstanceController extends AbstractRestfulController {
             return new JsonModel( InstanceFormatter::format( $instance ) );
         }
 
-        $this->response->setStatusCode( 404 );
-
-        return new JsonModel( [ 'message' => 'not found' ] );
+        $this->response->setStatusCode(204);
+        return null;
 
     }
 
@@ -74,9 +72,8 @@ class InstanceController extends AbstractRestfulController {
             return new JsonModel( InstanceFormatter::format( $instance ) );
         }
 
-        $this->response->setStatusCode( 404 );
-
-        return new JsonModel( [ 'message' => 'not found' ] );
+        $this->response->setStatusCode(204);
+        return null;
     }
 
     public function getList () {
@@ -91,7 +88,8 @@ class InstanceController extends AbstractRestfulController {
             return new JsonModel(InstanceCollectionFormatter::format($instances, $page, $limit));
         }
 
-        $this->response->setStatusCode(404);
-        return new JsonModel(['message' => 'not found']);
+        $this->response->setStatusCode(204);
+        return null;
+
     }
 }
