@@ -16,10 +16,7 @@ class InstanceFormatter {
      */
     public static function format ( CompanyInstance $instance ) {
 
-        $array = $instance->to_array();
-
-        unset($array['properties']);
-        unset($array['contacts']);
+        $array = $instance->to_array(false);
 
         $host = FormatterHelpers::get_http_protocol() . $_SERVER['HTTP_HOST'];
 

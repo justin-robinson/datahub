@@ -20,8 +20,8 @@ class CompanyFormatter {
         $host = FormatterHelpers::get_http_protocol() . $_SERVER['HTTP_HOST'];
         $uri = $host . '/api/company';
 
-        $array = $company->to_array();
-        unset($array['instances']);
+        $array = $company->to_array(false);
+
         $array['_links'] = [
             'self'      => [
                 'href' => $host . $_SERVER['REQUEST_URI']
