@@ -16,9 +16,10 @@ class CompanyProfileCollectionFormatter {
 
         $path = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
         $selfQueryParams = [
-            'from' => $from,
-            'to'   => $to,
-            'page' => $page,
+            'from'  => $from,
+            'to'    => $to,
+            'limit' => $limit,
+            'page'  => $page,
         ];
 
         $firstQueryParams = $selfQueryParams;

@@ -77,7 +77,7 @@ class CompanyProfileController extends AbstractRestfulController
         $from = isset($_GET['from']) ? $_GET['from'] : '0';
         $to = isset($_GET['to']) ? $_GET['to'] : date('Y-m-d H:i:s');
         $page = (isset($_GET['page']) && (int)$_GET['page'] >= 1 ) ? $_GET['page'] : 1;
-        $limit = 1000;
+        $limit = isset($_GET['limit']) ? $_GET['limit'] : 1000;
         $offset = $limit * ($page-1);
         $companies = Company::fetch_modified_in_range( $from, $to, $offset, $limit);
 
