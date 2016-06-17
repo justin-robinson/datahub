@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class DhIndustryBizjChannelMap
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/06/15
+ * @date 2016/06/17
  * @property mixed $dh_industry_id
  * @property mixed $channel_id
  * AUTO-GENERATED FILE

@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class CompanyMeroveusIndustryThirdPartyMap
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/06/15
+ * @date 2016/06/17
  * @property mixed $hub_id
  * @property mixed $meroveus_industry_id
  * AUTO-GENERATED FILE

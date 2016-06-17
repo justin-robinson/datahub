@@ -18,6 +18,10 @@ class InstanceFormatter {
 
         $array = $instance->to_array(false);
 
+        if ( isset($instance->channelIds) ) {
+            $array['channelIds'] = $instance->channelIds;
+        }
+
         $host = FormatterHelpers::get_http_protocol() . $_SERVER['HTTP_HOST'];
 
         $array['_links'] = [

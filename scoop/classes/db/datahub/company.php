@@ -331,12 +331,15 @@ class Company extends \DBCore\Datahub\Company
               ci.*,
               cip.*,
               cn.*,
-              s.*
+              s.*,
+              cMap.*
             FROM company c
               LEFT JOIN companyInstance ci USING (companyId)
               LEFT JOIN companyInstanceProperty cip USING (companyInstanceId)
               LEFT JOIN contact cn USING ( companyInstanceId )
               LEFT JOIN state s USING ( stateId )
+              LEFT JOIN companyInstance_meroveusIndustry cImI USING ( companyInstanceId )
+              LEFT JOIN dh_industry_bizj_channel_map cMap ON ( cImI.meroveusIndustryId = cMap.dh_industry_id )
             WHERE
               c.companyId = ?
               AND cip.deletedAt IS NULL
@@ -369,7 +372,8 @@ class Company extends \DBCore\Datahub\Company
               ci.*,
               cip.*,
               cn.*,
-              s.*
+              s.*,
+              cMap.*
             FROM
               (
                 SELECT
@@ -388,7 +392,9 @@ class Company extends \DBCore\Datahub\Company
               LEFT JOIN companyInstance ci USING (companyId)
               LEFT JOIN companyInstanceProperty cip USING (companyInstanceId)
               LEFT JOIN contact cn USING ( companyInstanceId )
-              LEFT JOIN state s USING ( stateId );",
+              LEFT JOIN state s USING ( stateId )
+              LEFT JOIN companyInstance_meroveusIndustry cImI USING ( companyInstanceId )
+              LEFT JOIN dh_industry_bizj_channel_map cMap ON ( cImI.meroveusIndustryId = cMap.dh_industry_id )",
             [$from, $to, $from, $to, $from, $to, $offset, $limit]);
 
         $companies = self::create_rows_from_mysqli_result($mysqliResult);
@@ -398,6 +404,12 @@ class Company extends \DBCore\Datahub\Company
         return $companies;
     }
 
+    /**
+     * @param $from
+     * @param $to
+     *
+     * @return mixed
+     */
     public static function fetch_num_companies_modified_in_range ( $from, $to ) {
 
         return Generic::query(
@@ -548,6 +560,7 @@ class Company extends \DBCore\Datahub\Company
         $prevCompanyInstancePropertyId = null;
         $prevContactId = null;
         $prevStateId = null;
+        $prevChannelId = null;
 
         // organize the fields where we can lookup by $fields['tableName']['columnName']
         // and get the index into the raw $rows array
@@ -636,7 +649,22 @@ class Company extends \DBCore\Datahub\Company
                 $stateId = null;
             }
 
+            if ( isset($fields[DhIndustryBizjChannelMap::TABLE]) ) {
+                $channelId = $row[$fields[DhIndustryBizjChannelMap::TABLE]['channel_id']];
+                if ( $channelId !== $prevChannelId && is_numeric($channelId) ) {
+                    if ( !isset($instance->channelIds) ){
+                        $instance->channelIds = [];
+                    }
+                    if ( !in_array($channelId, $instance->channelIds) ) {
+                        $instance->channelIds[] = $channelId;
+                    }
+                }
+            } else {
+                $channelId = null;
+            }
+
             // need this for the next iteration
+            $prevChannelId = $channelId;
             $prevStateId = $stateId;
             $prevContactId = $contactId;
             $prevCompanyInstancePropertyId = $companyInstancePropertyId;
