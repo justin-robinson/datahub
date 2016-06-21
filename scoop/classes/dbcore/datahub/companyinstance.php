@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class CompanyInstance
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/06/17
+ * @date 2016/06/18
  * @property mixed $companyInstanceId
  * @property mixed $companyId
  * @property mixed $generateCode
@@ -100,13 +100,12 @@ class CompanyInstance extends Model {
           array (
           ),
         );
-
-    protected $dBValuesArray = 
+    public static $dBColumnDefaultValuesArray = 
         array (
           'companyInstanceId' => NULL,
           'companyId' => NULL,
           'generateCode' => NULL,
-          'isHeadquarters' => NULL,
+          'isHeadquarters' => '0',
           'marketCode' => NULL,
           'marketOfRecord' => NULL,
           'name' => NULL,
@@ -116,8 +115,8 @@ class CompanyInstance extends Model {
           'tickerExchange' => NULL,
           'tierLevel' => NULL,
           'url' => NULL,
-          'createdAt' => NULL,
-          'updatedAt' => NULL,
+          'createdAt' => '0000-00-00 00:00:00',
+          'updatedAt' => '0000-00-00 00:00:00',
           'deletedAt' => NULL,
         );
 

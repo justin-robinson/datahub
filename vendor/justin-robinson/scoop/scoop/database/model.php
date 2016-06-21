@@ -53,6 +53,13 @@ abstract class Model extends Model\Generic {
      */
     public static $dBColumnDefaultValuesArray;
 
+    public function __construct ( array $dataArray = [] ) {
+
+        $this->dBValuesArray = static::$dBColumnDefaultValuesArray;
+
+        parent::__construct( $dataArray );
+    }
+
     /**
      * @return bool|int|Model|Rows
      */
@@ -75,7 +82,7 @@ abstract class Model extends Model\Generic {
     /**
      * @param $ID
      *
-     * @return bool|Model
+     * @return bool|static
      */
     public static function fetch_by_id ( $ID ) {
 
@@ -321,11 +328,9 @@ abstract class Model extends Model\Generic {
             }
         }
 
-        if ( !$this->loaded_from_database() ) {
-            // don't insert auto increment columns
-            if ( array_key_exists(static::AUTO_INCREMENT_COLUMN, $columns) ) {
-                unset($columns[static::AUTO_INCREMENT_COLUMN]);
-            }
+        // don't insert auto increment column for new models
+        if ( !$this->is_loaded_from_database() && array_key_exists(static::AUTO_INCREMENT_COLUMN, $columns)) {
+            unset($columns[static::AUTO_INCREMENT_COLUMN]);
         }
 
         $columnNames = '';

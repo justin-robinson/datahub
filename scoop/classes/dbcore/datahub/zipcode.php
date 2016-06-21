@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class ZipCode
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/06/17
+ * @date 2016/06/18
  * @property mixed $zip_code
  * @property mixed $city_name
  * @property mixed $state_code
@@ -87,11 +87,10 @@ class ZipCode extends Model {
           array (
           ),
         );
-
-    protected $dBValuesArray = 
+    public static $dBColumnDefaultValuesArray = 
         array (
-          'zip_code' => NULL,
-          'city_name' => NULL,
+          'zip_code' => '',
+          'city_name' => '',
           'state_code' => NULL,
           'area_code' => NULL,
           'fips_code' => NULL,
@@ -100,8 +99,8 @@ class ZipCode extends Model {
           'utc_dst_offset' => NULL,
           'latitude' => NULL,
           'longitude' => NULL,
-          'city_type' => NULL,
-          'zip_type' => NULL,
+          'city_type' => 'default',
+          'zip_type' => 'standard',
         );
 
 }
