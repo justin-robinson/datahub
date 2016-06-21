@@ -152,6 +152,7 @@ class CompanyProfileController extends AbstractRestfulController
                 $instance->fetch_contacts();
 
                 // channel ids
+                $instance->fetch_channel_ids();
                 foreach ($instance->get_channel_ids() as $channelId) {
                     $channelIds[] = $channelId->channel_id;
                 }
