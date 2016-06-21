@@ -112,7 +112,7 @@ class CompanyProfileController extends AbstractRestfulController
             }
 
 
-            return new JsonModel(CompanyProfileCollectionFormatter::format($companies, $page, $limit, $count, $from, $to));
+            return new JsonModel(CompanyProfileCollectionFormatter::format($companies, $page, $limit, $count, $from, $to, '/api/company/profile'));
         } catch (\Exception $e) {
             $this->response->setStatusCode(500);
             return new JsonModel(['error' => true, 'message' => 'ERROR: ' . $e->getMessage()]);
@@ -159,7 +159,7 @@ class CompanyProfileController extends AbstractRestfulController
             }
 
 
-            return new JsonModel(CompanyProfileCollectionFormatter::format($companies, $page, $limit, $count, $from, $to));
+            return new JsonModel(CompanyProfileCollectionFormatter::format($companies, $page, $limit, $count, $from, $to, '/api/company/profile/deletes'));
         } catch (\Exception $e) {
             $this->response->setStatusCode(500);
             return new JsonModel(['error' => true, 'message' => 'ERROR: ' . $e->getMessage()]);
