@@ -217,13 +217,29 @@ class Company extends \DBCore\Datahub\Company
 
     /**
      * @return Rows
+     * @param bool return all records (including deleted)
      */
-    public function fetch_company_instances()
+    public function fetch_company_instances($allRecords = false)
     {
 
         if (!empty($this->companyId)) {
-            $instances = CompanyInstance::fetch_where('companyId = ?', [$this->companyId]);
+            $instances = CompanyInstance::fetch_where('companyId = ?', [$this->companyId], 1000, 0, $allRecords);
+            $this->companyInstances = $instances ? $instances : new Rows();
+        }
 
+        return $this->get_company_instances();
+    }
+
+    /**
+     * Return only deleted instances
+     * 
+     * @return Rows
+     */
+    public function fetch_deleted_company_instances()
+    {
+
+        if (!empty($this->companyId)) {
+            $instances = CompanyInstance::fetch_where('companyId = ? AND deletedAt IS NOT NULL', [$this->companyId], 1000, 0, true);
             $this->companyInstances = $instances ? $instances : new Rows();
         }
 
@@ -340,6 +356,62 @@ class Company extends \DBCore\Datahub\Company
         }
 
         return $company;
+    }
+
+    /**
+     * @param     $from
+     * @param     $to
+     * @param int $offset
+     * @param int $limit
+     *
+     * @return Rows
+     * @throws \Exception
+     */
+    public static function fetch_deleted_in_range( $from, $to, $offset = 0, $limit = 1000) {
+
+        return self::query(
+            "SELECT
+              c.*
+            FROM
+              company c
+              LEFT JOIN companyInstance ci USING (companyId)
+              LEFT JOIN companyInstanceProperty cip USING (companyInstanceId)
+            WHERE
+              c.deletedAt BETWEEN ? and ?
+              OR ci.deletedAt BETWEEN ? and ?
+              OR cip.deletedAt BETWEEN ? and ?
+            GROUP BY c.companyID
+            LIMIT ?, ?",
+            [$from, $to, $from, $to, $from, $to, $offset, $limit]
+        );
+    }
+
+    /**
+     * Get deleted count
+     *
+     * @param $from
+     * @param $to
+     *
+     * @return bool|int|Rows
+     */
+    public static function fetch_deleted_in_range_count($from, $to) {
+
+        $companiesDeleted = Generic::query(
+            "SELECT
+              c.companyId
+            FROM
+              company c
+              LEFT JOIN companyInstance ci USING (companyId)
+              LEFT JOIN companyInstanceProperty cip USING (companyInstanceId)
+            WHERE
+              c.deletedAt BETWEEN ? and ?
+              OR ci.deletedAt BETWEEN ? and ?
+              OR cip.deletedAt BETWEEN ? and ?
+            GROUP BY c.companyID",
+            [$from, $to, $from, $to, $from, $to]
+        );
+
+        return $companiesDeleted ? $companiesDeleted->get_num_rows() : 0;
     }
 
     /**

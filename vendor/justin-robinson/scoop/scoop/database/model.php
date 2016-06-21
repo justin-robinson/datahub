@@ -100,14 +100,15 @@ abstract class Model extends Model\Generic {
     /**
      * @param       $where string
      * @param array $queryParams
+     * @param bool return all records (including deleted)
      *
      * @return Model|bool
      */
-    public static function fetch_one_where ( $where, array $queryParams = [ ] ) {
+    public static function fetch_one_where($where, array $queryParams = [ ], $allRecords = false) {
 
-        $rows = static::fetch_where ( $where, $queryParams, 1 );
+        $rows = static::fetch_where($where, $queryParams, 1, 0, $allRecords);
 
-        if ( !empty( $rows ) ) {
+        if (!empty($rows)) {
             return $rows[0];
         } else {
             return false;
@@ -119,12 +120,13 @@ abstract class Model extends Model\Generic {
      * @param int   $limit
      * @param int   $offset
      * @param array $queryParams
+     * @bool return all records (including deleted)
      *
      * @return Rows
      */
-    public static function fetch_where ( $where, array $queryParams = [ ], $limit = 1000, $offset = 0 ) {
+    public static function fetch_where($where, array $queryParams = [ ], $limit = 1000, $offset = 0, $allRecords = false) {
 
-        return static::fetch($limit, $offset, $where, $queryParams);
+        return static::fetch($limit, $offset, $where, $queryParams, $allRecords);
     }
 
     /**
@@ -381,7 +383,6 @@ abstract class Model extends Model\Generic {
 
         // build sql
         $sql = "SELECT * FROM " . static::get_sql_table_name () . " {$where} LIMIT ?,?";
-
         $queryParams[] = $offset;
         $queryParams[] = $limit;
 

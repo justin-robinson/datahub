@@ -229,14 +229,16 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
      * @param int    $offset
      * @param string $where
      * @param array  $queryParams
+     * @param bool fetch all records (including deleted)
      *
      * @return bool|int|Rows
      */
-    public static function fetch($limit = 1000, $offset = 0, $where = '', array $queryParams = [])
+    public static function fetch($limit = 1000, $offset = 0, $where = '', array $queryParams = [], $allRecords = false)
     {
 
-        $where .= empty($where) ? '' : ' AND ';
-        $where .= 'deletedAt IS NULL';
+        if (!$allRecords) {
+            $where .= empty($where) ? '' : ' AND deletedAt IS NULL';
+        }
 
         return parent::fetch($limit, $offset, $where, $queryParams);
     }
@@ -259,18 +261,15 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
     /**
      * @return Rows
+     * @boolean get all records (including deleted)
      */
-    public function fetch_properties()
+    public function fetch_properties($allRecords = false)
     {
 
         if (!empty($this->companyInstanceId)) {
-            $properties = CompanyInstanceProperty::query("SELECT
-               *
-             FROM
-               `datahub`.`companyInstanceProperty`
-             WHERE
-               companyInstanceId = ?
-               AND deletedAt IS NULL", [$this->companyInstanceId]);
+            $properties = CompanyInstanceProperty::query("SELECT *
+             FROM `datahub`.`companyInstanceProperty`
+             WHERE companyInstanceId = ?" . (!$allRecords ? ' AND deletedAt IS NULL' : ''), [$this->companyInstanceId]);
 
             $this->properties = [];
 
@@ -289,7 +288,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     /**
      * @return State|null
      */
-    public function fetch_state () {
+    public function fetch_state() {
 
         if ( is_numeric($this->stateId) ) {
             $this->state = State::fetch_by_id($this->stateId);
@@ -301,7 +300,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     /**
      * @return mixed
      */
-    public function fetch_channel_ids () {
+    public function fetch_channel_ids() {
 
         if ( !empty($this->companyInstanceId) ) {
             $channelIds = DhIndustryBizjChannelMap::query(
