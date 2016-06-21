@@ -168,10 +168,16 @@ class MeroveusController extends AbstractActionController
 
     }
 
-    public function doTier($id)
+    /**
+     * basic tiering thingy
+     * @param $id
+     *
+     * @return int
+     */public function doTier($id)
     {
         $tier    = 0;
         $company = Company::fetch_company_and_instances($id);
+
         if ($company) {
             $instances = $company->get_company_instances();
             $tier      = $instances->get_rows()[0]->instanceTierThyself(1);
@@ -179,6 +185,14 @@ class MeroveusController extends AbstractActionController
         unset($company);
 
         return $tier;
+    }
+
+    /**
+     * mess with stuff here
+     */
+    public function scratchAction()
+    {
+
     }
 
     /**
@@ -463,7 +477,7 @@ class MeroveusController extends AbstractActionController
                     }
 
                     // does this company have an industry?
-                    if ( isset($target['firm-industry_static']) ) {
+                    if (isset($target['firm-industry_static'])) {
 
                         //$industries = explode(',', $target['firm-industry_static']);
                         //$queryParams = rtrim(str_repeat('?,', count($industries)), ',');
@@ -472,16 +486,13 @@ class MeroveusController extends AbstractActionController
                         $meroveusIndustries = MeroveusIndustry::fetch_where("industry IN ({$target['firm-industry_static']})");
 
                         // companyInstanceId will be false if we didn't find a refinery id
-                        if ( $meroveusIndustries && is_numeric($companyInstanceId)) {
+                        if ($meroveusIndustries && is_numeric($companyInstanceId)) {
 
-                            foreach ( $meroveusIndustries as $meroveusIndustry ) {
-                                (new CompanyInstanceMeroveusIndustry(
-                                        [
-                                            'companyInstanceId' => $companyInstanceId,
-                                            'meroveusIndustryId' => $meroveusIndustry->meroveusIndustryId,
-                                        ]
-                                    )
-                                )->save();
+                            foreach ($meroveusIndustries as $meroveusIndustry) {
+                                (new CompanyInstanceMeroveusIndustry([
+                                        'companyInstanceId'  => $companyInstanceId,
+                                        'meroveusIndustryId' => $meroveusIndustry->meroveusIndustryId,
+                                    ]))->save();
                             }
 
                         }
@@ -668,16 +679,17 @@ class MeroveusController extends AbstractActionController
         // @todo handle deletions
         $industries = $this->companyService->queryMeroveusRoot($meroveusParams);
 
-        foreach ($industries as $industry ) {
-            ( new MeroveusIndustry(
-                [
+        foreach ($industries as $industry) {
+            (new MeroveusIndustry([
                     'externalId' => $industry['LABELID'],
-                    'industry'   => trim( $industry['NAME'], 'Â ' ),
-                ]
-            ) )->save();
+                    'industry'   => trim($industry['NAME'], 'Â '),
+                ]))->save();
         }
     }
 
+    /**
+     * @throws \Console\CsvIteratorException
+     */
     public function sicToMerovuesAction()
     {
 
@@ -883,6 +895,12 @@ class MeroveusController extends AbstractActionController
      * @return bool
      */
     // gross!!!
+    /**
+     * @param int   $refineryId
+     * @param array $target
+     *
+     * @return bool|mixed
+     */
     private function processMatch($refineryId, array $target)
     {
 
