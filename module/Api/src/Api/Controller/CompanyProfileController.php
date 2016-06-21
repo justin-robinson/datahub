@@ -28,7 +28,7 @@ class CompanyProfileController extends AbstractRestfulController
      */
     public function get( $companyId )
     {
-        
+
         $company = Company::fetch_company_and_instances($companyId);
 
         if ( $company === false ) {
@@ -87,31 +87,84 @@ class CompanyProfileController extends AbstractRestfulController
         $count = Company::fetch_modified_in_range_count($from, $to);
         $companies = $count ? Company::fetch_modified_in_range( $from, $to, $offset, $limit) : false;
 
-        if ( $companies === false ) {
-            $this->response->setStatusCode(204);
-            return null;
-        }
-
-        foreach ( $companies as $company ) {
-            /**
-             * @var $company Company
-             */
-            $company->fetch_company_instances();
-
-            foreach ( $company->get_company_instances() as $instance ) {
-                /**
-                 * @var $instance CompanyInstance
-                 */
-                $instance->fetch_properties();
-                $instance->fetch_contacts();
-                $instance->fetch_state();
-                $instance->fetch_channel_ids();
+        try {
+           if ($companies === false) {
+                $this->response->setStatusCode(204);
+                return null;
             }
-        }
 
+            foreach ($companies as $company) {
+                /**
+                 * @var $company Company
+                 */
+                $company->fetch_company_instances();
+
+                foreach ($company->get_company_instances() as $instance) {
+                    /**
+                     * @var $instance CompanyInstance
+                     */
+                    $instance->fetch_properties();
+                    $instance->fetch_contacts();
+                    $instance->fetch_state();
+                    $instance->fetch_channel_ids();
+                }
+            }
+
+
+            return new JsonModel(CompanyProfileCollectionFormatter::format($companies, $page, $limit, $count, $from, $to, '/api/company/profile'));
+        } catch (\Exception $e) {
+            $this->response->setStatusCode(500);
+            return new JsonModel(['error' => true, 'message' => 'ERROR: ' . $e->getMessage()]);
+        }
 
         return new JsonModel(CompanyProfileCollectionFormatter::format($companies, $page, $limit, $count, $from, $to));
     }
+
+    /**
+     * @return JsonModel|void
+     */
+    public function deleteListAction()
+    {
+        $from = isset($_GET['from']) ? $_GET['from'] : '0';
+        $to = isset($_GET['to']) ? $_GET['to'] : date('Y-m-d H:i:s');
+        $page = (isset($_GET['page']) && (int)$_GET['page'] >= 1 ) ? $_GET['page'] : 1;
+        $limit = isset($_GET['limit']) ? $_GET['limit'] : 1000;
+        $offset = $limit * ($page-1);
+        $count = Company::fetch_deleted_in_range_count($from, $to);
+        $companies = $count ? Company::fetch_deleted_in_range($from, $to, $offset, $limit) : false;
+
+        try {
+            if ($companies === false) {
+                $this->response->setStatusCode(204);
+                return null;
+            }
+
+            foreach ($companies as $company) {
+                /**
+                 * @var $company Company
+                 */
+                $company->fetch_deleted_company_instances();
+
+                foreach ($company->get_company_instances() as $instance) {
+                    /**
+                     * @var $instance CompanyInstance
+                     */
+                    //$instance->fetch_properties();
+                    //$instance->fetch_contacts();
+                    //$instance->fetch_state();
+                    //$instance->fetch_channel_ids();
+                }
+            }
+
+            return new JsonModel(CompanyProfileCollectionFormatter::format($companies, $page, $limit, $count, $from, $to, '/api/company/profile/deletes'));
+        } catch (\Exception $e) {
+            $this->response->setStatusCode(500);
+            return new JsonModel(['error' => true, 'message' => 'ERROR: ' . $e->getMessage()]);
+        }
+
+        return new JsonModel(CompanyProfileCollectionFormatter::format($companies, $page, $limit, $count, $from, $to));
+    }
+
 
     /**
      * @return JsonModel
@@ -129,6 +182,8 @@ class CompanyProfileController extends AbstractRestfulController
 
         $response = new CompanyResponse();
 
+
+
         if ( $company ) {
 
             // the company instances
@@ -137,6 +192,7 @@ class CompanyProfileController extends AbstractRestfulController
             // sorted list of properties
             $sortedProperties = [];
 
+            $channelIds = [];
             // get and sort all properties and contacts
             foreach ( $company->get_company_instances() as $instance ) {
 
@@ -148,10 +204,17 @@ class CompanyProfileController extends AbstractRestfulController
 
                 // contacts
                 $instance->fetch_contacts();
+
+                // channel ids
+                $instance->fetch_channel_ids();
+                foreach ($instance->get_channel_ids() as $channelId) {
+                    $channelIds[] = $channelId->channel_id;
+                }
             }
 
             // convert to array
             $company = $company->to_array();
+            $company['channelIds'] = $channelIds;
 
             // replace instance properties with sorted ones
             reset($sortedProperties);

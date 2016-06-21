@@ -146,6 +146,16 @@ return [
                     ],
                 ],
             ],
+            'company-profile-deletes' => [
+                'type'         => 'Literal',
+                'options'      => [
+                    'route'    => '/api/company/profile/deletes',
+                    'defaults' => [
+                        'controller' => 'Api\Controller\CompanyProfile',
+                        'action'     => 'deleteList',
+                    ],
+                ],
+            ],
             'company-profile' => [
                 'type'         => 'Literal',
                 'options'      => [
