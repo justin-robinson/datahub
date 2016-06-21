@@ -126,6 +126,10 @@ class CronController extends AbstractActionController {
             [$daysToLookBack, $daysToLookBack, $daysToLookBack, $daysToLookBack, $daysToLookBack, $daysToLookBack],
             $connection);
 
+        if ( $results === false ) {
+            return null;
+        }
+
         $elasticChunkNumber = 0;
         // parse each row into a csv and json file
         foreach ( $results as $index => $row ) {
