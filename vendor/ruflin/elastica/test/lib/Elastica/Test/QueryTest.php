@@ -1,5 +1,4 @@
 <?php
-
 namespace Elastica\Test;
 
 use Elastica\Document;
@@ -405,6 +404,31 @@ class QueryTest extends BaseTest
 
         $anotherQuery = new Query();
         $anotherQuery->addScriptField('script', $scriptField);
+
+        $this->assertEquals($query->toArray(), $anotherQuery->toArray());
+    }
+
+    /**
+     * @group unit
+     */
+    public function testAddScriptFieldToExistingScriptFields()
+    {
+        $script1 = new Script('s1');
+        $script2 = new Script('s2');
+
+        // add script1, then add script2
+        $query = new Query();
+        $scriptFields1 = new ScriptFields();
+        $scriptFields1->addScript('script1', $script1);
+        $query->setScriptFields($scriptFields1);
+        $query->addScriptField('script2', $script2);
+
+        // add script1 and script2 at once
+        $anotherQuery = new Query();
+        $scriptFields2 = new ScriptFields();
+        $scriptFields2->addScript('script1', $script1);
+        $scriptFields2->addScript('script2', $script2);
+        $anotherQuery->setScriptFields($scriptFields2);
 
         $this->assertEquals($query->toArray(), $anotherQuery->toArray());
     }

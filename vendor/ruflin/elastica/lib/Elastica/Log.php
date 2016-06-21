@@ -1,5 +1,4 @@
 <?php
-
 namespace Elastica;
 
 use Psr\Log\AbstractLogger;
@@ -16,14 +15,14 @@ class Log extends AbstractLogger
      *
      * @var string|bool
      */
-    protected $_log = true;
+    protected $_log;
 
     /**
      * Last logged message.
      *
      * @var string Last logged message
      */
-    protected $_lastMessage = '';
+    protected $_lastMessage;
 
     /**
      * Inits log object.

@@ -89,6 +89,8 @@ class ScoopRun {
             $outPath = \Scoop\Config::get_shared_class_path ();
         }
 
+        echo $outPath . PHP_EOL;
+
         $where = [
             "table_schema NOT IN (
                'information_schema',

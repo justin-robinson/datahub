@@ -1,5 +1,4 @@
 <?php
-
 namespace Elastica\Transport;
 
 use Elastica\Exception\Connection\HttpException;
@@ -28,7 +27,7 @@ class Http extends AbstractTransport
      *
      * @var resource Curl resource to reuse
      */
-    protected static $_curlConnection = null;
+    protected static $_curlConnection;
 
     /**
      * Makes calls to the elasticsearch server.
