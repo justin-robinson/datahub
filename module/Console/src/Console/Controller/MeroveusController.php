@@ -20,6 +20,7 @@ use Elastica\Client as ElasticaClient;
 use Elastica\Query as ElasticaQuery;
 use Elastica\QueryBuilder as QueryBuilder;
 use Elastica\Search as ElasticaSearch;
+use Scoop\Database\Model\Generic;
 use Services\Meroveus\Client as MeroveusClient;
 use Services\Meroveus\CompanyService;
 use Zend\Mvc\MvcEvent;
@@ -679,12 +680,27 @@ class MeroveusController extends AbstractActionController
         // @todo handle deletions
         $industries = $this->companyService->queryMeroveusRoot($meroveusParams);
 
+        $industriesAdded = 0;
+        $numberOfMeroveusIndustries = 0;
+
         foreach ($industries as $industry) {
-            (new MeroveusIndustry([
-                    'externalId' => $industry['LABELID'],
-                    'industry'   => trim($industry['NAME'], 'Â '),
-                ]))->save();
+            $numberOfMeroveusIndustries++;
+            try{
+                $saved = (new MeroveusIndustry([
+                                          'externalId' => $industry['LABELID'],
+                                          'industry'   => trim($industry['NAME'], 'Â '),
+                                      ]))->save();
+
+                $industriesAdded += $saved ? 1 : 0;
+            } catch ( \Exception $e ) {
+
+            }
         }
+
+        $savedIndustries = Generic::query("select count(*) as count from meroveusIndustry")->first()->count;
+
+        echo "Added {$industriesAdded} new industries of {$numberOfMeroveusIndustries} from meroveus" . PHP_EOL;
+        echo "There are {$savedIndustries} in the datahub";
     }
 
     /**
