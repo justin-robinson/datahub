@@ -371,6 +371,32 @@ class Company extends \DBCore\Datahub\Company
     }
 
     /**
+     * @param $from
+     * @param $to
+     *
+     * @return bool|int|Rows
+     */
+    public static function fetch_modified_in_range_count( $from, $to ) {
+
+        $companiesModified = Generic::query(
+            "SELECT
+              c.companyId
+            FROM
+              company c
+              LEFT JOIN companyInstance ci USING (companyId)
+              LEFT JOIN companyInstanceProperty cip USING (companyInstanceId)
+            WHERE
+              c.updatedAt BETWEEN ? and ?
+              OR ci.updatedAt BETWEEN ? and ?
+              OR cip.updatedAt BETWEEN ? and ?
+            GROUP BY c.companyID",
+            [$from, $to, $from, $to, $from, $to]
+        );
+
+        return $companiesModified ? $companiesModified->get_num_rows() : 0;
+    }
+
+    /**
      * @param array $dataArray
      */
     public function populate ( array $dataArray ) {
@@ -489,139 +515,6 @@ class Company extends \DBCore\Datahub\Company
      */
     public function tierTwoValidate(CompanyInstance $instance){
 
-    }
-
-    /**
-     * @param \mysqli_result $mysqliResult
-     *
-     * @return Rows
-     */
-    private static function create_rows_from_mysqli_result ( \mysqli_result $mysqliResult ) {
-
-        $rows = new Rows();
-        $prevCompanyId = null;
-        $prevCompanyInstanceId = null;
-        $prevCompanyInstancePropertyId = null;
-        $prevContactId = null;
-        $prevStateId = null;
-        $prevChannelId = null;
-
-        // organize the fields where we can lookup by $fields['tableName']['columnName']
-        // and get the index into the raw $rows array
-        $fields = [];
-        foreach ($mysqliResult->fetch_fields() as $fieldNumber => $field) {
-            if (empty($fields[$field->orgtable])) {
-                $fields[$field->orgtable] = [];
-            }
-            $fields[$field->orgtable][$field->orgname] = $fieldNumber;
-        }
-
-        while ($row = $mysqliResult->fetch_row()) {
-
-            // the company instance id of this row
-            $companyId = $row[$fields[Company::TABLE][Company::AUTO_INCREMENT_COLUMN]];
-
-            // is this row a new company?
-            if ( $companyId !== $prevCompanyId) {
-
-                // add previous company to the rows collection
-                if ( isset($company) ){
-                    $rows->add_row($company);
-                }
-
-                // create a new company model
-                $company = new self();
-                foreach ($fields[Company::TABLE] as $columnName => $rowIndex) {
-                    $company->$columnName = $row[$rowIndex];
-                }
-
-                // this will trigger a new company instance to be made ( just to be safe )
-                unset($instance);
-            }
-
-            // the company instance id of this row
-            $companyInstanceId = $row[$fields[CompanyInstance::TABLE][CompanyInstance::AUTO_INCREMENT_COLUMN]];
-
-            // is this row a new instance?
-            if ( $companyInstanceId !== $prevCompanyInstanceId) {
-
-                // create the new instance model
-                $instance = new CompanyInstance();
-
-                // populate the model
-                foreach ($fields[CompanyInstance::TABLE] as $columnName => $rowIndex) {
-                    $instance->$columnName = $row[$rowIndex];
-                }
-
-                // add the instance to the company record
-                $company->add_company_instance($instance);
-            }
-
-            // the company instance property id of this row
-            $companyInstancePropertyId = $row[$fields[CompanyInstanceProperty::TABLE][CompanyInstanceProperty::AUTO_INCREMENT_COLUMN]];
-
-            if ( $companyInstancePropertyId !== $prevCompanyInstancePropertyId ) {
-                // all rows are properties so just create, populate, and add the the instance
-                $property = new CompanyInstanceProperty();
-                foreach ($fields[CompanyInstanceProperty::TABLE] as $columnName => $rowIndex) {
-                    $property->$columnName = $row[$rowIndex];
-                }
-                $instance->add_property($property);
-            }
-
-            // the contact id of this row
-            $contactId = $row[$fields[Contact::TABLE][Contact::AUTO_INCREMENT_COLUMN]];
-            if ( $contactId !== $prevContactId ) {
-                $contact = new Contact();
-                foreach ( $fields[Contact::TABLE] as $columnName => $rowIndex ) {
-                    $contact->$columnName = $row[$rowIndex];
-                }
-                $instance->add_contact($contact);
-            }
-
-            if ( isset($fields[State::TABLE]) ){
-                // the state id of this row
-                $stateId = $row[$fields[State::TABLE][State::AUTO_INCREMENT_COLUMN]];
-                if ( $stateId !== $prevStateId ) {
-                    $state = new State();
-                    foreach ( $fields[State::TABLE] as $columnName => $rowIndex ) {
-                        $state->$columnName = $row[$rowIndex];
-                    }
-                    $instance->set_state($state);
-                }
-            } else {
-                $stateId = null;
-            }
-
-            if ( isset($fields[DhIndustryBizjChannelMap::TABLE]) ) {
-                $channelId = $row[$fields[DhIndustryBizjChannelMap::TABLE]['channel_id']];
-                if ( $channelId !== $prevChannelId && is_numeric($channelId) ) {
-                    if ( !isset($instance->channelIds) ){
-                        $instance->channelIds = [];
-                    }
-                    if ( !in_array($channelId, $instance->channelIds) ) {
-                        $instance->channelIds[] = $channelId;
-                    }
-                }
-            } else {
-                $channelId = null;
-            }
-
-            // need this for the next iteration
-            $prevChannelId = $channelId;
-            $prevStateId = $stateId;
-            $prevContactId = $contactId;
-            $prevCompanyInstancePropertyId = $companyInstancePropertyId;
-            $prevCompanyInstanceId = $companyInstanceId;
-            $prevCompanyId = $companyId;
-        }
-
-        // add last company to the rows collection
-        if ( isset($company) ) {
-            $rows->add_row($company);
-        }
-
-        return $rows;
     }
 }
 

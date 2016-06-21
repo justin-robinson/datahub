@@ -84,7 +84,8 @@ class CompanyProfileController extends AbstractRestfulController
         $page = (isset($_GET['page']) && (int)$_GET['page'] >= 1 ) ? $_GET['page'] : 1;
         $limit = isset($_GET['limit']) ? $_GET['limit'] : 1000;
         $offset = $limit * ($page-1);
-        $companies = Company::fetch_modified_in_range( $from, $to, $offset, $limit);
+        $count = Company::fetch_modified_in_range_count($from, $to);
+        $companies = $count ? Company::fetch_modified_in_range( $from, $to, $offset, $limit) : false;
 
         if ( $companies === false ) {
             $this->response->setStatusCode(204);
@@ -108,7 +109,7 @@ class CompanyProfileController extends AbstractRestfulController
             }
         }
 
-        $count = $companies->get_num_rows();
+
         return new JsonModel(CompanyProfileCollectionFormatter::format($companies, $page, $limit, $count, $from, $to));
     }
 

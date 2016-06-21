@@ -5,8 +5,22 @@ namespace Api\ResponseFormatter;
 use Scoop\Database\Model\Generic;
 use Scoop\Database\Rows;
 
+/**
+ * Class CompanyProfileCollectionFormatter
+ * @package Api\ResponseFormatter
+ */
 class CompanyProfileCollectionFormatter {
 
+    /**
+     * @param Rows $companies
+     * @param      $page
+     * @param      $limit
+     * @param      $totalCount
+     * @param      $from
+     * @param      $to
+     *
+     * @return array
+     */
     public static function format ( Rows $companies, $page, $limit, $totalCount, $from, $to ) {
 
         $host = FormatterHelpers::get_http_protocol() . $_SERVER['HTTP_HOST'];
