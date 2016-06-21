@@ -16,7 +16,7 @@ class CompanyProfileFormatter {
      *
      * @return array
      */
-    public static function format ( Company $company ) {
+    public static function format (Company $company) {
 
         // pull instances off since the formatter kills them
         $instances = $company->get_company_instances();
@@ -30,7 +30,7 @@ class CompanyProfileFormatter {
          * @var $instance CompanyInstance
          */
         // add instances back to hal response
-        foreach ( $instances as $instance ) {
+        foreach ($instances as $instance) {
 
             // get the sorted properties
             $sortedProperties = $instance->sort_properties();
