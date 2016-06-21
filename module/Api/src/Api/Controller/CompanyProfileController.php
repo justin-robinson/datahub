@@ -11,6 +11,7 @@ use Api\ResponseFormatter\CompanyProfileCollectionFormatter;
 use Api\ResponseFormatter\CompanyProfileFormatter;
 use Api\Response\CompanyResponse;
 use DB\Datahub\Company;
+use DB\Datahub\CompanyInstance;
 use Zend\View\Model\JsonModel;
 
 /**
@@ -21,17 +22,21 @@ use Zend\View\Model\JsonModel;
 class CompanyProfileController extends AbstractRestfulController
 {
     /**
-     * @param mixed $companyInstanceId
+     * @param mixed $companyId
      *
-     * @return JsonModel
+*@return JsonModel
      */
-    public function get( $companyInstanceId )
+    public function get( $companyId )
     {
-        $company = Company::fetch_company_and_instances( $companyInstanceId);
+        
+        $company = Company::fetch_company_and_instances($companyId);
 
-        $company = empty($company) ? $company : CompanyProfileFormatter::format($company);
+        if ( $company === false ) {
+            $this->response->setStatusCode(204);
+            return null;
+        }
 
-        return new JsonModel($company);
+        return new JsonModel(CompanyProfileFormatter::format($company));
     }
 
     /**
@@ -86,7 +91,24 @@ class CompanyProfileController extends AbstractRestfulController
             return null;
         }
 
-        $count = Company::fetch_num_companies_modified_in_range($from, $to);
+        foreach ( $companies as $company ) {
+            /**
+             * @var $company Company
+             */
+            $company->fetch_company_instances();
+
+            foreach ( $company->get_company_instances() as $instance ) {
+                /**
+                 * @var $instance CompanyInstance
+                 */
+                $instance->fetch_properties();
+                $instance->fetch_contacts();
+                $instance->fetch_state();
+                $instance->fetch_channel_ids();
+            }
+        }
+
+        $count = $companies->get_num_rows();
         return new JsonModel(CompanyProfileCollectionFormatter::format($companies, $page, $limit, $count, $from, $to));
     }
 

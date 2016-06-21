@@ -157,7 +157,7 @@ class Company extends \DBCore\Datahub\Company
      */
     public function delete () {
 
-        if ( !$this->loaded_from_database() ) {
+        if ( !$this->is_loaded_from_database() ) {
             return false;
         }
 
@@ -277,7 +277,7 @@ class Company extends \DBCore\Datahub\Company
             if( $setTimestamps ) {
 
                 // set timestamps
-                if( empty($this->createdAt) ) {
+                if( $this->createdAt !== self::$dBColumnDefaultValuesArray['createdAt'] ) {
                     $this->set_literal( 'createdAt', 'NOW()' );
                 }
                 $this->set_literal( 'updatedAt', 'NOW()' );
@@ -324,34 +324,22 @@ class Company extends \DBCore\Datahub\Company
      */
     public static function fetch_company_and_instances($companyId)
     {
-        Generic::connect();
-        $mysqliResult = Generic::$connection->execute(
-            "SELECT
-              c.*,
-              ci.*,
-              cip.*,
-              cn.*,
-              s.*,
-              cMap.*
-            FROM company c
-              LEFT JOIN companyInstance ci USING (companyId)
-              LEFT JOIN companyInstanceProperty cip USING (companyInstanceId)
-              LEFT JOIN contact cn USING ( companyInstanceId )
-              LEFT JOIN state s USING ( stateId )
-              LEFT JOIN companyInstance_meroveusIndustry cImI USING ( companyInstanceId )
-              LEFT JOIN dh_industry_bizj_channel_map cMap ON ( cImI.meroveusIndustryId = cMap.dh_industry_id )
-            WHERE
-              c.companyId = ?
-              AND cip.deletedAt IS NULL
-              AND ci.deletedAt IS NULL
-              AND c.deletedAt IS NULL;",
-            [$companyId]);
+        $company = Company::fetch_by_id($companyId);
 
-        $companies = self::create_rows_from_mysqli_result($mysqliResult);
+        if ( $company === false ) {
+            return false;
+        }
 
-        $mysqliResult->free();
+        $company->fetch_company_instances();
 
-        return $companies->first();
+        foreach ( $company->get_company_instances() as $instance ) {
+            $instance->fetch_properties();
+            $instance->fetch_contacts();
+            $instance->fetch_state();
+            $instance->fetch_channel_ids();
+        }
+
+        return $company;
     }
 
     /**
@@ -365,56 +353,9 @@ class Company extends \DBCore\Datahub\Company
      */
     public static function fetch_modified_in_range( $from, $to, $offset = 0, $limit = 1000) {
 
-        Generic::connect();
-        $mysqliResult = Generic::$connection->execute(
+        return self::query(
             "SELECT
-              c.*,
-              ci.*,
-              cip.*,
-              cn.*,
-              s.*,
-              cMap.*
-            FROM
-              (
-                SELECT
-                  c.*
-                FROM
-                  company c
-                  LEFT JOIN companyInstance ci USING (companyId)
-                  LEFT JOIN companyInstanceProperty cip USING (companyInstanceId)
-                WHERE
-                  c.updatedAt BETWEEN ? and ?
-                  OR ci.updatedAt BETWEEN ? and ?
-                  OR cip.updatedAt BETWEEN ? and ?
-                GROUP BY c.companyID
-                LIMIT ?, ?
-              ) c
-              LEFT JOIN companyInstance ci USING (companyId)
-              LEFT JOIN companyInstanceProperty cip USING (companyInstanceId)
-              LEFT JOIN contact cn USING ( companyInstanceId )
-              LEFT JOIN state s USING ( stateId )
-              LEFT JOIN companyInstance_meroveusIndustry cImI USING ( companyInstanceId )
-              LEFT JOIN dh_industry_bizj_channel_map cMap ON ( cImI.meroveusIndustryId = cMap.dh_industry_id )",
-            [$from, $to, $from, $to, $from, $to, $offset, $limit]);
-
-        $companies = self::create_rows_from_mysqli_result($mysqliResult);
-
-        $mysqliResult->free();
-
-        return $companies;
-    }
-
-    /**
-     * @param $from
-     * @param $to
-     *
-     * @return mixed
-     */
-    public static function fetch_num_companies_modified_in_range ( $from, $to ) {
-
-        return Generic::query(
-            "SELECT
-              count(DISTINCT c.companyId) as count
+              c.*
             FROM
               company c
               LEFT JOIN companyInstance ci USING (companyId)
@@ -422,8 +363,11 @@ class Company extends \DBCore\Datahub\Company
             WHERE
               c.updatedAt BETWEEN ? and ?
               OR ci.updatedAt BETWEEN ? and ?
-              OR cip.updatedAt BETWEEN ? and ?;"
-        ,[$from, $to, $from, $to, $from, $to])->first()->count;
+              OR cip.updatedAt BETWEEN ? and ?
+            GROUP BY c.companyID
+            LIMIT ?, ?",
+            [$from, $to, $from, $to, $from, $to, $offset, $limit]
+            );
     }
 
     /**

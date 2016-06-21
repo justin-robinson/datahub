@@ -46,8 +46,10 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
      */
     protected $state;
 
-
-    
+    /**
+     * @var Rows
+     */
+    protected $channelIds;
     
     /**
      * @var int
@@ -149,6 +151,8 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         $this->properties = [];
         
         $this->contacts = new Rows();
+
+        $this->channelIds = new Rows();
         
         if (is_null(self::$companyInstanceCache)) {
             self::$companyInstanceCache = new LRUCache (1000);
@@ -294,6 +298,30 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         return $this->get_state();
     }
 
+    /**
+     * @return mixed
+     */
+    public function fetch_channel_ids () {
+
+        if ( !empty($this->companyInstanceId) ) {
+            $channelIds = DhIndustryBizjChannelMap::query(
+                "SELECT
+                    cMap.*
+                FROM
+                  companyInstance_meroveusIndustry cImI
+                  LEFT JOIN dh_industry_bizj_channel_map cMap ON ( cImI.meroveusIndustryId = cMap.dh_industry_id )
+                WHERE
+                  cImI.companyInstanceId = ?",
+                [$this->companyInstanceId]
+            );
+
+            $this->channelIds = $channelIds ? $channelIds : new Rows();
+        }
+
+        return $this->get_channel_ids();
+
+    }
+
     
     /**
      * @param $name
@@ -318,7 +346,15 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
             GROUP BY
                 i.companyInstanceId", [$name, $id]);
     }
-    
+
+    /**
+     * @return mixed
+     */
+    public function get_channel_ids () {
+
+        return $this->channelIds;
+    }
+
     /**
      * @return Rows
      */
@@ -541,11 +577,13 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         $this->properties = $properties;
     }
 
+    /**
+     * @param State $state
+     */
     public function set_state ( State $state ) {
 
         $this->state = $state;
     }
-
     
     /**
      * @return array

@@ -13,8 +13,8 @@ use Zend\View\Model\JsonModel;
  */
 class CompanyController extends AbstractRestfulController {
 
-    public function get ( $companyInstanceId) {
-        $company = Company::fetch_by_id( $companyInstanceId);
+    public function get ( $companyId) {
+        $company = Company::fetch_by_id( $companyId);
         if ( $company ) {
             return new JsonModel(CompanyFormatter::format($company));
         }
