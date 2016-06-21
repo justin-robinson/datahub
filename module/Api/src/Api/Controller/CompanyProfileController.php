@@ -86,7 +86,7 @@ class CompanyProfileController extends AbstractRestfulController
         $offset = $limit * ($page-1);
         $companies = Company::fetch_modified_in_range( $from, $to, $offset, $limit);
 
-        if ( $companies->get_num_rows() === 0 ) {
+        if ( $companies === false ) {
             $this->response->setStatusCode(204);
             return null;
         }
