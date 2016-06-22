@@ -30,7 +30,7 @@ return [
         'url'  => 'http://elb.elasticsearch.datahub.bizj-staging.com/:9200/current/',
     ],
 
-    'pdo' => [
+    'mysql' => [
         'datahub' => $defaultMysqlConnectionParams,
         'db02' => [
             'charset'       => 'utf8',

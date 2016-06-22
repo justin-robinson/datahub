@@ -81,7 +81,7 @@ class CronController extends AbstractActionController {
         $countries = Countries::getAll();
 
         // connect to the recon db
-        $dbConfig = $this->config['pdo']['db02'];
+        $dbConfig = $this->config['mysql']['db02'];
         $dbConfig['database'] = $dbConfig['dbname'];
 
         $connection = new Connection($dbConfig);

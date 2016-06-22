@@ -50,4 +50,18 @@ return [
             'ViewJsonStrategy',
         ],
     ],
+
+    'mysql' => [
+        'reportdb' => [
+            'charset'       => 'utf8',
+            'host'          => 'reportdb.bizjournals.int',
+            'dbname'        => 'bizj',
+            'port'          => '3306',
+            'user'          => 'operations',
+            'password'      => 'operations',
+            'driverOptions' => [
+                1002 => 'SET NAMES utf8'
+            ],
+        ],
+    ]
 ];

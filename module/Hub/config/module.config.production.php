@@ -35,7 +35,7 @@ return [
         'url'  => 'http://elb.elasticsearch.datahub.bizj-internal.com/current/',
     ],
 
-    'pdo' => [
+    'mysql' => [
         'datahub' => $defaultMysqlConnectionParams,
         'db02' => [
             'charset'       => 'utf8',
