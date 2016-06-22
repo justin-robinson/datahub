@@ -427,8 +427,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
      *
      * @return bool
      */
-    public function save($setTimestamps = true)
-    {
+    public function save($setTimestamps = true) {
 
         // our cache key
         $zip                     = $this->get_property('zipCode');
@@ -442,16 +441,13 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
             $addr1,
         ];
         $companyInstanceCacheKey = strtolower(implode('-', $queryParams));
+        // guilty until proven innocent
+        $saved = false;
 
-        if (!$this->is_loaded_from_database()) {
+        if ( !$this->is_loaded_from_database() ) {
 
-            // check cache for this instance
-            $existingInstance = self::$companyInstanceCache->get($companyInstanceCacheKey);
-
-            // if the instance has an id, then it exists
-            if (isset($this->companyInstanceId)) {
-                $existingInstance = $this;
-            }
+            // existing instance can be this model if the id is set, if not look in the cache
+            $existingInstance = isset($this->companyInstanceId) ? $this : self::$companyInstanceCache->get($companyInstanceCacheKey);
 
             // no cache hit or id? look it up in the db
             if (!$existingInstance) {
@@ -470,47 +466,40 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
                         OR
                         ( p.name = 'address1' AND p.value = ? )
                       )", $queryParams);
-
                 if ($existingInstance) {
                     $existingInstance = $existingInstance->first();
                 }
             }
-
         } else {
             $existingInstance = false;
         }
 
-        // add properties to an existing instance
+        // link the properties to the existing instance
         if ($existingInstance) {
-
-            // add properties to this instance
+            // turn this instance into the existing one
             $this->populate($existingInstance->to_array(false));
-
             $this->save_properties();
-
         } else {
-
+            // set timestamps on the model before saving
             if ($setTimestamps) {
-
-                // set timestamps
-                if (empty($this->createdAt)) {
+                if ( $this->createdAt !== self::$dBColumnDefaultValuesArray['createdAt'] ) {
                     $this->set_literal('createdAt', 'NOW()');
                 }
                 $this->set_literal('updatedAt', 'NOW()');
-
             }
 
             // save to db
-            parent::save();
+            $saved = parent::save();
 
-            $this->save_contacts();
-            $this->save_properties();
-
-            ++self::$instancesSaved;
-
-            self::$companyInstanceCache->put($companyInstanceCacheKey, $this);
+            if ( $saved ) {
+                $this->save_contacts();
+                $this->save_properties();
+                ++self::$instancesSaved;
+                self::$companyInstanceCache->put($companyInstanceCacheKey, $this);
+            }
         }
 
+        return $saved;
     }
 
     /**
