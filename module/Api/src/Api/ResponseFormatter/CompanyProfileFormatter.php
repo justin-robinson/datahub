@@ -37,7 +37,7 @@ class CompanyProfileFormatter {
 
             $instance = InstanceFormatter::format($instance);
 
-            $instance['properties'] = $sortedProperties;
+            $instance['sortedProperties'] = $sortedProperties;
 
             $array['instances'][] = $instance;
 

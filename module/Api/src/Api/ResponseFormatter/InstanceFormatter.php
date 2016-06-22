@@ -25,6 +25,7 @@ class InstanceFormatter {
         }
 
         // find all external ids for this instance
+        $array['properties'] = [];
         $externalIds = [];
         foreach ( $instance->get_properties() as $sortOrder ) {
             foreach ( $sortOrder as $propertyName ) {
@@ -36,6 +37,7 @@ class InstanceFormatter {
 
                     // add this source id to the array
                     $externalIds[$sourceName][$property->sourceId] = $property->sourceId;
+                    $array['properties'][$property->name][] = PropertyFormatter::format($property);
                 }
             }
         }
