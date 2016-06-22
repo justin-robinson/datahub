@@ -31,17 +31,7 @@ class CompanyProfileFormatter {
          */
         // add instances back to hal response
         foreach ($instances as $instance) {
-
-            // get the sorted properties
-            $sortedProperties = $instance->sort_properties();
-
-            $instance = InstanceFormatter::format($instance);
-
-            $instance['sortedProperties'] = $sortedProperties;
-
-            $array['instances'][] = $instance;
-
-
+            $array['instances'][] = InstanceFormatter::format($instance);
         }
 
         return $array;

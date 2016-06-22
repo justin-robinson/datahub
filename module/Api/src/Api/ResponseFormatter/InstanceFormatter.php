@@ -48,6 +48,12 @@ class InstanceFormatter {
         $array['externalIds'] = $externalIds;
 
         $array['state'] = $instance->get_state();
+        $array['sortedProperties'] = $instance->sort_properties();
+
+        $array['contacts'] = [];
+        foreach ( $instance->get_contacts() as $contact ) {
+            $array['contacts'][] = ContactFormatter::format($contact);
+        }
 
         $host = FormatterHelpers::get_http_protocol() . $_SERVER['HTTP_HOST'];
 
