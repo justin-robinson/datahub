@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class CompanyInstance
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/06/18
+ * @date 2016/06/22
  * @property mixed $companyInstanceId
  * @property mixed $companyId
  * @property mixed $generateCode
@@ -22,6 +22,11 @@ use Scoop\Database\Model;
  * @property mixed $tickerExchange
  * @property mixed $tierLevel
  * @property mixed $url
+ * @property mixed $channel
+ * @property mixed $basicFieldCount
+ * @property mixed $enhancedFieldCount
+ * @property mixed $groupingFieldCount
+ * @property mixed $bestSource
  * @property mixed $createdAt
  * @property mixed $updatedAt
  * @property mixed $deletedAt
@@ -90,6 +95,21 @@ class CompanyInstance extends Model {
           'url' => 
           array (
           ),
+          'channel' => 
+          array (
+          ),
+          'basicFieldCount' => 
+          array (
+          ),
+          'enhancedFieldCount' => 
+          array (
+          ),
+          'groupingFieldCount' => 
+          array (
+          ),
+          'bestSource' => 
+          array (
+          ),
           'createdAt' => 
           array (
           ),
@@ -115,6 +135,11 @@ class CompanyInstance extends Model {
           'tickerExchange' => NULL,
           'tierLevel' => NULL,
           'url' => NULL,
+          'channel' => NULL,
+          'basicFieldCount' => NULL,
+          'enhancedFieldCount' => NULL,
+          'groupingFieldCount' => NULL,
+          'bestSource' => NULL,
           'createdAt' => '0000-00-00 00:00:00',
           'updatedAt' => '0000-00-00 00:00:00',
           'deletedAt' => NULL,

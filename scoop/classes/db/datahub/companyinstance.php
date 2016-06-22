@@ -901,7 +901,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
      *
      * @return int
      */
-    public function instanceTierThyself($firstRun = 1)
+    public function instanceTierThyself()
     {
 
 
