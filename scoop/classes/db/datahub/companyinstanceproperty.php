@@ -61,17 +61,13 @@ class CompanyInstanceProperty extends \DBCore\Datahub\CompanyInstanceProperty {
      * @param bool $setTimestamps
      */
     public function pre_save ( $setTimestamps = true ) {
-
         if( $setTimestamps ) {
-
             // set timestamps
-            if( empty($this->createdAt) ) {
+            if( $this->createdAt !== self::$dBColumnDefaultValuesArray['createdAt'] ) {
                 $this->set_literal( 'createdAt', 'NOW()' );
             }
             $this->set_literal( 'updatedAt', 'NOW()' );
-
         }
-
         $this->valueMd5 = md5( $this->value );
     }
 
