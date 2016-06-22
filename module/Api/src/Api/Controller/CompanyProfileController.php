@@ -180,59 +180,24 @@ class CompanyProfileController extends AbstractRestfulController
 
         $company = Company::fetch_by_source_name_and_id('refinery%', $refineryId);
 
-        $response = new CompanyResponse();
-
-
-
-        if ( $company ) {
-
-            // the company instances
-            $company->fetch_company_instances();
-
-            // sorted list of properties
-            $sortedProperties = [];
-
-            $channelIds = [];
-            // get and sort all properties and contacts
-            foreach ( $company->get_company_instances() as $instance ) {
-
-                // get
-                $instance->fetch_properties();
-
-                // sort
-                $sortedProperties[] = $instance->sort_properties();
-
-                // contacts
-                $instance->fetch_contacts();
-
-                // channel ids
-                $instance->fetch_channel_ids();
-                foreach ($instance->get_channel_ids() as $channelId) {
-                    $channelIds[] = $channelId->channel_id;
-                }
-            }
-
-            // convert to array
-            $company = $company->to_array();
-            $company['channelIds'] = $channelIds;
-
-            // replace instance properties with sorted ones
-            reset($sortedProperties);
-            foreach ( $company['instances'] as &$instance ) {
-                $instance['properties'] = current($sortedProperties);
-                next($sortedProperties);
-            }
-
-            $response->success = true;
-        } else {
-
-            $response->message = "company not found";
+        if ( $company === false ) {
+            $this->response->setStatusCode(204);
+            return null;
         }
 
-        $response->body = $company;
+        foreach ( $company->fetch_company_instances() as $instance ) {
+            /**
+             * @var $instance CompanyInstance
+             */
+            $instance->fetch_properties();
+            $instance->fetch_contacts();
+            $instance->fetch_state();
+            $instance->fetch_channel_ids();
+        }
+        return new JsonModel(CompanyProfileFormatter::format($company));
 
 
-        return new JsonModel($response->toArray());
+
     }
 
 

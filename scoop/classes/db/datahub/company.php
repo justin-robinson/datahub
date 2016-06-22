@@ -331,9 +331,7 @@ class Company extends \DBCore\Datahub\Company
             return false;
         }
 
-        $company->fetch_company_instances();
-
-        foreach ( $company->get_company_instances() as $instance ) {
+        foreach ( $company->fetch_company_instances() as $instance ) {
             /**
              * @var $instance CompanyInstance
              */
