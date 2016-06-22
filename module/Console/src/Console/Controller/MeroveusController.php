@@ -20,6 +20,7 @@ use Elastica\Client as ElasticaClient;
 use Elastica\Query as ElasticaQuery;
 use Elastica\QueryBuilder as QueryBuilder;
 use Elastica\Search as ElasticaSearch;
+use Scoop\Database\Model\Generic;
 use Services\Meroveus\Client as MeroveusClient;
 use Services\Meroveus\CompanyService;
 use Zend\Mvc\MvcEvent;
@@ -204,7 +205,173 @@ class MeroveusController extends AbstractActionController
      */
     public function indexAction()
     {
+        ini_set('memory_limit', '1024M');
+        $randomIds = [
+            227813,
+            156800,
+            31281,
+            260888,
+            58231,
+            277129,
+            234856,
+            72402,
+            251682,
+            223682,
+            144910,
+            278539,
+            67287,
+            197643,
+            9999,
+            159631,
+            137704,
+            54663,
+            289924,
+            146243,
+            274768,
+            41519,
+            52635,
+            295961,
+            290000,
+            16400,
+            200577,
+            146277,
+            166248,
+            27711,
+            147375,
+            151556,
+            299597,
+            26373,
+            168252,
+            296258,
+            159458,
+            92321,
+            259509,
+            298516,
+            242819,
+            35801,
+            288491,
+            290149,
+            202717,
+            79819,
+            98280,
+            223861,
+            298285,
+            130102,
+            131538,
+            6791,
+            273485,
+            231883,
+            16416,
+            50415,
+            172327,
+            91397,
+            103395,
+            143284,
+            84033,
+            142530,
+            119218,
+            89676,
+            262037,
+            156898,
+            242875,
+            171875,
+            1068,
+            273012,
+            261589,
+            226376,
+            186576,
+            296501,
+            161597,
+            35401,
+            231911,
+            119641,
+            41235,
+            105299,
+            187183,
+            104793,
+            25709,
+            95735,
+            695,
+            189359,
+            25253,
+            172286,
+            6023,
+            242892,
+            305692,
+            181819,
+            196560,
+            110265,
+            144656,
+            88260,
+            62032,
+            213706,
+            147804,
+            235661,
+        ];
 
+
+        echo '
+        __________________ _______  _______ _________ _        _______ 
+        \__   __/\__   __/(  ____ \(  ____ )\__   __/( (    /|(  ____ \
+           ) (      ) (   | (    \/| (    )|   ) (   |  \  ( || (    \/
+           | |      | |   | (__    | (____)|   | |   |   \ | || |      
+           | |      | |   |  __)   |     __)   | |   | (\ \) || | ____ 
+           | |      | |   | (      | (\ (      | |   | | \   || | \_  )
+           | |   ___) (___| (____/\| ) \ \_____) (___| )  \  || (___) |
+           )_(   \_______/(_______/|/   \__/\_______/|/    )_)(_______)
+        ';
+
+
+        $start = date('h:i:s A');
+        echo "started at " . $start . PHP_EOL;
+        $count = 1;
+
+        $counts = [
+            1 => 0,
+            2 => 0,
+            3 => 0,
+            4 => 0,
+            5 => 0,
+            6 => 0,
+            7 => 0,
+        ];
+
+        $foundCount = 0;
+        $count      = 1;
+//        while ($count < 310200) {
+        while ($count < 1000) {
+//        while ($count < 10000) {
+            $tier = $this->doTier($count);
+            if ($tier) {
+                $foundCount++;
+                $counts[$tier]++;
+
+            }
+
+            $count++;
+        }
+
+
+//        foreach ($randomIds as $id) {
+//            $company = Company::fetch_company_and_instances($id);
+//
+//            if ($company) {
+//
+//                $instances = $company->get_company_instances();
+//                $tier      = $instances->get_rows()[0]->instanceTierThyself(1);
+//                $counts[$tier]++;
+//                $foundCount++;
+//            }
+//
+//            $count++;
+//
+//        }
+        echo $count - 1 . ' records searched' . PHP_EOL;
+        echo $foundCount . ' records found' . PHP_EOL;
+        echo 'totals:' . PHP_EOL;
+        print_r($counts);
+        $end = date('h:i:s A');
+        echo "ended at " . $end . PHP_EOL;
     }
 
 
@@ -515,12 +682,27 @@ class MeroveusController extends AbstractActionController
         // @todo handle deletions
         $industries = $this->companyService->queryMeroveusRoot($meroveusParams);
 
+        $industriesAdded = 0;
+        $numberOfMeroveusIndustries = 0;
+
         foreach ($industries as $industry) {
-            (new MeroveusIndustry([
-                'externalId' => $industry['LABELID'],
-                'industry'   => trim($industry['NAME'], 'Â '),
-            ]))->save();
+            $numberOfMeroveusIndustries++;
+            try{
+                $saved = (new MeroveusIndustry([
+                                          'externalId' => $industry['LABELID'],
+                                          'industry'   => trim($industry['NAME'], 'Â '),
+                                      ]))->save();
+
+                $industriesAdded += $saved ? 1 : 0;
+            } catch ( \Exception $e ) {
+
+            }
         }
+
+        $savedIndustries = Generic::query("select count(*) as count from meroveusIndustry")->first()->count;
+
+        echo "Added {$industriesAdded} new industries of {$numberOfMeroveusIndustries} from meroveus" . PHP_EOL;
+        echo "There are {$savedIndustries} in the datahub";
     }
 
     /**

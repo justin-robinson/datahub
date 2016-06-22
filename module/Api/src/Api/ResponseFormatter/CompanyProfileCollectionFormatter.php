@@ -18,13 +18,14 @@ class CompanyProfileCollectionFormatter {
      * @param      $totalCount
      * @param      $from
      * @param      $to
+     * @param      $apiPath path to api endpoint
      *
      * @return array
      */
-    public static function format (Rows $companies, $page, $limit, $totalCount, $from, $to) {
+    public static function format(Rows $companies, $page, $limit, $totalCount, $from, $to, $apiPath = '/api/company/profile') {
 
         $host = FormatterHelpers::get_http_protocol() . $_SERVER['HTTP_HOST'];
-        $uri = $host . '/api/company/profile';
+        $uri = $host . $apiPath;
         $totalCount = is_null($totalCount) ? Generic::query('SELECT count(*) AS count FROM company')->first()->count : $totalCount;
         $lastPage = ceil($totalCount / $limit);
 

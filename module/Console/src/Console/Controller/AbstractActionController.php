@@ -60,7 +60,7 @@ abstract class AbstractActionController extends ZendAbstractActionController
 
         try{
             $this->db = DB::createPdo(
-                $this->config['pdo']['datahub']
+                $this->config['mysql']['datahub']
             );
         } catch (\PDOException $e){
             die("PDO Error!: " . $e->getMessage().PHP_EOL);

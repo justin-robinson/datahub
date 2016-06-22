@@ -148,7 +148,6 @@ class Company extends \DBCore\Datahub\Company
      */
     public function add_company_instance(CompanyInstance $instance)
     {
-
         $this->companyInstances->add_row($instance);
     }
 
@@ -216,8 +215,10 @@ class Company extends \DBCore\Datahub\Company
     }
 
     /**
+     * return all records (including deleted)
+     * @param bool $allRecords
+     *
      * @return Rows
-     * @param bool return all records (including deleted)
      */
     public function fetch_company_instances($allRecords = false)
     {
@@ -239,7 +240,7 @@ class Company extends \DBCore\Datahub\Company
     {
 
         if (!empty($this->companyId)) {
-            $instances = CompanyInstance::fetch_where('companyId = ? AND deletedAt IS NOT NULL', [$this->companyId], 1000, 0, true);
+            $instances = CompanyInstance::fetch_where('companyId = ? AND deletedAt IS NOT NULL', [$this->companyId], 1000, 0);
             $this->companyInstances = $instances ? $instances : new Rows();
         }
 
@@ -260,74 +261,55 @@ class Company extends \DBCore\Datahub\Company
      *
      * @return bool
      */
-    public function save($setTimestamps = true)
-    {
+    public function save($setTimestamps = true) {
         // this will renormalize the name
         $this->name = $this->name;
-
-        $companyKey = $this->normalizedName;
-
-        if (!$this->is_loaded_from_database() ) {
-
-            // does this company exist in the cache?
-            $existingCompany = self::$companyCache->get( $companyKey );
-
-            // look up to db on cache miss
-            if( !$existingCompany ) {
-                $existingCompany = Company::fetch_one_where( 'normalizedName = ?', [ $this->normalizedName ] );
-            }
-        } else {
-            $existingCompany = false;
-        }
-
-        // save new company on cache miss and db lookup failure
-        if( $existingCompany ) {
-
-            $this->populate($existingCompany->to_array(false));
+        // guilty until proven innocent
+        $saved = false;
+        // lookup company in cache by normalized name if it didn't come from the database
+        if ( !$this->is_loaded_from_database() && self::$companyCache->exists($this->normalizedName)) {
+            $this->populate(self::$companyCache->get( $this->normalizedName )->to_array(false));
             $this->loaded_from_database();
 
-            $saved = false;
-
         } else {
-
+            // actually save a new company :D
+            // set timestamps on the model before saving
             if( $setTimestamps ) {
-
-                // set timestamps
                 if( $this->createdAt !== self::$dBColumnDefaultValuesArray['createdAt'] ) {
                     $this->set_literal( 'createdAt', 'NOW()' );
                 }
                 $this->set_literal( 'updatedAt', 'NOW()' );
-
             }
-
-            if ( $saved = parent::save() ) {
-
-                ++self::$companiesSaved;
-
-                // put company in cache for later
-                self::$companyCache->put( $companyKey, $this );
+            // attempt the save
+            try{
+                $saved = parent::save();
+                if ( $saved ) {
+                    ++self::$companiesSaved;
+                    // put company in cache for later
+                    self::$companyCache->put( $this->normalizedName, $this );
+                }
+            } catch ( \Exception $e ) {
+                // load existing company data into this model
+                $existingCompany = self::fetch_one_where('normalizedName = ?', [$this->normalizedName]);
+                if ( $existingCompany ) {
+                    $this->populate($existingCompany->to_array(false));
+                }
             }
-
         }
-
         $this->save_company_instances();
-
         return $saved;
     }
 
     public function save_company_instances () {
-
+        // can't save instances if the company doesn't have an id
         if ( empty($this->companyId) ) {
             return;
         }
-
+        // save each company instance
         foreach ($this->get_company_instances() as $companyInstance) {
-
             // link this instance to the company
             $companyInstance->companyId = $this->companyId;
-
             $companyInstance->save();
-
         }
     }
 
@@ -338,9 +320,12 @@ class Company extends \DBCore\Datahub\Company
      *
      * @return bool|Company
      */
-    public static function fetch_company_and_instances($companyId)
-    {
-        $company = Company::fetch_by_id($companyId);
+    public static function fetch_company_and_instances($companyId) {
+
+        /**
+         * @var $company Company
+         */
+        $company = self::fetch_by_id($companyId);
 
         if ( $company === false ) {
             return false;
@@ -349,6 +334,9 @@ class Company extends \DBCore\Datahub\Company
         $company->fetch_company_instances();
 
         foreach ( $company->get_company_instances() as $instance ) {
+            /**
+             * @var $instance CompanyInstance
+             */
             $instance->fetch_properties();
             $instance->fetch_contacts();
             $instance->fetch_state();

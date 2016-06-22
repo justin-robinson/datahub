@@ -1,10 +1,9 @@
 <?php
-
 namespace Elastica\Test\ResultSet;
 
 use Elastica\Query;
 use Elastica\Response;
-use Elastica\ResultSet\Builder;
+use Elastica\ResultSet\DefaultBuilder;
 use Elastica\Test\Base as BaseTest;
 
 /**
@@ -13,7 +12,7 @@ use Elastica\Test\Base as BaseTest;
 class BuilderTest extends BaseTest
 {
     /**
-     * @var Builder
+     * @var DefaultBuilder
      */
     private $builder;
 
@@ -21,7 +20,7 @@ class BuilderTest extends BaseTest
     {
         parent::setUp();
 
-        $this->builder = new Builder();
+        $this->builder = new DefaultBuilder();
     }
 
     public function testEmptyResponse()
@@ -38,15 +37,15 @@ class BuilderTest extends BaseTest
 
     public function testResponse()
     {
-        $response = new Response([
-            'hits' => [
-                'hits' => [
-                    ['test' => 1],
-                    ['test' => 2],
-                    ['test' => 3],
-                ]
-            ]
-        ]);
+        $response = new Response(array(
+            'hits' => array(
+                'hits' => array(
+                    array('test' => 1),
+                    array('test' => 2),
+                    array('test' => 3),
+                ),
+            ),
+        ));
         $query = new Query();
 
         $resultSet = $this->builder->buildResultSet($response, $query);

@@ -1,5 +1,4 @@
 <?php
-
 namespace Elastica\Query;
 
 use Elastica\Exception\InvalidException;
@@ -18,7 +17,7 @@ class QueryString extends AbstractQuery
      *
      * @var string Query string
      */
-    protected $_queryString = '';
+    protected $_queryString;
 
     /**
      * Creates query string object. Calls setQuery with argument.

@@ -20,9 +20,17 @@ class CronController extends AbstractActionController {
      */
     public function exportReconAction () {
 
-        // how many days are we going back?
-        // default: 7
-        $daysToLookBack = $this->getRequest()->getParam('days') ?: 7;
+        // how many hours are we going back?
+        // default: 60 minutes
+        $days = (int)$this->getRequest()->getParam('days');
+        $days = $days >= 0 ? $days : 0;
+        $hours = (int)$this->getRequest()->getParam('hours');
+        $hours = $hours >= 0 ? $hours : 0;
+        $minutes = (int)$this->getRequest()->getParam('minutes');
+        $minutes = $minutes >= 0 ? $minutes : 0;
+
+        $minutes = ((($days*24) + $hours) * 60) + $minutes;
+        $minutes = $minutes >= 0 ? $minutes : 60;
 
         // that looks like a good spot to save a file
         $timestamp = time();
@@ -73,7 +81,7 @@ class CronController extends AbstractActionController {
         $countries = Countries::getAll();
 
         // connect to the recon db
-        $dbConfig = $this->config['pdo']['db02'];
+        $dbConfig = $this->config['mysql']['db02'];
         $dbConfig['database'] = $dbConfig['dbname'];
 
         $connection = new Connection($dbConfig);
@@ -111,19 +119,19 @@ class CronController extends AbstractActionController {
                 LEFT JOIN recon.OrgDesc    descr ON ( org.id = descr.OrgId )
               WHERE
                 (
-                  org.DateModified      > (NOW() - INTERVAL ? DAY )
-                  OR addr.DateModified  > (NOW() - INTERVAL ? DAY )
-                  OR phone.DateModified > (NOW() - INTERVAL ? DAY )
-				  OR url.DateModified   > (NOW() - INTERVAL ? DAY )
-				  OR sic.DateModified   > (NOW() - INTERVAL ? DAY )
-				  OR descr.DateModified > (NOW() - INTERVAL ? DAY )
+                  org.DateModified      > (NOW() - INTERVAL ? MINUTE )
+                  OR addr.DateModified  > (NOW() - INTERVAL ? MINUTE )
+                  OR phone.DateModified > (NOW() - INTERVAL ? MINUTE )
+				  OR url.DateModified   > (NOW() - INTERVAL ? MINUTE )
+				  OR sic.DateModified   > (NOW() - INTERVAL ? MINUTE )
+				  OR descr.DateModified > (NOW() - INTERVAL ? MINUTE )
 				)
                 AND addr.City IS NOT NULL
                 AND addr.City != ''
                 AND org.Name != ''
               ORDER BY
                 org.QName",
-            [$daysToLookBack, $daysToLookBack, $daysToLookBack, $daysToLookBack, $daysToLookBack, $daysToLookBack],
+            [$minutes, $minutes, $minutes, $minutes, $minutes, $minutes],
             $connection);
 
         if ( $results === false ) {
@@ -222,7 +230,9 @@ class CronController extends AbstractActionController {
         $importer = new Refinery();
         list($companiesProcessed, $instancesProcessed) = $importer->import($csvFilePath);
 
-        printf("Imported: %s\t%s companies%s\t%s instances%s", PHP_EOL,$companiesProcessed,PHP_EOL,$instancesProcessed,PHP_EOL);
+        //printf("Imported: %s\t%s companies%s\t%s instances%s", PHP_EOL,$companiesProcessed,PHP_EOL,$instancesProcessed,PHP_EOL);
+        echo "Raw data: " . PHP_EOL . PHP_EOL;
+        var_export($results->to_array());
 
     }
 

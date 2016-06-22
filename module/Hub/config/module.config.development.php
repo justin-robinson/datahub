@@ -62,7 +62,7 @@ return [
 //        'url'  => '127.0.0.1:9200/companies',
 //    ],
 
-    'pdo' => [
+    'mysql' => [
         'datahub' => $defaultMysqlConnectionParams,
         'db02' => [
             'charset'       => 'utf8',
