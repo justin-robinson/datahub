@@ -276,39 +276,10 @@ class CronController extends AbstractActionController {
                 'database' => $dbconfig['dbname'],
                 'port' => $dbconfig['port'],
             ]);
-        // get the lists to be released in the specified range
-        $lists = Generic::query(
-            "SELECT
-              DISTINCT tlr.list_id
-            FROM
-              bizj.top25_list_row tlr
-              INNER JOIN bizj.top25_list tl ON tlr.list_id = tl.list_id
-              INNER JOIN bizj.page p ON tl.page_id = p.page_id
-            WHERE
-              p.release_time BETWEEN (NOW() - INTERVAL ? MINUTE ) AND NOW()
-              AND object_id <> 0
-            ORDER BY tlr.created_at DESC",
-            [$minutes], $connection);
-
-        if ( $lists ) {
-            // every row of data needs an elastic action row
-            $elasticAction = json_encode(
-                [
-                    "create" => [
-                        "_index" => "lists",
-                        "_type"  => 'company_related',
-                    ],
-                ] );
-            // get the companies on each list and add them to the json file
-            foreach ($lists as $list) {
-                // no id is no bueno
-                if (empty($list->list_id)) {
-                    echo "no list!" . PHP_EOL;
-                    continue;
-                }
-                // get the companies in this list
-                $listCompanies = Generic::query(
-                    "SELECT DISTINCT 
+        // get the lists to be released in the specified range, along with the companies
+        $listCompanies = Generic::query(
+            "SELECT DISTINCT
+                      tlr.list_id,
                       tlr.rank,
                       tlr.object_id,
                       tlr.company_name,
@@ -318,24 +289,57 @@ class CronController extends AbstractActionController {
                       concat(p.site, p.path, p.slug, '.html') AS url
                     FROM
                       bizj.top25_list_row tlr
-                      INNER JOIN bizj.top25_list tl ON tlr.list_id = tl.list_id
-                      INNER JOIN bizj.page p ON tl.page_id = p.page_id
+                      JOIN bizj.top25_list tl USING (list_id )
+                      JOIN bizj.page p USING ( page_id )
                     WHERE
-                      p.release_time <= NOW()
+                      p.release_time BETWEEN (NOW() - INTERVAL ? MINUTE ) AND NOW()
                       AND object_id <> 0
-                      AND tlr.list_id = ?
                     ORDER BY tlr.created_at DESC",
-                    [$list->list_id]);
-                // add this list to the json file
-                if ($listCompanies) {
-                    // fix for JSON_ERROR_UTF8
-                    foreach ($listCompanies as $company) {
-                        $company->company_name  = iconv('UTF-8', 'UTF-8//IGNORE', utf8_encode($company->company_name));
-                        $company->page_headline = iconv('UTF-8', 'UTF-8//IGNORE', utf8_encode($company->page_headline));
-                    }
-                    $file->fwrite($elasticAction . PHP_EOL);
-                    $file->fwrite(json_encode(['list_id' => $list->list_id, 'companies' => $listCompanies->to_array()]) . PHP_EOL);
+            [$minutes], $connection);
+
+        if ( $listCompanies ) {
+            // every row of data needs an elastic action row
+            $elasticAction = json_encode(
+                [
+                    "create" => [
+                        "_index" => "lists",
+                        "_type"  => 'company_related',
+                    ],
+                ] );
+
+            $prevListId = $listCompanies->first()->list_id;
+            $companies = [];
+            // get the companies on each list and add them to the json file
+            foreach ($listCompanies as $listCompany) {
+                // no id is no bueno
+                if (empty($listCompany->list_id)) {
+                    echo "no list!" . PHP_EOL;
+                    continue;
                 }
+
+                // fix for JSON_ERROR_UTF8
+                $listCompany->company_name  = iconv('UTF-8', 'UTF-8//IGNORE', utf8_encode($listCompany->company_name));
+                $listCompany->page_headline = iconv('UTF-8', 'UTF-8//IGNORE', utf8_encode($listCompany->page_headline));
+
+                // write out if we have a new list id
+                if ( $prevListId !== $listCompany->list_id ) {
+                    // add this list to the json file
+                    $file->fwrite($elasticAction . PHP_EOL);
+                    $file->fwrite(json_encode(['list_id' => $prevListId, 'companies' => $companies]) . PHP_EOL);
+
+                    // reset the companies array
+                    $companies = [];
+                }
+                $prevListId = $listCompany->list_id;
+                $company = $listCompany->to_array();
+                unset($company['list_id']);
+                $companies[] = $company;
+            }
+
+            // write out any remaining lists
+            if ( !empty($companies) ) {
+                $file->fwrite($elasticAction . PHP_EOL);
+                $file->fwrite(json_encode(['list_id' => $prevListId, 'companies' => $companies]) . PHP_EOL);
             }
         }
 
