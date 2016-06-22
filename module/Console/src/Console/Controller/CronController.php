@@ -4,7 +4,6 @@ namespace Console\Controller;
 
 use Console\Countries;
 use Console\CsvIterator;
-use Console\DB\Connection\DB;
 use Console\Importer\Refinery;
 use Scoop\Database\Connection;
 use Scoop\Database\Model\Generic;
@@ -20,7 +19,7 @@ class CronController extends AbstractActionController {
      */
     public function exportReconAction () {
 
-        // how many hours are we going back?
+        // how far back are we looking?
         // default: 60 minutes
         $days = (int)$this->getRequest()->getParam('days');
         $days = $days >= 0 ? $days : 0;
@@ -234,6 +233,113 @@ class CronController extends AbstractActionController {
         echo "Raw data: " . PHP_EOL . PHP_EOL;
         var_export($results->to_array());
 
+    }
+
+    public function listsForRelatedAction () {
+        echo "
+ _       _______  _____  _______  _____ (_)(_)(_)(_)
+(_)     (_______)(_____)(__ _ __)(_____)(_)(_)(_)(_)
+(_)        (_)  (_)___     (_)  (_)___  (_)(_)(_)(_)
+(_)        (_)    (___)_   (_)    (___)_(_)(_)(_)(_)
+(_)____  __(_)__  ____(_)  (_)    ____(_)_  _  _  _ 
+(______)(_______)(_____)   (_)   (_____)(_)(_)(_)(_)
+";
+
+        echo "export started: " . date('h:i:s A') . PHP_EOL;
+
+        // how far back are we looking?
+        // default: 60 minutes
+        $days = (int)$this->getRequest()->getParam('days');
+        $days = $days >= 0 ? $days : 0;
+        $hours = (int)$this->getRequest()->getParam('hours');
+        $hours = $hours >= 0 ? $hours : 0;
+        $minutes = (int)$this->getRequest()->getParam('minutes');
+        $minutes = $minutes >= 0 ? $minutes : 0;
+
+        $minutes = ((($days*24) + $hours) * 60) + $minutes;
+        $minutes = $minutes >= 0 ? $minutes : 60;
+
+        // that looks like a good spot to save a file
+        $timestamp = time();
+        $filePath = "/tmp/datahub-cron-lists-for-related-{$timestamp}.json";
+        echo "output: {$filePath}" . PHP_EOL;
+        $file = new \SplFileObject($filePath, 'w');
+
+        // get the mysql connection credentials
+        $dbconfig = $this->config['mysql']['reportdb'];
+        // create a new mysql connection for our query
+        $connection = new Connection(
+            [
+                'host' => $dbconfig['host'],
+                'user' => $dbconfig['user'],
+                'password' => $dbconfig['password'],
+                'database' => $dbconfig['dbname'],
+                'port' => $dbconfig['port'],
+            ]);
+        // get the lists to be released in the specified range
+        $lists = Generic::query(
+            "SELECT
+              DISTINCT tlr.list_id
+            FROM
+              bizj.top25_list_row tlr
+              INNER JOIN bizj.top25_list tl ON tlr.list_id = tl.list_id
+              INNER JOIN bizj.page p ON tl.page_id = p.page_id
+            WHERE
+              p.release_time BETWEEN (NOW() - INTERVAL ? MINUTE ) AND NOW()
+              AND object_id <> 0
+            ORDER BY tlr.created_at DESC",
+            [$minutes], $connection);
+
+        if ( $lists ) {
+            // every row of data needs an elastic action row
+            $elasticAction = json_encode(
+                [
+                    "create" => [
+                        "_index" => "lists",
+                        "_type"  => 'company_related',
+                    ],
+                ] );
+            // get the companies on each list and add them to the json file
+            foreach ($lists as $list) {
+                // no id is no bueno
+                if (empty($list->list_id)) {
+                    echo "no list!" . PHP_EOL;
+                    continue;
+                }
+                // get the companies in this list
+                $listCompanies = Generic::query(
+                    "SELECT DISTINCT 
+                      tlr.rank,
+                      tlr.object_id,
+                      tlr.company_name,
+                      tl.market_id,
+                      tl.issue_date,
+                      tl.page_headline,
+                      concat(p.site, p.path, p.slug, '.html') AS url
+                    FROM
+                      bizj.top25_list_row tlr
+                      INNER JOIN bizj.top25_list tl ON tlr.list_id = tl.list_id
+                      INNER JOIN bizj.page p ON tl.page_id = p.page_id
+                    WHERE
+                      p.release_time <= NOW()
+                      AND object_id <> 0
+                      AND tlr.list_id = ?
+                    ORDER BY tlr.created_at DESC",
+                    [$list->list_id]);
+                // add this list to the json file
+                if ($listCompanies) {
+                    // fix for JSON_ERROR_UTF8
+                    foreach ($listCompanies as $company) {
+                        $company->company_name  = iconv('UTF-8', 'UTF-8//IGNORE', utf8_encode($company->company_name));
+                        $company->page_headline = iconv('UTF-8', 'UTF-8//IGNORE', utf8_encode($company->page_headline));
+                    }
+                    $file->fwrite($elasticAction . PHP_EOL);
+                    $file->fwrite(json_encode(['list_id' => $list->list_id, 'companies' => $listCompanies->to_array()]) . PHP_EOL);
+                }
+            }
+        }
+
+        echo "export ended: " . date('h:i:s A') . PHP_EOL;
     }
 
 }
