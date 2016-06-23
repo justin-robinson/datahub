@@ -170,20 +170,21 @@ class MeroveusController extends AbstractActionController
 
     /**
      * basic tiering thingy
+     *
      * @param $id
      *
      * @return int
-     */public function doTier($id)
+     */
+    public function doTier($id)
     {
         $tier    = 0;
         $company = Company::fetch_company_and_instances($id);
 
-        if ($company) {
-            $instances = $company->get_company_instances();
-            $tier      = $instances->get_rows()[0]->instanceTierThyself(1);
+        if ($company && $company->get_company_instances()->first()) {
+            if ($company->get_company_instances()->first()->save()) {
+                $tier = $company->get_company_instances()->first()->get_tier();
+            }
         }
-        unset($company);
-
         return $tier;
     }
 
@@ -656,24 +657,24 @@ class MeroveusController extends AbstractActionController
         // @todo handle deletions
         $industries = $this->companyService->queryMeroveusRoot($meroveusParams);
 
-        $industriesAdded = 0;
+        $industriesAdded            = 0;
         $numberOfMeroveusIndustries = 0;
 
         foreach ($industries as $industry) {
             $numberOfMeroveusIndustries++;
-            try{
+            try {
                 $saved = (new MeroveusIndustry([
-                                          'externalId' => $industry['LABELID'],
-                                          'industry'   => trim($industry['NAME'], 'Â '),
-                                      ]))->save();
+                    'externalId' => $industry['LABELID'],
+                    'industry'   => trim($industry['NAME'], 'Â '),
+                ]))->save();
 
                 $industriesAdded += $saved ? 1 : 0;
-            } catch ( \Exception $e ) {
+            } catch (\Exception $e) {
 
             }
         }
 
-        $savedIndustries = Generic::query("select count(*) as count from meroveusIndustry")->first()->count;
+        $savedIndustries = Generic::query("SELECT count(*) AS count FROM meroveusIndustry")->first()->count;
 
         echo "Added {$industriesAdded} new industries of {$numberOfMeroveusIndustries} from meroveus" . PHP_EOL;
         echo "There are {$savedIndustries} in the datahub";
@@ -886,7 +887,7 @@ class MeroveusController extends AbstractActionController
      *
      * @return bool
      */
-    // gross!!!
+// gross!!!
     /**
      * @param int   $refineryId
      * @param array $target
@@ -997,5 +998,52 @@ class MeroveusController extends AbstractActionController
         return @round($size / pow(1024, ($i = (int)floor(log($size, 1024)))), 2) . ' ' . $unit[$i];
     }
 
+
+    public function tierAction()
+    {
+        ini_set('memory_limit', '1024M');
+
+
+        echo '
+        __________________ _______  _______ _________ _        _______ 
+        \__   __/\__   __/(  ____ \(  ____ )\__   __/( (    /|(  ____ \
+           ) (      ) (   | (    \/| (    )|   ) (   |  \  ( || (    \/
+           | |      | |   | (__    | (____)|   | |   |   \ | || |      
+           | |      | |   |  __)   |     __)   | |   | (\ \) || | ____ 
+           | |      | |   | (      | (\ (      | |   | | \   || | \_  )
+           | |   ___) (___| (____/\| ) \ \_____) (___| )  \  || (___) |
+           )_(   \_______/(_______/|/   \__/\_______/|/    )_)(_______)
+        ';
+        $start = date('h:i:s A');
+        echo "started at " . $start . PHP_EOL;
+        $count = 1;
+
+        $counts     = [
+            1 => 0,
+            2 => 0,
+            3 => 0,
+            4 => 0,
+            5 => 0,
+            6 => 0,
+            7 => 0,
+        ];
+        $foundCount = 0;
+        $count      = 1;
+        while ($count < 1000) {
+            $tier = $this->doTier($count);
+            if ($tier) {
+                $foundCount++;
+                $counts[$tier]++;
+
+            }
+            $count++;
+        }
+        echo $count - 1 . ' records searched' . PHP_EOL;
+        echo $foundCount . ' records found' . PHP_EOL;
+        echo 'totals:' . PHP_EOL;
+        print_r($counts);
+        $end = date('h:i:s A');
+        echo "ended at " . $end . PHP_EOL;
+    }
 
 }
