@@ -20,7 +20,7 @@ $latestApiChildRoutes = [
                 ],
                 'child_routes' => [
                     'profile' => [
-                        'type'    => 'Segment',
+                        'type'    => 'Literal',
                         'options' => [
                             'defaults' => [
                                 'controller' => 'Api\v1\Controller\CompanyProfile',
@@ -59,7 +59,7 @@ $latestApiChildRoutes = [
                 ],
             ],
             'search'    => [
-                'type'    => 'Segment',
+                'type'    => 'Literal',
                 'options' => [
                     'route'    => '/search',
                     'defaults' => [
@@ -168,7 +168,7 @@ $latestApiChildRoutes = [
         ],
     ],
     'refinery' => [
-        'type'         => 'Segment',
+        'type'         => 'Literal',
         'options'      => [
             'route'    => '/refinery',
             'defaults' => [
