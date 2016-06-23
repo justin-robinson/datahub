@@ -3,6 +3,7 @@
 namespace Api\ResponseFormatter;
 
 use DB\Datahub\CompanyInstanceProperty;
+use DB\Datahub\SourceType;
 
 /**
  * Class CompanyInstancePropertyFormatter
@@ -20,6 +21,8 @@ class PropertyFormatter {
         $uri = FormatterHelpers::get_http_protocol() . $_SERVER['HTTP_HOST'] . '/api/';
 
         $array = $property->to_array();
+
+        $array['sourceType'] = SourceType::fetch_by_id($property->sourceTypeId);
 
         $array['_links'] = [
             'self'      => [
