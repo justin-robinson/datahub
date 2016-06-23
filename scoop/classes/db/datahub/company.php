@@ -240,7 +240,7 @@ class Company extends \DBCore\Datahub\Company
     {
 
         if (!empty($this->companyId)) {
-            $instances = CompanyInstance::fetch_where('companyId = ? AND deletedAt IS NOT NULL', [$this->companyId], 1000, 0);
+            $instances = CompanyInstance::fetch_where('companyId = ? AND deletedAt IS NOT NULL', [$this->companyId], 1000, 0, true);
             $this->companyInstances = $instances ? $instances : new Rows();
         }
 
@@ -361,14 +361,12 @@ class Company extends \DBCore\Datahub\Company
             FROM
               company c
               LEFT JOIN companyInstance ci USING (companyId)
-              LEFT JOIN companyInstanceProperty cip USING (companyInstanceId)
             WHERE
               c.deletedAt BETWEEN ? and ?
               OR ci.deletedAt BETWEEN ? and ?
-              OR cip.deletedAt BETWEEN ? and ?
             GROUP BY c.companyID
             LIMIT ?, ?",
-            [$from, $to, $from, $to, $from, $to, $offset, $limit]
+            [$from, $to, $from, $to, $offset, $limit]
         );
     }
 
@@ -388,13 +386,11 @@ class Company extends \DBCore\Datahub\Company
             FROM
               company c
               LEFT JOIN companyInstance ci USING (companyId)
-              LEFT JOIN companyInstanceProperty cip USING (companyInstanceId)
             WHERE
               c.deletedAt BETWEEN ? and ?
               OR ci.deletedAt BETWEEN ? and ?
-              OR cip.deletedAt BETWEEN ? and ?
             GROUP BY c.companyID",
-            [$from, $to, $from, $to, $from, $to]
+            [$from, $to, $from, $to]
         );
 
         return $companiesDeleted ? $companiesDeleted->get_num_rows() : 0;

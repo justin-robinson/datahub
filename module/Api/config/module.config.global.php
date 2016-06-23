@@ -1,7 +1,7 @@
 <?php
 
 $latestApiChildRoutes = [
-    'company'         => [
+    'company'  => [
         'type'         => 'Literal',
         'options'      => [
             'route'    => '/company',
@@ -11,11 +11,22 @@ $latestApiChildRoutes = [
         ],
         'child_routes' => [
             'company'   => [
-                'type'    => 'Segment',
-                'options' => [
+                'type'         => 'Segment',
+                'options'      => [
                     'route'       => '[/:id]',
                     'constraints' => [
                         'id' => '[0-9]*',
+                    ],
+                ],
+                'child_routes' => [
+                    'profile' => [
+                        'type'    => 'Segment',
+                        'options' => [
+                            'defaults' => [
+                                'controller' => 'Api\v1\Controller\CompanyProfile',
+                            ],
+                            'route'    => '/profile',
+                        ],
                     ],
                 ],
             ],
@@ -28,7 +39,27 @@ $latestApiChildRoutes = [
                     ],
                 ],
             ],
-            'search'   => [
+            'profiles'  => [
+                'type'    => 'Segment',
+                'options' => [
+                    'route'        => '/profiles',
+                    'defaults'     => [
+                        'controller' => 'Api\v1\Controller\CompanyProfile',
+                    ],
+                ],
+                'child_routes' => [
+                    'deletes' => [
+                        'type'    => 'Segment',
+                        'options' => [
+                            'route'    => '/deletes',
+                            'defaults' => [
+                                'action' => 'deleteList'
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'search'    => [
                 'type'    => 'Segment',
                 'options' => [
                     'route'    => '/search',
@@ -39,7 +70,7 @@ $latestApiChildRoutes = [
             ],
         ],
     ],
-    'instance'        => [
+    'instance' => [
         'type'         => 'Literal',
         'options'      => [
             'route'    => '/instance',
@@ -77,7 +108,7 @@ $latestApiChildRoutes = [
             ],
         ],
     ],
-    'property'        => [
+    'property' => [
         'type'         => 'Literal',
         'options'      => [
             'route'    => '/property',
@@ -97,7 +128,7 @@ $latestApiChildRoutes = [
             ],
         ],
     ],
-    'contact'         => [
+    'contact'  => [
         'type'         => 'Literal',
         'options'      => [
             'route'    => '/contact',
@@ -117,7 +148,7 @@ $latestApiChildRoutes = [
             ],
         ],
     ],
-    'state'         => [
+    'state'    => [
         'type'         => 'Literal',
         'options'      => [
             'route'    => '/state',
@@ -137,39 +168,7 @@ $latestApiChildRoutes = [
             ],
         ],
     ],
-    'company-profile-deletes' => [
-        'type'         => 'Literal',
-        'options'      => [
-            'route'    => '/company/profile/deletes',
-            'defaults' => [
-                'controller' => 'Api\v1\Controller\CompanyProfile',
-                'action'     => 'deleteList',
-            ],
-        ],
-    ],
-    'company-profile' => [
-        'type'         => 'Literal',
-        'options'      => [
-            'route'    => '/company',
-            'defaults' => [
-                'controller' => 'Api\v1\Controller\CompanyProfile',
-            ],
-        ],
-        'child_routes' => [
-            'rest' => [
-                'type'    => 'Segment',
-                'options' => [
-                    'route'       => '[/:id]/profile',
-                    'constraints' => [
-                        'id' => '[a-zA-Z0-9_-]*',
-                    ],
-
-                ],
-            ],
-
-        ],
-    ],
-    'refinery'        => [
+    'refinery' => [
         'type'         => 'Segment',
         'options'      => [
             'route'    => '/refinery',
@@ -213,17 +212,17 @@ return [
     ],
     'router'       => [
         'routes' => [
-            'api' => [
-                'type' => 'Literal',
-                'options' => [
-                    'route' => '/api'
+            'api'   => [
+                'type'         => 'Literal',
+                'options'      => [
+                    'route' => '/api',
                 ],
                 'child_routes' => $latestApiChildRoutes,
             ],
             'apiV1' => [
-                'type' => 'Literal',
-                'options' => [
-                    'route' => '/api/v1'
+                'type'         => 'Literal',
+                'options'      => [
+                    'route' => '/api/v1',
                 ],
                 'child_routes' => $latestApiChildRoutes,
             ],

@@ -115,8 +115,6 @@ class CompanyProfileController extends AbstractRestfulController
             $this->response->setStatusCode(500);
             return new JsonModel(['error' => true, 'message' => 'ERROR: ' . $e->getMessage()]);
         }
-
-        return new JsonModel(CompanyProfileCollectionFormatter::format($companies, $page, $limit, $count, $from, $to));
     }
 
     /**
@@ -143,16 +141,6 @@ class CompanyProfileController extends AbstractRestfulController
                  * @var $company Company
                  */
                 $company->fetch_deleted_company_instances();
-
-                foreach ($company->get_company_instances() as $instance) {
-                    /**
-                     * @var $instance CompanyInstance
-                     */
-                    //$instance->fetch_properties();
-                    //$instance->fetch_contacts();
-                    //$instance->fetch_state();
-                    //$instance->fetch_channel_ids();
-                }
             }
 
             return new JsonModel(CompanyProfileCollectionFormatter::format($companies, $page, $limit, $count, $from, $to, '/api/v1/company/profile/deletes'));
@@ -160,8 +148,6 @@ class CompanyProfileController extends AbstractRestfulController
             $this->response->setStatusCode(500);
             return new JsonModel(['error' => true, 'message' => 'ERROR: ' . $e->getMessage()]);
         }
-
-        return new JsonModel(CompanyProfileCollectionFormatter::format($companies, $page, $limit, $count, $from, $to));
     }
 
 
