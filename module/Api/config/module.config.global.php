@@ -28,6 +28,15 @@ $latestApiChildRoutes = [
                     ],
                 ],
             ],
+            'search'   => [
+                'type'    => 'Segment',
+                'options' => [
+                    'route'    => '/search',
+                    'defaults' => [
+                        'controller' => 'Api\v1\Controller\CompanySearch',
+                    ],
+                ],
+            ],
         ],
     ],
     'instance'        => [
@@ -183,16 +192,6 @@ $latestApiChildRoutes = [
             ],
         ],
     ],
-    'publicCompany'   => [
-        'type'    => 'Segment',
-        'options' => [
-            'route'    => '/public/company',
-            'defaults' => [
-                'controller' => 'Api\v1\Controller\PublicCompany',
-                'action'     => 'index',
-            ],
-        ],
-    ],
 ];
 return [
 
@@ -202,12 +201,12 @@ return [
             'Api\v1\Controller\Company'            => 'Api\v1\Controller\CompanyController',
             'Api\v1\Controller\CompanyInstances'   => 'Api\v1\Controller\CompanyInstancesController',
             'Api\v1\Controller\CompanyProfile'     => 'Api\v1\Controller\CompanyProfileController',
+            'Api\v1\Controller\CompanySearch'      => 'Api\v1\Controller\CompanySearchController',
             'Api\v1\Controller\Contact'            => 'Api\v1\Controller\ContactController',
             'Api\v1\Controller\Instance'           => 'Api\v1\Controller\InstanceController',
             'Api\v1\Controller\InstanceContacts'   => 'Api\v1\Controller\InstanceContactsController',
             'Api\v1\Controller\InstanceProperties' => 'Api\v1\Controller\InstancePropertiesController',
             'Api\v1\Controller\Property'           => 'Api\v1\Controller\PropertyController',
-            'Api\v1\Controller\PublicCompany'      => 'Api\v1\Controller\PublicCompanyController',
             'Api\v1\Controller\Search'             => 'Api\v1\Controller\SearchController',
             'Api\v1\Controller\State'              => 'Api\v1\Controller\StateController',
         ],

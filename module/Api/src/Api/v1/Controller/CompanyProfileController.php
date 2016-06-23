@@ -9,7 +9,6 @@ namespace Api\v1\Controller;
 
 use Api\v1\ResponseFormatter\CompanyProfileCollectionFormatter;
 use Api\v1\ResponseFormatter\CompanyProfileFormatter;
-use Api\v1\Response\CompanyResponse;
 use DB\Datahub\Company;
 use DB\Datahub\CompanyInstance;
 use Zend\View\Model\JsonModel;
