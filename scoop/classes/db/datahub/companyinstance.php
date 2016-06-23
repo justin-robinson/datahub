@@ -380,7 +380,10 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         return $this->state;
     }
 
-
+    public function get_tier()
+    {
+        return $this->tier;
+    }
     /**
      * @param array $dataArray
      */
@@ -430,6 +433,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     public function save($setTimestamps = true) {
 
         // our cache key
+
         $zip                     = $this->get_property('zipCode');
         $zip                     = $zip ? $zip->value : '';
         $addr1                   = $this->get_property('address1');
@@ -487,6 +491,8 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
                 }
                 $this->set_literal('updatedAt', 'NOW()');
             }
+            
+            $this->instanceTierThyself();
 
             // save to db
             $saved = parent::save();
@@ -890,7 +896,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
      *
      * @return int
      */
-    public function instanceTierThyself($firstRun = 1)
+    public function instanceTierThyself()
     {
 
 
