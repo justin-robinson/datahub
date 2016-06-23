@@ -10,7 +10,7 @@ $latestApiChildRoutes = [
             ],
         ],
         'child_routes' => [
-            'company'   => [
+            'id'   => [
                 'type'         => 'Segment',
                 'options'      => [
                     'route'       => '[/:id]',
@@ -40,23 +40,22 @@ $latestApiChildRoutes = [
                 ],
             ],
             'profiles'  => [
-                'type'    => 'Segment',
+                'type'    => 'Literal',
                 'options' => [
                     'route'        => '/profiles',
                     'defaults'     => [
                         'controller' => 'Api\v1\Controller\CompanyProfile',
                     ],
                 ],
-                'child_routes' => [
-                    'deletes' => [
-                        'type'    => 'Segment',
-                        'options' => [
-                            'route'    => '/deletes',
-                            'defaults' => [
-                                'action' => 'deleteList'
-                            ],
-                        ],
+            ],
+            'profiles-deletes' => [
+                'type'    => 'Literal',
+                'options' => [
+                    'defaults' => [
+                        'action' => 'deleteList',
+                        'controller' => 'Api\v1\Controller\CompanyProfile',
                     ],
+                    'route'    => '/profiles/deletes',
                 ],
             ],
             'search'    => [
