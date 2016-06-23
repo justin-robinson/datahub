@@ -12,7 +12,6 @@ use Console\Record\Formatter\Factory;
 use Console\Record\Formatter\Formatters\Meroveus;
 use DB\Datahub\Company;
 use DB\Datahub\CompanyInstance;
-use DB\Datahub\CompanyInstanceMeroveusIndustry;
 use DB\Datahub\CompanyInstanceProperty;
 use DB\Datahub\MeroveusIndustry;
 use DB\Datahub\SourceType;
@@ -381,7 +380,6 @@ class MeroveusController extends AbstractActionController
      */
     public function matchAction($sanity = false, $debug = false)
     {
-//        $debug = true;
         echo '
              ███▄ ▄███▓    ▄▄▄         ▄▄▄█████▓    ▄████▄      ██░ ██     ██▓    ███▄    █      ▄████
             ▓██▒▀█▀ ██▒   ▒████▄       ▓  ██▒ ▓▒   ▒██▀ ▀█     ▓██░ ██▒   ▓██▒    ██ ▀█   █     ██▒ ▀█▒
@@ -475,28 +473,6 @@ class MeroveusController extends AbstractActionController
 
                         $marketInserted++;
                         $totalInserted++;
-                    }
-
-                    // does this company have an industry?
-                    if (isset($target['firm-industry_static'])) {
-
-                        //$industries = explode(',', $target['firm-industry_static']);
-                        //$queryParams = rtrim(str_repeat('?,', count($industries)), ',');
-
-                        // @todo fix this sql injection
-                        $meroveusIndustries = MeroveusIndustry::fetch_where("industry IN ({$target['firm-industry_static']})");
-
-                        // companyInstanceId will be false if we didn't find a refinery id
-                        if ($meroveusIndustries && is_numeric($companyInstanceId)) {
-
-                            foreach ($meroveusIndustries as $meroveusIndustry) {
-                                (new CompanyInstanceMeroveusIndustry([
-                                        'companyInstanceId'  => $companyInstanceId,
-                                        'meroveusIndustryId' => $meroveusIndustry->meroveusIndustryId,
-                                    ]))->save();
-                            }
-
-                        }
                     }
 
                     // process contacts
@@ -927,22 +903,29 @@ class MeroveusController extends AbstractActionController
         }
 
         $params = [
-            'universal_revenue_volume_static'   => empty($target['universal-revenue-volume_static']) ? null : $target['universal-revenue-volume_static'],
-            'universal_employee_count_static'   => empty($target['universal-employee-count_static']) ? null : $target['universal-employee-count_static'],
-            'universal_employee_local_static'   => empty($target['universal-employee-local_static']) ? null : $target['universal-employee-local_static'],
-            'universal_established_year_static' => empty($target['universal-established-year_static']) ? null : $target['universal-established-year_static'],
-            'universal_profile_blob_static'     => empty($target['universal-profile-blob_static']) ? null : $target['universal-profile-blob_static'],
+            'universal_revenue_volume_static'   => empty($target['universal-revenue-volume_static']) ? [] : [$target['universal-revenue-volume_static']],
+            'universal_employee_count_static'   => empty($target['universal-employee-count_static']) ? [] : [$target['universal-employee-count_static']],
+            'universal_employee_local_static'   => empty($target['universal-employee-local_static']) ? [] : [$target['universal-employee-local_static']],
+            'universal_established_year_static' => empty($target['universal-established-year_static']) ? [] : [$target['universal-established-year_static']],
+            'universal_profile_blob_static'     => empty($target['universal-profile-blob_static']) ? [] : [$target['universal-profile-blob_static']],
+            'industry'                          => empty($target['firm-industry_static']) ? [] : explode(',', $target['firm-industry_static']),
         ];
 
-        foreach ($params as $name => $value) {
-            $companyInstances->first()->add_property(new CompanyInstanceProperty([
-                'name'         => $name,
-                'value'        => $value,
-                'sourceTypeId' => SourceType::fetch_one_where("name = 'meroveus'")->sourceTypeId,
-                'sourceId'     => $target['meroveusId'],
-                'createdAt'    => $target['createdAt'],
-                'updatedAt'    => $target['updatedAt'],
-            ]));
+        foreach ($params as $name => $values) {
+            foreach ( $values as $value ) {
+                $value = trim( $value, 'Â\'"  ');
+                $companyInstances->first()->add_property(
+                    new CompanyInstanceProperty(
+                        [
+                            'name'         => $name,
+                            'value'        => $value,
+                            'sourceTypeId' => SourceType::fetch_one_where( "name = 'meroveus'" )->sourceTypeId,
+                            'sourceId'     => $target['meroveusId'],
+                            'createdAt'    => $target['createdAt'],
+                            'updatedAt'    => $target['updatedAt'],
+                        ] ) );
+
+            }
         }
 
         $companyInstances->first()->save();
