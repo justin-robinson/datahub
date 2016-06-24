@@ -24,12 +24,12 @@ class CompanyProfileCollectionFormatter {
      */
     public static function format(Rows $companies, $page, $limit, $totalCount, $from, $to, $apiPath = '/api/v1/company/profile') {
 
-        $host = FormatterHelpers::get_http_protocol() . $_SERVER['HTTP_HOST'];
+        $host = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST');;
         $uri = $host . $apiPath;
         $totalCount = is_null($totalCount) ? Generic::query('SELECT count(*) AS count FROM company')->first()->count : $totalCount;
         $lastPage = ceil($totalCount / $limit);
 
-        $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $path = parse_url(FormatterHelpers::get_server_variable('REQUEST_URI'), PHP_URL_PATH);
         $selfQueryParams = [
             'from'  => $from,
             'to'    => $to,

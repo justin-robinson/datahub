@@ -55,7 +55,7 @@ class InstanceFormatter {
             $array['contacts'][] = ContactFormatter::format($contact);
         }
 
-        $host = FormatterHelpers::get_http_protocol() . $_SERVER['HTTP_HOST'];
+        $host = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST', 'hub');
 
         $array['_links'] = [
             'self'       => [

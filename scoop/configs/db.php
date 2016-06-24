@@ -11,11 +11,19 @@ if ( isset($_SERVER['argv']) ){
             $env = $args['env'];
             break;
         default:
-            $env = 'production';
+            break;
     }
-} else if ( isset($_SERVER['APPLICATION_ENV']) ) {
+}
+
+if ( !isset($env) && isset($_SERVER['APPLICATION_ENV']) ) {
     $env = $_SERVER['APPLICATION_ENV'];
-} else {
+}
+
+if ( !isset($env) && defined ( 'APPLICATION_ENV' ) ) {
+    $env = APPLICATION_ENV;
+}
+
+if ( !isset($env) ) {
     $env = 'production';
 }
 

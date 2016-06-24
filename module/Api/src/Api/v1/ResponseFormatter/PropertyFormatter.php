@@ -18,7 +18,7 @@ class PropertyFormatter {
      */
     public static function format (CompanyInstanceProperty $property) {
 
-        $uri = FormatterHelpers::get_http_protocol() . $_SERVER['HTTP_HOST'] . '/api/v1/';
+        $uri = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST', 'hub') . '/api/v1/';
 
         $array = $property->to_array();
 

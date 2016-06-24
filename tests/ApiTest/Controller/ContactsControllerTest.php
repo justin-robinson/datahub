@@ -5,10 +5,9 @@ namespace ApiTest\Controller;
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
 /**
- * Created by PhpStorm.
- * User: allisonhagge
- * Date: 2/24/16
- * Time: 4:04 PM
+ * Class ContactsControllerTest
+ * @package ApiTest\Controller
+ * @inheritdoc
  */
 class ContactsControllerTest extends AbstractHttpControllerTestCase
 {

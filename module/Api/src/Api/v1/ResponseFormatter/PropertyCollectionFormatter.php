@@ -22,7 +22,7 @@ class PropertyCollectionFormatter {
      */
     public static function format ( Rows $properties, $page = 1, $limit = 1000, $uri = '/api/v1/contact', $totalCount = null) {
 
-        $uri = FormatterHelpers::get_http_protocol() . $_SERVER['HTTP_HOST'] . $uri;
+        $uri = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST', 'hub') . $uri;
         $totalCount = is_null($totalCount) ? Generic::query('select count(*) as count from companyInstanceProperty')->first()->count : $totalCount;
         $lastPage = ceil($totalCount / $limit);
 

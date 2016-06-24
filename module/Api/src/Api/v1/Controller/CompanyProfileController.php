@@ -39,41 +39,6 @@ class CompanyProfileController extends AbstractRestfulController
     }
 
     /**
-     * @param mixed $companyId
-     *
-     * @return JsonModel
-     */
-    public function delete($companyId)
-    {
-        $this->response->setStatusCode(405);
-        return new JsonModel(['message' => 'not allowed']);
-    }
-
-
-    /**
-     * @param mixed $data
-     *
-     * @return JsonModel
-     */
-    public function create($data)
-    {
-        $this->response->setStatusCode(405);
-        return new JsonModel(['message' => 'not allowed']);
-    }
-
-    /**
-     * @param mixed $id
-     * @param mixed $data
-     *
-     * @return JsonModel
-     */
-    public function update($id, $data)
-    {
-        $this->response->setStatusCode(405);
-        return new JsonModel(['message' => 'not allowed']);
-    }
-
-    /**
      * @return JsonModel|void
      */
     public function getList()

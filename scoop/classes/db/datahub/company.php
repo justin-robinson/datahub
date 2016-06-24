@@ -382,18 +382,22 @@ class Company extends \DBCore\Datahub\Company
 
         $companiesDeleted = Generic::query(
             "SELECT
-              c.companyId
-            FROM
-              company c
-              LEFT JOIN companyInstance ci USING (companyId)
-            WHERE
-              c.deletedAt BETWEEN ? and ?
-              OR ci.deletedAt BETWEEN ? and ?
-            GROUP BY c.companyID",
+              count(*) as count
+            FROM (
+              SELECT
+                c.companyId
+              FROM
+                company c
+                LEFT JOIN companyInstance ci USING (companyId)
+              WHERE
+                c.deletedAt BETWEEN ? AND ?
+                OR ci.deletedAt BETWEEN ? AND ?
+              GROUP BY c.companyID
+            ) cc",
             [$from, $to, $from, $to]
         );
 
-        return $companiesDeleted ? $companiesDeleted->get_num_rows() : 0;
+        return $companiesDeleted->first()->count;
     }
 
     /**
@@ -434,20 +438,24 @@ class Company extends \DBCore\Datahub\Company
 
         $companiesModified = Generic::query(
             "SELECT
-              c.companyId
-            FROM
-              company c
-              LEFT JOIN companyInstance ci USING (companyId)
-              LEFT JOIN companyInstanceProperty cip USING (companyInstanceId)
-            WHERE
-              c.updatedAt BETWEEN ? and ?
-              OR ci.updatedAt BETWEEN ? and ?
-              OR cip.updatedAt BETWEEN ? and ?
-            GROUP BY c.companyID",
+              count(*) as count
+            FROM (
+              SELECT
+                c.companyId
+              FROM
+                company c
+                LEFT JOIN companyInstance ci USING (companyId)
+                LEFT JOIN companyInstanceProperty cip USING (companyInstanceId)
+              WHERE
+                c.updatedAt BETWEEN ? and ?
+                OR ci.updatedAt BETWEEN ? and ?
+                OR cip.updatedAt BETWEEN ? and ?
+              GROUP BY c.companyID
+            ) cc",
             [$from, $to, $from, $to, $from, $to]
         );
 
-        return $companiesModified ? $companiesModified->get_num_rows() : 0;
+        return $companiesModified->first()->count;
     }
 
     /**

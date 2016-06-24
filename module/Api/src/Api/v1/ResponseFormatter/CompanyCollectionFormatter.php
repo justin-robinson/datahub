@@ -20,7 +20,7 @@ class CompanyCollectionFormatter {
      */
     public static function format ( Rows $companies, $page = 1, $limit = 1000) {
 
-        $host = FormatterHelpers::get_http_protocol() . $_SERVER['HTTP_HOST'] . '/api/v1/company';
+        $host = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST'); . '/api/v1/company';
         $totalCount = Generic::query('select count(*) as count from company')->first()->count;
         $lastPage = ceil($totalCount / $limit);
 
