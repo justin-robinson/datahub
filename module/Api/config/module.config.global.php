@@ -20,7 +20,7 @@ $latestApiChildRoutes = [
                 ],
             ],
             'profile' => [
-                'type'    => 'Literal',
+                'type'    => 'Segment',
                 'options' => [
                     'route'    => '[/:id]/profile',
                     'constraints' => [
