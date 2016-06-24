@@ -1,0 +1,4 @@
+phpunitrunner:
+  script:
+    - cd scripts
+    - sh ./ci_env.sh
