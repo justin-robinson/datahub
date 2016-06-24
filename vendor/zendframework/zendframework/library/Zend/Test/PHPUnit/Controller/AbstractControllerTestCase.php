@@ -23,7 +23,6 @@ use Zend\Uri\Http as HttpUri;
 /**
  * Class AbstractControllerTestCase
  * @package Zend\Test\PHPUnit\Controller
- * @inheritdoc
  */
 abstract class AbstractControllerTestCase extends PHPUnit_Framework_TestCase
 {

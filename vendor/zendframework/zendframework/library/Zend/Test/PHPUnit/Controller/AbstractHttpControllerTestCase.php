@@ -14,7 +14,6 @@ use Zend\Dom\Document;
 /**
  * Class AbstractHttpControllerTestCase
  * @package Zend\Test\PHPUnit\Controller
- * @inheritdoc
  */
 abstract class AbstractHttpControllerTestCase extends AbstractControllerTestCase
 {

@@ -7,7 +7,6 @@ use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 /**
  * Class ContactsControllerTest
  * @package ApiTest\Controller
- * @inheritdoc
  */
 class ContactsControllerTest extends AbstractHttpControllerTestCase
 {
