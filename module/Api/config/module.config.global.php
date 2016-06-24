@@ -18,15 +18,16 @@ $latestApiChildRoutes = [
                         'id' => '[0-9]*',
                     ],
                 ],
-                'child_routes' => [
-                    'profile' => [
-                        'type'    => 'Literal',
-                        'options' => [
-                            'defaults' => [
-                                'controller' => 'Api\v1\Controller\CompanyProfile',
-                            ],
-                            'route'    => '/profile',
-                        ],
+            ],
+            'profile' => [
+                'type'    => 'Literal',
+                'options' => [
+                    'route'    => '[/:id]/profile',
+                    'constraints' => [
+                        'id' => '[0-9]*',
+                    ],
+                    'defaults' => [
+                        'controller' => 'Api\v1\Controller\CompanyProfile',
                     ],
                 ],
             ],
@@ -34,6 +35,9 @@ $latestApiChildRoutes = [
                 'type'    => 'Segment',
                 'options' => [
                     'route'    => '[/:id]/instances',
+                    'constraints' => [
+                        'id' => '[0-9]*',
+                    ],
                     'defaults' => [
                         'controller' => 'Api\v1\Controller\CompanyInstances',
                     ],
