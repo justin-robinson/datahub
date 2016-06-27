@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class FipsCounty
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/06/15
+ * @date 2016/06/18
  * @property mixed $fips_code
  * @property mixed $state_code
  * @property mixed $county
@@ -58,15 +58,14 @@ class FipsCounty extends Model {
           array (
           ),
         );
-
-    protected $dBValuesArray = 
+    public static $dBColumnDefaultValuesArray = 
         array (
-          'fips_code' => NULL,
+          'fips_code' => '0',
           'state_code' => NULL,
           'county' => NULL,
           'msa' => NULL,
           'pmsa' => NULL,
-          'is_outlying' => NULL,
+          'is_outlying' => '0',
         );
 
 }

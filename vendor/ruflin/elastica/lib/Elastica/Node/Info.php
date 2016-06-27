@@ -1,5 +1,4 @@
 <?php
-
 namespace Elastica\Node;
 
 use Elastica\Node as BaseNode;
@@ -19,7 +18,7 @@ class Info
      *
      * @var \Elastica\Response Response object
      */
-    protected $_response = null;
+    protected $_response;
 
     /**
      * Stats data.
@@ -33,7 +32,7 @@ class Info
      *
      * @var \Elastica\Node Node object
      */
-    protected $_node = null;
+    protected $_node;
 
     /**
      * Query parameters.

@@ -1,5 +1,4 @@
 <?php
-
 namespace Elastica\Filter;
 
 use Elastica\Exception\InvalidException;
@@ -22,13 +21,6 @@ class Terms extends AbstractFilter
      * @var array Terms
      */
     protected $_terms = array();
-
-    /**
-     * Params.
-     *
-     * @var array Params
-     */
-    protected $_params = array();
 
     /**
      * Terms key.

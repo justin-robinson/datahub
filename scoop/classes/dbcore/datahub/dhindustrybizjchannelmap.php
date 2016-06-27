@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class DhIndustryBizjChannelMap
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/06/15
+ * @date 2016/06/18
  * @property mixed $dh_industry_id
  * @property mixed $channel_id
  * AUTO-GENERATED FILE
@@ -36,8 +36,7 @@ class DhIndustryBizjChannelMap extends Model {
           array (
           ),
         );
-
-    protected $dBValuesArray = 
+    public static $dBColumnDefaultValuesArray = 
         array (
           'dh_industry_id' => NULL,
           'channel_id' => NULL,

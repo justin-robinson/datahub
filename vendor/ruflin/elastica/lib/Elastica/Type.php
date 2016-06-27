@@ -1,5 +1,4 @@
 <?php
-
 namespace Elastica;
 
 use Elastica\Exception\DeprecatedException;
@@ -26,14 +25,14 @@ class Type implements SearchableInterface
      *
      * @var \Elastica\Index Index object
      */
-    protected $_index = null;
+    protected $_index;
 
     /**
      * Type name.
      *
      * @var string Type name
      */
-    protected $_name = '';
+    protected $_name;
 
     /**
      * @var array|string A callable that serializes an object passed to it
@@ -325,9 +324,9 @@ class Type implements SearchableInterface
     /**
      * Create search object.
      *
-     * @param string|array|\Elastica\Query $query Array with all query data inside or a Elastica\Query object
-     * @param int|array $options OPTIONAL Limit or associative array of options (option=>value)
-     * @param BuilderInterface $builder
+     * @param string|array|\Elastica\Query $query   Array with all query data inside or a Elastica\Query object
+     * @param int|array                    $options OPTIONAL Limit or associative array of options (option=>value)
+     * @param BuilderInterface             $builder
      *
      * @return Search
      */

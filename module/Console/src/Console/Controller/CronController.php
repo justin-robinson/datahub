@@ -4,7 +4,6 @@ namespace Console\Controller;
 
 use Console\Countries;
 use Console\CsvIterator;
-use Console\DB\Connection\DB;
 use Console\Importer\Refinery;
 use Scoop\Database\Connection;
 use Scoop\Database\Model\Generic;
@@ -20,9 +19,17 @@ class CronController extends AbstractActionController {
      */
     public function exportReconAction () {
 
-        // how many days are we going back?
-        // default: 7
-        $daysToLookBack = $this->getRequest()->getParam('days') ?: 7;
+        // how far back are we looking?
+        // default: 60 minutes
+        $days = (int)$this->getRequest()->getParam('days');
+        $days = $days >= 0 ? $days : 0;
+        $hours = (int)$this->getRequest()->getParam('hours');
+        $hours = $hours >= 0 ? $hours : 0;
+        $minutes = (int)$this->getRequest()->getParam('minutes');
+        $minutes = $minutes >= 0 ? $minutes : 0;
+
+        $minutes = ((($days*24) + $hours) * 60) + $minutes;
+        $minutes = $minutes >= 0 ? $minutes : 60;
 
         // that looks like a good spot to save a file
         $timestamp = time();
@@ -73,7 +80,7 @@ class CronController extends AbstractActionController {
         $countries = Countries::getAll();
 
         // connect to the recon db
-        $dbConfig = $this->config['pdo']['db02'];
+        $dbConfig = $this->config['mysql']['db02'];
         $dbConfig['database'] = $dbConfig['dbname'];
 
         $connection = new Connection($dbConfig);
@@ -111,20 +118,24 @@ class CronController extends AbstractActionController {
                 LEFT JOIN recon.OrgDesc    descr ON ( org.id = descr.OrgId )
               WHERE
                 (
-                  org.DateModified      > (NOW() - INTERVAL ? DAY )
-                  OR addr.DateModified  > (NOW() - INTERVAL ? DAY )
-                  OR phone.DateModified > (NOW() - INTERVAL ? DAY )
-				  OR url.DateModified   > (NOW() - INTERVAL ? DAY )
-				  OR sic.DateModified   > (NOW() - INTERVAL ? DAY )
-				  OR descr.DateModified > (NOW() - INTERVAL ? DAY )
+                  org.DateModified      > (NOW() - INTERVAL ? MINUTE )
+                  OR addr.DateModified  > (NOW() - INTERVAL ? MINUTE )
+                  OR phone.DateModified > (NOW() - INTERVAL ? MINUTE )
+				  OR url.DateModified   > (NOW() - INTERVAL ? MINUTE )
+				  OR sic.DateModified   > (NOW() - INTERVAL ? MINUTE )
+				  OR descr.DateModified > (NOW() - INTERVAL ? MINUTE )
 				)
                 AND addr.City IS NOT NULL
                 AND addr.City != ''
                 AND org.Name != ''
               ORDER BY
                 org.QName",
-            [$daysToLookBack, $daysToLookBack, $daysToLookBack, $daysToLookBack, $daysToLookBack, $daysToLookBack],
+            [$minutes, $minutes, $minutes, $minutes, $minutes, $minutes],
             $connection);
+
+        if ( $results === false ) {
+            return null;
+        }
 
         $elasticChunkNumber = 0;
         // parse each row into a csv and json file
@@ -218,8 +229,121 @@ class CronController extends AbstractActionController {
         $importer = new Refinery();
         list($companiesProcessed, $instancesProcessed) = $importer->import($csvFilePath);
 
-        printf("Imported: %s\t%s companies%s\t%s instances%s", PHP_EOL,$companiesProcessed,PHP_EOL,$instancesProcessed,PHP_EOL);
+        //printf("Imported: %s\t%s companies%s\t%s instances%s", PHP_EOL,$companiesProcessed,PHP_EOL,$instancesProcessed,PHP_EOL);
+        echo "Raw data: " . PHP_EOL . PHP_EOL;
+        var_export($results->to_array());
 
+    }
+
+    public function listsForRelatedAction () {
+        echo "
+ _       _______  _____  _______  _____ (_)(_)(_)(_)
+(_)     (_______)(_____)(__ _ __)(_____)(_)(_)(_)(_)
+(_)        (_)  (_)___     (_)  (_)___  (_)(_)(_)(_)
+(_)        (_)    (___)_   (_)    (___)_(_)(_)(_)(_)
+(_)____  __(_)__  ____(_)  (_)    ____(_)_  _  _  _ 
+(______)(_______)(_____)   (_)   (_____)(_)(_)(_)(_)
+";
+
+        echo "export started: " . date('h:i:s A') . PHP_EOL;
+
+        // how far back are we looking?
+        // default: 60 minutes
+        $days = (int)$this->getRequest()->getParam('days');
+        $days = $days >= 0 ? $days : 0;
+        $hours = (int)$this->getRequest()->getParam('hours');
+        $hours = $hours >= 0 ? $hours : 0;
+        $minutes = (int)$this->getRequest()->getParam('minutes');
+        $minutes = $minutes >= 0 ? $minutes : 0;
+
+        $minutes = ((($days*24) + $hours) * 60) + $minutes;
+        $minutes = $minutes >= 0 ? $minutes : 60;
+
+        // that looks like a good spot to save a file
+        $timestamp = time();
+        $filePath = "/tmp/datahub-cron-lists-for-related-{$timestamp}.json";
+        echo "output: {$filePath}" . PHP_EOL;
+        $file = new \SplFileObject($filePath, 'w');
+
+        // get the mysql connection credentials
+        $dbconfig = $this->config['mysql']['reportdb'];
+        // create a new mysql connection for our query
+        $connection = new Connection(
+            [
+                'host' => $dbconfig['host'],
+                'user' => $dbconfig['user'],
+                'password' => $dbconfig['password'],
+                'database' => $dbconfig['dbname'],
+                'port' => $dbconfig['port'],
+            ]);
+        // get the lists to be released in the specified range, along with the companies
+        $listCompanies = Generic::query(
+            "SELECT DISTINCT
+                      tlr.list_id,
+                      tlr.rank,
+                      tlr.object_id,
+                      tlr.company_name,
+                      tl.market_id,
+                      tl.issue_date,
+                      tl.page_headline,
+                      concat(p.site, p.path, p.slug, '.html') AS url
+                    FROM
+                      bizj.top25_list_row tlr
+                      JOIN bizj.top25_list tl USING (list_id )
+                      JOIN bizj.page p USING ( page_id )
+                    WHERE
+                      p.release_time BETWEEN (NOW() - INTERVAL ? MINUTE ) AND NOW()
+                      AND object_id <> 0
+                    ORDER BY tlr.created_at DESC",
+            [$minutes], $connection);
+
+        if ( $listCompanies ) {
+            // every row of data needs an elastic action row
+            $elasticAction = json_encode(
+                [
+                    "create" => [
+                        "_index" => "lists",
+                        "_type"  => 'company_related',
+                    ],
+                ] );
+
+            $prevListId = $listCompanies->first()->list_id;
+            $companies = [];
+            // get the companies on each list and add them to the json file
+            foreach ($listCompanies as $listCompany) {
+                // no id is no bueno
+                if (empty($listCompany->list_id)) {
+                    echo "no list!" . PHP_EOL;
+                    continue;
+                }
+
+                // fix for JSON_ERROR_UTF8
+                $listCompany->company_name  = iconv('UTF-8', 'UTF-8//IGNORE', utf8_encode($listCompany->company_name));
+                $listCompany->page_headline = iconv('UTF-8', 'UTF-8//IGNORE', utf8_encode($listCompany->page_headline));
+
+                // write out if we have a new list id
+                if ( $prevListId !== $listCompany->list_id ) {
+                    // add this list to the json file
+                    $file->fwrite($elasticAction . PHP_EOL);
+                    $file->fwrite(json_encode(['list_id' => $prevListId, 'companies' => $companies]) . PHP_EOL);
+
+                    // reset the companies array
+                    $companies = [];
+                }
+                $prevListId = $listCompany->list_id;
+                $company = $listCompany->to_array();
+                unset($company['list_id']);
+                $companies[] = $company;
+            }
+
+            // write out any remaining lists
+            if ( !empty($companies) ) {
+                $file->fwrite($elasticAction . PHP_EOL);
+                $file->fwrite(json_encode(['list_id' => $prevListId, 'companies' => $companies]) . PHP_EOL);
+            }
+        }
+
+        echo "export ended: " . date('h:i:s A') . PHP_EOL;
     }
 
 }

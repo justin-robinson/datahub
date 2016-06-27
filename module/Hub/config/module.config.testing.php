@@ -35,7 +35,7 @@ return [
         'url'  => 'http://elb.es.datahub.bizj-dev.com:9200/current',
     ],
 
-    'pdo' => [
+    'mysql' => [
         'datahub' => $defaultMysqlConnectionParams,
         'db02' => [
             'charset'       => 'utf8',
