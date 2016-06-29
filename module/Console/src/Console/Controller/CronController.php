@@ -229,7 +229,7 @@ class CronController extends AbstractActionController {
         $importer = new Refinery();
         list($companiesProcessed, $instancesProcessed) = $importer->import($csvFilePath);
 
-        //printf("Imported: %s\t%s companies%s\t%s instances%s", PHP_EOL,$companiesProcessed,PHP_EOL,$instancesProcessed,PHP_EOL);
+        printf("Imported: %s\t%s companies%s\t%s instances%s", PHP_EOL,$companiesProcessed,PHP_EOL,$instancesProcessed,PHP_EOL);
         echo "Raw data: " . PHP_EOL . PHP_EOL;
         var_export($results->to_array());
 
@@ -261,9 +261,6 @@ class CronController extends AbstractActionController {
 
         // that looks like a good spot to save a file
         $timestamp = time();
-        $filePath = "/tmp/datahub-cron-lists-for-related-{$timestamp}.json";
-        echo "output: {$filePath}" . PHP_EOL;
-        $file = new \SplFileObject($filePath, 'w');
 
         // get the mysql connection credentials
         $dbconfig = $this->config['mysql']['reportdb'];
@@ -309,6 +306,8 @@ class CronController extends AbstractActionController {
 
             $prevListId = $listCompanies->first()->list_id;
             $companies = [];
+            $numListsInChunk = 0;
+            $chunkNumber = -1;
             // get the companies on each list and add them to the json file
             foreach ($listCompanies as $listCompany) {
                 // no id is no bueno
@@ -323,6 +322,18 @@ class CronController extends AbstractActionController {
 
                 // write out if we have a new list id
                 if ( $prevListId !== $listCompany->list_id ) {
+
+                    // chunk elastic bulk data into 50000 entries
+                    if ( $numListsInChunk % 50000 === 0 ) {
+                        ++$chunkNumber;
+                        $numListsInChunk = 0;
+                        $jsonFilePath = "/tmp/datahub-cron-recon-dump-{$timestamp}-{$chunkNumber}.json";
+                        $file = new \SplFileObject($jsonFilePath, 'w');
+                        echo $jsonFilePath . PHP_EOL;
+                    }
+
+                    // add a new list to this chunk
+                    ++$numListsInChunk;
                     // add this list to the json file
                     $file->fwrite($elasticAction . PHP_EOL);
                     $file->fwrite(json_encode(['list_id' => $prevListId, 'companies' => $companies]) . PHP_EOL);
