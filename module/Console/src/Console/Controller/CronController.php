@@ -279,22 +279,22 @@ class CronController extends AbstractActionController {
         // get the lists to be released in the specified range, along with the companies
         $listCompanies = Generic::query(
             "SELECT DISTINCT
-                      tlr.list_id,
-                      tlr.rank,
-                      tlr.object_id,
-                      tlr.company_name,
-                      tl.market_id,
-                      tl.issue_date,
-                      tl.page_headline,
-                      concat(p.site, p.path, p.slug, '.html') AS url
-                    FROM
-                      bizj.top25_list_row tlr
-                      JOIN bizj.top25_list tl USING (list_id )
-                      JOIN bizj.page p USING ( page_id )
-                    WHERE
-                      p.release_time BETWEEN (NOW() - INTERVAL ? MINUTE ) AND NOW()
-                      AND object_id <> 0
-                    ORDER BY tlr.created_at DESC",
+              tlr.list_id,
+              tlr.rank,
+              tlr.object_id,
+              tlr.company_name,
+              tl.market_id,
+              tl.issue_date,
+              tl.page_headline,
+              concat(p.site, p.path, p.slug, '.html') AS url
+            FROM
+              bizj.top25_list_row tlr
+              JOIN bizj.top25_list tl USING (list_id )
+              JOIN bizj.page p USING ( page_id )
+            WHERE
+              p.release_time BETWEEN (NOW() - INTERVAL ? MINUTE ) AND NOW()
+              AND object_id <> 0
+            ORDER BY tlr.created_at DESC",
             [$minutes], $connection);
 
         if ( $listCompanies ) {
