@@ -1,5 +1,4 @@
 <?php
-
 namespace Elastica\Index;
 
 use Elastica\Exception\NotFoundException;
@@ -21,12 +20,14 @@ use Elastica\Request;
  */
 class Settings
 {
+    const DEFAULT_REFRESH_INTERVAL = '1s';
+
     /**
      * Response.
      *
      * @var \Elastica\Response Response object
      */
-    protected $_response = null;
+    protected $_response;
 
     /**
      * Stats info.
@@ -40,9 +41,7 @@ class Settings
      *
      * @var \Elastica\Index Index object
      */
-    protected $_index = null;
-
-    const DEFAULT_REFRESH_INTERVAL = '1s';
+    protected $_index;
 
     /**
      * Construct.

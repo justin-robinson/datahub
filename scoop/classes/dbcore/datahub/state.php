@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class State
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/06/15
+ * @date 2016/06/18
  * @property mixed $stateId
  * @property mixed $countryId
  * @property mixed $name
@@ -63,16 +63,15 @@ class State extends Model {
           array (
           ),
         );
-
-    protected $dBValuesArray = 
+    public static $dBColumnDefaultValuesArray = 
         array (
           'stateId' => NULL,
           'countryId' => NULL,
           'name' => NULL,
           'code' => NULL,
           'state_ap_style' => NULL,
-          'is_active' => NULL,
-          'ord' => NULL,
+          'is_active' => '1',
+          'ord' => '0',
         );
 
 }

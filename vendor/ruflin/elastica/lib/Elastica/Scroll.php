@@ -1,5 +1,4 @@
 <?php
-
 namespace Elastica;
 
 /**
@@ -24,12 +23,12 @@ class Scroll implements \Iterator
     /**
      * @var null|string
      */
-    protected $_nextScrollId = null;
+    protected $_nextScrollId;
 
     /**
      * @var null|ResultSet
      */
-    protected $_currentResultSet = null;
+    protected $_currentResultSet;
 
     /**
      * 0: scroll<br>

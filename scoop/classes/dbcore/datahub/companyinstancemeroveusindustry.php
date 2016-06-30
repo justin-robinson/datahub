@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class CompanyInstanceMeroveusIndustry
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/06/15
+ * @date 2016/06/18
  * @property mixed $companyInstanceId
  * @property mixed $meroveusIndustryId
  * AUTO-GENERATED FILE
@@ -42,8 +42,7 @@ class CompanyInstanceMeroveusIndustry extends Model {
             0 => 1,
           ),
         );
-
-    protected $dBValuesArray = 
+    public static $dBColumnDefaultValuesArray = 
         array (
           'companyInstanceId' => NULL,
           'meroveusIndustryId' => NULL,

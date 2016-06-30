@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class Contact
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/06/15
+ * @date 2016/06/18
  * @property mixed $contactId
  * @property mixed $companyInstanceId
  * @property mixed $meroveusId
@@ -129,15 +129,14 @@ class Contact extends Model {
           array (
           ),
         );
-
-    protected $dBValuesArray = 
+    public static $dBColumnDefaultValuesArray = 
         array (
           'contactId' => NULL,
           'companyInstanceId' => NULL,
           'meroveusId' => NULL,
           'relevateId' => NULL,
-          'isDuplicate' => NULL,
-          'isCurrentEmployee' => NULL,
+          'isDuplicate' => '0',
+          'isCurrentEmployee' => '1',
           'firstName' => NULL,
           'middleInitial' => NULL,
           'lastName' => NULL,
@@ -152,8 +151,8 @@ class Contact extends Model {
           'city' => NULL,
           'state' => NULL,
           'postalCode' => NULL,
-          'createdAt' => NULL,
-          'updatedAt' => NULL,
+          'createdAt' => 'CURRENT_TIMESTAMP',
+          'updatedAt' => 'CURRENT_TIMESTAMP',
           'deletedAt' => NULL,
         );
 

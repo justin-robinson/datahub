@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class MarketMsaPmsaMap
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/06/15
+ * @date 2016/06/18
  * @property mixed $market_id
  * @property mixed $sa_code
  * AUTO-GENERATED FILE
@@ -42,11 +42,10 @@ class MarketMsaPmsaMap extends Model {
             0 => 1,
           ),
         );
-
-    protected $dBValuesArray = 
+    public static $dBColumnDefaultValuesArray = 
         array (
-          'market_id' => NULL,
-          'sa_code' => NULL,
+          'market_id' => '0',
+          'sa_code' => '',
         );
 
 }

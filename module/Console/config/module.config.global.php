@@ -33,7 +33,7 @@ return [
                 ],
                 'cron'     => [
                     'options' => [
-                        'route'    => 'cron [<action>] [--env=] [-e=s] [--days=s]',
+                        'route'    => 'cron [<action>] [--env=] [-e=s] [--days=s] [--hours=s] [--minutes=s]',
                         'defaults' => [
                             'controller' => 'Console\Controller\Cron',
                             'action'     => 'index',

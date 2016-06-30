@@ -12,7 +12,6 @@ use Console\Record\Formatter\Factory;
 use Console\Record\Formatter\Formatters\Meroveus;
 use DB\Datahub\Company;
 use DB\Datahub\CompanyInstance;
-use DB\Datahub\CompanyInstanceMeroveusIndustry;
 use DB\Datahub\CompanyInstanceProperty;
 use DB\Datahub\MeroveusIndustry;
 use DB\Datahub\SourceType;
@@ -20,6 +19,7 @@ use Elastica\Client as ElasticaClient;
 use Elastica\Query as ElasticaQuery;
 use Elastica\QueryBuilder as QueryBuilder;
 use Elastica\Search as ElasticaSearch;
+use Scoop\Database\Model\Generic;
 use Services\Meroveus\Client as MeroveusClient;
 use Services\Meroveus\CompanyService;
 use Zend\Mvc\MvcEvent;
@@ -168,17 +168,32 @@ class MeroveusController extends AbstractActionController
 
     }
 
+    /**
+     * basic tiering thingy
+     *
+     * @param $id
+     *
+     * @return int
+     */
     public function doTier($id)
     {
         $tier    = 0;
         $company = Company::fetch_company_and_instances($id);
-        if ($company) {
-            $instances = $company->get_company_instances();
-            $tier      = $instances->get_rows()[0]->instanceTierThyself(1);
-        }
-        unset($company);
 
+        if ($company && $company->get_company_instances()->first()) {
+            if ($company->get_company_instances()->first()->save()) {
+                $tier = $company->get_company_instances()->first()->get_tier();
+            }
+        }
         return $tier;
+    }
+
+    /**
+     * mess with stuff here
+     */
+    public function scratchAction()
+    {
+
     }
 
     /**
@@ -366,7 +381,6 @@ class MeroveusController extends AbstractActionController
      */
     public function matchAction($sanity = false, $debug = false)
     {
-//        $debug = true;
         echo '
              ███▄ ▄███▓    ▄▄▄         ▄▄▄█████▓    ▄████▄      ██░ ██     ██▓    ███▄    █      ▄████
             ▓██▒▀█▀ ██▒   ▒████▄       ▓  ██▒ ▓▒   ▒██▀ ▀█     ▓██░ ██▒   ▓██▒    ██ ▀█   █     ██▒ ▀█▒
@@ -460,31 +474,6 @@ class MeroveusController extends AbstractActionController
 
                         $marketInserted++;
                         $totalInserted++;
-                    }
-
-                    // does this company have an industry?
-                    if ( isset($target['firm-industry_static']) ) {
-
-                        //$industries = explode(',', $target['firm-industry_static']);
-                        //$queryParams = rtrim(str_repeat('?,', count($industries)), ',');
-
-                        // @todo fix this sql injection
-                        $meroveusIndustries = MeroveusIndustry::fetch_where("industry IN ({$target['firm-industry_static']})");
-
-                        // companyInstanceId will be false if we didn't find a refinery id
-                        if ( $meroveusIndustries && is_numeric($companyInstanceId)) {
-
-                            foreach ( $meroveusIndustries as $meroveusIndustry ) {
-                                (new CompanyInstanceMeroveusIndustry(
-                                        [
-                                            'companyInstanceId' => $companyInstanceId,
-                                            'meroveusIndustryId' => $meroveusIndustry->meroveusIndustryId,
-                                        ]
-                                    )
-                                )->save();
-                            }
-
-                        }
                     }
 
                     // process contacts
@@ -668,16 +657,32 @@ class MeroveusController extends AbstractActionController
         // @todo handle deletions
         $industries = $this->companyService->queryMeroveusRoot($meroveusParams);
 
-        foreach ($industries as $industry ) {
-            ( new MeroveusIndustry(
-                [
+        $industriesAdded            = 0;
+        $numberOfMeroveusIndustries = 0;
+
+        foreach ($industries as $industry) {
+            $numberOfMeroveusIndustries++;
+            try {
+                $saved = (new MeroveusIndustry([
                     'externalId' => $industry['LABELID'],
-                    'industry'   => trim( $industry['NAME'], 'Â ' ),
-                ]
-            ) )->save();
+                    'industry'   => trim($industry['NAME'], 'Â '),
+                ]))->save();
+
+                $industriesAdded += $saved ? 1 : 0;
+            } catch (\Exception $e) {
+
+            }
         }
+
+        $savedIndustries = Generic::query("SELECT count(*) AS count FROM meroveusIndustry")->first()->count;
+
+        echo "Added {$industriesAdded} new industries of {$numberOfMeroveusIndustries} from meroveus" . PHP_EOL;
+        echo "There are {$savedIndustries} in the datahub";
     }
 
+    /**
+     * @throws \Console\CsvIteratorException
+     */
     public function sicToMerovuesAction()
     {
 
@@ -882,7 +887,13 @@ class MeroveusController extends AbstractActionController
      *
      * @return bool
      */
-    // gross!!!
+// gross!!!
+    /**
+     * @param int   $refineryId
+     * @param array $target
+     *
+     * @return bool|mixed
+     */
     private function processMatch($refineryId, array $target)
     {
 
@@ -893,22 +904,29 @@ class MeroveusController extends AbstractActionController
         }
 
         $params = [
-            'universal_revenue_volume_static'   => empty($target['universal-revenue-volume_static']) ? null : $target['universal-revenue-volume_static'],
-            'universal_employee_count_static'   => empty($target['universal-employee-count_static']) ? null : $target['universal-employee-count_static'],
-            'universal_employee_local_static'   => empty($target['universal-employee-local_static']) ? null : $target['universal-employee-local_static'],
-            'universal_established_year_static' => empty($target['universal-established-year_static']) ? null : $target['universal-established-year_static'],
-            'universal_profile_blob_static'     => empty($target['universal-profile-blob_static']) ? null : $target['universal-profile-blob_static'],
+            'universal_revenue_volume_static'   => empty($target['universal-revenue-volume_static']) ? [] : [$target['universal-revenue-volume_static']],
+            'universal_employee_count_static'   => empty($target['universal-employee-count_static']) ? [] : [$target['universal-employee-count_static']],
+            'universal_employee_local_static'   => empty($target['universal-employee-local_static']) ? [] : [$target['universal-employee-local_static']],
+            'universal_established_year_static' => empty($target['universal-established-year_static']) ? [] : [$target['universal-established-year_static']],
+            'universal_profile_blob_static'     => empty($target['universal-profile-blob_static']) ? [] : [$target['universal-profile-blob_static']],
+            'industry'                          => empty($target['firm-industry_static']) ? [] : explode(',', $target['firm-industry_static']),
         ];
 
-        foreach ($params as $name => $value) {
-            $companyInstances->first()->add_property(new CompanyInstanceProperty([
-                'name'         => $name,
-                'value'        => $value,
-                'sourceTypeId' => SourceType::fetch_one_where("name = 'meroveus'")->sourceTypeId,
-                'sourceId'     => $target['meroveusId'],
-                'createdAt'    => $target['createdAt'],
-                'updatedAt'    => $target['updatedAt'],
-            ]));
+        foreach ($params as $name => $values) {
+            foreach ( $values as $value ) {
+                $value = trim( $value, 'Â\'"  ');
+                $companyInstances->first()->add_property(
+                    new CompanyInstanceProperty(
+                        [
+                            'name'         => $name,
+                            'value'        => $value,
+                            'sourceTypeId' => SourceType::fetch_one_where( "name = 'meroveus'" )->sourceTypeId,
+                            'sourceId'     => $target['meroveusId'],
+                            'createdAt'    => $target['createdAt'],
+                            'updatedAt'    => $target['updatedAt'],
+                        ] ) );
+
+            }
         }
 
         $companyInstances->first()->save();
@@ -980,5 +998,52 @@ class MeroveusController extends AbstractActionController
         return @round($size / pow(1024, ($i = (int)floor(log($size, 1024)))), 2) . ' ' . $unit[$i];
     }
 
+
+    public function tierAction()
+    {
+        ini_set('memory_limit', '1024M');
+
+
+        echo '
+        __________________ _______  _______ _________ _        _______ 
+        \__   __/\__   __/(  ____ \(  ____ )\__   __/( (    /|(  ____ \
+           ) (      ) (   | (    \/| (    )|   ) (   |  \  ( || (    \/
+           | |      | |   | (__    | (____)|   | |   |   \ | || |      
+           | |      | |   |  __)   |     __)   | |   | (\ \) || | ____ 
+           | |      | |   | (      | (\ (      | |   | | \   || | \_  )
+           | |   ___) (___| (____/\| ) \ \_____) (___| )  \  || (___) |
+           )_(   \_______/(_______/|/   \__/\_______/|/    )_)(_______)
+        ';
+        $start = date('h:i:s A');
+        echo "started at " . $start . PHP_EOL;
+        $count = 1;
+
+        $counts     = [
+            1 => 0,
+            2 => 0,
+            3 => 0,
+            4 => 0,
+            5 => 0,
+            6 => 0,
+            7 => 0,
+        ];
+        $foundCount = 0;
+        $count      = 1;
+        while ($count < 1000) {
+            $tier = $this->doTier($count);
+            if ($tier) {
+                $foundCount++;
+                $counts[$tier]++;
+
+            }
+            $count++;
+        }
+        echo $count - 1 . ' records searched' . PHP_EOL;
+        echo $foundCount . ' records found' . PHP_EOL;
+        echo 'totals:' . PHP_EOL;
+        print_r($counts);
+        $end = date('h:i:s A');
+        echo "ended at " . $end . PHP_EOL;
+    }
 
 }

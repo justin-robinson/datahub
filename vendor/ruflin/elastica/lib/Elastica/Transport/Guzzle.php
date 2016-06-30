@@ -1,5 +1,4 @@
 <?php
-
 namespace Elastica\Transport;
 
 use Elastica\Connection;
@@ -33,7 +32,7 @@ class Guzzle extends AbstractTransport
      *
      * @var Client Guzzle client to reuse
      */
-    protected static $_guzzleClientConnection = null;
+    protected static $_guzzleClientConnection;
 
     /**
      * Makes calls to the elasticsearch server.
@@ -148,7 +147,8 @@ class Guzzle extends AbstractTransport
     /**
      * Return Guzzle resource.
      *
-     * @param bool $persistent False if not persistent connection
+     * @param string $baseUrl
+     * @param bool   $persistent False if not persistent connection
      *
      * @return Client
      */

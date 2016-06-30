@@ -20,6 +20,10 @@ use Zend\Stdlib\Parameters;
 use Zend\Stdlib\ResponseInterface;
 use Zend\Uri\Http as HttpUri;
 
+/**
+ * Class AbstractControllerTestCase
+ * @package Zend\Test\PHPUnit\Controller
+ */
 abstract class AbstractControllerTestCase extends PHPUnit_Framework_TestCase
 {
     /**

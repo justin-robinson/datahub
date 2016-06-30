@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class ScratchBizjIndustry
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/06/15
+ * @date 2016/06/17
  * @property mixed $industry_id
  * @property mixed $industry_code
  * @property mixed $industry_name

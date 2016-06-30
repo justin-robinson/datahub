@@ -6,6 +6,7 @@ use Console\Record\Formatter\FormatterTrait;
 use DB\Datahub\Company;
 use DB\Datahub\CompanyInstance;
 use DB\Datahub\CompanyInstanceProperty;
+use DB\Datahub\MeroveusIndustry;
 use DB\Datahub\SourceType;
 use DB\Datahub\State;
 
@@ -157,6 +158,26 @@ class ImportRefinery {
         $propertyArray['name'] = 'phoneCountryCode';
         $propertyArray['value'] = $countryCode;
         $companyInstance->add_property( new CompanyInstanceProperty( $propertyArray ) );
+
+        if ( $companyInstance->sicCode ) {
+            $meroveusIndustries = MeroveusIndustry::query(
+                "SELECT
+                    mI.*
+                FROM
+                  sic_code_meroveus_industry_map scmim
+                  JOIN meroveusIndustry mI ON ( scmim.meroveus_industry_id = mI.meroveusIndustryId )
+                WHERE
+                  scmim.sic = ?",
+                [$companyInstance->sicCode]
+            );
+            if ( $meroveusIndustries ) {
+                foreach ( $meroveusIndustries as $meroveusIndustry ) {
+                    $propertyArray['name'] = 'industry';
+                    $propertyArray['value'] = $meroveusIndustry->industry;
+                    $companyInstance->add_property( new CompanyInstanceProperty( $propertyArray ) );
+                }
+            }
+        }
 
         $company->add_company_instance( $companyInstance );
 

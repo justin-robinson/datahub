@@ -148,7 +148,6 @@ class Company extends \DBCore\Datahub\Company
      */
     public function add_company_instance(CompanyInstance $instance)
     {
-
         $this->companyInstances->add_row($instance);
     }
 
@@ -157,7 +156,7 @@ class Company extends \DBCore\Datahub\Company
      */
     public function delete () {
 
-        if ( !$this->loaded_from_database() ) {
+        if ( !$this->is_loaded_from_database() ) {
             return false;
         }
 
@@ -216,14 +215,32 @@ class Company extends \DBCore\Datahub\Company
     }
 
     /**
+     * return all records (including deleted)
+     * @param bool $allRecords
+     *
      * @return Rows
      */
-    public function fetch_company_instances()
+    public function fetch_company_instances($allRecords = false)
     {
 
         if (!empty($this->companyId)) {
-            $instances = CompanyInstance::fetch_where('companyId = ?', [$this->companyId]);
+            $instances = CompanyInstance::fetch_where('companyId = ?', [$this->companyId], 1000, 0, $allRecords);
+            $this->companyInstances = $instances ? $instances : new Rows();
+        }
 
+        return $this->get_company_instances();
+    }
+
+    /**
+     * Return only deleted instances
+     * 
+     * @return Rows
+     */
+    public function fetch_deleted_company_instances()
+    {
+
+        if (!empty($this->companyId)) {
+            $instances = CompanyInstance::fetch_where('companyId = ? AND deletedAt IS NOT NULL', [$this->companyId], 1000, 0, true);
             $this->companyInstances = $instances ? $instances : new Rows();
         }
 
@@ -244,74 +261,55 @@ class Company extends \DBCore\Datahub\Company
      *
      * @return bool
      */
-    public function save($setTimestamps = true)
-    {
+    public function save($setTimestamps = true) {
         // this will renormalize the name
         $this->name = $this->name;
-
-        $companyKey = $this->normalizedName;
-
-        if (!$this->is_loaded_from_database() ) {
-
-            // does this company exist in the cache?
-            $existingCompany = self::$companyCache->get( $companyKey );
-
-            // look up to db on cache miss
-            if( !$existingCompany ) {
-                $existingCompany = Company::fetch_one_where( 'normalizedName = ?', [ $this->normalizedName ] );
-            }
-        } else {
-            $existingCompany = false;
-        }
-
-        // save new company on cache miss and db lookup failure
-        if( $existingCompany ) {
-
-            $this->populate($existingCompany->to_array(false));
+        // guilty until proven innocent
+        $saved = false;
+        // lookup company in cache by normalized name if it didn't come from the database
+        if ( !$this->is_loaded_from_database() && self::$companyCache->exists($this->normalizedName)) {
+            $this->populate(self::$companyCache->get( $this->normalizedName )->to_array(false));
             $this->loaded_from_database();
 
-            $saved = false;
-
         } else {
-
+            // actually save a new company :D
+            // set timestamps on the model before saving
             if( $setTimestamps ) {
-
-                // set timestamps
-                if( empty($this->createdAt) ) {
+                if( $this->createdAt !== self::$dBColumnDefaultValuesArray['createdAt'] ) {
                     $this->set_literal( 'createdAt', 'NOW()' );
                 }
                 $this->set_literal( 'updatedAt', 'NOW()' );
-
             }
-
-            if ( $saved = parent::save() ) {
-
-                ++self::$companiesSaved;
-
-                // put company in cache for later
-                self::$companyCache->put( $companyKey, $this );
+            // attempt the save
+            try{
+                $saved = parent::save();
+                if ( $saved ) {
+                    ++self::$companiesSaved;
+                    // put company in cache for later
+                    self::$companyCache->put( $this->normalizedName, $this );
+                }
+            } catch ( \Exception $e ) {
+                // load existing company data into this model
+                $existingCompany = self::fetch_one_where('normalizedName = ?', [$this->normalizedName]);
+                if ( $existingCompany ) {
+                    $this->populate($existingCompany->to_array(false));
+                }
             }
-
         }
-
         $this->save_company_instances();
-
         return $saved;
     }
 
     public function save_company_instances () {
-
+        // can't save instances if the company doesn't have an id
         if ( empty($this->companyId) ) {
             return;
         }
-
+        // save each company instance
         foreach ($this->get_company_instances() as $companyInstance) {
-
             // link this instance to the company
             $companyInstance->companyId = $this->companyId;
-
             $companyInstance->save();
-
         }
     }
 
@@ -322,31 +320,84 @@ class Company extends \DBCore\Datahub\Company
      *
      * @return bool|Company
      */
-    public static function fetch_company_and_instances($companyId)
-    {
-        Generic::connect();
-        $mysqliResult = Generic::$connection->execute(
+    public static function fetch_company_and_instances($companyId) {
+
+        /**
+         * @var $company Company
+         */
+        $company = self::fetch_by_id($companyId);
+
+        if ( $company === false ) {
+            return false;
+        }
+
+        foreach ( $company->fetch_company_instances() as $instance ) {
+            /**
+             * @var $instance CompanyInstance
+             */
+            $instance->fetch_properties();
+            $instance->fetch_contacts();
+            $instance->fetch_state();
+            $instance->fetch_channel_ids();
+        }
+
+        return $company;
+    }
+
+    /**
+     * @param     $from
+     * @param     $to
+     * @param int $offset
+     * @param int $limit
+     *
+     * @return Rows
+     * @throws \Exception
+     */
+    public static function fetch_deleted_in_range( $from, $to, $offset = 0, $limit = 1000) {
+
+        return self::query(
             "SELECT
-              c.*,
-              ci.*,
-              cip.*,
-              cn.*
-            FROM company c
+              c.*
+            FROM
+              company c
               LEFT JOIN companyInstance ci USING (companyId)
-              LEFT JOIN companyInstanceProperty cip USING (companyInstanceId)
-              LEFT JOIN contact cn USING ( companyInstanceId )
             WHERE
-              c.companyId = ?
-              AND cip.deletedAt IS NULL
-              AND ci.deletedAt IS NULL
-              AND c.deletedAt IS NULL;",
-            [$companyId]);
+              c.deletedAt BETWEEN ? and ?
+              OR ci.deletedAt BETWEEN ? and ?
+            GROUP BY c.companyID
+            LIMIT ?, ?",
+            [$from, $to, $from, $to, $offset, $limit]
+        );
+    }
 
-        $companies = self::create_rows_from_mysqli_result($mysqliResult);
+    /**
+     * Get deleted count
+     *
+     * @param $from
+     * @param $to
+     *
+     * @return bool|int|Rows
+     */
+    public static function fetch_deleted_in_range_count($from, $to) {
 
-        $mysqliResult->free();
+        $companiesDeleted = Generic::query(
+            "SELECT
+              count(*) as count
+            FROM (
+              SELECT
+                c.companyId
+              FROM
+                company c
+                LEFT JOIN companyInstance ci USING (companyId)
+              WHERE
+                c.deletedAt BETWEEN ? AND ?
+                OR ci.deletedAt BETWEEN ? AND ?
+              GROUP BY c.companyID
+            ) cc",
+            [$from, $to, $from, $to]
+        );
 
-        return $companies->first();
+        return $companiesDeleted->first()->count;
     }
 
     /**
@@ -360,45 +411,9 @@ class Company extends \DBCore\Datahub\Company
      */
     public static function fetch_modified_in_range( $from, $to, $offset = 0, $limit = 1000) {
 
-        Generic::connect();
-        $mysqliResult = Generic::$connection->execute(
+        return self::query(
             "SELECT
-              c.*,
-              ci.*,
-              cip.*,
-              cn.*
-            FROM
-              (
-                SELECT
-                  c.*
-                FROM
-                  company c
-                  LEFT JOIN companyInstance ci USING (companyId)
-                  LEFT JOIN companyInstanceProperty cip USING (companyInstanceId)
-                WHERE
-                  c.updatedAt BETWEEN ? and ?
-                  OR ci.updatedAt BETWEEN ? and ?
-                  OR cip.updatedAt BETWEEN ? and ?
-                GROUP BY c.companyID
-                LIMIT ?, ?
-              ) c
-              LEFT JOIN companyInstance ci USING (companyId)
-              LEFT JOIN companyInstanceProperty cip USING (companyInstanceId)
-              LEFT JOIN contact cn USING ( companyInstanceId );",
-            [$from, $to, $from, $to, $from, $to, $offset, $limit]);
-
-        $companies = self::create_rows_from_mysqli_result($mysqliResult);
-
-        $mysqliResult->free();
-
-        return $companies;
-    }
-
-    public static function fetch_num_companies_modified_in_range ( $from, $to ) {
-
-        return Generic::query(
-            "SELECT
-              count(DISTINCT c.companyId) as count
+              c.*
             FROM
               company c
               LEFT JOIN companyInstance ci USING (companyId)
@@ -406,8 +421,41 @@ class Company extends \DBCore\Datahub\Company
             WHERE
               c.updatedAt BETWEEN ? and ?
               OR ci.updatedAt BETWEEN ? and ?
-              OR cip.updatedAt BETWEEN ? and ?;"
-        ,[$from, $to, $from, $to, $from, $to])->first()->count;
+              OR cip.updatedAt BETWEEN ? and ?
+            GROUP BY c.companyID
+            LIMIT ?, ?",
+            [$from, $to, $from, $to, $from, $to, $offset, $limit]
+            );
+    }
+
+    /**
+     * @param $from
+     * @param $to
+     *
+     * @return bool|int|Rows
+     */
+    public static function fetch_modified_in_range_count( $from, $to ) {
+
+        $companiesModified = Generic::query(
+            "SELECT
+              count(*) as count
+            FROM (
+              SELECT
+                c.companyId
+              FROM
+                company c
+                LEFT JOIN companyInstance ci USING (companyId)
+                LEFT JOIN companyInstanceProperty cip USING (companyInstanceId)
+              WHERE
+                c.updatedAt BETWEEN ? and ?
+                OR ci.updatedAt BETWEEN ? and ?
+                OR cip.updatedAt BETWEEN ? and ?
+              GROUP BY c.companyID
+            ) cc",
+            [$from, $to, $from, $to, $from, $to]
+        );
+
+        return $companiesModified->first()->count;
     }
 
     /**
@@ -529,110 +577,6 @@ class Company extends \DBCore\Datahub\Company
      */
     public function tierTwoValidate(CompanyInstance $instance){
 
-    }
-
-    /**
-     * @param \mysqli_result $mysqliResult
-     *
-     * @return Rows
-     */
-    private static function create_rows_from_mysqli_result ( \mysqli_result $mysqliResult ) {
-
-        $rows = new Rows();
-        $prevCompanyId = null;
-        $prevCompanyInstanceId = null;
-        $prevCompanyInstancePropertyId = null;
-        $prevContactId = null;
-        $i = 0;
-
-        // organize the fields where we can lookup by $fields['tableName']['columnName']
-        // and get the index into the raw $rows array
-        $fields = [];
-        foreach ($mysqliResult->fetch_fields() as $fieldNumber => $field) {
-            if (empty($fields[$field->orgtable])) {
-                $fields[$field->orgtable] = [];
-            }
-            $fields[$field->orgtable][$field->orgname] = $fieldNumber;
-        }
-
-        while ($row = $mysqliResult->fetch_row()) {
-
-            // the company instance id of this row
-            $companyId = $row[$fields[Company::TABLE][Company::AUTO_INCREMENT_COLUMN]];
-
-            // is this row a new company?
-            if ( $companyId !== $prevCompanyId) {
-
-                // add previous company to the rows collection
-                if ( isset($company) ){
-                    $rows->add_row($company);
-                }
-
-                // create a new company model
-                $company = new self();
-                foreach ($fields[Company::TABLE] as $columnName => $rowIndex) {
-                    $company->$columnName = $row[$rowIndex];
-                }
-
-                // this will trigger a new company instance to be made ( just to be safe )
-                unset($instance);
-            }
-
-            // the company instance id of this row
-            $companyInstanceId = $row[$fields[CompanyInstance::TABLE][CompanyInstance::AUTO_INCREMENT_COLUMN]];
-
-            // is this row a new instance?
-            if ( $companyInstanceId !== $prevCompanyInstanceId) {
-
-                // create the new instance model
-                $instance = new CompanyInstance();
-
-                // populate the model
-                foreach ($fields[CompanyInstance::TABLE] as $columnName => $rowIndex) {
-                    $instance->$columnName = $row[$rowIndex];
-                }
-
-                // add the instance to the company record
-                $company->add_company_instance($instance);
-            }
-
-            // the company instance property id of this row
-            $companyInstancePropertyId = $row[$fields[CompanyInstanceProperty::TABLE][CompanyInstanceProperty::AUTO_INCREMENT_COLUMN]];
-
-            if ( $companyInstancePropertyId !== $prevCompanyInstancePropertyId ) {
-                // all rows are properties so just create, populate, and add the the instance
-                $property = new CompanyInstanceProperty();
-                foreach ($fields[CompanyInstanceProperty::TABLE] as $columnName => $rowIndex) {
-                    $property->$columnName = $row[$rowIndex];
-                }
-                $instance->add_property($property);
-            }
-
-            // the company instance property id of this row
-            $contactId = $row[$fields[Contact::TABLE][Contact::AUTO_INCREMENT_COLUMN]];
-            if ( $contactId !== $prevContactId ) {
-                $contact = new Contact();
-                foreach ( $fields[Contact::TABLE] as $columnName => $rowIndex ) {
-                    $contact->$columnName = $row[$rowIndex];
-                }
-                $instance->add_contact($contact);
-            }
-
-            // need this for the next iteration
-            $prevContactId = $contactId;
-            $prevCompanyInstancePropertyId = $companyInstancePropertyId;
-            $prevCompanyInstanceId = $companyInstanceId;
-            $prevCompanyId = $companyId;
-
-            ++$i;
-        }
-
-        // add last company to the rows collection
-        if ( isset($company) ) {
-            $rows->add_row($company);
-        }
-
-        return $rows;
     }
 }
 

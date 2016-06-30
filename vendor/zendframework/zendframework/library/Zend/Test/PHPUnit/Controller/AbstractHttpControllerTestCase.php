@@ -11,6 +11,10 @@ namespace Zend\Test\PHPUnit\Controller;
 use PHPUnit_Framework_ExpectationFailedException;
 use Zend\Dom\Document;
 
+/**
+ * Class AbstractHttpControllerTestCase
+ * @package Zend\Test\PHPUnit\Controller
+ */
 abstract class AbstractHttpControllerTestCase extends AbstractControllerTestCase
 {
     /**
