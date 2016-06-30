@@ -85,9 +85,10 @@ trait FormatterTrait {
               INNER JOIN `datahub`.`market_msa_pmsa_map` USING ( sa_code )
               INNER JOIN `datahub`.`market` m USING ( market_id )
             WHERE
-              msa.sa_name = ?
+              msa.sa_state = ?
+              AND msa.sa_name LIKE ?
             LIMIT 1",
-                [ "{$city}, {$stateCode}" ]
+                [ $stateCode, "%{$city}%" ]
             );
 
             if( $market ) {

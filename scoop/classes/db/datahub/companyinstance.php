@@ -494,31 +494,33 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
             $existingInstance = false;
         }
 
-        // link the properties to the existing instance
+        // merge existing instance into this one
         if ($existingInstance) {
-            // turn this instance into the existing one
-            $this->populate($existingInstance->to_array(false));
-            $this->save_properties();
-        } else {
-            // set timestamps on the model before saving
-            if ($setTimestamps) {
-                if ( $this->createdAt !== self::$dBColumnDefaultValuesArray['createdAt'] ) {
-                    $this->set_literal('createdAt', 'NOW()');
+            foreach ( $existingInstance->to_array(false) as $column => $value ) {
+                if ( empty($this->{$column}) ) {
+                    $this->{$column} = $value;
                 }
-                $this->set_literal('updatedAt', 'NOW()');
             }
-            
-            $this->instanceTierThyself();
+        }
 
-            // save to db
-            $saved = parent::save();
-
-            if ( $saved ) {
-                $this->save_contacts();
-                $this->save_properties();
-                ++self::$instancesSaved;
-                self::$companyInstanceCache->put($companyInstanceCacheKey, $this);
+        // set timestamps on the model before saving
+        if ($setTimestamps) {
+            if ( $this->createdAt !== self::$dBColumnDefaultValuesArray['createdAt'] ) {
+                $this->set_literal('createdAt', 'NOW()');
             }
+            $this->set_literal('updatedAt', 'NOW()');
+        }
+
+        $this->instanceTierThyself();
+
+        // save to db
+        $saved = parent::save();
+
+        if ( $saved ) {
+            $this->save_contacts();
+            $this->save_properties();
+            ++self::$instancesSaved;
+            self::$companyInstanceCache->put($companyInstanceCacheKey, $this);
         }
 
         return $saved;
@@ -693,7 +695,10 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         foreach ($this->properties as $field) {
             foreach ($field as $entry) {
                 foreach ($entry as $prop) {
-                    $compare = new \DateTime($prop->updatedAt);
+                    if ( is_a($prop, Literal::class)) {
+                        $oen = 1;
+                    }
+                    $compare = (string)$prop->updatedAt === 'NOW()' ? $now : new \DateTime($prop->updatedAt);
                     if ($compare > $updatedAt) {
                         $updatedAt = $compare;
                     }
