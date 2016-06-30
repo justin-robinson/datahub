@@ -64,15 +64,6 @@ class CronController extends AbstractActionController {
             "Description"
         ];
 
-        // each row in the elastic dump needs another row telling it to what to do with the data it's
-        // about to get
-        $elasticActionRow = json_encode([
-            "create" => [
-                "_index" => 'companies',
-                "_type"  => 'company',
-            ],
-        ]) . "\n";
-
         // write the header rows to the csv
         $csvFileHandle->fputcsv( $headers );
 
@@ -83,6 +74,8 @@ class CronController extends AbstractActionController {
         $dbConfig = $this->config['mysql']['db02'];
         $dbConfig['database'] = $dbConfig['dbname'];
 
+        $offset = 0;
+        $limit = 10000;
         $connection = new Connection($dbConfig);
 
         $results = Generic::query(
@@ -129,101 +122,146 @@ class CronController extends AbstractActionController {
                 AND addr.City != ''
                 AND org.Name != ''
               ORDER BY
-                org.QName",
-            [$minutes, $minutes, $minutes, $minutes, $minutes, $minutes],
+                org.QName
+              LIMIT ?, ?",
+            [$minutes, $minutes, $minutes, $minutes, $minutes, $minutes, $offset, $limit],
             $connection);
 
         if ( $results === false ) {
             return null;
         }
 
-        $elasticChunkNumber = 0;
-        // parse each row into a csv and json file
-        foreach ( $results as $index => $row ) {
+        while ( ($results = Generic::query(
+            "SELECT
+                org.id,
+                org.ExternalId,
+                org.SourceId,
+                org.Name,
+                org.Ticker,
+                org.TickerExchange,
+                org.DateModified,
+                addr.Address1,
+                addr.Address2,
+                addr.City,
+                addr.State,
+                addr.ZipCode,
+                # assume all empty countries are US
+                IF ( addr.Country IS NULL OR addr.Country = '',
+                  'United States',
+                  addr.Country) AS Country,
+                addr.Lat,
+                addr.Lon,
+                phone.OfficePhone1,
+                url.Url,
+                sic.SIC,
+                descr.Description
+              FROM
+                recon.Org org
+                LEFT JOIN recon.OrgAddress addr  ON ( org.id = addr.OrgId )
+                LEFT JOIN recon.OrgPhone   phone ON ( org.id = phone.OrgId )
+                LEFT JOIN recon.OrgUrl     url   ON ( org.id = url.OrgId )
+                LEFT JOIN recon.OrgSIC     sic   ON ( org.id = sic.OrgId )
+                LEFT JOIN recon.OrgDesc    descr ON ( org.id = descr.OrgId )
+              WHERE
+                (
+                  org.DateModified      > (NOW() - INTERVAL ? MINUTE )
+                  OR addr.DateModified  > (NOW() - INTERVAL ? MINUTE )
+                  OR phone.DateModified > (NOW() - INTERVAL ? MINUTE )
+				  OR url.DateModified   > (NOW() - INTERVAL ? MINUTE )
+				  OR sic.DateModified   > (NOW() - INTERVAL ? MINUTE )
+				  OR descr.DateModified > (NOW() - INTERVAL ? MINUTE )
+				)
+                AND addr.City IS NOT NULL
+                AND addr.City != ''
+                AND org.Name != ''
+              ORDER BY
+                org.QName
+              LIMIT ?, ?",
+            [$minutes, $minutes, $minutes, $minutes, $minutes, $minutes, $offset, $limit],
+            $connection)) !== false ) {
 
-            // chunk elastic bulk data into 50000 entries
-            if ( $index % 50000 === 0 ) {
-                ++$elasticChunkNumber;
-                $jsonFilePath = "/tmp/datahub-cron-recon-dump-{$timestamp}-{$elasticChunkNumber}.json";
-                $jsonFileHandle = new \SplFileObject($jsonFilePath, 'w');
-                echo $jsonFilePath . PHP_EOL;
-            }
-            $row->TickerExchange = strpos( $row->TickerExchange, 'NASDAQ' ) !== false ? 'NASDAQ' : $row->TickerExchange;
-            $row->TickerExchange = strpos( $row->TickerExchange, 'York Stock' ) !== false ? 'NYSE' : $row->TickerExchange;
-            $row->ExternalId = strlen( $row->ExternalId ) > 12 ? $row->ExternalId : '';
-            $row->Name = trim( preg_replace( '/\s+/', ' ', $row->Name ) );
+            // parse each row into a csv and json file
+            foreach ( $results as $index => $row ) {
 
-            // get the country names
-            // normalize the col for array searching
-            $processed = strtoupper( $row->Country );
-            $processed = trim( explode( "(", $processed )[0] );
-            $processed = preg_replace( '/,.*/', '', $processed );
-            $processed = preg_replace( "/\([^)]+\)/", "", $processed );
-            if( isset($countries['first'][$processed]) ) {
-                $countryCode = $countries['first'][$processed];
-            } else {
-                if( isset($countries['second'][$processed]) ) {
-                    $countryCode = $countries['second'][$processed];
+                $row->TickerExchange = strpos( $row->TickerExchange, 'NASDAQ' ) !== false ? 'NASDAQ' : $row->TickerExchange;
+                $row->TickerExchange = strpos( $row->TickerExchange, 'York Stock' ) !== false ? 'NYSE' : $row->TickerExchange;
+                $row->ExternalId = strlen( $row->ExternalId ) > 12 ? $row->ExternalId : '';
+                $row->Name = trim( preg_replace( '/\s+/', ' ', $row->Name ) );
+
+                // get the country names
+                // normalize the col for array searching
+                $processed = strtoupper( $row->Country );
+                $processed = trim( explode( "(", $processed )[0] );
+                $processed = preg_replace( '/,.*/', '', $processed );
+                $processed = preg_replace( "/\([^)]+\)/", "", $processed );
+                if( isset($countries['first'][$processed]) ) {
+                    $countryCode = $countries['first'][$processed];
                 } else {
-                    // no match so we don't care
-                    continue;
+                    if( isset($countries['second'][$processed]) ) {
+                        $countryCode = $countries['second'][$processed];
+                    } else {
+                        // no match so we don't care
+                        continue;
+                    }
                 }
+
+                // scrub phone number
+                $phone = '';
+                if( !empty($row->OfficePhone1) ) {
+                    // remove all but digits
+                    $phone = preg_replace( '/\D/', '', $row->OfficePhone1 );
+
+                    // take off the leading 1 if it's not american
+                    $phoneLength = strlen( $phone );
+                    if( ($phoneLength > 10) && (substr( $phone, 0, 1 ) === '1') ) {
+                        $phone = substr( $phone, 1, $phoneLength - 1 );
+                    }
+                }
+
+                // grab OrgUrl Data, normalise and tack on
+                $url = '';
+                if( !empty($row->Url) ) {
+                    // add http to those lacking either http or https
+                    $url = strpos( $row->Url, 'http' ) === 0 ? $row->Url : 'http://' . $row->Url;
+                    // remove everything after and including the first comma if there is a comma
+                    $url = strpos( $url, ',' ) ? substr( $url, 0, strpos( $url, ',' ) ) : $url;
+                    // remove everything after and including the first space if there is a space
+                    $url = strpos( $url, ' ' ) ? substr( $url, 0, strpos( $url, ' ' ) ) : $url;
+
+                    if( $url === "http:??" ) {
+                        $url = '';
+                    }
+                }
+
+                // format and write row to file
+                $outputLine = [
+                    $row->id,
+                    $row->ExternalId,
+                    $row->SourceId,
+                    $row->Name,
+                    $row->Ticker,
+                    $row->TickerExchange,
+                    $row->DateModified,
+                    trim( preg_replace( '/\s+/', ' ', $row->Address1 ) ),
+                    trim( preg_replace( '/\s+/', ' ', $row->Address2 ) ),
+                    trim( preg_replace( '/\s+/', ' ', $row->City ) ),
+                    trim( preg_replace( '/\s+/', ' ', $row->State ) ),
+                    trim( preg_replace( '/\s+/', ' ', $row->ZipCode ) ),
+                    $countryCode,
+                    trim( preg_replace( '/\s+/', ' ', $row->Lat ) ),
+                    trim( preg_replace( '/\s+/', ' ', $row->Lon ) ),
+                    $phone,
+                    $url,
+                    $row->SIC,
+                    $row->Description
+                ];
+                $csvFileHandle->fputcsv($outputLine);
             }
 
-            // scrub phone number
-            $phone = '';
-            if( !empty($row->OfficePhone1) ) {
-                // remove all but digits
-                $phone = preg_replace( '/\D/', '', $row->OfficePhone1 );
-
-                // take off the leading 1 if it's not american
-                $phoneLength = strlen( $phone );
-                if( ($phoneLength > 10) && (substr( $phone, 0, 1 ) === '1') ) {
-                    $phone = substr( $phone, 1, $phoneLength - 1 );
-                }
-            }
-
-            // grab OrgUrl Data, normalise and tack on
-            $url = '';
-            if( !empty($row->Url) ) {
-                // add http to those lacking either http or https
-                $url = strpos( $row->Url, 'http' ) === 0 ? $row->Url : 'http://' . $row->Url;
-                // remove everything after and including the first comma if there is a comma
-                $url = strpos( $url, ',' ) ? substr( $url, 0, strpos( $url, ',' ) ) : $url;
-                // remove everything after and including the first space if there is a space
-                $url = strpos( $url, ' ' ) ? substr( $url, 0, strpos( $url, ' ' ) ) : $url;
-
-                if( $url === "http:??" ) {
-                    $url = '';
-                }
-            }
-
-            // format and write row to file
-            $outputLine = [
-                $row->id,
-                $row->ExternalId,
-                $row->SourceId,
-                $row->Name,
-                $row->Ticker,
-                $row->TickerExchange,
-                $row->DateModified,
-                trim( preg_replace( '/\s+/', ' ', $row->Address1 ) ),
-                trim( preg_replace( '/\s+/', ' ', $row->Address2 ) ),
-                trim( preg_replace( '/\s+/', ' ', $row->City ) ),
-                trim( preg_replace( '/\s+/', ' ', $row->State ) ),
-                trim( preg_replace( '/\s+/', ' ', $row->ZipCode ) ),
-                $countryCode,
-                trim( preg_replace( '/\s+/', ' ', $row->Lat ) ),
-                trim( preg_replace( '/\s+/', ' ', $row->Lon ) ),
-                $phone,
-                $url,
-                $row->SIC,
-                $row->Description
-            ];
-            $csvFileHandle->fputcsv($outputLine);
-            $jsonFileHandle->fwrite($elasticActionRow);
-            $jsonFileHandle->fwrite(json_encode(array_combine($headers, $outputLine)) . "\n");
+            $offset += $limit;
+            echo '.';
         }
+
 
         // import the new data into meroveus
         $importer = new Refinery();
