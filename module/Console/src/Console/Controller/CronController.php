@@ -264,6 +264,7 @@ class CronController extends AbstractActionController {
 
 
         // import the new data into meroveus
+        echo PHP_EOL . "Importing {$csvFilePath}" . PHP_EOL;
         $importer = new Refinery();
         list($companiesProcessed, $instancesProcessed) = $importer->import($csvFilePath);
 
