@@ -501,7 +501,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
                     $this->{$column} = $value;
                 }
             }
-            $this->is_loaded_from_database();
+            $this->loaded_from_database();
         }
 
         // set timestamps on the model before saving
