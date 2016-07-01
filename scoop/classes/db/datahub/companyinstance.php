@@ -449,7 +449,6 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     public function save($setTimestamps = true) {
 
         // our cache key
-
         $zip                     = $this->get_property('zipCode');
         $zip                     = $zip ? $zip->value : '';
         $addr1                   = $this->get_property('address1');

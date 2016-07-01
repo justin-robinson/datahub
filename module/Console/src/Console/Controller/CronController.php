@@ -75,7 +75,7 @@ class CronController extends AbstractActionController {
         $dbConfig['database'] = $dbConfig['dbname'];
 
         $offset = 0;
-        $limit = 10000;
+        $limit = 100000;
         $connection = new Connection($dbConfig);
 
         while ( ($results = Generic::query(
@@ -128,7 +128,7 @@ class CronController extends AbstractActionController {
             $connection)) !== false ) {
 
             // parse each row into a csv and json file
-            foreach ( $results as $index => $row ) {
+            foreach ( $results as $row ) {
 
                 $row->TickerExchange = strpos( $row->TickerExchange, 'NASDAQ' ) !== false ? 'NASDAQ' : $row->TickerExchange;
                 $row->TickerExchange = strpos( $row->TickerExchange, 'York Stock' ) !== false ? 'NYSE' : $row->TickerExchange;
