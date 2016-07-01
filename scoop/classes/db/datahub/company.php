@@ -140,7 +140,7 @@ class Company extends \DBCore\Datahub\Company
             $this->normalizedName = strtolower($normalizedName);
         }
 
-        parent::__set($name, $value);
+        parent::__set($name, utf8_encode($value));
     }
 
     /**
@@ -196,10 +196,10 @@ class Company extends \DBCore\Datahub\Company
                 c.*,
                 p.sourceId
             FROM
-                `datahub`.`sourceType` s
-                LEFT JOIN `datahub`.`companyInstanceProperty` p USING (sourceTypeId)
-                LEFT JOIN `datahub`.`companyInstance` i USING ( companyInstanceId )
-                LEFT JOIN `datahub`.`company` c USING ( companyId )
+                sourceType s
+                LEFT JOIN companyInstanceProperty p USING (sourceTypeId)
+                LEFT JOIN companyInstance i USING ( companyInstanceId )
+                LEFT JOIN company c USING ( companyId )
             WHERE
                 s.name LIKE ?
                 AND p.sourceId = ?
