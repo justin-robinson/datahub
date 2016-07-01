@@ -178,6 +178,15 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     }
 
     /**
+     * @param $name
+     * @param $value
+     */
+    public function __set($name, $value) {
+
+        parent::__set($name, utf8_encode($value));
+    }
+
+    /**
      * @param Contact $contact
      */
     public function add_contact(Contact $contact)
