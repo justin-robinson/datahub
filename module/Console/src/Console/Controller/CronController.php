@@ -269,8 +269,6 @@ class CronController extends AbstractActionController {
         list($companiesProcessed, $instancesProcessed) = $importer->import($csvFilePath);
 
         printf("Imported: %s\t%s companies%s\t%s instances%s", PHP_EOL,$companiesProcessed,PHP_EOL,$instancesProcessed,PHP_EOL);
-        echo "Raw data: " . PHP_EOL . PHP_EOL;
-        var_export($results->to_array());
 
     }
 
