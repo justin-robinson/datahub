@@ -75,61 +75,8 @@ class CronController extends AbstractActionController {
         $dbConfig['database'] = $dbConfig['dbname'];
 
         $offset = 0;
-        $limit = 10000;
+        $limit = 100000;
         $connection = new Connection($dbConfig);
-
-        $results = Generic::query(
-            "SELECT
-                org.id,
-                org.ExternalId,
-                org.SourceId,
-                org.Name,
-                org.Ticker,
-                org.TickerExchange,
-                org.DateModified,
-                addr.Address1,
-                addr.Address2,
-                addr.City,
-                addr.State,
-                addr.ZipCode,
-                # assume all empty countries are US
-                IF ( addr.Country IS NULL OR addr.Country = '',
-                  'United States',
-                  addr.Country) AS Country,
-                addr.Lat,
-                addr.Lon,
-                phone.OfficePhone1,
-                url.Url,
-                sic.SIC,
-                descr.Description
-              FROM
-                recon.Org org
-                LEFT JOIN recon.OrgAddress addr  ON ( org.id = addr.OrgId )
-                LEFT JOIN recon.OrgPhone   phone ON ( org.id = phone.OrgId )
-                LEFT JOIN recon.OrgUrl     url   ON ( org.id = url.OrgId )
-                LEFT JOIN recon.OrgSIC     sic   ON ( org.id = sic.OrgId )
-                LEFT JOIN recon.OrgDesc    descr ON ( org.id = descr.OrgId )
-              WHERE
-                (
-                  org.DateModified      > (NOW() - INTERVAL ? MINUTE )
-                  OR addr.DateModified  > (NOW() - INTERVAL ? MINUTE )
-                  OR phone.DateModified > (NOW() - INTERVAL ? MINUTE )
-				  OR url.DateModified   > (NOW() - INTERVAL ? MINUTE )
-				  OR sic.DateModified   > (NOW() - INTERVAL ? MINUTE )
-				  OR descr.DateModified > (NOW() - INTERVAL ? MINUTE )
-				)
-                AND addr.City IS NOT NULL
-                AND addr.City != ''
-                AND org.Name != ''
-              ORDER BY
-                org.QName
-              LIMIT ?, ?",
-            [$minutes, $minutes, $minutes, $minutes, $minutes, $minutes, $offset, $limit],
-            $connection);
-
-        if ( $results === false ) {
-            return null;
-        }
 
         while ( ($results = Generic::query(
             "SELECT
@@ -181,7 +128,7 @@ class CronController extends AbstractActionController {
             $connection)) !== false ) {
 
             // parse each row into a csv and json file
-            foreach ( $results as $index => $row ) {
+            foreach ( $results as $row ) {
 
                 $row->TickerExchange = strpos( $row->TickerExchange, 'NASDAQ' ) !== false ? 'NASDAQ' : $row->TickerExchange;
                 $row->TickerExchange = strpos( $row->TickerExchange, 'York Stock' ) !== false ? 'NYSE' : $row->TickerExchange;
@@ -269,8 +216,6 @@ class CronController extends AbstractActionController {
         list($companiesProcessed, $instancesProcessed) = $importer->import($csvFilePath);
 
         printf("Imported: %s\t%s companies%s\t%s instances%s", PHP_EOL,$companiesProcessed,PHP_EOL,$instancesProcessed,PHP_EOL);
-        echo "Raw data: " . PHP_EOL . PHP_EOL;
-        var_export($results->to_array());
 
     }
 

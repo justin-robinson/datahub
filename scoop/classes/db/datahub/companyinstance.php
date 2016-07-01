@@ -449,7 +449,6 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     public function save($setTimestamps = true) {
 
         // our cache key
-
         $zip                     = $this->get_property('zipCode');
         $zip                     = $zip ? $zip->value : '';
         $addr1                   = $this->get_property('address1');
@@ -501,6 +500,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
                     $this->{$column} = $value;
                 }
             }
+            $this->loaded_from_database();
         }
 
         // set timestamps on the model before saving
@@ -695,9 +695,6 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         foreach ($this->properties as $field) {
             foreach ($field as $entry) {
                 foreach ($entry as $prop) {
-                    if ( is_a($prop, Literal::class)) {
-                        $oen = 1;
-                    }
                     $compare = (string)$prop->updatedAt === 'NOW()' ? $now : new \DateTime($prop->updatedAt);
                     if ($compare > $updatedAt) {
                         $updatedAt = $compare;

@@ -293,6 +293,7 @@ class Company extends \DBCore\Datahub\Company
                 $existingCompany = self::fetch_one_where('normalizedName = ?', [$this->normalizedName]);
                 if ( $existingCompany ) {
                     $this->populate($existingCompany->to_array(false));
+                    $this->loaded_from_database();
                 }
             }
         }
