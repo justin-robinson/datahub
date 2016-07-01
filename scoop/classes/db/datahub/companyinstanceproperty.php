@@ -16,6 +16,15 @@ use Scoop\Database\Rows;
 class CompanyInstanceProperty extends \DBCore\Datahub\CompanyInstanceProperty {
 
     /**
+     * @param $name
+     * @param $value
+     */
+    public function __set($name, $value) {
+
+        parent::__set($name, utf8_encode($value));
+    }
+
+    /**
      * @return bool
      */
     public function delete () {
