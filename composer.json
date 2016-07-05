@@ -16,15 +16,14 @@
 	},
 	"minimum-stability" : "stable",
 	"config" : {
-	    "preferred-install" : "dist",
-	    "secure-http" : false
+	    "preferred-install" : "dist"
 	},
 	"repositories" : [{
 			"type" : "composer",
 			"url" : "https://packages.zendframework.com/"
 		}, {
 			"type" : "composer",
-			"url" : "http://packages.bizj-internal.com/"
+			"url" : "https://packages.bizj-production.com/"
 		}
 	]
 }
