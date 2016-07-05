@@ -33,29 +33,4 @@ class CompanyInstancesController extends AbstractRestfulController
         return $this->getResponse()->setStatusCode(204);
 
     }
-
-    public function create($data)
-    {
-
-        $this->response->setStatusCode(405);
-
-        return new JsonModel(['message' => 'not allowed']);
-    }
-
-    public function update($companyId, $data)
-    {
-
-        $this->response->setStatusCode(405);
-
-        return new JsonModel(['message' => 'not allowed']);
-
-    }
-
-    public function delete($id)
-    {
-
-        $this->response->setStatusCode(405);
-
-        return new JsonModel(['message' => 'not allowed']);
-    }
 }
