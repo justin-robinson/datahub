@@ -81,28 +81,28 @@ class CronController extends AbstractActionController {
         // have to convert all these fields because refinery is latin1 NOT utf8
         while ( ($results = Generic::query(
             "SELECT
-                CONVERT(org.id USING utf8),
-                CONVERT(org.ExternalId USING utf8),
-                CONVERT(org.SourceId USING utf8),
-                CONVERT(org.Name USING utf8),
-                CONVERT(org.Ticker USING utf8),
-                CONVERT(org.TickerExchange USING utf8),
-                CONVERT(org.DateModified USING utf8),
-                CONVERT(addr.Address1 USING utf8),
-                CONVERT(addr.Address2 USING utf8),
-                CONVERT(addr.City USING utf8),
-                CONVERT(addr.State USING utf8),
-                CONVERT(addr.ZipCode USING utf8),
+                CONVERT(org.id USING utf8) AS id,
+                CONVERT(org.ExternalId USING utf8) AS ExternalId,
+                CONVERT(org.SourceId USING utf8) AS SourceId,
+                CONVERT(org.Name USING utf8) AS Name,
+                CONVERT(org.Ticker USING utf8) AS Ticker,
+                CONVERT(org.TickerExchange USING utf8) AS TickerExchange,
+                CONVERT(org.DateModified USING utf8) AS DateModified,
+                CONVERT(addr.Address1 USING utf8) AS Address1,
+                CONVERT(addr.Address2 USING utf8) AS Address2,
+                CONVERT(addr.City USING utf8) AS City,
+                CONVERT(addr.State USING utf8) AS State,
+                CONVERT(addr.ZipCode USING utf8) AS ZipCode,
                 # assume all empty countries are US
                 CONVERT(IF ( addr.Country IS NULL OR addr.Country = '',
                   'United States',
                   addr.Country) USING utf8) AS Country,
-                CONVERT(addr.Lat USING utf8),
-                CONVERT(addr.Lon USING utf8),
-                CONVERT(phone.OfficePhone1 USING utf8),
-                CONVERT(url.Url USING utf8),
-                CONVERT(sic.SIC USING utf8),
-                CONVERT(descr.Description USING utf8)
+                CONVERT(addr.Lat USING utf8) AS Lat,
+                CONVERT(addr.Lon USING utf8) AS Lon,
+                CONVERT(phone.OfficePhone1 USING utf8) AS OfficePhone1,
+                CONVERT(url.Url USING utf8) AS Url,
+                CONVERT(sic.SIC USING utf8) AS SIC,
+                CONVERT(descr.Description USING utf8) AS Description
               FROM
                 recon.Org org
                 LEFT JOIN recon.OrgAddress addr  ON ( org.id = addr.OrgId )
