@@ -405,4 +405,12 @@ class ImportController extends AbstractActionController
         echo "\t updated {$updateCount}";
     }
 
+
+
+
+    public function datasetFromCsv(){
+        $csvFile = realpath($this->getRequest()->getParam('file'));
+        $importer = '';
+    }
+
 }
