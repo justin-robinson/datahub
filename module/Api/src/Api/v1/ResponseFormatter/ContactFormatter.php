@@ -8,21 +8,24 @@ use DB\Datahub\Contact;
  * Class ContactFormatter
  * @package Api\v1\ResponseFormatter
  */
-class ContactFormatter {
+class ContactFormatter
+{
 
     /**
      * @param Contact $property
      *
      * @return array
      */
-    public static function format (Contact $property) {
+    public static function format(Contact $property)
+    {
 
-        $uri = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST', 'hub') . '/api/v1/';
+        $uri = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST',
+                'hub') . '/api/v1/';
 
         $array = $property->to_array();
 
         $array['_links'] = [
-            'self'      => [
+            'self'     => [
                 'href' => $uri . "contact/{$array['contactId']}",
             ],
             'instance' => [

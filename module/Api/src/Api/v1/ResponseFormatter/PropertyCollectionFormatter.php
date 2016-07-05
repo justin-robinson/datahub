@@ -9,7 +9,8 @@ use Scoop\Database\Rows;
  * Class PropertyCollectionFormatter
  * @package Api\v1\ResponseFormatter
  */
-class PropertyCollectionFormatter {
+class PropertyCollectionFormatter
+{
 
     /**
      * @param Rows   $properties
@@ -20,41 +21,47 @@ class PropertyCollectionFormatter {
      *
      * @return array
      */
-    public static function format ( Rows $properties, $page = 1, $limit = 1000, $uri = '/api/v1/contact', $totalCount = null) {
+    public static function format(
+        Rows $properties,
+        $page = 1,
+        $limit = 1000,
+        $uri = '/api/v1/contact',
+        $totalCount = null
+    ) {
 
         $uri = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST', 'hub') . $uri;
-        $totalCount = is_null($totalCount) ? Generic::query('select count(*) as count from companyInstanceProperty')->first()->count : $totalCount;
+        $totalCount = is_null($totalCount) ? Generic::query('SELECT count(*) AS count FROM companyInstanceProperty')->first()->count : $totalCount;
         $lastPage = ceil($totalCount / $limit);
 
         $array = [
             'count'     => [
                 'total'   => $totalCount,
                 'current' => $properties->get_num_rows(),
-                'offset'  => ($page-1) * $limit,
+                'offset'  => ($page - 1) * $limit,
             ],
-            '_links' => [
-                'self'     => [
+            '_links'    => [
+                'self'  => [
                     'href' => $uri,
                 ],
-                'first'     => [
+                'first' => [
                     'href' => $uri . '?page=1',
                 ],
-                'last' => [
+                'last'  => [
                     'href' => $uri . '?page=' . $lastPage,
                 ],
             ],
             '_embedded' => [
-                'properties' => []
-            ]
+                'properties' => [],
+            ],
         ];
 
-        if ( $page > 1 ) {
+        if ($page > 1) {
             $array['_links']['prev'] = [
                 'href' => $uri . '?page=' . ($page - 1),
             ];
         }
 
-        if ( $page < $lastPage ) {
+        if ($page < $lastPage) {
             $array['_links']['next'] = [
                 'href' => $uri . '?page=' . ($page + 1),
             ];
@@ -62,8 +69,8 @@ class PropertyCollectionFormatter {
 
         $propertyArray = &$array['_embedded']['properties'];
 
-        foreach ( $properties as $property ) {
-            $propertyArray[] = PropertyFormatter::format( $property );
+        foreach ($properties as $property) {
+            $propertyArray[] = PropertyFormatter::format($property);
         }
 
         return $array;

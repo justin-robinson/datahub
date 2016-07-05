@@ -9,23 +9,26 @@ use DB\Datahub\SourceType;
  * Class CompanyInstancePropertyFormatter
  * @package Api\v1\ResponseFormatter
  */
-class PropertyFormatter {
+class PropertyFormatter
+{
 
     /**
      * @param Company $property
      *
-*@return array
+     * @return array
      */
-    public static function format (CompanyInstanceProperty $property) {
+    public static function format(CompanyInstanceProperty $property)
+    {
 
-        $uri = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST', 'hub') . '/api/v1/';
+        $uri = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST',
+                'hub') . '/api/v1/';
 
         $array = $property->to_array();
 
         $array['sourceType'] = SourceType::fetch_by_id($property->sourceTypeId);
 
         $array['_links'] = [
-            'self'      => [
+            'self'     => [
                 'href' => $uri . "property/{$array['companyInstancePropertyId']}",
             ],
             'instance' => [

@@ -9,7 +9,8 @@ use Scoop\Database\Rows;
  * Class CompanyCollectionFormatter
  * @package Api\v1\ResponseFormatter
  */
-class CompanyCollectionFormatter {
+class CompanyCollectionFormatter
+{
 
     /**
      * @param Rows $companies
@@ -18,41 +19,42 @@ class CompanyCollectionFormatter {
      *
      * @return array
      */
-    public static function format ( Rows $companies, $page = 1, $limit = 1000) {
+    public static function format(Rows $companies, $page = 1, $limit = 1000)
+    {
 
         $host = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST') . '/api/v1/company';
-        $totalCount = Generic::query('select count(*) as count from company')->first()->count;
+        $totalCount = Generic::query('SELECT count(*) AS count FROM company')->first()->count;
         $lastPage = ceil($totalCount / $limit);
 
         $array = [
             'count'     => [
                 'total'   => $totalCount,
                 'current' => $companies->get_num_rows(),
-                'offset'  => ($page-1) * $limit,
+                'offset'  => ($page - 1) * $limit,
             ],
-            '_links' => [
-                'self'     => [
+            '_links'    => [
+                'self'  => [
                     'href' => $host,
                 ],
-                'first'     => [
+                'first' => [
                     'href' => $host . '?page=1',
                 ],
-                'last' => [
+                'last'  => [
                     'href' => $host . '?page=' . $lastPage,
                 ],
             ],
             '_embedded' => [
-                'company' => []
-            ]
+                'company' => [],
+            ],
         ];
 
-        if ( $page > 1 ) {
+        if ($page > 1) {
             $array['_links']['prev'] = [
                 'href' => $host . '?page=' . ($page - 1),
             ];
         }
 
-        if ( $page < $lastPage ) {
+        if ($page < $lastPage) {
             $array['_links']['next'] = [
                 'href' => $host . '?page=' . ($page + 1),
             ];
@@ -60,8 +62,8 @@ class CompanyCollectionFormatter {
 
         $companyArray = &$array['_embedded']['company'];
 
-        foreach ( $companies as $company ) {
-            $companyArray[] = CompanyFormatter::format( $company );
+        foreach ($companies as $company) {
+            $companyArray[] = CompanyFormatter::format($company);
         }
 
         return $array;

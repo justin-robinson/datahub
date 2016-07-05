@@ -9,14 +9,16 @@ use DB\Datahub\CompanyInstance;
  * Class CompanyProfileFormatter
  * @package Api\v1\ResponseFormatter
  */
-class CompanyProfileFormatter {
+class CompanyProfileFormatter
+{
 
     /**
      * @param Company $company
      *
      * @return array
      */
-    public static function format (Company $company) {
+    public static function format(Company $company)
+    {
 
         // format company into hal response
         $array = CompanyFormatter::format($company);

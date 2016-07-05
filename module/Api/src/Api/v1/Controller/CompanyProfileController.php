@@ -15,24 +15,23 @@ use Zend\View\Model\JsonModel;
 
 /**
  * Class CompanyProfileController
- *
  * @package Api\v1\Controller
  */
 class CompanyProfileController extends AbstractRestfulController
 {
+
     /**
      * @param mixed $companyId
      *
-*@return JsonModel
+     * @return JsonModel
      */
-    public function get( $companyId )
+    public function get($companyId)
     {
 
         $company = Company::fetch_company_and_instances($companyId);
 
-        if ( $company === false ) {
-            $this->response->setStatusCode(204);
-            return null;
+        if ($company === false) {
+            return $this->getResponse()->setStatusCode(204);
         }
 
         return new JsonModel(CompanyProfileFormatter::format($company));
@@ -43,18 +42,18 @@ class CompanyProfileController extends AbstractRestfulController
      */
     public function getList()
     {
+
         $from = isset($_GET['from']) ? $_GET['from'] : '0';
         $to = isset($_GET['to']) ? $_GET['to'] : date('Y-m-d H:i:s');
-        $page = (isset($_GET['page']) && (int)$_GET['page'] >= 1 ) ? $_GET['page'] : 1;
+        $page = (isset($_GET['page']) && (int)$_GET['page'] >= 1) ? $_GET['page'] : 1;
         $limit = isset($_GET['limit']) ? $_GET['limit'] : 1000;
-        $offset = $limit * ($page-1);
+        $offset = $limit * ($page - 1);
         $count = Company::fetch_modified_in_range_count($from, $to);
-        $companies = $count ? Company::fetch_modified_in_range( $from, $to, $offset, $limit) : false;
+        $companies = $count ? Company::fetch_modified_in_range($from, $to, $offset, $limit) : false;
 
         try {
-           if ($companies === false) {
-                $this->response->setStatusCode(204);
-                return null;
+            if ($companies === false) {
+                return $this->getResponse()->setStatusCode(204);
             }
 
             foreach ($companies as $company) {
@@ -74,10 +73,11 @@ class CompanyProfileController extends AbstractRestfulController
                 }
             }
 
-
-            return new JsonModel(CompanyProfileCollectionFormatter::format($companies, $page, $limit, $count, $from, $to, '/api/v1/company/profiles'));
+            return new JsonModel(CompanyProfileCollectionFormatter::format($companies, $page, $limit, $count, $from,
+                $to, '/api/v1/company/profiles'));
         } catch (\Exception $e) {
             $this->response->setStatusCode(500);
+
             return new JsonModel(['error' => true, 'message' => 'ERROR: ' . $e->getMessage()]);
         }
     }
@@ -87,18 +87,18 @@ class CompanyProfileController extends AbstractRestfulController
      */
     public function deleteListAction()
     {
+
         $from = isset($_GET['from']) ? $_GET['from'] : '0';
         $to = isset($_GET['to']) ? $_GET['to'] : date('Y-m-d H:i:s');
-        $page = (isset($_GET['page']) && (int)$_GET['page'] >= 1 ) ? $_GET['page'] : 1;
+        $page = (isset($_GET['page']) && (int)$_GET['page'] >= 1) ? $_GET['page'] : 1;
         $limit = isset($_GET['limit']) ? $_GET['limit'] : 1000;
-        $offset = $limit * ($page-1);
+        $offset = $limit * ($page - 1);
         $count = Company::fetch_deleted_in_range_count($from, $to);
         $companies = $count ? Company::fetch_deleted_in_range($from, $to, $offset, $limit) : false;
 
         try {
             if ($companies === false) {
-                $this->response->setStatusCode(204);
-                return null;
+                return $this->getResponse()->setStatusCode(204);
             }
 
             foreach ($companies as $company) {
@@ -108,9 +108,11 @@ class CompanyProfileController extends AbstractRestfulController
                 $company->fetch_deleted_company_instances();
             }
 
-            return new JsonModel(CompanyProfileCollectionFormatter::format($companies, $page, $limit, $count, $from, $to, '/api/v1/company/profiles/deletes'));
+            return new JsonModel(CompanyProfileCollectionFormatter::format($companies, $page, $limit, $count, $from,
+                $to, '/api/v1/company/profiles/deletes'));
         } catch (\Exception $e) {
             $this->response->setStatusCode(500);
+
             return new JsonModel(['error' => true, 'message' => 'ERROR: ' . $e->getMessage()]);
         }
     }
@@ -130,12 +132,11 @@ class CompanyProfileController extends AbstractRestfulController
 
         $company = Company::fetch_by_source_name_and_id('refinery%', $refineryId);
 
-        if ( $company === false ) {
-            $this->response->setStatusCode(204);
-            return null;
+        if ($company === false) {
+            return $this->getResponse()->setStatusCode(204);
         }
 
-        foreach ( $company->fetch_company_instances() as $instance ) {
+        foreach ($company->fetch_company_instances() as $instance) {
             /**
              * @var $instance CompanyInstance
              */
@@ -144,12 +145,10 @@ class CompanyProfileController extends AbstractRestfulController
             $instance->fetch_state();
             $instance->fetch_channel_ids();
         }
+
         return new JsonModel(CompanyProfileFormatter::format($company));
 
-
-
     }
-
 
 
 }

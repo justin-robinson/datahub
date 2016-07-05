@@ -8,14 +8,16 @@ use DB\Datahub\Company;
  * Class CompanyFormatter
  * @package Api\v1\ResponseFormatter
  */
-class CompanyFormatter {
+class CompanyFormatter
+{
 
     /**
      * @param Company $company
      *
      * @return array
      */
-    public static function format ( Company $company ) {
+    public static function format(Company $company)
+    {
 
         $host = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST', 'hub');
         $uri = $host . '/api/v1/company';
