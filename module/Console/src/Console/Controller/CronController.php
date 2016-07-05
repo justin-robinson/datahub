@@ -75,7 +75,7 @@ class CronController extends AbstractActionController {
         $dbConfig['database'] = $dbConfig['dbname'];
 
         $offset = 0;
-        $limit = 100000;
+        $limit = 10000;
         $connection = new Connection($dbConfig);
 
         // have to convert all these fields because refinery is latin1 NOT utf8
