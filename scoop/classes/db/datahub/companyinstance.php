@@ -246,7 +246,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     {
 
         if (!$allRecords) {
-            $where .= empty($where) ? '' : ' AND deletedAt IS NULL';
+            $where .= empty($where) ? '' : " AND (deletedAt IS NULL OR deletedAt = '0000-00-00 00:00:00')";
         }
 
         return parent::fetch($limit, $offset, $where, $queryParams);
