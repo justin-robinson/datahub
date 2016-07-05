@@ -78,30 +78,31 @@ class CronController extends AbstractActionController {
         $limit = 100000;
         $connection = new Connection($dbConfig);
 
+        // have to convert all these fields because refinery is latin1 NOT utf8
         while ( ($results = Generic::query(
             "SELECT
-                org.id,
-                org.ExternalId,
-                org.SourceId,
-                org.Name,
-                org.Ticker,
-                org.TickerExchange,
-                org.DateModified,
-                addr.Address1,
-                addr.Address2,
-                addr.City,
-                addr.State,
-                addr.ZipCode,
+                CONVERT(org.id USING utf8),
+                CONVERT(org.ExternalId USING utf8),
+                CONVERT(org.SourceId USING utf8),
+                CONVERT(org.Name USING utf8),
+                CONVERT(org.Ticker USING utf8),
+                CONVERT(org.TickerExchange USING utf8),
+                CONVERT(org.DateModified USING utf8),
+                CONVERT(addr.Address1 USING utf8),
+                CONVERT(addr.Address2 USING utf8),
+                CONVERT(addr.City USING utf8),
+                CONVERT(addr.State USING utf8),
+                CONVERT(addr.ZipCode USING utf8),
                 # assume all empty countries are US
-                IF ( addr.Country IS NULL OR addr.Country = '',
+                CONVERT(IF ( addr.Country IS NULL OR addr.Country = '',
                   'United States',
-                  addr.Country) AS Country,
-                addr.Lat,
-                addr.Lon,
-                phone.OfficePhone1,
-                url.Url,
-                sic.SIC,
-                descr.Description
+                  addr.Country) USING utf8) AS Country,
+                CONVERT(addr.Lat USING utf8),
+                CONVERT(addr.Lon USING utf8),
+                CONVERT(phone.OfficePhone1 USING utf8),
+                CONVERT(url.Url USING utf8),
+                CONVERT(sic.SIC USING utf8),
+                CONVERT(descr.Description USING utf8)
               FROM
                 recon.Org org
                 LEFT JOIN recon.OrgAddress addr  ON ( org.id = addr.OrgId )
