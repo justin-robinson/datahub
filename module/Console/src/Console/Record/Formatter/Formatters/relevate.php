@@ -10,18 +10,21 @@ use Services\Meroveus\ContactService;
 /**
  * Class Relevate
  */
-class Relevate {
+class Relevate
+{
 
     use FormatterTrait;
 
     /**
      * @param $line string
+     *
      * @return Contact
      */
-    public function format ( $line ) {
+    public function format($line)
+    {
 
         // char 0 to 10 is the id, strip off the first two digits and we have a meroveus id
-        $currentMeroveusId = $this->cut_line_by_index_and_length ( $line, 2, 8 );
+        $currentMeroveusId = $this->cut_line_by_index_and_length($line, 2, 8);
 
         $contactService = new ContactService();
 
@@ -31,7 +34,7 @@ class Relevate {
          * for I am sending this message from beyond the grave
          *          - justin robinson
          */
-        $jobTitle = $this->cut_line_by_index_and_length ( $line, 325, 30, true );
+        $jobTitle = $this->cut_line_by_index_and_length($line, 325, 30, true);
 
         return new Contact(
             [
@@ -39,13 +42,13 @@ class Relevate {
                 'relevateId'        => $currentMeroveusId,
                 'isDuplicate'       => 0,
                 'isCurrentEmployee' => 1,
-                'firstName'         => $this->cut_line_by_index_and_length( $line, 296, 11, true ),
-                'middleInitial'     => $this->cut_line_by_index_and_length( $line, 307, 1, true ),
-                'lastName'          => $this->cut_line_by_index_and_length( $line, 308, 14, true ),
-                'suffix'            => $this->cut_line_by_index_and_length( $line, 322, 3, true ),
+                'firstName'         => $this->cut_line_by_index_and_length($line, 296, 11, true),
+                'middleInitial'     => $this->cut_line_by_index_and_length($line, 307, 1, true),
+                'lastName'          => $this->cut_line_by_index_and_length($line, 308, 14, true),
+                'suffix'            => $this->cut_line_by_index_and_length($line, 322, 3, true),
                 'honorific'         => '',
                 'jobTitle'          => $jobTitle,
-                'jobPositionId'     => $contactService->getJobPositionId( $jobTitle, [ ] ),
+                'jobPositionId'     => $contactService->getJobPositionId($jobTitle, []),
                 'email'             => '',
                 'phone'             => '',
                 'address1'          => '',
@@ -60,18 +63,20 @@ class Relevate {
     }
 
     /**
-     * @param $line string
-     * @param $from int
+     * @param $line   string
+     * @param $from   int
      * @param $length int
      * @param $ucword bool
+     *
      * @return string
      */
-    private function cut_line_by_index_and_length ( $line, $from, $length, $ucword = false ) {
+    private function cut_line_by_index_and_length($line, $from, $length, $ucword = false)
+    {
 
-        $substring = trim ( substr ( $line, $from, $length ) );
+        $substring = trim(substr($line, $from, $length));
 
-        if ( $ucword ) {
-            $substring = ucwords ( strtolower ( $substring ) );
+        if ($ucword) {
+            $substring = ucwords(strtolower($substring));
         }
 
         return $substring;

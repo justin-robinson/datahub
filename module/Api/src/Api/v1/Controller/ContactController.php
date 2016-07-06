@@ -10,64 +10,66 @@ use Zend\View\Model\JsonModel;
  * Class ContactController
  * @package Api\v1\Controller
  */
-class ContactController extends AbstractRestfulController {
+class ContactController extends AbstractRestfulController
+{
 
-    public function get ( $contactId ) {
+    public function get($contactId)
+    {
 
-        $contact = Contact::fetch_by_id( $contactId );
-        if( $contact ) {
-            return new JsonModel( ContactFormatter::format( $contact ) );
+        $contact = Contact::fetch_by_id($contactId);
+        if ($contact) {
+            return new JsonModel(ContactFormatter::format($contact));
         }
 
-        $this->response->setStatusCode(204);
-        return null;
+        return $this->getResponse()->setStatusCode(204);
     }
 
-    public function create ( $data ) {
+    public function create($data)
+    {
 
         // don't allow properties or contacts to be saved
         unset($data['contactId']);
 
-        $contact = new Contact( $data );
-        if( $contact->save() ) {
+        $contact = new Contact($data);
+        if ($contact->save()) {
             // get the actual timestamps
             $contact->reload();
         }
 
-        return new JsonModel( ContactFormatter::format( $contact ) );
+        return new JsonModel(ContactFormatter::format($contact));
     }
 
-    public function update ( $contactId, $data ) {
+    public function update($contactId, $data)
+    {
 
         // don't allow properties or contacts to be saved
         unset($data['contactId']);
 
-        $contact = Contact::fetch_by_id( $contactId );
+        $contact = Contact::fetch_by_id($contactId);
 
-        if( $contact ) {
-            $contact->populate( $data );
+        if ($contact) {
+            $contact->populate($data);
             $contact->save();
             $contact->reload();
 
-            return new JsonModel( ContactFormatter::format( $contact ) );
+            return new JsonModel(ContactFormatter::format($contact));
         }
 
-        $this->response->setStatusCode(204);
-        return null;
+        return $this->getResponse()->setStatusCode(204);
 
     }
 
-    public function delete ( $id ) {
+    public function delete($id)
+    {
 
-        $contact = Contact::fetch_by_id( $id );
-        if( $contact ) {
+        $contact = Contact::fetch_by_id($id);
+        if ($contact) {
             $contact->delete();
-            $contact = Contact::query( 'SELECT * FROM datahub.contact WHERE contactId = ?', [ $id ] )->first();
+            $contact = Contact::query('SELECT * FROM datahub.contact WHERE contactId = ?', [$id])->first();
 
-            return new JsonModel( ContactFormatter::format( $contact ) );
+            return new JsonModel(ContactFormatter::format($contact));
         }
 
-        $this->response->setStatusCode(204);
-        return null;
+        return $this->getResponse()->setStatusCode(204);
     }
 }

@@ -10,44 +10,44 @@ $latestApiChildRoutes = [
             ],
         ],
         'child_routes' => [
-            'id'   => [
-                'type'         => 'Segment',
-                'options'      => [
+            'id'               => [
+                'type'    => 'Segment',
+                'options' => [
                     'route'       => '[/:id]',
                     'constraints' => [
                         'id' => '[0-9]*',
                     ],
                 ],
             ],
-            'profile' => [
+            'profile'          => [
                 'type'    => 'Segment',
                 'options' => [
-                    'route'    => '[/:id]/profile',
+                    'route'       => '[/:id]/profile',
                     'constraints' => [
                         'id' => '[0-9]*',
                     ],
-                    'defaults' => [
+                    'defaults'    => [
                         'controller' => 'Api\v1\Controller\CompanyProfile',
                     ],
                 ],
             ],
-            'instances' => [
+            'instances'        => [
                 'type'    => 'Segment',
                 'options' => [
-                    'route'    => '[/:id]/instances',
+                    'route'       => '[/:id]/instances',
                     'constraints' => [
                         'id' => '[0-9]*',
                     ],
-                    'defaults' => [
+                    'defaults'    => [
                         'controller' => 'Api\v1\Controller\CompanyInstances',
                     ],
                 ],
             ],
-            'profiles'  => [
+            'profiles'         => [
                 'type'    => 'Literal',
                 'options' => [
-                    'route'        => '/profiles',
-                    'defaults'     => [
+                    'route'    => '/profiles',
+                    'defaults' => [
                         'controller' => 'Api\v1\Controller\CompanyProfile',
                     ],
                 ],
@@ -56,13 +56,13 @@ $latestApiChildRoutes = [
                 'type'    => 'Literal',
                 'options' => [
                     'defaults' => [
-                        'action' => 'deleteList',
+                        'action'     => 'deleteList',
                         'controller' => 'Api\v1\Controller\CompanyProfile',
                     ],
                     'route'    => '/profiles/deletes',
                 ],
             ],
-            'search'    => [
+            'search'           => [
                 'type'    => 'Literal',
                 'options' => [
                     'route'    => '/search',
@@ -209,7 +209,6 @@ return [
             'Api\v1\Controller\InstanceContacts'   => 'Api\v1\Controller\InstanceContactsController',
             'Api\v1\Controller\InstanceProperties' => 'Api\v1\Controller\InstancePropertiesController',
             'Api\v1\Controller\Property'           => 'Api\v1\Controller\PropertyController',
-            'Api\v1\Controller\Search'             => 'Api\v1\Controller\SearchController',
             'Api\v1\Controller\State'              => 'Api\v1\Controller\StateController',
         ],
     ],

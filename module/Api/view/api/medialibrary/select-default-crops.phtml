@@ -1,6 +1,6 @@
 <?php
 $media = $this->media;
-$crops = array();
+$crops = [];
 foreach ($media['crops'] as $crop) {
     $crops[$crop['ratio']] = $crop;
 }
@@ -8,61 +8,65 @@ foreach ($media['crops'] as $crop) {
 
 <div class="modal hide span12 in" id="select-default-crops-modal">
     <div class="modal-header">
-        <button id='select-default-crops-modal-cancel-x' data-dismiss="modal" class="close modal-close" type="button">&times;</button>
+        <button id='select-default-crops-modal-cancel-x' data-dismiss="modal" class="close modal-close"
+                type="button">&times;</button>
         <h3>Edit Crops</h3>
     </div>
     <div class="modal-body">
-<?php if ($media['image_quality'] == 'poor:0:1200'): ?>
-                <div class="alert alert-danger">
-                    <strong>Poor quality image</strong><br>
-                    Photo crops are limited by this image's small dimensions. Recommended photo width is greater than 1200 pixels.
-                </div>
-<?php elseif ($media['image_quality'] == 'low:2:1200'): ?>
-                <div class="alert">
-                    <strong>Low quality image</strong><br>
-                    Photo crops may be limited by this image's small dimensions. Recommended photo width is greater than 1200 pixels.
-                </div>
-<?php endif ?>
-<?php if ($this->pref): ?>
-        <form>
-            <label class="radio inline"><strong>Preferred Orientation: </strong></label>
-            <label class="radio inline"><input type="radio" name="orientation" value="landscape">Horizontal</label>
-            <label class="radio inline"><input type="radio" name="orientation" value="portrait">Vertical</label>
-            <hr>
-        </form>
-<?php endif ?>
+        <?php if ($media['image_quality'] == 'poor:0:1200'): ?>
+            <div class="alert alert-danger">
+                <strong>Poor quality image</strong><br>
+                Photo crops are limited by this image's small dimensions. Recommended photo width is greater than 1200
+                pixels.
+            </div>
+        <?php elseif ($media['image_quality'] == 'low:2:1200'): ?>
+            <div class="alert">
+                <strong>Low quality image</strong><br>
+                Photo crops may be limited by this image's small dimensions. Recommended photo width is greater than
+                1200 pixels.
+            </div>
+        <?php endif ?>
+        <?php if ($this->pref): ?>
+            <form>
+                <label class="radio inline"><strong>Preferred Orientation: </strong></label>
+                <label class="radio inline"><input type="radio" name="orientation" value="landscape">Horizontal</label>
+                <label class="radio inline"><input type="radio" name="orientation" value="portrait">Vertical</label>
+                <hr>
+            </form>
+        <?php endif ?>
         <div class="row-fluid">
-           <ul class="thumbnails thumbnails--3col">
-<?php
-foreach (array('16:9', '3:2', '4:3', '1:1', '3:4', '2:3') as $ratio):
-    $crop = $crops[$ratio];
-?>
-                <li class="span4">
-                    <div class="thumbnail">
-                        <div class="image-container-proportioned">
-                            <div class="image-container">
-                                <img class="default-crop" src="<?php echo $media['crop_url'] ?>"
-                                    data-crop-url="<?php echo $crop['url'] ?>"
-                                    data-crop-id="<?php echo $crop['crop_id'] ?>"
-                                    data-cropdata="<?php echo $crop['cropdata'] ?>"
-                                    data-ratio="<?php echo $crop['ratio'] ?>"
-                                    data-media-width="<?php echo $media['width'] ?>"
-                                    data-media-height="<?php echo $media['height'] ?>">
+            <ul class="thumbnails thumbnails--3col">
+                <?php
+                foreach (['16:9', '3:2', '4:3', '1:1', '3:4', '2:3'] as $ratio):
+                    $crop = $crops[$ratio];
+                    ?>
+                    <li class="span4">
+                        <div class="thumbnail">
+                            <div class="image-container-proportioned">
+                                <div class="image-container">
+                                    <img class="default-crop" src="<?php echo $media['crop_url'] ?>"
+                                         data-crop-url="<?php echo $crop['url'] ?>"
+                                         data-crop-id="<?php echo $crop['crop_id'] ?>"
+                                         data-cropdata="<?php echo $crop['cropdata'] ?>"
+                                         data-ratio="<?php echo $crop['ratio'] ?>"
+                                         data-media-width="<?php echo $media['width'] ?>"
+                                         data-media-height="<?php echo $media['height'] ?>">
+                                </div>
                             </div>
+                            <small><?php echo $crop['ratio'] ?></small>
                         </div>
-                        <small><?php echo $crop['ratio'] ?></small>
-                    </div>
-                </li>
-<?php endforeach ?>
+                    </li>
+                <?php endforeach ?>
             </ul>
         </div>
     </div>
     <div class="modal-footer">
-<?php if ($this->backBtn): ?>
-        <button class="btn btn-back modal-close">Back</button>
-<?php else: ?>
-        <button data-dismiss="modal" class="btn modal-close" id='select-default-crops-modal-cancel' >Cancel</button>
-<?php endif ?>
-        <button data-dismiss="modal" class="btn btn-primary modal-finish" id='select-default-crops-modal-apply' >Apply</button>
+        <?php if ($this->backBtn): ?>
+            <button class="btn btn-back modal-close">Back</button>
+        <?php else: ?>
+            <button data-dismiss="modal" class="btn modal-close" id='select-default-crops-modal-cancel'>Cancel</button>
+        <?php endif ?>
+        <button data-dismiss="modal" class="btn btn-primary modal-finish" id='select-default-crops-modal-apply'>Apply
+        </button>
     </div>
 </div>

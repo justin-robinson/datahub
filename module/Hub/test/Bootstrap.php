@@ -2,10 +2,10 @@
 
 namespace HubTest;
 
+use RuntimeException;
 use Zend\Loader\AutoloaderFactory;
 use Zend\Mvc\Service\ServiceManagerConfig;
 use Zend\ServiceManager\ServiceManager;
-use RuntimeException;
 
 error_reporting(E_ALL | E_STRICT);
 chdir(__DIR__);
@@ -15,11 +15,13 @@ chdir(__DIR__);
  */
 class Bootstrap
 {
+
     protected static $serviceManager;
 
     public static function init()
     {
-        $zf2ModulePaths = array(dirname(dirname(__DIR__)));
+
+        $zf2ModulePaths = [dirname(dirname(__DIR__))];
         if (($path = static::findParentPath('vendor'))) {
             $zf2ModulePaths[] = $path;
         }
@@ -30,14 +32,14 @@ class Bootstrap
         static::initAutoloader();
 
         // use ModuleManager to load this module and it's dependencies
-        $config = array(
-            'module_listener_options' => array(
+        $config = [
+            'module_listener_options' => [
                 'module_paths' => $zf2ModulePaths,
-            ),
-            'modules' => array(
-                'Hub'
-            )
-        );
+            ],
+            'modules'                 => [
+                'Hub',
+            ],
+        ];
 
         $serviceManager = new ServiceManager(new ServiceManagerConfig());
         $serviceManager->setService('ApplicationConfig', $config);
@@ -47,17 +49,20 @@ class Bootstrap
 
     public static function chroot()
     {
+
         $rootPath = dirname(static::findParentPath('module'));
         chdir($rootPath);
     }
 
     public static function getServiceManager()
     {
+
         return static::$serviceManager;
     }
 
     protected static function initAutoloader()
     {
+
         $vendorPath = static::findParentPath('vendor');
 
         $zf2Path = getenv('ZF2_PATH');
@@ -83,18 +88,19 @@ class Bootstrap
         }
 
         include $zf2Path . '/Zend/Loader/AutoloaderFactory.php';
-        AutoloaderFactory::factory(array(
-            'Zend\Loader\StandardAutoloader' => array(
+        AutoloaderFactory::factory([
+            'Zend\Loader\StandardAutoloader' => [
                 'autoregister_zf' => true,
-                'namespaces' => array(
+                'namespaces'      => [
                     __NAMESPACE__ => __DIR__ . '/' . __NAMESPACE__,
-                ),
-            ),
-        ));
+                ],
+            ],
+        ]);
     }
 
     protected static function findParentPath($path)
     {
+
         $dir = __DIR__;
         $previousDir = '.';
         while (!is_dir($dir . '/' . $path)) {
@@ -104,6 +110,7 @@ class Bootstrap
             }
             $previousDir = $dir;
         }
+
         return $dir . '/' . $path;
     }
 }

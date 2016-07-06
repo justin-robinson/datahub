@@ -8,17 +8,13 @@
 
 namespace Console\Controller;
 
-use Console\DB\Connection\DB;
-use DBCore\Datahub\CompanyInstance;
-
-
 /**
  * Class TierController
- *
  * @package Console\Controller
  */
 class TierController extends AbstractActionController
 {
+
     /**
      * @param        $instance
      * @param bolean $firstRun
@@ -29,9 +25,7 @@ class TierController extends AbstractActionController
         // no contact = tiers 4 -7
         //
 
-
     }
-
 
 
 }

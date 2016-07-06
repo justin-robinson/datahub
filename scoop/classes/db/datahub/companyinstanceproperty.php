@@ -16,13 +16,9 @@ use Scoop\Database\Rows;
 class CompanyInstanceProperty extends \DBCore\Datahub\CompanyInstanceProperty {
 
     /**
-     * @param $name
-     * @param $value
+     * @var SourceType
      */
-    public function __set($name, $value) {
-
-        parent::__set($name, utf8_encode($value));
-    }
+    protected $sourceType;
 
     /**
      * @return bool
@@ -48,10 +44,29 @@ class CompanyInstanceProperty extends \DBCore\Datahub\CompanyInstanceProperty {
      */
     public static function fetch ( $limit = 1000, $offset = 0, $where = '', array $queryParams = [ ] ) {
 
-        $where .= empty($where) ? '' : ' AND ';
-        $where .= 'deletedAt IS NULL';
+        $where .= empty($where) ? '' :
+            " AND (deletedAt IS NULL OR deletedAt = '" . self::$dBColumnDefaultValuesArray['deletedAt'] . "')";
 
         return parent::fetch( $limit, $offset, $where, $queryParams );
+    }
+
+    /**
+     * @return bool|Source|\Scoop\Database\Model
+     */
+    public function fetch_source_type () {
+        if ( !empty($this->sourceTypeId) ) {
+            $this->sourceType = SourceType::fetch_by_id($this->sourceTypeId);
+        }
+
+        return $this->get_source_type();
+    }
+
+    /**
+     * @return Source
+     */
+    public function get_source_type () {
+
+        return $this->sourceType;
     }
 
     /**

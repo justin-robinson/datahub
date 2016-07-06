@@ -9,7 +9,8 @@ use Scoop\Database\Rows;
  * Class CompanyProfileCollectionFormatter
  * @package Api\v1\ResponseFormatter
  */
-class CompanyProfileCollectionFormatter {
+class CompanyProfileCollectionFormatter
+{
 
     /**
      * @param Rows $companies
@@ -22,7 +23,15 @@ class CompanyProfileCollectionFormatter {
      *
      * @return array
      */
-    public static function format(Rows $companies, $page, $limit, $totalCount, $from, $to, $apiPath = '/api/v1/company/profile') {
+    public static function format(
+        Rows $companies,
+        $page,
+        $limit,
+        $totalCount,
+        $from,
+        $to,
+        $apiPath = '/api/v1/company/profile'
+    ) {
 
         $host = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST');;
         $uri = $host . $apiPath;
@@ -47,7 +56,7 @@ class CompanyProfileCollectionFormatter {
             'count'     => [
                 'total'    => $totalCount,
                 'current'  => $companies->get_num_rows(),
-                'offset'   => ($page-1) * $limit,
+                'offset'   => ($page - 1) * $limit,
                 'nextPage' => ($page < $lastPage) ? $page + 1 : null,
                 'lastPage' => $lastPage,
             ],
@@ -59,11 +68,11 @@ class CompanyProfileCollectionFormatter {
                     'href' => $uri . '?' . http_build_query($firstQueryParams),
                 ],
                 'last'  => [
-                    'href' => $uri . '?'. http_build_query($lastQueryParams),
+                    'href' => $uri . '?' . http_build_query($lastQueryParams),
                 ],
             ],
             '_embedded' => [
-                'companies' => [ ],
+                'companies' => [],
             ],
         ];
 
@@ -79,7 +88,7 @@ class CompanyProfileCollectionFormatter {
             $nextQueryParams = $selfQueryParams;
             $nextQueryParams['page'] = $page + 1;
             $array['_links']['next'] = [
-                'href' => $uri . '?'. http_build_query($nextQueryParams),
+                'href' => $uri . '?' . http_build_query($nextQueryParams),
             ];
         }
 

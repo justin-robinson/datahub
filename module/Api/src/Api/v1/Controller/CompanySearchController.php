@@ -15,39 +15,45 @@ use Zend\View\Model\JsonModel;
  * Class CompanySearchController
  * @package Api\v1\Controller
  */
-class CompanySearchController extends AbstractRestfulController{
+class CompanySearchController extends AbstractRestfulController
+{
 
-    public function get ( $_ ) {
+    public function get($_)
+    {
 
         return $this->getList();
     }
 
-    public function getList () {
+    public function getList()
+    {
 
-        $config = $this->getServiceLocator()->get( 'Config' )['elastica-datahub'];
-        if( empty($_GET['search']) || !is_array( $_GET['search'] ) ) {
+        $config = $this->getServiceLocator()->get('Config')['elastica-datahub'];
+
+        $searchTerms = $this->params()->fromQuery('search');
+
+        if (empty($searchTerms) || !is_array($searchTerms)) {
             $response = [
                 'error'       => "missing 'search' parameter array",
                 'ex'          => FormatterHelpers::get_http_protocol() . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '?search[Name]=Google&search[State]=CA',
                 'searchTerms' => [],
             ];
-            $client = new Client( "{$config['host']}:{$config['port']}/companies" );
+            $client = new Client("{$config['host']}:{$config['port']}/companies");
             $elasticResponse = $client->send();
-            if( $elasticResponse->isSuccess() ) {
-                $body = json_decode( $elasticResponse->getBody() );
-                if( isset($body->companies->mappings->company->properties) ) {
-                    foreach ( $body->companies->mappings->company->properties as $propertyName => $value ) {
+            if ($elasticResponse->isSuccess()) {
+                $body = json_decode($elasticResponse->getBody());
+                if (isset($body->companies->mappings->company->properties)) {
+                    foreach ($body->companies->mappings->company->properties as $propertyName => $value) {
                         $response['searchTerms'][] = $propertyName;
                     }
                 }
             }
 
-            return new JsonModel( $response );
+            return new JsonModel($response);
         } else {
 
             // create the elastic client
             $elasticClient = ClientBuilder::create()
-                                          ->setHosts( [$config['host'] . ':' . $config['port']] )
+                                          ->setHosts([$config['host'] . ':' . $config['port']])
                                           ->build();
 
             // our elastic query
@@ -64,29 +70,27 @@ class CompanySearchController extends AbstractRestfulController{
             ];
 
             // add all search terms to the elastic query
-            foreach ( $_GET['search'] as $searchTermName => &$searchTerm ) {
+            foreach ($searchTerms as $searchTermName => &$searchTerm) {
                 $params['body']['query']['bool']['must'][] = ['match' => [$searchTermName => $searchTerm]];
             }
 
             // query elastic
-            $elasticResponse = $elasticClient->search( $params );
+            $elasticResponse = $elasticClient->search($params);
 
             // did we get a hit?
-            if( empty($elasticResponse['hits']['hits']) ) {
-                $this->response->setStatusCode( 204 );
-
-                return null;
+            if (empty($elasticResponse['hits']['hits'])) {
+                return $this->getResponse()->setStatusCode(204);
             }
 
             $companies = new Rows();
-            foreach ( $elasticResponse['hits']['hits'] as $hit ) {
-                $company = Company::fetch_by_source_name_and_id( 'refinery%', $hit['_source']['InternalId'] );
+            foreach ($elasticResponse['hits']['hits'] as $hit) {
+                $company = Company::fetch_by_source_name_and_id('refinery%', $hit['_source']['InternalId']);
 
-                if( $company === false ) {
+                if ($company === false) {
                     continue;
                 }
 
-                foreach ( $company->fetch_company_instances() as $instance ) {
+                foreach ($company->fetch_company_instances() as $instance) {
                     /**
                      * @var $instance CompanyInstance
                      */
@@ -96,16 +100,15 @@ class CompanySearchController extends AbstractRestfulController{
                     $instance->fetch_channel_ids();
                 }
 
-                $companies->add_row( $company );
+                $companies->add_row($company);
             }
 
-            if( $companies->get_num_rows() === 0 ) {
-                $this->response->setStatusCode( 204 );
-
-                return null;
+            if ($companies->get_num_rows() === 0) {
+                return $this->getResponse()->setStatusCode(204);
             }
 
-            return new JsonModel(CompanyProfileCollectionFormatter::format( $companies, 1, 1000, $companies->get_num_rows(), '0', '0', '/api/v1/company/search' ));
+            return new JsonModel(CompanyProfileCollectionFormatter::format($companies, 1, 1000,
+                $companies->get_num_rows(), '0', '0', '/api/v1/company/search'));
         }
     }
 }
