@@ -17,8 +17,9 @@ class InstancePropertiesController extends AbstractRestfulController
     public function get($companyInstanceId)
     {
 
-        $page = (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] >= 1) ? (int)$_GET['page'] : 1;
-        $limit = 1000;
+        $page = $this->params()->fromQuery('page', 1);
+        $page = (is_numeric($page) && $page >= 1) ? (int)$page : 1;
+        $limit = $this->params()->fromQuery('limit', 1000);
         $offset = $limit * ($page - 1);
 
         $contacts = CompanyInstanceProperty::fetch_where('companyInstanceId = ?', [$companyInstanceId], $limit,

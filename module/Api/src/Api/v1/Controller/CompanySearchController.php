@@ -28,7 +28,10 @@ class CompanySearchController extends AbstractRestfulController
     {
 
         $config = $this->getServiceLocator()->get('Config')['elastica-datahub'];
-        if (empty($_GET['search']) || !is_array($_GET['search'])) {
+
+        $searchTerms = $this->params()->fromQuery('search');
+
+        if (empty($searchTerms) || !is_array($searchTerms)) {
             $response = [
                 'error'       => "missing 'search' parameter array",
                 'ex'          => FormatterHelpers::get_http_protocol() . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '?search[Name]=Google&search[State]=CA',
@@ -67,7 +70,7 @@ class CompanySearchController extends AbstractRestfulController
             ];
 
             // add all search terms to the elastic query
-            foreach ($_GET['search'] as $searchTermName => &$searchTerm) {
+            foreach ($searchTerms as $searchTermName => &$searchTerm) {
                 $params['body']['query']['bool']['must'][] = ['match' => [$searchTermName => $searchTerm]];
             }
 

@@ -209,7 +209,6 @@ return [
             'Api\v1\Controller\InstanceContacts'   => 'Api\v1\Controller\InstanceContactsController',
             'Api\v1\Controller\InstanceProperties' => 'Api\v1\Controller\InstancePropertiesController',
             'Api\v1\Controller\Property'           => 'Api\v1\Controller\PropertyController',
-            'Api\v1\Controller\Search'             => 'Api\v1\Controller\SearchController',
             'Api\v1\Controller\State'              => 'Api\v1\Controller\StateController',
         ],
     ],

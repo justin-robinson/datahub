@@ -43,10 +43,11 @@ class CompanyProfileController extends AbstractRestfulController
     public function getList()
     {
 
-        $from = isset($_GET['from']) ? $_GET['from'] : '0';
-        $to = isset($_GET['to']) ? $_GET['to'] : date('Y-m-d H:i:s');
-        $page = (isset($_GET['page']) && (int)$_GET['page'] >= 1) ? $_GET['page'] : 1;
-        $limit = isset($_GET['limit']) ? $_GET['limit'] : 1000;
+        $from = $this->params()->fromQuery('from', '0');
+        $to = $this->params()->fromQuery('to', date('Y-m-d H:i:s'));
+        $page = $this->params()->fromQuery('page', 1);
+        $page = (is_numeric($page) && $page >= 1) ? (int)$page : 1;
+        $limit = $this->params()->fromQuery('limit', 1000);
         $offset = $limit * ($page - 1);
         $count = Company::fetch_modified_in_range_count($from, $to);
         $companies = $count ? Company::fetch_modified_in_range($from, $to, $offset, $limit) : false;
@@ -88,10 +89,11 @@ class CompanyProfileController extends AbstractRestfulController
     public function deleteListAction()
     {
 
-        $from = isset($_GET['from']) ? $_GET['from'] : '0';
-        $to = isset($_GET['to']) ? $_GET['to'] : date('Y-m-d H:i:s');
-        $page = (isset($_GET['page']) && (int)$_GET['page'] >= 1) ? $_GET['page'] : 1;
-        $limit = isset($_GET['limit']) ? $_GET['limit'] : 1000;
+        $from = $this->params()->fromQuery('from', '0');
+        $to = $this->params()->fromQuery('to', date('Y-m-d H:i:s'));
+        $page = $this->params()->fromQuery('page', 1);
+        $page = (is_numeric($page) && $page >= 1) ? (int)$page : 1;
+        $limit = $this->params()->fromQuery('limit', 1000);
         $offset = $limit * ($page - 1);
         $count = Company::fetch_deleted_in_range_count($from, $to);
         $companies = $count ? Company::fetch_deleted_in_range($from, $to, $offset, $limit) : false;
