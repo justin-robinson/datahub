@@ -26,12 +26,25 @@ class DatasetController extends AbstractRestfulController
      */
     public function get($setId)
     {
+        /** @var $set \DB\Datahub\Dataset */
         $set = Dataset::fetch_by_id($setId);
         $set->fetchDatasetEntries();
         if ($set) {
             return new JsonModel(DatasetFormatter::format($set));
         }
+
         return $this->getResponse()->setStatusCode(204);
+    }
+
+    public function create($data)
+    {
+        $set = new Dataset($data);
+        if ($set->save()) {
+            // get the actual timestamps
+            $set->reload();
+        }
+
+        return new JsonModel(DatasetFormatter::format($set, true));
     }
 
 }
