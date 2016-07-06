@@ -37,8 +37,6 @@ class CompanySearchController extends AbstractRestfulController
                 'searchTerms' => [],
             ];
 
-            var_dump($config['host'] . ':' . $config['port'] . '/companies');die;
-
             // create the elastic client
             $elasticClient = ClientBuilder::create()
                                           ->setHosts([$config['host'] . ':' . $config['port'] . '/companies'] )
