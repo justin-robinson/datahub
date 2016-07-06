@@ -27,10 +27,9 @@ class DatasetFormatter
     {
 
         $host = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST', 'hub');
-        $uri  = $host . '/api/v1/dataset';
 
         $array            = $set->to_array(false);
-        $array['entries'] = $set->entries->to_array(false) ?: null;
+        $array['entries'] = empty($set->entries)? null : $set->entries->to_array(false);
         $array['_links']  = [
             'self' => [
                 'href' => $host . FormatterHelpers::get_server_variable('REQUEST_URI'),
