@@ -8,7 +8,6 @@ use DB\Datahub\Company;
 use DB\Datahub\CompanyInstance;
 use Elasticsearch\ClientBuilder;
 use Scoop\Database\Rows;
-use Zend\Http\Client;
 use Zend\View\Model\JsonModel;
 
 /**
@@ -37,15 +36,16 @@ class CompanySearchController extends AbstractRestfulController
                 'ex'          => FormatterHelpers::get_http_protocol() . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '?search[Name]=Google&search[State]=CA',
                 'searchTerms' => [],
             ];
-            var_dump($config);die;
-            $client = new Client("{$config['host']}:{$config['port']}/companies");
-            $elasticResponse = $client->send();
-            if ($elasticResponse->isSuccess()) {
-                $body = json_decode($elasticResponse->getBody());
-                if (isset($body->companies->mappings->company->properties)) {
-                    foreach ($body->companies->mappings->company->properties as $propertyName => $value) {
-                        $response['searchTerms'][] = $propertyName;
-                    }
+
+            // create the elastic client
+            $elasticClient = ClientBuilder::create()
+                                          ->setHosts([$config['host'] . ':' . $config['port'] . '/companies'] )
+                                          ->build();
+
+            $elasticResponse = $elasticClient->info();
+            if (isset($elasticResponse['companies']['mappings']['company']['properties'])) {
+                foreach ($elasticResponse['companies']['mappings']['company']['properties'] as $propertyName => $value) {
+                    $response['searchTerms'][] = $propertyName;
                 }
             }
 
