@@ -407,7 +407,7 @@ class ImportController extends AbstractActionController
 
     /**
      * php run.php import datasetFromCsv -e development --file=/home/vagrant/files/<file>.csv
-
+     * takes a specifically formatted csv and makes/saves a dataset of it
      */
     public function datasetFromCsvAction(){
         $csvFile = realpath($this->getRequest()->getParam('file'));
