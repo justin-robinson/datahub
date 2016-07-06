@@ -131,7 +131,7 @@ class Company extends \DBCore\Datahub\Company
         // also normalize the name value
         if ($name === 'name') {
             // expand company abbreviations and lowercase the name
-            $value = $normalizedName = preg_replace(self::$companyNameNormalizationSearch,
+            $normalizedName = preg_replace(self::$companyNameNormalizationSearch,
                 self::$companyNameNormalizationReplace, $value);
 
             // strip out anything that isn't a letter or number
@@ -140,7 +140,7 @@ class Company extends \DBCore\Datahub\Company
             $this->normalizedName = strtolower($normalizedName);
         }
 
-        parent::__set($name, utf8_encode($value));
+        parent::__set($name, $value);
     }
 
     /**
@@ -174,7 +174,8 @@ class Company extends \DBCore\Datahub\Company
      */
     public static function fetch ( $limit = 1000, $offset = 0, $where = '', array $queryParams = [] ) {
 
-        $where .= empty($where) ? '' : " AND (deletedAt IS NULL OR deletedAt = '0000-00-00 00:00:00')";
+        $where .= empty($where) ? '' :
+            " AND (deletedAt IS NULL OR deletedAt = '" . self::$dBColumnDefaultValuesArray['deletedAt'] . "')";
 
         return parent::fetch($limit, $offset, $where, $queryParams);
     }

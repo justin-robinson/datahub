@@ -178,15 +178,6 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     }
 
     /**
-     * @param $name
-     * @param $value
-     */
-    public function __set($name, $value) {
-
-        parent::__set($name, utf8_encode($value));
-    }
-
-    /**
      * @param Contact $contact
      */
     public function add_contact(Contact $contact)
@@ -246,7 +237,8 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     {
 
         if (!$allRecords) {
-            $where .= empty($where) ? '' : " AND (deletedAt IS NULL OR deletedAt = '0000-00-00 00:00:00')";
+            $where .= empty($where) ? '' :
+                " AND (deletedAt IS NULL OR deletedAt = '" . self::$dBColumnDefaultValuesArray['deletedAt'] . "')";
         }
 
         return parent::fetch($limit, $offset, $where, $queryParams);

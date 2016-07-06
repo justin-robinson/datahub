@@ -16,15 +16,6 @@ use Scoop\Database\Rows;
 class CompanyInstanceProperty extends \DBCore\Datahub\CompanyInstanceProperty {
 
     /**
-     * @param $name
-     * @param $value
-     */
-    public function __set($name, $value) {
-
-        parent::__set($name, utf8_encode($value));
-    }
-
-    /**
      * @return bool
      */
     public function delete () {
@@ -48,7 +39,8 @@ class CompanyInstanceProperty extends \DBCore\Datahub\CompanyInstanceProperty {
      */
     public static function fetch ( $limit = 1000, $offset = 0, $where = '', array $queryParams = [ ] ) {
 
-        $where .= empty($where) ? '' : " AND (deletedAt IS NULL OR deletedAt = '0000-00-00 00:00:00')";
+        $where .= empty($where) ? '' :
+            " AND (deletedAt IS NULL OR deletedAt = '" . self::$dBColumnDefaultValuesArray['deletedAt'] . "')";
 
         return parent::fetch( $limit, $offset, $where, $queryParams );
     }
