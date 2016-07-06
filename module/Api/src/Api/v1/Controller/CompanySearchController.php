@@ -37,6 +37,7 @@ class CompanySearchController extends AbstractRestfulController
                 'ex'          => FormatterHelpers::get_http_protocol() . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '?search[Name]=Google&search[State]=CA',
                 'searchTerms' => [],
             ];
+            var_dump($config);die;
             $client = new Client("{$config['host']}:{$config['port']}/companies");
             $elasticResponse = $client->send();
             if ($elasticResponse->isSuccess()) {
