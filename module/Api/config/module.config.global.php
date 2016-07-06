@@ -194,6 +194,26 @@ $latestApiChildRoutes = [
             ],
         ],
     ],
+    'dataset'  => [
+        'type'    => 'Literal',
+        'options' => [
+            'route'    => '/dataset',
+            'defaults' => [
+                'controller' => 'Api\v1\Controller\Dataset',
+            ],
+        ],
+        'child_routes' => [
+            'id'               => [
+                'type'    => 'Segment',
+                'options' => [
+                    'route'       => '[/:id]',
+                    'constraints' => [
+                        'id' => '[0-9]*',
+                    ],
+                ],
+            ],
+        ],
+    ],
 ];
 return [
 
@@ -210,6 +230,7 @@ return [
             'Api\v1\Controller\InstanceProperties' => 'Api\v1\Controller\InstancePropertiesController',
             'Api\v1\Controller\Property'           => 'Api\v1\Controller\PropertyController',
             'Api\v1\Controller\State'              => 'Api\v1\Controller\StateController',
+            'Api\v1\Controller\Dataset'            => 'Api\v1\Controller\DatasetController',
         ],
     ],
     'router'       => [
