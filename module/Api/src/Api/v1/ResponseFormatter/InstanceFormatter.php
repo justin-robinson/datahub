@@ -29,19 +29,15 @@ class InstanceFormatter
         // find all external ids for this instance
         $array['properties'] = [];
         $externalIds = [];
-        foreach ($instance->get_properties() as $sortOrder) {
-            foreach ($sortOrder as $propertyName) {
-                foreach ($propertyName as $property) {
-                    $sourceType = SourceType::fetch_by_id($property->sourceTypeId);
+        foreach ($instance->get_properties() as $property) {
+            $sourceType = SourceType::fetch_by_id($property->sourceTypeId);
 
-                    // refinery has multiple types named refinery:bol and such
-                    $sourceName = explode(':', $sourceType->name)[0];
+            // refinery has multiple types named refinery:bol and such
+            $sourceName = explode(':', $sourceType->name)[0];
 
-                    // add this source id to the array
-                    $externalIds[$sourceName][$property->sourceId] = $property->sourceId;
-                    $array['properties'][$property->name][] = PropertyFormatter::format($property);
-                }
-            }
+            // add this source id to the array
+            $externalIds[$sourceName][$property->sourceId] = $property->sourceId;
+            $array['properties'][$property->name][] = PropertyFormatter::format($property);
         }
         // reindex array by ints
         foreach ($externalIds as &$sourceNameArray) {

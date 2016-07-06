@@ -16,6 +16,11 @@ use Scoop\Database\Rows;
 class CompanyInstanceProperty extends \DBCore\Datahub\CompanyInstanceProperty {
 
     /**
+     * @var SourceType
+     */
+    protected $sourceType;
+
+    /**
      * @return bool
      */
     public function delete () {
@@ -43,6 +48,25 @@ class CompanyInstanceProperty extends \DBCore\Datahub\CompanyInstanceProperty {
             " AND (deletedAt IS NULL OR deletedAt = '" . self::$dBColumnDefaultValuesArray['deletedAt'] . "')";
 
         return parent::fetch( $limit, $offset, $where, $queryParams );
+    }
+
+    /**
+     * @return bool|Source|\Scoop\Database\Model
+     */
+    public function fetch_source_type () {
+        if ( !empty($this->sourceTypeId) ) {
+            $this->sourceType = SourceType::fetch_by_id($this->sourceTypeId);
+        }
+
+        return $this->get_source_type();
+    }
+
+    /**
+     * @return Source
+     */
+    public function get_source_type () {
+
+        return $this->sourceType;
     }
 
     /**

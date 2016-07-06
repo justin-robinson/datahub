@@ -3,7 +3,6 @@
 namespace Api\v1\Controller;
 
 use DB\Datahub\State;
-use Zend\Json\Json;
 use Zend\View\Model\JsonModel;
 
 /**

@@ -264,8 +264,10 @@ class Company extends \DBCore\Datahub\Company
     public function save($setTimestamps = true) {
         // this will renormalize the name
         $this->name = $this->name;
+
         // guilty until proven innocent
         $saved = false;
+
         // lookup company in cache by normalized name if it didn't come from the database
         if ( !$this->is_loaded_from_database() && self::$companyCache->exists($this->normalizedName)) {
             $this->populate(self::$companyCache->get( $this->normalizedName )->to_array(false));
@@ -552,7 +554,7 @@ class Company extends \DBCore\Datahub\Company
     {
 
         $return = true;
-        $props = $instance->get_properties();
+        $props = $instance->get_properties_array();
         if (count($props[2]) < 10) {
             echo 'not enough tier1 fields' . PHP_EOL;
             $return = false;

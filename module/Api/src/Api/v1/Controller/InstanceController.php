@@ -2,8 +2,8 @@
 
 namespace Api\v1\Controller;
 
-use Api\v1\ResponseFormatter\InstanceFormatter;
 use Api\v1\ResponseFormatter\InstanceCollectionFormatter;
+use Api\v1\ResponseFormatter\InstanceFormatter;
 use DB\Datahub\CompanyInstance;
 use Zend\View\Model\JsonModel;
 

@@ -32,7 +32,7 @@ return [
 
     'mysql' => [
         'datahub' => $defaultMysqlConnectionParams,
-        'db02' => [
+        'db02'    => [
             'charset'       => 'utf8',
             'host'          => 'db02.bizj-internal.com',
             'dbname'        => 'recon',
@@ -40,8 +40,8 @@ return [
             'user'          => 'datahub',
             'password'      => 'readonly',
             'driverOptions' => [
-                1002 => 'SET NAMES utf8'
+                1002 => 'SET NAMES utf8',
             ],
         ],
-    ]
+    ],
 ];

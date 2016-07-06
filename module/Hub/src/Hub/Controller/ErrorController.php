@@ -9,10 +9,12 @@ class ErrorController extends AbstractActionController
 
     public function errorAction()
     {
+
         $errors = $this->_getParam('error_handler');
 
         if (!$errors) {
             $this->view->message = 'You have reached the error page';
+
             return;
         }
         $error_level = 'critical';
@@ -47,12 +49,14 @@ class ErrorController extends AbstractActionController
             $this->view->exception = $errors->exception;
         }
 
-        $this->view->request   = $errors->request;
+        $this->view->request = $errors->request;
     }
 
     public function getLog()
     {
+
         $log = Core_Log::getInstance();
+
         return $log;
     }
 

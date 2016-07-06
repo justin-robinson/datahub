@@ -4,11 +4,7 @@ namespace Api\v1\Controller;
 
 use Api\v1\ResponseFormatter\CompanyCollectionFormatter;
 use Api\v1\ResponseFormatter\CompanyFormatter;
-use Api\v1\ResponseFormatter\FormatterHelpers;
 use DB\Datahub\Company;
-use DB\Datahub\CompanyInstance;
-use Elasticsearch\ClientBuilder;
-use Scoop\Database\Rows;
 use Zend\View\Model\JsonModel;
 
 /**
@@ -83,6 +79,7 @@ class CompanyController extends AbstractRestfulController
 
     public function getList()
     {
+
         $page = $this->params()->fromQuery('page', 1);
         $page = (is_numeric($page) && $page >= 1) ? (int)$page : 1;
         $limit = 1000;

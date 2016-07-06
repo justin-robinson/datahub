@@ -1,41 +1,48 @@
 <?php foreach ($this->media as $item): ?>
     <tr>
-<?php   if ($this->modal_ref): ?>
-            <td><a class="thumb modal-trigger" href="#" data-media-id="<?= $item['source_id'] ?>" rel="<?= $this->modal_ref ?>" data-thumb-url="<?= $item['thumb_url'] ?>"></a></td>
-<?php   else: ?>
-            <td><a class="thumb" href="#" data-media-id="<?= $item['source_id'] ?>" data-thumb-url="<?= $item['thumb_url'] ?>"></a></td>
-<?php   endif ?>
+        <?php if ($this->modal_ref): ?>
+            <td><a class="thumb modal-trigger" href="#" data-media-id="<?= $item['source_id'] ?>"
+                   rel="<?= $this->modal_ref ?>" data-thumb-url="<?= $item['thumb_url'] ?>"></a></td>
+        <?php else: ?>
+            <td><a class="thumb" href="#" data-media-id="<?= $item['source_id'] ?>"
+                   data-thumb-url="<?= $item['thumb_url'] ?>"></a></td>
+        <?php endif ?>
         <td>
             <h3><?= $item['title'] ?></h3>
-<?php   if (!empty($item['copyright_notice'])): ?>
-            <p><?= $item['copyright_notice'] ?></p>
-<?php   endif ?>
+            <?php if (!empty($item['copyright_notice'])): ?>
+                <p><?= $item['copyright_notice'] ?></p>
+            <?php endif ?>
             <p>
                 <?= $item['width'] ?>W x <?= $item['height'] ?>H
-<?php   if ($item['image_quality'] == 'poor:0:1200'): ?>
-                <span class="alert alert-danger alert--inline">Poor quality: less than 600 pixels</span>
-<?php   elseif ($item['image_quality'] == 'low:2:1200'): ?>
-                <span class="alert alert--inline">Low quality: less than 1200 pixels</span>
-<?php   endif ?>
+                <?php if ($item['image_quality'] == 'poor:0:1200'): ?>
+                    <span class="alert alert-danger alert--inline">Poor quality: less than 600 pixels</span>
+                <?php elseif ($item['image_quality'] == 'low:2:1200'): ?>
+                    <span class="alert alert--inline">Low quality: less than 1200 pixels</span>
+                <?php endif ?>
             </p>
             <p>
                 <?= $this->bytesToSize($item['media_size']) ?>
-<?php   if ($item['is_pub_restricted']): ?>
+                <?php if ($item['is_pub_restricted']): ?>
                     &nbsp;&nbsp;&nbsp;<span style="color:blue;">(Note: Media is restricted for use by this publication only)</span>
-<?php   endif ?>
+                <?php endif ?>
             </p>
-<?php   if (!empty($item['caption'])): ?>
+            <?php if (!empty($item['caption'])): ?>
                 <p><?= $item['caption'] ?></p>
-<?php   endif ?>
+            <?php endif ?>
         </td>
-<?php   if ($this->show_select): ?>
-        <td>
-<?php       if ($this->modal_ref): ?>
-            <button class="btn btn-inverse modal-trigger" rel="<?= $this->modal_ref ?>" data-toggle="button" data-media-id="<?= $item['source_id'] ?>" data-media-url="<?= $item['thumb_url'] ?>" data-media-title="<?= $item['title'] ?>">Select</button>
-<?php       else: ?>
-            <button class="btn btn-inverse" data-toggle="button" data-media-id="<?= $item['source_id'] ?>" data-media-url="<?= $item['thumb_url'] ?>" data-media-title="<?= $item['title'] ?>">Select</button>
-<?php       endif ?>
-        </td>
-<?php   endif ?>
+        <?php if ($this->show_select): ?>
+            <td>
+                <?php if ($this->modal_ref): ?>
+                    <button class="btn btn-inverse modal-trigger" rel="<?= $this->modal_ref ?>" data-toggle="button"
+                            data-media-id="<?= $item['source_id'] ?>" data-media-url="<?= $item['thumb_url'] ?>"
+                            data-media-title="<?= $item['title'] ?>">Select
+                    </button>
+                <?php else: ?>
+                    <button class="btn btn-inverse" data-toggle="button" data-media-id="<?= $item['source_id'] ?>"
+                            data-media-url="<?= $item['thumb_url'] ?>" data-media-title="<?= $item['title'] ?>">Select
+                    </button>
+                <?php endif ?>
+            </td>
+        <?php endif ?>
     </tr>
 <?php endforeach ?>

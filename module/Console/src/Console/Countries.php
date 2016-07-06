@@ -6,7 +6,8 @@ namespace Console;
  * Class Countries
  * @package Console
  */
-class Countries {
+class Countries
+{
 
     private static $countries = [
         'first'  => [
@@ -259,7 +260,8 @@ class Countries {
     /**
      * @return array
      */
-    public static function getAll () {
+    public static function getAll()
+    {
 
         return self::$countries;
     }

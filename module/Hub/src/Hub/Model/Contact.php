@@ -7,8 +7,7 @@
 
 namespace Hub\Model;
 
-use \Entity\Model\Base;
-
+use Entity\Model\Base;
 
 /**
  * Class Contact
@@ -40,10 +39,10 @@ use \Entity\Model\Base;
  */
 class Contact extends Base
 {
+
     /**
      * Doctrine entity class name
-     *
-     * @var string $entity_class      Doctrine entity class name
+     * @var string $entity_class Doctrine entity class name
      * @access protected
      */
     protected $entity_class = 'Entity\Datahub\Contact';

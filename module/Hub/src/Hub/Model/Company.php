@@ -5,10 +5,7 @@
  * Time: 3:53 PM
  **/
 
-
-
 namespace Hub\Model;
-
 
 use \Entity\Model\Base;
 
@@ -43,13 +40,13 @@ use \Entity\Model\Base;
  * @method string getUpdatedAt() schema data get method
  * @method string getDeletedAt() schema data get method
  * @method string getContacts() schema data get method
- *
+
  */
 class Company extends Base
 {
+
     /**
      * Doctrine entity class name
-     *
      * @var string $entity_class Doctrine entity class name
      * @access protected
      */
