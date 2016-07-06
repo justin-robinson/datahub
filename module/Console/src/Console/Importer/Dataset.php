@@ -8,11 +8,10 @@
 
 namespace Console\Importer;
 
+
 use Console\CsvIterator;
-use Console\CsvIteratorException;
-use Console\Record\Formatter\Formatters\ImportRefinery;
-use DB\Datahub\Dataset;
-use DB\Datahub\DatasetEntries;
+use DB\Datahub\Dataset as Set;
+use DB\Datahub\DatasetEntries as Entries;
 
 class Dataset
 {
@@ -21,38 +20,49 @@ class Dataset
      *
      * @return array
      */
-    public function importFromCsv ( $csvFile ) {
+    public function importFromCsv($csvFile)
+    {
 
         // open file as csv
-        $file = new CsvIterator( $csvFile );
+        $file = new  CsvIterator($csvFile);
+        // create the dataset and save it
+        $header               = $file->getHeaderRow();
+        $firstRow             = explode(',', $file->fgets());
+        $DataSet              = new Set();
+        $DataSet->ranked_by   = end($header);
+        $DataSet->market_code = $firstRow[2];
+        $DataSet->name        = $firstRow[1];
 
-        // we have a header row woohoo!
-        $file->setHasHeaderRow( true );
-
-        $formatter = ImportRefinery::get_instance();
+        // skip to the next line of the file
+        $file->setHasHeaderRow(true);
 
         // process the rows
-        foreach ( $file as $record ) {
+        if ($DataSet->save()) {
+            $DataSet->id;
+            foreach ($file as $record) {
+//                create entries and save them
+                try {
+                    $entry                    = new Entries();
+                    $entry->companyInstanceId = $record[0];
+                    $entry->ranked            = $record[3];
+                    $entry->dataset_id        = $DataSet->id;
+                    $entry->meta              = $DataSet->ranked_by;
+                    $entry->save();
 
-            try {
-                // why don't we merge automatically?
-                // because then we would have to try catch around the foreach loop and that would
-                // cause the loop to break.  This way we can continue processing the remaining rows
-                $record = $file->mergeWithHeaderRow( $record );
+                } catch (\Console\CsvIteratorException $e) {
+                    // CsvIterator throws an exception when number of columns in the header row
+                    // and the current line do not match
+                    echo $e->getMessage() . PHP_EOL;
 
-                // format record into some db models
-                $company = $formatter->format( $record );
+                    return false;
+                }
 
-                $company->save();
-
-            } catch ( CsvIteratorException $e ) {
-                // CsvIterator throws an exception when number of columns in the header row
-                // and the current line do not match
-                echo $e->getMessage() . PHP_EOL;
             }
-
+            $return = true;
+        } else {
+            $return = false;
         }
 
-        return [Company::$companiesSaved, CompanyInstance::$instancesSaved];
+        return $return;
     }
 }
