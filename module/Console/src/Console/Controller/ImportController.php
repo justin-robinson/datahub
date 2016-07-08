@@ -362,7 +362,6 @@ class ImportController extends AbstractActionController
                 $currentContact->set_literal('created_at', 'NOW()');
                 $currentContact->set_literal('updated_at', 'NOW()');
 
-                // insert new contact
                 $contactInsertionBuffer->insert($currentContact);
 
             } else {
@@ -388,7 +387,7 @@ class ImportController extends AbstractActionController
                     }
                 }
 
-                $contactInsertionBuffer->insert($existingContact);
+                $existingContact->save();
             }
 
             $totalCount++;
