@@ -212,6 +212,17 @@ $latestApiChildRoutes = [
                     ],
                 ],
             ],
+            'type'               => [
+                'type'    => 'Segment',
+                'options' => [
+                    // :type will trigger specific formatting
+                    'route'       => '/:id/type/[:type]',
+                    'constraints' => [
+                        'type' => '[a-z]*',
+                        'id' => '[0-9]*',
+                    ],
+                ],
+            ],
         ],
     ],
 ];
@@ -231,6 +242,7 @@ return [
             'Api\v1\Controller\Property'           => 'Api\v1\Controller\PropertyController',
             'Api\v1\Controller\State'              => 'Api\v1\Controller\StateController',
             'Api\v1\Controller\Dataset'            => 'Api\v1\Controller\DatasetController',
+            'Api\v1\Controller\Type'            => 'Api\v1\Controller\TypeController',
         ],
     ],
     'router'       => [

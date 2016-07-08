@@ -26,11 +26,16 @@ class DatasetController extends AbstractRestfulController
      */
     public function get($setId)
     {
+        // looking for formatting types
+        $e     = $this->getEvent();
+        $route = $e->getRouteMatch();
+        $type  = $route->getParam('type');
         /** @var $set \DB\Datahub\Dataset */
         $set = Dataset::fetch_by_id($setId);
-        $set->fetchDatasetEntries();
         if ($set) {
-            return new JsonModel(DatasetFormatter::format($set));
+            $set->fetchDatasetEntries();
+
+            return new JsonModel(DatasetFormatter::format($set, false, $type));
         }
 
         return $this->getResponse()->setStatusCode(204);
@@ -38,6 +43,10 @@ class DatasetController extends AbstractRestfulController
 
     public function create($data)
     {
+        /**
+         * this needs to get the company instance id's?
+         * probably not just rename the col maroveus_id
+         */
         $set = new Dataset($data);
         if ($set->save()) {
             // get the actual timestamps
@@ -46,5 +55,6 @@ class DatasetController extends AbstractRestfulController
 
         return new JsonModel(DatasetFormatter::format($set, true));
     }
+
 
 }

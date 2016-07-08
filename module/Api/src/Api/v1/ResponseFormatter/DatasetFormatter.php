@@ -21,19 +21,30 @@ class DatasetFormatter
     /**
      * @param Dataset $set
      *
-     * @return array
+     * @return array
      */
-    public static function format(Dataset $set, $change = false)
+    public static function format(Dataset $set, $change = false, $type = null)
     {
+
+        // fetch type specific data
+        switch ($type) {
+            case 'map':
+            $entries = FormatterHelpers::getMapData($set);
+                break;
+            default:
+                if (!is_array($set->entries)) {
+            $entries = empty($set->entries) ? null : $set->entries->to_array(false);
+        } else {
+            $entries = empty($set->entries) ? null : $set->entries;
+        }
+                break;
+        }
 
         $host = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST', 'hub');
 
         $array = $set->to_array(false);
-        if (!is_array($set->entries)) {
-            $array['entries'] = empty($set->entries) ? null : $set->entries->to_array(false);
-        } else {
-            $array['entries'] = empty($set->entries) ? null : $set->entries;
-        }
+
+        $array['entries'] = $entries;
 
         if ($change) {
             $array['_links'] = [
