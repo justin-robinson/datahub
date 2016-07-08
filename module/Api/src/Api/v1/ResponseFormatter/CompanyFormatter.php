@@ -26,7 +26,7 @@ class CompanyFormatter
 
         $array['_links'] = [
             'self'      => [
-                'href' => $host . FormatterHelpers::get_server_variable('REQUEST_URI'),
+                'href' => $uri . "/{$array['companyId']}",
             ],
             'instances' => [
                 'href' => $uri . "/{$array['companyId']}/instances",

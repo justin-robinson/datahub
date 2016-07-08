@@ -23,8 +23,8 @@ return [
             ],
         ],
     ],
-    'elastica' => [
-        'host' => 'http://elb.elasticsearch.datahub.bizj-staging.com/',
+    'elastica-datahub' => [
+        'host' => 'http://elb.elasticsearch.datahub.bizj-staging.com',
         'path' => 'rerefinery/',
         'port' => '9200',
         'url'  => 'http://elb.elasticsearch.datahub.bizj-staging.com/:9200/current/',

@@ -13,7 +13,8 @@ use Scoop\Database\Rows;
  * This file is only generated once
  * Put your class specific code in here
  */
-class CompanyInstanceProperty extends \DBCore\Datahub\CompanyInstanceProperty {
+class CompanyInstanceProperty extends \DBCore\Datahub\CompanyInstanceProperty
+{
 
     /**
      * @var SourceType
@@ -21,17 +22,28 @@ class CompanyInstanceProperty extends \DBCore\Datahub\CompanyInstanceProperty {
     protected $sourceType;
 
     /**
+     * @param $name
+     * @param $value
+     */
+    public function __set($name, $value)
+    {
+
+        parent::__set($name, is_scalar($value) ? utf8_encode($value) : $value);
+    }
+
+    /**
      * @return bool
      */
-    public function delete () {
+    public function delete()
+    {
 
-        if( !$this->loaded_from_database() ) {
+        if (!$this->loaded_from_database()) {
             return false;
         }
 
-        $this->deletedAt = new Literal( 'NOW()' );
+        $this->deletedAt = new Literal('NOW()');
 
-        return $this->save( false );
+        return $this->save(false);
     }
 
     /**
@@ -42,19 +54,22 @@ class CompanyInstanceProperty extends \DBCore\Datahub\CompanyInstanceProperty {
      *
      * @return bool|int|Rows
      */
-    public static function fetch ( $limit = 1000, $offset = 0, $where = '', array $queryParams = [ ] ) {
+    public static function fetch($limit = 1000, $offset = 0, $where = '', array $queryParams = [])
+    {
 
         $where .= empty($where) ? '' :
             " AND (deletedAt IS NULL OR deletedAt = '" . self::$dBColumnDefaultValuesArray['deletedAt'] . "')";
 
-        return parent::fetch( $limit, $offset, $where, $queryParams );
+        return parent::fetch($limit, $offset, $where, $queryParams);
     }
 
     /**
      * @return bool|Source|\Scoop\Database\Model
      */
-    public function fetch_source_type () {
-        if ( !empty($this->sourceTypeId) ) {
+    public function fetch_source_type()
+    {
+
+        if (!empty($this->sourceTypeId)) {
             $this->sourceType = SourceType::fetch_by_id($this->sourceTypeId);
         }
 
@@ -64,7 +79,8 @@ class CompanyInstanceProperty extends \DBCore\Datahub\CompanyInstanceProperty {
     /**
      * @return Source
      */
-    public function get_source_type () {
+    public function get_source_type()
+    {
 
         return $this->sourceType;
     }
@@ -74,9 +90,10 @@ class CompanyInstanceProperty extends \DBCore\Datahub\CompanyInstanceProperty {
      *
      * @return bool
      */
-    public function save ( $setTimestamps = true ) {
+    public function save($setTimestamps = true)
+    {
 
-        $this->pre_save( $setTimestamps );
+        $this->pre_save($setTimestamps);
 
         return parent::save();
     }
@@ -84,15 +101,17 @@ class CompanyInstanceProperty extends \DBCore\Datahub\CompanyInstanceProperty {
     /**
      * @param bool $setTimestamps
      */
-    public function pre_save ( $setTimestamps = true ) {
-        if( $setTimestamps ) {
+    public function pre_save($setTimestamps = true)
+    {
+
+        if ($setTimestamps) {
             // set timestamps
-            if( $this->createdAt !== self::$dBColumnDefaultValuesArray['createdAt'] ) {
-                $this->set_literal( 'createdAt', 'NOW()' );
+            if ($this->createdAt !== self::$dBColumnDefaultValuesArray['createdAt']) {
+                $this->set_literal('createdAt', 'NOW()');
             }
-            $this->set_literal( 'updatedAt', 'NOW()' );
+            $this->set_literal('updatedAt', 'NOW()');
         }
-        $this->valueMd5 = md5( $this->value );
+        $this->valueMd5 = md5($this->value);
     }
 
 }

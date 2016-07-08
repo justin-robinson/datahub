@@ -3,12 +3,12 @@
 namespace Api\v1\Controller;
 
 use Api\v1\ResponseFormatter\CompanyProfileCollectionFormatter;
+use Api\v1\ResponseFormatter\CompanySearchCollectionFormatter;
 use Api\v1\ResponseFormatter\FormatterHelpers;
 use DB\Datahub\Company;
 use DB\Datahub\CompanyInstance;
 use Elasticsearch\ClientBuilder;
 use Scoop\Database\Rows;
-use Zend\Http\Client;
 use Zend\View\Model\JsonModel;
 
 /**
@@ -37,19 +37,26 @@ class CompanySearchController extends AbstractRestfulController
                 'ex'          => FormatterHelpers::get_http_protocol() . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '?search[Name]=Google&search[State]=CA',
                 'searchTerms' => [],
             ];
-            $client = new Client("{$config['host']}:{$config['port']}/companies");
-            $elasticResponse = $client->send();
-            if ($elasticResponse->isSuccess()) {
-                $body = json_decode($elasticResponse->getBody());
-                if (isset($body->companies->mappings->company->properties)) {
-                    foreach ($body->companies->mappings->company->properties as $propertyName => $value) {
-                        $response['searchTerms'][] = $propertyName;
-                    }
+
+            // create the elastic client
+            $elasticClient = ClientBuilder::create()
+                                          ->setHosts([$config['host'] . ':' . $config['port'] . '/companies'] )
+                                          ->build();
+
+            $elasticResponse = $elasticClient->info();
+            if (isset($elasticResponse['companies']['mappings']['company']['properties'])) {
+                foreach ($elasticResponse['companies']['mappings']['company']['properties'] as $propertyName => $value) {
+                    $response['searchTerms'][] = $propertyName;
                 }
             }
 
             return new JsonModel($response);
         } else {
+
+            $page = $this->params()->fromQuery('page', 1);
+            $page = (is_numeric($page) && $page >= 1) ? (int)$page : 1;
+            $limit = $this->params()->fromQuery('limit', 10);
+            $offset = $limit * ($page - 1);
 
             // create the elastic client
             $elasticClient = ClientBuilder::create()
@@ -60,6 +67,8 @@ class CompanySearchController extends AbstractRestfulController
             $params = [
                 'index' => 'companies',
                 'type'  => 'company',
+                'size' => $limit,
+                'from' => $offset,
                 'body'  => [
                     'query' => [
                         'bool' => [
@@ -90,16 +99,6 @@ class CompanySearchController extends AbstractRestfulController
                     continue;
                 }
 
-                foreach ($company->fetch_company_instances() as $instance) {
-                    /**
-                     * @var $instance CompanyInstance
-                     */
-                    $instance->fetch_properties();
-                    $instance->fetch_contacts();
-                    $instance->fetch_state();
-                    $instance->fetch_channel_ids();
-                }
-
                 $companies->add_row($company);
             }
 
@@ -107,8 +106,7 @@ class CompanySearchController extends AbstractRestfulController
                 return $this->getResponse()->setStatusCode(204);
             }
 
-            return new JsonModel(CompanyProfileCollectionFormatter::format($companies, 1, 1000,
-                $companies->get_num_rows(), '0', '0', '/api/v1/company/search'));
+            return new JsonModel(CompanySearchCollectionFormatter::format($companies, $elasticResponse['hits']['total'], $page, $limit));
         }
     }
 }
