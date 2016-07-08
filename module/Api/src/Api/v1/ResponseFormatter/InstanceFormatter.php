@@ -68,6 +68,9 @@ class InstanceFormatter
             'properties' => [
                 'href' => $host . "/api/v1/instance/{$array['companyInstanceId']}/properties",
             ],
+            'profile' => [
+                'href' => $host . "/api/v1/instance/{$array['companyInstanceId']}/profile",
+            ],
         ];
 
         return $array;

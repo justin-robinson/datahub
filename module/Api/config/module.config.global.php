@@ -109,6 +109,18 @@ $latestApiChildRoutes = [
                     ],
                 ],
             ],
+            'profile'          => [
+                'type'    => 'Segment',
+                'options' => [
+                    'route'       => '[/:id]/profile',
+                    'constraints' => [
+                        'id' => '[0-9]*',
+                    ],
+                    'defaults'    => [
+                        'controller' => 'Api\v1\Controller\InstanceProfile',
+                    ],
+                ],
+            ],
         ],
     ],
     'property' => [
@@ -207,6 +219,7 @@ return [
             'Api\v1\Controller\Contact'            => 'Api\v1\Controller\ContactController',
             'Api\v1\Controller\Instance'           => 'Api\v1\Controller\InstanceController',
             'Api\v1\Controller\InstanceContacts'   => 'Api\v1\Controller\InstanceContactsController',
+            'Api\v1\Controller\InstanceProfile'    => 'Api\v1\Controller\InstanceProfileController',
             'Api\v1\Controller\InstanceProperties' => 'Api\v1\Controller\InstancePropertiesController',
             'Api\v1\Controller\Property'           => 'Api\v1\Controller\PropertyController',
             'Api\v1\Controller\State'              => 'Api\v1\Controller\StateController',
