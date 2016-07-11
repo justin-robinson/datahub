@@ -1,100 +1,100 @@
 <?php
-return array(
-    'type' => 'Api\Form\ProoferForm',
-    'elements' => array(
-        array(
-            'spec' => array(
-                'type' => 'CMS\Form\Element\PathSelect',
-                'name' => 'paths',
-                'attributes' => array(
-                    'class' => 'select2-sortable span12',
+return [
+    'type'      => 'Api\Form\ProoferForm',
+    'elements'  => [
+        [
+            'spec' => [
+                'type'       => 'CMS\Form\Element\PathSelect',
+                'name'       => 'paths',
+                'attributes' => [
+                    'class'    => 'select2-sortable span12',
                     'multiple' => 'multiple',
-                ),
-                'options' => array(
+                ],
+                'options'    => [
                     'content_type' => 'story',
-                    'required' => true,
-                ),
-            ),
-        ),
-        array(
-            'spec' => array(
-                'type' => 'Zend\Form\Element\Checkbox',
-                'name' => 'redirect_secondary_path',
-                'options' => array(
-                    'label' => 'Redirect Secondary Paths',
-                    'label_attributes' => array(
+                    'required'     => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type'    => 'Zend\Form\Element\Checkbox',
+                'name'    => 'redirect_secondary_path',
+                'options' => [
+                    'label'            => 'Redirect Secondary Paths',
+                    'label_attributes' => [
                         'class' => 'control-label',
-                    ),
-                    'unchecked_value' => 0,
-                    'checked_value'   => 1,
-                ),
-            ),
-        ),
-    ),
-    'fieldsets' => array(
-        array(
-            'spec' => array(
-                'name' => 'buckets',
-                'type' => 'CMS\Form\Fieldset',
-                'elements' => array(
-                    array(
-                        'spec' => array(
-                            'type' => 'Zend\Form\Element\Checkbox',
-                            'name' => 'make_national',
-                            'options' => array(
-                                'label' => 'Make National',
-                                'label_attributes' => array(
+                    ],
+                    'unchecked_value'  => 0,
+                    'checked_value'    => 1,
+                ],
+            ],
+        ],
+    ],
+    'fieldsets' => [
+        [
+            'spec' => [
+                'name'     => 'buckets',
+                'type'     => 'CMS\Form\Fieldset',
+                'elements' => [
+                    [
+                        'spec' => [
+                            'type'    => 'Zend\Form\Element\Checkbox',
+                            'name'    => 'make_national',
+                            'options' => [
+                                'label'            => 'Make National',
+                                'label_attributes' => [
                                     'class' => 'control-label',
-                                ),
-                                'unchecked_value' => 0,
-                                'checked_value'   => 1,
-                            ),
-                        ),
-                    ),
-                    array(
-                        'spec' => array(
-                            'type' => 'Zend\Form\Element\Checkbox',
-                            'name' => 'make_standout',
-                            'options' => array(
-                                'label' => 'Make Standout',
-                                'label_attributes' => array(
+                                ],
+                                'unchecked_value'  => 0,
+                                'checked_value'    => 1,
+                            ],
+                        ],
+                    ],
+                    [
+                        'spec' => [
+                            'type'    => 'Zend\Form\Element\Checkbox',
+                            'name'    => 'make_standout',
+                            'options' => [
+                                'label'            => 'Make Standout',
+                                'label_attributes' => [
                                     'class' => 'control-label',
-                                ),
-                                'unchecked_value' => 0,
-                                'checked_value'   => 1,
-                            ),
-                        ),
-                    ),
-                    array(
-                        'spec' => array(
-                            'type' => 'Zend\Form\Element\Checkbox',
-                            'name' => 'main-street',
-                            'options' => array(
-                                'label' => 'Main Street',
-                                'label_attributes' => array(
+                                ],
+                                'unchecked_value'  => 0,
+                                'checked_value'    => 1,
+                            ],
+                        ],
+                    ],
+                    [
+                        'spec' => [
+                            'type'    => 'Zend\Form\Element\Checkbox',
+                            'name'    => 'main-street',
+                            'options' => [
+                                'label'            => 'Main Street',
+                                'label_attributes' => [
                                     'class' => 'control-label',
-                                ),
-                                'unchecked_value' => 0,
-                                'checked_value'   => 1,
-                            ),
-                        ),
-                    ),
-                    array(
-                        'spec' => array(
-                            'type' => 'Zend\Form\Element\Checkbox',
-                            'name' => 'on-numbers',
-                            'options' => array(
-                                'label' => 'On Numbers',
-                                'label_attributes' => array(
+                                ],
+                                'unchecked_value'  => 0,
+                                'checked_value'    => 1,
+                            ],
+                        ],
+                    ],
+                    [
+                        'spec' => [
+                            'type'    => 'Zend\Form\Element\Checkbox',
+                            'name'    => 'on-numbers',
+                            'options' => [
+                                'label'            => 'On Numbers',
+                                'label_attributes' => [
                                     'class' => 'control-label',
-                                ),
-                                'unchecked_value' => 0,
-                                'checked_value'   => 1,
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-        ),
-    ),
-);
+                                ],
+                                'unchecked_value'  => 0,
+                                'checked_value'    => 1,
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ],
+    ],
+];

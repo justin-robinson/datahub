@@ -14,6 +14,7 @@ class IndexController extends AbstractActionController
 
     public function indexAction()
     {
-        return array('message' => 'Hello World');
+
+        return ['message' => 'Hello World'];
     }
 }

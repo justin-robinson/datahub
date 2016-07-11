@@ -60,8 +60,8 @@ return [
             'user'          => 'operations',
             'password'      => 'operations',
             'driverOptions' => [
-                1002 => 'SET NAMES utf8'
+                1002 => 'SET NAMES utf8',
             ],
         ],
-    ]
+    ],
 ];

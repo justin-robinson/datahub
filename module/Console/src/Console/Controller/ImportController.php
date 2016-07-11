@@ -2,19 +2,17 @@
 
 namespace Console\Controller;
 
-use Console\Importer\Refinery;
 use Console\CsvIterator;
+use Console\Importer\Refinery;
 use Console\Record\Formatter\Formatters\Relevate;
 use DB\Datahub\CompanyInstance;
 use DB\Datahub\Contact;
 use LRUCache\LRUCache;
-use Scoop\Database\Literal;
 use Scoop\Database\Query\Buffer;
 use Zend\Db\Adapter as dbAdapter;
 
 /**
  * Class ImportController
- *
  * @package Console\Controller
  */
 class ImportController extends AbstractActionController
@@ -106,14 +104,14 @@ class ImportController extends AbstractActionController
      * @var $sqlStringsArray string[]
      */
     protected $sqlStringsArray = [
-        'selectContacts'    => '
+        'selectContacts' => '
             SELECT
                 *
             FROM
               `datahub`.`contact`
             WHERE meroveus_id = ?
             LIMIT 1000',
-        'insertContact'     => '
+        'insertContact'  => '
             INSERT INTO
               datahub.contact (
                 hub_id,
@@ -163,7 +161,7 @@ class ImportController extends AbstractActionController
                 NOW(),
                 NULL
               )',
-        'updateContact'     => '
+        'updateContact'  => '
             UPDATE
               `datahub`.`contact`
             SET
@@ -199,6 +197,7 @@ class ImportController extends AbstractActionController
      */
     public function indexAction()
     {
+
         $this->index($this->getRequest()->getParam('e'));
     }
 
@@ -211,6 +210,7 @@ class ImportController extends AbstractActionController
      */
     private function index($env)
     {
+
         echo $env . PHP_EOL;
 
         return $env . PHP_EOL;
@@ -218,12 +218,12 @@ class ImportController extends AbstractActionController
 
     /**
      * Testing 1.2.3.... Testing...
-     *
      * @access pubic
      * @return void
      */
     public function testAction()
     {
+
         $this->getServiceLocator()->get('Console\Logger')->info('test');
         echo "Hello World\n";
 
@@ -232,7 +232,6 @@ class ImportController extends AbstractActionController
     /**
      * Import the refinery data from a CSV file
      *  does a bit of normalising
-     *
      * @access pubic
      * @return void
      */
@@ -270,12 +269,11 @@ class ImportController extends AbstractActionController
         list($companiesProcessed, $instancesProcessed) = $importer->import($csvFile);
 
         printf("ended at %s%sImported: %s\t%s companies%s\t%s instances%s", date('h:i:s A'),
-               PHP_EOL, PHP_EOL,$companiesProcessed,PHP_EOL,$instancesProcessed,PHP_EOL);
+            PHP_EOL, PHP_EOL, $companiesProcessed, PHP_EOL, $instancesProcessed, PHP_EOL);
     }
 
     /**
      * Merges relevate csv data with our existing data
-     *
      * @access public
      * @return void
      */
@@ -284,13 +282,13 @@ class ImportController extends AbstractActionController
 
         $filePath = $this->getRequest()->getParam('file');
 
-        if ( !$filePath ) {
-            die ( 'run with arg --file /path/to/file ');
+        if (!$filePath) {
+            die ('run with arg --file /path/to/file ');
         }
 
         $filePath = realpath($filePath);
-        if ( !$filePath ) {
-            die ( "--file does not exist: " . $this->getRequest()->getParam('file') );
+        if (!$filePath) {
+            die ("--file does not exist: " . $this->getRequest()->getParam('file'));
         }
 
         $file = new CsvIterator($filePath);
@@ -302,7 +300,7 @@ class ImportController extends AbstractActionController
         // meroveus ids are grouped together so we can use this to reduce sql queries down to 1 for each company
         $lastMeroveusId = -1;
 
-        $updateContact     = null;//$this->sqlStatementsArray['updateContact'];
+        $updateContact = null;//$this->sqlStatementsArray['updateContact'];
 
         // some stats
         $totalCount = $insertCount = $updateCount = 0;
@@ -326,10 +324,10 @@ class ImportController extends AbstractActionController
 
             $companyInstances =
                 $companyInstanceCache->exists($currentContact->meroveusId)
-                ? $companyInstanceCache->get($currentContact->meroveusId)
-                : CompanyInstance::fetch_by_source_name_and_id('meroveus', $currentContact->meroveusId);
+                    ? $companyInstanceCache->get($currentContact->meroveusId)
+                    : CompanyInstance::fetch_by_source_name_and_id('meroveus', $currentContact->meroveusId);
 
-            if ( $companyInstances ) {
+            if ($companyInstances) {
                 $currentContact->companyInstanceId = $companyInstances->first()->companyInstanceId;
                 $companyInstanceCache->put($currentContact->meroveusId, $companyInstances);
             }
@@ -345,9 +343,9 @@ class ImportController extends AbstractActionController
 
                 // add each contact to our contacts array index by their name
                 $contacts = Contact::fetch_where('meroveusId = ?', [$currentContact->meroveusId]);
-                if ( $contacts ) {
-                    foreach ( $contacts as $contact) {
-                        $key               = strtolower($contact->firstName . $contact->lastName);
+                if ($contacts) {
+                    foreach ($contacts as $contact) {
+                        $key = strtolower($contact->firstName . $contact->lastName);
                         $allContacts[$key] = $contact;
                     }
 
@@ -361,10 +359,9 @@ class ImportController extends AbstractActionController
             // does this contact exist?
             if (empty($allContacts[$key])) {
 
-                $currentContact->set_literal( 'created_at', 'NOW()' );
-                $currentContact->set_literal( 'updated_at', 'NOW()' );
+                $currentContact->set_literal('created_at', 'NOW()');
+                $currentContact->set_literal('updated_at', 'NOW()');
 
-                // insert new contact
                 $contactInsertionBuffer->insert($currentContact);
 
             } else {
@@ -390,7 +387,7 @@ class ImportController extends AbstractActionController
                     }
                 }
 
-                $contactInsertionBuffer->insert($existingContact);
+                $existingContact->save();
             }
 
             $totalCount++;

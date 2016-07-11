@@ -28,12 +28,12 @@ use Zend\Mvc\MvcEvent;
 
 /**
  * Class MeroveusController
- *
  * @package Console\Controller
  *          pdo statement prep happens in __construct for DI reasons
  */
 class MeroveusController extends AbstractActionController
 {
+
     /**
      * @var array $markets
      * map of our market names to their respective meroveus environments
@@ -154,16 +154,17 @@ class MeroveusController extends AbstractActionController
      */
     public function init(MvcEvent $e)
     {
+
         parent::init($e);
         $this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         $this->companyService = new CompanyService($this->meroveusClient);
         //@todo make this environment aware
         // set up elastic
-        $this->elasticaClient      = new ElasticaClient($this->getServiceLocator()->get('Config')['elastica-datahub']);
-        $this->elasticSearch       = new ElasticaSearch($this->elasticaClient);
-        $this->elasticQuery        = new ElasticaQuery();
+        $this->elasticaClient = new ElasticaClient($this->getServiceLocator()->get('Config')['elastica-datahub']);
+        $this->elasticSearch = new ElasticaSearch($this->elasticaClient);
+        $this->elasticQuery = new ElasticaQuery();
         $this->elasticQueryBuilder = new QueryBuilder();
-        $this->contactService      = $this->getServiceLocator()->get('Services\Meroveus\ContactService');
+        $this->contactService = $this->getServiceLocator()->get('Services\Meroveus\ContactService');
         // prepare pdo outside the loop for memory purposes
 
     }
@@ -177,7 +178,8 @@ class MeroveusController extends AbstractActionController
      */
     public function doTier($id)
     {
-        $tier    = 0;
+
+        $tier = 0;
         $company = Company::fetch_company_and_instances($id);
 
         if ($company && $company->get_company_instances()->first()) {
@@ -185,6 +187,7 @@ class MeroveusController extends AbstractActionController
                 $tier = $company->get_company_instances()->first()->get_tier();
             }
         }
+
         return $tier;
     }
 
@@ -198,11 +201,11 @@ class MeroveusController extends AbstractActionController
 
     /**
      * utility randomness
-     *
      * @return string
      */
     public function indexAction()
     {
+
         ini_set('memory_limit', '1024M');
         $randomIds = [
             227813,
@@ -307,7 +310,6 @@ class MeroveusController extends AbstractActionController
             235661,
         ];
 
-
         echo '
         __________________ _______  _______ _________ _        _______ 
         \__   __/\__   __/(  ____ \(  ____ )\__   __/( (    /|(  ____ \
@@ -318,7 +320,6 @@ class MeroveusController extends AbstractActionController
            | |   ___) (___| (____/\| ) \ \_____) (___| )  \  || (___) |
            )_(   \_______/(_______/|/   \__/\_______/|/    )_)(_______)
         ';
-
 
         $start = date('h:i:s A');
         echo "started at " . $start . PHP_EOL;
@@ -335,7 +336,7 @@ class MeroveusController extends AbstractActionController
         ];
 
         $foundCount = 0;
-        $count      = 1;
+        $count = 1;
 //        while ($count < 310200) {
         while ($count < 1000) {
 //        while ($count < 10000) {
@@ -348,7 +349,6 @@ class MeroveusController extends AbstractActionController
 
             $count++;
         }
-
 
 //        foreach ($randomIds as $id) {
 //            $company = Company::fetch_company_and_instances($id);
@@ -375,12 +375,12 @@ class MeroveusController extends AbstractActionController
 
     /**
      * php run.php  meroveus match -e development
-     *
      * @var $sanity bool will write files for you to peruse for debugging
      * @var $debug  bool turns off any db inserts/updates
      */
     public function matchAction($sanity = false, $debug = false)
     {
+
         echo '
              ███▄ ▄███▓    ▄▄▄         ▄▄▄█████▓    ▄████▄      ██░ ██     ██▓    ███▄    █      ▄████
             ▓██▒▀█▀ ██▒   ▒████▄       ▓  ██▒ ▓▒   ▒██▀ ▀█     ▓██░ ██▒   ▓██▒    ██ ▀█   █     ██▒ ▀█▒
@@ -399,7 +399,7 @@ class MeroveusController extends AbstractActionController
 
         echo 'while you wait: https://www.youtube.com/watch?v=siwpn14IE7E' . PHP_EOL;
 
-        $maxRows      = 500;
+        $maxRows = 500;
         $totalMatched = $totalInserted = $marketMatched = $marketInserted = 0;
         /** @var  $contactService \Services\Meroveus\ContactService */
         $this->contactService = $this->getServiceLocator()->get('Services\Meroveus\ContactService');
@@ -439,9 +439,9 @@ class MeroveusController extends AbstractActionController
 
         foreach ($this->markets as $market => $env) {
 
-            $meroveusParams['ENV']      = $env;
+            $meroveusParams['ENV'] = $env;
             $meroveusParams['STARTROW'] = 1; // reset our pagination offset
-            $marketMatched              = $marketInserted = 0; // reset counts for this market
+            $marketMatched = $marketInserted = 0; // reset counts for this market
 
             // paginate over companies
             while ($marketCompanyList = $this->companyService->fetchByMarket($meroveusParams)) {
@@ -452,8 +452,8 @@ class MeroveusController extends AbstractActionController
 
                 foreach ($marketCompanyList as $index => $target) {
 
-                    $company           = $formatter->format($target);
-                    $match             = $this->elasticMatch($target);
+                    $company = $formatter->format($target);
+                    $match = $this->elasticMatch($target);
                     $companyInstanceId = null;
 
                     if ($match) {
@@ -484,9 +484,9 @@ class MeroveusController extends AbstractActionController
                     if ($debug) {
                         // track memory and total count
                         echo "\033[{$lastMemUsageMessageLength}D";
-                        $total                     = $totalInserted + $totalMatched;
+                        $total = $totalInserted + $totalMatched;
                         $currentLoopInsertionCount = $index + 1;
-                        $memory                    = $total . ':' . $currentLoopInsertionCount . ':' . $this->convert_memory_usage(memory_get_usage(true));
+                        $memory = $total . ':' . $currentLoopInsertionCount . ':' . $this->convert_memory_usage(memory_get_usage(true));
                         $lastMemUsageMessageLength = strlen($memory);
                         echo $memory;
                     }
@@ -523,9 +523,8 @@ class MeroveusController extends AbstractActionController
             if (!empty($contact)) {
                 // attach the company hub id to the contact, format it and add it
                 $contact['hub_id'] = $companyHubId;
-                $formattedContact  = $this->contactService->formatMeroveusContact($contact, $this->jobIdDictionary);
+                $formattedContact = $this->contactService->formatMeroveusContact($contact, $this->jobIdDictionary);
                 /** @var \DB\Datahub\Contact $formattedContact */
-
 
                 if (!$debug) {
                     if (!empty($formattedContact)) {
@@ -632,7 +631,6 @@ class MeroveusController extends AbstractActionController
             echo PHP_EOL . "exported {$count} companies to " . realpath($outFilePath);
         }
 
-
     }
 
     /**
@@ -657,7 +655,7 @@ class MeroveusController extends AbstractActionController
         // @todo handle deletions
         $industries = $this->companyService->queryMeroveusRoot($meroveusParams);
 
-        $industriesAdded            = 0;
+        $industriesAdded = 0;
         $numberOfMeroveusIndustries = 0;
 
         foreach ($industries as $industry) {
@@ -743,7 +741,6 @@ class MeroveusController extends AbstractActionController
     /**
      * Map third party sic codes to a meroveus_industry_id and link to a company via a provided
      * hub_id
-     *
      * @throws \Exception
      */
     public function mapThirdPartySicAction()
@@ -818,7 +815,6 @@ class MeroveusController extends AbstractActionController
             ]);
         }
 
-
     }
 
     /**
@@ -830,10 +826,11 @@ class MeroveusController extends AbstractActionController
      *
      * @return mixed array/bool
      * query elastic for match
-     *
+
      */
     private function elasticMatch(array $target, $minScore = 9.9)
     {
+
         if (empty($target)) {
             echo 'empty target passed to elasticMatch' . PHP_EOL;
 
@@ -862,12 +859,11 @@ class MeroveusController extends AbstractActionController
             $queryFields['State']))->addMust($this->elasticQueryBuilder->query()->match('PostalCode',
             $queryFields['PostalCode'])));
 
-
         // set the minimum score that we consider a match
         // https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-min-score.html
         $this->elasticQuery->setMinScore($minScore);
-        $resultSet    = $this->elasticSearch->search($this->elasticQuery);
-        $topScore     = $resultSet->getMaxScore();
+        $resultSet = $this->elasticSearch->search($this->elasticQuery);
+        $topScore = $resultSet->getMaxScore();
         $resultsArray = $resultSet->getResults();
 
         $result = false;
@@ -909,22 +905,23 @@ class MeroveusController extends AbstractActionController
             'universal_employee_local_static'   => empty($target['universal-employee-local_static']) ? [] : [$target['universal-employee-local_static']],
             'universal_established_year_static' => empty($target['universal-established-year_static']) ? [] : [$target['universal-established-year_static']],
             'universal_profile_blob_static'     => empty($target['universal-profile-blob_static']) ? [] : [$target['universal-profile-blob_static']],
-            'industry'                          => empty($target['firm-industry_static']) ? [] : explode(',', $target['firm-industry_static']),
+            'industry'                          => empty($target['firm-industry_static']) ? [] : explode(',',
+                $target['firm-industry_static']),
         ];
 
         foreach ($params as $name => $values) {
-            foreach ( $values as $value ) {
-                $value = trim( $value, 'Â\'"  ');
+            foreach ($values as $value) {
+                $value = trim($value, 'Â\'"  ');
                 $companyInstances->first()->add_property(
                     new CompanyInstanceProperty(
                         [
                             'name'         => $name,
                             'value'        => $value,
-                            'sourceTypeId' => SourceType::fetch_one_where( "name = 'meroveus'" )->sourceTypeId,
+                            'sourceTypeId' => SourceType::fetch_one_where("name = 'meroveus'")->sourceTypeId,
                             'sourceId'     => $target['meroveusId'],
                             'createdAt'    => $target['createdAt'],
                             'updatedAt'    => $target['updatedAt'],
-                        ] ) );
+                        ]));
 
             }
         }
@@ -943,10 +940,10 @@ class MeroveusController extends AbstractActionController
      * @param $elasticResult
      *
      * @return bool
-     *
      */
     private function writeSanityFiles($market, $target, $elasticResult)
     {
+
         ksort($target);
         $keepArray = [
             'firm-name_static',
@@ -1001,8 +998,8 @@ class MeroveusController extends AbstractActionController
 
     public function tierAction()
     {
-        ini_set('memory_limit', '1024M');
 
+        ini_set('memory_limit', '1024M');
 
         echo '
         __________________ _______  _______ _________ _        _______ 
@@ -1018,7 +1015,7 @@ class MeroveusController extends AbstractActionController
         echo "started at " . $start . PHP_EOL;
         $count = 1;
 
-        $counts     = [
+        $counts = [
             1 => 0,
             2 => 0,
             3 => 0,
@@ -1028,7 +1025,7 @@ class MeroveusController extends AbstractActionController
             7 => 0,
         ];
         $foundCount = 0;
-        $count      = 1;
+        $count = 1;
         while ($count < 1000) {
             $tier = $this->doTier($count);
             if ($tier) {

@@ -1930,7 +1930,8 @@
             "http client",
             "rest",
             "web service"
-        ]
+        ],
+        "abandoned": "guzzlehttp/guzzle"
     },
     {
         "name": "bizjournals/module_services",
@@ -2360,12 +2361,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/justin-robinson/scoop.git",
-            "reference": "b3f9a77244b5588d9aae669109c9fe6ba6efb78d"
+            "reference": "5b25f0ede320acc897932c9208a64bdc68958228"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/justin-robinson/scoop/zipball/b3f9a77244b5588d9aae669109c9fe6ba6efb78d",
-            "reference": "b3f9a77244b5588d9aae669109c9fe6ba6efb78d",
+            "url": "https://api.github.com/repos/justin-robinson/scoop/zipball/5b25f0ede320acc897932c9208a64bdc68958228",
+            "reference": "5b25f0ede320acc897932c9208a64bdc68958228",
             "shasum": ""
         },
         "require": {
@@ -2380,7 +2381,7 @@
             "phpunit/phpunit": "*",
             "phpunit/phpunit-mock-objects": "*"
         },
-        "time": "2016-06-21 20:03:02",
+        "time": "2016-07-07 19:07:29",
         "bin": [
             "bin/scoop"
         ],

@@ -23,8 +23,8 @@ return [
             ],
         ],
     ],
-    'elastica' => [
-        'host' => 'http://elb.elasticsearch.datahub.bizj-staging.com/',
+    'elastica-datahub' => [
+        'host' => 'http://elb.elasticsearch.datahub.bizj-staging.com',
         'path' => 'rerefinery/',
         'port' => '9200',
         'url'  => 'http://elb.elasticsearch.datahub.bizj-staging.com/:9200/current/',
@@ -32,7 +32,7 @@ return [
 
     'mysql' => [
         'datahub' => $defaultMysqlConnectionParams,
-        'db02' => [
+        'db02'    => [
             'charset'       => 'utf8',
             'host'          => 'db02.bizj-internal.com',
             'dbname'        => 'recon',
@@ -40,8 +40,8 @@ return [
             'user'          => 'datahub',
             'password'      => 'readonly',
             'driverOptions' => [
-                1002 => 'SET NAMES utf8'
+                1002 => 'SET NAMES utf8',
             ],
         ],
-    ]
+    ],
 ];

@@ -12,12 +12,14 @@ use Scoop\Database\Model\Generic;
  * Class CronController
  * @package Console\Controller
  */
-class CronController extends AbstractActionController {
+class CronController extends AbstractActionController
+{
 
     /**
      * @throws \Console\DB\Error\ConfigException
      */
-    public function exportReconAction () {
+    public function exportReconAction()
+    {
 
         // how far back are we looking?
         // default: 60 minutes
@@ -28,7 +30,7 @@ class CronController extends AbstractActionController {
         $minutes = (int)$this->getRequest()->getParam('minutes');
         $minutes = $minutes >= 0 ? $minutes : 0;
 
-        $minutes = ((($days*24) + $hours) * 60) + $minutes;
+        $minutes = ((($days * 24) + $hours) * 60) + $minutes;
         $minutes = $minutes >= 0 ? $minutes : 60;
 
         // that looks like a good spot to save a file
@@ -39,7 +41,7 @@ class CronController extends AbstractActionController {
         echo $csvFilePath . PHP_EOL;
 
         // get something to write to deez ladies
-        $csvFileHandle = new CsvIterator( $csvFilePath, 'w' );
+        $csvFileHandle = new CsvIterator($csvFilePath, 'w');
 
         // these are our fancy column names/object properties
         $headers = [
@@ -61,11 +63,11 @@ class CronController extends AbstractActionController {
             "OfficePhone1",
             "Url",
             "Sic",
-            "Description"
+            "Description",
         ];
 
         // write the header rows to the csv
-        $csvFileHandle->fputcsv( $headers );
+        $csvFileHandle->fputcsv($headers);
 
         // get our hardcoded lists of countries
         $countries = Countries::getAll();
@@ -75,33 +77,34 @@ class CronController extends AbstractActionController {
         $dbConfig['database'] = $dbConfig['dbname'];
 
         $offset = 0;
-        $limit = 100000;
+        $limit = 10000;
         $connection = new Connection($dbConfig);
 
-        while ( ($results = Generic::query(
-            "SELECT
-                org.id,
-                org.ExternalId,
-                org.SourceId,
-                org.Name,
-                org.Ticker,
-                org.TickerExchange,
-                org.DateModified,
-                addr.Address1,
-                addr.Address2,
-                addr.City,
-                addr.State,
-                addr.ZipCode,
+        // have to convert all these fields because refinery is latin1 NOT utf8
+        while (($results = Generic::query(
+                "SELECT
+                CONVERT(org.id USING utf8) AS id,
+                CONVERT(org.ExternalId USING utf8) AS ExternalId,
+                CONVERT(org.SourceId USING utf8) AS SourceId,
+                CONVERT(org.Name USING utf8) AS Name,
+                CONVERT(org.Ticker USING utf8) AS Ticker,
+                CONVERT(org.TickerExchange USING utf8) AS TickerExchange,
+                CONVERT(org.DateModified USING utf8) AS DateModified,
+                CONVERT(addr.Address1 USING utf8) AS Address1,
+                CONVERT(addr.Address2 USING utf8) AS Address2,
+                CONVERT(addr.City USING utf8) AS City,
+                CONVERT(addr.State USING utf8) AS State,
+                CONVERT(addr.ZipCode USING utf8) AS ZipCode,
                 # assume all empty countries are US
-                IF ( addr.Country IS NULL OR addr.Country = '',
+                CONVERT(IF ( addr.Country IS NULL OR addr.Country = '',
                   'United States',
-                  addr.Country) AS Country,
-                addr.Lat,
-                addr.Lon,
-                phone.OfficePhone1,
-                url.Url,
-                sic.SIC,
-                descr.Description
+                  addr.Country) USING utf8) AS Country,
+                CONVERT(addr.Lat USING utf8) AS Lat,
+                CONVERT(addr.Lon USING utf8) AS Lon,
+                CONVERT(phone.OfficePhone1 USING utf8) AS OfficePhone1,
+                CONVERT(url.Url USING utf8) AS Url,
+                CONVERT(sic.SIC USING utf8) AS SIC,
+                CONVERT(descr.Description USING utf8) AS Description
               FROM
                 recon.Org org
                 LEFT JOIN recon.OrgAddress addr  ON ( org.id = addr.OrgId )
@@ -124,27 +127,29 @@ class CronController extends AbstractActionController {
               ORDER BY
                 org.QName
               LIMIT ?, ?",
-            [$minutes, $minutes, $minutes, $minutes, $minutes, $minutes, $offset, $limit],
-            $connection)) !== false ) {
+                [$minutes, $minutes, $minutes, $minutes, $minutes, $minutes, $offset, $limit],
+                $connection)) !== false) {
 
             // parse each row into a csv and json file
-            foreach ( $results as $row ) {
+            foreach ($results as $row) {
 
-                $row->TickerExchange = strpos( $row->TickerExchange, 'NASDAQ' ) !== false ? 'NASDAQ' : $row->TickerExchange;
-                $row->TickerExchange = strpos( $row->TickerExchange, 'York Stock' ) !== false ? 'NYSE' : $row->TickerExchange;
-                $row->ExternalId = strlen( $row->ExternalId ) > 12 ? $row->ExternalId : '';
-                $row->Name = trim( preg_replace( '/\s+/', ' ', $row->Name ) );
+                $row->TickerExchange = strpos($row->TickerExchange,
+                    'NASDAQ') !== false ? 'NASDAQ' : $row->TickerExchange;
+                $row->TickerExchange = strpos($row->TickerExchange,
+                    'York Stock') !== false ? 'NYSE' : $row->TickerExchange;
+                $row->ExternalId = strlen($row->ExternalId) > 12 ? $row->ExternalId : '';
+                $row->Name = trim(preg_replace('/\s+/', ' ', $row->Name));
 
                 // get the country names
                 // normalize the col for array searching
-                $processed = strtoupper( $row->Country );
-                $processed = trim( explode( "(", $processed )[0] );
-                $processed = preg_replace( '/,.*/', '', $processed );
-                $processed = preg_replace( "/\([^)]+\)/", "", $processed );
-                if( isset($countries['first'][$processed]) ) {
+                $processed = strtoupper($row->Country);
+                $processed = trim(explode("(", $processed)[0]);
+                $processed = preg_replace('/,.*/', '', $processed);
+                $processed = preg_replace("/\([^)]+\)/", "", $processed);
+                if (isset($countries['first'][$processed])) {
                     $countryCode = $countries['first'][$processed];
                 } else {
-                    if( isset($countries['second'][$processed]) ) {
+                    if (isset($countries['second'][$processed])) {
                         $countryCode = $countries['second'][$processed];
                     } else {
                         // no match so we don't care
@@ -154,28 +159,28 @@ class CronController extends AbstractActionController {
 
                 // scrub phone number
                 $phone = '';
-                if( !empty($row->OfficePhone1) ) {
+                if (!empty($row->OfficePhone1)) {
                     // remove all but digits
-                    $phone = preg_replace( '/\D/', '', $row->OfficePhone1 );
+                    $phone = preg_replace('/\D/', '', $row->OfficePhone1);
 
                     // take off the leading 1 if it's not american
-                    $phoneLength = strlen( $phone );
-                    if( ($phoneLength > 10) && (substr( $phone, 0, 1 ) === '1') ) {
-                        $phone = substr( $phone, 1, $phoneLength - 1 );
+                    $phoneLength = strlen($phone);
+                    if (($phoneLength > 10) && (substr($phone, 0, 1) === '1')) {
+                        $phone = substr($phone, 1, $phoneLength - 1);
                     }
                 }
 
                 // grab OrgUrl Data, normalise and tack on
                 $url = '';
-                if( !empty($row->Url) ) {
+                if (!empty($row->Url)) {
                     // add http to those lacking either http or https
-                    $url = strpos( $row->Url, 'http' ) === 0 ? $row->Url : 'http://' . $row->Url;
+                    $url = strpos($row->Url, 'http') === 0 ? $row->Url : 'http://' . $row->Url;
                     // remove everything after and including the first comma if there is a comma
-                    $url = strpos( $url, ',' ) ? substr( $url, 0, strpos( $url, ',' ) ) : $url;
+                    $url = strpos($url, ',') ? substr($url, 0, strpos($url, ',')) : $url;
                     // remove everything after and including the first space if there is a space
-                    $url = strpos( $url, ' ' ) ? substr( $url, 0, strpos( $url, ' ' ) ) : $url;
+                    $url = strpos($url, ' ') ? substr($url, 0, strpos($url, ' ')) : $url;
 
-                    if( $url === "http:??" ) {
+                    if ($url === "http:??") {
                         $url = '';
                     }
                 }
@@ -189,18 +194,18 @@ class CronController extends AbstractActionController {
                     $row->Ticker,
                     $row->TickerExchange,
                     $row->DateModified,
-                    trim( preg_replace( '/\s+/', ' ', $row->Address1 ) ),
-                    trim( preg_replace( '/\s+/', ' ', $row->Address2 ) ),
-                    trim( preg_replace( '/\s+/', ' ', $row->City ) ),
-                    trim( preg_replace( '/\s+/', ' ', $row->State ) ),
-                    trim( preg_replace( '/\s+/', ' ', $row->ZipCode ) ),
+                    trim(preg_replace('/\s+/', ' ', $row->Address1)),
+                    trim(preg_replace('/\s+/', ' ', $row->Address2)),
+                    trim(preg_replace('/\s+/', ' ', $row->City)),
+                    trim(preg_replace('/\s+/', ' ', $row->State)),
+                    trim(preg_replace('/\s+/', ' ', $row->ZipCode)),
                     $countryCode,
-                    trim( preg_replace( '/\s+/', ' ', $row->Lat ) ),
-                    trim( preg_replace( '/\s+/', ' ', $row->Lon ) ),
+                    trim(preg_replace('/\s+/', ' ', $row->Lat)),
+                    trim(preg_replace('/\s+/', ' ', $row->Lon)),
                     $phone,
                     $url,
                     $row->SIC,
-                    $row->Description
+                    $row->Description,
                 ];
                 $csvFileHandle->fputcsv($outputLine);
             }
@@ -209,17 +214,19 @@ class CronController extends AbstractActionController {
             echo '.';
         }
 
-
         // import the new data into meroveus
         echo PHP_EOL . "Importing {$csvFilePath}" . PHP_EOL;
         $importer = new Refinery();
         list($companiesProcessed, $instancesProcessed) = $importer->import($csvFilePath);
 
-        printf("Imported: %s\t%s companies%s\t%s instances%s", PHP_EOL,$companiesProcessed,PHP_EOL,$instancesProcessed,PHP_EOL);
+        printf("Imported: %s\t%s companies%s\t%s instances%s", PHP_EOL, $companiesProcessed, PHP_EOL,
+            $instancesProcessed, PHP_EOL);
 
     }
 
-    public function listsForRelatedAction () {
+    public function listsForRelatedAction()
+    {
+
         echo "
  _       _______  _____  _______  _____ (_)(_)(_)(_)
 (_)     (_______)(_____)(__ _ __)(_____)(_)(_)(_)(_)
@@ -240,7 +247,7 @@ class CronController extends AbstractActionController {
         $minutes = (int)$this->getRequest()->getParam('minutes');
         $minutes = $minutes >= 0 ? $minutes : 0;
 
-        $minutes = ((($days*24) + $hours) * 60) + $minutes;
+        $minutes = ((($days * 24) + $hours) * 60) + $minutes;
         $minutes = $minutes >= 0 ? $minutes : 60;
 
         // that looks like a good spot to save a file
@@ -251,11 +258,11 @@ class CronController extends AbstractActionController {
         // create a new mysql connection for our query
         $connection = new Connection(
             [
-                'host' => $dbconfig['host'],
-                'user' => $dbconfig['user'],
+                'host'     => $dbconfig['host'],
+                'user'     => $dbconfig['user'],
                 'password' => $dbconfig['password'],
                 'database' => $dbconfig['dbname'],
-                'port' => $dbconfig['port'],
+                'port'     => $dbconfig['port'],
             ]);
         // get the lists to be released in the specified range, along with the companies
         $listCompanies = Generic::query(
@@ -278,7 +285,7 @@ class CronController extends AbstractActionController {
             ORDER BY tlr.created_at DESC",
             [$minutes], $connection);
 
-        if ( $listCompanies ) {
+        if ($listCompanies) {
             // every row of data needs an elastic action row
             $elasticAction = json_encode(
                 [
@@ -286,7 +293,7 @@ class CronController extends AbstractActionController {
                         "_index" => "lists",
                         "_type"  => 'company_related',
                     ],
-                ] );
+                ]);
 
             $prevListId = $listCompanies->first()->list_id;
             $companies = [];
@@ -301,14 +308,14 @@ class CronController extends AbstractActionController {
                 }
 
                 // fix for JSON_ERROR_UTF8
-                $listCompany->company_name  = iconv('UTF-8', 'UTF-8//IGNORE', utf8_encode($listCompany->company_name));
+                $listCompany->company_name = iconv('UTF-8', 'UTF-8//IGNORE', utf8_encode($listCompany->company_name));
                 $listCompany->page_headline = iconv('UTF-8', 'UTF-8//IGNORE', utf8_encode($listCompany->page_headline));
 
                 // write out if we have a new list id
-                if ( $prevListId !== $listCompany->list_id ) {
+                if ($prevListId !== $listCompany->list_id) {
 
                     // chunk elastic bulk data into 50000 entries
-                    if ( $numListsInChunk % 50000 === 0 ) {
+                    if ($numListsInChunk % 50000 === 0) {
                         ++$chunkNumber;
                         $numListsInChunk = 0;
                         $jsonFilePath = "/tmp/datahub-cron-recon-dump-{$timestamp}-{$chunkNumber}.json";
@@ -332,7 +339,7 @@ class CronController extends AbstractActionController {
             }
 
             // write out any remaining lists
-            if ( !empty($companies) ) {
+            if (!empty($companies)) {
                 $file->fwrite($elasticAction . PHP_EOL);
                 $file->fwrite(json_encode(['list_id' => $prevListId, 'companies' => $companies]) . PHP_EOL);
             }
