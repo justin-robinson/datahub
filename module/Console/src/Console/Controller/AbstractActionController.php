@@ -25,11 +25,6 @@ abstract class AbstractActionController extends ZendAbstractActionController
     protected $sqlStringsArray = [];
 
     /**
-     * @var \PDO
-     */
-    protected $db;
-
-    /**
      * @var array
      */
     protected $config;
@@ -59,15 +54,5 @@ abstract class AbstractActionController extends ZendAbstractActionController
     {
 
         $this->config = $this->getServiceLocator()->get('Config');
-
-        try {
-            $this->db = DB::createPdo(
-                $this->config['mysql']['datahub']
-            );
-        } catch (\PDOException $e) {
-            die("PDO Error!: " . $e->getMessage() . PHP_EOL);
-        } catch (ConfigException $e) {
-            die("PDO Config Error!: " . $e->getMessage() . PHP_EOL);
-        }
     }
 }
