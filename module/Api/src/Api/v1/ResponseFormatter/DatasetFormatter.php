@@ -70,7 +70,46 @@ class DatasetFormatter
 
         return $array;
     }
-        /**
+
+    public static function getDirectoryData(Dataset $set)
+    {
+        $entries = [];
+        foreach ($set->entries->to_array() as $entry) {
+            $result = [];
+            // get company that match the sourceId and are meroveus
+            $company = Company::fetch_by_source_name_and_id('meroveus', $entry['sourceId']);
+            /* @var $instance \DB\Datahub\CompanyInstance */
+            $instance = $company->fetch_company_instances()->first();
+            // fetch the properties
+            $instance->fetch_properties();
+            // extract the values
+            /**
+             * company name
+             * address
+             * phone
+             * email (if we have it)
+             * website
+             */
+            $result['companyName']      = $company->name;
+            $result['sourceId']         = $entry['sourceId'];
+            $result['address1']         = $instance->get_property('address1') ? $instance->get_property('address1')->value : null;
+            $result['address2']         = $instance->get_property('address12') ? $instance->get_property('address2')->value : null;
+            $result['city']             = $instance->get_property('city') ? $instance->get_property('city')->value : null;
+            $result['country']          = $instance->get_property('country') ? $instance->get_property('country')->value : null;
+            $result['state']            = $instance->get_property('state') ? $instance->get_property('state')->value : null;
+            $result['zipCode']          = $instance->get_property('zipCode') ? $instance->get_property('zipCode')->value : null;
+            $result['phoneNumber']      = $instance->get_property('phoneNumber') ? $instance->get_property('phoneNumber')->value : null;
+            $result['phoneCountryCode'] = $instance->get_property('phoneCountryCode') ? $instance->get_property('phoneCountryCode')->value : null;
+            $result['website']          = $instance->get_property('website') ? $instance->get_property('website')->value : null;
+            $result['email']            = $instance->get_property('email') ? $instance->get_property('email')->value : null;
+
+            array_push($entries, $result);
+        }
+
+        return $entries;
+    }
+
+    /**
      * @param Dataset $set
      *
      * @return array
