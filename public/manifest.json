@@ -1,0 +1,7 @@
+{
+  "name": "datahub",
+  "short_name": "datahub",
+  "description": "datahub api consumer",
+  "start_url": "/",
+  "display": "standalone"
+}
