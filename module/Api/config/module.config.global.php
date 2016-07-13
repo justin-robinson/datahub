@@ -71,6 +71,15 @@ $latestApiChildRoutes = [
                     ],
                 ],
             ],
+            'search-fuzzy'           => [
+                'type'    => 'Segment',
+                'options' => [
+                    'route'    => '/search/fuzzy[/:search]',
+                    'defaults' => [
+                        'controller' => 'Api\v1\Controller\CompanySearchFuzzy',
+                    ],
+                ],
+            ],
         ],
     ],
     'instance' => [
@@ -216,6 +225,7 @@ return [
             'Api\v1\Controller\CompanyInstances'   => 'Api\v1\Controller\CompanyInstancesController',
             'Api\v1\Controller\CompanyProfile'     => 'Api\v1\Controller\CompanyProfileController',
             'Api\v1\Controller\CompanySearch'      => 'Api\v1\Controller\CompanySearchController',
+            'Api\v1\Controller\CompanySearchFuzzy' => 'Api\v1\Controller\CompanySearchFuzzyController',
             'Api\v1\Controller\Contact'            => 'Api\v1\Controller\ContactController',
             'Api\v1\Controller\Instance'           => 'Api\v1\Controller\InstanceController',
             'Api\v1\Controller\InstanceContacts'   => 'Api\v1\Controller\InstanceContactsController',

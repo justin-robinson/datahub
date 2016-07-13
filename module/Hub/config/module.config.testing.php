@@ -29,10 +29,10 @@ return [
     ],
 
     'elastica-datahub' => [
-        'host' => 'http://elb.es.datahub.bizj-dev.com',
+        'host' => 'http://elb.elasticsearch.datahub.bizj-dev.com',
         'path' => 'rerefinery/',
         'port' => '9200',
-        'url'  => 'http://elb.es.datahub.bizj-dev.com:9200/current',
+        'url'  => 'http://elb.elasticsearch.datahub.bizj-dev.com:9200/current',
     ],
 
     'mysql' => [
