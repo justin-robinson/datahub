@@ -106,7 +106,7 @@ class CompanyInstanceProperty extends \DBCore\Datahub\CompanyInstanceProperty
 
         if ($setTimestamps) {
             // set timestamps
-            if ($this->createdAt !== self::$dBColumnDefaultValuesArray['createdAt']) {
+            if ($this->createdAt === self::$dBColumnDefaultValuesArray['createdAt']) {
                 $this->set_literal('createdAt', 'NOW()');
             }
             $this->set_literal('updatedAt', 'NOW()');
