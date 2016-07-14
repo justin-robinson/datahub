@@ -57,8 +57,9 @@ class CompanyInstanceProperty extends \DBCore\Datahub\CompanyInstanceProperty
     public static function fetch($limit = 1000, $offset = 0, $where = '', array $queryParams = [])
     {
 
-        $where .= empty($where) ? '' :
-            " AND (deletedAt IS NULL OR deletedAt = '" . self::$dBColumnDefaultValuesArray['deletedAt'] . "')";
+        $where = empty($where) ? 'deletedAt = ?' : "({$where}) AND deletedAt = ?";
+
+        $queryParams[] = self::$dBColumnDefaultValuesArray['deletedAt'];
 
         return parent::fetch($limit, $offset, $where, $queryParams);
     }

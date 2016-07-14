@@ -257,8 +257,9 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     {
 
         if (!$allRecords) {
-            $where .= empty($where) ? '' :
-                " AND (deletedAt IS NULL OR deletedAt = '" . self::$dBColumnDefaultValuesArray['deletedAt'] . "')";
+            $where = empty($where) ? 'deletedAt = ?' : "({$where}) AND deletedAt = ?";
+
+            $queryParams[] = self::$dBColumnDefaultValuesArray['deletedAt'];
         }
 
         return parent::fetch($limit, $offset, $where, $queryParams);
