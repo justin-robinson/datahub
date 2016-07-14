@@ -1,0 +1,181 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-slider/paper-slider.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-autocomplete/paper-autocomplete.html">
+<link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="instance-view.html">
+
+
+<dom-module id="company-view">
+
+    <template>
+        <style>
+            :host {
+                display: block;
+                padding: 16px;
+            }
+            :host .company-properties span {
+                display: block;
+            }
+            :host #delete {
+                background: #ff6662;
+                float: right;
+            }
+            :host #yes {
+                background: #70bf70;
+                float: right;
+            }
+            :host #no {
+                background: #ff6662;
+            }
+        </style>
+        <h1>New Company View</h1>
+
+        <iron-ajax
+            auto
+            id="ajaxSearch"
+            handle-as="json"
+            on-response="parseSearchResults"
+            last-response="{{searchResults}}"
+        ></iron-ajax>
+
+        <iron-ajax
+            id="ajaxSave"
+            handle-as="json"
+            last-response="{{data}}"
+        ></iron-ajax>
+
+        <paper-autocomplete
+            id="companySelector"
+            label="Search"
+            remote-source="true"
+            on-input="search"
+            on-autocomplete.selected="searchResultSelected"
+            min-length="3"></paper-autocomplete>
+
+        <div class="company-properties">
+            <paper-input value="{{data.companyId}}" label="Company Id" auto-validate allowed-pattern="[0-9]"></paper-input>
+            <paper-input value="{{data.name}}" label="Name""></paper-input>
+            <paper-input value="{{data.employeeCount}}" label="Employee Count""></paper-input>
+            <paper-input value="{{data.isActive}}" label="isActive""></paper-input>
+            <paper-input value="{{data.ownership}}" label="Ownership""></paper-input>
+            <paper-input value="{{data.createdAt}}" label="Created"></paper-input>
+            <paper-input value="{{data.updatedAt}}" label="Updated"></paper-input>
+        </div>
+
+        <paper-button id="save" raised on-click="save">Save</paper-button>
+
+        <template is="dom-if" if="{{data.companyId}}">
+            <paper-button id="delete" raised on-click="confirmDelete">Delete</paper-button>
+            <instance-view company-id="[[data.companyId]]"></instance-view>
+        </template>
+        <paper-dialog id="confirmDelete">
+            <div>
+                Are you sure you want to delete this record?
+            </div>
+            <paper-button id="no" on-click="delete">No</paper-button>
+            <paper-button id="yes" on-click="delete">Yes</paper-button>
+        </paper-dialog>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'company-view',
+            properties: {
+                route: Object,
+                data: Object,
+                searchResults: Object,
+                searchTimer: Object
+            },
+            ready: function () {
+                this.data = {};
+            },
+            searchResultSelected: function (e, selection) {
+                // updates the company data model after a search result is selected
+                this.data = this.searchResults._embedded.company[selection.option.index];
+            },
+            search: function () {
+
+                // perform a search when the user types in the input field
+                var searchString = this.$.companySelector.$.input.value;
+
+                // don't make request if we haven't met minimum search length
+                if ( searchString.length < this.$.companySelector.minLength ) {
+                    return;
+                }
+
+                // clear last request to be made
+                clearTimeout(this.searchTimer);
+
+                // set new request to happen in 0.5 seconds
+                var self = this;
+                this.searchTimer = setTimeout(function () {
+                    // search api
+                    self.$.ajaxSearch.url = window.location.origin + '/api/v1/company/search/fuzzy/' + encodeURIComponent(searchString);
+                }, 500);
+
+            },
+            parseSearchResults: function () {
+
+                // do we have results?
+                if ( !this.searchResults || !this.searchResults._embedded || !this.searchResults._embedded.company.length ) {
+                    return;
+                }
+
+                // map raw search results to suggestions selector
+                var suggestions = this.searchResults._embedded.company.map(function(company, index){
+                    return {
+                        text: '(' + company.companyId + ') ' + company.name,
+                        value: company.name,
+                        index: index
+                    }
+                });
+
+                // set suggestions
+                this.$.companySelector.suggestions(suggestions);
+            },
+            confirmDelete: function () {
+              this.$.confirmDelete.open();
+            },
+            delete: function (e) {
+
+                this.$.confirmDelete.close();
+
+                if ( e.currentTarget.id !== 'yes' ) {
+                    return;
+                }
+
+                this.$.ajaxSave.method = 'delete';
+                this.$.ajaxSave.url = window.location.origin + '/api/v1/company/' + this.data.companyId;
+                this.$.ajaxSave.generateRequest();
+            },
+            save: function () {
+
+                // performs saves and updates to a company via the api
+
+
+                if ( !this.data || !this.data.name ) {
+                    return;
+                }
+
+                // load ajax body as json
+                this.$.ajaxSave.body = this.data;
+                this.$.ajaxSave.contentType = 'application/json';
+
+                // put or post?
+                if ( this.data.companyId ) {
+                    this.$.ajaxSave.method = 'put';
+                    this.$.ajaxSave.url = window.location.origin + '/api/v1/company/' + this.data.companyId;
+                } else {
+                    this.$.ajaxSave.method = 'post';
+                    this.$.ajaxSave.url = window.location.origin + '/api/v1/company';
+                }
+
+                // make ajax call
+                this.$.ajaxSave.generateRequest();
+            }
+        });
+    </script>
+</dom-module>

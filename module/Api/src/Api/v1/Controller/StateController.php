@@ -77,7 +77,7 @@ class StateController extends AbstractRestfulController
 
         $states = State::fetch_where('1');
 
-        if ($states) {
+        if ($states === false) {
             return $this->getResponse()->setStatusCode(204);
         }
 

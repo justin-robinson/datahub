@@ -1,0 +1,88 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+
+<dom-module id="instance-view">
+
+    <template>
+        <style>
+
+        </style>
+
+        <div>
+            <h2>Instances</h2>
+            <template is="dom-repeat" items="{{data._embedded.instances}}">
+                <paper-input value="{{item.name}}" label="Name"></paper-input>
+                <paper-input value="{{item.url}}" label="Url"></paper-input>
+                <paper-input value="{{item.marketCode}}" label="Market Code"></paper-input>
+                <paper-input value="{{item.stateId}}" label="State Id"></paper-input>
+                <paper-input value="{{item.createdAt}}" label="Created"></paper-input>
+                <paper-input value="{{item.updatedAt}}" label="Updated"></paper-input>
+                <br>
+            </template>
+        </div>
+
+        <iron-ajax
+            id="getInstances"
+            auto
+            handle-as="json"
+            last-response="{{data}}"
+            on-response="parseInstances"
+        ></iron-ajax>
+
+        <iron-ajax
+            id="getState"
+            auto
+            handle-as="json"
+            on-response="parseStateResponse"
+        ></iron-ajax>
+
+    </template>
+
+    <script>
+        Polymer({
+            is: 'instance-view',
+            properties: {
+                companyId: {
+                    type: Number,
+                    notify: true
+                },
+                searchTimer: Object,
+                data: Object
+            },
+            ready: function() {
+                this.data = {};
+                this.listen(this, 'company-id-changed', 'getInstances');
+                this.getInstances();
+            },
+            getInstances: function () {
+
+                clearTimeout(this.searchTimer);
+                var self = this;
+                this.searchTimer = setTimeout(function () {
+                    self.$.getInstances.url = window.location.origin + '/api/v1/company/' + self.companyId + '/instances'
+                });
+            },
+            parseInstances: function () {
+
+                if ( !this.data || !this.data._embedded || !this.data._embedded.instances.length ) {
+                    return;
+                }
+
+                var self = this;
+                var instances = this.data._embedded.instances;
+                instances.map(function(instance, index) {
+                    if ( instance.stateId ) {
+                        self.$.getState.url = window.location.origin + '/api/v1/state/' + instance.stateId;
+                    }
+                });
+            },
+            parseState: function (a,b,c) {
+                console.log(a);
+                console.log(b);
+                console.log(c);
+            }
+        })
+    </script>
+
+</dom-module>
