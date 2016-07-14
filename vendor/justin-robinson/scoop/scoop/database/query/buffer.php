@@ -3,7 +3,7 @@
 namespace Scoop\Database\Query;
 
 use Scoop\Database\Model\Generic;
-use Scoop\Database\Connection;
+use Scoop\EventPool;
 
 /**
  * Class Buffer
@@ -15,6 +15,11 @@ class Buffer {
      * @var
      */
     private $columnNames;
+
+    /**
+     * @var EventPool
+     */
+    private $events;
 
     /**
      * @var bool
@@ -65,6 +70,8 @@ class Buffer {
      * @throws \Exception
      */
     public function __construct ( $maxSize, $modelClass ) {
+
+        $this->events = new EventPool();
 
         $model = new $modelClass();
 
@@ -167,6 +174,8 @@ class Buffer {
 
         $this->reset();
 
+        $this->events->trigger('flush', $this);
+
         return true;
     }
 
@@ -176,6 +185,22 @@ class Buffer {
     public function get_insert_ignore () {
 
         return $this->insertIgnore;
+    }
+
+    /**
+     * @return \Scoop\Database\Model[]
+     */
+    public function get_models () {
+
+        return $this->models;
+    }
+
+    /**
+     * @param callable $callback
+     */
+    public function on_flush( callable $callback ) {
+
+        $this->events->on('flush', $callback);
     }
 
     /**

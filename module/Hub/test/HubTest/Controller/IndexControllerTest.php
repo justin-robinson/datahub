@@ -2,12 +2,12 @@
 
 namespace HubTest\Controller;
 
-use Hub\Controller\IndexController,
-    Zend\Http\Request,
-    Zend\Http\Response,
-    Zend\Mvc\MvcEvent,
-    Zend\Mvc\Router\RouteMatch,
-    Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
+use Hub\Controller\IndexController;
+use Zend\Http\Request;
+use Zend\Http\Response;
+use Zend\Mvc\MvcEvent;
+use Zend\Mvc\Router\RouteMatch;
+use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
 class IndexControllerTest extends AbstractHttpControllerTestCase
 {
@@ -18,13 +18,18 @@ class IndexControllerTest extends AbstractHttpControllerTestCase
     protected $traceError = true;
 
     protected $controller;
+
     protected $request;
+
     protected $response;
+
     protected $routeMatch;
+
     protected $event;
 
     public function setUp()
     {
+
         $modulePath = static::findParentPath("module");
         $this->setApplicationConfig(
             include $modulePath . '/../config/application.config.php'
@@ -32,9 +37,9 @@ class IndexControllerTest extends AbstractHttpControllerTestCase
         parent::setUp();
 
         $this->controller = new IndexController();
-        $this->request    = new Request();
-        $this->routeMatch = new RouteMatch(array('controller' => 'index'));
-        $this->event      = new MvcEvent();
+        $this->request = new Request();
+        $this->routeMatch = new RouteMatch(['controller' => 'index']);
+        $this->event = new MvcEvent();
         $this->event->setRouteMatch($this->routeMatch);
         $this->controller->setEvent($this->event);
     }
@@ -42,12 +47,14 @@ class IndexControllerTest extends AbstractHttpControllerTestCase
 
     public function testIndexPageRedirects()
     {
+
         $this->dispatch('/index');
         $this->assertRedirectTo('http://www.bizjournals.com');
     }
 
     public function testIndexActionRedirects()
     {
+
         // Set the action
         $this->routeMatch->setParam('action', 'index');
 
@@ -68,6 +75,7 @@ class IndexControllerTest extends AbstractHttpControllerTestCase
 
     protected static function findParentPath($path)
     {
+
         $dir = __DIR__;
         $previousDir = '.';
         while (!is_dir($dir . '/' . $path)) {
@@ -77,6 +85,7 @@ class IndexControllerTest extends AbstractHttpControllerTestCase
             }
             $previousDir = $dir;
         }
+
         return $dir . '/' . $path;
     }
 

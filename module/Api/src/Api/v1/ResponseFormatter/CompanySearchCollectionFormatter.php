@@ -9,7 +9,7 @@ use Scoop\Database\Rows;
  * Class CompanyCollectionFormatter
  * @package Api\v1\ResponseFormatter
  */
-class CompanyCollectionFormatter
+class CompanySearchCollectionFormatter
 {
 
     /**
@@ -19,12 +19,24 @@ class CompanyCollectionFormatter
      *
      * @return array
      */
-    public static function format(Rows $companies, $page = 1, $limit = 1000)
+    public static function format(Rows $companies, $totalCount, $page = 1, $limit = 1000)
     {
 
-        $host = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST') . '/api/v1/company';
-        $totalCount = Generic::query('SELECT count(*) AS count FROM company')->first()->count;
+        $host = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST')
+            . parse_url(FormatterHelpers::get_server_variable('REQUEST_URI'), PHP_URL_PATH);
         $lastPage = ceil($totalCount / $limit);
+
+        parse_str(FormatterHelpers::get_server_variable('QUERY_STRING'), $selfQueryParams);
+        $selfQueryParams['page'] = $page;
+        $selfQueryParams['limit'] = $limit;
+
+        $firstQueryParams = $selfQueryParams;
+        $firstQueryParams['page'] = 1;
+
+        $lastQueryParams = $selfQueryParams;
+        $lastQueryParams['page'] = $lastPage;
+
+
 
         $array = [
             'count'     => [
@@ -34,13 +46,13 @@ class CompanyCollectionFormatter
             ],
             '_links'    => [
                 'self'  => [
-                    'href' => $host,
+                    'href' => $host . '?' . http_build_query($selfQueryParams),
                 ],
                 'first' => [
-                    'href' => $host . '?page=1',
+                    'href' => $host . '?' . http_build_query($firstQueryParams),
                 ],
                 'last'  => [
-                    'href' => $host . '?page=' . $lastPage,
+                    'href' => $host . '?' . http_build_query($lastQueryParams),
                 ],
             ],
             '_embedded' => [
@@ -49,14 +61,18 @@ class CompanyCollectionFormatter
         ];
 
         if ($page > 1) {
+            $prevQueryParams = $selfQueryParams;
+            $prevQueryParams['page']--;
             $array['_links']['prev'] = [
-                'href' => $host . '?page=' . ($page - 1),
+                'href' => $host . '?' . http_build_query($prevQueryParams),
             ];
         }
 
         if ($page < $lastPage) {
+            $nextQueryParams = $selfQueryParams;
+            $nextQueryParams['page']++;
             $array['_links']['next'] = [
-                'href' => $host . '?page=' . ($page + 1),
+                'href' => $host . '?' . http_build_query($nextQueryParams),
             ];
         }
 

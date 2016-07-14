@@ -7,10 +7,8 @@ use Scoop\Database\Literal;
 use Scoop\Database\Query\Buffer;
 use Scoop\Database\Rows;
 
-
 /**
  * Class CompanyInstance
- *
  * @package DB\Datahub
  * @author  jrobinson (robotically)
  * @date    2016/05/05
@@ -34,7 +32,12 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     /**
      * @var int[\DB\Datahub\CompanyInstanceProperty[]]
      */
-    protected $properties;
+    protected $propertiesArray;
+
+    /**
+     * @var \SplDoublyLinkedList
+     */
+    protected $propertiesList;
 
     /**
      * @var Rows
@@ -90,6 +93,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
      * @var int
      */
     protected $extraFieldsCount;
+
     /**
      * @var array
      */
@@ -130,6 +134,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
      * @var resource
      */
     private $curl;
+
     /**
      * @var array
      */
@@ -148,7 +153,9 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     public function __construct(array $dataArray = [])
     {
 
-        $this->properties = [];
+        $this->propertiesArray = [];
+
+        $this->propertiesList = new \SplDoublyLinkedList();
 
         $this->contacts = new Rows();
 
@@ -174,6 +181,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
      */
     public function __destruct()
     {
+
         curl_close($this->curl);
     }
 
@@ -181,9 +189,10 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
      * @param $name
      * @param $value
      */
-    public function __set($name, $value) {
+    public function __set($name, $value)
+    {
 
-        parent::__set($name, utf8_encode($value));
+        parent::__set($name, is_scalar($value) ? utf8_encode($value) : $value);
     }
 
     /**
@@ -207,15 +216,17 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
             return;
         }
 
-        if (!isset($this->properties[$sourceType->order]) || !is_array($this->properties[$sourceType->order])) {
-            $this->properties[$sourceType->order] = [];
+        if (!isset($this->propertiesArray[$sourceType->order]) || !is_array($this->propertiesArray[$sourceType->order])) {
+            $this->propertiesArray[$sourceType->order] = [];
         }
 
-        if (!isset($this->properties[$sourceType->order][$property->name]) || !is_array($this->properties[$sourceType->order][$property->name])) {
-            $this->properties[$sourceType->order][$property->name] = [];
+        if (!isset($this->propertiesArray[$sourceType->order][$property->name]) || !is_array($this->propertiesArray[$sourceType->order][$property->name])) {
+            $this->propertiesArray[$sourceType->order][$property->name] = [];
         }
 
-        $this->properties[$sourceType->order][$property->name][$property->value] = $property;
+        $this->propertiesArray[$sourceType->order][$property->name][$property->value] = $property;
+
+        $this->propertiesList->push($property);
     }
 
     /**
@@ -238,7 +249,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
      * @param int    $offset
      * @param string $where
      * @param array  $queryParams
-     * @param bool fetch all records (including deleted)
+     * @param        bool fetch all records (including deleted)
      *
      * @return bool|int|Rows
      */
@@ -246,7 +257,8 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     {
 
         if (!$allRecords) {
-            $where .= empty($where) ? '' : ' AND deletedAt IS NULL';
+            $where .= empty($where) ? '' :
+                " AND (deletedAt IS NULL OR deletedAt = '" . self::$dBColumnDefaultValuesArray['deletedAt'] . "')";
         }
 
         return parent::fetch($limit, $offset, $where, $queryParams);
@@ -261,9 +273,10 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
      *
      * @return bool|int|Rows
      */
-    public static function fetch_where ( $where, array $queryParams = [ ], $limit = 1000, $offset = 0, $allRecords = false ) {
+    public static function fetch_where($where, array $queryParams = [], $limit = 1000, $offset = 0, $allRecords = false)
+    {
 
-        return static::fetch( $limit, $offset, $where, $queryParams, $allRecords );
+        return static::fetch($limit, $offset, $where, $queryParams, $allRecords);
     }
 
     /**
@@ -290,11 +303,16 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     {
 
         if (!empty($this->companyInstanceId)) {
-            $properties = CompanyInstanceProperty::query("SELECT *
-             FROM `datahub`.`companyInstanceProperty`
-             WHERE companyInstanceId = ?" . (!$allRecords ? ' AND deletedAt IS NULL' : ''), [$this->companyInstanceId]);
+            $properties = CompanyInstanceProperty::query(
+                "SELECT
+                  *
+                FROM
+                  companyInstanceProperty
+                WHERE companyInstanceId = ?"
+                . ($allRecords ? '' : " AND (deletedAt IS NULL OR deletedAt = '" . self::$dBColumnDefaultValuesArray['deletedAt'] . "')"),
+                [$this->companyInstanceId]);
 
-            $this->properties = [];
+            $this->propertiesArray = [];
 
             if ($properties) {
                 foreach ($properties as $property) {
@@ -311,9 +329,10 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     /**
      * @return State|null
      */
-    public function fetch_state() {
+    public function fetch_state()
+    {
 
-        if ( is_numeric($this->stateId) ) {
+        if (is_numeric($this->stateId)) {
             $this->state = State::fetch_by_id($this->stateId);
         }
 
@@ -323,9 +342,10 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     /**
      * @return mixed
      */
-    public function fetch_channel_ids() {
+    public function fetch_channel_ids()
+    {
 
-        if ( !empty($this->companyInstanceId) ) {
+        if (!empty($this->companyInstanceId)) {
             $channelIds = DhIndustryBizjChannelMap::query(
                 "SELECT
                     cMap.*
@@ -374,7 +394,8 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     /**
      * @return mixed
      */
-    public function get_channel_ids () {
+    public function get_channel_ids()
+    {
 
         return $this->channelIds;
     }
@@ -389,26 +410,63 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     }
 
     /**
-     * @return \Scoop\Database\Rows
+     * @return \SplDoublyLinkedList
      */
     public function get_properties()
     {
 
-        return $this->properties;
+        return $this->propertiesList;
+    }
+
+    /**
+     * @return array|int
+     */
+    public function get_properties_array()
+    {
+
+        return $this->propertiesArray;
+    }
+
+    /**
+     * @param $name
+     *
+     * @return null
+     */
+    public function get_property($name)
+    {
+
+        $sourceOrders = array_keys($this->propertiesArray);
+        sort($sourceOrders);
+
+        foreach ($sourceOrders as $sourceOrder) {
+            if (!empty($this->propertiesArray[$sourceOrder][$name])) {
+                reset($this->propertiesArray[$sourceOrder][$name]);
+
+                return $this->propertiesArray[$sourceOrder][$name][key($this->propertiesArray[$sourceOrder][$name])];
+            }
+        }
+
+        return null;
     }
 
     /**
      * @return State|null
      */
-    public function get_state(){
+    public function get_state()
+    {
 
         return $this->state;
     }
 
+    /**
+     * @return int
+     */
     public function get_tier()
     {
+
         return $this->tier;
     }
+
     /**
      * @param array $dataArray
      */
@@ -417,7 +475,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
         parent::populate($dataArray);
 
-        foreach ($this->properties as $i => $instanceOrder) {
+        foreach ($this->propertiesArray as $i => $instanceOrder) {
             foreach ($instanceOrder as $j => $propertyName) {
                 foreach ($propertyName as $k => $property) {
                     if (is_array($property)) {
@@ -429,40 +487,19 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     }
 
     /**
-     * @param $name
-     *
-     * @return null
-     */
-    public function get_property($name)
-    {
-
-        $sourceOrders = array_keys($this->properties);
-        sort($sourceOrders);
-
-        foreach ($sourceOrders as $sourceOrder) {
-            if (!empty($this->properties[$sourceOrder][$name])) {
-                reset($this->properties[$sourceOrder][$name]);
-
-                return $this->properties[$sourceOrder][$name][key($this->properties[$sourceOrder][$name])];
-            }
-        }
-
-        return null;
-    }
-
-    /**
      * @param bool $setTimestamps
      *
      * @return bool
      */
-    public function save($setTimestamps = true) {
+    public function save($setTimestamps = true)
+    {
 
         // our cache key
-        $zip                     = $this->get_property('zipCode');
-        $zip                     = $zip ? $zip->value : '';
-        $addr1                   = $this->get_property('address1');
-        $addr1                   = $addr1 ? $addr1->value : '';
-        $queryParams             = [
+        $zip = $this->get_property('zipCode');
+        $zip = $zip ? $zip->value : '';
+        $addr1 = $this->get_property('address1');
+        $addr1 = $addr1 ? $addr1->value : '';
+        $queryParams = [
             $this->companyId,
             $this->name,
             $zip,
@@ -472,7 +509,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         // guilty until proven innocent
         $saved = false;
 
-        if ( !$this->is_loaded_from_database() ) {
+        if (!$this->is_loaded_from_database()) {
 
             // existing instance can be this model if the id is set, if not look in the cache
             $existingInstance = isset($this->companyInstanceId) ? $this : self::$companyInstanceCache->get($companyInstanceCacheKey);
@@ -504,8 +541,8 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
         // merge existing instance into this one
         if ($existingInstance) {
-            foreach ( $existingInstance->to_array(false) as $column => $value ) {
-                if ( empty($this->{$column}) ) {
+            foreach ($existingInstance->to_array(false) as $column => $value) {
+                if (empty($this->{$column})) {
                     $this->{$column} = $value;
                 }
             }
@@ -514,7 +551,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
         // set timestamps on the model before saving
         if ($setTimestamps) {
-            if ( $this->createdAt !== self::$dBColumnDefaultValuesArray['createdAt'] ) {
+            if ($this->createdAt !== self::$dBColumnDefaultValuesArray['createdAt']) {
                 $this->set_literal('createdAt', 'NOW()');
             }
             $this->set_literal('updatedAt', 'NOW()');
@@ -525,7 +562,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         // save to db
         $saved = parent::save();
 
-        if ( $saved ) {
+        if ($saved) {
             $this->save_contacts();
             $this->save_properties();
             ++self::$instancesSaved;
@@ -568,20 +605,15 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         $propertyBuffer = new Buffer(1000, CompanyInstanceProperty::class);
         $propertyBuffer->set_insert_ignore(true);
 
-        foreach ($this->properties as $sourceProperties) {
-            foreach ($sourceProperties as $propertyName) {
-                foreach ($propertyName as $property) {
-                    // link this property to this company instance
-                    $property->companyInstanceId = $this->companyInstanceId;
+        foreach ($this->get_properties() as $property) {
+            // link this property to this company instance
+            $property->companyInstanceId = $this->companyInstanceId;
 
-                    $property->pre_save(false);
+            $property->pre_save(false);
 
-                    if (!empty($property->value)) {
-                        // buffer the property insertion
-                        $propertyBuffer->insert($property);
-                    }
-                }
-
+            if (!empty($property->value)) {
+                // buffer the property insertion
+                $propertyBuffer->insert($property);
             }
         }
 
@@ -590,18 +622,19 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     }
 
     /**
-     * @param array $properties
+     * @param array $propertiesArray
      */
-    public function set_properties(array $properties)
+    public function set_properties(array $propertiesArray)
     {
 
-        $this->properties = $properties;
+        $this->propertiesArray = $propertiesArray;
     }
 
     /**
      * @param State $state
      */
-    public function set_state ( State $state ) {
+    public function set_state(State $state)
+    {
 
         $this->state = $state;
     }
@@ -615,38 +648,27 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         // the array of sorted properties
         $sortedProperties = [];
 
-        // order the properties by source order
-        ksort($this->properties);
-
         // loop over property order
-        foreach ($this->properties as $order => $orderedPropertyGroup) {
+        foreach ($this->get_properties() as $property) {
 
-            // property name
-            foreach ($orderedPropertyGroup as $propertyName) {
+            $property->fetch_source_type();
 
-                // property
-                foreach ($propertyName as $property) {
+            // add if property isn't set
+            if (!isset($sortedProperties[$property->name])) {
+                $sortedProperties[$property->name] = $property;
+            } else {
 
-                    $property->order = $order;
+                // new property should be ignored if of a higher order
+                if ($property->get_source_type()->order > $sortedProperties[$property->name]->get_source_type()->order) {
+                    continue;
+                }
 
-                    // add if property isn't set
-                    if (!isset($sortedProperties[$property->name])) {
-                        $sortedProperties[$property->name] = $property;
-                    } else {
+                // add if property is newer than set one
+                $newTime = new \DateTime($property->updatedAt);
+                $existingTime = new \DateTime($sortedProperties[$property->name]->updatedAt);
 
-                        // new property should be ignored if of a higher order
-                        if ($property->order > $sortedProperties[$property->name]->order) {
-                            continue;
-                        }
-
-                        // add if property is newer than set one
-                        $newTime      = new \DateTime($propertyName[$property->value]->updatedAt);
-                        $existingTime = new \DateTime($sortedProperties[$property->name]->updatedAt);
-
-                        if ($newTime > $existingTime) {
-                            $sortedProperties[$property->name] = $property;
-                        }
-                    }
+                if ($newTime > $existingTime) {
+                    $sortedProperties[$property->name] = $property;
                 }
             }
         }
@@ -670,15 +692,11 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         $array = parent::to_array();
 
         if ($recursive) {
-            $array['properties'] = $this->get_properties();
-            $array['contacts']   = [];
+            $array['properties'] = [];
+            $array['contacts'] = [];
 
-            foreach ($array['properties'] as &$orderedPropertyGroup) {
-                foreach ($orderedPropertyGroup as &$propertyName) {
-                    foreach ($propertyName as &$property) {
-                        $property = $property->to_array();
-                    }
-                }
+            foreach ($this->get_properties() as $property) {
+                $array['properties'][] = $property->to_array();
             }
 
             foreach ($this->get_contacts() as $contact) {
@@ -701,14 +719,10 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         // make a datetime of the newest existing property
         $updatedAt = null;
 
-        foreach ($this->properties as $field) {
-            foreach ($field as $entry) {
-                foreach ($entry as $prop) {
-                    $compare = (string)$prop->updatedAt === 'NOW()' ? $now : new \DateTime($prop->updatedAt);
-                    if ($compare > $updatedAt) {
-                        $updatedAt = $compare;
-                    }
-                }
+        foreach ($this->get_properties() as $property) {
+            $compare = (string)$property->updatedAt === 'NOW()' ? $now : new \DateTime($property->updatedAt);
+            if ($compare > $updatedAt) {
+                $updatedAt = $compare;
             }
         }
 
@@ -738,6 +752,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
      */
     private function hasStory($firstRun = false)
     {
+
         $return = false;
 
         if ($firstRun) {
@@ -756,11 +771,11 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
 
     /**
-     *
      * @return integer
      */
     private function countBasicFields()
     {
+
         // if there's no name, this is tier 7
         if (empty($this->name)) {
             return $basicPropCount = 0;
@@ -768,7 +783,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
         $basicPropCount = 0;
 
-        foreach ($this->properties as $prop) {
+        foreach ($this->propertiesArray as $prop) {
             foreach ($prop as $k => $v) {
                 if (in_array($k, $this->basicFieldsDefinition)) {
                     $basicPropCount++;
@@ -784,6 +799,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
      */
     private function getBestSource()
     {
+
         $best = 8;
         foreach ($this->sources as $typeId => $sourceId) {
             if ($typeId < $best) {
@@ -799,6 +815,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
      */
     private function getBestSourceType()
     {
+
         $best = 8;
         foreach ($this->sources as $typeId => $sourceId) {
             if ($typeId < $best) {
@@ -814,14 +831,14 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
      * I'm aware that I can generalize these count property fields
      */
     /**
-     *
      * @return int
      */
     private function countIdFields()
     {
+
         $idPropCount = 0;
 
-        foreach ($this->properties as $prop) {
+        foreach ($this->propertiesArray as $prop) {
             foreach ($prop as $k => $v) {
                 if (in_array($k, $this->idFieldsDefinition)) {
                     $idPropCount++;
@@ -835,14 +852,14 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
 
     /**
-     *
      * @return int
      */
     private function countEnhancedFields()
     {
+
         $count = 0;
 
-        foreach ($this->properties as $prop) {
+        foreach ($this->propertiesArray as $prop) {
             foreach ($prop as $k => $v) {
                 if (in_array($k, $this->enhancedFieldsDefinition)) {
                     $count++;
@@ -855,14 +872,14 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
 
     /**
-     *
      * @return int
      */
     private function countGroupingFields()
     {
+
         $count = 0;
 
-        foreach ($this->properties as $prop) {
+        foreach ($this->propertiesArray as $prop) {
             foreach ($prop as $k => $v) {
                 if (in_array($k, $this->groupingFieldsDefinition)) {
                     $count++;
@@ -880,14 +897,9 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     private function getSources()
     {
 
-
-        foreach ($this->properties as $property) {
-            foreach ($property as $entry) {
-                foreach ($entry as $data) {
-                    if (!isset($sources[$data->sourceTypeId]) || $sources[$data->sourceTypeId] !== $data->sourceId) {
-                        $this->sources[$data->sourceTypeId] = $data->sourceId;
-                    }
-                }
+        foreach ($this->get_properties() as $property) {
+            if (!isset($sources[$property->sourceTypeId]) || $sources[$property->sourceTypeId] !== $property->sourceId) {
+                $this->sources[$property->sourceTypeId] = $property->sourceId;
             }
         }
 
@@ -899,6 +911,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
      */
     private function countExtraFields()
     {
+
         return $this->countEnhancedFields() + $this->countIdFields() + $this->countGroupingFields();
     }
 
@@ -918,14 +931,12 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     }
 
     /**
-     *
      * @param int $firstRun
      *
      * @return int
      */
     public function instanceTierThyself()
     {
-
 
         $this->tier = 7;
 
@@ -949,9 +960,9 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         }
 
         $this->extraFieldsCount = $this->countExtraFields();
-        $sources                = $this->getSources();
-        $this->contactCount     = empty($this->contacts) ? 0 : $this->contacts->get_num_rows();
-        $bestSourceType         = $this->getBestSourceType();
+        $sources = $this->getSources();
+        $this->contactCount = empty($this->contacts) ? 0 : $this->contacts->get_num_rows();
+        $bestSourceType = $this->getBestSourceType();
 
         // find the "best" source (meroveus or datahub)
         // is there more than one source?
@@ -960,7 +971,6 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         } else {
             $bestSourceId = array_pop($sources);
         }
-
 
         $this->storyCount = $this->countStories($bestSourceId);
 
@@ -985,7 +995,6 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
                 $this->tier = 2;
             }
         }
-
 
         // tier 3
         if ($this->tier !== 2) {

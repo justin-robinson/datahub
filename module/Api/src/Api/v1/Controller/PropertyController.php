@@ -10,64 +10,67 @@ use Zend\View\Model\JsonModel;
  * Class InstanceController
  * @package Api\v1\Controller
  */
-class PropertyController extends AbstractRestfulController {
+class PropertyController extends AbstractRestfulController
+{
 
-    public function get ( $companyInstancePropertyId ) {
+    public function get($companyInstancePropertyId)
+    {
 
-        $instance = CompanyInstanceProperty::fetch_by_id( $companyInstancePropertyId );
-        if( $instance ) {
-            return new JsonModel( PropertyFormatter::format( $instance ) );
+        $instance = CompanyInstanceProperty::fetch_by_id($companyInstancePropertyId);
+        if ($instance) {
+            return new JsonModel(PropertyFormatter::format($instance));
         }
 
-        $this->response->setStatusCode(204);
-        return null;
+        return $this->getResponse()->setStatusCode(204);
     }
 
-    public function create ( $data ) {
+    public function create($data)
+    {
 
         // don't allow properties or contacts to be saved
         unset($data['companyInstancePropertyId']);
 
-        $instance = new CompanyInstanceProperty( $data );
-        if( $instance->save() ) {
+        $instance = new CompanyInstanceProperty($data);
+        if ($instance->save()) {
             // get the actual timestamps
             $instance->reload();
         }
 
-        return new JsonModel( PropertyFormatter::format( $instance ) );
+        return new JsonModel(PropertyFormatter::format($instance));
     }
 
-    public function update ( $companyInstancePropertyId, $data ) {
+    public function update($companyInstancePropertyId, $data)
+    {
 
         // don't allow properties or contacts to be saved
         unset($data['companyInstancePropertyId']);
 
-        $instance = CompanyInstanceProperty::fetch_by_id( $companyInstancePropertyId );
+        $instance = CompanyInstanceProperty::fetch_by_id($companyInstancePropertyId);
 
-        if( $instance ) {
-            $instance->populate( $data );
+        if ($instance) {
+            $instance->populate($data);
             $instance->save();
             $instance->reload();
 
-            return new JsonModel( PropertyFormatter::format( $instance ) );
+            return new JsonModel(PropertyFormatter::format($instance));
         }
 
-        $this->response->setStatusCode(204);
-        return null;
+        return $this->getResponse()->setStatusCode(204);
 
     }
 
-    public function delete ( $id ) {
+    public function delete($id)
+    {
 
-        $instance = CompanyInstanceProperty::fetch_by_id( $id );
-        if( $instance ) {
+        $instance = CompanyInstanceProperty::fetch_by_id($id);
+        if ($instance) {
             $instance->delete();
-            $instance = CompanyInstanceProperty::query( 'SELECT * FROM datahub.companyInstanceProperty WHERE companyInstancePropertyId = ?', [ $id ] )->first();
+            $instance = CompanyInstanceProperty::query('SELECT * FROM datahub.companyInstanceProperty WHERE companyInstancePropertyId = ?',
+                [$id])->first();
 
-            return new JsonModel( PropertyFormatter::format( $instance ) );
+            return new JsonModel(PropertyFormatter::format($instance));
         }
 
-        $this->response->setStatusCode(204);
-        return null;
+        return $this->getResponse()->setStatusCode(204);
     }
 }

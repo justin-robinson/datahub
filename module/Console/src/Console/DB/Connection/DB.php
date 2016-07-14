@@ -8,7 +8,8 @@ use Console\DB\Error\ConfigException;
  * Class DB
  * @package Console\DB\Connection
  */
-class DB {
+class DB
+{
 
     /**
      * @param $config
@@ -16,21 +17,22 @@ class DB {
      * @return \PDO
      * @throws ConfigException
      */
-    public static function createPdo ($config) {
+    public static function createPdo($config)
+    {
 
         // set default port
-        if ( !isset($config['port']) ) {
+        if (!isset($config['port'])) {
             $config['port'] = '3306';
         }
 
         // set default driver options
-        if ( !isset($config['driverOptions']) ){
+        if (!isset($config['driverOptions'])) {
             $config['driverOptions'] = [];
         }
 
         // check for required options
-        foreach ( ['host', 'dbname', 'user', 'password'] as &$requiredOption ) {
-            if ( !isset($config[$requiredOption]) ) {
+        foreach (['host', 'dbname', 'user', 'password'] as &$requiredOption) {
+            if (!isset($config[$requiredOption])) {
                 throw new ConfigException('Missing required config option for pdo connection: ' . $requiredOption);
             }
         }

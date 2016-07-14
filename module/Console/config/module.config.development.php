@@ -1,11 +1,11 @@
 <?php
 return [
-    'logger'  => [
+    'logger' => [
         'default' => [
             'priority' => \Zend\Log\Logger::DEBUG,
         ],
     ],
-    'log'     => [
+    'log'    => [
         'console' => [
             'writers' => [
                 'stderr' => [

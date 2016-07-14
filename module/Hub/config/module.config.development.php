@@ -7,7 +7,7 @@ $defaultMysqlConnectionParams = [
     'user'          => 'web',
     'password'      => '',
     'driverOptions' => [
-        1002 => 'SET NAMES utf8'
+        1002 => 'SET NAMES utf8',
     ],
 
 ];
@@ -15,17 +15,17 @@ return [
 
     'doctrine' => [
         'connection' => [
-            'datahub' => [
+            'datahub'     => [
                 'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
-                'params' => array_merge($defaultMysqlConnectionParams, [
+                'params'      => array_merge($defaultMysqlConnectionParams, [
                     'dbname' => 'datahub',
-                ] ),
+                ]),
             ],
             'orm_default' => [
                 'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
-                'params' => array_merge($defaultMysqlConnectionParams, [
-                    'dbname'  => 'datahub',
-                ] ),
+                'params'      => array_merge($defaultMysqlConnectionParams, [
+                    'dbname' => 'datahub',
+                ]),
             ],
         ],
     ],
@@ -33,10 +33,10 @@ return [
     'logger' => [
         'default' => [
             'priority' => \Zend\Log\Logger::DEBUG,
-            'path' => '/var/tmp',
-        ]
+            'path'     => '/var/tmp',
+        ],
     ],
-    'log'=> [
+    'log'    => [
         'content' => [
             'writers' => [
                 'stderr' => [
@@ -54,17 +54,17 @@ return [
         'port' => '9200',
         'url'  => 'http://elb.elasticsearch.datahub.bizj-dev.com:9200/companies',
     ],
-//
-//    'elastica-datahub' => [
-//        'host' => '127.0.0.1',
-//        'path' => 'companies/',
-//        'port' => '9200',
-//        'url'  => '127.0.0.1:9200/companies',
-//    ],
+    //
+    //    'elastica-datahub' => [
+    //        'host' => '127.0.0.1',
+    //        'path' => 'companies/',
+    //        'port' => '9200',
+    //        'url'  => '127.0.0.1:9200/companies',
+    //    ],
 
     'mysql' => [
         'datahub' => $defaultMysqlConnectionParams,
-        'db02' => [
+        'db02'    => [
             'charset'       => 'utf8',
             'host'          => 'radb.bizj-internal.com',
             'dbname'        => 'recon',
@@ -72,9 +72,9 @@ return [
             'user'          => 'directory-read',
             'password'      => 'readonly',
             'driverOptions' => [
-                1002 => 'SET NAMES utf8'
+                1002 => 'SET NAMES utf8',
             ],
         ],
-    ]
+    ],
 
 ];
