@@ -22,14 +22,14 @@ class InstancePropertiesController extends AbstractRestfulController
         $limit = $this->params()->fromQuery('limit', 1000);
         $offset = $limit * ($page - 1);
 
-        $contacts = CompanyInstanceProperty::fetch_where('companyInstanceId = ?', [$companyInstanceId], $limit,
+        $properties = CompanyInstanceProperty::fetch_where('companyInstanceId = ?', [$companyInstanceId], $limit,
             $offset);
 
-        if ($contacts) {
+        if ($properties) {
             $count = Generic::query('SELECT count(*) AS count FROM companyInstanceProperty WHERE companyInstanceId = ?',
                 [$companyInstanceId])->first()->count;
 
-            return new JsonModel(PropertyCollectionFormatter::format($contacts, $page, $limit,
+            return new JsonModel(PropertyCollectionFormatter::format($properties, $page, $limit,
                 "/api/v1/instance/{$companyInstanceId}/properties", $count));
         }
 

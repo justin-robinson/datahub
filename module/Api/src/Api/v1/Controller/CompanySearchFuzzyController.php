@@ -2,15 +2,16 @@
 
 namespace Api\v1\Controller;
 
-use Api\v1\ResponseFormatter\InstanceCollectionFormatter;
-use DB\Datahub\CompanyInstance;
+use Api\v1\ResponseFormatter\CompanyCollectionFormatter;
+use DB\Datahub\Company;
+use Scoop\Database\Rows;
 use Zend\View\Model\JsonModel;
 
 /**
- * Class InstanceSearchFuzzyController
+ * Class CompanySearchFuzzyController
  * @package Api\v1\Controller
  */
-class InstanceSearchFuzzyController extends AbstractRestfulController
+class CompanySearchFuzzyController extends AbstractRestfulController
 {
 
     public function get($_)
@@ -30,16 +31,16 @@ class InstanceSearchFuzzyController extends AbstractRestfulController
 
         $searchString = "%{$searchString}%";
 
-        $instances = CompanyInstance::fetch_where(
-            'name LIKE ? OR companyInstanceId LIKE ?',
+        $companies = Company::fetch_where(
+            'name LIKE ? OR companyId LIKE ?',
             [$searchString, $searchString]
         );
 
-        if ( $instances === false ) {
-            return new JsonModel([]);
+        if ( $companies === false ) {
+            $companies = new Rows();
         }
 
-        return new JsonModel(InstanceCollectionFormatter::format($instances));
+        return new JsonModel(CompanyCollectionFormatter::format($companies));
 
     }
 }
