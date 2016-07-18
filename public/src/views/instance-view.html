@@ -3,46 +3,73 @@
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../../bower_components/paper-autocomplete/paper-autocomplete.html">
 <link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="property-view.html">
 
 <dom-module id="instance-view">
 
     <template>
         <style>
+            paper-card {
+                width: 100%;
+                --paper-card-background-color: var(--paper-grey-200);
+            }
 
+            paper-card paper-input,paper-autocomplete {
+                width: 95%;
+                padding-left:1em;
+            }
+
+            paper-icon-button.save {
+                color: var(--paper-light-green-500);
+            }
+
+            paper-icon-button.delete {
+                float:right;
+                color: var(--paper-red-a200);
+            }
+            paper-icon-button.delete:hover {
+                background-color: var(--paper-red-a200);
+                color: white;
+            }
         </style>
 
-        <div>
-            <paper-input value="{{data.companyInstanceId}}" label="Instance Id" on-change="companyInstanceIdChanged"></paper-input>
-            <paper-input value="{{data.name}}" label="Name"></paper-input>
-            <paper-input value="{{data.url}}" label="Url"></paper-input>
-            <paper-input value="{{data.marketCode}}" label="Market Code"></paper-input>
-            <paper-autocomplete value="{{data.stateId}}" id="stateSelector" text-property="name" value-property="stateId" label="State"></paper-autocomplete>
-            <paper-input value="{{data.createdAt}}" label="Created"></paper-input>
-            <paper-input value="{{data.updatedAt}}" label="Updated"></paper-input>
-        </div>
+        <paper-card heading="{{data.name}}">
+            <div>
+                <paper-input value="{{data.companyInstanceId}}" label="Instance Id" on-change="companyInstanceIdChanged"></paper-input>
+                <paper-input value="{{data.name}}" label="Name"></paper-input>
+                <paper-input value="{{data.url}}" label="Url"></paper-input>
+                <paper-input value="{{data.marketCode}}" label="Market Code"></paper-input>
+                <paper-autocomplete value="{{data.stateId}}" id="stateSelector" text-property="name" value-property="stateId" label="State"></paper-autocomplete>
+                <paper-input value="{{data.createdAt}}" label="Created"></paper-input>
+                <paper-input value="{{data.updatedAt}}" label="Updated"></paper-input>
+            </div>
 
-        <paper-button id="save" raised on-click="save">Save</paper-button>
+            <div id="actions">
 
-        <template is="dom-if" if="{{data.companyInstanceId}}" as="self">
-            <paper-button id="delete" raised on-click="confirmDelete">Delete</paper-button>
+            </div>
 
-            <template is="dom-if" if="{{properties.length}}">
-                <paper-button id="showProperties" on-click="showProperties" raised>Properties</paper-button>
-            </template>
+            <paper-icon-button id="save" icon="save" on-click="save" class="save">Save</paper-icon-button>
 
-            <template is="dom-if" if="{{properties}}" as="{{property}}">
+            <template is="dom-if" if="{{data.companyInstanceId}}" as="self">
+                <paper-icon-button id="delete" icon="delete" on-click="confirmDelete" class="delete">Delete</paper-icon-button>
+
+                <template is="dom-if" if="{{properties.length}}">
+                    <paper-icon-button id="showProperties" icon="build" on-click="showProperties">Properties</paper-icon-button>
+                </template>
+
                 <paper-dialog id="propertiesModal">
                     <h2>tst</h2>
-                    <template is="dom-repeat" items="{{property}}">
-                        <property-view data="{{item}}"></property-view>
-                    </template>
-        <!--            <div>{{states.fetched}}</div>-->
-        <!--            <paper-fab id="addProperty" icon="add" on-click="addPropertyClicked"></paper-fab>-->
+                    <!--                        <template is="dom-repeat" items="{{property}}">-->
+                    <!--                            <property-view data="{{item}}"></property-view>-->
+                    <!--                        </template>-->
+                    <!--            <div>{{states.fetched}}</div>-->
+                    <!--            <paper-fab id="addProperty" icon="add" on-click="addPropertyClicked"></paper-fab>-->
                 </paper-dialog>
             </template>
-        </template>
-
+        </paper-card>
 
         <iron-ajax
             id="getState"

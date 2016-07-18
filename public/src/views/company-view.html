@@ -6,6 +6,8 @@
 <link rel="import" href="../../bower_components/paper-autocomplete/paper-autocomplete.html">
 <link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
 <link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="instance-view.html">
 
 
@@ -21,7 +23,7 @@
                 display: block;
             }
             :host #delete {
-                background: #ff6662;
+                background: var(--paper-red-a200);
                 float: right;
             }
             :host #yes {
@@ -29,12 +31,18 @@
                 float: right;
             }
             :host #no {
-                background: #ff6662;
+                background: var(--paper-red-a200);
             }
             :host #add-instance {
                 position: fixed;
                 bottom: 10px;
                 right: 10px;
+            }
+
+            paper-icon-button.save {
+                color: var(--paper-light-green-500);
+                width: 50px;
+                height: 50px;
             }
         </style>
 
@@ -77,7 +85,7 @@
             <paper-input value="{{data.updatedAt}}" label="Updated"></paper-input>
         </div>
 
-        <paper-button id="save" raised on-click="save">Save</paper-button>
+        <paper-icon-button id="save" icon="save" on-click="save" class="save">Save</paper-icon-button>
 
         <template is="dom-if" if="{{data.companyId}}">
             <paper-button id="delete" raised on-click="confirmDelete">Delete</paper-button>
