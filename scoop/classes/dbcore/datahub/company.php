@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class Company
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/06/18
+ * @date 2016/07/18
  * @property mixed $companyId
  * @property mixed $parentId
  * @property mixed $employeeCount
@@ -39,6 +39,7 @@ class Company extends Model {
           2 => 'name',
           3 => 'createdAt',
           4 => 'updatedAt',
+          5 => 'deletedAt',
         );
 
     public static $dBColumnPropertiesArray = 
@@ -87,7 +88,7 @@ class Company extends Model {
           'ownership' => NULL,
           'createdAt' => '0000-00-00 00:00:00',
           'updatedAt' => '0000-00-00 00:00:00',
-          'deletedAt' => NULL,
+          'deletedAt' => '0000-00-00 00:00:00',
         );
 
 }
