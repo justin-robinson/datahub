@@ -1,6 +1,9 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/paper-autocomplete/paper-autocomplete.html">
+<link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="property-view.html">
 
 <dom-module id="instance-view">
 
@@ -10,25 +13,36 @@
         </style>
 
         <div>
-            <h2>Instances</h2>
-            <template is="dom-repeat" items="{{data._embedded.instances}}">
-                <paper-input value="{{item.name}}" label="Name"></paper-input>
-                <paper-input value="{{item.url}}" label="Url"></paper-input>
-                <paper-input value="{{item.marketCode}}" label="Market Code"></paper-input>
-                <paper-input value="{{item.stateId}}" label="State Id"></paper-input>
-                <paper-input value="{{item.createdAt}}" label="Created"></paper-input>
-                <paper-input value="{{item.updatedAt}}" label="Updated"></paper-input>
-                <br>
-            </template>
+            <paper-input value="{{data.companyInstanceId}}" label="Instance Id" on-change="companyInstanceIdChanged"></paper-input>
+            <paper-input value="{{data.name}}" label="Name"></paper-input>
+            <paper-input value="{{data.url}}" label="Url"></paper-input>
+            <paper-input value="{{data.marketCode}}" label="Market Code"></paper-input>
+            <paper-autocomplete value="{{data.stateId}}" id="stateSelector" text-property="name" value-property="stateId" label="State"></paper-autocomplete>
+            <paper-input value="{{data.createdAt}}" label="Created"></paper-input>
+            <paper-input value="{{data.updatedAt}}" label="Updated"></paper-input>
         </div>
 
-        <iron-ajax
-            id="getInstances"
-            auto
-            handle-as="json"
-            last-response="{{data}}"
-            on-response="parseInstances"
-        ></iron-ajax>
+        <paper-button id="save" raised on-click="save">Save</paper-button>
+
+        <template is="dom-if" if="{{data.companyInstanceId}}" as="self">
+            <paper-button id="delete" raised on-click="confirmDelete">Delete</paper-button>
+
+            <template is="dom-if" if="{{properties.length}}">
+                <paper-button id="showProperties" on-click="showProperties" raised>Properties</paper-button>
+            </template>
+
+            <template is="dom-if" if="{{properties}}" as="{{property}}">
+                <paper-dialog id="propertiesModal">
+                    <h2>tst</h2>
+                    <template is="dom-repeat" items="{{property}}">
+                        <property-view data="{{item}}"></property-view>
+                    </template>
+        <!--            <div>{{states.fetched}}</div>-->
+        <!--            <paper-fab id="addProperty" icon="add" on-click="addPropertyClicked"></paper-fab>-->
+                </paper-dialog>
+            </template>
+        </template>
+
 
         <iron-ajax
             id="getState"
@@ -37,52 +51,120 @@
             on-response="parseStateResponse"
         ></iron-ajax>
 
+        <iron-ajax
+            id="getProperties"
+            auto
+            handle-as="json"
+            on-response="parseProperties"
+        ></iron-ajax>
+
     </template>
 
     <script>
-        Polymer({
-            is: 'instance-view',
-            properties: {
-                companyId: {
-                    type: Number,
-                    notify: true
+        (function () {
+
+            var states = {
+                "data": null,
+                "sorted": null,
+                "fetching": false,
+                "fetched": false
+            };
+
+            var fetchedEvent = new Event('states-fetched');
+            var element = document.createElement('div');
+
+            Polymer({
+                is: 'instance-view',
+                properties: {
+                    searchTimer: Object,
+                    data: Object,
+                    state: Object,
+                    properties: Array
                 },
-                searchTimer: Object,
-                data: Object
-            },
-            ready: function() {
-                this.data = {};
-                this.listen(this, 'company-id-changed', 'getInstances');
-                this.getInstances();
-            },
-            getInstances: function () {
+                ready: function () {
 
-                clearTimeout(this.searchTimer);
-                var self = this;
-                this.searchTimer = setTimeout(function () {
-                    self.$.getInstances.url = window.location.origin + '/api/v1/company/' + self.companyId + '/instances'
-                });
-            },
-            parseInstances: function () {
+                    this.data = this.data || {};
+                    this.properties = this.properties || [];
 
-                if ( !this.data || !this.data._embedded || !this.data._embedded.instances.length ) {
-                    return;
-                }
+                    this.companyInstanceIdChanged();
 
-                var self = this;
-                var instances = this.data._embedded.instances;
-                instances.map(function(instance, index) {
-                    if ( instance.stateId ) {
-                        self.$.getState.url = window.location.origin + '/api/v1/state/' + instance.stateId;
+                    // get all the possible states from the api
+
+                    // if we have already gotten the states, just attached them to autocomplete
+                    if ( states.fetched ) {
+                        this.$.stateSelector.source=states.data;
+                        return;
                     }
-                });
-            },
-            parseState: function (a,b,c) {
-                console.log(a);
-                console.log(b);
-                console.log(c);
-            }
-        })
+
+                    // listen to the event fired when the states are fetched
+                    var self = this;
+                    element.addEventListener('states-fetched', function () {
+
+                        // attach states to autocomplete
+                        self.$.stateSelector.source=states.data;
+
+                        // set current value of the autocomplete to the value of the instance
+                        if ( !self.data.stateId ) {
+                            return;
+                        }
+                        var state = states.sorted[self.data.stateId];
+                        self.$.stateSelector.setOption({
+                            text: state.name,
+                            value: state.stateId
+                        });
+                    });
+
+                    // first instance will do the actual api call for the states
+                    if ( !states.fetching ) {
+                        states.fetching = true;
+                        this.$.getState.url = window.location.origin + '/api/v1/state';
+                    }
+                },
+                parseStateResponse: function (event, request) {
+
+                    // set flags that we have fetched the states
+                    states.fetched = true;
+                    states.fetching = false;
+
+                    // save states api return
+                    states.data = request.xhr.response;
+
+                    // create map of stateId to state objects
+                    states.sorted = {};
+                    states.data.map(function(state){
+                        states.sorted[state.stateId] = state;
+                    });
+
+                    // notify all other elements that the states have been fetched
+                    element.dispatchEvent(fetchedEvent);
+                },
+                save: function () {
+                    
+                },
+                companyInstanceIdChanged: function () {
+                    if ( !this.data.companyInstanceId ) {
+                        return;
+                    }
+
+                    clearTimeout(this.searchTimer);
+                    var self = this;
+                    this.searchTimer = setTimeout(function () {
+                        self.$.getProperties.url = window.location.origin + '/api/v1/instance/' + self.data.companyInstanceId + '/properties'
+                    });
+                },
+                parseProperties: function (event, request) {
+
+                    if ( !request.xhr.response || !request.xhr.response._embedded || !request.xhr.response._embedded.properties.length ) {
+                        return;
+                    }
+
+                    this.properties = request.xhr.response._embedded.properties;
+                },
+                showProperties: function () {
+                    this.$.propertiesModal.open();
+                }
+            });
+        })();
     </script>
 
 </dom-module>

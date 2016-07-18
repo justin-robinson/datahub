@@ -1,0 +1,53 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/paper-autocomplete/paper-autocomplete.html">
+
+<dom-module id="property-view">
+
+    <template>
+        <style>
+
+        </style>
+
+        <div>
+            <paper-input value="{{data.companyInstancePropertyId}}" label="Property Id"></paper-input>
+            <paper-input value="{{data.name}}" label="Name"></paper-input>
+            <paper-input value="{{data.value}}" label="Value"></paper-input>
+            <paper-input value="{{data.createdAt}}" label="Created"></paper-input>
+            <paper-input value="{{data.updatedAt}}" label="Updated"></paper-input>
+        </div>
+
+        <paper-button id="save" raised on-click="save">Save</paper-button>
+
+        <template is="dom-if" if="{{data.companyInstancePropertyId}}">
+            <paper-button id="delete" raised on-click="confirmDelete">Delete</paper-button>
+        </template>
+
+    </template>
+
+    <script>
+        (function () {
+
+            Polymer({
+                is: 'property-view',
+                properties: {
+                    searchTimer: Object,
+                    data: Object,
+                    state: Object,
+                    properties: Array
+                },
+                ready: function () {
+
+                    if ( !this.data ) {
+                        this.data = {};
+                    }
+                },
+                save: function () {
+                    
+                },
+            });
+        })();
+    </script>
+
+</dom-module>
