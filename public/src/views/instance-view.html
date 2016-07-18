@@ -25,6 +25,10 @@
             paper-icon-button.save {
                 color: var(--paper-light-green-500);
             }
+            paper-icon-button.save:hover {
+                background-color: var(--paper-light-green-500);
+                color: var(--paper-grey-200);
+            }
 
             paper-icon-button.delete {
                 float:right;
@@ -32,7 +36,7 @@
             }
             paper-icon-button.delete:hover {
                 background-color: var(--paper-red-a200);
-                color: white;
+                color: var(--paper-grey-200);
             }
         </style>
 
@@ -52,23 +56,21 @@
             </div>
 
             <paper-icon-button id="save" icon="save" on-click="save" class="save">Save</paper-icon-button>
-
-            <template is="dom-if" if="{{data.companyInstanceId}}" as="self">
+            <template id="propertyTemplate" is="dom-if" if="{{data.companyInstanceId}}">
                 <paper-icon-button id="delete" icon="delete" on-click="confirmDelete" class="delete">Delete</paper-icon-button>
 
-                <template is="dom-if" if="{{properties.length}}">
+                <template is="dom-if" if="{{instanceProperties.length}}">
                     <paper-icon-button id="showProperties" icon="build" on-click="showProperties">Properties</paper-icon-button>
                 </template>
 
-                <paper-dialog id="propertiesModal">
-                    <h2>tst</h2>
-                    <!--                        <template is="dom-repeat" items="{{property}}">-->
-                    <!--                            <property-view data="{{item}}"></property-view>-->
-                    <!--                        </template>-->
-                    <!--            <div>{{states.fetched}}</div>-->
-                    <!--            <paper-fab id="addProperty" icon="add" on-click="addPropertyClicked"></paper-fab>-->
-                </paper-dialog>
+<!--                <paper-fab id="addProperty" icon="add" on-click="addPropertyClicked"></paper-fab>-->
             </template>
+            <paper-dialog id="propertiesModal">
+                <h2>tst</h2>
+                <template is="dom-repeat" items="{{instanceProperties}}">
+                    <property-view data="{{item}}"></property-view>
+                </template>
+            </paper-dialog>
         </paper-card>
 
         <iron-ajax
@@ -106,12 +108,12 @@
                     searchTimer: Object,
                     data: Object,
                     state: Object,
-                    properties: Array
+                    instanceProperties: Array
                 },
                 ready: function () {
 
                     this.data = this.data || {};
-                    this.properties = this.properties || [];
+                    this.instanceProperties = this.instanceProperties || [];
 
                     this.companyInstanceIdChanged();
 
@@ -185,7 +187,7 @@
                         return;
                     }
 
-                    this.properties = request.xhr.response._embedded.properties;
+                    this.instanceProperties = request.xhr.response._embedded.properties;
                 },
                 showProperties: function () {
                     this.$.propertiesModal.open();
