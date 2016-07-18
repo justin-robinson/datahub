@@ -15,16 +15,19 @@
 
     <template>
         <style>
+            :root {
+                --background-color: var(--paper-grey-800);
+                --text-color: var(--paper-teal-500);
+                --highlight-color: var(--paper-amber-600);
+            }
             :host {
                 display: block;
                 padding: 16px;
+                background-color: var(--background-color);
+                --button-size: 50px;
             }
             :host .company-properties span {
                 display: block;
-            }
-            :host #delete {
-                background: var(--paper-red-a200);
-                float: right;
             }
             :host #yes {
                 background: #70bf70;
@@ -33,16 +36,38 @@
             :host #no {
                 background: var(--paper-red-a200);
             }
-            :host #add-instance {
+            paper-fab.add-instance {
                 position: fixed;
                 bottom: 10px;
                 right: 10px;
+                --paper-fab-background: var(--highlight-color);
+            }
+
+            paper-input, paper-autocomplete {
+                --paper-input-container-input-color: var(--text-color);
+                --paper-input-container-focus-color: var(--highlight-color);
             }
 
             paper-icon-button.save {
                 color: var(--paper-light-green-500);
-                width: 50px;
-                height: 50px;
+                width: var(--button-size);
+                height: var(--button-size);
+            }
+
+            paper-icon-button.save:hover {
+                background-color: var(--paper-light-green-500);
+                color: var(--background-color);
+            }
+
+            paper-icon-button.delete {
+                float:right;
+                width: var(--button-size);
+                height: var(--button-size);
+                color: var(--paper-red-a200);
+            }
+            paper-icon-button.delete:hover {
+                background-color: var(--paper-red-a200);
+                color: var(--background-color);
             }
         </style>
 
@@ -88,13 +113,12 @@
         <paper-icon-button id="save" icon="save" on-click="save" class="save">Save</paper-icon-button>
 
         <template is="dom-if" if="{{data.companyId}}">
-            <paper-button id="delete" raised on-click="confirmDelete">Delete</paper-button>
-            <h2>Instances</h2>
+            <paper-icon-button id="delete" icon="delete" on-click="confirmDelete" class="delete">Delete</paper-icon-button>
             <template is="dom-repeat" items="{{instances}}">
                 <instance-view data="{{item}}"></instance-view>
                 <br><br>
             </template>
-            <paper-fab id="add-instance" icon="add" on-click="addInstanceClicked"></paper-fab>
+            <paper-fab id="add-instance" icon="add" on-click="addInstanceClicked" class="add-instance"></paper-fab>
         </template>
 
         <paper-dialog id="confirmDelete">
