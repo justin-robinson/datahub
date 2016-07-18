@@ -201,6 +201,26 @@ $latestApiChildRoutes = [
             ],
         ],
     ],
+    'sourceType'    => [
+        'type'         => 'Literal',
+        'options'      => [
+            'route'    => '/sourcetype',
+            'defaults' => [
+                'controller' => 'Api\v1\Controller\SourceType',
+            ],
+        ],
+        'child_routes' => [
+            'sourceType' => [
+                'type'    => 'Segment',
+                'options' => [
+                    'route'       => '[/:id]',
+                    'constraints' => [
+                        'id' => '[0-9]*',
+                    ],
+                ],
+            ],
+        ],
+    ],
     'refinery' => [
         'type'         => 'Literal',
         'options'      => [
@@ -243,6 +263,7 @@ return [
             'Api\v1\Controller\InstanceProperties' => 'Api\v1\Controller\InstancePropertiesController',
             'Api\v1\Controller\Property'           => 'Api\v1\Controller\PropertyController',
             'Api\v1\Controller\State'              => 'Api\v1\Controller\StateController',
+            'Api\v1\Controller\SourceType'              => 'Api\v1\Controller\SourceTypeController',
         ],
     ],
     'router'       => [
