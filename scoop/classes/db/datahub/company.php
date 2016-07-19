@@ -174,8 +174,9 @@ class Company extends \DBCore\Datahub\Company
      */
     public static function fetch ( $limit = 1000, $offset = 0, $where = '', array $queryParams = [] ) {
 
-        $where .= empty($where) ? '' :
-            " AND (deletedAt IS NULL OR deletedAt = '" . self::$dBColumnDefaultValuesArray['deletedAt'] . "')";
+        $where = empty($where) ? 'deletedAt = ?' : "({$where}) AND deletedAt = ?";
+
+        $queryParams[] = self::$dBColumnDefaultValuesArray['deletedAt'];
 
         return parent::fetch($limit, $offset, $where, $queryParams);
     }
@@ -277,7 +278,7 @@ class Company extends \DBCore\Datahub\Company
             // actually save a new company :D
             // set timestamps on the model before saving
             if( $setTimestamps ) {
-                if( !$this->is_loaded_from_database() && $this->createdAt !== self::$dBColumnDefaultValuesArray['createdAt'] ) {
+                if( $this->createdAt === self::$dBColumnDefaultValuesArray['createdAt'] ) {
                     $this->set_literal( 'createdAt', 'NOW()' );
                 }
                 $this->set_literal( 'updatedAt', 'NOW()' );

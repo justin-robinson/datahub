@@ -69,9 +69,6 @@ class CompanyController extends AbstractRestfulController
         $company = Company::fetch_by_id($id);
         if ($company) {
             $company->delete();
-            $company = Company::query('SELECT * FROM datahub.company WHERE companyId = ?', [$id])->first();
-
-            return new JsonModel(CompanyFormatter::format($company));
         }
 
         return $this->getResponse()->setStatusCode(204);

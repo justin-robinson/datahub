@@ -1,0 +1,234 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/paper-autocomplete/paper-autocomplete.html">
+<link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../../bower_components/paper-dialog-scrollable/paper-dialog-scrollable.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/scale-up-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="../behaviors/api-resource-behaivor.html">
+<link rel="import" href="property-view.html">
+<link rel="import" href="confirm-delete-view.html">
+
+<dom-module id="instance-view">
+
+    <template>
+        <style>
+            paper-card {
+                width: 100%;
+                --paper-card-background-color: var(--paper-grey-200);
+            }
+
+            paper-card paper-input,paper-autocomplete {
+                width: 95%;
+                padding-left:1em;
+            }
+
+            paper-icon-button.save {
+                color: var(--paper-light-green-500);
+            }
+            paper-icon-button.save:hover {
+                background-color: var(--paper-light-green-500);
+                color: var(--paper-grey-200);
+            }
+
+            paper-icon-button.delete {
+                float:right;
+                color: var(--paper-red-a200);
+            }
+            paper-icon-button.delete:hover {
+                background-color: var(--paper-red-a200);
+                color: var(--paper-grey-200);
+            }
+
+            paper-icon-button.show-properties {
+                color: var(--background-color);
+            }
+            paper-icon-button.show-properties:hover {
+                background-color: var(--background-color);
+                color: var(--paper-grey-200);
+            }
+
+            paper-icon-button.add-property {
+                color: var(--highlight-color);
+            }
+            paper-icon-button.add-property:hover {
+                color: var(--background-color);
+                background-color: var(--highlight-color);
+            }
+
+            property-view {
+                padding: 5px;
+            }
+
+            #propertiesModal {
+                background-color: var(--background-color);
+                width: 75%;
+            }
+        </style>
+
+        <paper-card heading="{{data.name}}">
+            <div>
+                <paper-input value="{{data.companyInstanceId}}" label="Instance Id" on-change="companyInstanceIdChanged"></paper-input>
+                <paper-input value="{{data.name}}" label="Name"></paper-input>
+                <paper-input value="{{data.url}}" label="Url"></paper-input>
+                <paper-input value="{{data.marketCode}}" label="Market Code"></paper-input>
+                <paper-autocomplete value="{{data.stateId}}" id="stateSelector" text-property="name" value-property="stateId" label="State"></paper-autocomplete>
+<!--                <paper-input value="{{data.createdAt}}" label="Created"></paper-input>-->
+<!--                <paper-input value="{{data.updatedAt}}" label="Updated"></paper-input>-->
+            </div>
+
+            <paper-icon-button id="save" icon="save" on-click="saveResource" class="save"></paper-icon-button>
+            <template id="propertyTemplate" is="dom-if" if="{{data.companyInstanceId}}">
+                <paper-icon-button id="delete" icon="delete" on-click="confirmDelete" class="delete"></paper-icon-button>
+
+                <template is="dom-if" if="{{childResources.properties.data.length}}">
+                    <paper-icon-button id="showProperties" icon="build" on-click="showProperties" class="show-properties">Properties</paper-icon-button>
+                </template>
+
+            </template>
+            <paper-dialog
+                id="propertiesModal"
+                alwaysOnTop
+                entry-animation="scale-up-animation"
+                exit-animation="fade-out-animation">
+                <paper-dialog-scrollable>
+                    <template is="dom-repeat" items="{{childResources.properties.data}}">
+                        <property-view data="{{item}}"></property-view>
+                    </template>
+                </paper-dialog-scrollable>
+                <paper-icon-button id="addProperty" icon="add" on-click="addPropertyClicked" class="add-property"></paper-icon-button>
+            </paper-dialog>
+
+            <confirm-delete-view id="confirmDelete" on-yes="deleteResource">
+                Are you sure you want to delete this instance and its properties?
+            </confirm-delete-view>
+        </paper-card>
+
+        <iron-ajax
+            id="getState"
+            auto
+            handle-as="json"
+            on-response="parseStateResponse"
+        ></iron-ajax>
+
+    </template>
+
+    <script>
+        (function () {
+
+            var states = {
+                "data": null,
+                "sorted": null,
+                "fetching": false,
+                "fetched": false
+            };
+
+            var fetchedEvent = new Event('states-fetched');
+            var element = document.createElement('div');
+
+            Polymer({
+                is: 'instance-view',
+                behaviors: [
+                    Datahub.ApiResourceBehavior
+                ],
+                properties: {
+                    childResources: {
+                        type: Object,
+                        value: function () {
+                            return {
+                                'properties': {
+                                    data: []
+                                }
+                            }
+                        }
+                    },
+                    idField: {
+                        value:'companyInstanceId'
+                    },
+                    url: {
+                        value: window.location.origin + '/api/v1/instance'
+                    },
+                    removeFromDomOnDelete: {
+                        value: true
+                    }
+                },
+                ready: function () {
+
+                    // get all the possible states from the api
+
+                    // if we have already gotten the states, just attached them to autocomplete
+                    if ( states.fetched ) {
+                        this.$.stateSelector.source=states.data;
+                        return;
+                    }
+
+                    // listen to the event fired when the states are fetched
+                    var self = this;
+                    element.addEventListener('states-fetched', function () {
+
+                        Datahub.ajaxSpinners.remove();
+
+                        // attach states to autocomplete
+                        self.$.stateSelector.source=states.data;
+
+                        // set current value of the autocomplete to the value of the instance
+                        if ( !self.data.stateId ) {
+                            return;
+                        }
+                        var state = states.sorted[self.data.stateId];
+                        self.$.stateSelector.setOption({
+                            text: state.name,
+                            value: state.stateId
+                        });
+                    });
+
+                    // first instance will do the actual api call for the states
+                    if ( !states.fetching ) {
+                        states.fetching = true;
+                        Datahub.ajaxSpinners.add();
+                        this.$.getState.url = window.location.origin + '/api/v1/state';
+                    }
+                },
+                parseStateResponse: function (event, request) {
+
+                    // set flags that we have fetched the states
+                    states.fetched = true;
+                    states.fetching = false;
+
+                    // save states api return
+                    states.data = request.xhr.response;
+
+                    // create map of stateId to state objects
+                    states.sorted = {};
+                    states.data.map(function(state){
+                        states.sorted[state.stateId] = state;
+                    });
+
+                    // notify all other elements that the states have been fetched
+                    element.dispatchEvent(fetchedEvent);
+                },
+                confirmDelete: function () {
+                    this.$.confirmDelete.open();
+                },
+                showProperties: function () {
+                    this.$.propertiesModal.open();
+                },
+                addPropertyClicked: function () {
+                    this.addProperty({});
+                },
+                addProperty: function (property) {
+
+                    property = property || {};
+
+                    // push new property to our array and notify polymer that it needs to render the new property
+                    this.push('childrenResources.properties.data', property);
+                },
+            });
+        })();
+    </script>
+
+</dom-module>

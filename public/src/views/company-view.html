@@ -1,0 +1,220 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-autocomplete/paper-autocomplete.html">
+<link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../behaviors/api-resource-behaivor.html">
+<link rel="import" href="ajax-spinners.html">
+<link rel="import" href="instance-view.html">
+<link rel="import" href="confirm-delete-view.html">
+
+<script src="../../bower_components/urijs/src/URI.min.js"></script>
+
+<dom-module id="company-view">
+
+    <template>
+        <style>
+            :root {
+                --background-color: var(--paper-grey-800);
+                --text-color: var(--paper-teal-500);
+                --highlight-color: var(--paper-amber-600);
+            }
+            :host {
+                display: block;
+                padding: 16px;
+                background-color: var(--background-color);
+                --button-size: 50px;
+            }
+            :host .company-properties span {
+                display: block;
+            }
+            paper-fab.add-instance {
+                position: fixed;
+                bottom: 10px;
+                right: 50px;
+                --paper-fab-background: var(--highlight-color);
+            }
+
+            paper-input, paper-autocomplete {
+                --paper-input-container-input-color: var(--text-color);
+                --paper-input-container-focus-color: var(--highlight-color);
+            }
+
+            paper-icon-button.save {
+                color: var(--paper-light-green-500);
+                width: var(--button-size);
+                height: var(--button-size);
+            }
+
+            paper-icon-button.save:hover {
+                background-color: var(--paper-light-green-500);
+                color: var(--background-color);
+            }
+
+            paper-icon-button.delete {
+                float:right;
+                width: var(--button-size);
+                height: var(--button-size);
+                color: var(--paper-red-a200);
+            }
+            paper-icon-button.delete:hover {
+                background-color: var(--paper-red-a200);
+                color: var(--background-color);
+            }
+
+            ajax-spinners {
+                position:fixed;
+                bottom: 10px;
+            }
+        </style>
+
+        <iron-ajax
+            auto
+            id="ajaxSearch"
+            handle-as="json"
+            on-response="parseSearchResults"
+            last-response="{{searchResults}}"
+        ></iron-ajax>
+
+        <paper-autocomplete
+            id="companySelector"
+            label="Search"
+            remote-source="true"
+            on-input="search"
+            on-autocomplete.selected="searchResultSelected"
+            min-length="3"></paper-autocomplete>
+
+        <div class="company-properties">
+            <paper-input id="companyId" value="{{data.companyId}}" label="Company Id" auto-validate allowed-pattern="[0-9]"></paper-input>
+            <paper-input value="{{data.name}}" label="Name""></paper-input>
+<!--            <paper-input value="{{data.employeeCount}}" label="Employee Count" auto-validate allowed-pattern="[0-9]""></paper-input>-->
+<!--            <paper-input value="{{data.isActive}}" label="isActive""></paper-input>-->
+<!--            <paper-input value="{{data.ownership}}" label="Ownership""></paper-input>-->
+<!--            <paper-input value="{{data.createdAt}}" label="Created"></paper-input>-->
+<!--            <paper-input value="{{data.updatedAt}}" label="Updated"></paper-input>-->
+        </div>
+
+        <paper-icon-button id="save" icon="save" on-click="saveResource" class="save">Save</paper-icon-button>
+
+        <template is="dom-if" if="{{data.companyId}}">
+            <paper-icon-button id="delete" icon="delete" on-click="confirmDelete" class="delete">Delete</paper-icon-button>
+            <template is="dom-repeat" items="{{childResources.instances.data}}">
+                <instance-view data="{{item}}"></instance-view>
+                <br><br>
+            </template>
+            <paper-fab id="add-instance" icon="add" on-click="addInstanceClicked" class="add-instance"></paper-fab>
+        </template>
+
+        <confirm-delete-view id="confirmDelete" on-yes="deleteResource">
+            Are you sure you want to delete this company and its instances?
+        </confirm-delete-view>
+
+        <ajax-spinners id="ajaxSpinners"></ajax-spinners>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'company-view',
+            behaviors: [
+                Datahub.ApiResourceBehavior
+            ],
+            properties: {
+                childResources: {
+                    type: Object,
+                    value: function () {
+                        return {
+                            'instances': null
+                        }
+                    }
+                },
+                idField: {
+                    value:'companyId'
+                },
+                url: {
+                    value: window.location.origin + '/api/v1/company'
+                },
+                searchResults: Object,
+                searchTimer: Object,
+                instances: {
+                    type:  Array,
+                    value: function () { return []; }
+                },
+                queryParams: {
+                    type:  Object,
+                    value: function () {
+                        return URI(window.location.href).query(true) || {};
+                    }
+                }
+            },
+            attached: function () {
+
+                Datahub.ajaxSpinners = this.$.ajaxSpinners;
+
+                if ( this.queryParams.id ) {
+                    this.$.companyId.value = this.queryParams.id;
+                }
+            },
+            addInstanceClicked: function () {
+                this.addInstance({});
+            },
+            addInstance: function (instance) {
+
+                instance = instance || {};
+
+                // push new instance to our array and notify polymer that it needs to render the new instance
+                this.push('childResources.instances.data', instance);
+            },
+            searchResultSelected: function (e, selection) {
+                // updates the company data model after a search result is selected
+                this.data = this.searchResults._embedded.company[selection.option.index];
+                this.companyIdChanged();
+            },
+            search: function () {
+
+                // perform a search when the user types in the input field
+                var searchString = this.$.companySelector.$.input.value;
+
+                // don't make request if we haven't met minimum search length
+                if ( searchString.length < this.$.companySelector.minLength ) {
+                    return;
+                }
+
+                // clear last request to be made
+                clearTimeout(this.searchTimer);
+
+                // set new request to happen in 0.5 seconds
+                var self = this;
+                this.searchTimer = setTimeout(function () {
+                    // search api
+                    self.$.ajaxSearch.url = window.location.origin + '/api/v1/company/search/fuzzy/' + encodeURIComponent(searchString);
+                }, 500);
+
+            },
+            parseSearchResults: function () {
+
+                // do we have results?
+                if ( !this.searchResults || !this.searchResults._embedded || !this.searchResults._embedded.company.length ) {
+                    return;
+                }
+
+                // map raw search results to suggestions selector
+                var suggestions = this.searchResults._embedded.company.map(function(company, index){
+                    return {
+                        text: '(' + company.companyId + ') ' + company.name,
+                        value: company.name,
+                        index: index
+                    }
+                });
+
+                // set suggestions
+                this.$.companySelector.suggestions(suggestions);
+            },
+            confirmDelete: function () {
+              this.$.confirmDelete.open();
+            }
+        });
+    </script>
+</dom-module>

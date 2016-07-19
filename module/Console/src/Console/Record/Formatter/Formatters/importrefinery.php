@@ -89,6 +89,7 @@ class ImportRefinery
                 'name'          => $data['Name'],
                 'createdAt'     => $data['DateModified'],
                 'updatedAt'     => $data['DateModified'],
+                'deletedAt'    => Company::$dBColumnDefaultValuesArray['deletedAt'],
             ]);
 
         $companyInstance = new CompanyInstance(
@@ -103,6 +104,7 @@ class ImportRefinery
                 'marketCode'     => $marketCode,
                 'createdAt'      => $data['DateModified'],
                 'updatedAt'      => $data['DateModified'],
+                'deletedAt'    => CompanyInstance::$dBColumnDefaultValuesArray['deletedAt'],
             ]);
 
         $sourceName = 'refinery' . strtolower((empty($data['SourceID']) ? '' : ":{$data['SourceID']}"));
@@ -113,6 +115,7 @@ class ImportRefinery
             'sourceId'     => $data['InternalId'],
             'createdAt'    => $data['DateModified'],
             'updatedAt'    => $data['DateModified'],
+            'deletedAt'    => CompanyInstanceProperty::$dBColumnDefaultValuesArray['deletedAt'],
         ];
 
         $propertyArray['name'] = 'address1';

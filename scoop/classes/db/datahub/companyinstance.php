@@ -257,8 +257,9 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     {
 
         if (!$allRecords) {
-            $where .= empty($where) ? '' :
-                " AND (deletedAt IS NULL OR deletedAt = '" . self::$dBColumnDefaultValuesArray['deletedAt'] . "')";
+            $where = empty($where) ? 'deletedAt = ?' : "({$where}) AND deletedAt = ?";
+
+            $queryParams[] = self::$dBColumnDefaultValuesArray['deletedAt'];
         }
 
         return parent::fetch($limit, $offset, $where, $queryParams);
@@ -551,7 +552,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
         // set timestamps on the model before saving
         if ($setTimestamps) {
-            if ($this->createdAt !== self::$dBColumnDefaultValuesArray['createdAt']) {
+            if ($this->createdAt === self::$dBColumnDefaultValuesArray['createdAt']) {
                 $this->set_literal('createdAt', 'NOW()');
             }
             $this->set_literal('updatedAt', 'NOW()');

@@ -65,9 +65,6 @@ class ContactController extends AbstractRestfulController
         $contact = Contact::fetch_by_id($id);
         if ($contact) {
             $contact->delete();
-            $contact = Contact::query('SELECT * FROM datahub.contact WHERE contactId = ?', [$id])->first();
-
-            return new JsonModel(ContactFormatter::format($contact));
         }
 
         return $this->getResponse()->setStatusCode(204);

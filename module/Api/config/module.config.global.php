@@ -71,6 +71,15 @@ $latestApiChildRoutes = [
                     ],
                 ],
             ],
+            'search-fuzzy'           => [
+                'type'    => 'Segment',
+                'options' => [
+                    'route'    => '/search/fuzzy[/:search]',
+                    'defaults' => [
+                        'controller' => 'Api\v1\Controller\CompanySearchFuzzy',
+                    ],
+                ],
+            ],
         ],
     ],
     'instance' => [
@@ -118,6 +127,15 @@ $latestApiChildRoutes = [
                     ],
                     'defaults'    => [
                         'controller' => 'Api\v1\Controller\InstanceProfile',
+                    ],
+                ],
+            ],
+            'search-fuzzy'           => [
+                'type'    => 'Segment',
+                'options' => [
+                    'route'    => '/search/fuzzy[/:search]',
+                    'defaults' => [
+                        'controller' => 'Api\v1\Controller\InstanceSearchFuzzy',
                     ],
                 ],
             ],
@@ -173,6 +191,26 @@ $latestApiChildRoutes = [
         ],
         'child_routes' => [
             'state' => [
+                'type'    => 'Segment',
+                'options' => [
+                    'route'       => '[/:id]',
+                    'constraints' => [
+                        'id' => '[0-9]*',
+                    ],
+                ],
+            ],
+        ],
+    ],
+    'sourceType'    => [
+        'type'         => 'Literal',
+        'options'      => [
+            'route'    => '/sourcetype',
+            'defaults' => [
+                'controller' => 'Api\v1\Controller\SourceType',
+            ],
+        ],
+        'child_routes' => [
+            'sourceType' => [
                 'type'    => 'Segment',
                 'options' => [
                     'route'       => '[/:id]',
@@ -247,6 +285,8 @@ return [
             'Api\v1\Controller\CompanyInstances'   => 'Api\v1\Controller\CompanyInstancesController',
             'Api\v1\Controller\CompanyProfile'     => 'Api\v1\Controller\CompanyProfileController',
             'Api\v1\Controller\CompanySearch'      => 'Api\v1\Controller\CompanySearchController',
+            'Api\v1\Controller\CompanySearchFuzzy' => 'Api\v1\Controller\CompanySearchFuzzyController',
+            'Api\v1\Controller\InstanceSearchFuzzy'=> 'Api\v1\Controller\InstanceSearchFuzzyController',
             'Api\v1\Controller\Contact'            => 'Api\v1\Controller\ContactController',
             'Api\v1\Controller\Instance'           => 'Api\v1\Controller\InstanceController',
             'Api\v1\Controller\InstanceContacts'   => 'Api\v1\Controller\InstanceContactsController',
@@ -256,6 +296,8 @@ return [
             'Api\v1\Controller\State'              => 'Api\v1\Controller\StateController',
             'Api\v1\Controller\Dataset'            => 'Api\v1\Controller\DatasetController',
             'Api\v1\Controller\Type'            => 'Api\v1\Controller\TypeController',
+            'Api\v1\Controller\SourceType'              => 'Api\v1\Controller\SourceTypeController',
+
         ],
     ],
     'router'       => [
