@@ -3,10 +3,15 @@
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../../bower_components/paper-autocomplete/paper-autocomplete.html">
 <link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../../bower_components/paper-dialog-scrollable/paper-dialog-scrollable.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/scale-up-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="../behaviors/api-resource-behaivor.html">
 <link rel="import" href="property-view.html">
+<link rel="import" href="confirm-delete-view.html">
 
 <dom-module id="instance-view">
 
@@ -38,6 +43,31 @@
                 background-color: var(--paper-red-a200);
                 color: var(--paper-grey-200);
             }
+
+            paper-icon-button.show-properties {
+                color: var(--background-color);
+            }
+            paper-icon-button.show-properties:hover {
+                background-color: var(--background-color);
+                color: var(--paper-grey-200);
+            }
+
+            paper-icon-button.add-property {
+                color: var(--highlight-color);
+            }
+            paper-icon-button.add-property:hover {
+                color: var(--background-color);
+                background-color: var(--highlight-color);
+            }
+
+            property-view {
+                padding: 5px;
+            }
+
+            #propertiesModal {
+                background-color: var(--background-color);
+                width: 75%;
+            }
         </style>
 
         <paper-card heading="{{data.name}}">
@@ -47,30 +77,35 @@
                 <paper-input value="{{data.url}}" label="Url"></paper-input>
                 <paper-input value="{{data.marketCode}}" label="Market Code"></paper-input>
                 <paper-autocomplete value="{{data.stateId}}" id="stateSelector" text-property="name" value-property="stateId" label="State"></paper-autocomplete>
-                <paper-input value="{{data.createdAt}}" label="Created"></paper-input>
-                <paper-input value="{{data.updatedAt}}" label="Updated"></paper-input>
+<!--                <paper-input value="{{data.createdAt}}" label="Created"></paper-input>-->
+<!--                <paper-input value="{{data.updatedAt}}" label="Updated"></paper-input>-->
             </div>
 
-            <div id="actions">
-
-            </div>
-
-            <paper-icon-button id="save" icon="save" on-click="save" class="save">Save</paper-icon-button>
+            <paper-icon-button id="save" icon="save" on-click="saveResource" class="save"></paper-icon-button>
             <template id="propertyTemplate" is="dom-if" if="{{data.companyInstanceId}}">
-                <paper-icon-button id="delete" icon="delete" on-click="confirmDelete" class="delete">Delete</paper-icon-button>
+                <paper-icon-button id="delete" icon="delete" on-click="confirmDelete" class="delete"></paper-icon-button>
 
-                <template is="dom-if" if="{{instanceProperties.length}}">
-                    <paper-icon-button id="showProperties" icon="build" on-click="showProperties">Properties</paper-icon-button>
+                <template is="dom-if" if="{{childResources.properties.data.length}}">
+                    <paper-icon-button id="showProperties" icon="build" on-click="showProperties" class="show-properties">Properties</paper-icon-button>
                 </template>
 
-<!--                <paper-fab id="addProperty" icon="add" on-click="addPropertyClicked"></paper-fab>-->
             </template>
-            <paper-dialog id="propertiesModal">
-                <h2>tst</h2>
-                <template is="dom-repeat" items="{{instanceProperties}}">
-                    <property-view data="{{item}}"></property-view>
-                </template>
+            <paper-dialog
+                id="propertiesModal"
+                alwaysOnTop
+                entry-animation="scale-up-animation"
+                exit-animation="fade-out-animation">
+                <paper-dialog-scrollable>
+                    <template is="dom-repeat" items="{{childResources.properties.data}}">
+                        <property-view data="{{item}}"></property-view>
+                    </template>
+                </paper-dialog-scrollable>
+                <paper-icon-button id="addProperty" icon="add" on-click="addPropertyClicked" class="add-property"></paper-icon-button>
             </paper-dialog>
+
+            <confirm-delete-view id="confirmDelete" on-yes="deleteResource">
+                Are you sure you want to delete this instance and its properties?
+            </confirm-delete-view>
         </paper-card>
 
         <iron-ajax
@@ -78,13 +113,6 @@
             auto
             handle-as="json"
             on-response="parseStateResponse"
-        ></iron-ajax>
-
-        <iron-ajax
-            id="getProperties"
-            auto
-            handle-as="json"
-            on-response="parseProperties"
         ></iron-ajax>
 
     </template>
@@ -104,18 +132,31 @@
 
             Polymer({
                 is: 'instance-view',
+                behaviors: [
+                    Datahub.ApiResourceBehavior
+                ],
                 properties: {
-                    searchTimer: Object,
-                    data: Object,
-                    state: Object,
-                    instanceProperties: Array
+                    childResources: {
+                        type: Object,
+                        value: function () {
+                            return {
+                                'properties': {
+                                    data: []
+                                }
+                            }
+                        }
+                    },
+                    idField: {
+                        value:'companyInstanceId'
+                    },
+                    url: {
+                        value: window.location.origin + '/api/v1/instance'
+                    },
+                    removeFromDomOnDelete: {
+                        value: true
+                    }
                 },
                 ready: function () {
-
-                    this.data = this.data || {};
-                    this.instanceProperties = this.instanceProperties || [];
-
-                    this.companyInstanceIdChanged();
 
                     // get all the possible states from the api
 
@@ -167,31 +208,22 @@
                     // notify all other elements that the states have been fetched
                     element.dispatchEvent(fetchedEvent);
                 },
-                save: function () {
-                    
-                },
-                companyInstanceIdChanged: function () {
-                    if ( !this.data.companyInstanceId ) {
-                        return;
-                    }
-
-                    clearTimeout(this.searchTimer);
-                    var self = this;
-                    this.searchTimer = setTimeout(function () {
-                        self.$.getProperties.url = window.location.origin + '/api/v1/instance/' + self.data.companyInstanceId + '/properties'
-                    });
-                },
-                parseProperties: function (event, request) {
-
-                    if ( !request.xhr.response || !request.xhr.response._embedded || !request.xhr.response._embedded.properties.length ) {
-                        return;
-                    }
-
-                    this.instanceProperties = request.xhr.response._embedded.properties;
+                confirmDelete: function () {
+                    this.$.confirmDelete.open();
                 },
                 showProperties: function () {
                     this.$.propertiesModal.open();
-                }
+                },
+                addPropertyClicked: function () {
+                    this.addProperty({});
+                },
+                addProperty: function (property) {
+
+                    property = property || {};
+
+                    // push new property to our array and notify polymer that it needs to render the new property
+                    this.push('childrenResources.properties.data', property);
+                },
             });
         })();
     </script>

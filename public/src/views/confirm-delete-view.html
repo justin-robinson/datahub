@@ -1,0 +1,39 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+
+<dom-module id="confirm-delete-view">
+
+    <template>
+        <style include="paper-dialog-shared-styles">
+            :host #yes {
+                background: #70bf70;
+                float: right;
+            }
+            :host #no {
+                background: var(--paper-red-a200);
+            }
+        </style>
+        <div>
+            <content></content>
+        </div>
+        <paper-button id="no" on-click="_no">No</paper-button>
+        <paper-button id="yes" on-click="_yes">Yes</paper-button>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'confirm-delete-view',
+            behaviors: [Polymer.PaperDialogBehavior],
+            _no: function () {
+                this.close();
+                this.fire('no');
+            },
+            _yes: function () {
+                this.close();
+                this.fire('yes');
+            }
+        })
+    </script>
+
+</dom-module>
