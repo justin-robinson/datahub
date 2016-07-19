@@ -170,6 +170,8 @@
                     var self = this;
                     element.addEventListener('states-fetched', function () {
 
+                        Datahub.ajaxSpinners.remove();
+
                         // attach states to autocomplete
                         self.$.stateSelector.source=states.data;
 
@@ -187,6 +189,7 @@
                     // first instance will do the actual api call for the states
                     if ( !states.fetching ) {
                         states.fetching = true;
+                        Datahub.ajaxSpinners.add();
                         this.$.getState.url = window.location.origin + '/api/v1/state';
                     }
                 },

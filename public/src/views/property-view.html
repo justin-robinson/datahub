@@ -112,6 +112,8 @@
                     var self = this;
                     element.addEventListener('source-types-fetched', function () {
 
+                        Datahub.ajaxSpinners.remove();
+
                         // attach sourceTypes to autocomplete
                         self.$.sourceTypeSelector.source=sourceTypes.data;
 
@@ -128,6 +130,7 @@
 
                     // first instance will do the actual api call for the sourceTypes
                     if ( !sourceTypes.fetching ) {
+                        Datahub.ajaxSpinners.add();
                         sourceTypes.fetching = true;
                         this.$.getSourceType.url = window.location.origin + '/api/v1/sourcetype';
                     }

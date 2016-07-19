@@ -7,11 +7,11 @@
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../behaviors/api-resource-behaivor.html">
+<link rel="import" href="ajax-spinners.html">
 <link rel="import" href="instance-view.html">
 <link rel="import" href="confirm-delete-view.html">
 
 <script src="../../bower_components/urijs/src/URI.min.js"></script>
-
 
 <dom-module id="company-view">
 
@@ -64,6 +64,11 @@
                 background-color: var(--paper-red-a200);
                 color: var(--background-color);
             }
+
+            ajax-spinners {
+                position:fixed;
+                bottom: 10px;
+            }
         </style>
 
         <iron-ajax
@@ -106,6 +111,8 @@
         <confirm-delete-view id="confirmDelete" on-yes="deleteResource">
             Are you sure you want to delete this company and its instances?
         </confirm-delete-view>
+
+        <ajax-spinners id="ajaxSpinners"></ajax-spinners>
     </template>
 
     <script>
@@ -143,6 +150,8 @@
                 }
             },
             attached: function () {
+
+                Datahub.ajaxSpinners = this.$.ajaxSpinners;
 
                 if ( this.queryParams.id ) {
                     this.$.companyId.value = this.queryParams.id;

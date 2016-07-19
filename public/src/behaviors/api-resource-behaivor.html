@@ -31,11 +31,26 @@
                     ajax.put.method = 'put';
                     ajax.delete.method = 'delete';
 
+                    // bind responses to data
                     this.listen(ajax.get, 'iron-ajax-response', 'bindResponseToData');
-                    this.listen(ajax.get, 'iron-ajax-response', 'parseLinksFromGet');
                     this.listen(ajax.put, 'iron-ajax-response', 'bindResponseToData');
                     this.listen(ajax.post, 'iron-ajax-response', 'bindResponseToData');
+
+                    // pull hal links from get
+                    this.listen(ajax.get, 'iron-ajax-response', 'parseLinksFromGet');
+
+                    // remove module from dom on delete
                     this.listen(ajax.delete, 'iron-ajax-response', 'removeFromDom');
+
+                    // listeneres for adding and removing ajax spinners
+                    this.listen(ajax.get, 'iron-ajax-request', 'addSpinner');
+                    this.listen(ajax.get, 'iron-ajax-response', 'removeSpinner');
+                    this.listen(ajax.post, 'iron-ajax-request', 'addSpinner');
+                    this.listen(ajax.post, 'iron-ajax-response', 'removeSpinner');
+                    this.listen(ajax.put, 'iron-ajax-request', 'addSpinner');
+                    this.listen(ajax.put, 'iron-ajax-response', 'removeSpinner');
+                    this.listen(ajax.delete, 'iron-ajax-request', 'addSpinner');
+                    this.listen(ajax.delete, 'iron-ajax-response', 'removeSpinner');
 
                     return ajax;
                 }
@@ -61,6 +76,14 @@
                 this.parseLinks(this.data);
             }
             this.listen(this, 'data-changed', '_dataChanged');
+        },
+        addSpinner: function () {
+            Datahub.ajaxSpinners.add();
+            console.log('add');
+        },
+        removeSpinner: function () {
+            Datahub.ajaxSpinners.remove();
+            console.log('remove');
         },
         bindResponseToData: function(event, ironAjax) {
             this.data = ironAjax.xhr.response;
@@ -95,7 +118,9 @@
                         this.childResources[childName].ajax = document.createElement('iron-ajax');
                         this.childResources[childName].ajax.auto = true;
                         this.childResources[childName].ajax.childName = childName;
-                        this.listen(this.childResources[childName].ajax, 'iron-ajax-response', 'bindResponseToChild')
+                        this.listen(this.childResources[childName].ajax, 'iron-ajax-response', 'bindResponseToChild');
+                        this.listen(this.childResources[childName].ajax, 'iron-ajax-request', 'addSpinner');
+                        this.listen(this.childResources[childName].ajax, 'iron-ajax-response', 'removeSpinner');
                     }
 
                     this.childResources[childName].ajax.url = this.url + '/' + this.id() + '/' + childName;
