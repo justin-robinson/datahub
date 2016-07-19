@@ -63,9 +63,6 @@ class SourceTypeController extends AbstractRestfulController
         $state = SourceType::fetch_by_id($id);
         if ($state) {
             $state->delete();
-            $state = SourceType::query('SELECT * FROM datahub.sourceType WHERE sourceTypeId = ?', [$id])->first();
-
-            return new JsonModel($state->to_array());
         }
 
         return $this->getResponse()->setStatusCode(204);

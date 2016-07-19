@@ -65,10 +65,6 @@ class PropertyController extends AbstractRestfulController
         $instance = CompanyInstanceProperty::fetch_by_id($id);
         if ($instance) {
             $instance->delete();
-            $instance = CompanyInstanceProperty::query('SELECT * FROM datahub.companyInstanceProperty WHERE companyInstancePropertyId = ?',
-                [$id])->first();
-
-            return new JsonModel(PropertyFormatter::format($instance));
         }
 
         return $this->getResponse()->setStatusCode(204);

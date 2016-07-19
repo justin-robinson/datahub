@@ -64,9 +64,6 @@ class StateController extends AbstractRestfulController
         $state = State::fetch_by_id($id);
         if ($state) {
             $state->delete();
-            $state = State::query('SELECT * FROM datahub.state WHERE stateId = ?', [$id])->first();
-
-            return new JsonModel($state->to_array());
         }
 
         return $this->getResponse()->setStatusCode(204);

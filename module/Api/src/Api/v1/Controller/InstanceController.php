@@ -91,10 +91,6 @@ class InstanceController extends AbstractRestfulController
         $instance = CompanyInstance::fetch_by_id($id);
         if ($instance) {
             $instance->delete();
-            $instance = CompanyInstance::query('SELECT * FROM datahub.companyInstance WHERE companyInstanceId = ?',
-                [$id])->first();
-
-            return new JsonModel(InstanceFormatter::format($instance));
         }
 
         return $this->getResponse()->setStatusCode(204);

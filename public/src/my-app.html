@@ -21,7 +21,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="my-icons.html">
 
-<dom-module id="my-app">
+<dom-module id="datahub-api-app">
 
   <template>
 
@@ -33,6 +33,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         --app-secondary-color: black;
       }
 
+      app-drawer {
+        --app-drawer-width: 100px;
+      }
       app-header {
         background-color: var(--app-primary-color);
         color: #fff;
@@ -103,7 +106,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     Polymer({
 
-      is: 'my-app',
+      is: 'datahub-api-app',
 
       properties: {
 
@@ -111,7 +114,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           type: String,
           reflectToAttribute: true,
           observer: '_pageChanged'
-        },
+        }
 
       },
 
@@ -130,6 +133,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
     });
+
+    var Datahub = {};
 
   </script>
 
