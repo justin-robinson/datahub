@@ -37,6 +37,7 @@ class CompanyController extends AbstractRestfulController
         if ($company->save()) {
             // get the actual timestamps
             $company->reload();
+            $this->getResponse()->setStatusCode(201);
         }
 
         return new JsonModel(CompanyFormatter::format($company));
@@ -51,15 +52,14 @@ class CompanyController extends AbstractRestfulController
 
         $company = Company::fetch_by_id($companyId);
 
+        $statusCode = 204;
+
         if ($company) {
             $company->populate($data);
-            $company->save();
-            $company->reload();
-
-            return new JsonModel(CompanyFormatter::format($company));
+            $statusCode = $company->save() ? 200 : 500;
         }
 
-        return $this->getResponse()->setStatusCode(204);
+        return $this->getResponse()->setStatusCode($statusCode);
 
     }
 
