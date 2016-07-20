@@ -1,7 +1,7 @@
 {
-  "name": "app-drawer-template",
+  "name": "datahub-api-app",
   "authors": [
-    "The Polymer Authors"
+    "Biz Journals"
   ],
   "private": true,
   "dependencies": {
