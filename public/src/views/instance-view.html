@@ -52,12 +52,17 @@
                 color: var(--paper-grey-200);
             }
 
+            #propertyActions {
+                margin: 0px;
+            }
+
             paper-icon-button.add-property {
+                float: right;
                 color: var(--highlight-color);
             }
             paper-icon-button.add-property:hover {
-                color: var(--background-color);
                 background-color: var(--highlight-color);
+                color: var(--background-color);
             }
 
             property-view {
@@ -88,7 +93,6 @@
                 <template is="dom-if" if="{{childResources.properties.data.length}}">
                     <paper-icon-button id="showProperties" icon="build" on-click="showProperties" class="show-properties">Properties</paper-icon-button>
                 </template>
-
             </template>
             <paper-dialog
                 id="propertiesModal"
@@ -100,7 +104,9 @@
                         <property-view data="{{item}}"></property-view>
                     </template>
                 </paper-dialog-scrollable>
-                <paper-icon-button id="addProperty" icon="add" on-click="addPropertyClicked" class="add-property"></paper-icon-button>
+                <div id="propertyActions">
+                    <paper-icon-button id="addProperty" icon="add" on-click="addPropertyClicked" class="add-property"></paper-icon-button>
+                </div>
             </paper-dialog>
 
             <confirm-delete-view id="confirmDelete" on-yes="deleteResource">
@@ -225,7 +231,7 @@
                     property = property || {};
 
                     // push new property to our array and notify polymer that it needs to render the new property
-                    this.push('childrenResources.properties.data', property);
+                    this.push('childResources.properties.data', property);
                 },
             });
         })();
