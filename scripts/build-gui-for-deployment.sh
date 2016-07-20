@@ -12,8 +12,8 @@ echo "working in " `pwd`
 
 # get dependencies
 echo -e ${BBlack}${On_Green}"Installing dependencies"${Color_Off}
-bower cache clean
-bower install --production
+bower cache clean --allow-root
+bower install --production --allow-root
 
 # build project
 echo -e ${BBlack}${On_Green}"Building"${Color_Off}
