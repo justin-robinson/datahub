@@ -84,6 +84,9 @@
             Datahub.ajaxSpinners.remove();
         },
         bindResponseToData: function(event, ironAjax) {
+            if ( ironAjax.xhr.response === null ) {
+                return;
+            }
             this.data = ironAjax.xhr.response;
         },
         bindResponseToChild: function(event, ironAjax) {
