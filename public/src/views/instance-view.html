@@ -176,8 +176,6 @@
                     var self = this;
                     element.addEventListener('states-fetched', function () {
 
-                        Datahub.ajaxSpinners.remove();
-
                         // attach states to autocomplete
                         self.$.stateSelector.source=states.data;
 
@@ -200,6 +198,8 @@
                     }
                 },
                 parseStateResponse: function (event, request) {
+
+                    Datahub.ajaxSpinners.remove();
 
                     // set flags that we have fetched the states
                     states.fetched = true;
