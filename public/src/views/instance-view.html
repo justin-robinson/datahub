@@ -230,6 +230,8 @@
 
                     property = property || {};
 
+                    property[this.idField] = this.data[this.idField];
+
                     // push new property to our array and notify polymer that it needs to render the new property
                     this.push('childResources.properties.data', property);
                 },

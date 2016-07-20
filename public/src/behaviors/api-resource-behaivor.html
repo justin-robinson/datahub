@@ -87,13 +87,16 @@
             this.data = ironAjax.xhr.response || {};
         },
         bindResponseToChild: function(event, ironAjax) {
-            if ( !event.target.childName ) {
+
+            var response =  event.target.lastResponse || {};
+
+            if ( !event.target.childName || !response._embedded) {
                 return;
             }
 
             var childName = event.target.childName;
 
-            this.set('childResources.' + childName + '.data', event.target.lastResponse._embedded[childName]);
+            this.set('childResources.' + childName + '.data', response._embedded[childName]);
         },
         parseLinksFromGet: function(event, ironAjax) {
 

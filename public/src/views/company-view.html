@@ -126,7 +126,9 @@
                     type: Object,
                     value: function () {
                         return {
-                            'instances': null
+                            'instances': {
+                                data: []
+                            }
                         }
                     }
                 },
@@ -164,13 +166,14 @@
 
                 instance = instance || {};
 
+                instance[this.idField] = this.data[this.idField];
+
                 // push new instance to our array and notify polymer that it needs to render the new instance
                 this.push('childResources.instances.data', instance);
             },
             searchResultSelected: function (e, selection) {
                 // updates the company data model after a search result is selected
-                this.data = this.searchResults._embedded.company[selection.option.index];
-                this.companyIdChanged();
+                this.set('data', this.searchResults._embedded.company[selection.option.index]);
             },
             search: function () {
 
@@ -188,12 +191,15 @@
                 // set new request to happen in 0.5 seconds
                 var self = this;
                 this.searchTimer = setTimeout(function () {
+                    Datahub.ajaxSpinners.add();
                     // search api
                     self.$.ajaxSearch.url = window.location.origin + '/api/v1/company/search/fuzzy/' + encodeURIComponent(searchString);
                 }, 500);
 
             },
             parseSearchResults: function () {
+
+                Datahub.ajaxSpinners.remove();
 
                 // do we have results?
                 if ( !this.searchResults || !this.searchResults._embedded || !this.searchResults._embedded.company.length ) {
