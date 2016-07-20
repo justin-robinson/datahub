@@ -89,7 +89,7 @@
 
         <div class="company-properties">
             <paper-input id="companyId" value="{{data.companyId}}" label="Company Id" auto-validate allowed-pattern="[0-9]"></paper-input>
-            <paper-input value="{{data.name}}" label="Name""></paper-input>
+            <paper-input value="{{data.name}}" label="Name"></paper-input>
 <!--            <paper-input value="{{data.employeeCount}}" label="Employee Count" auto-validate allowed-pattern="[0-9]""></paper-input>-->
 <!--            <paper-input value="{{data.isActive}}" label="isActive""></paper-input>-->
 <!--            <paper-input value="{{data.ownership}}" label="Ownership""></paper-input>-->
@@ -154,7 +154,7 @@
                 Datahub.ajaxSpinners = this.$.ajaxSpinners;
 
                 if ( this.queryParams.id ) {
-                    this.$.companyId.value = this.queryParams.id;
+                    this.set('data.companyId', this.queryParams.id);
                 }
             },
             addInstanceClicked: function () {
