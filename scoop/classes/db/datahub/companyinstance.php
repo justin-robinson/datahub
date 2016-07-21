@@ -565,7 +565,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
         if ($saved) {
             $this->save_contacts();
-            $this->save_properties();
+            $this->save_properties($setTimestamps);
             ++self::$instancesSaved;
             self::$companyInstanceCache->put($companyInstanceCacheKey, $this);
         }
@@ -594,8 +594,10 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
     /**
      * Save all properties to the db
+     *
+     * @param bool $setTimestamps
      */
-    public function save_properties()
+    public function save_properties($setTimestamps = false)
     {
 
         if (empty($this->companyInstanceId)) {
@@ -610,7 +612,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
             // link this property to this company instance
             $property->companyInstanceId = $this->companyInstanceId;
 
-            $property->pre_save(false);
+            $property->pre_save($setTimestamps);
 
             if (!empty($property->value)) {
                 // buffer the property insertion

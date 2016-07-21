@@ -300,11 +300,14 @@ class Company extends \DBCore\Datahub\Company
                 }
             }
         }
-        $this->save_company_instances();
+        $this->save_company_instances($setTimestamps);
         return $saved;
     }
 
-    public function save_company_instances () {
+    /**
+     * @param bool $setTimestamps
+     */
+    public function save_company_instances ($setTimestamps = true) {
         // can't save instances if the company doesn't have an id
         if ( empty($this->companyId) ) {
             return;
@@ -313,7 +316,7 @@ class Company extends \DBCore\Datahub\Company
         foreach ($this->get_company_instances() as $companyInstance) {
             // link this instance to the company
             $companyInstance->companyId = $this->companyId;
-            $companyInstance->save();
+            $companyInstance->save($setTimestamps);
         }
     }
 
