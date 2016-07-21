@@ -221,6 +221,26 @@ $latestApiChildRoutes = [
             ],
         ],
     ],
+    'market'    => [
+        'type'         => 'Literal',
+        'options'      => [
+            'route'    => '/market',
+            'defaults' => [
+                'controller' => 'Api\v1\Controller\Market',
+            ],
+        ],
+        'child_routes' => [
+            'market' => [
+                'type'    => 'Segment',
+                'options' => [
+                    'route'       => '[/:id]',
+                    'constraints' => [
+                        'id' => '[0-9]*',
+                    ],
+                ],
+            ],
+        ],
+    ],
     'refinery' => [
         'type'         => 'Literal',
         'options'      => [
@@ -261,6 +281,7 @@ return [
             'Api\v1\Controller\InstanceContacts'   => 'Api\v1\Controller\InstanceContactsController',
             'Api\v1\Controller\InstanceProfile'    => 'Api\v1\Controller\InstanceProfileController',
             'Api\v1\Controller\InstanceProperties' => 'Api\v1\Controller\InstancePropertiesController',
+            'Api\v1\Controller\Market'           => 'Api\v1\Controller\MarketController',
             'Api\v1\Controller\Property'           => 'Api\v1\Controller\PropertyController',
             'Api\v1\Controller\State'              => 'Api\v1\Controller\StateController',
             'Api\v1\Controller\SourceType'              => 'Api\v1\Controller\SourceTypeController',
