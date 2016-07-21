@@ -46,15 +46,14 @@ class StateController extends AbstractRestfulController
 
         $state = State::fetch_by_id($stateId);
 
+        $statusCode = 204;
+
         if ($state) {
             $state->populate($data);
-            $state->save();
-            $state->reload();
-
-            return new JsonModel($state->to_array());
+            $statusCode = $state->save() ? 200 : 500;
         }
 
-        return $this->getResponse()->setStatusCode(204);
+        return $this->getResponse()->setStatusCode($statusCode);
 
     }
 

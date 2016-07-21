@@ -89,7 +89,7 @@
 
         <div class="company-properties">
             <paper-input id="companyId" value="{{data.companyId}}" label="Company Id" auto-validate allowed-pattern="[0-9]"></paper-input>
-            <paper-input value="{{data.name}}" label="Name""></paper-input>
+            <paper-input value="{{data.name}}" label="Name"></paper-input>
 <!--            <paper-input value="{{data.employeeCount}}" label="Employee Count" auto-validate allowed-pattern="[0-9]""></paper-input>-->
 <!--            <paper-input value="{{data.isActive}}" label="isActive""></paper-input>-->
 <!--            <paper-input value="{{data.ownership}}" label="Ownership""></paper-input>-->
@@ -126,7 +126,9 @@
                     type: Object,
                     value: function () {
                         return {
-                            'instances': null
+                            'instances': {
+                                data: []
+                            }
                         }
                     }
                 },
@@ -154,7 +156,7 @@
                 Datahub.ajaxSpinners = this.$.ajaxSpinners;
 
                 if ( this.queryParams.id ) {
-                    this.$.companyId.value = this.queryParams.id;
+                    this.set('data.companyId', this.queryParams.id);
                 }
             },
             addInstanceClicked: function () {
@@ -164,13 +166,14 @@
 
                 instance = instance || {};
 
+                instance[this.idField] = this.data[this.idField];
+
                 // push new instance to our array and notify polymer that it needs to render the new instance
                 this.push('childResources.instances.data', instance);
             },
             searchResultSelected: function (e, selection) {
                 // updates the company data model after a search result is selected
-                this.data = this.searchResults._embedded.company[selection.option.index];
-                this.companyIdChanged();
+                this.set('data', this.searchResults._embedded.company[selection.option.index]);
             },
             search: function () {
 
@@ -188,12 +191,15 @@
                 // set new request to happen in 0.5 seconds
                 var self = this;
                 this.searchTimer = setTimeout(function () {
+                    Datahub.ajaxSpinners.add();
                     // search api
                     self.$.ajaxSearch.url = window.location.origin + '/api/v1/company/search/fuzzy/' + encodeURIComponent(searchString);
                 }, 500);
 
             },
             parseSearchResults: function () {
+
+                Datahub.ajaxSpinners.remove();
 
                 // do we have results?
                 if ( !this.searchResults || !this.searchResults._embedded || !this.searchResults._embedded.company.length ) {

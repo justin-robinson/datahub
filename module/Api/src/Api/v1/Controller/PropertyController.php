@@ -16,9 +16,9 @@ class PropertyController extends AbstractRestfulController
     public function get($companyInstancePropertyId)
     {
 
-        $instance = CompanyInstanceProperty::fetch_by_id($companyInstancePropertyId);
-        if ($instance) {
-            return new JsonModel(PropertyFormatter::format($instance));
+        $property = CompanyInstanceProperty::fetch_by_id($companyInstancePropertyId);
+        if ($property) {
+            return new JsonModel(PropertyFormatter::format($property));
         }
 
         return $this->getResponse()->setStatusCode(204);
@@ -30,13 +30,13 @@ class PropertyController extends AbstractRestfulController
         // don't allow properties or contacts to be saved
         unset($data['companyInstancePropertyId']);
 
-        $instance = new CompanyInstanceProperty($data);
-        if ($instance->save()) {
+        $property = new CompanyInstanceProperty($data);
+        if ($property->save()) {
             // get the actual timestamps
-            $instance->reload();
+            $property->reload();
         }
 
-        return new JsonModel(PropertyFormatter::format($instance));
+        return new JsonModel(PropertyFormatter::format($property));
     }
 
     public function update($companyInstancePropertyId, $data)
@@ -45,26 +45,25 @@ class PropertyController extends AbstractRestfulController
         // don't allow properties or contacts to be saved
         unset($data['companyInstancePropertyId']);
 
-        $instance = CompanyInstanceProperty::fetch_by_id($companyInstancePropertyId);
+        $property = CompanyInstanceProperty::fetch_by_id($companyInstancePropertyId);
+        
+        $statusCode = 204;
 
-        if ($instance) {
-            $instance->populate($data);
-            $instance->save();
-            $instance->reload();
-
-            return new JsonModel(PropertyFormatter::format($instance));
+        if ($property) {
+            $property->populate($data);
+            $statusCode = $property->save() ? 200 : 500;
         }
 
-        return $this->getResponse()->setStatusCode(204);
+        return $this->getResponse()->setStatusCode($statusCode);
 
     }
 
     public function delete($id)
     {
 
-        $instance = CompanyInstanceProperty::fetch_by_id($id);
-        if ($instance) {
-            $instance->delete();
+        $property = CompanyInstanceProperty::fetch_by_id($id);
+        if ($property) {
+            $property->delete();
         }
 
         return $this->getResponse()->setStatusCode(204);

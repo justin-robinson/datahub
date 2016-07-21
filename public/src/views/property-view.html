@@ -112,8 +112,6 @@
                     var self = this;
                     element.addEventListener('source-types-fetched', function () {
 
-                        Datahub.ajaxSpinners.remove();
-
                         // attach sourceTypes to autocomplete
                         self.$.sourceTypeSelector.source=sourceTypes.data;
 
@@ -139,6 +137,8 @@
                     this.$.confirmDelete.open();
                 },
                 parseSourceTypeResponse: function (event, request) {
+
+                    Datahub.ajaxSpinners.remove();
 
                     // set flags that we have fetched the sourceTypes
                     sourceTypes.fetched = true;

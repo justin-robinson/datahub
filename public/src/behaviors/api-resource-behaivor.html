@@ -79,27 +79,28 @@
         },
         addSpinner: function () {
             Datahub.ajaxSpinners.add();
-            console.log('add');
         },
         removeSpinner: function () {
             Datahub.ajaxSpinners.remove();
-            console.log('remove');
         },
         bindResponseToData: function(event, ironAjax) {
-            this.data = ironAjax.xhr.response;
+            this.data = ironAjax.xhr.response || {};
         },
         bindResponseToChild: function(event, ironAjax) {
-            if ( !event.target.childName ) {
+
+            var response =  event.target.lastResponse || {};
+
+            if ( !event.target.childName || !response._embedded) {
                 return;
             }
 
             var childName = event.target.childName;
 
-            this.set('childResources.' + childName + '.data', event.target.lastResponse._embedded[childName]);
+            this.set('childResources.' + childName + '.data', response._embedded[childName]);
         },
         parseLinksFromGet: function(event, ironAjax) {
 
-            if ( !ironAjax.xhr.response._links ) {
+            if ( !ironAjax.xhr.response || !ironAjax.xhr.response._links ) {
                 return;
             }
             this.parseLinks(ironAjax.xhr.response);
@@ -156,6 +157,10 @@
             }
         },
         _dataChanged: function ( event, change ) {
+
+            if ( change === null ) {
+                return;
+            }
 
             var idChanged = (change.path === 'data.' + this.idField) || change.value[this.idField];
 

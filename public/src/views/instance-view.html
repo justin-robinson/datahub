@@ -52,12 +52,17 @@
                 color: var(--paper-grey-200);
             }
 
+            #propertyActions {
+                margin: 0px;
+            }
+
             paper-icon-button.add-property {
+                float: right;
                 color: var(--highlight-color);
             }
             paper-icon-button.add-property:hover {
-                color: var(--background-color);
                 background-color: var(--highlight-color);
+                color: var(--background-color);
             }
 
             property-view {
@@ -75,7 +80,7 @@
                 <paper-input value="{{data.companyInstanceId}}" label="Instance Id" on-change="companyInstanceIdChanged"></paper-input>
                 <paper-input value="{{data.name}}" label="Name"></paper-input>
                 <paper-input value="{{data.url}}" label="Url"></paper-input>
-                <paper-input value="{{data.marketCode}}" label="Market Code"></paper-input>
+                <paper-autocomplete value="{{data.marketCode}}" id="marketSelector" text-property="market_name" value-property="market_code" label="Market"></paper-autocomplete>
                 <paper-autocomplete value="{{data.stateId}}" id="stateSelector" text-property="name" value-property="stateId" label="State"></paper-autocomplete>
 <!--                <paper-input value="{{data.createdAt}}" label="Created"></paper-input>-->
 <!--                <paper-input value="{{data.updatedAt}}" label="Updated"></paper-input>-->
@@ -88,7 +93,6 @@
                 <template is="dom-if" if="{{childResources.properties.data.length}}">
                     <paper-icon-button id="showProperties" icon="build" on-click="showProperties" class="show-properties">Properties</paper-icon-button>
                 </template>
-
             </template>
             <paper-dialog
                 id="propertiesModal"
@@ -100,7 +104,9 @@
                         <property-view data="{{item}}"></property-view>
                     </template>
                 </paper-dialog-scrollable>
-                <paper-icon-button id="addProperty" icon="add" on-click="addPropertyClicked" class="add-property"></paper-icon-button>
+                <div id="propertyActions">
+                    <paper-icon-button id="addProperty" icon="add" on-click="addPropertyClicked" class="add-property"></paper-icon-button>
+                </div>
             </paper-dialog>
 
             <confirm-delete-view id="confirmDelete" on-yes="deleteResource">
@@ -115,6 +121,13 @@
             on-response="parseStateResponse"
         ></iron-ajax>
 
+        <iron-ajax
+            id="getMarket"
+            auto
+            handle-as="json"
+            on-response="parseMarketResponse"
+        ></iron-ajax>
+
     </template>
 
     <script>
@@ -124,10 +137,18 @@
                 "data": null,
                 "sorted": null,
                 "fetching": false,
-                "fetched": false
+                "fetched": false,
+                "event": new Event('states-fetched')
             };
 
-            var fetchedEvent = new Event('states-fetched');
+            var markets = {
+                "data": null,
+                "sorted": null,
+                "fetching": false,
+                "fetched": false,
+                "event": new Event('markets-fetched')
+            };
+
             var element = document.createElement('div');
 
             Polymer({
@@ -158,6 +179,8 @@
                 },
                 ready: function () {
 
+                    var self = this;
+
                     // get all the possible states from the api
 
                     // if we have already gotten the states, just attached them to autocomplete
@@ -167,10 +190,7 @@
                     }
 
                     // listen to the event fired when the states are fetched
-                    var self = this;
                     element.addEventListener('states-fetched', function () {
-
-                        Datahub.ajaxSpinners.remove();
 
                         // attach states to autocomplete
                         self.$.stateSelector.source=states.data;
@@ -192,8 +212,43 @@
                         Datahub.ajaxSpinners.add();
                         this.$.getState.url = window.location.origin + '/api/v1/state';
                     }
+
+
+                    // get all the possible markets from the api
+
+                    // if we have already gotten the states, just attached them to autocomplete
+                    if ( markets.fetched ) {
+                        this.$.marketSelector.source=markets.data;
+                        return;
+                    }
+
+                    // listen to the event fired when the markets are fetched
+                    element.addEventListener('markets-fetched', function () {
+
+                        // attach markets to autocomplete
+                        self.$.marketSelector.source=markets.data;
+
+                        // set current value of the autocomplete to the value of the instance
+                        if ( !self.data.marketCode ) {
+                            return;
+                        }
+                        var market = markets.sorted[self.data.marketCode];
+                        self.$.marketSelector.setOption({
+                            text: market.market_name,
+                            value: market.market_code
+                        });
+                    });
+
+                    // first instance will do the actual api call for the markets
+                    if ( !markets.fetching ) {
+                        markets.fetching = true;
+                        Datahub.ajaxSpinners.add();
+                        this.$.getMarket.url = window.location.origin + '/api/v1/market';
+                    }
                 },
                 parseStateResponse: function (event, request) {
+
+                    Datahub.ajaxSpinners.remove();
 
                     // set flags that we have fetched the states
                     states.fetched = true;
@@ -209,7 +264,27 @@
                     });
 
                     // notify all other elements that the states have been fetched
-                    element.dispatchEvent(fetchedEvent);
+                    element.dispatchEvent(states.event);
+                },
+                parseMarketResponse: function (event, request) {
+
+                    Datahub.ajaxSpinners.remove();
+
+                    // set flags that we have fetched the states
+                    markets.fetched = true;
+                    markets.fetching = false;
+
+                    // save markets api return
+                    markets.data = request.xhr.response;
+
+                    // create map of stateId to state objects
+                    markets.sorted = {};
+                    markets.data.map(function(market){
+                        markets.sorted[market.market_code] = market;
+                    });
+
+                    // notify all other elements that the states have been fetched
+                    element.dispatchEvent(markets.event);
                 },
                 confirmDelete: function () {
                     this.$.confirmDelete.open();
@@ -224,8 +299,10 @@
 
                     property = property || {};
 
+                    property[this.idField] = this.data[this.idField];
+
                     // push new property to our array and notify polymer that it needs to render the new property
-                    this.push('childrenResources.properties.data', property);
+                    this.push('childResources.properties.data', property);
                 },
             });
         })();

@@ -15,9 +15,9 @@ class SourceTypeController extends AbstractRestfulController
     public function get($sourceTypeId)
     {
 
-        $state = SourceType::fetch_by_id($sourceTypeId);
-        if ($state) {
-            return new JsonModel($state->to_array());
+        $sourceType = SourceType::fetch_by_id($sourceTypeId);
+        if ($sourceType) {
+            return new JsonModel($sourceType->to_array());
         }
 
         return $this->getResponse()->setStatusCode(204);
@@ -28,13 +28,13 @@ class SourceTypeController extends AbstractRestfulController
 
         unset($data['sourceTypeId']);
 
-        $state = new State($data);
-        if ($state->save()) {
+        $sourceType = new State($data);
+        if ($sourceType->save()) {
             // get the actual timestamps
-            $state->reload();
+            $sourceType->reload();
         }
 
-        return new JsonModel($state->to_array());
+        return new JsonModel($sourceType->to_array());
     }
 
     public function update($sourceTypeId, $data)
@@ -43,26 +43,25 @@ class SourceTypeController extends AbstractRestfulController
         // don't allow properties or states to be saved
         unset($data['sourceTypeId']);
 
-        $state = SourceType::fetch_by_id($sourceTypeId);
+        $sourceType = SourceType::fetch_by_id($sourceTypeId);
 
-        if ($state) {
-            $state->populate($data);
-            $state->save();
-            $state->reload();
+        $statusCode = 204;
 
-            return new JsonModel($state->to_array());
+        if ($sourceType) {
+            $sourceType->populate($data);
+            $statusCode = $sourceType->save() ? 200 : 500;
         }
 
-        return $this->getResponse()->setStatusCode(204);
+        return $this->getResponse()->setStatusCode($statusCode);
 
     }
 
     public function delete($id)
     {
 
-        $state = SourceType::fetch_by_id($id);
-        if ($state) {
-            $state->delete();
+        $sourceType = SourceType::fetch_by_id($id);
+        if ($sourceType) {
+            $sourceType->delete();
         }
 
         return $this->getResponse()->setStatusCode(204);
@@ -71,12 +70,12 @@ class SourceTypeController extends AbstractRestfulController
     public function getList()
     {
 
-        $states = SourceType::fetch_where('1');
+        $sourceTypes = SourceType::fetch_where('1');
 
-        if ($states === false) {
+        if ($sourceTypes === false) {
             return $this->getResponse()->setStatusCode(204);
         }
 
-        return new JsonModel($states);
+        return new JsonModel($sourceTypes);
     }
 }
