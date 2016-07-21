@@ -75,10 +75,11 @@
         (function () {
 
             var sourceTypes = {
-                "data": null,
-                "sorted": null,
-                "fetching": false,
-                "fetched": false
+                data: null,
+                sorted: {},
+                map: {},
+                fetching: false,
+                fetched: false
             };
 
             var fetchedEvent = new Event('source-types-fetched');
@@ -133,6 +134,14 @@
                         this.$.getSourceType.url = window.location.origin + '/api/v1/sourcetype';
                     }
                 },
+                attached: function () {
+                    if ( !this.data.sourceTypeId && sourceTypes.fetched && sourceTypes.map.datahub ) {
+                        this.$.sourceTypeSelector.setOption({
+                            text: sourceTypes.map.datahub.name,
+                            value: sourceTypes.map.datahub.sourceTypeId
+                        });
+                    }
+                },
                 confirmDelete: function () {
                     this.$.confirmDelete.open();
                 },
@@ -149,8 +158,10 @@
 
                     // create map of sourceTypeId to sourceType objects
                     sourceTypes.sorted = {};
+                    sourceTypes.map = {};
                     sourceTypes.data.map(function(sourceType){
                         sourceTypes.sorted[sourceType.sourceTypeId] = sourceType;
+                        sourceTypes.map[sourceType.name] = sourceType;
                     });
 
                     // notify all other elements that the sourceTypes have been fetched
