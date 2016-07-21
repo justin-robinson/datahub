@@ -10,6 +10,7 @@ use DB\Datahub\Contact;
 use LRUCache\LRUCache;
 use Scoop\Database\Query\Buffer;
 use Zend\Db\Adapter as dbAdapter;
+use Console\Importer\Dataset;
 
 /**
  * Class ImportController
@@ -400,6 +401,17 @@ class ImportController extends AbstractActionController
         echo "imported {$totalCount} records" . PHP_EOL;
         echo "\t created {$insertCount}";
         echo "\t updated {$updateCount}";
+    }
+
+
+    /**
+     * php run.php import datasetFromCsv -e development --file=/home/vagrant/files/<file>.csv
+     * takes a specifically formatted csv and makes/saves a dataset of it
+     */
+    public function datasetFromCsvAction(){
+        $csvFile = realpath($this->getRequest()->getParam('file'));
+        $importer = new Dataset();
+        $importer->importFromCsv($csvFile);
     }
 
 }
