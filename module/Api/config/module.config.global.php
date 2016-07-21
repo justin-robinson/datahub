@@ -264,6 +264,37 @@ $latestApiChildRoutes = [
             ],
         ],
     ],
+    'dataset'  => [
+        'type'    => 'Literal',
+        'options' => [
+            'route'    => '/dataset',
+            'defaults' => [
+                'controller' => 'Api\v1\Controller\Dataset',
+            ],
+        ],
+        'child_routes' => [
+            'id'               => [
+                'type'    => 'Segment',
+                'options' => [
+                    'route'       => '[/:id]',
+                    'constraints' => [
+                        'id' => '[0-9]*',
+                    ],
+                ],
+            ],
+            'type'               => [
+                'type'    => 'Segment',
+                'options' => [
+                    // :type will trigger specific formatting
+                    'route'       => '/:id/type/[:type]',
+                    'constraints' => [
+                        'type' => '[a-z]*',
+                        'id' => '[0-9]*',
+                    ],
+                ],
+            ],
+        ],
+    ],
 ];
 return [
 
@@ -285,6 +316,8 @@ return [
             'Api\v1\Controller\Property'           => 'Api\v1\Controller\PropertyController',
             'Api\v1\Controller\State'              => 'Api\v1\Controller\StateController',
             'Api\v1\Controller\SourceType'              => 'Api\v1\Controller\SourceTypeController',
+            'Api\v1\Controller\Dataset'            => 'Api\v1\Controller\DatasetController',
+            'Api\v1\Controller\Type'            => 'Api\v1\Controller\TypeController',
         ],
     ],
     'router'       => [

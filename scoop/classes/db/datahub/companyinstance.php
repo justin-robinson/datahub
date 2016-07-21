@@ -274,7 +274,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
      *
      * @return bool|int|Rows
      */
-    public static function fetch_where($where, array $queryParams = [], $limit = 1000, $offset = 0, $allRecords = false)
+    public static function  fetch_where($where, array $queryParams = [], $limit = 1000, $offset = 0, $allRecords = false)
     {
 
         return static::fetch($limit, $offset, $where, $queryParams, $allRecords);
