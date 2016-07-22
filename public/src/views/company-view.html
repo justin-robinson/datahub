@@ -158,6 +158,8 @@
                 if ( this.queryParams.id ) {
                     this.set('data.companyId', this.queryParams.id);
                 }
+
+                this.$.companySelector.$.input.$.input.focus();
             },
             addInstanceClicked: function () {
                 this.addInstance({});
