@@ -131,6 +131,7 @@
             auto
             handle-as="json"
             on-response="parseStateResponse"
+            on-error="parseStateResponse"
         ></iron-ajax>
 
         <iron-ajax
@@ -138,6 +139,7 @@
             auto
             handle-as="json"
             on-response="parseMarketResponse"
+            on-error="parseStateResponse"
         ></iron-ajax>
 
     </template>
@@ -183,7 +185,7 @@
                         value:'companyInstanceId'
                     },
                     url: {
-                        value: Datahub.apiUrl + '/api/v1/instance'
+                        value: Datahub.apiUrl + 'instance'
                     },
                     removeFromDomOnDelete: {
                         value: true
@@ -222,7 +224,7 @@
                     if ( !states.fetching ) {
                         states.fetching = true;
                         Datahub.ajaxSpinners.add();
-                        this.$.getState.url = Datahub.apiUrl + '/api/v1/state';
+                        this.$.getState.url = Datahub.apiUrl + 'state';
                     }
 
 
@@ -255,11 +257,11 @@
                     if ( !markets.fetching ) {
                         markets.fetching = true;
                         Datahub.ajaxSpinners.add();
-                        this.$.getMarket.url = Datahub.apiUrl + '/api/v1/market';
+                        this.$.getMarket.url = Datahub.apiUrl + 'market';
                     }
 
                 },
-                parseStateResponse: function (event, request) {
+                parseStateResponse: function (event, response) {
 
                     Datahub.ajaxSpinners.remove();
 
@@ -267,19 +269,21 @@
                     states.fetched = true;
                     states.fetching = false;
 
-                    // save states api return
-                    states.data = request.xhr.response;
+                    if (response.xhr && response.xhr.response) {
+                        // save states api return
+                        states.data = response.xhr.response;
 
-                    // create map of stateId to state objects
-                    states.sorted = {};
-                    states.data.map(function(state){
-                        states.sorted[state.stateId] = state;
-                    });
+                        // create map of stateId to state objects
+                        states.sorted = {};
+                        states.data.map(function (state) {
+                            states.sorted[state.stateId] = state;
+                        });
 
-                    // notify all other elements that the states have been fetched
-                    element.dispatchEvent(states.event);
+                        // notify all other elements that the states have been fetched
+                        element.dispatchEvent(states.event);
+                    }
                 },
-                parseMarketResponse: function (event, request) {
+                parseMarketResponse: function (event, response) {
 
                     Datahub.ajaxSpinners.remove();
 
@@ -287,17 +291,20 @@
                     markets.fetched = true;
                     markets.fetching = false;
 
-                    // save markets api return
-                    markets.data = request.xhr.response;
+                    if (response.xhr && response.xhr.response) {
+                        // save markets api return
+                        markets.data = response.xhr.response;
 
-                    // create map of stateId to state objects
-                    markets.sorted = {};
-                    markets.data.map(function(market){
-                        markets.sorted[market.market_code] = market;
-                    });
+                        // create map of stateId to state objects
+                        markets.sorted = {};
+                        markets.data.map(function(market){
+                            markets.sorted[market.market_code] = market;
+                        });
 
-                    // notify all other elements that the states have been fetched
-                    element.dispatchEvent(markets.event);
+                        // notify all other elements that the states have been fetched
+                        element.dispatchEvent(markets.event);
+                    }
+
                 },
                 confirmDelete: function () {
                     this.$.confirmDelete.open();

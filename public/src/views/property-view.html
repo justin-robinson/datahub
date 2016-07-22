@@ -68,6 +68,7 @@
             auto
             handle-as="json"
             on-response="parseSourceTypeResponse"
+            on-error="parseSourceTypeResponse"
         ></iron-ajax>
     </template>
 
@@ -95,7 +96,7 @@
                         value:'companyInstancePropertyId'
                     },
                     url: {
-                        value: Datahub.apiUrl + '/api/v1/property'
+                        value: Datahub.apiUrl + 'property'
                     },
                     removeFromDomOnDelete: {
                         value: true
@@ -131,7 +132,7 @@
                     if ( !sourceTypes.fetching ) {
                         Datahub.ajaxSpinners.add();
                         sourceTypes.fetching = true;
-                        this.$.getSourceType.url = Datahub.apiUrl + '/api/v1/sourcetype';
+                        this.$.getSourceType.url = Datahub.apiUrl + 'sourcetype';
                     }
                 },
                 attached: function () {
@@ -145,7 +146,7 @@
                 confirmDelete: function () {
                     this.$.confirmDelete.open();
                 },
-                parseSourceTypeResponse: function (event, request) {
+                parseSourceTypeResponse: function (event, response) {
 
                     Datahub.ajaxSpinners.remove();
 
@@ -153,19 +154,21 @@
                     sourceTypes.fetched = true;
                     sourceTypes.fetching = false;
 
-                    // save sourceTypes api return
-                    sourceTypes.data = request.xhr.response;
+                    if (response.xhr && response.xhr.response) {
+                        // save sourceTypes api return
+                        sourceTypes.data = response.xhr.response;
 
-                    // create map of sourceTypeId to sourceType objects
-                    sourceTypes.sorted = {};
-                    sourceTypes.map = {};
-                    sourceTypes.data.map(function(sourceType){
-                        sourceTypes.sorted[sourceType.sourceTypeId] = sourceType;
-                        sourceTypes.map[sourceType.name] = sourceType;
-                    });
+                        // create map of sourceTypeId to sourceType objects
+                        sourceTypes.sorted = {};
+                        sourceTypes.map    = {};
+                        sourceTypes.data.map(function (sourceType) {
+                            sourceTypes.sorted[sourceType.sourceTypeId] = sourceType;
+                            sourceTypes.map[sourceType.name]            = sourceType;
+                        });
 
-                    // notify all other elements that the sourceTypes have been fetched
-                    element.dispatchEvent(fetchedEvent);
+                        // notify all other elements that the sourceTypes have been fetched
+                        element.dispatchEvent(fetchedEvent);
+                    }
                 },
             });
         })();
