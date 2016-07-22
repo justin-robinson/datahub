@@ -27,6 +27,12 @@
                 padding-left:1em;
             }
 
+            #propertiesSearch {
+                --paper-input-container-input-color: var(--text-color);
+                --paper-input-container-focus-color: var(--highlight-color);
+                margin-top: 0px;
+            }
+
             paper-icon-button.save {
                 color: var(--paper-light-green-500);
             }
@@ -72,6 +78,7 @@
             #propertiesModal {
                 background-color: var(--background-color);
                 width: 75%;
+                margin-top: 130px;
             }
         </style>
 
@@ -96,11 +103,16 @@
             </template>
             <paper-dialog
                 id="propertiesModal"
-                alwaysOnTop
+                always-on-top
+                on-iron-overlay-opened="propertiesOpened"
                 entry-animation="scale-up-animation"
                 exit-animation="fade-out-animation">
+                <paper-input id="propertiesSearch" value="{{propertySearchString}}" label="Search"></paper-input>
                 <paper-dialog-scrollable>
-                    <template is="dom-repeat" items="{{childResources.properties.data}}">
+                    <template is="dom-repeat" items="{{childResources.properties.data}}"
+                              filter="{{filterProperties(propertySearchString)}}"
+                              observe="name value"
+                    >
                         <property-view data="{{item}}"></property-view>
                     </template>
                 </paper-dialog-scrollable>
@@ -245,6 +257,7 @@
                         Datahub.ajaxSpinners.add();
                         this.$.getMarket.url = Datahub.apiUrl + '/api/v1/market';
                     }
+
                 },
                 parseStateResponse: function (event, request) {
 
@@ -303,6 +316,20 @@
 
                     // push new property to our array and notify polymer that it needs to render the new property
                     this.push('childResources.properties.data', property);
+                },
+                filterProperties: function (searchString) {
+                    if ( !searchString ) {
+                        return null;
+                    }
+
+                    return function (property) {
+                        var value = property.value.toLowerCase();
+                        var name = property.name.toLowerCase();
+                        return ( value.indexOf(searchString) != -1 || name.indexOf(searchString) != -1);
+                    }
+                },
+                propertiesOpened: function () {
+                    this.$.propertiesModal.querySelector('paper-input').$.input.focus();
                 },
             });
         })();
