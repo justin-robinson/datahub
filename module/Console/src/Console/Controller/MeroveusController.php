@@ -19,6 +19,7 @@ use Elastica\Client as ElasticaClient;
 use Elastica\Query as ElasticaQuery;
 use Elastica\QueryBuilder as QueryBuilder;
 use Elastica\Search as ElasticaSearch;
+use Scoop\Database\Literal;
 use Scoop\Database\Model\Generic;
 use Services\Meroveus\Client as MeroveusClient;
 use Services\Meroveus\CompanyService;
@@ -918,8 +919,8 @@ class MeroveusController extends AbstractActionController
                             'value'        => $value,
                             'sourceTypeId' => SourceType::fetch_one_where("name = 'meroveus'")->sourceTypeId,
                             'sourceId'     => $target['meroveusId'],
-                            'createdAt'    => $target['createdAt'],
-                            'updatedAt'    => $target['updatedAt'],
+                            'createdAt'    => empty($target['createdAt']) ? new Literal('NOW()') : $target['createdAt'],
+                            'updatedAt'    => empty($target['updatedAt']) ? new Literal('NOW()') : $target['updatedAt'],
                         ]));
 
             }
