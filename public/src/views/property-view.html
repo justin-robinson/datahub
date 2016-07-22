@@ -95,7 +95,7 @@
                         value:'companyInstancePropertyId'
                     },
                     url: {
-                        value: window.location.origin + '/api/v1/property'
+                        value: Datahub.apiUrl + '/api/v1/property'
                     },
                     removeFromDomOnDelete: {
                         value: true
@@ -131,7 +131,7 @@
                     if ( !sourceTypes.fetching ) {
                         Datahub.ajaxSpinners.add();
                         sourceTypes.fetching = true;
-                        this.$.getSourceType.url = window.location.origin + '/api/v1/sourcetype';
+                        this.$.getSourceType.url = Datahub.apiUrl + '/api/v1/sourcetype';
                     }
                 },
                 attached: function () {

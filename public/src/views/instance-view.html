@@ -171,7 +171,7 @@
                         value:'companyInstanceId'
                     },
                     url: {
-                        value: window.location.origin + '/api/v1/instance'
+                        value: Datahub.apiUrl + '/api/v1/instance'
                     },
                     removeFromDomOnDelete: {
                         value: true
@@ -210,7 +210,7 @@
                     if ( !states.fetching ) {
                         states.fetching = true;
                         Datahub.ajaxSpinners.add();
-                        this.$.getState.url = window.location.origin + '/api/v1/state';
+                        this.$.getState.url = Datahub.apiUrl + '/api/v1/state';
                     }
 
 
@@ -243,7 +243,7 @@
                     if ( !markets.fetching ) {
                         markets.fetching = true;
                         Datahub.ajaxSpinners.add();
-                        this.$.getMarket.url = window.location.origin + '/api/v1/market';
+                        this.$.getMarket.url = Datahub.apiUrl + '/api/v1/market';
                     }
                 },
                 parseStateResponse: function (event, request) {
