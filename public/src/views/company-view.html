@@ -136,7 +136,7 @@
                     value:'companyId'
                 },
                 url: {
-                    value: window.location.origin + '/api/v1/company'
+                    value: Datahub.apiUrl + 'company'
                 },
                 searchResults: Object,
                 searchTimer: Object,
@@ -158,6 +158,8 @@
                 if ( this.queryParams.id ) {
                     this.set('data.companyId', this.queryParams.id);
                 }
+
+                this.$.companySelector.$.input.$.input.focus();
             },
             addInstanceClicked: function () {
                 this.addInstance({});
@@ -193,7 +195,7 @@
                 this.searchTimer = setTimeout(function () {
                     Datahub.ajaxSpinners.add();
                     // search api
-                    self.$.ajaxSearch.url = window.location.origin + '/api/v1/company/search/fuzzy/' + encodeURIComponent(searchString);
+                    self.$.ajaxSearch.url = Datahub.apiUrl + 'company/search/fuzzy/' + encodeURIComponent(searchString);
                 }, 500);
 
             },
