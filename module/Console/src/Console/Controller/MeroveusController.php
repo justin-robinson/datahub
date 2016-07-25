@@ -470,6 +470,7 @@ class MeroveusController extends AbstractActionController
                     } else { // create a new record
 
                         $company->save();
+                        $company->employeeCount = empty($target['universal-employee-count_static']) ? 0 : [$target['universal-employee-count_static']];
                         $companyInstanceId = $company->get_company_instances()->first()->companyInstanceId;
 
                         $marketInserted++;
@@ -900,11 +901,10 @@ class MeroveusController extends AbstractActionController
         }
 
         $params = [
-            'universal_revenue_volume_static'   => empty($target['universal-revenue-volume_static']) ? [] : [$target['universal-revenue-volume_static']],
-            'universal_employee_count_static'   => empty($target['universal-employee-count_static']) ? [] : [$target['universal-employee-count_static']],
-            'universal_employee_local_static'   => empty($target['universal-employee-local_static']) ? [] : [$target['universal-employee-local_static']],
-            'universal_established_year_static' => empty($target['universal-established-year_static']) ? [] : [$target['universal-established-year_static']],
-            'universal_profile_blob_static'     => empty($target['universal-profile-blob_static']) ? [] : [$target['universal-profile-blob_static']],
+            'revenue'   => empty($target['universal-revenue-volume_static']) ? [] : [$target['universal-revenue-volume_static']],
+            'employeeCoutn'   => empty($target['universal-employee-local_static']) ? [] : [$target['universal-employee-local_static']],
+            'yearEstablished' => empty($target['universal-established-year_static']) ? [] : [$target['universal-established-year_static']],
+            'description'     => empty($target['universal-profile-blob_static']) ? [] : [$target['universal-profile-blob_static']],
             'industry'                          => empty($target['firm-industry_static']) ? [] : explode(',',
                 $target['firm-industry_static']),
         ];
