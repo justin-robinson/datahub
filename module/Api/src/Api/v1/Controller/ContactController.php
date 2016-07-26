@@ -47,15 +47,14 @@ class ContactController extends AbstractRestfulController
 
         $contact = Contact::fetch_by_id($contactId);
 
+        $statusCode = 204;
+
         if ($contact) {
             $contact->populate($data);
-            $contact->save();
-            $contact->reload();
-
-            return new JsonModel(ContactFormatter::format($contact));
+            $statusCode = $contact->save() ? 200 : 500;
         }
 
-        return $this->getResponse()->setStatusCode(204);
+        return $this->getResponse()->setStatusCode($statusCode);
 
     }
 
@@ -65,9 +64,6 @@ class ContactController extends AbstractRestfulController
         $contact = Contact::fetch_by_id($id);
         if ($contact) {
             $contact->delete();
-            $contact = Contact::query('SELECT * FROM datahub.contact WHERE contactId = ?', [$id])->first();
-
-            return new JsonModel(ContactFormatter::format($contact));
         }
 
         return $this->getResponse()->setStatusCode(204);

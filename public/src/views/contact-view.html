@@ -1,0 +1,126 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../behaviors/api-resource-behaivor.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/gold-phone-input/gold-phone-input.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/social-icons.html">
+<link rel="import" href="confirm-delete-view.html">
+
+<dom-module id="contact-view">
+
+    <template>
+        <style>
+            paper-card {
+                width: 100%;
+                --paper-card-background-color: var(--paper-grey-200);
+                margin: var(--contact-view-margin);
+                padding:1em;
+            }
+
+            paper-icon-button.save {
+                color: var(--paper-light-green-500);
+            }
+            paper-icon-button.save:hover {
+                background-color: var(--paper-light-green-500);
+                color: var(--paper-grey-200);
+            }
+
+            paper-icon-button.contacts {
+                color: var(--paper-light-blue-500);
+            }
+            paper-icon-button.contacts:hover {
+                background-color: var(--paper-light-blue-500);
+                color: var(--paper-grey-200);
+            }
+
+            paper-icon-button.delete {
+                float:right;
+                color: var(--paper-red-a200);
+            }
+            paper-icon-button.delete:hover {
+                background-color: var(--paper-red-a200);
+                color: var(--paper-grey-200);
+            }
+
+            .cl-1_2 {
+                width: 48%;
+                display: inline-block;
+            }
+
+            .cl-1_3 {
+                width: 30%;
+                display: inline-block;
+            }
+
+            .cl-1_4 {
+                width: 23%;
+                display: inline-block;
+            }
+
+            .cl-1_6 {
+                width: 14%;
+                display: inline-block;
+            }
+
+            .cl-1_10 {
+                width: 10%;
+                display: inline-block;
+            }
+
+        </style>
+
+        <paper-card heading="{{data.firstName}} {{data.lastName}} ({{data.jobTitle}})">
+            <div>
+                <paper-input class="cl-1_4" value="{{data.contactId}}" label="Contact Id"></paper-input>
+                <paper-input class="cl-1_4" value="{{data.meroveusId}}" label="Meroveus Id"></paper-input>
+                <paper-input class="cl-1_4" value="{{data.relevateId}}" label="Relevate Id"></paper-input>
+                <paper-input class="cl-1_4" value="{{data.companyInstanceId}}" label="Instance Id"></paper-input>
+                <paper-input class="cl-1_3" value="{{data.firstName}}" label="First Name"></paper-input>
+                <paper-input class="cl-1_10" value="{{data.middleInitial}}" label="Middle Initial"></paper-input>
+                <paper-input class="cl-1_3" value="{{data.lastName}}" label="Last Name"></paper-input>
+                <paper-input class="cl-1_10" value="{{data.suffix}}" label="Suffix"></paper-input>
+                <paper-input class="cl-1_2" value="{{data.jobTitle}}" label="Job Title"></paper-input>
+                <gold-phone-input class="cl-1_2" value="{{data.phone}}" label="Phone Number" country-code="1" phone-number-pattern="XXX-XXX-XXXX" auto-validate></gold-phone-input>
+                <paper-input class="cl-1_2" value="{{data.address1}}" label="Address 1"></paper-input>
+                <paper-input class="cl-1_2" value="{{data.address2}}" label="Address 2"></paper-input>
+                <paper-input class="cl-1_3" value="{{data.city}}" label="City"></paper-input>
+                <paper-input class="cl-1_3" value="{{data.state}}" label="State"></paper-input>
+                <paper-input class="cl-1_10" value="{{data.postalCode}}" label="Zip Code" type="number" min="1000"></paper-input>
+                <!--                <paper-input value="{{data.createdAt}}" label="Created"></paper-input>-->
+                <!--                <paper-input value="{{data.updatedAt}}" label="Updated"></paper-input>-->
+            </div>
+
+            <paper-icon-button id="save" icon="save" on-click="saveResource" class="save"></paper-icon-button>
+            <template id="propertyTemplate" is="dom-if" if="{{data.companyInstanceId}}">
+                <paper-icon-button id="delete" icon="delete" on-click="confirmDelete" class="delete"></paper-icon-button>
+            </template>
+
+            <confirm-delete-view id="confirmDelete" on-yes="deleteResource">
+                Are you sure you want to delete this contact?
+            </confirm-delete-view>
+        </paper-card>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'contact-view',
+            behaviors: [
+                Datahub.ApiResourceBehavior
+            ],
+            properties: {
+                idField: {
+                    value:'contactId'
+                },
+                url: {
+                    value: Datahub.apiUrl + 'contact'
+                }
+            },
+            confirmDelete: function () {
+                this.$.confirmDelete.open();
+            },
+        });
+    </script>
+
+</dom-module>

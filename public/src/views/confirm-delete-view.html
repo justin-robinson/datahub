@@ -1,0 +1,83 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/neon-animation/neon-animation-runner-behavior.html">
+<link rel="import" href="../../bower_components/paper-dialog-behavior/paper-dialog-behavior.html">
+<link rel="import" href="../../bower_components/paper-dialog-behavior/paper-dialog-shared-styles.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/scale-up-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
+
+<dom-module id="confirm-delete-view">
+
+    <template>
+        <style include="paper-dialog-shared-styles">
+            :host {
+                padding: 10px;
+            }
+            :host paper-button {
+                float: right;
+            }
+            :host #yes {
+                color: var(--paper-light-green-500);
+                font-weight: 700;
+            }
+            :host #no {
+                color: var(--paper-red-a200);
+            }
+        </style>
+        <div>
+            <h2>
+                Delete?
+            </h2>
+            <content></content>
+        </div>
+        <paper-button id="yes" on-click="_yes">Yes</paper-button>
+        <paper-button id="no" on-click="_no">No</paper-button>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'confirm-delete-view',
+            properties : {
+                'entryAnimation': {
+                    type: String,
+                    value: "scale-up-animation"
+                },
+                'exitAnimation': {
+                    type: String,
+                    value: "fade-out-animation"
+                }
+            },
+            behaviors: [
+                Polymer.PaperDialogBehavior,
+                Polymer.NeonAnimationRunnerBehavior
+            ],
+            listeners: {
+                'neon-animation-finish': '_onNeonAnimationFinish'
+            },
+            _renderOpened: function() {
+                this.cancelAnimation();
+                this.playAnimation('entry');
+            },
+            _renderClosed: function() {
+                this.cancelAnimation();
+                this.playAnimation('exit');
+            },
+            _onNeonAnimationFinish: function() {
+                if (this.opened) {
+                    this._finishRenderOpened();
+                } else {
+                    this._finishRenderClosed();
+                }
+            },
+            _no: function () {
+                this.close();
+                this.fire('no');
+            },
+            _yes: function () {
+                this.close();
+                this.fire('yes');
+            }
+        })
+    </script>
+
+</dom-module>

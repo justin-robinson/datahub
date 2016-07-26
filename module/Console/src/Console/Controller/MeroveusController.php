@@ -19,6 +19,7 @@ use Elastica\Client as ElasticaClient;
 use Elastica\Query as ElasticaQuery;
 use Elastica\QueryBuilder as QueryBuilder;
 use Elastica\Search as ElasticaSearch;
+use Scoop\Database\Literal;
 use Scoop\Database\Model\Generic;
 use Services\Meroveus\Client as MeroveusClient;
 use Services\Meroveus\CompanyService;
@@ -156,7 +157,6 @@ class MeroveusController extends AbstractActionController
     {
 
         parent::init($e);
-        $this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         $this->companyService = new CompanyService($this->meroveusClient);
         //@todo make this environment aware
         // set up elastic
@@ -470,6 +470,7 @@ class MeroveusController extends AbstractActionController
                     } else { // create a new record
 
                         $company->save();
+                        $company->employeeCount = empty($target['universal-employee-count_static']) ? 0 : [$target['universal-employee-count_static']];
                         $companyInstanceId = $company->get_company_instances()->first()->companyInstanceId;
 
                         $marketInserted++;
@@ -701,39 +702,40 @@ class MeroveusController extends AbstractActionController
         $file = new CsvIterator($filePath);
         $file->setHasHeaderRow(true);
 
-        $sql = $this->db->prepare("INSERT INTO
-              `datahub`.`sic_code_meroveus_industry_map` (`sic`, `meroveus_industry_id`)
-            SELECT
-                s.sic,
-                m.meroveus_industry_id
-            FROM
-                `datahub`.`sic_code` s
-                LEFT JOIN `datahub`.`meroveus_industry` m ON m.industry = ?
-            WHERE
-                s.sic LIKE ?
-                AND m.meroveus_industry_id IS NOT NULL
-
-            UNION
-
-            SELECT
-                c.sic_code,
-                m.meroveus_industry_id
-            FROM
-                `datahub`.`company` c
-                LEFT JOIN `datahub`.`meroveus_industry` m ON m.industry = ?
-            WHERE
-                c.sic_code LIKE ?
-                AND m.meroveus_industry_id IS NOT NULL");
-
         foreach ($file as $line) {
             $line = $file->mergeWithHeaderRow($line);
 
-            $sql->execute([
-                $line['DataHub Industry'],
-                $line['SIC'] . '%',
-                $line['DataHub Industry'],
-                $line['SIC'] . '%',
-            ]);
+            Generic::query(
+                "INSERT INTO
+                    sic_code_meroveus_industry_map (sic, meroveus_industry_id)
+                SELECT
+                    s.sic,
+                    m.meroveusIndustryId
+                FROM
+                    sic_code s
+                    LEFT JOIN meroveusIndustry m ON m.industry = ?
+                WHERE
+                    s.sic LIKE ?
+                    AND m.meroveusIndustryId IS NOT NULL
+    
+                UNION
+    
+                SELECT
+                    c.sicCode,
+                    m.meroveusIndustryId
+                FROM
+                    companyInstance c
+                    LEFT JOIN meroveusIndustry m ON m.industry = ?
+                WHERE
+                    c.sicCode LIKE ?
+                    AND m.meroveusIndustryId IS NOT NULL",
+                [
+                    $line['DataHub Industry'],
+                    $line['SIC'] . '%',
+                    $line['DataHub Industry'],
+                    $line['SIC'] . '%',
+                ]);
+
         }
 
     }
@@ -760,20 +762,6 @@ class MeroveusController extends AbstractActionController
         // load csv file
         $file = new CsvIterator($filePath);
         $file->setHasHeaderRow(true);
-
-        // get all sic_codes that match the given sic code regex and insert provided meroveus_id and mapped
-        // meroveus_industry_ids into company_meroveus_industry_third_party_map
-        $sql = $this->db->prepare('INSERT INTO
-                `datahub`.`company_meroveus_industry_third_party_map` (`meroveus_industry_id`, `hub_id`)
-            SELECT
-                DISTINCT(m.meroveus_industry_id),
-                ?
-            FROM
-                `datahub`.`sic_code` s
-                LEFT JOIN `datahub`.`sic_code_meroveus_industry_map` m USING (`sic`)
-            WHERE
-                s.sic REGEXP ?
-                AND m.meroveus_industry_id IS NOT NULL');
 
         // loop over each line
         foreach ($file as $line) {
@@ -808,11 +796,24 @@ class MeroveusController extends AbstractActionController
                 continue;
             }
 
-            // link matched meroveus industries to a company
-            $sql->execute([
-                $line['hub_id'],
-                implode('|', $sicCodes),
-            ]);
+            // get all sic_codes that match the given sic code regex and insert provided meroveus_id and mapped
+            // meroveus_industry_ids into company_meroveus_industry_third_party_map
+            Generic::query(
+                'INSERT INTO
+                    company_meroveus_industry_third_party_map (meroveus_industry_id, hub_id)
+                SELECT
+                    DISTINCT(m.meroveus_industry_id),
+                    ?
+                FROM
+                    sic_code s
+                    LEFT JOIN sic_code_meroveus_industry_map m USING (sic)
+                WHERE
+                    s.sic REGEXP ?
+                    AND m.meroveus_industry_id IS NOT NULL',
+                [
+                    $line['hub_id'],
+                    implode('|', $sicCodes),
+                ]);
         }
 
     }
@@ -900,11 +901,10 @@ class MeroveusController extends AbstractActionController
         }
 
         $params = [
-            'universal_revenue_volume_static'   => empty($target['universal-revenue-volume_static']) ? [] : [$target['universal-revenue-volume_static']],
-            'universal_employee_count_static'   => empty($target['universal-employee-count_static']) ? [] : [$target['universal-employee-count_static']],
-            'universal_employee_local_static'   => empty($target['universal-employee-local_static']) ? [] : [$target['universal-employee-local_static']],
-            'universal_established_year_static' => empty($target['universal-established-year_static']) ? [] : [$target['universal-established-year_static']],
-            'universal_profile_blob_static'     => empty($target['universal-profile-blob_static']) ? [] : [$target['universal-profile-blob_static']],
+            'revenue'   => empty($target['universal-revenue-volume_static']) ? [] : [$target['universal-revenue-volume_static']],
+            'employeeCoutn'   => empty($target['universal-employee-local_static']) ? [] : [$target['universal-employee-local_static']],
+            'yearEstablished' => empty($target['universal-established-year_static']) ? [] : [$target['universal-established-year_static']],
+            'description'     => empty($target['universal-profile-blob_static']) ? [] : [$target['universal-profile-blob_static']],
             'industry'                          => empty($target['firm-industry_static']) ? [] : explode(',',
                 $target['firm-industry_static']),
         ];
@@ -919,8 +919,8 @@ class MeroveusController extends AbstractActionController
                             'value'        => $value,
                             'sourceTypeId' => SourceType::fetch_one_where("name = 'meroveus'")->sourceTypeId,
                             'sourceId'     => $target['meroveusId'],
-                            'createdAt'    => $target['createdAt'],
-                            'updatedAt'    => $target['updatedAt'],
+                            'createdAt'    => empty($target['createdAt']) ? new Literal('NOW()') : $target['createdAt'],
+                            'updatedAt'    => empty($target['updatedAt']) ? new Literal('NOW()') : $target['updatedAt'],
                         ]));
 
             }

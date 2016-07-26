@@ -68,15 +68,14 @@ class InstanceController extends AbstractRestfulController
 
         $instance = CompanyInstance::fetch_by_id($companyInstanceId);
 
+        $statusCode = 204;
+
         if ($instance) {
             $instance->populate($data);
-            $instance->save();
-            $instance->reload();
-
-            return new JsonModel(InstanceFormatter::format($instance));
+            $statusCode = $instance->save() ? 200 : 500;
         }
 
-        return $this->getResponse()->setStatusCode(204);
+        return $this->getResponse()->setStatusCode($statusCode);
 
     }
 
@@ -91,10 +90,6 @@ class InstanceController extends AbstractRestfulController
         $instance = CompanyInstance::fetch_by_id($id);
         if ($instance) {
             $instance->delete();
-            $instance = CompanyInstance::query('SELECT * FROM datahub.companyInstance WHERE companyInstanceId = ?',
-                [$id])->first();
-
-            return new JsonModel(InstanceFormatter::format($instance));
         }
 
         return $this->getResponse()->setStatusCode(204);

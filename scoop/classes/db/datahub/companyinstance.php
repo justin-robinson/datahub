@@ -257,8 +257,9 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     {
 
         if (!$allRecords) {
-            $where .= empty($where) ? '' :
-                " AND (deletedAt IS NULL OR deletedAt = '" . self::$dBColumnDefaultValuesArray['deletedAt'] . "')";
+            $where = empty($where) ? 'deletedAt = ?' : "({$where}) AND deletedAt = ?";
+
+            $queryParams[] = self::$dBColumnDefaultValuesArray['deletedAt'];
         }
 
         return parent::fetch($limit, $offset, $where, $queryParams);
@@ -273,7 +274,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
      *
      * @return bool|int|Rows
      */
-    public static function fetch_where($where, array $queryParams = [], $limit = 1000, $offset = 0, $allRecords = false)
+    public static function  fetch_where($where, array $queryParams = [], $limit = 1000, $offset = 0, $allRecords = false)
     {
 
         return static::fetch($limit, $offset, $where, $queryParams, $allRecords);
@@ -551,7 +552,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
         // set timestamps on the model before saving
         if ($setTimestamps) {
-            if ($this->createdAt !== self::$dBColumnDefaultValuesArray['createdAt']) {
+            if ($this->createdAt === self::$dBColumnDefaultValuesArray['createdAt']) {
                 $this->set_literal('createdAt', 'NOW()');
             }
             $this->set_literal('updatedAt', 'NOW()');
@@ -564,7 +565,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
         if ($saved) {
             $this->save_contacts();
-            $this->save_properties();
+            $this->save_properties($setTimestamps);
             ++self::$instancesSaved;
             self::$companyInstanceCache->put($companyInstanceCacheKey, $this);
         }
@@ -593,8 +594,10 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
     /**
      * Save all properties to the db
+     *
+     * @param bool $setTimestamps
      */
-    public function save_properties()
+    public function save_properties($setTimestamps = false)
     {
 
         if (empty($this->companyInstanceId)) {
@@ -609,7 +612,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
             // link this property to this company instance
             $property->companyInstanceId = $this->companyInstanceId;
 
-            $property->pre_save(false);
+            $property->pre_save($setTimestamps);
 
             if (!empty($property->value)) {
                 // buffer the property insertion

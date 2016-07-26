@@ -1,0 +1,183 @@
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+
+<script>
+    Datahub.ApiResourceBehavior = {
+        properties: {
+            data: {
+                type: Object,
+                value: function () { return {}; },
+                notify: true
+            },
+            links: {
+                type: Object,
+                value: function () { return {}; },
+                notify: true
+            },
+            ajax: {
+                type: Object,
+                value: function () {
+                    var ajax = {
+                        'get': document.createElement('iron-ajax'),
+                        'post': document.createElement('iron-ajax'),
+                        'put': document.createElement('iron-ajax'),
+                        'delete': document.createElement('iron-ajax')
+                    };
+
+                    ajax.get.auto = ajax.delete.auto = true;
+
+                    ajax.post.contentType = ajax.put.contentType = 'application/json';
+
+                    ajax.post.method = 'post';
+                    ajax.put.method = 'put';
+                    ajax.delete.method = 'delete';
+
+                    // bind responses to data
+                    this.listen(ajax.get, 'iron-ajax-response', 'bindResponseToData');
+                    this.listen(ajax.put, 'iron-ajax-response', 'bindResponseToData');
+                    this.listen(ajax.post, 'iron-ajax-response', 'bindResponseToData');
+
+                    // pull hal links from get
+                    this.listen(ajax.get, 'iron-ajax-response', 'parseLinksFromGet');
+
+                    // remove module from dom on delete
+                    this.listen(ajax.delete, 'iron-ajax-response', 'removeFromDom');
+
+                    // listeneres for adding and removing ajax spinners
+                    this.listen(ajax.get, 'iron-ajax-request', 'addSpinner');
+                    this.listen(ajax.get, 'iron-ajax-response', 'removeSpinner');
+                    this.listen(ajax.post, 'iron-ajax-request', 'addSpinner');
+                    this.listen(ajax.post, 'iron-ajax-response', 'removeSpinner');
+                    this.listen(ajax.put, 'iron-ajax-request', 'addSpinner');
+                    this.listen(ajax.put, 'iron-ajax-response', 'removeSpinner');
+                    this.listen(ajax.delete, 'iron-ajax-request', 'addSpinner');
+                    this.listen(ajax.delete, 'iron-ajax-response', 'removeSpinner');
+
+                    return ajax;
+                }
+            },
+            url: String,
+            idField: {
+                type: String,
+                value: 'id'
+            },
+            childResources: {
+                type: Object,
+                value: function () { return {}; },
+                notify: true
+            },
+            fetchTimeout: Object,
+            removeFromDomOnDelete: {
+                type:  Boolean,
+                value: false
+            }
+        },
+        ready: function () {
+            if ( this.data._links ) {
+                this.parseLinks(this.data);
+            }
+            this.listen(this, 'data-changed', '_dataChanged');
+        },
+        addSpinner: function () {
+            Datahub.ajaxSpinners.add();
+        },
+        removeSpinner: function () {
+            Datahub.ajaxSpinners.remove();
+        },
+        bindResponseToData: function(event, ironAjax) {
+            this.data = ironAjax.xhr.response || {};
+        },
+        bindResponseToChild: function(event, ironAjax) {
+
+            var response =  event.target.lastResponse || {};
+
+            if ( !event.target.childName || !response._embedded) {
+                return;
+            }
+
+            var childName = event.target.childName;
+
+            this.set('childResources.' + childName + '.data', response._embedded[childName]);
+        },
+        parseLinksFromGet: function(event, ironAjax) {
+
+            if ( !ironAjax.xhr.response || !ironAjax.xhr.response._links ) {
+                return;
+            }
+            this.parseLinks(ironAjax.xhr.response);
+        },
+        parseLinks: function (data) {
+            this.links = data._links;
+            this.fetchChildren();
+        },
+        fetchChildren: function () {
+
+            for ( var childName in this.childResources) {
+                if ( this.childResources.hasOwnProperty(childName) && this.links[childName]) {
+
+                    this.childResources[childName] = this.childResources[childName] || {};
+                    if ( !this.childResources[childName].ajax ) {
+                        this.childResources[childName].ajax = document.createElement('iron-ajax');
+                        this.childResources[childName].ajax.auto = true;
+                        this.childResources[childName].ajax.childName = childName;
+                        this.listen(this.childResources[childName].ajax, 'iron-ajax-response', 'bindResponseToChild');
+                        this.listen(this.childResources[childName].ajax, 'iron-ajax-request', 'addSpinner');
+                        this.listen(this.childResources[childName].ajax, 'iron-ajax-response', 'removeSpinner');
+                    }
+
+                    this.childResources[childName].ajax.url = this.url + '/' + this.id() + '/' + childName;
+                }
+            }
+        },
+        id: function () {
+            return this.data[this.idField];
+        },
+        deleteResource: function (e) {
+            this.ajax.delete.url = this.url + '/' + this.id();
+        },
+        fetchResource: function () {
+            this.ajax.get.url = this.url + '/' + this.id();
+        },
+        saveResource: function () {
+
+            // performs saves and updates to a company via the api
+
+
+            if ( !this.data.name ) {
+                return;
+            }
+
+            if ( this.id() ) {
+                this.ajax.put.body = this.data;
+                this.ajax.put.url = this.url + '/' + this.id();
+                this.ajax.put.generateRequest();
+            } else {
+                this.ajax.post.body = this.data;
+                this.ajax.post.url = this.url;
+                this.ajax.post.generateRequest();
+            }
+        },
+        _dataChanged: function ( event, change ) {
+
+            if ( change === null ) {
+                return;
+            }
+
+            var idChanged = (change.path === 'data.' + this.idField) || change.value[this.idField];
+
+            if ( idChanged ) {
+                clearTimeout(this.fetchTimeout);
+                var self = this;
+                this.fetchTimeout = setTimeout(function () {
+                    self.fetchResource();
+                }, 500);
+            }
+        },
+        removeFromDom: function (event, ironAjax) {
+
+            if ( this.removeFromDomOnDelete && ironAjax.xhr.status === 204 ) {
+                this.remove();
+            }
+
+        }
+    }
+</script>

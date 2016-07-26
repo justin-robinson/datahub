@@ -77,7 +77,7 @@ class Meroveus
 
         $company = new Company(
             [
-                'employeeCount' => 0,
+                'employeeCount' => empty($target['universal-employee-count_static']) ? 0 : [$target['universal-employee-count_static']],
                 'isActive'      => true,
                 'name'          => isset($data['firm-name_static']) ? $data['firm-name_static'] : '',
                 'createdAt'     => $createdAt,

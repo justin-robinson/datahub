@@ -57,8 +57,9 @@ class CompanyInstanceProperty extends \DBCore\Datahub\CompanyInstanceProperty
     public static function fetch($limit = 1000, $offset = 0, $where = '', array $queryParams = [])
     {
 
-        $where .= empty($where) ? '' :
-            " AND (deletedAt IS NULL OR deletedAt = '" . self::$dBColumnDefaultValuesArray['deletedAt'] . "')";
+        $where = empty($where) ? 'deletedAt = ?' : "({$where}) AND deletedAt = ?";
+
+        $queryParams[] = self::$dBColumnDefaultValuesArray['deletedAt'];
 
         return parent::fetch($limit, $offset, $where, $queryParams);
     }
@@ -106,7 +107,7 @@ class CompanyInstanceProperty extends \DBCore\Datahub\CompanyInstanceProperty
 
         if ($setTimestamps) {
             // set timestamps
-            if ($this->createdAt !== self::$dBColumnDefaultValuesArray['createdAt']) {
+            if ($this->createdAt === self::$dBColumnDefaultValuesArray['createdAt']) {
                 $this->set_literal('createdAt', 'NOW()');
             }
             $this->set_literal('updatedAt', 'NOW()');
