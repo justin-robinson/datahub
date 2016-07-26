@@ -1,4 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-autocomplete/paper-autocomplete.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../behaviors/api-resource-behaivor.html">
 <link rel="import" href="contact-view.html">
 
@@ -17,10 +19,30 @@
             contact-view {
                 --contact-view-margin: 0 0 10px 0;
             }
+
+            paper-input, paper-autocomplete {
+                --paper-input-container-input-color: var(--text-color);
+                --paper-input-container-focus-color: var(--highlight-color);
+            }
         </style>
 
         <div id="root">
             <h2>Contacts</h2>
+            <paper-autocomplete
+                id="contactSelector"
+                label="Search"
+                remote-source="true"
+                on-input="search"
+                on-autocomplete.selected="searchResultSelected"
+                min-length="3"></paper-autocomplete>
+            <iron-ajax
+                auto
+                id="ajaxSearch"
+                handle-as="json"
+                on-response="parseSearchResults"
+                last-response="{{searchResults}}"
+            ></iron-ajax>
+
             <div id="contacts-container">
                 <template is="dom-repeat" items="{{data._embedded.contacts}}" as="contact">
                     <contact-view data="{{contact}}"></contact-view>
@@ -38,7 +60,8 @@
             properties: {
                 idField: {
                     value:'companyInstanceId'
-                }
+                },
+                searchTimer: Object
             },
             attached: function () {
                 if ( Datahub.queryParams.instanceId ) {
@@ -49,7 +72,55 @@
                 if ( this.id() ) {
                     this.ajax.get.url = Datahub.apiUrl + 'instance/' + this.id() + '/contacts';
                 }
-            }
+            },
+            search: function () {
+
+                // perform a search when the user types in the input field
+                var searchString = this.$.contactSelector.$.input.value;
+
+                // don't make request if we haven't met minimum search length
+                if ( searchString.length < this.$.contactSelector.minLength ) {
+                    return;
+                }
+
+                // clear last request to be made
+                clearTimeout(this.searchTimer);
+
+                // set new request to happen in 0.5 seconds
+                var self = this;
+                this.searchTimer = setTimeout(function () {
+                    Datahub.ajaxSpinners.add();
+                    // search api
+                    self.$.ajaxSearch.url = Datahub.apiUrl + 'contact/search/fuzzy/' + encodeURIComponent(searchString);
+                }, 500);
+
+            },
+            parseSearchResults: function () {
+
+                Datahub.ajaxSpinners.remove();
+
+                // do we have results?
+                if ( !this.searchResults || !this.searchResults._embedded || !this.searchResults._embedded.contacts.length ) {
+                    return;
+                }
+
+                // map raw search results to suggestions selector
+                var suggestions = this.searchResults._embedded.contacts.map(function(contact, index){
+                    contact.middleInitial = (contact.middleInitial && contact.middleInitial.length) ? contact.middleInitial + ' ' : '';
+                    return {
+                        text: contact.firstName + ' ' + contact.middleInitial + contact.lastName,
+                        value: contact.name,
+                        index: index
+                    }
+                });
+
+                // set suggestions
+                this.$.contactSelector.suggestions(suggestions);
+            },
+            searchResultSelected: function (e, selection) {
+                // updates the company data model after a search result is selected
+                this.set('data', this.searchResults._embedded.contacts[selection.option.index]);
+            },
         });
     </script>
 

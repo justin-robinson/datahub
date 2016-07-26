@@ -45,8 +45,10 @@
                     // listeneres for adding and removing ajax spinners
                     this.listen(ajax.get, 'iron-ajax-request', 'addSpinner');
                     this.listen(ajax.get, 'iron-ajax-response', 'removeSpinner');
+                    this.listen(ajax.get, 'error', 'removeSpinner');
                     this.listen(ajax.post, 'iron-ajax-request', 'addSpinner');
                     this.listen(ajax.post, 'iron-ajax-response', 'removeSpinner');
+                    this.listen(ajax.post, 'error', 'removeSpinner');
                     this.listen(ajax.put, 'iron-ajax-request', 'addSpinner');
                     this.listen(ajax.put, 'iron-ajax-response', 'removeSpinner');
                     this.listen(ajax.delete, 'iron-ajax-request', 'addSpinner');
