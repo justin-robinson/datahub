@@ -20,6 +20,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/polymer-cookie/polymer-cookie.html">
+<link rel="import" href="../bower_components/polymer-cookie/polymer-cookie.html">
+<link rel="import" href="views/ajax-spinners.html">
 <link rel="import" href="my-icons.html">
 
 <script src="../bower_components/urijs/src/URI.min.js"></script>
@@ -29,6 +31,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <template>
 
     <style>
+
+        :root {
+            --background-color: var(--paper-grey-800);
+            --text-color: var(--paper-teal-500);
+            --highlight-color: var(--paper-amber-600);
+        }
+
+        app-header-layout {
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
 
       :host {
         display: block;
@@ -82,6 +95,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-toolbar>Menu</app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
           <a name="company" href="/company">Company</a>
+          <a name="company" href="/contacts">Contacts</a>
         </iron-selector>
       </app-drawer>
 
@@ -97,7 +111,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
           <company-view name="company"></company-view>
+          <contacts-view name="contacts"></contacts-view>
         </iron-pages>
+
+        <ajax-spinners id="ajaxSpinners"></ajax-spinners>
 
       </app-header-layout>
 
@@ -109,15 +126,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <script>
 
-    var appEnv = {
-      development: {
-        apiUrl: 'http://hub.dev.bizjouranls.local/api/v1/'
-      },
-      staging: {
-        apiUrl: 'http://hub.bizj-internal.com/api/v1/'
-      },
-      production: {
-        apiUrl: 'http://datahub.bizj-staging.com/api/v1/'
+    var Datahub = {
+      appEnv : {
+        development: {
+          apiUrl: 'http://hub.dev.bizjouranls.local/api/v1/'
+        },
+        staging: {
+          apiUrl: 'http://datahub.bizj-staging.com/api/v1/'
+        },
+        production: {
+          apiUrl: 'http://hub.bizj-internal.com/api/v1/'
+        }
       }
     };
 
@@ -139,22 +158,26 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         '_routePageChanged(routeData.page)'
       ],
 
+      attached: function () {
+        Datahub.ajaxSpinners = this.$.ajaxSpinners;
+      },
+
       _routePageChanged: function(page) {
         this.page = page || 'company';
       },
 
       _pageChanged: function(page) {
-        var queryParams = URI(window.location.href).query(true) || {};
+        Datahub.queryParams = URI(window.location.href).query(true) || {};
 
-        if ( appEnv[queryParams.env] ) {
-          this.$.cookieEnv.value = queryParams.env;
+        if ( Datahub.appEnv[Datahub.queryParams.env] ) {
+          this.$.cookieEnv.value = Datahub.queryParams.env;
         } else {
           this.$.cookieEnv.value = this.$.cookieEnv.readCookie();
         }
         this.$.cookieEnv.createCookie();
 
-        if ( appEnv[this.$.cookieEnv.value] ) {
-          Datahub.apiUrl = appEnv[this.$.cookieEnv.value].apiUrl;
+        if ( Datahub.appEnv[this.$.cookieEnv.value] ) {
+          Datahub.apiUrl = Datahub.appEnv[this.$.cookieEnv.value].apiUrl;
         } else {
           Datahub.apiUrl = window.location.origin + '/api/v1/';
         }
@@ -165,8 +188,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
     });
-
-    var Datahub = {};
 
   </script>
 

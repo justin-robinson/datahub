@@ -7,6 +7,7 @@
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/social-icons.html">
 <link rel="import" href="../../bower_components/neon-animation/animations/scale-up-animation.html">
 <link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
 <link rel="import" href="../behaviors/api-resource-behaivor.html">
@@ -38,6 +39,14 @@
             }
             paper-icon-button.save:hover {
                 background-color: var(--paper-light-green-500);
+                color: var(--paper-grey-200);
+            }
+
+            paper-icon-button.contacts {
+                color: var(--paper-light-blue-500);
+            }
+            paper-icon-button.contacts:hover {
+                background-color: var(--paper-light-blue-500);
                 color: var(--paper-grey-200);
             }
 
@@ -80,6 +89,9 @@
                 width: 75%;
                 margin-top: 130px;
             }
+            a.blank {
+                text-decoration: none;
+            }
         </style>
 
         <paper-card heading="{{data.name}}">
@@ -95,6 +107,9 @@
 
             <paper-icon-button id="save" icon="save" on-click="saveResource" class="save"></paper-icon-button>
             <template id="propertyTemplate" is="dom-if" if="{{data.companyInstanceId}}">
+                <a href="/contacts/?instanceId={{data.companyInstanceId}}" class="blank">
+                    <paper-icon-button id="contacts" icon="social:people" class="contacts"></paper-icon-button>
+                </a>
                 <paper-icon-button id="delete" icon="delete" on-click="confirmDelete" class="delete"></paper-icon-button>
 
                 <template is="dom-if" if="{{childResources.properties.data.length}}">
