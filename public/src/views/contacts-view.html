@@ -1,0 +1,56 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../behaviors/api-resource-behaivor.html">
+<link rel="import" href="contact-view.html">
+
+<dom-module id="contacts-view">
+
+    <template>
+        <style>
+            :host{
+                background-color: var(--background-color);
+            }
+
+            #root {
+                margin: 10px;
+            }
+
+            contact-view {
+                --contact-view-margin: 0 0 10px 0;
+            }
+        </style>
+
+        <div id="root">
+            <h2>Contacts</h2>
+            <div id="contacts-container">
+                <template is="dom-repeat" items="{{data._embedded.contacts}}" as="contact">
+                    <contact-view data="{{contact}}"></contact-view>
+                </template>
+            </div>
+        </div>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'contacts-view',
+            behaviors: [
+                Datahub.ApiResourceBehavior
+            ],
+            properties: {
+                idField: {
+                    value:'companyInstanceId'
+                }
+            },
+            attached: function () {
+                if ( Datahub.queryParams.instanceId ) {
+                    this.set('data.companyInstanceId', Datahub.queryParams.instanceId);
+                }
+            },
+            fetchResource: function () {
+                if ( this.id() ) {
+                    this.ajax.get.url = Datahub.apiUrl + 'instance/' + this.id() + '/contacts';
+                }
+            }
+        });
+    </script>
+
+</dom-module>
