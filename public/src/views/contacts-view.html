@@ -35,6 +35,14 @@
                 on-input="search"
                 on-autocomplete.selected="searchResultSelected"
                 min-length="3"></paper-autocomplete>
+
+            <iron-ajax
+                auto
+                id="getInstance"
+                handle-as="json"
+                last-response="{{instance}}"
+            ></iron-ajax>
+
             <iron-ajax
                 auto
                 id="ajaxSearch"
@@ -42,6 +50,10 @@
                 on-response="parseSearchResults"
                 last-response="{{searchResults}}"
             ></iron-ajax>
+
+            <template is="dom-if" if="{{instance}}">
+                <h2>{{instance.name}}</h2>
+            </template>
 
             <div id="contacts-container">
                 <template is="dom-repeat" items="{{data._embedded.contacts}}" as="contact">
@@ -71,6 +83,7 @@
             fetchResource: function () {
                 if ( this.id() ) {
                     this.ajax.get.url = Datahub.apiUrl + 'instance/' + this.id() + '/contacts';
+                    this.$.getInstance.url = Datahub.apiUrl + 'instance/' + this.id();
                 }
             },
             search: function () {
