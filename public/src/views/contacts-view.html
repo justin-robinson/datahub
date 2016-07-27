@@ -45,6 +45,13 @@
 
             <iron-ajax
                 auto
+                id="getInstanceContacts"
+                handle-as="json"
+                on-response="parseInstanceContacts"
+            ></iron-ajax>
+
+            <iron-ajax
+                auto
                 id="ajaxSearch"
                 handle-as="json"
                 on-response="parseSearchResults"
@@ -56,7 +63,7 @@
             </template>
 
             <div id="contacts-container">
-                <template is="dom-repeat" items="{{data._embedded.contacts}}" as="contact">
+                <template is="dom-repeat" items="{{contacts}}" as="contact" initial-count="10" target-framerate="20">
                     <contact-view data="{{contact}}"></contact-view>
                 </template>
             </div>
@@ -66,23 +73,17 @@
     <script>
         Polymer({
             is: 'contacts-view',
-            behaviors: [
-                Datahub.ApiResourceBehavior
-            ],
             properties: {
-                idField: {
-                    value:'companyInstanceId'
-                },
                 searchTimer: Object
             },
             attached: function () {
                 if ( Datahub.queryParams.instanceId ) {
                     this.set('data.companyInstanceId', Datahub.queryParams.instanceId);
+                    this.$.getInstanceContacts.url = Datahub.apiUrl + 'instance/' + Datahub.queryParams.instanceId + '/contacts';
                 }
             },
             fetchResource: function () {
                 if ( this.id() ) {
-                    this.ajax.get.url = Datahub.apiUrl + 'instance/' + this.id() + '/contacts';
                     this.$.getInstance.url = Datahub.apiUrl + 'instance/' + this.id();
                 }
             },
@@ -132,8 +133,18 @@
             },
             searchResultSelected: function (e, selection) {
                 // updates the company data model after a search result is selected
-                this.set('data', this.searchResults._embedded.contacts[selection.option.index]);
+                this.set('contacts', [this.searchResults._embedded.contacts[selection.option.index]]);
             },
+            parseInstanceContacts: function (event, ironResponse) {
+
+                var response = ironResponse.xhr.response;
+
+                if ( !response._embedded || !response._embedded.contacts ) {
+                    return;
+                }
+
+                this.set('contacts', response._embedded.contacts);
+            }
         });
     </script>
 
