@@ -1,6 +1,8 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/paper-autocomplete/paper-autocomplete.html">
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/iron-list/iron-list.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../behaviors/api-resource-behaivor.html">
 <link rel="import" href="contact-view.html">
 
@@ -8,12 +10,12 @@
 
     <template>
         <style>
-            :host{
+            :host {
                 background-color: var(--background-color);
-            }
-
-            #root {
-                margin: 10px;
+                display: block;
+                padding-left: 16px;
+                padding-right: 16px;
+                @apply(--layout-flex);
             }
 
             contact-view {
@@ -24,50 +26,60 @@
                 --paper-input-container-input-color: var(--text-color);
                 --paper-input-container-focus-color: var(--highlight-color);
             }
+
+            #contactList{
+                @apply(--layout-fit);
+                top: 13em;
+                left: 16px;
+                right: 16px;
+                /*height: 800px;*/
+            }
         </style>
 
-        <div id="root">
-            <h2>Contacts</h2>
-            <paper-autocomplete
-                id="contactSelector"
-                label="Search"
-                remote-source="true"
-                on-input="search"
-                on-autocomplete.selected="searchResultSelected"
-                min-length="3"></paper-autocomplete>
+        <h2>Contacts</h2>
+        <paper-autocomplete
+            id="contactSelector"
+            label="Search"
+            remote-source="true"
+            on-input="search"
+            on-autocomplete.selected="searchResultSelected"
+            min-length="3"></paper-autocomplete>
 
-            <iron-ajax
-                auto
-                id="getInstance"
-                handle-as="json"
-                last-response="{{instance}}"
-            ></iron-ajax>
+        <iron-ajax
+            auto
+            id="getInstance"
+            handle-as="json"
+            last-response="{{instance}}"
+        ></iron-ajax>
 
-            <iron-ajax
-                auto
-                id="getInstanceContacts"
-                handle-as="json"
-                on-response="parseInstanceContacts"
-            ></iron-ajax>
+        <iron-ajax
+            auto
+            id="getInstanceContacts"
+            handle-as="json"
+            on-response="parseInstanceContacts"
+        ></iron-ajax>
 
-            <iron-ajax
-                auto
-                id="ajaxSearch"
-                handle-as="json"
-                on-response="parseSearchResults"
-                last-response="{{searchResults}}"
-            ></iron-ajax>
+        <iron-ajax
+            auto
+            id="ajaxSearch"
+            handle-as="json"
+            on-response="parseSearchResults"
+            last-response="{{searchResults}}"
+        ></iron-ajax>
 
-            <template is="dom-if" if="{{instance}}">
-                <h2>{{instance.name}}</h2>
+        <template is="dom-if" if="{{instance}}">
+            <h2>{{instance.name}}</h2>
+        </template>
+
+        <iron-list id="contactList" items="{{contacts}}" as="contact">
+            <template>
+                <div>
+<!--                        <h1>{{contact.firstName}}</h1>-->
+<!--                        <h1>{{contact.lastName}}</h1>-->
+                        <contact-view data="[[contact]]"></contact-view>
+                </div>
             </template>
-
-            <div id="contacts-container">
-                <template is="dom-repeat" items="{{contacts}}" as="contact" initial-count="10" target-framerate="20">
-                    <contact-view data="{{contact}}"></contact-view>
-                </template>
-            </div>
-        </div>
+        </iron-list>
     </template>
 
     <script>
