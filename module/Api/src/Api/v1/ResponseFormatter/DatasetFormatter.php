@@ -109,7 +109,6 @@ class DatasetFormatter
             }
             array_push($entries, $result);
         }
-        
         return $entries;
     }
     
