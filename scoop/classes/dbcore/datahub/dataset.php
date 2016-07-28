@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class Dataset
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/07/27
+ * @date 2016/07/28
  * @property mixed $id
  * @property mixed $name
  * @property mixed $market_code

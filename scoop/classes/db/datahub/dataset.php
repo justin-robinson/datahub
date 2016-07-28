@@ -28,8 +28,6 @@ class Dataset extends \DBCore\Datahub\Dataset
      * @var Rows
      */
     public $entries;
-    
-    public $fields;
 
     /**
      * @var LRUCache
