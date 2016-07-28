@@ -28,7 +28,7 @@ class DatasetFormatter
      */
     public static function format(Dataset $set, $change = false, $type = null)
     {
-
+        // @todo build the name instead of switching
         // fetch type specific data
         switch ($type) {
             case 'map':
@@ -45,37 +45,42 @@ class DatasetFormatter
                 }
                 break;
         }
-
-        $host = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST', 'hub');
-
-        $array = $set->to_array(false);
-
+        
+        $host             = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST',
+                'hub');
+        $array            = $set->to_array(false);
         $array['entries'] = $entries;
-
+        
         if ($change) {
             $array['_links'] = [
                 'self' => [
                     'href' => $host . FormatterHelpers::get_server_variable('REQUEST_URI') . $set->id,
                 ],
-
+            
             ];
         } else {
             $array['_links'] = [
                 'self' => [
                     'href' => $host . FormatterHelpers::get_server_variable('REQUEST_URI'),
                 ],
-
+            
             ];
         }
-
+        
         return $array;
     }
-
+    
     public static function getDirectoryData(Dataset $set)
     {
+        
+        //@todo loop fields to get the return data
+        //@todo get the featured data
         $entries = [];
+        $desiredDHFields = json_decode($set['fields'], true);
         foreach ($set->entries->to_array() as $entry) {
-            $result = [];
+            $customFields = json_decode($entry['meta'], true);
+            
+            $result       = [];
             // get company that match the sourceId and are meroveus
             $company = Company::fetch_by_source_name_and_id('meroveus', $entry['sourceId']);
             /* @var $instance \DB\Datahub\CompanyInstance */
@@ -90,8 +95,15 @@ class DatasetFormatter
              * email (if we have it)
              * website
              */
+            
+            foreach ($desiredDHFields as $field){
+                
+            }
+            
             $result['companyName']      = $company->name;
             $result['sourceId']         = $entry['sourceId'];
+            $result['logo']             = empty($entry['logo']) ? null : $entry['logo'];
+            $result['logo']             = empty($entry['image']) ? null : $entry['image'];
             $result['address1']         = $instance->get_property('address1') ? $instance->get_property('address1')->value : null;
             $result['address2']         = $instance->get_property('address12') ? $instance->get_property('address2')->value : null;
             $result['city']             = $instance->get_property('city') ? $instance->get_property('city')->value : null;
@@ -102,13 +114,16 @@ class DatasetFormatter
             $result['phoneCountryCode'] = $instance->get_property('phoneCountryCode') ? $instance->get_property('phoneCountryCode')->value : null;
             $result['website']          = $instance->get_property('website') ? $instance->get_property('website')->value : null;
             $result['email']            = $instance->get_property('email') ? $instance->get_property('email')->value : null;
-
+            // set the custom fields
+            foreach ($customFields as $key => $value) {
+                $result[key($value)] = current($value);
+            }
             array_push($entries, $result);
         }
-
+        
         return $entries;
     }
-
+    
     /**
      * @param Dataset $set
      *
@@ -135,11 +150,11 @@ class DatasetFormatter
             $result['longitude']   = $instance->get_property('longitude') ? $instance->get_property('longitude')->value : null;
             $result['state']       = $instance->get_property('state') ? $instance->get_property('state')->value : null;
             $result['zipCode']     = $instance->get_property('zipCode') ? $instance->get_property('zipCode')->value : null;
-
+            
             array_push($entries, $result);
         }
-
+        
         return $entries;
-
+        
     }
 }
