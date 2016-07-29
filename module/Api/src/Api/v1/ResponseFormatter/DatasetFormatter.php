@@ -102,11 +102,13 @@ class DatasetFormatter
             $result['featuredExpires'] = $entry['featuredExpires'];
             $result['promoText']       = $entry['promoText'];
             // set the custom fields
+            $metaFields = [];
             foreach ($customFields as $key => $value) {
                 if(!empty($value)){
-                    $result[key($value)] = current($value);
+                    $metaFields[key($value)] = current($value);
                 }
             }
+            $result['meta'] = $metaFields;
             array_push($entries, $result);
         }
         return $entries;
