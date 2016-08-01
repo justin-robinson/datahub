@@ -95,7 +95,7 @@
         <template is="dom-if" if="{{data.companyId}}">
             <paper-icon-button id="delete" icon="delete" on-click="confirmDelete" class="delete">Delete</paper-icon-button>
             <template is="dom-repeat" items="{{childResources.instances.data}}">
-                <instance-view data="{{item}}"></instance-view>
+                <instance-view data="{{item}}" auto-update></instance-view>
                 <br><br>
             </template>
             <paper-fab id="add-instance" icon="add" on-click="addInstanceClicked" class="add-instance"></paper-fab>
