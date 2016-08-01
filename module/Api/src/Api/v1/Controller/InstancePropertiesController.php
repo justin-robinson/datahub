@@ -79,7 +79,11 @@ class InstancePropertiesController extends AbstractRestfulController
         }
 
 
-        foreach ( $data as &$propertyData ) {
+        $response = [
+            'propertyIds' => array_fill(0, count($data), -1),
+            ];
+
+        foreach ( $data as $index => &$propertyData ) {
 
             // create a model for the post
             $p = new CompanyInstanceProperty($propertyData);
@@ -102,9 +106,12 @@ class InstancePropertiesController extends AbstractRestfulController
 
             $property->companyInstanceId = $companyInstanceId;
 
-            $property->save();
+            if ( $property->save() ) {
+                $response['propertyIds'][$index] = $property->companyInstancePropertyId;
+            }
         }
 
-        return $this->getResponse()->setStatusCode(201);
+        $this->getResponse()->setStatusCode(201);
+        return new JsonModel($response);
     }
 }
