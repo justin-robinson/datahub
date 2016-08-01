@@ -47,7 +47,7 @@ class InstancePropertiesController extends AbstractRestfulController
 
      So we were aske to merge our post and put methods into one 'intelligent' one
 
-     Dave nor I approved of this retarded practice but here I am in front of you
+     Dave nor I approved of this practice but here I am in front of you
      just doing what I'm asked instead of doing what I know is best :(
 
      **********************************************************/
@@ -67,7 +67,7 @@ class InstancePropertiesController extends AbstractRestfulController
      */
     public function update($companyInstanceId, $data) {
 
-        // gotta send us something retard
+        // gotta send us something
         if ( empty($data) || !is_array($data)) {
             return $this->getResponse()->setStatusCode(204);
         }
