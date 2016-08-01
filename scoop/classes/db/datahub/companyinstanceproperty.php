@@ -27,6 +27,10 @@ class CompanyInstanceProperty extends \DBCore\Datahub\CompanyInstanceProperty
      */
     public function __set($name, $value)
     {
+        if ( $name === 'value' ) {
+
+            $this->valueMd5 = md5($value);
+        }
 
         parent::__set($name, is_scalar($value) ? utf8_encode($value) : $value);
     }
