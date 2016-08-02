@@ -24,6 +24,9 @@ class DatasetController extends AbstractRestfulController
      *
      * @return JsonModel
      */
+    
+    //@todo set up formatter in constructor
+    
     public function get($setId)
     {
         // looking for formatting types
@@ -47,6 +50,13 @@ class DatasetController extends AbstractRestfulController
          * this needs to get the company instance id's?
          * probably not just rename the col maroveus_id
          */
+          // json encode the json
+        $data['fields'] = json_encode($data['fields']);
+        foreach ($data['entries'] as &$entry) {
+            $entry['meta'] = json_encode($entry['meta']);
+        }
+        
+        
         $set = new Dataset($data);
         if ($set->save()) {
             // get the actual timestamps

@@ -82,7 +82,7 @@ class Dataset extends \DBCore\Datahub\Dataset
         }
         // save each entry
         foreach ($this->entries as $entry) {
-            // create nentry objects
+            // create entry objects
             $new = new DatasetEntries($entry);
             // link this instance to the company
             $new->dataset_id = $this->id;
