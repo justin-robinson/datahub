@@ -28,7 +28,7 @@ class DatasetController extends AbstractRestfulController
     
     //@todo set up formatter in constructor
     
-    public function get($setId)
+    public function get($setId = null)
     {
         // looking for formatting types
         $e     = $this->getEvent();
@@ -43,6 +43,8 @@ class DatasetController extends AbstractRestfulController
         }
         
         return $this->getResponse()->setStatusCode(204);
+        
+        
     }
     
     public function create($data)
@@ -77,14 +79,14 @@ class DatasetController extends AbstractRestfulController
             
             foreach ($set->entries as $k => $entry) {
                 // process the entries
-                $entry->populate($data['entries'][$k]);
+//                $entry->populate($data['entries'][$k]);
                 
-//                $entry->meta     = empty($data['entries'][$k]['meta']) ? $entry->meta : json_encode($data['entries'][$k]['meta']);
-//                $entry->featured = empty($data['entries'][$k]['featured']) ? $entry->featured : $data['entries'][$k]['featured'];
-//                $entry->featuredExpires = empty($data['entries'][$k]['featuredExpires']) ? $entry->featuredExpires : $data['entries'][$k]['featuredExpires'];
-//                $entry->logo = empty($data['entries'][$k]['logo']) ? $entry->logo : $data['entries'][$k]['logo'];
-//                $entry->image = empty($data['entries'][$k]['image']) ? $entry->image : $data['entries'][$k]['image'];
-//                $entry->promoText = empty($data['entries'][$k]['promoText']) ? $entry->promoText : $data['entries'][$k]['promoText'];
+                $entry->meta            = empty($data['entries'][$k]['meta']) ? $entry->meta : json_encode($data['entries'][$k]['meta']);
+                $entry->featured        = empty($data['entries'][$k]['featured']) ? $entry->featured : $data['entries'][$k]['featured'];
+                $entry->featuredExpires = empty($data['entries'][$k]['featuredExpires']) ? $entry->featuredExpires : $data['entries'][$k]['featuredExpires'];
+                $entry->logo            = empty($data['entries'][$k]['logo']) ? $entry->logo : $data['entries'][$k]['logo'];
+                $entry->image           = empty($data['entries'][$k]['image']) ? $entry->image : $data['entries'][$k]['image'];
+                $entry->promoText       = empty($data['entries'][$k]['promoText']) ? $entry->promoText : $data['entries'][$k]['promoText'];
                 
                 $entry->save();
             }
@@ -116,4 +118,17 @@ class DatasetController extends AbstractRestfulController
     }
     
     
+    public function getList()
+    {
+        $sets = Dataset::fetch_where(1);
+        
+        $return = [];
+        foreach ($sets->to_array() as $set){
+            if($set['market_code'] === 'sanfrancisco'){
+                array_push($return, $set);
+            }
+        }
+        
+        return new JsonModel($return);
+    }
 }
