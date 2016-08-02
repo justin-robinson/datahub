@@ -1,6 +1,6 @@
 {
     "name":    "Catering",
-    "market":  "sanfrancisco",
+    "market_code":  "sanfrancisco",
     "fields":  [],
     "entries": [
         [

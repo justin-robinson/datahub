@@ -1,6 +1,6 @@
 {
     "name":    "Hotels",
-    "market":  "sanfrancisco",
+    "market_code":  "sanfrancisco",
     "fields":  [],
     "entries": [
         {
