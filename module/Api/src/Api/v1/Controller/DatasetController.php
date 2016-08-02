@@ -28,6 +28,11 @@ class DatasetController extends AbstractRestfulController
     
     //@todo set up formatter in constructor
     
+    /**
+     * @param null $setId
+     *
+     * @return JsonModel
+     */
     public function get($setId = null)
     {
         // looking for formatting types
@@ -47,6 +52,11 @@ class DatasetController extends AbstractRestfulController
         
     }
     
+    /**
+     * @param mixed $data
+     *
+     * @return JsonModel
+     */
     public function create($data)
     {
         /**
@@ -68,6 +78,12 @@ class DatasetController extends AbstractRestfulController
         return new JsonModel(DatasetFormatter::format($set, true));
     }
     
+    /**
+     * @param mixed $datasetId
+     * @param mixed $data
+     *
+     * @return JsonModel
+     */
     public function update($datasetId, $data)
     {
         /** @var $set \DB\Datahub\Dataset */
@@ -103,6 +119,11 @@ class DatasetController extends AbstractRestfulController
         
     }
     
+    /**
+     * @param mixed $id
+     *
+     * @return JsonModel
+     */
     public function delete($id)
     {
         
@@ -118,6 +139,9 @@ class DatasetController extends AbstractRestfulController
     }
     
     
+    /**
+     * @return JsonModel
+     */
     public function getList()
     {
         $sets = Dataset::fetch_where(1);
