@@ -14,16 +14,16 @@
                 {"Zip": 94109},
                 {"Phone": "415-567-5432"},
                 {"Web Address": "acquerello.com"},
-                {"Type of Industry: Select One": ""},
-                {"Type of Ownership: Select One": ""},
-                {"Total Local Employment 2014": ""},
+                {"Type of Industry: Select One": null},
+                {"Type of Ownership: Select One": null},
+                {"Total Local Employment 2014": null},
                 {"Year founded Locally": 1989},
                 {"Business Description": "Italian"},
                 {"Maximum standing": null},
                 {"Maximum seating": null},
                 {"Buyout": null},
-                {"In house AV": ""},
-                {"Service fee": ""}
+                {"In house AV": null},
+                {"Service fee": null}
             ]
         },
         {
@@ -38,16 +38,16 @@
                 {"Zip": 94107},
                 {"Phone": "415-495-1111"},
                 {"Web Address": "alexanderssteakhouse.com"},
-                {"Type of Industry: Select One": ""},
-                {"Type of Ownership: Select One": ""},
-                {"Total Local Employment 2014": ""},
+                {"Type of Industry: Select One": null},
+                {"Type of Ownership: Select One": null},
+                {"Total Local Employment 2014": null},
                 {"Year founded Locally": 2010},
                 {"Business Description": "Steakhouse/Asian fusion"},
                 {"Maximum standing": null},
                 {"Maximum seating": null},
                 {"Buyout": null},
-                {"In house AV": ""},
-                {"Service fee": ""}
+                {"In house AV": null},
+                {"Service fee": null}
             ]
         },
         {
@@ -62,16 +62,16 @@
                 {"Zip": 94105},
                 {"Phone": "415-284-4040"},
                 {"Web Address": "amerestaurant.com"},
-                {"Type of Industry: Select One": ""},
-                {"Type of Ownership: Select One": ""},
-                {"Total Local Employment 2014": ""},
+                {"Type of Industry: Select One": null},
+                {"Type of Ownership: Select One": null},
+                {"Total Local Employment 2014": null},
                 {"Year founded Locally": 2006},
                 {"Business Description": "New American"},
                 {"Maximum standing": null},
                 {"Maximum seating": null},
                 {"Buyout": null},
-                {"In house AV": ""},
-                {"Service fee": ""}
+                {"In house AV": null},
+                {"Service fee": null}
             ]
         },
         {
@@ -86,16 +86,16 @@
                 {"Zip": 94103},
                 {"Phone": "415-341-9000"},
                 {"Web Address": "aq-sf.com"},
-                {"Type of Industry: Select One": ""},
-                {"Type of Ownership: Select One": ""},
-                {"Total Local Employment 2014": ""},
+                {"Type of Industry: Select One": null},
+                {"Type of Ownership: Select One": null},
+                {"Total Local Employment 2014": null},
                 {"Year founded Locally": 2011},
                 {"Business Description": "American"},
                 {"Maximum standing": null},
                 {"Maximum seating": null},
                 {"Buyout": null},
-                {"In house AV": ""},
-                {"Service fee": ""}
+                {"In house AV": null},
+                {"Service fee": null}
             ]
         },
         {
@@ -110,16 +110,16 @@
                 {"Zip": 94123},
                 {"Phone": "415-440-0460"},
                 {"Web Address": "ateliercrenn.com"},
-                {"Type of Industry: Select One": ""},
-                {"Type of Ownership: Select One": ""},
-                {"Total Local Employment 2014": ""},
+                {"Type of Industry: Select One": null},
+                {"Type of Ownership: Select One": null},
+                {"Total Local Employment 2014": null},
                 {"Year founded Locally": 2011},
                 {"Business Description": "French"},
                 {"Maximum standing": null},
                 {"Maximum seating": null},
                 {"Buyout": null},
-                {"In house AV": ""},
-                {"Service fee": ""}
+                {"In house AV": null},
+                {"Service fee": null}
             ]
         },
         {
@@ -134,16 +134,16 @@
                 {"Zip": 94105},
                 {"Phone": "415-685-4860"},
                 {"Web Address": "benusf.com"},
-                {"Type of Industry: Select One": ""},
-                {"Type of Ownership: Select One": ""},
-                {"Total Local Employment 2014": ""},
+                {"Type of Industry: Select One": null},
+                {"Type of Ownership: Select One": null},
+                {"Total Local Employment 2014": null},
                 {"Year founded Locally": 2010},
                 {"Business Description": "New American"},
                 {"Maximum standing": null},
                 {"Maximum seating": null},
                 {"Buyout": null},
-                {"In house AV": ""},
-                {"Service fee": ""}
+                {"In house AV": null},
+                {"Service fee": null}
             ]
         },
         {
@@ -158,16 +158,16 @@
                 {"Zip": 94102},
                 {"Phone": "415-397-3003"},
                 {"Web Address": "bourbonsteaksf.com"},
-                {"Type of Industry: Select One": ""},
-                {"Type of Ownership: Select One": ""},
-                {"Total Local Employment 2014": ""},
+                {"Type of Industry: Select One": null},
+                {"Type of Ownership: Select One": null},
+                {"Total Local Employment 2014": null},
                 {"Year founded Locally": 2010},
                 {"Business Description": "American"},
                 {"Maximum standing": null},
                 {"Maximum seating": null},
                 {"Buyout": null},
-                {"In house AV": ""},
-                {"Service fee": ""}
+                {"In house AV": null},
+                {"Service fee": null}
             ]
         },
         {
@@ -182,16 +182,16 @@
                 {"Zip": 94108},
                 {"Phone": "415-955-5555"},
                 {"Web Address": "camptonplacesf.com"},
-                {"Type of Industry: Select One": ""},
-                {"Type of Ownership: Select One": ""},
-                {"Total Local Employment 2014": ""},
+                {"Type of Industry: Select One": null},
+                {"Type of Ownership: Select One": null},
+                {"Total Local Employment 2014": null},
                 {"Year founded Locally": 1983},
                 {"Business Description": "Cal-Indian"},
                 {"Maximum standing": null},
                 {"Maximum seating": null},
                 {"Buyout": null},
-                {"In house AV": ""},
-                {"Service fee": ""}
+                {"In house AV": null},
+                {"Service fee": null}
             ]
         },
         {
@@ -206,16 +206,16 @@
                 {"Zip": 94133},
                 {"Phone": "415-393-9000"},
                 {"Web Address": "coirestaurant.com"},
-                {"Type of Industry: Select One": ""},
-                {"Type of Ownership: Select One": ""},
-                {"Total Local Employment 2014": ""},
+                {"Type of Industry: Select One": null},
+                {"Type of Ownership: Select One": null},
+                {"Total Local Employment 2014": null},
                 {"Year founded Locally": 2006},
                 {"Business Description": "California-French"},
                 {"Maximum standing": null},
                 {"Maximum seating": null},
                 {"Buyout": null},
-                {"In house AV": ""},
-                {"Service fee": ""}
+                {"In house AV": null},
+                {"Service fee": null}
             ]
         },
         {
@@ -230,16 +230,16 @@
                 {"Zip": 94109},
                 {"Phone": "415-776-2722"},
                 {"Web Address": "crustaceansf.com"},
-                {"Type of Industry: Select One": ""},
-                {"Type of Ownership: Select One": ""},
-                {"Total Local Employment 2014": ""},
+                {"Type of Industry: Select One": null},
+                {"Type of Ownership: Select One": null},
+                {"Total Local Employment 2014": null},
                 {"Year founded Locally": 1991},
                 {"Business Description": "Seafood"},
                 {"Maximum standing": null},
                 {"Maximum seating": null},
                 {"Buyout": null},
-                {"In house AV": ""},
-                {"Service fee": ""}
+                {"In house AV": null},
+                {"Service fee": null}
             ]
         },
         {
@@ -254,16 +254,16 @@
                 {"Zip": 94109},
                 {"Phone": "415-749-2060"},
                 {"Web Address": "garydanko.com"},
-                {"Type of Industry: Select One": ""},
-                {"Type of Ownership: Select One": ""},
-                {"Total Local Employment 2014": ""},
+                {"Type of Industry: Select One": null},
+                {"Type of Ownership: Select One": null},
+                {"Total Local Employment 2014": null},
                 {"Year founded Locally": 1999},
                 {"Business Description": "Californian"},
                 {"Maximum standing": null},
                 {"Maximum seating": null},
                 {"Buyout": null},
-                {"In house AV": ""},
-                {"Service fee": ""}
+                {"In house AV": null},
+                {"Service fee": null}
             ]
         },
         {
@@ -278,16 +278,16 @@
                 {"Zip": 94108},
                 {"Phone": "415-829-8148"},
                 {"Web Address": "hakkasan.com/sanfrancisco"},
-                {"Type of Industry: Select One": ""},
-                {"Type of Ownership: Select One": ""},
-                {"Total Local Employment 2014": ""},
+                {"Type of Industry: Select One": null},
+                {"Type of Ownership: Select One": null},
+                {"Total Local Employment 2014": null},
                 {"Year founded Locally": 2012},
                 {"Business Description": "Chinese"},
                 {"Maximum standing": null},
                 {"Maximum seating": null},
                 {"Buyout": null},
-                {"In house AV": ""},
-                {"Service fee": ""}
+                {"In house AV": null},
+                {"Service fee": null}
             ]
         },
         {
@@ -302,16 +302,16 @@
                 {"Zip": 94109},
                 {"Phone": "415-673-1888"},
                 {"Web Address": "harrisrestaurant.com"},
-                {"Type of Industry: Select One": ""},
-                {"Type of Ownership: Select One": ""},
-                {"Total Local Employment 2014": ""},
+                {"Type of Industry: Select One": null},
+                {"Type of Ownership: Select One": null},
+                {"Total Local Employment 2014": null},
                 {"Year founded Locally": 1984},
                 {"Business Description": "Steakhouse"},
                 {"Maximum standing": null},
                 {"Maximum seating": null},
                 {"Buyout": null},
-                {"In house AV": ""},
-                {"Service fee": ""}
+                {"In house AV": null},
+                {"Service fee": null}
             ]
         },
         {
@@ -326,16 +326,16 @@
                 {"Zip": 94102},
                 {"Phone": "415-861-5555"},
                 {"Web Address": "jardiniere.com"},
-                {"Type of Industry: Select One": ""},
-                {"Type of Ownership: Select One": ""},
-                {"Total Local Employment 2014": ""},
+                {"Type of Industry: Select One": null},
+                {"Type of Ownership: Select One": null},
+                {"Total Local Employment 2014": null},
                 {"Year founded Locally": 1997},
                 {"Business Description": "French"},
                 {"Maximum standing": null},
                 {"Maximum seating": null},
                 {"Buyout": null},
-                {"In house AV": ""},
-                {"Service fee": ""}
+                {"In house AV": null},
+                {"Service fee": null}
             ]
         },
         {
@@ -350,16 +350,16 @@
                 {"Zip": 94109},
                 {"Phone": "415-829-7141"},
                 {"Web Address": "keikoanobhill.com"},
-                {"Type of Industry: Select One": ""},
-                {"Type of Ownership: Select One": ""},
-                {"Total Local Employment 2014": ""},
+                {"Type of Industry: Select One": null},
+                {"Type of Ownership: Select One": null},
+                {"Total Local Employment 2014": null},
                 {"Year founded Locally": 2011},
                 {"Business Description": "Japenese-French"},
                 {"Maximum standing": null},
                 {"Maximum seating": null},
                 {"Buyout": null},
-                {"In house AV": ""},
-                {"Service fee": ""}
+                {"In house AV": null},
+                {"Service fee": null}
             ]
         },
         {
@@ -374,16 +374,16 @@
                 {"Zip": 94115},
                 {"Phone": "415-474-2866"},
                 {"Web Address": "kissseafood.com"},
-                {"Type of Industry: Select One": ""},
-                {"Type of Ownership: Select One": ""},
-                {"Total Local Employment 2014": ""},
+                {"Type of Industry: Select One": null},
+                {"Type of Ownership: Select One": null},
+                {"Total Local Employment 2014": null},
                 {"Year founded Locally": 1999},
                 {"Business Description": "Japanese"},
                 {"Maximum standing": null},
                 {"Maximum seating": null},
                 {"Buyout": null},
-                {"In house AV": ""},
-                {"Service fee": ""}
+                {"In house AV": null},
+                {"Service fee": null}
             ]
         },
         {
@@ -398,16 +398,16 @@
                 {"Zip": 94109},
                 {"Phone": "415-776-5577"},
                 {"Web Address": "lafolie.com"},
-                {"Type of Industry: Select One": ""},
-                {"Type of Ownership: Select One": ""},
-                {"Total Local Employment 2014": ""},
+                {"Type of Industry: Select One": null},
+                {"Type of Ownership: Select One": null},
+                {"Total Local Employment 2014": null},
                 {"Year founded Locally": 1988},
                 {"Business Description": "French"},
                 {"Maximum standing": null},
                 {"Maximum seating": null},
                 {"Buyout": null},
-                {"In house AV": ""},
-                {"Service fee": ""}
+                {"In house AV": null},
+                {"Service fee": null}
             ]
         },
         {
@@ -422,16 +422,16 @@
                 {"Zip": 94111},
                 {"Phone": "415-397-9222"},
                 {"Web Address": "michaelmina.net"},
-                {"Type of Industry: Select One": ""},
-                {"Type of Ownership: Select One": ""},
-                {"Total Local Employment 2014": ""},
+                {"Type of Industry: Select One": null},
+                {"Type of Ownership: Select One": null},
+                {"Total Local Employment 2014": null},
                 {"Year founded Locally": 2004},
                 {"Business Description": "New American"},
                 {"Maximum standing": null},
                 {"Maximum seating": null},
                 {"Buyout": null},
-                {"In house AV": ""},
-                {"Service fee": ""}
+                {"In house AV": null},
+                {"Service fee": null}
             ]
         },
         {
@@ -446,16 +446,16 @@
                 {"Zip": 94102},
                 {"Phone": "415-986-5830"},
                 {"Web Address": "mortons.com/sanfrancisco"},
-                {"Type of Industry: Select One": ""},
-                {"Type of Ownership: Select One": ""},
-                {"Total Local Employment 2014": ""},
+                {"Type of Industry: Select One": null},
+                {"Type of Ownership: Select One": null},
+                {"Total Local Employment 2014": null},
                 {"Year founded Locally": 2000},
                 {"Business Description": "Steakhouse"},
                 {"Maximum standing": null},
                 {"Maximum seating": null},
                 {"Buyout": null},
-                {"In house AV": ""},
-                {"Service fee": ""}
+                {"In house AV": null},
+                {"Service fee": null}
             ]
         },
         {
@@ -470,16 +470,16 @@
                 {"Zip": 94108},
                 {"Phone": "415-771-6776"},
                 {"Web Address": "ossosteakhouse.com"},
-                {"Type of Industry: Select One": ""},
-                {"Type of Ownership: Select One": ""},
-                {"Total Local Employment 2014": ""},
+                {"Type of Industry: Select One": null},
+                {"Type of Ownership: Select One": null},
+                {"Total Local Employment 2014": null},
                 {"Year founded Locally": 2013},
                 {"Business Description": "Seafood"},
                 {"Maximum standing": null},
                 {"Maximum seating": null},
                 {"Buyout": null},
-                {"In house AV": ""},
-                {"Service fee": ""}
+                {"In house AV": null},
+                {"Service fee": null}
             ]
         },
         {
@@ -494,16 +494,16 @@
                 {"Zip": 94108},
                 {"Phone": "415-773-6168"},
                 {"Web Address": "parallel37sf.com"},
-                {"Type of Industry: Select One": ""},
-                {"Type of Ownership: Select One": ""},
-                {"Total Local Employment 2014": ""},
+                {"Type of Industry: Select One": null},
+                {"Type of Ownership: Select One": null},
+                {"Total Local Employment 2014": null},
                 {"Year founded Locally": 2011},
                 {"Business Description": "New American"},
                 {"Maximum standing": null},
                 {"Maximum seating": null},
                 {"Buyout": null},
-                {"In house AV": ""},
-                {"Service fee": ""}
+                {"In house AV": null},
+                {"Service fee": null}
             ]
         },
         {
@@ -518,9 +518,9 @@
                 {"Zip": 94133},
                 {"Phone": "415-775-8500"},
                 {"Web Address": "quincerestaurant.com"},
-                {"Type of Industry: Select One": ""},
-                {"Type of Ownership: Select One": ""},
-                {"Total Local Employment 2014": ""},
+                {"Type of Industry: Select One": null},
+                {"Type of Ownership: Select One": null},
+                {"Total Local Employment 2014": null},
                 {"Year founded Locally": 2003},
                 {"Business Description": "Italian"},
                 {"Maximum standing": 30},
@@ -542,16 +542,16 @@
                 {"Zip": 94107},
                 {"Phone": "415-828-7990"},
                 {"Web Address": "saisonsf.com"},
-                {"Type of Industry: Select One": ""},
-                {"Type of Ownership: Select One": ""},
-                {"Total Local Employment 2014": ""},
+                {"Type of Industry: Select One": null},
+                {"Type of Ownership: Select One": null},
+                {"Total Local Employment 2014": null},
                 {"Year founded Locally": 2009},
                 {"Business Description": "New American"},
                 {"Maximum standing": null},
                 {"Maximum seating": null},
                 {"Buyout": null},
-                {"In house AV": ""},
-                {"Service fee": ""}
+                {"In house AV": null},
+                {"Service fee": null}
             ]
         },
         {
@@ -566,16 +566,16 @@
                 {"Zip": 94108},
                 {"Phone": "415-391-8311"},
                 {"Web Address": "sonsanddaughterssf.com"},
-                {"Type of Industry: Select One": ""},
-                {"Type of Ownership: Select One": ""},
-                {"Total Local Employment 2014": ""},
+                {"Type of Industry: Select One": null},
+                {"Type of Ownership: Select One": null},
+                {"Total Local Employment 2014": null},
                 {"Year founded Locally": 2010},
                 {"Business Description": "New American"},
                 {"Maximum standing": null},
                 {"Maximum seating": null},
                 {"Buyout": null},
-                {"In house AV": ""},
-                {"Service fee": ""}
+                {"In house AV": null},
+                {"Service fee": null}
             ]
         },
         {
@@ -590,16 +590,16 @@
                 {"Zip": 94118},
                 {"Phone": "415-931-5100"},
                 {"Web Address": "sprucesf.com"},
-                {"Type of Industry: Select One": ""},
-                {"Type of Ownership: Select One": ""},
-                {"Total Local Employment 2014": ""},
+                {"Type of Industry: Select One": null},
+                {"Type of Ownership: Select One": null},
+                {"Total Local Employment 2014": null},
                 {"Year founded Locally": 2007},
                 {"Business Description": "New American"},
                 {"Maximum standing": null},
                 {"Maximum seating": null},
                 {"Buyout": null},
-                {"In house AV": ""},
-                {"Service fee": ""}
+                {"In house AV": null},
+                {"Service fee": null}
             ]
         }
     ]

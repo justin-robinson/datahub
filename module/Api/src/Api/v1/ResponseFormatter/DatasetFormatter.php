@@ -46,8 +46,7 @@ class DatasetFormatter
                 break;
         }
         
-        $host             = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST',
-                'hub');
+        $host             = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST', 'hub');
         $array            = $set->to_array(false);
         $array['entries'] = $entries;
         
@@ -82,25 +81,25 @@ class DatasetFormatter
             $customFields = json_decode($entry['meta'], true);
             
             $result = [];
-            // get company that match the sourceId and are meroveus
-            $company = Company::fetch_by_source_name_and_id('meroveus', $entry['sourceId']);
-            /* @var $instance \DB\Datahub\CompanyInstance */
-            $instance = $company->fetch_company_instances()->first();
-            // fetch the properties
-            $instance->fetch_properties();
-            // extract the values
-            // fetch the desired fields from datahub
-            foreach ($desiredDHFields as $field) {
-                $result[$field] = $instance->get_property($field) ? $instance->get_property($field)->value : null;
-            }
-    
-            $result['companyName']     = $company->name;
-            $result['sourceId']        = $entry['sourceId'];
-            $result['logo']            = empty($entry['logo']) ? null : $entry['logo'];
-            $result['image']           = empty($entry['image']) ? null : $entry['image'];
-            $result['featured']        = $entry['featured'];
-            $result['featuredExpires'] = $entry['featuredExpires'];
-            $result['promoText']       = $entry['promoText'];
+//            // get company that match the sourceId and are meroveus
+//            $company = Company::fetch_by_source_name_and_id('meroveus', $entry['sourceId']);
+//            /* @var $instance \DB\Datahub\CompanyInstance */
+//            $instance = $company->fetch_company_instances()->first();
+//            // fetch the properties
+//            $instance->fetch_properties();
+//            // extract the values
+//            // fetch the desired fields from datahub
+//            foreach ($desiredDHFields as $field) {
+//                $result[$field] = $instance->get_property($field) ? $instance->get_property($field)->value : null;
+//            }
+//
+//            $result['companyName']     = $company->name;
+//            $result['sourceId']        = $entry['sourceId'];
+//            $result['logo']            = empty($entry['logo']) ? null : $entry['logo'];
+//            $result['image']           = empty($entry['image']) ? null : $entry['image'];
+//            $result['featured']        = $entry['featured'];
+//            $result['featuredExpires'] = $entry['featuredExpires'];
+//            $result['promoText']       = $entry['promoText'];
             // set the custom fields
             $metaFields = [];
             foreach ($customFields as $key => $value) {
