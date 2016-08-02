@@ -94,6 +94,16 @@ class Dataset extends \DBCore\Datahub\Dataset
         }
         return $return;
     }
+    
+    /**
+     * @param array $dataArray
+     */
+    public function populate ( array $dataArray ) {
+
+        foreach ( $dataArray as $name => $value ) {
+            $this->__set( $name, $value );
+        }
+    }
 }
 
 ?>

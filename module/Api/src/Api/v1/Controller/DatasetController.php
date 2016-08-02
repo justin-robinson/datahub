@@ -65,6 +65,36 @@ class DatasetController extends AbstractRestfulController
 
         return new JsonModel(DatasetFormatter::format($set, true));
     }
+    
+    public function update($datasetId, $data)
+    {
+        $set = Dataset::fetch_by_id($datasetId);
+
+        if ($set) {
+            $set->populate($data);
+            $set->save();
+            $set->reload();
+
+            return new JsonModel(DatasetFormatter::format($set, true));
+        }
+
+        return $this->getResponse()->setStatusCode(204);
+
+    }
+
+    public function delete($id)
+    {
+
+        $set = Dataset::fetch_by_id($id);
+        if ($set) {
+            $set->delete();
+            $set = Dataset::query('SELECT * FROM datahub.company WHERE companyId = ?', [$id])->first();
+
+            return new JsonModel(DatasetFormatter::format($set));
+        }
+
+        return $this->getResponse()->setStatusCode(204);
+    }
 
 
 }
