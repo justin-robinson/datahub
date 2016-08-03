@@ -90,10 +90,9 @@ class InstancePropertiesController extends AbstractRestfulController
 
             // find out if this property is in the db aka THIS IS A PUT
             $property = CompanyInstanceProperty::fetch_one_where(
-                'name = ? AND valueMd5 = ? AND sourceTypeId = ?',
+                'name = ? AND sourceTypeId = ?',
                 [
                     $p->name,
-                    $p->valueMd5,
                     $p->sourceTypeId
                 ]);
 
