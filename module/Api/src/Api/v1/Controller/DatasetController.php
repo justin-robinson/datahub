@@ -64,10 +64,10 @@ class DatasetController extends AbstractRestfulController
          * probably not just rename the col maroveus_id
          */
         // json encode the json
-        $data['fields'] = json_encode($data['fields']);
-        foreach ($data['entries'] as &$entry) {
-            $entry['meta'] = json_encode($entry['meta']);
-        }
+//        $data['fields'] = json_encode($data['fields']);
+//        foreach ($data['entries'] as &$entry) {
+//            $entry['meta'] = json_encode($entry['meta']);
+//        }
         
         $set = new Dataset($data);
         if ($set->save()) {

@@ -46,7 +46,8 @@ class DatasetFormatter
                 break;
         }
         
-        $host             = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST', 'hub');
+        $host             = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST',
+                'hub');
         $array            = $set->to_array(false);
         $array['entries'] = $entries;
         
@@ -76,40 +77,48 @@ class DatasetFormatter
         //@todo get the featured data
         $entries         = [];
         $desiredDHFields = json_decode($set->fields, true);
-        
-        foreach ($set->entries->to_array() as $entry) {
+        $eArray          = $set->entries->to_array();
+        foreach ($eArray as $entry) {
             $customFields = json_decode($entry['meta'], true);
+            // DO NOT LET THIS GO OUT
+            $customFields = is_array($customFields)?$customFields:json_decode($customFields, true);
             
             $result = [];
-//            // get company that match the sourceId and are meroveus
-//            $company = Company::fetch_by_source_name_and_id('meroveus', $entry['sourceId']);
-//            /* @var $instance \DB\Datahub\CompanyInstance */
-//            $instance = $company->fetch_company_instances()->first();
-//            // fetch the properties
-//            $instance->fetch_properties();
-//            // extract the values
-//            // fetch the desired fields from datahub
-//            foreach ($desiredDHFields as $field) {
-//                $result[$field] = $instance->get_property($field) ? $instance->get_property($field)->value : null;
-//            }
-//
-//            $result['companyName']     = $company->name;
-//            $result['sourceId']        = $entry['sourceId'];
-//            $result['logo']            = empty($entry['logo']) ? null : $entry['logo'];
-//            $result['image']           = empty($entry['image']) ? null : $entry['image'];
-//            $result['featured']        = $entry['featured'];
-//            $result['featuredExpires'] = $entry['featuredExpires'];
-//            $result['promoText']       = $entry['promoText'];
+            
+            // initial implementation uses only meta for all company info so 'fields' is null in the first sets that we return
+            // future implementations will rely on dh having the company data that gets rendered
+            if(!empty($entry['fields'])) {
+                // get company that match the sourceId and are meroveus
+                $company = Company::fetch_by_source_name_and_id('meroveus', $entry['sourceId']);
+                /* @var $instance \DB\Datahub\CompanyInstance */
+                $instance = $company->fetch_company_instances()->first();
+                // fetch the properties
+                $instance->fetch_properties();
+                // extract the values
+                // fetch the desired fields from datahub
+                foreach ($desiredDHFields as $field) {
+                    $result[$field] = $instance->get_property($field) ? $instance->get_property($field)->value : null;
+                }
+    
+                $result['companyName']     = $company->name;
+                $result['sourceId']        = $entry['sourceId'];
+                $result['logo']            = empty($entry['logo']) ? null : $entry['logo'];
+                $result['image']           = empty($entry['image']) ? null : $entry['image'];
+                $result['featured']        = $entry['featured'];
+                $result['featuredExpires'] = $entry['featuredExpires'];
+                $result['promoText']       = $entry['promoText'];
+            }
             // set the custom fields
             $metaFields = [];
             foreach ($customFields as $key => $value) {
-                if(!empty($value)){
+                if (!empty($value)) {
                     $metaFields[key($value)] = current($value);
                 }
             }
             $result['meta'] = $metaFields;
             array_push($entries, $result);
         }
+        
         return $entries;
     }
     
