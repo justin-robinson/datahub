@@ -4,6 +4,7 @@ namespace Api\v1\Controller;
 
 use Api\v1\ResponseFormatter\InstanceCollectionFormatter;
 use Api\v1\ResponseFormatter\InstanceFormatter;
+use DB\Datahub\Company;
 use DB\Datahub\CompanyInstance;
 use Zend\View\Model\JsonModel;
 
@@ -42,6 +43,22 @@ class InstanceController extends AbstractRestfulController
         unset($data['companyInstanceId']);
         unset($data['properties']);
         unset($data['contacts']);
+
+        // ensure a the instance is linked to a company
+        if ( !isset($data['companyId']) || !is_numeric($data['companyId']) ) {
+
+            // create a new company model
+            $company = new Company($data);
+
+            $existingCompany = Company::fetch_one_where('normalizedName = ?', [$company->normalizedName]);
+
+            if ( $existingCompany === false ) {
+                $company->save();
+                $existingCompany = $company;
+            }
+
+            $data['companyId'] = $existingCompany->companyId;
+        }
 
         $instance = new CompanyInstance($data);
         if ($instance->save()) {

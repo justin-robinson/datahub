@@ -2,7 +2,7 @@
 $defaultMysqlConnectionParams = [
     'charset'       => 'utf8',
     'host'          => 'devdb.bizjournals.int',
-    'dbname'        => 'datahub_meroveous',
+    'dbname'        => 'datahub_meroveus',
     'port'          => '3306',
     'user'          => 'web',
     'password'      => '',

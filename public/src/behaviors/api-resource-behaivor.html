@@ -160,7 +160,7 @@
         },
         _dataChanged: function ( event, change ) {
 
-            if ( change === null ) {
+            if ( change === null || change.value === null ) {
                 return;
             }
 
