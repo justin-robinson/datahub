@@ -82,7 +82,7 @@ class Dataset extends \DBCore\Datahub\Dataset
         }
         // save each entry
         foreach ($this->entries as $entry) {
-            // create nentry objects
+            // create entry objects
             $new = new DatasetEntries($entry);
             // link this instance to the company
             $new->dataset_id = $this->id;
@@ -93,6 +93,16 @@ class Dataset extends \DBCore\Datahub\Dataset
             }
         }
         return $return;
+    }
+    
+    /**
+     * @param array $dataArray
+     */
+    public function populate ( array $dataArray ) {
+
+        foreach ( $dataArray as $name => $value ) {
+            $this->__set( $name, $value );
+        }
     }
 }
 

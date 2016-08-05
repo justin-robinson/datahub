@@ -13,6 +13,25 @@ namespace DB\Datahub;
  */
 class DatasetEntries extends \DBCore\Datahub\DatasetEntries {
 
+    public function __get($name) {
+        
+        $value = parent::__get($name);
+        
+        if ( $name === 'meta' ) {
+            $value = json_decode($value);
+        }
+        
+        return $value;
+    }
+    
+    public function __set($name, $value) {
+        
+        if ( $name === 'meta' ) {
+            $value = json_encode($value);
+        }
+        
+        parent::__set($name, $value);
+    }
 }
 
 ?>
