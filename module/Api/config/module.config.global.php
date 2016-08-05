@@ -339,8 +339,6 @@ return [
             'Api\v1\Controller\State'              => 'Api\v1\Controller\StateController',
             'Api\v1\Controller\SourceType'         => 'Api\v1\Controller\SourceTypeController',
             'Api\v1\Controller\Dataset'            => 'Api\v1\Controller\DatasetController',
-            'Api\v1\Controller\Type'               => 'Api\v1\Controller\TypeController',
-
             'Api\v1\Controller\DatasetEntries'     => 'Api\v1\Controller\DatasetEntriesController',
             'Api\v1\Controller\Type'               => 'Api\v1\Controller\TypeController',
         ],
