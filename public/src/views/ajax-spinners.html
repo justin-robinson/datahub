@@ -1,0 +1,31 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-spinner/paper-spinner.html">
+
+<dom-module id="ajax-spinners">
+    <template>
+        <style>
+
+        </style>
+
+        <template is="dom-repeat" items="{{count}}">
+            <paper-spinner active></paper-spinner>
+        </template>
+    </template>
+    <script>
+        Polymer({
+            is: 'ajax-spinners',
+            properties: {
+                count: {
+                    type: Array,
+                    value: function () { return []; }
+                }
+            },
+            add: function () {
+                this.push('count', true);
+            },
+            remove: function () {
+                this.pop('count');
+            }
+        })
+    </script>
+</dom-module>

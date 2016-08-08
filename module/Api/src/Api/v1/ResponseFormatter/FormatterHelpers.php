@@ -4,6 +4,7 @@ namespace Api\v1\ResponseFormatter;
 
 /**
  * Class FormatterHelpers
+ *
  * @package Api\v1\ResponseFormatter
  */
 class FormatterHelpers
@@ -33,4 +34,6 @@ class FormatterHelpers
 
         return array_key_exists($name, $_SERVER) ? $_SERVER[$name] : $default;
     }
+
+
 }

@@ -1,0 +1,8 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/my-app.html",
+  "fragments": [
+    "src/views/company-view.html",
+    "src/views/contact-view.html"
+  ]
+}

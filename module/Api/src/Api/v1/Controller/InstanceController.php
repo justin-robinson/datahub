@@ -4,6 +4,7 @@ namespace Api\v1\Controller;
 
 use Api\v1\ResponseFormatter\InstanceCollectionFormatter;
 use Api\v1\ResponseFormatter\InstanceFormatter;
+use DB\Datahub\Company;
 use DB\Datahub\CompanyInstance;
 use Zend\View\Model\JsonModel;
 
@@ -43,6 +44,22 @@ class InstanceController extends AbstractRestfulController
         unset($data['properties']);
         unset($data['contacts']);
 
+        // ensure a the instance is linked to a company
+        if ( !isset($data['companyId']) || !is_numeric($data['companyId']) ) {
+
+            // create a new company model
+            $company = new Company($data);
+
+            $existingCompany = Company::fetch_one_where('normalizedName = ?', [$company->normalizedName]);
+
+            if ( $existingCompany === false ) {
+                $company->save();
+                $existingCompany = $company;
+            }
+
+            $data['companyId'] = $existingCompany->companyId;
+        }
+
         $instance = new CompanyInstance($data);
         if ($instance->save()) {
             // get the actual timestamps
@@ -68,15 +85,14 @@ class InstanceController extends AbstractRestfulController
 
         $instance = CompanyInstance::fetch_by_id($companyInstanceId);
 
+        $statusCode = 204;
+
         if ($instance) {
             $instance->populate($data);
-            $instance->save();
-            $instance->reload();
-
-            return new JsonModel(InstanceFormatter::format($instance));
+            $statusCode = $instance->save() ? 200 : 500;
         }
 
-        return $this->getResponse()->setStatusCode(204);
+        return $this->getResponse()->setStatusCode($statusCode);
 
     }
 
@@ -91,10 +107,6 @@ class InstanceController extends AbstractRestfulController
         $instance = CompanyInstance::fetch_by_id($id);
         if ($instance) {
             $instance->delete();
-            $instance = CompanyInstance::query('SELECT * FROM datahub.companyInstance WHERE companyInstanceId = ?',
-                [$id])->first();
-
-            return new JsonModel(InstanceFormatter::format($instance));
         }
 
         return $this->getResponse()->setStatusCode(204);

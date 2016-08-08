@@ -40,7 +40,7 @@ class CompanySearchController extends AbstractRestfulController
 
             // create the elastic client
             $elasticClient = ClientBuilder::create()
-                                          ->setHosts([$config['host'] . ':' . $config['port'] . '/companies'] )
+                                          ->setHosts([$config['host'] . ':' . $config['port'] . '/companies'])
                                           ->build();
 
             $elasticResponse = $elasticClient->info();
@@ -51,62 +51,63 @@ class CompanySearchController extends AbstractRestfulController
             }
 
             return new JsonModel($response);
-        } else {
+        }
 
-            $page = $this->params()->fromQuery('page', 1);
-            $page = (is_numeric($page) && $page >= 1) ? (int)$page : 1;
-            $limit = $this->params()->fromQuery('limit', 10);
-            $offset = $limit * ($page - 1);
+        $page = $this->params()->fromQuery('page', 1);
+        $page = (is_numeric($page) && $page >= 1) ? (int)$page : 1;
+        $limit = $this->params()->fromQuery('limit', 10);
+        $offset = $limit * ($page - 1);
 
-            // create the elastic client
-            $elasticClient = ClientBuilder::create()
-                                          ->setHosts([$config['host'] . ':' . $config['port']])
-                                          ->build();
+        // create the elastic client
+        $elasticClient = ClientBuilder::create()
+                                      ->setHosts([$config['host'] . ':' . $config['port']])
+                                      ->build();
 
-            // our elastic query
-            $params = [
-                'index' => 'companies',
-                'type'  => 'company',
-                'size' => $limit,
-                'from' => $offset,
-                'body'  => [
-                    'query' => [
-                        'bool' => [
-                            'should' => [],
-                        ],
+        // our elastic query
+        $params = [
+            'index' => 'companies',
+            'type'  => 'company',
+            'size' => $limit,
+            'from' => $offset,
+            'body'  => [
+                'query' => [
+                    'bool' => [
+                        'should' => [],
                     ],
                 ],
-            ];
+            ],
+        ];
 
-            // add all search terms to the elastic query
-            foreach ($searchTerms as $searchTermName => &$searchTerm) {
-                $params['body']['query']['bool']['must'][] = ['match' => [$searchTermName => $searchTerm]];
-            }
-
-            // query elastic
-            $elasticResponse = $elasticClient->search($params);
-
-            // did we get a hit?
-            if (empty($elasticResponse['hits']['hits'])) {
-                return $this->getResponse()->setStatusCode(204);
-            }
-
-            $companies = new Rows();
-            foreach ($elasticResponse['hits']['hits'] as $hit) {
-                $company = Company::fetch_by_source_name_and_id('refinery%', $hit['_source']['InternalId']);
-
-                if ($company === false) {
-                    continue;
-                }
-
-                $companies->add_row($company);
-            }
-
-            if ($companies->get_num_rows() === 0) {
-                return $this->getResponse()->setStatusCode(204);
-            }
-
-            return new JsonModel(CompanySearchCollectionFormatter::format($companies, $elasticResponse['hits']['total'], $page, $limit));
+        // add all search terms to the elastic query
+        foreach ($searchTerms as $searchTermName => &$searchTerm) {
+            $params['body']['query']['bool']['must'][] = ['match' => [$searchTermName => $searchTerm]];
         }
+
+        // query elastic
+        $elasticResponse = $elasticClient->search($params);
+
+        // did we get a hit?
+        if (empty($elasticResponse['hits']['hits'])) {
+            return $this->getResponse()->setStatusCode(204);
+        }
+
+        $companies = new Rows();
+        $companyIds = [];
+        foreach ($elasticResponse['hits']['hits'] as $hit) {
+            $company = Company::fetch_by_source_name_and_id('refinery%', $hit['_source']['InternalId']);
+
+            if ($company === false || isset($companyIds[$company->companyId])) {
+                continue;
+            }
+
+            $companyIds[$company->companyId] = true;
+            $companies->add_row($company);
+        }
+
+        if ($companies->get_num_rows() === 0) {
+            return $this->getResponse()->setStatusCode(204);
+        }
+
+        return new JsonModel(CompanySearchCollectionFormatter::format($companies, $elasticResponse['hits']['total'], $page, $limit));
     }
 }
