@@ -1,6 +1,6 @@
 {
     "name":    "Meeting and Event Spaces",
-    "market":  "sanfrancisco",
+    "market_code":  "sanfrancisco",
     "fields":  [],
     "entries": [
         {
@@ -33,7 +33,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   836307,
@@ -65,7 +70,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   1138929,
@@ -129,7 +139,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   831805,
@@ -161,7 +176,12 @@
                 {"Corporate rates": "Yes"},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   836953,
@@ -193,7 +213,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   1138933,
@@ -225,7 +250,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   1138937,
@@ -257,7 +287,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   836311,
@@ -289,7 +324,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   829626,
@@ -321,7 +361,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   831804,
@@ -353,7 +398,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   836323,
@@ -385,7 +435,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   834234,
@@ -417,7 +472,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   836322,
@@ -449,7 +509,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   830588,
@@ -481,7 +546,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   832803,
@@ -513,7 +583,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   833882,
@@ -545,7 +620,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   1139008,
@@ -577,7 +657,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   1139016,
@@ -609,7 +694,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   836310,
@@ -641,7 +731,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   831810,
@@ -673,7 +768,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   1139033,
@@ -705,7 +805,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   829633,
@@ -737,7 +842,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   1139046,
@@ -769,7 +879,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   1139066,
@@ -801,7 +916,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   836305,
@@ -833,7 +953,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   829628,
@@ -865,7 +990,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   1139070,
@@ -897,7 +1027,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   1139068,
@@ -929,7 +1064,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   840500,
@@ -961,7 +1101,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   834711,
@@ -993,7 +1138,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   836300,
@@ -1025,7 +1175,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   830598,
@@ -1057,7 +1212,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   1139083,
@@ -1089,7 +1249,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   836302,
@@ -1121,7 +1286,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   831958,
@@ -1153,7 +1323,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   1139087,
@@ -1185,7 +1360,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   836324,
@@ -1217,7 +1397,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   835515,
@@ -1249,7 +1434,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   1139098,
@@ -1281,7 +1471,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   836309,
@@ -1313,7 +1508,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   1139104,
@@ -1345,7 +1545,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   840231,
@@ -1377,7 +1582,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   1139119,
@@ -1409,7 +1619,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   836301,
@@ -1441,7 +1656,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   1139132,
@@ -1473,7 +1693,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   1139130,
@@ -1505,7 +1730,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   1139135,
@@ -1537,7 +1767,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   1138964,
@@ -1569,7 +1804,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   835255,
@@ -1601,7 +1841,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   1139049,
@@ -1633,7 +1878,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   1139062,
@@ -1665,7 +1915,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   836304,
@@ -1697,7 +1952,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   1139108,
@@ -1729,7 +1989,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   840184,
@@ -1761,7 +2026,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   1153494,
@@ -1793,7 +2063,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   831809,
@@ -1825,7 +2100,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   833966,
@@ -1857,7 +2137,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         },
         {
             "Id":   830613,
@@ -1889,7 +2174,12 @@
                 {"Corporate rates": null},
                 {"On-site catering": null},
                 {"Meeting room charges": null}
-            ]
+            ],
+          "featured" : null,
+          "featuredExpires" : null,
+          "logo" : null,
+          "image": null,
+          "promotext": null
         }
     ]
 }

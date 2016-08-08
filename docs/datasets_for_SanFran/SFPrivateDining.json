@@ -1,6 +1,6 @@
 {
     "name" : "Private Dining",
-    "market": "sanfrancisco",
+    "market_code": "sanfrancisco",
     "entries": [
         {
             "Id":   1207656,
