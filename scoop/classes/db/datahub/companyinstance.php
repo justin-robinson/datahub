@@ -235,13 +235,13 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     public function delete()
     {
 
-        if (!$this->loaded_from_database()) {
+        if (!$this->loadedFromDb) {
             return false;
         }
 
         $this->deletedAt = new Literal('NOW()');
 
-        return $this->save(false);
+        return parent::save();
     }
 
     /**
