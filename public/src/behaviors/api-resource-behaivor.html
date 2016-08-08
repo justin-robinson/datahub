@@ -71,6 +71,10 @@
             removeFromDomOnDelete: {
                 type:  Boolean,
                 value: false
+            },
+            autoUpdate: {
+                type: Boolean,
+                value: false
             }
         },
         ready: function () {
@@ -160,7 +164,7 @@
         },
         _dataChanged: function ( event, change ) {
 
-            if ( change === null || change.value === null ) {
+            if ( !this.autoUpdate || change === null || change.value === null ) {
                 return;
             }
 
