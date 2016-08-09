@@ -189,6 +189,6 @@ class CompanyExportFormatter
             $array['_embedded']['companies'][] = $companyRecord;
         }
 
-        return array_values($array);
+        return $array;
     }
 }
