@@ -514,7 +514,7 @@ class Company extends \DBCore\Datahub\Company
             [$from, $to, $from, $to, $from, $to]
         );
 
-        return $companiesModified->first()->count;
+        return (int)$companiesModified->first()->count;
     }
 
     /**

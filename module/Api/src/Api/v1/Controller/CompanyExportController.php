@@ -51,7 +51,7 @@ class CompanyExportController extends AbstractRestfulController {
                 }
             }
 
-            return new JsonModel(CompanyExportFormatter::format($companies, $page, $limit, $limit, $count, $from, $to));
+            return new JsonModel(CompanyExportFormatter::format($companies, $page, $limit, $count, $from, $to));
         } catch (\Exception $e) {
             $this->response->setStatusCode(500);
 

@@ -38,7 +38,7 @@ class CompanyExportFormatter
     ) {
         $host = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST');;
         $uri = $host . $apiPath;
-        $totalCount = is_null($totalCount) ? Generic::query('SELECT count(*) AS count FROM company')->first()->count : $totalCount;
+        $totalCount = is_null($totalCount) ? (int)Generic::query('SELECT count(*) AS count FROM company')->first()->count : $totalCount;
         $lastPage = ceil($totalCount / $limit);
 
         $path = parse_url(FormatterHelpers::get_server_variable('REQUEST_URI'), PHP_URL_PATH);
