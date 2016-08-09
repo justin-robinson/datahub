@@ -40,6 +40,16 @@ $latestApiChildRoutes = [
                     ],
                 ],
             ],
+            'export-deletes' => [
+                'type'    => 'Literal',
+                'options' => [
+                    'defaults' => [
+                        'action'     => 'deleteList',
+                        'controller' => 'Api\v1\Controller\CompanyExport',
+                    ],
+                    'route'    => '/export/deletes',
+                ],
+            ],
             'instances'        => [
                 'type'    => 'Segment',
                 'options' => [

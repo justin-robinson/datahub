@@ -408,6 +408,28 @@ class Company extends \DBCore\Datahub\Company
     }
 
     /**
+     * Get deleted count
+     *
+     * @param $from
+     * @param $to
+     *
+     * @return bool|int|Rows
+     */
+    public static function fetch_deleted_in_range_ids($from, $to) {
+
+        return Generic::query(
+            "SELECT
+                companyId
+              FROM
+                company
+              WHERE
+                deletedAt BETWEEN ? AND ?
+              GROUP BY companyID",
+            [$from, $to]
+        );
+    }
+
+    /**
      * @param     $from
      * @param     $to
      * @param int $offset

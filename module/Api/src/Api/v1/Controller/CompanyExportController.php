@@ -16,7 +16,8 @@ class CompanyExportController extends AbstractRestfulController {
     /**
      * @return JsonModel
      */
-    public function getList() {
+    public function getList()
+    {
 
         $from = $this->params()->fromQuery('from', '0');
         $to = $this->params()->fromQuery('to', date('Y-m-d H:i:s'));
@@ -55,5 +56,25 @@ class CompanyExportController extends AbstractRestfulController {
 
             return new JsonModel(['error' => true, 'message' => 'ERROR: ' . $e->getMessage()]);
         }
+    }
+
+    public function deleteListAction ()
+    {
+        $from = $this->params()->fromQuery('from', '0000-00-00 00:00:01');
+        $to = $this->params()->fromQuery('to', date('Y-m-d H:i:s'));
+
+        $deletedCompanyIds = Company::fetch_deleted_in_range_ids($from, $to);
+
+        if ( $deletedCompanyIds === false ) {
+            return $this->response->setStatusCode(204);
+        }
+
+        $deletedCompanyIds = $deletedCompanyIds->to_array();
+
+        array_walk($deletedCompanyIds, function(&$company, $key){
+            $company = $company['companyId'];
+        });
+
+        return new JsonModel(['companyIds'=>$deletedCompanyIds]);
     }
 }
