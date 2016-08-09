@@ -3,6 +3,7 @@
 namespace Api\v1\Controller;
 
 use Api\v1\ResponseFormatter\CompanyExportFormatter;
+use Api\v1\ResponseFormatter\CompanyProfileCollectionFormatter;
 use DB\Datahub\Company;
 use DB\Datahub\CompanyInstance;
 use Zend\View\Model\JsonModel;
@@ -62,19 +63,18 @@ class CompanyExportController extends AbstractRestfulController {
     {
         $from = $this->params()->fromQuery('from', '0000-00-00 00:00:01');
         $to = $this->params()->fromQuery('to', date('Y-m-d H:i:s'));
+        $page = $this->params()->fromQuery('page', 1);
+        $page = (is_numeric($page) && $page >= 1) ? (int)$page : 1;
+        $limit = $this->params()->fromQuery('limit', 1000);
+        $offset = $limit * ($page - 1);
+        $count = Company::fetch_deleted_in_range_count($from, $to);
+        $companies = $count ? Company::fetch_deleted_in_range($from, $to, $offset, $limit) : false;
 
-        $deletedCompanyIds = Company::fetch_deleted_in_range_ids($from, $to);
-
-        if ( $deletedCompanyIds === false ) {
+        if ( $companies === false ) {
             return $this->response->setStatusCode(204);
         }
 
-        $deletedCompanyIds = $deletedCompanyIds->to_array();
-
-        array_walk($deletedCompanyIds, function(&$company, $key){
-            $company = $company['companyId'];
-        });
-
-        return new JsonModel(['companyIds'=>$deletedCompanyIds]);
+        return new JsonModel(CompanyProfileCollectionFormatter::format($companies, $page, $limit, $count, $from,
+            $to, '/api/v1/company/export/deletes'));
     }
 }
