@@ -13,13 +13,13 @@ class CompanyProfileCollectionFormatter
 {
 
     /**
-     * @param Rows $companies
-     * @param      $page
-     * @param      $limit
-     * @param      $totalCount
-     * @param      $from
-     * @param      $to
-     * @param      $apiPath path to api endpoint
+     * @param Rows   $companies
+     * @param        $page
+     * @param        $limit
+     * @param        $totalCount
+     * @param        $from
+     * @param        $to
+     * @param string $apiPath path to api endpoint
      *
      * @return array
      */
