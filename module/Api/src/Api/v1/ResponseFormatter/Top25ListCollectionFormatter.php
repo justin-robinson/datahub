@@ -8,8 +8,14 @@
 
 namespace Api\v1\ResponseFormatter;
 
+use DB\Datahub\CompanyInstanceTop25lists;
+use Scoop\Database\Rows;
 
 class Top25ListCollectionFormatter
 {
-    
+    public  static function format(Rows $lists)
+    {
+        $array = $lists->to_array();
+        return $array;
+    }
 }
