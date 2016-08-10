@@ -13,7 +13,7 @@ use DB\Datahub\CompanyInstanceTop25lists;
 use Scoop\Database\Model\Generic;
 use Zend\View\Model\JsonModel;
 
-class Top25ListsController extends AbstractRestfulController
+class Top25ListController extends AbstractRestfulController
 {
     public function get($companyInstanceId){
         $lists = CompanyInstanceTop25lists::fetch_where('companyInstanceId = ?', [$companyInstanceId]);

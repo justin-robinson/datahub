@@ -319,7 +319,7 @@ $latestApiChildRoutes = [
     'list' => [
         'type'    => 'Literal',
         'options' => [
-            'route'    => '/lists',
+            'route'    => '/list',
             'defaults' => [
                 'controller' => 'Api\v1\Controller\Top25List',
             ],
