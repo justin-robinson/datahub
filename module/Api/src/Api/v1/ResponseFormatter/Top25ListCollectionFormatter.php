@@ -11,8 +11,18 @@ namespace Api\v1\ResponseFormatter;
 use DB\Datahub\CompanyInstanceTop25lists;
 use Scoop\Database\Rows;
 
+/**
+ * Class Top25ListCollectionFormatter
+ *
+ * @package Api\v1\ResponseFormatter
+ */
 class Top25ListCollectionFormatter
 {
+    /**
+     * @param Rows $lists
+     *
+     * @return array
+     */
     public  static function format(Rows $lists)
     {
         $array = $lists->to_array();
