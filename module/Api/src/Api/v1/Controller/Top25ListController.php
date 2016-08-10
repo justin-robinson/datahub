@@ -27,7 +27,7 @@ class Top25ListsController extends AbstractRestfulController
     }
     
     /**
-     * @param mixed $data
+     * @param $data
      *
      * {
      *   "companyMeroveusId": 11111,
