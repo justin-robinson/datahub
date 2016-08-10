@@ -23,7 +23,7 @@ class Top25ListCollectionFormatter
      *
      * @return array
      */
-    public  static function format(Rows $lists)
+    public  static function format( $lists)
     {
         $array = $lists->to_array();
         return $array;
