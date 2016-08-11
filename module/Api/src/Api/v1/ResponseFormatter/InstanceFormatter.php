@@ -43,10 +43,10 @@ class InstanceFormatter
         foreach ($externalIds as &$sourceNameArray) {
             $sourceNameArray = array_values($sourceNameArray);
         }
-        $array['externalIds'] = $externalIds;
+        $array['externalIds'] = (object)$externalIds;
 
-        $array['state'] = $instance->get_state();
-        $array['sortedProperties'] = $instance->sort_properties();
+        $array['state'] = (object)$instance->get_state();
+        $array['sortedProperties'] = (object)$instance->sort_properties();
 
         $array['contacts'] = [];
         foreach ($instance->get_contacts() as $contact) {

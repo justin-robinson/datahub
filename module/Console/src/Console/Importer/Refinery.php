@@ -43,7 +43,7 @@ class Refinery extends ImporterAbstract
                 // format record into some db models
                 $company = $formatter->format($record);
 
-                $company->save();
+                $company->save(false);
 
             } catch (CsvIteratorException $e) {
                 // CsvIterator throws an exception when number of columns in the header row

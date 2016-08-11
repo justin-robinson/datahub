@@ -1,0 +1,161 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-autocomplete/paper-autocomplete.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/iron-list/iron-list.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../behaviors/api-resource-behaivor.html">
+<link rel="import" href="contact-view.html">
+
+<dom-module id="contacts-view">
+
+    <template>
+        <style>
+            :host {
+                background-color: var(--background-color);
+                display: block;
+                padding-left: 16px;
+                padding-right: 16px;
+                @apply(--layout-flex);
+            }
+
+            contact-view {
+                --contact-view-margin: 0 0 10px 0;
+            }
+
+            paper-input, paper-autocomplete {
+                --paper-input-container-input-color: var(--text-color);
+                --paper-input-container-focus-color: var(--highlight-color);
+            }
+
+            #contactList{
+                @apply(--layout-fit);
+                top: 13em;
+                left: 16px;
+                right: 16px;
+                /*height: 800px;*/
+            }
+        </style>
+
+        <h2>Contacts</h2>
+        <paper-autocomplete
+            id="contactSelector"
+            label="Search"
+            remote-source="true"
+            on-input="search"
+            on-autocomplete.selected="searchResultSelected"
+            min-length="3"></paper-autocomplete>
+
+        <iron-ajax
+            auto
+            id="getInstance"
+            handle-as="json"
+            last-response="{{instance}}"
+        ></iron-ajax>
+
+        <iron-ajax
+            auto
+            id="getInstanceContacts"
+            handle-as="json"
+            on-response="parseInstanceContacts"
+        ></iron-ajax>
+
+        <iron-ajax
+            auto
+            id="ajaxSearch"
+            handle-as="json"
+            on-response="parseSearchResults"
+            last-response="{{searchResults}}"
+        ></iron-ajax>
+
+        <template is="dom-if" if="{{instance}}">
+            <h2>{{instance.name}}</h2>
+        </template>
+
+        <iron-list id="contactList" items="{{contacts}}" as="contact">
+            <template>
+                <div>
+                    <contact-view data="[[contact]]"></contact-view>
+                </div>
+            </template>
+        </iron-list>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'contacts-view',
+            properties: {
+                searchTimer: Object
+            },
+            attached: function () {
+                if ( Datahub.queryParams.instanceId ) {
+                    this.set('data.companyInstanceId', Datahub.queryParams.instanceId);
+                    this.$.getInstanceContacts.url = Datahub.apiUrl + 'instance/' + Datahub.queryParams.instanceId + '/contacts';
+                }
+            },
+            fetchResource: function () {
+                if ( this.id() ) {
+                    this.$.getInstance.url = Datahub.apiUrl + 'instance/' + this.id();
+                }
+            },
+            search: function () {
+
+                // perform a search when the user types in the input field
+                var searchString = this.$.contactSelector.$.input.value;
+
+                // don't make request if we haven't met minimum search length
+                if ( searchString.length < this.$.contactSelector.minLength ) {
+                    return;
+                }
+
+                // clear last request to be made
+                clearTimeout(this.searchTimer);
+
+                // set new request to happen in 0.5 seconds
+                var self = this;
+                this.searchTimer = setTimeout(function () {
+                    Datahub.ajaxSpinners.add();
+                    // search api
+                    self.$.ajaxSearch.url = Datahub.apiUrl + 'contact/search/fuzzy/' + encodeURIComponent(searchString);
+                }, 500);
+
+            },
+            parseSearchResults: function () {
+
+                Datahub.ajaxSpinners.remove();
+
+                // do we have results?
+                if ( !this.searchResults || !this.searchResults._embedded || !this.searchResults._embedded.contacts.length ) {
+                    return;
+                }
+
+                // map raw search results to suggestions selector
+                var suggestions = this.searchResults._embedded.contacts.map(function(contact, index){
+                    contact.middleInitial = (contact.middleInitial && contact.middleInitial.length) ? contact.middleInitial + ' ' : '';
+                    return {
+                        text: contact.firstName + ' ' + contact.middleInitial + contact.lastName,
+                        value: contact.name,
+                        index: index
+                    }
+                });
+
+                // set suggestions
+                this.$.contactSelector.suggestions(suggestions);
+            },
+            searchResultSelected: function (e, selection) {
+                // updates the company data model after a search result is selected
+                this.set('contacts', [this.searchResults._embedded.contacts[selection.option.index]]);
+            },
+            parseInstanceContacts: function (event, ironResponse) {
+
+                var response = ironResponse.xhr.response;
+
+                if ( !response._embedded || !response._embedded.contacts ) {
+                    return;
+                }
+
+                this.set('contacts', response._embedded.contacts);
+            }
+        });
+    </script>
+
+</dom-module>

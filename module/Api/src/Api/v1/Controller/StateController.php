@@ -46,15 +46,14 @@ class StateController extends AbstractRestfulController
 
         $state = State::fetch_by_id($stateId);
 
+        $statusCode = 204;
+
         if ($state) {
             $state->populate($data);
-            $state->save();
-            $state->reload();
-
-            return new JsonModel($state->to_array());
+            $statusCode = $state->save() ? 200 : 500;
         }
 
-        return $this->getResponse()->setStatusCode(204);
+        return $this->getResponse()->setStatusCode($statusCode);
 
     }
 
@@ -64,9 +63,6 @@ class StateController extends AbstractRestfulController
         $state = State::fetch_by_id($id);
         if ($state) {
             $state->delete();
-            $state = State::query('SELECT * FROM datahub.state WHERE stateId = ?', [$id])->first();
-
-            return new JsonModel($state->to_array());
         }
 
         return $this->getResponse()->setStatusCode(204);
@@ -77,7 +73,7 @@ class StateController extends AbstractRestfulController
 
         $states = State::fetch_where('1');
 
-        if ($states) {
+        if ($states === false) {
             return $this->getResponse()->setStatusCode(204);
         }
 

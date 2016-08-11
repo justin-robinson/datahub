@@ -8,6 +8,7 @@
 namespace Services\Meroveus;
 
 use DB\Datahub\Contact;
+use Doctrine\ORM\Query\AST\Functions\ConcatFunction;
 use Scoop\Database\Literal;
 use Services\AbstractService;
 
@@ -141,6 +142,7 @@ class ContactService extends AbstractService
         $contact->postalCode = null;
         $contact->createdAt  = isset($contactData['CREATEDATE']) ? $contactData['CREATEDATE'] : new Literal('NOW()');
         $contact->updatedAt  = isset($contactData['LASTUPDATE']) ? $contactData['LASTUPDATE'] : new Literal('NOW()');
+        $contact->deletedAt  = Contact::$dBColumnDefaultValuesArray['deletedAt'];
         unset($meroveusReturn);
 
         return $contact;

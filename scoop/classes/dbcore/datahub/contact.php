@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class Contact
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/06/18
+ * @date 2016/07/26
  * @property mixed $contactId
  * @property mixed $companyInstanceId
  * @property mixed $meroveusId
@@ -53,6 +53,7 @@ class Contact extends Model {
           3 => 'lastName',
           4 => 'createdAt',
           5 => 'updatedAt',
+          6 => 'deletedAt',
         );
 
     public static $dBColumnPropertiesArray = 
@@ -153,7 +154,7 @@ class Contact extends Model {
           'postalCode' => NULL,
           'createdAt' => 'CURRENT_TIMESTAMP',
           'updatedAt' => 'CURRENT_TIMESTAMP',
-          'deletedAt' => NULL,
+          'deletedAt' => '0000-00-00 00:00:00',
         );
 
 }
