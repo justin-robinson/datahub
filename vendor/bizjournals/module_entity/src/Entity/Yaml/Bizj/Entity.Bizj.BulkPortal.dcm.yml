@@ -1,0 +1,107 @@
+Entity\Bizj\BulkPortal:
+  type: entity
+  table: bulk_portal
+  fields:
+    portal_id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned
+      generator:
+        strategy: AUTO
+    portal_name:
+      type: string
+      length: 255
+      nullable: false
+    slug:
+      type: string
+      length: 255
+      nullable: false
+    subscription_number:
+      type: integer
+      columnDefinition: int(10) unsigned
+    start_date:
+      type: datetime
+      nullable: false
+    expire_date:
+      type: datetime
+      nullable: false
+    is_active:
+      type: boolean
+      columnDefinition: tinyint(1) NOT NULL
+      nullable: false
+    note:
+      type: string
+      length: 255
+      nullable: true
+    reminder_email_list:
+      type: string
+      length: 5000
+    user_id:
+      type: integer
+      columnDefinition: int(10) unsigned
+    total_license_count:
+      type: integer
+      columnDefinition: int(10) unsigned
+    parameters:
+      type: string
+      columnDefinition: mediumText
+      nullable: false
+    has_automated_email:
+      type: boolean
+      columnDefinition: tinyint(1) NOT NULL
+      nullable: false
+    email_address:
+      type: string
+      length: 255
+      nullable: true
+    dow_mask:
+      type: string
+      length: 255
+      nullable: true
+    created_by:
+      type: string
+      length: 255
+      nullable: true
+    updated_by:
+      type: string
+      length: 255
+      nullable: true
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  manyToOne:
+      User:
+        targetEntity: UAccount
+        joinColumn:
+          name: user_id
+          referencedColumnName: user_id
+  manyToMany:
+      markets:
+        targetEntity: BulkPortalMarketMap
+        joinTable:
+          name: bulk_portal_market_map
+          joinColumns:
+            portal_id:
+              referencedColumnName: portal_id
+          inverseJoinColumns:
+            portal_id:
+              referencedColumnName: portal_id
+      siteUsers:
+        targetEntity: BulkSiteuser
+        joinTable:
+          name: Bulk_Siteuser
+          joinColumns:
+            portal_id:
+              referencedColumnName: portal_id
+          inverseJoinColumns:
+            portal_id:
+              referencedColumnName: portal_id

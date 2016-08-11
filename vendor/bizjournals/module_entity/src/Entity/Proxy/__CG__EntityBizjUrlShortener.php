@@ -64,10 +64,10 @@ class UrlShortener extends \Entity\Bizj\UrlShortener implements \Doctrine\ORM\Pr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'url_id', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'url', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'market', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'created_time', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'modified_time'];
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'url_id', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'url', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'market', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'created_time', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'modified_time', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'source'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'url_id', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'url', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'market', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'created_time', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'modified_time'];
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'url_id', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'url', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'market', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'created_time', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'modified_time', '' . "\0" . 'Entity\\Bizj\\UrlShortener' . "\0" . 'source'];
     }
 
     /**
@@ -270,6 +270,28 @@ class UrlShortener extends \Entity\Bizj\UrlShortener implements \Doctrine\ORM\Pr
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getModifiedTime', []);
 
         return parent::getModifiedTime();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setSource($source)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSource', [$source]);
+
+        return parent::setSource($source);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getSource()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSource', []);
+
+        return parent::getSource();
     }
 
 }

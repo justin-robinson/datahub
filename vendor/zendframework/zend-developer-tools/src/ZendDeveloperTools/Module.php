@@ -3,7 +3,7 @@
  * Zend Developer Tools for Zend Framework (http://framework.zend.com/)
  *
  * @link      http://github.com/zendframework/ZendDeveloperTools for the canonical source repository
- * @copyright Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
@@ -16,7 +16,6 @@ use Zend\ModuleManager\Feature\InitProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
 use Zend\ModuleManager\Feature\BootstrapListenerInterface;
-use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
 use BjyProfiler\Db\Adapter\ProfilingAdapter;
 
@@ -24,7 +23,6 @@ class Module implements
     InitProviderInterface,
     ConfigProviderInterface,
     ServiceProviderInterface,
-    AutoloaderProviderInterface,
     BootstrapListenerInterface,
     ViewHelperProviderInterface
 {
@@ -86,7 +84,7 @@ class Module implements
 
         $options = $sm->get('ZendDeveloperTools\Config');
 
-        if (!$options->isEnabled()) {
+        if (!$options->isToolbarEnabled()) {
             return;
         }
 
@@ -98,6 +96,10 @@ class Module implements
 
         if ($options->isStrict() && $report->hasErrors()) {
             throw new Exception\InvalidOptionException(implode(' ', $report->getErrors()));
+        }
+
+        if ($options->eventCollectionEnabled()) {
+            $sem->attachAggregate($sm->get('ZendDeveloperTools\EventLoggingListenerAggregate'));
         }
 
         $em->attachAggregate($sm->get('ZendDeveloperTools\ProfilerListener'));
@@ -114,23 +116,9 @@ class Module implements
     /**
      * @inheritdoc
      */
-    public function getAutoloaderConfig()
+    public function getConfig()
     {
-        return array(
-            'Zend\Loader\StandardAutoloader' => array(
-                'namespaces' => array(
-                    __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
-                ),
-            ),
-        );
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getConfig($env = null)
-    {
-        return include __DIR__ . '/config/module.config.php';
+        return include __DIR__ . '/../../config/module.config.php';
     }
 
     public function getViewHelperConfig()
@@ -193,6 +181,15 @@ class Module implements
                 'ZendDeveloperTools\ProfilerListener' => function ($sm) {
                     return new Listener\ProfilerListener($sm, $sm->get('ZendDeveloperTools\Config'));
                 },
+                'ZendDeveloperTools\EventLoggingListenerAggregate' => function ($sm) {
+                    /* @var $config \ZendDeveloperTools\Options */
+                    $config = $sm->get('ZendDeveloperTools\Config');
+
+                    return new Listener\EventLoggingListenerAggregate(
+                        array_map(array($sm, 'get'), $config->getEventCollectors()),
+                        $config->getEventIdentifiers()
+                    );
+                },
                 'ZendDeveloperTools\DbCollector' => function ($sm) {
                     $p  = false;
                     $db = new Collector\DbCollector();
@@ -203,7 +200,8 @@ class Module implements
                             $p = true;
                             $db->setProfiler($adapter->getProfiler());
                         }
-                    } elseif (!$p && $sm->has('Zend\Db\Adapter\ProfilingAdapter')) {
+                    }
+                    if (!$p && $sm->has('Zend\Db\Adapter\ProfilingAdapter')) {
                         $adapter = $sm->get('Zend\Db\Adapter\ProfilingAdapter');
                         if ($adapter instanceof ProfilingAdapter) {
                             $db->setProfiler($adapter->getProfiler());

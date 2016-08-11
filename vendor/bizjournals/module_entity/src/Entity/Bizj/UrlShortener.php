@@ -32,6 +32,11 @@ class UrlShortener extends \Entity\Entity\Base
      */
     private $modified_time;
 
+    /**
+     * @var string
+     */
+    private $source;
+
 
     /**
      * Get urlId
@@ -137,6 +142,30 @@ class UrlShortener extends \Entity\Entity\Base
     public function getModifiedTime()
     {
         return $this->modified_time;
+    }
+
+    /**
+     * Set source
+     *
+     * @param string $source
+     *
+     * @return UrlShortener
+     */
+    public function setSource($source)
+    {
+        $this->source = $source;
+
+        return $this;
+    }
+
+    /**
+     * Get source
+     *
+     * @return string
+     */
+    public function getSource()
+    {
+        return $this->source;
     }
 }
 
