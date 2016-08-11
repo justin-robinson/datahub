@@ -351,12 +351,14 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
                 "SELECT
                     cMap.*
                 FROM
-                  companyInstance_meroveusIndustry cImI
-                  LEFT JOIN dh_industry_bizj_channel_map cMap ON ( cImI.meroveusIndustryId = cMap.dh_industry_id )
+                    companyInstanceProperty cip
+                    LEFT JOIN meroveusIndustry mi ON (mi.industry = cip.value)
+                    LEFT JOIN dh_industry_bizj_channel_map cMap ON (cMap.dh_industry_id = mi.meroveusIndustryId)
                 WHERE
-                  cImI.companyInstanceId = ?
-                GROUP BY 
-                  cMap.channel_id",
+                    cip.companyInstanceId = ?
+                    AND cip.name = 'industry'
+                GROUP BY
+                    cMap.channel_id;",
                 [$this->companyInstanceId]
             );
 

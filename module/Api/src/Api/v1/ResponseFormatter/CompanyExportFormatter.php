@@ -5,6 +5,7 @@ namespace Api\v1\ResponseFormatter;
 use DB\Datahub\Company;
 use DB\Datahub\CompanyInstance;
 use DB\Datahub\CompanyInstanceProperty;
+use DB\Datahub\DhIndustryBizjChannelMap;
 use DB\Datahub\SourceType;
 use Scoop\Database\Model\Generic;
 use Scoop\Database\Rows;
@@ -111,6 +112,7 @@ class CompanyExportFormatter
                 'refineryIds' => [],
                 'instanceIds' => [],
                 'industries'  => [],
+                'channelIds'  => [],
             ];
 
             /**
@@ -143,6 +145,13 @@ class CompanyExportFormatter
                     $companyRecord['stateCode'] = $instance->get_state()->code;
                     $companyRecord['stockSymbol'] = $instance->stockSymbol;
                     $companyRecord['tickerExchange'] = $instance->tickerExchange;
+                }
+
+                foreach ( $instance->get_channel_ids() as $channelId ) {
+                    /**
+                     * @var $channelId DhIndustryBizjChannelMap
+                     */
+                    $companyRecord['channelIds'][$channelId->channel_id] = true;
                 }
 
                 // add this instance id
@@ -186,6 +195,7 @@ class CompanyExportFormatter
             $companyRecord['refineryIds'] = array_keys($companyRecord['refineryIds']);
             $companyRecord['instanceIds'] = array_keys($companyRecord['instanceIds']);
             $companyRecord['industries'] = array_keys($companyRecord['industries']);
+            $companyRecord['channelIds'] = array_keys($companyRecord['channelIds']);
             $array['_embedded']['companies'][] = $companyRecord;
         }
 
