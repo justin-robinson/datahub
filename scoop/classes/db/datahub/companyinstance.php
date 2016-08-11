@@ -24,6 +24,8 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
      */
     public static $companyInstanceCache;
 
+    public static $useCache = true;
+
     /**
      * @var int
      */
@@ -569,7 +571,9 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
             $this->save_contacts();
             $this->save_properties($setTimestamps);
             ++self::$instancesSaved;
-            self::$companyInstanceCache->put($companyInstanceCacheKey, $this);
+            if ( self::$useCache ) {
+                self::$companyInstanceCache->put($companyInstanceCacheKey, $this);
+            }
         }
 
         return $saved;

@@ -22,6 +22,8 @@ class Company extends \DBCore\Datahub\Company
 
     public static $companyCache;
 
+    public static $useCache = true;
+
     public static $companiesSaved = 0;
 
     /**
@@ -288,8 +290,10 @@ class Company extends \DBCore\Datahub\Company
                 $saved = parent::save();
                 if ( $saved ) {
                     ++self::$companiesSaved;
-                    // put company in cache for later
-                    self::$companyCache->put( $this->normalizedName, $this );
+                    if ( self::$useCache ) {
+                        // put company in cache for later
+                        self::$companyCache->put( $this->normalizedName, $this );
+                    }
                 }
             } catch ( \Exception $e ) {
                 // load existing company data into this model

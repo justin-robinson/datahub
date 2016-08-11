@@ -406,6 +406,8 @@ class MeroveusController extends AbstractActionController
 
         $lastMemUsageMessageLength = 0;
 
+        Company::$useCache = CompanyInstance::$useCache = false;
+
         $formatter = Meroveus::get_instance();
 
         // setup our meroveus params
