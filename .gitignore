@@ -11,3 +11,4 @@
 /.idea
 npm-debug.log
 deployment.properties
+public/bower_components

@@ -22,3 +22,7 @@ Entity\Bizj\UrlShortener:
     modified_time:
       type: datetime
       nullable: true
+    source:
+      type: string
+      length: '255'
+      nullable: true

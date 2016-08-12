@@ -406,6 +406,8 @@ class MeroveusController extends AbstractActionController
 
         $lastMemUsageMessageLength = 0;
 
+        Company::$useCache = CompanyInstance::$useCache = false;
+
         $formatter = Meroveus::get_instance();
 
         // setup our meroveus params
@@ -470,7 +472,6 @@ class MeroveusController extends AbstractActionController
                     } else { // create a new record
 
                         $company->save();
-                        $company->employeeCount = empty($target['universal-employee-count_static']) ? 0 : [$target['universal-employee-count_static']];
                         $companyInstanceId = $company->get_company_instances()->first()->companyInstanceId;
 
                         $marketInserted++;

@@ -31,6 +31,25 @@ $latestApiChildRoutes = [
                     ],
                 ],
             ],
+            'export'          => [
+                'type'    => 'Literal',
+                'options' => [
+                    'route'       => '/export',
+                    'defaults'    => [
+                        'controller' => 'Api\v1\Controller\CompanyExport',
+                    ],
+                ],
+            ],
+            'export-deletes' => [
+                'type'    => 'Literal',
+                'options' => [
+                    'defaults' => [
+                        'action'     => 'deleteList',
+                        'controller' => 'Api\v1\Controller\CompanyExport',
+                    ],
+                    'route'    => '/export/deletes',
+                ],
+            ],
             'instances'        => [
                 'type'    => 'Segment',
                 'options' => [
@@ -325,6 +344,7 @@ return [
             'Api\v1\Controller\Company'            => 'Api\v1\Controller\CompanyController',
             'Api\v1\Controller\CompanyInstances'   => 'Api\v1\Controller\CompanyInstancesController',
             'Api\v1\Controller\CompanyProfile'     => 'Api\v1\Controller\CompanyProfileController',
+            'Api\v1\Controller\CompanyExport'      => 'Api\v1\Controller\CompanyExportController',
             'Api\v1\Controller\CompanySearch'      => 'Api\v1\Controller\CompanySearchController',
             'Api\v1\Controller\CompanySearchFuzzy' => 'Api\v1\Controller\CompanySearchFuzzyController',
             'Api\v1\Controller\Contact'            => 'Api\v1\Controller\ContactController',

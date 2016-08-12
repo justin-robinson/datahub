@@ -95,8 +95,8 @@ class CompanyProfileController extends AbstractRestfulController
         $page = (is_numeric($page) && $page >= 1) ? (int)$page : 1;
         $limit = $this->params()->fromQuery('limit', 1000);
         $offset = $limit * ($page - 1);
-        $count = Company::fetch_deleted_in_range_count($from, $to);
-        $companies = $count ? Company::fetch_deleted_in_range($from, $to, $offset, $limit) : false;
+        $count = Company::fetch_deleted_instances_in_range_count($from, $to);
+        $companies = $count ? Company::fetch_deleted_instances_in_range($from, $to, $offset, $limit) : false;
 
         try {
             if ($companies === false) {

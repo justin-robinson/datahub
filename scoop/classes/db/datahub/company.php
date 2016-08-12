@@ -22,6 +22,8 @@ class Company extends \DBCore\Datahub\Company
 
     public static $companyCache;
 
+    public static $useCache = true;
+
     public static $companiesSaved = 0;
 
     /**
@@ -288,8 +290,10 @@ class Company extends \DBCore\Datahub\Company
                 $saved = parent::save();
                 if ( $saved ) {
                     ++self::$companiesSaved;
-                    // put company in cache for later
-                    self::$companyCache->put( $this->normalizedName, $this );
+                    if ( self::$useCache ) {
+                        // put company in cache for later
+                        self::$companyCache->put( $this->normalizedName, $this );
+                    }
                 }
             } catch ( \Exception $e ) {
                 // load existing company data into this model
@@ -364,6 +368,58 @@ class Company extends \DBCore\Datahub\Company
 
         return self::query(
             "SELECT
+              *
+            FROM
+              company
+            WHERE
+              deletedAt BETWEEN ? and ?
+            GROUP BY companyID
+            LIMIT ?, ?",
+            [$from, $to, $offset, $limit]
+        );
+    }
+
+    /**
+     * Get deleted count
+     *
+     * @param $from
+     * @param $to
+     *
+     * @return bool|int|Rows
+     */
+    public static function fetch_deleted_in_range_count($from, $to) {
+
+        $companiesDeleted = Generic::query(
+            "SELECT
+              count(*) as count
+            FROM (
+              SELECT
+                companyId
+              FROM
+                company
+              WHERE
+                deletedAt BETWEEN ? AND ?
+              GROUP BY companyID
+            ) cc",
+            [$from, $to]
+        );
+
+        return $companiesDeleted->first()->count;
+    }
+
+    /**
+     * @param     $from
+     * @param     $to
+     * @param int $offset
+     * @param int $limit
+     *
+     * @return Rows
+     * @throws \Exception
+     */
+    public static function fetch_deleted_instances_in_range( $from, $to, $offset = 0, $limit = 1000) {
+
+        return self::query(
+            "SELECT
               c.*
             FROM
               company c
@@ -385,7 +441,7 @@ class Company extends \DBCore\Datahub\Company
      *
      * @return bool|int|Rows
      */
-    public static function fetch_deleted_in_range_count($from, $to) {
+    public static function fetch_deleted_instances_in_range_count($from, $to) {
 
         $companiesDeleted = Generic::query(
             "SELECT
@@ -462,7 +518,7 @@ class Company extends \DBCore\Datahub\Company
             [$from, $to, $from, $to, $from, $to]
         );
 
-        return $companiesModified->first()->count;
+        return (int)$companiesModified->first()->count;
     }
 
     /**

@@ -40,6 +40,10 @@ class UrlShortener extends Base
      */
     public function shorten($url, $market = 'bizjournals')
     {
+        if (filter_var($url, FILTER_VALIDATE_URL) === false || substr($url, 0, 4) !== 'http') {
+            return '';
+        }
+
         // also add blacklist urls to admin tool publishing/controllers/LinkshortenerController
         $badUrls = array(
             'admin.bizjournals.com',
@@ -48,13 +52,13 @@ class UrlShortener extends Base
             'preview.bizjournals.com',
         );
         foreach ($badUrls as $badUrl) {
-            if (strstr($url, $badUrl) !== false) {
+            if (strpos($url, $badUrl) !== false) {
                 return $url;
             }
         }
 
         //Add www to the URL if it is missing and using bypass param
-        if (strpos($url, 'b=') !== FALSE) {
+        if (strpos($url, 'b=') !== false) {
             $url = str_replace('http://bizjournals.com/', 'http://www.bizjournals.com/', $url);
         }
 
@@ -65,10 +69,13 @@ class UrlShortener extends Base
         ));
 
         if (!is_object($entity)) {
+            $bt = debug_backtrace(0,2);
+            $caller = array_shift($bt);
             $entity = new \Entity\Bizj\UrlShortener();
             $entity
                 ->setUrl($url)
                 ->setMarket($market)
+                ->setSource($caller['file'] . ':' . $caller['line'])
                 ->setCreatedTime(new \DateTime());
 
             $em->persist($entity);

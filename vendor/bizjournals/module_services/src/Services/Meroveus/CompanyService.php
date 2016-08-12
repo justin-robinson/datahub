@@ -253,11 +253,11 @@ class CompanyService extends AbstractService
         curl_setopt($this->curl, CURLOPT_POSTFIELDS, ($isRootQuery ? 'MROOT' : 'MCORE') . '=' . urlencode($json));
         $result = curl_exec($this->curl);
         if ($result) {
-            $resp   = str_replace(":NaN", ":0", gzinflate(substr($result, 10, -8)));
+            $result   = str_replace(":NaN", ":0", gzinflate(substr($result, 10, -8)));
             try {
-                $return = Json\Json::decode($resp, Json\Json::TYPE_ARRAY);
+                $result = Json\Json::decode($result, Json\Json::TYPE_ARRAY);
             } catch ( \RuntimeException $e ) {
-                $return = $resp;
+
             }
             /* Uncomment to simulate all requests after the first one
              *             $this->return = $return;
@@ -267,7 +267,7 @@ class CompanyService extends AbstractService
                         unset($return['SET']['RECS']);
                         $this->returnEmpty = $return;
             */
-            return $return;
+            return $result;
         } else {
             echo 'no meroveus reaponse';
             return false;
