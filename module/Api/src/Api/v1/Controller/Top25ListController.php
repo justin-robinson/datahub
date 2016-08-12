@@ -35,10 +35,21 @@ class Top25ListController extends AbstractRestfulController
      */
     public function get($companyInstanceId)
     {
-        $lists = CompanyInstanceTop25lists::fetch_where('companyInstanceId = ?', [$companyInstanceId]);
-        if ($lists) {
+        $collection = CompanyInstanceTop25lists::fetch_where('companyInstanceId = ?', [$companyInstanceId]);
+        
+        $results = [];
+        foreach ($collection as $entry) {
             
-            return new JsonModel(Top25ListCollectionFormatter::format($lists));
+            $list = Top25List::fetch_where('listId = ?', [$entry->listId]);
+            if($list){
+                $results[] = $list;
+            }
+        }
+        
+        
+        if ($results) {
+            
+            return new JsonModel(Top25ListCollectionFormatter::format($results));
         }
         
         return $this->getResponse()->setStatusCode(204);
@@ -69,6 +80,7 @@ class Top25ListController extends AbstractRestfulController
     {
         if (empty($data['companyMeroveusIds'])) {
             $this->getResponse()->setStatusCode(500);
+            
             return new JsonModel(['message' => 'missing company ids']);
         }
         
@@ -82,16 +94,17 @@ class Top25ListController extends AbstractRestfulController
 //                return new JsonModel(['message' => 'instance with meroveus_id#' . $id . ' not present in datahub']);
 //            }
             
-            if($instance){
+            if ($instance) {
                 // build the mapping
                 $map                    = new CompanyInstanceTop25lists();
                 $map->companyInstanceId = $instance->first()->companyInstanceId;
                 $map->listId            = $data['listId'];
                 // save the mapping
                 $mapSave = $map->save();
-    
+                
                 if (!$mapSave) {
                     $this->getResponse()->setStatusCode(500);
+                    
                     return new JsonModel(['message' => 'mapping did not save']);
                 }
             }
@@ -106,9 +119,11 @@ class Top25ListController extends AbstractRestfulController
         // save the list
         if ($list->save()) {
             $list->reload();
+            
             return new JsonModel($list->to_array());
         } else {
             $this->getResponse()->setStatusCode(500);
+            
             return new JsonModel(['message' => 'list failed to sve']);
         }
     }

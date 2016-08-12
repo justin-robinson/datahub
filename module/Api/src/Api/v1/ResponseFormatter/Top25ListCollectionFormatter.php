@@ -25,7 +25,12 @@ class Top25ListCollectionFormatter
      */
     public  static function format( $lists)
     {
-        $array = $lists->to_array();
-        return $array;
+        
+        $return = [];
+        foreach ($lists as $list) {
+            $return = $list->to_array();
+        }
+        
+        return $return;
     }
 }
