@@ -41,7 +41,7 @@ class Top25ListController extends AbstractRestfulController
         foreach ($collection as $entry) {
             
             $list = Top25List::fetch_where('listId = ?', [$entry->listId]);
-            if($list){
+            if ($list) {
                 $results[] = $list;
             }
         }
@@ -124,7 +124,40 @@ class Top25ListController extends AbstractRestfulController
         } else {
             $this->getResponse()->setStatusCode(500);
             
-            return new JsonModel(['message' => 'list failed to sve']);
+            return new JsonModel(['message' => 'list failed to save']);
         }
+    }
+    
+    
+    /**
+     * @param mixed $id
+     *
+     * @return JsonModel
+     */
+    public function delete($listId)
+    {
+        $mappings = CompanyInstanceTop25lists::fetch_where('listId = ?', [$listId]);
+        
+        // delete each entry
+        foreach ($mappings as $entry) {
+            $list = Top25List::fetch_where('listId = ?', [$entry->listId]);
+            foreach($list as $deleteMe){
+                if (!$deleteMe->delete()) {
+                    $this->getResponse()->setStatusCode(500);
+                    return new JsonModel(['message' => 'list id ' . $list->listId . ' failed to delete']);
+                }
+            }
+        }
+        
+        // delete the mapping collection
+        foreach ($mappings as $mapping) {
+            if (!$mapping->delete()) {
+                $this->getResponse()->setStatusCode(500);
+                return new JsonModel(['message' => 'list id ' . $entry->listId . ' failed to delete']);
+            }
+        }
+        
+        return new JsonModel(['message' => 'list id ' . $entry->listId . ' deleted']);
+        
     }
 }
