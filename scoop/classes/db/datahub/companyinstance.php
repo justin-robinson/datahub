@@ -53,7 +53,12 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
      * @var Rows
      */
     protected $channelIds;
-
+    
+    /**
+     * @var rows
+     */
+    protected $lists;
+    
     /**
      * @var int
      */
@@ -339,7 +344,29 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
         return $this->get_state();
     }
+    
+    /**
+     * @return $mixed
+     */
 
+    public function fetch_lists()
+    {
+        $collection = CompanyInstanceTop25lists::fetch_where('companyInstanceId = ?', [$this->companyInstanceId]);
+        
+        $results = [];
+        foreach ($collection as $entry) {
+            
+            $list = Top25List::fetch_where('listId = ?', [$entry->listId]);
+            if($list){
+                $results[] = $list;
+            }
+        }
+        
+        
+        $this->lists = $results;
+        
+        return $this->get_lists();
+    }
     /**
      * @return mixed
      */
@@ -418,7 +445,11 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
         return $this->propertiesList;
     }
-
+    
+    public function get_lists()
+    {
+        return $this->lists;
+    }
     /**
      * @return array|int
      */
