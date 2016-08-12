@@ -31,7 +31,7 @@ class Top25ListController extends AbstractRestfulController
      *
      * @return JsonModel
      *
-     * useful for debugging since we want to get this payload with the company return
+     * there's no provision to get lists directly as a resource
      */
     public function get($companyInstanceId)
     {

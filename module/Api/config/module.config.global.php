@@ -130,6 +130,20 @@ $latestApiChildRoutes = [
                     ],
                 ],
             ],
+                       
+            'lists'        => [
+                'type'    => 'Segment',
+                'options' => [
+                    'route'       => '[/:id]/lists',
+                    'constraints' => [
+                        'id' => '[0-9]*',
+                    ],
+                    'defaults'    => [
+                        'controller' => 'Api\v1\Controller\Top25List',
+                    ],
+                ],
+            ],
+            
             'search-fuzzy'           => [
                 'type'    => 'Segment',
                 'options' => [
@@ -314,6 +328,8 @@ $latestApiChildRoutes = [
                     ],
                 ],
             ],
+ 
+            
         ],
     ],
     'list' => [
