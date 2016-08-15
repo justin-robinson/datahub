@@ -45,7 +45,6 @@ class CompanyExportController extends AbstractRestfulController {
                      * @var $instance CompanyInstance
                      */
                     $instance->fetch_properties();
-                    $instance->fetch_contacts();
                     $instance->fetch_state();
                     $instance->fetch_channel_ids();
                 }
