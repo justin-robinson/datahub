@@ -11,12 +11,7 @@ namespace Api\v1\Controller;
 use Api\v1\ResponseFormatter\Top25ListCollectionFormatter;
 use DB\Datahub\CompanyInstanceTop25lists;
 use DB\Datahub\Top25List;
-use DB\Datahub\Company;
 use DB\Datahub\CompanyInstance;
-
-use Scoop\Database\Model\Generic;
-use Zend\Db\Sql\Ddl\Column\Integer;
-use Zend\Json\Json;
 use Zend\View\Model\JsonModel;
 
 /**

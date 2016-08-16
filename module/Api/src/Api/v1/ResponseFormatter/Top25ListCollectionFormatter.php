@@ -8,7 +8,6 @@
 
 namespace Api\v1\ResponseFormatter;
 
-use DB\Datahub\CompanyInstanceTop25lists;
 use Scoop\Database\Rows;
 
 /**
