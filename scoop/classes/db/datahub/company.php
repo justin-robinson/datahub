@@ -260,6 +260,45 @@ class Company extends \DBCore\Datahub\Company
     }
 
     /**
+     * @param bool $isHeadquartersOverride
+     *
+     * @return CompanyInstance|null
+     */
+    public function get_latest_instance($isHeadquartersOverride = true) {
+
+        /**
+         * @var $latestInstance CompanyInstance
+         * @var $instance CompanyInstance
+         * @var $latestProperty CompanyInstanceProperty
+         */
+        $latestInstance = null;
+        $latestTimestamp = null;
+
+        foreach ( $this->get_company_instances() as $instance ) {
+
+            if ( $isHeadquartersOverride && $instance->isHeadquarters ) {
+                $latestInstance = $instance;
+                break;
+            }
+
+            $property = $instance->get_latest_property();
+
+            if ( $property === null ) {
+                $property = new CompanyInstanceProperty();
+            }
+
+            $timestamp = $instance->updatedAt > $property->updatedAt ? $instance->updatedAt : $property->updatedAt;
+
+            if ( $latestInstance === null || $timestamp > $latestTimestamp ) {
+                $latestInstance = $instance;
+                $latestTimestamp = $timestamp;
+            }
+        }
+
+        return $latestInstance;
+    }
+
+    /**
      * @param bool $setTimestamps
      *
      * @return bool
