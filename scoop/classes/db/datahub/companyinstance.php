@@ -2,7 +2,9 @@
 
 namespace DB\Datahub;
 
+use Heap\SortedUpdatedAt;
 use LRUCache\LRUCache;
+use Arrays\SortedInsert;
 use Scoop\Database\Literal;
 use Scoop\Database\Query\Buffer;
 use Scoop\Database\Rows;
@@ -35,6 +37,11 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
      * @var int[\DB\Datahub\CompanyInstanceProperty[]]
      */
     protected $propertiesArray;
+
+    /**
+     * @var SortedUpdatedAt
+     */
+    protected $propertiesSortedByUpdatedAt;
 
     /**
      * @var \SplDoublyLinkedList
@@ -157,6 +164,8 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
         $this->propertiesArray = [];
 
+        $this->propertiesSortedByUpdatedAt = new SortedUpdatedAt();
+
         $this->propertiesList = new \SplDoublyLinkedList();
 
         $this->contacts = new Rows();
@@ -227,6 +236,8 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         }
 
         $this->propertiesArray[$sourceType->order][$property->name][$property->value] = $property;
+
+        $this->propertiesSortedByUpdatedAt->insert($property);
 
         $this->propertiesList->push($property);
     }
@@ -412,6 +423,14 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     {
 
         return $this->contacts;
+    }
+
+    /**
+     * @return CompanyInstanceProperty|null
+     */
+    public function get_latest_property() {
+
+        return $this->propertiesSortedByUpdatedAt->isEmpty() ? null : $this->propertiesSortedByUpdatedAt->top();
     }
 
     /**

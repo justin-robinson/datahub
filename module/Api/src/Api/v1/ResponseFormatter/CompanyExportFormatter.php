@@ -120,9 +120,7 @@ class CompanyExportFormatter
              * @var $latestProperty CompanyInstanceProperty[]
              */
             // the last instance to be updated
-            $latestInstance = $company->get_company_instances()->first();
-            // array ( indexed by property name ) of last updated properties for this company
-            $latestProperties = [];
+            $latestInstance = $company->get_latest_instance();
             // array ( indexed by source type id ) of property source types
             $sourceTypes = [];
             foreach ( SourceType::fetch_all() as $sourceType ) {
@@ -132,21 +130,24 @@ class CompanyExportFormatter
                 $sourceTypes[$sourceType->sourceTypeId] = $sourceType;
             }
 
+            // pull in properties from the latest instance
+            $companyRecord['url'] = $latestInstance->url;
+            $companyRecord['stateCode'] = $latestInstance->get_state()->code;
+            $companyRecord['stockSymbol'] = $latestInstance->stockSymbol;
+            $companyRecord['tickerExchange'] = $latestInstance->tickerExchange;
+            $companyRecord['updatedAt'] = ($companyRecord['updatedAt'] < $latestInstance->updatedAt) ? $latestInstance->updatedAt : $companyRecord['updatedAt'];
+
+            // add all properties from the latest instance
+            foreach ( $latestInstance->get_properties() as $property) {
+                $companyRecord[$property->name] = $property->value;
+            }
+
             foreach ( $company->get_company_instances() as $instance ) {
                 /**
                  * @var $instance CompanyInstance
                  */
 
-                // update the updated at if this instance is newer than the company
-                $companyRecord['updatedAt'] = ($companyRecord['updatedAt'] < $instance->updatedAt) ? $instance->updatedAt : $companyRecord['updatedAt'];
-
-                if ( $instance->updatedAt <= $latestInstance->updatedAt ) {
-                    $companyRecord['url'] = $instance->url;
-                    $companyRecord['stateCode'] = $instance->get_state()->code;
-                    $companyRecord['stockSymbol'] = $instance->stockSymbol;
-                    $companyRecord['tickerExchange'] = $instance->tickerExchange;
-                }
-
+                // get the channel ids for each instance
                 foreach ( $instance->get_channel_ids() as $channelId ) {
                     /**
                      * @var $channelId DhIndustryBizjChannelMap
@@ -163,19 +164,6 @@ class CompanyExportFormatter
                      */
                     // update the updateAt if this property is newer than the company or instance
                     $companyRecord['updatedAt'] = ($companyRecord['updatedAt'] < $property->updatedAt) ? $property->updatedAt : $companyRecord['updatedAt'];
-
-                    // ensure we have a latest property for this property name
-                    if ( !array_key_exists($property->name, $latestProperties) ){
-                        $latestProperties[$property->name] = $property;
-                    }
-
-                    // update the company record with the latest property value
-                    $propertyTime = new \DateTime($property->updatedAt);
-                    $latestTime = new \DateTime($latestProperties[$property->name]->updatedAt);
-                    if ( $propertyTime >= $latestTime ) {
-                        $latestProperties[$property->name] = $property;
-                        $companyRecord[$property->name] = $property->value;
-                    }
 
                     // add this external id
                     if ( array_key_exists($property->sourceTypeId, $sourceTypes) ) {
