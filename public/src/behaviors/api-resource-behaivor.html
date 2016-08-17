@@ -102,6 +102,8 @@
             var childName = event.target.childName;
 
             this.set('childResources.' + childName + '.data', response._embedded[childName]);
+
+            this.fire(childName + '-fetched');
         },
         parseLinksFromGet: function(event, ironAjax) {
 
@@ -116,7 +118,10 @@
         },
         fetchChildren: function () {
 
+            // fetch all children
             for ( var childName in this.childResources) {
+
+                // does this resource map to a hal link?
                 if ( this.childResources.hasOwnProperty(childName) && this.links[childName]) {
 
                     this.childResources[childName] = this.childResources[childName] || {};
