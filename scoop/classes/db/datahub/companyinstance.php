@@ -354,15 +354,14 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         $collection = CompanyInstanceTop25lists::fetch_where('companyInstanceId = ?', [$this->companyInstanceId]);
         
         $results = [];
-        foreach ($collection as $entry) {
-            
-            $list = Top25List::fetch_where('listId = ?', [$entry->listId]);
-            if($list){
-                $results[] = $list;
+        if($collection){
+            foreach ($collection as $entry) {
+                $list = Top25List::fetch_where('listId = ?', [$entry->listId]);
+                if($list){
+                    $results[] = $list;
+                }
             }
         }
-        
-        
         $this->lists = $results;
         
         return $this->get_lists();

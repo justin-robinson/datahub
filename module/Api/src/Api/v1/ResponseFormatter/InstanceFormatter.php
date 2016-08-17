@@ -53,7 +53,7 @@ class InstanceFormatter
             $array['contacts'][] = ContactFormatter::format($contact);
         }
         
-        $array['lists'] =(object)$instance->get_lists();
+        $array['lists'] =(object)$instance->fetch_lists();
         
         $host = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST', 'hub');
 
