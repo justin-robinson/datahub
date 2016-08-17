@@ -1,18 +1,19 @@
-<link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
-<link rel="import" href="../../bower_components/paper-autocomplete/paper-autocomplete.html">
-<link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
-<link rel="import" href="../../bower_components/paper-dialog-scrollable/paper-dialog-scrollable.html">
-<link rel="import" href="../../bower_components/paper-card/paper-card.html">
-<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../../bower_components/iron-icons/social-icons.html">
-<link rel="import" href="../../bower_components/neon-animation/animations/scale-up-animation.html">
 <link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/scale-up-animation.html">
+<link rel="import" href="../../bower_components/paper-autocomplete/paper-autocomplete.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-dialog-scrollable/paper-dialog-scrollable.html">
+<link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../behaviors/api-resource-behaivor.html">
-<link rel="import" href="property-view.html">
 <link rel="import" href="confirm-delete-view.html">
+<link rel="import" href="property-view.html">
 
 <dom-module id="instance-view">
 
@@ -23,7 +24,7 @@
                 --paper-card-background-color: var(--paper-grey-200);
             }
 
-            paper-card paper-input,paper-autocomplete {
+            #values {
                 width: 95%;
                 padding-left:1em;
             }
@@ -95,7 +96,8 @@
         </style>
 
         <paper-card heading="{{data.name}}">
-            <div>
+            <div id="values">
+                <paper-checkbox checked="{{data.isHeadquarters}}">Headquarters</paper-checkbox>
                 <paper-input value="{{data.companyInstanceId}}" label="Instance Id" on-change="companyInstanceIdChanged"></paper-input>
                 <paper-input value="{{data.name}}" label="Name"></paper-input>
                 <paper-input value="{{data.url}}" label="Url"></paper-input>
@@ -207,6 +209,9 @@
                     }
                 },
                 ready: function () {
+
+                    // convert isHeadquarters flag to a true boolean for the checkbox
+                    this.set('data.isHeadquarters', parseInt(this.data.isHeadquarters) === 1);
 
                     var self = this;
 
@@ -352,7 +357,7 @@
                 },
                 propertiesOpened: function () {
                     this.$.propertiesModal.querySelector('paper-input').$.input.focus();
-                },
+                }
             });
         })();
     </script>
