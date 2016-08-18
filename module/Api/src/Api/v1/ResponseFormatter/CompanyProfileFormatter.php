@@ -34,10 +34,11 @@ class CompanyProfileFormatter
         $latestInstance = $company->get_latest_instance();
 
         $array['properties'] = [
-            'updatedAt'   => ($array['updatedAt'] < $latestInstance->updatedAt) ? $latestInstance->updatedAt : $array['updatedAt'],
-            'externalIds' => [],
-            'industries'  => [],
-            'channelIds'  => [],
+            'updatedAt'        => ($array['updatedAt'] < $latestInstance->updatedAt) ? $latestInstance->updatedAt : $array['updatedAt'],
+            'externalIds'      => [],
+            'industries'       => [],
+            'channelIds'       => [],
+            'latestInstanceId' => $latestInstance->companyInstanceId,
         ];
 
         // array ( indexed by source type id ) of property source types
