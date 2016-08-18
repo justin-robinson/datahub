@@ -302,10 +302,10 @@ $latestApiChildRoutes = [
                     ],
                 ],
             ],
-            'instances'        => [
+            'entry'        => [
                 'type'    => 'Segment',
                 'options' => [
-                    'route'       => '/:id/entry/[:id]',
+                    'route'       => '/entry[/:id]',
                     'constraints' => [
                         'id' => '[0-9]*',
                     ],

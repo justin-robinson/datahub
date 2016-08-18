@@ -18,6 +18,7 @@ class DatasetEntriesController extends AbstractRestfulController
 {
     public function get($entryId)
     {
+        
         $entry = DatasetEntries::fetch_by_id($entryId);
         if ($entry) {
             return new JsonModel(DatasetEntriesFormatter::format($entry));
@@ -26,15 +27,21 @@ class DatasetEntriesController extends AbstractRestfulController
         return $this->getResponse()->setStatusCode(404);
     }
     
-    
     public function create($data)
     {
+        $entry = new DatasetEntries($data);
+        if ($entry->save()) {
+            // get the actual timestamps
+            $entry->reload();
+        }
         
+        return new JsonModel(DatasetEntriesFormatter::format($entry, true));
     }
     public function update($entryId, $data)
     {
         $entry = DatasetEntries::fetch_by_id($entryId);
         $entry->populate($data);
+        $entry->save();
     }
     
     public function delete($entryId)
