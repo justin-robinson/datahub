@@ -149,6 +149,20 @@ $latestApiChildRoutes = [
                     ],
                 ],
             ],
+                       
+            'lists'        => [
+                'type'    => 'Segment',
+                'options' => [
+                    'route'       => '[/:id]/lists',
+                    'constraints' => [
+                        'id' => '[0-9]*',
+                    ],
+                    'defaults'    => [
+                        'controller' => 'Api\v1\Controller\Top25List',
+                    ],
+                ],
+            ],
+            
             'search-fuzzy'           => [
                 'type'    => 'Segment',
                 'options' => [
@@ -333,8 +347,31 @@ $latestApiChildRoutes = [
                     ],
                 ],
             ],
+ 
+            
         ],
     ],
+    'list' => [
+        'type'    => 'Literal',
+        'options' => [
+            'route'    => '/list',
+            'defaults' => [
+                'controller' => 'Api\v1\Controller\Top25List',
+            ],
+        ],
+        'child_routes' => [
+            'id'               => [
+                'type'    => 'Segment',
+                'options' => [
+                    'route'       => '[/:id]',
+                    'constraints' => [
+                        'id' => '[0-9]*',
+                    ],
+                ],
+            ],
+        ],
+    ],
+    
 ];
 return [
 
@@ -360,7 +397,7 @@ return [
             'Api\v1\Controller\SourceType'         => 'Api\v1\Controller\SourceTypeController',
             'Api\v1\Controller\Dataset'            => 'Api\v1\Controller\DatasetController',
             'Api\v1\Controller\DatasetEntries'     => 'Api\v1\Controller\DatasetEntriesController',
-            'Api\v1\Controller\Type'               => 'Api\v1\Controller\TypeController',
+            'Api\v1\Controller\Top25List'          => 'Api\v1\Controller\Top25ListController',
         ],
     ],
     'router'       => [
