@@ -2,7 +2,9 @@
 
 namespace DB\Datahub;
 
+use Heap\SortedUpdatedAt;
 use LRUCache\LRUCache;
+use Arrays\SortedInsert;
 use Scoop\Database\Literal;
 use Scoop\Database\Query\Buffer;
 use Scoop\Database\Rows;
@@ -24,6 +26,8 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
      */
     public static $companyInstanceCache;
 
+    public static $useCache = true;
+
     /**
      * @var int
      */
@@ -33,6 +37,11 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
      * @var int[\DB\Datahub\CompanyInstanceProperty[]]
      */
     protected $propertiesArray;
+
+    /**
+     * @var SortedUpdatedAt
+     */
+    protected $propertiesSortedByUpdatedAt;
 
     /**
      * @var \SplDoublyLinkedList
@@ -53,7 +62,12 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
      * @var Rows
      */
     protected $channelIds;
-
+    
+    /**
+     * @var rows
+     */
+    protected $lists;
+    
     /**
      * @var int
      */
@@ -155,6 +169,8 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
         $this->propertiesArray = [];
 
+        $this->propertiesSortedByUpdatedAt = new SortedUpdatedAt();
+
         $this->propertiesList = new \SplDoublyLinkedList();
 
         $this->contacts = new Rows();
@@ -226,6 +242,8 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
         $this->propertiesArray[$sourceType->order][$property->name][$property->value] = $property;
 
+        $this->propertiesSortedByUpdatedAt->insert($property);
+
         $this->propertiesList->push($property);
     }
 
@@ -235,13 +253,13 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     public function delete()
     {
 
-        if (!$this->loaded_from_database()) {
+        if (!$this->loadedFromDb) {
             return false;
         }
 
         $this->deletedAt = new Literal('NOW()');
 
-        return $this->save(false);
+        return parent::save();
     }
 
     /**
@@ -339,7 +357,28 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
         return $this->get_state();
     }
+    
+    /**
+     * @return $mixed
+     */
 
+    public function fetch_lists()
+    {
+        $collection = CompanyInstanceTop25lists::fetch_where('companyInstanceId = ?', [$this->companyInstanceId]);
+        
+        $results = [];
+        if($collection){
+            foreach ($collection as $entry) {
+                $list = Top25List::fetch_where('listId = ?', [$entry->listId]);
+                if($list){
+                    $results[] = $list;
+                }
+            }
+        }
+        $this->lists = $results;
+        
+        return $this->get_lists();
+    }
     /**
      * @return mixed
      */
@@ -351,12 +390,14 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
                 "SELECT
                     cMap.*
                 FROM
-                  companyInstance_meroveusIndustry cImI
-                  LEFT JOIN dh_industry_bizj_channel_map cMap ON ( cImI.meroveusIndustryId = cMap.dh_industry_id )
+                    companyInstanceProperty cip
+                    LEFT JOIN meroveusIndustry mi ON (mi.industry = cip.value)
+                    LEFT JOIN dh_industry_bizj_channel_map cMap ON (cMap.dh_industry_id = mi.meroveusIndustryId)
                 WHERE
-                  cImI.companyInstanceId = ?
-                GROUP BY 
-                  cMap.channel_id",
+                    cip.companyInstanceId = ?
+                    AND cip.name = 'industry'
+                GROUP BY
+                    cMap.channel_id;",
                 [$this->companyInstanceId]
             );
 
@@ -411,6 +452,14 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     }
 
     /**
+     * @return CompanyInstanceProperty|null
+     */
+    public function get_latest_property() {
+
+        return $this->propertiesSortedByUpdatedAt->isEmpty() ? null : $this->propertiesSortedByUpdatedAt->top();
+    }
+
+    /**
      * @return \SplDoublyLinkedList
      */
     public function get_properties()
@@ -418,7 +467,11 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
 
         return $this->propertiesList;
     }
-
+    
+    public function get_lists()
+    {
+        return $this->lists;
+    }
     /**
      * @return array|int
      */
@@ -567,7 +620,9 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
             $this->save_contacts();
             $this->save_properties($setTimestamps);
             ++self::$instancesSaved;
-            self::$companyInstanceCache->put($companyInstanceCacheKey, $this);
+            if ( self::$useCache ) {
+                self::$companyInstanceCache->put($companyInstanceCacheKey, $this);
+            }
         }
 
         return $saved;

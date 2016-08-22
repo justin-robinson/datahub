@@ -4,5 +4,8 @@
         <testsuite name="DataHub Complete Test Suite">
             <directory suffix=".php">./ApiTest</directory>
         </testsuite>
+        <testsuite name="scoop">
+            <directory>./scoop</directory>
+        </testsuite>
     </testsuites>
 </phpunit>

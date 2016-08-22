@@ -1,0 +1,54 @@
+Entity\Bizj\BulkSiteuser:
+  type: entity
+  table: bulk_siteuser
+  fields:
+    id:
+      id: true
+      type: integer
+      columnDefinition: int(10) unsigned
+    user_id:
+      type: integer
+      columnDefinition: int(10) unsigned
+      nullable: false
+    portal_id:
+      type: integer
+      columnDefinition: int(10) unsigned
+      nullable: false
+    parameters:
+      type: string
+    user_status:
+      type: string
+      columnDefinition: enum('pending', 'active', 'disabled')
+      options:
+        validate: ['pending','active','disabled']
+    email_sent:
+      type: boolean
+      columnDefinition: tinyint(1)
+      nullable: false
+    updated_by:
+      type: string
+      length: 255
+      nullable: true
+    created_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: create
+    updated_at:
+      type: datetime
+      nullable: false
+      options:
+        timestampable:
+          on: update
+  manyToOne:
+      BulkPortal:
+        targetEntity: BulkPortal
+        joinColumn:
+          name: portal_id
+          referencedColumnName: portal_id
+      User:
+        targetEntity: UAccount
+        joinColumn:
+          name: user_id
+          referencedColumnName: user_id

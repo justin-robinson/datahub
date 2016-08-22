@@ -104,8 +104,19 @@ class InstanceController extends AbstractRestfulController
     public function delete($id)
     {
 
+        // get the instance to delete
         $instance = CompanyInstance::fetch_by_id($id);
+
+
         if ($instance) {
+
+            // delete the instance properties
+            $instance->fetch_properties();
+            foreach ( $instance->get_properties() as $property ) {
+                $property->delete();
+            }
+
+            // delete the instance
             $instance->delete();
         }
 
