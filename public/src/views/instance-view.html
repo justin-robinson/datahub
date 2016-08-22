@@ -99,9 +99,11 @@
         <paper-card heading="{{data.name}}">
             <div id="values">
                 <paper-checkbox checked="{{data.isHeadquarters}}">Headquarters</paper-checkbox>
-                <paper-input value="{{data.companyInstanceId}}" label="Instance Id" on-change="companyInstanceIdChanged"></paper-input>
+                <paper-input value="{{data.companyInstanceId}}" label="Instance Id" on-change="companyInstanceIdChanged" disabled></paper-input>
                 <paper-input value="{{data.name}}" label="Name"></paper-input>
                 <paper-input value="{{data.url}}" label="Url"></paper-input>
+                <paper-input value="{{data.stockSymbol}}" label="Stock Symbol"></paper-input>
+                <paper-input value="{{data.tickerExchange}}" label="Ticker Exchange"></paper-input>
                 <paper-autocomplete value="{{data.marketCode}}" id="marketSelector" text-property="market_name" value-property="market_code" label="Market"></paper-autocomplete>
                 <paper-autocomplete value="{{data.stateId}}" id="stateSelector" text-property="name" value-property="stateId" label="State"></paper-autocomplete>
 <!--                <paper-input value="{{data.createdAt}}" label="Created"></paper-input>-->
