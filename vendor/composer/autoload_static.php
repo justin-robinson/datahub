@@ -250,17 +250,12 @@ class ComposerStaticInit80ce7eceae09e36de01171fc8eae3626
         ),
     );
 
-    public static $classMap = array (
-        'ZendDeveloperTools\\Module' => __DIR__ . '/..' . '/zendframework/zend-developer-tools/Module.php',
-    );
-
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit80ce7eceae09e36de01171fc8eae3626::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit80ce7eceae09e36de01171fc8eae3626::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit80ce7eceae09e36de01171fc8eae3626::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit80ce7eceae09e36de01171fc8eae3626::$classMap;
 
         }, null, ClassLoader::class);
     }

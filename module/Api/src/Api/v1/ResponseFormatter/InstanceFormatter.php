@@ -27,8 +27,8 @@ class InstanceFormatter
         }
 
         // find all external ids for this instance
-        $array['properties'] = [];
-        $externalIds = [];
+        $array['properties'] = new \stdClass();
+        $externalIds = new \stdClass();
         foreach ($instance->get_properties() as $property) {
             $sourceType = SourceType::fetch_by_id($property->sourceTypeId);
 
@@ -36,14 +36,13 @@ class InstanceFormatter
             $sourceName = explode(':', $sourceType->name)[0];
 
             // add this source id to the array
-            $externalIds[$sourceName][$property->sourceId] = $property->sourceId;
-            $array['properties'][$property->name][] = PropertyFormatter::format($property);
+            $externalIds->{$sourceName}[$property->sourceId] = $property->sourceId;
+            $array['properties']->{$property->name}[] = PropertyFormatter::format($property);
         }
         // reindex array by ints
         foreach ($externalIds as &$sourceNameArray) {
             $sourceNameArray = array_values($sourceNameArray);
         }
-        $array['externalIds'] = (object)$externalIds;
 
         $array['state'] = (object)$instance->get_state();
         $array['sortedProperties'] = (object)$instance->sort_properties();
@@ -52,7 +51,9 @@ class InstanceFormatter
         foreach ($instance->get_contacts() as $contact) {
             $array['contacts'][] = ContactFormatter::format($contact);
         }
-
+        
+        $array['lists'] = $instance->fetch_lists();
+        
         $host = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST', 'hub');
 
         $array['_links'] = [

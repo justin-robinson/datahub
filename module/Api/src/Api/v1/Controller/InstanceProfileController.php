@@ -39,6 +39,7 @@ class InstanceProfileController extends AbstractRestfulController
         $companyInstance->fetch_properties();
         $companyInstance->fetch_contacts();
         $companyInstance->fetch_state();
+        $companyInstance->fetch_lists();
 
         return new JsonModel(InstanceFormatter::format($companyInstance));
     }

@@ -31,6 +31,25 @@ $latestApiChildRoutes = [
                     ],
                 ],
             ],
+            'export'          => [
+                'type'    => 'Literal',
+                'options' => [
+                    'route'       => '/export',
+                    'defaults'    => [
+                        'controller' => 'Api\v1\Controller\CompanyExport',
+                    ],
+                ],
+            ],
+            'export-deletes' => [
+                'type'    => 'Literal',
+                'options' => [
+                    'defaults' => [
+                        'action'     => 'deleteList',
+                        'controller' => 'Api\v1\Controller\CompanyExport',
+                    ],
+                    'route'    => '/export/deletes',
+                ],
+            ],
             'instances'        => [
                 'type'    => 'Segment',
                 'options' => [
@@ -130,6 +149,20 @@ $latestApiChildRoutes = [
                     ],
                 ],
             ],
+                       
+            'lists'        => [
+                'type'    => 'Segment',
+                'options' => [
+                    'route'       => '[/:id]/lists',
+                    'constraints' => [
+                        'id' => '[0-9]*',
+                    ],
+                    'defaults'    => [
+                        'controller' => 'Api\v1\Controller\Top25List',
+                    ],
+                ],
+            ],
+            
             'search-fuzzy'           => [
                 'type'    => 'Segment',
                 'options' => [
@@ -314,8 +347,31 @@ $latestApiChildRoutes = [
                     ],
                 ],
             ],
+ 
+            
         ],
     ],
+    'list' => [
+        'type'    => 'Literal',
+        'options' => [
+            'route'    => '/list',
+            'defaults' => [
+                'controller' => 'Api\v1\Controller\Top25List',
+            ],
+        ],
+        'child_routes' => [
+            'id'               => [
+                'type'    => 'Segment',
+                'options' => [
+                    'route'       => '[/:id]',
+                    'constraints' => [
+                        'id' => '[0-9]*',
+                    ],
+                ],
+            ],
+        ],
+    ],
+    
 ];
 return [
 
@@ -325,6 +381,7 @@ return [
             'Api\v1\Controller\Company'            => 'Api\v1\Controller\CompanyController',
             'Api\v1\Controller\CompanyInstances'   => 'Api\v1\Controller\CompanyInstancesController',
             'Api\v1\Controller\CompanyProfile'     => 'Api\v1\Controller\CompanyProfileController',
+            'Api\v1\Controller\CompanyExport'      => 'Api\v1\Controller\CompanyExportController',
             'Api\v1\Controller\CompanySearch'      => 'Api\v1\Controller\CompanySearchController',
             'Api\v1\Controller\CompanySearchFuzzy' => 'Api\v1\Controller\CompanySearchFuzzyController',
             'Api\v1\Controller\Contact'            => 'Api\v1\Controller\ContactController',
@@ -340,7 +397,7 @@ return [
             'Api\v1\Controller\SourceType'         => 'Api\v1\Controller\SourceTypeController',
             'Api\v1\Controller\Dataset'            => 'Api\v1\Controller\DatasetController',
             'Api\v1\Controller\DatasetEntries'     => 'Api\v1\Controller\DatasetEntriesController',
-            'Api\v1\Controller\Type'               => 'Api\v1\Controller\TypeController',
+            'Api\v1\Controller\Top25List'          => 'Api\v1\Controller\Top25ListController',
         ],
     ],
     'router'       => [
