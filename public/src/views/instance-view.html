@@ -70,7 +70,7 @@
             }
 
             #propertyActions {
-                margin: 0px;
+                margin: 0;
             }
 
             paper-icon-button.add-property {
@@ -94,18 +94,38 @@
             a.blank {
                 text-decoration: none;
             }
+
+            #values * {
+                display: inline-block;
+            }
+
+            .col-3_4 {
+                width: 74%; !important;
+            }
+            .col-1_2 {
+                width: 48%; !important;
+            }
+            .col-1_3 {
+                width: 32%; !important;
+            }
+            .col-1_4 {
+                width: 24%;
+            }
+            .col-1_6 {
+                width: 15%; !important;
+            }
         </style>
 
         <paper-card heading="{{data.name}}">
             <div id="values">
-                <paper-checkbox checked="{{data.isHeadquarters}}">Headquarters</paper-checkbox>
-                <paper-input value="{{data.companyInstanceId}}" label="Instance Id" on-change="companyInstanceIdChanged" disabled></paper-input>
-                <paper-input value="{{data.name}}" label="Name"></paper-input>
-                <paper-input value="{{data.url}}" label="Url"></paper-input>
-                <paper-input value="{{data.stockSymbol}}" label="Stock Symbol"></paper-input>
-                <paper-input value="{{data.tickerExchange}}" label="Ticker Exchange"></paper-input>
-                <paper-autocomplete value="{{data.marketCode}}" id="marketSelector" text-property="market_name" value-property="market_code" label="Market"></paper-autocomplete>
-                <paper-autocomplete value="{{data.stateId}}" id="stateSelector" text-property="name" value-property="stateId" label="State"></paper-autocomplete>
+                <paper-checkbox class="col-1_6" checked="{{data.isHeadquarters}}">Headquarters</paper-checkbox>
+                <paper-input class="col-1_4" value="{{data.companyInstanceId}}" label="Instance Id" on-change="companyInstanceIdChanged" disabled></paper-input>
+                <paper-input class="col-1_4" value="{{data.name}}" label="Name"></paper-input>
+                <paper-input class="col-1_4" value="{{data.stockSymbol}}" label="Stock Symbol"></paper-input>
+                <paper-input class="col-1_4" value="{{data.tickerExchange}}" label="Ticker Exchange"></paper-input>
+                <paper-input class="col-3_4" value="{{data.url}}" label="Url"></paper-input>
+                <paper-autocomplete class="col-1_2" value="{{data.marketCode}}" id="marketSelector" text-property="market_name" value-property="market_code" label="Market"></paper-autocomplete>
+                <paper-autocomplete class="col-1_2" value="{{data.stateId}}" id="stateSelector" text-property="name" value-property="stateId" label="State"></paper-autocomplete>
 <!--                <paper-input value="{{data.createdAt}}" label="Created"></paper-input>-->
 <!--                <paper-input value="{{data.updatedAt}}" label="Updated"></paper-input>-->
             </div>
