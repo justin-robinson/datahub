@@ -130,17 +130,23 @@
 <!--                <paper-input value="{{data.updatedAt}}" label="Updated"></paper-input>-->
             </div>
 
+<!--    Save Button        -->
             <paper-icon-button id="save" icon="save" on-click="saveResource" class="save"></paper-icon-button>
+
+
             <template id="propertyTemplate" is="dom-if" if="{{data.companyInstanceId}}">
+<!--    Contacts Button        -->
                 <a href="/contacts/?instanceId={{data.companyInstanceId}}" class="blank">
                     <paper-icon-button id="contacts" icon="social:people" class="contacts"></paper-icon-button>
                 </a>
+<!--    Delete Button            -->
                 <paper-icon-button id="delete" icon="delete" on-click="confirmDelete" class="delete"></paper-icon-button>
-
+<!--    Properties Modal Button            -->
                 <template is="dom-if" if="{{childResources.properties.data.length}}">
                     <paper-icon-button id="showProperties" icon="build" on-click="showProperties" class="show-properties">Properties</paper-icon-button>
                 </template>
             </template>
+
             <paper-dialog
                 id="propertiesModal"
                 always-on-top
