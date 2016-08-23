@@ -50,8 +50,10 @@
                     this.listen(ajax.post, 'error', 'removeSpinner');
                     this.listen(ajax.put, 'iron-ajax-request', 'addSpinner');
                     this.listen(ajax.put, 'iron-ajax-response', 'removeSpinner');
+                    this.listen(ajax.put, 'error', 'removeSpinner');
                     this.listen(ajax.delete, 'iron-ajax-request', 'addSpinner');
                     this.listen(ajax.delete, 'iron-ajax-response', 'removeSpinner');
+                    this.listen(ajax.delete, 'error', 'removeSpinner');
 
                     return ajax;
                 }
@@ -132,6 +134,7 @@
                         this.listen(this.childResources[childName].ajax, 'iron-ajax-response', 'bindResponseToChild');
                         this.listen(this.childResources[childName].ajax, 'iron-ajax-request', 'addSpinner');
                         this.listen(this.childResources[childName].ajax, 'iron-ajax-response', 'removeSpinner');
+                        this.listen(this.childResources[childName].ajax, 'error', 'removeSpinner');
                     }
 
                     this.childResources[childName].ajax.url = this.url + '/' + this.id() + '/' + childName;
