@@ -172,13 +172,13 @@
             </confirm-delete-view>
         </paper-card>
 
-        <iron-ajax
-            id="getState"
-            auto
-            handle-as="json"
-            on-response="parseStateResponse"
-            on-error="parseStateResponse"
-        ></iron-ajax>
+<!--        <iron-ajax-->
+<!--            id="getState"-->
+<!--            auto-->
+<!--            handle-as="json"-->
+<!--            on-response="parseStateResponse"-->
+<!--            on-error="parseStateResponse"-->
+<!--        ></iron-ajax>-->
 
         <iron-ajax
             id="getMarket"
@@ -192,24 +192,6 @@
 
     <script>
         (function () {
-
-            var states = {
-                data: null,
-                sorted: null,
-                fetching: false,
-                fetched: false,
-                event: new Event('states-fetched')
-            };
-
-            var markets = {
-                data: null,
-                sorted: null,
-                fetching: false,
-                fetched: false,
-                event: new Event('markets-fetched')
-            };
-
-            var element = document.createElement('div');
 
             Polymer({
                 is: 'instance-view',
@@ -235,125 +217,35 @@
                     },
                     removeFromDomOnDelete: {
                         value: true
+                    },
+                    sharedCachableResources: {
+                        value: {
+                            'states': {
+                                url: Datahub.apiUrl + 'state',
+                                indexBy: 'stateId'
+                            },
+                            'markets': {
+                                url: Datahub.apiUrl + 'market',
+                                indexBy: 'market_code'
+                            }
+                        }
                     }
                 },
                 ready: function () {
 
+                    // listen for data changes
+                    this.listen(this, 'data-changed', 'dataChanged');
+
+                    // listen to the event fired when cachable resources are loaded
+                    this.listen(this, 'states-loaded', 'bindStatesToAutocomplete');
+                    this.listen(this, 'markets-loaded', 'bindMarketsToAutocomplete');
+
+                },
+                dataChanged: function () {
+                    this.setStateAutocompleteValue();
+                    this.setMarketAutocompleteValue();
                     // convert isHeadquarters flag to a true boolean for the checkbox
-                    this.set('data.isHeadquarters', parseInt(this.data.isHeadquarters) === 1);
-
-                    var self = this;
-
-                    // get all the possible states from the api
-
-                    // if we have already gotten the states, just attached them to autocomplete
-                    if ( states.fetched ) {
-                        this.$.stateSelector.source=states.data;
-                        return;
-                    }
-
-                    // listen to the event fired when the states are fetched
-                    element.addEventListener('states-fetched', function () {
-
-                        // attach states to autocomplete
-                        self.$.stateSelector.source=states.data;
-
-                        // set current value of the autocomplete to the value of the instance
-                        if ( !self.data.stateId ) {
-                            return;
-                        }
-                        var state = states.sorted[self.data.stateId];
-                        self.$.stateSelector.setOption({
-                            text: state.name,
-                            value: state.stateId
-                        });
-                    });
-
-                    // first instance will do the actual api call for the states
-                    if ( !states.fetching ) {
-                        states.fetching = true;
-                        Datahub.ajaxSpinners.add();
-                        this.$.getState.url = Datahub.apiUrl + 'state';
-                    }
-
-
-                    // get all the possible markets from the api
-
-                    // if we have already gotten the states, just attached them to autocomplete
-                    if ( markets.fetched ) {
-                        this.$.marketSelector.source=markets.data;
-                        return;
-                    }
-
-                    // listen to the event fired when the markets are fetched
-                    element.addEventListener('markets-fetched', function () {
-
-                        // attach markets to autocomplete
-                        self.$.marketSelector.source=markets.data;
-
-                        // set current value of the autocomplete to the value of the instance
-                        if ( !self.data.marketCode ) {
-                            return;
-                        }
-                        var market = markets.sorted[self.data.marketCode];
-                        self.$.marketSelector.setOption({
-                            text: market.market_name,
-                            value: market.market_code
-                        });
-                    });
-
-                    // first instance will do the actual api call for the markets
-                    if ( !markets.fetching ) {
-                        markets.fetching = true;
-                        Datahub.ajaxSpinners.add();
-                        this.$.getMarket.url = Datahub.apiUrl + 'market';
-                    }
-
-                },
-                parseStateResponse: function (event, response) {
-
-                    Datahub.ajaxSpinners.remove();
-
-                    // set flags that we have fetched the states
-                    states.fetched = true;
-                    states.fetching = false;
-
-                    if (response.xhr && response.xhr.response) {
-                        // save states api return
-                        states.data = response.xhr.response;
-
-                        // create map of stateId to state objects
-                        states.sorted = {};
-                        states.data.map(function (state) {
-                            states.sorted[state.stateId] = state;
-                        });
-
-                        // notify all other elements that the states have been fetched
-                        element.dispatchEvent(states.event);
-                    }
-                },
-                parseMarketResponse: function (event, response) {
-
-                    Datahub.ajaxSpinners.remove();
-
-                    // set flags that we have fetched the states
-                    markets.fetched = true;
-                    markets.fetching = false;
-
-                    if (response.xhr && response.xhr.response) {
-                        // save markets api return
-                        markets.data = response.xhr.response;
-
-                        // create map of stateId to state objects
-                        markets.sorted = {};
-                        markets.data.map(function(market){
-                            markets.sorted[market.market_code] = market;
-                        });
-
-                        // notify all other elements that the states have been fetched
-                        element.dispatchEvent(markets.event);
-                    }
-
+                    this.data.isHeadquarters = parseInt(this.data.isHeadquarters) === 1;
                 },
                 confirmDelete: function () {
                     this.$.confirmDelete.open();
@@ -386,6 +278,42 @@
                 },
                 propertiesOpened: function () {
                     this.$.propertiesModal.querySelector('paper-input').$.input.focus();
+                },
+                bindStatesToAutocomplete: function () {
+
+                    // attach states to autocomplete
+                    this.$.stateSelector.source = sharedCachableResources.states.data;
+
+                    this.setStateAutocompleteValue();
+                },
+                setStateAutocompleteValue: function() {
+                    // set current value of the autocomplete to the value of the instance
+                    if ( !this.data.stateId ) {
+                        return;
+                    }
+                    var state = sharedCachableResources.states.sorted[this.data.stateId];
+                    this.$.stateSelector.setOption({
+                        text: state.name,
+                        value: state.stateId
+                    });
+                },
+                bindMarketsToAutocomplete: function () {
+
+                    // attach states to autocomplete
+                    this.$.marketSelector.source = sharedCachableResources.markets.data;
+
+                    this.setMarketAutocompleteValue();
+                },
+                setMarketAutocompleteValue: function() {
+                    // set current value of the autocomplete to the value of the instance
+                    if ( !this.data.market_code ) {
+                        return;
+                    }
+                    var market = sharedCachableResources.markets.sorted[this.data.market_code];
+                    this.$.marketSelector.setOption({
+                        text: market.market_name,
+                        value: market.market_code
+                    });
                 }
             });
         })();
