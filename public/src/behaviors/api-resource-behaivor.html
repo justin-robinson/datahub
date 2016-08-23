@@ -105,7 +105,7 @@
                         // create the resource
                         sharedCachableResources[name] = {
                             data: null,
-                            sorted: null,
+                            indexes: null,
                             indexBy: resources[name].indexBy,
                             fetching: false,
                             fetched: false,
@@ -199,11 +199,16 @@
                 return;
             }
 
-            resource.sorted = {};
+            resource.indexes = {};
 
-            resource.data.map(function(r) {
-                resource.sorted[r[resource.indexBy]] = r;
-            });
+            for ( var i=0; i<resource.indexBy.length; ++i) {
+                var indexName = resource.indexBy[i];
+                resource.indexes[indexName] = {};
+                resource.data.map(function(r) {
+                    resource.indexes[indexName][r[indexName]] = r;
+                });
+            }
+
         },
         parseLinksFromGet: function(event, ironAjax) {
 

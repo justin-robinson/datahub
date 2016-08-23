@@ -206,11 +206,11 @@
                         value: {
                             'states': {
                                 url: Datahub.apiUrl + 'state',
-                                indexBy: 'stateId'
+                                indexBy: ['stateId']
                             },
                             'markets': {
                                 url: Datahub.apiUrl + 'market',
-                                indexBy: 'market_code'
+                                indexBy: ['market_code']
                             }
                         }
                     }
@@ -275,7 +275,7 @@
                     if ( !this.data.stateId ) {
                         return;
                     }
-                    var state = sharedCachableResources.states.sorted[this.data.stateId];
+                    var state = sharedCachableResources.states.indexes.stateId[this.data.stateId];
                     this.$.stateSelector.setOption({
                         text: state.name,
                         value: state.stateId
@@ -293,7 +293,7 @@
                     if ( !this.data.market_code ) {
                         return;
                     }
-                    var market = sharedCachableResources.markets.sorted[this.data.market_code];
+                    var market = sharedCachableResources.markets.indexes.market_code[this.data.market_code];
                     this.$.marketSelector.setOption({
                         text: market.market_name,
                         value: market.market_code
