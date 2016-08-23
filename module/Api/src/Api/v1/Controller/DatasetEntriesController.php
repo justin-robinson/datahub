@@ -42,6 +42,8 @@ class DatasetEntriesController extends AbstractRestfulController
         $entry = DatasetEntries::fetch_by_id($entryId);
         $entry->populate($data);
         $entry->save();
+        $entry->save();
+        return new JsonModel(DatasetEntriesFormatter::format($entry, true));
     }
     
     public function delete($entryId)
