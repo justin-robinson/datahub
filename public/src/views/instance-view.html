@@ -229,7 +229,7 @@
                     this.setStateAutocompleteValue();
                     this.setMarketAutocompleteValue();
                     // convert isHeadquarters flag to a true boolean for the checkbox
-                    this.data.isHeadquarters = parseInt(this.data.isHeadquarters) === 1;
+                    this.set('data.isHeadquarters', this.data.isHeadquarters === true || parseInt(this.data.isHeadquarters) === 1);
                 },
                 confirmDelete: function () {
                     this.$.confirmDelete.open();
