@@ -21,9 +21,9 @@ class DatasetEntriesFormatter
             $formattedEntry = empty($entry) ? null : $entry;
         }
         
-        $host             = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST',
+        $host           = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST',
                 'hub');
-        $array['entry']            = $formattedEntry;
+        $array['entry'] = $formattedEntry;
         
         if ($change) {
             $array['_links'] = [
