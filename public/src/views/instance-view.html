@@ -226,8 +226,8 @@
 
                 },
                 dataChanged: function () {
-                    this.setStateAutocompleteValue();
-                    this.setMarketAutocompleteValue();
+                    this.bindStatesToAutocomplete();
+                    this.bindMarketsToAutocomplete();
                     // convert isHeadquarters flag to a true boolean for the checkbox
                     this.set('data.isHeadquarters', this.data.isHeadquarters === true || parseInt(this.data.isHeadquarters) === 1);
                 },
