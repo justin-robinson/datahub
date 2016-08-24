@@ -139,6 +139,7 @@
                     if ( value ) {
                         resource.data = value;
                         this.indexResource(name);
+                        sharedCachableResources[name].fetched = true;
                         this.fire(name + '-loaded');
                     } else if ( !( resource.fetching || resource.fetched ) ) {
                         resource.fetching = true;
