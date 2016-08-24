@@ -157,8 +157,7 @@
                 <paper-dialog-scrollable>
                     <template is="dom-repeat" items="{{childResources.properties.data}}"
                               filter="{{filterProperties(propertySearchString)}}"
-                              observe="name value"
-                    >
+                              observe="name value">
                         <property-view data="{{item}}" auto-update></property-view>
                     </template>
                 </paper-dialog-scrollable>

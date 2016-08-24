@@ -63,28 +63,10 @@
             Are you sure you want to delete this company and its instances?
         </confirm-delete-view>
 
-        <iron-ajax
-            id="getSourceType"
-            auto
-            handle-as="json"
-            on-response="parseSourceTypeResponse"
-            on-error="parseSourceTypeResponse"
-        ></iron-ajax>
     </template>
 
     <script>
         (function () {
-
-            var sourceTypes = {
-                data: null,
-                sorted: {},
-                map: {},
-                fetching: false,
-                fetched: false
-            };
-
-            var fetchedEvent = new Event('source-types-fetched');
-            var element = document.createElement('div');
 
             Polymer({
                 is: 'property-view',
@@ -100,43 +82,30 @@
                     },
                     removeFromDomOnDelete: {
                         value: true
+                    },
+                    sharedCachableResources: {
+                        value: {
+                            'sourceTypes': {
+                                url: Datahub.apiUrl + 'sourcetype',
+                                indexBy: ['sourceTypeId', 'name']
+                            }
+                        }
                     }
                 },
                 ready: function () {
 
-                    // if we have already gotten the sourceTypes, just attached them to autocomplete
-                    if ( sourceTypes.fetched ) {
-                        this.$.sourceTypeSelector.source=sourceTypes.data;
-                        return;
-                    }
-
                     // listen to the event fired when the sourceTypes are fetched
-                    var self = this;
-                    element.addEventListener('source-types-fetched', function () {
+                    this.listen(this, 'sourceTypes-loaded', 'bindSourceTypesToAutocomplete');
 
-                        // attach sourceTypes to autocomplete
-                        self.$.sourceTypeSelector.source=sourceTypes.data;
-
-                        // set current value of the autocomplete to the value of the instance
-                        if ( !self.data.sourceTypeId ) {
-                            return;
-                        }
-                        var sourceType = sourceTypes.sorted[self.data.sourceTypeId];
-                        self.$.sourceTypeSelector.setOption({
-                            text: sourceType.name,
-                            value: sourceType.sourceTypeId
-                        });
-                    });
-
-                    // first instance will do the actual api call for the sourceTypes
-                    if ( !sourceTypes.fetching ) {
-                        Datahub.ajaxSpinners.add();
-                        sourceTypes.fetching = true;
-                        this.$.getSourceType.url = Datahub.apiUrl + 'sourcetype';
-                    }
+                    // listen for data changes
+                    this.listen(this, 'data-changed', 'dataChanged');
                 },
                 attached: function () {
-                    if ( !this.data.sourceTypeId && sourceTypes.fetched && sourceTypes.map.datahub ) {
+                    this.dataChanged();
+                },
+                dataChanged: function () {
+                    this.bindSourceTypesToAutocomplete();
+                    if ( !this.data.sourceTypeId && sharedCachableResources.sourceTypes.fetched && sharedCachableResources.sourceTypes.map.datahub ) {
                         this.$.sourceTypeSelector.setOption({
                             text: sourceTypes.map.datahub.name,
                             value: sourceTypes.map.datahub.sourceTypeId
@@ -146,30 +115,25 @@
                 confirmDelete: function () {
                     this.$.confirmDelete.open();
                 },
-                parseSourceTypeResponse: function (event, response) {
+                bindSourceTypesToAutocomplete:function () {
 
-                    Datahub.ajaxSpinners.remove();
+                    // attach sourceTypes to autocomplete
+                    this.$.sourceTypeSelector.source = sharedCachableResources.sourceTypes.data;
 
-                    // set flags that we have fetched the sourceTypes
-                    sourceTypes.fetched = true;
-                    sourceTypes.fetching = false;
-
-                    if (response.xhr && response.xhr.response) {
-                        // save sourceTypes api return
-                        sourceTypes.data = response.xhr.response;
-
-                        // create map of sourceTypeId to sourceType objects
-                        sourceTypes.sorted = {};
-                        sourceTypes.map    = {};
-                        sourceTypes.data.map(function (sourceType) {
-                            sourceTypes.sorted[sourceType.sourceTypeId] = sourceType;
-                            sourceTypes.map[sourceType.name]            = sourceType;
-                        });
-
-                        // notify all other elements that the sourceTypes have been fetched
-                        element.dispatchEvent(fetchedEvent);
-                    }
+                    this.setSourceTypesAutocompleteValue();
                 },
+                setSourceTypesAutocompleteValue: function() {
+
+                    // set current value of the autocomplete to the value of the instance
+                    if ( !this.data.sourceTypeId ) {
+                        return;
+                    }
+                    var sourceType = sharedCachableResources.sourceTypes.indexes.sourceTypeId[this.data.sourceTypeId];
+                    this.$.sourceTypeSelector.setOption({
+                        text: sourceType.name,
+                        value: sourceType.sourceTypeId
+                    });
+                }
             });
         })();
     </script>
