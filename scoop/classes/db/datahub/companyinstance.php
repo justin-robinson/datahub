@@ -369,7 +369,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         $results = [];
         if($collection){
             foreach ($collection as $entry) {
-                $list = Top25List::fetch_where('listId = ?', [$entry->listId]);
+                $list = Top25List::fetch_one_where('listId = ?', [$entry->listId]);
                 if($list){
                     $results[] = $list;
                 }
