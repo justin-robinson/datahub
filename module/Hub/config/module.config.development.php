@@ -75,6 +75,17 @@ return [
                 1002 => 'SET NAMES utf8',
             ],
         ],
+        'bizjournals' => [
+            'charset'       => 'utf8',
+            'host'          => 'devdb.bizj-internal.com',
+            'dbname'        => 'bizj',
+            'port'          => '3306',
+            'user'          => 'web',
+            'password'      => '',
+            'driverOptions' => [
+                1002 => 'SET NAMES utf8',
+            ]
+        ],
     ],
 
 ];

@@ -2,6 +2,7 @@
 
 namespace Api\v1\ResponseFormatter;
 
+use DB\Datahub\Company;
 use Scoop\Database\Model\Generic;
 use Scoop\Database\Rows;
 
@@ -43,6 +44,7 @@ class CompanySearchCollectionFormatter
                 'total'   => $totalCount,
                 'current' => $companies->get_num_rows(),
                 'offset'  => ($page - 1) * $limit,
+                'instances' => 0,
             ],
             '_links'    => [
                 'self'  => [
@@ -78,8 +80,12 @@ class CompanySearchCollectionFormatter
 
         $companyArray = &$array['_embedded']['company'];
 
+        /**
+         * @var $company Company
+         */
         foreach ($companies as $company) {
             $companyArray[] = CompanyFormatter::format($company);
+            $array['count']['instances'] += $company->get_company_instances()->get_num_rows();
         }
 
         return $array;

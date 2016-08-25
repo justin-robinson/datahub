@@ -94,8 +94,9 @@ class Contact extends \DBCore\Datahub\Contact {
      */
     public static function fetch ( $limit = 1000, $offset = 0, $where = '', array $queryParams = [ ] ) {
 
-        $where .= empty($where) ? '' : ' AND ';
-        $where .= 'deletedAt IS NULL';
+        $where = empty($where) ? 'deletedAt = ?' : "({$where}) AND deletedAt = ?";
+
+        $queryParams[] = self::$dBColumnDefaultValuesArray['deletedAt'];
 
         return parent::fetch( $limit, $offset, $where, $queryParams );
     }

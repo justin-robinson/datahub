@@ -100,6 +100,8 @@ class CompanySearchController extends AbstractRestfulController
                 continue;
             }
 
+            $company->fetch_company_instances();
+
             $companyIds[$company->companyId] = true;
             $companies->add_row($company);
         }

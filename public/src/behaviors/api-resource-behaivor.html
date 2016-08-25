@@ -33,7 +33,6 @@
 
                     // bind responses to data
                     this.listen(ajax.get, 'iron-ajax-response', 'bindResponseToData');
-                    this.listen(ajax.put, 'iron-ajax-response', 'bindResponseToData');
                     this.listen(ajax.post, 'iron-ajax-response', 'bindResponseToData');
 
                     // pull hal links from get
@@ -71,6 +70,10 @@
             removeFromDomOnDelete: {
                 type:  Boolean,
                 value: false
+            },
+            autoUpdate: {
+                type: Boolean,
+                value: false
             }
         },
         ready: function () {
@@ -99,6 +102,8 @@
             var childName = event.target.childName;
 
             this.set('childResources.' + childName + '.data', response._embedded[childName]);
+
+            this.fire(childName + '-fetched');
         },
         parseLinksFromGet: function(event, ironAjax) {
 
@@ -113,7 +118,10 @@
         },
         fetchChildren: function () {
 
+            // fetch all children
             for ( var childName in this.childResources) {
+
+                // does this resource map to a hal link?
                 if ( this.childResources.hasOwnProperty(childName) && this.links[childName]) {
 
                     this.childResources[childName] = this.childResources[childName] || {};
@@ -160,7 +168,7 @@
         },
         _dataChanged: function ( event, change ) {
 
-            if ( change === null || change.value === null ) {
+            if ( !this.autoUpdate || change === null || change.value === null ) {
                 return;
             }
 

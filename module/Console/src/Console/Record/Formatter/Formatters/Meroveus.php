@@ -21,7 +21,7 @@ class Meroveus
     /**
      * @param $data
      *
-     * @return array
+     * @return Company
      */
     public function format($data)
     {
