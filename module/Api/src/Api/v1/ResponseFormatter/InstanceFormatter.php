@@ -48,7 +48,7 @@ class InstanceFormatter
         $array['sortedProperties'] = (object)$instance->sort_properties();
 
         $array['contacts'] = [];
-        foreach ($instance->get_contacts() as $coentact) {
+        foreach ($instance->get_contacts() as $contact) {
             $array['contacts'][] = ContactFormatter::format($contact);
         }
         
