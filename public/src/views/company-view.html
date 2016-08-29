@@ -175,6 +175,9 @@
             searchResultSelected: function (e, selection) {
                 // updates the company data model after a search result is selected
                 this.set('data', this.searchResults._embedded.company[selection.option.index]);
+
+                // kill the instances loaded
+                this.set('childResources.instances.data', []);
             },
             search: function () {
 
