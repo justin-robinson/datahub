@@ -45,12 +45,8 @@
 
         <paper-card heading="{{data.name}}">
             <div>
-                <paper-input value="{{data.companyInstancePropertyId}}" label="Property Id"></paper-input>
-                <paper-input value="{{data.name}}" label="Name"></paper-input>
-                <paper-input value="{{data.value}}" label="Value"></paper-input>
-                <paper-autocomplete value="{{data.sourceTypeId}}" id="sourceTypeSelector" text-property="name" value-property="sourceTypeId" label="Source"></paper-autocomplete>
-<!--                <paper-input value="{{data.createdAt}}" label="Created"></paper-input>-->
-<!--                <paper-input value="{{data.updatedAt}}" label="Updated"></paper-input>-->
+                <paper-input value="{{sortedProperties.address1.value}}" label="Address 1"></paper-input>
+                <paper-input value="{{sortedProperties.address2.value}}" label="Address 2"></paper-input>
             </div>
             <paper-icon-button id="save" icon="save" on-click="saveResource" class="save">Save</paper-icon-button>
 
@@ -74,65 +70,42 @@
                     Datahub.ApiResourceBehavior
                 ],
                 properties: {
-                    idField: {
+                    idField:               {
                         value:'companyInstancePropertyId'
                     },
-                    url: {
+                    url:                   {
                         value: Datahub.apiUrl + 'property'
                     },
                     removeFromDomOnDelete: {
                         value: true
                     },
-                    sharedCachableResources: {
-                        value: {
-                            'sourceTypes': {
-                                url: Datahub.apiUrl + 'sourcetype',
-                                indexBy: ['sourceTypeId', 'name']
-                            }
-                        }
+                    props:                 {
+                        type: Array,
+                        value: function () { return []; },
+                        notify: true
+                    },
+                    sortedProperties: {
+                        type: Object,
+                        value: function() { return {}; }
                     }
                 },
                 ready: function () {
-
-                    // listen to the event fired when the sourceTypes are fetched
-                    this.listen(this, 'sourceTypes-loaded', 'bindSourceTypesToAutocomplete');
-
-                    // listen for data changes
-                    this.listen(this, 'data-changed', 'dataChanged');
+                    this.listen(this, 'props-changed', 'sortProperties');
                 },
-                attached: function () {
-                    this.dataChanged();
-                },
-                dataChanged: function () {
-                    this.bindSourceTypesToAutocomplete();
-                    if ( !this.data.sourceTypeId && sharedCachableResources.sourceTypes.fetched && sharedCachableResources.sourceTypes.map.datahub ) {
-                        this.$.sourceTypeSelector.setOption({
-                            text: sourceTypes.map.datahub.name,
-                            value: sourceTypes.map.datahub.sourceTypeId
-                        });
+                sortProperties: function () {
+                    var sortedProperties = {};
+                    var property;
+                    // get the latest property of each name
+                    for ( var i=0; i<this.props.length; ++i) {
+                        property = this.props[i];
+                        if ( !sortedProperties[property.name] || property.updatedAt.localeCompare(sortedProperties[property.name].updatedAt) === 1) {
+                            sortedProperties[property.name] = property;
+                        }
                     }
+                    this.set('sortedProperties', sortedProperties)
                 },
                 confirmDelete: function () {
                     this.$.confirmDelete.open();
-                },
-                bindSourceTypesToAutocomplete:function () {
-
-                    // attach sourceTypes to autocomplete
-                    this.$.sourceTypeSelector.source = sharedCachableResources.sourceTypes.data;
-
-                    this.setSourceTypesAutocompleteValue();
-                },
-                setSourceTypesAutocompleteValue: function() {
-
-                    // set current value of the autocomplete to the value of the instance
-                    if ( !this.data.sourceTypeId ) {
-                        return;
-                    }
-                    var sourceType = sharedCachableResources.sourceTypes.indexes.sourceTypeId[this.data.sourceTypeId];
-                    this.$.sourceTypeSelector.setOption({
-                        text: sourceType.name,
-                        value: sourceType.sourceTypeId
-                    });
                 }
             });
         })();

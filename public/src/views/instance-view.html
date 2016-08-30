@@ -5,7 +5,6 @@
 <link rel="import" href="../../bower_components/neon-animation/animations/scale-up-animation.html">
 <link rel="import" href="../../bower_components/paper-autocomplete/paper-autocomplete.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
-<link rel="import" href="../../bower_components/paper-dialog-scrollable/paper-dialog-scrollable.html">
 <link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
 <link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
@@ -142,6 +141,8 @@
     <script>
         (function () {
 
+            var propertyView;
+
             Polymer({
                 is: 'instance-view',
                 behaviors: [
@@ -200,33 +201,8 @@
                     this.$.confirmDelete.open();
                 },
                 showProperties: function () {
+                    this.getPropertyView().set('props',this.childResources.properties.data);
                     window.propertiesModal.open();
-                },
-                addPropertyClicked: function () {
-                    this.addProperty({});
-                },
-                addProperty: function (property) {
-
-                    property = property || {};
-
-                    property[this.idField] = this.data[this.idField];
-
-                    // push new property to our array and notify polymer that it needs to render the new property
-                    this.push('childResources.properties.data', property);
-                },
-                filterProperties: function (searchString) {
-                    if ( !searchString ) {
-                        return null;
-                    }
-
-                    return function (property) {
-                        var value = property.value.toLowerCase();
-                        var name = property.name.toLowerCase();
-                        return ( value.indexOf(searchString) != -1 || name.indexOf(searchString) != -1);
-                    }
-                },
-                propertiesOpened: function () {
-                    window.propertiesModal.querySelector('paper-input').$.input.focus();
                 },
                 bindStatesToAutocomplete: function () {
 
@@ -263,6 +239,10 @@
                         text: market.market_name,
                         value: market.market_code
                     });
+                },
+                getPropertyView: function() {
+                    propertyView = propertyView || window.propertiesModal.querySelector('property-view');
+                    return propertyView;
                 }
             });
         })();

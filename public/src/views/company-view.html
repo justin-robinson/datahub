@@ -86,12 +86,6 @@
                 margin-top: 130px;
             }
 
-            #propertiesSearch {
-                --paper-input-container-input-color: var(--text-color);
-                --paper-input-container-focus-color: var(--highlight-color);
-                margin-top: 0px;
-            }
-
             #propertyActions {
                 margin: 0;
             }
@@ -144,20 +138,9 @@
         <paper-dialog
             id="propertiesModal"
             always-on-top
-            on-iron-overlay-opened="propertiesOpened"
             entry-animation="scale-up-animation"
             exit-animation="fade-out-animation">
-            <paper-input id="propertiesSearch" value="{{propertySearchString}}" label="Search"></paper-input>
-            <paper-dialog-scrollable>
-                <template is="dom-repeat" items="{{childResources.properties.data}}"
-                          filter="{{filterProperties(propertySearchString)}}"
-                          observe="name value">
-                    <property-view data="{{item}}" auto-update></property-view>
-                </template>
-            </paper-dialog-scrollable>
-            <div id="propertyActions">
-                <paper-icon-button id="addProperty" icon="add" on-click="addPropertyClicked" class="add-property"></paper-icon-button>
-            </div>
+            <property-view></property-view>
         </paper-dialog>
     </template>
 
