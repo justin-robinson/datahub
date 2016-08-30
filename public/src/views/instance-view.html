@@ -177,6 +177,10 @@
                             'markets': {
                                 url: Datahub.apiUrl + 'market',
                                 indexBy: ['market_code']
+                            },
+                            'sourceTypes': {
+                                url: Datahub.apiUrl + 'sourcetype',
+                                indexBy: ['sourceTypeId', 'name']
                             }
                         }
                     }

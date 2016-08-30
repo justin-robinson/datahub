@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-input/paper-textarea.html">
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
@@ -16,7 +17,7 @@
                 display: block;
             }
 
-            paper-card paper-input,paper-autocomplete {
+            paper-card #properties {
                 width: 95%;
                 padding-left:1em;
             }
@@ -44,11 +45,16 @@
         </style>
 
         <paper-card heading="{{data.name}}">
-            <div>
+            <div id="properties">
                 <paper-input value="{{sortedProperties.address1.value}}" label="Address 1"></paper-input>
                 <paper-input value="{{sortedProperties.address2.value}}" label="Address 2"></paper-input>
+                <paper-input value="{{sortedProperties.city.value}}" label="City"></paper-input>
+                <paper-input value="{{sortedProperties.state.value}}" label="State"></paper-input>
+                <paper-input value="{{sortedProperties.zipCode.value}}" label="Zip Code"></paper-input>
+                <paper-input value="{{sortedProperties.country.value}}" label="Country"></paper-input>
+                <paper-textarea value="{{sortedProperties.description.value}}" label="Description"></paper-textarea>
             </div>
-            <paper-icon-button id="save" icon="save" on-click="saveResource" class="save">Save</paper-icon-button>
+            <paper-icon-button id="save" icon="save" on-click="save" class="save">Save</paper-icon-button>
 
             <template is="dom-if" if="{{data.companyInstancePropertyId}}">
                 <paper-icon-button id="delete" icon="delete" on-click="confirmDelete" class="delete"></paper-icon-button>
@@ -66,25 +72,17 @@
 
             Polymer({
                 is: 'property-view',
-                behaviors: [
-                    Datahub.ApiResourceBehavior
-                ],
                 properties: {
-                    idField:               {
-                        value:'companyInstancePropertyId'
-                    },
-                    url:                   {
-                        value: Datahub.apiUrl + 'property'
-                    },
-                    removeFromDomOnDelete: {
-                        value: true
-                    },
                     props:                 {
                         type: Array,
                         value: function () { return []; },
                         notify: true
                     },
                     sortedProperties: {
+                        type: Object,
+                        value: function() { return {}; }
+                    },
+                    originalValues: {
                         type: Object,
                         value: function() { return {}; }
                     }
@@ -94,18 +92,44 @@
                 },
                 sortProperties: function () {
                     var sortedProperties = {};
-                    var property;
+                    var originalValues = {};
+                    //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of
                     // get the latest property of each name
-                    for ( var i=0; i<this.props.length; ++i) {
-                        property = this.props[i];
+                    for ( let property of this.props ) {
                         if ( !sortedProperties[property.name] || property.updatedAt.localeCompare(sortedProperties[property.name].updatedAt) === 1) {
                             sortedProperties[property.name] = property;
+                            originalValues[property.name] = property.value;
                         }
                     }
-                    this.set('sortedProperties', sortedProperties)
+                    this.set('sortedProperties', sortedProperties);
+                    this.set('originalValues', originalValues);
                 },
-                confirmDelete: function () {
-                    this.$.confirmDelete.open();
+                save: function () {
+                    for ( let i in this.sortedProperties ) {
+                        if ( this.sortedProperties.hasOwnProperty(i) && this.sortedProperties[i].value !== this.originalValues[i]) {
+                            this.saveProperty(this.sortedProperties[i]);
+                        }
+                    }
+                },
+                addSpinner: function () {
+                    Datahub.ajaxSpinners.add();
+                },
+                removeSpinner: function () {
+                    Datahub.ajaxSpinners.remove();
+                },
+                saveProperty: function(property) {
+                    property.sourceTypeId = sharedCachableResources.sourceTypes.indexes.name.datahub.sourceTypeId;
+                    property.sourceId = property.companyInstanceId;
+                    let ajax = document.createElement('iron-ajax');
+                    ajax.auto = true;
+                    ajax.contentType = 'application/json';
+                    ajax.method = 'put';
+                    ajax.body = property;
+                    this.listen(ajax, 'iron-ajax-request', 'addSpinner');
+                    this.listen(ajax, 'iron-ajax-response', 'removeSpinner');
+                    this.listen(ajax, 'error', 'removeSpinner');
+
+                    ajax.url = property._links.self.href;
                 }
             });
         })();
