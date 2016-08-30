@@ -30,12 +30,6 @@
                 padding-left:1em;
             }
 
-            #propertiesSearch {
-                --paper-input-container-input-color: var(--text-color);
-                --paper-input-container-focus-color: var(--highlight-color);
-                margin-top: 0px;
-            }
-
             paper-icon-button.save {
                 color: var(--paper-light-green-500);
             }
@@ -69,10 +63,6 @@
                 color: var(--paper-grey-200);
             }
 
-            #propertyActions {
-                margin: 0;
-            }
-
             paper-icon-button.add-property {
                 float: right;
                 color: var(--highlight-color);
@@ -86,11 +76,7 @@
                 padding: 5px;
             }
 
-            #propertiesModal {
-                background-color: var(--background-color);
-                width: 75%;
-                margin-top: 130px;
-            }
+
             a.blank {
                 text-decoration: none;
             }
@@ -146,26 +132,6 @@
                     <paper-icon-button id="showProperties" icon="build" on-click="showProperties" class="show-properties">Properties</paper-icon-button>
                 </template>
             </template>
-
-            <paper-dialog
-                id="propertiesModal"
-                always-on-top
-                on-iron-overlay-opened="propertiesOpened"
-                entry-animation="scale-up-animation"
-                exit-animation="fade-out-animation">
-                <paper-input id="propertiesSearch" value="{{propertySearchString}}" label="Search"></paper-input>
-                <paper-dialog-scrollable>
-                    <template is="dom-repeat" items="{{childResources.properties.data}}"
-                              filter="{{filterProperties(propertySearchString)}}"
-                              observe="name value">
-                        <property-view data="{{item}}" auto-update></property-view>
-                    </template>
-                </paper-dialog-scrollable>
-                <div id="propertyActions">
-                    <paper-icon-button id="addProperty" icon="add" on-click="addPropertyClicked" class="add-property"></paper-icon-button>
-                </div>
-            </paper-dialog>
-
             <confirm-delete-view id="confirmDelete" on-yes="deleteResource">
                 Are you sure you want to delete this instance and its properties?
             </confirm-delete-view>
@@ -234,7 +200,7 @@
                     this.$.confirmDelete.open();
                 },
                 showProperties: function () {
-                    this.$.propertiesModal.open();
+                    window.propertiesModal.open();
                 },
                 addPropertyClicked: function () {
                     this.addProperty({});
@@ -260,7 +226,7 @@
                     }
                 },
                 propertiesOpened: function () {
-                    this.$.propertiesModal.querySelector('paper-input').$.input.focus();
+                    window.propertiesModal.querySelector('paper-input').$.input.focus();
                 },
                 bindStatesToAutocomplete: function () {
 

@@ -79,6 +79,22 @@
                 width: 47%;
                 display: inline-block;
             }
+
+            #propertiesModal {
+                background-color: var(--background-color);
+                width: 75%;
+                margin-top: 130px;
+            }
+
+            #propertiesSearch {
+                --paper-input-container-input-color: var(--text-color);
+                --paper-input-container-focus-color: var(--highlight-color);
+                margin-top: 0px;
+            }
+
+            #propertyActions {
+                margin: 0;
+            }
         </style>
 
         <iron-ajax
@@ -124,6 +140,25 @@
         <confirm-delete-view id="confirmDelete" on-yes="deleteResource">
             Are you sure you want to delete this company and its instances?
         </confirm-delete-view>
+
+        <paper-dialog
+            id="propertiesModal"
+            always-on-top
+            on-iron-overlay-opened="propertiesOpened"
+            entry-animation="scale-up-animation"
+            exit-animation="fade-out-animation">
+            <paper-input id="propertiesSearch" value="{{propertySearchString}}" label="Search"></paper-input>
+            <paper-dialog-scrollable>
+                <template is="dom-repeat" items="{{childResources.properties.data}}"
+                          filter="{{filterProperties(propertySearchString)}}"
+                          observe="name value">
+                    <property-view data="{{item}}" auto-update></property-view>
+                </template>
+            </paper-dialog-scrollable>
+            <div id="propertyActions">
+                <paper-icon-button id="addProperty" icon="add" on-click="addPropertyClicked" class="add-property"></paper-icon-button>
+            </div>
+        </paper-dialog>
     </template>
 
     <script>
@@ -159,6 +194,8 @@
                 }
 
                 this.$.companySelector.$.input.$.input.focus();
+
+                window.propertiesModal = this.$.propertiesModal;
             },
             addInstanceClicked: function () {
                 this.addInstance({});
