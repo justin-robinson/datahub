@@ -12,7 +12,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../behaviors/api-resource-behaivor.html">
 <link rel="import" href="confirm-delete-view.html">
-<link rel="import" href="property-view.html">
 
 <dom-module id="instance-view">
 
@@ -206,6 +205,7 @@
                 },
                 showProperties: function () {
                     this.getPropertyView().set('props',this.childResources.properties.data);
+                    this.getPropertyView().set('companyInstanceId',this.id());
                     window.propertiesModal.open();
                 },
                 bindStatesToAutocomplete: function () {

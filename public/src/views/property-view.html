@@ -7,6 +7,7 @@
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/paper-autocomplete/paper-autocomplete.html">
 <link rel="import" href="../behaviors/api-resource-behaivor.html">
+<link rel="import" href="../models/property-model.html">
 
 <dom-module id="property-view">
 
@@ -46,13 +47,20 @@
 
         <paper-card heading="{{data.name}}">
             <div id="properties">
-                <paper-input value="{{sortedProperties.address1.value}}" label="Address 1"></paper-input>
-                <paper-input value="{{sortedProperties.address2.value}}" label="Address 2"></paper-input>
-                <paper-input value="{{sortedProperties.city.value}}" label="City"></paper-input>
-                <paper-input value="{{sortedProperties.state.value}}" label="State"></paper-input>
-                <paper-input value="{{sortedProperties.zipCode.value}}" label="Zip Code"></paper-input>
-                <paper-input value="{{sortedProperties.country.value}}" label="Country"></paper-input>
-                <paper-textarea value="{{sortedProperties.description.value}}" label="Description"></paper-textarea>
+                <paper-input value="{{sortedProperties.address1.data.value}}" label="Address 1"></paper-input>
+                <paper-input value="{{sortedProperties.address2.data.value}}" label="Address 2"></paper-input>
+                <paper-input value="{{sortedProperties.city.data.value}}" label="City"></paper-input>
+                <paper-input value="{{sortedProperties.state.data.value}}" label="State"></paper-input>
+                <paper-input value="{{sortedProperties.zipCode.data.value}}" label="Zip Code"></paper-input>
+                <paper-input value="{{sortedProperties.country.data.value}}" label="Country"></paper-input>
+                <paper-textarea value="{{sortedProperties.description.data.value}}" label="Description"></paper-textarea>
+                <paper-input value="{{sortedProperties.latitude.data.value}}" label="Latitude"></paper-input>
+                <paper-input value="{{sortedProperties.longitude.data.value}}" label="Longitude"></paper-input>
+                <div>Industries</div>
+                <template is="dom-repeat" items="{{sortedProperties.industry}}" as="industry">
+                    <paper-input value="{{industry.data.value}}" label="Industry"></paper-input>
+                </template>
+                <paper-icon-button icon="add" on-click="addMultiPropertyClicked" data-propertyName="industry"></paper-icon-button>
             </div>
             <paper-icon-button id="save" icon="save" on-click="save" class="save">Save</paper-icon-button>
 
@@ -70,6 +78,26 @@
     <script>
         (function () {
 
+            var singleProperties = {
+                address1: true,
+                address2: true,
+                city: true,
+                country: true,
+                description: true,
+                latitude: true,
+                longitude: true,
+                phoneCountryCode: true,
+                phoneExtension: true,
+                phoneNumber: true,
+                state: true,
+                yearEstablished: true,
+                zipCode: true,
+            };
+
+            var multiProperties = {
+                industry: true,
+            };
+
             Polymer({
                 is: 'property-view',
                 properties: {
@@ -82,9 +110,9 @@
                         type: Object,
                         value: function() { return {}; }
                     },
-                    originalValues: {
-                        type: Object,
-                        value: function() { return {}; }
+                    companyInstanceId: {
+                        type: Number,
+                        value: 0
                     }
                 },
                 ready: function () {
@@ -92,44 +120,64 @@
                 },
                 sortProperties: function () {
                     var sortedProperties = {};
-                    var originalValues = {};
+                    for ( let propertyName in singleProperties ) {
+                        if ( singleProperties.hasOwnProperty(propertyName) ) {
+                            sortedProperties[propertyName] = document.createElement('property-model');
+                        }
+                    }
+                    for ( let propertyName in multiProperties ) {
+                        if ( multiProperties.hasOwnProperty(propertyName) ) {
+                            sortedProperties[propertyName] = [];
+                        }
+                    }
                     //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of
                     // get the latest property of each name
-                    for ( let property of this.props ) {
-                        if ( !sortedProperties[property.name] || property.updatedAt.localeCompare(sortedProperties[property.name].updatedAt) === 1) {
-                            sortedProperties[property.name] = property;
-                            originalValues[property.name] = property.value;
+                    var propertyModel;
+                    for ( let propertyData of this.props ) {
+                        if ( multiProperties.hasOwnProperty(propertyData.name) ) {
+                            propertyModel = document.createElement('property-model');
+                            propertyModel.set('data', propertyData);
+                            sortedProperties[propertyData.name].push(propertyModel);
+                        } else if (propertyData.updatedAt.localeCompare(sortedProperties[propertyData.name].get('data.updatedAt')) === 1) {
+                            sortedProperties[propertyData.name].set('data', propertyData);
                         }
                     }
                     this.set('sortedProperties', sortedProperties);
-                    this.set('originalValues', originalValues);
                 },
                 save: function () {
+                    var property;
+                    // save all the properties in the dom
                     for ( let i in this.sortedProperties ) {
-                        if ( this.sortedProperties.hasOwnProperty(i) && this.sortedProperties[i].value !== this.originalValues[i]) {
-                            this.saveProperty(this.sortedProperties[i]);
+                        if ( this.sortedProperties.hasOwnProperty(i) ) {
+
+                            // the property to save
+                            property = this.sortedProperties[i];
+
+                            // some properties are actually array of properties IE industry
+                            if ( multiProperties.hasOwnProperty(i) ) {
+                                // save the array of properties
+                                for ( let property of this.sortedProperties[i] ) {
+                                    property.set('data.companyInstanceId', this.companyInstanceId);
+                                    property.saveResource();
+                                }
+                            } else {
+                                // save the one property
+                                property.set('data.companyInstanceId', this.companyInstanceId);
+                                property.saveResource();
+                            }
                         }
                     }
                 },
-                addSpinner: function () {
-                    Datahub.ajaxSpinners.add();
+                addMultiPropertyClicked: function (event) {
+                    var propertyName = event.target.getAttribute('data-propertyName');
+                    if ( propertyName ) {
+                        this.addMultiProperty(propertyName);
+                    }
                 },
-                removeSpinner: function () {
-                    Datahub.ajaxSpinners.remove();
-                },
-                saveProperty: function(property) {
-                    property.sourceTypeId = sharedCachableResources.sourceTypes.indexes.name.datahub.sourceTypeId;
-                    property.sourceId = property.companyInstanceId;
-                    let ajax = document.createElement('iron-ajax');
-                    ajax.auto = true;
-                    ajax.contentType = 'application/json';
-                    ajax.method = 'put';
-                    ajax.body = property;
-                    this.listen(ajax, 'iron-ajax-request', 'addSpinner');
-                    this.listen(ajax, 'iron-ajax-response', 'removeSpinner');
-                    this.listen(ajax, 'error', 'removeSpinner');
-
-                    ajax.url = property._links.self.href;
+                addMultiProperty: function (name) {
+                    var property = document.createElement('property-model');
+                    property.data.name = name;
+                    this.push('sortedProperties.'+name, property);
                 }
             });
         })();
