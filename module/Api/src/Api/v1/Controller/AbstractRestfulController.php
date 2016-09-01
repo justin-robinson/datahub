@@ -19,9 +19,13 @@ abstract class AbstractRestfulController extends ZendAbstractRestfulController
     public function options()
     {
 
-        return $this->getResponse()->getHeaders()
-                    ->addHeaderLine('Access-Control-Allow-Headers',
-                        $this->getRequest()->getHeader('Access-Control-Request-Headers')->getFieldValue());
+        $headers = $this->getResponse()->getHeaders();
+        $headers->addHeaderLine(
+            'Allow',
+            $headers->get('Access-Control-Allow-Methods')->getFieldValue()
+                    );
+
+        return $headers;
     }
 
     /**
