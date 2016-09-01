@@ -118,10 +118,10 @@ SELECT
                   org.DateModified      > (NOW() - INTERVAL ? MINUTE )
                   OR addr.DateModified  > (NOW() - INTERVAL ? MINUTE )
                   OR phone.DateModified > (NOW() - INTERVAL ? MINUTE )
-				  OR url.DateModified   > (NOW() - INTERVAL ? MINUTE )
-				  OR sic.DateModified   > (NOW() - INTERVAL ? MINUTE )
-				  OR descr.DateModified > (NOW() - INTERVAL ? MINUTE )
-				)
+                  OR url.DateModified   > (NOW() - INTERVAL ? MINUTE )
+                  OR sic.DateModified   > (NOW() - INTERVAL ? MINUTE )
+                  OR descr.DateModified > (NOW() - INTERVAL ? MINUTE )
+                )
                 AND addr.City IS NOT NULL
                 AND addr.City != ''
                 AND org.Name != ''
@@ -363,6 +363,7 @@ SELECT
             "instancePropName",
             "instancePropValue",
             "instancePropUpdatedAt",
+            "instanceRefineryId",
         ];
         
         // write the header rows to the csv
@@ -380,6 +381,8 @@ SELECT
               ci.companyInstanceId AS instanceId,
               ci.url               AS instanceUrl,
               ci.name              AS instanceName,
+              cip.sourceTypeId,
+              cip.sourceId,
               cip.name             AS instancePropName,
               cip.value            AS instancePropValue,
               cip.updatedAt        AS instancePropUpdatedAt
@@ -399,7 +402,6 @@ SELECT
                 )
             LIMIT ?, ?";
         
-//        $results = Generic::query($sql, [$limit], $connection);
         while (($results = Generic::query($sql, [$offset, $limit], $connection))!== false) {
             foreach ($results as $row) {
                 $outputRow = [
@@ -411,14 +413,15 @@ SELECT
                     $row->instancePropName,
                     $row->instancePropValue,
                     $row->instancePropUpdatedAt,
+                    // if it's not a refinery id then set it to null
+                    $row->sourceTypeId >= 3 ? $row->sourceId : null,
                 ];
-                
                 $csvFileHandle->fputcsv($outputRow);
             }
             $offset += $limit;
             echo '.';
         }
         $end = date('h:i:s A');
-        echo "ended at " . $end . PHP_EOL;
+        echo PHP_EOL."ended at " . $end . PHP_EOL;
     }
 }
