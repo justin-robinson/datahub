@@ -10,39 +10,40 @@ use Scoop\Database\Model\Generic;
 
 /**
  * Class CronController
+ *
  * @package Console\Controller
  */
 class CronController extends AbstractActionController
 {
-
+    
     /**
      * @throws \Console\DB\Error\ConfigException
      */
     public function exportReconAction()
     {
-
+        
         // how far back are we looking?
         // default: 60 minutes
-        $days = (int)$this->getRequest()->getParam('days');
-        $days = $days >= 0 ? $days : 0;
-        $hours = (int)$this->getRequest()->getParam('hours');
-        $hours = $hours >= 0 ? $hours : 0;
+        $days    = (int)$this->getRequest()->getParam('days');
+        $days    = $days >= 0 ? $days : 0;
+        $hours   = (int)$this->getRequest()->getParam('hours');
+        $hours   = $hours >= 0 ? $hours : 0;
         $minutes = (int)$this->getRequest()->getParam('minutes');
         $minutes = $minutes >= 0 ? $minutes : 0;
-
+        
         $minutes = ((($days * 24) + $hours) * 60) + $minutes;
         $minutes = $minutes >= 0 ? $minutes : 60;
-
+        
         // that looks like a good spot to save a file
-        $timestamp = time();
+        $timestamp   = time();
         $csvFilePath = "/tmp/datahub-cron-recon-dump-{$timestamp}.csv";
-
+        
         // tell em where it's at
         echo $csvFilePath . PHP_EOL;
-
+        
         // get something to write to deez ladies
         $csvFileHandle = new CsvIterator($csvFilePath, 'w');
-
+        
         // these are our fancy column names/object properties
         $headers = [
             "InternalId",
@@ -65,24 +66,24 @@ class CronController extends AbstractActionController
             "Sic",
             "Description",
         ];
-
+        
         // write the header rows to the csv
         $csvFileHandle->fputcsv($headers);
-
+        
         // get our hardcoded lists of countries
         $countries = Countries::getAll();
-
+        
         // connect to the recon db
-        $dbConfig = $this->config['mysql']['db02'];
+        $dbConfig             = $this->config['mysql']['db02'];
         $dbConfig['database'] = $dbConfig['dbname'];
-
-        $offset = 0;
-        $limit = 10000;
+        
+        $offset     = 0;
+        $limit      = 10000;
         $connection = new Connection($dbConfig);
-
+        
         // have to convert all these fields because refinery is latin1 NOT utf8
-        while (($results = Generic::query(
-                "SELECT
+        while (($results = Generic::query("
+SELECT
                 CONVERT(org.id USING utf8) AS id,
                 CONVERT(org.ExternalId USING utf8) AS ExternalId,
                 CONVERT(org.SourceId USING utf8) AS SourceId,
@@ -126,20 +127,19 @@ class CronController extends AbstractActionController
                 AND org.Name != ''
               ORDER BY
                 org.QName
-              LIMIT ?, ?",
-                [$minutes, $minutes, $minutes, $minutes, $minutes, $minutes, $offset, $limit],
+              LIMIT ?, ?", [$minutes, $minutes, $minutes, $minutes, $minutes, $minutes, $offset, $limit],
                 $connection)) !== false) {
-
+            
             // parse each row into a csv and json file
             foreach ($results as $row) {
-
+                
                 $row->TickerExchange = strpos($row->TickerExchange,
                     'NASDAQ') !== false ? 'NASDAQ' : $row->TickerExchange;
                 $row->TickerExchange = strpos($row->TickerExchange,
                     'York Stock') !== false ? 'NYSE' : $row->TickerExchange;
-                $row->ExternalId = strlen($row->ExternalId) > 12 ? $row->ExternalId : '';
-                $row->Name = trim(preg_replace('/\s+/', ' ', $row->Name));
-
+                $row->ExternalId     = strlen($row->ExternalId) > 12 ? $row->ExternalId : '';
+                $row->Name           = trim(preg_replace('/\s+/', ' ', $row->Name));
+                
                 // get the country names
                 // normalize the col for array searching
                 $processed = strtoupper($row->Country);
@@ -156,20 +156,20 @@ class CronController extends AbstractActionController
                         continue;
                     }
                 }
-
+                
                 // scrub phone number
                 $phone = '';
                 if (!empty($row->OfficePhone1)) {
                     // remove all but digits
                     $phone = preg_replace('/\D/', '', $row->OfficePhone1);
-
+                    
                     // take off the leading 1 if it's not american
                     $phoneLength = strlen($phone);
                     if (($phoneLength > 10) && (substr($phone, 0, 1) === '1')) {
                         $phone = substr($phone, 1, $phoneLength - 1);
                     }
                 }
-
+                
                 // grab OrgUrl Data, normalise and tack on
                 $url = '';
                 if (!empty($row->Url)) {
@@ -179,12 +179,12 @@ class CronController extends AbstractActionController
                     $url = strpos($url, ',') ? substr($url, 0, strpos($url, ',')) : $url;
                     // remove everything after and including the first space if there is a space
                     $url = strpos($url, ' ') ? substr($url, 0, strpos($url, ' ')) : $url;
-
+                    
                     if ($url === "http:??") {
                         $url = '';
                     }
                 }
-
+                
                 // format and write row to file
                 $outputLine = [
                     $row->id,
@@ -209,24 +209,24 @@ class CronController extends AbstractActionController
                 ];
                 $csvFileHandle->fputcsv($outputLine);
             }
-
+            
             $offset += $limit;
             echo '.';
         }
-
+        
         // import the new data into meroveus
         echo PHP_EOL . "Importing {$csvFilePath}" . PHP_EOL;
         $importer = new Refinery();
         list($companiesProcessed, $instancesProcessed) = $importer->import($csvFilePath);
-
+        
         printf("Imported: %s\t%s companies%s\t%s instances%s", PHP_EOL, $companiesProcessed, PHP_EOL,
             $instancesProcessed, PHP_EOL);
-
+        
     }
-
+    
     public function listsForRelatedAction()
     {
-
+        
         echo "
  _       _______  _____  _______  _____ (_)(_)(_)(_)
 (_)     (_______)(_____)(__ _ __)(_____)(_)(_)(_)(_)
@@ -235,38 +235,36 @@ class CronController extends AbstractActionController
 (_)____  __(_)__  ____(_)  (_)    ____(_)_  _  _  _ 
 (______)(_______)(_____)   (_)   (_____)(_)(_)(_)(_)
 ";
-
+        
         echo "export started: " . date('h:i:s A') . PHP_EOL;
-
+        
         // how far back are we looking?
         // default: 60 minutes
-        $days = (int)$this->getRequest()->getParam('days');
-        $days = $days >= 0 ? $days : 0;
-        $hours = (int)$this->getRequest()->getParam('hours');
-        $hours = $hours >= 0 ? $hours : 0;
+        $days    = (int)$this->getRequest()->getParam('days');
+        $days    = $days >= 0 ? $days : 0;
+        $hours   = (int)$this->getRequest()->getParam('hours');
+        $hours   = $hours >= 0 ? $hours : 0;
         $minutes = (int)$this->getRequest()->getParam('minutes');
         $minutes = $minutes >= 0 ? $minutes : 0;
-
+        
         $minutes = ((($days * 24) + $hours) * 60) + $minutes;
         $minutes = $minutes >= 0 ? $minutes : 60;
-
+        
         // that looks like a good spot to save a file
         $timestamp = time();
-
+        
         // get the mysql connection credentials
         $dbconfig = $this->config['mysql']['reportdb'];
         // create a new mysql connection for our query
-        $connection = new Connection(
-            [
-                'host'     => $dbconfig['host'],
-                'user'     => $dbconfig['user'],
-                'password' => $dbconfig['password'],
-                'database' => $dbconfig['dbname'],
-                'port'     => $dbconfig['port'],
-            ]);
+        $connection = new Connection([
+            'host'     => $dbconfig['host'],
+            'user'     => $dbconfig['user'],
+            'password' => $dbconfig['password'],
+            'database' => $dbconfig['dbname'],
+            'port'     => $dbconfig['port'],
+        ]);
         // get the lists to be released in the specified range, along with the companies
-        $listCompanies = Generic::query(
-            "SELECT DISTINCT
+        $listCompanies = Generic::query("SELECT DISTINCT
               tlr.list_id,
               tlr.rank,
               tlr.object_id,
@@ -282,23 +280,21 @@ class CronController extends AbstractActionController
             WHERE
               p.release_time BETWEEN (NOW() - INTERVAL ? MINUTE ) AND NOW()
               AND object_id <> 0
-            ORDER BY tlr.created_at DESC",
-            [$minutes], $connection);
-
+            ORDER BY tlr.created_at DESC", [$minutes], $connection);
+        
         if ($listCompanies) {
             // every row of data needs an elastic action row
-            $elasticAction = json_encode(
-                [
-                    "create" => [
-                        "_index" => "lists",
-                        "_type"  => 'company_related',
-                    ],
-                ]);
-
-            $prevListId = $listCompanies->first()->list_id;
-            $companies = [];
+            $elasticAction = json_encode([
+                "create" => [
+                    "_index" => "lists",
+                    "_type"  => 'company_related',
+                ],
+            ]);
+            
+            $prevListId      = $listCompanies->first()->list_id;
+            $companies       = [];
             $numListsInChunk = 0;
-            $chunkNumber = -1;
+            $chunkNumber     = -1;
             // get the companies on each list and add them to the json file
             foreach ($listCompanies as $listCompany) {
                 // no id is no bueno
@@ -306,46 +302,123 @@ class CronController extends AbstractActionController
                     echo "no list!" . PHP_EOL;
                     continue;
                 }
-
+                
                 // fix for JSON_ERROR_UTF8
-                $listCompany->company_name = iconv('UTF-8', 'UTF-8//IGNORE', utf8_encode($listCompany->company_name));
+                $listCompany->company_name  = iconv('UTF-8', 'UTF-8//IGNORE', utf8_encode($listCompany->company_name));
                 $listCompany->page_headline = iconv('UTF-8', 'UTF-8//IGNORE', utf8_encode($listCompany->page_headline));
-
+                
                 // write out if we have a new list id
                 if ($prevListId !== $listCompany->list_id) {
-
+                    
                     // chunk elastic bulk data into 50000 entries
                     if ($numListsInChunk % 50000 === 0) {
                         ++$chunkNumber;
                         $numListsInChunk = 0;
-                        $jsonFilePath = "/tmp/datahub-cron-recon-dump-{$timestamp}-{$chunkNumber}.json";
-                        $file = new \SplFileObject($jsonFilePath, 'w');
+                        $jsonFilePath    = "/tmp/datahub-cron-recon-dump-{$timestamp}-{$chunkNumber}.json";
+                        $file            = new \SplFileObject($jsonFilePath, 'w');
                         echo $jsonFilePath . PHP_EOL;
                     }
-
+                    
                     // add a new list to this chunk
                     ++$numListsInChunk;
                     // add this list to the json file
                     $file->fwrite($elasticAction . PHP_EOL);
                     $file->fwrite(json_encode(['list_id' => $prevListId, 'companies' => $companies]) . PHP_EOL);
-
+                    
                     // reset the companies array
                     $companies = [];
                 }
                 $prevListId = $listCompany->list_id;
-                $company = $listCompany->to_array();
+                $company    = $listCompany->to_array();
                 unset($company['list_id']);
                 $companies[] = $company;
             }
-
+            
             // write out any remaining lists
             if (!empty($companies)) {
                 $file->fwrite($elasticAction . PHP_EOL);
                 $file->fwrite(json_encode(['list_id' => $prevListId, 'companies' => $companies]) . PHP_EOL);
             }
         }
-
+        
         echo "export ended: " . date('h:i:s A') . PHP_EOL;
     }
-
+    
+    public function bbmExportAction()
+    {
+        $start = date('h:i:s A');
+        echo "started at " . $start . PHP_EOL;
+        /** copypasta! */
+        $timestamp   = time();
+        $csvFilePath = "/home/vagrant/files/datahub-cron-bbm-dump-{$timestamp}.csv";
+        echo $csvFilePath . PHP_EOL;
+        $csvFileHandle = new CsvIterator($csvFilePath, 'w');
+        
+        $headers = [
+            "entityName",
+            "entityId",
+            "instanceId",
+            "instanceName",
+            "instanceUrl",
+            "instancePropName",
+            "instancePropValue",
+            "instancePropUpdatedAt",
+        ];
+        
+        // write the header rows to the csv
+        $csvFileHandle->fputcsv($headers);
+        
+        $dbConfig             = $this->config['mysql']['datahub'];
+        $dbConfig['database'] = $dbConfig['dbname'];
+        $connection           = new Connection($dbConfig);
+        $offset               = 0;
+        $limit                = 10000;
+        $sql                  = "
+            SELECT
+              c.name               AS entityName,
+              c.companyId          AS entityId,
+              ci.companyInstanceId AS instanceId,
+              ci.url               AS instanceUrl,
+              ci.name              AS instanceName,
+              cip.name             AS instancePropName,
+              cip.value            AS instancePropValue,
+              cip.updatedAt        AS instancePropUpdatedAt
+            FROM company c
+              JOIN companyInstance ci USING (companyId)
+              JOIN companyInstanceProperty cip USING (companyInstanceId)
+              WHERE cip.name IN (
+                'address1',
+                'city',
+                'country',
+                'phoneCountryCode' ,
+                'phoneNumber' ,
+                'state',
+                'zipCode' ,
+                'address2', 
+                'phoneExtension' 
+                )
+            LIMIT ?, ?";
+        
+//        $results = Generic::query($sql, [$limit], $connection);
+        while (($results = Generic::query($sql, [$offset, $limit], $connection))!== false) {
+            foreach ($results as $row) {
+                $outputRow = [
+                    $row->entityName,
+                    $row->entityId,
+                    $row->instanceId,
+                    $row->instanceName,
+                    $row->instanceUrl,
+                    $row->instancePropName,
+                    $row->instancePropValue,
+                    $row->instancePropUpdatedAt,
+                ];
+                
+                $csvFileHandle->fputcsv($outputRow);
+            }
+            $offset += $limit;
+            echo '.';
+        }
+        $end = date('h:i:s A');
+        echo "ended at " . $end . PHP_EOL;
+    }
 }
