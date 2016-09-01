@@ -1,0 +1,41 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../behaviors/api-resource-behaivor.html">
+
+<dom-module id="property-model">
+    <template>
+        <style></style>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'property-model',
+            behaviors: [
+                Datahub.ApiResourceBehavior
+            ],
+            properties: {
+                data: {
+                    type: Object,
+                    value: function () {
+                        return {
+                            companyInstanceId:         '',
+                            companyInstancePropertyId: '',
+                            createdAt:                 '',
+                            deletedAt:                 '',
+                            name:                      '',
+                            sourceId:                  '',
+                            sourceTypeId:              1,
+                            updatedAt:                 '',
+                            value:                     '',
+                        }
+                    }
+                },
+                idField: {
+                    value: 'companyInstancePropertyId'
+                },
+                url: {
+                    value: Datahub.apiUrl + 'property'
+                },
+            }
+        });
+    </script>
+</dom-module>
