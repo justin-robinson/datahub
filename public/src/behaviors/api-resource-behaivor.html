@@ -1,6 +1,10 @@
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/iron-localstorage/iron-localstorage.html">
 
 <script>
+
+    var sharedCachableResources = {};
+
     Datahub.ApiResourceBehavior = {
         properties: {
             data: {
@@ -50,8 +54,10 @@
                     this.listen(ajax.post, 'error', 'removeSpinner');
                     this.listen(ajax.put, 'iron-ajax-request', 'addSpinner');
                     this.listen(ajax.put, 'iron-ajax-response', 'removeSpinner');
+                    this.listen(ajax.put, 'error', 'removeSpinner');
                     this.listen(ajax.delete, 'iron-ajax-request', 'addSpinner');
                     this.listen(ajax.delete, 'iron-ajax-response', 'removeSpinner');
+                    this.listen(ajax.delete, 'error', 'removeSpinner');
 
                     return ajax;
                 }
@@ -74,6 +80,10 @@
             autoUpdate: {
                 type: Boolean,
                 value: false
+            },
+            sharedCachableResources: {
+                type: Object,
+                value: function () { return {}; }
             }
         },
         ready: function () {
@@ -81,6 +91,62 @@
                 this.parseLinks(this.data);
             }
             this.listen(this, 'data-changed', '_dataChanged');
+        },
+        attached: function () {
+            // load all cachable resources
+            var resources = this.sharedCachableResources;
+            for ( var name in resources ) {
+                if ( resources.hasOwnProperty(name) ) {
+
+                    var resource = sharedCachableResources[name];
+
+                    if ( !resource ) {
+
+                        // create the resource
+                        sharedCachableResources[name] = {
+                            data: null,
+                            indexes: null,
+                            indexBy: resources[name].indexBy,
+                            fetching: false,
+                            fetched: false,
+                            event: new Event(name + '-fetched'),
+                            ajax: document.createElement('iron-ajax'),
+                            localStorage: document.createElement('iron-localstorage')
+                        };
+
+                        resource = sharedCachableResources[name];
+
+                        // setup listeners for ajax events
+                        resource.ajax.resourceName = name;
+                        resource.ajax.set('url', resources[name].url);
+                        this.listen(resource.ajax, 'iron-ajax-response', 'bindResponseToResource');
+                        this.listen(resource.ajax, 'iron-ajax-request', 'addSpinner');
+                        this.listen(resource.ajax, 'iron-ajax-response', 'removeSpinner');
+                        this.listen(resource.ajax, 'error', 'removeSpinner');
+
+                        // set name of local storage key
+                        resource.localStorage.set('name', 'api-resource-' + name);
+                    }
+
+                    // ignore if resource data is populated
+                    if ( resource.data ) {
+                        return;
+                    }
+
+                    // load it from local storage if it's there, if not hit the api;
+                    resource.localStorage.reload();
+                    var value = resource.localStorage.get('value');
+                    if ( value ) {
+                        resource.data = value;
+                        this.indexResource(name);
+                        sharedCachableResources[name].fetched = true;
+                        this.fire(name + '-loaded');
+                    } else if ( !( resource.fetching || resource.fetched ) ) {
+                        resource.fetching = true;
+                        resource.ajax.generateRequest();
+                    }
+                }
+            }
         },
         addSpinner: function () {
             Datahub.ajaxSpinners.add();
@@ -104,6 +170,46 @@
             this.set('childResources.' + childName + '.data', response._embedded[childName]);
 
             this.fire(childName + '-fetched');
+        },
+        bindResponseToResource: function(event, ironAjax ) {
+
+            var resourceName = event.target.resourceName;
+
+            sharedCachableResources[resourceName].fetching = false;
+            sharedCachableResources[resourceName].fetched = true;
+
+            var response =  ironAjax.xhr.response || {};
+
+            if ( !event.target.resourceName ) {
+                return;
+            }
+
+            sharedCachableResources[resourceName].data =  response;
+            sharedCachableResources[resourceName].localStorage.value = response;
+            sharedCachableResources[resourceName].localStorage.save();
+
+            this.indexResource(resourceName);
+            this.fire(resourceName + '-fetched');
+            this.fire(resourceName + '-loaded');
+        },
+        indexResource: function (name) {
+
+            var resource = sharedCachableResources[name];
+
+            if (!resource || !resource.indexBy) {
+                return;
+            }
+
+            resource.indexes = {};
+
+            for ( var i=0; i<resource.indexBy.length; ++i) {
+                var indexName = resource.indexBy[i];
+                resource.indexes[indexName] = {};
+                resource.data.map(function(r) {
+                    resource.indexes[indexName][r[indexName]] = r;
+                });
+            }
+
         },
         parseLinksFromGet: function(event, ironAjax) {
 
@@ -132,6 +238,7 @@
                         this.listen(this.childResources[childName].ajax, 'iron-ajax-response', 'bindResponseToChild');
                         this.listen(this.childResources[childName].ajax, 'iron-ajax-request', 'addSpinner');
                         this.listen(this.childResources[childName].ajax, 'iron-ajax-response', 'removeSpinner');
+                        this.listen(this.childResources[childName].ajax, 'error', 'removeSpinner');
                     }
 
                     this.childResources[childName].ajax.url = this.url + '/' + this.id() + '/' + childName;
