@@ -66,6 +66,15 @@ class CronController extends AbstractActionController
             "Description",
         ];
 
+        // each row in the elastic dump needs another row telling it to what to do with the data it's
+        // about to get
+        $elasticActionRow = json_encode([
+                "create" => [
+                    "_index" => 'companies',
+                    "_type"  => 'company',
+                ],
+            ]) . PHP_EOL;
+
         // write the header rows to the csv
         $csvFileHandle->fputcsv($headers);
 
@@ -79,6 +88,8 @@ class CronController extends AbstractActionController
         $offset = 0;
         $limit = 10000;
         $connection = new Connection($dbConfig);
+
+        $elasticChunkNumber = 0;
 
         // have to convert all these fields because refinery is latin1 NOT utf8
         while (($results = Generic::query(
@@ -131,12 +142,18 @@ class CronController extends AbstractActionController
                 $connection)) !== false) {
 
             // parse each row into a csv and json file
-            foreach ($results as $row) {
+            foreach ($results as $index => $row) {
 
-                $row->TickerExchange = strpos($row->TickerExchange,
-                    'NASDAQ') !== false ? 'NASDAQ' : $row->TickerExchange;
-                $row->TickerExchange = strpos($row->TickerExchange,
-                    'York Stock') !== false ? 'NYSE' : $row->TickerExchange;
+                // chunk elastic bulk data into 50000 entries
+                if ( $index % 50000 === 0 ) {
+                    ++$elasticChunkNumber;
+                    $jsonFilePath = "/tmp/datahub-cron-recon-dump-{$timestamp}-{$elasticChunkNumber}.json";
+                    $jsonFileHandle = new \SplFileObject($jsonFilePath, 'w');
+                    echo $jsonFilePath . PHP_EOL;
+                }
+
+                $row->TickerExchange = strpos($row->TickerExchange, 'NASDAQ') !== false ? 'NASDAQ' : $row->TickerExchange;
+                $row->TickerExchange = strpos($row->TickerExchange, 'York Stock') !== false ? 'NYSE' : $row->TickerExchange;
                 $row->ExternalId = strlen($row->ExternalId) > 12 ? $row->ExternalId : '';
                 $row->Name = trim(preg_replace('/\s+/', ' ', $row->Name));
 
@@ -208,6 +225,9 @@ class CronController extends AbstractActionController
                     $row->Description,
                 ];
                 $csvFileHandle->fputcsv($outputLine);
+                $jsonFileHandle->fwrite($elasticActionRow);
+                $jsonFileHandle->fwrite(json_encode(array_combine($headers, $outputLine)) . "\n");
+
             }
 
             $offset += $limit;
