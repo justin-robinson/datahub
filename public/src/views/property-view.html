@@ -198,6 +198,11 @@
                     // get the latest property of each name
                     var propertyModel;
                     for ( let propertyData of this.props ) {
+
+                        if ( !sortedProperties[propertyData.name] ) {
+                            sortedProperties[propertyData.name] = document.createElement('property-model');
+                        }
+
                         if ( multiProperties.hasOwnProperty(propertyData.name) ) {
                             propertyModel = document.createElement('property-model');
                             propertyModel.set('data', propertyData);
@@ -210,23 +215,24 @@
                 },
                 save: function () {
                     var property;
+                    var sortedProperties = this.get('sortedProperties');
                     // save all the properties in the dom
-                    for ( let i in this.sortedProperties ) {
-                        if ( this.sortedProperties.hasOwnProperty(i) ) {
+                    for ( let i in sortedProperties) {
+                        if ( sortedProperties.hasOwnProperty(i) ) {
 
                             // the property to save
-                            property = this.sortedProperties[i];
+                            property = sortedProperties[i];
 
                             // some properties are actually array of properties IE industry
                             if ( multiProperties.hasOwnProperty(i) ) {
                                 // save the array of properties
-                                for ( let property of this.sortedProperties[i] ) {
-                                    property.set('data.companyInstanceId', this.companyInstanceId);
+                                for ( let property of sortedProperties[i] ) {
+                                    property.set('data.companyInstanceId', this.get('companyInstanceId'));
                                     property.saveResource();
                                 }
                             } else {
                                 // save the one property
-                                property.set('data.companyInstanceId', this.companyInstanceId);
+                                property.set('data.companyInstanceId', this.get('companyInstanceId'));
                                 property.saveResource();
                             }
                         }
