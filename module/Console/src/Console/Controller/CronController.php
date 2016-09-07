@@ -224,6 +224,9 @@ SELECT
         
     }
     
+    /**
+     * gets related lists
+     */
     public function listsForRelatedAction()
     {
         
@@ -344,6 +347,9 @@ SELECT
         echo "export ended: " . date('h:i:s A') . PHP_EOL;
     }
     
+    /**
+     * writes a file for them to use
+     */
     public function bbmExportAction()
     {
         $start = date('h:i:s A');
@@ -423,5 +429,16 @@ SELECT
         }
         $end = date('h:i:s A');
         echo PHP_EOL."ended at " . $end . PHP_EOL;
+    }
+    
+    /**
+     * reads their csv and saves it to dh
+     */
+    public function bbmImportAction(){
+        /**
+         * read their csv from wherever it lives
+         * insert with pdo
+         * profit
+         */
     }
 }

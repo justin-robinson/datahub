@@ -292,12 +292,14 @@ class ImportController extends AbstractActionController
         $filePath = $this->getRequest()->getParam('file');
         
         if (!$filePath) {
-            die ('run with arg --file /path/to/file ');
+            echo "line 295". ' in '."/Console/Controller/ImportController.php".PHP_EOL;
+            die(var_dump( 'run with arg --file /path/to/file ' ));
         }
         
         $filePath = realpath($filePath);
         if (!$filePath) {
-            die ("--file does not exist: " . $this->getRequest()->getParam('file'));
+            echo "line 302". ' in '."/Console/Controller/ImportController.php".PHP_EOL;
+            die(var_dump( "--file does not exist: " . $this->getRequest()->getParam('file') ));
         }
         
         $file = new CsvIterator($filePath);
@@ -421,6 +423,9 @@ class ImportController extends AbstractActionController
         $importer->importFromCsv($csvFile);
     }
     
+    /**
+     * @return string
+     */
     public function top25ListAction()
     {
         $error = [
@@ -450,7 +455,6 @@ class ImportController extends AbstractActionController
                   AND tlr.company_name IS NOT NULL
                   AND tlr.company_name <> ''
                   AND tlr.object_type = 'company'
-            #       AND tlr.company_name LIKE '%Google%'
             ORDER BY tlr.list_id ASC
             ";
         $stmnt  = $bizjDB->prepare($sql);
