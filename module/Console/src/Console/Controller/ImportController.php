@@ -385,13 +385,13 @@ class ImportController extends AbstractActionController
                     $newValue = isset($currentContact->$columnName) ? $currentContact->$columnName : null;
                     
                     // is the new value different from what we have?
-                    $newValueisDifferent = $valueInDB != $newValue;
+                    $newValueIsDifferent = $valueInDB != $newValue;
                     
                     // current value is null or empty string
                     $existingValueIsUseless = is_null($valueInDB) || $valueInDB === '';
                     
                     // update db value with new value
-                    if ($newValueisDifferent && $existingValueIsUseless) {
+                    if ($newValueIsDifferent && $existingValueIsUseless) {
                         $existingContact->$columnName = $currentContact->$columnName;
                     }
                 }
@@ -477,13 +477,13 @@ class ImportController extends AbstractActionController
                     }
                     // of the next list_id is different, save the current one
                     if ($list['list_id'] !== $lists[$k + 1]['list_id']) {
-                        $listTosave               = new Top25List();
-                        $listTosave->listId       = empty($list['list_id']) ? null : $list['list_id'];
-                        $listTosave->issueDate    = empty($list['issue_date']) ? null : $list['issue_date'];
-                        $listTosave->pageHeadline = empty($list['page_headline']) ? null : $list['page_headline'];
-                        $listTosave->listUrl      = empty($list['path']) ? null : $list['path'];
+                        $listToSave               = new Top25List();
+                        $listToSave->listId       = empty($list['list_id']) ? null : $list['list_id'];
+                        $listToSave->issueDate    = empty($list['issue_date']) ? null : $list['issue_date'];
+                        $listToSave->pageHeadline = empty($list['page_headline']) ? null : $list['page_headline'];
+                        $listToSave->listUrl      = empty($list['path']) ? null : $list['path'];
                         // save the list
-                        if (!$listTosave->save()) {
+                        if (!$listToSave->save()) {
                             // log the error
                             $error['listSave']++;
                         }
