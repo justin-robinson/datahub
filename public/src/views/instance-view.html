@@ -125,9 +125,7 @@
 <!--    Delete Button            -->
                 <paper-icon-button id="delete" icon="delete" on-click="confirmDelete" class="delete"></paper-icon-button>
 <!--    Properties Modal Button            -->
-                <template is="dom-if" if="{{childResources.properties.data.length}}">
-                    <paper-icon-button id="showProperties" icon="build" on-click="showProperties" class="show-properties">Properties</paper-icon-button>
-                </template>
+                <paper-icon-button id="showProperties" icon="build" on-click="showProperties" class="show-properties">Properties</paper-icon-button>
             </template>
             <confirm-delete-view id="confirmDelete" on-yes="deleteResource">
                 Are you sure you want to delete this instance and its properties?

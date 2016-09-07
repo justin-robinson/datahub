@@ -186,7 +186,9 @@
                     var sortedProperties = {};
                     for ( let propertyName in singleProperties ) {
                         if ( singleProperties.hasOwnProperty(propertyName) ) {
-                            sortedProperties[propertyName] = document.createElement('property-model');
+                            var property = document.createElement('property-model');
+                            property.set('data.name', propertyName);
+                            sortedProperties[propertyName] = property;
                         }
                     }
                     for ( let propertyName in multiProperties ) {
