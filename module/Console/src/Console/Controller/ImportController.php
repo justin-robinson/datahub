@@ -15,6 +15,7 @@ use LRUCache\LRUCache;
 use Scoop\Database\Query\Buffer;
 use Zend\Db\Adapter as dbAdapter;
 use Console\Importer\Dataset;
+use Console\Importer\Bbm;
 
 /**
  * Class ImportController
@@ -529,7 +530,7 @@ class ImportController extends AbstractActionController
 '.PHP_EOL;
 
         $csvFile  = realpath($this->getRequest()->getParam('file'));
-        $importer = new Dataset();
+        $importer = new Bbm();
         $importer->importFromCsv($csvFile);
         /**
          * read their csv from wherever it lives
