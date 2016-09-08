@@ -173,7 +173,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       },
 
       _routePageChanged: function(page) {
-        this.page = page || 'company';
+        if ( !page ) {
+          this.set('route.path', 'company');
+        } else {
+          this.page = page;
+        }
       },
 
       _pageChanged: function(page) {
