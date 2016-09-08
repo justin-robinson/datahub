@@ -10,6 +10,7 @@
 <link rel="import" href="../behaviors/api-resource-behaivor.html">
 <link rel="import" href="confirm-delete-view.html">
 <link rel="import" href="instance-view.html">
+<link rel="import" href="property-view.html">
 
 <script src="../../bower_components/urijs/src/URI.min.js"></script>
 
@@ -79,6 +80,16 @@
                 width: 47%;
                 display: inline-block;
             }
+
+            #propertiesModal {
+                background-color: var(--background-color);
+                width: 75%;
+                margin-top: 130px;
+            }
+
+            #propertyActions {
+                margin: 0;
+            }
         </style>
 
         <iron-ajax
@@ -94,7 +105,7 @@
             label="Search"
             remote-source="true"
             on-input="search"
-            on-autocomplete.selected="searchResultSelected"
+            on-autocomplete-selected="searchResultSelected"
             min-length="3"></paper-autocomplete>
 
         <div class="company-properties">
@@ -124,6 +135,14 @@
         <confirm-delete-view id="confirmDelete" on-yes="deleteResource">
             Are you sure you want to delete this company and its instances?
         </confirm-delete-view>
+
+        <paper-dialog
+            id="propertiesModal"
+            always-on-top
+            entry-animation="scale-up-animation"
+            exit-animation="fade-out-animation">
+            <property-view></property-view>
+        </paper-dialog>
     </template>
 
     <script>
@@ -159,6 +178,8 @@
                 }
 
                 this.$.companySelector.$.input.$.input.focus();
+
+                window.propertiesModal = this.$.propertiesModal;
             },
             addInstanceClicked: function () {
                 this.addInstance({});
@@ -175,6 +196,9 @@
             searchResultSelected: function (e, selection) {
                 // updates the company data model after a search result is selected
                 this.set('data', this.searchResults._embedded.company[selection.option.index]);
+
+                // kill the instances loaded
+                this.set('childResources.instances.data', []);
             },
             search: function () {
 
