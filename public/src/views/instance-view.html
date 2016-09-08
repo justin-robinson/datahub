@@ -5,7 +5,6 @@
 <link rel="import" href="../../bower_components/neon-animation/animations/scale-up-animation.html">
 <link rel="import" href="../../bower_components/paper-autocomplete/paper-autocomplete.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
-<link rel="import" href="../../bower_components/paper-dialog-scrollable/paper-dialog-scrollable.html">
 <link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
 <link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
@@ -13,7 +12,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../behaviors/api-resource-behaivor.html">
 <link rel="import" href="confirm-delete-view.html">
-<link rel="import" href="property-view.html">
 
 <dom-module id="instance-view">
 
@@ -28,12 +26,6 @@
             #values {
                 width: 95%;
                 padding-left:1em;
-            }
-
-            #propertiesSearch {
-                --paper-input-container-input-color: var(--text-color);
-                --paper-input-container-focus-color: var(--highlight-color);
-                margin-top: 0px;
             }
 
             paper-icon-button.save {
@@ -69,10 +61,6 @@
                 color: var(--paper-grey-200);
             }
 
-            #propertyActions {
-                margin: 0;
-            }
-
             paper-icon-button.add-property {
                 float: right;
                 color: var(--highlight-color);
@@ -86,11 +74,6 @@
                 padding: 5px;
             }
 
-            #propertiesModal {
-                background-color: var(--background-color);
-                width: 75%;
-                margin-top: 130px;
-            }
             a.blank {
                 text-decoration: none;
             }
@@ -142,30 +125,8 @@
 <!--    Delete Button            -->
                 <paper-icon-button id="delete" icon="delete" on-click="confirmDelete" class="delete"></paper-icon-button>
 <!--    Properties Modal Button            -->
-                <template is="dom-if" if="{{childResources.properties.data.length}}">
-                    <paper-icon-button id="showProperties" icon="build" on-click="showProperties" class="show-properties">Properties</paper-icon-button>
-                </template>
+                <paper-icon-button id="showProperties" icon="build" on-click="showProperties" class="show-properties">Properties</paper-icon-button>
             </template>
-
-            <paper-dialog
-                id="propertiesModal"
-                always-on-top
-                on-iron-overlay-opened="propertiesOpened"
-                entry-animation="scale-up-animation"
-                exit-animation="fade-out-animation">
-                <paper-input id="propertiesSearch" value="{{propertySearchString}}" label="Search"></paper-input>
-                <paper-dialog-scrollable>
-                    <template is="dom-repeat" items="{{childResources.properties.data}}"
-                              filter="{{filterProperties(propertySearchString)}}"
-                              observe="name value">
-                        <property-view data="{{item}}" auto-update></property-view>
-                    </template>
-                </paper-dialog-scrollable>
-                <div id="propertyActions">
-                    <paper-icon-button id="addProperty" icon="add" on-click="addPropertyClicked" class="add-property"></paper-icon-button>
-                </div>
-            </paper-dialog>
-
             <confirm-delete-view id="confirmDelete" on-yes="deleteResource">
                 Are you sure you want to delete this instance and its properties?
             </confirm-delete-view>
@@ -175,6 +136,8 @@
 
     <script>
         (function () {
+
+            var propertyView;
 
             Polymer({
                 is: 'instance-view',
@@ -210,6 +173,10 @@
                             'markets': {
                                 url: Datahub.apiUrl + 'market',
                                 indexBy: ['market_code']
+                            },
+                            'sourceTypes': {
+                                url: Datahub.apiUrl + 'sourcetype',
+                                indexBy: ['sourceTypeId', 'name']
                             }
                         }
                     }
@@ -234,33 +201,9 @@
                     this.$.confirmDelete.open();
                 },
                 showProperties: function () {
-                    this.$.propertiesModal.open();
-                },
-                addPropertyClicked: function () {
-                    this.addProperty({});
-                },
-                addProperty: function (property) {
-
-                    property = property || {};
-
-                    property[this.idField] = this.data[this.idField];
-
-                    // push new property to our array and notify polymer that it needs to render the new property
-                    this.push('childResources.properties.data', property);
-                },
-                filterProperties: function (searchString) {
-                    if ( !searchString ) {
-                        return null;
-                    }
-
-                    return function (property) {
-                        var value = property.value.toLowerCase();
-                        var name = property.name.toLowerCase();
-                        return ( value.indexOf(searchString) != -1 || name.indexOf(searchString) != -1);
-                    }
-                },
-                propertiesOpened: function () {
-                    this.$.propertiesModal.querySelector('paper-input').$.input.focus();
+                    this.getPropertyView().set('props',this.childResources.properties.data);
+                    this.getPropertyView().set('companyInstanceId',this.id());
+                    window.propertiesModal.open();
                 },
                 bindStatesToAutocomplete: function () {
 
@@ -297,6 +240,10 @@
                         text: market.market_name,
                         value: market.market_code
                     });
+                },
+                getPropertyView: function() {
+                    propertyView = propertyView || window.propertiesModal.querySelector('property-view');
+                    return propertyView;
                 }
             });
         })();

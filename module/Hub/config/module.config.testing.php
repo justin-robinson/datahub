@@ -43,7 +43,7 @@ return [
             'dbname'        => 'recon',
             'port'          => '3306',
             'user'          => 'datahub',
-            'password'      => 'readonly',
+            'password'      => 'datahub',
             'driverOptions' => [
                 1002 => 'SET NAMES utf8',
             ],

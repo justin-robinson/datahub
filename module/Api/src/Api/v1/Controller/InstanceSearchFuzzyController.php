@@ -39,7 +39,21 @@ class InstanceSearchFuzzyController extends AbstractRestfulController
             return new JsonModel([]);
         }
 
+        if ( array_key_exists('profile', $this->params()->fromQuery()) ) {
+            /**
+             * @var $instance CompanyInstance
+             */
+            foreach ( $instances as $instance ) {
+                $instance->fetch_properties();
+                $instance->fetch_channel_ids();
+                $instance->fetch_contacts();
+                $instance->fetch_lists();
+                $instance->fetch_state();
+            }
+        }
+
         return new JsonModel(InstanceCollectionFormatter::format($instances));
+
 
     }
 }

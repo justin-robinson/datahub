@@ -9,7 +9,7 @@
     "tickerExchange":     {},
     "url":                {},
     "ownership":          {},
-    "instanceProperties": {
+    "props": {
       "updatedAt":             {},
       "description":           {},
       "revenue":               {},

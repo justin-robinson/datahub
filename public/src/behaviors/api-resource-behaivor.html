@@ -12,6 +12,11 @@
                 value: function () { return {}; },
                 notify: true
             },
+            originalData: {
+                type: Object,
+                value: function () { return {}; },
+                notify: true
+            },
             links: {
                 type: Object,
                 value: function () { return {}; },
@@ -263,6 +268,11 @@
                 return;
             }
 
+            // don't save if nothing has changed
+            if ( JSON.stringify(this.data) === JSON.stringify(this.originalData) ) {
+                return;
+            }
+
             if ( this.id() ) {
                 this.ajax.put.body = this.data;
                 this.ajax.put.url = this.url + '/' + this.id();
@@ -275,7 +285,16 @@
         },
         _dataChanged: function ( event, change ) {
 
-            if ( !this.autoUpdate || change === null || change.value === null ) {
+            if ( change === null || change.value === null ) {
+                return;
+            }
+
+            // keep track of the original model values for save optimization
+            if ( typeof change.path === 'undefined' ) {
+                this.originalData = JSON.parse(JSON.stringify(this.data));
+            }
+
+            if ( !this.autoUpdate ) {
                 return;
             }
 
