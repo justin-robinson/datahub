@@ -432,14 +432,5 @@ SELECT
         echo PHP_EOL."ended at " . $end . PHP_EOL;
     }
     
-    /**
-     * reads their csv and saves it to dh
-     */
-    public function bbmImportAction(){
-        /**
-         * read their csv from wherever it lives
-         * insert with pdo
-         * profit
-         */
-    }
+
 }

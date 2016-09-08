@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class Company
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/07/18
+ * @date 2016/09/08
  * @property mixed $companyId
  * @property mixed $parentId
  * @property mixed $employeeCount

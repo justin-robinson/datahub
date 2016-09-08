@@ -508,4 +508,37 @@ class ImportController extends AbstractActionController
         
     }
     
+    /**
+     * reads their csv and saves it to dh
+     */
+    public function bbmAction(){
+        
+        echo PHP_EOL.'
+
+888888b.  888888b.  888b     d8888888888          d8b                888   d8b
+888  "88b 888  "88b 8888b   d8888  888            Y8P                888   Y8P
+888  .88P 888  .88P 88888b.d88888  888                               888
+8888888K. 8888888K. 888Y88888P888  888  88888b.  8888 .d88b.  .d8888b888888888 .d88b. 88888b.
+888  "Y88b888  "Y88b888 Y888P 888  888  888 "88b "888d8P  Y8bd88P"   888   888d88""88b888 "88b
+888    888888    888888  Y8P  888  888  888  888  88888888888888     888   888888  888888  888
+888   d88P888   d88P888   "   888  888  888  888  888Y8b.    Y88b.   Y88b. 888Y88..88P888  888
+8888888P" 8888888P" 888       8888888888888  888  888 "Y8888  "Y8888P "Y888888 "Y88P" 888  888
+                                                                        888
+                                                                       d88P
+                                                                      888P"
+'.PHP_EOL;
+
+        $csvFile  = realpath($this->getRequest()->getParam('file'));
+        $importer = new Dataset();
+        $importer->importFromCsv($csvFile);
+        /**
+         * read their csv from wherever it lives
+         * insert with pdo
+         * profit
+         */
+        
+//        $csvFile  = realpath($this->getRequest()->getParam('file'));
+//        $dave = $csvFile;
+//        echo PHP_EOL.'dave';
+    }
 }
