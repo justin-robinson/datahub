@@ -200,7 +200,7 @@
                 },
                 showProperties: function () {
                     this.getPropertyView().set('props',this.childResources.properties.data);
-                    this.getPropertyView().set('companyInstanceId',this.id());
+                    this.getPropertyView().set('companyInstanceId',this.getId());
                     window.propertiesModal.open();
                 },
                 bindStatesToAutocomplete: function () {

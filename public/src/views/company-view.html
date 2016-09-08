@@ -12,8 +12,6 @@
 <link rel="import" href="instance-view.html">
 <link rel="import" href="property-view.html">
 
-<script src="../../bower_components/urijs/src/URI.min.js"></script>
-
 <dom-module id="company-view">
 
     <template>
@@ -172,10 +170,6 @@
                 searchTimer: Object
             },
             attached: function () {
-
-                if ( Datahub.queryParams.id ) {
-                    this.set('data.companyId', Datahub.queryParams.id);
-                }
 
                 this.$.companySelector.$.input.$.input.focus();
 

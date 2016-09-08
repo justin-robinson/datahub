@@ -72,6 +72,10 @@
                 type: String,
                 value: 'id'
             },
+            resourceId: {
+                type: String,
+                value: ''
+            },
             childResources: {
                 type: Object,
                 value: function () { return {}; },
@@ -96,6 +100,10 @@
                 this.parseLinks(this.data);
             }
             this.listen(this, 'data-changed', '_dataChanged');
+
+            if ( this.resourceId ) {
+                this.set('data.' + this.idField, this.resourceId);
+            }
         },
         attached: function () {
             // load all cachable resources
@@ -246,18 +254,18 @@
                         this.listen(this.childResources[childName].ajax, 'error', 'removeSpinner');
                     }
 
-                    this.childResources[childName].ajax.url = this.url + '/' + this.id() + '/' + childName;
+                    this.childResources[childName].ajax.url = this.url + '/' + this.getId() + '/' + childName;
                 }
             }
         },
-        id: function () {
+        getId: function () {
             return this.data[this.idField];
         },
         deleteResource: function (e) {
-            this.ajax.delete.url = this.url + '/' + this.id();
+            this.ajax.delete.url = this.url + '/' + this.getId();
         },
         fetchResource: function () {
-            this.ajax.get.url = this.url + '/' + this.id();
+            this.ajax.get.url = this.url + '/' + this.getId();
         },
         saveResource: function () {
 
@@ -273,9 +281,9 @@
                 return;
             }
 
-            if ( this.id() ) {
+            if ( this.getId() ) {
                 this.ajax.put.body = this.data;
-                this.ajax.put.url = this.url + '/' + this.id();
+                this.ajax.put.url = this.url + '/' + this.getId();
                 this.ajax.put.generateRequest();
             } else {
                 this.ajax.post.body = this.data;

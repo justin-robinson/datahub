@@ -93,8 +93,8 @@
                 }
             },
             fetchResource: function () {
-                if ( this.id() ) {
-                    this.$.getInstance.url = Datahub.apiUrl + 'instance/' + this.id();
+                if ( this.getId() ) {
+                    this.$.getInstance.url = Datahub.apiUrl + 'instance/' + this.getId();
                 }
             },
             search: function () {

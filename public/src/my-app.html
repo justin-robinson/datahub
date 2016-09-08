@@ -24,8 +24,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="my-icons.html">
 <link rel="import" href="views/ajax-spinners.html">
 
-<script src="../bower_components/urijs/src/URI.min.js"></script>
-
 <dom-module id="my-app">
 
   <template>
@@ -94,7 +92,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <app-location route="{{route}}"></app-location>
     <app-route
         route="{{route}}"
-        pattern="/:page"
+        pattern="/:page/:id"
         data="{{routeData}}"
         tail="{{subroute}}"></app-route>
 
@@ -120,8 +118,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </app-header>
 
         <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
-          <company-view name="company" auto-update></company-view>
-          <contacts-view name="contacts"></contacts-view>
+          <company-view id="companyView" name="company" resource-id="{{id}}" auto-update></company-view>
+          <contacts-view id="contactsView" name="contacts" resource-id="{{id}}"></contacts-view>
         </iron-pages>
 
         <ajax-spinners id="ajaxSpinners"></ajax-spinners>
@@ -160,28 +158,38 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           type: String,
           reflectToAttribute: true,
           observer: '_pageChanged'
+        },
+        id: {
+          type: String,
+          reflectToAttribute: true,
+          observer: '_idChanged'
         }
 
       },
 
       observers: [
-        '_routePageChanged(routeData.page)'
+        '_routePageChanged(routeData)'
       ],
+
+      ready: function () {
+        this.listen(this.$.companyView, 'data-changed', 'companyChanged');
+      },
 
       attached: function () {
         Datahub.ajaxSpinners = this.$.ajaxSpinners;
       },
 
-      _routePageChanged: function(page) {
-        if ( !page ) {
+      _routePageChanged: function(routeData) {
+        if ( !routeData.page ) {
           this.set('route.path', 'company');
         } else {
-          this.page = page;
+          this.page = routeData.page;
+          this.id = routeData.id
         }
       },
 
       _pageChanged: function(page) {
-        Datahub.queryParams = URI(window.location.href).query(true) || {};
+        Datahub.queryParams = this.get('route.__queryParams') || {};
 
         if ( Datahub.appEnv[Datahub.queryParams.env] ) {
           this.$.cookieEnv.value = Datahub.queryParams.env;
@@ -199,6 +207,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         // load page import on demand.
         this.importHref(
           this.resolveUrl('views/' + page + '-view.html'), null, null, true);
+      },
+      _idChanged: function(id) {
+        this.id = id;
+        console.log(this.id);
+        if ( this.id ) {
+          let path = this.page + '/' + this.id;
+          if ( this.get('route.path') !== path ) {
+            this.set('route.path', path)
+          }
+        }
+      },
+      companyChanged: function(event, change){
+        if ( change.path === 'data.companyId' ) {
+          this.set('id', change.value);
+        } else if ( !change.path && change.value.companyId ) {
+          this.set('id', change.value.companyId )
+        }
       }
 
     });
