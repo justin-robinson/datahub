@@ -1,7 +1,7 @@
 <?php
 $defaultMysqlConnectionParams = [
     'charset'       => 'utf8',
-    'host'          => 'devdb.bizjournals.int',
+    'host'          => 'hubdb.bizj-staging.com',
     'dbname'        => 'datahub',
     'port'          => '3306',
     'user'          => 'web',
