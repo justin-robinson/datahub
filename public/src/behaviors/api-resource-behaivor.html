@@ -293,7 +293,7 @@
         },
         _dataChanged: function ( event, change ) {
 
-            if ( change === null || change.value === null ) {
+            if ( !this.autoUpdate || change === null || change.value === null ) {
                 return;
             }
 
