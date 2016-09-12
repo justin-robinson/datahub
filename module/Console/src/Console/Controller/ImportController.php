@@ -431,9 +431,9 @@ class ImportController extends AbstractActionController
     {
         $error = [
             'noInstance' => 0,
-            'mapSave' => 0,
-            'listSave' => 0,
-            'noLists' => 0,
+            'mapSave'    => 0,
+            'listSave'   => 0,
+            'noLists'    => 0,
         ];
         // get all the lists
         $config = $this->getServiceLocator()->get('Config');
@@ -498,15 +498,9 @@ class ImportController extends AbstractActionController
             // log the error
             $error['noLists']++;
         }
-        
-        return "done importing" . PHP_EOL. var_dump($error);
-
-//        $importer = Top25ListImporter::importFromDb();
-        // do the call
-        // format the results
-        // save
-        
-        
+    
+        return "done importing" . PHP_EOL . var_dump($error);
+    
     }
     
     /**
@@ -536,14 +530,5 @@ class ImportController extends AbstractActionController
         }
         $importer = new Bbm();
         $importer->importFromCsv($csvFile);
-        /**
-         * read their csv from wherever it lives
-         * insert with pdo
-         * profit
-         */
-        
-//        $csvFile  = realpath($this->getRequest()->getParam('file'));
-//        $dave = $csvFile;
-//        echo PHP_EOL.'dave';
     }
 }
