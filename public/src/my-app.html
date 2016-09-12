@@ -185,7 +185,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       _routePageChanged: function(routeData, subrouteData) {
         if ( !routeData.page ) {
-          this.set('page', 'company');
+          this.set('route.path', 'company');
         } else {
           this.page = routeData.page;
           this.id = subrouteData.id
