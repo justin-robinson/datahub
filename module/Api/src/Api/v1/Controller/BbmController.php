@@ -24,7 +24,6 @@ class BbmController extends AbstractRestfulController
         
         
         $bbmInstance = DatahubBbm::fetch_where('dhInstanceId = ?', [$companyInstanceId]);
-//        $bbmInstance = DatahubBbm::fetch_by_id($companyInstanceId);
         
         if ($bbmInstance) {
             return new JsonModel(BbmFormatter::format($bbmInstance));

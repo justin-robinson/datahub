@@ -9,11 +9,13 @@
 namespace Api\v1\ResponseFormatter;
 
 
-use DB\Datahub\DatahubBbm;
+use Scoop\Database\Rows;
 
 class BbmFormatter
 {
-    public static function format(DatahubBbm $bbm){
-        return true;
+    public static function format($bbm){
+        
+        return $bbm->to_array();
+        
     }
 }
