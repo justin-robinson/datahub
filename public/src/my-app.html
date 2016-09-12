@@ -92,9 +92,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <app-location route="{{route}}"></app-location>
     <app-route
         route="{{route}}"
-        pattern="/:page/:id"
+        pattern="/:page"
         data="{{routeData}}"
         tail="{{subroute}}"></app-route>
+    <app-route
+        route="{{subroute}}"
+        pattern="/:id"
+        data="{{subrouteData}}"></app-route>
 
     <app-drawer-layout fullbleed>
 
@@ -168,7 +172,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       },
 
       observers: [
-        '_routePageChanged(routeData)'
+        '_routePageChanged(routeData, subrouteData)'
       ],
 
       ready: function () {
@@ -179,12 +183,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         Datahub.ajaxSpinners = this.$.ajaxSpinners;
       },
 
-      _routePageChanged: function(routeData) {
+      _routePageChanged: function(routeData, subrouteData) {
         if ( !routeData.page ) {
-          this.set('route.path', 'company');
+          this.set('page', 'company');
         } else {
           this.page = routeData.page;
-          this.id = routeData.id
+          this.id = subrouteData.id
         }
       },
 
