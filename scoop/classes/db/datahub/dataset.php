@@ -104,6 +104,8 @@ class Dataset extends \DBCore\Datahub\Dataset
             $this->__set( $name, $value );
         }
     }
+    
+    
 }
 
 ?>

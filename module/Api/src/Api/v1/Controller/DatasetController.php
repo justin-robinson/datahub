@@ -138,21 +138,5 @@ class DatasetController extends AbstractRestfulController
         return $this->getResponse()->setStatusCode(204);
     }
     
-    
-    /**
-     * @return JsonModel
-     */
-    public function getList()
-    {
-        $sets = Dataset::fetch_where(1);
-        
-        $return = [];
-        foreach ($sets->to_array() as $set){
-            if($set['market_code'] === 'sanfrancisco'){
-                array_push($return, $set);
-            }
-        }
-        
-        return new JsonModel($return);
-    }
+
 }
