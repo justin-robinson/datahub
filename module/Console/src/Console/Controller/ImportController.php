@@ -495,12 +495,6 @@ class ImportController extends AbstractActionController
         }
         
         return "done importing" . PHP_EOL. var_dump($error);
-
-//        $importer = Top25ListImporter::importFromDb();
-        // do the call
-        // format the results
-        // save
-        
         
     }
     

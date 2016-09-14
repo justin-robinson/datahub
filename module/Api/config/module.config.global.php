@@ -355,13 +355,13 @@ $latestApiChildRoutes = [
     'marketdatasets' => [
         'type'         => 'Literal',
         'options'      => [
-            'route' => '/marketdatasets',
+            'route'    => '/marketdatasets',
             'defaults' => [
                 'controller' => 'Api\v1\Controller\Marketdatasets',
             ],
         ],
         'child_routes' => [
-            'id'   => [
+            'id' => [
                 'type'    => 'Segment',
                 'options' => [
                     'route'       => '[/:id]',
@@ -371,7 +371,6 @@ $latestApiChildRoutes = [
                 ],
             ],
         ],
-
     ],
     'list'           => [
         'type'         => 'Literal',
