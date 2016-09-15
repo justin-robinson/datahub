@@ -8,8 +8,8 @@ use Scoop\Database\Model;
  * Class DatahubBbm
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/09/12
- * @property mixed $dhInstanceId
+ * @date 2016/09/15
+ * @property mixed $dhEntityId
  * @property mixed $bbmId
  * @property mixed $bbmOrgUrl
  * @property mixed $bbmOrgName
@@ -35,7 +35,7 @@ class DatahubBbm extends Model {
 
     public static $dBColumnPropertiesArray = 
         array (
-          'dhInstanceId' => 
+          'dhEntityId' => 
           array (
           ),
           'bbmId' => 
@@ -62,7 +62,7 @@ class DatahubBbm extends Model {
         );
     public static $dBColumnDefaultValuesArray = 
         array (
-          'dhInstanceId' => NULL,
+          'dhEntityId' => NULL,
           'bbmId' => NULL,
           'bbmOrgUrl' => NULL,
           'bbmOrgName' => NULL,
