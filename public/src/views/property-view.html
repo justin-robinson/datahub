@@ -1,11 +1,14 @@
-<link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/gold-phone-input/gold-phone-input.html">
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
-<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
-<link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/paper-autocomplete/paper-autocomplete.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-input/paper-textarea.html">
+<link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../behaviors/api-resource-behaivor.html">
+<link rel="import" href="../models/property-model.html">
 
 <dom-module id="property-view">
 
@@ -16,7 +19,7 @@
                 display: block;
             }
 
-            paper-card paper-input,paper-autocomplete {
+            paper-card #properties {
                 width: 95%;
                 padding-left:1em;
             }
@@ -41,18 +44,95 @@
                 color: var(--paper-grey-200);
             }
 
+            #properties * {
+                display: inline-block;
+            }
+            
+            #industries-container * {
+                display: block;
+            }
+
+            #industries-header * {
+                display: inline-block;
+            }
+
+            #industries paper-input {
+                display: inline-block;
+            }
+
+            .col-1_1 {
+                width: 100% !important;
+            }
+            .col-3_4 {
+                width: 74%; !important;
+            }
+            .col-1_2 {
+                width: 48%; !important;
+            }
+            .col-1_3 {
+                width: 32%; !important;
+            }
+            .col-1_4 {
+                width: 24%;
+            }
+            .col-1_6 {
+                width: 15%; !important;
+            }
+            .col-1_12 {
+                width: 7%; !important;
+            }
+
+            .description {
+                /*position: absolute;*/
+                top: 0;
+                height:100%;
+            }
+
+            .column {
+                /*position: absolute;*/
+                top: 0;
+                height:;
+            }
+
+            .col2 {
+                position: absolute;
+            }
+
         </style>
 
         <paper-card heading="{{data.name}}">
-            <div>
-                <paper-input value="{{data.companyInstancePropertyId}}" label="Property Id"></paper-input>
-                <paper-input value="{{data.name}}" label="Name"></paper-input>
-                <paper-input value="{{data.value}}" label="Value"></paper-input>
-                <paper-autocomplete value="{{data.sourceTypeId}}" id="sourceTypeSelector" text-property="name" value-property="sourceTypeId" label="Source"></paper-autocomplete>
-<!--                <paper-input value="{{data.createdAt}}" label="Created"></paper-input>-->
-<!--                <paper-input value="{{data.updatedAt}}" label="Updated"></paper-input>-->
+            <div id="properties">
+                <div class="col-1_2 column col1">
+                    <paper-input class="col-1_2" value="{{sortedProperties.address1.data.value}}" label="Address 1"></paper-input>
+                    <paper-input class="col-1_2" value="{{sortedProperties.address2.data.value}}" label="Address 2"></paper-input>
+                    <paper-input class="col-1_4" value="{{sortedProperties.city.data.value}}" label="City"></paper-input>
+                    <paper-input class="col-1_4" value="{{sortedProperties.state.data.value}}" label="State"></paper-input>
+                    <paper-input class="col-1_4" value="{{sortedProperties.zipCode.data.value}}" label="Zip Code"></paper-input>
+                    <paper-input class="col-1_4" value="{{sortedProperties.country.data.value}}" label="Country"></paper-input>
+                    <paper-input class="col-1_2" value="{{sortedProperties.latitude.data.value}}" label="Latitude"></paper-input>
+                    <paper-input class="col-1_2" value="{{sortedProperties.longitude.data.value}}" label="Longitude"></paper-input>
+                    <gold-phone-input class="col-1_2" value="{{sortedProperties.phoneNumber.data.value}}" label="Phone Number" country-code="{{sortedProperties.phoneCountryCode.data.value}}" auto-validate></gold-phone-input>
+                    <paper-input class="col-1_6" value="{{sortedProperties.phoneExtension.data.value}}" label="Extension" auto-validate allowed-pattern="\d"></paper-input>
+                    <div id="industries-container" class="col-1_1">
+                        <div id="industries-header">
+                            <div>Industries</div>
+                            <paper-icon-button class="save" icon="add" on-click="addMultiPropertyClicked" data-propertyName="industry"></paper-icon-button>
+                        </div>
+                        <div id="industries">
+                            <template is="dom-repeat" items="{{sortedProperties.industry}}" as="industry">
+                                <div style="display: inline-block;">
+                                    <paper-input value="{{industry.data.value}}" label="Industry" no-label-float></paper-input>
+                                    <paper-icon-button class="delete" icon="delete" on-click="deleteIndustry"></paper-icon-button>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1_2 column col2">
+                    <paper-textarea class="col-1_1 description" value="{{sortedProperties.description.data.value}}" label="Description"></paper-textarea>
+                </div>
             </div>
-            <paper-icon-button id="save" icon="save" on-click="saveResource" class="save">Save</paper-icon-button>
+            <paper-icon-button id="save" icon="save" on-click="save" class="save">Save</paper-icon-button>
 
             <template is="dom-if" if="{{data.companyInstancePropertyId}}">
                 <paper-icon-button id="delete" icon="delete" on-click="confirmDelete" class="delete"></paper-icon-button>
@@ -68,71 +148,118 @@
     <script>
         (function () {
 
+            var singleProperties = {
+                address1: true,
+                address2: true,
+                city: true,
+                country: true,
+                description: true,
+                latitude: true,
+                longitude: true,
+                phoneCountryCode: true,
+                phoneExtension: true,
+                phoneNumber: true,
+                state: true,
+                yearEstablished: true,
+                zipCode: true,
+            };
+
+            var multiProperties = {
+                industry: true,
+            };
+
             Polymer({
                 is: 'property-view',
-                behaviors: [
-                    Datahub.ApiResourceBehavior
-                ],
                 properties: {
-                    idField: {
-                        value:'companyInstancePropertyId'
+                    props:                 {
+                        type: Array,
+                        value: function () { return []; },
+                        notify: true
                     },
-                    url: {
-                        value: Datahub.apiUrl + 'property'
+                    sortedProperties: {
+                        type: Object,
+                        value: function() { return {}; }
                     },
-                    removeFromDomOnDelete: {
-                        value: true
-                    },
-                    sharedCachableResources: {
-                        value: {
-                            'sourceTypes': {
-                                url: Datahub.apiUrl + 'sourcetype',
-                                indexBy: ['sourceTypeId', 'name']
+                    companyInstanceId: {
+                        type: Number,
+                        value: 0
+                    }
+                },
+                ready: function () {
+                    this.listen(this, 'props-changed', 'sortProperties');
+                },
+                sortProperties: function () {
+                    var sortedProperties = {};
+                    for ( let propertyName in singleProperties ) {
+                        if ( singleProperties.hasOwnProperty(propertyName) ) {
+                            var property = document.createElement('property-model');
+                            property.set('data.name', propertyName);
+                            sortedProperties[propertyName] = property;
+                        }
+                    }
+                    for ( let propertyName in multiProperties ) {
+                        if ( multiProperties.hasOwnProperty(propertyName) ) {
+                            sortedProperties[propertyName] = [];
+                        }
+                    }
+                    //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of
+                    // get the latest property of each name
+                    var propertyModel;
+                    for ( let propertyData of this.props ) {
+
+                        if ( !sortedProperties[propertyData.name] ) {
+                            sortedProperties[propertyData.name] = document.createElement('property-model');
+                        }
+
+                        if ( multiProperties.hasOwnProperty(propertyData.name) ) {
+                            propertyModel = document.createElement('property-model');
+                            propertyModel.set('data', propertyData);
+                            sortedProperties[propertyData.name].push(propertyModel);
+                        } else if (propertyData.updatedAt.localeCompare(sortedProperties[propertyData.name].get('data.updatedAt')) === 1) {
+                            sortedProperties[propertyData.name].set('data', propertyData);
+                        }
+                    }
+                    this.set('sortedProperties', sortedProperties);
+                },
+                save: function () {
+                    var property;
+                    var sortedProperties = this.get('sortedProperties');
+                    // save all the properties in the dom
+                    for ( let i in sortedProperties) {
+                        if ( sortedProperties.hasOwnProperty(i) ) {
+
+                            // the property to save
+                            property = sortedProperties[i];
+
+                            // some properties are actually array of properties IE industry
+                            if ( multiProperties.hasOwnProperty(i) ) {
+                                // save the array of properties
+                                for ( let property of sortedProperties[i] ) {
+                                    property.set('data.companyInstanceId', this.get('companyInstanceId'));
+                                    property.saveResource();
+                                }
+                            } else {
+                                // save the one property
+                                property.set('data.companyInstanceId', this.get('companyInstanceId'));
+                                property.saveResource();
                             }
                         }
                     }
                 },
-                ready: function () {
-
-                    // listen to the event fired when the sourceTypes are fetched
-                    this.listen(this, 'sourceTypes-loaded', 'bindSourceTypesToAutocomplete');
-
-                    // listen for data changes
-                    this.listen(this, 'data-changed', 'dataChanged');
-                },
-                attached: function () {
-                    this.dataChanged();
-                },
-                dataChanged: function () {
-                    this.bindSourceTypesToAutocomplete();
-                    if ( !this.data.sourceTypeId && sharedCachableResources.sourceTypes.fetched && sharedCachableResources.sourceTypes.map.datahub ) {
-                        this.$.sourceTypeSelector.setOption({
-                            text: sourceTypes.map.datahub.name,
-                            value: sourceTypes.map.datahub.sourceTypeId
-                        });
+                addMultiPropertyClicked: function (event) {
+                    var propertyName = event.target.getAttribute('data-propertyName');
+                    if ( propertyName ) {
+                        this.addMultiProperty(propertyName);
                     }
                 },
-                confirmDelete: function () {
-                    this.$.confirmDelete.open();
+                addMultiProperty: function (name) {
+                    var property = document.createElement('property-model');
+                    property.data.name = name;
+                    this.push('sortedProperties.'+name, property);
                 },
-                bindSourceTypesToAutocomplete:function () {
-
-                    // attach sourceTypes to autocomplete
-                    this.$.sourceTypeSelector.source = sharedCachableResources.sourceTypes.data;
-
-                    this.setSourceTypesAutocompleteValue();
-                },
-                setSourceTypesAutocompleteValue: function() {
-
-                    // set current value of the autocomplete to the value of the instance
-                    if ( !this.data.sourceTypeId ) {
-                        return;
-                    }
-                    var sourceType = sharedCachableResources.sourceTypes.indexes.sourceTypeId[this.data.sourceTypeId];
-                    this.$.sourceTypeSelector.setOption({
-                        text: sourceType.name,
-                        value: sourceType.sourceTypeId
-                    });
+                deleteIndustry: function (event) {
+                    event.model.industry.deleteResource();
+                    this.splice('sortedProperties.industry', event.model.index, 1);
                 }
             });
         })();

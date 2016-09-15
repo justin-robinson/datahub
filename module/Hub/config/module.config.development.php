@@ -66,11 +66,11 @@ return [
         'datahub' => $defaultMysqlConnectionParams,
         'db02'    => [
             'charset'       => 'utf8',
-            'host'          => 'radb.bizj-internal.com',
+            'host'          => 'db02.bizj-internal.com',
             'dbname'        => 'recon',
-            'port'          => '3306',
-            'user'          => 'directory-read',
-            'password'      => 'readonly',
+            'port'          => '3318',
+            'user'          => 'datahub',
+            'password'      => 'datahub',
             'driverOptions' => [
                 1002 => 'SET NAMES utf8',
             ],

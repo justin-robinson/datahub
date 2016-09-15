@@ -7,24 +7,22 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
-<link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/app-route/app-location.html">
-<link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
 <link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
-<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
-<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
 <link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
 <link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
-<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/polymer-cookie/polymer-cookie.html">
 <link rel="import" href="../bower_components/polymer-cookie/polymer-cookie.html">
-<link rel="import" href="views/ajax-spinners.html">
+<link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="my-icons.html">
-
-<script src="../bower_components/urijs/src/URI.min.js"></script>
+<link rel="import" href="views/ajax-spinners.html">
 
 <dom-module id="my-app">
 
@@ -32,16 +30,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <style>
 
-        :root {
-            --background-color: var(--paper-grey-800);
-            --text-color: var(--paper-teal-500);
-            --highlight-color: var(--paper-amber-600);
-        }
+      :root {
+          --background-color: var(--paper-grey-800);
+          --text-color: var(--paper-teal-500);
+          --highlight-color: var(--paper-amber-600);
+      }
 
-        app-header-layout {
-            background-color: var(--background-color);
-            color: var(--text-color);
-        }
+      app-header-layout {
+          background-color: var(--background-color);
+          color: var(--text-color);
+      }
 
       :host {
         display: block;
@@ -84,6 +82,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         left: 16px;
       }
 
+      #header-logo {
+        margin-left: -20px;
+      }
+
 
     </style>
 
@@ -93,15 +95,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         pattern="/:page"
         data="{{routeData}}"
         tail="{{subroute}}"></app-route>
+    <app-route
+        route="{{subroute}}"
+        pattern="/:id"
+        data="{{subrouteData}}"></app-route>
 
     <app-drawer-layout fullbleed>
 
       <!-- Drawer content -->
       <app-drawer>
-        <app-toolbar>Menu</app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
           <a name="company" href="/company">Company</a>
-          <a name="company" href="/contacts">Contacts</a>
+          <a name="contacts" href="/contacts">Contacts</a>
         </iron-selector>
       </app-drawer>
 
@@ -111,13 +116,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-header condenses reveals effects="waterfall">
           <app-toolbar>
             <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
-            <div title>Datahub API</div>
+            <img id="header-logo" src="/images/app-icon-64.png" alt="logo" height="60px" width="60px">
+            <div title>Bobby</div>
           </app-toolbar>
         </app-header>
 
         <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
-          <company-view name="company" auto-update></company-view>
-          <contacts-view name="contacts"></contacts-view>
+          <company-view id="companyView" name="company" resource-id="{{id}}" auto-update></company-view>
+          <contacts-view id="contactsView" name="contacts" resource-id="{{id}}"></contacts-view>
         </iron-pages>
 
         <ajax-spinners id="ajaxSpinners"></ajax-spinners>
@@ -156,24 +162,38 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           type: String,
           reflectToAttribute: true,
           observer: '_pageChanged'
+        },
+        id: {
+          type: String,
+          reflectToAttribute: true,
+          observer: '_idChanged'
         }
 
       },
 
       observers: [
-        '_routePageChanged(routeData.page)'
+        '_routePageChanged(routeData, subrouteData)'
       ],
+
+      ready: function () {
+        this.listen(this.$.companyView, 'data-changed', 'companyChanged');
+      },
 
       attached: function () {
         Datahub.ajaxSpinners = this.$.ajaxSpinners;
       },
 
-      _routePageChanged: function(page) {
-        this.page = page || 'company';
+      _routePageChanged: function(routeData, subrouteData) {
+        if ( !routeData.page ) {
+          this.set('route.path', 'company');
+        } else {
+          this.page = routeData.page;
+          this.id = subrouteData.id
+        }
       },
 
       _pageChanged: function(page) {
-        Datahub.queryParams = URI(window.location.href).query(true) || {};
+        Datahub.queryParams = this.get('route.__queryParams') || {};
 
         if ( Datahub.appEnv[Datahub.queryParams.env] ) {
           this.$.cookieEnv.value = Datahub.queryParams.env;
@@ -191,6 +211,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         // load page import on demand.
         this.importHref(
           this.resolveUrl('views/' + page + '-view.html'), null, null, true);
+      },
+      _idChanged: function(id) {
+        this.id = id;
+        if ( this.id ) {
+          let path = this.page + '/' + this.id;
+          if ( this.get('route.path') !== path ) {
+            this.set('route.path', path)
+          }
+        }
+      },
+      companyChanged: function(event, change){
+        if ( change.path === 'data.companyId' ) {
+          this.set('id', change.value);
+        } else if ( !change.path && change.value.companyId ) {
+          this.set('id', change.value.companyId )
+        }
       }
 
     });

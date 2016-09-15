@@ -902,12 +902,11 @@ class MeroveusController extends AbstractActionController
         }
 
         $params = [
-            'revenue'   => empty($target['universal-revenue-volume_static']) ? [] : [$target['universal-revenue-volume_static']],
+            'revenue'         => empty($target['universal-revenue-volume_static']) ? [] : [$target['universal-revenue-volume_static']],
             'employeeCoutn'   => empty($target['universal-employee-local_static']) ? [] : [$target['universal-employee-local_static']],
             'yearEstablished' => empty($target['universal-established-year_static']) ? [] : [$target['universal-established-year_static']],
             'description'     => empty($target['universal-profile-blob_static']) ? [] : [$target['universal-profile-blob_static']],
-            'industry'                          => empty($target['firm-industry_static']) ? [] : explode(',',
-                $target['firm-industry_static']),
+            'industry'        => empty($target['firm-industry_static']) ? [] : explode(',', $target['firm-industry_static']),
         ];
 
         foreach ($params as $name => $values) {
