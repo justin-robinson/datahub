@@ -685,7 +685,7 @@ class Company extends \DBCore\Datahub\Company
     {
         $ticker = null;
         foreach ($this->get_company_instances() as $company_instance) {
-            if(!is_null($company_instance->stockSymbol) ){
+            if(!empty($company_instance->stockSymbol) ){
                 $ticker = $company_instance->stockSymbol;
                 $dave = true;
             }
