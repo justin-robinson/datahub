@@ -236,7 +236,7 @@ class Company extends \DBCore\Datahub\Company
 
     /**
      * Return only deleted instances
-     * 
+     *
      * @return Rows
      */
     public function fetch_deleted_company_instances()
@@ -680,6 +680,17 @@ class Company extends \DBCore\Datahub\Company
     public function tierTwoValidate(CompanyInstance $instance){
 
     }
+    
+    public function getBestTicker()
+    {
+        $ticker = null;
+        foreach ($this->get_company_instances() as $company_instance) {
+            if(!is_null($company_instance->stockSymbol) ){
+                $ticker = $company_instance->stockSymbol;
+                $dave = true;
+            }
+        }
+        return $ticker;
+    }
 }
-
 ?>
