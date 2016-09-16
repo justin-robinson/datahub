@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class DatahubBbm
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/09/15
+ * @date 2016/09/16
  * @property mixed $dhEntityId
  * @property mixed $bbmId
  * @property mixed $bbmOrgUrl
