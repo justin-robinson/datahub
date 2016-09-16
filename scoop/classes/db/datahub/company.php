@@ -19,11 +19,20 @@ use Scoop\Database\Rows;
  */
 class Company extends \DBCore\Datahub\Company
 {
-
+    
+    /**
+     * @var LRUCache
+     */
     public static $companyCache;
-
+    
+    /**
+     * @var bool
+     */
     public static $useCache = true;
-
+    
+    /**
+     * @var int
+     */
     public static $companiesSaved = 0;
 
     /**
@@ -681,13 +690,16 @@ class Company extends \DBCore\Datahub\Company
 
     }
     
+    /**
+     *
+     * @return mixed|null
+     */
     public function getBestTicker()
     {
         $ticker = null;
         foreach ($this->get_company_instances() as $company_instance) {
             if(!empty($company_instance->stockSymbol) ){
                 $ticker = $company_instance->stockSymbol;
-                $dave = true;
             }
         }
         return $ticker;
