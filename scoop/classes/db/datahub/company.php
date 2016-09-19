@@ -19,17 +19,17 @@ use Scoop\Database\Rows;
  */
 class Company extends \DBCore\Datahub\Company
 {
-    
+
     /**
      * @var LRUCache
      */
     public static $companyCache;
-    
+
     /**
      * @var bool
      */
     public static $useCache = true;
-    
+
     /**
      * @var int
      */
@@ -689,7 +689,7 @@ class Company extends \DBCore\Datahub\Company
     public function tierTwoValidate(CompanyInstance $instance){
 
     }
-    
+
     /**
      *
      * @return mixed|null
@@ -697,12 +697,14 @@ class Company extends \DBCore\Datahub\Company
     public function getBestTicker()
     {
         $ticker = null;
+        $exchange = null;
         foreach ($this->get_company_instances() as $company_instance) {
-            if(!empty($company_instance->stockSymbol) ){
+            if (!empty($company_instance->stockSymbol)) {
                 $ticker = $company_instance->stockSymbol;
+                $exchange = $company_instance->tickerExchange;
             }
         }
-        return $ticker;
+        return array($ticker, $exchange);
     }
 }
 ?>

@@ -113,7 +113,7 @@ class CompanyExportFormatter
                 'industries'  => [],
                 'channelIds'  => [],
             ];
-    
+
             /**
              * @var $latestInstance CompanyInstance
              * @var $latestProperty CompanyInstanceProperty[]
@@ -128,12 +128,13 @@ class CompanyExportFormatter
                  */
                 $sourceTypes[$sourceType->sourceTypeId] = $sourceType;
             }
-    
+
             // pull in properties from the latest instance
             $companyRecord['url'] = $latestInstance->url;
             $companyRecord['stateCode'] = $latestInstance->get_state()->code;
-            $companyRecord['stockSymbol'] = $company->getBestTicker();
-            $companyRecord['tickerExchange'] = $latestInstance->tickerExchange;
+            list($ticker, $exchange) = $company->getBestTicker();
+            $companyRecord['stockSymbol'] = $ticker;
+            $companyRecord['tickerExchange'] = $exchange;
             $companyRecord['updatedAt'] = ($companyRecord['updatedAt'] < $latestInstance->updatedAt) ? $latestInstance->updatedAt : $companyRecord['updatedAt'];
 
             // add all properties from the latest instance
