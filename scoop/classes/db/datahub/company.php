@@ -20,10 +20,19 @@ use Scoop\Database\Rows;
 class Company extends \DBCore\Datahub\Company
 {
 
+    /**
+     * @var LRUCache
+     */
     public static $companyCache;
 
+    /**
+     * @var bool
+     */
     public static $useCache = true;
 
+    /**
+     * @var int
+     */
     public static $companiesSaved = 0;
 
     /**
@@ -236,7 +245,7 @@ class Company extends \DBCore\Datahub\Company
 
     /**
      * Return only deleted instances
-     * 
+     *
      * @return Rows
      */
     public function fetch_deleted_company_instances()
@@ -680,6 +689,22 @@ class Company extends \DBCore\Datahub\Company
     public function tierTwoValidate(CompanyInstance $instance){
 
     }
-}
 
+    /**
+     *
+     * @return mixed|null
+     */
+    public function getBestTicker()
+    {
+        $ticker = null;
+        $exchange = null;
+        foreach ($this->get_company_instances() as $company_instance) {
+            if (!empty($company_instance->stockSymbol)) {
+                $ticker = $company_instance->stockSymbol;
+                $exchange = $company_instance->tickerExchange;
+            }
+        }
+        return array($ticker, $exchange);
+    }
+}
 ?>
