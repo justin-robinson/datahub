@@ -17,6 +17,7 @@
 
             :host {
                 display: block;
+                height: 92%;
             }
 
             paper-card #properties {
@@ -26,12 +27,17 @@
 
             paper-card {
                 width: 100%;
+                height: 100%;
             }
-            paper-icon-button.save {
-                color: var(--paper-light-green-500);
-            }
-            paper-icon-button.save:hover {
+
+            paper-button.save {
                 background-color: var(--paper-light-green-500);
+                color: var(--paper-grey-200);
+                position: absolute;
+                left: 1em;
+            }
+            paper-button.save:hover {
+                background-color: var(--paper-light-green-800);
                 color: var(--paper-grey-200);
             }
 
@@ -129,10 +135,10 @@
                     </div>
                 </div>
                 <div class="col-1_2 column col2">
-                    <paper-textarea class="col-1_1 description" value="{{sortedProperties.description.data.value}}" label="Description"></paper-textarea>
+                    <paper-textarea class="col-1_1 description" value="{{sortedProperties.description.data.value}}" label="Description" max-rows=10></paper-textarea>
                 </div>
             </div>
-            <paper-icon-button id="save" icon="save" on-click="save" class="save">Save</paper-icon-button>
+            <paper-button raised id="save" on-click="save" class="save"><iron-icon icon="save"></iron-icon>Save</paper-button>
 
             <template is="dom-if" if="{{data.companyInstancePropertyId}}">
                 <paper-icon-button id="delete" icon="delete" on-click="confirmDelete" class="delete"></paper-icon-button>
