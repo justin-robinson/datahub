@@ -235,9 +235,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _idChanged: function(id) {
         this.id = id;
         if ( this.id ) {
-          let path = this.page + '/' + this.id;
+          var path = this.page + '/' + this.id;
           if ( this.get('route.path') !== path ) {
-            this.set('route.path', path)
+            this.set('route.path', path);
           }
         }
       },

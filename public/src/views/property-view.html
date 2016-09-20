@@ -7,7 +7,7 @@
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../../bower_components/paper-input/paper-textarea.html">
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../behaviors/api-resource-behaivor.html">
+<link rel="import" href="../behaviors/api-resource-behavior.html">
 <link rel="import" href="../models/property-model.html">
 
 <dom-module id="property-view">
@@ -196,14 +196,15 @@
                 },
                 sortProperties: function () {
                     var sortedProperties = {};
-                    for ( let propertyName in singleProperties ) {
+                    var propertyName;
+                    for ( propertyName in singleProperties ) {
                         if ( singleProperties.hasOwnProperty(propertyName) ) {
                             var property = document.createElement('property-model');
                             property.set('data.name', propertyName);
                             sortedProperties[propertyName] = property;
                         }
                     }
-                    for ( let propertyName in multiProperties ) {
+                    for ( propertyName in multiProperties ) {
                         if ( multiProperties.hasOwnProperty(propertyName) ) {
                             sortedProperties[propertyName] = [];
                         }
@@ -211,7 +212,9 @@
                     //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of
                     // get the latest property of each name
                     var propertyModel;
-                    for ( let propertyData of this.props ) {
+                    var propertyData;
+                    for ( var i=0; i<this.props.length; ++i ) {
+                        propertyData = this.props[i];
 
                         if ( !sortedProperties[propertyData.name] ) {
                             sortedProperties[propertyData.name] = document.createElement('property-model');
@@ -230,17 +233,19 @@
                 save: function () {
                     var property;
                     var sortedProperties = this.get('sortedProperties');
+                    var propertyName;
                     // save all the properties in the dom
-                    for ( let i in sortedProperties) {
-                        if ( sortedProperties.hasOwnProperty(i) ) {
+                    for ( propertyName in sortedProperties) {
+                        if ( sortedProperties.hasOwnProperty(propertyName) ) {
 
                             // the property to save
-                            property = sortedProperties[i];
+                            property = sortedProperties[propertyName];
 
                             // some properties are actually array of properties IE industry
-                            if ( multiProperties.hasOwnProperty(i) ) {
+                            if ( multiProperties.hasOwnProperty(propertyName) ) {
                                 // save the array of properties
-                                for ( let property of sortedProperties[i] ) {
+                                for ( var j=0; j<sortedProperties[propertyName].length; ++j ) {
+                                    property = sortedProperties[propertyName][j];
                                     property.set('data.companyInstanceId', this.get('companyInstanceId'));
                                     property.saveResource();
                                 }
