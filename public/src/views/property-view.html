@@ -15,26 +15,27 @@
     <template>
         <style>
 
-            :host {
-                display: block;
-                height: 92%;
-            }
-
-            paper-card #properties {
-                width: 95%;
+            paper-card #container {
                 padding-left:1em;
             }
 
             paper-card {
-                width: 100%;
-                height: 100%;
+                margin-top: 24px;
+                width: calc(100% - 48px);
+                width: -o-calc(100% - 48px);
+                width: -webkit-calc(100% - 48px);
+                width: -moz-calc(100% - 48px);
+                height: calc(100% - 48px);
+                height: -o-calc(100% - 48px);
+                height: -webkit-calc(100% - 48px);
+                height: -moz-calc(100% - 48px);
             }
 
             paper-button.save {
                 background-color: var(--paper-light-green-500);
                 color: var(--paper-grey-200);
                 position: absolute;
-                left: 1em;
+                bottom: 1em;
             }
             paper-button.save:hover {
                 background-color: var(--paper-light-green-800);
@@ -107,42 +108,40 @@
         </style>
 
         <paper-card heading="{{data.name}}">
-            <div id="properties">
-                <div class="col-1_2 column col1">
-                    <paper-input class="col-1_2" value="{{sortedProperties.address1.data.value}}" label="Address 1"></paper-input>
-                    <paper-input class="col-1_2" value="{{sortedProperties.address2.data.value}}" label="Address 2"></paper-input>
-                    <paper-input class="col-1_4" value="{{sortedProperties.city.data.value}}" label="City"></paper-input>
-                    <paper-input class="col-1_4" value="{{sortedProperties.state.data.value}}" label="State"></paper-input>
-                    <paper-input class="col-1_4" value="{{sortedProperties.zipCode.data.value}}" label="Zip Code"></paper-input>
-                    <paper-input class="col-1_4" value="{{sortedProperties.country.data.value}}" label="Country"></paper-input>
-                    <paper-input class="col-1_2" value="{{sortedProperties.latitude.data.value}}" label="Latitude"></paper-input>
-                    <paper-input class="col-1_2" value="{{sortedProperties.longitude.data.value}}" label="Longitude"></paper-input>
-                    <gold-phone-input class="col-1_2" value="{{sortedProperties.phoneNumber.data.value}}" label="Phone Number" country-code="{{sortedProperties.phoneCountryCode.data.value}}" auto-validate></gold-phone-input>
-                    <paper-input class="col-1_6" value="{{sortedProperties.phoneExtension.data.value}}" label="Extension" auto-validate allowed-pattern="\d"></paper-input>
-                    <div id="industries-container" class="col-1_1">
-                        <div id="industries-header">
-                            <div>Industries</div>
-                            <paper-icon-button class="save" icon="add" on-click="addMultiPropertyClicked" data-propertyName="industry"></paper-icon-button>
-                        </div>
-                        <div id="industries">
-                            <template is="dom-repeat" items="{{sortedProperties.industry}}" as="industry">
-                                <div style="display: inline-block;">
-                                    <paper-input value="{{industry.data.value}}" label="Industry" no-label-float></paper-input>
-                                    <paper-icon-button class="delete" icon="delete" on-click="deleteIndustry"></paper-icon-button>
-                                </div>
-                            </template>
+            <div id="container">
+                <div id="properties">
+                    <div class="col-1_2 column col1">
+                        <paper-input class="col-1_2" value="{{sortedProperties.address1.data.value}}" label="Address 1"></paper-input>
+                        <paper-input class="col-1_2" value="{{sortedProperties.address2.data.value}}" label="Address 2"></paper-input>
+                        <paper-input class="col-1_4" value="{{sortedProperties.city.data.value}}" label="City"></paper-input>
+                        <paper-input class="col-1_4" value="{{sortedProperties.state.data.value}}" label="State"></paper-input>
+                        <paper-input class="col-1_4" value="{{sortedProperties.zipCode.data.value}}" label="Zip Code"></paper-input>
+                        <paper-input class="col-1_4" value="{{sortedProperties.country.data.value}}" label="Country"></paper-input>
+                        <paper-input class="col-1_2" value="{{sortedProperties.latitude.data.value}}" label="Latitude"></paper-input>
+                        <paper-input class="col-1_2" value="{{sortedProperties.longitude.data.value}}" label="Longitude"></paper-input>
+                        <gold-phone-input class="col-1_2" value="{{sortedProperties.phoneNumber.data.value}}" label="Phone Number" country-code="{{sortedProperties.phoneCountryCode.data.value}}" auto-validate></gold-phone-input>
+                        <paper-input class="col-1_6" value="{{sortedProperties.phoneExtension.data.value}}" label="Extension" auto-validate allowed-pattern="\d"></paper-input>
+                        <div id="industries-container" class="col-1_1">
+                            <div id="industries-header">
+                                <div>Industries</div>
+                                <paper-icon-button class="save" icon="add" on-click="addMultiPropertyClicked" data-propertyName="industry"></paper-icon-button>
+                            </div>
+                            <div id="industries">
+                                <template is="dom-repeat" items="{{sortedProperties.industry}}" as="industry">
+                                    <div style="display: inline-block;">
+                                        <paper-input value="{{industry.data.value}}" label="Industry" no-label-float></paper-input>
+                                        <paper-icon-button class="delete" icon="delete" on-click="deleteIndustry"></paper-icon-button>
+                                    </div>
+                                </template>
+                            </div>
                         </div>
                     </div>
+                    <div class="col-1_2 column col2">
+                        <paper-textarea class="col-1_1 description" value="{{sortedProperties.description.data.value}}" label="Description" max-rows=10></paper-textarea>
+                    </div>
                 </div>
-                <div class="col-1_2 column col2">
-                    <paper-textarea class="col-1_1 description" value="{{sortedProperties.description.data.value}}" label="Description" max-rows=10></paper-textarea>
-                </div>
+                <paper-button raised id="save" on-click="save" class="save"><iron-icon icon="save"></iron-icon>Save</paper-button>
             </div>
-            <paper-button raised id="save" on-click="save" class="save"><iron-icon icon="save"></iron-icon>Save</paper-button>
-
-            <template is="dom-if" if="{{data.companyInstancePropertyId}}">
-                <paper-icon-button id="delete" icon="delete" on-click="confirmDelete" class="delete"></paper-icon-button>
-            </template>
         </paper-card>
 
         <confirm-delete-view id="confirmDelete" on-yes="deleteResource">
