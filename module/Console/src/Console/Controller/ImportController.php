@@ -12,6 +12,8 @@ use DB\Datahub\CompanyInstanceTop25lists;
 use DB\Datahub\Top25List;
 use DB\Datahub\Contact;
 use LRUCache\LRUCache;
+use Scoop\Database\Connection;
+use Scoop\Database\Model\Generic;
 use Scoop\Database\Query\Buffer;
 use Zend\Db\Adapter as dbAdapter;
 use Console\Importer\Dataset;
@@ -429,11 +431,13 @@ class ImportController extends AbstractActionController
             'listSave' => 0,
             'noLists' => 0,
         ];
-        // get all the lists
-        $config = $this->getServiceLocator()->get('Config');
-        $bizjDB = new \PDO('mysql:host=' . $config['mysql']['bizjournals']['host'] . ';
-            dbname:=' . $config['mysql']['bizjournals']['dbname'], $config['mysql']['bizjournals']['user'],
-            $config['mysql']['bizjournals']['password']);
+
+        // connect to the recon db
+        $dbConfig = $this->config['mysql']['bizjournals'];
+        $dbConfig['database'] = $dbConfig['dbname'];
+
+        $connection = new Connection($dbConfig);
+
         $sql    = "
             SELECT
               tlr.company_name,
@@ -453,54 +457,49 @@ class ImportController extends AbstractActionController
             #       AND tlr.company_name LIKE '%Google%'
             ORDER BY tlr.list_id ASC
             ";
-        $stmnt  = $bizjDB->prepare($sql);
-        $stmnt->execute();
-        // process and save them
-        $lists = $stmnt->fetchAll(\PDO::FETCH_ASSOC);
+        $lists = Generic::query($sql, $connection);
         if ($lists) {
+
+            // truncate tables
+            Generic::query("TRUNCATE " . CompanyInstanceTop25lists::TABLE);
+            Generic::query("TRUNCATE " . Top25List::TABLE);
+
+            $listBuffer = new Buffer(1, Top25List::class);
+            $mapBuffer = new Buffer(1000, CompanyInstanceTop25lists::class);
+
             foreach ($lists as $k => $list) {
-                $instance = CompanyInstance::fetch_by_source_name_and_id('meroveus', $list['meroveusId']);
+                $instance = CompanyInstance::fetch_by_source_name_and_id('meroveus', $list->meroveusId);
                 if ($instance) {
                     // build the mapping
                     $map                    = new CompanyInstanceTop25lists();
                     $map->companyInstanceId = $instance->first()->companyInstanceId;
-                    $map->listId            = $list['list_id'];
-                    // save the mapping
-                    $mapSave = $map->save();
-                    if (!$mapSave) {
-                        //log the error
-                        $error['mapSave']++;
-                    }
+                    $map->listId            = $list->list_id;
+                    $mapBuffer->insert($map);
                     // of the next list_id is different, save the current one
-                    if ($list['list_id'] !== $lists[$k + 1]['list_id']) {
+                    $nextList = $lists->get($k+1);
+                    if ($nextList === null || $list->list_id !== $nextList->list_id) {
                         $listTosave               = new Top25List();
-                        $listTosave->listId       = empty($list['list_id']) ? null : $list['list_id'];
-                        $listTosave->issueDate    = empty($list['issue_date']) ? null : $list['issue_date'];
-                        $listTosave->pageHeadline = empty($list['page_headline']) ? null : $list['page_headline'];
-                        $listTosave->listUrl      = empty($list['path']) ? null : $list['path'];
-                        // save the list
-                        if (!$listTosave->save()) {
-                            // log the error
-                            $error['listSave']++;
-                        }
+                        $listTosave->listId       = empty($list->list_id) ? null : $list->list_id;
+                        $listTosave->issueDate    = empty($list->issue_date) ? null : $list->issue_date;
+                        $listTosave->pageHeadline = empty($list->page_headline) ? null : $list->page_headline;
+                        $listTosave->listUrl      = empty($list->path) ? null : $list->path;
+
+                        $listBuffer->insert($listTosave);
                     }
                 } else {
                     // log the error
                     $error['noInstance']++;
                 }
             }
+
+            $listBuffer->flush();
+            $mapBuffer->flush();
         } else {
             // log the error
             $error['noLists']++;
         }
         
         return "done importing" . PHP_EOL. var_dump($error);
-
-//        $importer = Top25ListImporter::importFromDb();
-        // do the call
-        // format the results
-        // save
-        
         
     }
     

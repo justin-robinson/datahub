@@ -1,7 +1,7 @@
 <?php
 
 $latestApiChildRoutes = [
-    'company'  => [
+    'company'        => [
         'type'         => 'Literal',
         'options'      => [
             'route'    => '/company',
@@ -31,16 +31,16 @@ $latestApiChildRoutes = [
                     ],
                 ],
             ],
-            'export'          => [
+            'export'           => [
                 'type'    => 'Literal',
                 'options' => [
-                    'route'       => '/export',
-                    'defaults'    => [
+                    'route'    => '/export',
+                    'defaults' => [
                         'controller' => 'Api\v1\Controller\CompanyExport',
                     ],
                 ],
             ],
-            'export-deletes' => [
+            'export-deletes'   => [
                 'type'    => 'Literal',
                 'options' => [
                     'defaults' => [
@@ -90,7 +90,7 @@ $latestApiChildRoutes = [
                     ],
                 ],
             ],
-            'search-fuzzy'           => [
+            'search-fuzzy'     => [
                 'type'    => 'Segment',
                 'options' => [
                     'route'    => '/search/fuzzy[/:search]',
@@ -101,7 +101,7 @@ $latestApiChildRoutes = [
             ],
         ],
     ],
-    'instance' => [
+    'instance'       => [
         'type'         => 'Literal',
         'options'      => [
             'route'    => '/instance',
@@ -137,7 +137,7 @@ $latestApiChildRoutes = [
                     ],
                 ],
             ],
-            'profile'          => [
+            'profile'    => [
                 'type'    => 'Segment',
                 'options' => [
                     'route'       => '[/:id]/profile',
@@ -149,8 +149,8 @@ $latestApiChildRoutes = [
                     ],
                 ],
             ],
-                       
-            'lists'        => [
+            
+            'lists' => [
                 'type'    => 'Segment',
                 'options' => [
                     'route'       => '[/:id]/lists',
@@ -163,7 +163,7 @@ $latestApiChildRoutes = [
                 ],
             ],
             
-            'search-fuzzy'           => [
+            'search-fuzzy' => [
                 'type'    => 'Segment',
                 'options' => [
                     'route'    => '/search/fuzzy[/:search]',
@@ -174,7 +174,7 @@ $latestApiChildRoutes = [
             ],
         ],
     ],
-    'property' => [
+    'property'       => [
         'type'         => 'Literal',
         'options'      => [
             'route'    => '/property',
@@ -194,7 +194,7 @@ $latestApiChildRoutes = [
             ],
         ],
     ],
-    'contact'  => [
+    'contact'        => [
         'type'         => 'Literal',
         'options'      => [
             'route'    => '/contact',
@@ -203,7 +203,7 @@ $latestApiChildRoutes = [
             ],
         ],
         'child_routes' => [
-            'contact' => [
+            'contact'      => [
                 'type'    => 'Segment',
                 'options' => [
                     'route'       => '[/:id]',
@@ -212,7 +212,7 @@ $latestApiChildRoutes = [
                     ],
                 ],
             ],
-            'search-fuzzy'           => [
+            'search-fuzzy' => [
                 'type'    => 'Segment',
                 'options' => [
                     'route'    => '/search/fuzzy[/:search]',
@@ -223,7 +223,7 @@ $latestApiChildRoutes = [
             ],
         ],
     ],
-    'state'    => [
+    'state'          => [
         'type'         => 'Literal',
         'options'      => [
             'route'    => '/state',
@@ -243,7 +243,7 @@ $latestApiChildRoutes = [
             ],
         ],
     ],
-    'sourceType'    => [
+    'sourceType'     => [
         'type'         => 'Literal',
         'options'      => [
             'route'    => '/sourcetype',
@@ -263,7 +263,7 @@ $latestApiChildRoutes = [
             ],
         ],
     ],
-    'market'    => [
+    'market'         => [
         'type'         => 'Literal',
         'options'      => [
             'route'    => '/market',
@@ -283,7 +283,7 @@ $latestApiChildRoutes = [
             ],
         ],
     ],
-    'refinery' => [
+    'refinery'       => [
         'type'         => 'Literal',
         'options'      => [
             'route'    => '/refinery',
@@ -306,16 +306,16 @@ $latestApiChildRoutes = [
             ],
         ],
     ],
-    'dataset'  => [
-        'type'    => 'Literal',
-        'options' => [
+    'dataset'        => [
+        'type'         => 'Literal',
+        'options'      => [
             'route'    => '/dataset',
             'defaults' => [
                 'controller' => 'Api\v1\Controller\Dataset',
             ],
         ],
         'child_routes' => [
-            'id'               => [
+            'id'   => [
                 'type'    => 'Segment',
                 'options' => [
                     'route'       => '[/:id]',
@@ -324,18 +324,19 @@ $latestApiChildRoutes = [
                     ],
                 ],
             ],
-            'type'               => [
+            'type' => [
                 'type'    => 'Segment',
                 'options' => [
                     // :type will trigger specific formatting
                     'route'       => '/:id/type/[:type]',
                     'constraints' => [
                         'type' => '[a-z]*',
-                        'id' => '[0-9]*',
+                        'id'   => '[0-9]*',
                     ],
                 ],
             ],
-            'entry'        => [
+            
+            'entry' => [
                 'type'    => 'Segment',
                 'options' => [
                     'route'       => '/:id/entry/[:id]',
@@ -347,20 +348,40 @@ $latestApiChildRoutes = [
                     ],
                 ],
             ],
- 
-            
+        
+        
         ],
     ],
-    'list' => [
-        'type'    => 'Literal',
-        'options' => [
+    'marketdatasets' => [
+        'type'         => 'Literal',
+        'options'      => [
+            'route'    => '/marketdatasets',
+            'defaults' => [
+                'controller' => 'Api\v1\Controller\Marketdatasets',
+            ],
+        ],
+        'child_routes' => [
+            'id' => [
+                'type'    => 'Segment',
+                'options' => [
+                    'route'       => '[/:id]',
+                    'constraints' => [
+                        'id' => '[a-z]*',
+                    ],
+                ],
+            ],
+        ],
+    ],
+    'list'           => [
+        'type'         => 'Literal',
+        'options'      => [
             'route'    => '/list',
             'defaults' => [
                 'controller' => 'Api\v1\Controller\Top25List',
             ],
         ],
         'child_routes' => [
-            'id'               => [
+            'id' => [
                 'type'    => 'Segment',
                 'options' => [
                     'route'       => '[/:id]',
@@ -371,33 +392,35 @@ $latestApiChildRoutes = [
             ],
         ],
     ],
-    
+
+
 ];
 return [
-
+    
     'controllers'  => [
         'invokables' => [
-            'Api\v1\Controller\Abstract'           => 'Api\v1\Controller\AbstractRestfulController',
-            'Api\v1\Controller\Company'            => 'Api\v1\Controller\CompanyController',
-            'Api\v1\Controller\CompanyInstances'   => 'Api\v1\Controller\CompanyInstancesController',
-            'Api\v1\Controller\CompanyProfile'     => 'Api\v1\Controller\CompanyProfileController',
-            'Api\v1\Controller\CompanyExport'      => 'Api\v1\Controller\CompanyExportController',
-            'Api\v1\Controller\CompanySearch'      => 'Api\v1\Controller\CompanySearchController',
-            'Api\v1\Controller\CompanySearchFuzzy' => 'Api\v1\Controller\CompanySearchFuzzyController',
-            'Api\v1\Controller\Contact'            => 'Api\v1\Controller\ContactController',
-            'Api\v1\Controller\ContactSearchFuzzy' => 'Api\v1\Controller\ContactSearchFuzzyController',
-            'Api\v1\Controller\InstanceSearchFuzzy'=> 'Api\v1\Controller\InstanceSearchFuzzyController',
-            'Api\v1\Controller\Instance'           => 'Api\v1\Controller\InstanceController',
-            'Api\v1\Controller\InstanceContacts'   => 'Api\v1\Controller\InstanceContactsController',
-            'Api\v1\Controller\InstanceProfile'    => 'Api\v1\Controller\InstanceProfileController',
-            'Api\v1\Controller\InstanceProperties' => 'Api\v1\Controller\InstancePropertiesController',
-            'Api\v1\Controller\Market'             => 'Api\v1\Controller\MarketController',
-            'Api\v1\Controller\Property'           => 'Api\v1\Controller\PropertyController',
-            'Api\v1\Controller\State'              => 'Api\v1\Controller\StateController',
-            'Api\v1\Controller\SourceType'         => 'Api\v1\Controller\SourceTypeController',
-            'Api\v1\Controller\Dataset'            => 'Api\v1\Controller\DatasetController',
-            'Api\v1\Controller\DatasetEntries'     => 'Api\v1\Controller\DatasetEntriesController',
-            'Api\v1\Controller\Top25List'          => 'Api\v1\Controller\Top25ListController',
+            'Api\v1\Controller\Abstract'            => 'Api\v1\Controller\AbstractRestfulController',
+            'Api\v1\Controller\Company'             => 'Api\v1\Controller\CompanyController',
+            'Api\v1\Controller\CompanyInstances'    => 'Api\v1\Controller\CompanyInstancesController',
+            'Api\v1\Controller\CompanyProfile'      => 'Api\v1\Controller\CompanyProfileController',
+            'Api\v1\Controller\CompanyExport'       => 'Api\v1\Controller\CompanyExportController',
+            'Api\v1\Controller\CompanySearch'       => 'Api\v1\Controller\CompanySearchController',
+            'Api\v1\Controller\CompanySearchFuzzy'  => 'Api\v1\Controller\CompanySearchFuzzyController',
+            'Api\v1\Controller\Contact'             => 'Api\v1\Controller\ContactController',
+            'Api\v1\Controller\ContactSearchFuzzy'  => 'Api\v1\Controller\ContactSearchFuzzyController',
+            'Api\v1\Controller\InstanceSearchFuzzy' => 'Api\v1\Controller\InstanceSearchFuzzyController',
+            'Api\v1\Controller\Instance'            => 'Api\v1\Controller\InstanceController',
+            'Api\v1\Controller\InstanceContacts'    => 'Api\v1\Controller\InstanceContactsController',
+            'Api\v1\Controller\InstanceProfile'     => 'Api\v1\Controller\InstanceProfileController',
+            'Api\v1\Controller\InstanceProperties'  => 'Api\v1\Controller\InstancePropertiesController',
+            'Api\v1\Controller\Market'              => 'Api\v1\Controller\MarketController',
+            'Api\v1\Controller\Property'            => 'Api\v1\Controller\PropertyController',
+            'Api\v1\Controller\State'               => 'Api\v1\Controller\StateController',
+            'Api\v1\Controller\SourceType'          => 'Api\v1\Controller\SourceTypeController',
+            'Api\v1\Controller\Dataset'             => 'Api\v1\Controller\DatasetController',
+            'Api\v1\Controller\DatasetEntries'      => 'Api\v1\Controller\DatasetEntriesController',
+            'Api\v1\Controller\Top25List'           => 'Api\v1\Controller\Top25ListController',
+            'Api\v1\Controller\MarketDatasets'      => 'Api\v1\Controller\MarketDatasetsController',
         ],
     ],
     'router'       => [

@@ -1,0 +1,28 @@
+{
+  "name": "bobby",
+  "version": "1.0.0",
+  "description": "polymer app to consume datahub api",
+  "main": "index.html",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.bizjournals.com:bizjournals/datahub.git"
+  },
+  "keywords": [
+    "polymer",
+    "datahub",
+    "api"
+  ],
+  "author": "bizjournals",
+  "license": "ISC",
+  "dependencies": {
+    "bower": "^1.7.9",
+    "polymer-cli": "^0.16.0"
+  }
+}
