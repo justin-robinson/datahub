@@ -96,10 +96,9 @@
             }
         </style>
 
-        <paper-card heading="{{data.name}}">
+        <paper-card heading="{{data.name}} - {{data.companyInstanceId}}">
             <div id="values">
                 <paper-checkbox class="col-1_6" checked="{{data.isHeadquarters}}">Headquarters</paper-checkbox>
-                <paper-input class="col-1_4" value="{{data.companyInstanceId}}" label="Instance Id" on-change="companyInstanceIdChanged" disabled></paper-input>
                 <paper-input class="col-1_4" value="{{data.name}}" label="Name"></paper-input>
                 <paper-input class="col-1_4" value="{{data.stockSymbol}}" label="Stock Symbol"></paper-input>
                 <paper-input class="col-1_4" value="{{data.tickerExchange}}" label="Ticker Exchange"></paper-input>
