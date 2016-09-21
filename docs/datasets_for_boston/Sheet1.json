@@ -1,356 +1,507 @@
 {
-  "name": "Recipients",
+  "name":        "Recipients",
   "description": "The top 50 recipients of payments from drug and device companies in 2015",
   "market_code": "boston",
-  "meta": [
+  "entries":     [
     {
-      "Physician name":        "PAUL TORNETTA",
-      "Physician ID":          275263,
-      "Recorded work address": "725 ALBANY ST",
-      "City":                  "BOSTON",
-      "Total payments":        "$2,290,447"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "PAUL TORNETTA"},
+        {"Physician ID": 275263},
+        {"Recorded work address": "725 ALBANY ST"},
+        {"City": "BOSTON"},
+        {"Total payments": "$2,290,447"}
+      ]
     },
     {
-      "Physician name":        "THOMAS THORNHILL",
-      "Physician ID":          212872,
-      "Recorded work address": "75 FRANCIS ST",
-      "City":                  "BOSTON",
-      "Total payments":        "$1,880,429"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "THOMAS THORNHILL"},
+        {"Physician ID": 212872},
+        {"Recorded work address": "75 FRANCIS ST"},
+        {"City": "BOSTON"},
+        {"Total payments": "$1,880,429"}
+      ]
     },
     {
-      "Physician name":        "AJAY WAKHLOO",
-      "Physician ID":          325702,
-      "Recorded work address": "55 LAKE AVE N",
-      "City":                  "WORCESTER",
-      "Total payments":        "$1,338,106"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "AJAY WAKHLOO"},
+        {"Physician ID": 325702},
+        {"Recorded work address": "55 LAKE AVE N"},
+        {"City": "WORCESTER"},
+        {"Total payments": "$1,338,106"}
+      ]
     },
     {
-      "Physician name":        "JAMES QUINN",
-      "Physician ID":          764067,
-      "Recorded work address": "92 GRAPE ST",
-      "City":                  "NEW BEDFORD",
-      "Total payments":        "$1,105,395"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "JAMES QUINN"},
+        {"Physician ID": 764067},
+        {"Recorded work address": "92 GRAPE ST"},
+        {"City": "NEW BEDFORD"},
+        {"Total payments": "$1,105,395"}
+      ]
     },
     {
-      "Physician name":        "JOSEPH MCCARTHY",
-      "Physician ID":          245015,
-      "Recorded work address": "2000 WASHINGTON ST",
-      "City":                  "NEWTON",
-      "Total payments":        "$948,072"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "JOSEPH MCCARTHY"},
+        {"Physician ID": 245015},
+        {"Recorded work address": "2000 WASHINGTON ST"},
+        {"City": "NEWTON"},
+        {"Total payments": "$948,072"}
+      ]
     },
     {
-      "Physician name":        "RICHARD SCOTT",
-      "Physician ID":          127282,
-      "Recorded work address": "125 PARKER HILL AVENUE",
-      "City":                  "BOSTON",
-      "Total payments":        "$912,701"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "RICHARD SCOTT"},
+        {"Physician ID": 127282},
+        {"Recorded work address": "125 PARKER HILL AVENUE"},
+        {"City": "BOSTON"},
+        {"Total payments": "$912,701"}
+      ]
     },
     {
-      "Physician name":        "MICHAEL MENDELSOHN",
-      "Physician ID":          842966,
-      "Recorded work address": "220 BOYLSTON ST APT 1103",
-      "City":                  "BOSTON",
-      "Total payments":        "$860,280"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "MICHAEL MENDELSOHN"},
+        {"Physician ID": 842966},
+        {"Recorded work address": "220 BOYLSTON ST APT 1103"},
+        {"City": "BOSTON"},
+        {"Total payments": "$860,280"}
+      ]
     },
     {
-      "Physician name":        "JOSEPH SKLAR",
-      "Physician ID":          310572,
-      "Recorded work address": "300 BIRNIE AVE",
-      "City":                  "SPRINGFIELD",
-      "Total payments":        "$827,797"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "JOSEPH SKLAR"},
+        {"Physician ID": 310572},
+        {"Recorded work address": "300 BIRNIE AVE"},
+        {"City": "SPRINGFIELD"},
+        {"Total payments": "$827,797"}
+      ]
     },
     {
-      "Physician name":        "NESLI BASGOZ",
-      "Physician ID":          38662,
-      "Recorded work address": "255 FRUIT ST FOUNDERS",
-      "City":                  "BOSTON",
-      "Total payments":        "$809,340"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "NESLI BASGOZ"},
+        {"Physician ID": 38662},
+        {"Recorded work address": "255 FRUIT ST FOUNDERS"},
+        {"City": "BOSTON"},
+        {"Total payments": "$809,340"}
+      ]
     },
     {
-      "Physician name":        "AMAN PATEL",
-      "Physician ID":          11360,
-      "Recorded work address": "15 PARKMAN ST",
-      "City":                  "BOSTON",
-      "Total payments":        "$791,043"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "AMAN PATEL"},
+        {"Physician ID": 11360},
+        {"Recorded work address": "15 PARKMAN ST"},
+        {"City": "BOSTON"},
+        {"Total payments": "$791,043"}
+      ]
     },
     {
-      "Physician name":        "ALI NASSEH",
-      "Physician ID":          966882,
-      "Recorded work address": "607 BOYLSTON ST FL 2",
-      "City":                  "BOSTON",
-      "Total payments":        "$719,456"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "ALI NASSEH"},
+        {"Physician ID": 966882},
+        {"Recorded work address": "607 BOYLSTON ST FL 2"},
+        {"City": "BOSTON"},
+        {"Total payments": "$719,456"}
+      ]
     },
     {
-      "Physician name":        "JAMES BONO",
-      "Physician ID":          52351,
-      "Recorded work address": "125 PARKER HILL AVE",
-      "City":                  "BOSTON",
-      "Total payments":        "$619,072"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "JAMES BONO"},
+        {"Physician ID": 52351},
+        {"Recorded work address": "125 PARKER HILL AVE"},
+        {"City": "BOSTON"},
+        {"Total payments": "$619,072"}
+      ]
     },
     {
-      "Physician name":        "W GERALD AUSTEN",
-      "Physician ID":          206030,
-      "Recorded work address": "55 FRUIT ST",
-      "City":                  "BOSTON",
-      "Total payments":        "$592,655"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "W GERALD AUSTEN"},
+        {"Physician ID": 206030},
+        {"Recorded work address": "55 FRUIT ST"},
+        {"City": "BOSTON"},
+        {"Total payments": "$592,655"}
+      ]
     },
     {
-      "Physician name":        "WILLIAM HEALY",
-      "Physician ID":          338398,
-      "Recorded work address": "41 MALL RD",
-      "City":                  "BURLINGTON",
-      "Total payments":        "$586,435"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "WILLIAM HEALY"},
+        {"Physician ID": 338398},
+        {"Recorded work address": "41 MALL RD"},
+        {"City": "BURLINGTON"},
+        {"Total payments": "$586,435"}
+      ]
     },
     {
-      "Physician name":        "ANDREW FREIBERG",
-      "Physician ID":          97453,
-      "Recorded work address": "PO BOX 9142",
-      "City":                  "CHARLESTOWN",
-      "Total payments":        "$547,627"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "ANDREW FREIBERG"},
+        {"Physician ID": 97453},
+        {"Recorded work address": "PO BOX 9142"},
+        {"City": "CHARLESTOWN"},
+        {"Total payments": "$547,627"}
+      ]
     },
     {
-      "Physician name":        "DAVID STASKIN",
-      "Physician ID":          165062,
-      "Recorded work address": "11 NEVINS ST",
-      "City":                  "BRIGHTON",
-      "Total payments":        "$471,071"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "DAVID STASKIN"},
+        {"Physician ID": 165062},
+        {"Recorded work address": "11 NEVINS ST"},
+        {"City": "BRIGHTON"},
+        {"Total payments": "$471,071"}
+      ]
     },
     {
-      "Physician name":        "THERESE SCHMALBACH",
-      "Physician ID":          1388260,
-      "Recorded work address": "1313 WASHINGTON ST APT 605",
-      "City":                  "BOSTON",
-      "Total payments":        "$409,038"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "THERESE SCHMALBACH"},
+        {"Physician ID": 1388260},
+        {"Recorded work address": "1313 WASHINGTON ST APT 605"},
+        {"City": "BOSTON"},
+        {"Total payments": "$409,038"}
+      ]
     },
     {
-      "Physician name":        "MICHAEL MASON",
-      "Physician ID":          66659,
-      "Recorded work address": "300 MOUNT AUBURN ST",
-      "City":                  "CAMBRIDGE",
-      "Total payments":        "$400,585"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "MICHAEL MASON"},
+        {"Physician ID": 66659},
+        {"Recorded work address": "300 MOUNT AUBURN ST"},
+        {"City": "CAMBRIDGE"},
+        {"Total payments": "$400,585"}
+      ]
     },
     {
-      "Physician name":        "TIMOTHY LEACH",
-      "Physician ID":          1287726,
-      "Recorded work address": "79 DUCK POND DR",
-      "City":                  "GROTON",
-      "Total payments":        "$388,500"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "TIMOTHY LEACH"},
+        {"Physician ID": 1287726},
+        {"Recorded work address": "79 DUCK POND DR"},
+        {"City": "GROTON"},
+        {"Total payments": "$388,500"}
+      ]
     },
     {
-      "Physician name":        "ROBERT WRIGHT",
-      "Physician ID":          1157588,
-      "Recorded work address": "75 FRANCIS STREET",
-      "City":                  "BOSTON",
-      "Total payments":        "$384,598"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "ROBERT WRIGHT"},
+        {"Physician ID": 1157588},
+        {"Recorded work address": "75 FRANCIS STREET"},
+        {"City": "BOSTON"},
+        {"Total payments": "$384,598"}
+      ]
     },
     {
-      "Physician name":        "ANA STANKOVIC",
-      "Physician ID":          362632,
-      "Recorded work address": "10 WILLIAMS ST",
-      "City":                  "WATERTOWN",
-      "Total payments":        "$373,039"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "ANA STANKOVIC"},
+        {"Physician ID": 362632},
+        {"Recorded work address": "10 WILLIAMS ST"},
+        {"City": "WATERTOWN"},
+        {"Total payments": "$373,039"}
+      ]
     },
     {
-      "Physician name":        "ELIZABETH NABEL",
-      "Physician ID":          972971,
-      "Recorded work address": "75 FRANCIS ST",
-      "City":                  "BOSTON",
-      "Total payments":        "$371,675"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "ELIZABETH NABEL"},
+        {"Physician ID": 972971},
+        {"Recorded work address": "75 FRANCIS ST"},
+        {"City": "BOSTON"},
+        {"Total payments": "$371,675"}
+      ]
     },
     {
-      "Physician name":        "STEPHEN MURPHY",
-      "Physician ID":          142814,
-      "Recorded work address": "125 PARKER HILL AVE",
-      "City":                  "ROXBURY CROSSING",
-      "Total payments":        "$359,421"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "STEPHEN MURPHY"},
+        {"Physician ID": 142814},
+        {"Recorded work address": "125 PARKER HILL AVE"},
+        {"City": "ROXBURY CROSSING"},
+        {"Total payments": "$359,421"}
+      ]
     },
     {
-      "Physician name":        "CHRISTOPH CANNON",
-      "Physician ID":          341720,
-      "Recorded work address": "75 FRANCIS ST",
-      "City":                  "BOSTON",
-      "Total payments":        "$331,626"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "CHRISTOPH CANNON"},
+        {"Physician ID": 341720},
+        {"Recorded work address": "75 FRANCIS ST"},
+        {"City": "BOSTON"},
+        {"Total payments": "$331,626"}
+      ]
     },
     {
-      "Physician name":        "HARRY RUBASH",
-      "Physician ID":          24607,
-      "Recorded work address": "55 FRUIT ST",
-      "City":                  "BOSTON",
-      "Total payments":        "$274,061"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "HARRY RUBASH"},
+        {"Physician ID": 24607},
+        {"Recorded work address": "55 FRUIT ST"},
+        {"City": "BOSTON"},
+        {"Total payments": "$274,061"}
+      ]
     },
     {
-      "Physician name":        "DENNIS AUSIELLO",
-      "Physician ID":          59755,
-      "Recorded work address": "MASSACHUSETTS GENERAL HOSPITAL",
-      "City":                  "BOSTON",
-      "Total payments":        "$270,167"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "DENNIS AUSIELLO"},
+        {"Physician ID": 59755},
+        {"Recorded work address": "MASSACHUSETTS GENERAL HOSPITAL"},
+        {"City": "BOSTON"},
+        {"Total payments": "$270,167"}
+      ]
     },
     {
-      "Physician name":        "JOSEPH FERRUCCI",
-      "Physician ID":          785461,
-      "Recorded work address": "2014 WASHINGTON ST",
-      "City":                  "NEWTON",
-      "Total payments":        "$253,900"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "JOSEPH FERRUCCI"},
+        {"Physician ID": 785461},
+        {"Recorded work address": "2014 WASHINGTON ST"},
+        {"City": "NEWTON"},
+        {"Total payments": "$253,900"}
+      ]
     },
     {
-      "Physician name":        "DARREN BRENNAN",
-      "Physician ID":          122454,
-      "Recorded work address": "BETH ISRAEL DEACONESS MEDICAL CENTER",
-      "City":                  "BOSTON",
-      "Total payments":        "$252,808"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "DARREN BRENNAN"},
+        {"Physician ID": 122454},
+        {"Recorded work address": "BETH ISRAEL DEACONESS MEDICAL CENTER"},
+        {"City": "BOSTON"},
+        {"Total payments": "$252,808"}
+      ]
     },
     {
-      "Physician name":        "LAURENCE EPSTEIN",
-      "Physician ID":          156773,
-      "Recorded work address": "75 FRANCIS ST",
-      "City":                  "BOSTON",
-      "Total payments":        "$239,415"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "LAURENCE EPSTEIN"},
+        {"Physician ID": 156773},
+        {"Recorded work address": "75 FRANCIS ST"},
+        {"City": "BOSTON"},
+        {"Total payments": "$239,415"}
+      ]
     },
     {
-      "Physician name":        "MICHAEL GROFF",
-      "Physician ID":          305170,
-      "Recorded work address": "75 FRANCIS ST",
-      "City":                  "BOSTON",
-      "Total payments":        "$236,001"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "MICHAEL GROFF"},
+        {"Physician ID": 305170},
+        {"Recorded work address": "75 FRANCIS ST"},
+        {"City": "BOSTON"},
+        {"Total payments": "$236,001"}
+      ]
     },
     {
-      "Physician name":        "KEITH DREYER",
-      "Physician ID":          1244539,
-      "Recorded work address": "55 FRUIT ST",
-      "City":                  "BOSTON",
-      "Total payments":        "$236,000"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "KEITH DREYER"},
+        {"Physician ID": 1244539},
+        {"Recorded work address": "55 FRUIT ST"},
+        {"City": "BOSTON"},
+        {"Total payments": "$236,000"}
+      ]
     },
     {
-      "Physician name":        "ANDREW PALMER",
-      "Physician ID":          346132,
-      "Recorded work address": "5 TEAL WAY",
-      "City":                  "EASTHAM",
-      "Total payments":        "$235,991"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "ANDREW PALMER"},
+        {"Physician ID": 346132},
+        {"Recorded work address": "5 TEAL WAY"},
+        {"City": "EASTHAM"},
+        {"Total payments": "$235,991"}
+      ]
     },
     {
-      "Physician name":        "YOAV GOLAN",
-      "Physician ID":          249214,
-      "Recorded work address": "750 WASHINGTON ST",
-      "City":                  "BOSTON",
-      "Total payments":        "$235,627"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "YOAV GOLAN"},
+        {"Physician ID": 249214},
+        {"Recorded work address": "750 WASHINGTON ST"},
+        {"City": "BOSTON"},
+        {"Total payments": "$235,627"}
+      ]
     },
     {
-      "Physician name":        "ARATHI SETTY",
-      "Physician ID":          435081,
-      "Recorded work address": "625 MOUNT AUBURN ST STE 1",
-      "City":                  "CAMBRIDGE",
-      "Total payments":        "$233,730"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "ARATHI SETTY"},
+        {"Physician ID": 435081},
+        {"Recorded work address": "625 MOUNT AUBURN ST STE 1"},
+        {"City": "CAMBRIDGE"},
+        {"Total payments": "$233,730"}
+      ]
     },
     {
-      "Physician name":        "SAMUEL THIER",
-      "Physician ID":          636899,
-      "Recorded work address": "55 FRUIT ST",
-      "City":                  "BOSTON",
-      "Total payments":        "$233,070"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "SAMUEL THIER"},
+        {"Physician ID": 636899},
+        {"Recorded work address": "55 FRUIT ST"},
+        {"City": "BOSTON"},
+        {"Total payments": "$233,070"}
+      ]
     },
     {
-      "Physician name":        "TARIQ MUGHAL",
-      "Physician ID":          14532,
-      "Recorded work address": "55 LAKE AVE N",
-      "City":                  "WORCESTER",
-      "Total payments":        "$232,736"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "TARIQ MUGHAL"},
+        {"Physician ID": 14532},
+        {"Recorded work address": "55 LAKE AVE N"},
+        {"City": "WORCESTER"},
+        {"Total payments": "$232,736"}
+      ]
     },
     {
-      "Physician name":        "GUY BUCKLE",
-      "Physician ID":          357201,
-      "Recorded work address": "ONE BROOKLINE PLACE",
-      "City":                  "BROOKLINE",
-      "Total payments":        "$229,562"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "GUY BUCKLE"},
+        {"Physician ID": 357201},
+        {"Recorded work address": "ONE BROOKLINE PLACE"},
+        {"City": "BROOKLINE"},
+        {"Total payments": "$229,562"}
+      ]
     },
     {
-      "Physician name":        "DAVID WHITE",
-      "Physician ID":          729175,
-      "Recorded work address": "221 LONGWOOD AVE",
-      "City":                  "BOSTON",
-      "Total payments":        "$226,005"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "DAVID WHITE"},
+        {"Physician ID": 729175},
+        {"Recorded work address": "221 LONGWOOD AVE"},
+        {"City": "BOSTON"},
+        {"Total payments": "$226,005"}
+      ]
     },
     {
-      "Physician name":        "JOHN MILLER",
-      "Physician ID":          265362,
-      "Recorded work address": "143 STATE ST",
-      "City":                  "NEWBURYPORT",
-      "Total payments":        "$222,910"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "JOHN MILLER"},
+        {"Physician ID": 265362},
+        {"Recorded work address": "143 STATE ST"},
+        {"City": "NEWBURYPORT"},
+        {"Total payments": "$222,910"}
+      ]
     },
     {
-      "Physician name":        "LEE KAPLAN",
-      "Physician ID":          329257,
-      "Recorded work address": "30 BANCROFT RD",
-      "City":                  "WELLESLEY",
-      "Total payments":        "$222,574"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "LEE KAPLAN"},
+        {"Physician ID": 329257},
+        {"Recorded work address": "30 BANCROFT RD"},
+        {"City": "WELLESLEY"},
+        {"Total payments": "$222,574"}
+      ]
     },
     {
-      "Physician name":        "MUKESH HARISINGHANI",
-      "Physician ID":          581034,
-      "Recorded work address": "55 FRUIT ST",
-      "City":                  "BOSTON",
-      "Total payments":        "$221,854"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "MUKESH HARISINGHANI"},
+        {"Physician ID": 581034},
+        {"Recorded work address": "55 FRUIT ST"},
+        {"City": "BOSTON"},
+        {"Total payments": "$221,854"}
+      ]
     },
     {
-      "Physician name":        "JEFFREY SOBELL",
-      "Physician ID":          51651,
-      "Recorded work address": "1244 BOYLSTON ST",
-      "City":                  "CHESTNUT HILL",
-      "Total payments":        "$216,098"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "JEFFREY SOBELL"},
+        {"Physician ID": 51651},
+        {"Recorded work address": "1244 BOYLSTON ST"},
+        {"City": "CHESTNUT HILL"},
+        {"Total payments": "$216,098"}
+      ]
     },
     {
-      "Physician name":        "STEVEN DAWSON",
-      "Physician ID":          401633,
-      "Recorded work address": "55 FRUIT ST",
-      "City":                  "BOSTON",
-      "Total payments":        "$214,771"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "STEVEN DAWSON"},
+        {"Physician ID": 401633},
+        {"Recorded work address": "55 FRUIT ST"},
+        {"City": "BOSTON"},
+        {"Total payments": "$214,771"}
+      ]
     },
     {
-      "Physician name":        "PETER MUELLER",
-      "Physician ID":          1225580,
-      "Recorded work address": "55 FRUIT ST WHT 2",
-      "City":                  "BOSTON",
-      "Total payments":        "$210,822"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "PETER MUELLER"},
+        {"Physician ID": 1225580},
+        {"Recorded work address": "55 FRUIT ST WHT 2"},
+        {"City": "BOSTON"},
+        {"Total payments": "$210,822"}
+      ]
     },
     {
-      "Physician name":        "THERESA CERULLI",
-      "Physician ID":          85244,
-      "Recorded work address": "790 TURNPIKE ST",
-      "City":                  "NORTH ANDOVER",
-      "Total payments":        "$209,338"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "THERESA CERULLI"},
+        {"Physician ID": 85244},
+        {"Recorded work address": "790 TURNPIKE ST"},
+        {"City": "NORTH ANDOVER"},
+        {"Total payments": "$209,338"}
+      ]
     },
     {
-      "Physician name":        "LAWRENCE DUBUSKE",
-      "Physician ID":          301582,
-      "Recorded work address": "358 ELM ST",
-      "City":                  "GARDNER",
-      "Total payments":        "$204,311"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "LAWRENCE DUBUSKE"},
+        {"Physician ID": 301582},
+        {"Recorded work address": "358 ELM ST"},
+        {"City": "GARDNER"},
+        {"Total payments": "$204,311"}
+      ]
     },
     {
-      "Physician name":        "YONG-HAN KOO",
-      "Physician ID":          47882,
-      "Recorded work address": "241 BOSTON POST RD STE 2",
-      "City":                  "WAYLAND",
-      "Total payments":        "$202,547"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "YONG-HAN KOO"},
+        {"Physician ID": 47882},
+        {"Recorded work address": "241 BOSTON POST RD STE 2"},
+        {"City": "WAYLAND"},
+        {"Total payments": "$202,547"}
+      ]
     },
     {
-      "Physician name":        "TAMER YACOUB",
-      "Physician ID":          70750,
-      "Recorded work address": "235 HANOVER ST",
-      "City":                  "FALL RIVER",
-      "Total payments":        "$198,508"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "TAMER YACOUB"},
+        {"Physician ID": 70750},
+        {"Recorded work address": "235 HANOVER ST"},
+        {"City": "FALL RIVER"},
+        {"Total payments": "$198,508"}
+      ]
     },
     {
-      "Physician name":        "CHERYL SADOW",
-      "Physician ID":          176949,
-      "Recorded work address": "75 FRANCIS ST",
-      "City":                  "BOSTON",
-      "Total payments":        "$195,842"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "CHERYL SADOW"},
+        {"Physician ID": 176949},
+        {"Recorded work address": "75 FRANCIS ST"},
+        {"City": "BOSTON"},
+        {"Total payments": "$195,842"}
+      ]
     },
     {
-      "Physician name":        "LYNETTE JOHNS",
-      "Physician ID":          92928,
-      "Recorded work address": "464 HILLSIDE AVE",
-      "City":                  "NEEDHAM",
-      "Total payments":        "$188,693"
+      "Id":   "",
+      "meta": [
+        {"Physician name": "LYNETTE JOHNS"},
+        {"Physician ID": 92928},
+        {"Recorded work address": "464 HILLSIDE AVE"},
+        {"City": "NEEDHAM"},
+        {"Total payments": "$188,693"}
+      ]
     }
-  ]}
+  ]
+}

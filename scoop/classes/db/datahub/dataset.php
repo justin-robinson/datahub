@@ -77,9 +77,9 @@ class Dataset extends \DBCore\Datahub\Dataset
 
     private function saveDataSetEntries(){
         $return = false;
-        if ( empty($this->id) ) {
-            return $return;
-        }
+//        if ( empty($this->id) ) {
+//            return $return;
+//        }
         // save each entry
         foreach ($this->entries as $entry) {
             // create entry objects
