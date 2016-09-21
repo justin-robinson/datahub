@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class CompanyInstanceTop25lists
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/09/14
+ * @date 2016/09/21
  * @property mixed $companyInstanceId
  * @property mixed $listId
  * AUTO-GENERATED FILE

@@ -35,6 +35,7 @@ class DatasetController extends AbstractRestfulController
      */
     public function get($setId = null)
     {
+        
         // looking for formatting types
         $e     = $this->getEvent();
         $route = $e->getRouteMatch();
