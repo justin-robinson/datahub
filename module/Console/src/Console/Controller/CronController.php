@@ -391,7 +391,8 @@ SELECT
         echo "started at " . $start . PHP_EOL;
         /** copypasta! */
         $timestamp   = time();
-        $csvFilePath = "/home/vagrant/files/datahub-cron-bbm-dump-{$timestamp}.csv";
+//        $csvFilePath = "/home/vagrant/files/datahub-cron-bbm-dump-{$timestamp}.csv";
+        $csvFilePath = "/tmp/datahub-cron-bbm-dump-{$timestamp}.csv";
         echo $csvFilePath . PHP_EOL;
         $csvFileHandle = new CsvIterator($csvFilePath, 'w');
         
@@ -465,6 +466,4 @@ SELECT
         $end = date('h:i:s A');
         echo PHP_EOL . "ended at " . $end . PHP_EOL;
     }
-    
-    
 }

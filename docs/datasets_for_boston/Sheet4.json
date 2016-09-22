@@ -1,0 +1,231 @@
+{
+  "name":        "Spending by Drug",
+  "description": "Spending by drug/drug category in Massachusetts",
+  "market_code": "boston",
+  "entries":     [
+    {
+      "id":"",
+      "meta":[{"Drug":           "BELVIQ"},
+      {"Treatment area": "Obesity"},
+      {"Payor":          "EISAI INC."},
+      {"Total payments": "$6,014,153"},
+      {"EISAI INC.":     "United Therapeutics Corporation"}]
+    },
+    {
+      "id":"",
+      "meta":[{"Drug":           "TYVASO"},
+      {"Treatment area": "Hypertension"},
+      {"Payor":          "United Therapeutics Corporation"},
+      {"Total payments": "$4,176,934"},
+      {"EISAI INC.":     "Celgene Corporation"}]
+    },
+    {
+    "id":"",
+    "meta":[
+      {"Drug":           "Thalomid"},
+      {"Treatment area": "Leprosy"},
+      {"Payor":          "Celgene Corporation"},
+      {"Total payments": "$3,241,427"},
+      {"EISAI INC.":     "Merck Sharp & Dohme Corporation"}]
+    },
+    {
+    "id":"",
+    "meta":[{"Drug":           "KEYTRUDA"},
+      {"Treatment area": "Cancer"},
+      {"Payor":          "Merck Sharp & Dohme Corporation"},
+      {"Total payments": "$1,654,989"},
+      {"EISAI INC.":     "Ipsen Biopharmaceuticals, Inc"}]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Drug": "Somatuline Depot 120mg-.5ml"},
+        {"Treatment area": "Growth hormone/cancer"},
+        {"Payor": "Ipsen Biopharmaceuticals, Inc"},
+        {"Total payments": "$1,520,727"},
+        {"EISAI INC.": "Merck Sharp & Dohme Corporation"}
+      ]
+    },
+    {
+    "id":"",
+    "meta":[{"Drug":           "Humira"},
+      {"Treatment area": "Rheumatoid arthritis"},
+      {"Payor":          "AbbVie, Inc."},
+      {"Total payments": "$665,790"},
+      {"EISAI INC.":     "Pfizer Inc."}]
+    },
+    {
+    "id":"",
+    "meta":[{"Drug":           "Victoza"},
+      {"Treatment area": "Diabetes"},
+      {"Payor":          "Novo Nordisk AS"},
+      {"Total payments": "$456,520"},
+      {"EISAI INC.":     "AbbVie, Inc."}]
+    },
+    {
+    "id":"",
+    "meta":[{"Drug":           "INOMAX"},
+      {"Treatment area": "Respitory problems in premature babies"},
+      {"Payor":          "INO Therapeutics LLC"},
+      {"Total payments": "$371,736"},
+      {"EISAI INC.":     "Genentech, Inc."}]
+    },
+    {
+    "id":"",
+    "meta":[{"Drug":           "AUBAGIO"},
+      {"Treatment area": "Multiple sclerosis"},
+      {"Payor":          "GENZYME CORPORATION"},
+      {"Total payments": "$331,591"},
+      {"EISAI INC.":     "Novo Nordisk AS"}]
+    },
+    {
+    "id":"",
+      "meta": [
+    {"Drug":           "Invokana"},
+      {"Treatment area": "Diabetes"},
+      {"Payor":          "Janssen Pharmaceuticals, Inc"},
+      {"Total payments": "$273,891"},
+      {"EISAI INC.":     "NOVARTIS PHARMACEUTICALS CORPORATION"}
+      ]
+    },
+    {
+    "id":"",
+      "meta":[
+    {"Drug":           "ELIQUIS*"},
+      {"Treatment area": ""},
+      {"Payor":          "Pfizer Inc."},
+      {"Total payments": "$272,476"},
+      {"EISAI INC.":     "INO Therapeutics LLC"}]
+    },
+    {
+    "id":"",
+      "meta":[
+    {"Drug":           "ELIQUIS*"},
+      {"Treatment area": "Blood thinner"},
+      {"Payor":          "E.R. Squibb & Sons, L.L.C."},
+      {"Total payments": "$270,588"},
+      {"EISAI INC.":     "GENZYME CORPORATION"}]
+    },
+    {
+    "id":"",
+      "meta":[
+    {"Drug":           "Actemra"},
+      {"Treatment area": "Rheumatoid arthritis"},
+      {"Payor":          "Genentech, Inc."},
+      {"Total payments": "$270,037"},
+      {"EISAI INC.":     "Janssen Pharmaceuticals, Inc"}]
+    },
+    {
+    "id":"",
+            "meta":[
+    {"Drug":           "Xarelto"},
+      {"Treatment area": "Blood thinner"},
+      {"Payor":          "Janssen Pharmaceuticals, Inc"},
+      {"Total payments": "$266,267"},
+      {"EISAI INC.":     "Pfizer Inc."}]
+    },
+    {
+    "id":"",
+        "meta":[
+    {"Drug":           "Repatha"},
+      {"Treatment area": "(LDL) cholesterol"},
+      {"Payor":          "Amgen Inc."},
+      {"Total payments": "$258,499"},
+      {"EISAI INC.":     "E.R. Squibb & Sons, L.L.C."}]
+    },
+    {
+    "id":"",
+    "meta":[{"Drug":           "AG-221"},
+      {"Treatment area": "Cancer"},
+      {"Payor":          "Celgene Corporation"},
+      {"Total payments": "$253,120"},
+      {"EISAI INC.":     "Genentech, Inc."}]
+    },
+    {
+    "id":"",
+    "meta":[{"Drug":           "DIOVAN"},
+      {"Treatment area": "Hypertension"},
+      {"Payor":          "Novartis Pharma AG"},
+      {"Total payments": "$250,000"},
+      {"EISAI INC.":     "Janssen Pharmaceuticals, Inc"}]
+    },
+    {
+    "id":"",
+            "meta":[
+    {"Drug":           "Xarelto"},
+      {"Treatment area": "Blood thinner"},
+      {"Payor":          "Janssen Research & Development, LLC"},
+      {"Total payments": "$249,060"},
+      {"EISAI INC.":     "Amgen Inc."}]
+    },
+    {
+    "id":"",
+      "meta":[
+    {"Drug":           "SOLIRIS"},
+      {"Treatment area": "Rare chronic blood disease"},
+      {"Payor":          "Alexion Pharmaceuticals, Inc."},
+      {"Total payments": "$228,039"},
+      {"EISAI INC.":     "Celgene Corporation"}]
+    },
+    {
+    "id":"",
+      "meta":[
+    {"Drug":           "BYDUREON"},
+      {"Treatment area": "Diabetes"},
+      {"Payor":          "AstraZeneca Pharmaceuticals LP"},
+      {"Total payments": "$222,424"},
+      {"EISAI INC.":     "Novartis Pharma AG"}]
+    },
+    {
+    "id":"",
+    "meta":[{"Drug":           "GILENYA"},
+      {"Treatment area": "Multiple sclerosis"},
+      {"Payor":          "NOVARTIS PHARMACEUTICALS CORPORATION"},
+      {"Total payments": "$215,364"},
+      {"EISAI INC.":     "Janssen Research & Development, LLC"}]
+    },
+    {
+    "id":"",
+      "meta":[
+    {"Drug":           "Contrave"},
+      {"Treatment area": "Obesity"},
+      {"Payor":          "Takeda Pharmaceuticals America, Inc."},
+      {"Total payments": "$197,668"},
+      {"EISAI INC.":     "Alexion Pharmaceuticals, Inc."}]
+    },
+    {
+    "id":"",
+    "meta":[{"Drug":           "JAKAFI"},
+      {"Treatment area": "Bone marrow disorders"},
+      {"Payor":          "Incyte Corporation"},
+      {"Total payments": "$197,381"},
+      {"EISAI INC.":     "AstraZeneca Pharmaceuticals LP"}]
+    },
+    {
+    "id":"",
+      "meta":[
+    {"Drug":           "ACZ885M"},
+      {"Treatment area": "Gout"},
+      {"Payor":          "Novartis Pharma AG"},
+      {"Total payments": "$190,371"},
+      {"EISAI INC.":     "NOVARTIS PHARMACEUTICALS CORPORATION"}]
+    },
+    {
+    "id":"",
+    "meta":[{"Drug":           "TOUJEO"},
+      {"Treatment area": "Diabetes"},
+      {"Payor":          "SANOFI-AVENTIS U.S. LLC"},
+      {"Total payments": "$180,085"},
+      {"EISAI INC.":     "Takeda Pharmaceuticals America, Inc."}]
+    },
+    {
+    "id":"",
+      "meta":[
+    {"Drug":           "ENTRESTO"},
+      {"Treatment area": "Heart disease"},
+      {"Payor":          "NOVARTIS PHARMACEUTICALS CORPORATION"},
+      {"Total payments": "$164,645"},
+      {"EISAI INC.":     "Incyte Corporation"}]
+    }
+  ]
+}
