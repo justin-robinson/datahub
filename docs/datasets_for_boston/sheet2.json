@@ -1,0 +1,339 @@
+{
+  "name":        "sheet2",
+  "market_code": "boston",
+  "description": "The 30 largest sources of doctor payments in Massachusetts",
+  "entries":     [
+    {
+      "id":   "",
+      "meta": [
+        {"Drug/Device company": "Zimmer Biomet Holdings, Inc."},
+        {"Parent organization": "Zimmer Biomet Holdings, Inc."},
+        {"State": "IN"},
+        {"Total payments in 2015": "1,166"},
+        {"Value of payments": "$31,416,315"},
+        {"Average payment": "$26,944"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Drug/Device company": "EISAI INC."},
+        {"Parent organization": "Eisai Inc."},
+        {"State": "NJ"},
+        {"Total payments in 2015": 602},
+        {"Value of payments": "$6,059,084"},
+        {"Average payment": "$10,065"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Drug/Device company": "DePuy Synthes Products LLC"},
+        {"Parent organization": "DePuy Synthes Sales Inc."},
+        {"State": "MA"},
+        {"Total payments in 2015": 61},
+        {"Value of payments": "$4,910,408"},
+        {"Average payment": "$80,498"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Drug/Device company": "Celgene Corporation"},
+        {"Parent organization": "Celgene Corporation"},
+        {"State": "NJ"},
+        {"Total payments in 2015": "1,811"},
+        {"Value of payments": "$4,619,902"},
+        {"Average payment": "$2,551"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Drug/Device company": "United Therapeutics Corporation"},
+        {"Parent organization": "United Therapeutics Corporation"},
+        {"State": "NC"},
+        {"Total payments in 2015": 42},
+        {"Value of payments": "$4,225,519"},
+        {"Average payment": "$100,608"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Drug/Device company": "Stryker Corporation"},
+        {"Parent organization": "Stryker Corporation"},
+        {"State": "MI"},
+        {"Total payments in 2015": "2,048"},
+        {"Value of payments": "$3,962,878"},
+        {"Average payment": "$1,935"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Drug/Device company": "Merck Sharp & Dohme Corporation"},
+        {"Parent organization": "Merck Sharp & Dohme Corporation"},
+        {"State": "NJ"},
+        {"Total payments in 2015": "6,809"},
+        {"Value of payments": "$3,231,459"},
+        {"Average payment": "$475"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Drug/Device company": "Pfizer Inc."},
+        {"Parent organization": "Pfizer Inc."},
+        {"State": "NY"},
+        {"Total payments in 2015": "9,717"},
+        {"Value of payments": "$3,079,014"},
+        {"Average payment": "$317"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Drug/Device company": "Medtronic Vascular, Inc."},
+        {"Parent organization": "Medtronic Vascular, Inc."},
+        {"State": "MN"},
+        {"Total payments in 2015": "2,126"},
+        {"Value of payments": "$2,709,827"},
+        {"Average payment": "$1,275"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Drug/Device company": "Smith & Nephew, Inc."},
+        {"Parent organization": "Smith & Nephew, Inc."},
+        {"State": "TN"},
+        {"Total payments in 2015": "1,796"},
+        {"Value of payments": "$2,679,832"},
+        {"Average payment": "$1,492"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Drug/Device company": "GE Healthcare"},
+        {"Parent organization": "GE Healthcare"},
+        {"State": "WI"},
+        {"Total payments in 2015": 92},
+        {"Value of payments": "$1,912,914"},
+        {"Average payment": "$20,793"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Drug/Device company": "Shire North American Group Inc"},
+        {"Parent organization": "Shire North American Group Inc"},
+        {"State": "MA"},
+        {"Total payments in 2015": "1,546"},
+        {"Value of payments": "$1,606,602"},
+        {"Average payment": "$1,039"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Drug/Device company": "Ipsen Biopharmaceuticals, Inc"},
+        {"Parent organization": "Ipsen Biopharmaceuticals, Inc"},
+        {"State": "NJ"},
+        {"Total payments in 2015": 93},
+        {"Value of payments": "$1,521,902"},
+        {"Average payment": "$16,365"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Drug/Device company": "Fujirebio Diagnostics, Incorporated"},
+        {"Parent organization": "Fujirebio Diagnostics, Incorporated"},
+        {"State": "PA"},
+        {"Total payments in 2015": 1},
+        {"Value of payments": "$1,409,447"},
+        {"Average payment": "$1,409,447"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Drug/Device company": "Millennium Pharmaceuticals, Inc."},
+        {"Parent organization": "Millennium Pharmaceuticals, Inc."},
+        {"State": "MA"},
+        {"Total payments in 2015": 302},
+        {"Value of payments": "$1,402,346"},
+        {"Average payment": "$4,644"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Drug/Device company": "Medtronic Neurovascular"},
+        {"Parent organization": "Medtronic Neurovascular"},
+        {"State": "MN"},
+        {"Total payments in 2015": 97},
+        {"Value of payments": "$1,380,721"},
+        {"Average payment": "$14,234"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Drug/Device company": "SANOFI-AVENTIS U.S. LLC"},
+        {"Parent organization": "Sanofi and Genzyme US Co}mpanies"},
+        {"State": "NJ"},
+        {"Total payments in 2015": "4,454"},
+        {"Value of payments": "$1,212,227"},
+        {"Average payment": "$272"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Drug/Device company": "Actavis Pharma Inc"},
+        {"Parent organization": "Actavis Pharma Inc"},
+        {"State": "NJ"},
+        {"Total payments in 2015": "4,896"},
+        {"Value of payments": "$1,151,181"},
+        {"Average payment": "$235"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Drug/Device company": "NOVARTIS PHARMACEUTICALS CORPORATION"},
+        {"Parent organization": "Novartis Pharmaceuticals Corporation"},
+        {"State": "NJ"},
+        {"Total payments in 2015": "2,719"},
+        {"Value of payments": "$1,145,144"},
+        {"Average payment": "$421"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Drug/Device company": "Siemens Medical Solutions USA, Inc."},
+        {"Parent organization": "Siemens Medical Solutions USA, Inc."},
+        {"State": "PA"},
+        {"Total payments in 2015": 158},
+        {"Value of payments": "$1,056,831"},
+        {"Average payment": "$6,689"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Drug/Device company": "Boehringer Ingelheim Pharmaceuticals, Inc."},
+        {"Parent organization": "Boehringer Ingelheim Pharmaceuticals, Inc."},
+        {"State": "CT"},
+        {"Total payments in 2015": "6,372"},
+        {"Value of payments": "$1,050,351"},
+        {"Average payment": "$165"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Drug/Device company": "Boston Scientific Corporation"},
+        {"Parent organization": "BOSTON SCIENTIFIC CORPORATION"},
+        {"State": "MA"},
+        {"Total payments in 2015": "1,663"},
+        {"Value of payments": "$1,048,372"},
+        {"Average payment": "$630"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Drug/Device company": "Biogen, Inc."},
+        {"Parent organization": "Biogen, Inc."},
+        {"State": "MA"},
+        {"Total payments in 2015": "1,358"},
+        {"Value of payments": "$1,019,652"},
+        {"Average payment": "$751"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Drug/Device company": "Genentech, Inc."},
+        {"Parent organization": "Genentech, Inc."},
+        {"State": "CA"},
+        {"Total payments in 2015": 145},
+        {"Value of payments": "$994,057"},
+        {"Average payment": "$6,856"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Drug/Device company": "Gilead Sciences Inc"},
+        {"Parent organization": "Gilead Sciences Inc"},
+        {"State": "CA"},
+        {"Total payments in 2015": "2,434"},
+        {"Value of payments": "$952,224"},
+        {"Average payment": "$391"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Drug/Device company": "AstraZeneca Pharmaceuticals LP"},
+        {"Parent organization": "AstraZeneca Pharmaceuticals LP"},
+        {"State": "DE"},
+        {"Total payments in 2015": "7,542"},
+        {"Value of payments": "$941,881"},
+        {"Average payment": "$125"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Drug/Device company": "AbbVie, Inc."},
+        {"Parent organization": "AbbVie, Inc."},
+        {"State": "IL"},
+        {"Total payments in 2015": "4,734"},
+        {"Value of payments": "$898,646"},
+        {"Average payment": "$190"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Drug/Device company": "E.R. Squibb & Sons, L.L.C."},
+        {"Parent organization": "Bristol-Myers Squibb Compan}y"},
+        {"State": "NJ"},
+        {"Total payments in 2015": "3,567"},
+        {"Value of payments": "$878,642"},
+        {"Average payment": "$246"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Drug/Device company": "Amgen Inc."},
+        {"Parent organization": "Amgen Inc."},
+        {"State": "CA"},
+        {"Total payments in 2015": "3,344"},
+        {"Value of payments": "$868,533"},
+        {"Average payment": "$260"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Drug/Device company": "Eli Lilly and Company"},
+        {"Parent organization": "Eli Lilly and Company"},
+        {"State": "IN"},
+        {"Total payments in 2015": 280},
+        {"Value of payments": "$796,525"},
+        {
+          "Average payment": "$2,845"
+        }
+      ]
+    }
+  ]
+}
