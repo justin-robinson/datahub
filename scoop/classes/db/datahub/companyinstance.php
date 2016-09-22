@@ -697,8 +697,8 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
                 $sortedProperties[$property->name] = $property;
             } else {
 
-                // new property should be ignored if of a higher order
-                if ($property->get_source_type()->order > $sortedProperties[$property->name]->get_source_type()->order) {
+                // new property should be ignored if of a lower order
+                if ($property->get_source_type()->order < $sortedProperties[$property->name]->get_source_type()->order) {
                     continue;
                 }
 
