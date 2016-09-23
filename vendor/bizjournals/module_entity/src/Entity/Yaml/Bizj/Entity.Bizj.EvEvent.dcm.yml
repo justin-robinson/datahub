@@ -345,3 +345,8 @@ Entity\Bizj\EvEvent:
     deleted_at:
       type: datetime
       nullable: true
+  oneToMany:
+      SponsorTiers:
+        targetEntity: EvSponsorTier
+        mappedBy: EvEvent
+        cascade: [persist]

@@ -1,0 +1,51 @@
+Entity\Bizj\EvSponsorTier:
+  type: entity
+  table: ev_sponsor_tier
+  fields:
+    tier_id:
+      type: integer
+      unsigned: true
+      id: true
+      generator:
+        strategy: AUTO
+    event_id:
+      type: integer
+      unsigned: true
+    level:
+      type: integer
+      unsigned: true
+      options:
+        default: 0
+    title:
+      type: string
+      length: 255
+      nullable: true
+    cost:
+      type: string
+      length: 255
+      nullable: true
+    available:
+      type: integer
+      unsigned: true
+      options:
+        default: 0
+    benefits:
+      type: string
+    other_benefits:
+      type: string
+    ord:
+      type: integer
+      unsigned: true
+      options:
+        default: 0
+  manyToOne:
+    Event:
+      targetEntity: EvEvent
+      joinColumn:
+        name: event_id
+        referencedColumnName: event_id
+  oneToMany:
+    Sponsors:
+      targetEntity: EvSponsor
+      mappedBy: EvSponsorTier
+      cascade: [persist]

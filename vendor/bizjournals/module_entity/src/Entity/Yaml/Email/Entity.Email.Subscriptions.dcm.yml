@@ -1,0 +1,52 @@
+Entity\Email\Subscriptions:
+  type: entity
+  table: subscriptions
+  fields:
+    subscription_id:
+      type: integer
+      unsigned: true
+      id: true
+      generator:
+        strategy: AUTO
+    product_id:
+      type: integer
+      unsigned: true
+      nullable: false
+    user_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    uin:
+      type: string
+      length: 45
+      nullable: true
+    email:
+      type: string
+      length: 255
+      nullable: false
+    first_name:
+      type: string
+      length: 50
+      nullable: true
+    last_name:
+      type: string
+      length: 50
+      nullable: true
+    source_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    is_active:
+      type: boolean
+    created_at:
+      type: datetime
+      nullable: true
+      options:
+        timestampable:
+          'on': create
+    updated_at:
+      type: datetime
+      nullable: true
+      options:
+        timestampable:
+          'on': update

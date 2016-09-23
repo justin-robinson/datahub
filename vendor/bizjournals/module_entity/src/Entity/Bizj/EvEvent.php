@@ -402,6 +402,18 @@ class EvEvent extends \Entity\Entity\Base
      */
     private $deleted_at;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $SponsorTiers;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->SponsorTiers = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get eventId
@@ -2283,6 +2295,40 @@ class EvEvent extends \Entity\Entity\Base
     public function getDeletedAt()
     {
         return $this->deleted_at;
+    }
+
+    /**
+     * Add sponsorTier
+     *
+     * @param \Entity\Bizj\EvSponsorTier $sponsorTier
+     *
+     * @return EvEvent
+     */
+    public function addSponsorTier(\Entity\Bizj\EvSponsorTier $sponsorTier)
+    {
+        $this->SponsorTiers[] = $sponsorTier;
+
+        return $this;
+    }
+
+    /**
+     * Remove sponsorTier
+     *
+     * @param \Entity\Bizj\EvSponsorTier $sponsorTier
+     */
+    public function removeSponsorTier(\Entity\Bizj\EvSponsorTier $sponsorTier)
+    {
+        $this->SponsorTiers->removeElement($sponsorTier);
+    }
+
+    /**
+     * Get sponsorTiers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSponsorTiers()
+    {
+        return $this->SponsorTiers;
     }
 }
 

@@ -24,7 +24,7 @@ class JSON
         $args = func_get_args();
 
         // default to decoding into an assoc array
-        if (sizeof($args) === 1) {
+        if (count($args) === 1) {
             $args[] = true;
         }
 
@@ -54,12 +54,6 @@ class JSON
     {
         // extract arguments
         $args = func_get_args();
-
-        // allow special options value for Elasticsearch compatibility
-        if (sizeof($args) > 1 && $args[1] === 'JSON_ELASTICSEARCH') {
-            // Use built in JSON constants if available (php >= 5.4)
-            $args[1] = defined('JSON_UNESCAPED_UNICODE') ? JSON_UNESCAPED_UNICODE : 256;
-        }
 
         // run encode and output
         return call_user_func_array('json_encode', $args);

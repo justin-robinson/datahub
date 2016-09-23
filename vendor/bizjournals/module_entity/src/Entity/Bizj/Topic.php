@@ -37,6 +37,11 @@ class Topic extends \Entity\Entity\Base
      */
     private $is_active = true;
 
+    /**
+     * @var integer
+     */
+    private $channel_id;
+
 
     /**
      * Get topicId
@@ -166,6 +171,30 @@ class Topic extends \Entity\Entity\Base
     public function getIsActive()
     {
         return $this->is_active;
+    }
+
+    /**
+     * Set channelId
+     *
+     * @param integer $channelId
+     *
+     * @return Topic
+     */
+    public function setChannelId($channelId)
+    {
+        $this->channel_id = $channelId;
+
+        return $this;
+    }
+
+    /**
+     * Get channelId
+     *
+     * @return integer
+     */
+    public function getChannelId()
+    {
+        return $this->channel_id;
     }
 }
 

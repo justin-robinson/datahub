@@ -64,10 +64,10 @@ class Topic extends \Entity\Bizj\Topic implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'topic_id', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'usage_market', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'topic_code', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'topic_name', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'hidden', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'is_active'];
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'topic_id', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'usage_market', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'topic_code', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'topic_name', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'hidden', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'is_active', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'channel_id'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'topic_id', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'usage_market', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'topic_code', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'topic_name', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'hidden', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'is_active'];
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'topic_id', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'usage_market', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'topic_code', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'topic_name', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'hidden', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'is_active', '' . "\0" . 'Entity\\Bizj\\Topic' . "\0" . 'channel_id'];
     }
 
     /**
@@ -292,6 +292,28 @@ class Topic extends \Entity\Bizj\Topic implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsActive', []);
 
         return parent::getIsActive();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setChannelId($channelId)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setChannelId', [$channelId]);
+
+        return parent::setChannelId($channelId);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getChannelId()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getChannelId', []);
+
+        return parent::getChannelId();
     }
 
 }

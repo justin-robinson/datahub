@@ -3,3 +3,10 @@
 /vendor
 /composer.lock
 /.settings
+.DS_Store
+.DS_Store?
+/*.sublime-project
+/*.sublime-workspace
+.idea/
+npm-debug.log
+build

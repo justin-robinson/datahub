@@ -24,4 +24,7 @@ return array(
             'sslverifypeer'  => false,
         ),
     ),
+    'datahub' => [
+        'host' => 'http://hub.dev.bizjournals.com'
+    ],
 );

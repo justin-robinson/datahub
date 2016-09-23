@@ -33,3 +33,6 @@ Entity\Bizj\Topic:
       nullable: false
       options:
         default: true
+    channel_id:
+      type: integer
+      columnDefinition: int(10) unsigned

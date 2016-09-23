@@ -191,6 +191,22 @@ class Module
                     $client = $sm->get('Services\Meroveus\Client');
                     return new Meroveus\ContactService($client);
                 },
+
+                // Datahub
+                'Services\Datahub\Api\Company' => function (ServiceManager $sm) {
+                    $host = $sm->get('Config')['datahub']['host'];
+                    return new Datahub\Api\Client($host, 'api/v1/company');
+                },
+
+                'Services\Datahub\Api\Instance' => function (ServiceManager $sm) {
+                    $host = $sm->get('Config')['datahub']['host'];
+                    return new Datahub\Api\Client($host, 'api/v1/instance');
+                },
+
+                'Services\Datahub\Api\Property' => function (ServiceManager $sm) {
+                    $host = $sm->get('Config')['datahub']['host'];
+                    return new Datahub\Api\Client($host, 'api/v1/property');
+                }
             ),
         );
     }
