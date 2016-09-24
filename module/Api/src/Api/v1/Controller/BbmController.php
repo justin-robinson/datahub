@@ -9,7 +9,7 @@
 namespace Api\v1\Controller;
 
 use Api\v1\ResponseFormatter\BbmFormatter;
-use DB\Datahub\CompanyInstance;
+use DB\Datahub\Company;
 use DB\Datahub\DatahubBbm;
 use Zend\View\Model\JsonModel;
 
@@ -22,9 +22,7 @@ class BbmController extends AbstractRestfulController
      */
     public function get($companyInstanceId)
     {
-        
-        $instance    = CompanyInstance::fetch_where('companyInstanceId = ?', [$companyInstanceId]);
-        $bbmInstance = DatahubBbm::fetch_where('dhEntityId = ?', [$instance->first()->companyId]);
+        $bbmInstance = DatahubBbm::fetch_where('acbj_datahub_org_id = ?', [$companyInstanceId]);
         
         if ($bbmInstance) {
             return new JsonModel(BbmFormatter::format($bbmInstance));
