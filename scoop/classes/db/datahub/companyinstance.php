@@ -181,24 +181,15 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
             self::$companyInstanceCache = new LRUCache (1000);
         }
 
-        $this->curl = curl_init();
-        curl_setopt($this->curl, CURLOPT_POST, true);
-        curl_setopt($this->curl, CURLOPT_HTTPHEADER, ['Expect:']);
-        curl_setopt($this->curl, CURLOPT_HEADER, false);
-        curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($this->curl, CURLOPT_SSL_VERIFYHOST, 0);
+//        $this->curl = curl_init();
+//        curl_setopt($this->curl, CURLOPT_POST, true);
+//        curl_setopt($this->curl, CURLOPT_HTTPHEADER, ['Expect:']);
+//        curl_setopt($this->curl, CURLOPT_HEADER, false);
+//        curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, true);
+//        curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, false);
+//        curl_setopt($this->curl, CURLOPT_SSL_VERIFYHOST, 0);
 
         parent::__construct($dataArray);
-    }
-
-    /**
-     *
-     */
-    public function __destruct()
-    {
-
-        curl_close($this->curl);
     }
 
     /**

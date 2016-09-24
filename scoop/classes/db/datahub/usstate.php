@@ -3,15 +3,15 @@
 namespace DB\Datahub;
 
 /**
- * Class ScratchBizjIndustry
+ * Class UsState
  * @package DB\Datahub
  * @author jrobinson (robotically)
- * @date 2016/06/06
+ * @date 2016/09/14
  * @inheritdoc
  * This file is only generated once
  * Put your class specific code in here
  */
-class ScratchBizjIndustry extends \DBCore\Datahub\ScratchBizjIndustry {
+class UsState extends \DBCore\Datahub\UsState {
 
 }
 

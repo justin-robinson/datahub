@@ -103,7 +103,6 @@ class CompanyExportFormatter
             if ( array_key_exists($company->companyId, $array) ) {
                 continue;
             }
-
             $companyRecord = [
                 'companyId' => $company->companyId,
                 'name' => $company->name,
@@ -133,8 +132,9 @@ class CompanyExportFormatter
             // pull in properties from the latest instance
             $companyRecord['url'] = $latestInstance->url;
             $companyRecord['stateCode'] = $latestInstance->get_state()->code;
-            $companyRecord['stockSymbol'] = $latestInstance->stockSymbol;
-            $companyRecord['tickerExchange'] = $latestInstance->tickerExchange;
+            list($ticker, $exchange) = $company->getBestTicker();
+            $companyRecord['stockSymbol'] = $ticker;
+            $companyRecord['tickerExchange'] = $exchange;
             $companyRecord['updatedAt'] = ($companyRecord['updatedAt'] < $latestInstance->updatedAt) ? $latestInstance->updatedAt : $companyRecord['updatedAt'];
 
             // add all properties from the latest instance
