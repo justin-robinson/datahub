@@ -31,9 +31,16 @@ class Bbm
         // skip to the next line of the file
         $file->setHasHeaderRow(true);
     
+        
+        
         foreach ($file as $line){
-            $bbm = new DatahubBbm();
-            $bbm->populate($line);
+            // give the row the correct names
+            $merged = [];
+            foreach($line as $k => $val){
+                $merged[$header[$k]] = $val;
+            }
+            $bbm = new DatahubBbm($merged);
+//            $bbm->populate($line);
             $bbm->saveFromImport();
         }
        
