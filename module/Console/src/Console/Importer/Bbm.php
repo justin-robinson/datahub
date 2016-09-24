@@ -17,7 +17,7 @@ class Bbm
     /**
      * @param      $csvFile
      *
-     * @return array
+     * @return bool
      */
     public function importFromCsv($csvFile)
     {
@@ -34,7 +34,7 @@ class Bbm
         foreach ($file as $line){
             $bbm = new DatahubBbm();
             $bbm->populate($line);
-            $bbm->save();
+            $bbm->saveFromImport();
         }
        
         

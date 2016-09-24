@@ -23,9 +23,7 @@ class BbmController extends AbstractRestfulController
     public function get($companyInstanceId)
     {
         
-        $instance = CompanyInstance::fetch_where('companyInstanceId = ?', [$companyInstanceId] );
-        
-        
+        $instance    = CompanyInstance::fetch_where('companyInstanceId = ?', [$companyInstanceId]);
         $bbmInstance = DatahubBbm::fetch_where('dhEntityId = ?', [$instance->first()->companyId]);
         
         if ($bbmInstance) {
