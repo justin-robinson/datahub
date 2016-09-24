@@ -205,9 +205,9 @@ abstract class Model extends Model\Generic {
             return false;
         }
 
-        // validate if we want
-        if( method_exists( $this, 'validate' ) ) {
-            $this->validate();
+        // validate if we can
+        if( method_exists( $this, 'presave' ) ) {
+            $this->presave();
         }
 
         list($columnNames, $values, $queryParams, $updateColumnValues) =
@@ -244,6 +244,7 @@ abstract class Model extends Model\Generic {
         }
 
         return true;
+
     }
 
     /**

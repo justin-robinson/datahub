@@ -1823,65 +1823,6 @@
         ]
     },
     {
-        "name": "ruflin/elastica",
-        "version": "3.2.2",
-        "version_normalized": "3.2.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/ruflin/Elastica.git",
-            "reference": "1aa1b70d0c778323cb77a46ec872475136ed8c1e"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/ruflin/Elastica/zipball/1aa1b70d0c778323cb77a46ec872475136ed8c1e",
-            "reference": "1aa1b70d0c778323cb77a46ec872475136ed8c1e",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.4.0",
-            "psr/log": "~1.0"
-        },
-        "require-dev": {
-            "aws/aws-sdk-php": "~3.0",
-            "guzzlehttp/guzzle": "~6.0"
-        },
-        "suggest": {
-            "aws/aws-sdk-php": "Allow using IAM authentication with Amazon ElasticSearch Service",
-            "egeloen/http-adapter": "Allow using httpadapter transport",
-            "guzzlehttp/guzzle": "Allow using guzzle 6 as the http transport (Requires php 5.5)",
-            "monolog/monolog": "Logging request"
-        },
-        "time": "2016-08-23 13:01:58",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "3.2.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Elastica\\": "lib/Elastica/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Nicolas Ruflin",
-                "homepage": "http://ruflin.com/"
-            }
-        ],
-        "description": "Elasticsearch Client",
-        "homepage": "http://elastica.io/",
-        "keywords": [
-            "client",
-            "search"
-        ]
-    },
-    {
         "name": "symfony/console",
         "version": "v3.1.4",
         "version_normalized": "3.1.4.0",
@@ -2314,18 +2255,113 @@
         "homepage": "https://symfony.com"
     },
     {
+        "name": "bizjournals/module_services",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "git@gitlab.bizjournals.com:bizjournals/module_services.git",
+            "reference": "43ba41f16614a0f8356b0541138c3d536baef291"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://packages.bizj-production.com/dist/module_services-670-43ba41f16614a0f8356b0541138c3d536baef291.zip",
+            "reference": "43ba41f16614a0f8356b0541138c3d536baef291",
+            "shasum": null
+        },
+        "require": {
+            "monolog/monolog": "@stable",
+            "ruflin/elastica": "3.*",
+            "solarium/solarium": "@stable",
+            "zendframework/zendframework": "2.3.*"
+        },
+        "require-dev": {
+            "phpunit/php-code-coverage": "*",
+            "phpunit/phpunit": "*",
+            "phpunit/phpunit-mock-objects": "*"
+        },
+        "time": "2016-09-14 11:15:07",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "Services\\": "src/"
+            }
+        },
+        "description": "bizjournals Services Module"
+    },
+    {
+        "name": "ruflin/elastica",
+        "version": "3.2.3",
+        "version_normalized": "3.2.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ruflin/Elastica.git",
+            "reference": "02bf2fbb8ad6b679869af145eed89436a1c50229"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ruflin/Elastica/zipball/02bf2fbb8ad6b679869af145eed89436a1c50229",
+            "reference": "02bf2fbb8ad6b679869af145eed89436a1c50229",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0",
+            "psr/log": "~1.0"
+        },
+        "require-dev": {
+            "aws/aws-sdk-php": "~3.0",
+            "guzzlehttp/guzzle": "~6.0"
+        },
+        "suggest": {
+            "aws/aws-sdk-php": "Allow using IAM authentication with Amazon ElasticSearch Service",
+            "egeloen/http-adapter": "Allow using httpadapter transport",
+            "guzzlehttp/guzzle": "Allow using guzzle 6 as the http transport (Requires php 5.5)",
+            "monolog/monolog": "Logging request"
+        },
+        "time": "2016-09-23 10:24:25",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.2.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Elastica\\": "lib/Elastica/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Nicolas Ruflin",
+                "homepage": "http://ruflin.com/"
+            }
+        ],
+        "description": "Elasticsearch Client",
+        "homepage": "http://elastica.io/",
+        "keywords": [
+            "client",
+            "search"
+        ]
+    },
+    {
         "name": "justin-robinson/scoop",
         "version": "dev-php56",
         "version_normalized": "dev-php56",
         "source": {
             "type": "git",
             "url": "https://github.com/justin-robinson/scoop.git",
-            "reference": "8e59f27023e18bd2e33ef15d437dee3fe055b5b0"
+            "reference": "5407801ff32cc484ccd1ad6071e294f265cb2581"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/justin-robinson/scoop/zipball/8e59f27023e18bd2e33ef15d437dee3fe055b5b0",
-            "reference": "8e59f27023e18bd2e33ef15d437dee3fe055b5b0",
+            "url": "https://api.github.com/repos/justin-robinson/scoop/zipball/5407801ff32cc484ccd1ad6071e294f265cb2581",
+            "reference": "5407801ff32cc484ccd1ad6071e294f265cb2581",
             "shasum": ""
         },
         "require": {
@@ -2340,7 +2376,7 @@
             "phpunit/phpunit": "*",
             "phpunit/phpunit-mock-objects": "*"
         },
-        "time": "2016-09-23 02:43:37",
+        "time": "2016-09-24 17:43:44",
         "bin": [
             "bin/scoop"
         ],
@@ -2381,12 +2417,12 @@
         "source": {
             "type": "git",
             "url": "git@gitlab.bizjournals.com:bizjournals/module_entity.git",
-            "reference": "6d4d97015f32be6d9092256a654c71ae2458caf6"
+            "reference": "8322109a1c11221cc2deb7a0cb7621074c46c069"
         },
         "dist": {
             "type": "zip",
-            "url": "https://packages.bizj-production.com/dist/module_entity-657-6d4d97015f32be6d9092256a654c71ae2458caf6.zip",
-            "reference": "6d4d97015f32be6d9092256a654c71ae2458caf6",
+            "url": "https://packages.bizj-production.com/dist/module_entity-657-8322109a1c11221cc2deb7a0cb7621074c46c069.zip",
+            "reference": "8322109a1c11221cc2deb7a0cb7621074c46c069",
             "shasum": null
         },
         "require": {
@@ -2396,7 +2432,7 @@
         "require-dev": {
             "zendframework/zendframework": "2.4.*"
         },
-        "time": "2016-09-22 14:47:55",
+        "time": "2016-09-23 14:25:35",
         "type": "library",
         "installation-source": "source",
         "autoload": {
@@ -2405,41 +2441,5 @@
             }
         },
         "description": "bizjournals Entity Module"
-    },
-    {
-        "name": "bizjournals/module_services",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "git@gitlab.bizjournals.com:bizjournals/module_services.git",
-            "reference": "43ba41f16614a0f8356b0541138c3d536baef291"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://packages.bizj-production.com/dist/module_services-670-43ba41f16614a0f8356b0541138c3d536baef291.zip",
-            "reference": "43ba41f16614a0f8356b0541138c3d536baef291",
-            "shasum": null
-        },
-        "require": {
-            "monolog/monolog": "@stable",
-            "ruflin/elastica": "3.*",
-            "solarium/solarium": "@stable",
-            "zendframework/zendframework": "2.3.*"
-        },
-        "require-dev": {
-            "phpunit/php-code-coverage": "*",
-            "phpunit/phpunit": "*",
-            "phpunit/phpunit-mock-objects": "*"
-        },
-        "time": "2016-09-14 11:15:07",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "psr-0": {
-                "Services\\": "src/"
-            }
-        },
-        "description": "bizjournals Services Module"
     }
 ]

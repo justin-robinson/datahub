@@ -60,7 +60,7 @@ class EvSponsorTier extends \Entity\Entity\Base
     /**
      * @var \Entity\Bizj\EvEvent
      */
-    private $Event;
+    private $EvEvent;
 
     /**
      * Constructor
@@ -307,27 +307,27 @@ class EvSponsorTier extends \Entity\Entity\Base
     }
 
     /**
-     * Set event
+     * Set evEvent
      *
-     * @param \Entity\Bizj\EvEvent $event
+     * @param \Entity\Bizj\EvEvent $evEvent
      *
      * @return EvSponsorTier
      */
-    public function setEvent(\Entity\Bizj\EvEvent $event = null)
+    public function setEvEvent(\Entity\Bizj\EvEvent $evEvent = null)
     {
-        $this->Event = $event;
+        $this->EvEvent = $evEvent;
 
         return $this;
     }
 
     /**
-     * Get event
+     * Get evEvent
      *
      * @return \Entity\Bizj\EvEvent
      */
-    public function getEvent()
+    public function getEvEvent()
     {
-        return $this->Event;
+        return $this->EvEvent;
     }
 }
 

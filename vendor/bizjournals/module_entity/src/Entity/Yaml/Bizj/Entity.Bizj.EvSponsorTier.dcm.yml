@@ -39,7 +39,7 @@ Entity\Bizj\EvSponsorTier:
       options:
         default: 0
   manyToOne:
-    Event:
+    EvEvent:
       targetEntity: EvEvent
       joinColumn:
         name: event_id

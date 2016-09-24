@@ -2,6 +2,7 @@
 namespace Elastica\QueryBuilder\DSL;
 
 use Elastica\Aggregation\Avg;
+use Elastica\Aggregation\BucketScript;
 use Elastica\Aggregation\Cardinality;
 use Elastica\Aggregation\DateHistogram;
 use Elastica\Aggregation\DateRange;
@@ -21,6 +22,7 @@ use Elastica\Aggregation\Percentiles;
 use Elastica\Aggregation\Range;
 use Elastica\Aggregation\ReverseNested;
 use Elastica\Aggregation\ScriptedMetric;
+use Elastica\Aggregation\SerialDiff;
 use Elastica\Aggregation\SignificantTerms;
 use Elastica\Aggregation\Stats;
 use Elastica\Aggregation\Sum;
@@ -466,5 +468,36 @@ class Aggregation implements DSL
     public function geohash_grid($name, $field)
     {
         return new GeohashGrid($name, $field);
+    }
+
+    /**
+     * bucket script aggregation.
+     *
+     * @link https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-pipeline-bucket-script-aggregation.html
+     *
+     * @param string      $name
+     * @param array|null  $bucketsPath
+     * @param string|null $script
+     *
+     * @return BucketScript
+     */
+    public function bucket_script($name, $bucketsPath = null, $script = null)
+    {
+        return new BucketScript($name, $bucketsPath, $script);
+    }
+
+    /**
+     * serial diff aggregation.
+     *
+     * @link https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-pipeline-serialdiff-aggregation.html
+     *
+     * @param string      $name
+     * @param string|null $bucketsPath
+     *
+     * @return SerialDiff
+     */
+    public function serial_diff($name, $bucketsPath = null)
+    {
+        return new SerialDiff($name, $bucketsPath);
     }
 }

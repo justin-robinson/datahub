@@ -64,10 +64,10 @@ class EvSponsorTier extends \Entity\Bizj\EvSponsorTier implements \Doctrine\ORM\
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'tier_id', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'event_id', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'level', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'title', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'cost', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'available', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'benefits', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'other_benefits', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'ord', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'Sponsors', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'Event'];
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'tier_id', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'event_id', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'level', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'title', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'cost', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'available', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'benefits', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'other_benefits', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'ord', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'Sponsors', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'EvEvent'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'tier_id', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'event_id', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'level', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'title', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'cost', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'available', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'benefits', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'other_benefits', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'ord', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'Sponsors', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'Event'];
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'tier_id', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'event_id', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'level', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'title', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'cost', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'available', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'benefits', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'other_benefits', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'ord', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'Sponsors', '' . "\0" . 'Entity\\Bizj\\EvSponsorTier' . "\0" . 'EvEvent'];
     }
 
     /**
@@ -396,23 +396,23 @@ class EvSponsorTier extends \Entity\Bizj\EvSponsorTier implements \Doctrine\ORM\
     /**
      * {@inheritDoc}
      */
-    public function setEvent(\Entity\Bizj\EvEvent $event = NULL)
+    public function setEvEvent(\Entity\Bizj\EvEvent $evEvent = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEvent', [$event]);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEvEvent', [$evEvent]);
 
-        return parent::setEvent($event);
+        return parent::setEvEvent($evEvent);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function getEvent()
+    public function getEvEvent()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEvent', []);
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEvEvent', []);
 
-        return parent::getEvent();
+        return parent::getEvEvent();
     }
 
 }

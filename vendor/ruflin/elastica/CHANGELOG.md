@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file based on the [Keep a Changelog](http://keepachangelog.com/) Standard. This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/ruflin/Elastica/compare/3.2.2...HEAD)
+## [Unreleased](https://github.com/ruflin/Elastica/compare/3.2.3...HEAD)
 
 ### Backward Compatibility Fixes
 
@@ -13,19 +13,36 @@ All notable changes to this project will be documented in this file based on the
 
 ## Deprecated
 
+
+## [Unreleased](https://github.com/ruflin/Elastica/compare/3.2.2...3.2.3)
+
+### Bugfixes
+- Query builder is now compatible with Elasticsearch 2.X
+
+### Added
+- Elastica\Aggregation\BucketScript
+- Elastica\Aggregation\SerialDiff
+- Elastica\Query\InnerHits
+
+### Improvements
+- Elastica\Client constructor now accepts a transport of fully qualified name. [#1169](https://github.com/ruflin/Elastica/pull/1169)
+- Update Elasticsearch dependency to 2.4.0
+
+
 ## [3.2.2](https://github.com/ruflin/Elastica/compare/3.2.1...3.2.2)
 
 ### Backward Compatibility Fixes
 
 ### Bugfixes
 - Set HTTP headers on each request preventing server error if persistent connection is enabled and compression enabled and later disabled for the same connection.
-- Removed `int` type hinting in `setMinimumMatch` (`Terms` Query): it should also allow `string`. [#1151](https://github.com/ruflin/Elastica/pull/1151)  
+- Removed `int` type hinting in `setMinimumMatch` (`Terms` Query): it should also allow `string`. [#1151](https://github.com/ruflin/Elastica/pull/1151)
 
 ### Added
 - Elastica\QueryBuilder\DSL\Query::geo_distance
 - Elastica\Aggregation\GeoCentroid [#1150](https://github.com/ruflin/Elastica/pull/1150)
 - [Multi value field](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html#_multi_values_fields) param for decay function.
 - Elastica\Client::getVersion [#1152](https://github.com/ruflin/Elastica/pull/1152)
+- Added support for terminate_after parameter in search queries [#1168](https://github.com/ruflin/Elastica/pull/1168)
 
 ### Improvements
 - Set PHP 7.0 as default development version
