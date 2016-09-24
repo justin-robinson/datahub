@@ -22,7 +22,12 @@ class BbmController extends AbstractRestfulController
      */
     public function get($companyInstanceId)
     {
-        $bbmInstance = DatahubBbm::fetch_where('acbj_datahub_org_id = ?', [$companyInstanceId]);
+        
+        // set appropriate where clause for the fetch_where
+        $e           = $this->getEvent();
+        $route       = $e->getRouteMatch();
+        $where       = $route->getParam('type') ? 'acbj_refinery_org_id = ?' : 'acbj_datahub_org_id = ?';
+        $bbmInstance = DatahubBbm::fetch_where($where, [$companyInstanceId]);
         
         if ($bbmInstance) {
             return new JsonModel(BbmFormatter::format($bbmInstance));
