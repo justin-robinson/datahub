@@ -9,7 +9,7 @@
 namespace Api\v1\Controller;
 
 use Api\v1\ResponseFormatter\BbmFormatter;
-use DB\Datahub\Company;
+use DB\Datahub\CompanyInstance;
 use DB\Datahub\DatahubBbm;
 use Zend\View\Model\JsonModel;
 
