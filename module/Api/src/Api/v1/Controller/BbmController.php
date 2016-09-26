@@ -23,17 +23,18 @@ class BbmController extends AbstractRestfulController
     public function get($companyInstanceId)
     {
         
-        // set appropriate where clause for the fetch_where
-        $e           = $this->getEvent();
-        $route       = $e->getRouteMatch();
-        $where       = $route->getParam('type') ? 'acbj_refinery_org_id = ?' : 'acbj_datahub_org_id = ?';
-        $bbmInstance = DatahubBbm::fetch_where($where, [$companyInstanceId]);
-        
+        // is it a refinery request?
+        $e     = $this->getEvent();
+        $route = $e->getRouteMatch();
+        if ($route->getParam('type')) { // came in on the refinery endpoint
+            $bbmInstance = DatahubBbm::fetch_where('acbj_refinery_org_id = ?', [$companyInstanceId]);
+        } else { // came in on then instanceId endpoint
+            $instance    = CompanyInstance::fetch_where('companyInstanceId = ?', [$companyInstanceId]);
+            $bbmInstance = DatahubBbm::fetch_where('acbj_datahub_org_id = ?', [$instance->first()->companyId]);
+        }
         if ($bbmInstance) {
             return new JsonModel(BbmFormatter::format($bbmInstance));
         }
-        
-        
         return $this->getResponse()->setStatusCode(204);
     }
 }
