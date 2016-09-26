@@ -28,7 +28,7 @@ class BbmController extends AbstractRestfulController
         if ($route->getParam('type')) { // came in on the refinery endpoint
             $bbmInstance = DatahubBbm::fetch_where('acbj_refinery_org_id = ?', [$companyInstanceId]);
         } else { // came in on then instanceId endpoint
-            // chack for false instance
+            // check for false instance
             $instance    = CompanyInstance::fetch_where('companyInstanceId = ?', [$companyInstanceId]);
             $bbmInstance = empty($instance) ? null : DatahubBbm::fetch_where('acbj_datahub_org_id = ?', [$instance->first()->companyId]);
         }
