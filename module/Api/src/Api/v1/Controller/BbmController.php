@@ -30,11 +30,12 @@ class BbmController extends AbstractRestfulController
         } else { // came in on then instanceId endpoint
             // chack for false instance
             $instance    = CompanyInstance::fetch_where('companyInstanceId = ?', [$companyInstanceId]);
-            $bbmInstance = DatahubBbm::fetch_where('acbj_datahub_org_id = ?', [$instance->first()->companyId]);
+            $bbmInstance = empty($instance) ? null : DatahubBbm::fetch_where('acbj_datahub_org_id = ?', [$instance->first()->companyId]);
         }
         if ($bbmInstance) {
             return new JsonModel(BbmFormatter::format($bbmInstance));
         }
+        
         return $this->getResponse()->setStatusCode(204);
     }
 }
