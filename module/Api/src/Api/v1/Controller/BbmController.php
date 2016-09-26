@@ -22,13 +22,13 @@ class BbmController extends AbstractRestfulController
      */
     public function get($companyInstanceId)
     {
-        
         // is it a refinery request?
         $e     = $this->getEvent();
         $route = $e->getRouteMatch();
         if ($route->getParam('type')) { // came in on the refinery endpoint
             $bbmInstance = DatahubBbm::fetch_where('acbj_refinery_org_id = ?', [$companyInstanceId]);
         } else { // came in on then instanceId endpoint
+            // chack for false instance
             $instance    = CompanyInstance::fetch_where('companyInstanceId = ?', [$companyInstanceId]);
             $bbmInstance = DatahubBbm::fetch_where('acbj_datahub_org_id = ?', [$instance->first()->companyId]);
         }
