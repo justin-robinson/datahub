@@ -58,7 +58,7 @@ class Dataset extends \DBCore\Datahub\Dataset
     {
 
         if (!empty($this->id)) {
-            $entries       = DatasetEntries::fetch_where('dataset_id = ?', [$this->id], 1000, 0, true);
+            $entries       = DatasetEntries::fetch_where('dataset_id = ?', [$this->id], 1000, 0);
             $this->entries = $entries ? $entries : new Rows();
         }
 
