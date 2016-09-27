@@ -465,7 +465,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
     /**
      * @param $name
      *
-     * @return null
+     * @return CompanyInstanceProperty|null
      */
     public function get_property($name)
     {

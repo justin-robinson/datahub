@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class FipsCounty
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/09/24
+ * @date 2016/09/27
  * @property mixed $fips_code
  * @property mixed $state_code
  * @property mixed $county

@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class JobPosition
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/09/24
+ * @date 2016/09/27
  * @property mixed $job_position_id
  * @property mixed $position
  * AUTO-GENERATED FILE

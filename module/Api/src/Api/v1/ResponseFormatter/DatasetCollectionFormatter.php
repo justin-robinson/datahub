@@ -11,61 +11,63 @@ namespace Api\v1\ResponseFormatter;
 
 use DB\Datahub\Dataset;
 use DB\Datahub\Company;
+use DB\Datahub\CompanyInstance;
+use DB\Datahub\CompanyInstanceProperty;
+use Scoop\Database\Model\Generic;
+use Scoop\Database\Rows;
 
 /**
- * Class DatasetFormatter
+ * Class DatasetCollectionFormatter
  *
  * @package Api\v1\ResponseFormatter
  */
-class DatasetFormatter
+class DatasetCollectionFormatter
 {
 
     /**
-     * @param Dataset $set
-     * @param bool    $change
-     * @param null    $type
+     * @param Rows $datasets
+     * @param int  $page
+     * @param int  $limit
+     * @param int  $totalCount
      *
      * @return array
      */
-    public static function format(Dataset $set, $change = false, $type = null)
+    public static function format(Rows $datasets, $url, $page = 1, $limit = 1000, $totalCount = null)
     {
-        // @todo build the name instead of switching
-        // fetch type specific data
-        switch ($type) {
-            case 'map':
-                $entries = DatasetFormatter::getMapData($set);
-                break;
-            case 'directory':
-                $entries = DatasetFormatter::getDirectoryData($set);
-                break;
-            default:
-                if (!is_array($set->entries)) {
-                    $entries = empty($set->entries) ? null : $set->entries->to_array();
-                } else {
-                    $entries = empty($set->entries) ? null : $set->entries;
-                }
-                break;
-        }
-        
-        $host             = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST', 'hub');
-        $array            = $set->to_array();
-        $array['entries'] = $entries;
+        $host = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST') . '/api/v1/dataset';
+        $totalCount = $totalCount === null ? Generic::query('SELECT count(*) AS count FROM dataset')->first()->count : $totalCount;
+        $lastPage = ceil($totalCount / $limit);
 
-        $array['_links'] = [
-            'self' => [
-                'href' => $host . '/api/v1/dataset' . ($change ? '/' . $set->id : ''),
+        $array = [
+            'count'     => [
+                'total'   => $totalCount,
+                'current' => $datasets->get_num_rows(),
+                'offset'  => ($page - 1) * $limit,
             ],
-
+            '_links'    => [
+                'self'  => [
+                    'href' => $host,
+                ],
+                'first' => [
+                    'href' => $host . '?page=1',
+                ],
+                'last'  => [
+                    'href' => $host . '?page=' . $lastPage,
+                ],
+            ],
+            '_embedded' => [
+                'dataset' => [],
+            ],
         ];
+
+        /** @var Dataset $dataset */
+        foreach ( $datasets as $dataset ) {
+            $array['_embedded']['dataset'][] = DatasetFormatter::format($dataset, true);
+        }
         
         return $array;
     }
-
-    /**
-     * @param Dataset $set
-     *
-     * @return array
-     */
+    
     public static function getDirectoryData(Dataset $set)
     {
         
