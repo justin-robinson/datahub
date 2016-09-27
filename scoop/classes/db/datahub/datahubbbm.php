@@ -19,7 +19,8 @@ class DatahubBbm extends \DBCore\Datahub\DatahubBbm
      * @return bool
      */
     public function saveFromImport () {
-        
+
+        // @todo just call a normal save
 
         // validate if we want
         if( method_exists( $this, 'validate' ) ) {
