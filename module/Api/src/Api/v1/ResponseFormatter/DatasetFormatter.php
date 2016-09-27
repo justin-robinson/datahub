@@ -11,6 +11,7 @@ namespace Api\v1\ResponseFormatter;
 
 use DB\Datahub\Dataset;
 use DB\Datahub\Company;
+use DB\Datahub\DatasetEntries;
 
 /**
  * Class DatasetFormatter
@@ -39,10 +40,10 @@ class DatasetFormatter
                 $entries = DatasetFormatter::getDirectoryData($set);
                 break;
             default:
-                if (!is_array($set->entries)) {
-                    $entries = empty($set->entries) ? null : $set->entries->to_array();
-                } else {
+                if (is_array($set->entries)) {
                     $entries = empty($set->entries) ? null : $set->entries;
+                } else {
+                    $entries = empty($set->entries) ? null : $set->entries->to_array();
                 }
                 break;
         }
@@ -68,16 +69,13 @@ class DatasetFormatter
      */
     public static function getDirectoryData(Dataset $set)
     {
-        
+
         //@todo loop fields to get the return data
         //@todo get the featured data
         $entries         = [];
         $desiredDHFields = json_decode($set->fields, true);
         $eArray          = $set->entries->to_array();
         foreach ($eArray as $entry) {
-            $customFields = json_decode($entry['meta'], true);
-            // DO NOT LET THIS GO OUT
-            $customFields = is_array($customFields)?$customFields:json_decode($customFields, true);
             
             $result = [];
             
@@ -106,7 +104,7 @@ class DatasetFormatter
             }
             // set the custom fields
             $metaFields = [];
-            foreach ($customFields as $key => $value) {
+            foreach ($entry['meta'] as $key => $value) {
                 if (!empty($value)) {
                     $metaFields[key($value)] = current($value);
                 }

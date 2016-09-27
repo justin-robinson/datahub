@@ -13,18 +13,34 @@ namespace DB\Datahub;
  */
 class DatasetEntries extends \DBCore\Datahub\DatasetEntries {
     
-    public function __set($name, $value) {
+    public function __get($name) {
+
+        $value = parent::__get($name);
         
         if ( $name === 'meta' && is_string($value)) {
             $value = json_decode($value);
         }
-        
+
+        return $value;
+    }
+
+    public function __set($name, $value) {
+
+        if ( $name === 'meta' && !is_string($value)) {
+            $value = json_encode($value);
+        }
+
         parent::__set($name, $value);
     }
 
-    public function presave() {
+    public function to_array()
+    {
 
-        $this->dBValuesArray['meta'] = json_encode($this->meta);
+        $array = parent::to_array();
+
+        $array['meta'] = $this->meta;
+
+        return $array;
     }
 }
 

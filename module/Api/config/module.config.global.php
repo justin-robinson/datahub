@@ -352,7 +352,7 @@ $latestApiChildRoutes = [
             'entry1' => [
                 'type'    => 'Segment',
                 'options' => [
-                    'route'       => '/entry/[:id]',
+                    'route'       => '/entry[/:id]',
                     'constraints' => [
                         'id' => '[0-9]*',
                     ],
