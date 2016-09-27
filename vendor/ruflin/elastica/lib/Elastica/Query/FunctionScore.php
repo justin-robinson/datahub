@@ -42,7 +42,12 @@ class FunctionScore extends AbstractQuery
     const FIELD_VALUE_FACTOR_MODIFIER_SQRT = 'sqrt';
     const FIELD_VALUE_FACTOR_MODIFIER_RECIPROCAL = 'reciprocal';
 
-    protected $_functions = array();
+    const MULTI_VALUE_MODE_MIN = 'min';
+    const MULTI_VALUE_MODE_MAX = 'max';
+    const MULTI_VALUE_MODE_AVG = 'avg';
+    const MULTI_VALUE_MODE_SUM = 'sum';
+
+    protected $_functions = [];
 
     /**
      * Set the child query for this function_score query.
@@ -80,9 +85,9 @@ class FunctionScore extends AbstractQuery
      */
     public function addFunction($functionType, $functionParams, $filter = null, $weight = null)
     {
-        $function = array(
+        $function = [
             $functionType => $functionParams,
-        );
+        ];
 
         if (!is_null($filter)) {
             if ($filter instanceof AbstractFilter) {
@@ -128,14 +133,15 @@ class FunctionScore extends AbstractQuery
     /**
      * Add a decay function to the query.
      *
-     * @param string        $function see DECAY_* constants for valid options
-     * @param string        $field    the document field on which to perform the decay function
-     * @param string        $origin   the origin value for this decay function
-     * @param string        $scale    a scale to define the rate of decay for this function
-     * @param string        $offset   If defined, this function will only be computed for documents with a distance from the origin greater than this value
-     * @param float         $decay    optionally defines how documents are scored at the distance given by the $scale parameter
-     * @param float         $weight   optional factor by which to multiply the score at the value provided by the $scale parameter
-     * @param AbstractQuery $filter   a filter associated with this function
+     * @param string        $function       see DECAY_* constants for valid options
+     * @param string        $field          the document field on which to perform the decay function
+     * @param string        $origin         the origin value for this decay function
+     * @param string        $scale          a scale to define the rate of decay for this function
+     * @param string        $offset         If defined, this function will only be computed for documents with a distance from the origin greater than this value
+     * @param float         $decay          optionally defines how documents are scored at the distance given by the $scale parameter
+     * @param float         $weight         optional factor by which to multiply the score at the value provided by the $scale parameter
+     * @param AbstractQuery $filter         a filter associated with this function
+     * @param string        $multiValueMode see MULTI_VALUE_MODE_* constants for valid options
      *
      * @return $this
      */
@@ -147,7 +153,8 @@ class FunctionScore extends AbstractQuery
         $offset = null,
         $decay = null,
         $weight = null,
-        $filter = null
+        $filter = null,
+        $multiValueMode = null
     ) {
         if (null !== $filter) {
             if ($filter instanceof AbstractFilter) {
@@ -157,17 +164,21 @@ class FunctionScore extends AbstractQuery
             }
         }
 
-        $functionParams = array(
-            $field => array(
+        $functionParams = [
+            $field => [
                 'origin' => $origin,
                 'scale' => $scale,
-            ),
-        );
+            ],
+        ];
         if (!is_null($offset)) {
             $functionParams[$field]['offset'] = $offset;
         }
         if (!is_null($decay)) {
             $functionParams[$field]['decay'] = (float) $decay;
+        }
+
+        if (null !== $multiValueMode) {
+            $functionParams['multi_value_mode'] = $multiValueMode;
         }
 
         return $this->addFunction($function, $functionParams, $filter, $weight);
@@ -189,9 +200,9 @@ class FunctionScore extends AbstractQuery
             }
         }
 
-        $functionParams = array(
+        $functionParams = [
             'field' => $field,
-        );
+        ];
 
         if (!is_null($factor)) {
             $functionParams['factor'] = $factor;
@@ -264,7 +275,7 @@ class FunctionScore extends AbstractQuery
             }
         }
 
-        $this->addFunction('random_score', array('seed' => $seed), $filter, $weight);
+        $this->addFunction('random_score', ['seed' => $seed], $filter, $weight);
     }
 
     /**

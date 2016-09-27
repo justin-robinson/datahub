@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class UsState
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/09/21
+ * @date 2016/09/27
  * @property mixed $state_long
  * @property mixed $state_postal
  * @property mixed $state_ap_style

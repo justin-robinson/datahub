@@ -8,12 +8,11 @@ use Scoop\Database\Model;
  * Class CompanyInstanceProperty
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/09/21
+ * @date 2016/09/27
  * @property mixed $companyInstancePropertyId
  * @property mixed $companyInstanceId
  * @property mixed $name
  * @property mixed $value
- * @property mixed $valueMd5
  * @property mixed $sourceTypeId
  * @property mixed $sourceId
  * @property mixed $createdAt
@@ -58,9 +57,6 @@ class CompanyInstanceProperty extends Model {
           'value' => 
           array (
           ),
-          'valueMd5' => 
-          array (
-          ),
           'sourceTypeId' => 
           array (
           ),
@@ -83,7 +79,6 @@ class CompanyInstanceProperty extends Model {
           'companyInstanceId' => NULL,
           'name' => NULL,
           'value' => NULL,
-          'valueMd5' => NULL,
           'sourceTypeId' => '1',
           'sourceId' => NULL,
           'createdAt' => NULL,

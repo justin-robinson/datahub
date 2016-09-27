@@ -1,0 +1,131 @@
+<script src="../../bower_components/CSV-JS/csv.js" type="application/javascript"></script>
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/iron-list/iron-list.html">
+<link rel="import" href="../../bower_components/paper-autocomplete/paper-autocomplete.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../behaviors/api-resource-behavior.html">
+<link rel="import" href="confirm-delete-view.html">
+
+<dom-module id="entry-view">
+
+    <template>
+        <style>
+            :host {
+                box-sizing: border-box;
+                background-color: var(--background-color);
+                display: block;
+                padding-left: 16px;
+                padding-right: 16px;
+                @apply(--layout-flex);
+            }
+            *, *:before, *:after {
+                box-sizing: inherit;
+            }
+
+            paper-card {
+                width: 100%;
+                --paper-card-background-color: var(--paper-grey-200);
+                margin: var(--entry-view-margin);
+                padding: 1em;
+            }
+
+            .entry-properties paper-input {
+                width: calc(25% - 0.25em);
+                width: -o-calc(25% - 0.25em);
+                width: -moz-calc(25% - 0.25em);
+                width: -webkit-calc(25% - 0.25em);
+                display: inline-table;
+            }
+
+            paper-button.save {
+                background-color: var(--paper-light-green-500);
+                color: var(--paper-grey-200);
+            }
+            paper-button.save:hover {
+                background-color: var(--paper-light-green-800);
+                color: var(--paper-grey-200);
+            }
+
+            paper-button.delete {
+                float:right;
+                color: var(--paper-red-a200);
+            }
+            paper-button.delete:hover {
+                background-color: var(--paper-red-a200);
+                color: var(--paper-grey-200);
+            }
+
+        </style>
+
+        <paper-card heading="{{data.id}}">
+            <div class="entry-properties">
+                <paper-input value="{{data.featured}}" label="Featured"></paper-input>
+                <paper-input value="{{data.featuredExpires}}" label="Expires"></paper-input>
+                <paper-input value="{{data.logo}}" label="Logo URL"></paper-input>
+                <paper-input value="{{data.image}}" label="Image URL"></paper-input>
+                <paper-input value="{{data.promoText}}" label="Promo Text"></paper-input>
+                <template is="dom-repeat" items="{{metas}}" as="meta">
+                    <paper-input class="meta" value="{{meta.value}}" label="[[meta.name]]"></paper-input>
+                </template>
+            </div>
+            <!--    Save Button        -->
+            <paper-button raised id="save" on-click="saveEntry" class="save"><iron-icon icon="save"></iron-icon>Save</paper-button>
+            <!--    Delete Button            -->
+            <paper-button raised id="delete" on-click="confirmDelete" class="delete"><iron-icon icon="delete"></iron-icon>Delete</paper-button>
+            <confirm-delete-view id="confirmDelete" on-yes="deleteResource">
+                Are you sure you want to delete this entry?
+            </confirm-delete-view>
+        </paper-card>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'entry-view',
+            behaviors: [
+                Datahub.ApiResourceBehavior
+            ],
+            properties: {
+                url: {
+                    value: Datahub.apiUrl + 'dataset/entry'
+                },
+                metas: {
+                    value: function () { return []; }
+                }
+            },
+            ready: function () {
+                // listen for data changes
+                this.listen(this, 'data-changed', 'dataChanged');
+            },
+            dataChanged: function () {
+                // who knows how many times its json encoded (usually 2)
+                var metas = this.data.meta;
+                var decodeCount = 0;
+                while ( !Array.isArray(metas) && decodeCount++ < 10 ) {
+                    metas = JSON.parse(metas);
+                }
+
+                var key;
+                metas.forEach(function(meta, index, metas){
+                    key = Object.keys(meta)[0];
+                    metas[index] = {
+                        name: key,
+                        value: meta[key]
+                    };
+                });
+
+                this.set('metas', metas);
+            },
+            saveEntry: function () {
+                this.data.meta = JSON.stringify(this.metas);
+                this.saveResource();
+            },
+            confirmDelete: function () {
+                this.$.confirmDelete.open();
+            }
+
+        });
+    </script>
+
+</dom-module>

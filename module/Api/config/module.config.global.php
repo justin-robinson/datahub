@@ -348,6 +348,29 @@ $latestApiChildRoutes = [
                     ],
                 ],
             ],
+
+            'entry1' => [
+                'type'    => 'Segment',
+                'options' => [
+                    'route'       => '/entry[/:id]',
+                    'constraints' => [
+                        'id' => '[0-9]*',
+                    ],
+                    'defaults'    => [
+                        'controller' => 'Api\v1\Controller\DatasetEntries',
+                    ],
+                ],
+            ],
+
+            'search' => [
+                'type' => 'Segment',
+                'options' => [
+                    'route' => '/search/[:search]',
+                    'defaults' => [
+                        'controller' => 'Api\v1\Controller\DatasetSearch',
+                    ],
+                ],
+            ],
         
         
         ],
@@ -418,6 +441,7 @@ return [
             'Api\v1\Controller\State'               => 'Api\v1\Controller\StateController',
             'Api\v1\Controller\SourceType'          => 'Api\v1\Controller\SourceTypeController',
             'Api\v1\Controller\Dataset'             => 'Api\v1\Controller\DatasetController',
+            'Api\v1\Controller\DatasetSearch'             => 'Api\v1\Controller\DatasetSearchController',
             'Api\v1\Controller\DatasetEntries'      => 'Api\v1\Controller\DatasetEntriesController',
             'Api\v1\Controller\Top25List'           => 'Api\v1\Controller\Top25ListController',
             'Api\v1\Controller\MarketDatasets'      => 'Api\v1\Controller\MarketDatasetsController',

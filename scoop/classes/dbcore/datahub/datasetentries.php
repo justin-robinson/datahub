@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class DatasetEntries
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/09/21
+ * @date 2016/09/27
  * @property mixed $id
  * @property mixed $dataset_id
  * @property mixed $sourceId
@@ -35,6 +35,7 @@ class DatasetEntries extends Model {
         array (
           0 => 'id',
           1 => 'sourceId',
+          2 => 'featured',
         );
 
     public static $dBColumnPropertiesArray = 
@@ -75,7 +76,7 @@ class DatasetEntries extends Model {
           'dataset_id' => NULL,
           'sourceId' => NULL,
           'meta' => NULL,
-          'featured' => NULL,
+          'featured' => '0',
           'featuredExpires' => NULL,
           'logo' => NULL,
           'image' => NULL,

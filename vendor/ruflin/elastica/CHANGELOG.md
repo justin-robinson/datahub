@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file based on the [Keep a Changelog](http://keepachangelog.com/) Standard. This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/ruflin/Elastica/compare/3.2.1...HEAD)
+## [Unreleased](https://github.com/ruflin/Elastica/compare/3.2.3...HEAD)
 
 ### Backward Compatibility Fixes
 
@@ -11,7 +11,48 @@ All notable changes to this project will be documented in this file based on the
 
 ### Improvements
 
-## [Unreleased](https://github.com/ruflin/Elastica/compare/3.2.0...3.2.1)
+## Deprecated
+
+
+## [Unreleased](https://github.com/ruflin/Elastica/compare/3.2.2...3.2.3)
+
+### Bugfixes
+- Query builder is now compatible with Elasticsearch 2.X
+
+### Added
+- Elastica\Aggregation\BucketScript
+- Elastica\Aggregation\SerialDiff
+- Elastica\Query\InnerHits
+
+### Improvements
+- Elastica\Client constructor now accepts a transport of fully qualified name. [#1169](https://github.com/ruflin/Elastica/pull/1169)
+- Update Elasticsearch dependency to 2.4.0
+
+
+## [3.2.2](https://github.com/ruflin/Elastica/compare/3.2.1...3.2.2)
+
+### Backward Compatibility Fixes
+
+### Bugfixes
+- Set HTTP headers on each request preventing server error if persistent connection is enabled and compression enabled and later disabled for the same connection.
+- Removed `int` type hinting in `setMinimumMatch` (`Terms` Query): it should also allow `string`. [#1151](https://github.com/ruflin/Elastica/pull/1151)
+
+### Added
+- Elastica\QueryBuilder\DSL\Query::geo_distance
+- Elastica\Aggregation\GeoCentroid [#1150](https://github.com/ruflin/Elastica/pull/1150)
+- [Multi value field](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-function-score-query.html#_multi_values_fields) param for decay function.
+- Elastica\Client::getVersion [#1152](https://github.com/ruflin/Elastica/pull/1152)
+- Added support for terminate_after parameter in search queries [#1168](https://github.com/ruflin/Elastica/pull/1168)
+
+### Improvements
+- Set PHP 7.0 as default development version
+- Get the root reason from Elasticsearch's error JSON, when available [#1111](https://github.com/ruflin/Elastica/pull/1111)
+- Optimize memory usage for Http Adapter [#1161](https://github.com/ruflin/Elastica/pull/1161)
+
+### Changed
+- Remove JSON_ELASTICSEARCH constant as not needed anymore
+
+## [3.2.1](https://github.com/ruflin/Elastica/compare/3.2.0...3.2.1)
 
 ### Backward Compatibility Fixes
 - Reintroduced properties in ResultSet removed in 3.2.0 as deprecated properties to be removed in 4.0
@@ -44,8 +85,6 @@ All notable changes to this project will be documented in this file based on the
 ### Deprecated
 - Configuring the logger in \Elastica\Client $config constructor is deprecated and will be removed. Use the $logger argument instead. [#1069](https://github.com/ruflin/Elastica/pull/1069)
 - Extracted creation of ResultSet objects to a new dedicated ResultSet\Builder implementation. [#1065](https://github.com/ruflin/Elastica/pull/1065)
-
-### Deprecated
 - All properties in the \Elastica\ResultSet class will be moved to private in 4.0. To manipulate the creation of a ResultSet, implement the \Elastica\ResultSet\BuilderInterface and pass your new Builder to the \Elastica\Search instances. [#1065](https://github.com/ruflin/Elastica/pull/1065)
 
 

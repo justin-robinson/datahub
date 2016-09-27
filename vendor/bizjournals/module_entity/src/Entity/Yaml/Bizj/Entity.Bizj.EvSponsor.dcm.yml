@@ -1,0 +1,48 @@
+Entity\Bizj\EvSponsor:
+  type: entity
+  table: ev_sponsor
+  fields:
+    sponsor_id:
+      type: integer
+      unsigned: true
+      id: true
+      generator:
+        strategy: AUTO
+    sponsor_name:
+      type: string
+      length: 255
+    tier_id:
+      type: integer
+      unsigned: true
+    image_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    description:
+      type: string
+      nullable: true
+    industry_id:
+      type: integer
+      unsigned: true
+      nullable: true
+    image_type:
+      type: string
+      columnDefinition: enum('jpg', 'gif', 'png') NOT NULL DEFAULT 'jpg'
+      options:
+        validate: [jpg, gif, png]
+        default: 'jpg'
+    image_link:
+      type: string
+      length: 512
+      nullable: true
+    ord:
+      type: integer
+      unsigned: true
+      options:
+        default: 0
+  manyToOne:
+    Tier:
+      targetEntity: EvSponsorTier
+      joinColumn:
+        name: tier_id
+        referencedColumnName: tier_id

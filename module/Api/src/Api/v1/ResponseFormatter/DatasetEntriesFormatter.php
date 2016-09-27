@@ -14,32 +14,17 @@ class DatasetEntriesFormatter
 {
     public static function format(DatasetEntries $entry, $change = false, $type = null)
     {
+
+        $array = $entry->to_array();
         
-        if (!is_array($entry)) {
-            $formattedEntry = empty($entry) ? null : $entry->to_array(false);
-        } else {
-            $formattedEntry = empty($entry) ? null : $entry;
-        }
-        
-        $host           = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST',
-                'hub');
-        $array['entry'] = $formattedEntry;
-        
-        if ($change) {
-            $array['_links'] = [
-                'self' => [
-                    'href' => $host . FormatterHelpers::get_server_variable('REQUEST_URI') . $entry->id,
-                ],
-            
-            ];
-        } else {
-            $array['_links'] = [
-                'self' => [
-                    'href' => $host . FormatterHelpers::get_server_variable('REQUEST_URI'),
-                ],
-            
-            ];
-        }
+        $host = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST', 'hub');
+
+        $array['_links'] = [
+            'self' => [
+                'href' => $host . '/api/v1/dataset/entry' . ($change ? '/' . $entry->id : ''),
+            ],
+
+        ];
         
         return $array;
     }

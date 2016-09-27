@@ -8,7 +8,7 @@ use Scoop\Database\Model;
  * Class Dataset
  * @package DBCore\Datahub
  * @author jrobinson (robotically)
- * @date 2016/09/21
+ * @date 2016/09/27
  * @property mixed $id
  * @property mixed $name
  * @property mixed $market_code
@@ -57,10 +57,10 @@ class Dataset extends Model {
           'fields' => 
           array (
           ),
-          'taxonomy' => 
+          'taxonomy' =>
           array (
           ),
-          'description' => 
+          'description' =>
           array (
           ),
         );

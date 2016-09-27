@@ -25,4 +25,7 @@ return array(
             'sslverifypeer'  => false,
         ),
     ),
+    'datahub' => [
+        'host' => 'http://datahub.bizj-staging.com'
+    ],
 );

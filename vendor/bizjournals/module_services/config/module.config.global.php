@@ -11,6 +11,9 @@ return array(
             'sslverifypeer' => false,
         ),
     ),
+    'datahub' => [
+        'host' => 'http://datahub.bizj-production.com'
+    ],
     'elastica' => array(
         'log' => false,
     ),

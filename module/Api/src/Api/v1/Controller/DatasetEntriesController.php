@@ -13,7 +13,10 @@ use DB\Datahub\Dataset;
 use DB\Datahub\DatasetEntries;
 use Zend\View\Model\JsonModel;
 
-
+/**
+ * Class DatasetEntriesController
+ * @package Api\v1\Controller
+ */
 class DatasetEntriesController extends AbstractRestfulController
 {
     public function get($entryId)

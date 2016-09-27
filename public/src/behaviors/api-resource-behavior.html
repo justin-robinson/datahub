@@ -269,12 +269,7 @@
         },
         saveResource: function () {
 
-            // performs saves and updates to a company via the api
-
-
-            if ( !this.data.name ) {
-                return;
-            }
+            // performs saves and updates to a resource via the api
 
             // don't save if nothing has changed
             if ( JSON.stringify(this.data) === JSON.stringify(this.originalData) ) {

@@ -35,7 +35,7 @@ class Generic implements \JsonSerializable {
     /**
      * @var array
      */
-    protected $orignalDbValuesArray;
+    protected $originalDbValuesArray;
 
     /**
      * @var Connection
@@ -63,12 +63,11 @@ class Generic implements \JsonSerializable {
     /**
      * run a raw sql query
      *
-     * @param string     $sql
-     * @param array      $queryParams
-     * @param Connection $connection
+     * @param                 $sql
+     * @param array           $queryParams
+     * @param Connection|null $connection
      *
      * @return bool|int|Rows
-     * @throws \Exception
      */
     public static function query ( $sql, $queryParams = [], Connection $connection = null ) {
 
@@ -175,7 +174,7 @@ class Generic implements \JsonSerializable {
 
         $this->loadedFromDb = true;
 
-        $this->orignalDbValuesArray = $this->dBValuesArray;
+        $this->originalDbValuesArray = $this->dBValuesArray;
 
         return $this;
 

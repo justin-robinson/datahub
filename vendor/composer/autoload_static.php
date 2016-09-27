@@ -32,6 +32,10 @@ class ComposerStaticInit80ce7eceae09e36de01171fc8eae3626
         array (
             'React\\Promise\\' => 14,
         ),
+        'P' => 
+        array (
+            'Psr\\Log\\' => 8,
+        ),
         'M' => 
         array (
             'Monolog\\' => 8,
@@ -94,6 +98,10 @@ class ComposerStaticInit80ce7eceae09e36de01171fc8eae3626
         'React\\Promise\\' => 
         array (
             0 => __DIR__ . '/..' . '/react/promise/src',
+        ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
         'Monolog\\' => 
         array (
@@ -161,13 +169,6 @@ class ComposerStaticInit80ce7eceae09e36de01171fc8eae3626
             'Services\\' => 
             array (
                 0 => __DIR__ . '/..' . '/bizjournals/module_services/src',
-            ),
-        ),
-        'P' => 
-        array (
-            'Psr\\Log\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/psr/log',
             ),
         ),
         'L' => 

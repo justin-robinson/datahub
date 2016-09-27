@@ -1,0 +1,219 @@
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../bower_components/iron-list/iron-list.html">
+<link rel="import" href="../../bower_components/paper-autocomplete/paper-autocomplete.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../behaviors/api-resource-behavior.html">
+<link rel="import" href="confirm-delete-view.html">
+<link rel="import" href="entry-view.html">
+<script src="../../bower_components/CSV-JS/csv.js" type="application/javascript"></script>
+
+<dom-module id="dataset-view">
+
+    <template>
+        <style>
+            :host {
+                background-color: var(--background-color);
+                display: block;
+                padding-left: 16px;
+                padding-right: 16px;
+                @apply(--layout-flex);
+            }
+
+            .dataset-properties paper-input,.dataset-properties paper-autocomplete{
+                width: calc(25% - 4px);
+                width: -webkit-calc(25% - 4px);
+                width: -o-calc(25% - 4px);
+                width: -moz-calc(25% - 4px);
+                display: inline-table;
+            }
+
+            paper-input, paper-autocomplete {
+                --paper-input-container-input-color: var(--paper-teal-50);
+                --paper-input-container-focus-color: var(--highlight-color);
+            }
+
+            #entriesList {
+                @apply(--layout-fit);
+                top: 15em;
+            }
+
+            entry-view {
+                --entry-view-margin: 0 0 10px 0;
+            }
+
+            paper-button.save {
+                background-color: var(--paper-light-green-500);
+                color: var(--paper-grey-200);
+            }
+            paper-button.save:hover {
+                background-color: var(--paper-light-green-800);
+                color: var(--paper-grey-200);
+            }
+
+            paper-button.delete {
+                float:right;
+                color: var(--paper-red-a200);
+            }
+            paper-button.delete:hover {
+                background-color: var(--paper-red-a200);
+                color: var(--paper-grey-200);
+            }
+        </style>
+
+        <paper-autocomplete
+            id="datasetSelector"
+            label="Search"
+            remote-source="true"
+            on-input="search"
+            on-autocomplete-selected="searchResultSelected"
+            min-length="3"></paper-autocomplete>
+
+        <iron-ajax
+            auto
+            id="ajaxSearch"
+            handle-as="json"
+            on-response="parseSearchResults"
+            last-response="{{searchResults}}"
+        ></iron-ajax>
+
+        <div>
+            <div class="dataset-properties">
+                <paper-input value="{{data.id}}" label="ID"></paper-input>
+                <paper-input value="{{data.name}}" label="Name"></paper-input>
+                <paper-input value="{{data.ranked_by}}" label="Ranked By"></paper-input>
+                <paper-autocomplete
+                    value="{{data.market_code}}"
+                    id="marketSelector"
+                    text-property="market_name"
+                    value-property="market_code"
+                    label="Market"></paper-autocomplete>
+            </div>
+            <!--    Save Button        -->
+            <paper-button raised id="save" on-click="saveResource" class="save"><iron-icon icon="save"></iron-icon>Save</paper-button>
+            <!--    Delete Button            -->
+            <paper-button raised id="delete" on-click="confirmDelete" class="delete"><iron-icon icon="delete"></iron-icon>Delete</paper-button>
+
+            <confirm-delete-view id="confirmDelete" on-yes="deleteResource">
+                Are you sure you want to delete this dataset?
+            </confirm-delete-view>
+
+            <iron-list id="entriesList" items="{{data.entries}}" as="entry">
+                <template>
+                    <div>
+                        <entry-view data="{{entry}}"></entry-view>
+                    </div>
+                </template>
+            </iron-list>
+        </div>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'dataset-view',
+            behaviors: [
+                Datahub.ApiResourceBehavior
+            ],
+            properties: {
+                url: {
+                    value: Datahub.apiUrl + 'dataset'
+                },
+                searchResults: Object,
+                searchTimer: Object,
+                sharedCachableResources: {
+                    value: {
+                        'markets': {
+                            url: Datahub.apiUrl + 'market',
+                            indexBy: ['market_code']
+                        }
+                    }
+                }
+            },
+            ready: function () {
+                // listen for data changes
+                this.listen(this, 'data-changed', 'dataChanged');
+                this.listen(this, 'markets-loaded', 'bindMarketsToAutocomplete');
+            },
+            attached: function () {
+                this.listen(this.$.ajaxSearch, 'loading', function (a) {console.log(a)});
+            },
+            dataChanged: function () {
+                this.bindMarketsToAutocomplete();
+            },
+            search: function () {
+
+                // perform a search when the user types in the input field
+                var searchString = this.$.datasetSelector.$.input.value;
+
+                // don't make request if we haven't met minimum search length
+                if ( searchString.length < this.$.datasetSelector.minLength ) {
+                    return;
+                }
+
+                // clear last request to be made
+                clearTimeout(this.searchTimer);
+
+                // set new request to happen in 0.5 seconds
+                var self = this;
+                this.searchTimer = setTimeout(function () {
+                    Datahub.ajaxSpinners.add();
+                    // search api
+                    self.$.ajaxSearch.url = Datahub.apiUrl + 'dataset/search/' + encodeURIComponent(searchString);
+                }, 500);
+
+            },
+            parseSearchResults: function () {
+
+                Datahub.ajaxSpinners.remove();
+
+                // do we have results?
+                if ( !this.searchResults || !this.searchResults._embedded || !this.searchResults._embedded.dataset.length ) {
+                    return;
+                }
+
+                // map raw search results to suggestions selector
+                var suggestions = this.searchResults._embedded.dataset.map(function(dataset, index){
+                    return {
+                        text: '(' + dataset.id + ') ' + dataset.name,
+                        value: dataset.name,
+                        index: index
+                    }
+                });
+
+                // set suggestions
+                this.$.datasetSelector.suggestions(suggestions);
+            },
+            searchResultSelected: function (e, selection) {
+                // updates the company data model after a search result is selected
+                this.set('data', this.searchResults._embedded.dataset[selection.option.index]);
+
+                // kill the instances loaded
+                //this.set('childResources.instances.data', []);
+            },
+            bindMarketsToAutocomplete: function () {
+
+                // attach states to autocomplete
+                this.$.marketSelector.source = sharedCachableResources.markets.data;
+
+                this.setMarketAutocompleteValue();
+            },
+            setMarketAutocompleteValue: function() {
+                // set current value of the autocomplete to the value of the instance
+                if ( !this.data.market_code ) {
+                    return;
+                }
+                var market = sharedCachableResources.markets.indexes.market_code[this.data.market_code];
+                this.$.marketSelector.setOption({
+                    text: market.market_name,
+                    value: market.market_code
+                });
+            },
+            confirmDelete: function () {
+                this.$.confirmDelete.open();
+            }
+        });
+    </script>
+
+</dom-module>

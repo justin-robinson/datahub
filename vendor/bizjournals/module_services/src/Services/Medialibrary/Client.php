@@ -38,8 +38,8 @@ class Client extends AbstractClient
             if (isset($_SERVER['REMOTE_ADDR'])) {
                 $client_ip = $_SERVER['REMOTE_ADDR'];
             } else {
-                preg_match_all('/inet addr: ?([^ ]+)/', `ifconfig`, $ips, PREG_SET_ORDER);
-                $client_ip = $ips[0][1];
+                $host= gethostname();
+                $client_ip = gethostbyname($host);
             }
             $unique = uniqid() . time();
             $signature = preg_replace('/=+$/', '',

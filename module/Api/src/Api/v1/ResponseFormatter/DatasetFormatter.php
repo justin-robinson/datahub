@@ -11,8 +11,7 @@ namespace Api\v1\ResponseFormatter;
 
 use DB\Datahub\Dataset;
 use DB\Datahub\Company;
-use DB\Datahub\CompanyInstance;
-use DB\Datahub\CompanyInstanceProperty;
+use DB\Datahub\DatasetEntries;
 
 /**
  * Class DatasetFormatter
@@ -21,10 +20,13 @@ use DB\Datahub\CompanyInstanceProperty;
  */
 class DatasetFormatter
 {
+
     /**
      * @param Dataset $set
+     * @param bool    $change
+     * @param null    $type
      *
-     * @return array
+     * @return array
      */
     public static function format(Dataset $set, $change = false, $type = null)
     {
@@ -38,50 +40,42 @@ class DatasetFormatter
                 $entries = DatasetFormatter::getDirectoryData($set);
                 break;
             default:
-                if (!is_array($set->entries)) {
-                    $entries = empty($set->entries) ? null : $set->entries->to_array(false);
-                } else {
+                if (is_array($set->entries)) {
                     $entries = empty($set->entries) ? null : $set->entries;
+                } else {
+                    $entries = empty($set->entries) ? null : $set->entries->to_array();
                 }
                 break;
         }
         
-        $host             = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST',
-                'hub');
-        $array            = $set->to_array(false);
+        $host             = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST', 'hub');
+        $array            = $set->to_array();
         $array['entries'] = $entries;
-        
-        if ($change) {
-            $array['_links'] = [
-                'self' => [
-                    'href' => $host . FormatterHelpers::get_server_variable('REQUEST_URI') . $set->id,
-                ],
-            
-            ];
-        } else {
-            $array['_links'] = [
-                'self' => [
-                    'href' => $host . FormatterHelpers::get_server_variable('REQUEST_URI'),
-                ],
-            
-            ];
-        }
+
+        $array['_links'] = [
+            'self' => [
+                'href' => $host . '/api/v1/dataset' . ($change ? '/' . $set->id : ''),
+            ],
+
+        ];
         
         return $array;
     }
-    
+
+    /**
+     * @param Dataset $set
+     *
+     * @return array
+     */
     public static function getDirectoryData(Dataset $set)
     {
-        
+
         //@todo loop fields to get the return data
         //@todo get the featured data
         $entries         = [];
         $desiredDHFields = json_decode($set->fields, true);
         $eArray          = $set->entries->to_array();
         foreach ($eArray as $entry) {
-            $customFields = json_decode($entry['meta'], true);
-            // DO NOT LET THIS GO OUT
-            $customFields = is_array($customFields)?$customFields:json_decode($customFields, true);
             
             $result = [];
             
@@ -110,7 +104,7 @@ class DatasetFormatter
             }
             // set the custom fields
             $metaFields = [];
-            foreach ($customFields as $key => $value) {
+            foreach ($entry['meta'] as $key => $value) {
                 if (!empty($value)) {
                     $metaFields[key($value)] = current($value);
                 }

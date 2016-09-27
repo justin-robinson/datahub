@@ -75,6 +75,8 @@ abstract class AbstractClient extends ArrayObject implements ServiceLocatorAware
     {
         if (!$this->httpClient) {
             $this->httpClient = new HttpClient();
+            $this->httpClient->setAdapter('Zend\Http\Client\Adapter\Curl');
+
             if (isset($this->options)) {
                 $this->httpClient->getAdapter();
                 $this->httpClient->setOptions($this->options);

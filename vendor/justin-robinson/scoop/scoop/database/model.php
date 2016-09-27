@@ -205,9 +205,9 @@ abstract class Model extends Model\Generic {
             return false;
         }
 
-        // validate if we want
-        if( method_exists( $this, 'validate' ) ) {
-            $this->validate();
+        // validate if we can
+        if( method_exists( $this, 'presave' ) ) {
+            $this->presave();
         }
 
         list($columnNames, $values, $queryParams, $updateColumnValues) =
@@ -244,6 +244,7 @@ abstract class Model extends Model\Generic {
         }
 
         return true;
+
     }
 
     /**
@@ -267,7 +268,7 @@ abstract class Model extends Model\Generic {
         unset($dbValuesArray[static::AUTO_INCREMENT_COLUMN]);
 
         if( $this->loadedFromDb ) {
-            $dirtyColumns = array_diff_assoc( $dbValuesArray, $this->orignalDbValuesArray );
+            $dirtyColumns = array_diff_assoc( $dbValuesArray, $this->originalDbValuesArray );
         } else {
             $dirtyColumns = $dbValuesArray;
         }

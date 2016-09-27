@@ -111,7 +111,7 @@ class Company extends \DBCore\DatahubProd\Company {
             $this->normalizedName = strtolower($normalizedName);
         }
 
-        parent::__set($name, is_scalar($value) ? utf8_encode($value) : $value);
+        parent::__set($name, $value);
     }
 
 }

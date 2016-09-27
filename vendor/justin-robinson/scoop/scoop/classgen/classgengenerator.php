@@ -1,6 +1,7 @@
 <?php
 
 namespace Scoop\ClassGen;
+use Scoop\File;
 
 /**
  * Generates and saves a php class to a given file name
@@ -94,6 +95,11 @@ class ClassGenGenerator {
         }
     }
 
+    public function add_function ( ClassGenFunction $function ) {
+
+        $this->functionsArray[] = $function;
+    }
+
     /**
      * @return string
      * @throws \Exception
@@ -169,41 +175,35 @@ class ClassGenGenerator {
 
         $classBody = PHP_EOL . $classBody;
 
+        foreach ( $this->functionsArray as $function ) {
+            $functionBody = $function->get();
+            $functionBody = self::$indentation . preg_replace('/\n/', PHP_EOL . self::$indentation, $functionBody);
+
+            $classBody .= $functionBody . PHP_EOL . PHP_EOL;
+        }
+
         return $this->class->get_header() . $classBody . $this->class->get_footer ();
 
     }
 
     /**
+     * @return int
+     *
      * @throws \Exception
      */
     public function save () {
 
         // ensure path to output file exists
-        $this->create_path ();
+        File::create_path(dirname($this->filepath));
 
         // save file and set permissions
-        if ( file_put_contents ( $this->filepath, $this->get_file_contents() ) ) {
+        $saved = file_put_contents ( $this->filepath, $this->get_file_contents() );
+        if ( $saved ) {
             chmod ( $this->filepath, 0777 );
         }
 
-    }
+        return $saved;
 
-    /**
-     * @throws \Exception
-     */
-    private function create_path () {
-
-        // break file path up
-        $dirname = dirname($this->filepath);
-
-        // create directory if it doesn't exist
-        if ( !( $created = file_exists ( $dirname ) ) ) {
-            $created = mkdir ( $dirname, 0777, true );
-        }
-
-        if ( !$created ) {
-            throw new \Exception( 'failed to create directory at ' . $dirname );
-        }
     }
 
 
