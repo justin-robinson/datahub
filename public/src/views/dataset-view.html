@@ -4,6 +4,8 @@
 <link rel="import" href="../../bower_components/iron-list/iron-list.html">
 <link rel="import" href="../../bower_components/paper-autocomplete/paper-autocomplete.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../behaviors/api-resource-behavior.html">
 <link rel="import" href="confirm-delete-view.html">
@@ -61,6 +63,12 @@
                 background-color: var(--paper-red-a200);
                 color: var(--paper-grey-200);
             }
+            paper-fab.add-entry {
+                position: fixed;
+                bottom: 10px;
+                right: 50px;
+                --paper-fab-background: var(--highlight-color);
+            }
         </style>
 
         <paper-autocomplete
@@ -100,6 +108,7 @@
                 Are you sure you want to delete this dataset?
             </confirm-delete-view>
 
+
             <iron-list id="entriesList" items="{{data.entries}}" as="entry">
                 <template>
                     <div>
@@ -107,6 +116,10 @@
                     </div>
                 </template>
             </iron-list>
+
+            <template is="dom-if" if="{{data.id}}">
+                <paper-fab id="add-entry" icon="add" on-click="addEntryClicked" class="add-entry"></paper-fab>
+            </template>
         </div>
     </template>
 
@@ -212,7 +225,19 @@
             },
             confirmDelete: function () {
                 this.$.confirmDelete.open();
-            }
+            },
+            addEntryClicked: function () {
+                this.addEntry({});
+            },
+            addEntry: function (entry) {
+
+                entry = entry || {};
+
+                entry.dataset_id = this.data[this.idField];
+
+                // push new entry to our array and notify polymer that it needs to render the new entry
+                this.push('data.entries', entry);
+            },
         });
     </script>
 

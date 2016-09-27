@@ -72,8 +72,10 @@
             </div>
             <!--    Save Button        -->
             <paper-button raised id="save" on-click="saveEntry" class="save"><iron-icon icon="save"></iron-icon>Save</paper-button>
-            <!--    Delete Button            -->
-            <paper-button raised id="delete" on-click="confirmDelete" class="delete"><iron-icon icon="delete"></iron-icon>Delete</paper-button>
+            <template is="dom-if" if="[[data.id]]">
+                <!--    Delete Button            -->
+                <paper-button raised id="delete" on-click="confirmDelete" class="delete"><iron-icon icon="delete"></iron-icon>Delete</paper-button>
+            </template>
             <confirm-delete-view id="confirmDelete" on-yes="deleteResource">
                 Are you sure you want to delete this entry?
             </confirm-delete-view>
@@ -100,11 +102,7 @@
             },
             dataChanged: function () {
                 // who knows how many times its json encoded (usually 2)
-                var metas = this.data.meta;
-                var decodeCount = 0;
-                while ( !Array.isArray(metas) && decodeCount++ < 10 ) {
-                    metas = JSON.parse(metas);
-                }
+                var metas = JSON.parse(JSON.stringify(this.data.meta || []));
 
                 var key;
                 metas.forEach(function(meta, index, metas){
@@ -118,7 +116,14 @@
                 this.set('metas', metas);
             },
             saveEntry: function () {
-                this.data.meta = JSON.stringify(this.metas);
+                var metas = JSON.parse(JSON.stringify(this.metas || []));
+
+                metas.forEach(function(meta, index, metas){
+                    metas[index] = {};
+                    metas[index][meta.name] = meta.value;
+                });
+
+                this.data.meta = metas;
                 this.saveResource();
             },
             confirmDelete: function () {
