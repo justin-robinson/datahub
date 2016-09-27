@@ -12,25 +12,19 @@ namespace DB\Datahub;
  * Put your class specific code in here
  */
 class DatasetEntries extends \DBCore\Datahub\DatasetEntries {
-
-    public function __get($name) {
-        
-        $value = parent::__get($name);
-        
-        if ( $name === 'meta' ) {
-            $value = json_decode($value);
-        }
-        
-        return $value;
-    }
     
     public function __set($name, $value) {
         
-        if ( $name === 'meta' ) {
-            $value = json_encode($value);
+        if ( $name === 'meta' && is_string($value)) {
+            $value = json_decode($value);
         }
         
         parent::__set($name, $value);
+    }
+
+    public function presave() {
+
+        $this->dBValuesArray['meta'] = json_encode($this->meta);
     }
 }
 

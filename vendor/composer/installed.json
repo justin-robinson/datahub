@@ -2350,18 +2350,50 @@
         ]
     },
     {
+        "name": "bizjournals/module_entity",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "git@gitlab.bizjournals.com:bizjournals/module_entity.git",
+            "reference": "8322109a1c11221cc2deb7a0cb7621074c46c069"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://packages.bizj-production.com/dist/module_entity-657-8322109a1c11221cc2deb7a0cb7621074c46c069.zip",
+            "reference": "8322109a1c11221cc2deb7a0cb7621074c46c069",
+            "shasum": null
+        },
+        "require": {
+            "doctrine/doctrine-orm-module": "@stable",
+            "symfony/yaml": "@stable"
+        },
+        "require-dev": {
+            "zendframework/zendframework": "2.4.*"
+        },
+        "time": "2016-09-23 14:25:35",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "Entity\\": "src/"
+            }
+        },
+        "description": "bizjournals Entity Module"
+    },
+    {
         "name": "justin-robinson/scoop",
         "version": "dev-php56",
         "version_normalized": "dev-php56",
         "source": {
             "type": "git",
             "url": "https://github.com/justin-robinson/scoop.git",
-            "reference": "5407801ff32cc484ccd1ad6071e294f265cb2581"
+            "reference": "5bee104d1fa5a07ad4064bbe768dc921200e7ec7"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/justin-robinson/scoop/zipball/5407801ff32cc484ccd1ad6071e294f265cb2581",
-            "reference": "5407801ff32cc484ccd1ad6071e294f265cb2581",
+            "url": "https://api.github.com/repos/justin-robinson/scoop/zipball/5bee104d1fa5a07ad4064bbe768dc921200e7ec7",
+            "reference": "5bee104d1fa5a07ad4064bbe768dc921200e7ec7",
             "shasum": ""
         },
         "require": {
@@ -2376,7 +2408,7 @@
             "phpunit/phpunit": "*",
             "phpunit/phpunit-mock-objects": "*"
         },
-        "time": "2016-09-24 17:43:44",
+        "time": "2016-09-27 16:07:35",
         "bin": [
             "bin/scoop"
         ],
@@ -2409,37 +2441,5 @@
             "php",
             "php 7"
         ]
-    },
-    {
-        "name": "bizjournals/module_entity",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "git@gitlab.bizjournals.com:bizjournals/module_entity.git",
-            "reference": "8322109a1c11221cc2deb7a0cb7621074c46c069"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://packages.bizj-production.com/dist/module_entity-657-8322109a1c11221cc2deb7a0cb7621074c46c069.zip",
-            "reference": "8322109a1c11221cc2deb7a0cb7621074c46c069",
-            "shasum": null
-        },
-        "require": {
-            "doctrine/doctrine-orm-module": "@stable",
-            "symfony/yaml": "@stable"
-        },
-        "require-dev": {
-            "zendframework/zendframework": "2.4.*"
-        },
-        "time": "2016-09-23 14:25:35",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "psr-0": {
-                "Entity\\": "src/"
-            }
-        },
-        "description": "bizjournals Entity Module"
     }
 ]
