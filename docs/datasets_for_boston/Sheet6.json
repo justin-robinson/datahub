@@ -1,0 +1,43 @@
+{
+  "name":        "Spending by Purpose",
+  "description": "Spending by business purpose in Massachusetts",
+  "market_code": "boston",
+  "entries":     [
+    {
+      "id":   "",
+      "meta": [
+        {"Form of payment": "Cash or cash equivalent"},
+        {"Total payments": "35,956"},
+        {"Value of payments": "$116,891,404"},
+        {"Average payment": "$3,251"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Form of payment": "In-kind items and services"},
+        {"Total payments": "134,502"},
+        {"Value of payments": "$10,047,815"},
+        {"Average payment": "$75"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Form of payment": "Stock, stock option, or any other ownership interest"},
+        {"Total payments": 12},
+        {"Value of payments": "$594,565"},
+        {"Average payment": "$49,547"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Form of payment": "Dividend, profit or other return on investment"},
+        {"Total payments": 6},
+        {"Value of payments": "$270,373"},
+        {"Average payment": "$45,062"}
+      ]
+    }
+  ]
+}

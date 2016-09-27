@@ -1,7 +1,7 @@
 <?php
 
 $latestApiChildRoutes = [
-    'company'        => [
+    'company'    => [
         'type'         => 'Literal',
         'options'      => [
             'route'    => '/company',
@@ -101,7 +101,7 @@ $latestApiChildRoutes = [
             ],
         ],
     ],
-    'instance'       => [
+    'instance'   => [
         'type'         => 'Literal',
         'options'      => [
             'route'    => '/instance',
@@ -174,7 +174,7 @@ $latestApiChildRoutes = [
             ],
         ],
     ],
-    'property'       => [
+    'property'   => [
         'type'         => 'Literal',
         'options'      => [
             'route'    => '/property',
@@ -194,7 +194,7 @@ $latestApiChildRoutes = [
             ],
         ],
     ],
-    'contact'        => [
+    'contact'    => [
         'type'         => 'Literal',
         'options'      => [
             'route'    => '/contact',
@@ -223,7 +223,7 @@ $latestApiChildRoutes = [
             ],
         ],
     ],
-    'state'          => [
+    'state'      => [
         'type'         => 'Literal',
         'options'      => [
             'route'    => '/state',
@@ -243,7 +243,7 @@ $latestApiChildRoutes = [
             ],
         ],
     ],
-    'sourceType'     => [
+    'sourceType' => [
         'type'         => 'Literal',
         'options'      => [
             'route'    => '/sourcetype',
@@ -263,7 +263,7 @@ $latestApiChildRoutes = [
             ],
         ],
     ],
-    'market'         => [
+    'market'     => [
         'type'         => 'Literal',
         'options'      => [
             'route'    => '/market',
@@ -283,7 +283,7 @@ $latestApiChildRoutes = [
             ],
         ],
     ],
-    'refinery'       => [
+    'refinery'   => [
         'type'         => 'Literal',
         'options'      => [
             'route'    => '/refinery',
@@ -306,7 +306,7 @@ $latestApiChildRoutes = [
             ],
         ],
     ],
-    'dataset'        => [
+    'dataset'    => [
         'type'         => 'Literal',
         'options'      => [
             'route'    => '/dataset',
@@ -315,7 +315,7 @@ $latestApiChildRoutes = [
             ],
         ],
         'child_routes' => [
-            'id'   => [
+            'id'    => [
                 'type'    => 'Segment',
                 'options' => [
                     'route'       => '[/:id]',
@@ -324,7 +324,7 @@ $latestApiChildRoutes = [
                     ],
                 ],
             ],
-            'type' => [
+            'type'  => [
                 'type'    => 'Segment',
                 'options' => [
                     // :type will trigger specific formatting
@@ -335,7 +335,6 @@ $latestApiChildRoutes = [
                     ],
                 ],
             ],
-            
             'entry' => [
                 'type'    => 'Segment',
                 'options' => [
@@ -373,6 +372,8 @@ $latestApiChildRoutes = [
             ],
         
         
+        
+        
         ],
     ],
     'marketdatasets' => [
@@ -395,7 +396,7 @@ $latestApiChildRoutes = [
             ],
         ],
     ],
-    'list'           => [
+    'list'       => [
         'type'         => 'Literal',
         'options'      => [
             'route'    => '/list',
@@ -417,6 +418,37 @@ $latestApiChildRoutes = [
     ],
 
 
+    'bbm'        => [
+        'type'         => 'Literal',
+        'options'      => [
+            'route'    => '/bbm',
+            'defaults' => [
+                'controller' => 'Api\v1\Controller\Bbm',
+            ],
+        ],
+        'child_routes' => [
+            'instance' => [
+                'type'    => 'Segment',
+                'options' => [
+                    'route'       => '[/:id]',
+                    'constraints' => [
+                        'id' => '[0-9]*',
+                    ],
+                ],
+            ],
+            'type'  => [
+                'type'    => 'Segment',
+                'options' => [
+                    // :type will trigger specific formatting
+                    'route'       => '/:id/type/[:type]',
+                    'constraints' => [
+                        'type' => '[a-z]*',
+                        'id'   => '[0-9]*',
+                    ],
+                ],
+            ],
+        ],
+    ],
 ];
 return [
     
@@ -445,6 +477,7 @@ return [
             'Api\v1\Controller\DatasetEntries'      => 'Api\v1\Controller\DatasetEntriesController',
             'Api\v1\Controller\Top25List'           => 'Api\v1\Controller\Top25ListController',
             'Api\v1\Controller\MarketDatasets'      => 'Api\v1\Controller\MarketDatasetsController',
+            'Api\v1\Controller\Bbm'                 => 'Api\v1\Controller\BbmController',
         ],
     ],
     'router'       => [

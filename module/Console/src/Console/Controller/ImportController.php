@@ -12,11 +12,10 @@ use DB\Datahub\CompanyInstanceTop25lists;
 use DB\Datahub\Top25List;
 use DB\Datahub\Contact;
 use LRUCache\LRUCache;
-use Scoop\Database\Connection;
-use Scoop\Database\Model\Generic;
 use Scoop\Database\Query\Buffer;
 use Zend\Db\Adapter as dbAdapter;
 use Console\Importer\Dataset;
+use Console\Importer\Bbm;
 
 /**
  * Class ImportController
@@ -294,12 +293,14 @@ class ImportController extends AbstractActionController
         $filePath = $this->getRequest()->getParam('file');
         
         if (!$filePath) {
-            die ('run with arg --file /path/to/file ');
+            echo "line 295". ' in '."/Console/Controller/ImportController.php".PHP_EOL;
+            die(var_dump( 'run with arg --file /path/to/file ' ));
         }
         
         $filePath = realpath($filePath);
         if (!$filePath) {
-            die ("--file does not exist: " . $this->getRequest()->getParam('file'));
+            echo "line 302". ' in '."/Console/Controller/ImportController.php".PHP_EOL;
+            die(var_dump( "--file does not exist: " . $this->getRequest()->getParam('file') ));
         }
         
         $file = new CsvIterator($filePath);
@@ -385,13 +386,13 @@ class ImportController extends AbstractActionController
                     $newValue = isset($currentContact->$columnName) ? $currentContact->$columnName : null;
                     
                     // is the new value different from what we have?
-                    $newValueisDifferent = $valueInDB != $newValue;
+                    $newValueIsDifferent = $valueInDB != $newValue;
                     
                     // current value is null or empty string
                     $existingValueIsUseless = is_null($valueInDB) || $valueInDB === '';
                     
                     // update db value with new value
-                    if ($newValueisDifferent && $existingValueIsUseless) {
+                    if ($newValueIsDifferent && $existingValueIsUseless) {
                         $existingContact->$columnName = $currentContact->$columnName;
                     }
                 }
@@ -423,21 +424,22 @@ class ImportController extends AbstractActionController
         $importer->importFromCsv($csvFile);
     }
     
+    /**
+     * @return string
+     */
     public function top25ListAction()
     {
         $error = [
             'noInstance' => 0,
-            'mapSave' => 0,
-            'listSave' => 0,
-            'noLists' => 0,
+            'mapSave'    => 0,
+            'listSave'   => 0,
+            'noLists'    => 0,
         ];
-
-        // connect to the recon db
-        $dbConfig = $this->config['mysql']['bizjournals'];
-        $dbConfig['database'] = $dbConfig['dbname'];
-
-        $connection = new Connection($dbConfig);
-
+        // get all the lists
+        $config = $this->getServiceLocator()->get('Config');
+        $bizjDB = new \PDO('mysql:host=' . $config['mysql']['bizjournals']['host'] . ';
+            dbname:=' . $config['mysql']['bizjournals']['dbname'], $config['mysql']['bizjournals']['user'],
+            $config['mysql']['bizjournals']['password']);
         $sql    = "
             SELECT
               tlr.company_name,
@@ -454,53 +456,79 @@ class ImportController extends AbstractActionController
                   AND tlr.company_name IS NOT NULL
                   AND tlr.company_name <> ''
                   AND tlr.object_type = 'company'
-            #       AND tlr.company_name LIKE '%Google%'
             ORDER BY tlr.list_id ASC
             ";
-        $lists = Generic::query($sql, $connection);
+        $stmnt  = $bizjDB->prepare($sql);
+        $stmnt->execute();
+        // process and save them
+        $lists = $stmnt->fetchAll(\PDO::FETCH_ASSOC);
         if ($lists) {
-
-            // truncate tables
-            Generic::query("TRUNCATE " . CompanyInstanceTop25lists::TABLE);
-            Generic::query("TRUNCATE " . Top25List::TABLE);
-
-            $listBuffer = new Buffer(1, Top25List::class);
-            $mapBuffer = new Buffer(1000, CompanyInstanceTop25lists::class);
-
             foreach ($lists as $k => $list) {
-                $instance = CompanyInstance::fetch_by_source_name_and_id('meroveus', $list->meroveusId);
+                $instance = CompanyInstance::fetch_by_source_name_and_id('meroveus', $list['meroveusId']);
                 if ($instance) {
                     // build the mapping
                     $map                    = new CompanyInstanceTop25lists();
                     $map->companyInstanceId = $instance->first()->companyInstanceId;
-                    $map->listId            = $list->list_id;
-                    $mapBuffer->insert($map);
+                    $map->listId            = $list['list_id'];
+                    // save the mapping
+                    $mapSave = $map->save();
+                    if (!$mapSave) {
+                        //log the error
+                        $error['mapSave']++;
+                    }
                     // of the next list_id is different, save the current one
-                    $nextList = $lists->get($k+1);
-                    if ($nextList === null || $list->list_id !== $nextList->list_id) {
-                        $listTosave               = new Top25List();
-                        $listTosave->listId       = empty($list->list_id) ? null : $list->list_id;
-                        $listTosave->issueDate    = empty($list->issue_date) ? null : $list->issue_date;
-                        $listTosave->pageHeadline = empty($list->page_headline) ? null : $list->page_headline;
-                        $listTosave->listUrl      = empty($list->path) ? null : $list->path;
-
-                        $listBuffer->insert($listTosave);
+                    if ($list['list_id'] !== $lists[$k + 1]['list_id']) {
+                        $listToSave               = new Top25List();
+                        $listToSave->listId       = empty($list['list_id']) ? null : $list['list_id'];
+                        $listToSave->issueDate    = empty($list['issue_date']) ? null : $list['issue_date'];
+                        $listToSave->pageHeadline = empty($list['page_headline']) ? null : $list['page_headline'];
+                        $listToSave->listUrl      = empty($list['path']) ? null : $list['path'];
+                        // save the list
+                        if (!$listToSave->save()) {
+                            // log the error
+                            $error['listSave']++;
+                        }
                     }
                 } else {
                     // log the error
                     $error['noInstance']++;
                 }
             }
-
-            $listBuffer->flush();
-            $mapBuffer->flush();
         } else {
             // log the error
             $error['noLists']++;
         }
-        
-        return "done importing" . PHP_EOL. var_dump($error);
-        
+    
+        return "done importing" . PHP_EOL . var_dump($error);
+    
     }
     
+    /**
+     * reads their csv and saves it to dh
+     */
+    public function bbmAction(){
+        
+        echo PHP_EOL.'
+
+888888b.  888888b.  888b     d888       8888888          d8b                888   d8b
+888  "88b 888  "88b 8888b   d8888         888            Y8P                888   Y8P
+888  .88P 888  .88P 88888b.d88888         888                               888
+8888888K. 8888888K. 888Y88888P888         888  88888b.  8888 .d88b.  .d8888b888888888 .d88b. 88888b.
+888  "Y88b888  "Y88b888 Y888P 888         888  888 "88b "888d8P  Y8bd88P"   888   888d88""88b888 "88b
+888    888888    888888  Y8P  888         888  888  888  88888888888888     888   888888  888888  888
+888   d88P888   d88P888   "   888         888  888  888  888Y8b.    Y88b.   Y88b. 888Y88..88P888  888
+8888888P" 8888888P" 888       888       8888888888  888  888 "Y8888  "Y8888P "Y888888 "Y88P" 888  888
+                                                         888
+                                                        d88P
+                                                       888P"
+'.PHP_EOL;
+
+        $csvFile  = realpath($this->getRequest()->getParam('file'));
+        if (!$csvFile) {
+            echo "line 302". ' in '."/Console/Controller/ImportController.php".PHP_EOL;
+            die(var_dump( "--file does not exist: " . $this->getRequest()->getParam('file') ));
+        }
+        $importer = new Bbm();
+        $importer->importFromCsv($csvFile);
+    }
 }

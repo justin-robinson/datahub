@@ -1,0 +1,142 @@
+{
+  "name":        "Spending by Purpose",
+  "description": "Spending by business purpose in Massachusetts",
+  "market_code": "boston",
+  "entries":     [
+    {
+      "id":   "",
+      "meta": [
+        {"Nature of payment": "Royalty or License"},
+        {"Total payments":    "1,158"},
+        {"Value of payments": "$57,941,139"},
+        {"Average payment":   "$50,036"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Nature of payment": "Consulting Fee"},
+        {"Total payments":    "6,287"},
+        {"Value of payments": "$30,783,828"},
+        {"Average payment":   "$4,896"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Nature of payment": "Compensation for services other than consulting, including serving as faculty or as a speaker at a venue other than a continuing education program"},
+        {"Total payments":    "4,577"},
+        {"Value of payments": "$15,379,363"},
+        {"Average payment":   "$3,360"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Nature of payment": "Grant"},
+        {"Total payments":    606},
+        {"Value of payments": "$7,756,629"},
+        {"Average payment":   "$12,800"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Nature of payment": "Travel and Lodging"},
+        {"Total payments":    "13,946"},
+        {"Value of payments": "$6,028,857"},
+        {"Average payment":   "$432"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Nature of payment": "Food and Beverage"},
+        {"Total payments":    "135,049"},
+        {"Value of payments": "$3,749,620"},
+        {"Average payment":   "$28"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Nature of payment": "Education"},
+        {"Total payments":    "6,083"},
+        {"Value of payments": "$1,580,908"},
+        {"Average payment":   "$260"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Nature of payment": "Charitable Contribution"},
+        {"Total payments":    137},
+        {"Value of payments": "$1,159,345"},
+        {"Average payment":   "$8,462"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Nature of payment": "Honoraria"},
+        {"Total payments":    414},
+        {"Value of payments": "$1,011,832"},
+        {"Average payment":   "$2,444"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Nature of payment": "Space rental or facility fees(teaching hospital only)"},
+        {"Total payments":    215},
+        {"Value of payments": "$862,863"},
+        {"Average payment":   "$4,013"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Nature of payment": "Gift"},
+        {"Total payments":    "1,611"},
+        {"Value of payments": "$694,546"},
+        {"Average payment":   "$431"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Nature of payment": "Compensation for serving as faculty or as a speaker for a non-accredited and noncertified continuing education program"},
+        {"Total payments":    231},
+        {"Value of payments": "$574,723"},
+        {"Average payment":   "$2,488"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Nature of payment": "Current or prospective ownership or investment interest"},
+        {"Total payments":    58},
+        {"Value of payments": "$162,033"},
+        {"Average payment":   "$2,794"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Nature of payment": "Compensation for serving as faculty or as a speaker for an accredited or certified continuing education program"},
+        {"Total payments":    46},
+        {"Value of payments": "$114,416"},
+        {"Average payment":   "$2,487"}
+      ]
+    },
+    {
+      "id":   "",
+      "meta": [
+        {"Nature of payment": "Entertainment"},
+        {"Total payments":    58},
+        {"Value of payments": "$4,057"},
+        {"Average payment":   "$70"}
+      ]
+    }
+  ]
+}
