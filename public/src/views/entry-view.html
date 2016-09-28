@@ -1,12 +1,13 @@
-<script src="../../bower_components/CSV-JS/csv.js" type="application/javascript"></script>
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/iron-list/iron-list.html">
 <link rel="import" href="../../bower_components/paper-autocomplete/paper-autocomplete.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../behaviors/api-resource-behavior.html">
 <link rel="import" href="confirm-delete-view.html">
+<script src="../../bower_components/CSV-JS/csv.js" type="application/javascript"></script>
 
 <dom-module id="entry-view">
 
@@ -66,6 +67,10 @@
                 color: var(--paper-grey-200);
             }
 
+            #meta-properties-header * {
+                display: inline-block;
+            }
+
         </style>
 
         <paper-card heading="{{data.id}}">
@@ -76,7 +81,10 @@
                 <paper-input value="{{data.image}}" label="Image URL"></paper-input>
                 <paper-input value="{{data.promoText}}" label="Promo Text"></paper-input>
                 <div class="meta-properties">
-                    <h3>Meta Properties</h3>
+                    <div id="meta-properties-header">
+                        <h3>Meta Properties</h3>
+                        <paper-icon-button class="save" icon="add" on-click="addMetaClicked"></paper-icon-button>
+                    </div>
                     <div>
                         <template is="dom-repeat" items="{{metas}}" as="meta">
                             <div class="meta-property">
@@ -145,6 +153,14 @@
             },
             confirmDelete: function () {
                 this.$.confirmDelete.open();
+            },
+            addMetaClicked: function () {
+                this.addMeta();
+            },
+            addMeta: function (meta) {
+                meta = meta || {name: '', value: ''};
+
+                this.push('metas', meta);
             }
 
         });
