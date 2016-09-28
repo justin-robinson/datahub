@@ -10,6 +10,7 @@ namespace Api\v1\Controller;
 
 use Api\v1\ResponseFormatter\DatasetFormatter;
 use DB\Datahub\Dataset;
+use DB\Datahub\DatasetEntries;
 use Zend\View\Model\JsonModel;
 
 /**
@@ -68,12 +69,9 @@ class DatasetController extends AbstractRestfulController
 //        foreach ($data['entries'] as &$entry) {
 //            $entry['meta'] = json_encode($entry['meta']);
 //        }
-        
+
         $set = new Dataset($data);
-        if ($set->save()) {
-            // get the actual timestamps
-            $set->reload();
-        }
+        $set->save();
         
         return new JsonModel(DatasetFormatter::format($set, true));
     }
@@ -90,27 +88,31 @@ class DatasetController extends AbstractRestfulController
         $set = Dataset::fetch_by_id($datasetId);
         
         if ($set) {
-            /** @var \Db\Datahub\DatasetEntries */
-            $set->fetchDatasetEntries();
-            
-            foreach ($set->entries as $k => $entry) {
-                // process the entries
-//                $entry->populate($data['entries'][$k]);
-                
-                $entry->meta            = empty($data['entries'][$k]['meta']) ? $entry->meta : json_encode($data['entries'][$k]['meta']);
-                $entry->featured        = empty($data['entries'][$k]['featured']) ? $entry->featured : $data['entries'][$k]['featured'];
-                $entry->featuredExpires = empty($data['entries'][$k]['featuredExpires']) ? $entry->featuredExpires : $data['entries'][$k]['featuredExpires'];
-                $entry->logo            = empty($data['entries'][$k]['logo']) ? $entry->logo : $data['entries'][$k]['logo'];
-                $entry->image           = empty($data['entries'][$k]['image']) ? $entry->image : $data['entries'][$k]['image'];
-                $entry->promoText       = empty($data['entries'][$k]['promoText']) ? $entry->promoText : $data['entries'][$k]['promoText'];
-                
-                $entry->save();
-            }
+
             $data['fields'] = empty($data['fields']) ? null : json_encode($data['fields']);
-            
+
             $set->populate($data);
             $set->save();
-            $set->reload();
+
+            foreach ( $data['entries'] as $k => $entryData ) {
+                $entry = new DatasetEntries($entryData);
+                $entry->dataset_id = $set->id;
+                $entry->set_loaded_from_database($entry->has_id())->save();
+            }
+            
+//            foreach ($set->entries as $k => $entry) {
+//                // process the entries
+////                $entry->populate($data['entries'][$k]);
+//
+//                $entry->meta            = empty($data['entries'][$k]['meta']) ? $entry->meta : json_encode($data['entries'][$k]['meta']);
+//                $entry->featured        = empty($data['entries'][$k]['featured']) ? $entry->featured : $data['entries'][$k]['featured'];
+//                $entry->featuredExpires = empty($data['entries'][$k]['featuredExpires']) ? $entry->featuredExpires : $data['entries'][$k]['featuredExpires'];
+//                $entry->logo            = empty($data['entries'][$k]['logo']) ? $entry->logo : $data['entries'][$k]['logo'];
+//                $entry->image           = empty($data['entries'][$k]['image']) ? $entry->image : $data['entries'][$k]['image'];
+//                $entry->promoText       = empty($data['entries'][$k]['promoText']) ? $entry->promoText : $data['entries'][$k]['promoText'];
+//
+//                $entry->save();
+//            }
             
             return new JsonModel(DatasetFormatter::format($set, true));
         }

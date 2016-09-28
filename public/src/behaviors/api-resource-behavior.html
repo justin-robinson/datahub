@@ -272,11 +272,6 @@
 
             // performs saves and updates to a resource via the api
 
-            // don't save if nothing has changed
-            if ( JSON.stringify(this.data) === JSON.stringify(this.originalData) ) {
-                return;
-            }
-
             if ( this.getId() ) {
                 this.ajax.put.body = this.data;
                 this.ajax.put.url = this.url + '/' + this.getId();
@@ -291,11 +286,6 @@
 
             if ( !this.autoUpdate || change === null || change.value === null ) {
                 return;
-            }
-
-            // keep track of the original model values for save optimization
-            if ( typeof change.path === 'undefined' ) {
-                this.originalData = JSON.parse(JSON.stringify(this.data));
             }
 
             if ( !this.autoUpdate ) {

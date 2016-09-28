@@ -27,7 +27,7 @@ class CompanyInstanceProperty extends \DBCore\Datahub\CompanyInstanceProperty
     public function delete()
     {
 
-        if (!$this->loaded_from_database()) {
+        if (!$this->get_loaded_from_database()) {
             return false;
         }
 

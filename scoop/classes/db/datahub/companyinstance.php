@@ -544,7 +544,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
         // guilty until proven innocent
         $saved = false;
 
-        if (!$this->is_loaded_from_database()) {
+        if (!$this->get_loaded_from_database()) {
 
             // existing instance can be this model if the id is set, if not look in the cache
             $existingInstance = isset($this->companyInstanceId) ? $this : self::$companyInstanceCache->get($companyInstanceCacheKey);
@@ -581,7 +581,7 @@ class CompanyInstance extends \DBCore\Datahub\CompanyInstance
                     $this->{$column} = $value;
                 }
             }
-            $this->loaded_from_database();
+            $this->set_loaded_from_database(true);
         }
 
         // set timestamps on the model before saving

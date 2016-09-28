@@ -167,7 +167,7 @@ class Company extends \DBCore\Datahub\Company
      */
     public function delete () {
 
-        if ( !$this->is_loaded_from_database() ) {
+        if ( !$this->get_loaded_from_database() ) {
             return false;
         }
 
@@ -320,9 +320,9 @@ class Company extends \DBCore\Datahub\Company
         $saved = false;
 
         // lookup company in cache by normalized name if it didn't come from the database
-        if ( !$this->is_loaded_from_database() && self::$companyCache->exists($this->normalizedName)) {
+        if ( !$this->get_loaded_from_database() && self::$companyCache->exists($this->normalizedName)) {
             $this->populate(self::$companyCache->get( $this->normalizedName )->to_array(false));
-            $this->loaded_from_database();
+            $this->set_loaded_from_database(true);
 
         } else {
             // actually save a new company :D
@@ -348,7 +348,7 @@ class Company extends \DBCore\Datahub\Company
                 $existingCompany = self::fetch_one_where('normalizedName = ?', [$this->normalizedName]);
                 if ( $existingCompany ) {
                     $this->populate($existingCompany->to_array(false));
-                    $this->loaded_from_database();
+                    $this->set_loaded_from_database(true);
                 }
             }
         }

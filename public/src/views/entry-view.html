@@ -48,15 +48,6 @@
                 width: 49%;
             }
 
-            paper-button.save {
-                background-color: var(--paper-light-green-500);
-                color: var(--paper-grey-200);
-            }
-            paper-button.save:hover {
-                background-color: var(--paper-light-green-800);
-                color: var(--paper-grey-200);
-            }
-
             paper-button.delete {
                 float:right;
                 color: var(--paper-red-a200);
@@ -94,8 +85,7 @@
                     </div>
                 </div>
             </div>
-            <!--    Save Button        -->
-            <paper-button raised id="save" on-click="saveEntry" class="save"><iron-icon icon="save"></iron-icon>Save</paper-button>
+
             <template is="dom-if" if="[[data.id]]">
                 <!--    Delete Button            -->
                 <paper-button raised id="delete" on-click="confirmDelete" class="delete"><iron-icon icon="delete"></iron-icon>Delete</paper-button>
@@ -117,12 +107,24 @@
                     value: Datahub.apiUrl + 'dataset/entry'
                 },
                 metas: {
-                    value: function () { return []; }
+                    value: function () { return []; },
+                    notify: true
                 }
             },
             ready: function () {
                 // listen for data changes
                 this.listen(this, 'data-changed', 'dataChanged');
+                this.listen(this, 'metas-changed', 'metaChanged');
+            },
+            metaChanged: function() {
+                var metas = JSON.parse(JSON.stringify(this.metas || []));
+
+                var self = this;
+                metas.forEach(function(meta, index, metas){
+                    metas[index] = self._convertDomMetaToApiMeta(meta);
+                });
+
+                this.data.meta = metas;
             },
             dataChanged: function () {
                 // clone the meta array
@@ -136,17 +138,6 @@
 
                 // save our meaningful object
                 this.set('metas', metas);
-            },
-            saveEntry: function () {
-                var metas = JSON.parse(JSON.stringify(this.metas || []));
-
-                var self = this;
-                metas.forEach(function(meta, index, metas){
-                    metas[index] = self._convertDomMetaToApiMeta(meta);
-                });
-
-                this.data.meta = metas;
-                this.saveResource();
             },
             confirmDelete: function () {
                 this.$.confirmDelete.open();

@@ -56,7 +56,7 @@ class DatahubBbm extends \DBCore\Datahub\DatahubBbm
                 $this->__set( static::AUTO_INCREMENT_COLUMN, $ID );
             }
 
-            $this->loaded_from_database();
+            $this->set_loaded_from_database(true);
         }
 
         return true;

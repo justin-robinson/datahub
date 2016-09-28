@@ -133,6 +133,21 @@
                 Datahub.ApiResourceBehavior
             ],
             properties: {
+                data: {
+                    value: function () {
+                        return {
+                            id: '',
+                            name: '',
+                            market_code: '',
+                            ranked_by: '',
+                            published_at: '',
+                            fields: '',
+                            taxonomy: '',
+                            description: '',
+                            entries: [],
+                        }
+                    }
+                },
                 url: {
                     value: Datahub.apiUrl + 'dataset'
                 },
