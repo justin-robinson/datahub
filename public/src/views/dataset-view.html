@@ -228,7 +228,26 @@
                 this.$.confirmDelete.open();
             },
             addEntryClicked: function () {
-                this.addEntry({});
+
+                // new entry to be added
+                var entry = {
+                    meta: []
+                };
+
+                // copy all meta keys from the first entry
+                var entries = this.get('data.entries');
+                if ( entries.length ) {
+                    var firstEntry = entries[0];
+                    var meta;
+                    firstEntry.meta.forEach(function(meta){
+                       Object.keys(meta).map(function(key){
+                           meta = {};
+                           meta[key] = '';
+                           entry.meta.push(meta);
+                       });
+                    });
+                }
+                this.addEntry(entry);
             },
             addEntry: function (entry) {
 
