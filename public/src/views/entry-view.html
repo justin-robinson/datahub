@@ -32,11 +32,20 @@
             }
 
             .entry-properties paper-input {
-                width: calc(25% - 0.25em);
-                width: -o-calc(25% - 0.25em);
-                width: -moz-calc(25% - 0.25em);
-                width: -webkit-calc(25% - 0.25em);
+                width: calc(20% - 0.2em);
+                width: -o-calc(20% - 0.2em);
+                width: -moz-calc(20% - 0.2em);
+                width: -webkit-calc(20% - 0.2em);
                 display: inline-table;
+            }
+
+            .meta-properties .meta-property {
+                display: inline-table;
+                width: 49%;
+            }
+
+            .meta-properties .meta-property paper-input {
+                width: 49%;
             }
 
             paper-button.save {
@@ -66,9 +75,17 @@
                 <paper-input value="{{data.logo}}" label="Logo URL"></paper-input>
                 <paper-input value="{{data.image}}" label="Image URL"></paper-input>
                 <paper-input value="{{data.promoText}}" label="Promo Text"></paper-input>
-                <template is="dom-repeat" items="{{metas}}" as="meta">
-                    <paper-input class="meta" value="{{meta.value}}" label="[[meta.name]]"></paper-input>
-                </template>
+                <div class="meta-properties">
+                    <h3>Meta Properties</h3>
+                    <div>
+                        <template is="dom-repeat" items="{{metas}}" as="meta">
+                            <div class="meta-property">
+                                <paper-input class="meta" value="{{meta.name}}" label="Name"></paper-input>
+                                <paper-input class="meta" value="{{meta.value}}" label="Value"></paper-input>
+                            </div>
+                        </template>
+                    </div>
+                </div>
             </div>
             <!--    Save Button        -->
             <paper-button raised id="save" on-click="saveEntry" class="save"><iron-icon icon="save"></iron-icon>Save</paper-button>
