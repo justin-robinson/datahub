@@ -126,9 +126,10 @@
                 this.listen(this, 'data-changed', 'dataChanged');
             },
             dataChanged: function () {
-                // who knows how many times its json encoded (usually 2)
+                // clone the meta array
                 var metas = JSON.parse(JSON.stringify(this.data.meta || []));
 
+                // transform key value pairs into a meaningful object
                 var key;
                 metas.forEach(function(meta, index, metas){
                     key = Object.keys(meta)[0];
@@ -138,6 +139,7 @@
                     };
                 });
 
+                // save our meaningful object
                 this.set('metas', metas);
             },
             saveEntry: function () {
