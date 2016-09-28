@@ -102,6 +102,7 @@
             </div>
             <!--    Save Button        -->
             <paper-button raised id="save" on-click="saveResource" class="save"><iron-icon icon="save"></iron-icon>Save</paper-button>
+            <paper-button raised class="upload" on-click="uploadMetaClicked"><iron-icon icon="cloud-upload"></iron-icon>Upload Meta</paper-button>
             <!--    Delete Button            -->
             <paper-button raised id="delete" on-click="confirmDelete" class="delete"><iron-icon icon="delete"></iron-icon>Delete</paper-button>
 
@@ -121,6 +122,7 @@
             <template is="dom-if" if="{{data.id}}">
                 <paper-fab id="add-entry" icon="add" on-click="addEntryClicked" class="add-entry"></paper-fab>
             </template>
+            <input type="file" id="metaPropertiesFile" name="file" style="display:none;" accept="text/csv"/>
         </div>
     </template>
 
@@ -149,6 +151,8 @@
                 // listen for data changes
                 this.listen(this, 'data-changed', 'dataChanged');
                 this.listen(this, 'markets-loaded', 'bindMarketsToAutocomplete');
+                // listen for file uploads
+                this.$.metaPropertiesFile.addEventListener('change', this.handleMetaUpload.bind(this), false);
             },
             attached: function () {
                 this.listen(this.$.ajaxSearch, 'loading', function (a) {console.log(a)});
@@ -238,7 +242,6 @@
                 var entries = this.get('data.entries');
                 if ( entries.length ) {
                     var firstEntry = entries[0];
-                    var meta;
                     firstEntry.meta.forEach(function(meta){
                        Object.keys(meta).map(function(key){
                            meta = {};
@@ -258,6 +261,49 @@
                 // push new entry to our array and notify polymer that it needs to render the new entry
                 this.push('data.entries', entry);
             },
+            uploadMetaClicked: function () {
+                this.$.metaPropertiesFile.click();
+            },
+            handleMetaUpload: function (event) {
+
+                var self = this;
+                // ensure we have a file
+                var file = event.target.files.length ? event.target.files[0] : null;
+
+                if ( file ) {
+
+                    var reader = new FileReader();
+
+                    // Closure to capture the file information.
+                    reader.onload = (function() {
+                        return function(e) {
+                            var csvContent = CSV.parse(e.target.result);
+
+                            // process csv data if successful parse
+                            if ( Array.isArray(csvContent) && csvContent.length ) {
+                                var headerRow = csvContent.shift();
+
+                                csvContent.forEach(function(row) {
+                                    var entry = {
+                                        meta: []
+                                    };
+
+                                    headerRow.forEach(function(metaName, index) {
+                                        var meta = {};
+                                        meta[metaName] = row[index];
+                                        entry.meta.push(meta);
+                                    });
+
+                                    self.addEntry(entry);
+                                });
+                            }
+                        };
+                    })(file);
+
+                    // Read in the csv file as text and parse into an array
+                    reader.readAsText(file);
+                }
+            }
         });
     </script>
 
