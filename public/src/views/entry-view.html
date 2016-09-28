@@ -3,6 +3,7 @@
 <link rel="import" href="../../bower_components/iron-list/iron-list.html">
 <link rel="import" href="../../bower_components/paper-autocomplete/paper-autocomplete.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../behaviors/api-resource-behavior.html">
@@ -31,12 +32,15 @@
                 padding: 1em;
             }
 
+            .entry-properties * {
+                display: inline-block;
+            }
+
             .entry-properties paper-input {
                 width: calc(20% - 0.2em);
                 width: -o-calc(20% - 0.2em);
                 width: -moz-calc(20% - 0.2em);
                 width: -webkit-calc(20% - 0.2em);
-                display: inline-table;
             }
 
             .meta-properties .meta-property {
@@ -65,7 +69,7 @@
 
         <paper-card heading="{{data.id}}">
             <div class="entry-properties">
-                <paper-input value="{{data.featured}}" label="Featured"></paper-input>
+                <paper-checkbox checked="{{data.featured}}">Featured</paper-checkbox>
                 <paper-input value="{{data.featuredExpires}}" label="Expires"></paper-input>
                 <paper-input value="{{data.logo}}" label="Logo URL"></paper-input>
                 <paper-input value="{{data.image}}" label="Image URL"></paper-input>
@@ -138,6 +142,9 @@
 
                 // save our meaningful object
                 this.set('metas', metas);
+
+                // convert featured flag to a true boolean for the checkbox
+                this.set('data.featured', this.data.featured === true || parseInt(this.data.featured) === 1);
             },
             confirmDelete: function () {
                 this.$.confirmDelete.open();
