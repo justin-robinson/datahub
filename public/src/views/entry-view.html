@@ -130,13 +130,9 @@
                 var metas = JSON.parse(JSON.stringify(this.data.meta || []));
 
                 // transform key value pairs into a meaningful object
-                var key;
+                var self = this;
                 metas.forEach(function(meta, index, metas){
-                    key = Object.keys(meta)[0];
-                    metas[index] = {
-                        name: key,
-                        value: meta[key]
-                    };
+                    metas[index] = self._convertApiMetaToDomMeta(meta);
                 });
 
                 // save our meaningful object
@@ -145,9 +141,9 @@
             saveEntry: function () {
                 var metas = JSON.parse(JSON.stringify(this.metas || []));
 
+                var self = this;
                 metas.forEach(function(meta, index, metas){
-                    metas[index] = {};
-                    metas[index][meta.name] = meta.value;
+                    metas[index] = self._convertDomMetaToApiMeta(meta);
                 });
 
                 this.data.meta = metas;
@@ -163,6 +159,20 @@
                 meta = meta || {name: '', value: ''};
 
                 this.push('metas', meta);
+            },
+            _convertDomMetaToApiMeta: function(domMeta) {
+
+                var apiMeta = {};
+                apiMeta[domMeta.name] = domMeta.value;
+                return apiMeta;
+            },
+            _convertApiMetaToDomMeta: function(apiMeta) {
+                var key = Object.keys(apiMeta)[0];
+
+                return {
+                    name: key,
+                    value: apiMeta[key]
+                }
             }
 
         });
