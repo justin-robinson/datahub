@@ -88,7 +88,7 @@ class Generic implements \JsonSerializable {
             foreach ( $result as $row ) {
 
                 // add a new instance of this row to the collection
-                $rows->add_row ( ( new static( $row ) )->loaded_from_database () );
+                $rows->add_row ( ( new static( $row ) )->set_loaded_from_database(true) );
 
             }
 
@@ -162,22 +162,22 @@ class Generic implements \JsonSerializable {
     /**
      * @return bool
      */
-    public function is_loaded_from_database () {
+    public function get_loaded_from_database () {
 
         return $this->loadedFromDb;
     }
 
     /**
-     * Mark this object as loaded from the database
+     * @param bool $loadedFromDb
+     * @return $this
      */
-    public function loaded_from_database () {
+    public function set_loaded_from_database ($loadedFromDb = true) {
 
-        $this->loadedFromDb = true;
-
-        $this->originalDbValuesArray = $this->dBValuesArray;
+        if ( $this->loadedFromDb = $loadedFromDb ) {
+            $this->originalDbValuesArray = $this->dBValuesArray;
+        }
 
         return $this;
-
     }
 
     /**
