@@ -36,19 +36,19 @@ return [
 
     'mysql' => [
         'datahub' => [
-            'host'          => 'devdb.bizj-internal.com',
-            'database'      => 'datahub',
-            'port'          => '3306',
-            'user'          => 'web',
-            'password'      => '',
+            'host'     => 'devdb.bizj-internal.com',
+            'database' => 'datahub',
+            'port'     => '3306',
+            'user'     => 'web',
+            'password' => '',
         ],
         'db02'    => [
-            'host'          => 'db02.bizj-internal.com',
-            'database'        => 'recon',
-            'port'          => '3318',
-            'user'          => 'datahub',
-            'password'      => 'datahub',
-        ]
+            'host'     => 'db02.bizj-internal.com',
+            'database' => 'recon',
+            'port'     => '3318',
+            'user'     => 'datahub',
+            'password' => 'datahub',
+        ],
     ],
 
 ];

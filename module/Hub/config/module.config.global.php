@@ -55,7 +55,7 @@ return [
         'reportdb' => [
             'charset'       => 'utf8',
             'host'          => 'reportdb.bizjournals.int',
-            'database'        => 'bizj',
+            'database'      => 'bizj',
             'port'          => '3306',
             'user'          => 'operations',
             'password'      => 'operations',

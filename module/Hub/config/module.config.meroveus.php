@@ -11,18 +11,18 @@ return [
 
     'mysql' => [
         'datahub' => [
-            'host'          => 'devdb.bizjournals.int',
-            'database'        => 'datahub_meroveus',
-            'port'          => '3306',
-            'user'          => 'web',
-            'password'      => '',
+            'host'     => 'devdb.bizjournals.int',
+            'database' => 'datahub_meroveus',
+            'port'     => '3306',
+            'user'     => 'web',
+            'password' => '',
         ],
         'db02'    => [
-            'host'          => 'radb.bizj-internal.com',
-            'database'        => 'recon',
-            'port'          => '3306',
-            'user'          => 'datahub',
-            'password'      => 'readonly',
+            'host'     => 'radb.bizj-internal.com',
+            'database' => 'recon',
+            'port'     => '3306',
+            'user'     => 'datahub',
+            'password' => 'readonly',
         ],
     ],
 ];
