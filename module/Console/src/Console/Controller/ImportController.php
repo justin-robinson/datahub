@@ -12,8 +12,8 @@ use DB\Datahub\CompanyInstanceTop25lists;
 use DB\Datahub\Top25List;
 use DB\Datahub\Contact;
 use LRUCache\LRUCache;
+use Scoop\Database\Model\Generic;
 use Scoop\Database\Query\Buffer;
-use Zend\Db\Adapter as dbAdapter;
 use Console\Importer\Dataset;
 use Console\Importer\Bbm;
 
@@ -436,11 +436,7 @@ class ImportController extends AbstractActionController
             'noLists'    => 0,
         ];
         // get all the lists
-        $config = $this->getServiceLocator()->get('Config');
-        $bizjDB = new \PDO('mysql:host=' . $config['mysql']['bizjournals']['host'] . ';
-            dbname:=' . $config['mysql']['bizjournals']['dbname'], $config['mysql']['bizjournals']['user'],
-            $config['mysql']['bizjournals']['password']);
-        $sql    = "
+        $sql = "
             SELECT
               tlr.company_name,
               tlr.list_id,
@@ -457,44 +453,55 @@ class ImportController extends AbstractActionController
                   AND tlr.company_name <> ''
                   AND tlr.object_type = 'company'
             ORDER BY tlr.list_id ASC
+            LIMIT ?,?
             ";
-        $stmnt  = $bizjDB->prepare($sql);
-        $stmnt->execute();
-        // process and save them
-        $lists = $stmnt->fetchAll(\PDO::FETCH_ASSOC);
-        if ($lists) {
+        $limit = 1000;
+        $offset = 0;
+        $previousList = null;
+        $mapBuffer = new Buffer(1000, CompanyInstanceTop25lists::class);
+        $listBuffer = new Buffer(1000, Top25List::class);
+        while ( $lists = Generic::query($sql, [$offset, $limit])) {
+            if ( $previousList === null ) {
+                $previousList = $lists->get(0);
+            }
             foreach ($lists as $k => $list) {
-                $instance = CompanyInstance::fetch_by_source_name_and_id('meroveus', $list['meroveusId']);
-                if ($instance) {
-                    // build the mapping
-                    $map                    = new CompanyInstanceTop25lists();
-                    $map->companyInstanceId = $instance->first()->companyInstanceId;
-                    $map->listId            = $list['list_id'];
-                    // save the mapping
-                    $mapSave = $map->save();
-                    if (!$mapSave) {
-                        //log the error
-                        $error['mapSave']++;
-                    }
-                    // of the next list_id is different, save the current one
-                    if ($list['list_id'] !== $lists[$k + 1]['list_id']) {
-                        $listToSave               = new Top25List();
-                        $listToSave->listId       = empty($list['list_id']) ? null : $list['list_id'];
-                        $listToSave->issueDate    = empty($list['issue_date']) ? null : $list['issue_date'];
-                        $listToSave->pageHeadline = empty($list['page_headline']) ? null : $list['page_headline'];
-                        $listToSave->listUrl      = empty($list['path']) ? null : $list['path'];
-                        // save the list
-                        if (!$listToSave->save()) {
-                            // log the error
-                            $error['listSave']++;
-                        }
-                    }
-                } else {
+                $instance = CompanyInstance::fetch_by_source_name_and_id('meroveus', $list->meroveusId);
+
+                if ( $instance === false ) {
                     // log the error
                     $error['noInstance']++;
+                    $previousList = $list;
+                    continue;
                 }
+
+                // build the mapping
+                $map                    = new CompanyInstanceTop25lists();
+                $map->companyInstanceId = $instance->first()->companyInstanceId;
+                $map->listId            = $list->list_id;
+
+                $mapBuffer->insert($map);
+
+                // of the next list_id is different, save the current one
+                if ($list->list_id !== $previousList->list_id) {
+                    $listToSave               = new Top25List();
+                    $listToSave->listId       = empty($list->list_id) ? null : $list->list_id;
+                    $listToSave->issueDate    = empty($list->issue_date) ? null : $list->issue_date;
+                    $listToSave->pageHeadline = empty($list->page_headline) ? null : $list->page_headline;
+                    $listToSave->listUrl      = empty($list->path) ? null : $list->path;
+
+                    $listBuffer->insert($listToSave);
+                }
+
+                $previousList = $list;
             }
-        } else {
+
+            $offset += $limit;
+        }
+
+        $mapBuffer->flush();
+        $listBuffer->flush();
+
+        if ( $lists === false && $offset === 0 ) {
             // log the error
             $error['noLists']++;
         }

@@ -37,7 +37,7 @@ return [
     'mysql' => [
         'datahub' => [
             'host'          => 'devdb.bizj-internal.com',
-            'database'        => 'datahub',
+            'database'      => 'datahub',
             'port'          => '3306',
             'user'          => 'web',
             'password'      => '',
@@ -48,18 +48,7 @@ return [
             'port'          => '3318',
             'user'          => 'datahub',
             'password'      => 'datahub',
-        ],
-        'bizjournals' => [
-            'charset'       => 'utf8',
-            'host'          => 'devdb.bizj-internal.com',
-            'database'        => 'bizj',
-            'port'          => '3306',
-            'user'          => 'web',
-            'password'      => '',
-            'driverOptions' => [
-                1002 => 'SET NAMES utf8',
-            ]
-        ],
+        ]
     ],
 
 ];
