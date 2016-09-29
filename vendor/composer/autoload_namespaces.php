@@ -15,7 +15,6 @@ return array(
     'LRUCache' => array($vendorDir . '/justin-robinson/lrucache/src'),
     'Guzzle\\Tests' => array($vendorDir . '/guzzle/guzzle/tests'),
     'Guzzle' => array($vendorDir . '/guzzle/guzzle/src'),
-    'Gedmo\\' => array($vendorDir . '/gedmo/doctrine-extensions/lib'),
     'Entity\\' => array($vendorDir . '/bizjournals/module_entity/src'),
     'Doctrine\\ORM\\' => array($vendorDir . '/doctrine/orm/lib'),
     'Doctrine\\DBAL\\' => array($vendorDir . '/doctrine/dbal/lib'),
@@ -26,5 +25,4 @@ return array(
     'DoctrineORMModule\\' => array($vendorDir . '/doctrine/doctrine-orm-module/src'),
     'DoctrineModule\\' => array($vendorDir . '/doctrine/doctrine-module/src'),
     'Colors' => array($vendorDir . '/kevinlebrun/colors.php/src'),
-    'Behat\\Transliterator' => array($vendorDir . '/behat/transliterator/src'),
 );

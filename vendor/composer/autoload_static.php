@@ -188,10 +188,6 @@ class ComposerStaticInit80ce7eceae09e36de01171fc8eae3626
             array (
                 0 => __DIR__ . '/..' . '/guzzle/guzzle/src',
             ),
-            'Gedmo\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/gedmo/doctrine-extensions/lib',
-            ),
         ),
         'E' => 
         array (
@@ -240,13 +236,6 @@ class ComposerStaticInit80ce7eceae09e36de01171fc8eae3626
             'Colors' => 
             array (
                 0 => __DIR__ . '/..' . '/kevinlebrun/colors.php/src',
-            ),
-        ),
-        'B' => 
-        array (
-            'Behat\\Transliterator' => 
-            array (
-                0 => __DIR__ . '/..' . '/behat/transliterator/src',
             ),
         ),
     );
