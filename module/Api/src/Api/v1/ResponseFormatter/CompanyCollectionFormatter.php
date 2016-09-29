@@ -16,14 +16,17 @@ class CompanyCollectionFormatter
      * @param Rows $companies
      * @param int  $page
      * @param int  $limit
+     * @param null $totalCount
      *
      * @return array
      */
-    public static function format(Rows $companies, $page = 1, $limit = 1000)
+    public static function format(Rows $companies, $page = 1, $limit = 1000, $totalCount = null)
     {
 
         $host = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST') . '/api/v1/company';
-        $totalCount = Generic::query('SELECT count(*) AS count FROM company')->first()->count;
+        $totalCount = $totalCount === null
+            ? Generic::query('SELECT count(*) AS count FROM company')->first()->count
+            : $totalCount;
         $lastPage = ceil($totalCount / $limit);
 
         $array = [

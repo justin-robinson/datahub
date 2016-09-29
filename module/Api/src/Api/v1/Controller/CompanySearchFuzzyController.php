@@ -4,6 +4,7 @@ namespace Api\v1\Controller;
 
 use Api\v1\ResponseFormatter\CompanyCollectionFormatter;
 use DB\Datahub\Company;
+use Scoop\Database\Model\Generic;
 use Scoop\Database\Rows;
 use Zend\View\Model\JsonModel;
 
@@ -38,9 +39,22 @@ class CompanySearchFuzzyController extends AbstractRestfulController
 
         if ( $companies === false ) {
             $companies = new Rows();
+            $totalCount = 0;
+        } else {
+            $totalCount = Generic::query(
+                'SELECT
+                  count(*)
+                 AS
+                  count
+                 FROM
+                  company
+                 WHERE
+                  name LIKE ?
+                  OR companyId LIKE ?',
+            [$searchString, $searchString])->first()->count;
         }
 
-        return new JsonModel(CompanyCollectionFormatter::format($companies));
+        return new JsonModel(CompanyCollectionFormatter::format($companies, 1, 1000, $totalCount));
 
     }
 }
