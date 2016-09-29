@@ -1,15 +1,5 @@
 <?php
-$defaultMysqlConnectionParams = [
-    'charset'       => 'utf8',
-    'host'          => 'devdb.bizjournals.int',
-    'dbname'        => 'datahub_meroveus',
-    'port'          => '3306',
-    'user'          => 'web',
-    'password'      => '',
-    'driverOptions' => [
-        1002 => 'SET NAMES utf8',
-    ],
-];
+
 return [
 
     'elastica-datahub' => [
@@ -20,17 +10,19 @@ return [
     ],
 
     'mysql' => [
-        'datahub' => $defaultMysqlConnectionParams,
+        'datahub' => [
+            'host'          => 'devdb.bizjournals.int',
+            'database'        => 'datahub_meroveus',
+            'port'          => '3306',
+            'user'          => 'web',
+            'password'      => '',
+        ],
         'db02'    => [
-            'charset'       => 'utf8',
             'host'          => 'radb.bizj-internal.com',
-            'dbname'        => 'recon',
+            'database'        => 'recon',
             'port'          => '3306',
             'user'          => 'datahub',
             'password'      => 'readonly',
-            'driverOptions' => [
-                1002 => 'SET NAMES utf8',
-            ],
         ],
     ],
 ];

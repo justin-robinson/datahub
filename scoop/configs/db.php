@@ -32,15 +32,7 @@ $configFilePath = __DIR__ . "/../../module/Hub/config/module.config.{$env}.php";
 if ( file_exists($configFilePath) ) {
 
     $configFile = include $configFilePath;
-    $configFile = $configFile['mysql']['datahub'];
-
-    return [
-        'host'     => $configFile['host'],
-        'database' => $configFile['dbname'],
-        'user'     => $configFile['user'],
-        'password' => $configFile['password'],
-        'port'     => $configFile['port'],
-    ];
+    return $configFile['mysql']['datahub'];
 }
 
 return;

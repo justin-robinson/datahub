@@ -1,16 +1,5 @@
 <?php
-$defaultMysqlConnectionParams = [
-    'charset'       => 'utf8',
-    'host'          => 'devdb.bizj-internal.com',
-    'dbname'        => 'datahub',
-    'port'          => '3306',
-    'user'          => 'web',
-    'password'      => '',
-    'driverOptions' => [
-        1002 => 'SET NAMES utf8',
-    ],
 
-];
 return [
 
     'logger' => [
@@ -46,22 +35,24 @@ return [
     //    ],
 
     'mysql' => [
-        'datahub' => $defaultMysqlConnectionParams,
+        'datahub' => [
+            'host'          => 'devdb.bizj-internal.com',
+            'database'        => 'datahub',
+            'port'          => '3306',
+            'user'          => 'web',
+            'password'      => '',
+        ],
         'db02'    => [
-            'charset'       => 'utf8',
             'host'          => 'db02.bizj-internal.com',
-            'dbname'        => 'recon',
+            'database'        => 'recon',
             'port'          => '3318',
             'user'          => 'datahub',
             'password'      => 'datahub',
-            'driverOptions' => [
-                1002 => 'SET NAMES utf8',
-            ],
         ],
         'bizjournals' => [
             'charset'       => 'utf8',
             'host'          => 'devdb.bizj-internal.com',
-            'dbname'        => 'bizj',
+            'database'        => 'bizj',
             'port'          => '3306',
             'user'          => 'web',
             'password'      => '',
