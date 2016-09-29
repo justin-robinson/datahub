@@ -84,12 +84,27 @@
         Polymer({
             is: 'contacts-view',
             properties: {
-                searchTimer: Object
+                searchTimer: Object,
+                contacts: {
+                    type: Array,
+                    value: function () { return []; },
+                    observer: 'contactsChanged'
+                },
+                instanceId: {
+                    type: Number,
+                    value: null,
+                    notify: true,
+                    observer: 'instanceIdChanged'
+                }
             },
-            attached: function () {
-                if ( Datahub.queryParams.instanceId ) {
-                    this.set('data.companyInstanceId', Datahub.queryParams.instanceId);
-                    this.$.getInstanceContacts.url = Datahub.apiUrl + 'instance/' + Datahub.queryParams.instanceId + '/contacts';
+            instanceIdChanged: function(newValue, oldValue) {
+                if ( !isNaN(parseFloat(newValue)) && isFinite(newValue) && newValue != oldValue ) {
+                    this.$.getInstanceContacts.url = Datahub.apiUrl + 'instance/' + newValue + '/contacts';
+                }
+            },
+            contactsChanged: function ( newValue, oldValue ) {
+                if ( newValue.length ) {
+                    this.set('instanceId', newValue[0].companyInstanceId);
                 }
             },
             fetchResource: function () {

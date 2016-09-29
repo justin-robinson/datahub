@@ -135,7 +135,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
           <company-view id="companyView" name="company" resource-id="{{id}}" auto-update></company-view>
-          <contacts-view id="contactsView" name="contacts" resource-id="{{id}}"></contacts-view>
+          <contacts-view id="contactsView" name="contacts" instance-id="{{id}}"></contacts-view>
           <dataset-view id="datasetView" name="dataset" resource-id="{{id}}" auto-update></dataset-view>
         </iron-pages>
 
@@ -193,6 +193,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       ready: function () {
         this.listen(this.$.companyView, 'data-changed', 'companyChanged');
+        this.listen(this.$.contactsView, 'instanceId-changed', 'contactChanged');
       },
 
       attached: function () {
@@ -249,6 +250,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         } else if ( !change.path && change.value.companyId ) {
           this.set('id', change.value.companyId )
         }
+      },
+      contactChanged: function(event, change) {
+        this.set('id', change.value);
       }
 
     });
