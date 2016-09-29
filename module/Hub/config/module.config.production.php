@@ -11,22 +11,6 @@ $defaultMysqlConnectionParams = [
     ],
 ];
 return [
-    'doctrine' => [
-        'connection' => [
-            'datahub'     => [
-                'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
-                'params'      => array_merge($defaultMysqlConnectionParams, [
-                    'dbname' => 'datahub',
-                ]),
-            ],
-            'orm_default' => [
-                'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
-                'params'      => array_merge($defaultMysqlConnectionParams, [
-                    'dbname' => 'datahub',
-                ]),
-            ],
-        ],
-    ],
 
     'elastica-datahub' => [
         'host' => 'http://elb.elasticsearch.datahub.bizj-internal.com',

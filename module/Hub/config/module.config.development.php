@@ -13,23 +13,6 @@ $defaultMysqlConnectionParams = [
 ];
 return [
 
-    'doctrine' => [
-        'connection' => [
-            'datahub'     => [
-                'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
-                'params'      => array_merge($defaultMysqlConnectionParams, [
-                    'dbname' => 'datahub',
-                ]),
-            ],
-            'orm_default' => [
-                'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
-                'params'      => array_merge($defaultMysqlConnectionParams, [
-                    'dbname' => 'datahub',
-                ]),
-            ],
-        ],
-    ],
-
     'logger' => [
         'default' => [
             'priority' => \Zend\Log\Logger::DEBUG,
