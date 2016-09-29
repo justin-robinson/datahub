@@ -1,8 +1,5 @@
 <?php
 $modules = [
-    'DoctrineModule',
-    'DoctrineORMModule',
-    'Entity',
     'Services',
     'Console',
     'Api',
