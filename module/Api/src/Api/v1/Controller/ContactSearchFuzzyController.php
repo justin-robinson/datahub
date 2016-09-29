@@ -32,7 +32,7 @@ class ContactSearchFuzzyController extends AbstractRestfulController
         $searchString = "%{$searchString}%";
 
         $contacts = Contact::fetch_where(
-            'CONCAT(firstName, " ", lastName) LIKE ?
+            'CONCAT_WS(" ", honorific, firstName, middleInitial, lastName, suffix) LIKE ?
             OR email LIKE ?
             OR address1 LIKE ?
             OR contactId LIKE ?',
