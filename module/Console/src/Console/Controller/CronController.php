@@ -475,7 +475,7 @@ SELECT
         $config = $this->getServiceLocator()->get('Config')['elastica-datahub'];
 
         // the last time this script ran
-        $lastRunTimeFileName = 'datahub.datasets.export.elastic';
+        $lastRunTimeFileName = '/tmp/datahub.datasets.export.elastic';
         $lastRunTime = file_exists($lastRunTimeFileName)
             ? file_get_contents($lastRunTimeFileName)
             : Dataset::$dBColumnDefaultValuesArray['updatedAt'];

@@ -12,4 +12,3 @@
 npm-debug.log
 deployment.properties
 public/bower_components
-datahub.datasets.export.elastic
