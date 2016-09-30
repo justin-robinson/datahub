@@ -3,12 +3,10 @@
     "datasets": {
       "properties": {
         "name": {
-          "type": "string",
-          "index": "not_analyzed"
+          "type": "string"
         },
         "description": {
-          "type": "string",
-          "index": "not_analyzed"
+          "type": "string"
         },
         "market_code": {
           "type": "string"

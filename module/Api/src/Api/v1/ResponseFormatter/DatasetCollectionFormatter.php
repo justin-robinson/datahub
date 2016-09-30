@@ -32,7 +32,7 @@ class DatasetCollectionFormatter
      *
      * @return array
      */
-    public static function format(Rows $datasets, $url, $page = 1, $limit = 1000, $totalCount = null)
+    public static function format(Rows $datasets, $page = 1, $limit = 1000, $totalCount = null)
     {
         $host = FormatterHelpers::get_http_protocol() . FormatterHelpers::get_server_variable('HTTP_HOST') . '/api/v1/dataset';
         $totalCount = $totalCount === null ? Generic::query('SELECT count(*) AS count FROM dataset')->first()->count : $totalCount;
