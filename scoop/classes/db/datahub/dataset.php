@@ -60,8 +60,23 @@ class Dataset extends \DBCore\Datahub\Dataset
         return $this->entries;
     }
 
-    public function save()
+    /**
+     * @param bool $setTimestamps
+     *
+     * @return $this|bool
+     */
+    public function save($setTimestamps = true)
     {
+
+        // set timestamps on the model before saving
+        if( $setTimestamps ) {
+            if( $this->createdAt === self::$dBColumnDefaultValuesArray['createdAt'] ) {
+                $this->set_literal( 'createdAt', 'NOW()' );
+            }
+            $this->set_literal( 'updatedAt', 'NOW()' );
+        }
+
+
         if(parent::save()){
             if($this->saveDataSetEntries()){
                 return $this;
@@ -70,6 +85,9 @@ class Dataset extends \DBCore\Datahub\Dataset
         return false;
     }
 
+    /**
+     * @return bool
+     */
     private function saveDataSetEntries(){
         $return = false;
 //        if ( empty($this->id) ) {

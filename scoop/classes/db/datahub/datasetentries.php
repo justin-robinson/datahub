@@ -42,6 +42,18 @@ class DatasetEntries extends \DBCore\Datahub\DatasetEntries {
 
         return $array;
     }
+
+    public function save($setTimestamps = true ) {
+
+        // set timestamps on the model before saving
+        if( $setTimestamps ) {
+            if( $this->createdAt === self::$dBColumnDefaultValuesArray['createdAt'] ) {
+                $this->set_literal( 'createdAt', 'NOW()' );
+            }
+            $this->set_literal( 'updatedAt', 'NOW()' );
+        }
+
+    }
 }
 
 ?>

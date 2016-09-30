@@ -72,6 +72,7 @@ class DatasetController extends AbstractRestfulController
 
         $set = new Dataset($data);
         $set->save();
+        $set->reload(); // get actual timestamp values
         
         return new JsonModel(DatasetFormatter::format($set, true));
     }
@@ -93,26 +94,14 @@ class DatasetController extends AbstractRestfulController
 
             $set->populate($data);
             $set->save();
+            $set->reload(); // get actual timestamp values
 
             foreach ( $data['entries'] as $k => $entryData ) {
                 $entry = new DatasetEntries($entryData);
                 $entry->dataset_id = $set->id;
                 $entry->set_loaded_from_database($entry->has_id())->save();
+                $entry->reload(); // get actual timestamp values
             }
-            
-//            foreach ($set->entries as $k => $entry) {
-//                // process the entries
-////                $entry->populate($data['entries'][$k]);
-//
-//                $entry->meta            = empty($data['entries'][$k]['meta']) ? $entry->meta : json_encode($data['entries'][$k]['meta']);
-//                $entry->featured        = empty($data['entries'][$k]['featured']) ? $entry->featured : $data['entries'][$k]['featured'];
-//                $entry->featuredExpires = empty($data['entries'][$k]['featuredExpires']) ? $entry->featuredExpires : $data['entries'][$k]['featuredExpires'];
-//                $entry->logo            = empty($data['entries'][$k]['logo']) ? $entry->logo : $data['entries'][$k]['logo'];
-//                $entry->image           = empty($data['entries'][$k]['image']) ? $entry->image : $data['entries'][$k]['image'];
-//                $entry->promoText       = empty($data['entries'][$k]['promoText']) ? $entry->promoText : $data['entries'][$k]['promoText'];
-//
-//                $entry->save();
-//            }
             
             return new JsonModel(DatasetFormatter::format($set, true));
         }
