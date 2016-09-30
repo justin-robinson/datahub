@@ -12,6 +12,7 @@ use Scoop\Database\Model;
  * @property mixed $id
  * @property mixed $name
  * @property mixed $market_code
+ * @property mixed $type
  * @property mixed $ranked_by
  * @property mixed $publishedAt
  * @property mixed $fields
@@ -52,6 +53,9 @@ class Dataset extends Model {
           'market_code' => 
           array (
           ),
+          'type' => 
+          array (
+          ),
           'ranked_by' => 
           array (
           ),
@@ -79,6 +83,7 @@ class Dataset extends Model {
           'id' => NULL,
           'name' => NULL,
           'market_code' => NULL,
+          'type' => NULL,
           'ranked_by' => NULL,
           'publishedAt' => NULL,
           'fields' => NULL,
