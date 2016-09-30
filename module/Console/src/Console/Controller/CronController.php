@@ -5,6 +5,8 @@ namespace Console\Controller;
 use Console\Countries;
 use Console\CsvIterator;
 use Console\Importer\Refinery;
+use DB\Datahub\Dataset;
+use Elasticsearch\ClientBuilder;
 use Scoop\Database\Connection;
 use Scoop\Database\Model\Generic;
 
@@ -466,7 +468,59 @@ SELECT
         echo PHP_EOL . "ended at " . $end . PHP_EOL;
     }
 
-    public function datasetElasticExportAction () {
+    public function exportDatasetToElasticAction ()
+    {
 
+        // get elastic connection info
+        $config = $this->getServiceLocator()->get('Config')['elastica-datahub'];
+
+        $elasticClient = ClientBuilder::create()
+                                      ->setHosts([$config['host'] . ':' . $config['port']])
+                                      ->build();
+        // our elastic index and type to use
+        $index = $type = 'datasets';
+
+        // ensure the index exists
+        $indexCreationParams = ['index' => $index];
+        if (!$elasticClient->indices()->exists($indexCreationParams)) {
+            $elasticClient->indices()->create($indexCreationParams);
+        }
+        // ensure the type exists
+        $mappingCreationParams = ['index' => $index, 'type' => $type];
+        $mappingConfig = json_decode(file_get_contents(getcwd() . '/config/elastic/datasetMappings.json'), true);
+        if (!$elasticClient->indices()->existsType($mappingCreationParams)) {
+            $mappingCreationParams['body'] = $mappingConfig['mappings'];
+            $elasticClient->indices()->putMapping($mappingCreationParams);
+        }
+
+        // do a bulk upload of datasets
+        $offset = 0;
+        $limit = 1000;
+
+        while ( $datasets = Dataset::fetch_all($limit, $offset) ) {
+            $bulkUploadParams = ['body' => []];
+
+            /** @var Dataset $dataset */
+            foreach ( $datasets as $dataset ) {
+
+                // action
+                $bulkUploadParams['body'][] = [
+                    'index' => [
+                        '_index' => $index,
+                        '_type' => $type,
+                        '_id' => $dataset->id
+                    ]
+                ];
+
+                // extract fields from model that exist in the index
+                $bulkUploadParams['body'][] = array_intersect_key(
+                    $dataset->to_array(),
+                    $mappingConfig['mappings'][$type]['properties']
+                );
+            }
+
+            $elasticClient->bulk($bulkUploadParams);
+            $offset += $limit;
+        }
     }
 }
