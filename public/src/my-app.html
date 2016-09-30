@@ -126,9 +126,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
             <img id="header-logo" src="/images/app-icon-64.png" alt="logo" height="60px" width="60px">
             <div title>Bobby</div>
-            <template is="dom-if" if="[[envOverride]]">
-              <div class="environment">env: <strong>{{envOverride.env}}</strong></div>
-            </template>
+            <div class="environment">env: <strong>[[env.name]]</strong></div>
           </app-toolbar>
         </app-header>
 
@@ -144,7 +142,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     </app-drawer-layout>
 
-    <polymer-cookie id="cookieEnv" name="env"></polymer-cookie>
+    <polymer-cookie id="cookieEnvName" name="env.name"></polymer-cookie>
+    <polymer-cookie id="cookieEnvApiUrl" name="env.api.url"></polymer-cookie>
 
   </template>
 
@@ -153,16 +152,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     var Datahub = {
       appEnv : {
         development: {
-          apiUrl: 'http://hub.dev.bizjournals.com/api/v1/'
+          api: {
+            url: 'http://hub.dev.bizjournals.com/api/v1/'
+          },
+          name: 'development'
         },
         testing: {
-          apiUrl: 'http://datahub.bizj-staging.com/api/v1/'
+          api: {
+            url: 'http://datahub.bizj-staging.com/api/v1/'
+          },
+          name: 'testing'
         },
         staging: {
-          apiUrl: 'http://datahub.bizj-staging.com/api/v1/'
+          api: {
+            url: 'http://datahub.bizj-staging.com/api/v1/'
+          },
+          name: 'staging'
         },
         production: {
-          apiUrl: 'http://datahub.bizj-production.com/api/v1/'
+          api: {
+            url: 'http://datahub.bizj-production.com/api/v1/'
+          },
+          name: 'production'
+        },
+        self: {
+          api: {
+            url: window.location.origin + '/api/v1/'
+          },
+          name: 'self'
         }
       }
     };
@@ -209,26 +226,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       },
 
       _pageChanged: function(page) {
+
+        // get query parameters
         Datahub.queryParams = this.get('route.__queryParams') || {};
 
-        if ( Datahub.appEnv[Datahub.queryParams.env] ) {
-          this.$.cookieEnv.value = Datahub.queryParams.env;
-        } else {
-          this.$.cookieEnv.value = this.$.cookieEnv.readCookie();
-        }
-        this.$.cookieEnv.createCookie();
+        // get the name of the environment
+        var envName = Datahub.queryParams.env || this.$.cookieEnvName.readCookie() || 'self';
 
-        Datahub.envOverride = (Datahub.appEnv[this.$.cookieEnv.value])
-          ? {env: this.$.cookieEnv.value, apiUrl: Datahub.appEnv[this.$.cookieEnv.value].apiUrl}
-          : false;
+        // get the application environment by name
+        Datahub.env = Datahub.appEnv[envName] || Datahub.appEnv['self'];
+        this.set('env', Datahub.env);
 
-        if ( Datahub.envOverride ) {
-          Datahub.apiUrl = Datahub.envOverride.apiUrl;
-        } else {
-          Datahub.apiUrl = window.location.origin + '/api/v1/';
-        }
-
-        this.set('envOverride', Datahub.envOverride);
+        // save the cookies
+        this.$.cookieEnvName.value = Datahub.env.name; // this is the only one used
+        this.$.cookieEnvName.createCookie();
+        this.$.cookieEnvApiUrl.value = Datahub.env.api.url; // this is just for debugging purposes
+        this.$.cookieEnvApiUrl.createCookie();
 
         // load page import on demand.
         this.importHref(

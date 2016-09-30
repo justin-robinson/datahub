@@ -156,7 +156,7 @@
                         value:'companyInstanceId'
                     },
                     url: {
-                        value: Datahub.apiUrl + 'instance'
+                        value: Datahub.env.api.url + 'instance'
                     },
                     removeFromDomOnDelete: {
                         value: true
@@ -164,15 +164,15 @@
                     sharedCachableResources: {
                         value: {
                             'states': {
-                                url: Datahub.apiUrl + 'state',
+                                url: Datahub.env.api.url + 'state',
                                 indexBy: ['stateId']
                             },
                             'markets': {
-                                url: Datahub.apiUrl + 'market',
+                                url: Datahub.env.api.url + 'market',
                                 indexBy: ['market_code']
                             },
                             'sourceTypes': {
-                                url: Datahub.apiUrl + 'sourcetype',
+                                url: Datahub.env.api.url + 'sourcetype',
                                 indexBy: ['sourceTypeId', 'name']
                             }
                         }

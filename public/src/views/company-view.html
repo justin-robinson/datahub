@@ -167,7 +167,7 @@
                     value:'companyId'
                 },
                 url: {
-                    value: Datahub.apiUrl + 'company'
+                    value: Datahub.env.api.url + 'company'
                 },
                 searchResults: Object,
                 searchTimer: Object
@@ -215,7 +215,7 @@
                 this.searchTimer = setTimeout(function () {
                     Datahub.ajaxSpinners.add();
                     // search api
-                    self.$.ajaxSearch.url = Datahub.apiUrl + 'company/search/fuzzy/' + encodeURIComponent(searchString);
+                    self.$.ajaxSearch.url = Datahub.env.api.url + 'company/search/fuzzy/' + encodeURIComponent(searchString);
                 }, 500);
 
             },

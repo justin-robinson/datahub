@@ -149,14 +149,14 @@
                     }
                 },
                 url: {
-                    value: Datahub.apiUrl + 'dataset'
+                    value: Datahub.env.api.url + 'dataset'
                 },
                 searchResults: Object,
                 searchTimer: Object,
                 sharedCachableResources: {
                     value: {
                         'markets': {
-                            url: Datahub.apiUrl + 'market',
+                            url: Datahub.env.api.url + 'market',
                             indexBy: ['market_code']
                         }
                     }
@@ -193,7 +193,7 @@
                 this.searchTimer = setTimeout(function () {
                     Datahub.ajaxSpinners.add();
                     // search api
-                    self.$.ajaxSearch.url = Datahub.apiUrl + 'dataset/search/' + encodeURIComponent(searchString);
+                    self.$.ajaxSearch.url = Datahub.env.api.url + 'dataset/search/' + encodeURIComponent(searchString);
                 }, 500);
 
             },
