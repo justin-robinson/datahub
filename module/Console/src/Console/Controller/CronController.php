@@ -474,6 +474,13 @@ SELECT
         // get elastic connection info
         $config = $this->getServiceLocator()->get('Config')['elastica-datahub'];
 
+        // the last time this script ran
+        $lastRunTimeFileName = 'datahub.datasets.export.elastic';
+        $lastRunTime = file_exists($lastRunTimeFileName)
+            ? file_get_contents($lastRunTimeFileName)
+            : Dataset::$dBColumnDefaultValuesArray['updatedAt'];
+
+        // our elastic client
         $elasticClient = ClientBuilder::create()
                                       ->setHosts([$config['host'] . ':' . $config['port']])
                                       ->build();
@@ -491,13 +498,16 @@ SELECT
         if (!$elasticClient->indices()->existsType($mappingCreationParams)) {
             $mappingCreationParams['body'] = $mappingConfig['mappings'];
             $elasticClient->indices()->putMapping($mappingCreationParams);
+
+            // if we created the type, upload all datasets again
+            $lastRunTime = Dataset::$dBColumnDefaultValuesArray['updatedAt'];
         }
 
         // do a bulk upload of datasets
         $offset = 0;
         $limit = 1000;
 
-        while ( $datasets = Dataset::fetch_all($limit, $offset) ) {
+        while ( $datasets = Dataset::fetch_where('updatedAt >= ?', [$lastRunTime], $limit, $offset) ) {
             $bulkUploadParams = ['body' => []];
 
             /** @var Dataset $dataset */
@@ -522,5 +532,8 @@ SELECT
             $elasticClient->bulk($bulkUploadParams);
             $offset += $limit;
         }
+
+        // save the last run time
+        file_put_contents($lastRunTimeFileName, date('Y-m-d H:i:s'));
     }
 }
